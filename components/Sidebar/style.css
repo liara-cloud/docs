@@ -1,0 +1,38 @@
+.sidebar {
+  width: 30%;
+  margin-top: 24px;
+}
+
+.brand {
+  display: flex;
+}
+
+.brand__text {
+  margin-right: 16px;
+  color: var(--primary);
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+}
+
+.nav {
+  margin: 24px 0;
+}
+
+.nav__title {
+  color: #555;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav__list li:not(:first-child) {
+  margin: 10px 0;
+}
