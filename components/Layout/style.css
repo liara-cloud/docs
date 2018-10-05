@@ -84,9 +84,10 @@ code {
 }
 
 span.code {
-  color: var(--secondary);
+  margin: 0 4px;
+  color: #004473;
   padding: 2px 8px;
-  background-color: #109bfc08;
+  background-color: #0d9afd21;
 }
 
 .ltr {
