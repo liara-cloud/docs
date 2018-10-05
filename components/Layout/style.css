@@ -49,7 +49,10 @@ p {
 }
 
 .article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
-  margin: 0 0 10px 0;
+  margin: 30px 0 10px 0;
+}
+.article h1:first-child, .article h2:first-child, .article h3:first-child, .article h4:first-child, .article h5:first-child, .article h6:first-child {
+  margin-top: 0;
 }
 
 .article p {
@@ -66,4 +69,27 @@ p {
 }
 .article a:hover {
   color: #1076bd;
+}
+
+code {
+  direction: ltr;
+  text-align: left;
+  width: 100%;
+  display: block;
+  font-size: 16px;
+  padding: 8px 20px;
+  line-height: 1.8em;
+  background-color: #eee;
+  border-left: 2px solid var(--primary);
+}
+
+span.code {
+  color: var(--secondary);
+  padding: 2px 8px;
+  background-color: #109bfc08;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
 }

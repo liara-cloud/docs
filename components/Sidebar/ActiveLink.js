@@ -2,8 +2,9 @@ import { withRouter } from 'next/router'
 
 const ActiveLink = ({ children, router, href }) => {
   const style = {
+    color: 'black',
     marginRight: 10,
-    color: router.pathname === href? 'red' : 'black'
+    fontWeight: router.pathname === href ? 'bold' : 'normal',
   }
 
   const handleClick = (e) => {

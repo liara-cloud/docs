@@ -12,6 +12,12 @@ export default () => (
     </a>
 
     <nav className="nav">
+      <ul className="nav__list">
+        <li><ActiveLink href="/">آشنایی با لیارا</ActiveLink></li>
+      </ul>
+    </nav>
+
+    <nav className="nav">
       <span className="nav__title">کلاینت‌ها</span>
       <ul className="nav__list">
         <li><ActiveLink href="/clients/cli">CLI</ActiveLink></li>
@@ -19,22 +25,21 @@ export default () => (
     </nav>
 
     <nav className="nav">
-      <span className="nav__title">استقرار پروژه‌های Back End</span>
+      <span className="nav__title">استقرار پروژه‌ها</span>
       <ul className="nav__list">
         <li><ActiveLink href="/deployments/nodejs">NodeJS</ActiveLink></li>
         <li><ActiveLink href="/deployments/laravel">Laravel</ActiveLink></li>
+        <li><ActiveLink href="/deployments/static">Static</ActiveLink></li>
+        <li><ActiveLink href="/deployments/docker">Docker</ActiveLink></li>
       </ul>
     </nav>
 
-    <nav className="nav">
-      <span className="nav__title">استقرار پروژه‌های Front End</span>
+    {/* TODO: <nav className="nav">
+      <span className="nav__title">دامنه‌ها</span>
       <ul className="nav__list">
-        <li><ActiveLink href="/deployments/static">Static</ActiveLink></li>
-        <li><ActiveLink href="/deployments/react">React</ActiveLink></li>
-        <li><ActiveLink href="/deployments/angular">Angular</ActiveLink></li>
-        <li><ActiveLink href="/deployments/vue">Vue</ActiveLink></li>
+        <li><ActiveLink href="/domains/mysql">افزودن دامنه</ActiveLink></li>
       </ul>
-    </nav>
+    </nav> */}
 
     <nav className="nav">
       <span className="nav__title">دیتابیس‌ها</span>
