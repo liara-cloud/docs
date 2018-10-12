@@ -16,6 +16,6 @@ build:
     - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
   only:
-    - master
+    - tags
   tags:
     - docker
