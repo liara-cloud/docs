@@ -88,6 +88,7 @@ code {
 
 span.code {
   direction: ltr;
+  letter-spacing: 1px;
   margin: 0 4px;
   color: #004473;
   padding: 0px 8px;

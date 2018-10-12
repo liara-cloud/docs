@@ -22,7 +22,7 @@ export default () => (
       <ul className="nav__list">
         <li><ActiveLink href="/projects/logs">لاگ‌ها</ActiveLink></li>
         <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
-        <li><ActiveLink href="/projects/environement-variables">متغیرها</ActiveLink></li>
+        <li><ActiveLink href="/projects/environment-variables">متغیرها</ActiveLink></li>
       </ul>
     </nav>
 
@@ -50,20 +50,20 @@ export default () => (
       </ul>
     </nav> */}
 
-    <nav className="nav">
+    {/* TODO: <nav className="nav">
       <span className="nav__title">دیتابیس‌ها</span>
       <ul className="nav__list">
         <li><ActiveLink href="/databases/mysql">MySQL</ActiveLink></li>
         <li><ActiveLink href="/databases/mongodb">MongoDB</ActiveLink></li>
       </ul>
-    </nav>
+    </nav> */}
 
-    <nav className="nav">
+    {/* TODO: <nav className="nav">
       <span className="nav__title">سرویس ذخیره‌ی فایل</span>
       <ul className="nav__list">
         <li><ActiveLink href="/storage/nodejs">NodeJS</ActiveLink></li>
         <li><ActiveLink href="/storage/laravel">Laravel</ActiveLink></li>
       </ul>
-    </nav>
+    </nav> */}
   </div>
 )
