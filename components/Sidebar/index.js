@@ -20,9 +20,9 @@ export default () => (
     <nav className="nav">
       <span className="nav__title">پروژه‌ها</span>
       <ul className="nav__list">
-        <li><ActiveLink href="/projects/console">لاگ‌ها</ActiveLink></li>
+        <li><ActiveLink href="/projects/logs">لاگ‌ها</ActiveLink></li>
         <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
-        <li><ActiveLink href="/projects/">متغیرها</ActiveLink></li>
+        <li><ActiveLink href="/projects/environement-variables">متغیرها</ActiveLink></li>
       </ul>
     </nav>
 
