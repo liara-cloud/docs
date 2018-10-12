@@ -18,6 +18,15 @@ export default () => (
     </nav>
 
     <nav className="nav">
+      <span className="nav__title">پروژه‌ها</span>
+      <ul className="nav__list">
+        <li><ActiveLink href="/projects/console">لاگ‌ها</ActiveLink></li>
+        <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
+        <li><ActiveLink href="/projects/">متغیرها</ActiveLink></li>
+      </ul>
+    </nav>
+
+    <nav className="nav">
       <span className="nav__title">کلاینت‌ها</span>
       <ul className="nav__list">
         <li><ActiveLink href="/clients/cli">CLI</ActiveLink></li>

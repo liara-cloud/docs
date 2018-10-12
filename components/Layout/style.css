@@ -70,6 +70,9 @@ p {
 .article a:hover {
   color: #1076bd;
 }
+.article img {
+  max-width: 100%;
+}
 
 code {
   direction: ltr;
@@ -84,9 +87,11 @@ code {
 }
 
 span.code {
+  direction: ltr;
   margin: 0 4px;
   color: #004473;
-  padding: 2px 8px;
+  padding: 0px 8px;
+  display: inline-block;
   background-color: #0d9afd21;
 }
 
