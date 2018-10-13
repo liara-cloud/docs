@@ -22,7 +22,7 @@ export default () => (
       <ul className="nav__list">
         <li><ActiveLink href="/projects/logs">لاگ‌ها</ActiveLink></li>
         <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
-        <li><ActiveLink href="/projects/environment-variables">متغیرها</ActiveLink></li>
+        <li><ActiveLink href="/projects/environment-variables">متغیرها (تنظیمات)</ActiveLink></li>
       </ul>
     </nav>
 
