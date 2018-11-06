@@ -58,12 +58,13 @@ export default () => (
       </ul>
     </nav> */}
 
-    {/* TODO: <nav className="nav">
+    <nav className="nav">
       <span className="nav__title">سرویس ذخیره‌ی فایل</span>
       <ul className="nav__list">
-        <li><ActiveLink href="/storage/nodejs">NodeJS</ActiveLink></li>
-        <li><ActiveLink href="/storage/laravel">Laravel</ActiveLink></li>
+        <li><ActiveLink href="/storage/overview">آشنایی</ActiveLink></li>
+        <li><ActiveLink href="/storage/nodejs">NodeJS SDK</ActiveLink></li>
+        <li><ActiveLink href="/storage/laravel">Laravel SDK</ActiveLink></li>
       </ul>
-    </nav> */}
+    </nav>
   </div>
 )

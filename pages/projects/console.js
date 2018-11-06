@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import ZoomableImage from '../../components/ZoomableImage'
 
 export default () => (
   <Layout>
@@ -15,7 +16,7 @@ export default () => (
       <br />
       سپس روی گزینه‌ی کنسول از فهرست سمت راست کلیک کنید تا وارد صفحه‌ی کنسول شوید.
     </p>
-    <img src="/static/console1.png" alt="صفحه‌ی کنسول" />
+    <ZoomableImage src="/static/console1.png" alt="صفحه‌ی کنسول" />
     <p>
     در این صفحه، با کلیک کردن روی دکمه‌ی «اتصال»، به کنسول متصل شده و یک ترمینال برای‌تان اجرا خواهد شد.
     <br />
@@ -26,6 +27,6 @@ export default () => (
     bash
     قابل اجرا است را وارد نمایید.
     </p>
-    <img src="/static/console2.png" alt="ترمینال"/>
+    <ZoomableImage src="/static/console2.png" alt="ترمینال" />
   </Layout>
 )

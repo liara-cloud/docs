@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import ZoomableImage from '../../components/ZoomableImage'
 
 export default () => (
   <Layout>
@@ -42,7 +43,7 @@ export default () => (
       <br/>
       در این صفحه، بخش متغیرها را می‌توانید مشاهده کنید.
     </p>
-    <img src="/static/envs-empty.png" alt="بخش متغیرها"/>
+    <ZoomableImage src="/static/envs-empty.png" alt="بخش متغیرها" />
     <p>
       با کلیک بر روی گزینه‌ی
       {' '}
@@ -54,6 +55,6 @@ export default () => (
       <span className="code">Value</span>
       ایجاد می‌شود که می‌توانید متغیر مد نظرتان را از طریق آنها تعریف نمایید.
     </p>
-    <img src="/static/envs-full.png" alt="نمونه‌ای از متغیرها"/>
+    <ZoomableImage src="/static/envs-full.png" alt="نمونه‌ای از متغیرها" />
   </Layout>
 )
