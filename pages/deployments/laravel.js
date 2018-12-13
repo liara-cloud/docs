@@ -1,8 +1,13 @@
 import Layout from '../../components/Layout'
 import Link from 'next/link'
+import Head from 'next/head'
 
 export default () => (
   <Layout>
+    <Head>
+      <title>Liara | استقرار پروژه‌های Laravel - Laravel deployment</title>
+    </Head>
+
     <h1>استقرار پروژه‌های Laravel</h1>
     <p>
       پروژه‌ی شما باید دارای فایل

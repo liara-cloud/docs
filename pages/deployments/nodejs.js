@@ -1,7 +1,12 @@
 import Layout from '../../components/Layout'
+import Head from 'next/head'
 
 export default () => (
   <Layout>
+    <Head>
+      <title>Liara | استقرار پروژه‌های NodeJS - NodeJS deployment</title>
+    </Head>
+
     <h1>استقرار پروژه‌های NodeJS</h1>
 
     <p>

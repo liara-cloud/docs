@@ -1,8 +1,13 @@
 import Layout from '../../components/Layout'
 import ZoomableImage from '../../components/ZoomableImage'
+import Head from 'next/head'
 
 export default () => (
   <Layout>
+    <Head>
+      <title>Liara | کنسول - ssh - console</title>
+    </Head>
+
     <h1>کنسول</h1>
     <p>
       در اکثر پروژه‌ها، لازم است که بعد از مستقر کردن روی سرور، یک سری کارها انجام شود.

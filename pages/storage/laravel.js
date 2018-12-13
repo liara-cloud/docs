@@ -1,8 +1,13 @@
 import Layout from '../../components/Layout'
 import ZoomableImage from '../../components/ZoomableImage'
+import Head from 'next/head'
 
 export default () => (
   <Layout>
+    <Head>
+      <title>Liara | Laravel SDK - Object Storage</title>
+    </Head>
+
     <h1>Liara Laravel SDK</h1>
     <p>
       لاراول مفهومی با عنوان دیسک دارد که به شما این اجازه را می‌دهد که بدون اعمال تغییرات خاصی

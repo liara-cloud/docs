@@ -1,8 +1,13 @@
 import Layout from '../../components/Layout'
 import ZoomableImage from '../../components/ZoomableImage'
+import Head from 'next/head'
 
 export default () => (
   <Layout>
+    <Head>
+      <title>Liara | متغیرها - Environment Variables</title>
+    </Head>
+
     <h1>متغیرها (Environment Variables)</h1>
     <p>
       هر پروژه‌ای ممکن است در محیط‌های مختلفی اجرا شود.

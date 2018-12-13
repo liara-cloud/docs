@@ -1,9 +1,14 @@
 import Link from 'next/link'
 import Layout from '../../components/Layout'
 import ZoomableImage from '../../components/ZoomableImage'
+import Head from 'next/head'
 
 export default () => (
   <Layout>
+    <Head>
+      <title>Liara | سرویس ذخیره‌ی فایل - Object Storage</title>
+    </Head>
+
     <h1>سرویس ذخیره‌ی فایل (Object Storage)</h1>
     <p>
       لیارا یک فایل‌سیستم

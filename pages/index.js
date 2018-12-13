@@ -1,7 +1,12 @@
 import Layout from '../components/Layout'
+import Head from 'next/head'
 
 export default () => (
   <Layout>
+    <Head>
+      <title>Liara | مستندات لیارا - Documentation</title>
+    </Head>
+
     <h1>مستندات</h1>
 
     <p>
