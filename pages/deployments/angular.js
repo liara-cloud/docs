@@ -5,24 +5,14 @@ import Link from 'next/link'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های Static - React and Vue deployment</title>
+      <title>Liara | استقرار پروژه‌های Angular - Angular deployment</title>
     </Head>
 
-    <h1>استقرار پروژه‌های Static</h1>
+    <h1>استقرار پروژه‌های Angular</h1>
     <p>
-      منظور از پروژه‌های استاتیک، پروژه‌هایی هستند که اصطلاحا به پروژه‌های سمت کاربری
-      یا همان
-      Front End
-      معروف‌اند. شما می‌توانید یک فایل
-      <span className="code">index.html</span>
-      و 
-      <span className="code">style.css</span>
-      تا پروژه‌های پیچیده‌تری مانند
-      <span className="code">React</span> و یا 
-      <span className="code">Vue</span>
-      و حتی
-      <span className="code">Angular</span>
-      را روی سرورهای لیارا مستقر کنید.
+      پروژه‌هایی که با
+      <span className="code">Angular CLI</span>
+      ساخته می‌شوند، به راحتی می‌توانند روی لیارا مستقر شوند.
     </p>
 
     <h3>شروع عملیات استقرار</h3>
@@ -33,11 +23,7 @@ export default () => (
       {' '}
       <Link href="/clients/cli" title="مستندات CLI">اطلاعات بیشتر</Link>
       <br/>
-      و حالا کافیست که پروژه‌ی‌تان را
-      <span className="code">build</span>
-      بگیرید و در پوشه‌ی نهایی پروژه که حتما باید شامل یک فایل
-      <span className="code">index.html</span>
-      باشد، دستور زیر را وارد کنید:
+      و حالا کافیست که وارد پوشه‌ی پروژه‌ی‌تان شوید و دستور زیر را وارد کنید:
     </p>
     <pre>
       <code>
@@ -45,28 +31,30 @@ export default () => (
       </code>
     </pre>
     <p>
-      لیارا به صورت خودکار، تشخیص خواهد داد که پروژه‌ی شما را باید به عنوان یک پروژه‌ی سمت کاربری
+      لیارا به صورت خودکار، تشخیص خواهد داد که پروژه‌ی شما را باید به عنوان یک پروژه‌ی
+      Angular
       اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
     </p>
     <pre>
       <code>
-        liara deploy --static
+        liara deploy --angular
       </code>
     </pre>
 
     <h3>تنظیمات Nginx</h3>
     <p>
-      استقرار پروژه‌های استاتیک، توسط وب‌سرور
+      استقرار پروژه‌های Angular، توسط وب‌سرور
       <span className="code">Nginx</span>
       انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این وب‌سرور را مطابق با
       نیازهای‌تان تنظیم کنید. برای این کار، کافیست که در ریشه‌ی پروژه‌ی‌تان، فایلی با نام
       <span className="code">liara_nginx.conf</span>
-      ایجاد کنید. به‌صورت پیش‌فرض، برای پروژه‌های استاتیک، این فایل به شکل زیر تعریف شده‌است:
+      ایجاد کنید. به‌صورت پیش‌فرض، برای پروژه‌های Angular، این فایل به شکل زیر تعریف شده‌است:
     </p>
     <pre>
       <code>
 {`location / {
-  index  index.html index.htm;
+  index index.html index.htm;
+  try_files $uri $uri/ /index.html =404;
 }`}
       </code>
     </pre>
