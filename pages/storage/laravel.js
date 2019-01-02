@@ -1,14 +1,15 @@
 import Layout from '../../components/Layout'
 import ZoomableImage from '../../components/ZoomableImage'
 import Head from 'next/head'
+import Gist from 'react-gist'
 
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | Laravel SDK - Object Storage</title>
+      <title>Liara | Laravel S3 Driver</title>
     </Head>
 
-    <h1>Liara Laravel SDK</h1>
+    <h1>Laravel S3 Driver</h1>
     <p>
       لاراول مفهومی با عنوان دیسک دارد که به شما این اجازه را می‌دهد که بدون اعمال تغییرات خاصی
       در پروژه‌یتان، فایل‌هایتان را در جاهای مختلف ذخیره کنید. شما تا به حال از دیسک
@@ -32,118 +33,166 @@ export default () => (
 
     <h3>نصب و راه‌اندازی</h3>
     <p>
-      برای نصب
-      <span className="code">Liara SDK</span>
-      دستور زیر را داخل پروژه‌یتان وارد کنید:
+      از آنجایی که سرویس فایل لیارا با
+      S3
+      سازگار است، شما می‌توانید از همان
+      <span className="code">S3 Driver</span>
+      لاراول، برای ذخیره‌ی فایل در لیارا با کمی تغییرات کوچک، استفاده کنید.
+    </p>
+    <p>
+      با توجه به
+      {' '}
+      <a href="https://laravel.com/docs/filesystem" title="Laravel's filesystems docs">مستندات لاراول</a>
+      {' '}
+      لازم است که
+      <span className="code">S3 Driver</span>
+      نصب شود. برای نصب می‌توانید از دستور زیر استفاده کنید:
     </p>
     <pre>
       <code>
-        composer require liara/sdk
+{`composer require league/flysystem-aws-s3-v3`}
       </code>
     </pre>
     <p>
-      برای راه‌اندازی، باید لیارا را کانفیگ کنید.
-      فایل کانفیگ
+      سپس وارد فایل
       <span className="code">config/filesystems.php</span>
-      را در ویرایشگر متنی خود باز کنید.
+      شوید و یک دیسک جدید با نام
+      <span className="code">liara</span>
+      اضافه کنید:
     </p>
-    <ZoomableImage src="/static/laravel-filesystems.png" alt="laravel filesystems"/>
+    <Gist id="6275691101e0c46682729e1170153128" />
     <p>
-      همان‌طور که مشاهده می‌کنید، این فایل شامل تنظیمات دیسک‌های شماست.
-      در بخش
-      <span className="code">disks</span>
-      تنظیمات مرتبط با دیسک لیارا را اضافه کنید:
-      (<a href="https://laravel.com/docs/filesystem#configuration">
-        مستندات لاراول
-      </a>)
+      همان‌طور که مشاهده می‌کنید، در این تکه‌کد، نام دیسک را برابر
+      <span className="code">liara</span>
+      قرار داده‌ایم و از درایور
+      <span className="code">s3</span>
+      استفاده خواهیم کرد.
+      مقدار
+      <span className="code">region</span>
+      در حال حاظر، باید حتما برابر
+      <span className="code">us-east-1</span>
+      باشد،
     </p>
-    <pre>
-      <code>
-{`'liara' => [
-  'driver' => 'liara',
-  'namespace' => env('LIARA_NAMESPACE'),
-  'secret' => env('LIARA_SECRET_KEY'),
-],`}
-      </code>
-    </pre>
-    <ZoomableImage src="/static/laravel-liara-disk.png" alt="تنظیمات دیسک لیارا" />
     <p>
-      در نهایت، فایل
+      و حالا باید مابقی تنظیمات را که نباید در سورس‌کد نوشته شوند را در فایل
       <span className="code">.env</span>
-      پروژه‌یتان را باز کرده و دو متغیر زیر را به انتهای این فایل اضافه کنید:
+      باید وارد کنیم:
     </p>
     <pre>
       <code>
-{`LIARA_NAMESPACE=
-LIARA_SECRET_KEY=`}
+{`LIARA_ENDPOINT="https://asdf.storage.liara.ir"
+LIARA_ACCESS_KEY=KBSIYRR36U3A1IO1QARI
+LIARA_SECRET_KEY=Z9BV6YsP7jtRQR1qCJk3PWecs22smNTOl7HC1Yj3
+LIARA_BUCKET=test`}
       </code>
     </pre>
     <p>
-      مقابل متغیر
-      <span className="code">LIARA_NAMESPACE</span>
-      شناسه‌ی یکتای سرویس فایل‌تان را وارد کنید.
-      این شناسه را هنگام فعال‌کردن سرویس فایل‌تان تعیین کردید.
-      متغیر
+      به مقادیر فیلدهای
+      <span className="code">LIARA_ACCESS_KEY</span>
+      و
       <span className="code">LIARA_SECRET_KEY</span>
-      را هم با کلید وب‌سرویس لیارا پر کنید. این کلید را از
-      {' '}
-      <a href="https://console.liara.ir/API" target="_blank">داشبورد</a>
-      {' '}
-      می‌توانید کپی کنید.
+      و همین‌طور 
+      <span className="code">LIARA_ENDPOINT</span>
+      از داخل داشبورد، بخش سرویس فایل می‌توانید دسترسی داشته باشید.
+      اما برای فیلد
+      <span className="code">LIARA_BUCKET</span>
+      لازم است که وارد «داشبورد سرویس فایل» شوید و یک باکت با نام دلخواه‌تان بسازید و سپس نام آن را
+      در اینجا وارد نمایید.
     </p>
-    <ZoomableImage src="/static/api-key.png" alt="Liara API key" />
+    <ZoomableImage src="/static/create-bucket.png" alt="Create a new bucket" />
+    
+    <h3>Bucket چیست؟</h3>
+    <p>
+      باکت را اگر معادل مخزن در نظر بگیریم، مخزن و محفظه‌ای برای نگه‌داری پوشه‌ها و فایل‌های شماست.
+      ممکن است شما باکت‌های‌تان را به این شکل ایجاد کنید:
+    </p>
+    <ul className="ltr">
+      <li>images</li>
+      <li>videos</li>
+      <li>docs</li>
+    </ul>
+    <p>
+      و یا ممکن است به ازای هر پروژه، یک باکت ایجاد کنید:
+    </p>
+    <ul className="ltr">
+      <li>chat-app-files</li>
+      <li>my-second-project-files</li>
+    </ul>
+    <p>
+      و یا حتی ترکیبی از این حالت‌ها. باکت‌ها علاوه‌بر این که برای نظم‌دادن به فایل‌ها کاربردی هستند،
+      قابلیت‌هایی مثل سطوح دسترسی به فایل‌ها و پوشه‌های درون آن باکت را می‌توانند فراهم کنند.
+    </p>
+
+    <h3>سطح دسترسی باکت</h3>
+    <p>
+      همان‌طور که گفته شد، باکت‌ها می‌توانند سطح دسترسی فایل‌های درون خود را مشخص کنند.
+      برای این کار، کافیست که روی تنظیمات باکت که در مقابل نام هر باکت وجود دارد، کلیک کرده و بعد
+      <span className="code">Edit policy</span>
+      را انتخاب کنید:
+    </p>
+    <ZoomableImage src="/static/storage-edit-policy.png" alt="Edit bucket policy" />
+    <p>
+      در صفحه‌ای که باز می‌شود، می‌توانید
+      <span className="code">Prefix</span>
+      و یا همان پیشوند مورد نظرتان را وارد کنید و سپس برای آن
+      Prefix
+      باید دسترسی مربوطه که می‌تواند یک از موارد زیر باشد را انتخاب کنید:
+    </p>
+    <ul className="list-more-space">
+      <li>
+        <span className="code">Read Only</span>:
+        هر کسی می‌تواند این فایل‌ها را مشاهده کند.
+      </li>
+      <li>
+        <span className="code">Write Only</span>:
+        هر کسی می‌تواند این فایل‌ها را تغییر دهد و فایل‌های دیگری را به جای آن‌ها آپلود کند.
+      </li>
+      <li>
+        <span className="code">Read and Write</span>:
+        همه می‌توانند این فایل‌ها را مشاهده و فایل‌های دیگری را به جای آن آپلود کنند.
+      </li>
+    </ul>
+    <p>
+      برای مثال، اگر Prefix
+      را برابر photo
+      و دسترسی را برابر Read Only
+      قرار دهید، همه‌ی فایل‌های این باکت که با نام photo
+      آغاز شوند، از طریق URL
+      مخصوص خودشان در دسترس خواهند بود.
+    </p>
+    <p>
+      اگر می‌خواهید دسترسی‌ای را روی همه‌ی فایل‌های باکت اعمال کنید، فقط کافیست که
+      که در فیلد Prefix
+      کاراکتر
+      <span className="code">*</span>
+      را قرار دهید تا به عنوان Wild card 
+      عمل کرده و شامل همه‌ی فایل‌های داخل باکت شود.
+    </p>
+    <ZoomableImage src="/static/bucket-policies.png" alt="Bucket policies" />
 
     <h3>آپلود فایل</h3>
     <p>
-      برای ذخیره‌ی یک فایل متنی، می‌توانید از متد
-      <span className="code">put</span>
-      استفاده کنید:
+      با استفاده از
+      <span className="code">Storage Facade</span>
+      در لاراول، می‌توانید فایل‌های‌تان در سرویس فایل لیارا مدیریت کنید.
+    </p>
+    <Gist id="f5e234b660e662de8741366ed1a571eb" />
+    <p>
+      به صورت پیش‌فرض، فایل‌ها داخل پوشه‌ی
+      <span className="code">storage</span>
+      خود لاراول ذخیره می‌شوند، اما می‌توانید داخل فایل
+      <span className="code">.env</span>
+      تنظیمات زیر را وارد کنید تا درایور فایل‌سیستم پیش‌فرض تغییر کرده و برابر لیارا شود:
     </p>
     <pre>
       <code>
-        Storage::disk('liara')->put('hello.txt', 'Hello World!');
+{`FILESYSTEM_DRIVER=liara`}
       </code>
     </pre>
     <p>
-      یکی از کارهای رایجی که در وب‌اپلیکیشن‌ها انجام می‌شود، ذخیره‌ی فایل‌هایی است که کاربران
-      {' '}
-      آپلود کرده‌اند. لاراول با استفاده از متد
-      <span className="code">store</span>
-      این کار را بسیار آسان می‌کند.
-    </p>
-    <pre>
-      <code>
-{`<?php
-
-namespace App\\Http\\Controllers;
-
-use Illuminate\\Http\\Request;
-use App\\Http\\Controllers\\Controller;
-
-class UserAvatarController extends Controller
-{
-    /**
-     * Update the avatar for the user.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-        $path = $request->file('avatar')->store('avatars', 'liara');
-
-        return $path;
-    }
-}`}
-      </code>
-    </pre>
-    <p>
-      ورودی اول متد
-      <span className="code">store</span>
-      نام پوشه‌ای است که قصد دارید فایل را در آن ذخیره کنید. ورودی دوم هم نام دیسک است
-      که برای ذخیره‌سازی در لیارا باید برابر
-      <span className="code">liara</span>
-      قرار دهید. این متد یک نام تصادفی و یکتا برای فایل شما ایجاد می‌کند.
+      از این پس،
+      <span className="code">Storage Facade</span>
+      فایل‌ها را در سرویس فایل لیارا آپلود کرده و از آنجا می‌خواند.
     </p>
     <p>
       برای اطلاعات بیشتر به

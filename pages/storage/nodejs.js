@@ -1,6 +1,7 @@
 import Layout from '../../components/Layout'
 import ZoomableImage from '../../components/ZoomableImage'
 import Head from 'next/head'
+import Gist from 'react-gist'
 
 export default () => (
   <Layout>
@@ -23,6 +24,11 @@ export default () => (
       <span className="code">Rackspace Cloud Storage</span>
       دارد که تمام دغدغه‌های شما برای ذخیره‌ی فایل‌هایتان را حل می‌کند.
     </p>
+    <p>
+      توجه داشته باشید که سرویس فایل لیارا، S3-Compatible و یا همان سازگار با S3 است.
+      و این بدین معنی است که شما می‌توانید از کتابخانه‌ها و نرم‌افزارهایی که برای AWS S3 نوشته شده‌اند،
+      برای ارتباط با سرویس فایل لیارا استفاده کنید.
+    </p>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>
@@ -40,106 +46,143 @@ export default () => (
       Liara
       ایجاد کنید:
     </p>
-    <pre>
-      <code>
-{`const Liara = require('@liara/sdk');
-
-const { Storage } = new Liara({
-  namespace: 'YOUR_NAMESPACE',
-  secret_key: 'YOUR_SECRET_KEY'
-});`}
-      </code>
-    </pre>
+    <Gist id="66e102ce9af59b76d55452bf78dda805" />
     <p>
-      در کد بالا، باید به جای
-      <span className="code">YOUR_NAMESPACE</span>
-      شناسه‌ی یکتای سرویس فایل‌تان را وارد کنید.
-      این شناسه را هنگام فعال‌کردن سرویس فایل‌تان تعیین کردید.
-      به جای
-      <span className="code">YOUR_SECRET_KEY</span>
-      هم کلید وب‌سرویس لیارا را وارد کنید. این کلید را از
-      {' '}
-      <a href="https://console.liara.ir/API" target="_blank">داشبورد</a>
-      {' '}
-      می‌توانید کپی کنید.
+      به مقادیر فیلدهای
+      <span className="code">LIARA_ACCESS_KEY</span>
+      و
+      <span className="code">LIARA_SECRET_KEY</span>
+      و همین‌طور 
+      <span className="code">LIARA_ENDPOINT</span>
+      از داخل داشبورد، بخش سرویس فایل می‌توانید دسترسی داشته باشید.
     </p>
-    <ZoomableImage src="/static/api-key.png" alt="Liara API key" />
+    <p>
+      اگر از کتاب‌خانه‌ای استفاده می‌کنید که نیازمند فیلد
+      <span className="code">region</span>
+      است، مقدار آن را برابر
+      <span className="code">us-east-1</span>
+      قرار دهید.
+    </p>
 
     <h3>آپلود فایل</h3>
     <p>
       برای ایجاد و آپلود فایل‌ها باید از متد
-      <span className="code">put</span>
+      <span className="code">putObject</span>
       استفاده کنید:
     </p>
-    <pre>
-      <code>
-        Storage.put('file.txt', 'Hello World!');
-      </code>
-    </pre>
+    <Gist id="dbbafadda488a734615e17a999c98eba" />
     <p>
       در این نمونه، ما یک فایل با نام
       <span className="code">file.txt</span>
+      در باکت
+      <span className="code">my-files</span>
       ایجاد کردیم و محتوای آن را برابر
       <span className="code">Hello World!</span>
       قرار دادیم. اگر به داشبوردتان در لیارا مراجعه کنید، می‌بینید که این فایل ایجاد شده‌است.
     </p>
     <p>
-      برای ذخیره‌ی یک فایل می‌توانید از استریم‌ها هم استفاده کنید.
+      برای آپلود یک فایل می‌توانید از استریم‌ها هم استفاده کنید.
+    </p>
+    <Gist id="b0120c73418cc6a3e382843157bae298" />
+
+    <h3>Bucket چیست؟</h3>
+    <p>
+      باکت را اگر معادل مخزن در نظر بگیریم، مخزن و محفظه‌ای برای نگه‌داری پوشه‌ها و فایل‌های شماست.
+      ممکن است شما باکت‌های‌تان را به این شکل ایجاد کنید:
+    </p>
+    <ul className="ltr">
+      <li>images</li>
+      <li>videos</li>
+      <li>docs</li>
+    </ul>
+    <p>
+      و یا ممکن است به ازای هر پروژه، یک باکت ایجاد کنید:
+    </p>
+    <ul className="ltr">
+      <li>chat-app-files</li>
+      <li>my-second-project-files</li>
+    </ul>
+    <p>
+      و یا حتی ترکیبی از این حالت‌ها. باکت‌ها علاوه‌بر این که برای نظم‌دادن به فایل‌ها کاربردی هستند،
+      قابلیت‌هایی مثل سطوح دسترسی به فایل‌ها و پوشه‌های درون آن باکت را می‌توانند فراهم کنند.
+    </p>
+
+    <h3>سطح دسترسی باکت</h3>
+    <p>
+      همان‌طور که گفته شد، باکت‌ها می‌توانند سطح دسترسی فایل‌های درون خود را مشخص کنند.
+      برای این کار، کافیست که روی تنظیمات باکت که در مقابل نام هر باکت وجود دارد، کلیک کرده و بعد
+      <span className="code">Edit policy</span>
+      را انتخاب کنید:
+    </p>
+    <ZoomableImage src="/static/storage-edit-policy.png" alt="Edit bucket policy" />
+    <p>
+      در صفحه‌ای که باز می‌شود، می‌توانید
+      <span className="code">Prefix</span>
+      و یا همان پیشوند مورد نظرتان را وارد کنید و سپس برای آن
+      Prefix
+      باید دسترسی مربوطه که می‌تواند یک از موارد زیر باشد را انتخاب کنید:
+    </p>
+    <ul className="list-more-space">
+      <li>
+        <span className="code">Read Only</span>:
+        هر کسی می‌تواند این فایل‌ها را مشاهده کند.
+      </li>
+      <li>
+        <span className="code">Write Only</span>:
+        هر کسی می‌تواند این فایل‌ها را تغییر دهد و فایل‌های دیگری را به جای آن‌ها آپلود کند.
+      </li>
+      <li>
+        <span className="code">Read and Write</span>:
+        همه می‌توانند این فایل‌ها را مشاهده و فایل‌های دیگری را به جای آن آپلود کنند.
+      </li>
+    </ul>
+    <p>
+      برای مثال، اگر Prefix
+      را برابر photo
+      و دسترسی را برابر Read Only
+      قرار دهید، همه‌ی فایل‌های این باکت که با نام photo
+      آغاز شوند، از طریق URL
+      مخصوص خودشان در دسترس خواهند بود.
+    </p>
+    <p>
+      اگر می‌خواهید دسترسی‌ای را روی همه‌ی فایل‌های باکت اعمال کنید، فقط کافیست که
+      که در فیلد Prefix
+      کاراکتر
+      <span className="code">*</span>
+      را قرار دهید تا به عنوان Wild card 
+      عمل کرده و شامل همه‌ی فایل‌های داخل باکت شود.
+    </p>
+    <ZoomableImage src="/static/bucket-policies.png" alt="Bucket policies" />
+
+    <h3>آدرس فایل‌ها</h3>
+    <p>
+      فایل‌ها با ساختار زیر در دسترس هستند:
     </p>
     <pre>
       <code>
-{`const fs = require('fs');
-
-const fileContents = fs.createReadStream('./cat.png');
-
-Storage.put('/cat.png', fileContents)
-  .then(result => console.log('Successfully uploaded.'))`}
+{`https://YOUR_ENDPOINT/YOUR_BUCKET/KEY`}
       </code>
     </pre>
-
-    <h3>لیست فایل‌ها و پوشه‌ها</h3>
     <p>
-      برای مشاهده‌ی لیست فایل‌‌هایتان می‌توانید از متد
-      <span className="code">list</span>
-      استفاده کنید:
+      برای مثال اگر فایلی را در مسیر
+      <span className="code">user-12/avatar.png</span>
+      داخل باکت
+      <span className="code">users</span>
+      ذخیره‌ای کرده‌اید، این فایل در
+      <span className="code">Endpoint</span>
+      شما به شکل زیر در دسترس خواهد بود:
     </p>
     <pre>
       <code>
-{`Storage.list()
-  .then(list => console.log(list));`}
+{`https://sawersasdfza.storage.liara.ir/users/user-12/avatar.png`}
       </code>
     </pre>
-    <p>
-      و برای لیست پوشه‌ها از متد
-      <span className="code">directories</span>
-      استفاده کنید:
-    </p>
-    <pre>
-      <code>
-{`Storage.directories()
-  .then(dirs => console.log(dirs));`}
-      </code>
-    </pre>
-    {/* TODO: list and directories methods takes some arguments. Document them too.*/}
-
-    <h3>دریافت فایل‌ها</h3>
-    <p>
-      برای دریافت می‌توانید آن‌ها را استریم کنید:
-    </p>
-    <pre>
-      <code>
-{`const result = fs.createWriteStream('result.png');
-
-Storage.getStream('cat.png').pipe(result);
-`}
-      </code>
-    </pre>
-    <p>
-      در نمونه‌ی بالا فایل
-      <span className="code">cat.png</span>
-      را دریافت کرده و در فایل
-      <span className="code">result.png</span>
-      ذخیره کردیم.
-    </p>
+    <ul style={{ marginTop: 54 }}>
+      <li>
+        مستندات کامل، در صفحه‌ی اصلی SDK موجود هستند:
+        {' '}
+        <a href="https://www.npmjs.com/package/@liara/sdk" title="Liara JavaScript SDK">مستندات Liara SDK</a>
+      </li>
+    </ul>
   </Layout>
 )

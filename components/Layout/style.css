@@ -100,3 +100,7 @@ span.code {
   direction: ltr;
   text-align: left;
 }
+
+.list-more-space li {
+  margin-bottom: 4px;
+}

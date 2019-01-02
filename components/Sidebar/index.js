@@ -23,6 +23,7 @@ export default () => (
         <li><ActiveLink href="/projects/logs">لاگ‌ها</ActiveLink></li>
         <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
         <li><ActiveLink href="/projects/environment-variables">متغیرها (تنظیمات)</ActiveLink></li>
+        <li><ActiveLink href="/projects/volumes">Volumes</ActiveLink></li>
       </ul>
     </nav>
 
@@ -39,6 +40,7 @@ export default () => (
         <li><ActiveLink href="/deployments/nodejs">NodeJS</ActiveLink></li>
         <li><ActiveLink href="/deployments/laravel">Laravel</ActiveLink></li>
         <li><ActiveLink href="/deployments/static">Static</ActiveLink></li>
+        <li><ActiveLink href="/deployments/angular">Angular</ActiveLink></li>
         <li><ActiveLink href="/deployments/docker">Docker</ActiveLink></li>
       </ul>
     </nav>
@@ -63,7 +65,7 @@ export default () => (
       <ul className="nav__list">
         <li><ActiveLink href="/storage/overview">آشنایی</ActiveLink></li>
         <li><ActiveLink href="/storage/nodejs">NodeJS SDK</ActiveLink></li>
-        <li><ActiveLink href="/storage/laravel">Laravel SDK</ActiveLink></li>
+        <li><ActiveLink href="/storage/laravel">Laravel S3 Driver</ActiveLink></li>
       </ul>
     </nav>
   </div>
