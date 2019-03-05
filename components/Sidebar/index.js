@@ -41,6 +41,7 @@ export default () => (
         <li><ActiveLink href="/deployments/laravel">Laravel</ActiveLink></li>
         <li><ActiveLink href="/deployments/static">Static</ActiveLink></li>
         <li><ActiveLink href="/deployments/angular">Angular</ActiveLink></li>
+        <li><ActiveLink href="/deployments/wordpress">WordPress</ActiveLink></li>
         <li><ActiveLink href="/deployments/docker">Docker</ActiveLink></li>
       </ul>
     </nav>
