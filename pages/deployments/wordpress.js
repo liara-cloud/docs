@@ -72,6 +72,31 @@ WORDPRESS_DB_PASSWORD=__SECRET__`}
       باید رمز عبور دیتابیسی که ساختید را وارد کنید.
     </p>
     <ZoomableImage src="/static/wordpress-settings.png" alt="تنظیمات دیتابیس وردپرس" />
+    <p>
+      به صورت پیش‌فرض، وردپرس در دیتابیسی با نام
+      <span className="code">wordpress</span>
+      نصب می‌شود. اما اگر نام دیگری را برای دیتابیس خود انتخاب کرده‌اید، می‌توانید متغیر زیر را در بخش تنظیمات
+      وارد کنید:
+    </p>
+    <pre>
+      <code>
+{`WORDPRESS_DB_NAME=wordpress`}
+      </code>
+    </pre>
+    <p>
+      به جای
+      <span className="code">wordpress</span>
+      باید نام دیتابیس دلخواه‌تان را وارد کنید.
+    </p>
+    <p>
+      توجه کنید که بعد از سفارش دیتابیس از طریق پنل لیارا، باید از طریق خط فرمان کامپیوترتان
+      به سرور دیتابیس متصل شده و با دستور زیر دیتابیس مد نظرتان را بسازید:
+    </p>
+    <pre>
+      <code>
+{`CREATE DATABASE wordpress;`}
+      </code>
+    </pre>
 
     <h3>تنظیمات HTTPS</h3>
     <p>
@@ -84,9 +109,6 @@ WORDPRESS_DB_PASSWORD=__SECRET__`}
     </p>
     <Gist id="398f628977d47eebd50a7d681efd4eb9" />
 
-    {/* TODO: php.ini settings */}
-    {/* TODO: Apache settings */}
-
     <h3>آپلود فایل در پنل وردپرس</h3>
     <p>
       لیارا به صورت خودکار برای پروژه‌های وردپرسی،
@@ -96,6 +118,63 @@ WORDPRESS_DB_PASSWORD=__SECRET__`}
       تعریف می‌کند.
       و این یعنی فایل‌هایی که آپلود می‌کنید و یا یک افزونه و یا پوسته نصب می‌کنید،
       بین استقرارها ثابت می‌مانند و از بین نمی‌روند.
+    </p>
+
+    <h3>شخصی‌سازی تنظیمات <span className="code">php.ini</span></h3>
+    <p>
+      از طریق ایجاد یک فایل با نام
+      <span className="code">liara_php.ini</span>
+      داخل ریشه‌ی پروژه‌ی‌تان می‌توانید تنظیمات
+      PHP
+      را شخصی‌سازی کنید.
+      برای مثال، ممکن است بخواهید که حداکثر حجم مجاز برای آپلود فایل در سایت وردپرسی‌تان را شخصی‌سازی کنید.
+      پس لازم است که فایل
+      <span className="code">liara_php.ini</span>
+      را به پروژه‌ی‌تان اضافه کرده و محتویات آن را برابر تکه‌کد قرار دهید:
+    </p>
+    <pre>
+      <code>
+{`file_uploads = On
+memory_limit = 64M
+upload_max_filesize = 64M
+post_max_size = 64M
+max_execution_time = 600`}
+      </code>
+    </pre>
+    <p>
+      و حالا با اجرای دستور
+      <span className="code">liara deploy</span>
+      تنظیمات شما روی سرور قرار می‌گیرد.
+    </p>
+
+    <h3>تنظیمات <span className="code">.htaccess</span></h3>
+    <p>
+      اگر صفحات مختلف سایت وردپرسی شما نمایش داده نمی‌شوند و با خطای 404
+      مواجه می‌شوید، احتمالا به دلیل تنظیمات Permalink سایت شماست.
+      برای رفع این مشکل، یا باید از طریق پنل وردپرس تنظیمات را اصلاح کنید و یا اگر
+      قصد استفاده از Pretty URLs
+      را دارید، یک فایل با نام
+      <span className="code">.htaccess</span>
+      در پروژه‌ی‌تان بسازید و محتویات زیر را داخل آن قرار دهید:
+    </p>
+    <pre>
+      <code>
+{`# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress`}
+      </code>
+    </pre>
+    <p>
+      و حالا دستور
+      <span className="code">liara deploy</span>
+      را وارد کنید. مشکل باید رفع شده باشد.
     </p>
   </Layout>
 )
