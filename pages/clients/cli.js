@@ -58,6 +58,7 @@ export default () => (
       <code>
 {`{
   "platform": "node",
+  "project": "my-project"
   "port": 3000
 }`}
       </code>
@@ -78,6 +79,16 @@ export default () => (
       </ul>
     </div>
     <p>
+      همچنین میتوانید با اضافه کردن 
+      <span className="code">"project": "my-project"</span>
+      عملیات 
+      Deploy
+      را فقط با وارد کردن دستور 
+      <span className="code">liara</span>
+       در ترمینال خود سرعت ببخشید.
+    </p>
+    <p>
+      <b>نکته: </b>
       برای هر پلتفرم، تنظیمات جداگانه‌ای وجود دارد که در بخش مربوط به هر کدام، می‌توانید مشاهده کنید.
     </p>
 
@@ -89,8 +100,8 @@ export default () => (
     </p>
     <pre>
       <code>
-{`cd projects/my-project
-liara deploy
+{`$ cd projects/my-project
+$ liara deploy
 `}
       </code>
     </pre>
@@ -102,7 +113,7 @@ liara deploy
     </p>
     <pre>
       <code>
-        liara deploy --path projects/my-project
+      $  liara deploy --path projects/my-project
       </code>
     </pre>
 
@@ -112,6 +123,28 @@ liara deploy
       در ابتدا سعی می‌کند که تشخیص دهد پروژه‌ی شما یک پروژه‌ی لاراولی است و در مرحله‌ی بعد از
       طریق راه‌اندازی بستر مناسب برای اجرای لاراول مانند نصب کردن PHP و Apache
       پروژه‌ی شما را اجرا می‌کند.
+    </p>
+    <p>
+      <b>نکته: </b>
+      کلمه ی 
+      <span className="code">deploy</span>
+      یک کلمه اختیاری برای مستقر کردن پروژه است، بنابر این میتوان دستورات خود را به شکل زیر نیز اجرا کنید:
+
+      <pre>
+        <code>
+          $ liara --path projects/my-project
+        </code>
+      </pre>
+    </p>
+
+    <p>
+      <b> نمونه ای از مستقر کردن پروژه در صورت نبود فایل <i>liara.json</i> : </b>
+
+      <pre>
+        <code>
+          $ liara --project my-project --port 5000
+        </code>
+      </pre>
     </p>
   </Layout>
 )
