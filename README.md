@@ -11,10 +11,10 @@ $ npm install # Or yarn install
 # install and build next
 $ npm run build
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:3005
 $ npm run dev
 
-# build for production and launch server
+# lunch server at http://localhost:3000
 $ npm start
 
 ```
