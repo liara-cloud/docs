@@ -58,7 +58,7 @@ export default () => (
       <code>
 {`{
   "platform": "node",
-  "project": "my-project"
+  "project": "my-project",
   "port": 3000
 }`}
       </code>
@@ -79,7 +79,7 @@ export default () => (
       </ul>
     </div>
     <p>
-      همچنین میتوانید با اضافه کردن 
+      همچنین می‌توانید با اضافه کردن 
       <span className="code">"project": "my-project"</span>
       عملیات 
       Deploy
@@ -128,7 +128,7 @@ $ liara deploy
       <b>نکته: </b>
       کلمه ی 
       <span className="code">deploy</span>
-      یک کلمه اختیاری برای مستقر کردن پروژه است، بنابر این میتوان دستورات خود را به شکل زیر نیز اجرا کنید:
+      یک کلمه اختیاری برای مستقر کردن پروژه است، بنابر این می‌توانید دستورات خود را به شکل زیر نیز اجرا کنید:
 
       <pre>
         <code>
@@ -138,7 +138,7 @@ $ liara deploy
     </p>
 
     <p>
-      <b> نمونه ای از مستقر کردن پروژه در صورت نبود فایل <i>liara.json</i> : </b>
+      <h3> نمونه ای از مستقر کردن پروژه در صورت نبود فایل <i>liara.json</i> : </h3>
 
       <pre>
         <code>
