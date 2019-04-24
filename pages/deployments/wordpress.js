@@ -42,7 +42,7 @@ export default () => (
     </p>
     <pre>
       <code>
-        liara deploy --wordpress
+        liara deploy --platform=wordpress
       </code>
     </pre>
 

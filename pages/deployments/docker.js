@@ -13,7 +13,37 @@ export default () => (
       هر پروژه‌ای که دارای یک
       <span className="code">Dockerfile</span>
       باشد، امکان مستقر شدن در لیارا را دارد. این یعنی هر پروژه‌ای که با پایتون، روبی و یا جاوا
-      نوشته شده‌باشد، در لیارا می‌تواند اجرا شود.
+      نوشته شده‌باشد، در لیارا می‌تواند اجرا شود. اگر یک image داکر هم داشته باشید، می‌توانید آن را مستقیما دیپلوی کنید.
+    </p>
+
+    <h3>مستقرکردن image آماده</h3>
+    <p>
+      با پارامتر
+      <span className="code">--image</span>
+      و یا 
+      <span className="code">-i</span>
+      می‌توانید image های آماده‌ی داکر را که قبلا build شده‌اند را روی لیارا مستقر کنید.
+      برای مثال، اگر می‌خواهید یک وبلاگ جذاب با WordPress
+      اجرا کنید، می‌توانید از image آماده‌ی
+      <span className="code">wordpress:5</span>
+      که در رجیستری DockerHub
+      است، استفاده کنید:
+    </p>
+    <pre>
+      <code>$ liara deploy --image wordpress:5 --project my-blog --port 80</code>
+    </pre>
+    <p>
+      این ایمیج، پورت 80 را
+      Expose
+      می‌کند که آن را باید با پارامتر
+      <span className="code">--port</span>
+      و یا از طریق ایجاد فایل
+      {' '}
+      <Link href="/clients/cli" title="مستندات CLI">liara.json</Link>
+      {' '}
+      به لیارا اطلاع دهید. در غیر این‌صورت، در زمان دیپلوی،
+      CLI
+      از شما پورت را می‌پرسد.
     </p>
 
     <h3>نوشتن Dockerfile</h3>
@@ -43,7 +73,7 @@ export default () => (
     </p>
     <pre>
       <code>
-        liara deploy
+        $ liara deploy
       </code>
     </pre>
     <p>
@@ -53,7 +83,7 @@ export default () => (
     </p>
     <pre>
       <code>
-        liara deploy --docker
+        $ liara deploy --platform=docker
       </code>
     </pre>
 

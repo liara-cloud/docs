@@ -37,7 +37,7 @@ export default () => (
     </p>
     <pre>
       <code>
-        liara deploy --angular
+        liara deploy --platform=angular
       </code>
     </pre>
 
