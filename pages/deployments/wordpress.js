@@ -1,7 +1,8 @@
-import Layout from '../../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
 import Gist from 'react-gist'
+import Layout from '../../components/Layout'
+import Notice from '../../components/Notice'
 import ZoomableImage from '../../components/ZoomableImage'
 
 export default () => (
@@ -20,6 +21,12 @@ export default () => (
       WordPress
       ساخته می‌شوند، به راحتی می‌توانند روی لیارا مستقر شوند.
     </p>
+
+    <Notice variant="info">
+      با استفاده از قابلیت «برنامه‌های آماده‌ی لیارا»، نیازی نیست که مراحل زیر را
+      برای یک پروژه‌ی وردپرسی تازه طی کنید.
+      می‌توانید از بخش ایجاد پروژه، وارد بخش برنامه‌های آماده شوید و با یک کلیک وردپرس را تهیه و نصب کنید.
+    </Notice>
 
     <h3>شروع عملیات استقرار</h3>
     <p>

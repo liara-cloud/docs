@@ -36,3 +36,13 @@
 .nav__list li:not(:first-child) {
   margin: 10px 0;
 }
+
+.platform-icon {
+  width: 20px;
+  margin-left: 4px;
+  vertical-align: middle;
+  filter: grayscale(1);
+}
+.platform-icon.active {
+  filter: grayscale(0);
+}

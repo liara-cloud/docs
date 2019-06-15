@@ -1,10 +1,12 @@
 import { withRouter } from 'next/router'
 
-const ActiveLink = ({ children, router, href }) => {
+const ActiveLink = ({ children, router, href, icon }) => {
+  const isActive = router.pathname === href
+
   const style = {
-    color: 'black',
     marginRight: 10,
-    fontWeight: router.pathname === href ? 'bold' : 'normal',
+    color: isActive ? '#218be5' : '#222',
+    fontWeight: isActive ? 'bold' : 'normal',
   }
 
   const handleClick = (e) => {
@@ -14,6 +16,11 @@ const ActiveLink = ({ children, router, href }) => {
 
   return (
     <a href={href} onClick={handleClick} style={style}>
+      <img
+        alt=""
+        src={`/static/platformicons/${icon}`}
+        className={`platform-icon ${isActive ? 'active' : ''}`}
+      />
       {children}
     </a>
   )

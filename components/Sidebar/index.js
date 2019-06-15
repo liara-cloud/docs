@@ -31,18 +31,21 @@ export default () => (
       <span className="nav__title">کلاینت‌ها</span>
       <ul className="nav__list">
         <li><ActiveLink href="/clients/cli">CLI</ActiveLink></li>
+        {/* <li><ActiveLink href="/clients/api">API</ActiveLink></li> */}
       </ul>
     </nav>
 
     <nav className="nav">
       <span className="nav__title">استقرار پروژه‌ها</span>
       <ul className="nav__list">
-        <li><ActiveLink href="/deployments/nodejs">NodeJS</ActiveLink></li>
-        <li><ActiveLink href="/deployments/laravel">Laravel</ActiveLink></li>
-        <li><ActiveLink href="/deployments/static">Static</ActiveLink></li>
-        <li><ActiveLink href="/deployments/angular">Angular</ActiveLink></li>
-        <li><ActiveLink href="/deployments/wordpress">WordPress</ActiveLink></li>
-        <li><ActiveLink href="/deployments/docker">Docker</ActiveLink></li>
+        <li><ActiveLink icon="react.svg" href="/deployments/react">React</ActiveLink></li>
+        <li><ActiveLink icon="vue.svg" href="/deployments/vue">Vue</ActiveLink></li>
+        <li><ActiveLink icon="angularjs.svg" href="/deployments/angular">Angular</ActiveLink></li>
+        <li><ActiveLink icon="nodejs.svg" href="/deployments/nodejs">NodeJS</ActiveLink></li>
+        <li><ActiveLink icon="laravel.svg" href="/deployments/laravel">Laravel</ActiveLink></li>
+        <li><ActiveLink icon="HTML5.svg" href="/deployments/static">Static</ActiveLink></li>
+        <li><ActiveLink icon="wordpress.svg" href="/deployments/wordpress">WordPress</ActiveLink></li>
+        <li><ActiveLink icon="docker.png" href="/deployments/docker">Docker</ActiveLink></li>
       </ul>
     </nav>
 
