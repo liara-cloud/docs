@@ -1,6 +1,4 @@
-FROM node:8.11
-
-RUN npm i -g npm@6.4.1
+FROM node:10
 
 COPY package.json package-lock.json /app/
 

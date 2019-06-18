@@ -24,6 +24,7 @@ export default () => (
         <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
         <li><ActiveLink href="/projects/environment-variables">متغیرها (تنظیمات)</ActiveLink></li>
         <li><ActiveLink href="/projects/volumes">Volumes</ActiveLink></li>
+        <li><ActiveLink href="/projects/ignore">Gitignore</ActiveLink></li>
       </ul>
     </nav>
 
