@@ -14,7 +14,7 @@ export default () => (
       <span className="code">composer.json</span>
       باشد تا بتواند در لیارا مستقر شود.
       <br />
-      در حال حاظر، لیارا از Larvel > 5.1 پشتیبانی می‌کند.
+      در حال حاظر، لیارا از Laravel > 5.1 پشتیبانی می‌کند.
     </p>
     
     <h3>شروع عملیات استقرار</h3>
@@ -108,6 +108,53 @@ export default () => (
       شما به صورت صحیح در اختیار کاربران‌تان قرار گیرند.
     </p>
 
+    <h3>تنظیمات TrustedProxies</h3>
+    <p>
+      تمامی درخواست‌ها به سمت پروژه‌ی شما توسط
+      {' '}
+      <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">Reverse proxy</a>
+      {' '}
+      های لیارا
+      هدایت می‌شوند. برای این که در پروژه‌ی‌تان بتوانید به آی‌پی واقعی کاربر دسترسی داشته باشید
+      و یا این که از قابلیت Signed URL های Laravel استفاده کنید، لازم است که تغییراتی را در فایل
+      <span className="code">app/Http/Middleware/TrustProxies.php</span>
+      اعمال کنید.
+    </p>
+    <p>
+      در این فایل، یک متغیر با نام
+      <span className="code">$proxies</span>
+      وجود دارد. فقط کافیست که مقدار آن را به
+      <span className="code">*</span>
+      تغییر دهید.
+    </p>
+<pre>
+  <code>
+{`<?php
+
+namespace App\Http\Middleware;
+
+use Illuminate\Http\Request;
+use Fideloper\Proxy\TrustProxies as Middleware;
+
+class TrustProxies extends Middleware
+{
+    /**
+     * The trusted proxies for this application.
+     *
+     * @var array|string
+     */
+    protected $proxies = '*';
+
+    /**
+     * The headers that should be used to detect proxies.
+     *
+     * @var int
+     */
+    protected $headers = Request::HEADER_X_FORWARDED_ALL;
+}`}
+  </code>
+</pre>
+
     <h3>اتصال به دیتابیس</h3>
     <p>
       شما می‌توانید از بخش «دیتابیس‌ها»، یک دیتابیس
@@ -166,5 +213,146 @@ DB_PASSWORD=123456`}
       {' '}
       <Link href="/storage/laravel">اطلاعات بیشتر</Link>
     </p>
+
+    <h3>ایجاد CronJob</h3>
+    <p>
+      گاهی اوقات نیاز است کار خاصی در زمان خاصی و به صورت دوره‌ای انجام شود، مثلا تهیه‌ی فایل پشتیبان از پایگاه داده، ارسال ایمیل و خبرنامه و کارهایی نظیر این.
+      برای تعریف کران‌جاب‌هایتان، می‌توانید فیدی به نام
+      <span className="code">cron</span>
+      را به فایل liara.json
+      پروژه‌ی‌تان اضافه کنید.
+    </p>
+<pre>
+  <code>
+{`{
+  "cron": [
+    "* * * * * cd $ROOT && php artisan schedule:run >> /dev/null 2>&1"
+  ]
+}`}
+  </code>
+</pre>
+    <p>
+      همان‌طور که مشاهده می‌کنید، فیلد
+      <span className="code">cron</span>
+      یک آرایه است و این یعنی می‌توانید یک یا چند کران‌جاب تعریف کنید.
+    </p>
+
+    <h3>کار با Queue ها</h3>
+    <p>
+      یکی از امکانات مهم Laravel، قابلیت تعریف صف (Queue) است. از امروز از این قابلیت لاراول هم پشتیبانی می‌کنیم. در پتلفرم لاراول، Supervisor نصب شده و شما با ایجاد یک فایل به نام supervisor.conf در ریشه‌ی پروژه‌تان، می‌توانید تنظیمات صف‌های مختلف‌تان را در آن وارد کنید. و در نهایت با یک‌بار دیپلوی‌کردن، صف‌های شما شروع به کار خواهند کرد.
+    </p>
+    <p>
+      Supervisor برنامه‌ی بسیار مفیدی است که سعی می‌کند صف‌های شما را همیشه در حال اجرا نگه‌دارد. اگر به هر دلیلی صف‌های‌تان به خطا بخورند و خاموش شوند، Supervisor آن‌ها را دوباره ایجاد و فعال می‌کند.
+    </p>
+    <p>
+      از بخش
+      {' '}
+      <Link href="/projects/console">خط فرمان (کنسول)</Link>
+      {' '}
+      پروژه‌ی‌تان هم می‌توانید با supervisorctl کار کنید و وضعیت صف‌های‌تان را مشاهده کنید.
+    </p>
+    <pre>
+      <code>
+{`$ supervisorctl status`}
+      </code>
+    </pre>
+    <p>
+      یک نمونه کانفیگ ساده برای یک صف با نام sms که وظیفه‌ی ارسال پیامک به کاربران را به عهده دارد:
+    </p>
+    <pre>
+      <code>
+{`[program:scheduler]
+process_name=%(program_name)s_%(process_num)02d
+command=php $ROOT/artisan queue:work --queue=sms --tries=3
+autostart=true
+autorestart=true
+numprocs=1
+user=www-data
+redirect_stderr=true
+stdout_logfile=/tmp/sms-queue.log`}
+      </code>
+    </pre>
+    <p>
+      برای اطلاعات بیشتر می‌توانید به لینک‌های زیر مراجعه کنید:
+      <ul>
+        <li><a href="http://supervisord.org/" target="_blank">مستندات Supervisor</a></li>
+        <li><a href="https://laravel.com/docs/queues#supervisor-configuration" target="_blank">مستندات لاراول درباره‌ی Supervisor</a></li>
+      </ul>
+    </p>
+
+    <h3>لیست اکستنشن‌های نصب شده</h3>
+    <p>
+      در پلتفرم لاراول، اکستنشن‌های PHP زیر نصب شده‌اند:
+    </p>
+<pre>
+  <code>
+{`[PHP Modules]
+amqp
+apcu
+bcmath
+calendar
+Core
+ctype
+curl
+date
+dom
+exif
+fileinfo
+filter
+ftp
+gd
+gettext
+gmp
+gnupg
+hash
+iconv
+igbinary
+imagick
+imap
+intl
+json
+ldap
+libxml
+mbstring
+mcrypt
+memcached
+mongodb
+mysqli
+mysqlnd
+openssl
+pcntl
+pcre
+PDO
+pdo_dblib
+pdo_mysql
+pdo_pgsql
+pdo_sqlite
+pgsql
+Phar
+posix
+readline
+redis
+Reflection
+session
+SimpleXML
+soap
+sockets
+sodium
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+yaml
+Zend OPcache
+zip
+zlib
+
+[Zend Modules]
+Zend OPcache`}
+  </code>
+</pre>
   </Layout>
 )
