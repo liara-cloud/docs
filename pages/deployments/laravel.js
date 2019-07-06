@@ -214,6 +214,33 @@ DB_PASSWORD=123456`}
       <Link href="/storage/laravel">اطلاعات بیشتر</Link>
     </p>
 
+    <h3>شخصی‌سازی تنظیمات <span className="code">php.ini</span></h3>
+    <p>
+      از طریق ایجاد یک فایل با نام
+      <span className="code">liara_php.ini</span>
+      داخل ریشه‌ی پروژه‌ی‌تان می‌توانید تنظیمات
+      PHP
+      را شخصی‌سازی کنید.
+      برای مثال، ممکن است بخواهید که حداکثر حجم مجاز برای آپلود فایل در سایت لاراولی‌تان را شخصی‌سازی کنید.
+      پس لازم است که فایل
+      <span className="code">liara_php.ini</span>
+      را به پروژه‌ی‌تان اضافه کرده و محتویات آن را برابر تکه‌کد قرار دهید:
+    </p>
+    <pre>
+      <code>
+{`file_uploads = On
+memory_limit = 128M
+upload_max_filesize = 64M
+post_max_size = 128M
+max_execution_time = 600`}
+      </code>
+    </pre>
+    <p>
+      و حالا با اجرای دستور
+      <span className="code">liara deploy</span>
+      تنظیمات شما روی سرور قرار می‌گیرد.
+    </p>
+
     <h3>ایجاد CronJob</h3>
     <p>
       گاهی اوقات نیاز است کار خاصی در زمان خاصی و به صورت دوره‌ای انجام شود، مثلا تهیه‌ی فایل پشتیبان از پایگاه داده، ارسال ایمیل و خبرنامه و کارهایی نظیر این.
