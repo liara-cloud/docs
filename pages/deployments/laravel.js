@@ -253,7 +253,7 @@ max_execution_time = 600`}
   <code>
 {`{
   "cron": [
-    "* * * * * cd $ROOT && php artisan schedule:run >> /dev/null 2>&1"
+    "* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1"
   ]
 }`}
   </code>
@@ -290,7 +290,7 @@ max_execution_time = 600`}
       <code>
 {`[program:scheduler]
 process_name=%(program_name)s_%(process_num)02d
-command=php $ROOT/artisan queue:work --queue=sms --tries=3
+command=php /var/www/html/artisan queue:work --queue=sms --tries=3
 autostart=true
 autorestart=true
 numprocs=1
