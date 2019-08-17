@@ -1,6 +1,7 @@
 import Layout from '../../components/Layout'
 import Link from 'next/link'
 import Head from 'next/head'
+import Notice from '../../components/Notice'
 
 export default () => (
   <Layout>
@@ -14,7 +15,7 @@ export default () => (
       <span className="code">composer.json</span>
       باشد تا بتواند در لیارا مستقر شود.
       <br />
-      در حال حاظر، لیارا از Laravel > 5.1 پشتیبانی می‌کند.
+      در حال حاظر، لیارا از Laravel >= 5.5 پشتیبانی می‌کند.
     </p>
     
     <h3>شروع عملیات استقرار</h3>
@@ -106,6 +107,29 @@ export default () => (
       هر زمان که پروژه‌ی‌تان را روی لیارا مستقر می‌کنید، ما این دستور را برای‌تان اجرا می‌کنیم
       تا مطمئن شویم که فایل‌های CSS و JS
       شما به صورت صحیح در اختیار کاربران‌تان قرار گیرند.
+    </p>
+    <p>
+      اما اگر از Laravel
+      فقط برای ساخت یک API استفاده کرده‌اید و یا به طور کلی نیازی به این ندارید
+      که لیارا پکیج‌های npm
+      را برای‌تان نصب و فایل‌های CSS و JavaScript تان را build کند،
+      می‌توانید در فایل
+      <span className="code">liara.json</span>
+      پروژه، یک فیلد با نام laravel و داخل آن یک فیلد با نام
+      <span className="code">buildAssets</span>
+      بسازید و این قابلیت را غیر فعال کنید.
+    </p>
+    <pre>
+      <code>
+{`{
+  "laravel": {
+    "buildAssets": false
+  }
+}`}
+      </code>
+    </pre>
+    <p>
+      با این تغییر، هر بار که دیپلوی کنید، لیارا از اجرای دستورات npm خودداری می‌کند.
     </p>
 
     <h3>تنظیمات TrustedProxies</h3>
@@ -341,6 +365,94 @@ stdout_logfile=/tmp/sms-queue.log`}
         <li><a href="https://laravel.com/docs/queues#supervisor-configuration" target="_blank">مستندات لاراول درباره‌ی Supervisor</a></li>
       </ul>
     </p>
+
+    <h3>کش‌کردن تنظیمات و route ها</h3>
+    <p>
+      فریم‌ورک Laravel،
+      دستوراتی را برای افزایش عملکرد این فریم‌ورک در اختیار گذاشته است که با اجرای آن‌ها در محیط production
+      سرعت پروژه‌ی‌تان افزایش می‌یابد. لیارا این امکان را فراهم کرده که این دستورات بعد از هر بار دیپلوی‌، به طور خودکار
+      روی پروژه‌ی‌تان اجرا شوند.
+    </p>
+    <p>
+      دستور اول، دستور
+      <span className="code">php artisan config:cache</span>
+      است که تنظیمات لاراول را کش می‌کند. برای فعال‌کردن این قابلیت، از فیلد
+      <span className="code">configCache</span>
+      در فایل
+      <span className="code">liara.json</span>
+      استفاده کنید:
+    </p>
+    <pre>
+      <code>
+{`{
+  "laravel": {
+    "configCache": true
+  }
+}`}
+      </code>
+    </pre>
+    <p>
+      دستور دوم، دستور
+      <span className="code">php artisan route:cache</span>
+      است که تنظیمات لاراول را کش می‌کند. برای فعال‌کردن این قابلیت، از فیلد
+      <span className="code">routeCache</span>
+      در فایل
+      <span className="code">liara.json</span>
+      استفاده کنید:
+    </p>
+    <pre>
+      <code>
+{`{
+  "laravel": {
+    "routeCache": true
+  }
+}`}
+      </code>
+    </pre>
+    <p>
+      این امکان هم وجود دارد که این دو قابلیت را هم‌زمان فعال کنید:
+    </p>
+    <pre>
+      <code>
+{`{
+  "laravel": {
+    "configCache": true,
+    "routeCache": true
+  }
+}`}
+      </code>
+    </pre>
+
+    <Notice variant="danger">
+      توجه داشته باشید که طبق
+      {' '}
+      <a href="https://laravel.com/docs/5.8/deployment#optimization" target="_blank">مستندات لاراول</a>،
+      {' '}
+      استفاده از دستور
+      route:cache
+      تنها زمانی امکان‌پذیر است که شما از Closure
+      ها برای تعریف route ها استفاده نکرده باشید و فقط از Controller
+      استفاده کرده باشید.
+    </Notice>
+
+    <h3>نمونه‌ی فایل liara.json برای لاراول</h3>
+    <p>
+      در نهایت، فایل liara.json برای یک پروژه‌ی لاراولی ممکن است به این شکل نهایی شود:
+    </p>
+    <pre>
+      <code>
+{`{
+  "cron": [
+    "* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1"
+  ],
+  "laravel": {
+    "routeCache": true,
+    "configCache": true,
+    "buildAssets": true
+  }
+}`}
+      </code>
+    </pre>
 
     <h3>لیست اکستنشن‌های نصب شده</h3>
     <p>
