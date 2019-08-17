@@ -155,6 +155,41 @@ class TrustProxies extends Middleware
   </code>
 </pre>
 
+    <h3>تنظیمات مربوط به HTTPS</h3>
+    <p>
+      ممکن است با انجام تنظیمات بخش
+      TrustedProxies
+      همچنان با مشکلاتی مانند عدم نمایش تصاویر و یا عدم لودشدن فایل‌های
+      CSS و JavaScript
+      رو به رو شوید. در چنین شرایطی، پیشنهاد می‌کنیم تکه کد زیر را در متد
+      <span className="code">boot()</span>
+      فایل
+      <span className="code">AppServiceProvider</span>
+      قرار دهید:
+    </p>
+    <pre>
+      <code>
+{`if($this->app->environment('production')) {
+  \\URL::forceScheme('https');
+}`}
+      </code>
+    </pre>
+    <p>
+      کد بالا به سادگی چک می‌کند که اگر متغیر
+      <span className="code">APP_ENV</span>
+      برابر
+      <span className="code">production</span>
+      باشد، لاراول حتما از https برای نمایش تصاویر و سایر asset ها استفاده کند.
+      این متغیر به صورت پیش‌فرض برابر
+      production
+      است، مگر این که از بخش
+      {' '}
+      <Link href="/projects/environment-variables">متغیرهای لیارا</Link>
+      {' '}
+      مقدار آن را تغییر داده باشید.
+      با توجه به صلاح‌دید خودتان، یا این تکه کد را تغییر دهید یا مقدار متغیر را.
+    </p>
+
     <h3>اتصال به دیتابیس</h3>
     <p>
       شما می‌توانید از بخش «دیتابیس‌ها»، یک دیتابیس
