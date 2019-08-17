@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import Link from 'next/link'
 import Head from 'next/head'
 import Notice from '../../components/Notice'
+import ZoomableImage from '../../components/ZoomableImage'
 
 export default () => (
   <Layout>
@@ -298,6 +299,25 @@ max_execution_time = 600`}
       و حالا با اجرای دستور
       <span className="code">liara deploy</span>
       تنظیمات شما روی سرور قرار می‌گیرد.
+    </p>
+
+    <h3>مشاهده‌ی لاگ‌ها</h3>
+    <p>
+      به صورت پیش‌فرض لاگ‌های لاراول در فایلی به نام laravel.log ذخیره می‌شوند.
+      برای این که لاگ‌های پروژه‌ی‌تان در صفحه‌ی لاگ‌های پنل کاربری لیارا نمایش داده شوند،
+      لازم است که متغیر زیر را در بخش متغیرها اضافه کنید:
+    </p>
+    <pre>
+      <code>
+{`LOG_CHANNEL=errorlog`}
+      </code>
+    </pre>
+    <ZoomableImage src="/static/laravel-log-channel.png" alt="صفحه‌ی لاگ‌های لاراول" />
+    <p>
+      با این environment variable،
+      لاراول لاگ‌های خود را به
+      stdout و stderr
+      منتقل می‌کند و لیارا این امکان را پیدا می‌کند تا لاگ‌های‌تان را در پنل کاربری نمایش دهد.
     </p>
 
     <h3>ایجاد CronJob</h3>

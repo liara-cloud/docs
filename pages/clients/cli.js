@@ -76,8 +76,10 @@ export default () => (
       <ul>
         <li>node</li>
         <li>laravel</li>
-        <li>static</li>
+        <li>react</li>
+        <li>vue</li>
         <li>angular</li>
+        <li>static</li>
         <li>wordpress</li>
         <li>docker</li>
       </ul>
@@ -140,7 +142,7 @@ $ liara deploy
 
     <h3>نمایش لاگ‌های پروژه بلافاصله بعد از اتمام استقرار</h3>
     <p>
-      بعد از اجرای دستوری
+      بعد از اجرای دستور
       <span className="code">liara deploy</span>،
       اگر عملیات با موفقیت به اتمام برسد، لیارا لاگ‌های پروژه‌ی‌تان را بلافاصله بعد از اتمام استقرار نمایش می‌دهد.
       با مشاهده‌ی لاگ‌ها می‌توانید مطمئن شوید که پروژه‌ی‌تان به درستی مستقر شده.
@@ -150,5 +152,10 @@ $ liara deploy
       <span className="code">--no-project-logs</span>
       این قابلیت را غیر فعال کنید.
     </p>
+    <pre>
+        <code>
+          $ liara deploy --project my-blog --port 80 --no-project-logs
+        </code>
+      </pre>
   </Layout>
 )
