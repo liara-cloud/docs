@@ -42,9 +42,10 @@ export default () => (
         <li><ActiveLink icon="react.svg" href="/deployments/react">React</ActiveLink></li>
         <li><ActiveLink icon="vue.svg" href="/deployments/vue">Vue</ActiveLink></li>
         <li><ActiveLink icon="angularjs.svg" href="/deployments/angular">Angular</ActiveLink></li>
+        <li><ActiveLink icon="HTML5.svg" href="/deployments/static">Static</ActiveLink></li>
         <li><ActiveLink icon="nodejs.svg" href="/deployments/nodejs">NodeJS</ActiveLink></li>
         <li><ActiveLink icon="laravel.svg" href="/deployments/laravel">Laravel</ActiveLink></li>
-        <li><ActiveLink icon="HTML5.svg" href="/deployments/static">Static</ActiveLink></li>
+        <li><ActiveLink icon="django.svg" href="/deployments/django">Django</ActiveLink></li>
         <li><ActiveLink icon="wordpress.svg" href="/deployments/wordpress">WordPress</ActiveLink></li>
         <li><ActiveLink icon="docker.png" href="/deployments/docker">Docker</ActiveLink></li>
       </ul>
