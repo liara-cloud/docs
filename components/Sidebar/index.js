@@ -23,8 +23,9 @@ export default () => (
         <li><ActiveLink href="/projects/logs">لاگ‌ها</ActiveLink></li>
         <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
         <li><ActiveLink href="/projects/environment-variables">متغیرها (تنظیمات)</ActiveLink></li>
-        <li><ActiveLink href="/projects/volumes">Volumes</ActiveLink></li>
-        <li><ActiveLink href="/projects/ignore">Gitignore</ActiveLink></li>
+        <li><ActiveLink href="/projects/volumes">ذخیره‌ی داده‌ها</ActiveLink></li>
+        <li><ActiveLink href="/projects/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
+        <li><ActiveLink href="/projects/fixed-ip">آی‌پی ثابت</ActiveLink></li>
       </ul>
     </nav>
 
