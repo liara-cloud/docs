@@ -47,6 +47,7 @@ export default () => (
         <li><ActiveLink icon="nodejs.svg" href="/deployments/nodejs">NodeJS</ActiveLink></li>
         <li><ActiveLink icon="laravel.svg" href="/deployments/laravel">Laravel</ActiveLink></li>
         <li><ActiveLink icon="django.svg" href="/deployments/django">Django</ActiveLink></li>
+        <li><ActiveLink icon="flask.svg" href="/deployments/flask">Flask</ActiveLink></li>
         <li><ActiveLink icon="wordpress.svg" href="/deployments/wordpress">WordPress</ActiveLink></li>
         <li><ActiveLink icon="docker.png" href="/deployments/docker">Docker</ActiveLink></li>
       </ul>
