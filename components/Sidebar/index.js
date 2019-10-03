@@ -6,8 +6,8 @@ export default () => (
     <a href="https://liara.ir" className="brand">
       <img src="/static/logo.png" alt="liara" className="logo" />
       <div className="brand__text">
-        <h2>لیارا</h2>
-        <p>بستر ابری برای اپلیکیشن‌ها</p>
+        <h2>سرویس ابری لیارا</h2>
+        <p>ارائه دهنده خدمات ابری PaaS و DBaaS</p>
       </div>
     </a>
 

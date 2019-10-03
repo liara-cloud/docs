@@ -12,6 +12,11 @@
   color: var(--primary);
 }
 
+.brand__text p {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
 .logo {
   width: 64px;
   height: 64px;
