@@ -35,15 +35,15 @@ p {
   display: flex;
   margin: auto;
   direction: rtl;
-  max-width: 1100px;
+  flex-direction: column;
   align-items: flex-start;
 }
 
 .article {
   flex: 1;
-  padding: 24px;
+  width: 100%;
+  padding: 32px;
   margin: 24px 0;
-  border-radius: 4px;
   background-color: white;
   box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
 }
@@ -56,9 +56,9 @@ p {
 }
 
 .article p {
-  margin: 1em 0;
-  font-size: 15px;
-  line-height: 1.9em;
+  margin: 0.5em 0;
+  font-size: .8rem;
+  line-height: 1.8em;
 }
 .article *:last-child {
   margin-bottom: 0;
@@ -79,11 +79,12 @@ code {
   text-align: left;
   width: 100%;
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   padding: 8px 20px;
   line-height: 1.8em;
   background-color: #eee;
   border-left: 2px solid var(--primary);
+  overflow-x: auto;
 }
 
 span.code {
@@ -103,4 +104,47 @@ span.code {
 
 .list-more-space li {
   margin-bottom: 4px;
+}
+
+@media (min-width: 1100px) {
+  .wrapper {
+    width: 1100px;
+    flex-direction: row;
+  }
+
+  .article {
+    padding: 24px;
+    border-radius: 4px;
+  }
+
+  .article p {
+    margin: 1em 0;
+    font-size: 15px;
+    line-height: 1.9em;
+  }
+
+  code {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 576px) {
+  .menu-button {
+    background-color: red;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.3em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+  h4 {
+    font-size: 0.9em;
+  }
 }

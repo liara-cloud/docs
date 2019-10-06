@@ -1,5 +1,5 @@
 .notice {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.8em;
   padding: 10px;
   background-color: #eee;
@@ -14,4 +14,11 @@
 .notice--danger {
   background-color: #ffc9d5;
   border-right: 2px solid #e5212b;
+}
+
+
+@media (min-width: 1100px) {
+  .notice {
+    font-size: 14px;
+  }
 }
