@@ -59,9 +59,9 @@
   border: none;
   color: white;
   margin-top: 24px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-family: inherit;
-  background-color: var(--primary);
+  background-color: #0076ff;
 }
 
 .menu-button__icon {

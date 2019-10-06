@@ -9,7 +9,7 @@
 
 body {
   margin: 0;
-  background-color: #eee;
+  background-color: #fafbfc;
   font-family: iranyekan, Arial, Helvetica, sans-serif;
 }
 
@@ -26,11 +26,6 @@ p {
   margin: 0;
 }
 
-.top-bar {
-  height: 4px;
-  background-color: var(--primary);
-}
-
 .wrapper {
   display: flex;
   margin: auto;
@@ -43,9 +38,9 @@ p {
   flex: 1;
   width: 100%;
   padding: 32px;
-  margin: 24px 0;
+  margin-top: 24px;
   background-color: white;
-  box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+  border-top: 1px solid #eaeaea;
 }
 
 .article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
@@ -114,7 +109,10 @@ span.code {
 
   .article {
     padding: 24px;
-    border-radius: 4px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+    border: 0;
   }
 
   .article p {
