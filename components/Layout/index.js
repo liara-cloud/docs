@@ -11,6 +11,7 @@ export default ({ children }) => (
     <Head>
       <meta name="theme-color" content="#000000" />
       <link rel="shortcut icon" href="/static/favicon.ico" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     </Head>
 
     <div className="top-bar"></div>
