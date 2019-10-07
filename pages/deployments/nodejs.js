@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout'
 import Head from 'next/head'
+import ZoomableImage from '../../components/ZoomableImage'
 
 export default () => (
   <Layout>
@@ -157,5 +158,34 @@ export default () => (
 }`}
       </code>
     </pre>
+
+    <a name="npm-auditing"></a>
+    <h3>گزارش مشکلات امنیتی پکیج‌های نصب شده با npm</h3>
+    <p>
+      قابل انکار نیست که تعداد پکیج‌های npm بسیار زیاد هستند و برخی از آن‌ها هم ممکن است دارای مشکلات امنیتی باشند و بسیاری از این مشکلات امنیتی هم بعدها در نسخه‌های جدیدی که ارائه می‌کنند رفع می‌شود. اما شما چگونه می‌توانید مطمئن شوید که نسخه‌ی فعلی پکیج‌هایی که نصب کرده‌اید دارای مشکل هستند یا نه؟ چگونه می‌توانید متوجه شوید که آیا راه حلی هم برای این مشکل وجود دارد یا نه؟
+    </p>
+    <p>
+      لیارا می‌تواند گزارشات کاملی را درباره مشکلات امنیتی پروژه‌ی‌تان در پنل کاربری به شما نمایش دهد. فقط کافی است که در فایل
+      <span className="code">liara.json</span>
+      پروژه‌ی خود، <span className="code">npmAudit</span>
+      را برابر <span className="code">true</span> قرار دهید. این قابلیت به صورت پیش‌فرض غیر فعال است. برای نمونه:
+    </p>
+    <pre>
+      <code>
+{`{
+  "port": 3000,
+  "node": {
+    "version": "10",
+    "npmAudit": true
+  }
+}`}
+      </code>
+    </pre>
+    <p>
+      و حالا از این پس هر بار که دستور
+      <span className="code">liara deploy</span>
+      را برای استقرار و بروزرسانی پروژه‌ی‌تان وارد کنید، گزارش امنیتی نیز برای‌تان قابل مشاهده خواهد بود.
+    </p>
+    <ZoomableImage src="/static/npm-auditing.png" alt="صفحه‌ی گزارشات امنیتی" />
   </Layout>
 )
