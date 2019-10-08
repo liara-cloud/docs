@@ -4,7 +4,7 @@ import Head from 'next/head'
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات سرویس ابری لیارا | ارائه دهنده خدمات ابری PaaS و DBaaS</title>
+      <title>سرویس ابری لیارا | مستندات</title>
     </Head>
 
     <h1>مستندات</h1>

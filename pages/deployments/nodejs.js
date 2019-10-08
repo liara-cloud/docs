@@ -5,7 +5,7 @@ import ZoomableImage from '../../components/ZoomableImage'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های NodeJS - NodeJS deployment</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌های NodeJS - NodeJS deployment</title>
     </Head>
 
     <h1>استقرار پروژه‌های NodeJS</h1>

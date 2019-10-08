@@ -7,7 +7,7 @@ import ZoomableImage from '../../components/ZoomableImage'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های Django - Django deployment</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌های Django - Django deployment</title>
     </Head>
 
     <h1>استقرار پروژه‌های Django</h1>

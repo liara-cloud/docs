@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | لاگ‌ها - logs</title>
+      <title>سرویس ابری لیارا | مستندات لاگ‌ها - logs</title>
     </Head>
 
     <h1>لاگ‌ها</h1>

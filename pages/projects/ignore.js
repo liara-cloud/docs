@@ -4,7 +4,7 @@ import Head from 'next/head'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | نادیده‌گرفتن فایل‌ها - .liaraignore - .gitignore</title>
+      <title>سرویس ابری لیارا | مستندات نادیده‌گرفتن فایل‌ها - .liaraignore - .gitignore</title>
     </Head>
 
     <h1>نادیده‌گرفتن فایل‌ها (Gitignore)</h1>

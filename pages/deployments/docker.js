@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌ها با استفاده از Dockerfile</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌ها با استفاده از Dockerfile</title>
     </Head>
 
     <h1>استقرار پروژه‌ها با استفاده از Dockerfile</h1>

@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های Angular - Angular deployment</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌های Angular - Angular deployment</title>
     </Head>
 
     <h1>استقرار پروژه‌های Angular</h1>
