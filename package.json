@@ -17,6 +17,7 @@
     "next": "^7.0.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-gist": "^1.2.1"
+    "react-gist": "^1.2.1",
+    "react-highlight": "^0.12.0"
   }
 }

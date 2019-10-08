@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import './style.css'
 import './fontiran.css'
 import Head from 'next/head'
+import 'highlight.js/styles/atom-one-light.css'
 
 import Sidebar from '../Sidebar'
 

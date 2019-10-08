@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Notice from '../../components/Notice'
 import ZoomableImage from '../../components/ZoomableImage'
+import Highlight from 'react-highlight'
 
 export default () => (
   <Layout>
@@ -130,15 +131,13 @@ export default () => (
       <span className="code">buildAssets</span>
       بسازید و این قابلیت را غیر فعال کنید.
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
 {`{
   "laravel": {
     "buildAssets": false
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       با این تغییر، هر بار که دیپلوی کنید، لیارا از اجرای دستورات npm خودداری می‌کند.
     </p>
@@ -162,8 +161,7 @@ export default () => (
       <span className="code">*</span>
       تغییر دهید.
     </p>
-<pre>
-  <code>
+    <Highlight className="php">
 {`<?php
 
 namespace App\Http\Middleware;
@@ -187,9 +185,7 @@ class TrustProxies extends Middleware
      */
     protected $headers = Request::HEADER_X_FORWARDED_ALL;
 }`}
-  </code>
-</pre>
-
+    </Highlight>
     <h3>تنظیمات مربوط به HTTPS</h3>
     <p>
       ممکن است با انجام تنظیمات بخش
@@ -202,13 +198,11 @@ class TrustProxies extends Middleware
       <span className="code">AppServiceProvider</span>
       قرار دهید:
     </p>
-    <pre>
-      <code>
+    <Highlight className="php">
 {`if($this->app->environment('production')) {
   \\URL::forceScheme('https');
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       کد بالا به سادگی چک می‌کند که اگر متغیر
       <span className="code">APP_ENV</span>
@@ -338,15 +332,13 @@ max_execution_time = 600`}
       را به فایل liara.json
       پروژه‌ی‌تان اضافه کنید.
     </p>
-<pre>
-  <code>
+    <Highlight className="json">
 {`{
   "cron": [
     "* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1"
   ]
 }`}
-  </code>
-</pre>
+    </Highlight>
     <p>
       همان‌طور که مشاهده می‌کنید، فیلد
       <span className="code">cron</span>
@@ -375,8 +367,7 @@ max_execution_time = 600`}
     <p>
       یک نمونه کانفیگ ساده برای یک صف با نام sms که وظیفه‌ی ارسال پیامک به کاربران را به عهده دارد:
     </p>
-    <pre>
-      <code>
+    <Highlight className="ini">
 {`[program:scheduler]
 process_name=%(program_name)s_%(process_num)02d
 command=php /var/www/html/artisan queue:work --queue=sms --tries=3
@@ -386,8 +377,7 @@ numprocs=1
 user=www-data
 redirect_stderr=true
 stdout_logfile=/tmp/sms-queue.log`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       برای اطلاعات بیشتر می‌توانید به لینک‌های زیر مراجعه کنید:
       <ul>
@@ -412,15 +402,13 @@ stdout_logfile=/tmp/sms-queue.log`}
       <span className="code">liara.json</span>
       استفاده کنید:
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
 {`{
   "laravel": {
     "configCache": true
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       دستور دوم، دستور
       <span className="code">php artisan route:cache</span>
@@ -430,28 +418,24 @@ stdout_logfile=/tmp/sms-queue.log`}
       <span className="code">liara.json</span>
       استفاده کنید:
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
 {`{
   "laravel": {
     "routeCache": true
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       این امکان هم وجود دارد که این دو قابلیت را هم‌زمان فعال کنید:
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
 {`{
   "laravel": {
     "configCache": true,
     "routeCache": true
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
 
     <Notice variant="danger">
       توجه داشته باشید که طبق
@@ -469,8 +453,7 @@ stdout_logfile=/tmp/sms-queue.log`}
     <p>
       در نهایت، فایل liara.json برای یک پروژه‌ی لاراولی ممکن است به این شکل نهایی شود:
     </p>
-    <pre>
-      <code>
+    <Highlight className="php">
 {`{
   "cron": [
     "* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1"
@@ -481,8 +464,7 @@ stdout_logfile=/tmp/sms-queue.log`}
     "buildAssets": true
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
 
     <h3>اجرای خودکار دستورات دلخواه</h3>
     <p>
@@ -495,8 +477,7 @@ stdout_logfile=/tmp/sms-queue.log`}
       migration
       ها را به صورت خودکار اجرا کنید و یا این که ماژول‌های Apache را فعال کنید.
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
 {`{
   "laravel": {
     "postBuildCommands": [
@@ -506,8 +487,7 @@ stdout_logfile=/tmp/sms-queue.log`}
     ]
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       همان‌طور که مشاهده می‌کنید،
       <span className="code">postBuildCommands</span>
