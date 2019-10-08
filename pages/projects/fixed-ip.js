@@ -6,7 +6,7 @@ import Notice from '../../components/Notice'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | متغیرها - Environment Variables</title>
+      <title>سرویس ابری لیارا | مستندات آی‌پی ثابت - Fixed - Static IP</title>
     </Head>
 
     <h1>آی‌پی ثابت (Fixed / Static IP)</h1>

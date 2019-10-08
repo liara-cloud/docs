@@ -8,7 +8,7 @@ import Highlight from 'react-highlight'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های Laravel - Laravel deployment</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌های Laravel - Laravel deployment</title>
     </Head>
 
     <h1>استقرار پروژه‌های Laravel</h1>

@@ -4,7 +4,7 @@ import Head from 'next/head'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | رابط خط فرمان - Liara CLI</title>
+      <title>سرویس ابری لیارا | مستندات رابط خط فرمان - Liara CLI</title>
     </Head>
 
     <h1>رابط خط فرمان (CLI)</h1>

@@ -5,7 +5,7 @@ import Head from 'next/head'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | متغیرها - Environment Variables</title>
+      <title>سرویس ابری لیارا | مستندات متغیرها - Environment Variables</title>
     </Head>
 
     <h1>متغیرها (Environment Variables)</h1>

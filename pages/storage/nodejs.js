@@ -6,7 +6,7 @@ import Gist from 'react-gist'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | NodeJS SDK - Object Storage</title>
+      <title>سرویس ابری لیارا | مستندات NodeJS SDK - Object Storage</title>
     </Head>
 
     <h1>Liara NodeJS SDK</h1>

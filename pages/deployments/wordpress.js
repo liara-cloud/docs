@@ -8,7 +8,7 @@ import ZoomableImage from '../../components/ZoomableImage'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های WordPress - WordPress deployment</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌های WordPress - WordPress deployment</title>
     </Head>
 
     <h1>استقرار پروژه‌های وردپرس</h1>

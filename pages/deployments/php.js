@@ -6,7 +6,7 @@ import Notice from '../../components/Notice'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های PHP - PHP deployment</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌های PHP - PHP deployment</title>
     </Head>
 
     <h1>استقرار پروژه‌های PHP</h1>

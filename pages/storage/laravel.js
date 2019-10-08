@@ -6,7 +6,7 @@ import Gist from 'react-gist'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | Laravel S3 Driver</title>
+      <title>سرویس ابری لیارا | مستندات Laravel S3 Driver</title>
     </Head>
 
     <h1>Laravel S3 Driver</h1>

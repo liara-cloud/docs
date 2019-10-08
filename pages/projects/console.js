@@ -5,7 +5,7 @@ import Head from 'next/head'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | کنسول - ssh - console</title>
+      <title>سرویس ابری لیارا | مستندات کنسول - ssh - console</title>
     </Head>
 
     <h1>کنسول</h1>

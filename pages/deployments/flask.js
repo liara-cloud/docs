@@ -5,7 +5,7 @@ import Head from 'next/head'
 export default () => (
   <Layout>
     <Head>
-      <title>Liara | استقرار پروژه‌های Flask - Flask deployment</title>
+      <title>سرویس ابری لیارا | مستندات استقرار پروژه‌های Flask - Flask deployment</title>
     </Head>
 
     <h1>استقرار پروژه‌های Flask</h1>
