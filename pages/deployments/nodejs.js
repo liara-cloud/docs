@@ -187,5 +187,26 @@ export default () => (
       را برای استقرار و بروزرسانی پروژه‌ی‌تان وارد کنید، گزارش امنیتی نیز برای‌تان قابل مشاهده خواهد بود.
     </p>
     <ZoomableImage src="/static/npm-auditing.png" alt="صفحه‌ی گزارشات امنیتی" />
+
+    <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <p>
+      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است.
+      برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
+      <span className="code">timezone</span>
+      در فایل
+      <span className="code">liara.json</span>
+      استفاده کنید. برای نمونه:
+    </p>
+    <pre>
+      <code>
+{`{
+  "port": 3000,
+  "node": {
+    "version": "10",
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+      </code>
+    </pre>
   </Layout>
 )
