@@ -121,14 +121,94 @@ export default () => (
       </code>
     </pre>
 
-    {/* TODO: Talk about django's s3 packages */}
+    <h3>تنظیمات Nginx</h3>
+    <p>
+      استقرار پروژه‌های Django، توسط وب‌سرور
+      <span className="code">Nginx</span>
+      انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این وب‌سرور را مطابق با
+      نیازهای‌تان تنظیم کنید. برای این کار، کافیست که در ریشه‌ی پروژه‌ی‌تان، فایلی با نام
+      <span className="code">liara_nginx.conf</span>
+      ایجاد کنید. به‌صورت پیش‌فرض، برای پروژه‌های Django، این فایل به شکل زیر تعریف شده‌است:
+    </p>
+    <pre>
+      <code>
+{`location /static {
+  alias /usr/src/app/staticfiles;
+}
+
+location / {
+  try_files $uri @django_app;
+}`}
+      </code>
+    </pre>
+    <p>
+      که شما می‌توانید آن را به شیوه‌ی خودتان گسترش دهید. برای مثال، برای فعال‌کردن فشرده‌سازی
+      <span className="code">gzip</span>
+      می‌توانید به این صورت عمل کنید:
+    </p>
+    <pre>
+      <code>
+{`gzip             on;
+gzip_disable     "msie6";
+gzip_vary        on;
+gzip_proxied     any;
+gzip_comp_level  6;
+gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
+location /static {
+  alias /usr/src/app/staticfiles;
+}
+
+location / {
+  try_files $uri @django_app;
+}`}
+      </code>
+    </pre>
+
     <h3>ذخیره‌ی فایل‌ها</h3>
     <p>
-      لیارا یک فضای ابری نامحدود برای ذخیره‌ی فایل‌هایتان در اختیار شما قرار می‌دهد.
+      شما می‌توانید فایل‌های
+      Media
+      پروژه‌ی‌تان را به ۲ شیوه ذخیره کنید. اول این که می‌توانید از پوشه‌ی media
+      در ریشه‌ی پروژه‌ی‌تان استفاده کنید. ما این روش را برای پروژه‌های بزرگ توصیه نمی‌کنیم، چون مقیاس‌پذیر نیست. اما برای پروژه‌های کوچک و متوسط قابل استفاده است.
       <br />
-      فقط کافیست که SDK لیارا را در پروژه‌یتان نصب کرده و شروع به استفاده کنید.
+      از آن‌جایی که فایل‌سیستم در لیارا موقتی است، لازم است که این پوشه را به عنوان
       {' '}
-      <Link href="/storage/overview">اطلاعات بیشتر</Link>
+      <Link href="/projects/volumes">Volume</Link>
+      {' '}
+      در فایل
+      <span className="code">liara.json</span>
+      پروژه‌ی‌تان به لیارا معرفی کنید:
+    </p>
+    <pre>
+      <code>
+{`{
+  "volume": "/usr/src/app/media"
+}`}
+      </code>
+    </pre>
+
+    <Notice variant="info">
+      ریشه‌ی پروژه‌های جنگو در لیارا
+      <span className="code">/usr/src/app</span>
+      است. برای همین در زمان تعریف volume
+      باید از این مسیر شروع کنید.
+    </Notice>
+
+    <p>
+      روش دوم استفاده از
+      {' '}
+      <Link href="/storage/overview">سرویس فایل لیارا</Link>
+      {' '}
+      است. این سرویس در واقع یک سرویس Object Storage
+      است که دارای API ای سازگار با سرویس معروف AWS S3 است. بنابراین شما می‌توانید
+      از کتاب‌خانه‌های AWS S3 برای کار با سرویس فایل لیارا استفاده کنید.
+      <br />
+      ما استفاده از کتاب‌خانه‌ی
+      {' '}
+      <a href="https://docs.min.io/docs/python-client-quickstart-guide.html" target="_blank">MinIO</a>
+      {' '}
+      را برای کار با سرویس فایل لیارا توصیه می‌کنیم.
     </p>
   </Layout>
 )
