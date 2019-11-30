@@ -175,6 +175,41 @@ export default () => (
       </table>
     </div>
 
+    <h4>خاموش یا روشن‌کردن پروژه</h4>
+    <pre>
+      <code>
+{`POST https://api.liara.ir/v1/projects/:project_id/actions/scale`}
+      </code>
+    </pre>
+    <p>نمونه‌ی داده‌هایی که در این خواست می‌توانید ارسال کنید:</p>
+    <Highlight className="json">
+{`{
+  "scale": 1
+}`}
+    </Highlight>
+    <p>
+      برای مثال، اگر قصد خاموش‌کردن پروژه‌ای را با شناسه‌ی
+      <span className="code">my-app</span>
+      دارید، به این صورت باید درخواست دهید:
+    </p>
+    <pre>
+      <code>
+{`POST https://api.liara.ir/v1/projects/my-app/actions/scale`}
+      </code>
+    </pre>
+    <p>
+      و این داده‌ها را باید بفرستید:
+    </p>
+    <Highlight className="json">
+{`{
+  "scale": 0
+}`}
+    </Highlight>
+    <p>
+      پارامتر <span className="code">scale</span>
+      را اگر برابر صفر قرار دهید، پروژه خاموش‌شده و اگر برابر یک قرار دهید، پروژه روشن می‌شود.
+    </p>
+
     <h4>حذف پروژه</h4>
     <pre>
       <code>
