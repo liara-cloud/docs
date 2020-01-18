@@ -21,7 +21,7 @@ const ActiveLink = ({ children, router, href, icon }) => {
         src={`/static/platformicons/${icon}`}
         className={`platform-icon ${isActive ? 'active' : ''}`}
       />
-      {children}
+      <span style={{ direction: 'ltr', display: 'inline-block' }}>{children}</span>
     </a>
   )
 }
