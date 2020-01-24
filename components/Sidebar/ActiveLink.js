@@ -16,11 +16,11 @@ const ActiveLink = ({ children, router, href, icon }) => {
 
   return (
     <a href={href} onClick={handleClick} style={style}>
-      <img
+      {icon && <img
         alt=""
         src={`/static/platformicons/${icon}`}
         className={`platform-icon ${isActive ? 'active' : ''}`}
-      />
+      />}
       <span style={{ direction: 'ltr', display: 'inline-block' }}>{children}</span>
     </a>
   )
