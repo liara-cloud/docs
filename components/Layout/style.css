@@ -119,6 +119,13 @@ span.code {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+.pageDescription {
+  color: #999;
+  display: block;
+  font-size: 14px;
+  margin-top: -6px;
+}
+
 @media (min-width: 1100px) {
   .wrapper {
     width: 1100px;

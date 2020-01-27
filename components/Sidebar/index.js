@@ -37,6 +37,14 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
+            <span className="nav__title">کلاینت‌ها</span>
+            <ul className="nav__list">
+              <li><ActiveLink href="/clients/cli">CLI</ActiveLink></li>
+              <li><ActiveLink href="/clients/api">API</ActiveLink></li>
+            </ul>
+          </nav>
+
+          <nav className="nav">
             <span className="nav__title">پروژه‌ها</span>
             <ul className="nav__list">
               <li><ActiveLink href="/projects/logs">لاگ‌ها</ActiveLink></li>
@@ -49,10 +57,11 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">کلاینت‌ها</span>
+            <span className="nav__title">دیتابیس‌ها</span>
             <ul className="nav__list">
-              <li><ActiveLink href="/clients/cli">CLI</ActiveLink></li>
-              <li><ActiveLink href="/clients/api">API</ActiveLink></li>
+              <li><ActiveLink href="/databases/tunnel">اتصال با تونل امن</ActiveLink></li>
+              {/* <li><ActiveLink href="/databases/mysql">MySQL</ActiveLink></li>
+              <li><ActiveLink href="/databases/mongodb">MongoDB</ActiveLink></li> */}
             </ul>
           </nav>
 
@@ -78,14 +87,6 @@ export default class Sidebar extends Component {
           <span className="nav__title">دامنه‌ها</span>
           <ul className="nav__list">
             <li><ActiveLink href="/domains/mysql">افزودن دامنه</ActiveLink></li>
-          </ul>
-        </nav> */}
-
-          {/* TODO: <nav className="nav">
-          <span className="nav__title">دیتابیس‌ها</span>
-          <ul className="nav__list">
-            <li><ActiveLink href="/databases/mysql">MySQL</ActiveLink></li>
-            <li><ActiveLink href="/databases/mongodb">MongoDB</ActiveLink></li>
           </ul>
         </nav> */}
 
