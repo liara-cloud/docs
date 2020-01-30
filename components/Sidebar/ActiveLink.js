@@ -1,6 +1,6 @@
 import { withRouter } from 'next/router'
 
-const ActiveLink = ({ children, router, href, icon }) => {
+const ActiveLink = ({ children, router, href, icon, textStyle }) => {
   const isActive = router.pathname === href
 
   const style = {
@@ -21,7 +21,7 @@ const ActiveLink = ({ children, router, href, icon }) => {
         src={`/static/platformicons/${icon}`}
         className={`platform-icon ${isActive ? 'active' : ''}`}
       />}
-      <span style={{ direction: 'ltr', display: 'inline-block' }}>{children}</span>
+      <span style={{ display: 'inline-block', ...textStyle }}>{children}</span>
     </a>
   )
 }

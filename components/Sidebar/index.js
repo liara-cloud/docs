@@ -59,7 +59,8 @@ export default class Sidebar extends Component {
           <nav className="nav">
             <span className="nav__title">دیتابیس‌ها</span>
             <ul className="nav__list">
-              <li><ActiveLink href="/databases/tunnel">اتصال با تونل امن</ActiveLink></li>
+              <li><ActiveLink href="/databases/tunnel">ایجاد تونل امن</ActiveLink></li>
+              <li><ActiveLink href="/databases/robo3t">اتصال با Robo3T</ActiveLink></li>
               {/* <li><ActiveLink href="/databases/mysql">MySQL</ActiveLink></li>
               <li><ActiveLink href="/databases/mongodb">MongoDB</ActiveLink></li> */}
             </ul>
@@ -77,7 +78,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink icon="laravel.svg" href="/deployments/laravel">Laravel</ActiveLink></li>
               <li><ActiveLink icon="django.svg" href="/deployments/django">Django</ActiveLink></li>
               <li><ActiveLink icon="flask.svg" href="/deployments/flask">Flask</ActiveLink></li>
-              <li><ActiveLink icon="netcore.svg" href="/deployments/netcore">.Net Core</ActiveLink></li>
+              <li><ActiveLink icon="netcore.svg" href="/deployments/netcore" textStyle={{ direction: 'ltr' }}>.Net Core</ActiveLink></li>
               <li><ActiveLink icon="wordpress.svg" href="/deployments/wordpress">WordPress</ActiveLink></li>
               <li><ActiveLink icon="docker.png" href="/deployments/docker">Docker</ActiveLink></li>
             </ul>
