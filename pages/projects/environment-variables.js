@@ -8,7 +8,9 @@ export default () => (
       <title>سرویس ابری لیارا | مستندات متغیرها - Environment Variables</title>
     </Head>
 
-    <h1>متغیرها (Environment Variables)</h1>
+    <h1>متغیرهای محیطی</h1>
+    <span className="pageDescription">(Environment Variables)</span>
+
     <p>
       هر پروژه‌ای ممکن است در محیط‌های مختلفی اجرا شود.
       برای مثال پروژه‌ی شما علاوه بر این که در حالت

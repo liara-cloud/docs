@@ -53,6 +53,9 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/projects/volumes">ذخیره‌ی داده‌ها</ActiveLink></li>
               <li><ActiveLink href="/projects/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
               <li><ActiveLink href="/projects/fixed-ip">آی‌پی ثابت</ActiveLink></li>
+              <li><ActiveLink href="/projects/zero-downtime-deployment">استقرار بدون داون‌تایم</ActiveLink></li>
+              <li><ActiveLink href="/projects/health-check">بررسی سلامت</ActiveLink></li>
+              <li><ActiveLink href="/projects/applets">برنامک‌ها</ActiveLink></li>
             </ul>
           </nav>
 
