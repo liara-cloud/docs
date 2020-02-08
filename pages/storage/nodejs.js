@@ -34,7 +34,7 @@ export default () => (
     <p>
       برای نصب
       <span className="code">Liara SDK</span>
-      دستور زیر را داخل پروژه‌یتان وارد کنید:
+      دستور زیر را داخل برنامه‌ی‌تان وارد کنید:
     </p>
     <pre>
       <code>
@@ -96,7 +96,7 @@ export default () => (
       <li>docs</li>
     </ul>
     <p>
-      و یا ممکن است به ازای هر پروژه، یک باکت ایجاد کنید:
+      و یا ممکن است به ازای هر برنامه، یک باکت ایجاد کنید:
     </p>
     <ul className="ltr">
       <li>chat-app-files</li>

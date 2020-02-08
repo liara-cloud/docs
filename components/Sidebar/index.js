@@ -45,17 +45,17 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">پروژه‌ها</span>
+            <span className="nav__title">برنامه‌ها</span>
             <ul className="nav__list">
-              <li><ActiveLink href="/projects/logs">لاگ‌ها</ActiveLink></li>
-              <li><ActiveLink href="/projects/console">کنسول</ActiveLink></li>
-              <li><ActiveLink href="/projects/environment-variables">متغیرها (تنظیمات)</ActiveLink></li>
-              <li><ActiveLink href="/projects/volumes">ذخیره‌ی داده‌ها</ActiveLink></li>
-              <li><ActiveLink href="/projects/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
-              <li><ActiveLink href="/projects/fixed-ip">آی‌پی ثابت</ActiveLink></li>
-              <li><ActiveLink href="/projects/zero-downtime-deployment">استقرار بدون داون‌تایم</ActiveLink></li>
-              <li><ActiveLink href="/projects/health-check">بررسی سلامت</ActiveLink></li>
-              <li><ActiveLink href="/projects/applets">برنامک‌ها</ActiveLink></li>
+              <li><ActiveLink href="/apps/logs">لاگ‌ها</ActiveLink></li>
+              <li><ActiveLink href="/apps/console">کنسول</ActiveLink></li>
+              <li><ActiveLink href="/apps/environment-variables">متغیرها (تنظیمات)</ActiveLink></li>
+              <li><ActiveLink href="/apps/volumes">ذخیره‌ی داده‌ها</ActiveLink></li>
+              <li><ActiveLink href="/apps/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
+              <li><ActiveLink href="/apps/fixed-ip">آی‌پی ثابت</ActiveLink></li>
+              <li><ActiveLink href="/apps/zero-downtime-deployment">استقرار بدون داون‌تایم</ActiveLink></li>
+              <li><ActiveLink href="/apps/health-check">بررسی سلامت</ActiveLink></li>
+              <li><ActiveLink href="/apps/applets">برنامک‌ها</ActiveLink></li>
             </ul>
           </nav>
 
@@ -70,7 +70,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">استقرار پروژه‌ها</span>
+            <span className="nav__title">استقرار برنامه‌ها</span>
             <ul className="nav__list">
               <li><ActiveLink icon="react.svg" href="/deployments/react">React</ActiveLink></li>
               <li><ActiveLink icon="vue.svg" href="/deployments/vue">Vue</ActiveLink></li>

@@ -8,7 +8,7 @@ import Highlight from 'react-highlight'
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات بررسی سلامت پروژه - Health Check</title>
+      <title>سرویس ابری لیارا | مستندات بررسی سلامت برنامه - Health Check</title>
     </Head>
 
     <h1>بررسی سلامت</h1>
@@ -16,12 +16,12 @@ export default () => (
 
     <p>
       برای این که بتوانید از قابلیت
-      «<Link href="/projects/zero-downtime-deployment">استقرار بدون داون‌تایم</Link>»
+      «<Link href="/apps/zero-downtime-deployment">استقرار بدون داون‌تایم</Link>»
       لیارا بیشترین استفاده را ببرید، توصیه می‌کنیم که از قابلیت
       «بررسی سلامت» هم استفاده کنید.
       هر استقرار جدید منجر به ایجاد یک
       {' '}
-      <Link href="/projects/applets">برنامک</Link>
+      <Link href="/apps/applets">برنامک</Link>
       {' '}
       مختص به آن استقرار می‌شود. 
       برنامک‌ها، یک نسخه‌ی اجرا شده از استقرار شما هستند.
