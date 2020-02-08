@@ -1,15 +1,15 @@
-FROM node:10
-
-COPY package.json package-lock.json /app/
+# 1) Build
+FROM node:12-alpine AS builder
 
 WORKDIR /app
 
-RUN npm ci
-
 COPY . /app
 
-RUN npm run build
+RUN npm ci && npm run build
 
-CMD npm start
 
-EXPOSE 3000
+# 2) Run
+FROM liararepo/static-platform:base
+
+COPY liara_nginx.conf /etc/nginx/conf.d
+COPY --from=builder /app/out /usr/share/nginx/html
