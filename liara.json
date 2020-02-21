@@ -1,0 +1,5 @@
+{
+  "project": "the-docs",
+  "port": 80,
+  "platform": "docker"
+}
