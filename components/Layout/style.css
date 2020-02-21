@@ -72,6 +72,10 @@ p {
   display: block;
 }
 
+.article video {
+  max-width: 100%;
+}
+
 code {
   direction: ltr;
   text-align: left;

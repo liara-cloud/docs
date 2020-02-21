@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
   };
 
   toggleNav = () => {
-    this.setState(prevState => ({ isNavOpen: ! prevState.isNavOpen }));
+    this.setState(prevState => ({ isNavOpen: !prevState.isNavOpen }));
   };
 
   render() {
@@ -70,6 +70,14 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
+            <span className="nav__title">دامنه‌ها</span>
+            <ul className="nav__list">
+              <li><ActiveLink href="/domains/add-domain">افزودن دامنه</ActiveLink></li>
+              <li><ActiveLink href="/domains/ssl-https">تهیه‌ی SSL</ActiveLink></li>
+            </ul>
+          </nav>
+
+          <nav className="nav">
             <span className="nav__title">استقرار برنامه‌ها</span>
             <ul className="nav__list">
               <li><ActiveLink icon="react.svg" href="/deployments/react">React</ActiveLink></li>
@@ -86,13 +94,6 @@ export default class Sidebar extends Component {
               <li><ActiveLink icon="docker.png" href="/deployments/docker">Docker</ActiveLink></li>
             </ul>
           </nav>
-
-          {/* TODO: <nav className="nav">
-          <span className="nav__title">دامنه‌ها</span>
-          <ul className="nav__list">
-            <li><ActiveLink href="/domains/mysql">افزودن دامنه</ActiveLink></li>
-          </ul>
-        </nav> */}
 
           <nav className="nav">
             <span className="nav__title">سرویس ذخیره‌ی فایل</span>
