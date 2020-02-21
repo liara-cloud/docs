@@ -1,7 +1,6 @@
 import Layout from '../../components/Layout'
 import ZoomableImage from '../../components/ZoomableImage'
 import Head from 'next/head'
-import Notice from '../../components/Notice'
 import Link from 'next/link'
 import Highlight from 'react-highlight'
 
@@ -47,6 +46,7 @@ export default () => (
     </p>
 
     <h3>ایجاد تست بررسی سلامت</h3>
+    <ZoomableImage src="/static/health-check.jpg" alt="docker container health check" />
     <p>
       تست بررسی سلامت را باید در فایل
       {' '}
@@ -59,9 +59,9 @@ export default () => (
   "port": 3000,
   "healthCheck": {
     "command": "curl --fail http://localhost:3000 || exit 1",
-    "interval": 3,
-    "timeout": 1,
-    "retries": 4,
+    "interval": 20,
+    "timeout": 15,
+    "retries": 2,
     "startPeriod": 5
   }
 }`}
@@ -90,9 +90,9 @@ export default () => (
     <p>
       بعد از اتمام ۵ ثانیه، لیارا به مدت
       <span className="code">interval</span>
-      ثانیه صبر می‌کند و سپس دستور را یک بار اجرا می‌کند. در مثال بالا، این مقدار برابر با ۳ ثانیه است،
-      و این یعنی اولین تست سلامت در ثانیه‌ی ۸ انجام می‌گردد.
-      (۵ + ۳ = ۸)
+      ثانیه صبر می‌کند و سپس دستور را یک بار اجرا می‌کند. در مثال بالا، این مقدار برابر با ۲۰ ثانیه است،
+      و این یعنی اولین تست سلامت در ثانیه‌ی ۲۵ انجام می‌گردد.
+      (۵ + ۲۰ = ۲۵)
     </p>
     <p>
       وب‌سرور شما حداکثر به اندازه‌ی

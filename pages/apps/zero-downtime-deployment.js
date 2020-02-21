@@ -27,6 +27,8 @@ export default () => (
       و برنامه بدون خارج‌شدن از دسترس، سرویس‌دهی می‌کند.
     </p>
 
+    <ZoomableImage src="/static/zero-downtime.jpg" alt="docker zero downtime deployment" />
+
     <p>
       برای تشخیص پایدار بودن وضعیت استقرار جدید، لیارا قابلیتی را به نام
       «<Link href="/apps/health-check">بررسی وضعیت سلامتی برنامه</Link>»
