@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "next -p 3005",
     "build": "next build && next export",
-    "start": "next start",
-    "push": "git push && git push gitlab && git push gitlab --tags"
+    "start": "next start"
   },
   "keywords": [],
   "author": "",
