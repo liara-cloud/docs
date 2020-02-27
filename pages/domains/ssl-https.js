@@ -36,6 +36,17 @@ export default () => (
 
     {/* <h3>تهیه‌ی HTTPS برای Subdomain</h3> */}
 
+    <h3>فعال‌سازی HTTPS همراه با CDN</h3>
+    <p>
+      چنانچه از سرویس‌های CDN مانند Cloudflare
+      استفاده می‌کنید، باید SSL را هم در سمت همان سرویس CDN فعال کنید و
+      در سمت لیارا، SSL باید غیرفعال شود.
+    </p>
+
+    <Notice variant="info">
+      در سرویس Cloudflare، تنظیمات SSL را همیشه روی Flexible تنظیم کنید.
+    </Notice>
+
     <h3>آیا HTTPS شما معتبر است؟</h3>
     <p>
       ما از سرویس معتبر
