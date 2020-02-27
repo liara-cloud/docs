@@ -1,5 +1,5 @@
 {
-  "project": "the-docs",
+  "app": "the-docs",
   "port": 80,
   "platform": "docker"
 }
