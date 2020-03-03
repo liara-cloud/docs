@@ -46,7 +46,6 @@ export default () => (
     </p>
 
     <h3>ایجاد تست بررسی سلامت</h3>
-    <ZoomableImage src="/static/health-check.jpg" alt="docker container health check" />
     <p>
       تست بررسی سلامت را باید در فایل
       {' '}
@@ -66,6 +65,7 @@ export default () => (
   }
 }`}
     </Highlight>
+    <ZoomableImage src="/static/health-check.jpg" alt="docker container health check" />
     <p>
       در مثال بالا، از ابزار
       <span className="code">curl</span>
