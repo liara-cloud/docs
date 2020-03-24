@@ -39,7 +39,7 @@ export default () => (
       <span className="code">--port</span>
       و یا از طریق ایجاد فایل
       {' '}
-      <Link href="/clients/cli" title="مستندات CLI">liara.json</Link>
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
       {' '}
       به لیارا اطلاع دهید. در غیر این‌صورت، در زمان دیپلوی،
       CLI
@@ -98,7 +98,9 @@ export default () => (
     </p>
     <p>
       اگر می‌خواهید این پورت را یک‌بار برای همیشه معرفی کنید، می‌توانید یک فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       داخل ریشه‌ی برنامه‌ی‌تان ایجاد کنید و داخل آن، تکه کد زیر را قرار دهید:
     </p>
     <pre>
@@ -113,7 +115,7 @@ export default () => (
       <span className="code">JSON</span>
       بالا، فرض بر این بوده‌است که کانتینر شما روی پورت 8000 اجرا خواهد شد.
       <br/>
-      <Link href="/clients/cli" title="مستندات CLI">اطلاعات بیشتر درمورد liara.json</Link>
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">اطلاعات بیشتر درمورد liara.json</Link>
     </p>
   </Layout>
 )

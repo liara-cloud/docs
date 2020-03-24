@@ -48,10 +48,20 @@ export default () => (
       {' '}
       <a href="https://console.liara.ir/register">ثبت نام در لیارا</a>
     </p>
+
+    <a name="liara-json-file"></a>
     <h3>فایل liara.json</h3>
     <p>
       برای این‌که CLI بتواند برنامه‌ی شما را با موفقیت در بستر لیارا مستقر کند، نیاز دارد که اطلاعاتی از برنامه‌ی‌تان داشته‌باشد.
       شما می‌توانید با ایجاد یک فایل با نام <span className="code">liara.json</span> این اطلاعات را در اختیار CLI قرار بدهید.
+      توجه داشته باشید که این فایل حتما باید در
+      {' '}
+      <b>ریشه‌ی برنامه‌ی‌تان</b>
+      {' '}
+      ساخته شود. برای مثال، در کنار فایل
+      <span className="code">composer.json</span>
+      و یا
+      <span className="code">package.json</span>.
     </p>
     <h3>نمونه‌ای از فایل liara.json:</h3>
     <pre>

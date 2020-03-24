@@ -1,6 +1,7 @@
 import Layout from '../../components/Layout'
 import Head from 'next/head'
 import ZoomableImage from '../../components/ZoomableImage'
+import Link from 'next/link'
 
 export default () => (
   <Layout>
@@ -18,33 +19,6 @@ export default () => (
       باشد تا بتواند در لیارا مستقر شود.
     </p>
 
-    <h3>انتخاب نسخه‌ی NodeJS</h3>
-    <p>
-      به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی 10 این پلتفرم اجرا می‌شود.
-      می‌توانید یک فایل با نام
-      <span className="code">liara.json</span>
-      داخل برنامه‌ی‌تان بسازید و نسخه‌ی مدنظرتان را به شکل زیر تعیین کنید. سپس بعد از یک بار دیپلوی،
-      برنامه‌ی شما روی نسخه‌ی تعیین شده اجرا خواهد شد.
-    </p>
-<pre>
-  <code>
-{`{
-  "node": {
-    "version": "12"
-  }
-}`}
-  </code>
-</pre>
-    <p>
-      در حال حاظر، از نسخه‌های زیر پشتیبانی می‌شود:
-      <ul>
-        <li>8</li>
-        <li>10</li>
-        <li>11</li>
-        <li>12</li>
-      </ul>
-    </p>
-
     <h3>پکیج‌ها به صورت خودکار نصب می‌شوند</h3>
     <p>
       لیارا به صورت خودکار پکیج‌هایی که در فایل
@@ -54,7 +28,7 @@ export default () => (
       باشید. از آن‌جایی که اجرای این دستور زمان‌بر است، برای سرعت بیشتر، این دستور را روی سرورهای قدرتمندمان اجرا می‌کنیم تا زمان زیادی را منتظر نمانید.
     </p>
 
-    <h3>دستور npm start</h3>
+    <h3>گام اول) دستور npm start</h3>
     <p>
       داخل فایل 
       <span className="code">package.json</span>
@@ -66,7 +40,6 @@ export default () => (
       <span className="code">start</span>
       تعریف کنید.
     </p>
-    <h3>نمونه‌ی فایل package.json</h3>
     <pre>
       <code>
 {`{
@@ -99,7 +72,7 @@ export default () => (
       قرار دهید. (مانند نمونه‌ی بالا)
     </p>
 
-    <h3>مشخص کردن Port</h3>
+    <h3>گام دوم) مشخص کردن Port</h3>
     <p>
       لیارا باید بداند که برنامه‌ی شما روی چه پورتی اجرا خواهد شد تا بتواند درخواست‌هایی که
       {' '}
@@ -109,7 +82,9 @@ export default () => (
       CLI هر بار که بخواهید مستقر کردن را انجام دهید، از شما پورت را می‌پرسد.
       <br/>
       اما شما می‌توانید یک فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       داخل برنامه‌ی‌تان تعریف کرده و پورت را داخل آن وارد کنید:
     </p>
     <pre>
@@ -124,13 +99,18 @@ export default () => (
       شما باید به جای این پورت، پورتی که برنامه‌ی‌تان در آن اجرا خواهد شد را وارد نمایید.
     </p>
 
-    <h3>آغاز عملیات استقرار</h3>
+    <h3>گام سوم) آغاز عملیات استقرار</h3>
     <p>
-      و حالا که تقریبا تمامی تنظیمات اولیه را انجام داده‌ایم، می‌توانیم عملیات استقرار (deployment)
+      و حالا که تقریبا تمامی تنظیمات اولیه را انجام داده‌ایم، می‌توانیم عملیات استقرار (Deployment)
       {' '}
       را آغاز کنیم.
+      در ابتدا مطمئن شوید که
+      <span className="code">@liara/cli</span>
+      را روی کامپیوترتان نصب کرده‌اید.
+      {' '}
+      <Link href="/clients/cli" title="مستندات CLI">اطلاعات بیشتر</Link>
       <br />
-      دستور زیر را داخل برنامه‌ی‌تان اجرا کنید:
+      سپس دستور زیر را داخل برنامه‌ی‌تان اجرا کنید:
     </p>
     <pre>
       <code>liara deploy</code>
@@ -159,6 +139,58 @@ export default () => (
       </code>
     </pre>
 
+    <h3>انتخاب نسخه‌ی NodeJS</h3>
+    <p>
+      به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی 10 این پلتفرم اجرا می‌شود.
+      می‌توانید یک فایل با نام
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
+      داخل برنامه‌ی‌تان بسازید و نسخه‌ی مدنظرتان را به شکل زیر تعیین کنید. سپس بعد از یک بار دیپلوی،
+      برنامه‌ی شما روی نسخه‌ی تعیین شده اجرا خواهد شد.
+    </p>
+<pre>
+  <code>
+{`{
+  "node": {
+    "version": "12"
+  }
+}`}
+  </code>
+</pre>
+    <p>
+      در حال حاظر، از نسخه‌های زیر پشتیبانی می‌شود:
+      <ul>
+        <li>8</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+      </ul>
+    </p>
+
+    <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <p>
+      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است.
+      برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
+      <span className="code">timezone</span>
+      در فایل
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
+      استفاده کنید. برای نمونه:
+    </p>
+    <pre>
+      <code>
+{`{
+  "port": 3000,
+  "node": {
+    "version": "10",
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+      </code>
+    </pre>
+
     <a name="npm-auditing"></a>
     <h3>گزارش مشکلات امنیتی پکیج‌های نصب شده با npm</h3>
     <p>
@@ -166,7 +198,9 @@ export default () => (
     </p>
     <p>
       لیارا می‌تواند گزارشات کاملی را درباره مشکلات امنیتی برنامه‌ی‌تان در پنل کاربری به شما نمایش دهد. فقط کافی است که در فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       برنامه‌ی خود، <span className="code">npmAudit</span>
       را برابر <span className="code">true</span> قرار دهید. این قابلیت به صورت پیش‌فرض غیر فعال است. برای نمونه:
     </p>
@@ -187,26 +221,5 @@ export default () => (
       را برای استقرار و بروزرسانی برنامه‌ی‌تان وارد کنید، گزارش امنیتی نیز برای‌تان قابل مشاهده خواهد بود.
     </p>
     <ZoomableImage src="/static/npm-auditing.png" alt="صفحه‌ی گزارشات امنیتی" />
-
-    <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
-    <p>
-      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است.
-      برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
-      <span className="code">timezone</span>
-      در فایل
-      <span className="code">liara.json</span>
-      استفاده کنید. برای نمونه:
-    </p>
-    <pre>
-      <code>
-{`{
-  "port": 3000,
-  "node": {
-    "version": "10",
-    "timezone": "America/Los_Angeles"
-  }
-}`}
-      </code>
-    </pre>
   </Layout>
 )

@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout'
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default () => (
   <Layout>
@@ -44,7 +45,9 @@ export default () => (
     <p>
       تعریف‌کردن Volume
       به کمک فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       صورت می‌گیرد.
     </p>
     <pre>

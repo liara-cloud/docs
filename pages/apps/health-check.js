@@ -49,7 +49,7 @@ export default () => (
     <p>
       تست بررسی سلامت را باید در فایل
       {' '}
-      <Link href="/clients/cli" title="مستندات CLI">liara.json</Link>
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
       {' '}
       تعریف کنید. برای نمونه:
     </p>

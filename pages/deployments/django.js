@@ -15,7 +15,7 @@ export default () => (
       برنامه‌ی شما باید دارای فایل
       <span className="code">requirements.txt</span>
       باشد و حتما مطمئن شوید که Django در این فایل وجود داشته باشد تا بتواند در لیارا مستقر شود.
-      در حال حاظر، لیارا از Django 2 پشتیبانی می‌کند.
+      در حال حاظر، لیارا از جنگو 2 و 3 پشتیبانی می‌کند.
     </p>
     
     <h3>شروع عملیات استقرار</h3>
@@ -188,7 +188,9 @@ location / {
       <Link href="/apps/volumes">Volume</Link>
       {' '}
       در فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       برنامه‌ی‌تان به لیارا معرفی کنید:
     </p>
     <pre>

@@ -126,7 +126,9 @@ export default () => (
       که لیارا پکیج‌های npm
       را برای‌تان نصب و فایل‌های CSS و JavaScript تان را build کند،
       می‌توانید در فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       برنامه، یک فیلد با نام laravel و داخل آن یک فیلد با نام
       <span className="code">buildAssets</span>
       بسازید و این قابلیت را غیر فعال کنید.
@@ -329,7 +331,10 @@ max_execution_time = 600`}
       گاهی اوقات نیاز است کار خاصی در زمان خاصی و به صورت دوره‌ای انجام شود، مثلا تهیه‌ی فایل پشتیبان از پایگاه داده، ارسال ایمیل و خبرنامه و کارهایی نظیر این.
       برای تعریف کران‌جاب‌هایتان، می‌توانید فیدی به نام
       <span className="code">cron</span>
-      را به فایل liara.json
+      را به فایل
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       برنامه‌ی‌تان اضافه کنید.
     </p>
     <Highlight className="json">
@@ -399,7 +404,9 @@ stdout_logfile=/tmp/sms-queue.log`}
       است که تنظیمات لاراول را کش می‌کند. برای فعال‌کردن این قابلیت، از فیلد
       <span className="code">configCache</span>
       در فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       استفاده کنید:
     </p>
     <Highlight className="json">
@@ -415,7 +422,9 @@ stdout_logfile=/tmp/sms-queue.log`}
       است که تنظیمات لاراول را کش می‌کند. برای فعال‌کردن این قابلیت، از فیلد
       <span className="code">routeCache</span>
       در فایل
-      <span className="code">liara.json</span>
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
       استفاده کنید:
     </p>
     <Highlight className="json">
@@ -451,7 +460,11 @@ stdout_logfile=/tmp/sms-queue.log`}
 
     <h3>نمونه‌ی فایل liara.json برای لاراول</h3>
     <p>
-      در نهایت، فایل liara.json برای یک برنامه‌ی لاراولی ممکن است به این شکل نهایی شود:
+      در نهایت، فایل
+      {' '}
+      <Link href="/clients/cli#liara-json-file" title="مستندات CLI">liara.json</Link>
+      {' '}
+      برای یک برنامه‌ی لاراولی ممکن است به این شکل نهایی شود:
     </p>
     <Highlight className="php">
 {`{
