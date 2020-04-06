@@ -69,7 +69,7 @@ export default () => (
       استفاده خواهیم کرد.
       مقدار
       <span className="code">region</span>
-      در حال حاظر، باید حتما برابر
+      در حال حاضر، باید حتما برابر
       <span className="code">us-east-1</span>
       باشد،
     </p>
