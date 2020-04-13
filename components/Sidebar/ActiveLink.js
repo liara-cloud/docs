@@ -12,6 +12,7 @@ const ActiveLink = ({ children, router, href, icon, textStyle }) => {
   const handleClick = (e) => {
     e.preventDefault()
     router.push(href)
+    scrollToTop();
   }
 
   return (
@@ -24,6 +25,13 @@ const ActiveLink = ({ children, router, href, icon, textStyle }) => {
       <span style={{ display: 'inline-block', ...textStyle }}>{children}</span>
     </a>
   )
+}
+
+function scrollToTop() {
+  if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+    window.scrollBy(0, -50);
+    requestAnimationFrame(scrollToTop);
+  }
 }
 
 export default withRouter(ActiveLink)
