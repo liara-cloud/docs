@@ -50,7 +50,7 @@ export default () => (
     </p>
     <pre>
       <code>
-        liara deploy --static
+        liara deploy --platform=static
       </code>
     </pre>
 
