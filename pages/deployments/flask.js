@@ -79,15 +79,5 @@ export default () => (
       <span className="code">my_database</span>
       ساخته‌اید.
     </p>
-
-    {/* TODO: Talk about django's s3 packages */}
-    <h3>ذخیره‌ی فایل‌ها</h3>
-    <p>
-      لیارا یک فضای ابری نامحدود برای ذخیره‌ی فایل‌هایتان در اختیار شما قرار می‌دهد.
-      <br />
-      فقط کافیست که SDK لیارا را در برنامه‌ی‌تان نصب کرده و شروع به استفاده کنید.
-      {' '}
-      <Link href="/storage/overview">اطلاعات بیشتر</Link>
-    </p>
   </Layout>
 )

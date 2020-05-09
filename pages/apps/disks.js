@@ -62,6 +62,15 @@ export default () => (
 `}
     </Highlight>
     <p>
+      فیلد <span className="code">name</span>
+      در واقع همان نام دیسکی است که ساخته‌اید. فیلد
+      <span className="code">mountTo</span>
+      هم مسیر پوشه‌ای است که قصد دارید دیسک در آنجا قرار بگیرد و اصطلاحا mount شود.
+      همان‌طور که در این نمونه مشاهده می‌کنید، این مسیر به صورت نسبی وارد شده است.
+      در صورت تمایل، به صورت مطلق و از ریشه‌ی برنامه هم می‌توانید آدرس‌دهی کنید. البته آدرس‌دهی
+      مطلق را توصیه نمی‌کنیم.
+    </p>
+    <p>
       به عنوان مثالی دیگر، فرض کنید برای یک برنامه‌ی لاراولی قصد دارید که
       یک دیسک برای پوشه‌ی storage بسازید. در این صورت،
       از بخش دیسک‌ها یک دیسک با نام دلخواه مانند
@@ -81,5 +90,67 @@ export default () => (
 }
 `}
     </Highlight>
+
+    <h3>تعریف چندین دیسک</h3>
+    <p>
+      در حالتی که ۲ یا چندین دیسک دارید،
+      می‌توانید آن‌ها را مانند نمونه‌ی زیر تعریف کنید:
+    </p>
+    <Highlight className="json">
+{`{
+  "disks": [
+    {
+      "name": "disk1",
+      "mountTo": "public/files"
+    },
+    {
+      "name": "disk2",
+      "mountTo": "storage/images"
+    }
+  ]
+}
+`}
+    </Highlight>
+
+    <h3>مهاجرت از <span className="code">volume</span> به <span className="code">disks</span></h3>
+    <p>
+      همان‌طور که پیش‌تر گفته شد، قابلیت
+      <span className="code">volume</span>
+      منسوخ شده و ممکن است بخواهید که به قابلیت جدید
+      <span className="code">disks</span>
+      مهاجرت کنید. خوشبختانه این کار بسیار ساده‌است. نمونه‌ی زیر را در نظر بگیرید:
+      <Highlight className="json">
+{`{
+  "volume": "/var/www/html/storage"
+}
+`}
+    </Highlight>
+
+    حالا برای انتقال این
+    <span className="code">volume</span>
+    ،
+    فقط کافیست که فایل <span className="code">liara.json</span>
+    را به شکل زیر تغییر دهید:
+    </p>
+    <Highlight className="json">
+{`{
+  "disks": [
+    {
+      "name": "default",
+      "mountTo": "/var/www/html/storage"
+    }
+  ]
+}
+`}
+    </Highlight>
+    <p>
+      در این حالت، نام دیسک را حتما باید
+      <span className="code">default</span>
+      وارد کنید. حالا می‌توانید دستور
+      <span className="code">liara deploy</span>
+      را اجرا کنید. در این مرحله، دیگر هشدار منسوخ‌شدن قابلیت
+      <span className="code">volume</span>
+      را مشاهده نخواهید کرد.
+    </p>
   </Layout>
 )
