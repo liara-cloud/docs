@@ -90,7 +90,14 @@ export default class Sidebar extends Component {
               <li><ActiveLink icon="django.svg" href="/deployments/django">Django</ActiveLink></li>
               <li><ActiveLink icon="flask.svg" href="/deployments/flask">Flask</ActiveLink></li>
               <li><ActiveLink icon="netcore.svg" href="/deployments/netcore" textStyle={{ direction: 'ltr' }}>.Net Core</ActiveLink></li>
-              <li><ActiveLink icon="wordpress.svg" href="/deployments/wordpress">WordPress</ActiveLink></li>
+            </ul>
+          </nav>
+
+          <nav className="nav">
+            <span className="nav__title">برنامه‌های آماده</span>
+            <ul className="nav__list">
+              {/* <li><ActiveLink href="/one-click-apps/overview">آشنایی</ActiveLink></li> */}
+              <li><ActiveLink icon="wordpress.svg" href="/one-click-apps/wordpress">WordPress</ActiveLink></li>
             </ul>
           </nav>
 
