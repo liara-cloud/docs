@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout'
 import Head from 'next/head'
+import Notice from '../../components/Notice'
 
 export default () => (
   <Layout>
@@ -167,5 +168,10 @@ $ liara deploy
           $ liara deploy --app my-blog --port 80 --detach
         </code>
       </pre>
+      <Notice variant="info">
+      توضیحات بیشتر درباره راه‌اندازی CI/CD بر روی پلتفرم لیارا:
+      {' '}
+      <a href="https://liara.ir/blog/cicd-example/">«راهنمای راه اندازی CD به کمک GitLab»</a>
+    </Notice>
   </Layout>
 )
