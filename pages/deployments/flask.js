@@ -44,7 +44,7 @@ export default () => (
     <h3>پکیج‌ها به صورت خودکار نصب می‌شوند</h3>
     <p>
       لیارا به صورت خودکار پکیج‌هایی که در فایل‌های
-      <span className="code">requirements.json</span>
+      <span className="code">requirements.txt</span>
       لیست شده‌اند را برای شما نصب می‌کند.
       پس نیازی ندارید که به دنبال اجرای دستورات
       <span className="code">pip install</span>
