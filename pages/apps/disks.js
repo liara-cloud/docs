@@ -14,6 +14,20 @@ export default () => (
     <h1>ذخیره‌ی داده‌ها در دیسک‌ها</h1>
     <span className="pageDescription">(Disks)</span>
 
+    <Notice variant="warning">
+      توجه کنید که اگر قبلا از قابلیت
+      <span className="code">volume</span>
+      استفاده می‌کردید، این قابلیت منسوخ شده و به دیسک تغییر نام داده شده‌است.
+      اما شما می‌توانید بدون نیاز به اقدامی، همچنان از همان قابلیت استفاده کنید.
+      <br />
+      برای مهاجرت از
+      <span className="code">volume</span>
+      به دیسک‌ها،
+      {' '}
+      <Link href="#migrate">این بخش
+      را مطالعه کنید.</Link>
+    </Notice>
+
     <p>
       فایل‌سیستم در لیارا زودگذر و فانی است، این یعنی هر فایلی که در کنار پوشه‌های
       برنامه‌های‌تان ذخیره کنید، بعد از یک عملیات استقرار و یا یک ری‌استارت، از بین خواهند رفت.
@@ -41,13 +55,6 @@ export default () => (
       باید دارای نسخه‌ی 2.4.0 یا بالاتر باشد.
       {' '}
       <Link href="/clients/cli#upgrade">راهنمای ارتقا CLI</Link>
-    </Notice>
-
-    <Notice variant="warning">
-      توجه کنید که اگر قبلا از قابلیت
-      <span className="code">volume</span>
-      استفاده می‌کردید، این قابلیت منسوخ شده و به دیسک تغییر نام داده شده‌است.
-      اما شما می‌توانید بدون نیاز به اقدامی، همچنان از همان قابلیت استفاده کنید.
     </Notice>
 
     <h3>ساخت دیسک</h3>
@@ -161,7 +168,13 @@ export default () => (
 `}
     </Highlight>
 
+    <a name="migrate" />
     <h3>مهاجرت از <span className="code">volume</span> به <span className="code">disks</span></h3>
+    <Notice variant="warning">
+      نیازی به مطالعه‌ی این قسمت نیست، اگر قبلا از قابلیت
+      <span className="code">volume</span>
+      استفاده نمی‌کردید.
+    </Notice>
     <p>
       همان‌طور که پیش‌تر گفته شد، قابلیت
       <span className="code">volume</span>
