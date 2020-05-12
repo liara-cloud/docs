@@ -31,6 +31,28 @@ export default () => (
         npm install -g @liara/cli
       </code>
     </pre>
+
+    <a name="upgrade"></a>
+    <h3>ارتقا به نسخه‌ی جدیدتر</h3>
+    <p>
+      اگر Liara cli
+      را قبلا نصب کرده‌اید و الان صرفا قصد ارتقا آن را دارید، با استفاده از دستور زیر
+      می‌توانید نسخه‌ی جدید را نصب کنید:
+    </p>
+    <pre>
+      <code>
+        npm install -g @liara/cli
+      </code>
+    </pre>
+    <p>
+      و حالا با دستور زیر می‌توانید نسخه‌ی CLI جدید را چک کنید:
+    </p>
+    <pre>
+      <code>
+        liara -v
+      </code>
+    </pre>
+
     <h3>ورود به حساب کاربری</h3>
     <p>
       برای این‌که بتوانید از CLI استفاده کنید، لازم است که در ابتدا، با استفاده از اطلاعات حساب کاربری‌تان در لیارا، وارد شوید:
@@ -49,6 +71,39 @@ export default () => (
       {' '}
       <a href="https://console.liara.ir/register">ثبت نام در لیارا</a>
     </p>
+
+    <a name="trouble"></a>
+    <h3>خطاهای رایج در اجرای Liara CLI</h3>
+    <p>
+      اگر بعد از نصب CLI،
+      خطایی را مانند خطاهای زیر مشاهده کردید، این بخش را حتما مطالعه کنید.
+      <ul>
+        <li><span className="code">command not found</span></li>
+        <li><span className="code">command is not recognized as an internal or external command</span></li>
+      </ul>
+      دلیل این خطاها معمولا این است که مسیر پکیج‌های <span className="code">npm</span>
+      در متغیر <span className="code">PATH</span>
+      سیستم عامل شما اضافه نشده است. این مشکل معمولا به دلیل نصب ناقص NodeJS رخ می‌دهد.
+    </p>
+    <p>
+      اما جای نگرانی نیست، چرا که می‌توانید به شکل زیر دستورات Liara CLI
+      را وارد کنید:
+    </p>
+    <pre>
+      <code>
+{`npx liara login
+npx liara deploy`}
+      </code>
+    </pre>
+    <p>
+      و یا به این صورت امتحان کنید:
+    </p>
+    <pre>
+      <code>
+{`npx @liara/cli login
+npx @liara/cli deploy`}
+      </code>
+    </pre>
 
     <a name="liara-json-file"></a>
     <h3>فایل liara.json</h3>
