@@ -24,7 +24,7 @@ export default () => (
       <span className="code">volume</span>
       به دیسک‌ها،
       {' '}
-      <Link href="#migrate">این بخش
+      <Link href="/apps/disks#migrate">این بخش
       را مطالعه کنید.</Link>
     </Notice>
 
