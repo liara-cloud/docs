@@ -103,5 +103,21 @@ export default () => (
       <span className="code">my_database</span>
       ساخته‌اید.
     </p>
+
+    <h3>تنظیم TimeZone</h3>
+    <p>
+      ابتدا فایل
+      <span className="code">app/config.php</span>
+      را باز کرده و فیلد
+      <span className="code">timezone</span>
+      آن را به
+      <span className="code">Asia/Tehran</span>
+      تغییر دهید و سپس در فایل
+      <span className="code">liara_php.ini</span>
+      خط زیر را اضافه کرده و بعد دیپلوی کنید:
+    </p>
+    <pre>
+      <code>date.timezone = 'Asia/Tehran'</code>
+    </pre>
   </Layout>
 )

@@ -330,6 +330,23 @@ max_execution_time = 600`}
       تنظیمات شما روی سرور قرار می‌گیرد.
     </p>
 
+    <h3>تنظیم TimeZone</h3>
+    <p>
+      ابتدا فایل
+      <span className="code">app/config.php</span>
+      را باز کرده و فیلد
+      <span className="code">timezone</span>
+      آن را به
+      <span className="code">Asia/Tehran</span>
+      تغییر دهید و سپس در فایل
+      <span className="code">liara_php.ini</span>
+      خط زیر را اضافه کرده و بعد دیپلوی کنید:
+    </p>
+    <pre>
+      <code>date.timezone = 'Asia/Tehran'</code>
+    </pre>
+
+
     <h3>مشاهده‌ی لاگ‌ها</h3>
     <p>
       به صورت پیش‌فرض لاگ‌های لاراول در فایلی به نام laravel.log ذخیره می‌شوند.
