@@ -1,6 +1,7 @@
 import Layout from '../../components/Layout'
 import Head from 'next/head'
 import Link from 'next/link'
+import Notice from '../../components/Notice'
 
 export default () => (
   <Layout>
@@ -9,6 +10,17 @@ export default () => (
     </Head>
 
     <h1>استقرار برنامه‌های React</h1>
+
+    <Notice variant="info">
+      برنامه‌های
+      NextJS
+      را باید در
+      {' '}
+      <Link href="/deployments/nodejs">پلتفرم NodeJS</Link>
+      {' '}
+      مستقر کنید.
+    </Notice>
+
     <p>
       برنامه‌هایی که با
       <span className="code">Create React App</span>

@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import Head from 'next/head'
 import ZoomableImage from '../../components/ZoomableImage'
 import Link from 'next/link'
+import Notice from '../../components/Notice'
 
 export default () => (
   <Layout>
@@ -10,6 +11,24 @@ export default () => (
     </Head>
 
     <h1>استقرار برنامه‌های NodeJS</h1>
+
+    <Notice variant="info">
+      برنامه‌های
+      NextJS
+      و 
+      NuxtJS
+      را هم می‌توانید بدون تنظیمات خاصی در پلتفرم
+      NodeJS
+      مستقر کنید.
+    </Notice>
+    
+    <Notice variant="info">
+      برای استقرار برنامه‌هایی که با فریم‌ورک AdonisJS
+      نوشته شده‌اند،
+      {' '}
+      <Link href="/deployments/nodejs#adonisjs">این بخش
+      را مطالعه کنید.</Link>
+    </Notice>
 
     <p>
       ما هم مثل شما عاشق NodeJS هستیم :)
@@ -166,6 +185,42 @@ export default () => (
         <li>11</li>
         <li>12</li>
       </ul>
+    </p>
+
+    <a name="adonisjs" />
+    <h3>استقرار فریم‌ورک AdonisJS</h3>
+    <p>
+      اگر از فریم‌ورک
+      AdonisJS
+      استفاده می‌کنید، نیاز به تنظیمات خاصی ندارید و مطابق با مواردی که در بالا گفته شد،
+      می‌توانید برنامه‌ی‌تان را در لیارا مستقر کنید.
+      تنها خطای خاصی که ممکن است با آن مواجه شوید این است که این فریم‌ورک
+      وجود یک فایل
+      <span className="code">.env</span>
+      را در ریشه‌ی برنامه الزامی می‌داند. اما چون در لیارا، شما متغیرهای‌تان را
+      از بخش «تنظیمات برنامه» وارد می‌کنید، ممکن است با خطای زیر مواجه شوید:
+    </p>
+    <pre>
+      <code>
+        Error: ENOENT: no such file or directory, open '/app/.env'
+      </code>
+    </pre>
+    <p>
+      برای رفع این مشکل، فقط کافیست که متغیر زیر را هم از بخش تنظیمات برنامه، وارد کنید و بعد ذخیره کنید:
+    </p>
+    <pre>
+      <code>
+{`ENV_SILENT=true`}
+      </code>
+    </pre>
+    <p>
+      این مورد در مستندات AdonisJS هم با عنوان
+      {' '}
+      <a href="https://adonisjs.com/docs/4.1/configuration-and-env#_disabling_the_env_file" target="_blank" rel="noopener">
+      Disabling the .env file
+      </a>
+      {' '}
+      گفته شده‌است.
     </p>
 
     <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
