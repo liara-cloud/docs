@@ -1,7 +1,7 @@
-import Layout from '../../components/Layout'
+import Layout from '../../../components/Layout'
 import Link from 'next/link'
 import Head from 'next/head'
-import Notice from '../../components/Notice'
+import Notice from '../../../components/Notice'
 
 export default () => (
   <Layout>

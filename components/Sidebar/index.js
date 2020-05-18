@@ -41,7 +41,7 @@ export default class Sidebar extends Component {
             <ul className="nav__list">
               <li><span className="nav__title">NodeJS</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/nodejs/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/nodejs/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
@@ -56,7 +56,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Laravel</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/nodejs/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/nodejs/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
@@ -71,7 +71,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">PHP</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/php/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
@@ -86,7 +86,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Django</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/django/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
@@ -101,7 +101,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Flask</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/flask/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
@@ -116,7 +116,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Net Core.</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/netcore/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
@@ -131,7 +131,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">React</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/react/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/react/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
@@ -142,7 +142,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Angular</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/angular/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/angular/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
@@ -153,7 +153,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Vue</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/vue/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/vue/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
@@ -164,7 +164,7 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Static</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="apps/static/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/static/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
                   <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
@@ -214,56 +214,56 @@ export default class Sidebar extends Component {
             <ul className="nav__list">
               <li><span className="nav__title">MongoDB</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="databases/mongodb/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="databases/mongodb/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="databases/mongodb/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="databases/mongodb/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="databases/mongodb/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/">اجرای اولین کوئری</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">MySQL</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="databases/mysql/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="databases/mysql/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="databases/mysql/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="databases/mysql/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="databases/mysql/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql/">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql/">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql/">اجرای اولین کوئری</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql/">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql/">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">PostgreSQL</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="databases/postgresql/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="databases/postgresql/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="databases/postgresql/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="databases/postgresql/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="databases/postgresql/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/">اجرای اولین کوئری</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Redis</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="databases/redis/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="databases/redis/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="databases/redis/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="databases/redis/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="databases/redis/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/">اجرای اولین کوئری</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">MariaDB</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="databases/mariadb/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="databases/mariadb/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="databases/mariadb/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="databases/mariadb/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="databases/mariadb/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mariadb/">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mariadb/">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mariadb/">اجرای اولین کوئری</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mariadb/">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mariadb/">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">SQL Server</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="databases/sql-server/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="databases/sql-server/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="databases/sql-server/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="databases/sql-server/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="databases/sql-server/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sql-server/">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sql-server/">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sql-server/">اجرای اولین کوئری</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sql-server/">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sql-server/">Restore</ActiveLink></li>
                 </ul>
               </li>
             </ul>
@@ -274,18 +274,18 @@ export default class Sidebar extends Component {
             <ul className="nav__list">
               <li><span className="nav__title">دیسک‌ها (Disks)</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="storage/disks/">درباره دیسک</ActiveLink></li>
-                  <li><ActiveLink href="storage/disks/">مدیریت دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="storage/disks/">افزایش حجم دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="storage/disks/">اتصال به دیسک‌ها با FTP</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/">درباره دیسک</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/">مدیریت دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/">افزایش حجم دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/">اتصال به دیسک‌ها با FTP</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Object Storage</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="storage/object-storage/">درباره آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="storage/disks/object-storage/">مدیریت آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="storage/disks/object-storage/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="storage/disks/object-storage/">افزایش حجم</ActiveLink></li>
+                  <li><ActiveLink href="/storage/object-storage/">درباره آبجکت استوریج</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/object-storage/">مدیریت آبجکت استوریج</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/object-storage/">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/object-storage/">افزایش حجم</ActiveLink></li>
                 </ul>
               </li>
             </ul>

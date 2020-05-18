@@ -1,8 +1,8 @@
-import Layout from '../../components/Layout'
+import Layout from '../../../components/Layout'
 import Link from 'next/link'
 import Head from 'next/head'
-import Notice from '../../components/Notice'
-import ZoomableImage from '../../components/ZoomableImage'
+import Notice from '../../../components/Notice'
+import ZoomableImage from '../../../components/ZoomableImage'
 
 export default () => (
   <Layout>
