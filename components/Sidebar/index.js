@@ -51,6 +51,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/apps/environment-variables">متغیرها</ActiveLink></li>
               <li><ActiveLink href="/apps/console">خط فرمان</ActiveLink></li>
               <li><ActiveLink href="/apps/disks">دیسک‌ها</ActiveLink></li>
+              <li><ActiveLink href="/apps/ftp">FTP</ActiveLink></li>
               <li><ActiveLink href="/apps/fixed-ip">آی‌پی ثابت</ActiveLink></li>
               <li><ActiveLink href="/apps/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
               <li><ActiveLink href="/apps/zero-downtime-deployment">استقرار بدون اختلال</ActiveLink></li>
