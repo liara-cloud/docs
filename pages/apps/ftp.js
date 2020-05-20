@@ -26,7 +26,7 @@ export default () => (
     </p>
     <ZoomableImage src="/static/ftp/1.png" alt="صفحه‌ی خالی دسترسی FTP" />
     <p>در پنجره باز شده، نام کاربری مدنظرتان را وارد کنید:</p>
-    <ZoomableImage src="/static/ftp/2.png" alt="صفحه‌ی ساخت دسترسی FTP" />
+    <ZoomableImage src="/static/ftp/2.jpg" alt="صفحه‌ی ساخت دسترسی FTP" />
     <Notice variant="info">
       توجه داشته باشید که نام کاربری باید بین ۵ الی ۱۶ کاراکتر و تنها شامل حروف
       کوچک، عدد و ـ و همچنین یکتا باشد.
@@ -35,7 +35,7 @@ export default () => (
       پس از وارد کردن نام کاربری مدنظرتان در صورت در دسترس بودن نام کاربری بر
       روی دکمه ایجاد دسترسی کلیک کنید:
     </p>
-    <ZoomableImage src="/static/ftp/3.png" alt="صفحه‌ی دسترسی‌ها ‌FTP" />
+    <ZoomableImage src="/static/ftp/3.jpg" alt="صفحه‌ی دسترسی‌ها ‌FTP" />
     <p>
       همان‌طور که مشاهده می‌کنید، دسترسی FTP با نام کاربری
       <span className="code">ftp_user</span>
