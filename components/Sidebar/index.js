@@ -221,13 +221,12 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/mongodb/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">MySQL</span>
+              <li><span className="nav__title">MySQL / MariaDB</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/databases/mysql/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mysql/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mysql/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mysql/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mysql/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql-mariadb/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql-mariadb/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql-mariadb/backup">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql-mariadb/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">PostgreSQL</span>
@@ -246,15 +245,6 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/redis/">اجرای اولین کوئری</ActiveLink></li>
                   <li><ActiveLink href="/databases/redis/">Backup</ActiveLink></li>
                   <li><ActiveLink href="/databases/redis/">Restore</ActiveLink></li>
-                </ul>
-              </li>
-              <li><span className="nav__title">MariaDB</span>
-                <ul className="nav__list">
-                  <li><ActiveLink href="/databases/mariadb/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mariadb/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mariadb/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mariadb/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mariadb/">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">SQL Server</span>
