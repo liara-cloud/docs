@@ -240,11 +240,10 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Redis</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/databases/redis/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/redis/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/redis/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="/databases/redis/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/redis/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/backup">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">SQL Server</span>
