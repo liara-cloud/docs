@@ -274,10 +274,11 @@ export default class Sidebar extends Component {
             <ul className="nav__list">
               <li><span className="nav__title">دیسک‌ها (Disks)</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/storage/disks/">درباره دیسک</ActiveLink></li>
-                  <li><ActiveLink href="/storage/disks/">مدیریت دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/storage/disks/">افزایش حجم دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/storage/disks/">اتصال به دیسک‌ها با FTP</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/about">درباره دیسک</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/management">مدیریت دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/increase-size">افزایش حجم دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/FTP">اتصال به دیسک‌ها با FTP</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/backup-restore">Backup / Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Object Storage</span>
