@@ -212,13 +212,13 @@ export default class Sidebar extends Component {
           <nav className="nav">
             <span className="nav__title">دیتابیس‌ها</span>
             <ul className="nav__list">
+              <li><ActiveLink href="/databases/tunnel">اتصال امن به دیتابیس‌ها</ActiveLink></li>
               <li><span className="nav__title">MongoDB</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/databases/mongodb/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mongodb/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mongodb/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mongodb/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mongodb/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/backup">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">MySQL</span>
