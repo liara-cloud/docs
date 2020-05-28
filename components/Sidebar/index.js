@@ -231,11 +231,10 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">PostgreSQL</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/databases/postgresql/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/postgresql/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/postgresql/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="/databases/postgresql/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/postgresql/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/backup">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/postgresql/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Redis</span>
