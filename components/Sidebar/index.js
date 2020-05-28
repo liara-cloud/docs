@@ -247,11 +247,10 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">SQL Server</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/databases/sql-server/">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/sql-server/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/sql-server/">اجرای اولین کوئری</ActiveLink></li>
-                  <li><ActiveLink href="/databases/sql-server/">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/sql-server/">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sqlserver/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sqlserver/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sqlserver/backup">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/sqlserver/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
             </ul>
