@@ -33,7 +33,7 @@ export default () => (
       و برای هر دیتابیس در فایل پشتیبان یک فایل اختصاصی ایجاد میشود.
     </p>
     <code>
-      {`$ mysqldump -u root -pL6pcNH1fhgQXdlN --host s3.liara.ir --port 34595 --single-transaction --quick --add-drop-database --lock-tables=false --databases liaraDB > backup-liaraDB.sql`}
+      {`$ mysqldump -u root -pL6pcNH1fhgQXdlN --host s3.liara.ir --port 34595 --single-transaction --quick --add-drop-database --lock-tables=false --databases liaraDB | gzip > liaraDB.sql.gz`}
     </code>
   </Layout>
 );
