@@ -133,6 +133,12 @@ span.code {
   margin-top: -6px;
 }
 
+.commandDescription {
+  display: block;
+  font-size: 11px !important;
+  margin-top: -25px !important;
+}
+
 @media (min-width: 1100px) {
   .wrapper {
     width: 1100px;

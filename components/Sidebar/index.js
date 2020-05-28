@@ -291,8 +291,8 @@ export default class Sidebar extends Component {
           <nav className="nav">
             <span className="nav__title">لیارا CLI</span>
             <ul className="nav__list">
-              <li><ActiveLink href="/cli/">نصب و به‌روزرسانی</ActiveLink></li>
-              <li><ActiveLink href="/cli/">خلاصه دستورات</ActiveLink></li>
+              <li><ActiveLink href="/cli/install">نصب و به‌روزرسانی</ActiveLink></li>
+              <li><ActiveLink href="/cli/commands">خلاصه دستورات</ActiveLink></li>
             </ul>
           </nav>
           {/* <nav className="nav">
