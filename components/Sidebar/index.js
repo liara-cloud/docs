@@ -56,17 +56,19 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Laravel</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/apps/nodejs/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به دیتابیس</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/https">پیکربندی HTTPS</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/dbs">اتصال به دیتابیس</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/migrations">اجرای migration ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/disks">استفاده از دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/objectstorage">اتصال به آبجکت استوریج</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">PHP</span>
