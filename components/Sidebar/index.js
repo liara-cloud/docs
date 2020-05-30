@@ -74,16 +74,15 @@ export default class Sidebar extends Component {
               <li><span className="nav__title">PHP</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/php/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به دیتابیس</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/dbs">اتصال به دیتابیس</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/disks">استفاده از دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Django</span>
