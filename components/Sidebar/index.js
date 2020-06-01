@@ -165,12 +165,12 @@ export default class Sidebar extends Component {
               <li><span className="nav__title">Static</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/static/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/static/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/static/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/static/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/static/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/static/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/static/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
             </ul>
