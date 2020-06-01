@@ -132,34 +132,34 @@ export default class Sidebar extends Component {
               <li><span className="nav__title">React</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/react/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/react/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/react/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/react/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/react/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/react/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/react/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Angular</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/angular/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/angular/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/angular/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/angular/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/angular/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/angular/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/angular/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Vue</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/vue/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/vue/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/vue/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/vue/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/vue/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/vue/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/vue/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Static</span>
