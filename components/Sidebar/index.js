@@ -93,6 +93,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/django/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/update">به‌روزرسانی برنامه</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/dbs">اتصال به دیتابیس</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/migrations">اجرای migration ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/disks">استفاده از دیسک‌ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/domain">وصل کردن دامنه</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
