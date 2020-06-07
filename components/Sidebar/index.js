@@ -115,16 +115,16 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Net Core.</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/apps/dotnetcore/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/envs">پیکربندی ENV‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/logs">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/liarajson">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/update">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/dbs">اتصال به دیتابیس</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/domain">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/dotnetcore/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/dbs">اتصال به دیتابیس</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/disks">استفاده از دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">React</span>
