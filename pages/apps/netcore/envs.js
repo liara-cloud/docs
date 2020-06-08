@@ -8,11 +8,11 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>ASP .Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>پلتفرم ASP .Net Core</h1>
-    <span className="pageDescription">(ASP .Net Core Platform)</span>
+    <h1>پلتفرم ASP.Net Core</h1>
+    <span className="pageDescription">(ASP.Net Core Platform)</span>
 
     <h3>پیکربندی ENV‌ها</h3>
 
@@ -21,7 +21,7 @@ export default () => (
       برنامه‌ی‌تان در هر محیط اطلاعات مربوط به همان محیط را دریافت کند.
     </p>
     <p>
-      شما با ابزارهای مختلفی میتوانید در پلتفرم ASP .Net Core  مقادیر ENV ها را مدیریت
+      شما با ابزارهای مختلفی میتوانید در پلتفرم ASP.Net Core  مقادیر ENV ها را مدیریت
       کنید. ولی به صورت خیلی ساده و برای نمونه یک ENV از طریق پنل لیارا اضافه
       میکنیم و در سایت نمایش میدهیم. به همین شیوه شما میتوانید از ENV ها در
       پروژه‌ی‌تان استفاده کنید.
@@ -59,6 +59,6 @@ else
       مستقر میشوند.
     </Notice>
     <br />
-    <Link href="/apps/netcore/envs">متوجه شدم، برو بعدی!</Link>
+    <Link href="/apps/netcore/logs">متوجه شدم، برو بعدی!</Link>
   </Layout>
 );
