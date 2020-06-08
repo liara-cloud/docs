@@ -87,46 +87,44 @@ export default class Sidebar extends Component {
               <li><span className="nav__title">Django</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/django/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به دیتابیس</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/dbs">اتصال به دیتابیس</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/migrations">اجرای migration ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/disks">استفاده از دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Flask</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/flask/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به دیتابیس</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/dbs">اتصال به دیتابیس</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/disks">استفاده از دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">Net Core.</span>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/netcore/getting-started">شروع به کار</ActiveLink></li>
-                  <li><ActiveLink href="">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">پیکربندی ENV‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">مشاهده لاگ‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از فایل liara.json</ActiveLink></li>
-                  <li><ActiveLink href="">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به دیتابیس</ActiveLink></li>
-                  <li><ActiveLink href="">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="">اتصال به آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="">وصل کردن دامنه</ActiveLink></li>
-                  <li><ActiveLink href="">توضیحات و نکات تکمیلی</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/dbs">اتصال به دیتابیس</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/disks">استفاده از دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
               <li><span className="nav__title">React</span>

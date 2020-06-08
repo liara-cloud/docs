@@ -1,0 +1,47 @@
+import Layout from "../../../components/Layout";
+import Link from "next/link";
+import Head from "next/head";
+import Highlight from "react-highlight";
+import Notice from "../../../components/Notice";
+
+export default () => (
+  <Layout>
+    <Head>
+      <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+    </Head>
+
+    <h1>پلتفرم ASP.Net Core</h1>
+    <span className="pageDescription">(ASP.Net Core Platform)</span>
+
+    <h3>اتصال به دیتابیس‌ها</h3>
+    <p>
+      خیلی کم پیش‌می‌آید که در برنامه‌ای از دیتابیس استفاده نشده‌باشد. اگر در
+      پروژه ASP.Net Core ای‌‌تان از دیتابیس استفاده کرده اید میتوانید
+      به‌این‌صورت به آن متصل شوید.
+    </p>
+    <ul>
+      <li>
+        <b>MySQL:</b>
+      </li>
+      <p>
+        اگر از این پایگاه داده استفاده کرده‌اید کافیست اطلاعات وصل شدن به
+        دیتابیس MySQL را در بخش ENV ها وارد کنید (در چند بخش قبل درباره اضافه
+        کردن ENV‌ها توضیحاتی داده بودیم):
+      </p>
+      <Highlight className="config">
+        {`ConnectionStrings:DefaultConnection="server=URL:PORT;uid=USERNAME;pwd=PASS;database=NAME"`}
+      </Highlight>
+      <li>
+        <b>بقیه دیتابیس‌ها</b>
+      </li>
+      <p>کافیست ENV ها را در بخش تنظیمات، مانند مثال بالا وارد کنید.</p>
+    </ul>
+    <Notice variant="warning">
+      توجه داشته باشید که اطلاعات بالا همگی برای برنامه‌ی تست این آموزش میباشد.
+      شما متناسب با اطلاعات دیتابیس برنامه‌ی‌تان باید مقادیر را جایگذاری کنید.
+    </Notice>
+    <br />
+
+    <Link href="/apps/netcore/disks">متوجه شدم، برو بعدی!</Link>
+  </Layout>
+);
