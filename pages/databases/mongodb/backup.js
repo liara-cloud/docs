@@ -26,10 +26,9 @@ export default () => (
       سپس کافیست فایل پشتیبان موردنظرتان از لحاظ زمانی را دانلود کرده و از آن
       استفاده نمایید. محتویات این فایل‌ها شامل تمام اطلاعات دیتابیس MongoDB‌ تان
       میباشد. در حقیقت این فایل ها از خروجی دستوری شبیه دستور زیر ایجاد می‌شوند:
-      (این دستور برای یک دیتابیس نمونه در لیارا است)
     </p>
     <code>
-      {`$ mongodump -u root  -p n4o0X7PhuyC8yZ7f8pjYcyDR --host s11.liara.ir --port 31124 --authenticationDatabase admin --gzip --archive=/tmp/mongobackup.gz --quiet`}
+      {`$ mongodump -u USERNAME -p PASSWORD --host DB_HOST --port DB_PORT --authenticationDatabase admin --archive=/tmp/mongobackup.dump --quiet`}
     </code>
   </Layout>
 );
