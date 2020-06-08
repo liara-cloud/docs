@@ -34,7 +34,7 @@ export default () => (
       </li>
       <br />
       <code>
-        {`$ mongorestore -u root -p Oz4YNoqSiHtglXpWzVcbmSdu --host s11.liara.ir --port 31255 --authenticationDatabase admin --verbose --archive=2020-05-24T00-41-28-1590264688336.dump`}
+        {`$ mongorestore -u root -p Oz4YNoqSiHtglXpWzVcbmSdu --host s11.liara.ir --port 31255 --authenticationDatabase admin --verbose --gzip --archive=2020-05-24T00-41-28-1590264688336.dump`}
       </code>
       <br />
       <ZoomableImage src="/static/databases/mongo-backup-2.png" />
