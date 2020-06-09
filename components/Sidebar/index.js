@@ -268,10 +268,12 @@ export default class Sidebar extends Component {
               </li>
               <li><span className="nav__title">Object Storage</span>
                 <ul className="nav__list">
-                  <li><ActiveLink href="/storage/object-storage/">درباره آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="/storage/disks/object-storage/">مدیریت آبجکت استوریج</ActiveLink></li>
-                  <li><ActiveLink href="/storage/disks/object-storage/">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/storage/disks/object-storage/">افزایش حجم</ActiveLink></li>
+                  <li><ActiveLink href="/storage/object-storage/about">درباره آبجکت استوریج</ActiveLink></li>
+                  <li><ActiveLink href="/storage/object-storage/management">مدیریت آبجکت استوریج</ActiveLink></li>
+                  <li><ActiveLink href="/storage/object-storage/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/storage/object-storage/increase-size">افزایش حجم</ActiveLink></li>
+                  <li><ActiveLink href="/storage/object-storage/cli">MinIO CLI</ActiveLink></li>
+                  <li><ActiveLink href="/storage/object-storage/backup-restore">Backup / Restore</ActiveLink></li>
                 </ul>
               </li>
             </ul>
