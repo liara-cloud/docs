@@ -20,22 +20,24 @@ export default () => (
       واقعی تمام مراحل رو پیش میبریم. میتونید این پروژه رو از github دریافت
       کنید: (البته بدون در نظرگرفتن این پروژه تستی نیز میتوانید نحوه استقرار
       برنامه‌ی‌تان را یاد بگیرید.)
-      <pre>
-        <code>
-          {`$ git clone https://github.com/liara-cloud/nodejs-getting-started
-$ cd nodejs-getting-started`}
-        </code>
-      </pre>
     </p>
+    <pre>
+      <code>
+        {`$ git clone https://github.com/liara-cloud/nodejs-getting-started
+$ cd nodejs-getting-started`}
+      </code>
+    </pre>
     <p>
       برای این که مطمئن بشید همه چیز درست کار میکنه کافیه پروژه رو توی سیستم
       خودتون این شکلی اجرا کنید:
-      <pre>
-        <code>
-          {`$ npm install
+    </p>
+    <pre>
+      <code>
+        {`$ npm install
 $ npm start`}
-        </code>
-      </pre>
+      </code>
+    </pre>
+    <p>
       و درنهایت توی مرورگرتون پروژه رو با آدرس
       <span className="code">http://127.0.0.1:8000</span> باز کنید. اگر همه چیز
       درسته یعنی آماد‌ه‌ایم که این برنامه رو روی لیارا مستقر کنیم.

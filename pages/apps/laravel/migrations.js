@@ -25,14 +25,14 @@ export default () => (
     <p>
       کافیست ابتدا از طریق پنل لیارا، وارد بخش <b>خط فرمان</b> شده و سپس دستورات
       لازم را وارد نمایید:
-      <pre>
-        <code>{`$ php artisan migrate`}</code>
-      </pre>
-      <ZoomableImage
-        src="/static/laravel-migrate-success.png"
-        alt="اجرای دستورات migrations"
-      />
     </p>
+    <pre>
+      <code>{`$ php artisan migrate`}</code>
+    </pre>
+    <ZoomableImage
+      src="/static/laravel-migrate-success.png"
+      alt="اجرای دستورات migrations"
+    />
 
     <Notice variant="info">
       در نظر داشته باشید که هرزمان از طریق خط‌ فرمان لیارا متصل میشوید، در ریشه

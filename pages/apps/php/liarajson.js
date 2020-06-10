@@ -24,14 +24,14 @@ export default () => (
     <p>
       کافیست وارد ریشه پروژه‌ی‌تان شده و یک فایل به نام{" "}
       <span className="code">liara.json</span> با این محتوا ایجاد کنید:
-      <Highlight className="json">
-        {`{
+    </p>
+    <Highlight className="json">
+      {`{
   "platform": "php",
   "app": "php-starter"
 }
 `}
-      </Highlight>
-    </p>
+    </Highlight>
     <p>
       در این فایل برای پروژه تستی‌مان پلتفرم و نام برنامه‌ی‌مان را مشخص
       کرده‌ایم. لیارا در هربار اجرای دستور{" "}

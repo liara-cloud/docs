@@ -65,7 +65,6 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/laravel/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/migrations">اجرای migration ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/apps/laravel/objectstorage">اتصال به آبجکت استوریج</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/domain">وصل کردن دامنه</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>

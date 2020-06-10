@@ -27,14 +27,15 @@ export default () => (
       میتوانید از message در دستور deploy استفاده کنید. فرض کنید استقرار مد نظر
       شما به علت رفع باگ auth کاربران بوده. پس اینطوری نسخه جدید را deploy
       میکنیم:
-      <Highlight className="shell">
-        {`$ liara deploy --message="Fix auth bug in login api"`}
-      </Highlight>
     </p>
+    <Highlight className="shell">
+      {`$ liara deploy --message="Fix auth bug in login api"`}
+    </Highlight>
     <p>
       {" "}
       البته اگر شما از Git استفاده میکنید، لیارا همیشه از آخرین Commit message
-      روی Branch جاری شما برای توضیحات استقرار استفاده میکند. البته به این شرط که شما <span className="code">--message</span> را خالی گذاشته باشید.
+      روی Branch جاری شما برای توضیحات استقرار استفاده میکند. البته به این شرط
+      که شما <span className="code">--message</span> را خالی گذاشته باشید.
     </p>
 
     <Link href="/apps/php/dbs">متوجه شدم، برو بعدی!</Link>

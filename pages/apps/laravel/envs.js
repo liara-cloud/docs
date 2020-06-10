@@ -25,15 +25,17 @@ export default () => (
       این کلید و انتقال آن به لیارا این اقدامات را انجام میدهیم:
     </p>
     <Notice variant="info">
-      در پتلفرم Laravel، متغیر APP_KEY به صورت خودکار با ساخت برنامه ایجاد میشود
-      و شما میتوانید از این مراحل صرف نظر کنید و صرفاً برای یادگیری مدیریت ENV
-      ها در لیارا آن را مطالعه کنید.
+      در پتلفرم Laravel لیارا، متغیر APP_KEY به صورت خودکار با ساخت برنامه ایجاد
+      میشود و شما میتوانید از این مراحل صرف نظر کنید و صرفاً برای یادگیری مدیریت
+      ENV ها در لیارا آن را مطالعه کنید.
     </Notice>
     <p>
       <b>گام اول)</b> دستور زیر را در پروژه وارد میکنیم.
-      <pre>
-        <code>{`$ php artisan key:generate --show`}</code>
-      </pre>
+    </p>
+    <pre>
+      <code>{`$ php artisan key:generate --show`}</code>
+    </pre>
+    <p>
       این دستور خروجی‌ای شبیه{" "}
       <span className="code">
         base64:3uoN2edh6vBwFm6xKWqxBoC0VlEsCm7a5HEOzblXLzs=

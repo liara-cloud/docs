@@ -20,32 +20,26 @@ export default () => (
       خیلی کم پیش‌می‌آید که در برنامه‌ای از دیتابیس استفاده نشده‌باشد. اگر در
       پروژه Laravel ای‌‌تان از دیتابیس استفاده کرده اید میتوانید به‌این‌صورت به
       آن متصل شوید.
-      <ul>
-        <li>
-          <b>MySQL:</b>
-        </li>
+    </p>
+    <ul>
+      <li>
+        <b>MySQL:</b>
+      </li>
+      <p>
         اگر از این پایگاه داده استفاده کرده‌اید کافیست اطلاعات وصل شدن به
         دیتابیس MySQL را در بخش ENV ها وارد کنید (در چند بخش قبل درباره اضافه
         کردن ENV‌ها توضیحاتی داده بودیم):
-        <Highlight className="config">
-          {`DB_CONNECTION=mysql
+      </p>
+      <Highlight className="config">
+        {`DB_CONNECTION=mysql
 DB_HOST=s11.liara.ir
 DB_PORT=3306
 DB_DATABASE=laravel-starter-db
 DB_USERNAME=root
 DB_PASSWORD=xxxxxxxxxxxx
 `}
-        </Highlight>
-        <li>
-          <b>Redis</b>
-        </li>
-        در دست تکمیل
-        <li>
-          <b>MongoDB</b>
-        </li>
-        در دست تکمیل
-      </ul>
-    </p>
+      </Highlight>
+    </ul>
     <Notice variant="warning">
       توجه داشته باشید که اطلاعات بالا همگی برای برنامه‌ی تست این آموزش میباشد.
       شما متناسب با اطلاعات دیتابیس برنامه‌ی‌تان باید مقادیر را جایگذاری کنید.

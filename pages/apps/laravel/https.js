@@ -16,16 +16,18 @@ export default () => (
 
     <h3>پیکربندی https</h3>
     <p>
-      برای آن که لاراول حتما از https برای نمایش تصاویر و سایر asset ها
-      استفاده کند میتوانیم تکه کد زیر را به فایل{" "}
+      برای آن که لاراول حتما از https برای نمایش تصاویر و سایر asset ها استفاده
+      کند میتوانیم تکه کد زیر را به فایل{" "}
       <span className="code">app/Providers/AppServiceProvider.php</span> داخل
       متد <span className="code">boot()</span> اضافه کنیم:
-      <Highlight className="php">
-        {`if($this->app->environment('production')) {
+    </p>
+    <Highlight className="php">
+      {`if($this->app->environment('production')) {
     \\URL::forceScheme('https');
 }
 `}
-      </Highlight>
+    </Highlight>
+    <p>
       کد بالا به سادگی چک می‌کند که اگر متغیر APP_ENV برابر production باشد،
       لاراول حتما از https برای نمایش تصاویر و سایر asset ها استفاده کند. این
       متغیر به صورت پیش‌فرض برابر production است، مگر این که از بخش متغیرهای

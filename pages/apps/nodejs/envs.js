@@ -27,19 +27,19 @@ export default () => (
       برای اضافه کردن یک ENV به برنامه‌ی‌تان کافیست که به بخش تنظیمات
       برنامه‌ی‌تان بروید و با اضافه کردن یک key به عنوان اسم و یک value به عنوان
       مقدار آن، و با زدن دکمه <b>ثبت تغییرات</b> یک ENV به برنامه‌ی‌تان اضافه
-      کنید. برای نمونه ما ENV ای با عنوان URL و مقدار
-      https://nodejs-starter.liara.run/ اضافه کردیم.
+      کنید. برای نمونه ما ENV ای با عنوان LIARA_URL و مقدار https://liara.ir
+      اضافه کردیم.
     </p>
-    <ZoomableImage src="/static/nodejs-env.png" />
+    <ZoomableImage src="/static/php-env.png" />
     <p> حالا به راحتی میتوانیم از‌ آن در برنامه‌ی‌مان استفاده کنیم:</p>
     <Highlight className="js">
-      {`console.log(\`app listening on port 8000 on \${process.env.URL}\`)`}
+      {`console.log(\`app listening on port 8000 on \${process.env.LIARA_URL}\`)`}
     </Highlight>
     <p>
       بعد از کلیک روی دکمه <b>ثبت تغییرات</b> برنامه‌ی‌ شما به صورت خودکار
       ریستارت میشود و در استقرار جدید این متغیر‌های محیطی در داخل برنامه قابل
-      استفاده میشوند. به این شیوه که URL را اضافه کردید میتوانید هر ENV دیگری را
-      نیز به پروژه اضافه کنید.
+      استفاده میشوند. به این شیوه که LIARA_URL را اضافه کردید میتوانید هر ENV
+      دیگری را نیز به پروژه اضافه کنید.
     </p>
     <Link href="/apps/nodejs/logs">متوجه شدم، برو بعدی!</Link>
   </Layout>

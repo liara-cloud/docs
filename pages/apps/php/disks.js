@@ -32,14 +32,15 @@ export default () => (
     </p>
     <p>
       <b>گام اول)</b> ساخت یک دیسک جدید در منوی <b>دیسک‌های</b> پنل لیارا:{" "}
-      <br />
-      <ZoomableImage src="/static/laravel-create-disk.gif" />
     </p>
+    <ZoomableImage src="/static/laravel-create-disk.gif" />
+
     <p>
       <b>گام دوم)</b> اضافه کردن پوشه مد‌نظرمان به فایل{" "}
       <span className="code">liara.json</span>
-      <Highlight className="json">
-        {`{
+    </p>
+    <Highlight className="json">
+      {`{
   "platform": "php",
   "app": "php-starter",
   "disks": [
@@ -49,12 +50,11 @@ export default () => (
     }
   ]
 }`}
-      </Highlight>
-    </p>
+    </Highlight>
     <p>
-      همانطور که در فایل بالا میبینید، دیسک با شناسه disk1 را به دایرکتوری
-      files پروژه‌ی‌مان متصل کرده‌ایم. از حالا به بعد هر فایلی داخل دایرکتوری
-      files قرار بگیرد در هر استقرار یا ریستارت پاک نخواهد شد.
+      همانطور که در فایل بالا میبینید، دیسک با شناسه disk1 را به دایرکتوری files
+      پروژه‌ی‌مان متصل کرده‌ایم. از حالا به بعد هر فایلی داخل دایرکتوری files
+      قرار بگیرد در هر استقرار یا ریستارت پاک نخواهد شد.
     </p>
     <Notice variant="info">
       همانطور که میبینید، بخش disks در فایل بالا یک آرایه میباشد که یعنی شما
@@ -76,8 +76,8 @@ export default () => (
       </Highlight>
     </Notice>
     <Notice variant="info">
-      همانطور که در فایل‌های بالا میبینید آدرس دهی‌ها از ریشه هر پروژه لاراولی
-      داده شده است.
+      همانطور که در فایل‌های بالا میبینید آدرس دهی‌ها از ریشه هر پروژه PHP داده
+      شده است.
     </Notice>
     <br />
     <Link href="/apps/php/domain">متوجه شدم، برو بعدی!</Link>

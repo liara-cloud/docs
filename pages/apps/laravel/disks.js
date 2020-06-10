@@ -33,16 +33,14 @@ export default () => (
     </p>
     <p>
       <b>گام اول)</b> ساخت یک دیسک جدید در منوی <b>دیسک‌های</b> پنل لیارا:
-      <ZoomableImage
-        src="/static/laravel-create-disk.gif"
-        alt="ساخت دیسک جدید"
-      />
     </p>
+    <ZoomableImage src="/static/laravel-create-disk.gif" alt="ساخت دیسک جدید" />
     <p>
       <b>گام دوم)</b> اضافه کردن پوشه مد‌نظرمان به فایل{" "}
       <span className="code">liara.json</span>
-      <Highlight className="json">
-        {`{
+    </p>
+    <Highlight className="json">
+      {`{
   "platform": "laravel",
   "app": "laravel-starter",
   "disks": [
@@ -52,8 +50,7 @@ export default () => (
     }
   ]
 }`}
-      </Highlight>
-    </p>
+    </Highlight>
     <p>
       همانطور که در فایل بالا میبینید، دیسک با شناسه disk1 رو به دایرکتوری
       storage لاراول متصل کرده‌ایم. از حالا به بعد هر فایلی داخل دایرکتوری
@@ -83,6 +80,6 @@ export default () => (
       داده شده است.
     </Notice>
     <br />
-    <Link href="/apps/laravel/objectstorage">متوجه شدم، برو بعدی!</Link>
+    <Link href="/apps/laravel/domain">متوجه شدم، برو بعدی!</Link>
   </Layout>
 );

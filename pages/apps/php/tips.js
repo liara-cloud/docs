@@ -37,11 +37,11 @@ export default () => (
     <p>
       برای تنظیم TimeZone به ایران میتوانید در برنامه‌ی‌تان از این تابع PHP
       استفاده کنید:
-      <Highlight className="php">
-        {`<?php
-date_default_timezone_set("Asia/tehran");`}
-      </Highlight>
     </p>
+    <Highlight className="php">
+      {`<?php
+date_default_timezone_set("Asia/tehran");`}
+    </Highlight>
 
     <h3>تنظیمات اختصاصی php.ini</h3>
     <p>
@@ -72,13 +72,14 @@ max_execution_time = 600`}
       از آن‌جایی که در لیارا برنامه‌های PHP به وسیله Apache اجرا میشوند، شما
       میتوانید تنظیمات دلخواه وب‌سروری خود را در فایل‌های{" "}
       <span className="code">.htaccess</span> قرار دهید. برای نمونه فرض کنید
-      می‌خواهید از انتهای همه URL ها php. و html. را حذف کنید. کافیست یک فایل
-      htaccess. به ریشه پروژه‌ی‌تان اضافه کنید و سپس مقادیر زیر را در آن قرار
-      دهید. بعد از اضافه کردن این مقادیر میتوانید لینکی مثل
-      https://liara.ir/about.php را به صورت https://liara.ir/about مشاهده کنید.
-      <pre>
-        <code>
-          {`<IfModule mod_rewrite.c>
+      می‌خواهید از انتهای همه URL ها php. را حذف کنید. کافیست یک فایل htaccess.
+      به ریشه پروژه‌ی‌تان اضافه کنید و سپس مقادیر زیر را در آن قرار دهید. بعد از
+      اضافه کردن این مقادیر میتوانید لینکی مثل https://liara.ir/about.php را به
+      صورت https://liara.ir/about مشاهده کنید.
+    </p>
+    <pre>
+      <code>
+        {`<IfModule mod_rewrite.c>
 
     RewriteEngine on
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -86,14 +87,13 @@ max_execution_time = 600`}
     RewriteRule ^(.*)$ $1.php [NC,L]
 
 </IfModule>`}
-        </code>
-      </pre>
-      <p>
-        {" "}
-        شما میتوانید هر تنظیمی که از قبل در htaccess. پروژه‌ی‌تان داشتید را به
-        لیارا نیز منتقل کنید. اگر مشکلی در این مورد برخوردید حتما با پشتیبانی
-        لیارا در میان بگذارید.
-      </p>
+      </code>
+    </pre>
+    <p>
+      {" "}
+      شما میتوانید هر تنظیمی که از قبل در htaccess. پروژه‌ی‌تان داشتید را به
+      لیارا نیز منتقل کنید. اگر مشکلی در این مورد برخوردید حتما با پشتیبانی
+      لیارا در میان بگذارید.
     </p>
 
     <h3>لیست اکستنشن‌های نصب شده</h3>

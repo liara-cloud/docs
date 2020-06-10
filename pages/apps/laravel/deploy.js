@@ -20,19 +20,19 @@ export default () => (
     <p>
       اگر liara cli را نصب ندارید میتوانید به وسیله دستور زیر آن‌ را به‌راحتی
       نصب کنید:
-      <pre>
-        <code>{`$ npm install -g @liara/cli`}</code>
-      </pre>
     </p>
+    <pre>
+      <code>{`$ npm install -g @liara/cli`}</code>
+    </pre>
     <h3>- ورود به حساب</h3>
     <p>
       برای ورود به حساب کاربری خود به وسیله liara cli کافیست دستور زیر را وارد
       کنید و ایمیل و رمزعبوری که با آن حساب کاربری خود را ایجاد کرده اید را وارد
       نمایید:
-      <pre>
-        <code>{`$ liara login`}</code>
-      </pre>
     </p>
+    <pre>
+      <code>{`$ liara login`}</code>
+    </pre>
     <h3>- اولین استقرار!</h3>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
@@ -48,10 +48,10 @@ export default () => (
       اولین استقرار خود را اجرا کنید. بعد از وارد کردن، دستور از شما شناسه
       برنامه‌ موردنظرتان را میپرسد و بعد از انتخاب شناسه، لیارا عملیات استقرار
       را شروع میکند.
-      <pre>
-        <code>{`$ liara deploy --platform=laravel`}</code>
-      </pre>
     </p>
+    <pre>
+      <code>{`$ liara deploy --platform=laravel`}</code>
+    </pre>
     <Notice variant="info">
       میتوانید <span className="code">--platform=laravel</span> را در دستور وارد
       نکنید، زیرا لیارا به صورت خودکار تشخیص میدهد که برنامه شما از چه پلتفرمی
@@ -78,15 +78,6 @@ export default () => (
       <a href="https://laravel-starter.liara.run/" target="_blank">
         https://laravel-starter.liara.run
       </a>
-    </p>
-    <p>
-      همانطور که در تصویر زیر میبینید پروژه با موفقیت به لیارا منتقل شده است.
-      <br />
-      <br />
-      <ZoomableImage
-        src="/static/laravel-success.png"
-        alt="اولین استقرار پروژه‌های لاراولی"
-      />
     </p>
 
     <Link href="/apps/laravel/envs">متوجه شدم، برو بعدی!</Link>
