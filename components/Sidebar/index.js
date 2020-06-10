@@ -43,7 +43,7 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/nodejs/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/nodejs/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/nodejs/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/nodejs/envs">پیکربندی ENV ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/nodejs/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/nodejs/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/apps/nodejs/update">به‌روزرسانی برنامه</ActiveLink></li>
@@ -57,7 +57,7 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/laravel/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/laravel/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/laravel/envs">پیکربندی ENV ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/https">پیکربندی HTTPS</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/liarajson">استفاده از فایل liara.json</ActiveLink></li>
@@ -73,7 +73,7 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/php/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/php/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/php/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/php/envs">پیکربندی ENV ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/php/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/php/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/apps/php/update">به‌روزرسانی برنامه</ActiveLink></li>
@@ -87,7 +87,7 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/django/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/django/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/django/envs">پیکربندی ENV ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/update">به‌روزرسانی برنامه</ActiveLink></li>
@@ -102,7 +102,7 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/flask/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/flask/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/flask/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/flask/envs">پیکربندی ENV ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/flask/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/flask/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/apps/flask/update">به‌روزرسانی برنامه</ActiveLink></li>
@@ -116,7 +116,7 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/netcore/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/netcore/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/apps/netcore/envs">پیکربندی ENV‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/apps/netcore/envs">پیکربندی ENV ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/netcore/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/apps/netcore/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/apps/netcore/update">به‌روزرسانی برنامه</ActiveLink></li>
@@ -177,7 +177,7 @@ export default class Sidebar extends Component {
             <span className="nav__title">امکانات برنامه</span>
             <ul className="nav__list">
               <li><ActiveLink href="/app-features/logs">لاگ‌ها</ActiveLink></li>
-              <li><ActiveLink href="/app-features/environment-variables">متغیرها (ENVها)</ActiveLink></li>
+              <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (ENV ها)</ActiveLink></li>
               <li><ActiveLink href="/app-features/console">خط فرمان</ActiveLink></li>
               <li><ActiveLink href="/app-features/fixed-ip">آی‌پی ثابت</ActiveLink></li>
               <li><ActiveLink href="/app-features/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>

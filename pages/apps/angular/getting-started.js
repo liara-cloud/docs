@@ -8,8 +8,8 @@ export default () => (
       <title>Angular سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های Angular</h1>
-    <span className="pageDescription">(Angular Apps)</span>
+    <h1>فریم‌ورک Angular</h1>
+    <span className="pageDescription">(Angular Framework)</span>
     <p>
       در این بخش به شما کمک میکنیم که در سریع‌ترین زمان ممکن برنامه Angular ای‌
       که نوشتید را روی بستر ابری Liara مستقر کنید. برای راحتی شما با یک مثال

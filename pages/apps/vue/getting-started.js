@@ -8,8 +8,8 @@ export default () => (
       <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های VueJS</h1>
-    <span className="pageDescription">(VueJS Apps)</span>
+    <h1>فریم‌ورک VueJS</h1>
+    <span className="pageDescription">(VueJS Framework)</span>
     <p>
       در این بخش به شما کمک میکنیم که در سریع‌ترین زمان ممکن برنامه VueJS ای‌ که
       نوشتید را روی بستر ابری Liara مستقر کنید. برای راحتی شما با یک مثال واقعی

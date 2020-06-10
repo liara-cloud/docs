@@ -9,8 +9,8 @@ export default () => (
       <title>ReactJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های ReactJS</h1>
-    <span className="pageDescription">(ReactJS Sites)</span>
+    <h1>فریم‌ورک ReactJS</h1>
+    <span className="pageDescription">(ReactJS Framework)</span>
 
     <h3>مشاهده لاگ‌های پروژه</h3>
     <p>

@@ -21,7 +21,7 @@ export default () => (
       کافیست دستور زیر را وارد کنید: (این دستور برای یک دیتابیس نمونه است.)
     </p>
     <code>
-      {`$ gunzip -c liaraDB.sql.gz | mysql -u root -pQarujHHCWywSz --host s11.liara.ir --port 30549`}
+      {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT < liaraDB.sql`}
     </code>
     <p>
       همچنین میتوانید برای راحتی بیشتر، از طریق پنل phpMyAdmin و از بخش import،

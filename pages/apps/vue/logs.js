@@ -9,8 +9,8 @@ export default () => (
       <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های VueJS</h1>
-    <span className="pageDescription">(VueJS Apps)</span>
+    <h1>فریم‌ورک VueJS</h1>
+    <span className="pageDescription">(VueJS Framework)</span>
 
     <h3>مشاهده لاگ‌های پروژه</h3>
     <p>
