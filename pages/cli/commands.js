@@ -47,19 +47,19 @@ export default () => (
       </p> */}
       <li>&nbsp;&nbsp;-h, --help</li>
       <p dir="rtl" className="commandDescription">
-        (3) نمایش راهنما
+        (2) نمایش راهنما
       </p>
       <li>&nbsp;&nbsp;-m, --message</li>
       <p dir="rtl" className="commandDescription">
-        (4) در نظر گرفتن پیامی برای این استقرار، مثلا fix the user login bug
+        (3) در نظر گرفتن پیامی برای این استقرار، مثلا fix the user login bug
       </p>
       <li>&nbsp;&nbsp;-v, --volume</li>
       <p dir="rtl" className="commandDescription">
-        (5) در دست تکمیل
+        (4) در دست تکمیل
       </p>
       <li>&nbsp;&nbsp;--api-token=</li>
       <p dir="rtl" className="commandDescription">
-        (6) اجرای عملیات استقرار بدون login کردن و به کمک{" "}
+        (5) اجرای عملیات استقرار بدون login کردن و به کمک{" "}
         <a href="https://console.liara.ir/API" target="_blank">
           api token
         </a>{" "}
@@ -67,20 +67,20 @@ export default () => (
       </p>
       <li>&nbsp;&nbsp;--detach</li>
       <p dir="rtl" className="commandDescription">
-        (7) عدم نمایش لاگ‌ها بعد از هر استقرار
+        (6) عدم نمایش لاگ‌ها بعد از هر استقرار
       </p>
       <li>&nbsp;&nbsp;--path</li>
       <p dir="rtl" className="commandDescription">
-        (8) آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید
+        (7) آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید
       </p>
       <li>&nbsp;&nbsp;--platform</li>
       <p dir="rtl" className="commandDescription">
-        (9) مشخص کردن پلتفرم [larave, flask, nodejs, vue, react, static, django,
+        (8) مشخص کردن پلتفرم [larave, flask, nodejs, vue, react, static, django,
         net]
       </p>
       <li>&nbsp;&nbsp;--port=port</li>
       <p dir="rtl" className="commandDescription">
-        (10) مشخص کردن port ای که برنامه شما به آن گوش میدهد.
+        (9) مشخص کردن port ای که برنامه شما به آن گوش میدهد.
       </p>
     </ol>
 
@@ -167,7 +167,7 @@ export default () => (
 
     <p dir="rtl">
       برای کسب اطلاعات بیشتر به{" "}
-      <a href="" target="_blank">
+      <a href="/databases/tunnel" target="_blank">
         اتصال امن به دیتابیس‌ها
       </a>{" "}
       مراجعه کنید.
