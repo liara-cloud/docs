@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './style.css'
+import NavTitle from './NavTitle'
 import ActiveLink from './ActiveLink'
 
 export default class Sidebar extends Component {
@@ -15,7 +16,7 @@ export default class Sidebar extends Component {
   render() {
     const { isNavOpen } = this.state;
     return (
-      <div className="sidebar">
+      <aside className="sidebar">
         <a href="https://liara.ir" className="brand">
           <img src="/static/logo.png" alt="liara" className="logo" />
           <div className="brand__text">
@@ -31,15 +32,13 @@ export default class Sidebar extends Component {
 
         <div className={isNavOpen ? '' : 'hide-nav'}>
           <nav className="nav">
-            <ul className="nav__list">
-              <li><ActiveLink href="/">صفحه اصلی</ActiveLink></li>
-            </ul>
+            <ActiveLink href="/">صفحه اصلی</ActiveLink>
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">برنامه‌ها</span>
+            <NavTitle href="/apps">برنامه‌ها</NavTitle>
             <ul className="nav__list">
-              <li><span className="nav__title">NodeJS</span>
+              <li><NavTitle href="/apps/nodejs">NodeJS</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/nodejs/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/nodejs/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -53,7 +52,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/nodejs/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Laravel</span>
+              <li><NavTitle href="/apps/laravel">Laravel</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/laravel/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/laravel/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -69,7 +68,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/laravel/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">PHP</span>
+              <li><NavTitle href="/apps/php">PHP</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/php/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/php/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -83,7 +82,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/php/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Django</span>
+              <li><NavTitle href="/apps/django">Django</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/django/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/django/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -98,7 +97,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/django/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Flask</span>
+              <li><NavTitle href="/apps/flask">Flask</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/flask/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/flask/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -112,7 +111,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/flask/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Net Core.</span>
+              <li><NavTitle href="/apps/netcore">Net Core.</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/netcore/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/netcore/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -126,7 +125,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/netcore/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">React</span>
+              <li><NavTitle href="/apps/react">React</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/react/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/react/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -137,7 +136,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/react/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Angular</span>
+              <li><NavTitle href="/apps/angular">Angular</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/angular/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/angular/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -148,7 +147,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/angular/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Vue</span>
+              <li><NavTitle href="/apps/vue">Vue</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/vue/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/vue/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -159,7 +158,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/apps/vue/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Static</span>
+              <li><NavTitle href="/apps/static">Static</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/apps/static/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/apps/static/deploy">استقرار اولین برنامه</ActiveLink></li>
@@ -174,7 +173,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">امکانات برنامه</span>
+            <NavTitle href="/app-features">امکانات برنامه</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/app-features/logs">لاگ‌ها</ActiveLink></li>
               <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (ENV ها)</ActiveLink></li>
@@ -188,29 +187,29 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">راه‌اندازی CI/CD</span>
+            <NavTitle href="/ci-cd">راه‌اندازی CI/CD</NavTitle>
             <ul className="nav__list">
-              <li><ActiveLink href="/ci-cd/">استفاده از Gitlab</ActiveLink></li>
-              <li><ActiveLink href="/ci-cd/">استفاده از Github</ActiveLink></li>
-              <li><ActiveLink href="/ci-cd/">استفاده از Bitbucket</ActiveLink></li>
+              <li><ActiveLink href="/ci-cd/gitlab">استفاده از Gitlab</ActiveLink></li>
+              <li><ActiveLink href="/ci-cd/github">استفاده از Github</ActiveLink></li>
+              <li><ActiveLink href="/ci-cd/bitbucket">استفاده از Bitbucket</ActiveLink></li>
             </ul>
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">برنامه‌های آماده</span>
+            <NavTitle href="/one-click-apps">برنامه‌های آماده</NavTitle>
             <ul className="nav__list">
-              <li><ActiveLink href="/one-click-apps/wordpress">Wordpress</ActiveLink></li>
+              <li><ActiveLink href="/one-click-apps/wordpress">WordPress</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/">RocketChat</ActiveLink></li>
-              <li><ActiveLink href="/one-click-apps/">Wordpress</ActiveLink></li>
+              <li><ActiveLink href="/one-click-apps/">Gitea</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/">دیگر برنامه‌ها</ActiveLink></li>
             </ul>
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">دیتابیس‌ها</span>
+            <NavTitle href="/databases">دیتابیس‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/databases/tunnel">اتصال امن به دیتابیس‌ها</ActiveLink></li>
-              <li><span className="nav__title">MongoDB</span>
+              <li><NavTitle href="/databases/mongodb">MongoDB</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/mongodb/install">نصب و راه‌اندازی</ActiveLink></li>
                   <li><ActiveLink href="/databases/mongodb/connections">راه‌های اتصال</ActiveLink></li>
@@ -218,7 +217,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/mongodb/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">MySQL / MariaDB</span>
+              <li><NavTitle href="/databases/mysql-mariadb">MySQL / MariaDB</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/mysql-mariadb/install">نصب و راه‌اندازی</ActiveLink></li>
                   <li><ActiveLink href="/databases/mysql-mariadb/connections">راه‌های اتصال</ActiveLink></li>
@@ -226,7 +225,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/mysql-mariadb/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">PostgreSQL</span>
+              <li><NavTitle href="/databases/postgresql">PostgreSQL</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/postgresql/install">نصب و راه‌اندازی</ActiveLink></li>
                   <li><ActiveLink href="/databases/postgresql/connections">راه‌های اتصال</ActiveLink></li>
@@ -234,7 +233,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/postgresql/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Redis</span>
+              <li><NavTitle href="/databases/redis">Redis</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/redis/install">نصب و راه‌اندازی</ActiveLink></li>
                   <li><ActiveLink href="/databases/redis/connections">راه‌های اتصال</ActiveLink></li>
@@ -242,7 +241,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/redis/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">SQL Server</span>
+              <li><NavTitle href="/databases/sqlserver">SQL Server</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/sqlserver/install">نصب و راه‌اندازی</ActiveLink></li>
                   <li><ActiveLink href="/databases/sqlserver/connections">راه‌های اتصال</ActiveLink></li>
@@ -254,9 +253,9 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">ذخیره‌سازی</span>
+            <NavTitle href="/storage">ذخیره‌سازی</NavTitle>
             <ul className="nav__list">
-              <li><span className="nav__title">دیسک‌ها (Disks)</span>
+              <li><NavTitle href="/storage/disks">دیسک‌ها (Disks)</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/storage/disks/about">درباره دیسک</ActiveLink></li>
                   <li><ActiveLink href="/storage/disks/management">مدیریت دیسک‌ها</ActiveLink></li>
@@ -265,7 +264,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/storage/disks/backup-restore">Backup / Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><span className="nav__title">Object Storage</span>
+              <li><NavTitle href="/storage/object-storage">Object Storage</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/storage/object-storage/about">درباره آبجکت استوریج</ActiveLink></li>
                   <li><ActiveLink href="/storage/object-storage/management">مدیریت آبجکت استوریج</ActiveLink></li>
@@ -279,7 +278,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">دامنه‌ها</span>
+            <NavTitle href="/domains">دامنه‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/domains/management">مدیریت دامنه‌ها</ActiveLink></li>
               <li><ActiveLink href="/domains/ssl">مدیریت SSL‌ ها</ActiveLink></li>
@@ -287,14 +286,14 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">لیارا CLI</span>
+            <NavTitle href="/cli">لیارا CLI</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/cli/install">نصب و به‌روزرسانی</ActiveLink></li>
               <li><ActiveLink href="/cli/commands">خلاصه دستورات</ActiveLink></li>
             </ul>
           </nav>
           {/* <nav className="nav">
-            <span className="nav__title">کلاینت‌ها</span>
+            <NavTitle href="/apps">کلاینت‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/clients/cli">CLI</ActiveLink></li>
               <li><ActiveLink href="/clients/api">API</ActiveLink></li>
@@ -303,7 +302,7 @@ export default class Sidebar extends Component {
 
 
           <nav className="nav">
-            <span className="nav__title">برنامه‌ها</span>
+            <NavTitle href="/apps">برنامه‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/apps/logs">لاگ‌ها</ActiveLink></li>
               <li><ActiveLink href="/apps/environment-variables">متغیرها</ActiveLink></li>
@@ -318,7 +317,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">دیتابیس‌ها</span>
+            <NavTitle href="/apps">دیتابیس‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/databases/tunnel">ایجاد تونل امن</ActiveLink></li>
               <li><ActiveLink href="/databases/robo3t">اتصال با Robo3T</ActiveLink></li>
@@ -328,7 +327,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">دامنه‌ها</span>
+            <NavTitle href="/apps">دامنه‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/domains/add-domain">افزودن دامنه</ActiveLink></li>
               <li><ActiveLink href="/domains/ssl-https">تهیه‌ی SSL</ActiveLink></li>
@@ -336,7 +335,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">استقرار برنامه‌ها</span>
+            <NavTitle href="/apps">استقرار برنامه‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink icon="react.svg" href="/deployments/react">React</ActiveLink></li>
               <li><ActiveLink icon="vue.svg" href="/deployments/vue">Vue</ActiveLink></li>
@@ -352,7 +351,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">برنامه‌های آماده</span>
+            <NavTitle href="/apps">برنامه‌های آماده</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/one-click-apps/overview">آشنایی</ActiveLink></li>
               <li><ActiveLink icon="wordpress.svg" href="/one-click-apps/wordpress">WordPress</ActiveLink></li>
@@ -360,7 +359,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <span className="nav__title">سرویس ذخیره‌ی فایل</span>
+            <NavTitle href="/apps">سرویس ذخیره‌ی فایل</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/storage/overview">آشنایی</ActiveLink></li>
               <li><ActiveLink href="/storage/nodejs">NodeJS SDK</ActiveLink></li>
@@ -368,7 +367,7 @@ export default class Sidebar extends Component {
             </ul>
           </nav>*/}
         </div>
-      </div>
+      </aside>
     );
   }
 }

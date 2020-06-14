@@ -2,6 +2,7 @@
   width: 100%;
   margin-top: 24px;
   padding: 0 24px;
+  font-size: 16px;
 }
 
 .brand {
@@ -23,24 +24,80 @@
   height: 64px;
 }
 
-.nav {
-  margin: 24px 0;
+.nav__title, .nav > .nav__link {
+  margin-bottom: 16px;
+}
+
+.nav__link {
+  color: #303030;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.nav > .nav__link::before {
+  margin-left: 8px;
+  margin-right: 3px;
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #a1a1a1;
+}
+
+.nav__link--active {
+  color: #218be5;
+  font-weight: bold;
 }
 
 .nav__title {
-  color: #555;
-  margin-bottom: 8px;
+  color: #303030;
+  cursor: pointer;
   display: inline-block;
+}
+
+.nav__title--active {
+  font-weight: bold;
+}
+
+.nav__title--active + .nav__list {
+  display: block;
+}
+
+.nav__title::before {
+  margin-left: 8px;
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 6px;
+  background-color: #a1a1a1;
+  background-size: initial;
+  background: url(/static/arrow.svg) no-repeat;
+  background-position: center center;
+  transform: rotate(90deg);
+}
+.nav__title--active::before {
+  transform: rotate(0deg);
 }
 
 .nav__list {
   margin: 0;
   padding: 0;
+  display: none;
   list-style-type: none;
+  border-right: 1px solid #a1a1a1;
 }
 
-.nav__list li:not(:first-child) {
-  margin: 10px 0;
+.nav__list .nav__link {
+  padding-right: 10px;
+}
+
+.nav__list .nav__title, .nav__list .nav__list {
+  margin-right: 12px;
+}
+
+.nav__list .nav__title {
+  margin-right: 12px;
 }
 
 .platform-icon {
