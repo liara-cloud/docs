@@ -1,6 +1,7 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Notice from "../../../components/Notice";
+import Link from "next/link";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -61,6 +62,20 @@ export default () => (
       کنید و از بالا گزینه <b>Download object</b> را بزنید.
     </p>
     <ZoomableImage src="/static/storage-download.png" />
+
+    <h3>اضافه کردن دامنه اختصاصی به سرویس فایل</h3>
+
+    <p>
+      لیارا به صورت پیش‌فرض به شما زیر‌دامنه‌ای مثل{" "}
+      <span className="code">827a4c001192dd15.liara.space</span> اختصاص میدهد.
+      (این دامنه یک نمونه است و برای هر کاربر بخش زیردامنه به صورت تصادفی انتخاب
+      میشوند). در صورتی که قصد دارید دامنه‌ شخصی‌ خودتان را برای سرویس فایل
+      استفاده کنید کافیست برای مطالعه دراین مورد به{" "}
+      <a href="/domains/management#files-domain" target="_blank">
+        مستندات دامنه‌ها
+      </a>{" "}
+      مراجعه کنید.
+    </p>
     {/* <p>
       در بخش بعدی به روش‌های کار با Object Storage با زبان‌های برنامه نویسی
       میپردازیم.
