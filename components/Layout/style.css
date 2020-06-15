@@ -37,10 +37,9 @@ p {
 .article {
   flex: 1;
   width: 100%;
-  padding: 32px;
+  padding-right: 24px;
   margin-top: 24px;
   background-color: white;
-  border-top: 1px solid #eaeaea;
   max-width: 770px;
 }
 
@@ -139,18 +138,21 @@ span.code {
   margin-top: -25px !important;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
+  main {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
   .wrapper {
-    width: 1100px;
     flex-direction: row;
+    margin-top: 40px;
   }
 
   .article {
     width: 70%;
-    padding: 24px;
     border-radius: 12px;
     margin-bottom: 24px;
-    border: 1px solid #eaeaea;
   }
 
   .article p {

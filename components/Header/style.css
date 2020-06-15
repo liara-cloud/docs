@@ -1,0 +1,82 @@
+.header {
+  line-height: 1.5;
+  display: flex;
+  direction: rtl;
+  justify-content: space-between;
+}
+
+.header__slogan {
+  color: #666;
+  font-weight: 400;
+  font-size: .875rem;
+  line-height: 1.75;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+
+.header__logo img {
+  height: 2.75rem;
+  margin-left: 1rem;
+}
+
+.header__logo h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.header__nav {
+  text-align: left;
+}
+
+.header__login {
+  font-size: .875rem;
+  color: #0070f3;
+  padding: .25rem;
+  margin-left: 1.25rem;
+  display: inline-block;
+}
+
+.header__register {
+  font-size: .875rem;
+  color: white;
+  padding: .375rem .75rem;
+  display: inline-block;
+  background-color: #0070f3;
+  border-radius: .5rem;
+}
+
+.header__links {
+  margin-top: 1rem;
+}
+
+.header__links a {
+  font-size: .875rem;
+  color: #303030;
+  padding: .25rem;
+  margin-left: .75rem;
+  display: inline-block;
+}
+
+.header__links a:last-child {
+  margin-left: 0;
+}
+
+.header__floating-nav {
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 75%;
+  position: fixed;
+  z-index: 60;
+  background-color: white;
+}
+
+@media (min-width: 1200px) {
+  .header {
+    padding: 2rem 4rem 0;
+  }
+}

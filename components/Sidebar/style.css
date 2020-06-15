@@ -1,7 +1,7 @@
 .sidebar {
   width: 100%;
   margin-top: 24px;
-  padding: 0 24px;
+  padding: 0 4rem 0 0;
   font-size: 16px;
 }
 
@@ -133,10 +133,9 @@ li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link
   vertical-align: middle;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .sidebar {
     width: 30%;
-    padding: 0;
   }
 
   .menu-button {
@@ -144,7 +143,7 @@ li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .hide-nav {
     display: none;
   }

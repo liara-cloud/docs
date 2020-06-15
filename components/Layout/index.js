@@ -5,6 +5,7 @@ import './fontiran.css'
 import Head from 'next/head'
 import 'highlight.js/styles/atom-one-light.css'
 
+import Header from '../Header'
 import Sidebar from '../Sidebar'
 
 export default ({ children }) => (
@@ -15,9 +16,12 @@ export default ({ children }) => (
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     </Head>
 
-    <div className="wrapper">
-      <Sidebar />
-      <article className="article">{children}</article>
-    </div>
+    <main>
+      <Header />
+      <div className="wrapper">
+        <Sidebar />
+        <article className="article">{children}</article>
+      </div>
+    </main>
   </Fragment>
 )
