@@ -24,12 +24,8 @@
   height: 64px;
 }
 
-.nav__title, .nav > .nav__link {
-  margin-bottom: 16px;
-}
-
 .nav__link {
-  color: #303030;
+  color: #606060;
   font-weight: normal;
   display: inline-block;
 }
@@ -51,12 +47,13 @@
 }
 
 .nav__title {
-  color: #303030;
+  color: #606060;
   cursor: pointer;
   display: inline-block;
 }
 
 .nav__title--active {
+  color: #303030;
   font-weight: bold;
 }
 
@@ -84,20 +81,29 @@
   margin: 0;
   padding: 0;
   display: none;
+  margin-right: 16px;
   list-style-type: none;
   border-right: 1px solid #a1a1a1;
 }
 
 .nav__list .nav__link {
-  padding-right: 10px;
+  padding-right: 20px;
 }
 
 .nav__list .nav__title, .nav__list .nav__list {
-  margin-right: 12px;
+  margin-right: 32px;
 }
 
 .nav__list .nav__title {
-  margin-right: 12px;
+  margin-right: 16px;
+}
+
+.nav__title, .nav__link, .nav__list {
+  margin-bottom: 16px;
+}
+
+li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link {
+  margin-bottom: 0;
 }
 
 .platform-icon {
