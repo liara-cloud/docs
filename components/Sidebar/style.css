@@ -1,7 +1,6 @@
 .sidebar {
   width: 100%;
-  margin-top: 24px;
-  padding: 0 1rem;
+  padding: 0 20px;
   font-size: 16px;
   user-select: none;
   -moz-user-select: none;
@@ -125,7 +124,7 @@ li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link
   width: 100%;
   border: none;
   color: white;
-  margin-top: 24px;
+  margin-top: 16px;
   margin-bottom: 16px;
   border-radius: 8px;
   font-family: inherit;
@@ -141,6 +140,7 @@ li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link
 @media (min-width: 1200px) {
   .sidebar {
     width: 30%;
+    margin-top: 24px;
     padding: 0 4rem 0 0;
   }
 
