@@ -183,10 +183,6 @@
     font-size: 1.5rem;
   }
 
-  .header__slogan {
-    font-size: 1.125rem;
-  }
-
   .header__auth, .header__links {
     display: block;
   }
