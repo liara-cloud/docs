@@ -1,7 +1,8 @@
 .header {
-  line-height: 1.5;
   display: flex;
   direction: rtl;
+  line-height: 1.5;
+  padding: 1.5rem 1.25rem;
   justify-content: space-between;
 }
 
@@ -19,12 +20,12 @@
 }
 
 .header__logo img {
-  height: 2.75rem;
+  height: 2.25rem;
   margin-left: 1rem;
 }
 
 .header__logo h2 {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 400;
 }
 
@@ -47,6 +48,10 @@
   display: inline-block;
   background-color: #0070f3;
   border-radius: .5rem;
+}
+
+.header__auth, .header__links {
+  display: none;
 }
 
 .header__links {
@@ -75,8 +80,122 @@
   background-color: white;
 }
 
+.header__overlay {
+  height: 100%;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 50;
+  position: fixed;
+  background-color: #303030;
+}
+
+.header__floating-nav, .header__overlay {
+  opacity: 0;
+  transition: all .5s ease;
+  transform: translateX(100%);
+}
+
+.header__menu-toggle {
+  padding: 1rem;
+}
+.header__menu-toggle img {
+  display: block;
+}
+
+.header__floating-nav-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.header__floating-nav-wrapper--open .header__floating-nav {
+  opacity: 1;
+  transform: translateX(0);
+}
+.header__floating-nav-wrapper--open .header__overlay {
+  opacity: .25;
+  transform: translateX(0);
+}
+
+.header__floating-nav-wrapper--open #close-menu {
+  display: block;
+}
+.header__floating-nav-wrapper--open #open-menu {
+  display: none;
+}
+.header__floating-nav-wrapper--open .header__overlay {
+  display: block;
+}
+.header__floating-nav-wrapper--open .header__floating-nav {
+  display: block;
+}
+
+.header__floating-nav .header__logo {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 1.5rem;
+}
+.header__floating-nav .header__auth {
+  display: block;
+  text-align: center;
+}
+
+.header__floating-nav nav {
+  margin: 2rem 3rem;
+}
+.header__floating-nav ul {
+  padding: 0;
+  list-style-type: none;
+}
+.header__floating-nav-link {
+  line-height: 1.75;
+  text-align: center;
+  padding-bottom: .75rem;
+  margin-bottom: .75rem;
+  border-bottom: 1px solid #eaeaea;
+}
+.header__floating-nav-link a {
+  display: block;
+  padding: .25rem;
+  color: #303030;
+  font-size: .875rem;
+  font-weight: 400;
+}
+
+#open-menu {
+  display: block;
+}
+#close-menu {
+  display: none;
+}
+
 @media (min-width: 1200px) {
   .header {
     padding: 2rem 4rem 0;
+  }
+
+  .header__logo img {
+    height: 2.75rem;
+    margin-left: 1rem;
+  }
+
+  .header__logo h2 {
+    font-size: 1.5rem;
+  }
+
+  .header__slogan {
+    font-size: 1.125rem;
+  }
+
+  .header__auth, .header__links {
+    display: block;
+  }
+
+  .header__floating-nav-wrapper {
+    display: none;
+  }
+
+  #open-menu {
+    display: none;
   }
 }

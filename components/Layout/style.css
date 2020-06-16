@@ -138,6 +138,11 @@ span.code {
   margin-top: -25px !important;
 }
 
+.article img {
+  border-radius: 12px;
+  border: 1px solid #eaeaea;
+}
+
 @media (min-width: 1200px) {
   main {
     width: 1200px;

@@ -1,8 +1,11 @@
 .sidebar {
   width: 100%;
   margin-top: 24px;
-  padding: 0 4rem 0 0;
+  padding: 0 1rem;
   font-size: 16px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 .brand {
@@ -25,6 +28,7 @@
 }
 
 .nav__link {
+  outline: none;
   color: #606060;
   font-weight: normal;
   display: inline-block;
@@ -122,6 +126,7 @@ li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link
   border: none;
   color: white;
   margin-top: 24px;
+  margin-bottom: 16px;
   border-radius: 8px;
   font-family: inherit;
   background-color: #0076ff;
@@ -136,6 +141,7 @@ li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link
 @media (min-width: 1200px) {
   .sidebar {
     width: 30%;
+    padding: 0 4rem 0 0;
   }
 
   .menu-button {
