@@ -179,21 +179,22 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <NavTitle href="/ci-cd">راه‌اندازی CI/CD</NavTitle>
+            <NavTitle href="/cicd">راه‌اندازی CI/CD</NavTitle>
             <ul className="nav__list">
-              <li><ActiveLink href="/ci-cd/gitlab">استفاده از Gitlab</ActiveLink></li>
-              <li><ActiveLink href="/ci-cd/github">استفاده از Github</ActiveLink></li>
-              <li><ActiveLink href="/ci-cd/bitbucket">استفاده از Bitbucket</ActiveLink></li>
+              <li><ActiveLink href="/cicd/about">درباره CI/CD</ActiveLink></li>
+              <li><ActiveLink href="/cicd/gitlab">استفاده از Gitlab</ActiveLink></li>
+              <li><ActiveLink href="/cicd/github">استفاده از Github</ActiveLink></li>
             </ul>
           </nav>
 
           <nav className="nav">
             <NavTitle href="/one-click-apps">برنامه‌های آماده</NavTitle>
             <ul className="nav__list">
+              <li><ActiveLink href="/one-click-apps/about">درباره برنامه‌های آماده</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/wordpress">WordPress</ActiveLink></li>
-              <li><ActiveLink href="/one-click-apps/">RocketChat</ActiveLink></li>
-              <li><ActiveLink href="/one-click-apps/">Gitea</ActiveLink></li>
-              <li><ActiveLink href="/one-click-apps/">دیگر برنامه‌ها</ActiveLink></li>
+              <li><ActiveLink href="/one-click-apps/rocketchat">RocketChat</ActiveLink></li>
+              <li><ActiveLink href="/one-click-apps/gitea">Gitea</ActiveLink></li>
+              <li><ActiveLink href="/one-click-apps/others">دیگر برنامه‌ها</ActiveLink></li>
             </ul>
           </nav>
 
@@ -284,80 +285,6 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/cli/commands">خلاصه دستورات</ActiveLink></li>
             </ul>
           </nav>
-          {/* <nav className="nav">
-            <NavTitle href="/apps">کلاینت‌ها</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/clients/cli">CLI</ActiveLink></li>
-              <li><ActiveLink href="/clients/api">API</ActiveLink></li>
-            </ul>
-          </nav>
-
-
-          <nav className="nav">
-            <NavTitle href="/apps">برنامه‌ها</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/apps/logs">لاگ‌ها</ActiveLink></li>
-              <li><ActiveLink href="/apps/environment-variables">متغیرها</ActiveLink></li>
-              <li><ActiveLink href="/apps/console">خط فرمان</ActiveLink></li>
-              <li><ActiveLink href="/apps/disks">دیسک‌ها</ActiveLink></li>
-              <li><ActiveLink href="/apps/fixed-ip">آی‌پی ثابت</ActiveLink></li>
-              <li><ActiveLink href="/apps/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
-              <li><ActiveLink href="/apps/zero-downtime-deployment">استقرار بدون اختلال</ActiveLink></li>
-              <li><ActiveLink href="/apps/health-check">بررسی سلامت</ActiveLink></li>
-              <li><ActiveLink href="/apps/applets">برنامک‌ها</ActiveLink></li>
-            </ul>
-          </nav>
-
-          <nav className="nav">
-            <NavTitle href="/apps">دیتابیس‌ها</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/databases/tunnel">ایجاد تونل امن</ActiveLink></li>
-              <li><ActiveLink href="/databases/robo3t">اتصال با Robo3T</ActiveLink></li>
-              <li><ActiveLink href="/databases/mysql">MySQL</ActiveLink></li>
-              <li><ActiveLink href="/databases/mongodb">MongoDB</ActiveLink></li>
-            </ul>
-          </nav>
-
-          <nav className="nav">
-            <NavTitle href="/apps">دامنه‌ها</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/domains/add-domain">افزودن دامنه</ActiveLink></li>
-              <li><ActiveLink href="/domains/ssl-https">تهیه‌ی SSL</ActiveLink></li>
-            </ul>
-          </nav>
-
-          <nav className="nav">
-            <NavTitle href="/apps">استقرار برنامه‌ها</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink icon="react.svg" href="/deployments/react">React</ActiveLink></li>
-              <li><ActiveLink icon="vue.svg" href="/deployments/vue">Vue</ActiveLink></li>
-              <li><ActiveLink icon="angularjs.svg" href="/deployments/angular">Angular</ActiveLink></li>
-              <li><ActiveLink icon="HTML5.svg" href="/deployments/static">Static</ActiveLink></li>
-              <li><ActiveLink icon="nodejs.svg" href="/deployments/nodejs">NodeJS</ActiveLink></li>
-              <li><ActiveLink icon="php.svg" href="/deployments/php">PHP</ActiveLink></li>
-              <li><ActiveLink icon="laravel.svg" href="/deployments/laravel">Laravel</ActiveLink></li>
-              <li><ActiveLink icon="django.svg" href="/deployments/django">Django</ActiveLink></li>
-              <li><ActiveLink icon="flask.svg" href="/deployments/flask">Flask</ActiveLink></li>
-              <li><ActiveLink icon="netcore.svg" href="/deployments/netcore" textStyle={{ direction: 'ltr' }}>.Net Core</ActiveLink></li>
-            </ul>
-          </nav>
-
-          <nav className="nav">
-            <NavTitle href="/apps">برنامه‌های آماده</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/one-click-apps/overview">آشنایی</ActiveLink></li>
-              <li><ActiveLink icon="wordpress.svg" href="/one-click-apps/wordpress">WordPress</ActiveLink></li>
-            </ul>
-          </nav>
-
-          <nav className="nav">
-            <NavTitle href="/apps">سرویس ذخیره‌ی فایل</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/storage/overview">آشنایی</ActiveLink></li>
-              <li><ActiveLink href="/storage/nodejs">NodeJS SDK</ActiveLink></li>
-              <li><ActiveLink href="/storage/laravel">Laravel S3 Driver</ActiveLink></li>
-            </ul>
-          </nav>*/}
         </div>
       </aside>
     );
