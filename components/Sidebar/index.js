@@ -201,15 +201,6 @@ export default class Sidebar extends Component {
           <nav className="nav">
             <NavTitle href="/databases">دیتابیس‌ها</NavTitle>
             <ul className="nav__list">
-              <li><ActiveLink href="/databases/tunnel">اتصال امن به دیتابیس‌ها</ActiveLink></li>
-              <li><NavTitle href="/databases/mongodb">MongoDB</NavTitle>
-                <ul className="nav__list">
-                  <li><ActiveLink href="/databases/mongodb/install">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mongodb/connections">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mongodb/backup">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/mongodb/restore">Restore</ActiveLink></li>
-                </ul>
-              </li>
               <li><NavTitle href="/databases/mysql-mariadb">MySQL / MariaDB</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/mysql-mariadb/install">نصب و راه‌اندازی</ActiveLink></li>
@@ -218,6 +209,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/mysql-mariadb/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
+
               <li><NavTitle href="/databases/postgresql">PostgreSQL</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/postgresql/install">نصب و راه‌اندازی</ActiveLink></li>
@@ -226,14 +218,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/postgresql/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><NavTitle href="/databases/redis">Redis</NavTitle>
-                <ul className="nav__list">
-                  <li><ActiveLink href="/databases/redis/install">نصب و راه‌اندازی</ActiveLink></li>
-                  <li><ActiveLink href="/databases/redis/connections">راه‌های اتصال</ActiveLink></li>
-                  <li><ActiveLink href="/databases/redis/backup">Backup</ActiveLink></li>
-                  <li><ActiveLink href="/databases/redis/restore">Restore</ActiveLink></li>
-                </ul>
-              </li>
+
               <li><NavTitle href="/databases/sqlserver">SQL Server</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/databases/sqlserver/install">نصب و راه‌اندازی</ActiveLink></li>
@@ -242,6 +227,26 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/sqlserver/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
+
+              <li><NavTitle href="/databases/mongodb">MongoDB</NavTitle>
+                <ul className="nav__list">
+                  <li><ActiveLink href="/databases/mongodb/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/backup">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mongodb/restore">Restore</ActiveLink></li>
+                </ul>
+              </li>
+
+              <li><NavTitle href="/databases/redis">Redis</NavTitle>
+                <ul className="nav__list">
+                  <li><ActiveLink href="/databases/redis/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/connections">راه‌های اتصال</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/backup">Backup</ActiveLink></li>
+                  <li><ActiveLink href="/databases/redis/restore">Restore</ActiveLink></li>
+                </ul>
+              </li>
+              <li><ActiveLink href="/databases/tunnel">اتصال امن به دیتابیس‌ها</ActiveLink></li>
+
             </ul>
           </nav>
 
