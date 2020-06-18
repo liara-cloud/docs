@@ -34,10 +34,10 @@ export default () => (
         سپس به راحتی با اطلاعات دیتابیس‌‌تان وارد پنل شوید و از امکانات
         phpmyAdmin استفاده کنید:
       </p>
-      <ZoomableImage
+      {/* <ZoomableImage
         src="/static/databases/mysql-phpmyadmin.png"
         alt="پنل phpmyadmin"
-      />
+      /> */}
       <br />
       <li>
         <b>استفاده از MySQL Workbench</b>
@@ -60,11 +60,10 @@ export default () => (
       <p>
         در صورتی که قصد دارید از طریق MySQL CLI به دیتابیس‌‌تان متصل شوید کافیست
         که ابتدا mysql-client را متناسب با سیستم‌عامل‌تان نصب کنید. سپس به روش
-        زیر میتوانید به دیتابیس متصل شوید: (اطلاعات زیر برای یک دیتابیس نمونه
-        است)
+        زیر میتوانید به دیتابیس متصل شوید:
       </p>
       <code>
-        {`$ mysql -u root -pH0izba5IfWS2SGeYJaTOh2HI --host s11.liara.ir --port 33589`}
+        {`$ mysql -u DB_USER -pDB_PASSWORD --host DB_HOST --port DB_PORT`}
       </code>
       <br />
 

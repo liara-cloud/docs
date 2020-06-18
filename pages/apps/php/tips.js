@@ -74,8 +74,9 @@ max_execution_time = 600`}
       <span className="code">.htaccess</span> قرار دهید. برای نمونه فرض کنید
       می‌خواهید از انتهای همه URL ها php. را حذف کنید. کافیست یک فایل htaccess.
       به ریشه پروژه‌ی‌تان اضافه کنید و سپس مقادیر زیر را در آن قرار دهید. بعد از
-      اضافه کردن این مقادیر میتوانید لینکی مثل https://liara.ir/about.php را به
-      صورت https://liara.ir/about مشاهده کنید.
+      اضافه کردن میتوانید لینکی مثل{" "}
+      <span className="code">https://liara.ir/about.php</span> را به صورت{" "}
+      <span className="code">https://liara.ir/about</span> مشاهده کنید.
     </p>
     <pre>
       <code>

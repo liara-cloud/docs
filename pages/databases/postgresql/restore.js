@@ -16,11 +16,11 @@ export default () => (
     <p>
       کافیست فایل پشتیبان مدنظرتان را دانلود کنید و بعد از خارج کردن آن از حالت
       فشرده، به ازای هر دیتابیس، یک فایل dump دارید. برای بازگرداندن اطلاعات
-      مربوط به یک دیتابیس خاص که فرض میکنیم اسم آن در اینجا liaraDB میباشد
+      مربوط به یک دیتابیس خاص که فرض میکنیم اسم آن در اینجا liaraDB میباشد،
       کافیست دستور زیر را وارد کنید:
     </p>
     <code>
-      {`$ pg_restore -h s11.liara.ir -p 34479 -U root -F c --create -d postgres liaraDB.dump`}
+      {`$ pg_restore -h DB_HOST -p DB_PORT -U DB_USERNAME -F c --create -d postgres liaraDB.dump`}
     </code>
     <Notice variant="info">
       در فایل بالا تصور کردیم شما میخواهید اطلاعات یک دیتابیس فرضی به نام

@@ -45,26 +45,26 @@ export default () => (
         >
           sqlcmd
         </a>{" "}
-        کافیست برای اتصال دستور زیر را وارد کنید: (این دستور برای یک دیتابیس
-        نمونه است.)
+        کافیست برای اتصال دستور زیر را وارد کنید:
       </p>
-      <code>
-        {`$ sqlcmd -S s11.liara.ir,34472 -Usa -P7FMEv63BeG4xqXdQXcto3XPj`}
-      </code>
+      <code>{`$ sqlcmd -S DB_URL,DB_PORT -Usa -P DB_PASSWORD`}</code>
       <br />
       <ZoomableImage src="/static/databases/sqlcmd.png" />
       <br />
       <li>
-        <b>
-          با مراجعه به این بخش از{" "}
-          <a
-            href="https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?view=sql-server-ver15"
-            target="_blank"
-          >
-            مستندات Microsoft
-          </a>{" "}
-          میتوانید ابزارهای بیشتری را برای اتصال به دیتابیس SQL Server ببینید.
-        </b>
+        <p>
+          <b>
+            {" "}
+            با مراجعه به این بخش از{" "}
+            <a
+              href="https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?view=sql-server-ver15"
+              target="_blank"
+            >
+              مستندات Microsoft
+            </a>{" "}
+            میتوانید ابزارهای بیشتری را برای اتصال به دیتابیس SQL Server ببینید.
+          </b>
+        </p>
       </li>
     </ul>
     <Notice variant="info">

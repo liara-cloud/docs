@@ -53,10 +53,9 @@ export default () => (
       <p>
         در صورتی که قصد دارید از طریق psql به دیتابیس‌‌تان متصل شوید کافیست که
         ابتدا postgresql-client را متناسب با سیستم‌عامل‌تان نصب کنید. سپس به روش
-        زیر میتوانید به دیتابیس متصل شوید: (اطلاعات زیر برای یک دیتابیس نمونه
-        است)
+        زیر میتوانید به دیتابیس متصل شوید:
       </p>
-      <code>{`$ psql -h s11.liara.ir -p 30480 -U root -W postgres`}</code>
+      <code>{`$ psql -h DB_HOST -p DB_PORT -U DB_USERNAME -W postgres`}</code>
       <p>بعد از وارد کردن دستور بالا از شما رمزعبور پرسیده میشود.</p>
       <ZoomableImage src="/static/databases/psql-cli.png" />
     </ul>

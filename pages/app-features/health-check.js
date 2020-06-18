@@ -3,6 +3,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import Notice from "../../components/Notice";
 
 export default () => (
   <Layout>
@@ -65,6 +66,7 @@ export default () => (
       src="/static/health-check.jpg"
       alt="docker container health check"
     />
+
     <p>
       در مثال بالا، از ابزار
       <span className="code">curl</span>
@@ -73,6 +75,15 @@ export default () => (
       <span className="code">curl</span>
       را روی تمام پلتفرم‌های پشتیبانی شده نصب کرده است.
     </p>
+
+    <Notice>
+      در فایل نمونه‌ی بالا از دستور{" "}
+      <span className="code">curl --fail http://localhost:3000 || exit 1</span>{" "}
+      استفاده کرده‌ایم. این دستور به این صورت عمل میکند که یا وب‌سرور شما Status
+      200 برمیگرداند و در نتیجه curl با کد 0 خارج میشود (عملیات موفقیت‌آمیز) و
+      یا این که وب‌سرور شما Status 200 برنمیگرداند و curl با کد 0 خارج نمیشود و
+      قسمت بعد از || یا همان exit 1 اجرا میشود. (عملیات غیرموفقیت‌آمیز)
+    </Notice>
 
     <p>
       در مثال بالا، بعد از روشن‌شدن برنامک‌، به اندازه‌ی

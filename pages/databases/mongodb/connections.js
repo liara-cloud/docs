@@ -58,10 +58,10 @@ export default () => (
       <p>
         برای اتصال با cli کافیست که mongo در سیستم شما نصب شده باشد و به کمک
         ترمینال میتوانید با استفاده از این دستور به دیتابیس‌‌تان در لیارا متصل
-        شوید (دستور زیر برای یک دیتابیس نمونه در لیارا است):
+        شوید:
       </p>
       <code>
-        {`$ mongo -u root -p n4o0X7PhuyC8yZ7f8pjYcyDR --host s11.liara.ir --port 31124 --authenticationDatabase admin`}
+        {`$ mongo -u DB_USERNAME -p DB_PASSWORD --host DB_HOST --port DB_PORT --authenticationDatabase admin`}
       </code>
       <br />
 

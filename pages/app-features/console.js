@@ -25,7 +25,7 @@ export default () => (
       سپس روی گزینه‌ی کنسول از فهرست سمت راست کلیک کنید تا وارد صفحه‌ی کنسول
       شوید.
     </p>
-    <ZoomableImage src="/static/console1.png" alt="صفحه‌ی کنسول" />
+    <ZoomableImage src="/static/console2.png" alt="صفحه‌ی کنسول" />
     <p>
       در این صفحه، با کلیک کردن روی دکمه‌ی «اتصال»، به کنسول متصل شده و یک
       ترمینال برای‌تان اجرا خواهد شد.
@@ -35,6 +35,6 @@ export default () => (
       را اجرا می‌کند. بنابراین می‌توانید هر دستوری که در bash قابل اجرا است را
       وارد نمایید.
     </p>
-    <ZoomableImage src="/static/console2.png" alt="ترمینال" />
+    <ZoomableImage src="/static/console1.png" alt="صفحه‌ی ترمینال" />
   </Layout>
 );

@@ -139,8 +139,11 @@ for bucket in s3.buckets.all():
       اکثر آن‌ها کتابخانه‌های رسمی AWS S3 میباشد. شما میتوانید از هر
       کتابخانه‌‌ای که S3 compatible باشد استفاده کنید. همچنین خود تیم MinIO نیز
       SDK هایی برای کار با S3 ارائه کرده است که میتوانید در مستندات آن‌ها و در
-      بخش <a href="https://docs.min.io/">MinIO SDKs</a> درباره آن‌ها بیشتر
-      بخوانید.
+      بخش{" "}
+      <a href="https://docs.min.io/" target="_blank">
+        MinIO SDKs
+      </a>{" "}
+      درباره آن‌ها بیشتر بخوانید.
     </Notice>
   </Layout>
 );

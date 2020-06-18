@@ -19,30 +19,38 @@ export default () => (
     </p>
     <ul>
       <li>
-        ابتدا فایل پشتیبان مدنظرتان را دانلود کنید و آن‌را از حالت فشرده خارج
-        کنید. احتمالا فایل‌هایی شبیه تصویر زیر خواهید داشت.
+        <p>
+          {" "}
+          ابتدا فایل پشتیبان مدنظرتان را دانلود کنید و آن‌را از حالت فشرده خارج
+          کنید. احتمالا فایل‌هایی شبیه تصویر زیر خواهید داشت.
+        </p>
       </li>
       <br />
       <ZoomableImage src="/static/databases/mongo-backup-1.png" />
       <br />
 
       <li>
-        دیتابیس جدیدی هم‌نسخه با دیتابیس قدیم ایجاد میکنید، سپس کافیست به وسیله
-        دستور mongorestore داده‌ها را به دیتابیس جدید منتقل کنید: (این اطلاعات
-        برای یک دیتابیس نمونه است و شما باید متناسب با اطلاعات دیتابیس‌‌تان
-        آن‌هارا پر کنید.)
+        <p>
+          {" "}
+          دیتابیس جدیدی هم‌نسخه با دیتابیس قدیم ایجاد میکنید، سپس کافیست به
+          وسیله دستور mongorestore داده‌ها را به دیتابیس جدید منتقل کنید:
+        </p>
       </li>
       <br />
       <code>
-        {`$ mongorestore -u root -p Oz4YNoqSiHtglXpWzVcbmSdu --host s11.liara.ir --port 31255 --authenticationDatabase admin --verbose --archive=2020-05-24T00-41-28-1590264688336.dump`}
+        {`$ mongorestore -u DB_USERNAME -p DB_PASSWORD --host DB_HOST --port DB_PORT --authenticationDatabase admin --verbose --archive=/path/BACKUP_FILE.dump`}
       </code>
       <br />
       <ZoomableImage src="/static/databases/mongo-backup-2.png" />
       <br />
 
       <li>
-        همانطور که در تصویر بالا میبینید، به داخل پوشه فایل‌های بک‌آپ رفتیم و با
-        دستور mongorestore اطلاعات فایل بک‌آپ را به دیتابیس‌‌ جدید منتقل کردیم.
+        <p>
+          {" "}
+          همانطور که در تصویر بالا میبینید، به داخل پوشه فایل‌های بک‌آپ رفتیم و
+          با دستور mongorestore اطلاعات فایل بک‌آپ را به دیتابیس‌‌ جدید منتقل
+          کردیم.
+        </p>
       </li>
     </ul>
   </Layout>

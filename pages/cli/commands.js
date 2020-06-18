@@ -53,13 +53,9 @@ export default () => (
       <p dir="rtl" className="commandDescription">
         (3) در نظر گرفتن پیامی برای این استقرار، مثلا fix the user login bug
       </p>
-      <li>&nbsp;&nbsp;-v, --volume</li>
-      <p dir="rtl" className="commandDescription">
-        (4) در دست تکمیل
-      </p>
       <li>&nbsp;&nbsp;--api-token=</li>
       <p dir="rtl" className="commandDescription">
-        (5) اجرای عملیات استقرار بدون login کردن و به کمک{" "}
+        (4) اجرای عملیات استقرار بدون login کردن و به کمک{" "}
         <a href="https://console.liara.ir/API" target="_blank">
           api token
         </a>{" "}
@@ -67,20 +63,20 @@ export default () => (
       </p>
       <li>&nbsp;&nbsp;--detach</li>
       <p dir="rtl" className="commandDescription">
-        (6) عدم نمایش لاگ‌ها بعد از هر استقرار
+        (5) عدم نمایش لاگ‌ها بعد از هر استقرار
       </p>
       <li>&nbsp;&nbsp;--path</li>
       <p dir="rtl" className="commandDescription">
-        (7) آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید
+        (6) آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید
       </p>
       <li>&nbsp;&nbsp;--platform</li>
       <p dir="rtl" className="commandDescription">
-        (8) مشخص کردن پلتفرم [larave, flask, nodejs, vue, react, static, django,
-        net]
+        (7) مشخص کردن پلتفرم [larave, flask, node, vue, react, angular,static,
+        django, netcore]
       </p>
       <li>&nbsp;&nbsp;--port=port</li>
       <p dir="rtl" className="commandDescription">
-        (9) مشخص کردن port ای که برنامه شما به آن گوش میدهد.
+        (8) مشخص کردن port ای که برنامه شما به آن گوش میدهد.
       </p>
     </ol>
 

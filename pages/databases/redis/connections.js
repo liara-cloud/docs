@@ -31,21 +31,16 @@ export default () => (
         alt="آماده شدن دیتابیس"
       />
       <p>
-        برای ورود به پنل کافیست در بخش UserName مقدار root و در بخش Password رمز
-        عبور Redis را وارد کنید.
+        برای ورود به پنل کافیست در بخش UserName مقدار admin و در بخش Password
+        رمز عبور Redis را وارد کنید.
       </p>
 
       <br />
       <li>
         <b>استفاده از Redis-cli</b>
       </li>
-      <p>
-        بعد از نصب redis-cli کافیست برای اتصال دستور زیر را وارد کنید: (این
-        دستور برای یک دیتابیس نمونه است.)
-      </p>
-      <code>
-        {`$ redis-cli -p 32276 -h s15.liara.ir -a tCFtdIG9F3N5xsdUCk`}
-      </code>
+      <p>بعد از نصب redis-cli کافیست برای اتصال دستور زیر را وارد کنید:</p>
+      <code>{`$ redis-cli -h REDIS_HOST -p REDIS_PORT -a REDIS_PASSWORD`}</code>
       <br />
       <ZoomableImage
         src="/static/databases/redis-cli.png"
