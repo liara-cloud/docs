@@ -7,8 +7,8 @@ export default () => (
       <title>Static سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>سایت‌های Static</h1>
-    <span className="pageDescription">(Static Sites)</span>
+    <h1>برنامه‌های Static</h1>
+    <span className="pageDescription">(Static Apps)</span>
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 

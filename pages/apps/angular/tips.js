@@ -8,7 +8,7 @@ export default () => (
     </Head>
 
     <h1>فریم‌ورک Angular</h1>
-    <span className="pageDescription">(Angular Framework)</span>
+    <span className="pageDescription">(Angular Apps)</span>
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 

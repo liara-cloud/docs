@@ -8,8 +8,8 @@ export default () => (
       <title>Angular سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>فریم‌ورک Angular</h1>
-    <span className="pageDescription">(Angular Framework)</span>
+    <h1>برنامه‌های Angular</h1>
+    <span className="pageDescription">(Angular Apps)</span>
 
     <h3>🚀 شروع به کار</h3>
     <video

@@ -9,8 +9,8 @@ export default () => (
     <Head>
       <title>PHP سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>زبان PHP</h1>
-    <span className="pageDescription">(PHP Language)</span>
+    <h1>برنامه‌های PHP</h1>
+    <span className="pageDescription">(PHP Apps)</span>
     <h3>مشاهده لاگ‌های پروژه</h3>
     <p>
       لاگ‌ها یا Logs، بخش مهمی از هر برنامه میباشد و به برنامه‌نویسان کمک میکند

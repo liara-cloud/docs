@@ -9,8 +9,8 @@ export default () => (
     <Head>
       <title>PHP سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>زبان PHP</h1>
-    <span className="pageDescription">(PHP Language)</span>
+    <h1>برنامه‌های PHP</h1>
+    <span className="pageDescription">(PHP Apps)</span>
     <h3>اتصال به دیتابیس‌ها</h3>
     <ul>
       <li>

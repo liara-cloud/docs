@@ -9,8 +9,8 @@ export default () => (
     <Head>
       <title>Laravel سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>فریم‌ورک Laravel</h1>
-    <span className="pageDescription">(Laravel Framework)</span>
+    <h1>برنامه‌های Laravel</h1>
+    <span className="pageDescription">(Laravel Apps)</span>
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
     <h3>بهینه کردن لاراول برای استقرار</h3>
     <p>

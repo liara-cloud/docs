@@ -10,8 +10,8 @@ export default () => (
       <title>Flask سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>فریم‌ورک Flask</h1>
-    <span className="pageDescription">(Flask Framework)</span>
+    <h1>برنامه‌های Flask</h1>
+    <span className="pageDescription">(Flask Apps)</span>
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
     <p>در دست تکمیل</p>

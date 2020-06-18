@@ -8,8 +8,8 @@ export default () => (
     <Head>
       <title>Django سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>فریم‌ورک Django</h1>
-    <span className="pageDescription">(Django Framework)</span>
+    <h1>برنامه‌های Django</h1>
+    <span className="pageDescription">(Django Apps)</span>
 
     <h3>
       استفاده‌ از فایل <span className="code">liara.json</span>

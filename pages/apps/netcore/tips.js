@@ -8,8 +8,8 @@ export default () => (
       <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>فریم‌ورک ASP.Net Core</h1>
-    <span className="pageDescription">(ASP.Net Core Framework)</span>
+    <h1>برنامه‌های ASP.Net Core</h1>
+    <span className="pageDescription">(ASP.Net Core Apps)</span>
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 

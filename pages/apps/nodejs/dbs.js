@@ -10,8 +10,8 @@ export default () => (
       <title>NodeJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>زبان NodeJS</h1>
-    <span className="pageDescription">(NodeJS Language)</span>
+    <h1>برنامه‌های NodeJS</h1>
+    <span className="pageDescription">(NodeJS Apps)</span>
     <h3>اتصال به دیتابیس‌ها</h3>
     <ul>
       <li>
