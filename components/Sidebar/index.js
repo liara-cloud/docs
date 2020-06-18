@@ -24,7 +24,7 @@ export default class Sidebar extends Component {
 
         <div className={isNavOpen ? '' : 'hide-nav'}>
           <nav className="nav">
-            <ActiveLink href="/">صفحه اصلی</ActiveLink>
+            <ActiveLink href="/">صفحه‌ی اصلی مستندات</ActiveLink>
           </nav>
 
           <nav className="nav">

@@ -7,52 +7,95 @@ export default () => (
       <title>سرویس ابری لیارا | مستندات</title>
     </Head>
 
-    <h1>مستندات</h1>
+    <h1>صفحه‌ی اصلی مستندات</h1>
 
+    <h3>معرفی سرویس ابری لیارا</h3>
     <p>
-      <strong>خوش آمدید به لیارا! </strong>
-      در این بخش، با خدمات لیارا آشنا می‌شوید.
+      سرویس ابری لیارا بستری را فراهم می‌کند تا شما بدون نیاز به پیکربندی و تنظیمات، با نهایت سرعت، آسودگی
+      و راحتی، برنامه‌ی خود را روی سرور اجرا کنید.
     </p>
 
-    <h3>ساب‌دامنه‌ی رایگان liara.run</h3>
+    <h3>برنامه‌هایی که پشتیبانی می‌کنیم</h3>
     <p>
-      برای مشاهده‌ی برنامه‌های‌تان، نیازی نیست که حتما یک دامنه داشته باشید.
-      لیارا به صورت پیش‌فرض یک دامنه‌ی
-      <span className="code">{'project-name.liara.run'}</span>
-      به هر کدام از برنامه‌های شما اختصاص می‌دهد که از طریق آن می‌توانید به برنامه‌ی‌تان دسترسی پیدا کنید.
+      برای مطالعه‌ی راهنمای اجرای هر برنامه، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
 
-    <h3>پشتیبانی از تکنولوژی‌های مختلف</h3>
-    <p>
-      دیگر دوران انحصار PHP گذشته است.
-      <br />
-      اگر شما هم آرزو می‌کردید که ای‌کاش سرویسی با راحتی و آسایش هاستینگ‌های
-      PHP،
-      اما قدرتمندتر و با امکانات بیشتر، برای زبان‌ها و تکنولوژی‌های مختلف داشتید
-      قطعا لیارا همان سرویس است.
-    </p>
+    <div className="platforms">
+      <a href="apps/nodejs/getting-started">
+        <img src="/static/platformicons/nodejs.svg" alt=""/>
+        <span>NodeJS</span>
+      </a>
+      <a href="apps/laravel/getting-started">
+        <img src="/static/platformicons/laravel.svg" alt=""/>
+        <span>Laravel</span>
+      </a>
+      <a href="apps/php/getting-started">
+        <img src="/static/platformicons/php.svg" alt=""/>
+        <span>PHP</span>
+      </a>
+      <a href="apps/django/getting-started">
+        <img src="/static/platformicons/django.svg" alt=""/>
+        <span>Django</span>
+      </a>
+      <a href="apps/flask/getting-started">
+        <img src="/static/platformicons/flask.svg" alt=""/>
+        <span>Flask</span>
+      </a>
+      <a href="apps/netcore/getting-started">
+        <img src="/static/platformicons/netcore.svg" alt=""/>
+        <span>.NetCore</span>
+      </a>
+      <a href="apps/react/getting-started">
+        <img src="/static/platformicons/react.svg" alt=""/>
+        <span>React</span>
+      </a>
+      <a href="apps/angular/getting-started">
+        <img src="/static/platformicons/angularjs.svg" alt=""/>
+        <span>Angular</span>
+      </a>
+      <a href="apps/vue/getting-started">
+        <img src="/static/platformicons/vue.svg" alt=""/>
+        <span>Vue</span>
+      </a>
+      <a href="apps/static/getting-started">
+        <img src="/static/platformicons/HTML5.svg" alt=""/>
+        <span>Static</span>
+      </a>
+      <a href="apps/one-click-apps/wordpress">
+        <img src="/static/platformicons/wordpress.svg" alt=""/>
+        <span>WordPress</span>
+      </a>
+    </div>
 
-    <h3>برای اولین‌بار، ارائه‌ی سرویس MongoDB</h3>
+    <h3>دیتابیس‌هایی که ارائه می‌کنیم</h3>
     <p>
-      همه‌ی ما تعریف این غول جدید تکنولوژی را شنیده‌ایم.
-      <br />
-      اگر شما هم از طرفداران دیتابیس‌های
-      NoSQL
-      هستید، در لیارا می‌توانید فقط با چند کلیک ساده دیتابیس‌های مورد نظر خود را در لحظه تهیه کنید.
-      <br />
-      دنبال MySQL هستید؟ نگران نباشید. ما از MySQL هم پشتیبانی می‌کنیم.
+      برای مطالعه‌ی راهنمای اجرای هر دیتابیس، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
-
-    <h3>سرویس ذخیره‌ی فایل ابری (Object Storage)</h3>
-    <p>
-      با توجه به حجم داده‌هایی که این روزها تولید می‌شود، ذخیره‌ی فایل‌ها و نگهداری از آن‌ها کار چندان ساده‌ای نیست.
-      <br />
-      لیارا سرویس ذخیره‌ی فایل ابری خود را با الهام از سرویس AWS S3 شرکت آمازون ارائه می‌دهد.
-      <br />
-      شما می‌توانید با نصب کردن
-      <span className="code">SDK</span>
-      های لیارا که برای NodeJS و Laravel و...
-      در دسترس هستند، فایل‌های‌تان را به راحتی در فضای ابری ما ذخیره کنید.
-    </p>
+    <div className="platforms">
+      <a href="/databases/mysql-mariadb/install">
+        <img src="/static/platformicons/mysql.svg" alt=""/>
+        <span>MySQL</span>
+      </a>
+      <a href="/databases/mysql-mariadb/install">
+        <img src="/static/platformicons/mysql.svg" alt=""/>
+        <span>MariaDB</span>
+      </a>
+      <a href="/databases/postgresql/install">
+        <img src="/static/platformicons/postgres.svg" alt=""/>
+        <span>PostgreSQL</span>
+      </a>
+      <a href="/databases/sqlserver/install">
+        <img src="/static/platformicons/mssql.svg" alt=""/>
+        <span>SQL Server</span>
+      </a>
+      <a href="/databases/mongodb/install">
+        <img src="/static/platformicons/mongodb.svg" alt=""/>
+        <span>MongoDB</span>
+      </a>
+      <a href="/databases/redis/install">
+        <img src="/static/platformicons/redis.svg" alt=""/>
+        <span>Redis</span>
+      </a>
+    </div>
   </Layout>
 )
