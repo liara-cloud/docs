@@ -22,17 +22,14 @@ export default () => (
       <b>تغییر اندازه</b> میتوانید حجم دلخواه خود را وارد کنید. در لیارا شما فقط
       امکان افزایش حجم را دارید درنتیجه باید حجم جدید بیشتر از حجم فعلی‌تان
       باشد.
-      <ZoomableImage
-        src="/static/disks/scale.png"
-        alt="صفحه‌ی افزایش حجم دیسک"
-      />
-      <Notice variant="info">
-        برای مثال همان‌طور که در تصویر بالا مشخص است فضای کل دیسک ما{" "}
-        <span className="code">40 GB</span> است که{" "}
-        <span className="code">10 GB</span> آن در حال حاضر رزرو شده است، و ما
-        می‌توانیم حجم جدید را بیشتر از <span className="code">10 GB</span> تا{" "}
-        <span className="code">40 GB</span> قرار دهیم.
-      </Notice>
     </p>
+    <ZoomableImage src="/static/disks/scale.png" alt="صفحه‌ی افزایش حجم دیسک" />
+    <Notice variant="info">
+      برای مثال همان‌طور که در تصویر بالا مشخص است فضای کل دیسک ما{" "}
+      <span className="code">40 GB</span> است که{" "}
+      <span className="code">10 GB</span> آن در حال حاضر رزرو شده است، و ما
+      می‌توانیم حجم جدید را بیشتر از <span className="code">10 GB</span> تا{" "}
+      <span className="code">40 GB</span> قرار دهیم.
+    </Notice>
   </Layout>
 );
