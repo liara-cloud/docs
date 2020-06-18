@@ -15,13 +15,13 @@ class Header extends Component {
     const { isNavOpen } = this.state;
     return (
       <header className="header">
-        <div>
+        <a href="https://liara.ir">
           <div className="header__logo">
             <img src="/static/layout/liara-logo.svg" alt="سرویس ابری لیارا" />
             <h2>سرویس ابری لیارا</h2>
           </div>
           <h2 className="header__slogan">ارائه دهنده خدمات ابری PaaS و DBaaS</h2>
-        </div>
+        </a>
         <nav className="header__nav">
           <div className="header__auth">
             <a className="header__login" href="https://console.liara.ir/login">ورود</a>
@@ -43,10 +43,10 @@ class Header extends Component {
             <div onClick={this.toggleNav} className="header__overlay"></div>
   
             <div className="header__floating-nav">
-              <div className="header__logo">
+              <a href="https://liara.ir" className="header__logo">
                 <img src="/static/layout/liara-logo.svg" alt="سرویس ابری لیارا" />
                 <h2>سرویس ابری لیارا</h2>
-              </div>
+              </a>
               <div className="header__auth">
                 <a href="https://console.liara.ir/login" className="header__login">ورود</a>
                 <a href="https://console.liara.ir/register" className="header__register">ایجاد حساب کاربری</a>

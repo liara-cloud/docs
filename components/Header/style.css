@@ -161,6 +161,16 @@
   font-size: .875rem;
   font-weight: 400;
 }
+.header__links a:hover {
+  color: #0070f3;
+}
+.header__login:hover {
+  color: #303030;
+}
+.header__register:hover {
+  color: white;
+  background-color: #3291ff;
+}
 
 #open-menu {
   display: block;
