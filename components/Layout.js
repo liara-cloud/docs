@@ -1,12 +1,8 @@
+import Head from 'next/head'
 import { Fragment } from 'react'
 
-import './style.css'
-import './fontiran.css'
-import Head from 'next/head'
-import 'highlight.js/styles/atom-one-light.css'
-
-import Header from '../Header'
-import Sidebar from '../Sidebar'
+import Header from './Header'
+import Sidebar from './Sidebar'
 
 export default ({ children }) => (
   <Fragment>

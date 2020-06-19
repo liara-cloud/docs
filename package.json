@@ -4,19 +4,17 @@
   "description": "Liara docs",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 3005",
-    "build": "next build && next export",
-    "start": "next start"
+    "dev": "next dev -p 3005",
+    "build": "next build && next export"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
-    "medium-zoom": "^1.0.2",
-    "next": "^7.0.1",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "medium-zoom": "^1.0.5",
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-gist": "^1.2.1",
     "react-highlight": "^0.12.0"
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import './style.css'
 import NavTitle from './NavTitle'
 import ActiveLink from './ActiveLink'
 
