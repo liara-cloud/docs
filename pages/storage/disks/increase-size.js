@@ -1,6 +1,5 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
-import Notice from "../../../components/Notice";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -24,12 +23,13 @@ export default () => (
       باشد.
     </p>
     <ZoomableImage src="/static/disks/scale.png" alt="صفحه‌ی افزایش حجم دیسک" />
-    <Notice variant="info">
+    <p>
+      {" "}
       برای مثال همان‌طور که در تصویر بالا مشخص است فضای کل دیسک ما{" "}
       <span className="code">40 GB</span> است که{" "}
       <span className="code">10 GB</span> آن در حال حاضر رزرو شده است، و ما
       می‌توانیم حجم جدید را بیشتر از <span className="code">10 GB</span> تا{" "}
       <span className="code">40 GB</span> قرار دهیم.
-    </Notice>
+    </p>
   </Layout>
 );
