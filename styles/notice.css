@@ -1,0 +1,30 @@
+.notice {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.8em;
+  padding: 10px;
+  background-color: #eee;
+  border-right: 2px solid #ccc;
+}
+
+.notice--info {
+  background-color: #e7f3fe;
+  border-right: 2px solid #218be5;
+}
+
+.notice--warning {
+  background-color: #fff8bc;
+  border-right: 2px solid #ffe826;
+}
+
+.notice--danger {
+  background-color: #ffc9d5;
+  border-right: 2px solid #e5212b;
+}
+
+
+@media (min-width: 1200px) {
+  .notice {
+    font-size: 14px;
+  }
+}
