@@ -257,7 +257,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/storage/disks/about">درباره دیسک</ActiveLink></li>
                   <li><ActiveLink href="/storage/disks/management">مدیریت دیسک‌ها</ActiveLink></li>
                   <li><ActiveLink href="/storage/disks/increase-size">افزایش حجم دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/storage/disks/ftp">اتصال به دیسک‌ها با FTP</ActiveLink></li>
+                  <li><ActiveLink href="/storage/disks/FTP">اتصال به دیسک‌ها با FTP</ActiveLink></li>
                   <li><ActiveLink href="/storage/disks/backup-restore">Backup / Restore</ActiveLink></li>
                 </ul>
               </li>
