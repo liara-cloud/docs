@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <h1>استقرار برنامه‌ها با استفاده از Dockerfile</h1>
-    <Notice variant="danger">
+    <Notice variant="warning">
       در حال حاضر در سرویس ابری لیارا از پلتفرم داکر پشتیبانی نمیشود.
     </Notice>
     <p>
