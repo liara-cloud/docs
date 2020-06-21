@@ -44,6 +44,6 @@ DB_PASSWORD=xxxxxxxxxxxx
     </Notice>
     <br />
 
-    <Link href="/app-deploy/laravel/migrations">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/laravel/migrations">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

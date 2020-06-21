@@ -59,6 +59,6 @@ export default () => (
       کنید.
     </p>
 
-    <Link href="/app-deploy/laravel/https">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/laravel/https">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

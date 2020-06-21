@@ -85,6 +85,6 @@ MongoClient.connect(mongoDSN, function(err, client) {
 
     <br />
 
-    <Link href="/app-deploy/nodejs/disks">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/nodejs/disks">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

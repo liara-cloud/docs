@@ -40,6 +40,6 @@ export default () => (
       لیارا در بخش <b>توضیحات و نکات تکمیلی</b> بیشتر توضیح داده‌ایم.
     </p>
 
-    <Link href="/app-deploy/laravel/liarajson">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/laravel/liarajson">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

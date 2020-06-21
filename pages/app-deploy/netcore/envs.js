@@ -59,6 +59,6 @@ else
       مستقر میشوند.
     </Notice>
     <br />
-    <Link href="/app-deploy/netcore/logs">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/netcore/logs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

@@ -39,6 +39,6 @@ export default () => (
       که شما <span className="code">--message</span> را خالی گذاشته باشید.
     </p>
 
-    <Link href="/app-deploy/netcore/dbs">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/netcore/dbs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

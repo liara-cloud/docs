@@ -42,6 +42,6 @@ export default () => (
       بخش بعدی یعنی <b>توضیحات و نکات تکمیلی</b> به آن‌ها پرداخته‌ایم.
     </p>
 
-    <Link href="/app-deploy/netcore/tips">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/netcore/tips">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

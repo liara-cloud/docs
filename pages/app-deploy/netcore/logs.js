@@ -41,6 +41,6 @@ export default () => (
       در فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
-    <Link href="/app-deploy/netcore/liarajson">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/netcore/liarajson">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

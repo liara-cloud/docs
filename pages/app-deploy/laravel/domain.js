@@ -43,6 +43,6 @@ export default () => (
       بعدی یعنی <b>توضیحات و نکات تکمیلی</b> به آن‌ها پرداخته‌ایم.
     </p>
 
-    <Link href="/app-deploy/laravel/tips">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/laravel/tips">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

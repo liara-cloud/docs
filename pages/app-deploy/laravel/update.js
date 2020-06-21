@@ -38,6 +38,6 @@ export default () => (
       روی Branch جاری شما برای توضیحات استقرار استفاده میکند.
     </p>
 
-    <Link href="/app-deploy/laravel/dbs">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/laravel/dbs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

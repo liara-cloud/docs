@@ -23,6 +23,6 @@ export default () => (
     <ZoomableImage src="/static/angular-logs.png" />
     <br />
 
-    <Link href="/app-deploy/angular/liarajson">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/angular/liarajson">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

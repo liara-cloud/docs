@@ -35,6 +35,6 @@ export default () => (
     </Notice>
     <br />
 
-    <Link href="/app-deploy/django/disks">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/django/disks">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

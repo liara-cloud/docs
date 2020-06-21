@@ -77,6 +77,6 @@ export default () => (
       داده شده است.
     </Notice>
     <br />
-    <Link href="/app-deploy/django/domain">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/django/domain">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

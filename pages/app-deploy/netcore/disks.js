@@ -82,6 +82,6 @@ export default () => (
     </Notice>
     <br />
 
-    <Link href="/app-deploy/netcore/domain">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/netcore/domain">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

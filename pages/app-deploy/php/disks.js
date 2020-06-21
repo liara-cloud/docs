@@ -80,6 +80,6 @@ export default () => (
       شده است.
     </Notice>
     <br />
-    <Link href="/app-deploy/php/domain">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/php/domain">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

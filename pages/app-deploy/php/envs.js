@@ -41,6 +41,6 @@ echo getenv('LIARA_URL');
       استفاده میشوند. به این شیوه که LIARA_URL را اضافه کردید میتوانید هر ENV
       دیگری را نیز به پروژه اضافه کنید.
     </p>
-    <Link href="/app-deploy/php/logs">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/php/logs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

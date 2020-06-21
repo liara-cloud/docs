@@ -33,6 +33,6 @@ export default () => (
       را در فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
-    <Link href="/app-deploy/nodejs/liarajson">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/nodejs/liarajson">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

@@ -22,6 +22,6 @@ export default () => (
     <ZoomableImage src="/static/vue-logs.png" />
     <br />
 
-    <Link href="/app-deploy/vue/liarajson">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/vue/liarajson">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

@@ -27,6 +27,6 @@ export default () => (
       پیاده‌سازی پروژه‌ی‌تان و تصمیمات شما میباشد. ممکن است لاگ‌های مهم‌تر را در
       فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
-    <Link href="/app-deploy/django/liarajson">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/django/liarajson">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

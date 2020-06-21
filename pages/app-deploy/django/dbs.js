@@ -62,6 +62,6 @@ mysqlclient == 1.4.6‍`}
     </Notice>
     <br />
 
-    <Link href="/app-deploy/django/migrations">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/django/migrations">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

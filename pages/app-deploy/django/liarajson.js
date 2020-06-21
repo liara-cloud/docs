@@ -40,6 +40,6 @@ export default () => (
       آن را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/django/update">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/django/update">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

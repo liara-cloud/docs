@@ -46,6 +46,6 @@ def show_envs():
       دیگری را نیز به پروژه اضافه کنید.
     </p>
 
-    <Link href="/app-deploy/flask/logs">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/flask/logs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

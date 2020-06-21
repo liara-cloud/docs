@@ -42,6 +42,6 @@ mongo = PyMongo(app, uri=os.getenv('MONGO_URI'))`}
 
     <br />
 
-    <Link href="/app-deploy/flask/disks">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/flask/disks">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

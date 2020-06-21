@@ -36,6 +36,6 @@ export default () => (
       کرده باشید. اما پلتفرم VueJS نکات و توضیحات بیشتری نیز دارد که در بخش بعدی
       یعنی <b>توضیحات و نکات تکمیلی</b> به آن‌ها پرداخته‌ایم.
     </p>
-    <Link href="/app-deploy/vue/tips">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/vue/tips">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

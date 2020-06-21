@@ -42,6 +42,6 @@ export default () => (
       برنامه‌ی‌تان باید آن را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/nodejs/update">متوجه شدم، برو بعدی!</Link>
+    <Link href="/app-deploy/nodejs/update">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
