@@ -1,6 +1,7 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
+import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
@@ -23,6 +24,12 @@ export default () => (
       ReactJS را روی بستر ابری لیارا مستقر کنید. در هر گام، شما با یک ویژگی در
       لیارا آشنا میشوید و میتوانید از آن‌ها در پروژه‌ی‌تان استفاده کنید.
     </p>
+    <Notice variant="info">
+      برنامه‌های NextJS را باید در{" "}
+      <Link href="/app-deploy/nodejs/getting-started">پلتفرم NodeJS</Link> مستقر
+      کنید.
+    </Notice>
+    <br />
 
     <Link href="/app-deploy/react/deploy">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
