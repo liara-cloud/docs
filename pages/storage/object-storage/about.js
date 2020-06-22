@@ -73,7 +73,7 @@ export default () => (
     </p>
     <p>
       همچنین هر آبجکت یا همان فایل در Object Storage ها دارای یک کلید منحصر به
-      فرد میباشد. مثلا میتواند کلیدی مثل <span className="code">12345.png</span>{" "}
+      فرد است. مثلا میتواند کلیدی مثل <span className="code">12345.png</span>{" "}
       یا <span className="code">pic/user.png</span> داشته باشد.
     </p>
   </Layout>

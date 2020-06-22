@@ -17,7 +17,7 @@ export default () => (
       <a href="https://en.wikipedia.org/wiki/Version_control" target="_blank">
         VCS
       </a>{" "}
-      یا سیستم مدیریت نسخه است. Gitea پروژه‌ای منبع‌باز میباشد که امکانات خیلی
+      یا سیستم مدیریت نسخه است. Gitea پروژه‌ای منبع‌باز است که امکانات خیلی
       خوبی مشابه GitHub و GitLab به شما میدهد. برای کسب اطلاعات بیشتر میتوانید
       به وبسایت{" "}
       <a href="https://gitea.io/en-us/" target="_blank">

@@ -26,7 +26,7 @@ export default () => (
       سپس کافیست فایل پشتیبان موردنظرتان از لحاظ زمانی را دانلود کرده و از آن
       استفاده نمایید. اگر دوست دارید بیشتر بدانید که لیارا چطور بک‌آپ میگیرد، در
       حقیقت این فایل ها از خروجی دستوری شبیه دستور زیر ایجاد می‌شوند. محتویات
-      فایل‌های Backup شامل تمام اطلاعات دیتابیس MongoDB‌ تان میباشد.
+      فایل‌های Backup شامل تمام اطلاعات دیتابیس MongoDB‌ تان است.
     </p>
     <code>
       {`$ mongodump -u DB_USERNAME -p DB_PASSWORD --host DB_HOST --port DB_PORT --authenticationDatabase admin --archive=/tmp/mongobackup.dump --quiet`}

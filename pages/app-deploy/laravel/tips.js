@@ -16,9 +16,9 @@ export default () => (
     <p>
       Laravel برای دیپلوی در محیط‌های production با اجرای چند دستور ساده میتواند
       عملکرد بهتری داشته باشد. دستور اول
-      <span className="code">php artisan config:cache</span> میباشد که وظیفه کش
+      <span className="code">php artisan config:cache</span> است که وظیفه کش
       کردن کانفیگ‌فایل‌ها را به عهده دارد و دستور دوم{" "}
-      <span className="code">php artisan route:cache</span> میباشد که وظیفه کش
+      <span className="code">php artisan route:cache</span> است که وظیفه کش
       کردن فایل‌های route را به عهده دارد. برای این که این دستورات به صورت
       خودکار توسط لیارا در هر استقرار اجرا شود کافیست که در فایل{" "}
       <span className="code">liara.json</span> این فیلد‌ها را اضافه کنیم:

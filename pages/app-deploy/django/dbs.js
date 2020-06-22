@@ -53,7 +53,7 @@ export default () => (
       توجه داشته باشید برای اتصال به هر دیتابیس باید درایور‌های آن را نصب کرده
       باشید. مثلا برای MySQL و PostgreSQL نیاز است تا مقادیر زیر در فایل
       requirements.txt شما وجود داشته باشد. این یک فایل نمونه برای Django
-      میباشد:
+      است:
       <Highlight className="config">
         {`Django == 3.0.7
 psycopg2 == 2.8.5
