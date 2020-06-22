@@ -22,7 +22,7 @@ export default () => (
       src="/static/databases/mysql-liara-backup.png"
       alt="mysql backup page"
     />
-    <p>
+    {/* <p>
       سپس کافیست فایل پشتیبان موردنظرتان از لحاظ زمانی را دانلود کرده و از آن
       استفاده نمایید. محتویات این فایل‌ها شامل تمام اطلاعات دیتابیس Redis تان
       میباشد. اگر دوست دارید بیشتر بدانید که لیارا چطور بک‌آپ میگیرد، در حقیقت
@@ -30,6 +30,6 @@ export default () => (
     </p>
     <code>
       {`$ redi-cli: BGSAVE`}
-    </code>
+    </code> */}
   </Layout>
 );

@@ -22,7 +22,7 @@ export default () => (
       src="/static/databases/mysql-liara-backup.png"
       alt="mysql backup page"
     />
-    <p>
+    {/* <p>
       سپس کافیست فایل پشتیبان موردنظرتان از لحاظ زمانی را دانلود کرده و از آن
       استفاده نمایید. محتویات این فایل‌ها شامل تمام اطلاعات دیتابیس PostgreSQL
       تان میباشد. اگر دوست دارید بیشتر بدانید که لیارا چطور بک‌آپ میگیرد، در
@@ -34,6 +34,6 @@ export default () => (
     </p>
     <code>
       {`$ pg_dump -h DB_HOST -p DB_PORT -U DB_USERNAME --create --clean -F c liaraDB > liaraDB.dump`}
-    </code>
+    </code> */}
   </Layout>
 );

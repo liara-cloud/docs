@@ -22,7 +22,7 @@ export default () => (
       src="/static/databases/mysql-liara-backup.png"
       alt="mysql backup page"
     />
-    <p>
+    {/* <p>
       سپس کافیست فایل پشتیبان موردنظرتان از لحاظ زمانی را دانلود کرده و از آن
       استفاده نمایید. محتویات این فایل‌ها شامل تمام اطلاعات دیتابیس MySQL تان
       میباشد. اگر دوست دارید بیشتر بدانید که لیارا چطور بک‌آپ میگیرد، در حقیقت
@@ -34,6 +34,6 @@ export default () => (
     </p>
     <code>
       {`$ mysqldump -u DB_USERNAME -pDB_PASSWORD --host DB_HOST --port DB_PORT --single-transaction --quick --add-drop-database --lock-tables=false --databases liaraDB > liaraDB.sql`}
-    </code>
+    </code> */}
   </Layout>
 );
