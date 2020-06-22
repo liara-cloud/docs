@@ -20,7 +20,7 @@ export default () => (
       میتوانید از فایل‌ <span className="code">liara.json</span> استفاده کنید.
     </p>
     <p>
-      کافیست وارد ریشه پروژه‌ی‌تان شده و یک فایل به نام{" "}
+      کافیست وارد ریشه برنامه‌ی‌تان شده و یک فایل به نام{" "}
       <span className="code">liara.json</span> با این محتوا ایجاد کنید:
     </p>
     <Highlight className="json">

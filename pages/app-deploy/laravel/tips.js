@@ -298,7 +298,7 @@ stdout_logfile=/tmp/sms-queue.log`}
     </Notice>
     <Notice variant="info">
       برنامه‌های Laravel ای در لیارا به صورت پیشفرض با درایور{" "}
-      <span className="code">errorlog</span> مستقر میشوند.
+      <span className="code">errorlog</span> مستقر می‌شوند.
     </Notice>
     <Notice variant="info">
       در پروژه تستی آموزش راه‌اندازی Laravel در لیارا، از درایور stack برای لاگ

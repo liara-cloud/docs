@@ -26,7 +26,7 @@ export default () => (
     </p>
     <p>
       <b>گام اول)</b> ابتدا نیاز دارید که فایلی تحت عنوان{" "}
-      <span className="code">.gitlab-ci.yml</span> در ریشه پروژه‌ی‌تان تعریف
+      <span className="code">.gitlab-ci.yml</span> در ریشه برنامه‌ی‌تان تعریف
       کنید. در پایین یک فایل نمونه میبینید:
     </p>
     <Highlight className="yaml">
