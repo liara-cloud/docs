@@ -45,13 +45,16 @@ export default () => (
       نمایید:
     </p>
     <pre>
+      <code>{`$ liara deploy`}</code>
+    </pre>
+    <p>
+      liara cli به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
+      یک برنامه‌ی ReactJS اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
+      مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
+    </p>
+    <pre>
       <code>{`$ liara deploy --platform=react`}</code>
     </pre>
-    <Notice variant="info">
-      میتوانید <span className="code">--platform=react</span> را در دستور وارد
-      نکنید، زیرا لیارا به صورت خودکار تشخیص میدهد که برنامه شما از چه پلتفرمی
-      استفاده میکند.
-    </Notice>
     <Notice variant="info">
       لیارا به صورت خودکار پکیج‌هایی که در فایل
       <span className="code">package.json</span>
@@ -74,7 +77,7 @@ export default () => (
       شوید که برنامه‌ی‌تان به صورت صحیح به بستر لیارا منتقل شده است یا خیر. این
       آدرس بر اساس شناسه برنامه‌ی شما میباشد، برای نمونه:
     </p>
-    
+
     <p dir="ltr">
       <a href="https://react-starter.liara.run/" target="_blank">
         https://react-starter.liara.run

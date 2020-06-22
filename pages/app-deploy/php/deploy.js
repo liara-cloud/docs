@@ -47,14 +47,17 @@ export default () => (
       را شروع میکند.
     </p>
     <pre>
+      <code>{`$ liara deploy`}</code>
+    </pre>
+    <p>
+      توجه داشته باشید که لازم است در ریشه‌ی برنامه‌ی‌تان حداقل یک فایل با نام
+      <span className="code">index.php</span>
+      داشته باشید. در غیر این صورت لیارا نمی‌تواند پلتفرم برنامه‌ی‌تان را تشخیص
+      دهد و لازم خواهد بود با استفاده از دستور زیر پلتفرم‌تان را مشخص کنید.
+    </p>
+    <pre>
       <code>{`$ liara deploy --platform=php`}</code>
     </pre>
-    <Notice variant="info">
-      میتوانید <span className="code">--platform=php</span> را در دستور وارد
-      نکنید، زیرا لیارا به صورت خودکار تشخیص میدهد که برنامه شما از چه پلتفرمی
-      استفاده میکند. (البته به این شرط که در ریشه پروژه‌ی‌تان یک فایل با اسم{" "}
-      <span className="code">index.php</span> داشته باشید.)
-    </Notice>
     <Notice variant="info">
       لیارا به صورت خودکار پکیج‌هایی که در فایل
       <span className="code">composer.json</span>
@@ -71,7 +74,7 @@ export default () => (
       شوید که برنامه‌ی‌تان به صورت صحیح به بستر لیارا منتقل شده است یا خیر. این
       آدرس بر اساس شناسه برنامه‌ی شما میباشد، برای نمونه:
     </p>
-    
+
     <p dir="ltr">
       <a href="https://php-starter.liara.run/" target="_blank">
         https://php-starter.liara.run

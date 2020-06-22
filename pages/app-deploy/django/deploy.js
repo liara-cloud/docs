@@ -47,13 +47,16 @@ export default () => (
       را شروع میکند.
     </p>
     <pre>
+      <code>{`$ liara deploy`}</code>
+    </pre>
+    <p>
+      liara cli به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
+      یک برنامه‌ی Django اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
+      مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
+    </p>
+    <pre>
       <code>{`$ liara deploy --platform=django`}</code>
     </pre>
-    <Notice variant="info">
-      میتوانید <span className="code">--platform=django</span> را در دستور وارد
-      نکنید، زیرا لیارا به صورت خودکار تشخیص میدهد که برنامه شما از چه پلتفرمی
-      استفاده میکند.
-    </Notice>
     <Notice variant="info">
       لیارا به صورت خودکار پکیج‌هایی که در فایل‌های
       <span className="code">requirements.txt</span>
