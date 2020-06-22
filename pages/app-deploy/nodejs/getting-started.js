@@ -1,7 +1,7 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
-import ZoomableImage from "../../../components/ZoomableImage";
 import Link from "next/link";
+import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
@@ -25,13 +25,20 @@ export default () => (
       لیارا آشنا میشوید و میتوانید از آن‌ها در پروژه‌ی‌تان استفاده کنید.
     </p>
     {/* <Notice variant="info"> */}
-    <p>در حال حاضر، این نسخه‌ها از NodeJS در سرویس ابری لیارا پشتیبانی میشود:</p>
+    <p>
+      در حال حاضر، این نسخه‌ها از NodeJS در سرویس ابری لیارا پشتیبانی میشود:
+    </p>
     <ul dir="ltr">
       <li>8</li>
       <li>10</li>
       <li>11</li>
       <li>12</li>
     </ul>
+    <Notice variant="info">
+      برنامه‌های NextJS و NuxtJS را هم می‌توانید بدون تنظیمات خاصی در بخش
+      برنامه‌های NodeJS مستقر کنید.
+    </Notice>
+    <br />
     {/* <p>
       در این بخش به شما کمک میکنیم که در سریع‌ترین زمان ممکن برنامه NodeJS ای‌
       که نوشتید را روی بستر ابری لیارا مستقر کنید. برای راحتی شما با یک مثال
