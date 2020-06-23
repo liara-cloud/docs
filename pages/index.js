@@ -21,47 +21,47 @@ export default () => (
     </p>
 
     <div className="platforms">
-      <a href="apps/nodejs/getting-started">
+      <a href="app-deploy/nodejs/getting-started">
         <img src="/static/platformicons/nodejs.svg" alt=""/>
         <span>NodeJS</span>
       </a>
-      <a href="apps/laravel/getting-started">
+      <a href="app-deploy/laravel/getting-started">
         <img src="/static/platformicons/laravel.svg" alt=""/>
         <span>Laravel</span>
       </a>
-      <a href="apps/php/getting-started">
+      <a href="app-deploy/php/getting-started">
         <img src="/static/platformicons/php.svg" alt=""/>
         <span>PHP</span>
       </a>
-      <a href="apps/django/getting-started">
+      <a href="app-deploy/django/getting-started">
         <img src="/static/platformicons/django.svg" alt=""/>
         <span>Django</span>
       </a>
-      <a href="apps/flask/getting-started">
+      <a href="app-deploy/flask/getting-started">
         <img src="/static/platformicons/flask.svg" alt=""/>
         <span>Flask</span>
       </a>
-      <a href="apps/netcore/getting-started">
+      <a href="app-deploy/netcore/getting-started">
         <img src="/static/platformicons/netcore.svg" alt=""/>
         <span>.NetCore</span>
       </a>
-      <a href="apps/react/getting-started">
+      <a href="app-deploy/react/getting-started">
         <img src="/static/platformicons/react.svg" alt=""/>
         <span>React</span>
       </a>
-      <a href="apps/angular/getting-started">
+      <a href="app-deploy/angular/getting-started">
         <img src="/static/platformicons/angularjs.svg" alt=""/>
         <span>Angular</span>
       </a>
-      <a href="apps/vue/getting-started">
+      <a href="app-deploy/vue/getting-started">
         <img src="/static/platformicons/vue.svg" alt=""/>
         <span>Vue</span>
       </a>
-      <a href="apps/static/getting-started">
+      <a href="app-deploy/static/getting-started">
         <img src="/static/platformicons/HTML5.svg" alt=""/>
         <span>Static</span>
       </a>
-      <a href="apps/one-click-apps/wordpress">
+      <a href="app-deploy/one-click-apps/wordpress">
         <img src="/static/platformicons/wordpress.svg" alt=""/>
         <span>WordPress</span>
       </a>
