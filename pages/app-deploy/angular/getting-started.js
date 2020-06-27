@@ -23,6 +23,11 @@ export default () => (
       لیارا آشنا میشوید و میتوانید از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
 
+    <p>
+      شما میتوانید برنامه‌هایی که با <span className="code">angular cli</span>
+      ساخته‌شده‌اند را روی لیارا مستقر کنید.
+    </p>
+
     <Link href="/app-deploy/angular/deploy">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

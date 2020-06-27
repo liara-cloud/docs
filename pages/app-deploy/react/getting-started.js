@@ -24,6 +24,11 @@ export default () => (
       ReactJS را روی بستر ابری لیارا مستقر کنید. در هر گام، شما با یک ویژگی در
       لیارا آشنا میشوید و میتوانید از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
+    <p>
+      شما میتوانید برنامه‌هایی که با{" "}
+      <span className="code">create-react-app</span>
+      ساخته‌شده‌اند را روی لیارا مستقر کنید.
+    </p>
     <Notice variant="info">
       برنامه‌های NextJS را باید در{" "}
       <Link href="/app-deploy/nodejs/getting-started">پلتفرم NodeJS</Link> مستقر
