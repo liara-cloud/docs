@@ -12,8 +12,8 @@ function handleClick(e) {
   e.target.classList.toggle('nav__title--active');
 }
 
-function NavTitle({ router, href, children }) {
-  const isActive = router.pathname.toLowerCase().startsWith(href.toLowerCase())
+function NavTitle({ router, href, children, active }) {
+  const isActive = active || router.pathname.toLowerCase().startsWith(href.toLowerCase())
   return (
     <span onClick={handleClick} className={`nav__title ${isActive ? 'nav__title--active' : ''}`}>{children}</span>
   )

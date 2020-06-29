@@ -8,6 +8,10 @@ export default class Sidebar extends Component {
     isNavOpen: false,
   };
 
+  componentDidMount() {
+    this.setState({ defaultActive: document.querySelectorAll('.nav__title--active').length === 0 });
+  }
+
   toggleNav = () => {
     this.setState(prevState => ({ isNavOpen: !prevState.isNavOpen }));
   };
@@ -27,7 +31,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <NavTitle href="/app-deploy">برنامه‌ها</NavTitle>
+            <NavTitle active={this.state.defaultActive} href="/app-deploy">برنامه‌ها</NavTitle>
             <ul className="nav__list">
               <li><NavTitle href="/app-deploy/nodejs">NodeJS</NavTitle>
                 <ul className="nav__list">
