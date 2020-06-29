@@ -33,6 +33,17 @@ export default () => (
       بپردازید.
     </p>
 
+    <p>
+      همچنین میتوانید در{" "}
+      <a
+        href="https://github.com/liara-cloud/flask-getting-started"
+        target="_blank"
+      >
+        این آدرس،
+      </a>{" "}
+      نمونه کد‌های یک برنامه Flask قابل استقرار را مشاهده کنید.
+    </p>
+
     {/* <Link href="/app-deploy/flask/tips">متوجه شدم، برو گام بعدی!</Link> */}
   </Layout>
 );

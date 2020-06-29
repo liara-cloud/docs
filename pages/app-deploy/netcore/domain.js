@@ -42,6 +42,17 @@ export default () => (
       بخش بعدی یعنی <b>توضیحات و نکات تکمیلی</b> به آن‌ها پرداخته‌ایم.
     </p>
 
+    <p>
+      همچنین میتوانید در{" "}
+      <a
+        href="https://github.com/liara-cloud/dotnetcore-starter"
+        target="_blank"
+      >
+        این آدرس،
+      </a>{" "}
+      نمونه کد‌های یک برنامه ASP.Net Core قابل استقرار را مشاهده کنید.
+    </p>
+
     <Link href="/app-deploy/netcore/tips">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
