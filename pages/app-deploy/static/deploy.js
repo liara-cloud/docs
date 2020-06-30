@@ -66,9 +66,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://static-starter.liara.run/" target="_blank">
-        https://static-starter.liara.run
-      </a>
+      https://static-starter.liara.run
     </p>
 
     <Link href="/app-deploy/static/logs">متوجه شدم، برو گام بعدی!</Link>

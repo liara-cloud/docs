@@ -77,9 +77,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
     <p dir="ltr">
-      <a href="https://angular-starter.liara.run/" target="_blank">
-        https://angular-starter.liara.run
-      </a>
+      https://angular-starter.liara.run
     </p>
 
     <Link href="/app-deploy/angular/logs">متوجه شدم، برو گام بعدی!</Link>

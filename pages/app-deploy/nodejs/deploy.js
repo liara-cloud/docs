@@ -123,9 +123,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://nodejs-starter.liara.run/" target="_blank">
-        https://nodejs-starter.liara.run
-      </a>
+      https://nodejs-starter.liara.run
     </p>
 
     <Link href="/app-deploy/nodejs/envs">متوجه شدم، برو گام بعدی!</Link>

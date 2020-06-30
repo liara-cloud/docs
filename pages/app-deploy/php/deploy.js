@@ -76,9 +76,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://php-starter.liara.run/" target="_blank">
-        https://php-starter.liara.run
-      </a>
+      https://php-starter.liara.run
     </p>
 
     <Link href="/app-deploy/php/envs">متوجه شدم، برو گام بعدی!</Link>

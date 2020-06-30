@@ -76,9 +76,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://flask-starter.liara.run/" target="_blank">
-        https://flask-starter.liara.run
-      </a>
+      https://flask-starter.liara.run
     </p>
 
     <Link href="/app-deploy/flask/envs">متوجه شدم، برو گام بعدی!</Link>

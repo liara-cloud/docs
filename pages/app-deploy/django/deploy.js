@@ -75,9 +75,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://django-starter.liara.run/" target="_blank">
-        https://django-starter.liara.run
-      </a>
+      https://django-starter.liara.run
     </p>
 
     <Link href="/app-deploy/django/envs">متوجه شدم، برو گام بعدی!</Link>

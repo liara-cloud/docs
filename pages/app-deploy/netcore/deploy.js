@@ -78,9 +78,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://dotnet-starter.liara.run/" target="_blank">
-        https://dotnet-starter.liara.run
-      </a>
+      https://dotnet-starter.liara.run
     </p>
 
     <Link href="/app-deploy/netcore/envs">متوجه شدم، برو گام بعدی!</Link>

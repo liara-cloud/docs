@@ -78,9 +78,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://laravel-starter.liara.run/" target="_blank">
-        https://laravel-starter.liara.run
-      </a>
+      https://laravel-starter.liara.run
     </p>
 
     <Link href="/app-deploy/laravel/envs">متوجه شدم، برو گام بعدی!</Link>

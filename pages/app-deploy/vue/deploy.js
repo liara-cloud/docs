@@ -79,9 +79,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://vue-starter.liara.run/" target="_blank">
-        https://vue-starter.liara.run
-      </a>
+      https://vue-starter.liara.run
     </p>
 
     <Link href="/app-deploy/vue/logs">متوجه شدم، برو گام بعدی!</Link>

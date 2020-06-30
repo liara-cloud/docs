@@ -79,9 +79,7 @@ export default () => (
     </p>
 
     <p dir="ltr">
-      <a href="https://react-starter.liara.run/" target="_blank">
-        https://react-starter.liara.run
-      </a>
+      https://react-starter.liara.run
     </p>
 
     <Link href="/app-deploy/react/logs">متوجه شدم، برو گام بعدی!</Link>
