@@ -77,7 +77,7 @@ export default () => (
         <span>MySQL</span>
       </a>
       <a href="/databases/mysql-mariadb/install">
-        <img src="/static/platformicons/mysql.svg" alt=""/>
+        <img src="/static/platformicons/mariadb.svg" alt=""/>
         <span>MariaDB</span>
       </a>
       <a href="/databases/postgresql/install">
