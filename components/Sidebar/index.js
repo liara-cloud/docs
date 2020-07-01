@@ -37,13 +37,13 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/app-deploy/nodejs/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/nodejs/envs">پیکربندی ENV ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/nodejs/envs">تنظیم متغیرها (env)</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/update">به‌روزرسانی برنامه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/nodejs/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/nodejs/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -51,7 +51,7 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/app-deploy/laravel/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/laravel/envs">پیکربندی ENV ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/laravel/envs">تنظیم متغیرها (env)</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/https">پیکربندی HTTPS</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/liarajson">استفاده از فایل liara.json</ActiveLink></li>
@@ -59,7 +59,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/laravel/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/migrations">اجرای migration ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/laravel/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/laravel/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -67,13 +67,13 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/app-deploy/php/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/php/envs">پیکربندی ENV ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/php/envs">تنظیم متغیرها (env)</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/update">به‌روزرسانی برنامه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/php/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/php/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -81,14 +81,14 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/app-deploy/django/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/django/envs">پیکربندی ENV ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/django/envs">تنظیم متغیرها (env)</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/update">به‌روزرسانی برنامه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/migrations">اجرای migration ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/django/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/django/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -96,13 +96,13 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/app-deploy/flask/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/flask/envs">پیکربندی ENV ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/flask/envs">تنظیم متغیرها (env)</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/update">به‌روزرسانی برنامه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/flask/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/flask/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -110,13 +110,13 @@ export default class Sidebar extends Component {
                 <ul className="nav__list">
                   <li><ActiveLink href="/app-deploy/netcore/getting-started">شروع به کار</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/deploy">استقرار اولین برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/netcore/envs">پیکربندی ENV ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/netcore/envs">تنظیم متغیرها (env)</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/update">به‌روزرسانی برنامه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/disks">استفاده از دیسک‌ها</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/netcore/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/netcore/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -127,7 +127,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/react/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/react/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/react/update">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/react/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/react/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/react/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -138,7 +138,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/angular/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/angular/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/angular/update">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/angular/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/angular/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/angular/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -149,7 +149,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/vue/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/vue/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/vue/update">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/vue/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/vue/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/vue/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -160,7 +160,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/static/logs">مشاهده لاگ‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/static/liarajson">استفاده از فایل liara.json</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/static/update">به‌روزرسانی برنامه</ActiveLink></li>
-                  <li><ActiveLink href="/app-deploy/static/domain">وصل کردن دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/static/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/static/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -171,7 +171,7 @@ export default class Sidebar extends Component {
             <NavTitle href="/app-features">امکانات برنامه</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/app-features/logs">لاگ‌ها</ActiveLink></li>
-              <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (ENV ها)</ActiveLink></li>
+              <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (env ها)</ActiveLink></li>
               <li><ActiveLink href="/app-features/console">خط فرمان</ActiveLink></li>
               <li><ActiveLink href="/app-features/fixed-ip">آی‌پی ثابت</ActiveLink></li>
               <li><ActiveLink href="/app-features/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>

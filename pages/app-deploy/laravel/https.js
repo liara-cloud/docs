@@ -15,7 +15,7 @@ export default () => (
     <h3>پیکربندی https</h3>
     <p>
       برای آن که مطمئن شوید لاراول از https برای نمایش تصاویر و سایر asset ها
-      استفاده میکند، میتوانید تکه کد زیر را به فایل{" "}
+      استفاده می‌کند، می‌توانید تکه کد زیر را به فایل{" "}
       <span className="code">app/Providers/AppServiceProvider.php</span> داخل
       متد <span className="code">boot()</span> اضافه کنید:
     </p>

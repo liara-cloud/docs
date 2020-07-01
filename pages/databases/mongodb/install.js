@@ -36,7 +36,7 @@ export default () => (
     </p>
 
     <Notice variant="info">
-      اگر قصد دارید بعضی از خواص MongoDB که فقط در حالت ReplicaSet فعال میشود
+      اگر قصد دارید بعضی از خواص MongoDB که فقط در حالت ReplicaSet فعال می‌شود
       (مثل{" "}
       <a
         target="_blank"

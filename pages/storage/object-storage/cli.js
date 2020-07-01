@@ -11,8 +11,8 @@ export default () => (
     <span className="pageDescription">(Object Storage)</span>
     <h3>درباره MinIO CLI</h3>
     <p>
-      از آنجایی که در لیارا از MinIO برای زیرساخت Object Storage استفاده میشود،
-      برای کار با آن میتوانید از ابزار کاربردی MinIO CLI نیز استفاده کنید.
+      از آنجایی که در لیارا از MinIO برای زیرساخت Object Storage استفاده می‌شود،
+      برای کار با آن می‌توانید از ابزار کاربردی MinIO CLI نیز استفاده کنید.
     </p>
     <h3>نصب MinIO CLI</h3>
     <p>
@@ -24,7 +24,7 @@ export default () => (
       >
         مستندات MinIO CLI
       </a>{" "}
-      میتوانید این ابزار را در لینوکس، ویندوز و مک و همچنین به صورت Docker ای
+      می‌توانید این ابزار را در لینوکس، ویندوز و مک و همچنین به صورت Docker ای
       نصب کنید.
     </p>
     <h3>راه‌اندازی MinIO CLI</h3>
@@ -33,11 +33,11 @@ export default () => (
       <code>$ mc config host add liara API_ENDPOINT ACCESS_KEY SECRET_KEY</code>
     </pre>
     <Notice variant="info">
-      در دستور بالا یک کانکشن به اسم liara درست کردیم. شما میتوانید به جای liara
+      در دستور بالا یک کانکشن به اسم liara درست کردیم. شما می‌توانید به جای liara
       هر اسم دلخواه دیگری نیز وارد کنید.
     </Notice>
     <Notice variant="info">
-      مقدار API_ENDPOINT را که از پنل کپی میکنید حتما به ابتدای آن{" "}
+      مقدار API_ENDPOINT را که از پنل کپی می‌کنید حتما به ابتدای آن{" "}
       <span className="code">https://</span> نیز اضافه کنید.
     </Notice>
     <h3>لیست کردن باکت‌ها</h3>

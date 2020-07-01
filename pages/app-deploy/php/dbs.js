@@ -23,7 +23,7 @@ export default () => (
           Medoo
         </a>{" "}
         برای اتصال به دیتابیس و اجرای کوئری‌ها استفاده کرده‌اید، بدین صورت ENV
-        های لازم را اضافه میکنید:
+        های لازم را اضافه می‌کنید:
       </p>
       <Highlight className="config">
         {`DB_CONNECTION=mysql

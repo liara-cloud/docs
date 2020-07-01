@@ -17,7 +17,7 @@ export default () => (
     </p>
     <p>
       این دستور از شما نام کاربری و رمزعبوری که با آن در لیارا ثبت نام کرده‌اید
-      را میپرسد.
+      را می‌پرسد.
     </p>
 
     <h3>نسخه cli</h3>
@@ -43,7 +43,7 @@ export default () => (
       </p>
       {/* <li>&nbsp;&nbsp;-d, --debug</li>
       <p dir="rtl" className="commandDescription">
-        (2) فعال کردن نمایش لاگ‌های داخلی liara cli
+        (2) فعال کردن نمایش لاگ‌های داخلی Liara CLI
       </p> */}
       <li>&nbsp;&nbsp;-h, --help</li>
       <p dir="rtl" className="commandDescription">
@@ -67,7 +67,7 @@ export default () => (
       </p>
       <li>&nbsp;&nbsp;--path</li>
       <p dir="rtl" className="commandDescription">
-        (6) آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید
+        (6) آدرس ریشه برنامه‌ای که قصد استقرار آن را دارید
       </p>
       <li>&nbsp;&nbsp;--platform</li>
       <p dir="rtl" className="commandDescription">
@@ -76,11 +76,11 @@ export default () => (
       </p>
       <li>&nbsp;&nbsp;--port=port</li>
       <p dir="rtl" className="commandDescription">
-        (8) مشخص کردن port ای که برنامه شما به آن گوش میدهد.
+        (8) مشخص کردن port ای که برنامه شما به آن گوش می‌دهد.
       </p>
     </ol>
 
-    <h3>دیدن لاگ‌های پروژه‌ها</h3>
+    <h3>دیدن لاگ‌های برنامه‌ها</h3>
     <p>
       <code>$ liara logs</code>
     </p>
@@ -93,7 +93,7 @@ export default () => (
       </p>
       {/* <li>&nbsp;&nbsp;-d, --debug</li>
       <p dir="rtl" className="commandDescription">
-        (2) فعال کردن نمایش لاگ‌های داخلی liara cli
+        (2) فعال کردن نمایش لاگ‌های داخلی Liara CLI
       </p> */}
       <li>&nbsp;&nbsp;-h, --help</li>
       <p dir="rtl" className="commandDescription">
@@ -113,33 +113,33 @@ export default () => (
       </p>
     </ol>
 
-    <h3>روشن کردن پروژه</h3>
+    <h3>روشن کردن برنامه</h3>
     <p>
       <code>$ liara start</code>
     </p>
 
     <p dir="rtl">
-      کافیست شناسه پروژه خود را به این دستور پاس دهید مثلا: liara start
+      کافیست شناسه برنامه خود را به این دستور پاس دهید مثلا: liara start
       ProjectName
     </p>
 
-    <h3>خاموش کردن پروژه</h3>
+    <h3>خاموش کردن برنامه</h3>
     <p>
       <code>$ liara stop</code>
     </p>
 
     <p dir="rtl">
-      کافیست شناسه پروژه خود را به این دستور پاس دهید مثلا: liara stop
+      کافیست شناسه برنامه خود را به این دستور پاس دهید مثلا: liara stop
       ProjectName
     </p>
 
-    <h3>ریستارت کردن پروژه</h3>
+    <h3>ریستارت کردن برنامه</h3>
     <p>
       <code>$ liara restart</code>
     </p>
 
     <p dir="rtl">
-      کافیست شناسه پروژه خود را به این دستور پاس دهید مثلا: liara restart
+      کافیست شناسه برنامه خود را به این دستور پاس دهید مثلا: liara restart
       ProjectName
     </p>
 
