@@ -61,7 +61,7 @@ export default () => (
         <img src="/static/platformicons/HTML5.svg" alt=""/>
         <span>Static</span>
       </a>
-      <a href="app-deploy/one-click-apps/wordpress">
+      <a href="/one-click-apps/wordpress">
         <img src="/static/platformicons/wordpress.svg" alt=""/>
         <span>WordPress</span>
       </a>

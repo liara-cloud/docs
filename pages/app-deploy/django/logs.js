@@ -20,7 +20,7 @@ export default () => (
       کنید:
     </p>{" "}
     <Highlight className="php">{`logger.info('Everything is OK!')`}</Highlight>{" "}
-    <p>سپس با رفرش کردن سایت میتوانیم آن‌ها را در منوی لاگ‌های لیارا ببینیم:</p>
+    <p>سپس با رفرش کردن سایت می‌توانیم آن‌ها را در منوی لاگ‌های لیارا ببینیم:</p>
     <ZoomableImage src="/static/django-logs.png" />
     <p>
       مدیریت Log ها در Django می‌تواند روش‌های مختلفی داشته باشد و وابسته به
