@@ -2,7 +2,6 @@ import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
-import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
@@ -20,6 +19,46 @@ export default () => (
       متصل شوید.
     </p>
     <ul>
+      <li>
+        <b>SQLite</b>
+      </li>
+      <p>
+        برای استفاده از SQLite باید در نظر داشته باشید که فایل‌سیستم در لیارا
+        داده‌ها را موقتی نگه‌داری می‌کند و داده‌های پایدار را باید داخل دیسک ذخیره کنید.
+        برای این کار، یک پوشه‌ی اختصاصی برای دیتابیس‌تان بسازید و فایل دیتابیس را داخل آن قرار بدهید
+        و سپس آن پوشه را به عنوان دیسک تعریف کرده و دیپلوی کنید.
+        {' '}
+        <Link href="/storage/disks/about"><a>اطلاعات بیشتر درباره‌ی دیسک‌ها</a></Link>
+      </p>
+      <li>
+        <b>PostgreSQL</b>
+      </li>
+      <p>
+        {" "}
+        برای اتصال به دیتابیس PostgreSQL کافیست اطلاعات اتصال به آن را در بخش
+        متغیرهای محیطی یا همان ENVs وارد کنید:
+      </p>
+      <Highlight className="config">
+        {`DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME`}
+      </Highlight>
+      <p>
+        و حالا با اضافه‌شدن این متغیر، می‌توانید آن را از داخل کدهای‌تان فراخوانی کرده و با آن به دیتابیس متصل شوید.
+      </p>
+      <li>
+        <b>MySQL</b>
+      </li>
+      <p>
+        {" "}
+        برای اتصال به دیتابیس MySQL کافیست اطلاعات اتصال به آن را در بخش
+        متغیرهای محیطی یا همان ENVs وارد کنید:
+      </p>
+
+      <Highlight className="config">
+        {`DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME`}
+      </Highlight>
+      <p>
+        و حالا با اضافه‌شدن این متغیر، می‌توانید آن را از داخل کدهای‌تان فراخوانی کرده و با آن به دیتابیس متصل شوید.
+      </p>
       <li>
         <b>MongoDB</b>
       </li>

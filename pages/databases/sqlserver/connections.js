@@ -2,6 +2,7 @@ import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
 import Head from "next/head";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -72,7 +73,7 @@ export default () => (
       قابلیت <b>Secure SSH Tunnel</b> نیز استفاده کرد. برای راه اندازی این
       قابلیت کافی‌ست مستندات{" "}
       <b>
-        <a href="">اتصال امن به دیتابیس‌ها</a>
+        <Link href="/databases/tunnel"><a>اتصال امن به دیتابیس‌ها</a></Link>
       </b>{" "}
       را مطالعه کنید.
     </Notice>

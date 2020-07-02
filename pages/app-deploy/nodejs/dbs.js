@@ -15,7 +15,7 @@ export default () => (
     <h3>اتصال به دیتابیس‌ها</h3>
     <ul>
       <li>
-        <b>دیتابیس MySQL:</b>
+        <b>MySQL</b>
       </li>
       <p>
         {" "}
@@ -56,7 +56,7 @@ connection.query('SELECT 1 + 1 AS plus', function (error, results, fields) {
 connection.end();`}{" "}
       </Highlight>
       <li>
-        <b>دیتابیس MongoDB:</b>
+        <b>MongoDB</b>
       </li>
       <p>
         {" "}

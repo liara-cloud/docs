@@ -2,6 +2,7 @@ import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Notice from "../../../components/Notice";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -19,10 +20,10 @@ export default () => (
     </p>
     <ul>
       <li>
-        <b>استفاده از phpmyAdmin</b>
+        <b>استفاده از PHPMyAdmin</b>
       </li>
       <p>
-        لیارا برای دیتابیس MySQL / MariaDB امکان راه‌اندازی phpmyAdmin را به
+        لیارا برای دیتابیس MySQL / MariaDB امکان راه‌اندازی PHPMyAdmin را به
         راحتی فراهم کرده است. برای این کار کافیست که به صفحه دیتابیس مورد نظرتان
         بروید و از بخش <b>راه‌اندازی PHPMyAdmin</b> آن را اجرا کنید.
       </p>
@@ -31,20 +32,20 @@ export default () => (
         alt="آماده شدن دیتابیس"
       />
       <p>
-        سپس به راحتی با اطلاعات دیتابیس‌‌تان وارد پنل شوید و از امکانات
-        phpmyAdmin استفاده کنید:
+        سپس با نام کاربری و رمز عبور دیتابیس‌تان وارد PHPMyAdmin شوید و از امکانات
+        آن استفاده کنید:
       </p>
-      {/* <ZoomableImage
+      <ZoomableImage
         src="/static/databases/mysql-phpmyadmin.png"
         alt="پنل phpmyadmin"
-      /> */}
+      />
       <br />
       <li>
         <b>استفاده از MySQL Workbench</b>
       </li>
       <p>
-        اگر از نرم‌افزار Workbench روی سیستم‌تان استفاده می‌کنید، می‌توانید به
-        راحتی به دیتابیس‌‌تان در لیارا متصل شوید. کافیست اطلاعات اتصال به
+        اگر از نرم‌افزار Workbench روی سیستم‌تان استفاده می‌کنید، می‌توانید به وسیله‌ی آن
+        به دیتابیس‌‌تان در لیارا متصل شوید. کافیست اطلاعات اتصال به
         دیتابیس‌‌تان را وارد کنید. بعد از وارد کردن اطلاعات کافی‌ست تست اتصال یا
         همان Test Connection را بزنید تا مطمئن شوید اتصال به لیارا با موفقیت
         برقرار شده است.
@@ -78,7 +79,7 @@ export default () => (
       قابلیت <b>Secure SSH Tunnel</b> نیز استفاده کرد. برای راه اندازی این
       قابلیت کافی‌ست مستندات{" "}
       <b>
-        <a href="">اتصال امن به دیتابیس‌ها</a>
+        <Link href="/databases/tunnel"><a>اتصال امن به دیتابیس‌ها</a></Link>
       </b>{" "}
       را مطالعه کنید.
     </Notice>
