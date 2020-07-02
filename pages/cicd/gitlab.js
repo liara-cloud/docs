@@ -40,18 +40,18 @@ deploy:
   only:
     - master  
   before_script:
-    - npm install -g @liara/cli
+    - npm install -g @liara/cli@2
   script:
-    - liara deploy --app $PROJECT_NAME --detach --api-token $TOKEN
+    - liara deploy --app $APP_NAME --detach --api-token $TOKEN
 `}
     </Highlight>
-    <Notice variant="info">
+    <p>
       همانطور که می‌بینید شما در این فایل همه اتفاقات را تعریف می‌کنید. مثلا در
       فایل بالا ابزار Liara CLI را ابتدا نصب کرده‌ایم و سپس در ریشه برنامه دستور
       deploy را اجرا کرده‌ایم. در همین فایل می‌شود Test ها را اجرا کرد و مطمئن شد
       که برنامه‌‍ سالم است و اجازه آپدیت شدن دارد. GitLab CI امکانات بسیار خوبی
       برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
-    </Notice>
+    </p>
     <p>
       <b>گام دوم)</b> لیارا برای اجرای دستور deploy نیاز به نام یا همان شناسه
       برنامه و api-token دارد. البته اگر از{" "}
@@ -73,7 +73,7 @@ deploy:
       بیشتر مطالعه کنید. به صورت کلی شما هر key-value ای را که در بخش Variables
       تعریف کنید، در فایل <span className="code">.gitlab-ci.yml</span> قابل
       استفاده می‌شود. مثلا در فایل بالا ما دو Variable با نام‌های TOKEN و
-      PROJECT_NAME داریم.
+      APP_NAME داریم.
     </p>
     <p>
       <b>گام سوم)</b> بعد از تعریف کردن همه موارد بالا با Push کردن فایل{" "}

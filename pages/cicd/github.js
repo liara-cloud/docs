@@ -50,7 +50,7 @@ jobs:
           LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}\
 
         run: |
-          npm i -g @liara/cli
+          npm i -g @liara/cli@2
           liara deploy --api-token="$LIARA_TOKEN" --detach
 `}
     </Highlight>
