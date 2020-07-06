@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>اتصال امن به دیتابیس‌ها</h1>
-    <span className="pageDescription">(Secure SSH Tunnel to Databases)</span>
+    <span className="page-description">(Secure SSH Tunnel to Databases)</span>
 
     <p>
       زمانی که دیتابیسی را در پنل کاربری لیارا تهیه می‌کنید، اطلاعات اتصال{" "}

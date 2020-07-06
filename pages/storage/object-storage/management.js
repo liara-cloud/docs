@@ -10,7 +10,7 @@ export default () => (
       <title>سرویس ابری لیارا | مستندات آبجکت‌استوریج</title>
     </Head>
     <h1>آبجکت استوریج</h1>
-    <span className="pageDescription">(Object Storage)</span>
+    <span className="page-description">(Object Storage)</span>
     <h3>فعال‌کردن سرویس</h3>
     <p>
       از منو‌های بالای صفحه داشبورد روی «سرویس فایل» کلیک کنید. بعد از کلیک وارد

@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>کنسول / خط‌فرمان</h1>
-    <span className="pageDescription">(Console - Terminal)</span>
+    <span className="page-description">(Console - Terminal)</span>
 
     <p>
       در اکثر برنامه‌ها، لازم است که بعد از مستقر کردن روی سرور، یک سری کارها

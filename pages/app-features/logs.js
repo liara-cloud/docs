@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>لاگ‌ها</h1>
-    <span className="pageDescription">(Logs)</span>
+    <span className="page-description">(Logs)</span>
 
     <p>
       لاگ‌ها بخش مهمی را در هر برنامه‌ای به عهده دارند. لیارا این امکان را

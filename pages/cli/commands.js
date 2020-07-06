@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>
-    <span className="pageDescription">(Liara CLI)</span>
+    <span className="page-description">(Liara CLI)</span>
 
     <h3>ورود به حساب کاربری</h3>
     <p>

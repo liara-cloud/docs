@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>دامنه‌ها</h1>
-    <span className="pageDescription">(Domain Management)</span>
+    <span className="page-description">(Domain Management)</span>
 
     <h3>تهیه‌ی SSL رایگان</h3>
     <p>

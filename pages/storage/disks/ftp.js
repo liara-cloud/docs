@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>دیسک‌ها</h1>
-    <span className="pageDescription">(Disks)</span>
+    <span className="page-description">(Disks)</span>
 
     <h3>دسترسی به دیسک‌ها با FTP</h3>
     <p>

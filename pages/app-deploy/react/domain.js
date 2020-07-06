@@ -8,8 +8,14 @@ export default () => (
     <Head>
       <title>Static سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>برنامه‌های ReactJS</h1>
-    <span className="pageDescription">(ReactJS Apps)</span>
+
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/react.svg" alt="react"/>
+      <div className="page-title">
+        <h1>برنامه‌های ReactJS</h1>
+        <span className="page-description">(ReactJS Apps)</span>
+      </div>
+    </div>
 
     <h3>اتصال دامنه به برنامه</h3>
     <p>

@@ -10,7 +10,7 @@ export default () => (
       <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
     </Head>
     <h1>دیتابیس MySQL / MariaDB</h1>
-    <span className="pageDescription">(MySQL / MariaDB Database)</span>
+    <span className="page-description">(MySQL / MariaDB Database)</span>
 
     <h3>راه‌های اتصال به MySQL / MariaDB</h3>
     <p>

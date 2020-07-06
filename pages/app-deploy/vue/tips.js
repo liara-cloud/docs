@@ -6,8 +6,14 @@ export default () => (
     <Head>
       <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>برنامه‌های VueJS</h1>
-    <span className="pageDescription">(VueJS Apps)</span>
+
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/vue.svg" alt="vue"/>
+      <div className="page-title">
+        <h1>برنامه‌های VueJS</h1>
+        <span className="page-description">(VueJS Apps)</span>
+      </div>
+    </div>
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 

@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>برنامک‌ها</h1>
-    <span className="pageDescription">(Applets)</span>
+    <span className="page-description">(Applets)</span>
 
     <p>
       برنامک‌ها، یک نسخه‌ی اجرا شده از کدها و استقرار شما هستند. هر استقرار

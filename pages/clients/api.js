@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>
-    <span className="pageDescription">(Liara API)</span>
+    <span className="page-description">(Liara API)</span>
 
     <p>
       وب‌سرویس و در واقع API ما به شما دسترسی کامل به امکانات پلتفرم ابری لیارا را می‌دهد.

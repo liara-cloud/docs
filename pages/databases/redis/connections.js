@@ -10,7 +10,7 @@ export default () => (
       <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
     </Head>
     <h1>دیتابیس Redis</h1>
-    <span className="pageDescription">(Redis key/value Database)</span>
+    <span className="page-description">(Redis key/value Database)</span>
 
     <h3>راه‌های اتصال به Redis</h3>
     <p>

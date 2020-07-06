@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <h1>فرآیند CI/CD</h1>
-    <span className="pageDescription">
+    <span className="page-description">
       (Continuous integration and Continuous Delivery)
     </span>
 

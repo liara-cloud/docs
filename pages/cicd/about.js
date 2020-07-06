@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>درباره CI/CD</h1>
-    <span className="pageDescription">
+    <span className="page-description">
       (Continuous Integration and Continuous Delivery)
     </span>
 

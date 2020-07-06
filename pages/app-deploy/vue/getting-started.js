@@ -9,11 +9,17 @@ export default () => (
       <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های VueJS</h1>
-    <span className="pageDescription">(VueJS Apps)</span>
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/vue.svg" alt="vue"/>
+      <div className="page-title">
+        <h1>برنامه‌های VueJS</h1>
+        <span className="page-description">(VueJS Apps)</span>
+      </div>
+    </div>
 
     <h3>🚀 شروع به کار</h3>
     <video
+      width="730"
       src="https://files.liara.ir/liara/react.mp4"
       controls="controls"
       className="block w-full"

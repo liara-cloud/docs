@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>دیتابیس Redis</h1>
-    <span className="pageDescription">(Redis key/value Database)</span>
+    <span className="page-description">(Redis key/value Database)</span>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>

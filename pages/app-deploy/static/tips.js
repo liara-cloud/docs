@@ -7,8 +7,13 @@ export default () => (
       <title>Static سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های Static</h1>
-    <span className="pageDescription">(Static Apps)</span>
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/HTML5.svg" alt="HTML5"/>
+      <div className="page-title">
+        <h1>برنامه‌های Static</h1>
+        <span className="page-description">(Static Apps)</span>
+      </div>
+    </div>
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 

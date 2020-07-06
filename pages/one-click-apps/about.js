@@ -8,7 +8,7 @@ export default () => (
     </Head>
 
     <h1>برنامه‌های آماده</h1>
-    <span className="pageDescription">(One-Click Apps)</span>
+    <span className="page-description">(One-Click Apps)</span>
 
     <h1>درباره برنامه‌های آماده</h1>
     <p>

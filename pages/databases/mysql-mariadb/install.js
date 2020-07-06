@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>دیتابیس MySQL / MariaDB</h1>
-    <span className="pageDescription">(MySQL / MariaDB Database)</span>
+    <span className="page-description">(MySQL / MariaDB Database)</span>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>

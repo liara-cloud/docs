@@ -11,8 +11,13 @@ export default () => (
       <title>PHP سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های PHP</h1>
-    <span className="pageDescription">(PHP Apps)</span>
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/php.svg" alt="php"/>
+      <div className="page-title">
+        <h1>برنامه‌های PHP</h1>
+        <span className="page-description">(PHP Apps)</span>
+      </div>
+    </div>
 
     <h3>استفاده از دیسک‌ها</h3>
     <p>

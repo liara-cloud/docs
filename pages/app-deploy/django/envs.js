@@ -10,9 +10,14 @@ export default () => (
     <Head>
       <title>Django سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>برنامه‌های Django</h1>
-    <span className="pageDescription">(Django Apps)</span>
-
+  
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/django.svg" alt="django"/>
+      <div className="page-title">
+        <h1>برنامه‌های Django</h1>
+        <span className="page-description">(Django Apps)</span>
+      </div>
+    </div>
     <h3>تنظیم متغیرها (Environment Variables)</h3>
     <p>
       متغیرهای محیطی یا همان Environment Variables به شما کمک می‌کنند تا

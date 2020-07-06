@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <h1>دیسک‌ها</h1>
-    <span className="pageDescription">(Disks)</span>
+    <span className="page-description">(Disks)</span>
 
     <h2>مدیریت دیسک‌ها</h2>
     <h3>ساخت دیسک</h3>

@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>دیتابیس SQL Server</h1>
-    <span className="pageDescription">(SQL Server Database)</span>
+    <span className="page-description">(SQL Server Database)</span>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>

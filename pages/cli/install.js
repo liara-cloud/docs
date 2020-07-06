@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>
-    <span className="pageDescription">(Liara CLI)</span>
+    <span className="page-description">(Liara CLI)</span>
 
     <p>
       رابط خط فرمان و یا همان Liara CLI، این امکان را به شما می‌دهد که فقط با

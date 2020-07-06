@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>متغیرهای محیطی</h1>
-    <span className="pageDescription">(Environment Variables)</span>
+    <span className="page-description">(Environment Variables)</span>
 
     <p>
       هر برنامه‌ای ممکن است در محیط‌های مختلفی اجرا شود. برای مثال برنامه‌ی شما

@@ -13,7 +13,7 @@ export default () => (
     </Head>
 
     <h1>استقرار بدون اختلال</h1>
-    <span className="pageDescription">(Zero Downtime Deployment)</span>
+    <span className="page-description">(Zero Downtime Deployment)</span>
 
     <p>
       به صورت پیش‌فرض، همه‌ی برنامه‌هایی که در لیارا ساخته می‌شوند، از قابلیت

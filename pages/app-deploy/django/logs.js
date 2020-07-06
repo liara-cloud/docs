@@ -9,8 +9,15 @@ export default () => (
     <Head>
       <title>Django سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
-    <h1>برنامه‌های Django</h1>
-    <span className="pageDescription">(Django Apps)</span>
+
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/django.svg" alt="django"/>
+      <div className="page-title">
+        <h1>برنامه‌های Django</h1>
+        <span className="page-description">(Django Apps)</span>
+      </div>
+    </div>
+
     <h3>مشاهده لاگ‌های برنامه</h3>
     <p>
       لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند

@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <h1>دیتابیس PostgreSQL</h1>
-    <span className="pageDescription">(PostgreSQL Database)</span>
+    <span className="page-description">(PostgreSQL Database)</span>
 
     <h3>راه‌های اتصال به PostgreSQL</h3>
     <p>

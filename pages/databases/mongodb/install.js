@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>دیتابیس MongoDB</h1>
-    <span className="pageDescription">(MongoDB Database)</span>
+    <span className="page-description">(MongoDB Database)</span>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>

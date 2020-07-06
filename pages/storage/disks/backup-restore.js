@@ -9,7 +9,7 @@ export default () => (
     </Head>
 
     <h1>دیسک‌ها</h1>
-    <span className="pageDescription">(Disks)</span>
+    <span className="page-description">(Disks)</span>
 
     <h3>تهیه‌ی فایل پشتیبان از دیسک‌ها</h3>
     <p>

@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>آی‌پی ثابت</h1>
-    <span className="pageDescription">(Fixed / Static IP)</span>
+    <span className="page-description">(Fixed / Static IP)</span>
 
     <p>
       در یک سرویس ابری مانند لیارا، تعداد زیادی سرور به یکدیگر متصل شده و

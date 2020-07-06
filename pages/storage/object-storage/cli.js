@@ -8,7 +8,7 @@ export default () => (
       <title>سرویس ابری لیارا | مستندات آبجکت‌استوریج</title>
     </Head>
     <h1>آبجکت استوریج</h1>
-    <span className="pageDescription">(Object Storage)</span>
+    <span className="page-description">(Object Storage)</span>
     <h3>درباره MinIO CLI</h3>
     <p>
       از آنجایی که در لیارا از MinIO برای زیرساخت Object Storage استفاده می‌شود،

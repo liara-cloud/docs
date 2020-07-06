@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <h1>نادیده‌گرفتن فایل‌ها</h1>
-    <span className="pageDescription">(Gitignore)</span>
+    <span className="page-description">(Gitignore)</span>
 
     <p>
       Liara CLI این هوشمندی را دارد که در هر بار عملیات استقرار، فقط فایل‌هایی

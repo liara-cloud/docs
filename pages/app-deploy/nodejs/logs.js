@@ -10,8 +10,14 @@ export default () => (
       <title>NodeJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های NodeJS</h1>
-    <span className="pageDescription">(NodeJS Apps)</span>
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/nodejs.svg" alt="nodejs"/>
+      <div className="page-title">
+        <h1>برنامه‌های NodeJS</h1>
+        <span className="page-description">(NodeJS Apps)</span>
+      </div>
+    </div>
+
     <h3>مشاهده لاگ‌های برنامه</h3>
     <p>
       لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند

@@ -14,7 +14,7 @@ export default () => (
     </Head>
 
     <h1>بررسی سلامت</h1>
-    <span className="pageDescription">(Health Check)</span>
+    <span className="page-description">(Health Check)</span>
 
     <p>
       برای این که بتوانید از قابلیت «

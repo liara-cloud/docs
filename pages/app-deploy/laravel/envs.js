@@ -10,8 +10,13 @@ export default () => (
       <title>Laravel سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
     </Head>
 
-    <h1>برنامه‌های Laravel</h1>
-    <span className="pageDescription">(Laravel Apps)</span>
+    <div className="page-head">
+      <img className="page-icon" src="/static/platformicons/laravel.svg" alt="laravel"/>
+      <div className="page-title">
+        <h1>برنامه‌های Laravel</h1>
+        <span className="page-description">(Laravel Apps)</span>
+      </div>
+    </div>
 
     <h3>تنظیم متغیرها (Environment Variables)</h3>
     <p>

@@ -98,6 +98,7 @@ code {
 }
 
 span.code {
+  border-radius: 4px;
   direction: ltr;
   letter-spacing: 1px;
   margin: 0 4px;
@@ -134,7 +135,21 @@ span.code {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-.pageDescription {
+.page-head {
+  display: flex;
+}
+
+img.page-icon {
+  width: 64px;
+  margin-left: 12px;
+  border: none !important;
+}
+
+.page-title {
+  flex: 1;
+}
+
+.page-description {
   color: #999;
   display: block;
   font-size: 14px;

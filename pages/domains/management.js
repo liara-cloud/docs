@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <h1>دامنه‌ها</h1>
-    <span className="pageDescription">(Domain Management)</span>
+    <span className="page-description">(Domain Management)</span>
 
     <h3>
       زیردامنه‌ رایگان <span className="code">.liara.run</span>
@@ -44,6 +44,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
+      width="730"
       src="https://files.liara.ir/liara/domain.mp4"
       controls="controls"
       className="block w-full"
