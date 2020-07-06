@@ -32,5 +32,18 @@ export default () => (
       ممکن است راه‌اندازی دیتابیس چند ثانیه‌ای زمان ببرد و بعد از آن دیتابیس شما
       آماده استفاده می‌شود.
     </p>
+
+    <h3>ماژول‌های نصب‌شده</h3>
+    <p>
+      ماژول‌های زیر به‌صورت پیش‌فرض روی سرویس‌های Redis نصب و فعال شده‌اند:
+    </p>
+    <ul dir="ltr">
+      <li>RedisJson</li>
+      <li>RediSearch</li>
+      <li>RedisBloom</li>
+      <li>RedisGraph</li>
+      <li>RedisTimeseries</li>
+      <li>RedisAI</li>
+    </ul>
   </Layout>
 );
