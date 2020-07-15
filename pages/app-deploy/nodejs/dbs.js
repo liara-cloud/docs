@@ -20,6 +20,12 @@ export default () => (
 
 
     <h3>اتصال به دیتابیس‌ها</h3>
+    <video
+      width="730"
+      src="https://files.liara.ir/liara/node-mongodb.mp4"
+      controls="controls"
+      className="block w-full"
+    ></video>
     <ul>
       <li>
         <b>MySQL</b>
