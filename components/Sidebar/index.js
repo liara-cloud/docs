@@ -178,6 +178,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/app-features/zero-downtime-deployment">استقرار بدون اختلال</ActiveLink></li>
               <li><ActiveLink href="/app-features/health-check">بررسی سلامت</ActiveLink></li>
               <li><ActiveLink href="/app-features/applets">برنامک‌ها</ActiveLink></li>
+              <li><ActiveLink href="/app-features/email">ایمیل</ActiveLink></li>
             </ul>
           </nav>
 
