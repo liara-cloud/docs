@@ -158,7 +158,7 @@ export default () => (
     <Notice variant="info">
       برای استفاده از دسترسی SMTP سرویس ایمیل، برای{" "}
       <span className="code">ENCRYPTION</span> تنها باید از{" "}
-      <span className="code">tsl</span> استفاده کنید. به عبارتی به تنها به صورت
+      <span className="code">tls</span> استفاده کنید. به عبارتی به تنها به صورت
       ایمن می‌توانید از این دسترسی استفاده کنید و هیچ جای نگرانی برای شما، باقی
       نمی‌ماند.
     </Notice>
@@ -186,7 +186,7 @@ export default () => (
     <Highlight className="json">
       {`MAIL_HOST=smtp.liara.ir
 MAIL_PORT=587
-MAIL_USER=my-nextjs
+MAIL_USER=my-app
 MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
     </Highlight>
     <p>
@@ -234,9 +234,9 @@ await transporter.sendMail({
       {`MAIL_DRIVER=smtp
 MAIL_HOST=smtp.liara.ir
 MAIL_PORT=587
-MAIL_USERNAME=my-nextjs
+MAIL_USERNAME=my-app
 MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
-MAIL_ENCRYPTION=ssl`}
+MAIL_ENCRYPTION=tls`}
     </Highlight>
     <p>
       برای اطلاعات بیشتر می‌توانید به{" "}
@@ -257,7 +257,7 @@ MAIL_ENCRYPTION=ssl`}
       {`EMAIL_BACKEND = ‘django.core.mail.backends.smtp.EmailBackend’
 EMAIL_HOST=smtp.liara.ir
 EMAIL_PORT=587
-EMAIL_HOST_USER=my-nextjs
+EMAIL_HOST_USER=my-app
 EMAIL_HOST_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
 EMAIL_USE_TLS=True`}
     </Highlight>
