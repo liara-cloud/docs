@@ -6,7 +6,7 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات اتصال به آبجکت‌استوریج - سرویس ابری لیارا</title>
+      <title>مستندات اتصال به آبجکت استوریج - سرویس ابری لیارا</title>
     </Head>
 
     <h1>آبجکت استوریج</h1>
