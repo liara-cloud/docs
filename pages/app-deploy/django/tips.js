@@ -5,11 +5,17 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>Django سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        توضیحات و نکات تکمیلی در برنامه‌های Django - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/django.svg" alt="django"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/django.svg"
+        alt="django"
+      />
       <div className="page-title">
         <h1>برنامه‌های Django</h1>
         <span className="page-description">(Django Apps)</span>
@@ -37,19 +43,20 @@ export default () => (
     <p>
       همان‌طور که مشاهده می‌کنید، فیلد
       <span className="code">cron</span>
-      یک آرایه است و این یعنی می‌توانید یک یا چند کران‌جاب تعریف کنید.
-      در لینک زیر،
-      می‌توانید مستندات مربوط به ساخت دستورات مدیریتی دلخواه مانند
+      یک آرایه است و این یعنی می‌توانید یک یا چند کران‌جاب تعریف کنید. در لینک
+      زیر، می‌توانید مستندات مربوط به ساخت دستورات مدیریتی دلخواه مانند
       <span className="code">remove-old-emails</span>
-      را مطالعه کنید:
-      {' '}
-      <a href="https://docs.djangoproject.com/en/3.0/howto/custom-management-commands/" target="_blank">
+      را مطالعه کنید:{" "}
+      <a
+        href="https://docs.djangoproject.com/en/3.0/howto/custom-management-commands/"
+        target="_blank"
+      >
         مستندات ساخت دستورات دلخواه مدیریتی برای جنگو
       </a>
     </p>
     <p>
-    بعد از تنظیم فایل <span className="code">liara.json</span>،
-      باید دستور <span className="code">liara deploy</span>
+      بعد از تنظیم فایل <span className="code">liara.json</span>، باید دستور{" "}
+      <span className="code">liara deploy</span>
       را اجرا کنید تا تغییرات‌تان روی سرور اعمال شود و جاب‌های‌تان اجرا شوند.
     </p>
 

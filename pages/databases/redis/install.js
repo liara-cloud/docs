@@ -5,11 +5,22 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات نصب و راه‌اندازی دیتابیس‌های Redis - سرویس ابری لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس Redis</h1>
-    <span className="page-description">(Redis key/value Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/redis.svg"
+        alt="redis"
+      />
+      <div className="page-title">
+        <h1>دیتابیس Redis</h1>
+        <span className="page-description">(Redis key/value Database)</span>
+      </div>
+    </div>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>
@@ -34,9 +45,7 @@ export default () => (
     </p>
 
     <h3>ماژول‌های نصب‌شده</h3>
-    <p>
-      ماژول‌های زیر به‌صورت پیش‌فرض روی سرویس‌های Redis نصب و فعال شده‌اند:
-    </p>
+    <p>ماژول‌های زیر به‌صورت پیش‌فرض روی سرویس‌های Redis نصب و فعال شده‌اند:</p>
     <ul dir="ltr">
       <li>RedisJson</li>
       <li>RediSearch</li>

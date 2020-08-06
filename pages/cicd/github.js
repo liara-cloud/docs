@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>CI/CD سرویس ابری لیارا | مستندات</title>
+      <title>مستندات CI/CD در GitHub - سرویس ابری لیارا</title>
     </Head>
 
     <h1>فرآیند CI/CD</h1>
@@ -57,9 +57,9 @@ jobs:
     <Notice variant="info">
       همانطور که می‌بینید شما در این فایل همه اتفاقات را تعریف می‌کنید. مثلا در
       فایل بالا ابزار Liara CLI را ابتدا نصب کرده‌ایم و سپس در ریشه برنامه دستور
-      deploy را اجرا کرده‌ایم. در همین فایل می‌شود Test ها را اجرا کرد و مطمئن شد
-      که برنامه‌ سالم است و اجازه آپدیت شدن دارد. GitHub Actions امکانات بسیار
-      خوبی برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
+      deploy را اجرا کرده‌ایم. در همین فایل می‌شود Test ها را اجرا کرد و مطمئن
+      شد که برنامه‌ سالم است و اجازه آپدیت شدن دارد. GitHub Actions امکانات
+      بسیار خوبی برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
     </Notice>
     <p>
       <b>گام دوم)</b> لیارا برای اجرای دستور deploy نیاز به نام یا همان شناسه
@@ -69,10 +69,10 @@ jobs:
       <a href="https://console.liara.ir/API" target="_blank">
         صفحه API
       </a>{" "}
-      در حساب کاربری شما وجود دارد که به راحتی می‌توانید آن را کپی کنید. سپس برای
-      این که بتوانید از این اطلاعات در <span className="code">liara.yaml</span>{" "}
-      استفاده کنید باید این اطلاعات را به بخش Secrets در GitHub منتقل کنید.
-      می‌توانید درباره این موضوع در{" "}
+      در حساب کاربری شما وجود دارد که به راحتی می‌توانید آن را کپی کنید. سپس
+      برای این که بتوانید از این اطلاعات در{" "}
+      <span className="code">liara.yaml</span> استفاده کنید باید این اطلاعات را
+      به بخش Secrets در GitHub منتقل کنید. می‌توانید درباره این موضوع در{" "}
       <a
         href="https://help.github.com/en/actions/configuring-and-managing-workflows/using-variables-and-secrets-in-a-workflow"
         target="_blank"

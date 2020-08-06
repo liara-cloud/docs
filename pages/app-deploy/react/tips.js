@@ -4,11 +4,17 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>ReactJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        توضیحات و نکات تکمیلی در برنامه‌های React - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/react.svg" alt="react"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/react.svg"
+        alt="react"
+      />
       <div className="page-title">
         <h1>برنامه‌های ReactJS</h1>
         <span className="page-description">(ReactJS Apps)</span>

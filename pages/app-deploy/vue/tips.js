@@ -4,11 +4,15 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>توضیحات و نکات تکمیلی در برنامه‌های Vue - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/vue.svg" alt="vue"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/vue.svg"
+        alt="vue"
+      />
       <div className="page-title">
         <h1>برنامه‌های VueJS</h1>
         <span className="page-description">(VueJS Apps)</span>

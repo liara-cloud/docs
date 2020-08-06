@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>NodeJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات شروع به کار برنامه‌های NodeJS - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/nodejs.svg" alt="nodejs"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/nodejs.svg"
+        alt="nodejs"
+      />
       <div className="page-title">
         <h1>برنامه‌های NodeJS</h1>
         <span className="page-description">(NodeJS Apps)</span>

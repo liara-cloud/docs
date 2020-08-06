@@ -6,11 +6,17 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات استفاده از فایل liara.json در برنامه‌های Vue - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/vue.svg" alt="vue"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/vue.svg"
+        alt="vue"
+      />
       <div className="page-title">
         <h1>برنامه‌های VueJS</h1>
         <span className="page-description">(VueJS Apps)</span>
@@ -21,8 +27,9 @@ export default () => (
       استفاده‌ از فایل <span className="code">liara.json</span>
     </h3>
     <p>
-      شاید پرسیدن شناسه برنامه در هر استقرار برای شما جالب نباشد. برای رفع این موضوع
-      می‌توانید از فایل‌ <span className="code">liara.json</span> استفاده کنید.
+      شاید پرسیدن شناسه برنامه در هر استقرار برای شما جالب نباشد. برای رفع این
+      موضوع می‌توانید از فایل‌ <span className="code">liara.json</span> استفاده
+      کنید.
     </p>
     <p>
       کافیست وارد ریشه برنامه‌ی‌تان شده و یک فایل به نام{" "}
@@ -39,8 +46,8 @@ export default () => (
       در این فایل، پلتفرم و نام برنامه‌ی‌تان را مشخص می‌کنید. لیارا در هر بار
       اجرای دستور <span className="code">liara deploy</span> ابتدا محتویات این
       فایل‌ را چک می‌کند و سپس عملیات استقرار را آغاز می‌کند. توجه داشته باشید
-      مقدار app در مثال بالا تستی است و شما متناسب با شناسه برنامه‌ی‌تان باید
-      آن را تغییر دهید.
+      مقدار app در مثال بالا تستی است و شما متناسب با شناسه برنامه‌ی‌تان باید آن
+      را تغییر دهید.
     </p>
 
     <Link href="/app-deploy/vue/update">متوجه شدم، برو گام بعدی!</Link>

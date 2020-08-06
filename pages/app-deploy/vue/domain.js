@@ -6,11 +6,15 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات اتصال دامنه به برنامه‌های Vue - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/vue.svg" alt="vue"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/vue.svg"
+        alt="vue"
+      />
       <div className="page-title">
         <h1>برنامه‌های VueJS</h1>
         <span className="page-description">(VueJS Apps)</span>

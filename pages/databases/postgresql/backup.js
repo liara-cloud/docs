@@ -5,11 +5,22 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات تهیه فایل پشتیبان از دیتابیس‌های PostgreSQL - سرویس ابری لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس PostgreSQL</h1>
-    <span className="page-description">(PostgreSQL Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/postgres.svg"
+        alt="postgres"
+      />
+      <div className="page-title">
+        <h1>دیتابیس PostgreSQL</h1>
+        <span className="page-description">(PostgreSQL Database)</span>
+      </div>
+    </div>
 
     <h3>PostgreSQL Backup</h3>
     <p>
@@ -20,7 +31,7 @@ export default () => (
     </p>
     <ZoomableImage
       src="/static/databases/mysql-liara-backup.png"
-      alt="mysql backup page"
+      alt="postgres backup page"
     />
     {/* <p>
       سپس کافیست فایل پشتیبان موردنظرتان از لحاظ زمانی را دانلود کرده و از آن

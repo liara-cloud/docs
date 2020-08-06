@@ -5,11 +5,15 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>Flask سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات شروع به کار برنامه‌های Flask - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/flask.svg" alt="flask"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/flask.svg"
+        alt="flask"
+      />
       <div className="page-title">
         <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>

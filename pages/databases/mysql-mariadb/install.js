@@ -5,11 +5,22 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات نصب و راه‌اندازی دیتابیس‌های MySQL / MariaDB - سرویس ابری لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس MySQL / MariaDB</h1>
-    <span className="page-description">(MySQL / MariaDB Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/mysql.svg"
+        alt="mysql"
+      />
+      <div className="page-title">
+        <h1>دیتابیس MySQL / MariaDB</h1>
+        <span className="page-description">(MySQL / MariaDB Database)</span>
+      </div>
+    </div>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>

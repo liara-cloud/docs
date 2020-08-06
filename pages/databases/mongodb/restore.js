@@ -5,11 +5,22 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های MongoDB - سرویس ابری لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس MongoDB</h1>
-    <span className="page-description">(MongoDB Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/mongodb.svg"
+        alt="mongodb"
+      />
+      <div className="page-title">
+        <h1>دیتابیس MongoDB</h1>
+        <span className="page-description">(MongoDB Database)</span>
+      </div>
+    </div>
 
     <h1>MongoDB Restore</h1>
     <p>

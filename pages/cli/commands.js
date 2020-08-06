@@ -5,7 +5,9 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات رابط خط فرمان - Liara CLI</title>
+      <title>
+        مستندات دستورات رابط خط فرمان لیارا Liara CLI - سرویس ابری لیارا
+      </title>
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>
@@ -133,7 +135,7 @@ export default () => (
       ProjectName
     </p>
 
-    <h3>ریستارت کردن برنامه</h3>
+    <h3>ری‌استارت کردن برنامه</h3>
     <p>
       <code>$ liara restart</code>
     </p>

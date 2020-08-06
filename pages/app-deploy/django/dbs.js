@@ -7,11 +7,17 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>Django سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات اتصال به دیتابیس‌ها در برنامه‌های Django - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/django.svg" alt="django"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/django.svg"
+        alt="django"
+      />
       <div className="page-title">
         <h1>برنامه‌های Django</h1>
         <span className="page-description">(Django Apps)</span>
@@ -25,11 +31,13 @@ export default () => (
       </li>
       <p>
         برای استفاده از SQLite باید در نظر داشته باشید که فایل‌سیستم در لیارا
-        داده‌ها را موقتی نگه‌داری می‌کند و داده‌های پایدار را باید داخل دیسک ذخیره کنید.
-        برای این کار، یک پوشه‌ی اختصاصی برای دیتابیس‌تان بسازید و فایل دیتابیس را داخل آن قرار بدهید
-        و سپس آن پوشه را به عنوان دیسک تعریف کرده و دیپلوی کنید.
-        {' '}
-        <Link href="/storage/disks/about"><a>اطلاعات بیشتر درباره‌ی دیسک‌ها</a></Link>
+        داده‌ها را موقتی نگه‌داری می‌کند و داده‌های پایدار را باید داخل دیسک
+        ذخیره کنید. برای این کار، یک پوشه‌ی اختصاصی برای دیتابیس‌تان بسازید و
+        فایل دیتابیس را داخل آن قرار بدهید و سپس آن پوشه را به عنوان دیسک تعریف
+        کرده و دیپلوی کنید.{" "}
+        <Link href="/storage/disks/about">
+          <a>اطلاعات بیشتر درباره‌ی دیسک‌ها</a>
+        </Link>
       </p>
       <li>
         <b>PostgreSQL</b>
@@ -68,8 +76,7 @@ export default () => (
     <Notice variant="info">
       توجه داشته باشید برای اتصال به هر دیتابیس باید درایور‌های آن را نصب کرده
       باشید. مثلا برای MySQL و PostgreSQL نیاز است تا مقادیر زیر در فایل
-      requirements.txt شما وجود داشته باشد. این یک فایل نمونه برای Django
-      است:
+      requirements.txt شما وجود داشته باشد. این یک فایل نمونه برای Django است:
       <Highlight className="config">
         {`Django == 3.0.7
 psycopg2 == 2.8.5

@@ -8,11 +8,15 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>PHP سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات اتصال دامنه به برنامه‌های PHP - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/php.svg" alt="php"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/php.svg"
+        alt="php"
+      />
       <div className="page-title">
         <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>

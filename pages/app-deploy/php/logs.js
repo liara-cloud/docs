@@ -7,11 +7,15 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>PHP سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات لاگ‌ها در برنامه‌های PHP - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/php.svg" alt="php"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/php.svg"
+        alt="php"
+      />
       <div className="page-title">
         <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>
@@ -20,10 +24,10 @@ export default () => (
 
     <h3>مشاهده لاگ‌های برنامه</h3>
     <p>
-      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند
-      تا بتوانند راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت
-      خلاصه شما می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده
-      کنید. برای نمونه می‌توانید یک Log خیلی ساده بدین‌صورت در برنامه‌ی‌تان ایجاد
+      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند تا بتوانند
+      راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت خلاصه شما
+      می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده کنید.
+      برای نمونه می‌توانید یک Log خیلی ساده بدین‌صورت در برنامه‌ی‌تان ایجاد
       کنید:
     </p>
     <Highlight className="php">

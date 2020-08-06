@@ -5,8 +5,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        سرویس ابری لیارا | مستندات نادیده‌گرفتن فایل‌ها - .liaraignore -
-        .gitignore
+        مستندات نادیده‌گرفتن فایل‌ها .liaraignore .gitignore - سرویس ابری لیارا
       </title>
     </Head>
 

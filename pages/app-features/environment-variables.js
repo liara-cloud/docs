@@ -6,7 +6,7 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات متغیرها - Environment Variables</title>
+      <title>مستندات متغیرها Environment Variables - سرویس ابری لیارا</title>
     </Head>
 
     <h1>متغیرهای محیطی</h1>
@@ -35,8 +35,8 @@ export default () => (
       <span className="code">.env</span>
       جهت ذخیره‌ی متغیرها باشد، اما در لیارا نیازی به این فایل نیست و از بخش
       تنظیمات هر برنامه می‌توانید متغیرهای موردنظرتان را تعریف کنید. (اگرچه
-      می‌توانید با آپلود فایل<span className="code">.env</span> برنامه‌ی‌تان همه‌ی
-      env ها را به لیارا منتقل کنید.)
+      می‌توانید با آپلود فایل<span className="code">.env</span> برنامه‌ی‌تان
+      همه‌ی env ها را به لیارا منتقل کنید.)
     </p>
 
     <h3>دسترسی به متغیرها</h3>

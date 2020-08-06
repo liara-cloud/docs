@@ -6,11 +6,17 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات به‌روزرسانی در برنامه‌های .Net Core - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/netcore.svg" alt="netcore"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/netcore.svg"
+        alt="netcore"
+      />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
@@ -22,16 +28,17 @@ export default () => (
       بعد از هر تغییر در برنامه‌ی‌تان به راحتی با اجرای مجدد دستور{" "}
       <span className="code">liara deploy</span> می‌توانید فقط تغییرات را ارسال
       کنید. Liara CLI این هوشمندی را دارد که در هر بار عملیات استقرار، فقط
-      فایل‌هایی که تغییر کرده باشند و یا به تازگی اضافه شده باشند را آپلود
-      کند و سایر فایل‌ها از روی سرور خوانده می‌شوند. این کار باعث می‌شود که
-      سرعت دیپلوی‌ها افزایش یابد و نیاز نباشد که شما گاها به خاطر تغییر یک فایل،
+      فایل‌هایی که تغییر کرده باشند و یا به تازگی اضافه شده باشند را آپلود کند و
+      سایر فایل‌ها از روی سرور خوانده می‌شوند. این کار باعث می‌شود که سرعت
+      دیپلوی‌ها افزایش یابد و نیاز نباشد که شما گاها به خاطر تغییر یک فایل،
       منتظر آپلودشدن کل فایل‌ها باشید.
     </p>
     <p>
       {" "}
       برای این که در هر استقرار بتوانید بعدا متوجه شوید علت این استقرار چه بوده،
       می‌توانید از message در دستور deploy استفاده کنید. فرض کنید استقرار مد نظر
-      شما به علت رفع باگ auth کاربران بوده. این‌گونه می‌توانیم نسخه‌ی جدید را  همراه با یک پیام توضیح مستقر کنیم:
+      شما به علت رفع باگ auth کاربران بوده. این‌گونه می‌توانیم نسخه‌ی جدید را
+      همراه با یک پیام توضیح مستقر کنیم:
     </p>
     <Highlight className="shell">
       {`$ liara deploy --message="Fix auth bug in login api"`}

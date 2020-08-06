@@ -6,7 +6,7 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات آی‌پی ثابت - Fixed - Static IP</title>
+      <title>مستندات آی‌پی ثابت Fixed - Static IP - سرویس ابری لیارا</title>
     </Head>
 
     <h1>آی‌پی ثابت</h1>

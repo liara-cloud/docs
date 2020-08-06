@@ -5,17 +5,21 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>Django سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات شروع به کار برنامه‌های Django - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/django.svg" alt="django"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/django.svg"
+        alt="django"
+      />
       <div className="page-title">
         <h1>برنامه‌های Django</h1>
         <span className="page-description">(Django Apps)</span>
       </div>
     </div>
-  
+
     <h3>🚀 شروع به کار</h3>
     <video
       width="730"

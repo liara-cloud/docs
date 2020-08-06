@@ -1,15 +1,27 @@
-import Layout from "../../../components/Layout";
 import Head from "next/head";
-import ZoomableImage from "../../../components/ZoomableImage";
+import Layout from "../../../components/Layout";
+import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های SQL Server - سرویس ابری
+        لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس SQL Server</h1>
-    <span className="page-description">(SQL Server Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/mssql.svg"
+        alt="mssql"
+      />
+      <div className="page-title">
+        <h1>دیتابیس SQL Server</h1>
+        <span className="page-description">(SQL Server Database)</span>
+      </div>
+    </div>
 
     <h3>SQL Server Restore</h3>
     <p>

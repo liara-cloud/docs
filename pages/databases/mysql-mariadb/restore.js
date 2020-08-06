@@ -6,19 +6,31 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های MySQL / MariaDB - سرویس
+        ابری لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس MySQL / MariaDB</h1>
-    <span className="page-description">(MySQL / MariaDB Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/mysql.svg"
+        alt="mysql"
+      />
+      <div className="page-title">
+        <h1>دیتابیس MySQL / MariaDB</h1>
+        <span className="page-description">(MySQL / MariaDB Database)</span>
+      </div>
+    </div>
 
     <h3>MySQL / MariaDB Restore</h3>
 
     <p>
       کافیست فایل پشتیبان مدنظرتان را دانلود کنید و بعد از خارج کردن آن از حالت
       فشرده، به ازای هر دیتابیس، یک فایل dump دارید. برای بازگرداندن اطلاعات
-      مربوط به یک دیتابیس خاص که فرض می‌کنیم اسم آن در اینجا liaraDB است
-      کافیست دستور زیر را وارد کنید:
+      مربوط به یک دیتابیس خاص که فرض می‌کنیم اسم آن در اینجا liaraDB است کافیست
+      دستور زیر را وارد کنید:
     </p>
     <code>
       {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT < liaraDB.sql`}

@@ -4,11 +4,17 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>Angular سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        توضیحات و نکات تکمیلی در برنامه‌های Angular - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/angularjs.svg" alt="angular"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/angularjs.svg"
+        alt="angular"
+      />
       <div className="page-title">
         <h1>برنامه‌های Angular</h1>
         <span className="page-description">(Angular Apps)</span>

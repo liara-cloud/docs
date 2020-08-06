@@ -6,18 +6,30 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های PostgreSQL - سرویس ابری
+        لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس PostgreSQL</h1>
-    <span className="page-description">(PostgreSQL Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/postgres.svg"
+        alt="postgres"
+      />
+      <div className="page-title">
+        <h1>دیتابیس PostgreSQL</h1>
+        <span className="page-description">(PostgreSQL Database)</span>
+      </div>
+    </div>
 
     <h3>PostgreSQL Restore</h3>
     <p>
       کافیست فایل پشتیبان مدنظرتان را دانلود کنید و بعد از خارج کردن آن از حالت
       فشرده، به ازای هر دیتابیس، یک فایل dump دارید. برای بازگرداندن اطلاعات
-      مربوط به یک دیتابیس خاص که فرض می‌کنیم اسم آن در اینجا liaraDB است،
-      کافیست دستور زیر را وارد کنید:
+      مربوط به یک دیتابیس خاص که فرض می‌کنیم اسم آن در اینجا liaraDB است، کافیست
+      دستور زیر را وارد کنید:
     </p>
     <code>
       {`$ pg_restore -h DB_HOST -p DB_PORT -U DB_USERNAME -F c --create -d postgres liaraDB.dump`}

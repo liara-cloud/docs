@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>Laravel سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات شروع به کار برنامه‌های Laravel - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/laravel.svg" alt="laravel"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/laravel.svg"
+        alt="laravel"
+      />
       <div className="page-title">
         <h1>برنامه‌های Laravel</h1>
         <span className="page-description">(Laravel Apps)</span>

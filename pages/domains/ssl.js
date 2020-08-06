@@ -6,7 +6,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات دامنه‌ها</title>
+      <title>مستندات تهیه SSL برای دامنه‌ها - سرویس ابری لیارا</title>
     </Head>
 
     <h1>دامنه‌ها</h1>

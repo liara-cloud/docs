@@ -6,11 +6,15 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>Flask سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات اتصال دامنه به برنامه‌های Flask - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/flask.svg" alt="flask"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/flask.svg"
+        alt="flask"
+      />
       <div className="page-title">
         <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>

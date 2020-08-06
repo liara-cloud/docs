@@ -5,7 +5,9 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات رابط خط فرمان - Liara CLI</title>
+      <title>
+        مستندات نصب و راه‌ندازی رابط خط فرمان لیارا Liara CLI - سرویس ابری لیارا
+      </title>
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>
@@ -21,8 +23,8 @@ export default () => (
     <h3>نصب و راه‌اندازی</h3>
     <p>
       برای نصب، فرقی نمی‌کند سیستم‌‌عامل شما Windows ،Linux یا macOS باشد، تنها
-      به NodeJS و npm نیاز دارید.
-      برای دانلود و نصب NodeJS می‌توانید از لینک مقابل استفاده کنید:{" "}
+      به NodeJS و npm نیاز دارید. برای دانلود و نصب NodeJS می‌توانید از لینک
+      مقابل استفاده کنید:{" "}
       <a href="https://nodejs.org/en/">وب‌سایت رسمی NodeJS</a>
     </p>
     <p>

@@ -7,11 +7,17 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات اتصال به دیتابیس‌ها در برنامه‌های .Net Core - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/netcore.svg" alt="netcore"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/netcore.svg"
+        alt="netcore"
+      />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
@@ -29,9 +35,9 @@ export default () => (
         <b>MySQL</b>
       </li>
       <p>
-        اگر از این پایگاه داده استفاده کرده‌اید کافیست اطلاعات اتصال به
-        دیتابیس MySQL را در بخش env ها وارد کنید (در چند بخش قبل درباره اضافه
-        کردن env ها توضیحاتی داده بودیم):
+        اگر از این پایگاه داده استفاده کرده‌اید کافیست اطلاعات اتصال به دیتابیس
+        MySQL را در بخش env ها وارد کنید (در چند بخش قبل درباره اضافه کردن env
+        ها توضیحاتی داده بودیم):
       </p>
       <Highlight className="config">
         {`ConnectionStrings:DefaultConnection="server=URL:PORT;uid=USERNAME;pwd=PASS;database=NAME"`}

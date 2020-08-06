@@ -7,10 +7,20 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>مستندات اتصال به دیتابیس‌های Redis - سرویس ابری لیارا</title>
     </Head>
-    <h1>دیتابیس Redis</h1>
-    <span className="page-description">(Redis key/value Database)</span>
+
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/redis.svg"
+        alt="redis"
+      />
+      <div className="page-title">
+        <h1>دیتابیس Redis</h1>
+        <span className="page-description">(Redis key/value Database)</span>
+      </div>
+    </div>
 
     <h3>راه‌های اتصال به Redis</h3>
     <p>
@@ -73,7 +83,9 @@ export default () => (
       قابلیت <b>Secure SSH Tunnel</b> نیز استفاده کرد. برای راه اندازی این
       قابلیت کافی‌ست مستندات{" "}
       <b>
-        <Link href="/databases/tunnel"><a>اتصال امن به دیتابیس‌ها</a></Link>
+        <Link href="/databases/tunnel">
+          <a>اتصال امن به دیتابیس‌ها</a>
+        </Link>
       </b>{" "}
       را مطالعه کنید.
     </Notice>

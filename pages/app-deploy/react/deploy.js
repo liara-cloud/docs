@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>ReactJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات استقرار برنامه‌های React - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/react.svg" alt="react"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/react.svg"
+        alt="react"
+      />
       <div className="page-title">
         <h1>برنامه‌های ReactJS</h1>
         <span className="page-description">(ReactJS Apps)</span>
@@ -83,9 +87,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">
-      https://react-starter.liara.run
-    </p>
+    <p dir="ltr">https://react-starter.liara.run</p>
 
     <Link href="/app-deploy/react/logs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>

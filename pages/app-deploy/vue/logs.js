@@ -6,11 +6,15 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Vue - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/vue.svg" alt="vue"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/vue.svg"
+        alt="vue"
+      />
       <div className="page-title">
         <h1>برنامه‌های VueJS</h1>
         <span className="page-description">(VueJS Apps)</span>
@@ -19,10 +23,9 @@ export default () => (
 
     <h3>مشاهده لاگ‌های برنامه</h3>
     <p>
-      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند
-      تا بتوانند راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت
-      خلاصه شما می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده
-      کنید:
+      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند تا بتوانند
+      راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت خلاصه شما
+      می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده کنید:
     </p>
     <ZoomableImage src="/static/vue-logs.png" />
     <br />

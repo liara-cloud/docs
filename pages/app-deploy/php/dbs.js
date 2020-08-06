@@ -7,11 +7,17 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>PHP سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات اتصال به دیتابیس‌ها در برنامه‌های PHP - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/php.svg" alt="php"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/php.svg"
+        alt="php"
+      />
       <div className="page-title">
         <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>
@@ -59,8 +65,8 @@ $database = new Medoo([
       </Highlight>
     </ul>
     <Notice variant="warning">
-      توجه داشته باشید که اطلاعات بالا همگی برای مثال است. شما متناسب با
-      اطلاعات دیتابیس برنامه‌ی‌تان باید مقادیر را جایگذاری کنید.
+      توجه داشته باشید که اطلاعات بالا همگی برای مثال است. شما متناسب با اطلاعات
+      دیتابیس برنامه‌ی‌تان باید مقادیر را جایگذاری کنید.
     </Notice>
     <br />
 

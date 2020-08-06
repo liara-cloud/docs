@@ -7,19 +7,28 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>NodeJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات اتصال به دیتابیس‌ها در برنامه‌های NodeJS - سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/nodejs.svg" alt="nodejs"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/nodejs.svg"
+        alt="nodejs"
+      />
       <div className="page-title">
         <h1>برنامه‌های NodeJS</h1>
         <span className="page-description">(NodeJS Apps)</span>
       </div>
     </div>
 
-
     <h3>اتصال به دیتابیس‌ها</h3>
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
     <video
       width="730"
       src="https://files.liara.ir/liara/node-mongodb.mp4"

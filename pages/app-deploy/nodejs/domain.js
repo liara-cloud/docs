@@ -8,11 +8,15 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>NodeJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات اتصال دامنه به برنامه‌های NodeJS - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/nodejs.svg" alt="nodejs"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/nodejs.svg"
+        alt="nodejs"
+      />
       <div className="page-title">
         <h1>برنامه‌های NodeJS</h1>
         <span className="page-description">(NodeJS Apps)</span>
@@ -22,9 +26,9 @@ export default () => (
     <h3>اتصال دامنه به برنامه</h3>
     <p>
       لیارا به صورت رایگان یک زیردامنه به همراه https برای شما ایجاد کرده است که
-      از طریق بخش برنامه‌ها می‌توانید لینک آن ‌را مشاهده کنید. این دامنه برای تست
-      و بررسی برنامه و نشان دادن برنامه به دیگران و کارفرمایان کار را راحت‌تر
-      کرده است.
+      از طریق بخش برنامه‌ها می‌توانید لینک آن ‌را مشاهده کنید. این دامنه برای
+      تست و بررسی برنامه و نشان دادن برنامه به دیگران و کارفرمایان کار را
+      راحت‌تر کرده است.
     </p>
     <ZoomableImage src="/static/nodejs-default-domain.png" />
     <p>

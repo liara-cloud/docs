@@ -6,26 +6,33 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>Django سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات استفاده از فایل liara.json در برنامه‌های Django - سرویس ابری
+        لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/django.svg" alt="django"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/django.svg"
+        alt="django"
+      />
       <div className="page-title">
         <h1>برنامه‌های Django</h1>
         <span className="page-description">(Django Apps)</span>
       </div>
     </div>
-  
+
     <h3>
       استفاده‌ از فایل <span className="code">liara.json</span>
     </h3>
     <p>
-      شاید پرسیدن شناسه برنامه در هر استقرار برای شما جالب نباشد. برای رفع این موضوع
-      می‌توانید از فایل‌ <span className="code">liara.json</span> استفاده کنید.
-      اگرچه کاربرد‌های این فایل بیشتر از این‌هاست ولی در اینجا به همین نکته
-      بسنده می‌کنیم و در بخش <b>توضیحات و نکات تکمیلی</b> درباره تمام کاربرد‌های
-      آن در برنامه‌های Django توضیح داده‌ایم.
+      شاید پرسیدن شناسه برنامه در هر استقرار برای شما جالب نباشد. برای رفع این
+      موضوع می‌توانید از فایل‌ <span className="code">liara.json</span> استفاده
+      کنید. اگرچه کاربرد‌های این فایل بیشتر از این‌هاست ولی در اینجا به همین
+      نکته بسنده می‌کنیم و در بخش <b>توضیحات و نکات تکمیلی</b> درباره تمام
+      کاربرد‌های آن در برنامه‌های Django توضیح داده‌ایم.
     </p>
     <p>
       کافیست وارد ریشه برنامه‌ی‌تان شده و یک فایل به نام{" "}
@@ -42,8 +49,8 @@ export default () => (
       در این فایل، پلتفرم و شناسه برنامه‌ی‌تان را مشخص می‌کنید. لیارا در هر بار
       اجرای دستور <span className="code">liara deploy</span> ابتدا محتویات این
       فایل‌ را چک می‌کند و سپس عملیات استقرار را آغاز می‌کند. توجه داشته باشید
-      مقدار app در مثال بالا تستی است و شما متناسب با شناسه برنامه‌ی‌تان باید
-      آن را تغییر دهید.
+      مقدار app در مثال بالا تستی است و شما متناسب با شناسه برنامه‌ی‌تان باید آن
+      را تغییر دهید.
     </p>
 
     <Link href="/app-deploy/django/update">متوجه شدم، برو گام بعدی!</Link>

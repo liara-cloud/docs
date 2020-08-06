@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>Angular سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات استقرار برنامه‌های Angular - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/angularjs.svg" alt="angular"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/angularjs.svg"
+        alt="angular"
+      />
       <div className="page-title">
         <h1>برنامه‌های Angular</h1>
         <span className="page-description">(Angular Apps)</span>
@@ -82,9 +86,7 @@ export default () => (
       شوید که برنامه‌ی‌تان به صورت صحیح به بستر لیارا منتقل شده است یا خیر. این
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
-    <p dir="ltr">
-      https://angular-starter.liara.run
-    </p>
+    <p dir="ltr">https://angular-starter.liara.run</p>
 
     <Link href="/app-deploy/angular/logs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>

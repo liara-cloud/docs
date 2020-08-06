@@ -5,8 +5,9 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات آبجکت‌استوریج</title>
+      <title>مستندات استفاده از MinIO CLI - سرویس ابری لیارا</title>
     </Head>
+
     <h1>آبجکت استوریج</h1>
     <span className="page-description">(Object Storage)</span>
     <h3>درباره MinIO CLI</h3>
@@ -33,8 +34,8 @@ export default () => (
       <code>$ mc config host add liara API_ENDPOINT ACCESS_KEY SECRET_KEY</code>
     </pre>
     <Notice variant="info">
-      در دستور بالا یک کانکشن به اسم liara درست کردیم. شما می‌توانید به جای liara
-      هر اسم دلخواه دیگری نیز وارد کنید.
+      در دستور بالا یک کانکشن به اسم liara درست کردیم. شما می‌توانید به جای
+      liara هر اسم دلخواه دیگری نیز وارد کنید.
     </Notice>
     <Notice variant="info">
       مقدار API_ENDPOINT را که از پنل کپی می‌کنید حتما به ابتدای آن{" "}

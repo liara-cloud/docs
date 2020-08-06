@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات ایمیل</title>
+      <title>مستندات ایمیل Transactional Email - سرویس ابری لیارا</title>
     </Head>
 
     <h1>ایمیل</h1>

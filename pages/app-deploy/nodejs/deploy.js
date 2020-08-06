@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>NodeJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات استقرار برنامه‌های NodeJS - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/nodejs.svg" alt="nodejs"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/nodejs.svg"
+        alt="nodejs"
+      />
       <div className="page-title">
         <h1>برنامه‌های NodeJS</h1>
         <span className="page-description">(NodeJS Apps)</span>
@@ -90,10 +94,11 @@ export default () => (
     <p>
       <b>گام سوم)</b> کافیست وارد ریشه برنامه‌ی‌تان شده و به وسیله دستور زیر
       اولین استقرار خود را اجرا کنید. بعد از وارد کردن این دستور، از شما شناسه
-      برنامه‌ موردنظرتان پرسیده می‌شود و بعد از انتخاب شناسه، پورتی که برنامه‌ی شما روی آن
+      برنامه‌ موردنظرتان پرسیده می‌شود و بعد از انتخاب شناسه، پورتی که برنامه‌ی
+      شما روی آن
       <span className="code">listen</span>
-      می‌کند و اصطلاحا گوش می‌دهد پرسیده خواهد شد.
-      برای مثال، چنانچه در لوکال و روی کامپیوتر خودتان برنامه روی پورت
+      می‌کند و اصطلاحا گوش می‌دهد پرسیده خواهد شد. برای مثال، چنانچه در لوکال و
+      روی کامپیوتر خودتان برنامه روی پورت
       <span className="code">8000</span>
       اجرا می‌شود، باید
       <span className="code">8000</span>
@@ -111,8 +116,9 @@ export default () => (
       <code>{`$ liara deploy --platform=node`}</code>
     </pre>
     <Notice variant="info">
-      برنامه‌ی شما حتما باید دارای فایل<span className="code">package.json</span>{" "}
-      باشد تا بتواند در لیارا مستقر شود.
+      برنامه‌ی شما حتما باید دارای فایل
+      <span className="code">package.json</span> باشد تا بتواند در لیارا مستقر
+      شود.
     </Notice>
     <Notice variant="info">
       لیارا به صورت خودکار پکیج‌هایی که در فایل
@@ -131,9 +137,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">
-      https://nodejs-starter.liara.run
-    </p>
+    <p dir="ltr">https://nodejs-starter.liara.run</p>
 
     <Link href="/app-deploy/nodejs/envs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>

@@ -5,7 +5,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات آبجکت‌استوریج</title>
+      <title>مستندات افزایش حجم آبجکت‌استوریج - سرویس ابری لیارا</title>
     </Head>
 
     <h1>آبجکت استوریج</h1>

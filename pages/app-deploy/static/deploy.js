@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>Static سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات استقرار برنامه‌های Static - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/HTML5.svg" alt="HTML5"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/HTML5.svg"
+        alt="HTML5"
+      />
       <div className="page-title">
         <h1>برنامه‌های Static</h1>
         <span className="page-description">(Static Apps)</span>
@@ -70,9 +74,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">
-      https://static-starter.liara.run
-    </p>
+    <p dir="ltr">https://static-starter.liara.run</p>
 
     <Link href="/app-deploy/static/logs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>

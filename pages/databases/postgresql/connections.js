@@ -7,11 +7,20 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>مستندات اتصال به دیتابیس‌های PostgreSQL - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>دیتابیس PostgreSQL</h1>
-    <span className="page-description">(PostgreSQL Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/postgres.svg"
+        alt="postgres"
+      />
+      <div className="page-title">
+        <h1>دیتابیس PostgreSQL</h1>
+        <span className="page-description">(PostgreSQL Database)</span>
+      </div>
+    </div>
 
     <h3>راه‌های اتصال به PostgreSQL</h3>
     <p>
@@ -42,8 +51,8 @@ export default () => (
       </li>
       <p>
         اگر از نرم‌افزار Adminer استفاده می‌کنید، می‌توانید به راحتی به
-        دیتابیس‌‌تان در لیارا متصل شوید. کافیست اطلاعات اتصال به دیتابیس‌‌تان
-        را وارد کنید و سپس Login کنید. حتما از بخش System گزینه PostgreSQL را
+        دیتابیس‌‌تان در لیارا متصل شوید. کافیست اطلاعات اتصال به دیتابیس‌‌تان را
+        وارد کنید و سپس Login کنید. حتما از بخش System گزینه PostgreSQL را
         انتخاب کرده باشید.
       </p>
       <ZoomableImage src="/static/databases/login-adminer.png" />
@@ -70,7 +79,9 @@ export default () => (
       قابلیت <b>Secure SSH Tunnel</b> نیز استفاده کرد. برای راه اندازی این
       قابلیت کافی‌ست مستندات{" "}
       <b>
-        <Link href="/databases/tunnel"><a>اتصال امن به دیتابیس‌ها</a></Link>
+        <Link href="/databases/tunnel">
+          <a>اتصال امن به دیتابیس‌ها</a>
+        </Link>
       </b>{" "}
       را مطالعه کنید.
     </Notice>

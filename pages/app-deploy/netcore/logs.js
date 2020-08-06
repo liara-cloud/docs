@@ -8,11 +8,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات لاگ‌ها در برنامه‌های .Net Core - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/netcore.svg" alt="netcore"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/netcore.svg"
+        alt="netcore"
+      />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
@@ -21,11 +25,11 @@ export default () => (
 
     <h3>مشاهده لاگ‌های برنامه</h3>
     <p>
-      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند
-      تا بتوانند راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت
-      خلاصه شما می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده
-      کنید. برای نمونه اگر سطح لاگ‌ها را روی Information قرار داده‌ باشید، هر
-      وقت کاربری به سایت درخواستی ارسال کند لاگ می‌شود:
+      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند تا بتوانند
+      راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت خلاصه شما
+      می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده کنید.
+      برای نمونه اگر سطح لاگ‌ها را روی Information قرار داده‌ باشید، هر وقت
+      کاربری به سایت درخواستی ارسال کند لاگ می‌شود:
     </p>
     <Highlight className="php">
       {`{ 

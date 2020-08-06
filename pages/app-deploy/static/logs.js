@@ -6,11 +6,15 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>Static سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Static - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/HTML5.svg" alt="HTML5"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/HTML5.svg"
+        alt="HTML5"
+      />
       <div className="page-title">
         <h1>برنامه‌های Static</h1>
         <span className="page-description">(Static Apps)</span>
@@ -19,10 +23,9 @@ export default () => (
 
     <h3>مشاهده لاگ‌های برنامه</h3>
     <p>
-      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند
-      تا بتوانند راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت
-      خلاصه شما می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده
-      کنید:
+      لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند تا بتوانند
+      راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت خلاصه شما
+      می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده کنید:
     </p>
 
     <ZoomableImage src="/static/static-logs.png" />

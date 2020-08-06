@@ -5,11 +5,22 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات نصب و راه‌اندازی دیتابیس‌های SQL Server - سرویس ابری لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس SQL Server</h1>
-    <span className="page-description">(SQL Server Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/mssql.svg"
+        alt="mssql"
+      />
+      <div className="page-title">
+        <h1>دیتابیس SQL Server</h1>
+        <span className="page-description">(SQL Server Database)</span>
+      </div>
+    </div>
 
     <h3>نصب و راه‌اندازی</h3>
     <p>

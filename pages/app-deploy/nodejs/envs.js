@@ -7,11 +7,18 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>NodeJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات تنظیم متغیرها (Environment Variables) در برنامه‌های NodeJS -
+        سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/nodejs.svg" alt="nodejs"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/nodejs.svg"
+        alt="nodejs"
+      />
       <div className="page-title">
         <h1>برنامه‌های NodeJS</h1>
         <span className="page-description">(NodeJS Apps)</span>
@@ -21,9 +28,9 @@ export default () => (
     <h3>تنظیم متغیرها (Environment Variables)</h3>
     <p>
       متغیرهای محیطی یا همان Environment Variables به شما کمک می‌کنند تا
-      برنامه‌ی‌تان در هر محیط اطلاعات مربوط به همان محیط را دریافت کند. برای مثال، اطلاعات اتصال به دیتابیس را می‌توانید از این بخش وارد کنید.
-{' '}
-<Link href="/app-features/environment-variables">توضیحات بیشتر</Link>
+      برنامه‌ی‌تان در هر محیط اطلاعات مربوط به همان محیط را دریافت کند. برای
+      مثال، اطلاعات اتصال به دیتابیس را می‌توانید از این بخش وارد کنید.{" "}
+      <Link href="/app-features/environment-variables">توضیحات بیشتر</Link>
     </p>
     <p>
       برای افزودن یک ENV کافیست که به بخش تنظیمات برنامه‌ی‌تان بروید و یک key به
@@ -38,7 +45,7 @@ export default () => (
     </Highlight>
     <p>
       بعد از کلیک روی دکمه <b>ثبت تغییرات</b> برنامه‌ی‌ شما به صورت خودکار
-      ریستارت می‌شود و در استقرار جدید این متغیر‌های محیطی در داخل برنامه قابل
+      ری‌استارت می‌شود و در استقرار جدید این متغیر‌های محیطی در داخل برنامه قابل
       استفاده می‌شوند. به این شیوه که LIARA_URL را اضافه کردید می‌توانید هر ENV
       دیگری را نیز به برنامه اضافه کنید.
     </p>

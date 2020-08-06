@@ -7,11 +7,20 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>مستندات اتصال به دیتابیس‌های SQL Server - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>دیتابیس SQL Server</h1>
-    <span className="page-description">(SQL Server Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/mssql.svg"
+        alt="mssql"
+      />
+      <div className="page-title">
+        <h1>دیتابیس SQL Server</h1>
+        <span className="page-description">(SQL Server Database)</span>
+      </div>
+    </div>
 
     <h3>راه‌های اتصال به SQL Server</h3>
     <p>
@@ -41,7 +50,7 @@ export default () => (
       <p>
         بعد از نصب{" "}
         <a
-          href="https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?redirectedfrom=MSDN&view=sql-server-ver15"
+          href="https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-ver15"
           target="_blank"
         >
           sqlcmd
@@ -63,7 +72,8 @@ export default () => (
             >
               مستندات Microsoft
             </a>{" "}
-            می‌توانید ابزارهای بیشتری را برای اتصال به دیتابیس SQL Server ببینید.
+            می‌توانید ابزارهای بیشتری را برای اتصال به دیتابیس SQL Server
+            ببینید.
           </b>
         </p>
       </li>
@@ -73,7 +83,9 @@ export default () => (
       قابلیت <b>Secure SSH Tunnel</b> نیز استفاده کرد. برای راه اندازی این
       قابلیت کافی‌ست مستندات{" "}
       <b>
-        <Link href="/databases/tunnel"><a>اتصال امن به دیتابیس‌ها</a></Link>
+        <Link href="/databases/tunnel">
+          <a>اتصال امن به دیتابیس‌ها</a>
+        </Link>
       </b>{" "}
       را مطالعه کنید.
     </Notice>

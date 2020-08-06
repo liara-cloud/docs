@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>VueJS سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات شروع به کار برنامه‌های Vue - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/vue.svg" alt="vue"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/vue.svg"
+        alt="vue"
+      />
       <div className="page-title">
         <h1>برنامه‌های VueJS</h1>
         <span className="page-description">(VueJS Apps)</span>
@@ -31,8 +35,7 @@ export default () => (
     </p>
 
     <p>
-      شما می‌توانید برنامه‌هایی که با{" "}
-      <span className="code">vue cli</span>
+      شما می‌توانید برنامه‌هایی که با <span className="code">vue cli</span>
       ساخته‌شده‌اند را روی لیارا مستقر کنید.
     </p>
     <Notice variant="info">

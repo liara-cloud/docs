@@ -6,11 +6,15 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>Static سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات اتصال دامنه به برنامه‌های Static - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/HTML5.svg" alt="HTML5"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/HTML5.svg"
+        alt="HTML5"
+      />
       <div className="page-title">
         <h1>برنامه‌های Static</h1>
         <span className="page-description">(Static Apps)</span>

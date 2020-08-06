@@ -7,10 +7,22 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات اتصال به دیتابیس‌های MySQL / MariaDB - سرویس ابری لیارا
+      </title>
     </Head>
-    <h1>دیتابیس MySQL / MariaDB</h1>
-    <span className="page-description">(MySQL / MariaDB Database)</span>
+
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/mysql.svg"
+        alt="mysql"
+      />
+      <div className="page-title">
+        <h1>دیتابیس MySQL / MariaDB</h1>
+        <span className="page-description">(MySQL / MariaDB Database)</span>
+      </div>
+    </div>
 
     <h3>راه‌های اتصال به MySQL / MariaDB</h3>
     <p>
@@ -32,8 +44,8 @@ export default () => (
         alt="آماده شدن دیتابیس"
       />
       <p>
-        سپس با نام کاربری و رمز عبور دیتابیس‌تان وارد PHPMyAdmin شوید و از امکانات
-        آن استفاده کنید:
+        سپس با نام کاربری و رمز عبور دیتابیس‌تان وارد PHPMyAdmin شوید و از
+        امکانات آن استفاده کنید:
       </p>
       <ZoomableImage
         src="/static/databases/mysql-phpmyadmin.png"
@@ -44,8 +56,8 @@ export default () => (
         <b>استفاده از MySQL Workbench</b>
       </li>
       <p>
-        اگر از نرم‌افزار Workbench روی سیستم‌تان استفاده می‌کنید، می‌توانید به وسیله‌ی آن
-        به دیتابیس‌‌تان در لیارا متصل شوید. کافیست اطلاعات اتصال به
+        اگر از نرم‌افزار Workbench روی سیستم‌تان استفاده می‌کنید، می‌توانید به
+        وسیله‌ی آن به دیتابیس‌‌تان در لیارا متصل شوید. کافیست اطلاعات اتصال به
         دیتابیس‌‌تان را وارد کنید. بعد از وارد کردن اطلاعات کافی‌ست تست اتصال یا
         همان Test Connection را بزنید تا مطمئن شوید اتصال به لیارا با موفقیت
         برقرار شده است.
@@ -71,15 +83,18 @@ export default () => (
       <ZoomableImage src="/static/databases/mysql-cli.png" alt="mysql cli" />
     </ul>
     <Notice variant="info">
-      شما می‌توانید از هر نرم‌افزار دلخواهی به MySQL در لیارا متصل شوید. در صورتی
-      که مشکلی در اتصال به دیتابیس MySQL داشتید، به پشتیبانی لیارا اطلاع دهید.
+      شما می‌توانید از هر نرم‌افزار دلخواهی به MySQL در لیارا متصل شوید. در
+      صورتی که مشکلی در اتصال به دیتابیس MySQL داشتید، به پشتیبانی لیارا اطلاع
+      دهید.
     </Notice>
     <Notice variant="info">
       در همه موارد گفته شده در بالا میتوان به جای اتصال مستقیم به دیتابیس از
       قابلیت <b>Secure SSH Tunnel</b> نیز استفاده کرد. برای راه اندازی این
       قابلیت کافی‌ست مستندات{" "}
       <b>
-        <Link href="/databases/tunnel"><a>اتصال امن به دیتابیس‌ها</a></Link>
+        <Link href="/databases/tunnel">
+          <a>اتصال امن به دیتابیس‌ها</a>
+        </Link>
       </b>{" "}
       را مطالعه کنید.
     </Notice>

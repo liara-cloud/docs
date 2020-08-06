@@ -6,11 +6,15 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات استقرار برنامه‌های .Net Core - سرویس ابری لیارا</title>
     </Head>
-  
+
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/netcore.svg" alt="netcore"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/netcore.svg"
+        alt="netcore"
+      />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
@@ -47,8 +51,9 @@ export default () => (
     </p>
     <p>
       <b>گام دوم)</b> کافیست وارد ریشه برنامه‌ی‌تان شده و به وسیله دستور زیر
-      اولین استقرار خود را اجرا کنید. این دستور از شما شناسه‌ی برنامه‌ای را که قصد دارید
-      در آن استقرار را انجام دهید، می‌پرسد و سپس فرایند استقرار آغاز می‌شود:
+      اولین استقرار خود را اجرا کنید. این دستور از شما شناسه‌ی برنامه‌ای را که
+      قصد دارید در آن استقرار را انجام دهید، می‌پرسد و سپس فرایند استقرار آغاز
+      می‌شود:
     </p>
     <pre>
       <code>{`$ liara deploy`}</code>
@@ -78,22 +83,18 @@ export default () => (
 
     <h3>استقرار پوشه‌ی Solution</h3>
     <p>
-      در صورتی که ساختار برنامه‌ی شما وابسته به چندین پروژه است،
-      پوشه‌ی Solution ریشه‌ی برنامه‌ی شما به‌حساب می‌آید.
-      بنابراین، لازم است که اگر فایل
+      در صورتی که ساختار برنامه‌ی شما وابسته به چندین پروژه است، پوشه‌ی Solution
+      ریشه‌ی برنامه‌ی شما به‌حساب می‌آید. بنابراین، لازم است که اگر فایل
       <span className="code">liara.json</span>
-      را می‌سازید، آن را در پوشه‌ی Solution
-      ساخته و دستور
+      را می‌سازید، آن را در پوشه‌ی Solution ساخته و دستور
       <span className="code">liara deploy</span>
       را هم در پوشه‌ی Solution اجرا کنید.
     </p>
 
     <h3>خطاهای رایج در فرایند استقرار</h3>
     <p>
-      چنانچه در فرایند استقرار با خطای خاصی مواجه شده‌اید، حتما پیشنهاد می‌کنیم که بخش
-      {' '}
-      <Link href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</Link>
-      {' '}
+      چنانچه در فرایند استقرار با خطای خاصی مواجه شده‌اید، حتما پیشنهاد می‌کنیم
+      که بخش <Link href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</Link>{" "}
       را مطالعه کرده و تنظیمات مربوطه را انجام دهید.
     </p>
 
@@ -104,9 +105,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">
-      https://dotnet-starter.liara.run
-    </p>
+    <p dir="ltr">https://dotnet-starter.liara.run</p>
 
     <Link href="/app-deploy/netcore/envs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>

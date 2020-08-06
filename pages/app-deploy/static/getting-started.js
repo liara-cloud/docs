@@ -5,11 +5,15 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>Static سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات شروع به کار برنامه‌های Static - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/HTML5.svg" alt="HTML5"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/HTML5.svg"
+        alt="HTML5"
+      />
       <div className="page-title">
         <h1>برنامه‌های Static</h1>
         <span className="page-description">(Static Apps)</span>
@@ -26,8 +30,8 @@ export default () => (
     <p>
       در این بخش به شما کمک می‌کنیم که بتوانید در سریع‌ترین زمان ممکن، یک برنامه
       Static را روی بستر ابری لیارا مستقر کنید. برنامه‌های Static در حقیت شامل
-      برنامه‌هایی می‌شوند که با HTML/CSS/JS ساخته شده‌اند یا نسخه‌ای Build شده از
-      فریم‌ورک‌های JS مثل React یا Vue هستند. در هر گام، شما با یک ویژگی در
+      برنامه‌هایی می‌شوند که با HTML/CSS/JS ساخته شده‌اند یا نسخه‌ای Build شده
+      از فریم‌ورک‌های JS مثل React یا Vue هستند. در هر گام، شما با یک ویژگی در
       لیارا آشنا می‌شوید و می‌توانید از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
 

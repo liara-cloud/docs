@@ -5,11 +5,22 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>سرویس ابری لیارا | مستندات اتصال به دیتابیس‌های ابری</title>
+      <title>
+        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های Redis - سرویس ابری لیارا
+      </title>
     </Head>
 
-    <h1>دیتابیس Redis</h1>
-    <span className="page-description">(Redis key/value Database)</span>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/redis.svg"
+        alt="redis"
+      />
+      <div className="page-title">
+        <h1>دیتابیس Redis</h1>
+        <span className="page-description">(Redis key/value Database)</span>
+      </div>
+    </div>
 
     <h3>Redis Restore</h3>
     <p>

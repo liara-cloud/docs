@@ -8,11 +8,18 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>ASP.Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات تنظیم متغیرها (Environment Variables) در برنامه‌های .Net Core -
+        سرویس ابری لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/netcore.svg" alt="netcore"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/netcore.svg"
+        alt="netcore"
+      />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
@@ -23,9 +30,9 @@ export default () => (
 
     <p>
       متغیرهای محیطی یا همان Environment Variables به شما کمک می‌کنند تا
-      برنامه‌ی‌تان در هر محیط اطلاعات مربوط به همان محیط را دریافت کند. برای مثال، اطلاعات اتصال به دیتابیس را می‌توانید از این بخش وارد کنید.
-{' '}
-<Link href="/app-features/environment-variables">توضیحات بیشتر</Link>
+      برنامه‌ی‌تان در هر محیط اطلاعات مربوط به همان محیط را دریافت کند. برای
+      مثال، اطلاعات اتصال به دیتابیس را می‌توانید از این بخش وارد کنید.{" "}
+      <Link href="/app-features/environment-variables">توضیحات بیشتر</Link>
     </p>
     <p>
       برای افزودن یک ENV کافیست که به بخش تنظیمات برنامه‌ی‌تان بروید و یک key به
@@ -48,7 +55,7 @@ else
     </Highlight>
     <p>
       بعد از کلیک روی دکمه <b>ثبت تغییرات</b> برنامه‌ی‌ شما به صورت خودکار
-      ریستارت می‌شود و در استقرار جدید این متغیر‌های محیطی در داخل برنامه قابل
+      ری‌استارت می‌شود و در استقرار جدید این متغیر‌های محیطی در داخل برنامه قابل
       استفاده می‌شوند. به این شیوه که LIARA_URL را اضافه کردید می‌توانید هر ENV
       دیگری را نیز به برنامه اضافه کنید.
     </p>

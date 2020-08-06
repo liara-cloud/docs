@@ -8,11 +8,15 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>PHP سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>توضیحات و نکات تکمیلی در برنامه‌های PHP - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/php.svg" alt="php"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/php.svg"
+        alt="php"
+      />
       <div className="page-title">
         <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>
@@ -78,8 +82,8 @@ max_execution_time = 600`}
       می‌توانید تنظیمات دلخواه وب‌سروری خود را در فایل‌های{" "}
       <span className="code">.htaccess</span> قرار دهید. برای نمونه فرض کنید
       می‌خواهید از انتهای همه URL ها php. را حذف کنید. کافیست یک فایل htaccess.
-      به ریشه برنامه‌ی‌تان اضافه کنید و سپس مقادیر زیر را در آن قرار دهید. بعد از
-      اضافه کردن می‌توانید لینکی مثل{" "}
+      به ریشه برنامه‌ی‌تان اضافه کنید و سپس مقادیر زیر را در آن قرار دهید. بعد
+      از اضافه کردن می‌توانید لینکی مثل{" "}
       <span className="code">https://liara.ir/about.php</span> را به صورت{" "}
       <span className="code">https://liara.ir/about</span> مشاهده کنید.
     </p>

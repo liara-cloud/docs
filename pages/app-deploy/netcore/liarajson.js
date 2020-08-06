@@ -6,11 +6,18 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>ASP .Net Core سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>
+        مستندات استفاده از فایل liara.json در برنامه‌های .Net Core - سرویس ابری
+        لیارا
+      </title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/netcore.svg" alt="netcore"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/netcore.svg"
+        alt="netcore"
+      />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
@@ -40,10 +47,10 @@ export default () => (
 `}
     </Highlight>
     <p>
-      در این فایل، پلتفرم، پورت و نام برنامه‌ی‌تان را مشخص می‌کنید. لیارا در
-      هر بار اجرای دستور <span className="code">liara deploy</span> ابتدا محتویات
-      این فایل‌ را چک می‌کند و سپس عملیات استقرار را آغاز می‌کند. توجه داشته باشید
-      مقادیر app و port در مثال بالا تستی است و شما متناسب با شناسه و پورت
+      در این فایل، پلتفرم، پورت و نام برنامه‌ی‌تان را مشخص می‌کنید. لیارا در هر
+      بار اجرای دستور <span className="code">liara deploy</span> ابتدا محتویات
+      این فایل‌ را چک می‌کند و سپس عملیات استقرار را آغاز می‌کند. توجه داشته
+      باشید مقادیر app و port در مثال بالا تستی است و شما متناسب با شناسه و پورت
       برنامه‌ی‌تان باید آن را تغییر دهید.
     </p>
 

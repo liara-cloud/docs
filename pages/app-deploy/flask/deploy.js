@@ -7,11 +7,15 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>Flask سرویس ابری لیارا | مستندات استقرار برنامه‌های</title>
+      <title>مستندات استقرار برنامه‌های Flask - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <img className="page-icon" src="/static/platformicons/flask.svg" alt="flask"/>
+      <img
+        className="page-icon"
+        src="/static/platformicons/flask.svg"
+        alt="flask"
+      />
       <div className="page-title">
         <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>
@@ -80,9 +84,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">
-      https://flask-starter.liara.run
-    </p>
+    <p dir="ltr">https://flask-starter.liara.run</p>
 
     <Link href="/app-deploy/flask/envs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
