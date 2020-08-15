@@ -40,6 +40,7 @@ p {
   direction: rtl;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 40px;
 }
 
 .article {
@@ -49,7 +50,6 @@ p {
   padding: 0 20px;
   margin-top: 24px;
   background-color: white;
-  max-width: 770px;
 }
 
 .article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
@@ -170,7 +170,6 @@ img.page-icon {
 .platforms {
   display: flex;
   flex-wrap: wrap;
-  max-width: 800px;
 }
 .platforms a {
   color: #666666;
@@ -197,17 +196,16 @@ img.page-icon {
 }
 
 @media (min-width: 1200px) {
-  main {
-    width: 1200px;
-    margin: 0 auto;
+main {
+  width: 1200px;
+  margin: 0 auto;
   }
-
+  
   .wrapper {
     flex-direction: row;
     margin-top: 40px;
-    margin-bottom: 80px;
   }
-
+  
   .article {
     width: 70%;
     border-radius: 12px;
