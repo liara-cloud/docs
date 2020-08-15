@@ -30,10 +30,9 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      width="730"
       src="https://files.liara.ir/liara/laravel-mysql.mp4"
       controls="controls"
-      className="block w-full"
+      className="block w-full video"
     ></video>
     <p>
       به‌ندرت پیش‌ می‌آید که در برنامه‌ای از دیتابیس استفاده نشده ‌باشد. اگر در

@@ -44,10 +44,9 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      width="730"
       src="https://files.liara.ir/liara/domain.mp4"
       controls="controls"
-      className="block w-full"
+      className="block w-full video"
     >
       آموزش ویدیوئی متصل کردن دامنه‌ اختصاصی
     </video>

@@ -27,10 +27,9 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      width="730"
       src="https://files.liara.ir/liara/react.mp4"
       controls="controls"
-      className="block w-full"
+      className="block w-full video"
     ></video>
     <p>
       در این بخش به شما کمک می‌کنیم که بتوانید در سریع‌ترین زمان ممکن، یک برنامه

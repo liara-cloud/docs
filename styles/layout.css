@@ -195,6 +195,20 @@ img.page-icon {
   font-weight: bold;
 }
 
+@media (min-width: 768px) {
+  main {
+    width: 768px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 992px) {
+  main {
+    width: 992px;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 1200px) {
 main {
   width: 1200px;
@@ -241,5 +255,15 @@ main {
   }
   h4 {
     font-size: 0.9em;
+  }
+}
+
+.video {
+  width: 730px;
+}
+
+@media (max-width: 1200px) {
+  .video {
+    width: 100%;
   }
 }
