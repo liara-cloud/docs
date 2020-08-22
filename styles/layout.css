@@ -224,6 +224,7 @@ main {
     width: 70%;
     border-radius: 12px;
     margin-bottom: 24px;
+    padding-left: 4rem;
   }
 
   .article p {
@@ -255,15 +256,5 @@ main {
   }
   h4 {
     font-size: 0.9em;
-  }
-}
-
-.video {
-  width: 730px;
-}
-
-@media (max-width: 1200px) {
-  .video {
-    width: 100%;
   }
 }

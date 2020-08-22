@@ -29,7 +29,8 @@ export default () => (
     <video
       src="https://files.liara.ir/liara/laravel.mp4"
       controls="controls"
-      className="block w-full video"
+      className="block w-full"
+      width="100%"
     ></video>
     <p>
       در این بخش به شما کمک می‌کنیم که در سریع‌ترین زمان ممکن برنامه Laravel ای‌

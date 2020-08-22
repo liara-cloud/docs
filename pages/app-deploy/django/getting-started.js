@@ -28,7 +28,8 @@ export default () => (
     <video
       src="https://files.liara.ir/liara/django.mp4"
       controls="controls"
-      className="block w-full video"
+      className="block w-full"
+      width="100%"
     ></video>
 
     <p>
