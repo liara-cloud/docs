@@ -277,6 +277,30 @@ send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@examp
       مراجعه کنید.
     </p>
 
+    <h4>WordPress</h4>
+    <p>
+      پلاگین‌های زیادی در وردپرس، برای استفاده از دسترسی SMTP وجود دارد. اما
+      پیشنهاد ما استفاده از پلاگین{" "}
+      <a href="https://wordpress.org/plugins/wp-mail-smtp/" target="_blank">
+        WP Mail SMTP
+      </a>
+      ، با بیش از ۱ میلیون نصب فعال است. بعد از نصب این پلاگین، همانند تصویر
+      زیر، به قسمت تنظیمات آن وارد شوید.
+    </p>
+    <ZoomableImage src="/static/wp-mail-smtp-1.png" />
+
+    <p>سپس فیلد From Email را تنظیم کنید.</p>
+    <ZoomableImage src="/static/wp-mail-smtp-2.png" />
+
+    <p>در قدم بعد از میان سرویس‌های مختلف، Other SMTP را انتخاب کنید.</p>
+    <ZoomableImage src="/static/wp-mail-smtp-3.png" />
+
+    <p>
+      و در نهایت، در قسمت تنظیمات، اطلاعات دسترسی SMTP خود را وارد کنید، و این
+      تغییرات را ذخیره کنید.
+    </p>
+    <ZoomableImage src="/static/wp-mail-smtp-4.png" />
+
     <h3>پیوست‌ها</h3>
     <Notice variant="info">به زودی این قابلیت به ایمیل‌ها اضافه می‌شود.</Notice>
   </Layout>
