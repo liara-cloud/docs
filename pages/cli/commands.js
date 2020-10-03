@@ -18,7 +18,7 @@ export default () => (
       <code>$ liara login</code>
     </p>
     <p>
-      این دستور از شما نام کاربری و رمزعبوری که با آن در لیارا ثبت نام کرده‌اید
+      این دستور از شما موقعیت جغرافیایی، نام کاربری و رمزعبوری که با آن در لیارا ثبت نام کرده‌اید
       را می‌پرسد.
     </p>
 
@@ -80,6 +80,11 @@ export default () => (
       <p dir="rtl" className="commandDescription">
         (8) مشخص کردن port ای که برنامه شما به آن گوش می‌دهد.
       </p>
+      <li>&nbsp;&nbsp;--region=iran|germany</li>
+      <p dir="rtl" className="commandDescription">
+        (9) مشخص‌کردن موقعیت جغرافیایی
+        (مناسب ci/cd)
+      </p>
     </ol>
 
     <h3>دیدن لاگ‌های برنامه‌ها</h3>
@@ -112,6 +117,11 @@ export default () => (
       <p dir="rtl" className="commandDescription">
         (4) مشخص کردن این‌ که لاگ‌ها از چه تاریخی به بعد نمایش داده شود با فرمت
         unixtimestamp
+      </p>
+      <li>&nbsp;&nbsp;--region=iran|germany</li>
+      <p dir="rtl" className="commandDescription">
+        (5) مشخص‌کردن موقعیت جغرافیایی
+        (مناسب ci/cd)
       </p>
     </ol>
 

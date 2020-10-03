@@ -295,6 +295,10 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/cli/commands">خلاصه دستورات</ActiveLink></li>
             </ul>
           </nav>
+
+          <nav className="nav">
+            <ActiveLink href="/migrate">انتقال بین موقعیت‌ها</ActiveLink>
+          </nav>
         </div>
       </aside>
     );
