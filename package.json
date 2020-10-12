@@ -18,6 +18,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-gist": "^1.2.1",
-    "react-highlight": "^0.12.0"
+    "react-highlight": "^0.12.0",
+    "react-yandex-metrika": "^2.6.0"
   }
 }
