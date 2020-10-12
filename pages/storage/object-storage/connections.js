@@ -120,7 +120,7 @@ for bucket in s3.buckets.all():
             href="https://django-storages.readthedocs.io/en/latest/index.html"
             target="_blank"
           >
-            «django-storages» documents
+            «Django-Storages» documents
           </a>
         </b>
       </li>
@@ -128,8 +128,8 @@ for bucket in s3.buckets.all():
       <li>
         <b>
           .Net Core:{" "}
-          <a href="https://www.nuget.org/packages/AWSSDK.S3/" target="_blank">
-            «AWSSDK.S3 3» library
+          <a href="https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html" target="_blank">
+            How to use AWS SDK for .NET with MinIO Server
           </a>
         </b>
       </li>
