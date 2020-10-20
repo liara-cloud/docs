@@ -174,7 +174,9 @@ Zend OPcache
 zip
 zlib
 [Zend Modules]
-Zend OPcache`}
+SourceGuardian
+Zend OPcache
+the ionCube PHP Loader + ionCube24`}
       </code>
     </pre>
   </Layout>
