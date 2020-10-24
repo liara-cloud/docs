@@ -31,7 +31,7 @@ export default () => (
       دیتابیس MongoDB میسازد و به RocketChat متصل می‌کند و شما نیازی به درگیری
       با نصب و کانفیگ دیتابیس و اتصال آن ندارید.
     </p>
-    <ZoomableImage src="/static/rocket-add.png" />
+    <ZoomableImage src="/static/rocket-add.jpg" />
 
     <p>
       بعد از طی کردن مراحل بالا و با کلیک روی دکمه <b>ایجاد برنامه،</b> وارد

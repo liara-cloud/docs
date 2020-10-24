@@ -27,6 +27,16 @@ export default () => (
 
     <h3>استفاده از دیسک‌ها</h3>
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/node-disks.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <p>
       فایل سیستم برنامه‌های لیارا،{" "}
       <a href="/app-features/file-system">Read-Only</a> است. به عبارتی، بعد از
       عملیات استقرار، امکان ذخیره‌سازی فایل‌های جدید در کنار فایل‌های پروژه،

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../../components/Layout";
+import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -12,23 +13,19 @@ export default () => (
 
     <h1>درباره برنامه‌های آماده</h1>
     <p>
-      در بخش <b>برنامه‌های آماده</b> شما می‌توانید به سادگی و راحتی برنامه‌های
+      در صفحه‌ی ساخت برنامه بخشی وجود دارد به نام <b>برنامه‌های آماده</b> که شما می‌توانید به سادگی و راحتی برنامه‌های
       کاربردی خاصی را فقط با یک کلیک ایجاد کنید. برای مثال شما می‌توانید با یک
       کلیک WordPress را نصب و اجرا کنید. دیتابیس به صورت خودکار برای شما ایجاد و
       WordPress به آن متصل می‌شود.
     </p>
+    <ZoomableImage src="/static/one-click-apps.jpg" />
+
     <p>در حال حاضر این برنامه‌ها در این بخش وجود دارد:</p>
     <ul dir="ltr">
-      <li>Gitea</li>
-      <li>Ghost</li>
-      <li>File Run</li>
-      <li>Adminer</li>
       <li>WordPress</li>
       <li>RocketChat</li>
-      <li>Mattermost</li>
-      <li>Code Server</li>
-      <li>adminMongo</li>
-      <li>phpMyAdmin</li>
+      <li>Gitea</li>
+      <li>Ghost</li>
     </ul>
   </Layout>
 );

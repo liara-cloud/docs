@@ -23,7 +23,7 @@ export default () => (
       WordPress شما به دیتابیس‌ متصل می‌شود و شما می‌توانید به صورت مستقیم بدون
       درگیری با بخش‌های مرتبط با کانفیگ دیتابیس، وارد پنل WordPress شوید.
     </p>
-    <ZoomableImage src="/static/wp-add.png" />
+    <ZoomableImage src="/static/wp-add.jpg" />
 
     <p>
       بعد از طی کردن مراحل بالا و با کلیک روی دکمه <b>ایجاد برنامه،</b> وارد
