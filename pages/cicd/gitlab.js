@@ -42,7 +42,7 @@ deploy:
   before_script:
     - npm install -g @liara/cli@2
   script:
-    - liara deploy --app $APP_NAME --detach --api-token $TOKEN
+    - liara deploy --app $APP_NAME --detach --region iran --api-token $TOKEN
 `}
     </Highlight>
     <p>
@@ -52,6 +52,12 @@ deploy:
       شد که برنامه‌‍ سالم است و اجازه آپدیت شدن دارد. GitLab CI امکانات بسیار
       خوبی برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
     </p>
+    <Notice variant="info">
+      در نمونه‌ی بالا، موقعیت جغرافیایی «ایران» در نظر گرفته شده‌است. اگر شما از موقعیت آلمان
+      استفاده می‌کنید، لازم است که <span className="code">germany</span>
+      را در پارامتر <span className="code">--region</span>
+      تنظیم کنید.
+    </Notice>
     <p>
       <b>گام دوم)</b> لیارا برای اجرای دستور deploy نیاز به نام یا همان شناسه
       برنامه و api-token دارد. البته اگر از{" "}

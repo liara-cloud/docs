@@ -51,15 +51,21 @@ jobs:
 
         run: |
           npm i -g @liara/cli@2
-          liara deploy --api-token="$LIARA_TOKEN" --detach
+          liara deploy --api-token="$LIARA_TOKEN" --region iran --detach
 `}
     </Highlight>
-    <Notice variant="info">
+    <p>
       همانطور که می‌بینید شما در این فایل همه اتفاقات را تعریف می‌کنید. مثلا در
       فایل بالا ابزار Liara CLI را ابتدا نصب کرده‌ایم و سپس در ریشه برنامه دستور
       deploy را اجرا کرده‌ایم. در همین فایل می‌شود Test ها را اجرا کرد و مطمئن
       شد که برنامه‌ سالم است و اجازه آپدیت شدن دارد. GitHub Actions امکانات
       بسیار خوبی برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
+    </p>
+    <Notice variant="info">
+      در نمونه‌ی بالا، موقعیت جغرافیایی «ایران» در نظر گرفته شده‌است. اگر شما از موقعیت آلمان
+      استفاده می‌کنید، لازم است که <span className="code">germany</span>
+      را در پارامتر <span className="code">--region</span>
+      تنظیم کنید.
     </Notice>
     <p>
       <b>گام دوم)</b> لیارا برای اجرای دستور deploy نیاز به نام یا همان شناسه
