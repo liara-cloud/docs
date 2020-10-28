@@ -45,8 +45,8 @@ export default () => (
     <ul dir="ltr">
       <li>8</li>
       <li>10</li>
-      <li>11</li>
       <li>12</li>
+      <li>14</li>
     </ul>
     <Notice variant="info">
       برنامه‌های NextJS و NuxtJS را هم می‌توانید بدون تنظیمات خاصی در بخش

@@ -50,7 +50,7 @@ export default () => (
 
     <h3>انتخاب نسخه‌ی NodeJS</h3>
     <p>
-      به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی 10 این پلتفرم اجرا می‌شود. در
+      به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی ۱۲ این پلتفرم اجرا می‌شود. در
       صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
       می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
       اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
@@ -62,7 +62,7 @@ export default () => (
   "app": "nodejs-starter",
   "port": 8000,
   "node": {
-    "version": "12"
+    "version": "14"
   }
 }`}
       </code>
@@ -71,8 +71,8 @@ export default () => (
     <ul>
       <li>8</li>
       <li>10</li>
-      <li>11</li>
       <li>12</li>
+      <li>14</li>
     </ul>
 
     <a name="adonisjs" />
@@ -123,7 +123,6 @@ export default () => (
   "app": "nodejs-starter",
   "port": 8000,
   "node": {
-    "version": "10",
     "timezone": "America/Los_Angeles"
   }
 }`}

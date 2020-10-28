@@ -122,21 +122,7 @@ max_execution_time = 600`}
       آرایه است که شما می‌توانید به هر تعدادی دستور که مایل بودید، به آن اضافه
       کنید.
     </p>
-    <h3>تنظیم TimeZone</h3>
-    <p>
-      ابتدا فایل
-      <span className="code">app/config.php</span>
-      را باز کرده و فیلد
-      <span className="code">timezone</span>
-      آن را به
-      <span className="code">Asia/Tehran</span>
-      تغییر دهید و سپس در فایل
-      <span className="code">liara_php.ini</span>
-      خط زیر را اضافه کرده و بعد دیپلوی کنید:
-    </p>
-    <pre>
-      <code>date.timezone = 'Asia/Tehran'</code>
-    </pre>
+
     <h3>تنظیمات TrustedProxies (برای مشاهده IP واقعی کاربران)</h3>
     <p>
       تمامی درخواست‌ها به سمت برنامه‌ی شما توسط{" "}
@@ -333,6 +319,53 @@ stdout_logfile=/tmp/sms-queue.log`}
       </a>{" "}
       برای بررسی بیشتر مطالعه کنید.
     </Notice>
+
+    <h3>انتخاب نسخه‌ی PHP</h3>
+    <p>
+      به‌صورت پیش‌فرض، برنامه‌ی شما در نسخه‌ی PHP 7.4 اجرا می‌شود. در
+      صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
+      می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
+      اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
+    </p>
+    <pre>
+      <code>
+        {`{
+  "platform": "laravel",
+  "app": "laravel-starter",
+  "laravel": {
+    "phpVersion": "7.2"
+  }
+}`}
+      </code>
+    </pre>
+    <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌کنیم:</p>
+    <ul>
+      <li>7.2</li>
+      <li>7.3</li>
+      <li>7.4</li>
+    </ul>
+
+    <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <p>
+      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
+      تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
+      <span className="code">timezone</span>
+      در فایل <span className="code">liara.json</span>
+      استفاده کنید. برای نمونه:
+    </p>
+    <pre>
+      <code>
+        {`{
+  "platform": "laravel",
+  "app": "laravel-starter",
+  "laravel": {
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+      </code>
+    </pre>
+
+
     <h3>لیست اکستنشن‌های نصب شده</h3>
     <p>در پلتفرم لاراول، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
     <pre>
