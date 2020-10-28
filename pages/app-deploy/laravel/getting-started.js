@@ -44,9 +44,10 @@ export default () => (
     </p>
 
     <ul dir="ltr">
-      <li>5.8.^</li>
+      <li>5.5.^</li>
       <li>6.^</li>
       <li>7.^</li>
+      <li>8.^</li>
     </ul>
     {/* </Notice> */}
     {/* <pre>
