@@ -341,6 +341,7 @@ stdout_logfile=/tmp/sms-queue.log`}
 amqp
 apcu
 bcmath
+bz2
 calendar
 Core
 ctype
@@ -362,12 +363,11 @@ imagick
 imap
 intl
 json
-ldap
 libxml
 mbstring
-mcrypt
 memcached
 mongodb
+msgpack
 mysqli
 mysqlnd
 openssl
@@ -385,6 +385,7 @@ readline
 redis
 Reflection
 session
+shmop
 SimpleXML
 soap
 sockets
@@ -392,14 +393,19 @@ sodium
 SPL
 sqlite3
 standard
+sysvmsg
+sysvsem
+sysvshm
 tokenizer
 xml
 xmlreader
 xmlwriter
+xsl
 yaml
 Zend OPcache
 zip
 zlib
+
 [Zend Modules]
 Zend OPcache`}
       </code>
