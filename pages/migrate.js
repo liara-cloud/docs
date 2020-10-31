@@ -189,7 +189,7 @@ export default () => (
           دستور زیر را در کامپیوترتان برای بازیابی داده‌ها وارد کنید:
           <pre>
             <code>
-              $ mongorestore 'CONNECTION_URI' --archive=my-db.dump
+              $ mongorestore --uri='CONNECTION_URI' --archive=my-db.dump
             </code>
           </pre>
           به‌جای <span className="code">CONNECTION_URI</span>، از آدرس URI ای استفاده کنید که در بخش دسترسی سریع شبکه‌ی عمومی در پنل لیارا به‌شما نمایش داده شده‌است.
@@ -198,7 +198,7 @@ export default () => (
           <br />
           برای نمونه:
           <pre>
-            <code>mongorestore 'mongodb://root:pass@host:12345/my-app?authSource=admin' --archive=test-db.dump</code>
+            <code>mongorestore --uri='mongodb://root:pass@host:12345/my-app?authSource=admin' --archive=test-db.dump</code>
           </pre>
         </li>
       </ol>
