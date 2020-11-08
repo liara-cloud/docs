@@ -234,8 +234,8 @@ export default () => (
           هر دو سرویس فایل را به CLI بدهیم:
           <pre>
             <code>
-              $ mc alias set source-minio endpoint1.liara.run ACCESS-KEY1 SECRET-KEY1<br />
-              $ mc alias set target-minio endpoint2.iran.liara.run ACCESS-KEY2 SECRET-KEY2
+              $ mc alias set source-minio https://endpoint1.liara.space ACCESS-KEY1 SECRET-KEY1<br />
+              $ mc alias set target-minio https://endpoint2.iran.liara.space ACCESS-KEY2 SECRET-KEY2
             </code>
           </pre>
           همان‌طور که مشاهده می‌کنید، ما ۲ بار از دستور
