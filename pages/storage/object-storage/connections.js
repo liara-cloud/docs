@@ -26,36 +26,6 @@ export default () => (
     <ul dir="ltr">
       <li>
         <b>
-          PHP:{" "}
-          <a href="https://github.com/aws/aws-sdk-php" target="_blank">
-            aws-sdk-php
-          </a>
-        </b>
-      </li>
-
-      <Highlight className="php">
-        {`$ composer require aws/aws-sdk-php
-
-<?php
-require 'vendor/autoload.php';
-use Aws\S3\S3Client;
-$client = new S3Client([
-    'region' => 'us-east-1',
-    'version' => '2006-03-01',
-    'endpoint' => "https://".API_ENDPOINT,
-    'credentials' => [
-        'key' => ACCESS_KEY
-        'secret' => SECRET_KEY
-    ],
-    'use_path_style_endpoint' => true
-]);
-$listResponse = $client->listBuckets();
-print_r($listResponse);`}
-      </Highlight>
-      <br />
-
-      <li>
-        <b>
           Nodejs:{" "}
           <a href="https://github.com/aws/aws-sdk-js" target="_blank">
             aws-sdk-js
@@ -83,21 +53,123 @@ s3.listBuckets(function(err, data) {
 
       <li>
         <b>
-          Python:{" "}
+          Laravel:{" "}
+          <a href="https://laravel.com/docs/master/filesystem" target="_blank">
+            «File Storage» documents
+          </a>
+        </b>
+      </li>
+      <Highlight className="php">
+        {`// config/filesystems.php
+<?php
+return [
+  // ...
+  'cloud' => 's3',
+  'disks' => [
+    // ...
+    'minio' => [
+      'driver' => 's3',
+      'endpoint' => env('MINIO_ENDPOINT'),
+      'use_path_style_endpoint' => true,
+      'key' => env('AWS_KEY'),
+      'secret' => env('AWS_SECRET'),
+      'region' => env('AWS_REGION'),
+      'bucket' => env('AWS_BUCKET'),
+    ],
+  ],
+];`}
+      </Highlight>
+      <br />
+
+      <li>
+        <b>
+          PHP:{" "}
+          <a href="https://github.com/aws/aws-sdk-php" target="_blank">
+            aws-sdk-php
+          </a>
+        </b>
+      </li>
+      <Highlight className="php">
+        {`$ composer require aws/aws-sdk-php
+
+<?php
+require 'vendor/autoload.php';
+use Aws\S3\S3Client;
+$client = new S3Client([
+    'region' => 'us-east-1',
+    'version' => '2006-03-01',
+    'endpoint' => "https://".API_ENDPOINT,
+    'credentials' => [
+        'key' => ACCESS_KEY
+        'secret' => SECRET_KEY
+    ],
+    'use_path_style_endpoint' => true
+]);
+$listResponse = $client->listBuckets();
+print_r($listResponse);`}
+      </Highlight>
+      <br />
+
+      <li>
+        <b>
+          Django:{" "}
+          <a
+            href="https://django-storages.readthedocs.io/en/latest/index.html"
+            target="_blank"
+          >
+            Django-Storages
+          </a>
+          ,{" "}
           <a href="https://github.com/boto/boto3" target="_blank">
             boto3
           </a>
         </b>
       </li>
+      <Highlight className="python">
+        {`pip install boto3
+pip install django-storages
 
+# settings.py:
+INSTALLED_APPS = [
+  'django.contrib.auth',
+  'django.contrib.contenttypes',
+  'django.contrib.sessions',
+  'django.contrib.messages',
+  'django.contrib.staticfiles',
+  ...,
+  'storages',
+  ...
+]
+
+AWS_ACCESS_KEY_ID = os.environ.get(ACCESS_KEY)
+AWS_SECRET_ACCESS_KEY = os.environ.get(SECRET_KEY)
+AWS_STORAGE_BUCKET_NAME = os.environ.get(BUCKET_NAME)
+AWS_S3_CUSTOM_DOMAIN = os.environ.get(API_ENDPOINT)
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
+      </Highlight>
+      <br />
+
+      <li>
+        <b>
+          Flask:{" "}
+          <a href="https://github.com/boto/boto3" target="_blank">
+            boto3
+          </a>
+        </b>
+      </li>
       <Highlight className="python">
         {`$ pip install boto3
 
-import boto3
+import boto3, os
 
-s3 = boto3.resource('s3', endpoint_url='https://'+API_ENDPOINT,
-                  aws_access_key_id=ACCESS_KEY,
-                  aws_secret_access_key=SECRET_KEY)
+s3 = boto3.resource('s3',
+        endpoint_url='https://'+os.environ.get(API_ENDPOINT),
+        aws_access_key_id=os.environ.get(ACCESS_KEY),
+        aws_secret_access_key=os.environ.get(SECRET_KEY))
 
 for bucket in s3.buckets.all():
     print(bucket.name)`}
@@ -106,33 +178,64 @@ for bucket in s3.buckets.all():
 
       <li>
         <b>
-          Laravel:{" "}
-          <a href="https://laravel.com/docs/master/filesystem" target="_blank">
-            «File Storage» documents
-          </a>
-        </b>
-      </li>
-      <br />
-      <li>
-        <b>
-          Django:{" "}
+          .Net Core:{" "}
           <a
-            href="https://django-storages.readthedocs.io/en/latest/index.html"
+            href="https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html"
             target="_blank"
           >
-            «Django-Storages» documents
+            AWS SDK for .NET
           </a>
         </b>
       </li>
-      <br />
-      <li>
-        <b>
-          .Net Core:{" "}
-          <a href="https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html" target="_blank">
-            How to use AWS SDK for .NET with MinIO Server
-          </a>
-        </b>
-      </li>
+      <Highlight className="csharp">
+        {`using Amazon.S3;
+using System;
+using System.Threading.Tasks;
+using Amazon;
+
+class Program
+{
+  private const string accessKey = "ACCESSKEY";
+  private const string secretKey = "SECRETKEY";
+
+  static void Main(string[] args)
+  {
+    Task.Run(MainAsync).GetAwaiter().GetResult();
+  }
+
+  private static async Task MainAsync()
+  {
+    var config = new AmazonS3Config
+    {
+      RegionEndpoint = RegionEndpoint.USEast1,
+      ServiceURL = "http://localhost:9000",
+      ForcePathStyle = true
+    };
+    var amazonS3Client = new AmazonS3Client(
+      accessKey,
+      secretKey,
+      config);
+
+    amazonS3Client.ExceptionEvent += OnAmazonS3Exception;
+
+    var listBucketResponse = await amazonS3Client.ListBucketsAsync();
+
+    foreach (var bucket in listBucketResponse.Buckets)
+    {
+      // ...
+    }
+    if (listBucketResponse.Buckets.Count > 0)
+    {
+      var bucketName = listBucketResponse.Buckets[0].BucketName;
+      var listObjectsResponse = await amazonS3Client.ListObjectsAsync(bucketName);
+      foreach (var obj in listObjectsResponse.S3Objects)
+      {
+        // ...
+      }
+    }
+  }
+}`}
+      </Highlight>
     </ul>
     <Notice variant="info">
       کتابخانه‌های معرفی شده در بالا صرفا مثال‌هایی برای S3 در هر زبان بودند که
