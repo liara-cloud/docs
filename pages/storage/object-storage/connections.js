@@ -23,6 +23,13 @@ export default () => (
       در این مثال‌ها فقط نحوه اتصال و نمایش لیست باکت‌ها قرار گرفته است. لینک
       مستندات و گیت‌هاب هر کتابخانه برای مطالعه بیشتر قرار گرفته است.
     </Notice>
+    <Notice variant="info">
+      مقدار متغیر‌های
+      <span className="code">LIARA_ENDPOINT</span>،{" "}
+      <span className="code">LIARA_ACCESS_KEY</span> و
+      <span className="code">LIARA_SECRET_KEY</span> را می‌توانید از قسمت{" "}
+      «کلید‌های دسترسی» در صفحه اطلاعات کلی سرویس فایل‌تان، بدست آورید.
+    </Notice>
     <ul dir="ltr">
       <li>
         <b>
@@ -38,9 +45,9 @@ export default () => (
 
 var AWS = require('aws-sdk');
 const s3 = new AWS.S3({
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_KEY,
-    endpoint: API_ENDPOINT,
+    accessKeyId: LIARA_ACCESS_KEY,
+    secretAccessKey: LIARA_SECRET_KEY,
+    endpoint: LIARA_ENDPOINT,
     s3ForcePathStyle: true
 });
  
@@ -64,17 +71,17 @@ s3.listBuckets(function(err, data) {
 <?php
 return [
   // ...
-  'cloud' => 's3',
+  'cloud' => 'minio',
   'disks' => [
     // ...
     'minio' => [
       'driver' => 's3',
-      'endpoint' => env('MINIO_ENDPOINT'),
+      'endpoint' => env('LIARA_ENDPOINT'),
       'use_path_style_endpoint' => true,
-      'key' => env('AWS_KEY'),
-      'secret' => env('AWS_SECRET'),
-      'region' => env('AWS_REGION'),
-      'bucket' => env('AWS_BUCKET'),
+      'key' => env('LIARA_ACCESS_KEY'),
+      'secret' => env('LIARA_SECRET_KEY'),
+      'region' => 'us-east-1',
+      'bucket' => env('LIARA_BUCKET_NAME'),
     ],
   ],
 ];`}
@@ -98,10 +105,10 @@ use Aws\S3\S3Client;
 $client = new S3Client([
     'region' => 'us-east-1',
     'version' => '2006-03-01',
-    'endpoint' => "https://".API_ENDPOINT,
+    'endpoint' => LIARA_ENDPOINT,
     'credentials' => [
-        'key' => ACCESS_KEY
-        'secret' => SECRET_KEY
+        'key' => LIARA_ACCESS_KEY
+        'secret' => LIARA_SECRET_KEY
     ],
     'use_path_style_endpoint' => true
 ]);
@@ -141,10 +148,10 @@ INSTALLED_APPS = [
   ...
 ]
 
-AWS_ACCESS_KEY_ID = os.environ.get(ACCESS_KEY)
-AWS_SECRET_ACCESS_KEY = os.environ.get(SECRET_KEY)
-AWS_STORAGE_BUCKET_NAME = os.environ.get(BUCKET_NAME)
-AWS_S3_CUSTOM_DOMAIN = os.environ.get(API_ENDPOINT)
+AWS_ACCESS_KEY_ID = os.environ.get(LIARA_ACCESS_KEY)
+AWS_SECRET_ACCESS_KEY = os.environ.get(LIARA_SECRET_KEY)
+AWS_STORAGE_BUCKET_NAME = os.environ.get(LIARA_BUCKET_NAME)
+AWS_S3_CUSTOM_DOMAIN = os.environ.get(LIARA_ENDPOINT)
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
@@ -167,9 +174,9 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
 import boto3, os
 
 s3 = boto3.resource('s3',
-        endpoint_url='https://'+os.environ.get(API_ENDPOINT),
-        aws_access_key_id=os.environ.get(ACCESS_KEY),
-        aws_secret_access_key=os.environ.get(SECRET_KEY))
+        endpoint_url=os.environ.get(LIARA_ENDPOINT),
+        aws_access_key_id=os.environ.get(LIARA_ACCESS_KEY),
+        aws_secret_access_key=os.environ.get(LIARA_SECRET_KEY))
 
 for bucket in s3.buckets.all():
     print(bucket.name)`}
@@ -195,8 +202,8 @@ using Amazon;
 
 class Program
 {
-  private const string accessKey = "ACCESSKEY";
-  private const string secretKey = "SECRETKEY";
+  private const string accessKey = Environment.GetEnvironmentVariable("LIARA_ACCESS_KEY");
+  private const string secretKey = Environment.GetEnvironmentVariable("LIARA_SECRET_KEY");
 
   static void Main(string[] args)
   {
@@ -208,7 +215,7 @@ class Program
     var config = new AmazonS3Config
     {
       RegionEndpoint = RegionEndpoint.USEast1,
-      ServiceURL = "http://localhost:9000",
+      ServiceURL = Environment.GetEnvironmentVariable("LIARA_ENDPOINT"),
       ForcePathStyle = true
     };
     var amazonS3Client = new AmazonS3Client(
