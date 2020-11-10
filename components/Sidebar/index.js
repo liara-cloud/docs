@@ -284,7 +284,7 @@ export default class Sidebar extends Component {
             <NavTitle href="/domains">دامنه‌ها</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/domains/management">مدیریت دامنه‌ها</ActiveLink></li>
-              <li><ActiveLink href="/domains/ssl">مدیریت SSL‌ ها</ActiveLink></li>
+              <li><ActiveLink href="/domains/ssl">مدیریت SSL‌ها</ActiveLink></li>
             </ul>
           </nav>
 
