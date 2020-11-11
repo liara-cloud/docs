@@ -38,10 +38,10 @@ stages:
 deploy:
   stage: update-production
   only:
-    - master  
-  before_script:
-    - npm install -g @liara/cli@2
+    - master
   script:
+    - npm i -g @liara/cli@2
+    - export http_proxy=http://proxy.liara.ir:6666
     - liara deploy --app $APP_NAME --detach --region iran --api-token $TOKEN
 `}
     </Highlight>
@@ -52,6 +52,11 @@ deploy:
       شد که برنامه‌‍ سالم است و اجازه آپدیت شدن دارد. GitLab CI امکانات بسیار
       خوبی برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
     </p>
+    <Notice variant="info">
+      سرویس GitLab ایران را به‌لیست تحریم خود اضافه کرده و بنابراین
+      برای دیپلوی‌کردن در موقعیت ایران، لازم است که از پروکسی‌ای که در نمونه‌ی بالا قرار داده شده حتما استفاده کنید.
+      برای دیپلوی در موقعیت آلمان نیازی به‌پروکسی نیست.
+    </Notice>
     <Notice variant="info">
       در نمونه‌ی بالا، موقعیت جغرافیایی «ایران» در نظر گرفته شده‌است. اگر شما از موقعیت آلمان
       استفاده می‌کنید، لازم است که <span className="code">germany</span>
