@@ -61,5 +61,60 @@ max_execution_time = 600`}
       </a>{" "}
       مراجعه کنید و طبق مستندات، دامنه‌ اختصاصی را به برنامه متصل کنید.
     </Notice>
+
+    <h3>لیست اکستنشن‌های نصب شده</h3>
+    <p>در برنامه‌ی آماده‌ی وردپرس، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
+    <pre>
+      <code>{`[PHP Modules]
+bcmath
+Core
+ctype
+curl
+date
+dom
+exif
+fileinfo
+filter
+ftp
+gd
+hash
+iconv
+imagick
+ionCube Loader
+json
+libxml
+mbstring
+mysqli
+mysqlnd
+openssl
+pcre
+PDO
+pdo_sqlite
+Phar
+posix
+readline
+redis
+Reflection
+session
+SimpleXML
+soap
+sodium
+SourceGuardian
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+Zend OPcache
+zip
+zlib
+
+[Zend Modules]
+SourceGuardian
+Zend OPcache
+the ionCube PHP Loader + ionCube24`}</code>
+    </pre>
   </Layout>
 );
