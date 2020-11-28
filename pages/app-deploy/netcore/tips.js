@@ -1,7 +1,7 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
-import Link from "next/link";
 import Highlight from "react-highlight";
+import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
@@ -41,13 +41,20 @@ export default () => (
 }`}
       </code>
     </pre>
-    <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌شود:</p>
+    <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌کنیم:</p>
     <ul>
-      <li>3.1</li>
+      <li>5.0</li>
+      <li>3.1 <b>(LTS)</b></li>
       <li>3.0</li>
       <li>2.2</li>
-      <li>2.1</li>
+      <li>2.1 <b>(LTS)</b></li>
     </ul>
+
+    <Notice variant="warning">
+      توجه داشته باشید که نسخه‌های 2.2 و 3.0  در وضعیت
+      End of Life
+      قرار دارند و بهتر است که از آن‌ها استفاده نکنید.
+    </Notice>
 
     <h3>تنظیمات مرتبط با ساختار برنامه</h3>
     <p>

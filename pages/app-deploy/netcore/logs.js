@@ -3,7 +3,6 @@ import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
 import ZoomableImage from "../../../components/ZoomableImage";
-import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
