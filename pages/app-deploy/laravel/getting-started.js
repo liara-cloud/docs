@@ -71,6 +71,19 @@ $ php artisan serve --port 8000`}
       <span className="code">http://127.0.0.1:8000</span> باز کنید. اگر همه چیز
       درست بود یعنی آماد‌ه‌اید که برنامه را روی لیارا مستقر کنید.
     </p> */}
+
+    <Notice variant="info">
+      اگر قصد دارید تنظیمات پیش‌فرض php.ini را تغییر دهید
+      و یا با Queue ها و CronJob کار کنید
+      صفحه‌ی
+      {' '}
+      <Link href="/app-deploy/laravel/tips">توضیحات و نکات تکمیلی</Link>
+      {' '}
+      را مطالعه بفرمایید.
+    </Notice>
+
+    <br />
+
     <Link href="/app-deploy/laravel/deploy">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
