@@ -174,6 +174,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/app-features/logs">لاگ‌ها</ActiveLink></li>
               <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (env ها)</ActiveLink></li>
               <li><ActiveLink href="/app-features/console">خط فرمان</ActiveLink></li>
+              <li><ActiveLink href="/app-features/cron-jobs">Cron Job ها</ActiveLink></li>
               <li><ActiveLink href="/app-features/fixed-ip">آی‌پی ثابت</ActiveLink></li>
               <li><ActiveLink href="/app-features/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
               <li><ActiveLink href="/app-features/zero-downtime-deployment">استقرار بدون اختلال</ActiveLink></li>

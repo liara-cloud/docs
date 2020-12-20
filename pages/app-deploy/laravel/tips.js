@@ -265,27 +265,7 @@ stdout_logfile=/tmp/sms-queue.log`}
         </a>
       </li>
     </ul>
-    <h3>ایجاد CronJob</h3>
-    <p>
-      گاهی اوقات نیاز است کار خاصی در زمان خاصی و به صورت دوره‌ای انجام شود،
-      مثلا تهیه‌ی فایل پشتیبان از پایگاه داده، ارسال ایمیل و خبرنامه و کارهایی
-      نظیر این. برای تعریف کران‌جاب‌هایتان، می‌توانید فیلدی به نام
-      <span className="code">cron</span>
-      را به فایل <span className="code">liara.json</span> برنامه‌ی‌تان اضافه
-      کنید.
-    </p>
-    <Highlight className="json">
-      {`{
-  "cron": [
-    "* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1"
-  ]
-}`}
-    </Highlight>
-    <p>
-      همان‌طور که مشاهده می‌کنید، فیلد
-      <span className="code">cron</span>
-      یک آرایه است و این یعنی می‌توانید یک یا چند کران‌جاب تعریف کنید.
-    </p>
+
     <h3>مدیریت لاگ‌ها در Laravel</h3>
     <p>
       لاگ‌ها وظیفه دارند اتفاقات رخ داده در نرم‌افزار مثل error ها یا exception
