@@ -74,7 +74,7 @@ $ php artisan serve --port 8000`}
 
     <Notice variant="info">
       اگر قصد دارید تنظیمات پیش‌فرض php.ini را تغییر دهید
-      و یا با Queue ها و CronJob کار کنید
+      و یا با Queue ها کار کنید
       صفحه‌ی
       {' '}
       <Link href="/app-deploy/laravel/tips">توضیحات و نکات تکمیلی</Link>

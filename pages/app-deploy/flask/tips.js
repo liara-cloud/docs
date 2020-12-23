@@ -1,8 +1,5 @@
 import Layout from "../../../components/Layout";
-import Link from "next/link";
 import Head from "next/head";
-import Notice from "../../../components/Notice";
-import Highlight from "react-highlight";
 
 export default () => (
   <Layout>
@@ -25,6 +22,25 @@ export default () => (
     </div>
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
-    <p>در دست تکمیل</p>
+
+    <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <p>
+      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
+      تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
+      <span className="code">timezone</span>
+      در فایل <span className="code">liara.json</span>
+      استفاده کنید. برای نمونه:
+    </p>
+    <pre>
+      <code>
+        {`{
+  "app": "flask-starter",
+  "flask": {
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+      </code>
+    </pre>
+
   </Layout>
 );

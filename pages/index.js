@@ -44,7 +44,7 @@ export default () => (
       </a>
       <a href="app-deploy/netcore/getting-started">
         <img src="/static/platformicons/netcore.svg" alt="netcore" />
-        <span>.NetCore</span>
+        <span>ASP.Net Core</span>
       </a>
       <a href="app-deploy/react/getting-started">
         <img src="/static/platformicons/react.svg" alt="react" />

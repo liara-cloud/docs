@@ -51,9 +51,9 @@ export default () => (
     <Notice variant="info">
       برای استفاده از این قابلیت، Liara CLI باید دارای نسخه‌ی 2.4.0 یا بالاتر
       باشد.{" "}
-      <a href="/cli/install" target="_blank">
+      <Link href="/cli/install">
         راهنمای نصب و ارتقا CLI
-      </a>
+      </Link>
     </Notice>
   </Layout>
 );

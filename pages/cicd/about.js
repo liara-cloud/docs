@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import Head from "next/head";
+import Link from "next/link";
 import Notice from "../../components/Notice";
 
 export default () => (
@@ -45,9 +46,9 @@ export default () => (
 
     <Notice variant="info">
       یکی از قابلیت‌های لیارا به نام{" "}
-      <a href="/app-features/zero-downtime-deployment" target="_blank">
-        <b>استقرار بدون اختلال</b>
-      </a>{" "}
+      <Link href="/app-features/zero-downtime-deployment">
+        <a><b>استقرار بدون اختلال</b></a>
+      </Link>{" "}
       تا حدی مرتبط با مبحث CD است. اگر تا به حال این بخش را مطالعه نکرده‌اید،
       توصیه می‌کنیم برای تجربه بهتر و حرفه‌ای تر حتما این بخش را نیز مطالعه
       کنید.

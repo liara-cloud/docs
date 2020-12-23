@@ -24,8 +24,12 @@ export default () => (
     <h3>استقرار اولین برنامه</h3>
     <h3>نصب Liara CLI</h3>
     <p>
-      اگر Liara CLI را نصب ندارید می‌توانید به وسیله دستور زیر آن‌ را به‌راحتی
+      اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید:
+      {' '}
+      <Link href="/cli/install">
+        توضیحات بیشتر
+      </Link>
     </p>
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>

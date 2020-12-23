@@ -2,7 +2,7 @@ import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Notice from "../../../components/Notice";
-import ZoomableImage from "../../../components/ZoomableImage";
+import Highlight from "react-highlight";
 
 export default () => (
   <Layout>
@@ -25,8 +25,12 @@ export default () => (
     <h3>استقرار اولین برنامه</h3>
     <h3>نصب Liara CLI</h3>
     <p>
-      اگر Liara CLI را نصب ندارید می‌توانید به وسیله دستور زیر آن‌ را به‌راحتی
+      اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید:
+      {' '}
+      <Link href="/cli/install">
+        توضیحات بیشتر
+      </Link>
     </p>
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>
@@ -60,7 +64,17 @@ export default () => (
       <code>{`$ liara deploy`}</code>
     </pre>
     <p>
-      Liara CLI به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
+      برنامه‌ی شما حتما باید فایل
+      <span className="code">requirements.txt</span>
+      را داشته باشد و در این فایل باید لیست تمام پکیج‌هایی که استفاده کرده‌اید را وارد کنید.
+      برای برنامه‌های Flask، دست کم باید پکیج Flask را در این فایل عنوان کرده باشید.
+      یک نمونه‌ی پروژه‌ی Flask که آماده‌ی مستقر شدن در لیارا است را در لینک زیر می‌توانید مشاهده کنید:
+    </p>
+    <p dir="ltr">
+      <a href="https://github.com/liara-cloud/flask-getting-started" target="_blank">https://github.com/liara-cloud/flask-getting-started</a>
+    </p>
+    <p>
+      بعد از وارد کردن دستور دیپلوی، Liara CLI به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
       یک برنامه‌ی Flask اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
       مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
     </p>
@@ -85,6 +99,49 @@ export default () => (
     </p>
 
     <p dir="ltr">https://flask-starter.liara.run</p>
+
+    <h3>خطاهای رایج در فرایند استقرار</h3>
+    <p>
+      لیارا برنامه‌های فلسک را با دستوری مشابه دستور زیر اجرا می‌کند:
+    </p>
+    <pre>
+      <code>$ gunicorn app:app</code>
+    </pre>
+    <p>
+      همان‌طور که در دستور بالا مشاهده می‌کنید، لیارا نام ماژول شما را به‌صورت پیش‌فرض
+      <span className="code">app</span>
+      در نظر می‌گیرد. اما چنانچه شما از نام دیگری استفاده می‌کنید و در زمان دیپلوی خطای زیر را دریافت می‌کنید:
+    </p>
+    <pre>
+      <code>
+{`File "/usr/local/lib/python3.7/site-packages/gunicorn/util.py", line 350, in import_app
+  __import__(module)
+  ModuleNotFoundError: No module named 'app'`}
+      </code>
+    </pre>
+    <p>
+      دو راه حل دارید. راه اول این است که نام ماژول‌تان را به <span className="code">app</span>
+      تغییر دهید و بعد دوباره <span className="code">liara deploy</span>
+      را وارد کنید. در غیر این‌صورت، چنانچه قصد دارید که از همان نام ماژول خودتان استفاده کنید، لازم است که
+      نام این ماژول را در فایلی به‌نام <span className="code">liara.json</span>
+      تعریف کنید. این فایل باید در کنار <span className="code">requirements.txt</span>
+      ساخته شود و محتویات آن به‌شکل زیر باشد:
+    </p>
+    <Highlight className="json">
+      {`{
+  "flask": {
+    "appModule": "myname:app"
+  }
+}`}
+    </Highlight>
+    <p>
+      با اضافه‌کردن این فایل، دستور
+      <span className="code">liara deploy</span>
+      را وارد کنید. حالا لیارا برنامه‌ی شما را با دستور زیر اجرا خواهد کرد:
+    </p>
+    <pre>
+      <code>$ gunicorn myname:app</code>
+    </pre>
 
     <Link href="/app-deploy/flask/envs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
