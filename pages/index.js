@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import Head from "next/head";
 
-export default () => (
+const Index = () => (
   <Layout>
     <Head>
       <title>مستندات - سرویس ابری لیارا</title>
@@ -100,3 +100,5 @@ export default () => (
     </div>
   </Layout>
 );
+
+export default Index;
