@@ -26,11 +26,17 @@ export default () => (
 
     <h3>اتصال به دیتابیس‌ها</h3>
     <p>
-      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیو‌های آموزشی زیر
       ‌را مشاهده کنید.
     </p>
     <video
       src="https://files.liara.ir/liara/django-mysql.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <video
+      src="https://files.liara.ir/liara/django-sqlite.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
@@ -96,16 +102,6 @@ mysqlclient == 1.4.6‍`}
           <a>اطلاعات بیشتر درباره‌ی دیسک‌ها</a>
         </Link>
       </p>
-      <p>
-      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
-      ‌را مشاهده کنید.
-    </p>
-      <video
-      src="https://files.liara.ir/liara/django-sqlite.mp4"
-      controls="controls"
-      className="block w-full"
-      width="100%"
-    ></video>
       </ul>
 
     <Link href="/app-deploy/django/migrations">متوجه شدم، برو گام بعدی!</Link>
