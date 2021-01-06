@@ -209,12 +209,14 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-await transporter.sendMail({
-  from: 'from@example.com',
+transporter.sendMail({
+  from: 'MyName <from@example.com>',
   to: 'to@example.com',
   subject: 'Test Email Subject',
   html: '<h1>Example HTML Message Body</h1>'
-});`}
+})
+  .then(() => console.log('OK, Email has been sent.'))
+  .catch(console.error);`}
     </Highlight>
     <p>
       برای اطلاعات بیشتر به{" "}
