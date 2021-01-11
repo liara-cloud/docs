@@ -50,12 +50,32 @@ export default () => (
       <ul>
         <li>Laravel</li>
         <li>Django</li>
+        <li>Flask</li>
       </ul>
     </p>
     <Notice varint="info">
     به‌زودی پشتیبانی سایر پلتفرم‌ها از این قابلیت را اضافه خواهیم کرد.
       چنانچه پلتفرم مدنظر شما در این لیست نیست، می‌توانید با پشتیبانی از طریق تیکت ارتباط بگیرید تا پلتفرم مربوطه را اضافه کنیم.
     </Notice>
+
+    <h3>بازه‌های زمانی رایج</h3>
+    <p>
+      برای تعریف هر Job، ابتدا لازم است که زمان اجرای آن را تعریف کنید.
+      در Cron Job، تعریف زمان نحوه‌ی نگارش خاصی دارد که در زیر چند نمونه‌ی پر استفاده را عنوان کرده‌ایم:
+    </p>
+    <ul>
+      <li><span className="code">* * * * *</span>{' '}<a href="https://crontab.guru/every-1-minute" target="_blank">هر دقیقه</a></li>
+      <li><span className="code">0 * * * *</span>{' '}<a href="https://crontab.guru/every-1-hour" target="_blank">هر یک ساعت</a></li>
+      <li><span className="code">0 1 * * *</span>{' '}<a href="https://crontab.guru/every-day-at-1am" target="_blank">هر روز ساعت یک بامداد</a></li>
+      <li><span className="code">0 0 * * 0</span>{' '}<a href="https://crontab.guru/every-week" target="_blank">هر هفته روز یکشنبه</a></li>
+    </ul>
+    <p>
+      با کمک وب‌سایت
+      {' '}
+      <a href="https://crontab.guru/" target="_blank">crontab.guru</a>
+      {' '}
+      می‌توانید زمان دلخواه‌تان را بسازید.
+    </p>
 
     <h3>نمونه‌ی Cron Job برای پلتفرم Django</h3>
     <Highlight className="json">
@@ -79,6 +99,23 @@ export default () => (
       >
         مستندات ساخت دستورات دلخواه مدیریتی برای جنگو
       </a>
+    </p>
+
+    <h3>نمونه‌ی Cron Job برای پلتفرم Flask</h3>
+    <Highlight className="json">
+      {`{
+  "cron": [
+    "0 0 * * 0 cd $ROOT && python3 job1.py",
+    "0 0 * * 2 cd $ROOT && python3 job2.py"
+  ]
+}`}
+    </Highlight>
+    <p>
+      در نمونه‌ی بالا، دو اسکریپت با نام‌های
+      <span className="code">job1.py</span>
+      و
+      <span className="code">job2.py</span>
+      در ریشه‌ی برنامه داریم که هفته‌ای یک‌بار اجرا می‌شوند.
     </p>
   </Layout>
 );
