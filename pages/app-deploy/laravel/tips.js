@@ -171,6 +171,18 @@ class TrustProxies extends Middleware
     protected $headers = Request::HEADER_X_FORWARDED_ALL;
 }`}
     </Highlight>
+
+    <Notice variant="info">
+      اگر از فریم‌ورک
+      {' '}
+      <a href="https://laravel-livewire.com/" target="_blank">Livewire</a>
+      {' '}
+      در برنامه‌ی لاراولی خود استفاده می‌کنید، باید حتما تنظیمات مرتبط با
+      {' '}
+      <a href="#trusted-proxies">TrustedProxies</a>
+      {' '}
+      را انجام بدهید.
+    </Notice>
     
     <h3 id="auto-build-assets">فایل‌های CSS و JS به صورت خودکار build می‌شوند</h3>
     <p>
