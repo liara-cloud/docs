@@ -48,6 +48,6 @@ export default () => (
       که شما <span className="code">--message</span> را خالی گذاشته باشید.
     </p>
 
-    <Link href="/app-deploy/docker/dbs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/docker/disks">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

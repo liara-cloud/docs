@@ -62,6 +62,10 @@ const Index = () => (
         <img src="/static/platformicons/HTML5.svg" alt="HTML5" />
         <span>Static</span>
       </a>
+      <a href="app-deploy/docker/getting-started">
+        <img src="/static/platformicons/docker.svg" alt="Docker" />
+        <span>Docker</span>
+      </a>
       <a href="/one-click-apps/wordpress">
         <img src="/static/platformicons/wordpress.svg" alt="wordpress" />
         <span>WordPress</span>
