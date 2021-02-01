@@ -164,6 +164,18 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/static/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
+              <li><NavTitle href="/app-deploy/docker">Docker</NavTitle>
+                <ul className="nav__list">
+                  <li><ActiveLink href="/app-deploy/docker/getting-started">شروع به کار</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/docker/deploy">استقرار اولین برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/docker/envs">تنظیم متغیرها (env)</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/docker/logs">مشاهده لاگ‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/docker/liarajson">استفاده از فایل liara.json</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/docker/update">به‌روزرسانی برنامه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/docker/disks">استفاده از دیسک‌ها</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/docker/domain">اتصال دامنه</ActiveLink></li>
+                </ul>
+              </li>
             </ul>
           </nav>
 
