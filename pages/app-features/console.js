@@ -1,15 +1,16 @@
 import Layout from "../../components/Layout";
 import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
+import Link from "next/link";
 
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات کنسول / خط‌فرمان Console - سرویس ابری لیارا</title>
+      <title>مستندات کنسول / خط فرمان Console - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>کنسول / خط‌فرمان</h1>
-    <span className="page-description">(Console - Terminal)</span>
+    <h1>کنسول / خط فرمان</h1>
+    <span className="page-description">(Console / Terminal)</span>
 
     <p>
       در اکثر برنامه‌ها، لازم است که بعد از مستقر کردن روی سرور، یک سری کارها
@@ -36,5 +37,28 @@ export default () => (
       وارد نمایید.
     </p>
     <ZoomableImage src="/static/console1.png" alt="صفحه‌ی ترمینال" />
+
+    <h3>چرا اتصال من به خط فرمان مدام قطع می‌شود؟</h3>
+    <p>
+      برای این‌که بتوانید به‌خط فرمان وصل شوید، برنامه‌ی شما باید روشن و در حال اجرا باشد.
+      حتما بخش
+      {' '}
+      <Link href="/app-features/applets">
+        <a>برنامک‌ها</a>
+      </Link>
+      {' '}
+      را بررسی کنید. چنانچه برنامه‌ی شما مدام در حال crash
+      کردن و ری‌استارت‌شدن باشد، امکان اتصال به‌خط فرمان را نخواهید داشت و ارتباط شما قطع خواهد شد.
+    </p>
+
+    <h3>چگونه می‌توانم با <span className="code">apt-get</span> پکیج‌های دلخواهم را روی سرور نصب کنم؟</h3>
+    <p>
+      از بخش خط فرمان این مورد امکان‌پذیر نیست. اما شما می‌توانید با استفاده از پلتفرم
+      {' '}
+      <Link href="/app-deploy/docker/getting-started">
+        <a>Docker</a>
+      </Link>
+      ، هرگونه شخصی‌سازی‌ای که نیاز دارید را انجام دهید و پکیج‌های مدنظرتان را نصب کنید.
+    </p>
   </Layout>
 );
