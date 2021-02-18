@@ -55,5 +55,50 @@ location /images {
 }`}
       </code>
     </pre>
+
+    <h3>فعال‌سازی gzip و Browser Caching</h3>
+    <p>
+      برای کاهش اندازه‌ی صفحات وب، فعال‌سازی فشرده‌ساز gzip
+      و همین‌طور Browser Caching
+      بسیار توصیه می‌شود. برای این‌کار، کافیست که فایلی به‌نام
+      <span className="code">liara_nginx.conf</span>
+      در ریشه‌ی برنامه‌ی‌تان
+      بسازید و بعد دستور<span className="code">liara deploy</span>
+      را وارد کنید.
+    </p>
+    <pre>
+      <code>
+        {`gzip             on;
+gzip_disable     "msie6";
+gzip_vary        on;
+gzip_proxied     any;
+gzip_comp_level  6;
+gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
+location / {
+  index index.html index.htm;
+  try_files $uri $uri/ /index.html =404;
+}
+
+# cache.appcache, your document html and data
+location ~* \.(?:manifest|appcache|html?|xml|json)$ {
+  expires -1;
+}
+
+# Media: images, icons, video, audio, HTC
+location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
+  expires 1M;
+  access_log off;
+  add_header Cache-Control "public";
+}
+
+# CSS, Javascript and Fonts
+location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
+  expires 1y;
+  access_log off;
+  add_header Cache-Control "public";
+}`}
+      </code>
+    </pre>
   </Layout>
 );
