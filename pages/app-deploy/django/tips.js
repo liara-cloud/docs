@@ -31,6 +31,7 @@ export default () => (
       <li><a href="#compilemessages">دستور compilemessages</a></li>
       <li><a href="#modify-settings">جلوگیری از اعمال تغییرات در فایل settings.py</a></li>
       <li><a href="#nginx-customization">تنظیمات Nginx</a></li>
+      <li><a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a></li>
     </ul>
 
     <h3 id="collectstatic">دستور <span className="code">collectstatic</span></h3>
@@ -110,7 +111,7 @@ export default () => (
     <h3 id="nginx-customization">تنظیمات Nginx</h3>
     <p>
       استقرار برنامه‌های Django، توسط وب‌سرور
-      <span className="code">Nginx</span>
+      Nginx
       انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این وب‌سرور را
       مطابق با نیازهای‌تان تنظیم کنید. برای این کار، کافیست که در ریشه‌ی
       برنامه‌ی‌تان، فایلی با نام
@@ -123,8 +124,14 @@ export default () => (
         {`location /static {
   alias /usr/src/app/staticfiles;
 }
+
 location / {
   try_files $uri @django_app;
+}
+
+location ~\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
 }`}
       </code>
     </pre>
@@ -150,5 +157,49 @@ location / {
 }`}
       </code>
     </pre>
+
+    <h3 id="max-upload-size">افزایش محدودیت حجم آپلود فایل</h3>
+    <p>
+      همان‌طور که در بخش قبلی گفته شد، پلتفرم Django در لیارا با استفاده از
+      وب‌سرور Nginx مستقر و اجرا می‌گردد.
+      در این وب‌سرور، به‌صورت پیش‌فرض حداکثر حجم مجاز آپلود فایل
+      {' '}
+      <strong>1MB</strong>
+      {' '}
+      در نظر گرفته شده‌است. شما می‌توانید یک فایل با نام
+      <span className="code">liara_nginx.conf</span>
+      در کنار
+      <span className="code">requirements.txt</span>
+      بسازید و محتویات زیر را داخل آن قرار دهید و سپس دستور
+      <span className="code">liara deploy</span>
+      را وارد کنید:
+    </p>
+    <pre>
+      <code>
+        {`client_max_body_size 250M;
+
+location /static {
+  alias /usr/src/app/staticfiles;
+}
+
+location / {
+  try_files $uri @django_app;
+}
+
+location ~\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+`}
+      </code>
+    </pre>
+    <p>
+      با قرار دادن فایل بالا در ریشه‌ی برنامه‌ی‌تان
+      حداکثر حجم مجاز آپلود فایل به
+      {' '}
+      <strong>250MB</strong>
+      {' '}
+      افزایش می‌یابد. شما می‌توانید مقدار دلخواه خودتان را تنظیم کنید.
+    </p>
   </Layout>
 );
