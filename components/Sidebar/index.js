@@ -217,6 +217,13 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
+            <NavTitle href="/instructions">دستورالعمل‌ها</NavTitle>
+            <ul className="nav__list">
+              <li><ActiveLink href="/instructions/dotnet-published">استقرار فایل DLL</ActiveLink></li>
+            </ul>
+          </nav>
+
+          <nav className="nav">
             <NavTitle href="/databases">دیتابیس‌ها</NavTitle>
             <ul className="nav__list">
               <li><NavTitle href="/databases/mysql-mariadb">MySQL / MariaDB</NavTitle>
