@@ -44,9 +44,9 @@ WORKDIR /app
 COPY . ./
 
 # Install dependencies
-RUN go mod download && \
+RUN go mod download && \\
   # Build the app
-  GOOS=linux GOARCH=amd64 go build -o main && \
+  GOOS=linux GOARCH=amd64 go build -o main && \\
   # Make the final output executable
   chmod +x ./main
 
