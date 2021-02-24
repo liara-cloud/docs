@@ -219,6 +219,12 @@ export default class Sidebar extends Component {
           <nav className="nav">
             <NavTitle href="/instructions">دستورالعمل‌ها</NavTitle>
             <ul className="nav__list">
+              {/* <li><ActiveLink href="/instructions/nextjs">NextJS</ActiveLink></li>
+              <li><ActiveLink href="/instructions/nuxtjs">NuxtJS</ActiveLink></li>
+              <li><ActiveLink href="/instructions/gatsbyjs">GatsbyJS</ActiveLink></li>
+              <li><ActiveLink href="/instructions/strapi">Strapi</ActiveLink></li> */}
+              <li><ActiveLink href="/instructions/golang">Golang</ActiveLink></li>
+              {/* <li><ActiveLink href="/instructions/elasticsearch">ElasticSearch</ActiveLink></li> */}
               <li><ActiveLink href="/instructions/dotnet-published">استقرار فایل DLL</ActiveLink></li>
             </ul>
           </nav>
