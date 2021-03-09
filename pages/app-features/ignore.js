@@ -57,20 +57,39 @@ export default () => (
       بدون در نظر گرفتن این‌که شما پوشه‌های زیر را در <span className="code">.gitignore</span>
       قرار داده‌اید یا خیر، از آن‌ها صرف نظر می‌کند و این پوشه‌ها و فایل‌ها به سرور آپلود نمی‌شوند:
     </p>
+    <ul style={{ direction: 'ltr' }}>
+      <li>.git</li>
+      <li>.idea</li>
+      <li>.vscode</li>
+      <li>.next</li>
+      <li>.gitignore</li>
+      <li>.liaraignore</li>
+      <li>.dockerignore</li>
+      <li>*.*~</li>
+      <li>liara.json</li>
+      <li>node_modules</li>
+      <li>bower_components</li>
+    </ul>
     <p>
-      <ul style={{ direction: 'ltr' }}>
-        <li>.git</li>
-        <li>.idea</li>
-        <li>.vscode</li>
-        <li>.gitignore</li>
-        <li>.liaraignore</li>
-        <li>.dockerignore</li>
-        <li>*.*~</li>
-        <li>liara.json</li>
-        <li>node_modules</li>
-        <li>bower_components</li>
-      </ul>
+      در پلتفرم ASP.Net Core،
+      پوشه‌های زیر علاوه‌بر پوشه‌های بالا، به‌صورت پیش‌فرض نادیده گرفته می‌شوند:
     </p>
+    <ul style={{ direction: 'ltr' }}>
+      <li>Debug</li>
+      <li>debug</li>
+      <li>Release</li>
+      <li>release</li>
+      <li>Releases</li>
+      <li>releases</li>
+      <li>x64</li>
+      <li>x86</li>
+      <li>build</li>
+      <li>bld</li>
+      <li>Bin</li>
+      <li>bin</li>
+      <li>Obj</li>
+      <li>obj</li>
+    </ul>
     <p>
       اما شما می‌توانید عکس این الگوها و در واقع pattern ها را به فایل
       <span className="code">.gitignore</span>
