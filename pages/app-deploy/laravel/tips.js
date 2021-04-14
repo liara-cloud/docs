@@ -240,15 +240,17 @@ class TrustProxies extends Middleware
       کاربران را به عهده دارد:
     </p>
     <Highlight className="ini">
-      {`[program:scheduler]
+      {`[program:laravel-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/html/artisan queue:work --queue=sms --tries=3
+command=php /var/www/html/artisan queue:work
 autostart=true
 autorestart=true
+stopasgroup=true
+killasgroup=true
 numprocs=1
 user=www-data
 redirect_stderr=true
-stdout_logfile=/tmp/sms-queue.log`}
+stdout_logfile=/tmp/laravel-worker.log`}
     </Highlight>
     <p>برای اطلاعات بیشتر می‌توانید به لینک‌های زیر مراجعه کنید:</p>
     <ul>
