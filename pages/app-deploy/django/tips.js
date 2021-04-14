@@ -27,12 +27,65 @@ export default () => (
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
+      <li><a href="#python-version">انتخاب نسخه‌ی Python</a></li>
+      <li><a href="#supervisord-conf">استفاده از Supervisord</a></li>
       <li><a href="#collectstatic">دستور collectstatic</a></li>
       <li><a href="#compilemessages">دستور compilemessages</a></li>
       <li><a href="#modify-settings">جلوگیری از اعمال تغییرات در فایل settings.py</a></li>
       <li><a href="#nginx-customization">تنظیمات Nginx</a></li>
       <li><a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a></li>
     </ul>
+
+    <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
+    <p>
+      به‌صورت پیش‌فرض برنامه‌ی شما روی Python 3.8 اجرا می‌شود.
+      صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
+      می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
+      اضافه کنید. توجه داشته باشید که فایل <span className="code">liara.json</span>
+      را باید در کنار فایل <span className="code">requirements.txt</span> بسازید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "django": {
+    "pythonVersion": "3.9"
+  }
+}
+`}
+    </Highlight>
+    <p>
+
+    </p>
+    <ul>
+      <li>3.7</li>
+      <li>3.8</li>
+      <li>3.9</li>
+    </ul>
+
+    <h3 id="supervisord-conf">استفاده از Supervisord</h3>
+    <p>
+      در صورتی که نیاز به Worker برای اجرای Background Job‌ها
+      برای مثال با Celery را دارید، می‌تونید یک فایل به‌نام
+      <span className="code">supervisor.conf</span>
+      در کنار <span className="code">requirements.txt</span>
+      بسازید و سپس دیپلوی کنید. در این‌صورت Supervisor
+      اجرا شده و دستور شما را در Background اجرا خواهد کرد.
+      در ادامه، یک نمونه فایل <span className="code">supervisor.conf</span>
+      را مشاهده می‌کنید:
+    </p>
+    <Highlight className="ini">
+      {`[program:celery-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=celery worker -A sendmail --loglevel=INFO
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+numprocs=1
+startsecs=10
+stopwaitsecs=600
+redirect_stderr=true
+stdout_logfile=/tmp/worker.log`}
+    </Highlight>
 
     <h3 id="collectstatic">دستور <span className="code">collectstatic</span></h3>
     <p>
