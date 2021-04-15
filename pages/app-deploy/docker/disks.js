@@ -51,7 +51,7 @@ export default () => (
     </p>
     <Highlight className="json">
       {`{
-  "platform": "node",
+  "platform": "docker",
   "app": "docker-starter",
   "port": 8000,
   "disks": [
