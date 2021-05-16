@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
 
 import NavTitle from './NavTitle'
 import ActiveLink from './ActiveLink'
@@ -224,8 +224,13 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/instructions/gatsbyjs">GatsbyJS</ActiveLink></li>
               <li><ActiveLink href="/instructions/strapi">Strapi</ActiveLink></li> */}
               <li><ActiveLink href="/instructions/golang">Golang</ActiveLink></li>
-              {/* <li><ActiveLink href="/instructions/elasticsearch">ElasticSearch</ActiveLink></li> */}
               <li><ActiveLink href="/instructions/dotnet-published">استقرار فایل DLL</ActiveLink></li>
+              <li><ActiveLink href="/instructions/rabbitmq">RabbitMQ</ActiveLink></li>
+              <li><ActiveLink href="/instructions/elasticsearch">Elasticsearch</ActiveLink></li>
+              <li><ActiveLink href="/instructions/kibana">Kibana</ActiveLink></li>
+              <li><ActiveLink href="/instructions/grafana">Grafana</ActiveLink></li>
+              <li><ActiveLink href="/instructions/prestashop">Prestashop</ActiveLink></li>
+              <li><ActiveLink href="/instructions/mattermost">Mattermost</ActiveLink></li>
             </ul>
           </nav>
 
