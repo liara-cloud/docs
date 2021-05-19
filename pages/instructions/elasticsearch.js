@@ -44,7 +44,7 @@ xpack.security.enabled=true`}
   "port": 9200,
   "disks": [
     {
-      "name": "[نام دیسک اول]",
+      "name": "[نام دیسک]",
       "mountTo": "/usr/share/elasticsearch"
     }
   ]
