@@ -21,24 +21,31 @@ export default () => (
             برای استقرار این برنامه، ابتدا لازم است که از بخش «برنامه‌ها» یک برنامه از نوع <Link
             href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
             <br/>
-            سپس دو دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
+            سپس یک دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
+        </p>
+        <p>
+            سپس طبق مستندات «<Link href="/app-deploy/docker/envs">تنظیم متغیرها (Environment Variables)</Link>» متغیرهای
+            زیر را تنظیم کنید.
+            <Highlight>
+                {`ELASTIC_USERNAME=[نام کاربری دلخواه]
+ELASTIC_PASSWORD=[گذرواژه دلخواه]
+discovery.type=single-node
+path.repo=/usr/share/elasticsearch/backups
+xpack.security.enabled=true`}
+            </Highlight>
         </p>
         <p>
             در مرحله بعد یک فایل<span className="code">liara.json</span> طبق راهنمایی زیر بسازید و مشخصات مربوطه را در
             این فایل وارد نمایید.
             <Highlight>
                 {`{
-  "image": "bitnami/elasticsearch:[نسخه مورد نظر]",
-  "app": "[نام برنامه‌ای که ساخته‌اید]",
+  "image": "elasticsearch:[نسخه مورد نظر]",
+  "app": "[نام برنامه‌ای که ساخته‌اید]",ساخته‌اید
   "port": 9200,
   "disks": [
     {
       "name": "[نام دیسک اول]",
-      "mountTo": "/opt/bitnami/elasticsearch"
-    },
-    {
-      "name": "[نام دیسک دوم]",
-      "mountTo": "/bitnami"
+      "mountTo": "/usr/share/elasticsearch"
     }
   ]
 }`}
@@ -74,7 +81,7 @@ export default () => (
             </li>
             <li>
                 برای اطلاع از تنظیمات بیشتر و نسخه‌های مختلف می‌توانید از مستندات مربوطه در <Link
-                href="https://hub.docker.com/r/bitnami/elasticsearch">Bitnami Elasticsearch</Link> استفاده کنید.
+                href="https://hub.docker.com/r/elastic/elasticsearch">Elasticsearch</Link> استفاده کنید.
             </li>
         </ul>
     </Layout>
