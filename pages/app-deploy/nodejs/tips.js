@@ -1,8 +1,5 @@
 import Layout from "../../../components/Layout";
-import Link from "next/link";
 import Head from "next/head";
-import Notice from "../../../components/Notice";
-import ZoomableImage from "../../../components/ZoomableImage";
 import Highlight from "react-highlight";
 
 export default () => (
@@ -27,28 +24,16 @@ export default () => (
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 
-    <h3>ES6 و build کردن برنامه</h3>
-    <p>
-      اگر برنامه‌ی‌تان را با ES6 و یا بالاتر نوشته‌اید و برنامه‌ی‌تان قبل از
-      اجرا شدن، نیاز به build شدن دارد، باید یک اسکریپت دیگر با نام
-      <span className="code">build</span>
-      تعریف کنید و دستورات لازم برای build شدن برنامه‌ی‌تان را داخل{" "}
-      <span className="code">package.json</span> تعریف کنید.
-      <br />
-      برای نمونه:
-    </p>
-    <pre>
-      <code>
-        {`{
-  "scripts": {
-    "start": "node build/server.js",
-    "build": "gulp build"
-  }
-}`}
-      </code>
-    </pre>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#nodejs-version">انتخاب نسخه‌ی NodeJS</a></li>
+      <li><a href="#build-script">ES6 و build کردن برنامه</a></li>
+      <li><a href="#graphql-error">رفع خطای GET query missing در GraphQL</a></li>
+      <li><a href="#adonisjs">استقرار فریم‌ورک AdonisJS</a></li>
+      <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
+    </ul>
 
-    <h3>انتخاب نسخه‌ی NodeJS</h3>
+    <h3 id="nodejs-version">انتخاب نسخه‌ی NodeJS</h3>
     <p>
       به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی ۱۲ این پلتفرم اجرا می‌شود. در
       صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
@@ -75,8 +60,60 @@ export default () => (
       <li>14</li>
     </ul>
 
-    <a name="adonisjs" />
-    <h3>استقرار فریم‌ورک AdonisJS</h3>
+    <h3 id="build-script">ES6 و build کردن برنامه</h3>
+    <p>
+      اگر برنامه‌ی‌تان را با ES6 و یا بالاتر نوشته‌اید و برنامه‌ی‌تان قبل از
+      اجرا شدن، نیاز به build شدن دارد، باید یک اسکریپت دیگر با نام
+      <span className="code">build</span>
+      تعریف کنید و دستورات لازم برای build شدن برنامه‌ی‌تان را داخل{" "}
+      <span className="code">package.json</span> تعریف کنید.
+      <br />
+      برای نمونه:
+    </p>
+    <pre>
+      <code>
+        {`{
+  "scripts": {
+    "start": "node build/server.js",
+    "build": "gulp build"
+  }
+}`}
+      </code>
+    </pre>
+
+    <h3 id="graphql-error">رفع خطای <span className="code">GET query missing</span> در GraphQL</h3>
+    <p>
+      قابلیت Playground در Apollo Server
+      در محیط Production
+      به‌صورت پیش‌فرض غیرفعال است. برای فعال‌سازی، لازم است تا فیلدهای
+      <span className="code">introspection</span>
+      و
+      <span className="code">playground</span>
+      را برابر با <span className="code">true</span>
+      تنظیم و سپس دیپلوی کنید.
+    </p>
+    <Highlight className="javascript">
+      {`const { ApolloServer } = require('apollo-server');
+const { typeDefs, resolvers } = require('./schema');
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  playground: true,
+});
+
+server.listen().then(({ url }) => {
+  console.log(\`🚀 Server ready at \${url}\`);
+});`}
+    </Highlight>
+    <p>
+      منبع:
+      {' '}
+      <a href="https://www.apollographql.com/docs/apollo-server/testing/graphql-playground/#enabling-graphql-playground-in-production" target="_blank">Enabling GraphQL Playground in production</a>
+    </p>
+
+    <h3 id="adonisjs">استقرار فریم‌ورک AdonisJS</h3>
     <p>
       اگر از فریم‌ورک AdonisJS استفاده می‌کنید، نیاز به تنظیمات خاصی ندارید و
       مطابق با مواردی که در بالا گفته شد، می‌توانید برنامه‌ی‌تان را در لیارا
@@ -108,7 +145,7 @@ export default () => (
       گفته شده‌است.
     </p>
 
-    <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
     <p>
       به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
       تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
@@ -128,44 +165,5 @@ export default () => (
 }`}
       </code>
     </pre>
-
-    <a name="npm-auditing"></a>
-    <h3>گزارش مشکلات امنیتی پکیج‌های نصب شده با npm</h3>
-    <p>
-      قابل انکار نیست که تعداد پکیج‌های npm بسیار زیاد هستند و برخی از آن‌ها هم
-      ممکن است دارای مشکلات امنیتی باشند و بسیاری از این مشکلات امنیتی هم بعدها
-      در نسخه‌های جدیدی که ارائه می‌کنند رفع می‌شود. اما شما چگونه می‌توانید
-      مطمئن شوید که نسخه‌ی فعلی پکیج‌هایی که نصب کرده‌اید دارای مشکل هستند یا
-      نه؟ چگونه می‌توانید متوجه شوید که آیا راه حلی هم برای این مشکل وجود دارد
-      یا نه؟
-    </p>
-    <p>
-      لیارا می‌تواند گزارشات کاملی را درباره مشکلات امنیتی برنامه‌ی‌تان در پنل
-      کاربری به شما نمایش دهد. فقط کافی است که در فایل
-      <span className="code">liara.json</span>
-      برنامه‌ی خود، <span className="code">npmAudit</span>
-      را برابر <span className="code">true</span> قرار دهید. این قابلیت به صورت
-      پیش‌فرض غیر فعال است. برای نمونه:
-    </p>
-    <pre>
-      <code>
-        {`{
-  "platform": "node",
-  "app": "nodejs-starter",
-  "port": 8000,
-  "node": {
-    "version": "10",
-    "npmAudit": true
-  }
-}`}
-      </code>
-    </pre>
-    <p>
-      و حالا از این پس هر بار که دستور
-      <span className="code">liara deploy</span>
-      را برای استقرار و بروزرسانی برنامه‌ی‌تان وارد کنید، گزارش امنیتی نیز
-      برای‌تان قابل مشاهده خواهد بود.
-    </p>
-    <ZoomableImage src="/static/npm-auditing.png" alt="صفحه‌ی گزارشات امنیتی" />
   </Layout>
 );
