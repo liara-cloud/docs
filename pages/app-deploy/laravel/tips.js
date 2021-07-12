@@ -199,7 +199,7 @@ class TrustProxies extends Middleware
       اما اگر از Laravel فقط برای ساخت یک API استفاده کرده‌اید و یا به طور کلی
       نیازی به این ندارید که لیارا پکیج‌های npm را برای‌تان نصب و فایل‌های CSS و
       JavaScript تان را build کند، می‌توانید در فایل{" "}
-      <Link href="/clients/cli#liara-json-file">liara.json</Link> برنامه، یک
+      <Link href="/app-deploy/laravel/liarajson">liara.json</Link> برنامه، یک
       فیلد با نام laravel و داخل آن یک فیلد با نام
       <span className="code">buildAssets</span>
       بسازید و این قابلیت را غیر فعال کنید.
