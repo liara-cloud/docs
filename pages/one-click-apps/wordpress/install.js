@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Layout from "../../components/Layout";
-import ZoomableImage from "../../components/ZoomableImage";
-import Notice from "../../components/Notice";
+import Layout from "../../../components/Layout";
+import ZoomableImage from "../../../components/ZoomableImage";
+import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>

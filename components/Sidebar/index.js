@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 import NavTitle from './NavTitle'
 import ActiveLink from './ActiveLink'
@@ -209,7 +209,12 @@ export default class Sidebar extends Component {
             <NavTitle href="/one-click-apps">برنامه‌های آماده</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/one-click-apps/about">درباره برنامه‌های آماده</ActiveLink></li>
-              <li><ActiveLink href="/one-click-apps/wordpress">WordPress</ActiveLink></li>
+              <li><NavTitle href="/one-click-apps/wordpress/install">WordPress</NavTitle>
+                <ul className="nav__list">
+                  <li><ActiveLink href="/one-click-apps/wordpress/install">نصب و راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/one-click-apps/wordpress/migrate-from-cpanel">انتقال از cPanel</ActiveLink></li>
+                </ul>
+              </li>
               <li><ActiveLink href="/one-click-apps/rocketchat">RocketChat</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/gitea">Gitea</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/others">دیگر برنامه‌ها</ActiveLink></li>

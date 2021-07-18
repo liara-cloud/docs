@@ -3,6 +3,7 @@ import Notice from "../../../components/Notice";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -34,6 +35,7 @@ export default () => (
       <li><a href="#modify-settings">جلوگیری از اعمال تغییرات در فایل settings.py</a></li>
       <li><a href="#nginx-customization">تنظیمات Nginx</a></li>
       <li><a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a></li>
+      <li><a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a></li>
     </ul>
 
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
@@ -254,5 +256,17 @@ location ~\.sqlite3$ {
       {' '}
       افزایش می‌یابد. شما می‌توانید مقدار دلخواه خودتان را تنظیم کنید.
     </p>
+
+    <h3 id="gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</h3>
+    <p>
+      درصورتی که در برنامه‌ی Django خود با خطای <span className="code">[CRITICAL] WORKER TIMEOUT</span> مواجه شده‌اید و به WORKER TIMEOUT بیشتر از ۳۰ ثانیه نیاز دارید می‌توانید وارد تنظیمات برنامه‌ی Django خود شده و در بخش متغیرها، متغیر <span className="code">GUNICORN_TIMEOUT=60</span> را به‌شکل زیر اضافه کرده و درنهایت با کلیک بر روی دکمه ثبت تغییرات، WORKER TIMEOUT برنامه را افزایش دهید.
+    </p>
+
+    <ZoomableImage src="https://files.liara.ir/docs/django/add-gunicorn-timeout-variable-to-django-app.gif"></ZoomableImage>
+
+    <Notice variant="info">
+      توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span> براساس ثانیه است.
+    </Notice>
+
   </Layout>
 );
