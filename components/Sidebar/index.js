@@ -209,7 +209,7 @@ export default class Sidebar extends Component {
             <NavTitle href="/one-click-apps">برنامه‌های آماده</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/one-click-apps/about">درباره برنامه‌های آماده</ActiveLink></li>
-              <li><NavTitle href="/one-click-apps/wordpress/install">WordPress</NavTitle>
+              <li><NavTitle href="/one-click-apps/wordpress">WordPress</NavTitle>
                 <ul className="nav__list">
                   <li><ActiveLink href="/one-click-apps/wordpress/install">نصب و راه‌اندازی</ActiveLink></li>
                   <li><ActiveLink href="/one-click-apps/wordpress/migrate-from-cpanel">انتقال از cPanel</ActiveLink></li>
