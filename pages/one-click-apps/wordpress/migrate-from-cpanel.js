@@ -22,18 +22,18 @@ export default () => (
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/delete-all-files-of-one-click-wordpress-app.gif"></ZoomableImage>
 
     <p>حال برای انتقال فایل‌ها به دسترسی FTP نیاز است. بنابراین برای ایجاد دسترسی FTP وارد بخش دیسک‌ها در برنامه‌ی موردنظرتان شده و در بخش دسترسی FTP، بر روی دکمه‌ی ایجاد دسترسی FTP کلیک کنید.</p>
-    <ZoomableImage src="https://files.liara.ir/docs/wordpress/delete-all-files-of-one-click-wordpress-app.gif" />
+    <ZoomableImage src="https://files.liara.ir/docs/wordpress/create-new-ftp-access.gif" />
 
     <p>
-      پس از ایجاد دسترسی FTP باید با استفاده از این پروتکل‌، فایل‌های دانلود شده از هاستینگ را در دیسک برنامه آپلود کرد.
+      پس از ایجاد دسترسی FTP باید با استفاده از این پروتکل‌، فایل‌های دانلود شده از هاستینگ را در دیسک برنامه آپلود کنید.
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/upload-zip-file-with-ftp.gif" />
 
     <Notice variant="info">
-      برای کسب اطلاعات بیشتر می‌توانید به <a href="/storage/disks/ftp">مستندات دسترسی به دیسک‌ها با دسترسی FTP</a> مراجعه کنید.
+      برای کسب اطلاعات بیشتر می‌توانید به <a href="/storage/disks/ftp">مستندات دسترسی به دیسک‌ها با FTP</a> مراجعه کنید.
     </Notice>
     <p>
-      در مرحله‌ی آخر باید فایل zip آپلود شده در مرحله‌ی قبل را با اجرای دستور <span className="code">unzip file-name.zip </span> از حالت فشرده خارج کرد.
+      در مرحله‌ی آخر باید فایل zip آپلود شده در مرحله‌ی قبل را با اجرای دستور <span className="code">unzip file-name.zip </span> از حالت فشرده خارج کنید.
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/unzip-some-file-with-liara-command-line.gif" />
 
