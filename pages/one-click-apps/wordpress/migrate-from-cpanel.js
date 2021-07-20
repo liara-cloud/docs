@@ -71,5 +71,22 @@ export default () => (
     <br />
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/debugging-err-too-many-redirects.gif"></ZoomableImage>
 
+    <h4>خطاهای مربوط به دسترسی فایل‌</h4>
+    <p>
+      درصورتی که با خطاهای مربوط به دسترسی فایل (File Permission) در برنامه‌ی WordPress مواجه شدید، دستورهای زیر را با استفاده از خط فرمان اجرا کنید:
+    </p>
+    <pre>
+      <code>
+        {`chown www-data:www-data  -R *
+find . -type d -exec chmod 755 {} \\;
+find . -type f -exec chmod 644 {} \\;`}
+      </code>
+    </pre>
+    <p>
+      اگر هنوزهم خطا برقرار بود می‌توانید از طریق <a href="https://console.liara.ir/tickets">تیکت</a> با ما در ارتباط باشید.
+    </p>
+    <br />
+    <ZoomableImage src="https://files.liara.ir/docs/wordpress/make-change-in-file-and-directory-permission.gif"></ZoomableImage>
+
   </Layout>
 );
