@@ -41,7 +41,7 @@ export default () => (
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
     <p>
       به‌صورت پیش‌فرض برنامه‌ی شما روی Python 3.8 اجرا می‌شود.
-      صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
+      در صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
       می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
       اضافه کنید. توجه داشته باشید که فایل <span className="code">liara.json</span>
       را باید در کنار فایل <span className="code">requirements.txt</span> بسازید:
@@ -49,7 +49,7 @@ export default () => (
     <Highlight className="json">
       {`{
   "django": {
-    "pythonVersion": "3.9"
+    "pythonVersion": "3.7"
   }
 }
 `}
