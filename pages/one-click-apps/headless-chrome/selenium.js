@@ -25,7 +25,7 @@ export default () => (
       برای اتصال از طریق وب درایور Selenium به برنامه‌ی Headless Chrome باید تغییری در کدهای قبلی خود ایجاد کنیم. برای مثال قطعه کد زیر را درنظر بگیرید که ما با استفاده از آن مرورگر Chrome را برای انجام کارهای مورد نیاز خود راه‌اندازی می‌کردیم:
     </p>
 
-    <Highlight className="python">
+    <Highlight className="javascript">
       {`const webdriver = require('selenium-webdriver');
 const fs = require('fs');
 
@@ -48,7 +48,7 @@ const driver = new webdriver.Builder()
     <p>
       اما شما برای انجام این کار در لیارا باید به شکل زیر به برنامه‌ی Headless Chrome خود متصل شوید:
     </p>
-    <Highlight className="python">
+    <Highlight className="javascript">
 
       {`const webdriver = require('selenium-webdriver');
 const fs = require('fs');
