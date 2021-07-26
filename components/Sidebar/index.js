@@ -215,6 +215,15 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/one-click-apps/wordpress/migrate-from-cpanel">انتقال از cPanel</ActiveLink></li>
                 </ul>
               </li>
+              <li><NavTitle href="/one-click-apps/headless-chrome">Headless Chrome</NavTitle>
+                <ul className="nav__list">
+                  <li><ActiveLink href="/one-click-apps/headless-chrome/install">راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/one-click-apps/headless-chrome/puppeteer">اتصال از طریق Puppeter</ActiveLink></li>
+                  <li><ActiveLink href="/one-click-apps/headless-chrome/selenium">اتصال از طریق Selenium</ActiveLink></li>
+                  <li><ActiveLink href="/one-click-apps/headless-chrome/playwright">اتصال از طریق Playwright</ActiveLink></li>
+                  <li><ActiveLink href="/one-click-apps/headless-chrome/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
+                </ul>
+              </li>
               <li><ActiveLink href="/one-click-apps/rocketchat">RocketChat</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/gitea">Gitea</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/others">دیگر برنامه‌ها</ActiveLink></li>
