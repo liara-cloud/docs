@@ -1,0 +1,44 @@
+.label--red {
+  color: #E53E3E;
+  background-color: #FEB2B2;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.label--green {
+  color: #38A169;
+  background-color: #C6F6D5;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.label--orange {
+  color: #D69E2E;
+  background-color: #FEFCBF;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.label--blue {
+  color: #3182CE;
+  background-color: #BEE3F8;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.label--default {
+  color: #555;
+  background-color: #eee;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: Arial, Helvetica, sans-serif;
+}

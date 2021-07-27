@@ -1,0 +1,43 @@
+.endpoint {
+  direction: ltr;
+}
+
+.endpoint__path {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #555;
+  margin-left: 8px;
+}
+
+.endpoint__param {
+  color: var(--secondary);
+}
+
+.endpoint-inputs, .endpoint-inputs td {
+  border-collapse: collapse;
+  padding: 8px;
+}
+
+.endpoint-inputs {
+  width: 100%;
+  direction: ltr;
+}
+
+.endpoint-inputs__group {
+  font-weight: bold;
+  background-color: #e2f5ff !important;
+}
+
+.endpoint-inputs td {
+  font-size: 14px;
+}
+
+.endpoint-inputs tr:nth-child(odd) {
+  background-color: #f3f3f3;
+}
+
+.endpoint-inputs__description {
+  direction: rtl;
+  font-size: 12px !important;
+}
+
+
