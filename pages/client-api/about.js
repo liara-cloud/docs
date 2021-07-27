@@ -1,8 +1,9 @@
 import Layout from "../../components/Layout";
 import Head from "next/head";
 import Notice from "../../components/Notice";
-import Link from "next/link";
 import Label from '../../components/Label';
+import Highlight from "react-highlight";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -22,6 +23,7 @@ export default () => (
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li><a href="#authentication">کلید احراز هویت</a></li>
+      <li><a href="#user-information">دریافت اطلاعات جامع کاربری</a></li>
       <li><a href="#create-domain">ایجاد دامنه</a></li>
       <li><a href="#delete-domain">حذف دامنه</a></li>
     </ul>
@@ -33,13 +35,23 @@ export default () => (
 
     <h3 id="authentication">کلید احراز هویت</h3>
     <p>
-      در پنل کاربری از بخش API امکان دریافت Token و یا همان کلید اختصاصی خودتان
-      را دارید. در حال حاضر تنها کاربرد رایج این کلید، احراز هویت در ساز و
-      کارهای CI/CD است.{" "}
-      <Link href="/cicd/about">
-        <a>توضیحات بیشتر</a>
-      </Link>
+      شما با مراجعه به پنل کاربری و وارد شدن به بخش API امکان مشاهده و دریافت Token اختصاصی حساب خودتان را دارید. به‌کمک این Token می‌توانید از سازوکارهای <Link href="/cicd/about">
+        <a>CI/CD</a>
+      </Link> و تعامل با API لیارا استفاده کنید.
+      <br />
+      نحوه‌ی استفاده از این Token برای کار با APIها به این صورت است که آن را به‌شکل زیر در HEADERها به سمت endpoint مربوطه ارسال می‌کنید:
+      <br />
+      <Highlight className="plaintext">
+        {`Authorization: Bearer $TOKEN`}
+      </Highlight>
     </p>
+
+    <h3 id="user-information">دریافت اطلاعات جامع کاربری</h3>
+    <div className="endpoint">
+      <Label variant="green">GET</Label>
+      <span className="endpoint__path">/v1/me</span>
+    </div>
+    <p>در این endpint شما می‌توانید به اطلاعات کاملی از حساب کاربری، پلن‌های قابل انتخاب به‌همراه قیمت، مشخصات هر پلن و نسخه‌های دیتابیس‌ها دسترسی داشته باشید. بنابراین از اطلاعاتی که از این endpoint دریافت می‌کنید می‌توانید در endpointهای دیگر استفاده کنید.</p>
 
     <h3>برنامه‌ها</h3>
 
