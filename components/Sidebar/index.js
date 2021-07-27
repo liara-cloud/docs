@@ -343,6 +343,16 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
+            <NavTitle href="/client-api">لیارا API</NavTitle>
+            <ul className="nav__list">
+              <li><ActiveLink href="/client-api/about">شروع به کار</ActiveLink></li>
+              <li><ActiveLink href="/client-api/app">برنامه‌ها</ActiveLink></li>
+              <li><ActiveLink href="/client-api/database">دیتابیس‌ها</ActiveLink></li>
+              <li><ActiveLink href="/client-api/domain">دامنه‌ها</ActiveLink></li>
+            </ul>
+          </nav>
+
+          <nav className="nav">
             <ActiveLink href="/migrate">انتقال بین موقعیت‌ها</ActiveLink>
           </nav>
         </div>
