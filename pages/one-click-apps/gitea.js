@@ -9,7 +9,17 @@ export default () => (
       <title>مستندات Gitea - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>سیستم مدیریت نسخه Gitea</h1>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/gitea.svg"
+        alt="gitea"
+      />
+      <div className="page-title">
+        <h1>سیستم مدیریت نسخه Gitea</h1>
+        <span className="page-description">(Gitea one-click app)</span>
+      </div>
+    </div>
 
     <h3>درباره Gitea</h3>
     <p>
