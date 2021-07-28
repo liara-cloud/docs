@@ -18,7 +18,7 @@ export default () => (
             />
             <div className="page-title">
                 <h1>اتصال از طریق Puppeteer به برنامه‌ی Headless Chrome</h1>
-                <span className="page-description">(Headless Chrome Apps)</span>
+                <span className="page-description">(Headless Chrome one-click app)</span>
             </div>
         </div>
         <p>
