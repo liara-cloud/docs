@@ -35,6 +35,7 @@ export default () => (
       <li><a href="#logs">مدیریت لاگ‌ها در Laravel</a></li>
       <li><a href="#php-version">انتخاب نسخه‌ی PHP</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
+      <li><a href="#enable-caching">فعال‌سازی Caching</a></li>
       <li><a href="#extensions">لیست اکستنشن‌های نصب شده</a></li>
     </ul>
 
@@ -43,7 +44,7 @@ export default () => (
       برای دسترسی به فایل‌های پوشه‌های
       <span className="code">storage</span>، طبق مستندات لاراول باید این پوشه به
       پوشه‌ی <span className="code">public</span> لینک شود.
-      لیارا به‌صورت خودکار، در زمان استقرار، دستور 
+      لیارا به‌صورت خودکار، در زمان استقرار، دستور
       <span className="code">php artisan storage:link</span>
       را اجرا می‌کند و نیازی نیست که اقدام خاصی انجام دهید.
     </p>
@@ -86,7 +87,7 @@ export default () => (
       شما از Closure ها برای تعریف route ها استفاده نکرده باشید و فقط از
       Controller استفاده کرده باشید.
     </Notice>
-    
+
     <h3 id="php-ini-customization">تنظیمات اختصاصی php.ini</h3>
     <p>
       از طریق ایجاد یک فایل با نام
@@ -183,7 +184,7 @@ class TrustProxies extends Middleware
       {' '}
       را انجام بدهید.
     </Notice>
-    
+
     <h3 id="auto-build-assets">فایل‌های CSS و JS به صورت خودکار build می‌شوند</h3>
     <p>
       همان‌طور که اطلاع دارید، در برنامه‌های لاراولی با اجرای دستور
@@ -215,7 +216,7 @@ class TrustProxies extends Middleware
       با این تغییر، هر بار که دیپلوی کنید، لیارا از اجرای دستورات npm خودداری
       می‌کند.
     </p>
-    
+
     <h3 id="queues">کار با Queue ها</h3>
     <p>
       یکی از امکانات مهم Laravel، قابلیت تعریف صف (Queue) است. در پلتفرم لاراول،
@@ -369,7 +370,68 @@ stdout_logfile=/tmp/laravel-worker.log`}
       </code>
     </pre>
 
+    <h3 id="enable-caching">فعال‌سازی Caching</h3>
+    <p>
+      برای فعال‌سازی Caching در برنامه‌های Laravel باید تنظیمات مربوطه را در فایل <span className="code">public/.htaccess</span> برنامه وارد کنید:
+    </p>
+    <pre>
+      <code>
+        {`<IfModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/plain
+ AddOutputFilterByType DEFLATE text/html
+ AddOutputFilterByType DEFLATE text/xml
+ AddOutputFilterByType DEFLATE text/css
+ AddOutputFilterByType DEFLATE text/javascript
+ AddOutputFilterByType DEFLATE application/xml
+ AddOutputFilterByType DEFLATE application/xhtml+xml
+ AddOutputFilterByType DEFLATE application/rss+xml
+ AddOutputFilterByType DEFLATE application/atom_xml
+ AddOutputFilterByType DEFLATE application/javascript
+ AddOutputFilterByType DEFLATE application/x-javascript
+ AddOutputFilterByType DEFLATE application/x-shockwave-flash
+</IfModule>
 
+
+<IfModule mod_expires.c>
+ ExpiresActive On
+ ExpiresByType text/css "access plus 1 month"
+ ExpiresByType text/javascript "access plus 1 month"
+ ExpiresByType text/html "access plus 1 month"
+ ExpiresByType application/javascript "access plus 1 month"
+ ExpiresByType image/gif "access plus 1 month"
+ ExpiresByType image/jpeg "access plus 1 month"
+ ExpiresByType image/png "access plus 1 month"
+ ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>
+<ifmodule mod_headers.c>
+ <filesmatch "\\.(ico|jpe?g|png|gif|swf)$">
+  Header set Cache-Control "max-age=2592000, public"
+ </filesmatch>
+ <filesmatch "\\.(css)$">
+  Header set Cache-Control "max-age=604800, public"
+ </filesmatch>
+ <filesmatch "\\.(js)$">
+  Header set Cache-Control "max-age=216000, private"
+ </filesmatch>
+</ifmodule>`}
+      </code>
+    </pre>
+
+    <p>در قدم بعد باید قطعه کد زیر را به فایل <span className="code">webpack.mix.js</span> اضافه کنید:</p>
+
+    <pre>
+      <code>
+        {`if (mix.inProduction()) {
+    mix.version();
+}`}
+      </code>
+    </pre>
+    <p>درنهایت باید فایل‌های Asset را مانند مثال زیر در برنامه‌ی خود فراخوانی کنید:</p>
+    <pre>
+      <code>
+        {`<script src="{{ mix('js/app.js') }}"></script>`}
+      </code>
+    </pre>
     <h3 id="extensions">لیست اکستنشن‌های نصب شده</h3>
     <p>در پلتفرم لاراول، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
     <pre>
