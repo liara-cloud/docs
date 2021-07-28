@@ -9,7 +9,18 @@ export default () => (
       <title>مستندات WordPress - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>سیستم مدیریت محتوای WordPress</h1>
+
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/wordpress.svg"
+        alt="wordpress"
+      />
+      <div className="page-title">
+        <h1>سیستم مدیریت محتوای WordPress</h1>
+        <span className="page-description">(WordPress one-click app)</span>
+      </div>
+    </div>
 
     <h3>نصب و اجرا</h3>
     <p>

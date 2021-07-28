@@ -17,7 +17,7 @@ export default () => (
             />
             <div className="page-title">
                 <h1>برنامه‌ی Headless Chrome</h1>
-                <span className="page-description">(Headless Chrome Apps)</span>
+                <span className="page-description">(Headless Chrome one-click app)</span>
             </div>
         </div>
 

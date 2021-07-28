@@ -9,7 +9,17 @@ export default () => (
       <title>انتقال از cPanel - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>انتقال از cPanel</h1>
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/wordpress.svg"
+        alt="wordpress"
+      />
+      <div className="page-title">
+        <h1>انتقال از cPanel</h1>
+        <span className="page-description">(WordPress one-click app)</span>
+      </div>
+    </div>
 
     <h3>انتقال فایل‌ها</h3>
     <p>
