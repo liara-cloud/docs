@@ -9,7 +9,18 @@ export default () => (
       <title>مستندات RocketChat - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>نرم‌افزار چت و ارتباطات تیمی RocketChat</h1>
+
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/rocketchat.svg"
+        alt="rocketchat"
+      />
+      <div className="page-title">
+        <h1>نرم‌افزار چت و ارتباطات تیمی RocketChat</h1>
+        <span className="page-description">(RocketChat one-click app)</span>
+      </div>
+    </div>
 
     <h3>درباره RocketChat</h3>
     <p>
