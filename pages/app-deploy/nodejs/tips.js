@@ -35,29 +35,28 @@ export default () => (
 
     <h3 id="nodejs-version">انتخاب نسخه‌ی NodeJS</h3>
     <p>
-      به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی ۱۲ این پلتفرم اجرا می‌شود. در
+      به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی ۱۴ این پلتفرم اجرا می‌شود. در
       صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
       می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
       اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
         {`{
   "platform": "node",
   "app": "nodejs-starter",
   "port": 8000,
   "node": {
-    "version": "14"
+    "version": "12"
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌شود:</p>
     <ul>
       <li>8</li>
       <li>10</li>
       <li>12</li>
-      <li>14</li>
+      <li><b>14 (پیش‌فرض)</b></li>
+      <li>16</li>
     </ul>
 
     <h3 id="build-script">ES6 و build کردن برنامه</h3>
@@ -70,16 +69,14 @@ export default () => (
       <br />
       برای نمونه:
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
         {`{
   "scripts": {
     "start": "node build/server.js",
     "build": "gulp build"
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
 
     <h3 id="graphql-error">رفع خطای <span className="code">GET query missing</span> در GraphQL</h3>
     <p>
@@ -153,8 +150,7 @@ server.listen().then(({ url }) => {
       در فایل <span className="code">liara.json</span>
       استفاده کنید. برای نمونه:
     </p>
-    <pre>
-      <code>
+    <Highlight className="json">
         {`{
   "platform": "node",
   "app": "nodejs-starter",
@@ -163,7 +159,6 @@ server.listen().then(({ url }) => {
     "timezone": "America/Los_Angeles"
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
   </Layout>
 );

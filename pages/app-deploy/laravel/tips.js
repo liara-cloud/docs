@@ -220,7 +220,7 @@ class TrustProxies extends Middleware
     <h3 id="queues">کار با Queue ها</h3>
     <p>
       یکی از امکانات مهم Laravel، قابلیت تعریف صف (Queue) است. در پلتفرم لاراول،
-      Supervisor نصب شده و شما با ایجاد یک فایل به نام supervisor.conf در ریشه‌ی
+      Supervisor نصب شده و شما با ایجاد یک فایل به نام <span className="code">supervisor.conf</span> در ریشه‌ی
       برنامه‌، می‌توانید تنظیمات صف‌های مختلف‌تان را در آن وارد کنید. و در نهایت
       با یک‌بار دیپلوی‌کردن، صف‌های شما شروع به کار خواهند کرد.
     </p>
@@ -332,22 +332,20 @@ stdout_logfile=/tmp/laravel-worker.log`}
       می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
       اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
     </p>
-    <pre>
-      <code>
-        {`{
+    <Highlight className="json">
+      {`{
   "platform": "laravel",
   "app": "laravel-starter",
   "laravel": {
     "phpVersion": "7.2"
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌کنیم:</p>
     <ul>
       <li>7.2</li>
       <li>7.3</li>
-      <li>7.4</li>
+      <li><b>7.4 (پیش‌فرض)</b></li>
     </ul>
 
     <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
@@ -358,17 +356,15 @@ stdout_logfile=/tmp/laravel-worker.log`}
       در فایل <span className="code">liara.json</span>
       استفاده کنید. برای نمونه:
     </p>
-    <pre>
-      <code>
-        {`{
+    <Highlight className="json">
+      {`{
   "platform": "laravel",
   "app": "laravel-starter",
   "laravel": {
     "timezone": "America/Los_Angeles"
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
 
     <h3 id="enable-caching">فعال‌سازی Caching</h3>
     <p>

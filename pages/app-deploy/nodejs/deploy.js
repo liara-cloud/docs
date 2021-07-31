@@ -2,6 +2,7 @@ import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Notice from "../../../components/Notice";
+import Highlight from "react-highlight";
 
 export default () => (
   <Layout>
@@ -64,25 +65,21 @@ export default () => (
       <span className="code">start</span>
       تعریف کنید.
     </p>
-    <pre>
-      <code>
-        {`{
+    <Highlight className="json">
+      {`{
   "name": "app",
   "version": "0.1.0",
-  "description": "My application",`}
-        <b>
-          {`
+  "description": "My application",
+
   "scripts": {
     "start": "node server.js"
-  },`}
-        </b>
-        {`
+  },
+
   "dependencies": {
     "express": "4"
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       بعد از این‌که برنامه‌ی شما آپلود شد، لیارا برای شما دستور
       <span className="code">npm start</span>
