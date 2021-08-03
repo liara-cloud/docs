@@ -27,6 +27,13 @@ export default () => (
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#python-version">انتخاب نسخه‌ی Python</a></li>
+      <li><a href="#set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
+      <li><a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a></li>
+    </ul>
+
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
     <p>
       به‌صورت پیش‌فرض برنامه‌ی شما روی Python 3.8 اجرا می‌شود.
@@ -52,7 +59,7 @@ export default () => (
       <li>3.9</li>
     </ul>
 
-    <h3>تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <h3 id="set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
     <p>
       به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
       تغییر مقدار پیش‌فرض، می‌توانید از پارامتر

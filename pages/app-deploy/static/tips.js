@@ -23,7 +23,12 @@ export default () => (
 
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
 
-    <h3>تنظیمات Nginx</h3>
+    <ul className="mt-0">
+      <li><a href="#nginx-conf">تنظیمات Nginx</a></li>
+      <li><a href="#enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</a></li>
+    </ul>
+
+    <h3 id="nginx-conf">تنظیمات Nginx</h3>
     <p>
       استقرار برنامه‌های استاتیک، توسط وب‌سرور
       <span className="code">Nginx</span>
@@ -56,7 +61,7 @@ location /images {
       </code>
     </pre>
 
-    <h3>فعال‌سازی gzip و Browser Caching</h3>
+    <h3 id="enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</h3>
     <p>
       برای کاهش اندازه‌ی صفحات وب، فعال‌سازی فشرده‌ساز gzip
       و همین‌طور Browser Caching
