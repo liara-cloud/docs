@@ -18,14 +18,17 @@ export default () => (
       کلیک WordPress را نصب و اجرا کنید. دیتابیس به صورت خودکار برای شما ایجاد و
       WordPress به آن متصل می‌شود.
     </p>
-    <ZoomableImage src="/static/one-click-apps.jpg" />
+    <ZoomableImage src="/static/one-click-apps.png" />
 
     <p>در حال حاضر این برنامه‌ها در این بخش وجود دارد:</p>
     <ul dir="ltr">
       <li>WordPress</li>
+      <li>Ghost</li>
       <li>RocketChat</li>
       <li>Gitea</li>
-      <li>Ghost</li>
+      <li>Metabase</li>
+      <li>Chrome</li>
+      <li>NextCloud</li>
     </ul>
   </Layout>
 );
