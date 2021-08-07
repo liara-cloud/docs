@@ -22,7 +22,14 @@ export default () => (
       </div>
     </div>
 
-    <h3>نصب و اجرا</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#setup">نصب و اجرا</a></li>
+      <li><a href="#php-ini-customization">شخصی‌سازی تنظیمات php.ini</a></li>
+      <li><a href="#extensions">لیست اکستنشن‌های نصب شده</a></li>
+    </ul>
+
+    <h3 id="setup">نصب و اجرا</h3>
     <p>
       کافیست از بخش <b>برنامه‌های آماده</b> روی WORDPRESS کلیک کنید و سپس شناسه
       برنامه‌‌ی موردنظرتان را وارد کنید، مثلا{" "}
@@ -43,7 +50,7 @@ export default () => (
     <ZoomableImage src="/static/wp-install.png" />
     <p>بعد از اتمام موفقیت‌آمیز، می‌توانید لینک برنامه‌ی‌تان را مشاهده کنید.</p>
 
-    <h3>
+    <h3 id="php-ini-customization">
       شخصی‌سازی تنظیمات <span className="code">php.ini</span>
     </h3>
     <p>
@@ -73,7 +80,7 @@ max_execution_time = 600`}
       مراجعه کنید و طبق مستندات، دامنه‌ اختصاصی را به برنامه متصل کنید.
     </Notice>
 
-    <h3>لیست اکستنشن‌های نصب شده</h3>
+    <h3 id="extensions">لیست اکستنشن‌های نصب شده</h3>
     <p>در برنامه‌ی آماده‌ی وردپرس، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
     <pre>
       <code>{`[PHP Modules]
