@@ -185,6 +185,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/app-features/file-system">فایل سیستم</ActiveLink></li>
               <li><ActiveLink href="/app-features/logs">لاگ‌ها</ActiveLink></li>
               <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (env ها)</ActiveLink></li>
+              <li><ActiveLink href="/app-features/private-network">شبکه‌ی خصوصی</ActiveLink></li>
               <li><ActiveLink href="/app-features/console">خط فرمان</ActiveLink></li>
               <li><ActiveLink href="/app-features/cron-jobs">Cron Job ها</ActiveLink></li>
               <li><ActiveLink href="/app-features/fixed-ip">آی‌پی ثابت</ActiveLink></li>
@@ -193,7 +194,6 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/app-features/health-check">بررسی سلامت</ActiveLink></li>
               <li><ActiveLink href="/app-features/applets">برنامک‌ها</ActiveLink></li>
               <li><ActiveLink href="/app-features/email">ایمیل</ActiveLink></li>
-              <li><ActiveLink href="/app-features/private-network">شبکه‌ی خصوصی</ActiveLink></li>
             </ul>
           </nav>
 
