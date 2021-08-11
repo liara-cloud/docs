@@ -30,6 +30,7 @@ export default () => (
       <li><a href="#dotnet-version">انتخاب نسخه‌ی ASP.Net Core</a></li>
       <li><a href="#app-settings">تنظیمات مرتبط با ساختار برنامه</a></li>
       <li><a href="#bad-gateway">رفع خطای 502 Bad Gateway</a></li>
+      <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
     </ul>
 
     <h3 id="dotnet-version">انتخاب نسخه‌ی ASP.Net Core</h3>
@@ -110,6 +111,21 @@ https://aka.ms/dotnet-download`}
       </ul>
     </p>
 
+    <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <p>
+      منطقه‌ی زمانی در برنامه‌های ASP.Net Core به‌طور پیش‌فرض بر روی Asia/Tehran تنظیم شده است اما شما می‌توانید منظقه‌ی زمانی برنامه‌ی خود را با استفاده از پارامتر <span className="code">timezone</span> در فایل <span className="code">liara.json</span> تغییر دهید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "netcore",
+  "app": "dotnets-starter",
+  "netcore": {
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+    </Highlight>
+
     <h3 id="bad-gateway">رفع خطای 502 Bad Gateway</h3>
     <p>
       در صورتی که فرایند استقرار برنامه‌ی‌تان موفقیت‌آمیز بوده اما خطای 502 را
@@ -144,5 +160,6 @@ https://aka.ms/dotnet-download`}
       استفاده کنید تا لیارا بداند که برنامه‌ی شما قرار است روی پورت 5000 اجرا
       شود.
     </p>
+
   </Layout>
 );
