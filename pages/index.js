@@ -70,6 +70,18 @@ const Index = () => (
         <img src="/static/platformicons/wordpress.svg" alt="wordpress" />
         <span>WordPress</span>
       </a>
+      <a href="/instructions/nextjs">
+        <img src="/static/platformicons/next.svg" alt="nextjs" />
+        <span>NextJS</span>
+      </a>
+      <a href="/instructions/nuxtjs">
+        <img src="/static/platformicons/nuxt.svg" alt="nuxtjs" />
+        <span>NuxtJS</span>
+      </a>
+      <a href="/instructions/nestjs">
+        <img src="/static/platformicons/nest.svg" alt="nestjs" />
+        <span>NestJS</span>
+      </a>
     </div>
 
     <h3>دیتابیس‌هایی که ارائه می‌کنیم</h3>
