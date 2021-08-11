@@ -120,8 +120,7 @@ https://aka.ms/dotnet-download`}
       {`{
   "platform": "netcore",
   "app": "dotnets-starter",
-  "port": 5000,
-  "node": {
+  "netcore": {
     "timezone": "America/Los_Angeles"
   }
 }`}
