@@ -34,7 +34,15 @@ export default () => (
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-  },`}</Highlight>
+},`}</Highlight>
+
+        <p>
+            حالت استاندارد npm scripts
+            در برنامه‌های NextJS همانند به‌شکل بالا است.
+            در نهایت دستور
+            <span className="code">liara deploy --port 3000</span>
+            را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
+        </p>
 
     </Layout>
 );

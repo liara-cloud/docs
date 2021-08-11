@@ -31,6 +31,16 @@ export default () => (
         </p>
         <Highlight className="json">{`"scripts": {
     "start": "node dist/main"
-  },`}</Highlight>
+},`}</Highlight>
+
+        <p>
+            همچنین، توجه داشته باشید که لیارا به صورت خودکار دستور
+            <span className="code">npm run build</span>
+            را اجرا می‌کند و نیازی نیست که تغییر خاصی برای اجرای این دستور اعمال کنید.
+            
+            در نهایت دستور
+            <span className="code">liara deploy --port 3000</span>
+            را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
+        </p>
     </Layout>
 );

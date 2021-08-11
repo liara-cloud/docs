@@ -32,6 +32,14 @@ export default () => (
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start"
-  },`}</Highlight>
+},`}</Highlight>
+
+        <p>
+            حالت استاندارد npm scripts
+            در برنامه‌های NuxtJS همانند به‌شکل بالا است.
+            در نهایت دستور
+            <span className="code">liara deploy --port 3000</span>
+            را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
+        </p>
     </Layout>
 );
