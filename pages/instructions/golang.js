@@ -11,7 +11,20 @@ export default () => (
       </title>
     </Head>
 
-    <h1>استقرار برنامه‌های Golang</h1>
+
+
+    <div className="page-head">
+      <img
+        className="page-icon"
+        src="/static/platformicons/Go.svg"
+        alt="Golang"
+      />
+      <div className="page-title">
+        <h1>استقرار برنامه‌های Golang</h1>
+        <span className="page-description">(Golang Apps)</span>
+      </div>
+    </div>
+
     <p>
       در حال حاضر Golang
       جزو پلتفرم‌ها پشتیبانی‌شده توسط لیارا نیست. اما این به این معنا نیست که شما نمی‌توانید
