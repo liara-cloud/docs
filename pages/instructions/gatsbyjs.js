@@ -12,6 +12,11 @@ export default () => (
         </Head>
 
         <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/Gatsby.svg"
+                alt="GatsbyJS"
+            />
             <div className="page-title">
                 <h1>استقرار برنامه‌های GatsbyJS</h1>
                 <span className="page-description">(GatsbyJS Apps)</span>
