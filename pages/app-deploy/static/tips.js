@@ -82,7 +82,6 @@ gzip_types       text/plain text/css application/json application/javascript app
 
 location / {
   index index.html index.htm;
-  try_files $uri $uri/ /index.html =404;
 }
 
 # cache.appcache, your document html and data
