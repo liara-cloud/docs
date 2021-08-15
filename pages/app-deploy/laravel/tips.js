@@ -36,7 +36,7 @@ export default () => (
       <li><a href="#php-version">انتخاب نسخه‌ی PHP</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
       <li><a href="#enable-caching">فعال‌سازی Caching</a></li>
-      <li><a href="#using-ignition-and-faker-packages">استفاده از پکیج‌های Ignition و Faker در حالت production</a></li>
+      <li><a href="#using-ignition-and-faker-packages">استفاده از پکیج‌های Ignition و Faker</a></li>
       <li><a href="#extensions">لیست اکستنشن‌های نصب شده</a></li>
     </ul>
 
@@ -430,18 +430,18 @@ stdout_logfile=/tmp/laravel-worker.log`}
       </code>
     </pre>
 
-    <h3 id="using-ignition-and-faker-packages">استفاده از پکیج‌های Ignition و Faker در حالت production</h3>
+    <h3 id="using-ignition-and-faker-packages">استفاده از پکیج‌های Ignition و Faker</h3>
     <p>
-      شما برای استفاده از پکیج‌های <a href="https://github.com/facade/ignition" target="_blank">Ignition</a> و <a href="https://github.com/FakerPHP/Faker" target="_blank">Faker</a> در حالت Production باید در ابتدا این پکیج‌ها را از بخش <span className="code">require-dev</span> فایل <span className="code">composer.json</span> به بخش <span className="code">require</span> انتقال دهید:
+      شما برای استفاده از پکیج‌های <a href="https://github.com/facade/ignition" target="_blank">Ignition</a> و <a href="https://github.com/FakerPHP/Faker" target="_blank">Faker</a> در لیارا باید ابتدا این پکیج‌ها را از بخش <span className="code">require-dev</span> فایل <span className="code">composer.json</span> به بخش <span className="code">require</span> انتقال دهید:
     </p>
     <Highlight className="json">{`"require": {
         ...
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
 },`}</Highlight>
-    <p>سپس برای اعمال این تغییرات، دستور زیر را اجرا کنید:</p>
+    <p>سپس برای اعمال این تغییرات، دستور زیر را در لوکال خود اجرا کنید:</p>
     <code>{`composer update`}</code>
-    <p>حال برنامه‌ی شما آماده‌ی استقرار در حالت Production است و با اجرای دستور <span className="code">liara deploy</span>، فرایند استقرار آغاز خواهد شد.</p>
+    <p>حال با اجرای دستور <span className="code">liara deploy</span>، فرایند استقرار آغاز خواهد شد.</p>
 
     <h3 id="extensions">لیست اکستنشن‌های نصب شده</h3>
     <p>در پلتفرم لاراول، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
