@@ -251,6 +251,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/instructions/grafana">Grafana</ActiveLink></li>
               <li><ActiveLink href="/instructions/prestashop">Prestashop</ActiveLink></li>
               <li><ActiveLink href="/instructions/mattermost">Mattermost</ActiveLink></li>
+              <li><ActiveLink href="/instructions/voyager">Voyager</ActiveLink></li>
             </ul>
           </nav>
 
