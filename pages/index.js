@@ -115,7 +115,7 @@ const Index = () => (
     <div className="platforms">
       <Link href="/instructions/golang">
         <a>
-          <img src="/static/platformicons/go.svg" alt="go" />
+          <img src="/static/platformicons/Go.svg" alt="golang" />
           <span>Go</span>
         </a>
       </Link>
