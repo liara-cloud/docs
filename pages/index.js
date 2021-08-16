@@ -42,7 +42,7 @@ const Index = () => (
       </Link>
       <Link href="/instructions/gatsbyjs">
         <a>
-          <img src="/static/platformicons/gatsby.svg" alt="gatsby" />
+          <img src="/static/platformicons/Gatsby.svg" alt="gatsby" />
           <span>GatsbyJS</span>
         </a>
       </Link>
