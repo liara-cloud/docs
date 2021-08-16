@@ -12,7 +12,7 @@ export default () => (
         </Head>
 
         <h1>استفاده از Voyager در برنامه‌های Laravel</h1>
-        <p>شما برای استفاده از پکیج <a href="https://github.com/the-control-group/voyager" target="_blank">Voyager</a> در برنامه‌های Laravel باید در قدم اول پکیج <span className="code">tcg/voyager</span> را در بخش <span className="code">dont-discover</span> فایل <span className="code">composer.json</span> برنامه‌ی خود اضافه کنید:</p>
+        <p>شما برای استفاده از پکیج <a href="https://github.com/the-control-group/voyager" target="_blank">Voyager</a> در برنامه‌های <Link href="/app-deploy/laravel/getting-started">Laravel</Link> باید در قدم اول پکیج <span className="code">tcg/voyager</span> را در بخش <span className="code">dont-discover</span> فایل <span className="code">composer.json</span> برنامه‌ی خود اضافه کنید:</p>
         <Highlight className="json">{`"extra": {
     "laravel": {
         "dont-discover": [
