@@ -166,7 +166,7 @@ const Index = () => (
           <span>Gitea</span>
         </a>
       </Link>
-      <Link href="https://liara.ir/blog/metabase-%DA%86%DB%8C%D8%B3%D8%AA%D8%9F/" target="_blank">
+      <Link href="/one-click-apps/metabase">
         <a>
           <img src="/static/platformicons/metabase.svg" alt="metabase" />
           <span>Metabase</span>

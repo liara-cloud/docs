@@ -227,8 +227,9 @@ export default class Sidebar extends Component {
                 </ul>
               </li>
               <li><ActiveLink href="/one-click-apps/rocketchat">RocketChat</ActiveLink></li>
-              <li><ActiveLink href="/one-click-apps/gitea">Gitea</ActiveLink></li>
+              <li><ActiveLink href="/one-click-apps/metabase">Metabase</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/nextcloud">Nextcloud</ActiveLink></li>
+              <li><ActiveLink href="/one-click-apps/gitea">Gitea</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/others">دیگر برنامه‌ها</ActiveLink></li>
             </ul>
           </nav>
