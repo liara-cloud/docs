@@ -37,7 +37,7 @@ export default () => (
             در قدم اول، <Link href="/domains/management#liara-subdomain">زیردامنه‌ی رایگان liara.run</Link> را از بخش تنظیمات برنامه به‌منظور SEO غیرفعال کنید و همچنین <Link href="/domains/management#add-subdoamin">ساب‌دامنه‌ی www</Link>  را علاوه‌بر دامنه‌ی ریشه در بخش دامنه‌ها اضافه کرده و با تنظیم ریدایرکت 301، کاربران را به دامنه‌ی ریشه هدایت کنید.
         </p>
         <Notice variant="warning">
-            توجه داشته باشید که در صورت فعال بودن CDN بایستی SSL/TLS خود را از سرویس‌دهنده‌ی CDN فعلی تهیه کرده و صدور گواهی SSL را در سمت لیارا غیرفعال کنید.
+            توجه داشته باشید که در صورت فعال بودن CDN بایستی SSL/TLS خود را از سرویس‌دهنده‌ی CDN فعلی تهیه کرده و گواهی SSL را در سمت لیارا غیر فعال کنید.
         </Notice>
 
         <h3 id="backups">فایل‌های پشتیبان</h3>
@@ -58,7 +58,7 @@ export default () => (
         <h3 id="laravel">برنامه‌های Laravel</h3>
         <p>
             توجه داشته باشید که مقدار <span className="code">APP_DEBUG</span> در متغیرهای محیطی برنامه‌‌های <Link href="/app-deploy/laravel/getting-started">Laravel</Link> برابر با <span className="code">false</span> باشد.
-            همچنین باتوجه به ترافیک برنامه‌ی شما در حالت Production بایستی مقدار <span className="code">SESSIONS_DRIVE</span> برنامه‌ی خود را در تنظیمات برنامه از <span className="code">file</span> به <Link href="/databases/redis/install">cookie</Link> تغییر دهید زیرا ممکن است با ذخیره‌ی هر session به‌صورت فایل در سرور با مشکل‌هایی مانند پر شدن Disk یا با محدودیت inode مواجه شوید.
+            همچنین باتوجه به ترافیک برنامه‌ی شما در حالت Production بایستی مقدار <span className="code">SESSION_DRIVER</span> برنامه‌ی خود را در تنظیمات برنامه از <span className="code">file</span> به <span className="code">cookie</span> تغییر دهید زیرا ممکن است با ذخیره‌ی هر session به‌صورت فایل در سرور با مشکل‌هایی مانند پر شدن Disk یا محدودیت inode مواجه شوید.
 
         </p>
 
