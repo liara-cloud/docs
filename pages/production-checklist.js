@@ -37,7 +37,7 @@ export default () => (
             در قدم اول، <Link href="/domains/management#liara-subdomain">زیردامنه‌ی رایگان liara.run</Link> را از بخش تنظیمات برنامه به‌منظور SEO غیرفعال کنید و همچنین <Link href="/domains/management#add-subdoamin">ساب‌دامنه‌ی www</Link>  را علاوه‌بر دامنه‌ی ریشه در بخش دامنه‌ها اضافه کرده و با تنظیم ریدایرکت 301، کاربران را به دامنه‌ی ریشه هدایت کنید.
         </p>
         <Notice variant="warning">
-            توجه داشته باشید که در صورت فعال بودن CDN بایستی SSL/TLS خود را از سرویس‌دهنده‌ی CDN فعلی تهیه کنید و صدور گواهی SSL برای دامنه‌ی شما در لیارا امکان‌پذیر نیست.
+            توجه داشته باشید که در صورت فعال بودن CDN بایستی SSL/TLS خود را از سرویس‌دهنده‌ی CDN فعلی تهیه کرده و صدور گواهی SSL را در سمت لیارا غیرفعال کنید.
         </Notice>
 
         <h3 id="backups">فایل‌های پشتیبان</h3>
@@ -58,7 +58,8 @@ export default () => (
         <h3 id="laravel">برنامه‌های Laravel</h3>
         <p>
             توجه داشته باشید که مقدار <span className="code">APP_DEBUG</span> در متغیرهای محیطی برنامه‌‌های <Link href="/app-deploy/laravel/getting-started">Laravel</Link> برابر با <span className="code">false</span> باشد.
-            همچنین باتوجه به ترافیک برنامه‌ی شما در حالت Production بایستی مقدار <span className="code">SESSIONS_DRIVE</span> برنامه‌ی خود را در مسیر <span className="code">config/session.php</span> از <span className="code">file</span> به <Link href="/databases/redis/install">redis</Link> تغییر دهید زیرا ممکن است با ذخیره‌ی هر session به‌صورت فایل در سرور با مشکل‌های عمده‌ای مانند پر شدن Disk یا با محدودیت inode مواجه شوید.
+            همچنین باتوجه به ترافیک برنامه‌ی شما در حالت Production بایستی مقدار <span className="code">SESSIONS_DRIVE</span> برنامه‌ی خود را در تنظیمات برنامه از <span className="code">file</span> به <Link href="/databases/redis/install">cookie</Link> تغییر دهید زیرا ممکن است با ذخیره‌ی هر session به‌صورت فایل در سرور با مشکل‌هایی مانند پر شدن Disk یا با محدودیت inode مواجه شوید.
+
         </p>
 
         <h3 id="django">برنامه‌های Django</h3>
@@ -68,7 +69,7 @@ export default () => (
 
         <h3 id="wordpress">برنامه‌های WordPress</h3>
         <p>
-            به‌منظور ارتقا عملکرد برنامه‌های WordPress حتما توجه داشته باشید که Caching را با استفاده از پلاگین‌هایی مانند W3 Total Cache فعال کرده باشید و علاوه‌بر آن به‌منظور ارتقا امنیت برنامه حتما <a href="https://liara.ir/blog/%DA%A9%D8%A7%D8%B1%D8%A7%DB%8C%DB%8C-xmlrpc-php-%D8%AF%D8%B1-%D9%88%D8%B1%D8%AF%D9%BE%D8%B1%D8%B3-%DA%86%DB%8C%D8%B3%D8%AA-%D9%88-%DA%86%D8%B1%D8%A7-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A2%D9%86-%D8%B1%D8%A7/" target="_blank">ویژگی XML-RPC</a> را در برنامه‌ی خود غیرفال کنید.
+            به‌منظور ارتقا عملکرد برنامه‌های WordPress حتما توجه داشته باشید که Caching را با استفاده از پلاگین‌هایی مانند W3 Total Cache فعال کرده باشید و علاوه‌بر آن به‌منظور ارتقا امنیت برنامه حتما <a href="https://liara.ir/blog/%DA%A9%D8%A7%D8%B1%D8%A7%DB%8C%DB%8C-xmlrpc-php-%D8%AF%D8%B1-%D9%88%D8%B1%D8%AF%D9%BE%D8%B1%D8%B3-%DA%86%DB%8C%D8%B3%D8%AA-%D9%88-%DA%86%D8%B1%D8%A7-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%A2%D9%86-%D8%B1%D8%A7/" target="_blank">ویژگی XML-RPC</a> را در برنامه‌ی خود غیر فعال کنید.
         </p>
 
     </Layout>
