@@ -20,6 +20,7 @@ export default () => (
             <li><a href="#notifications">اعلان‌ها</a></li>
             <li><a href="#domains">دامنه‌ها</a></li>
             <li><a href="#backups">فایل‌های پشتیبان</a></li>
+            <li><a href="#useful-features">فعال کردن ویژگی‌های کاربردی</a></li>
             <li><a href="#databases">دیتابیس‌ها</a></li>
             <li><a href="#nodejs">برنامه‌های NodeJS</a></li>
             <li><a href="#laravel">برنامه‌های Laravel</a></li>
@@ -43,6 +44,11 @@ export default () => (
         <h3 id="backups">فایل‌های پشتیبان</h3>
         <p>
             لیارا به‌منظور جلوگیری از از دست رفتن داده‌های شما به‌صورت روزانه و خودکار از برنامه‌ها و دیتابیس‌های شما، فایل پشتیبان تهیه می‌کند. حال شما می‌توانید فایل‌های پشتیبان را با استفاده از <Link href="/client-api/about">API لیارا</Link> به‌صورت خودکار در فضاهای ذخیره‌سازی ابری دیگری مانند Google Drive ذخیره کنید.
+        </p>
+
+        <h3 id="useful-features">فعال کردن ویژگی‌های کاربردی</h3>
+        <p>
+            برای داشتن بالاترین آپتایم، از فعال بودن قابلیت <Link href="/app-features/zero-downtime-deployment">استقرار بدون اختلال</Link> اطمینان حاصل کرده و همچنین قابلیت <Link href="/app-features/health-check">بررسی سلامت</Link> را پیکربندی کنید.
         </p>
 
         <h3 id="databases">دیتابیس‌ها</h3>
