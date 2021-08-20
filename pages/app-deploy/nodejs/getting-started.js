@@ -46,7 +46,8 @@ export default () => (
       <li>8</li>
       <li>10</li>
       <li>12</li>
-      <li>14</li>
+             <li>14 <b>پیشفرض</b></li>
+      <li>16</li>
     </ul>
     <Notice variant="info">
       برنامه‌های NextJS و NuxtJS را هم می‌توانید بدون تنظیمات خاصی در بخش
