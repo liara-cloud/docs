@@ -61,10 +61,12 @@ const Index = () => (
           <span>NodeJS</span>
         </a>
       </Link>
-      <a href="/instructions/nestjs">
-        <img src="/static/platformicons/nest.svg" alt="nestjs" />
-        <span>NestJS</span>
-      </a>
+      <Link href="/instructions/nestjs">
+        <a>
+          <img src="/static/platformicons/nest.svg" alt="nestjs" />
+          <span>NestJS</span>
+        </a>
+      </Link>
       <Link href="/instructions/nextjs">
         <a>
           <img src="/static/platformicons/next.svg" alt="nextjs" />
