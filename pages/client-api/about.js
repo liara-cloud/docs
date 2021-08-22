@@ -31,6 +31,18 @@ export default () => (
       تیکت با پشتیبانی لیارا ارتباط بگیرید.
     </Notice>
 
+    <h3 id="api-address">آدرس API</h3>
+    <p>
+      آدرس API برای دسترسی به برنامه‌های موقعیت ایران:
+      <Highlight className="plaintext">
+        {`https://api.iran.liara.ir/`}
+      </Highlight>
+
+      آدرس API برای دسترسی به برنامه‌های موقعیت آلمان:
+      <Highlight className="plaintext">
+        {`https://api.liara.ir/`}
+      </Highlight>
+    </p>
     <h3 id="authentication">کلید احراز هویت</h3>
     <p>
       شما با مراجعه به پنل کاربری و وارد شدن به بخش API امکان مشاهده و دریافت Token اختصاصی حساب خودتان را دارید. به‌کمک این Token می‌توانید از سازوکارهای <Link href="/cicd/about">
