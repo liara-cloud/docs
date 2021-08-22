@@ -213,7 +213,7 @@ export default () => (
         <h4 id="download-backup">دریافت فایل پشتیبان</h4>
         <div className="endpoint">
             <Label variant="blue">POST</Label>
-            <span className="endpoint__path">/v1/databases/<span className="endpoint__param">{`{database-id}`}</span>/<span className="endpoint__param">{`{backups-name}`}</span>/download</span>
+            <span className="endpoint__path">/v1/databases/<span className="endpoint__param">{`{database-id}`}</span>/backups/<span className="endpoint__param">{`{backups-name}`}</span>/download</span>
         </div>
 
         <h5>ورودی‌ها</h5>
