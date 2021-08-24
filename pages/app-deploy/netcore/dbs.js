@@ -40,7 +40,7 @@ export default () => (
         ها توضیحاتی داده بودیم):
       </p>
       <Highlight className="config">
-        {`ConnectionStrings:DefaultConnection="server=URL,PORT;Database=NAME;User Id=USERNAME;Password=PASS"`}
+        {`ConnectionStrings:DefaultConnection="server=HOST,PORT;Database=NAME;User Id=USERNAME;Password=PASS"`}
       </Highlight>
       <li>
         <b>بقیه دیتابیس‌ها</b>
