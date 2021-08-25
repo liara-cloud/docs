@@ -21,7 +21,16 @@ export default () => (
       </div>
     </div>
 
-    <h3>انتقال فایل‌ها</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#migrate-files">انتقال فایل‌ها</a></li>
+      <li><a href="#migrate-database">انتقال دیتابیس</a></li>
+      <li><a href="#load-problem">لود نشدن صحیح برنامه</a></li>
+      <li><a href="#too-many-redirects">خطای err_too_many_redirects</a></li>
+      <li><a href="#permissions">خطاهای مربوط به دسترسی فایل</a></li>
+    </ul>
+
+    <h3 id="migrate-files">انتقال فایل‌ها</h3>
     <p>
       برای انتقال فایل‌های برنامه WordPress خود از cPanel به لیارا باید وارد حساب کاربری cPanel شده و از بخش مدیریت فایل (File Manager)، تمام فایل‌های مربوط به برنامه در مسیر <span className="code">public_html</span> هاستینگ را به‌صورت zip شده، دانلود کنید.
     </p>
@@ -47,7 +56,7 @@ export default () => (
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/unzip-some-file-with-liara-command-line.gif" />
 
-    <h3>
+    <h3 id="migrate-database">
       انتقال دیتابیس
     </h3>
     <p>
@@ -67,13 +76,13 @@ export default () => (
 
     <h3>دستورالعمل‌های نهایی</h3>
 
-    <h4>لود نشدن صحیح برنامه</h4>
+    <h4 id="load-problem">لود نشدن صحیح برنامه</h4>
     <p>
       درصورتی که دامنه‌ی قبلی خود را به برنامه WordPress متصل نکرده باشید باید در جدول <span className="code">wp_options</span> آدرس فعلی برنامه را وارد کرده و درنهایت برنامه را ری‌استارت کنید.
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/last-migration-steps.gif"></ZoomableImage>
 
-    <h4>خطای err_too_many_redirects</h4>
+    <h4 id="too-many-redirects">خطای err_too_many_redirects</h4>
     <p>
       درصورتی که برنامه‌ی شما با خطای too many redirects مواجه شد باید قطعه کد زیر را به فایل <span className="code">wp-config.php</span> اضافه کرده و مجدد برنامه را بررسی کنید. درصورتی که خطا رفع نشد، می‌توانید ازطریق <a href="https://console.liara.ir/tickets">تیکت</a> با پشتیبان‌های فنی در ارتباط باشید.
     </p>
@@ -81,7 +90,7 @@ export default () => (
     <br />
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/debugging-err-too-many-redirects.gif"></ZoomableImage>
 
-    <h4>خطاهای مربوط به دسترسی فایل‌</h4>
+    <h4 id="permissions">خطاهای مربوط به دسترسی فایل‌</h4>
     <p>
       درصورتی که با خطاهای مربوط به دسترسی فایل (File Permission) در برنامه‌ی WordPress مواجه شدید، دستورهای زیر را با استفاده از خط فرمان اجرا کنید:
     </p>
