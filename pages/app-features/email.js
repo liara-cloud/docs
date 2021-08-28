@@ -197,7 +197,7 @@ export default () => (
       قسمت تنظیمات برنامه اضافه کنید.
     </p>
     <Highlight className="json">
-      {`MAIL_HOST=smtp.liara.ir
+      {`MAIL_HOST=smtp.iran.liara.ir
 MAIL_PORT=587
 MAIL_USER=my-app
 MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
@@ -247,7 +247,7 @@ transporter.sendMail({
     </p>
     <Highlight className="json">
       {`MAIL_DRIVER=smtp
-MAIL_HOST=smtp.liara.ir
+MAIL_HOST=smtp.iran.liara.ir
 MAIL_PORT=587
 MAIL_USERNAME=my-app
 MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
@@ -270,7 +270,7 @@ MAIL_ENCRYPTION=tls`}
     </p>
     <Highlight className="json">
       {`EMAIL_BACKEND = ‘django.core.mail.backends.smtp.EmailBackend’
-EMAIL_HOST=smtp.liara.ir
+EMAIL_HOST=smtp.iran.liara.ir
 EMAIL_PORT=587
 EMAIL_HOST_USER=my-app
 EMAIL_HOST_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
