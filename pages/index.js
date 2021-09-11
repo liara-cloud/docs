@@ -150,6 +150,12 @@ const Index = () => (
           <span>WordPress</span>
         </a>
       </Link>
+      <Link href="/one-click-apps/pusher/install">
+        <a>
+          <img src="/static/platformicons/pusher.png" alt="pusher" />
+          <span>Pusher</span>
+        </a>
+      </Link>
       <Link href="/one-click-apps/others">
         <a>
           <img src="/static/platformicons/ghost.svg" alt="ghost" />
