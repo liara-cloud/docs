@@ -227,6 +227,12 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/one-click-apps/headless-chrome/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
+              <li><NavTitle href="/one-click-apps/pusher">Pusher</NavTitle>
+                <ul className="nav__list">
+                  <li><ActiveLink href="/one-click-apps/pusher/install">راه‌اندازی</ActiveLink></li>
+                  <li><ActiveLink href="/one-click-apps/pusher/laravel">اتصال از طریق Laravel</ActiveLink></li>
+                </ul>
+              </li>
               <li><ActiveLink href="/one-click-apps/rocketchat">RocketChat</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/metabase">Metabase</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/nextcloud">Nextcloud</ActiveLink></li>
