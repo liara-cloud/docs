@@ -13,7 +13,7 @@ export default () => (
         <div className="page-head">
             <img
                 className="page-icon"
-                src="/static/platformicons/pusher.png"
+                src="/static/platformicons/pusher.svg"
                 alt="pusher"
             />
             <div className="page-title">
