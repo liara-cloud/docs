@@ -152,7 +152,7 @@ const Index = () => (
       </Link>
       <Link href="/one-click-apps/pusher/install">
         <a>
-          <img src="/static/platformicons/pusher.png" alt="pusher" />
+          <img src="/static/platformicons/pusher.svg" alt="pusher" />
           <span>Pusher</span>
         </a>
       </Link>
