@@ -79,6 +79,12 @@ const Index = () => (
           <span>NuxtJS</span>
         </a>
       </Link>
+      <Link href="/instructions/strapi">
+        <a>
+          <img src="/static/platformicons/strapi.svg" alt="strapi" />
+          <span>Strapi</span>
+        </a>
+      </Link>
     </div>
 
     <div className="platforms">
