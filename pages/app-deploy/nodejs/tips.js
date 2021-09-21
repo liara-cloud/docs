@@ -28,6 +28,7 @@ export default () => (
     <ul className="mt-0">
       <li><a href="#nodejs-version">انتخاب نسخه‌ی NodeJS</a></li>
       <li><a href="#build-script">ES6 و build کردن برنامه</a></li>
+      <li><a href="#proxy">تنظیمات TrustedProxies</a></li>
       <li><a href="#graphql-error">رفع خطای GET query missing در GraphQL</a></li>
       <li><a href="#adonisjs">استقرار فریم‌ورک AdonisJS</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
@@ -41,7 +42,7 @@ export default () => (
       اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
     </p>
     <Highlight className="json">
-        {`{
+      {`{
   "platform": "node",
   "app": "nodejs-starter",
   "port": 8000,
@@ -70,7 +71,7 @@ export default () => (
       برای نمونه:
     </p>
     <Highlight className="json">
-        {`{
+      {`{
   "scripts": {
     "start": "node build/server.js",
     "build": "gulp build"
@@ -78,11 +79,30 @@ export default () => (
 }`}
     </Highlight>
 
+    <h3 id="proxy">تنظیمات TrustedProxies</h3>
+    <p>
+      با توجه به این نکته که تمامی درخواست‌ها توسط <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">
+        Reverse proxy
+      </a> لیارا به برنامه‌ی شما هدایت می‌شود باید در زمان استفاده از فریم‌ورک‌های مختلف برای مشاهده‌ی IP واقعی کاربران و بسیاری از قابلیت‌های دیگر تعیین کنید که برنامه‌ی شما در پشت یک Reverse proxy راه‌اندازی شده است.
+    </p>
+
+    <h4>فریم‌ورک Express</h4>
+    <Highlight className="javascript">{`const app = express();
+app.set("trust proxy", 1);`}
+    </Highlight>
+
+    <h4>فریم‌ورک Koa</h4>
+    <Highlight className="javascript">{`const app = new Koa({ proxy: true });
+// or
+const app = new Koa();
+app.proxy = true;`}
+    </Highlight>
+
     <h3 id="graphql-error">رفع خطای <span className="code">GET query missing</span> در GraphQL</h3>
     <p>
       قابلیت Playground در Apollo Server
       در محیط Production
-      به‌صورت پیش‌فرض غیرفعال است. برای فعال‌سازی، لازم است تا فیلدهای
+      به‌صورت پیش‌فرض غیرفعال است.برای فعال‌سازی، لازم است تا فیلدهای
       <span className="code">introspection</span>
       و
       <span className="code">playground</span>
@@ -114,10 +134,10 @@ server.listen().then(({ url }) => {
     <p>
       اگر از فریم‌ورک AdonisJS استفاده می‌کنید، نیاز به تنظیمات خاصی ندارید و
       مطابق با مواردی که در بالا گفته شد، می‌توانید برنامه‌ی‌تان را در لیارا
-      مستقر کنید. تنها خطای خاصی که ممکن است با آن مواجه شوید این است که این
+      مستقر کنید.تنها خطای خاصی که ممکن است با آن مواجه شوید این است که این
       فریم‌ورک وجود یک فایل
       <span className="code">.env</span>
-      را در ریشه‌ی برنامه الزامی می‌داند. اما چون در لیارا، شما متغیرهای‌تان را
+      را در ریشه‌ی برنامه الزامی می‌داند.اما چون در لیارا، شما متغیرهای‌تان را
       از بخش «تنظیمات برنامه» وارد می‌کنید، ممکن است با خطای زیر مواجه شوید:
     </p>
     <pre>
@@ -137,21 +157,21 @@ server.listen().then(({ url }) => {
         target="_blank"
         rel="noopener"
       >
-        Disabling the .env file
+        Disabling the.env file
       </a>{" "}
       گفته شده‌است.
     </p>
 
     <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
     <p>
-      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
+      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است.برای
       تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
       <span className="code">timezone</span>
       در فایل <span className="code">liara.json</span>
-      استفاده کنید. برای نمونه:
+      استفاده کنید.برای نمونه:
     </p>
     <Highlight className="json">
-        {`{
+      {`{
   "platform": "node",
   "app": "nodejs-starter",
   "port": 8000,
@@ -160,5 +180,8 @@ server.listen().then(({ url }) => {
   }
 }`}
     </Highlight>
-  </Layout>
+
+
+
+  </Layout >
 );
