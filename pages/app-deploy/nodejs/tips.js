@@ -28,6 +28,7 @@ export default () => (
     <ul className="mt-0">
       <li><a href="#nodejs-version">انتخاب نسخه‌ی NodeJS</a></li>
       <li><a href="#build-script">ES6 و build کردن برنامه</a></li>
+      <li><a href="#proxy">تنظیمات TrustedProxies</a></li>
       <li><a href="#graphql-error">رفع خطای GET query missing در GraphQL</a></li>
       <li><a href="#adonisjs">استقرار فریم‌ورک AdonisJS</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
@@ -41,7 +42,7 @@ export default () => (
       اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
     </p>
     <Highlight className="json">
-        {`{
+      {`{
   "platform": "node",
   "app": "nodejs-starter",
   "port": 8000,
@@ -70,12 +71,31 @@ export default () => (
       برای نمونه:
     </p>
     <Highlight className="json">
-        {`{
+      {`{
   "scripts": {
     "start": "node build/server.js",
     "build": "gulp build"
   }
 }`}
+    </Highlight>
+
+    <h3 id="proxy">تنظیمات TrustedProxies</h3>
+    <p>
+      با توجه به این نکته که تمامی درخواست‌ها توسط <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">
+        Reverse proxy
+      </a> لیارا به برنامه‌ی شما هدایت می‌شود باید در زمان استفاده از فریم‌ورک‌های مختلف برای مشاهده‌ی IP واقعی کاربران و بسیاری از قابلیت‌های دیگر تعیین کنید که برنامه‌ی شما در پشت یک Reverse proxy راه‌اندازی شده است.
+    </p>
+
+    <h4>فریم‌ورک Express</h4>
+    <Highlight className="javascript">{`const app = express();
+app.set("trust proxy", 1);`}
+    </Highlight>
+
+    <h4>فریم‌ورک Koa</h4>
+    <Highlight className="javascript">{`const app = new Koa({ proxy: true });
+// or
+const app = new Koa();
+app.proxy = true;`}
     </Highlight>
 
     <h3 id="graphql-error">رفع خطای <span className="code">GET query missing</span> در GraphQL</h3>
@@ -151,7 +171,7 @@ server.listen().then(({ url }) => {
       استفاده کنید. برای نمونه:
     </p>
     <Highlight className="json">
-        {`{
+      {`{
   "platform": "node",
   "app": "nodejs-starter",
   "port": 8000,
