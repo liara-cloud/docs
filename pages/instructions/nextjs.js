@@ -46,7 +46,7 @@ export default () => (
 
         <h3>Static HTML Export</h3>
         <p>
-            قابلیت <a href="https://nextjs.org/docs/advanced-features/static-html-export" target="_blank">Static HTML Export</a> این امکان را فراهم کرده تا شما از برنامه‌ی های NextJS خود، خروجی static HTML بگیرید و دیگر نیازی به سرور NodeJS نخواهید داشت. همچنین خروجی نهایی تقریبا از تمام ویژگی‌های ارائه شده در NextJS مانند dynamic routes، prefetching، preloading و dynamic imports پشتیبانی می‌کند.
+            قابلیت <a href="https://nextjs.org/docs/advanced-features/static-html-export" target="_blank">Static HTML Export</a> این امکان را فراهم کرده تا شما از برنامه‌های NextJS خود، خروجی static HTML بگیرید و دیگر نیازی به سرور NodeJS نخواهید داشت. همچنین خروجی نهایی تقریبا از تمام ویژگی‌های ارائه شده در NextJS مانند dynamic routes، prefetching، preloading و dynamic imports پشتیبانی می‌کند.
         </p>
         <p>
             برای استفاده از این قابلیت بایستی اسکریپت build برنامه‌ی خود را در فایل <span className="code">package.json</span> به‌شکل زیر تغییر دهید.
