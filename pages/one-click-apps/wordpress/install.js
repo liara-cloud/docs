@@ -31,6 +31,16 @@ export default () => (
 
     <h3 id="setup">نصب و اجرا</h3>
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/wordpress.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <p>
       کافیست از بخش <b>برنامه‌های آماده</b> روی WORDPRESS کلیک کنید و سپس شناسه
       برنامه‌‌ی موردنظرتان را وارد کنید، مثلا{" "}
       <span className="code">my-blog</span>. سپس در بخش <b>انتخاب دیتابیس</b>{" "}
