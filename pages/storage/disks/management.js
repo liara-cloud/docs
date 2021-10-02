@@ -11,11 +11,19 @@ export default () => (
       <title>مستندات مدیریت دیسک‌ها - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>دیسک‌ها</h1>
+    <h1>مدیریت دیسک‌ها</h1>
     <span className="page-description">(Disks)</span>
 
-    <h2>مدیریت دیسک‌ها</h2>
-    <h3>ساخت دیسک</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#create-disk">ساخت دیسک</a></li>
+      <li><a href="#mount-disk">تعریف مسیر دیسک</a></li>
+      <li><a href="#mount-multiple-disks">تعریف چندین دیسک</a></li>
+      <li><a href="#delete-disks">حذف‌ دیسک‌ها</a></li>
+      <li><a href="#migrate-from-volume-to-disks">مهاجرت از volume به disks</a></li>
+    </ul>
+
+    <h3 id="create-disk">ساخت دیسک</h3>
     <p>
       برای این که بتوانید یک پوشه در برنامه‌ی‌تان را به یک دیسک در لیارا متصل
       کنید، ابتدا لازم است که دیسک را با اندازه‌ی دلخواه‌تان از صفحه‌ی «دیسک‌ها»
@@ -56,7 +64,7 @@ export default () => (
       <span className="code">0.2 GB</span>
     </Notice>
 
-    <h3>تعریف مسیر دیسک</h3>
+    <h3 id="mount-disk">تعریف مسیر دیسک</h3>
     <p>
       تعریف‌کردن مسیر دیسک به کمک فایل{" "}
       <Link href="/clients/cli#liara-json-file" title="مستندات CLI">
@@ -105,7 +113,7 @@ export default () => (
 `}
     </Highlight>
 
-    <h3>تعریف چندین دیسک</h3>
+    <h3 id="mount-multiple-disks">تعریف چندین دیسک</h3>
     <p>
       در حالتی که چندین دیسک دارید، می‌توانید آن‌ها را مانند نمونه‌ی زیر تعریف
       کنید:
@@ -126,7 +134,7 @@ export default () => (
 `}
     </Highlight>
 
-    <h3>حذف‌ دیسک‌ها</h3>
+    <h3 id="delete-disks">حذف‌ دیسک‌ها</h3>
     <p>
       با حذف دیسک‌ها در لیارا داده‌های مربوط به آن دیسک کاملا حذف شده و غیرقابل
       بازگشت هستند. قبل از حذف دیسک اطمینان حاصل کنید که دیسک درستی را حذف
@@ -145,7 +153,7 @@ export default () => (
     </p>
     <ZoomableImage src="/static/disks/remove.png" alt="صفحه‌ی حذف دیسک" />
     <a name="migrate" />
-    <h3>
+    <h3 id="migrate-from-volume-to-disks">
       مهاجرت از <span className="code">volume</span> به{" "}
       <span className="code">disks</span>
     </h3>
