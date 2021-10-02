@@ -181,34 +181,6 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <NavTitle href="/app-features">ویژگی‌های برنامه</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/app-features/file-system">فایل سیستم</ActiveLink></li>
-              <li><ActiveLink href="/app-features/logs">لاگ‌ها</ActiveLink></li>
-              <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (env ها)</ActiveLink></li>
-              <li><ActiveLink href="/app-features/private-network">شبکه‌ی خصوصی</ActiveLink></li>
-              <li><ActiveLink href="/app-features/console">خط فرمان</ActiveLink></li>
-              <li><ActiveLink href="/app-features/cron-jobs">Cron Job ها</ActiveLink></li>
-              <li><ActiveLink href="/app-features/ffmpeg">ماژول FFMPEG</ActiveLink></li>
-              <li><ActiveLink href="/app-features/fixed-ip">آی‌پی ثابت</ActiveLink></li>
-              <li><ActiveLink href="/app-features/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
-              <li><ActiveLink href="/app-features/zero-downtime-deployment">استقرار بدون اختلال</ActiveLink></li>
-              <li><ActiveLink href="/app-features/health-check">بررسی سلامت</ActiveLink></li>
-              <li><ActiveLink href="/app-features/applets">برنامک‌ها</ActiveLink></li>
-              <li><ActiveLink href="/app-features/email">ایمیل</ActiveLink></li>
-            </ul>
-          </nav>
-
-          <nav className="nav">
-            <NavTitle href="/cicd">راه‌اندازی CI/CD</NavTitle>
-            <ul className="nav__list">
-              <li><ActiveLink href="/cicd/about">درباره CI/CD</ActiveLink></li>
-              <li><ActiveLink href="/cicd/gitlab">استفاده از GitLab</ActiveLink></li>
-              <li><ActiveLink href="/cicd/github">استفاده از GitHub</ActiveLink></li>
-            </ul>
-          </nav>
-
-          <nav className="nav">
             <NavTitle href="/one-click-apps">برنامه‌های آماده</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/one-click-apps/about">درباره برنامه‌های آماده</ActiveLink></li>
@@ -314,6 +286,25 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
+            <NavTitle href="/app-features">ویژگی‌های برنامه</NavTitle>
+            <ul className="nav__list">
+              <li><ActiveLink href="/app-features/file-system">فایل سیستم</ActiveLink></li>
+              <li><ActiveLink href="/app-features/logs">لاگ‌ها</ActiveLink></li>
+              <li><ActiveLink href="/app-features/environment-variables">متغیرهای محیطی (env ها)</ActiveLink></li>
+              <li><ActiveLink href="/app-features/private-network">شبکه‌ی خصوصی</ActiveLink></li>
+              <li><ActiveLink href="/app-features/console">خط فرمان</ActiveLink></li>
+              <li><ActiveLink href="/app-features/cron-jobs">Cron Job ها</ActiveLink></li>
+              <li><ActiveLink href="/app-features/ffmpeg">ماژول FFMPEG</ActiveLink></li>
+              <li><ActiveLink href="/app-features/fixed-ip">آی‌پی ثابت</ActiveLink></li>
+              <li><ActiveLink href="/app-features/ignore">نادیده‌گرفتن فایل‌ها</ActiveLink></li>
+              <li><ActiveLink href="/app-features/zero-downtime-deployment">استقرار بدون اختلال</ActiveLink></li>
+              <li><ActiveLink href="/app-features/health-check">بررسی سلامت</ActiveLink></li>
+              <li><ActiveLink href="/app-features/applets">برنامک‌ها</ActiveLink></li>
+              <li><ActiveLink href="/app-features/email">ایمیل</ActiveLink></li>
+            </ul>
+          </nav>
+
+          <nav className="nav">
             <NavTitle href="/storage">ذخیره‌سازی</NavTitle>
             <ul className="nav__list">
               <li><NavTitle href="/storage/disks">دیسک‌ها (Disks)</NavTitle>
@@ -344,6 +335,15 @@ export default class Sidebar extends Component {
             <ul className="nav__list">
               <li><ActiveLink href="/domains/management">مدیریت دامنه‌ها</ActiveLink></li>
               <li><ActiveLink href="/domains/ssl">مدیریت SSL‌ها</ActiveLink></li>
+            </ul>
+          </nav>
+
+          <nav className="nav">
+            <NavTitle href="/cicd">راه‌اندازی CI/CD</NavTitle>
+            <ul className="nav__list">
+              <li><ActiveLink href="/cicd/about">درباره CI/CD</ActiveLink></li>
+              <li><ActiveLink href="/cicd/gitlab">استفاده از GitLab</ActiveLink></li>
+              <li><ActiveLink href="/cicd/github">استفاده از GitHub</ActiveLink></li>
             </ul>
           </nav>
 
