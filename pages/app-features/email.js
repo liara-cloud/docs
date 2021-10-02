@@ -13,6 +13,17 @@ export default () => (
     <h1>ایمیل</h1>
     <span className="page-description">(Transactional Email)</span>
 
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#create-email">ایجاد سرویس ایمیل</a></li>
+      <li><a href="#send-email">ارسال ایمیل</a></li>
+      <li><a href="#inbox">صندوق ورودی</a></li>
+      <li><a href="#sent-email">ارسال شده‌ها</a></li>
+      <li><a href="#settings">تنظیمات</a></li>
+      <li><a href="#spam-rate">درصد اسپم بودن ایمیل</a></li>
+      <li><a href="#smtp-access">استفاده از دسترسی SMTP</a></li>
+    </ul>
+
     <p>
       با استفاده از سرویس ایمیل لیارا، می‌توانید اقدام به ارسال ایمیل‌های
       تراکنشی، در برنامه‌های خود، از طریق دسترسی SMTP کنید.
@@ -30,18 +41,6 @@ export default () => (
       مشاهده، سرویس ایمیل مسدود خواهد شد.
     </Notice>
 
-    <h4>فهرست عناوین:</h4>
-    <ul className="mt-0">
-      <li><a href="#create-email">ایجاد سرویس ایمیل</a></li>
-      <li><a href="#send-email">ارسال ایمیل</a></li>
-      <li><a href="#inbox">صندوق ورودی</a></li>
-      <li><a href="#sent-email">ارسال شده‌ها</a></li>
-      <li><a href="#settings">تنظیمات</a></li>
-      <li><a href="#spam-rate">درصد اسپم بودن ایمیل</a></li>
-      <li><a href="#smtp-access">استفاده از دسترسی SMTP</a></li>
-    </ul>
-
-
     <h3 id="create-email">ایجاد سرویس ایمیل</h3>
     <p>
       برای ایجاد سرویس ایمیل، با مراجعه به بخش «برنامه‌ها» و بعد از انتخاب
@@ -51,9 +50,11 @@ export default () => (
     <ZoomableImage src="/static/email-1.png" />
 
     <Notice variant="warning">
-      برای ایجاد سرویس ایمیل، نیاز هست تا برنامه‌تان، حداقل یک استقرار موفق، به
-      همراه یک دامنه فعال متصل به این برنامه، داشته باشد.
-    </Notice>
+      <ul>
+        <li style={{ fontSize:14, lineHeight:1.8 }}>برای ایجاد سرویس ایمیل در برنامه تهیه شده باید حداقل یک استقرار موفق داشته باشید و یک دامنه فعال نیز به این برنامه متصل شده باشد.</li>
+        <li style={{ fontSize:14, lineHeight:1.8 }}>توجه داشته باشید که سرویس ایمیل فقط برای ریشه‌ی دامنه قابل ارائه است و ارائه سرویس ایمیل برای زیردامنه‌هایی مانند ‌(subdomain.example.com) ممکن نیست.</li>
+      </ul>
+   </Notice>
 
     <p>
       پس از کلیک بر روی دکمه ایجاد سرویس ایمیل، در پنجره باز شده، بعد از انتخاب
@@ -61,10 +62,6 @@ export default () => (
     </p>
 
     <ZoomableImage src="/static/email-2.png" />
-
-    <Notice variant="warning">
-      توجه داشته باشید که ایمیل برای زیردامنه‌ها، قابل ارائه نیست.
-    </Notice>
 
     <p>بعد از کلیک بر روی دکمه ایجاد سرویس ایمیل، به صفحه زیر منتقل می‌شوید.</p>
 
