@@ -19,6 +19,16 @@ export default () => (
       متصل شوید. برای نمونه چند کتابخانه‌ در زبان‌ها و فریم‌ورک‌های مختلف در
       پایین معرفی کرده‌ایم و همچنین نحوه‌ اتصال آن‌ها به لیارا را نیز آورده‌ایم:
     </p>
+
+    <ul className="mt-0">
+      <li><a href="#node">Nodejs</a></li>
+      <li><a href="#laravel">Laravel</a></li>
+      <li><a href="#php">PHP</a></li>
+      <li><a href="#django">Django</a></li>
+      <li><a href="#flask">Flask</a></li>
+      <li><a href="#netcore">Net Core</a></li>
+    </ul>
+
     <Notice variant="info">
       در این مثال‌ها فقط نحوه اتصال و نمایش لیست باکت‌ها قرار گرفته است. لینک
       مستندات و گیت‌هاب هر کتابخانه برای مطالعه بیشتر قرار گرفته است.
@@ -30,8 +40,9 @@ export default () => (
       <span className="code">LIARA_SECRET_KEY</span> را می‌توانید از قسمت{" "}
       «کلید‌های دسترسی» در صفحه اطلاعات کلی سرویس فایل‌تان، بدست آورید.
     </Notice>
+
     <ul dir="ltr">
-      <li>
+      <li id="node">
         <b>
           Nodejs:{" "}
           <a href="https://github.com/aws/aws-sdk-js" target="_blank">
@@ -58,7 +69,7 @@ s3.listBuckets(function(err, data) {
       </Highlight>
       <br />
 
-      <li>
+      <li id="laravel">
         <b>
           Laravel:{" "}
           <a href="https://laravel.com/docs/master/filesystem" target="_blank">
@@ -88,7 +99,7 @@ return [
       </Highlight>
       <br />
 
-      <li>
+      <li id="php">
         <b>
           PHP:{" "}
           <a href="https://github.com/aws/aws-sdk-php" target="_blank">
@@ -117,7 +128,7 @@ print_r($listResponse);`}
       </Highlight>
       <br />
 
-      <li>
+      <li id="django">
         <b>
           Django:{" "}
           <a
@@ -160,7 +171,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
       </Highlight>
       <br />
 
-      <li>
+      <li id="flask">
         <b>
           Flask:{" "}
           <a href="https://github.com/boto/boto3" target="_blank">
@@ -183,7 +194,7 @@ for bucket in s3.buckets.all():
       </Highlight>
       <br />
 
-      <li>
+      <li id="netcore">
         <b>
           .Net Core:{" "}
           <a
