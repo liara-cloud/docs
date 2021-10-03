@@ -16,13 +16,19 @@ export default () => (
         alt="php"
       />
       <div className="page-title">
-        <h1>برنامه‌های PHP</h1>
+        <h1>اولین استقرار در برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>
       </div>
     </div>
 
-    <h3>استقرار اولین برنامه</h3>
-    <h3>نصب Liara CLI</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#installing-liara-cli">نصب Liara CLI</a></li>
+      <li><a href="#login">ورود به حساب کاربری</a></li>
+      <li><a href="#deploy">اولین استقرار</a></li>
+    </ul>
+
+    <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید:
@@ -34,7 +40,7 @@ export default () => (
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>
     </pre>
-    <h3>ورود به حساب کاربری</h3>
+    <h3 id="login">ورود به حساب کاربری</h3>
     <p>
       برای ورود به حساب کاربری خود به وسیله Liara CLI کافیست دستور زیر را وارد
       کنید و ایمیل و رمزعبوری که با آن حساب کاربری خود را ایجاد کرده‌اید را وارد
@@ -43,7 +49,7 @@ export default () => (
     <pre>
       <code>{`$ liara login`}</code>
     </pre>
-    <h3>اولین استقرار</h3>
+    <h3 id="deploy">اولین استقرار</h3>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
       <a href="https://console.liara.ir/apps/create" target="_blank">

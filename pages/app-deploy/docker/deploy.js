@@ -17,13 +17,21 @@ export default () => (
         alt="docker"
       />
       <div className="page-title">
-        <h1>برنامه‌های Docker</h1>
+        <h1>اولین استقرار در برنامه‌های Docker</h1>
         <span className="page-description">(Docker Apps)</span>
       </div>
     </div>
 
-    <h3>استقرار اولین برنامه</h3>
-    <h3>نصب Liara CLI</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#installing-liara-cli">نصب Liara CLI</a></li>
+      <li><a href="#login">ورود به حساب کاربری</a></li>
+      <li><a href="#deploy">اولین استقرار</a></li>
+      <li><a href="#image-from-dockerhub">استقرار Image از DockerHub</a></li>
+      <li><a href="#limits">محدودیت‌ها</a></li>
+    </ul>
+
+    <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید:
@@ -35,7 +43,7 @@ export default () => (
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>
     </pre>
-    <h3>ورود به حساب کاربری</h3>
+    <h3 id="login">ورود به حساب کاربری</h3>
     <p>
       برای ورود به حساب کاربری خود به وسیله Liara CLI کافیست دستور زیر را وارد
       کنید و ایمیل و رمزعبوری که با آن حساب کاربری خود را ایجاد کرده‌اید را وارد
@@ -44,7 +52,7 @@ export default () => (
     <pre>
       <code>{`$ liara login`}</code>
     </pre>
-    <h3>اولین استقرار</h3>
+    <h3 id="deploy">اولین استقرار</h3>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
       <a href="https://console.liara.ir/apps/create" target="_blank">
@@ -95,7 +103,7 @@ export default () => (
     </p>
     <p dir="ltr">https://docker-starter.liara.run</p>
 
-    <h3>استقرار Image از DockerHub</h3>
+    <h3 id="image-from-dockerhub">استقرار Image از DockerHub</h3>
     <p>
       این امکان هم وجود دارد که Image ای را مستقیما
       از رجیستری‌های عمومی مثل
@@ -141,7 +149,7 @@ export default () => (
       را دوباره دانلود می‌کند که ممکن است باعث تغییر نسخه شده و سرویس‌تان دچار مشکل شود.
     </Notice>
 
-    <h3>محدودیت‌ها</h3>
+    <h3 id="limits">محدودیت‌ها</h3>
     <p>
       <ol>
         <li>
