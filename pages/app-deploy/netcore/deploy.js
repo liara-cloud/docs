@@ -16,13 +16,21 @@ export default () => (
         alt="netcore"
       />
       <div className="page-title">
-        <h1>برنامه‌های ASP.Net Core</h1>
+        <h1>اولین استقرار در برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
       </div>
     </div>
 
-    <h3>استقرار اولین برنامه</h3>
-    <h3>نصب Liara CLI</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#installing-liara-cli">نصب Liara CLI</a></li>
+      <li><a href="#login">ورود به حساب کاربری</a></li>
+      <li><a href="#deploy">اولین استقرار</a></li>
+      <li><a href="#solution-folder">استقرار پوشه‌ی Solution</a></li>
+      <li><a href="#common-problem">خطاهای رایج در فرایند استقرار</a></li>
+    </ul>
+
+    <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید:
@@ -34,7 +42,7 @@ export default () => (
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>
     </pre>
-    <h3>ورود به حساب کاربری</h3>
+    <h3 id="login">ورود به حساب کاربری</h3>
     <p>
       برای ورود به حساب کاربری خود به وسیله Liara CLI کافیست دستور زیر را وارد
       کنید و ایمیل و رمزعبوری که با آن حساب کاربری خود را ایجاد کرده‌اید را وارد
@@ -43,7 +51,7 @@ export default () => (
     <pre>
       <code>{`$ liara login`}</code>
     </pre>
-    <h3>اولین استقرار</h3>
+    <h3 id="deploy">اولین استقرار</h3>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
       <a href="https://console.liara.ir/apps/create" target="_blank">
@@ -89,7 +97,7 @@ export default () => (
       نمانید.
     </Notice>
 
-    <h3>استقرار پوشه‌ی Solution</h3>
+    <h3 id="solution-folder">استقرار پوشه‌ی Solution</h3>
     <p>
       در صورتی که ساختار برنامه‌ی شما وابسته به چندین پروژه است، پوشه‌ی Solution
       ریشه‌ی برنامه‌ی شما به‌حساب می‌آید. بنابراین، لازم است که اگر فایل
@@ -99,7 +107,7 @@ export default () => (
       را هم در پوشه‌ی Solution اجرا کنید.
     </p>
 
-    <h3>خطاهای رایج در فرایند استقرار</h3>
+    <h3 id="common-problem">خطاهای رایج در فرایند استقرار</h3>
     <p>
       چنانچه در فرایند استقرار با خطای خاصی مواجه شده‌اید، حتما پیشنهاد می‌کنیم
       که بخش <Link href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</Link>{" "}
