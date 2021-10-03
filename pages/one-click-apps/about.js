@@ -29,6 +29,7 @@ export default () => (
       <li>Metabase</li>
       <li>Chrome</li>
       <li>NextCloud</li>
+      <li>Pusher</li>
     </ul>
   </Layout>
 );
