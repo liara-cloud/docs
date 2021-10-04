@@ -20,77 +20,103 @@ export default () => (
         alt="netcore"
       />
       <div className="page-title">
-        <h1>برنامه‌های ASP.Net Core</h1>
+        <h1>استفاده از دیسک‌ها در برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>
       </div>
     </div>
 
-    <h3>استفاده از دیسک‌ها</h3>
-    <p>
-      فایل سیستم برنامه‌های لیارا،{" "}
-      <a href="/app-features/file-system">Read-Only</a> است. به عبارتی، بعد از
-      عملیات استقرار، امکان ذخیره‌سازی فایل‌های جدید در کنار فایل‌های پروژه،
-      وجود ندارد. به همین دلیل از قابلیتی تحت عنوان <b>دیسک‌ها</b> در اینجا
-      استفاده می‌کنیم تا بتوانیم اطلاعات را ذخیره کنیم.
-    </p>
-    <p>
-      به صورت خلاصه روند کار بدین‌صورت خواهد‌بود که ابتدا یک دیسک به اندازه
-      دلخواه میسازید، و سپس آن دایرکتوری خاصی که مد‌نظرتان است را به آن دیسک
-      متصل کنید تا اطلاعات آن همیشه محفوظ بماند. برای مثال فرض کنید میخواهید کل
-      دایرکتوری MyStaticFiles را به یک دیسک متصل کنید تا داده‌های آن همیشه محفوظ
-      باقی‌بماند.
-    </p>
-    <p>
-      <b>گام اول)</b> ساخت یک دیسک جدید در منوی <b>دیسک‌های</b> پنل لیارا:{" "}
-    </p>
-    <ZoomableImage src="/static/laravel-create-disk.gif" />
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li><a href="#create-new-disk">ساخت یک دیسک جدید</a></li>
+      <li><a href="#mount-disk">اتصال دیسک به مسیر مورد نظر در فایل liara.json</a></li>
+      <li><a href="#mount-disks">اتصال چند دیسک به مسیرهای مختلف در فایل liara.json</a></li>
+      <li><a href="#increase-tmp-size">افزایش فضای مسیر /tmp</a></li>
+    </ul>
 
     <p>
-      <b>گام دوم)</b> اضافه کردن بخش اتصال دیسک به دایرکتوری در فایل{" "}
-      <span className="code">liara.json</span>
+      <Link href="/app-features/file-system">فایل سیستم برنامه‌های لیارا</Link> Read-Only است یعنی بعد از استقرار برنامه تنها می‌توانیم فایل‌ها و دایرکتوری‌ها را مشاهده کنیم و امکان ایجاد هیچ گونه تغییری در این فایل سیستم وجود ندارد.
     </p>
+    <p>
+      حال در این تجربه‌ی جدید که امنیت بیشتر از مزیت‌های آن است، درصورت نیاز به ذخیره‌ی فایل‌هایی مانند فایل‌های رسانه در کنار سورس‌کد برنامه در مسیری مشخص باید از دیسک‌ها استفاده کرد که آموزش ایجاد دیسک و نحوه‌ی اتصال آن به مسیر مورد نظر به شرح زیر است:
+    </p>
+
+    <Notice variant="warning">
+      توجه داشته باشید که با وجود Read-Only بودن فایل‌سیستم برنامه‌های لیارا، دایرکتوری <span className="code">/tmp</span> از این قاعده مستثنی است و شما می‌توانید از این دایرکتوری که در همه پلن‌های ارائه شده، فضایی برابر ۱۰۰ مگابایت دارد، برای ذخیره لاگ‌ها، فایل‌ها آپلودی موقتی و غیره استفاده کنید.
+      {' '}
+      <a href="#increase-tmp-size">
+        توضیحات بیشتر
+      </a>
+    </Notice>
+
+    <h3 id="create-new-disk">ساخت یک دیسک جدید</h3>
+
+    <ZoomableImage src="/static/create-new-disk.gif" />
+
+    <h3 id="mount-disk">اتصال دیسک به مسیر مورد نظر در فایل <span className="code">liara.json</span></h3>
+
+    <p>
+      برای اتصال دیسک ایجاد شده در مرحله‌ی قبل به مسیر <span className="code">MyStaticFiles</span> باید قطعه کد زیر را در فایل ‌<span className="code">liara.json</span> قرار داده و با اجرای دستور <span className="code">liara deploy</span> سورس‌کد خود را بر روی برنامه‌ی تهیه شده مستقر کنید.
+    </p>
+
     <Highlight className="json">
       {`{
-  "platform": "netcore",
-  "app": "dotnets-starter",
-  "port": "5000",
   "disks": [
     {
-      "name": "disk1",
+      "name": "data",
       "mountTo": "MyStaticFiles"
     }
   ]
 }`}
     </Highlight>
-    <p>
-      همانطور که در فایل بالا می‌بینید، دیسک با شناسه disk1 به دایرکتوری
-      MyStaticFiles برنامه متصل شده‌است. از حالا به بعد هر چیزی داخل دایرکتوری
-      MyStaticFiles قرار بگیرد در هر استقرار یا ری‌استارت پاک نخواهد شد.
-    </p>
+
     <Notice variant="info">
-      همانطور که می‌بینید، بخش disks در فایل بالا یک آرایه است که یعنی شما
-      می‌تواند دیسک‌های جدیدتری بسازید و دایرکتوری های دیگری را به آن ها متصل
-      کنید.
-      <Highlight className="json">
-        {`{
+      توجه داشته باشید که فایل‌های ذخیره شده در دیسک‌ها با استقرار نسخه‌های جدید برنامه به‌رزورسانی نخواهند شد و باید با استفاده از <Link href="/storage/disks/ftp">دسترسی FTP</Link> یا به‌صورت نرم‌افزاری فایل‌های مورد نظر خود را بر روی دیسک مربوطه آپلود کنید.
+    </Notice>
+
+    <h3 id="mount-disks">اتصال چند دیسک به مسیرهای مختلف در فایل <span className="code">liara.json</span></h3>
+    <p>
+      به‌دلیل امکان تعیین اندازه برای هر دیسک می‌توانید از فضای قابل رزرو پلن تهیه شده‌ی خود برای ایجاد چندین دیسک استفاده کرده و آن‌ها را به شکل زیر به مسیرهای مختلفی متصل کنید:
+    </p>
+
+    <Highlight className="json">
+      {`{
   "disks": [
     {
-      "name": "disk1",
+      "name": "data",
       "mountTo": "MyStaticFiles"
     },
     {
-      "name": "disk2",
-      "mountTo": "Logs"
+      "name": "logs",
+      "mountTo": "logs"
     }
   ]
 }`}
-      </Highlight>
-    </Notice>
-    <Notice variant="info">
-      همانطور که در فایل‌های بالا می‌بینید آدرس دهی‌ها از ریشه هر برنامه داده
-      شده است.
-    </Notice>
-    <br />
+    </Highlight>
+
+    <h3 id="increase-tmp-size">افزایش فضای مسیر <span className="code">/tmp</span></h3>
+
+    <p>
+      در تمام پلن‌های لیارا ۱۰۰ مگابایت فضا به مسیر <span className="code">/tmp</span> برنامه  اختصاص داده شده است اما شما می‌توانید دیسکی با فضای دلخواه ایجاد کرده و آن را به این مسیر متصل کنید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "disks": [
+    {
+      "name": "data",
+      "mountTo": "MyStaticFiles"
+    },
+    {
+      "name": "logs",
+      "mountTo": "logs"
+    },
+    {
+      "name": "temp",
+      "mountTo": "/tmp"
+    }
+  ]
+}`}
+    </Highlight>
 
     <Link href="/app-deploy/netcore/domain">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
