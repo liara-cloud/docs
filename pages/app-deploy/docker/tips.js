@@ -7,7 +7,9 @@ import Highlight from "react-highlight";
 export default () => (
     <Layout>
         <Head>
-            <title></title>
+            <title>
+                توضیحات و نکات تکمیلی در برنامه‌های Docker - سرویس ابری لیارا
+            </title>
         </Head>
 
         <div className="page-head">
