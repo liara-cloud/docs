@@ -224,6 +224,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/instructions/nestjs">NestJS</ActiveLink></li>
               <li><ActiveLink href="/instructions/strapi">Strapi</ActiveLink></li>
               <li><ActiveLink href="/instructions/gatsbyjs">GatsbyJS</ActiveLink></li>
+              <li><ActiveLink href="/instructions/nginx">Nginx</ActiveLink></li>
               <li><ActiveLink href="/instructions/golang">Golang</ActiveLink></li>
               <li><ActiveLink href="/instructions/dotnet-published">استقرار فایل DLL</ActiveLink></li>
               <li><ActiveLink href="/instructions/rabbitmq">RabbitMQ</ActiveLink></li>
