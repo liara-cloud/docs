@@ -30,6 +30,7 @@ export default () => (
       <li><a href="#create-new-disk">ساخت یک دیسک جدید</a></li>
       <li><a href="#mount-disk">اتصال دیسک به مسیر مورد نظر در فایل liara.json</a></li>
       <li><a href="#mount-disks">اتصال چند دیسک به مسیرهای مختلف در فایل liara.json</a></li>
+      <li><a href="#increase-tmp-size">افزایش فضای مسیر /tmp</a></li>
     </ul>
 
     <p>
