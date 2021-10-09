@@ -13,7 +13,9 @@ function handleClick(e) {
 }
 
 function NavTitle({ router, href, children, active }) {
-  const isActive = active || router.pathname.toLowerCase().startsWith(href.toLowerCase())
+  const currentPagePath = router.pathname.endsWith('/') ? router.pathname.toLowerCase() : `${router.pathname.toLowerCase()}/`
+  const currentHref = href.endsWith('/') ? href.toLowerCase() : `${href.toLowerCase()}/`
+  const isActive = active || currentPagePath.startsWith(currentHref)
   return (
     <span onClick={handleClick} className={`nav__title ${isActive ? 'nav__title--active' : ''}`}>{children}</span>
   )
