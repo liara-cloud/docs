@@ -44,6 +44,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/nodejs/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/disks">استفاده از دیسک‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/domain">اتصال دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/nodejs/email">ارسال ایمیل</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/nodejs/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
