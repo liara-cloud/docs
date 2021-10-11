@@ -11,7 +11,18 @@ export default () => (
             </title>
         </Head>
 
-        <h1>استقرار Elasticsearch</h1>
+        <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/elastic.svg"
+                alt="elastic"
+            />
+            <div className="page-title">
+                <h1>استقرار Elasticsearch</h1>
+                <span className="page-description">(Docker Apps)</span>
+            </div>
+        </div>
+
         <p>
             elasticsearch، یک موتور جستجو و تحلیلگر توزیع شده است که با رابط کاربری وب(HTTP) و الگوی استاندارد JSON برای
             انتقال داده ها کار می‌کند.
@@ -19,8 +30,8 @@ export default () => (
 
         <p>
             برای استقرار این برنامه، ابتدا لازم است که از بخش «برنامه‌ها» یک برنامه از نوع <Link
-            href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
-            <br/>
+                href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
+            <br />
             سپس یک دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
         </p>
         <p>
@@ -58,8 +69,8 @@ xpack.security.enabled=true`}
             دستور زیر را برای استقرار و اجرای برنامه وارد کنید:
         </p>
         <pre>
-      <code>$ liara deploy</code>
-    </pre>
+            <code>$ liara deploy</code>
+        </pre>
         <p>
             <Link href="/cli/install">
                 راهنمای نصب Liara CLI
@@ -81,7 +92,7 @@ xpack.security.enabled=true`}
             </li>
             <li>
                 برای اطلاع از تنظیمات بیشتر و نسخه‌های مختلف می‌توانید از مستندات مربوطه در <Link
-                href="https://hub.docker.com/r/elastic/elasticsearch">Elasticsearch</Link> استفاده کنید.
+                    href="https://hub.docker.com/r/elastic/elasticsearch">Elasticsearch</Link> استفاده کنید.
             </li>
         </ul>
     </Layout>

@@ -9,7 +9,18 @@ export default () => (
             <title>استقرار برنامه‌های Yii - سرویس ابری لیارا</title>
         </Head>
 
-        <h1>استقرار برنامه‌های Yii</h1>
+        <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/yii.svg"
+                alt="yii"
+            />
+            <div className="page-title">
+                <h1>استقرار برنامه‌های Yii</h1>
+                <span className="page-description">(Docker Apps)</span>
+            </div>
+        </div>
+
         <p>
             Yii یک فریم‌ورک قدرتمند و در عین حال انعطاف‌پذیر است که برای استقرار
             آن در لیارا باید یک{' '}
