@@ -11,7 +11,18 @@ export default () => (
             </title>
         </Head>
 
-        <h1>استقرار Kibana</h1>
+        <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/kibana.svg"
+                alt="kibana"
+            />
+            <div className="page-title">
+                <h1>استقرار Kibana</h1>
+                <span className="page-description">(Docker Apps)</span>
+            </div>
+        </div>
+
         <p>
             Kibana یک پلتفرم است که با استفاده از آن می‌توان ساز و کارهایی مثل ایجاد گزارش، ایجاد نوتیفیکشن، مانیتورینگ
             بخش‌های مختلف رویدادها و ... را در اختیار داشت. داده‌های kibana از طریق beats جمع آوری شده و با logstash به
@@ -20,8 +31,8 @@ export default () => (
 
         <p>
             برای استقرار این برنامه، ابتدا لازم است که از بخش «برنامه‌ها» یک برنامه از نوع <Link
-            href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
-            <br/>
+                href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
+            <br />
             سپس دو دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
         </p>
         <p>
@@ -59,8 +70,8 @@ export default () => (
             دستور زیر را برای استقرار و اجرای برنامه وارد کنید:
         </p>
         <pre>
-      <code>$ liara deploy</code>
-    </pre>
+            <code>$ liara deploy</code>
+        </pre>
         <p>
             <Link href="/cli/install">
                 راهنمای نصب Liara CLI
@@ -82,7 +93,7 @@ export default () => (
             </li>
             <li>
                 برای اطلاع از تنظیمات بیشتر و نسخه‌های مختلف می‌توانید از مستندات مربوطه در <Link
-                href="https://hub.docker.com/r/bitnami/kibana">Bitnami Kibana</Link> استفاده کنید.
+                    href="https://hub.docker.com/r/bitnami/kibana">Bitnami Kibana</Link> استفاده کنید.
             </li>
         </ul>
     </Layout>

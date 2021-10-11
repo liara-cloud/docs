@@ -11,7 +11,18 @@ export default () => (
             </title>
         </Head>
 
-        <h1>استقرار Mattermost</h1>
+        <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/mattermost.svg"
+                alt="mattermost"
+            />
+            <div className="page-title">
+                <h1>استقرار Mattermost</h1>
+                <span className="page-description">(Docker Apps)</span>
+            </div>
+        </div>
+        
         <p>
             اگر با Slack کار کرده باشید، Mattermost می‌تواند جایگزین خوبی برای آن باشد. Mattermost نرم‌افزاری برای چت و
             گفتگوی درون تیمی یا سازمانی است.
@@ -19,11 +30,11 @@ export default () => (
 
         <p>
             برای استقرار این برنامه، ابتدا لازم است که از بخش «برنامه‌ها» یک برنامه از نوع <Link
-            href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
+                href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
         </p>
         <p>
             در مرحله بعد یک پایگاه داده PostgreSQL طبق مستندات «<Link href="/databases/postgresql/install">دیتابیس
-            PostgreSQL</Link>» بسازید.
+                PostgreSQL</Link>» بسازید.
         </p>
         <p>
             سپس پنج دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
@@ -78,8 +89,8 @@ MM_PASSWORD=[گذرواژه دیتابیس]`}
             دستور زیر را برای استقرار و اجرای برنامه وارد کنید:
         </p>
         <pre>
-      <code>$ liara deploy</code>
-    </pre>
+            <code>$ liara deploy</code>
+        </pre>
         <p>
             <Link href="/cli/install">
                 راهنمای نصب Liara CLI
@@ -101,7 +112,7 @@ MM_PASSWORD=[گذرواژه دیتابیس]`}
             </li>
             <li>
                 برای اطلاع از تنظیمات بیشتر و نسخه‌های مختلف می‌توانید از مستندات مربوطه در <Link
-                href="https://hub.docker.com/r/mattermost/mattermost-prod-app">Mattermost</Link> استفاده کنید.
+                    href="https://hub.docker.com/r/mattermost/mattermost-prod-app">Mattermost</Link> استفاده کنید.
             </li>
         </ul>
     </Layout>

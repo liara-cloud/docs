@@ -11,7 +11,18 @@ export default () => (
             </title>
         </Head>
 
-        <h1>استقرار Prestashop</h1>
+        <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/prestashop.svg"
+                alt="prestashop"
+            />
+            <div className="page-title">
+                <h1>استقرار Prestashop</h1>
+                <span className="page-description">(Docker Apps)</span>
+            </div>
+        </div>
+
         <p>
             پرستاشاپ یک سامانه فروشگاه ساز اینترنتی است که به صورت رایگان در دسترس قرار گرفته است. این سیستم با برنامه
             نویسی PHP و دیتابیس MySQL طراحی و برنامه‌نویسی شده است که با نصب آن می‌توانید فروشگاه خود را در زمانی کوتاه

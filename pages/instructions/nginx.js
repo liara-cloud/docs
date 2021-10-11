@@ -10,7 +10,18 @@ export default () => (
             <title>استقرار Nginx - سرویس ابری لیارا</title>
         </Head>
 
-        <h1>استقرار Nginx</h1>
+        <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/nginx.svg"
+                alt="nginx"
+            />
+            <div className="page-title">
+                <h1>استقرار Nginx</h1>
+                <span className="page-description">(Docker Apps)</span>
+            </div>
+        </div>
+
         <p>
             Nginx یک HTTP server و reverse proxy متن باز و بسیار قدرتمند است که
             شما می‌توانید از آن به‌منظور کنترل و مدیریت ترافیک ورودی

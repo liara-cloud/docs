@@ -52,9 +52,6 @@ const Index = () => (
           <span>Static</span>
         </a>
       </Link>
-    </div>
-
-    <div className="platforms">
       <Link href="/app-deploy/nodejs/getting-started">
         <a>
           <img src="/static/platformicons/nodejs.svg" alt="nodejs" />
@@ -85,9 +82,6 @@ const Index = () => (
           <span>Strapi</span>
         </a>
       </Link>
-    </div>
-
-    <div className="platforms">
       <Link href="/app-deploy/php/getting-started">
         <a>
           <img src="/static/platformicons/php.svg" alt="php" />
@@ -104,8 +98,7 @@ const Index = () => (
           <span>WordPress</span>
         </a>
       </Link>
-    </div>
-    <div className="platforms">
+      
       <Link href="/app-deploy/django/getting-started">
         <a>
           <img src="/static/platformicons/django.svg" alt="django" />
@@ -118,25 +111,13 @@ const Index = () => (
           <span>Flask</span>
         </a>
       </Link>
-    </div>
-
-    <div className="platforms">
-      <Link href="/instructions/golang">
-        <a>
-          <img src="/static/platformicons/Go.svg" alt="golang" />
-          <span>Go</span>
-        </a>
-      </Link>
-
       <Link href="/app-deploy/docker/getting-started">
         <a>
           <img src="/static/platformicons/docker.svg" alt="Docker" />
           <span>Docker</span>
         </a>
       </Link>
-    </div>
 
-    <div className="platforms">
       <Link href="/app-deploy/netcore/getting-started">
         <a>
           <img src="/static/platformicons/netcore.svg" alt="netcore" />
@@ -145,7 +126,50 @@ const Index = () => (
       </Link>
     </div>
 
-    <h3>برنامه‌های آماده‌ای که پشتیبانی می‌کنیم</h3>
+    <h3>دیتابیس‌هایی که پشتیبانی می‌کنیم</h3>
+    <p>
+      برای مطالعه‌ی راهنمای اجرای هر دیتابیس، صفحه‌ی مربوط به آن را دنبال کنید.
+    </p>
+    <div className="platforms">
+      <Link href="/databases/mysql-mariadb/install">
+        <a>
+          <img src="/static/platformicons/mysql.svg" alt="mysql" />
+          <span>MySQL</span>
+        </a>
+      </Link>
+      <Link href="/databases/mysql-mariadb/install">
+        <a>
+          <img src="/static/platformicons/mariadb.svg" alt="mariadb" />
+          <span>MariaDB</span>
+        </a>
+      </Link>
+      <Link href="/databases/postgresql/install">
+        <a>
+          <img src="/static/platformicons/postgres.svg" alt="postgres" />
+          <span>PostgreSQL</span>
+        </a>
+      </Link>
+      <Link href="/databases/sqlserver/install">
+        <a>
+          <img src="/static/platformicons/mssql.svg" alt="mssql" />
+          <span>SQL Server</span>
+        </a>
+      </Link>
+      <Link href="/databases/mongodb/install">
+        <a>
+          <img src="/static/platformicons/mongodb.svg" alt="mongodb" />
+          <span>MongoDB</span>
+        </a>
+      </Link>
+      <Link href="/databases/redis/install">
+        <a>
+          <img src="/static/platformicons/redis.svg" alt="redis" />
+          <span>Redis</span>
+        </a>
+      </Link>
+    </div>
+
+    <h3>برنامه‌های آماده‌ای که ارائه می‌کنیم</h3>
     <p>
       برای مطالعه‌ی راهنمای نصب هر برنامه آماده، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
@@ -200,48 +224,75 @@ const Index = () => (
       </Link>
     </div>
 
-    <h3>دیتابیس‌هایی که ارائه می‌کنیم</h3>
+    <h3>دستورالعمل‌های آماده برای استقرار هر ایمیج در Docker</h3>
     <p>
-      برای مطالعه‌ی راهنمای اجرای هر دیتابیس، صفحه‌ی مربوط به آن را دنبال کنید.
+      برای مطالعه‌ی دستورالعمل استقرار هر ایمیج، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
     <div className="platforms">
-      <Link href="/databases/mysql-mariadb/install">
+    <Link href="/instructions/yii">
         <a>
-          <img src="/static/platformicons/mysql.svg" alt="mysql" />
-          <span>MySQL</span>
+          <img src="/static/platformicons/yii.svg" alt="yii" />
+          <span>Yii</span>
         </a>
       </Link>
-      <Link href="/databases/mysql-mariadb/install">
+
+      <Link href="/instructions/prestashop">
         <a>
-          <img src="/static/platformicons/mariadb.svg" alt="mariadb" />
-          <span>MariaDB</span>
+          <img src="/static/platformicons/prestashop.svg" alt="prestashop" />
+          <span>Prestashop</span>
         </a>
       </Link>
-      <Link href="/databases/postgresql/install">
+
+      <Link href="/instructions/nginx">
         <a>
-          <img src="/static/platformicons/postgres.svg" alt="postgres" />
-          <span>PostgreSQL</span>
+          <img src="/static/platformicons/nginx.svg" alt="Nginx" />
+          <span>Nginx</span>
         </a>
       </Link>
-      <Link href="/databases/sqlserver/install">
+
+      <Link href="/instructions/golang">
         <a>
-          <img src="/static/platformicons/mssql.svg" alt="mssql" />
-          <span>SQL Server</span>
+          <img src="/static/platformicons/Go.svg" alt="golang" />
+          <span>Go</span>
         </a>
       </Link>
-      <Link href="/databases/mongodb/install">
+
+      <Link href="/instructions/elasticsearch">
         <a>
-          <img src="/static/platformicons/mongodb.svg" alt="mongodb" />
-          <span>MongoDB</span>
+          <img src="/static/platformicons/elastic.svg" alt="elasticsearch" />
+          <span>Elastic</span>
         </a>
       </Link>
-      <Link href="/databases/redis/install">
+
+      <Link href="/instructions/kibana">
         <a>
-          <img src="/static/platformicons/redis.svg" alt="redis" />
-          <span>Redis</span>
+          <img src="/static/platformicons/kibana.svg" alt="kibana" />
+          <span>Kibana</span>
+        </a>
+      </Link>
+
+      <Link href="/instructions/grafana">
+        <a>
+          <img src="/static/platformicons/grafana.svg" alt="grafana" />
+          <span>Grafana</span>
+        </a>
+      </Link>
+
+      <Link href="/instructions/mattermost">
+        <a>
+          <img src="/static/platformicons/mattermost.svg" alt="mattermost" />
+          <span>Mattermost</span>
+        </a>
+      </Link>
+
+      <Link href="/instructions/rabbitmq">
+        <a>
+          <img src="/static/platformicons/rabbitmq.svg" alt="rabbitmq" />
+          <span>RabbitMQ</span>
         </a>
       </Link>
     </div>
+
   </Layout >
 );
 

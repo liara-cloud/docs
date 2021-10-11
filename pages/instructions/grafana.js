@@ -11,7 +11,18 @@ export default () => (
             </title>
         </Head>
 
-        <h1>استقرار Grafana</h1>
+        <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/grafana.svg"
+                alt="grafana"
+            />
+            <div className="page-title">
+                <h1>استقرار Grafana</h1>
+                <span className="page-description">(Docker Apps)</span>
+            </div>
+        </div>
+
         <p>
             گرافانا پلتفرمی بسیار محبوب و ساده برای تحلیل و نمایش داده‌های به دست آمده از پایگاه‌های داده خصوصا
             دیتابیس‌های سری زمانی (Time-series Databases) است. گرافانا از دیتابیس‌های مختلفی از جمله InfluxDB و
@@ -20,8 +31,8 @@ export default () => (
 
         <p>
             برای استقرار این برنامه، ابتدا لازم است که از بخش «برنامه‌ها» یک برنامه از نوع <Link
-            href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
-            <br/>
+                href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
+            <br />
             سپس یک دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
         </p>
         <p>
@@ -48,8 +59,8 @@ export default () => (
             دستور زیر را برای استقرار و اجرای برنامه وارد کنید:
         </p>
         <pre>
-      <code>$ liara deploy</code>
-    </pre>
+            <code>$ liara deploy</code>
+        </pre>
         <p>
             <Link href="/cli/install">
                 راهنمای نصب Liara CLI
@@ -71,7 +82,7 @@ export default () => (
             </li>
             <li>
                 برای اطلاع از تنظیمات بیشتر و نسخه‌های مختلف می‌توانید از مستندات مربوطه در <Link
-                href="https://hub.docker.com/r/grafana/grafana">Grafana</Link> استفاده کنید.
+                    href="https://hub.docker.com/r/grafana/grafana">Grafana</Link> استفاده کنید.
             </li>
         </ul>
     </Layout>
