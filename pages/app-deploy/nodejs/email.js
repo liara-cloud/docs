@@ -101,5 +101,7 @@ transporter.sendMail({
             <a href="https://nodemailer.com/smtp/" target="_blank">مستندات</a> این پکیج
             مراجعه کنید.
         </p>
+    
+        <Link href="/app-deploy/nodejs/tips">متوجه شدم، برو گام بعدی!</Link>
     </Layout>
 );
