@@ -16,10 +16,12 @@ export default () => (
         alt="php"
       />
       <div className="page-title">
-        <h1>اولین استقرار در برنامه‌های PHP</h1>
+        <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>
       </div>
     </div>
+
+    <h3>‌استقرار اولین برنامه</h3>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">

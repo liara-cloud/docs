@@ -16,10 +16,12 @@ export default () => (
         alt="HTML5"
       />
       <div className="page-title">
-        <h1>اولین استقرار در برنامه‌های Static</h1>
+        <h1>برنامه‌های Static</h1>
         <span className="page-description">(Static Apps)</span>
       </div>
     </div>
+
+    <h3>استقرار اولین برنامه</h3>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">

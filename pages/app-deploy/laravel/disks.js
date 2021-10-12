@@ -20,10 +20,12 @@ export default () => (
         alt="laravel"
       />
       <div className="page-title">
-        <h1>استفاده از دیسک‌ها در برنامه‌های Laravel</h1>
+        <h1>برنامه‌های Laravel</h1>
         <span className="page-description">(Laravel Apps)</span>
       </div>
     </div>
+
+    <h3>استفاده از دیسک‌ها</h3>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">

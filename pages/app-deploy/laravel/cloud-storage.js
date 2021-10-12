@@ -17,10 +17,13 @@ export default () => (
                 alt="laravel"
             />
             <div className="page-title">
-                <h1>اتصال به سرویس فایل در برنامه‌های Laravel</h1>
+                <h1>برنامه‌های Laravel</h1>
                 <span className="page-description">(Laravel Apps)</span>
             </div>
         </div>
+        
+        <h3>اتصال به سرویس فایل</h3>
+        
         <p>
             بدون شک اتصال برنامه به یک <Link href="/storage/object-storage/about">سرویس فایل</Link> مطمئن برای نگهداری داده‌های آپلود شده توسط کاربران که درنهایت باعث اطمینان خاطر صاحبان کسب و کار و بهبود عملکرد برنامه‌ می‌شود را باید یکی از اولویت‌های مهم دانست.
         </p>

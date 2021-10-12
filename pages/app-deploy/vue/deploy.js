@@ -16,10 +16,12 @@ export default () => (
         alt="vue"
       />
       <div className="page-title">
-        <h1>اولین استقرار در برنامه‌های VueJS</h1>
+        <h1>برنامه‌های VueJS</h1>
         <span className="page-description">(VueJS Apps)</span>
       </div>
     </div>
+
+    <h3>استقرار اولین برنامه</h3>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">

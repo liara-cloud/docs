@@ -19,10 +19,12 @@ export default () => (
                 alt="docker"
             />
             <div className="page-title">
-                <h1> توضیحات و نکات تکمیلی</h1>
+                <h1>برنامه‌های Docker</h1>
                 <span className="page-description">(Docker Apps)</span>
             </div>
         </div>
+
+        <h3> توضیحات و نکات تکمیلی</h3>
 
         <h3 id="limits">محدودیت‌ها</h3>
         <p>
