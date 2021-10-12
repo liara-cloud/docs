@@ -19,10 +19,12 @@ export default () => (
                 alt="nodejs"
             />
             <div className="page-title">
-                <h1>سرویس ایمیل در برنامه‌های NodeJS</h1>
+                <h1>برنامه‌های NodeJS</h1>
                 <span className="page-description">(NodeJS Apps)</span>
             </div>
         </div>
+
+        <h3>ارسال ایمیل</h3>
 
         <p>
             برای استفاده از سرویس ایمیل در برنامه‌های NodeJS باید پس از{' '}

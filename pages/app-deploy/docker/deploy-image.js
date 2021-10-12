@@ -17,10 +17,12 @@ export default () => (
                 alt="docker"
             />
             <div className="page-title">
-                <h1>استقرار Image از DockerHub</h1>
+                <h1>برنامه‌های Docker</h1>
                 <span className="page-description">(Docker Apps)</span>
             </div>
         </div>
+
+        <h3>استقرار Image از DockerHub</h3>
 
         <p>
             در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی

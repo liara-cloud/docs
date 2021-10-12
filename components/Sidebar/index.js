@@ -92,6 +92,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/django/migrations">اجرای migration ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/disks">استفاده از دیسک‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/domain">اتصال دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/django/email">ارسال ایمیل</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/django/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>

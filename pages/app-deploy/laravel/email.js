@@ -19,10 +19,12 @@ export default () => (
                 alt="laravel"
             />
             <div className="page-title">
-                <h1>سرویس ایمیل در برنامه‌های Laravel</h1>
+                <h1>برنامه‌های Laravel</h1>
                 <span className="page-description">(Laravel Apps)</span>
             </div>
         </div>
+        
+        <h3>ارسال ایمیل</h3>
 
         <p>
             برای استفاده از سرویس ایمیل در برنامه‌های Laravel باید پس از{' '}

@@ -17,11 +17,13 @@ export default () => (
         alt="flask"
       />
       <div className="page-title">
-        <h1>اولین استقرار در برنامه‌های Flask</h1>
+        <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>
       </div>
     </div>
     
+    <h3>استقرار اولین برنامه</h3>
+
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li><a href="#installing-liara-cli">نصب Liara CLI</a></li>
