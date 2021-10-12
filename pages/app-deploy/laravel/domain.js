@@ -37,6 +37,6 @@ export default () => (
       اما برای اتصال دامنه‌ی اختصاصی به برنامه باید طبق مستندات <Link href="/domains/management#add-domain">اضافه‌کردن دامنه‌</Link> عمل کنید. البته پلتفرم Laravel نکات و توضیحات بیشتری دارد که در بخش بعدی یعنی <b>توضیحات و نکات تکمیلی</b> به آن‌ها پرداخته‌ایم.
     </p>
 
-    <Link href="/app-deploy/laravel/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/email">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
