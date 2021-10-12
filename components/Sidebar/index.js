@@ -77,6 +77,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/php/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/disks">استفاده از دیسک‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/domain">اتصال دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/php/email">ارسال ایمیل</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/php/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
