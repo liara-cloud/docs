@@ -17,10 +17,12 @@ export default () => (
         alt="wordpress"
       />
       <div className="page-title">
-        <h1>سیستم مدیریت محتوای WordPress</h1>
+        <h1>برنامه‌های آماده WordPress</h1>
         <span className="page-description">(WordPress one-click app)</span>
       </div>
     </div>
+
+    <h3>نصب و راه‌اندازی</h3>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">

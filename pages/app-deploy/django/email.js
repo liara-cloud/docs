@@ -8,7 +8,7 @@ export default () => (
     <Layout>
         <Head>
             <title>
-                مستندات سرویس ایمیل در برنامه‌های Laravel - سرویس ابری لیارا
+                مستندات سرویس ایمیل در برنامه‌های Django - سرویس ابری لیارا
             </title>
         </Head>
 
@@ -82,7 +82,7 @@ send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@examp
             مراجعه کنید.
         </p>
 
-        <Link href="/app-deploy/laravel/cloud-storage">
+        <Link href="/app-deploy/django/tips">
             متوجه شدم، برو گام بعدی!
         </Link>
     </Layout>
