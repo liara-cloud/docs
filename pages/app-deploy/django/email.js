@@ -33,7 +33,7 @@ export default () => (
             </Link>
             ، اطلاعات{' '}
             <Link href="/app-features/email#settings">دسترسی SMTP</Link> را طبق
-            مستندات <Link href="/app-deploy/laravel/envs">تنظیم متغیرها</Link>{' '}
+            مستندات <Link href="/app-deploy/django/envs">تنظیم متغیرها</Link>{' '}
             در تنظیمات برنامه اضافه کرده و از آن‌ها در فایل{' '}
             <span className="code">settings.py</span> استفاده کنید.
         </p>
@@ -62,7 +62,7 @@ EMAIL_USE_TLS=True`}
         </p>
 
         <Notice variant="warning">
-            قابل ذکر است که فیلد <span className="code">from@example.com</span>{' '}
+            قابل ذکر است که مقدار <span className="code">from@example.com</span>{' '}
             در قطعه کد زیر باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
         </Notice>
 

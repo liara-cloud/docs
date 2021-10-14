@@ -108,6 +108,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/flask/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/disks">استفاده از دیسک‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/domain">اتصال دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/flask/email">ارسال ایمیل</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/flask/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
