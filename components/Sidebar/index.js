@@ -123,6 +123,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/netcore/dbs">اتصال به دیتابیس</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/disks">استفاده از دیسک‌ها</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/domain">اتصال دامنه</ActiveLink></li>
+                  <li><ActiveLink href="/app-deploy/netcore/email">ارسال ایمیل</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -291,8 +292,6 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/redis/restore">Restore</ActiveLink></li>
                 </ul>
               </li>
-              <li><ActiveLink href="/databases/tunnel">اتصال امن به دیتابیس‌ها</ActiveLink></li>
-
             </ul>
           </nav>
 
