@@ -44,7 +44,7 @@ export default () => (
       <code>
         {`{
   "netcore": {
-    "version": "3.1"
+    "version": "5.0"
   }
 }`}
       </code>
