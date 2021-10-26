@@ -347,6 +347,7 @@ stdout_logfile=/tmp/laravel-worker.log`}
       <li>7.2</li>
       <li>7.3</li>
       <li><b>7.4 (پیش‌فرض)</b></li>
+      <li>8.0 (آزمایشی)</li>
     </ul>
 
     <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
