@@ -39,7 +39,7 @@ export default () => (
             <Link href="/app-deploy/docker/envs">مستندات تنظیم متغیرها</Link>،
             متغیر زیر را تنظیم کرده و بر روی دکمه‌ی ثبت تغییرات کلیک کنید.
         </p>
-        <Highlight className="ini">{`ARANGO_ROOT_PASSWORD=secure-password`}</Highlight>
+        <Highlight className="plaintext">{`ARANGO_ROOT_PASSWORD=secure-password`}</Highlight>
 
         <Notice variant="warning">
             توجه داشته باشید که از یک رمز عبور قوی به‌عنوان جایگزین مقدار{' '}
@@ -58,7 +58,7 @@ export default () => (
             در مسیر دلخواه، آن را به شکل زیر پیکربندی کنید.
         </p>
 
-        <Highlight>
+        <Highlight className="json">
             {`{
   "image": "arangodb:3.8.1",
   "port": 8529,
