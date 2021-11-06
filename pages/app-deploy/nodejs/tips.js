@@ -30,7 +30,6 @@ export default () => (
       <li><a href="#build-script">ES6 و build کردن برنامه</a></li>
       <li><a href="#proxy">تنظیمات TrustedProxies</a></li>
       <li><a href="#graphql-error">رفع خطای GET query missing در GraphQL</a></li>
-      <li><a href="#adonisjs">استقرار فریم‌ورک AdonisJS</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
     </ul>
 
@@ -130,37 +129,6 @@ server.listen().then(({ url }) => {
       <a href="https://www.apollographql.com/docs/apollo-server/testing/graphql-playground/#enabling-graphql-playground-in-production" target="_blank">Enabling GraphQL Playground in production</a>
     </p>
 
-    <h3 id="adonisjs">استقرار فریم‌ورک AdonisJS</h3>
-    <p>
-      اگر از فریم‌ورک AdonisJS استفاده می‌کنید، نیاز به تنظیمات خاصی ندارید و
-      مطابق با مواردی که در بالا گفته شد، می‌توانید برنامه‌ی‌تان را در لیارا
-      مستقر کنید. تنها خطای خاصی که ممکن است با آن مواجه شوید این است که این
-      فریم‌ورک وجود یک فایل
-      <span className="code">.env</span>
-      را در ریشه‌ی برنامه الزامی می‌داند. اما چون در لیارا، شما متغیرهای‌تان را
-      از بخش «تنظیمات برنامه» وارد می‌کنید، ممکن است با خطای زیر مواجه شوید:
-    </p>
-    <pre>
-      <code>Error: ENOENT: no such file or directory, open '/app/.env'</code>
-    </pre>
-    <p>
-      برای رفع این مشکل، فقط کافیست که متغیر زیر را هم از بخش تنظیمات برنامه،
-      وارد کنید و بعد ذخیره کنید:
-    </p>
-    <pre>
-      <code>{`ENV_SILENT=true`}</code>
-    </pre>
-    <p>
-      این مورد در مستندات AdonisJS هم با عنوان{" "}
-      <a
-        href="https://adonisjs.com/docs/4.1/configuration-and-env#_disabling_the_env_file"
-        target="_blank"
-        rel="noopener"
-      >
-        Disabling the .env file
-      </a>{" "}
-      گفته شده‌است.
-    </p>
 
     <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
     <p>

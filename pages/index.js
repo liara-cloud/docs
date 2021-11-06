@@ -82,6 +82,12 @@ const Index = () => (
           <span>Strapi</span>
         </a>
       </Link>
+      <Link href="/instructions/adonis">
+        <a>
+          <img src="/static/platformicons/adonisjs.svg" alt="adonis" />
+          <span>Adonis</span>
+        </a>
+      </Link>
       <Link href="/app-deploy/php/getting-started">
         <a>
           <img src="/static/platformicons/php.svg" alt="php" />
@@ -289,6 +295,20 @@ const Index = () => (
         <a>
           <img src="/static/platformicons/rabbitmq.svg" alt="rabbitmq" />
           <span>RabbitMQ</span>
+        </a>
+      </Link>
+
+      <Link href="/instructions/arangodb">
+        <a>
+          <img src="/static/platformicons/arangodb.svg" alt="arangodb" />
+          <span>ArangoDB</span>
+        </a>
+      </Link>
+
+      <Link href="/instructions/seq">
+        <a>
+          <img src="/static/platformicons/seq.svg" alt="seq" />
+          <span>Seq</span>
         </a>
       </Link>
     </div>

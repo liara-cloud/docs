@@ -231,6 +231,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/instructions/nestjs">NestJS</ActiveLink></li>
               <li><ActiveLink href="/instructions/strapi">Strapi</ActiveLink></li>
               <li><ActiveLink href="/instructions/gatsbyjs">GatsbyJS</ActiveLink></li>
+              <li><ActiveLink href="/instructions/adonis">Adonis</ActiveLink></li>
               <li><ActiveLink href="/instructions/nginx">Nginx</ActiveLink></li>
               <li><ActiveLink href="/instructions/golang">Golang</ActiveLink></li>
               <li><ActiveLink href="/instructions/dotnet-published">استقرار فایل DLL</ActiveLink></li>
@@ -243,6 +244,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/instructions/yii">Yii</ActiveLink></li>
               <li><ActiveLink href="/instructions/asgi">ASGI</ActiveLink></li>
               <li><ActiveLink href="/instructions/arangodb">ArangoDB</ActiveLink></li>
+              <li><ActiveLink href="/instructions/seq">Seq</ActiveLink></li>
               <li><ActiveLink href="/instructions/voyager">Voyager</ActiveLink></li>
             </ul>
           </nav>

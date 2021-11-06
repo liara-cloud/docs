@@ -11,6 +11,11 @@ export default () => (
         </Head>
 
         <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/arangodb.svg"
+                alt="arangodb"
+            />
             <div className="page-title">
                 <h1>استقرار ArangoDB</h1>
                 <span className="page-description">(Docker Apps)</span>
@@ -18,8 +23,11 @@ export default () => (
         </div>
 
         <p>
-            ArangoDB یک دیتابیس متن باز و native multi-model است که برای استقرار
-            آن در لیارا باید یک{' '}
+            <a href="https://hub.docker.com/_/arangodb" target="_blank">
+                ArangoDB
+            </a>{' '}
+            یک دیتابیس متن باز و native multi-model است که برای استقرار آن در
+            لیارا باید یک{' '}
             <Link href="/app-deploy/docker/getting-started">
                 برنامه‌ی Docker
             </Link>{' '}
@@ -90,7 +98,7 @@ export default () => (
             پس از تکمیل فرایند استقرار و اجرای ArangoDB می‌توانید در از طریق{' '}
             <Link href="/app-features/private-network">شبکه‌ی خصوصی</Link> بر
             روی پورت <span className="code">8592</span> به دیتابیس خود دسترسی
-            داشته باشید..
+            داشته باشید.
         </p>
     </Layout>
 );
