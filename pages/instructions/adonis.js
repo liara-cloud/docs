@@ -51,7 +51,13 @@ NODE_ENV=production
 APP_KEY=<APP_KEY> # generate APP_KEY with 'node ace generate:key' command
 DRIVE_DISK=local
 SESSION_DRIVER=cookie
-CACHE_VIEWS=true`}</Highlight>
+CACHE_VIEWS=true
+DB_CONNECTION=pg
+PG_HOST=tommy.iran.liara.ir # you can use private-network host like 'adonis-pg'
+PG_PORT=30807 # you can use private-network port like '5432'
+PG_USER=root
+PG_PASSWORD=9xPHbQ7xxxxxxxxa6pS3v
+PG_DB_NAME=postgres`}</Highlight>
 
         <p>
             در نهایت برای استقرار پروژه‌ی AdonisJS بر روی لیارا باید دستور
