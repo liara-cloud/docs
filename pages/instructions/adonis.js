@@ -42,26 +42,31 @@ export default () => (
         <p>
             در قدم بعد وارد تنظیمات برنامه شده و طبق مستندات{' '}
             <Link href="/app-deploy/nodejs/liarajson">تنظیم متغیرها</Link>،
-            متغیر زیر را تنظیم کرده و بر روی دکمه‌ی ثبت تغییرات کلیک کنید.
+            متغیرهای زیر را تنظیم کرده و بر روی دکمه‌ی ثبت تغییرات کلیک کنید.
         </p>
 
-        <Highlight className="plaintext">{`ENV_SILENT=true`}</Highlight>
-
-        <Notice variant="info">
-            برای کسب اطلاعات بیشتر می‌توانید مستندات{' '}
-            <a
-                href="https://adonisjs.com/docs/4.1/configuration-and-env#_disabling_the_env_file"
-                target="_blank"
-            >
-                Disabling the .env file
-            </a>{' '}
-            فریم‌ورک AdonisJS را مطالعه کنید.
-        </Notice>
+        <Highlight className="plaintext">{`PORT=3000
+HOST=0.0.0.0
+NODE_ENV=production
+APP_KEY=<APP_KEY> # generate APP_KEY with 'node ace generate:key' command
+DRIVE_DISK=local
+SESSION_DRIVER=cookie
+CACHE_VIEWS=true`}</Highlight>
 
         <p>
             در نهایت برای استقرار پروژه‌ی AdonisJS بر روی لیارا باید دستور
             <span className="code">liara deploy --port 3000</span>
             را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
         </p>
+
+        <h3>اجرای Migrationها</h3>
+
+        <p>
+            برای اجرای Migrationها در برنامه‌های Adonis کافیست پس از استقرار موفق پروژه، دستور زیر را در
+            خط فرمان برنامه اجرا کنید:
+        </p>
+
+        <Highlight className="bash">{`node build/ace migration:run --force`}</Highlight>
+
     </Layout>
 );
