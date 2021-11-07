@@ -365,6 +365,10 @@ export default class Sidebar extends Component {
             <NavTitle href="/cli">لیارا CLI</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/cli/install">نصب و به‌روزرسانی</ActiveLink></li>
+              <li><ActiveLink href="/cli/login">ورود به حساب کاربری</ActiveLink></li>
+              <li><ActiveLink href="/cli/deploy">استقرار برنامه</ActiveLink></li>
+              <li><ActiveLink href="/cli/app">مدیریت برنامه‌ها</ActiveLink></li>
+              <li><ActiveLink href="/cli/account">مدیریت حساب‌های کاربری</ActiveLink></li>
               <li><ActiveLink href="/cli/commands">خلاصه دستورات</ActiveLink></li>
             </ul>
           </nav>

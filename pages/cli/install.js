@@ -1,6 +1,7 @@
-import Layout from "../../components/Layout";
 import Head from "next/head";
+import Link from "next/link";
 import Notice from "../../components/Notice";
+import Layout from "../../components/Layout";
 
 export default () => (
   <Layout>
@@ -49,24 +50,6 @@ export default () => (
       <code>liara -v</code>
     </pre>
 
-    <h3>ورود به حساب کاربری</h3>
-    <p>
-      برای این‌که بتوانید از CLI استفاده کنید، لازم است که در ابتدا، با استفاده
-      از اطلاعات حساب کاربری‌تان در لیارا، وارد شوید:
-    </p>
-    <pre>
-      <code>liara login</code>
-    </pre>
-    <p>
-      بعد از وارد کردن دستور بالا، ابتدا باید موقعیت جغرافیایی‌ای را که در آن ثبت نام کرده‌اید انتخاب کنید و سپس ایمیل و رمز عبور کاربری‌تان را وارد کنید.
-      <br />
-      اگر اطلاعات صحیح باشند، با موفقیت وارد خواهید شد و CLI قابل استفاده خواهد
-      بود.
-      <br />
-      اگر هنوز ثبت نام نکرده‌اید، می‌توانید از لینک رو به رو اقدام کنید:{" "}
-      <a href="https://console.liara.ir/register">ثبت نام در لیارا</a>
-    </p>
-
     <a name="trouble"></a>
     <h3>خطاهای رایج در اجرای Liara CLI</h3>
     <p>
@@ -110,5 +93,8 @@ npx @liara/cli deploy`}
       در صورتی که موفق به نصب CLI نمی‌شوید، از طریق تیکت با پشتیبانی لیارا
       ارتباط بگیرید.
     </Notice>
+
+    <br />
+    <Link href="/cli/login">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
