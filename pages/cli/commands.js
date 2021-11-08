@@ -26,7 +26,7 @@ export default () => (
             این دستور از شما موقعیت جغرافیایی، نام کاربری و رمزعبوری که با آن در
             لیارا ثبت نام کرده‌اید را می‌پرسد.{' '}
         </p>
-        <h5>دستور <span className="code">liara login</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara login</span> این پارامتر‌ها را می‌پذیرد</h5>
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-e, --email</li>
             <p dir="rtl" className="commandDescription">
@@ -64,7 +64,7 @@ export default () => (
             این دستور از شما شناسه برنامه‌ای که قصد دارید پروژه‌تان در آن مستقر
             شود را می‌پرسد.
         </p>
-        <h5>دستور <span className="code">liara deploy</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara deploy</span> این پارامتر‌ها را می‌پذیرد</h5>
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
             <p dir="rtl" className="commandDescription">
@@ -73,7 +73,7 @@ export default () => (
 
             <li>&nbsp;&nbsp;-d, --disks</li>
             <p dir="rtl" className="commandDescription">
-                ۲. اتصال دیسک به مسیر مورد نظر، برای مثال:
+                ۲. اتصال یک یا چند دیسک به مسیرهای مورد نظر، برای مثال:
                 disk-name:/var/www/html
             </p>
 

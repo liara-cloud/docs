@@ -71,7 +71,7 @@ export default () => (
             این دستور از شما شناسه برنامه، پلتفرم و مشخصات سخت‌افزاری مورد نیاز را می‌پرسد.
         </p>
 
-        <h5>دستور <span className="code">liara app:create</span> یا به اختصار <span className="code">liara create</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara app:create</span> یا به اختصار <span className="code">liara create</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -112,7 +112,7 @@ export default () => (
         <h4 id="delete">حذف یک برنامه</h4>
         <Highlight className="bash">{`$ liara delete -a APP`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:delete</span> یا به اختصار <span className="code">liara delete</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara app:delete</span> یا به اختصار <span className="code">liara delete</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -143,7 +143,7 @@ export default () => (
         <h4 id="logs">مشاهده‌ی لاگ‌های برنامه</h4>
         <Highlight className="bash">{`$ liara logs -a APP`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:logs</span> یا به اختصار <span className="code">liara logs</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara app:logs</span> یا به اختصار <span className="code">liara logs</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -179,7 +179,7 @@ export default () => (
         <h4 id="restart">ری‌استارت کردن برنامه</h4>
         <Highlight className="bash">{`$ liara restart -a APP`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:restart</span> یا به اختصار <span className="code">liara restart</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara app:restart</span> یا به اختصار <span className="code">liara restart</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -210,7 +210,7 @@ export default () => (
         <h4 id="shell">اتصال مستقیم به خط فرمان برنامه</h4>
         <Highlight className="bash">{`$ liara shell`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:shell</span> یا به اختصار <span className="code">liara shell</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara app:shell</span> یا به اختصار <span className="code">liara shell</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -246,7 +246,7 @@ export default () => (
         <h4 id="start">روشن کردن برنامه</h4>
         <Highlight className="bash">{`$ liara start -a APP`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:start</span> یا به اختصار <span className="code">liara start</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara app:start</span> یا به اختصار <span className="code">liara start</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -277,7 +277,7 @@ export default () => (
         <h4 id="stop">خاموش کردن برنامه</h4>
         <Highlight className="bash">{`$ liara stop -a APP`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:stop</span> یا به اختصار <span className="code">liara stop</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara app:stop</span> یا به اختصار <span className="code">liara stop</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>

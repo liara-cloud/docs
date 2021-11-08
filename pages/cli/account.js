@@ -54,7 +54,7 @@ export default () => (
             این دستور  از شما نام انتخابی، موقعیت مکانی، ایمیل و رمز عبور حساب ایجاد شده را می‌پرسد.
         </p>
 
-        <h5>دستور <span className="code">liara account:add</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara account:add</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --account</li>
@@ -95,7 +95,7 @@ export default () => (
         <h4 id="list">مشاهده‌ی لیستی از حساب‌های اضافه شده</h4>
         <Highlight className="bash">{`$ liara account:list`}</Highlight>
 
-        <h5>دستور <span className="code">liara account:list</span> یا به اختصار <span className="code">liara account:ls</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara account:list</span> یا به اختصار <span className="code">liara account:ls</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-h, --help</li>
@@ -122,7 +122,7 @@ export default () => (
         <h4 id="remove">حذف یکی از حساب‌های اضافه شده</h4>
         <Highlight className="bash">{`$ liara account:remove`}</Highlight>
 
-        <h5>دستور <span className="code">liara account:remove</span> یا به اختصار <span className="code">liara account:rm</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara account:remove</span> یا به اختصار <span className="code">liara account:rm</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --account</li>
@@ -139,7 +139,7 @@ export default () => (
         <h4 id="use">انتخاب یکی از حساب‌های اضافه شده به‌عنوان حساب اصلی</h4>
         <Highlight className="bash">{`$ liara account:use`}</Highlight>
 
-        <h5>دستور <span className="code">liara account:use</span> این پارامتر‌ها را میپذیرد</h5>
+        <h5>دستور <span className="code">liara account:use</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --account</li>
