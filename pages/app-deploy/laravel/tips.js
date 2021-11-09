@@ -338,7 +338,7 @@ stdout_logfile=/tmp/laravel-worker.log`}
   "platform": "laravel",
   "app": "laravel-starter",
   "laravel": {
-    "phpVersion": "7.2"
+    "phpVersion": "8.0"
   }
 }`}
     </Highlight>
