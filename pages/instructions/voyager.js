@@ -21,7 +21,7 @@ export default () => (
     }
 },`}</Highlight>
 
-        <p>سپس  در قدم بعد باید فایل <span className="code">app/config.php</span> را به شکل زیر تغییر دهید تا <span className="code">VoyagerServiceProvider</span> و <span className="code">VoyagerDummyServiceProvider</span> فقط در حالت production به پیکربندی برنامه اضافه شوند:</p>
+        <p>سپس  در قدم بعد باید فایل <span className="code">config/app.php</span> را به شکل زیر تغییر دهید تا <span className="code">VoyagerServiceProvider</span> و <span className="code">VoyagerDummyServiceProvider</span> فقط در حالت production به پیکربندی برنامه اضافه شوند:</p>
 
         <Highlight className="php">{`<?php
 
