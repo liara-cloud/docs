@@ -136,7 +136,7 @@ CELERY_TIMEZONE = 'Asia/Tehran'`}
             تعریف کنید:
         </p>
 
-        <Highlight className="plaintext">
+        <Highlight className="python">
             {`# app1/tasks.py
 
 from celery import shared_task
@@ -152,7 +152,7 @@ def add(x, y):
             پیکربندی زیر را در این فایل قرار دهید:
         </p>
 
-        <Highlight className="plaintext">
+        <Highlight className="ini">
             {`[program:celery-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=celery -A proj worker -l INFO

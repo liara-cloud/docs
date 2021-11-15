@@ -74,7 +74,7 @@ export default () => (
       در ادامه، یک نمونه فایل <span className="code">supervisor.conf</span>
       را مشاهده می‌کنید:
     </p>
-    <Highlight className="plaintext">
+    <Highlight className="ini">
       {`[program:celery-worker]
 process_name=%(program_name)s_%(process_num)02d
 command=celery -A proj worker -l INFO
