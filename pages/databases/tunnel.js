@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
 import Head from "next/head";
 import Link from "next/link";
+import Highlight from "react-highlight";
 
 export default () => (
   <Layout>
@@ -42,14 +43,15 @@ export default () => (
     </Notice>
 
     <h3>ایجاد یک تونل امن</h3>
-    <p>
-      در ابتدا مطمئن شوید که
-      <span className="code">@liara/cli</span>
-      را روی کامپیوترتان نصب کرده‌اید.{" "}
+    <Notice variant="warning">
+      توجه داشته باشید که این قابلیت در نسخه‌های جدید لیارا CLI حذف شده و
+      برای اتصال امن به دیتابیس‌ها باید نسخه‌ی 2.8.7 Liara CLI را با اجرای
+      دستور زیر نصب کرده باشید.{' '}
       <Link href="/clients/cli" title="مستندات CLI">
         اطلاعات بیشتر
       </Link>
-    </p>
+    </Notice>
+    <Highlight className="bash">{`npm i -g @liara/cli@2.8.7`}</Highlight>
     <p>
       و حالا با اجرای دستور زیر، لیست دیتابیس‌های فعال شما نمایش داده می‌شود که
       بر حسب تاریخ ساخت، مرتب شده‌اند. با انتخاب دیتابیس مورد نظر، تونل روی
