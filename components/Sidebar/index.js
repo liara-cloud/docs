@@ -245,6 +245,7 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/instructions/asgi">ASGI</ActiveLink></li>
               <li><ActiveLink href="/instructions/arangodb">ArangoDB</ActiveLink></li>
               <li><ActiveLink href="/instructions/seq">Seq</ActiveLink></li>
+              <li><ActiveLink href="/instructions/celery">Celery</ActiveLink></li>
               <li><ActiveLink href="/instructions/voyager">Voyager</ActiveLink></li>
             </ul>
           </nav>
