@@ -12,13 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "medium-zoom": "^1.0.5",
-    "next": "^10.0.4",
-    "postcss": "^7.0.32",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-gist": "^1.2.1",
-    "react-highlight": "^0.12.0",
-    "react-yandex-metrika": "^2.6.0"
+    "medium-zoom": "^1.0.6",
+    "next": "^12.0.3",
+    "postcss": "^8.3.11",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-gist": "^1.2.4",
+    "react-highlight": "^0.14.0"
   }
 }

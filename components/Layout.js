@@ -1,14 +1,11 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
-import { YMInitializer } from 'react-yandex-metrika'
 
 import Header from './Header'
 import Sidebar from './Sidebar'
 
 export default ({ children }) => (
   <Fragment>
-    <YMInitializer accounts={[51360556]} options={{clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true}} version="2" />
-
     <Head>
       <meta name="theme-color" content="#2C333F" />
       <link rel="shortcut icon" href="/static/favicon.ico" />
