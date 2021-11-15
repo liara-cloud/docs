@@ -77,7 +77,7 @@ export default () => (
     <Highlight className="ini">
       {`[program:celery-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=celery worker -A sendmail --loglevel=INFO
+command=celery -A proj worker -l INFO
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -88,6 +88,13 @@ stopwaitsecs=600
 redirect_stderr=true
 stdout_logfile=/tmp/worker.log`}
     </Highlight>
+
+    <Notice variant="info">
+            برای کسب اطلاعات بیشتر در رابطه با نحوه‌ی شروع به کار Celery در برنامه‌‌های
+            Django می‌توانید{' '}
+            <Link href="/instructions/celery#django">دستورالعمل Celery در برنامه‌های Django</Link> را مطالعه
+            کنید.
+        </Notice>
 
     <h3 id="collectstatic">دستور <span className="code">collectstatic</span></h3>
     <p>
