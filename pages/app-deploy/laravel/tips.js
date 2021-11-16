@@ -434,8 +434,7 @@ stdout_logfile=/tmp/laravel-worker.log`}
 
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
-      برای رفع خطای CORS در برنامه‌های Laravel، دو راه حل مختلف پیش روی شما قرار دارد. در راه حل اول می‌توانید پکیج <a href="https://github.com/fruitcake/laravel-cors" target="_blank">laravel-cors</a> را با اجرای دستور زیر در پروژه‌ی خود نصب کرده و طبق <a hre
-        ="https://github.com/fruitcake/laravel-cors#global-usage" target="_blank">مستندات</a>، CORS را در پروژه‌ی خود فعال کنید.
+      برای رفع خطای CORS در برنامه‌های Laravel، دو راه حل مختلف پیش روی شما قرار دارد. در راه حل اول می‌توانید پکیج <a href="https://github.com/fruitcake/laravel-cors" target="_blank">laravel-cors</a> را با اجرای دستور زیر در پروژه‌ی خود نصب کرده و طبق <a href="https://github.com/fruitcake/laravel-cors#global-usage" target="_blank">مستندات</a>، CORS را در پروژه‌ی خود فعال کنید.
     </p>
 
     <Highlight>{`composer require fruitcake/laravel-cors`}</Highlight>
