@@ -36,6 +36,7 @@ export default () => (
       <li><a href="#php-version">انتخاب نسخه‌ی PHP</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
       <li><a href="#enable-caching">فعال‌سازی Caching</a></li>
+      <li><a href="#cors">رفع خطای CORS</a></li>
       <li><a href="#using-ignition-and-faker-packages">استفاده از پکیج‌های Ignition و Faker</a></li>
       <li><a href="#extensions">لیست اکستنشن‌های نصب شده</a></li>
     </ul>
@@ -430,6 +431,35 @@ stdout_logfile=/tmp/laravel-worker.log`}
         {`<script src="{{ mix('js/app.js') }}"></script>`}
       </code>
     </pre>
+
+    <h3 id="cors">رفع خطای CORS</h3>
+    <p>
+      برای رفع خطای CORS در برنامه‌های Laravel تنهای کافیست تنظیمات مربوط به CORS را به شکل زیر در فایل <strong>public/.htaccess</strong> پروژه‌ی خود اضافه کنید:
+    </p>
+
+    <Highlight className="htaccess">{`Header set Access-Control-Allow-Origin "*"
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>`}</Highlight>
 
     <h3 id="using-ignition-and-faker-packages">استفاده از پکیج‌های Ignition و Faker</h3>
     <p>
