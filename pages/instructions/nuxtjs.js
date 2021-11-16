@@ -1,7 +1,8 @@
-import Layout from "../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import Layout from "../../components/Layout";
+import Notice from "../../components/Notice";
 
 export default () => (
     <Layout>
@@ -62,5 +63,35 @@ export default () => (
         <p>
             حال برای استقرار خروجی نهایی در لیارا کافیست که یک برنامه‌ی <Link href="/app-deploy/static/getting-started">Static</Link> در پنل کاربری خود ایجاد کرده و برنامه‌ی خود را با اجرای دستور <span className="code">liara deploy --path dist</span> بر روی لیارا مستقر کنید.
         </p>
-    </Layout>
+
+        <h3>Proxy کردن درخواست‌ها در برنامه‌های NuxtJS (رفع خطای CORS)</h3>
+
+        <p>
+            برای رفع خطای CORS در زمان Proxy کردن درخواست‌ها در برنامه‌های NuxtJS باید در قدم اول با اجرای دستور زیر، پکیج <a href="https://www.npmjs.com/package/@nuxtjs/proxy" target="_blank">nuxtjs/proxy</a> را در پروژه‌ی خود نصب کنید:
+        </p>
+
+        <Highlight className="bash">{`npm i @nuxtjs/proxy`}</Highlight>
+
+        <p>در قدم بعد باید <strong>nuxtjs/proxy</strong> را در بخش <strong>modules</strong> فایل <strong>nuxt.config.js</strong>، اضافه کرده و پیکربندی موردنظر را اعمال کنید:</p>
+        <Highlight className="javascript">{`modules: [
+  ...,
+  '@nuxtjs/proxy'
+],
+
+axios: {
+  proxy: true
+},
+
+proxy: {
+  '/api/': {
+      target: 'https://api.example.com/',
+      pathRewrite: {'^/api/': ''},
+      changeOrigin: true
+    }
+}`}</Highlight>
+
+        <Notice variant="warning">
+            توجه داشته باشید که مقادیر <strong>target</strong> و <strong>pathRewrite</strong> را در پروژه‌ی خود به‌ترتیب با آدرس API و Route پروژه جایگزین کنید.
+        </Notice>
+    </Layout >
 );
