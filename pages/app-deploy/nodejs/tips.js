@@ -31,6 +31,7 @@ export default () => (
       <li><a href="#proxy">تنظیمات TrustedProxies</a></li>
       <li><a href="#graphql-error">رفع خطای GET query missing در GraphQL</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
+      <li><a href="#cors">رفع خطای CORS</a></li>
     </ul>
 
     <h3 id="nodejs-version">انتخاب نسخه‌ی NodeJS</h3>
@@ -148,5 +149,17 @@ server.listen().then(({ url }) => {
   }
 }`}
     </Highlight>
+
+    <h3 id="cors">رفع خطای CORS</h3>
+    <p>
+      با وجود انواع مختلف فریم‌ورک‌ها، برای رفع خطای CORS راه حل‌های متفاوتی وجود دارد. برای مثال در فریم‌ورک Express باید طبق <a href="https://expressjs.com/en/resources/middleware/cors.html" target="_blank">مستندات رسمی</a> این فریم‌ورک، پکیج <a href="https://www.npmjs.com/package/cors" target="_blank">cors</a> را نصب کرده:
+    </p>
+    <Highlight className="bash">{`$ npm i cors`}</Highlight>
+    <p>و به‌شکل زیر از آن در برنامه‌ی خود استفاده کنید:</p>
+    <Highlight className="javascript">{`const express = require('express')
+const cors = require('cors')
+const app = express()
+
+app.use(cors())`}</Highlight>
   </Layout>
 );
