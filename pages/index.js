@@ -104,7 +104,7 @@ const Index = () => (
           <span>WordPress</span>
         </a>
       </Link>
-      
+
       <Link href="/app-deploy/django/getting-started">
         <a>
           <img src="/static/platformicons/django.svg" alt="django" />
@@ -230,12 +230,12 @@ const Index = () => (
       </Link>
     </div>
 
-    <h3>دستورالعمل استقرار ایمیج‌های مختلف در Docker</h3>
+    <h3>دستورالعمل‌ها</h3>
     <p>
-      برای مطالعه‌ی دستورالعمل استقرار هر ایمیج، صفحه‌ی مربوط به آن را دنبال کنید.
+      هر دستورالعمل به شما در استقرار یا استفاده از تکنولوژی به‌خصوصی کمک می‌کند. برای مطالعه‌ی هر یک، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
     <div className="platforms">
-    <Link href="/instructions/yii">
+      <Link href="/instructions/yii">
         <a>
           <img src="/static/platformicons/yii.svg" alt="yii" />
           <span>Yii</span>
@@ -309,6 +309,13 @@ const Index = () => (
         <a>
           <img src="/static/platformicons/seq.svg" alt="seq" />
           <span>Seq</span>
+        </a>
+      </Link>
+
+      <Link href="/instructions/celery">
+        <a>
+          <img src="/static/platformicons/celery.svg" alt="celery" />
+          <span>Celery</span>
         </a>
       </Link>
     </div>
