@@ -14,6 +14,11 @@ export default () => (
         </Head>
 
         <div className="page-head">
+            <img
+                className="page-icon"
+                src="/static/platformicons/celery.svg"
+                alt="celery"
+            />
             <div className="page-title">
                 <h1>Celery</h1>
                 <span className="page-description">
