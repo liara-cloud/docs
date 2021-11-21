@@ -228,6 +228,12 @@ const Index = () => (
           <span>NextCloud</span>
         </a>
       </Link>
+      <Link href="/one-click-apps/imgproxy">
+        <a>
+          <img src="/static/platformicons/imgproxy.svg" alt="imgproxy" />
+          <span>Imgproxy</span>
+        </a>
+      </Link>
     </div>
 
     <h3>دستورالعمل‌ها</h3>

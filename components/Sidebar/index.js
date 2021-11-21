@@ -215,6 +215,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/one-click-apps/pusher/laravel">اتصال از طریق Laravel</ActiveLink></li>
                 </ul>
               </li>
+              <li><ActiveLink href="/one-click-apps/imgproxy">Imgproxy</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/rocketchat">RocketChat</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/metabase">Metabase</ActiveLink></li>
               <li><ActiveLink href="/one-click-apps/nextcloud">Nextcloud</ActiveLink></li>
