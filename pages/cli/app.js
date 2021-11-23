@@ -171,9 +171,9 @@ export default () => (
         </ol>
 
         <h4 id="logs">مشاهده‌ی لاگ‌های برنامه</h4>
+        <Highlight className="bash">{`$ liara logs`}</Highlight>
 
         <h5>دستور <span className="code">liara app:logs</span> یا به اختصار <span className="code">liara logs</span> این پارامتر‌ها را می‌پذیرد:</h5>
-        <Highlight className="bash">{`$ liara logs`}</Highlight>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -207,9 +207,9 @@ export default () => (
         </ol>
 
         <h4 id="restart">ری‌استارت کردن برنامه</h4>
+        <Highlight className="bash">{`$ liara restart`}</Highlight>
 
         <h5>دستور <span className="code">liara app:restart</span> یا به اختصار <span className="code">liara restart</span> این پارامتر‌ها را می‌پذیرد</h5>
-        <Highlight className="bash">{`$ liara restart`}</Highlight>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -274,9 +274,9 @@ export default () => (
         </ol>
 
         <h4 id="start">روشن کردن برنامه</h4>
+        <Highlight className="bash">{`$ liara start`}</Highlight>
 
         <h5>دستور <span className="code">liara app:start</span> یا به اختصار <span className="code">liara start</span> این پارامتر‌ها را می‌پذیرد:</h5>
-        <Highlight className="bash">{`$ liara start`}</Highlight>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -305,9 +305,9 @@ export default () => (
         </ol>
 
         <h4 id="stop">خاموش کردن برنامه</h4>
+        <Highlight className="bash">{`$ liara stop`}</Highlight>
 
         <h5>دستور <span className="code">liara app:stop</span> یا به اختصار <span className="code">liara stop</span> این پارامتر‌ها را می‌پذیرد:</h5>
-        <Highlight className="bash">{`$ liara stop`}</Highlight>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
