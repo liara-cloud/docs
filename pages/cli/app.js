@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../components/Layout';
-import Notice from '../../components/Notice';
 
 export default () => (
     <Layout>
@@ -37,41 +36,45 @@ export default () => (
                 ۲. <Link href="#delete">حذف یک برنامه</Link>
             </p>
 
+            <li>&nbsp;&nbsp;app:list</li>
+            <p dir="rtl" className="commandDescription">
+                ۳. <Link href="#list">مشاهده‌ی لیستی از برنامه‌های ایجاد شده</Link>
+            </p>
+
             <li>&nbsp;&nbsp;app:logs</li>
             <p dir="rtl" className="commandDescription">
-                ۳. <Link href="#logs">مشاهده‌ی لاگ‌های برنامه</Link>
+                ۴. <Link href="#logs">مشاهده‌ی لاگ‌های برنامه</Link>
             </p>
 
             <li>&nbsp;&nbsp;app:restart</li>
             <p dir="rtl" className="commandDescription">
-                ۴. <Link href="#restart">ری‌استارت کردن برنامه</Link>
+                ۵. <Link href="#restart">ری‌استارت کردن برنامه</Link>
             </p>
 
             <li>&nbsp;&nbsp;app:shell</li>
             <p dir="rtl" className="commandDescription">
-                ۵. <Link href="#shell">اتصال مستقیم به خط فرمان برنامه</Link>
+                ۶. <Link href="#shell">اتصال مستقیم به خط فرمان برنامه</Link>
             </p>
 
             <li>&nbsp;&nbsp;app:start</li>
             <p dir="rtl" className="commandDescription">
-                ۶. <Link href="#start">روشن کردن برنامه</Link>
+                ۷. <Link href="#start">روشن کردن برنامه</Link>
             </p>
 
             <li>&nbsp;&nbsp;app:stop</li>
             <p dir="rtl" className="commandDescription">
-                ۷. <Link href="#stop">خاموش کردن برنامه</Link>
+                ۸. <Link href="#stop">خاموش کردن برنامه</Link>
             </p>
         </ol>
 
-        <Notice variant="info"><span className="code">-a APP</span> نشان‌دهنده‌ی اجباری بودن وارد کردن شناسه‌ی برنامه در زمان اجرای دستورها است.</Notice>
-
         <h4 id="create">ایجاد یک برنامه جدید</h4>
-        <Highlight className="bash">{`$ liara create -a APP`}</Highlight>
+        <Highlight className="bash">{`$ liara create`}</Highlight>
+
         <p>
             این دستور از شما شناسه برنامه، پلتفرم و مشخصات سخت‌افزاری مورد نیاز را می‌پرسد.
         </p>
 
-        <h5>دستور <span className="code">liara app:create</span> یا به اختصار <span className="code">liara create</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara app:create</span> یا به اختصار <span className="code">liara create</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -110,9 +113,9 @@ export default () => (
         </ol>
 
         <h4 id="delete">حذف یک برنامه</h4>
-        <Highlight className="bash">{`$ liara delete -a APP`}</Highlight>
+        <Highlight className="bash">{`$ liara delete`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:delete</span> یا به اختصار <span className="code">liara delete</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara app:delete</span> یا به اختصار <span className="code">liara delete</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -140,10 +143,37 @@ export default () => (
             </p>
         </ol>
 
-        <h4 id="logs">مشاهده‌ی لاگ‌های برنامه</h4>
-        <Highlight className="bash">{`$ liara logs -a APP`}</Highlight>
+        <h4 id="list">مشاهده‌ی لیستی از برنامه‌های ایجاد شده</h4>
+        <Highlight className="bash">{`$ liara app:list`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:logs</span> یا به اختصار <span className="code">liara logs</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara app:list</span> یا به اختصار <span className="code">liara app:ls</span> این پارامتر‌ها را می‌پذیرد:</h5>
+
+        <ol dir="ltr">
+            <li>&nbsp;&nbsp;-h, --help</li>
+            <p dir="rtl" className="commandDescription">
+                ۱. نمایش راهنما
+            </p>
+
+            <li>&nbsp;&nbsp;--csv</li>
+            <p dir="rtl" className="commandDescription">
+                ۲. ارائه خروجی CSV از لیست حساب‌های اضافه شده
+            </p>
+
+            <li>&nbsp;&nbsp;--sort</li>
+            <p dir="rtl" className="commandDescription">
+                ۳. مرتب سازی لیست حساب‌های اضافه شده براساس Name, Platform, Plan, ...
+            </p>
+
+            <li>&nbsp;&nbsp;--region=iran|germany</li>
+            <p dir="rtl" className="commandDescription">
+                4. مشخص‌کردن موقعیت جغرافیایی
+            </p>
+        </ol>
+
+        <h4 id="logs">مشاهده‌ی لاگ‌های برنامه</h4>
+        <Highlight className="bash">{`$ liara logs`}</Highlight>
+
+        <h5>دستور <span className="code">liara app:logs</span> یا به اختصار <span className="code">liara logs</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -177,7 +207,7 @@ export default () => (
         </ol>
 
         <h4 id="restart">ری‌استارت کردن برنامه</h4>
-        <Highlight className="bash">{`$ liara restart -a APP`}</Highlight>
+        <Highlight className="bash">{`$ liara restart`}</Highlight>
 
         <h5>دستور <span className="code">liara app:restart</span> یا به اختصار <span className="code">liara restart</span> این پارامتر‌ها را می‌پذیرد</h5>
 
@@ -210,7 +240,7 @@ export default () => (
         <h4 id="shell">اتصال مستقیم به خط فرمان برنامه</h4>
         <Highlight className="bash">{`$ liara shell`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:shell</span> یا به اختصار <span className="code">liara shell</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara app:shell</span> یا به اختصار <span className="code">liara shell</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -244,9 +274,9 @@ export default () => (
         </ol>
 
         <h4 id="start">روشن کردن برنامه</h4>
-        <Highlight className="bash">{`$ liara start -a APP`}</Highlight>
+        <Highlight className="bash">{`$ liara start`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:start</span> یا به اختصار <span className="code">liara start</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara app:start</span> یا به اختصار <span className="code">liara start</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -275,9 +305,9 @@ export default () => (
         </ol>
 
         <h4 id="stop">خاموش کردن برنامه</h4>
-        <Highlight className="bash">{`$ liara stop -a APP`}</Highlight>
+        <Highlight className="bash">{`$ liara stop`}</Highlight>
 
-        <h5>دستور <span className="code">liara app:stop</span> یا به اختصار <span className="code">liara stop</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara app:stop</span> یا به اختصار <span className="code">liara stop</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
@@ -306,7 +336,7 @@ export default () => (
         </ol>
 
         <br />
-        <Link href="/cli/account">متوجه شدم، برو گام بعدی!</Link>
+        <Link href="/cli/plan">متوجه شدم، برو گام بعدی!</Link>
 
     </Layout>
 );

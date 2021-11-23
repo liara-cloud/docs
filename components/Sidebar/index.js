@@ -369,8 +369,11 @@ export default class Sidebar extends Component {
               <li><ActiveLink href="/cli/install">نصب و به‌روزرسانی</ActiveLink></li>
               <li><ActiveLink href="/cli/login">ورود به حساب کاربری</ActiveLink></li>
               <li><ActiveLink href="/cli/deploy">استقرار برنامه</ActiveLink></li>
+              <li><ActiveLink href="/cli/disk">مدیریت دیسک‌ها</ActiveLink></li>
               <li><ActiveLink href="/cli/app">مدیریت برنامه‌ها</ActiveLink></li>
+              <li><ActiveLink href="/cli/plan">پلن‌های سرویس برنامه</ActiveLink></li>
               <li><ActiveLink href="/cli/account">مدیریت حساب‌های کاربری</ActiveLink></li>
+              <li><ActiveLink href="/cli/auto-complete">تکمیل خودکار دستورات</ActiveLink></li>
               <li><ActiveLink href="/cli/commands">خلاصه دستورات</ActiveLink></li>
             </ul>
           </nav>
