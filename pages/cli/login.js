@@ -26,7 +26,7 @@ export default () => (
             لیارا ثبت نام کرده‌اید را می‌پرسد.
         </p>
 
-        <h5>دستور <span className="code">liara login</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara login</span> این پارامتر‌ها را می‌پذیرد:</h5>
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-e, --email</li>
             <p dir="rtl" className="commandDescription">

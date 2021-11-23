@@ -26,7 +26,7 @@ export default () => (
             شود را می‌پرسد.
         </p>
 
-        <h5>دستور <span className="code">liara deploy</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara deploy</span> این پارامتر‌ها را می‌پذیرد:</h5>
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
             <p dir="rtl" className="commandDescription">
@@ -44,7 +44,7 @@ export default () => (
                 ۳. نمایش راهنما
             </p>
 
-            <li>&nbsp;&nbsp;--image</li>
+            <li>&nbsp;&nbsp;-i, --image</li>
             <p dir="rtl" className="commandDescription">
                 ۴. استقرار مستقیم Image از DockerHub
             </p>
@@ -92,6 +92,6 @@ export default () => (
         </ol>
 
         <br />
-        <Link href="/cli/app">متوجه شدم، برو گام بعدی!</Link>
+        <Link href="/cli/disk">متوجه شدم، برو گام بعدی!</Link>
     </Layout>
 );

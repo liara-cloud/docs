@@ -26,7 +26,7 @@ export default () => (
             این دستور از شما موقعیت جغرافیایی، نام کاربری و رمزعبوری که با آن در
             لیارا ثبت نام کرده‌اید را می‌پرسد.{' '}
         </p>
-        <h5>دستور <span className="code">liara login</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara login</span> این پارامتر‌ها را می‌پذیرد:</h5>
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-e, --email</li>
             <p dir="rtl" className="commandDescription">
@@ -64,7 +64,7 @@ export default () => (
             این دستور از شما شناسه برنامه‌ای که قصد دارید پروژه‌تان در آن مستقر
             شود را می‌پرسد.
         </p>
-        <h5>دستور <span className="code">liara deploy</span> این پارامتر‌ها را می‌پذیرد</h5>
+        <h5>دستور <span className="code">liara deploy</span> این پارامتر‌ها را می‌پذیرد:</h5>
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
             <p dir="rtl" className="commandDescription">
@@ -82,7 +82,7 @@ export default () => (
                 ۳. نمایش راهنما
             </p>
 
-            <li>&nbsp;&nbsp;--image</li>
+            <li>&nbsp;&nbsp;-i, --image</li>
             <p dir="rtl" className="commandDescription">
                 ۴. استقرار مستقیم Image از DockerHub
             </p>
@@ -126,6 +126,54 @@ export default () => (
             <li>&nbsp;&nbsp;--region=iran|germany</li>
             <p dir="rtl" className="commandDescription">
                 ۱۰. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
+            </p>
+        </ol>
+
+        <h3>ایجاد دیسک</h3>
+        <Highlight className="bash">{`$ liara disk:create`}</Highlight>
+
+        <p>
+            این دستور از شما شناسه برنامه، نام و اندازه دیسک مورد نیاز را می‌پرسد.
+        </p>
+
+        <h5>
+            دستور <span className="code">liara disk:create</span> این پارامتر‌ها
+            را می‌پذیرد:
+        </h5>
+
+        <ol dir="ltr">
+            <li>&nbsp;&nbsp;-a, --app</li>
+            <p dir="rtl" className="commandDescription">
+                ۱. شناسه برنامه‌ای که قصد دارید دیسک مورد نظر را در آن ایجاد کنید
+            </p>
+
+            <li>&nbsp;&nbsp;-h, --help</li>
+            <p dir="rtl" className="commandDescription">
+                ۲. نمایش راهنما
+            </p>
+
+            <li>&nbsp;&nbsp;-n, --name</li>
+            <p dir="rtl" className="commandDescription">
+                ۳. نام دیسک
+            </p>
+
+            <li>&nbsp;&nbsp;-s, --size</li>
+            <p dir="rtl" className="commandDescription">
+                ۴. اندازه‌ی دلخواه به گیگابایت
+            </p>
+
+            <li>&nbsp;&nbsp;--api-token=</li>
+            <p dir="rtl" className="commandDescription">
+                ۵. اجرای آنی عملیات ایجاد دیسک به کمک{' '}
+                <a href="https://console.liara.ir/API" target="_blank">
+                    api token
+                </a>{' '}
+                بدون ورود به حساب کاربری (مناسب ci/cd)
+            </p>
+
+            <li>&nbsp;&nbsp;--region=iran|germany</li>
+            <p dir="rtl" className="commandDescription">
+                ۶. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
             </p>
         </ol>
 
@@ -173,6 +221,15 @@ export default () => (
             </p>
         </ol>
 
+        <h3>پلن‌های سرویس برنامه</h3>
+        <Highlight className="bash">{`$ liara disk:create`}</Highlight>
+
+        <p>
+            با اجرای دستور <span className="code">liara plan:list</span> یا به
+            اختصار <span className="code">liara plan:ls</span> می‌توانید لیستی
+            از پلن‌های سرویس برنامه را مشاهده کنید.
+        </p>
+
         <h3>مدیریت حساب‌های کاربری</h3>
         <Highlight className="plaintext">{`$ liara account`}</Highlight>
         <p>
@@ -213,5 +270,12 @@ export default () => (
                 </Link>
             </p>
         </ol>
+
+        <h3>تکمیل خودکار دستورات</h3>
+        <Highlight className="bash">{`$ liara autocomplete`}</Highlight>
+        <p>
+            با اجرای این دستور می‌توانید راهنمای فعال‌سازی تکمیل خودکار دستورات
+            لیارا CLI را در سیستم‌عامل فعلی خود مشاهده کنید.
+        </p>
     </Layout>
 );
