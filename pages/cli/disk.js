@@ -7,7 +7,7 @@ export default () => (
     <Layout>
         <Head>
             <title>
-                مستندات ایجاد دیسک در رابط خط فرمان لیارا Liara CLI - سرویس ابری
+                مستندات مدیریت دیسک‌ها در رابط خط فرمان لیارا Liara CLI - سرویس ابری
                 لیارا
             </title>
         </Head>
@@ -15,7 +15,20 @@ export default () => (
         <h1>رابط خط فرمان لیارا</h1>
         <span className="page-description">(Liara CLI)</span>
 
-        <h4>ایجاد دیسک</h4>
+        <h4>مدیریت دیسک‌ها</h4>
+        <Highlight className="bash">{`$ liara disk`}</Highlight>
+        <p>
+            با اجرای این دستور می‌توانید دستورات مرتبط با مدیریت دیسک‌ها را مشاهده کنید.
+        </p>
+
+        <ol dir="ltr">
+            <li>&nbsp;&nbsp;app:create</li>
+            <p dir="rtl" className="commandDescription">
+                ۱. <Link href="#create">ایجاد یک دیسک جدید</Link>
+            </p>
+        </ol>
+
+        <h4 id="create">ایجاد یک دیسک جدید</h4>
         <Highlight className="bash">{`$ liara disk:create`}</Highlight>
 
         <p>
