@@ -1,7 +1,6 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
-import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
