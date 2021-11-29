@@ -1,7 +1,6 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
-import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
@@ -13,20 +12,6 @@ export default () => (
     <span className="page-description">(Disks)</span>
 
     <h3>درباره دیسک‌ها</h3>
-
-    <Notice variant="warning">
-      توجه کنید که اگر قبلا از قابلیت
-      <span className="code">volume</span>
-      استفاده می‌کردید، این قابلیت منسوخ شده و به دیسک تغییر نام داده شده‌است.
-      اما شما می‌توانید بدون نیاز به اقدامی، همچنان از همان قابلیت استفاده کنید.
-      <br />
-      برای مهاجرت از
-      <span className="code">volume</span>
-      به دیسک‌ها،{" "}
-      <Link href="/storage/disks/management#migrate">
-        این بخش را مطالعه کنید.
-      </Link>
-    </Notice>
 
     <p>
       فایل سیستم برنامه‌های لیارا،{" "}
@@ -48,12 +33,6 @@ export default () => (
       متصل کنید.
     </p>
 
-    <Notice variant="info">
-      برای استفاده از این قابلیت، Liara CLI باید دارای نسخه‌ی 2.4.0 یا بالاتر
-      باشد.{" "}
-      <Link href="/cli/install">
-        راهنمای نصب و ارتقا CLI
-      </Link>
-    </Notice>
+    <Link href="/storage/disks/management">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
