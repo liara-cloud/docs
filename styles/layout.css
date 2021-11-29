@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --primary: #2c333f;
   --secondary: #109bfc;
@@ -17,7 +21,12 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   color: var(--primary);
 }
@@ -55,16 +64,26 @@ p {
   background-color: white;
 }
 
-.article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
+.article h1,
+.article h2,
+.article h3,
+.article h4,
+.article h5,
+.article h6 {
   margin: 30px 0 10px 0;
 }
-.article h1:first-child, .article h2:first-child, .article h3:first-child, .article h4:first-child, .article h5:first-child, .article h6:first-child {
+.article h1:first-child,
+.article h2:first-child,
+.article h3:first-child,
+.article h4:first-child,
+.article h5:first-child,
+.article h6:first-child {
   margin-top: 0;
 }
 
 .article p {
   margin: 0.5em 0;
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.8em;
 }
 .article *:last-child {
@@ -124,7 +143,8 @@ span.code {
   width: 100%;
   border-collapse: collapse;
 }
-.table th, .table td {
+.table th,
+.table td {
   padding: 6px;
 }
 .table thead {
@@ -200,7 +220,7 @@ img.page-icon {
 }
 
 .article ul {
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.8em;
 }
 
@@ -219,16 +239,16 @@ img.page-icon {
 }
 
 @media (min-width: 1200px) {
-main {
-  width: 1200px;
-  margin: 0 auto;
+  main {
+    width: 1200px;
+    margin: 0 auto;
   }
-  
+
   .wrapper {
     flex-direction: row;
     margin-top: 40px;
   }
-  
+
   .article {
     width: 70%;
     border-radius: 12px;
@@ -271,4 +291,26 @@ main {
   h4 {
     font-size: 0.9em;
   }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px !important;
+  }
+}
+
+.container {
+  width: 100% !important;
+}
+.text-grey {
+  color: #999;
+}
+.text-sm {
+  font-size: .875rem !important;
+}
+.bg-grey-lighter {
+  background-color: #fafbfc;
+}
+.footer-icons a:hover {
+  opacity: 1;
 }
