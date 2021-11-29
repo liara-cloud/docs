@@ -20,7 +20,6 @@ export default () => (
       <li><a href="#mount-disk">تعریف مسیر دیسک</a></li>
       <li><a href="#mount-multiple-disks">تعریف چندین دیسک</a></li>
       <li><a href="#delete-disks">حذف‌ دیسک‌ها</a></li>
-      <li><a href="#migrate-from-volume-to-disks">مهاجرت از volume به disks</a></li>
     </ul>
 
     <h3 id="create-disk">ساخت دیسک</h3>
@@ -152,53 +151,5 @@ export default () => (
       برای حذف کافیست از طریق پنل دیسک‌ها گزینه <b>حذف دیسک</b> را انتخاب کنیم:
     </p>
     <ZoomableImage src="/static/disks/remove.png" alt="صفحه‌ی حذف دیسک" />
-    <a name="migrate" />
-    <h3 id="migrate-from-volume-to-disks">
-      مهاجرت از <span className="code">volume</span> به{" "}
-      <span className="code">disks</span>
-    </h3>
-    <Notice variant="warning">
-      نیازی به مطالعه‌ی این قسمت نیست، اگر قبلا از قابلیت
-      <span className="code">volume</span>
-      استفاده نمی‌کردید.
-    </Notice>
-    <p>
-      همان‌طور که پیش‌تر گفته شد، قابلیت
-      <span className="code">volume</span>
-      منسوخ شده و ممکن است بخواهید که به قابلیت جدید
-      <span className="code">disks</span>
-      مهاجرت کنید. خوشبختانه این کار بسیار ساده‌است. نمونه‌ی زیر را در نظر
-      بگیرید:
-      <Highlight className="json">
-        {`{
-  "volume": "/var/www/html/storage"
-}
-`}
-      </Highlight>
-      حالا برای انتقال این
-      <span className="code">volume</span>، فقط کافیست که فایل{" "}
-      <span className="code">liara.json</span>
-      را به شکل زیر تغییر دهید:
-    </p>
-    <Highlight className="json">
-      {`{
-  "disks": [
-    {
-      "name": "default",
-      "mountTo": "/var/www/html/storage"
-    }
-  ]
-}
-`}
-    </Highlight>
-    <p>
-      در این حالت، نام دیسک را حتما باید
-      <span className="code">default</span>
-      وارد کنید. حالا می‌توانید دستور
-      <span className="code">liara deploy</span>
-      را اجرا کنید. در این مرحله، دیگر هشدار منسوخ‌شدن قابلیت
-      <span className="code">volume</span>
-      را مشاهده نخواهید کرد.
-    </p>
   </Layout>
 );
