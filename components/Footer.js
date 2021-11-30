@@ -1,10 +1,11 @@
 import React from "react";
-import Image from "next/image"
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <div className="">
-      <footer dir="rtl"
+      <footer
+        dir="rtl"
         id="footer"
         className="mt-5 border-t border-grey-light bg-grey-lighter "
       >
@@ -15,7 +16,11 @@ export default function Footer() {
               title="صفحه&zwnj;ی اصلی سرویس ابری لیارا"
               className="flex items-center my-1 p-2"
             >
-              <img src="/static/layout/footer-logo.svg" alt="سرویس ابری لیارا" className="h-9 sm:h-11 ml-3"  /> 
+              <img
+                src="/static/layout/footer-logo.svg"
+                alt="سرویس ابری لیارا"
+                className="h-9 sm:h-11 ml-3"
+              />
               <div>
                 <h5 className="m-0 pb-2 text-base font-normal text-black">
                   سرویس ابری لیارا
@@ -26,14 +31,7 @@ export default function Footer() {
               </div>
             </a>
             <div className="flex items-center justify-center">
-              <div className="w-1/3 pt-3 px-2">
-                <a
-                  target="_blank"
-                  href="https://trustseal.enamad.ir/?id=141165&amp;Code=c0nFUGmVSBHNCn8hKnaU"
-                >
-                  <img src="https://Trustseal.eNamad.ir/logo.aspx?id=141165&Code=c0nFUGmVSBHNCn8hKnaU" alt="" id="c0nFUGmVSBHNCn8hKnaU" style={{cursor : "pointer"}} />
-                </a>
-              </div>
+              <div className="w-1/3 pt-3 px-2"></div>
             </div>
           </div>
           <div className="md:w-1/3 my-5 md:my-0 lg:pr-12 md:pr-6">
@@ -116,7 +114,11 @@ export default function Footer() {
                   rel="noopener"
                   className="block opacity-50 m-2 lg:m-3 p-2"
                 >
-                  <img src="https://liara.ir/wp-content/themes/liara-theme-v2/assets/img/footer/Twitter.svg" alt="Twitter" className="block" />
+                  <img
+                    src="https://liara.ir/wp-content/themes/liara-theme-v2/assets/img/footer/Twitter.svg"
+                    alt="Twitter"
+                    className="block"
+                  />
                 </a>
               </li>
               <li className="m-0">
@@ -127,7 +129,11 @@ export default function Footer() {
                   rel="noopener"
                   className="block opacity-50 m-2 lg:m-3 p-2"
                 >
-                  <img src="/static/layout/Telegram.svg" alt="Telegram" className="block" />
+                  <img
+                    src="/static/layout/Telegram.svg"
+                    alt="Telegram"
+                    className="block"
+                  />
                 </a>
               </li>
               <li className="m-0">
@@ -138,7 +144,11 @@ export default function Footer() {
                   rel="noopener"
                   className="block opacity-50 m-2 lg:m-3 p-2"
                 >
-                  <img src="/static/layout/Instagram.svg" alt="Instagram" className="block" />
+                  <img
+                    src="/static/layout/Instagram.svg"
+                    alt="Instagram"
+                    className="block"
+                  />
                 </a>
               </li>
               <li className="m-0">
@@ -149,7 +159,11 @@ export default function Footer() {
                   rel="noopener"
                   className="block opacity-50 m-2 lg:m-3 p-2"
                 >
-                  <img src="/static/layout/GitHub.svg" alt="GitHub" className="block" />
+                  <img
+                    src="/static/layout/GitHub.svg"
+                    alt="GitHub"
+                    className="block"
+                  />
                 </a>
               </li>
             </ul>
@@ -163,7 +177,10 @@ export default function Footer() {
             </div>
             <div className="my-1 p-1">
               <span className="text-grey text-sm">آدرس:</span>{" "}
-              <span title="آدرس سرویس ابری لیارا" className="text-black text-sm">
+              <span
+                title="آدرس سرویس ابری لیارا"
+                className="text-black text-sm"
+              >
                 قم، میدان جانبازان، خیابان شهیدان فاطمی، نبش کوچه ۱۲، پلاک ۴،
                 طبقه سوم، واحد ۳
               </span>
