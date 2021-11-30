@@ -1,6 +1,5 @@
 import Layout from '../../../components/Layout';
 import Head from 'next/head';
-import Notice from '../../../components/Notice';
 import Highlight from 'react-highlight';
 
 export default () => (
