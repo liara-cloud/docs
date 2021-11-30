@@ -8,6 +8,8 @@ import '../styles/sidebar.css'
 import '../styles/label.css'
 import '../styles/api.css'
 
+
+
 export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }

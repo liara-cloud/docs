@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
+import Footer from './Footer'
 
 import Header from './Header'
 import Sidebar from './Sidebar'
@@ -19,5 +20,6 @@ export default ({ children }) => (
         <article className="article">{children}</article>
       </div>
     </main>
+    <Footer />
   </Fragment>
 )
