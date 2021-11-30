@@ -30,7 +30,21 @@ export default function Footer() {
               </div>
             </a>
             <div className="flex items-center justify-center">
-              <div className="w-1/3 pt-3 px-2"></div>
+              <div className="w-1/3 pt-3 px-2">
+                <div className="w-1/3 pt-3 px-2">
+                  <a
+                    target="_blank"
+                    href="https://trustseal.enamad.ir/?id=141165&amp;Code=c0nFUGmVSBHNCn8hKnaU"
+                  >
+                    <img
+                      src="https://Trustseal.eNamad.ir/logo.aspx?id=141165&Code=c0nFUGmVSBHNCn8hKnaU"
+                      alt=""
+                      id="c0nFUGmVSBHNCn8hKnaU"
+                      style={{ cursor: "pointer" }}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <div className="md:w-1/3 my-5 md:my-0 lg:pr-12 md:pr-6">
