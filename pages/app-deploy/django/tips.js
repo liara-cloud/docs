@@ -36,6 +36,7 @@ export default () => (
       <li><a href="#nginx-customization">تنظیمات Nginx</a></li>
       <li><a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a></li>
       <li><a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a></li>
+      <li><a href="#cors">رفع خطای CORS</a></li>
     </ul>
 
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
@@ -90,11 +91,11 @@ stdout_logfile=/tmp/worker.log`}
     </Highlight>
 
     <Notice variant="info">
-            برای کسب اطلاعات بیشتر در رابطه با نحوه‌ی شروع به کار Celery در برنامه‌‌های
-            Django می‌توانید{' '}
-            <Link href="/instructions/celery#django">دستورالعمل Celery در برنامه‌های Django</Link> را مطالعه
-            کنید.
-        </Notice>
+      برای کسب اطلاعات بیشتر در رابطه با نحوه‌ی شروع به کار Celery در برنامه‌‌های
+      Django می‌توانید{' '}
+      <Link href="/instructions/celery#django">دستورالعمل Celery در برنامه‌های Django</Link> را مطالعه
+      کنید.
+    </Notice>
 
     <h3 id="collectstatic">دستور <span className="code">collectstatic</span></h3>
     <p>
@@ -275,5 +276,33 @@ location ~\.sqlite3$ {
       توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span> براساس ثانیه است.
     </Notice>
 
+    <h3 id="cors">رفع خطای CORS</h3>
+    <p>
+      درصورتی که Headerهای مربوط به CORS را با استفاده از پکیج{' '}
+      <a
+        href="https://pypi.org/project/django-cors-headers/"
+        target="_blank"
+        rel="noopener"
+      >
+        django-cors-headers
+      </a>
+      ، در Middleware برنامه‌ی خود تنظیم کرده‌اید باید
+      <span className="code">CORS_ALLOWED_ORIGINS</span> و{' '}
+      <span className="code">CORS_ALLOW_METHODS</span> را نیز در
+      فایل <span className="code">settings.py</span> تعریف کرده باشید:
+    </p>
+    <Highlight className="python">{`CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://www.example.com",
+]
+
+CORS_ALLOW_METHODS = [
+  "DELETE",
+  "GET",
+  "OPTIONS",
+  "PATCH",
+  "POST",
+  "PUT",
+]`}</Highlight>
   </Layout>
 );
