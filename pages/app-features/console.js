@@ -1,7 +1,8 @@
+import Link from "next/link";
+import Head from "next/head";
+import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import ZoomableImage from "../../components/ZoomableImage";
-import Head from "next/head";
-import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -19,7 +20,18 @@ export default () => (
       می‌توانید دستوراتی که معمولا یک بار لازم است اجرا شوند را اجرا کنید.
     </p>
 
-    <h3>دسترسی به خط فرمان</h3>
+    <h3>دسترسی به خط فرمان برنامه در لیارا CLI</h3>
+
+    <p>
+      برای اجرای دستور‌های مورد نیاز در فرایند{' '}
+      <Link href="/cicd/about">CI/CD</Link> و یا دسترسی مستقیم به خط فرمان
+      برنامه در سیستم‌عامل خود می‌توانید از دستور{' '}
+      <Link href="/cli/app/#shell">shell</Link> لیارا CLI استفاده کنید.
+    </p>
+
+    <Highlight className="bash">{`$ liara shell --command=/bin/bash`}</Highlight>
+
+    <h3>دسترسی به خط فرمان برنامه در پنل کاربری</h3>
     <p>
       با مراجعه به فهرست «برنامه‌ها»، روی برنامه‌ی مورد نظرتان کلیک کنید.
       <br />
