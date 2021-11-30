@@ -63,6 +63,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/app-deploy/laravel/domain">اتصال دامنه</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/email">ارسال ایمیل</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/cloud-storage">اتصال به سرویس فایل</ActiveLink></li>
+                  <li><ActiveLink href="/one-click-apps/pusher/laravel">اتصال به Pusher</ActiveLink></li>
                   <li><ActiveLink href="/app-deploy/laravel/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
@@ -260,6 +261,7 @@ export default class Sidebar extends Component {
                   <li><ActiveLink href="/databases/mysql-mariadb/connections">راه‌های اتصال</ActiveLink></li>
                   <li><ActiveLink href="/databases/mysql-mariadb/backup">Backup</ActiveLink></li>
                   <li><ActiveLink href="/databases/mysql-mariadb/restore">Restore</ActiveLink></li>
+                  <li><ActiveLink href="/databases/mysql-mariadb/tips">توضیحات و نکات تکمیلی</ActiveLink></li>
                 </ul>
               </li>
 
