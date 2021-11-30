@@ -1,5 +1,6 @@
 import Layout from "../../../components/Layout";
 import Head from "next/head";
+import Link from "next/link";
 import Notice from "../../../components/Notice";
 import Highlight from "react-highlight";
 
@@ -29,6 +30,7 @@ export default () => (
       <li><a href="#set-timezone">تنظیم TimeZone</a></li>
       <li><a href="#php-ini">تنظیمات اختصاصی php.ini</a></li>
       <li><a href="#htaccess">تنظیمات اختصاصی htaccess</a></li>
+      <li><a href="#cors">رفع خطای CORS</a></li>
       <li><a href="#default-php-modules">لیست اکستنشن‌های نصب شده</a></li>
     </ul>
 
@@ -111,6 +113,33 @@ max_execution_time = 600`}
       شما می‌توانید هر تنظیمی که از قبل در htaccess. برنامه‌ی‌تان داشتید را به
       لیارا نیز منتقل کنید. اگر در این قسمت با مشکلی مواجه شدید، از طریق تیکت،
       مسأله را با پشتیبانی لیارا مطرح کنید.
+    </p>
+
+    <h3 id="cors">رفع خطای CORS</h3>
+    <p>
+      درصورتی که در برنامه‌ی PHP با خطای CORS مواجه شده‌اید، توصیه می‌شود
+      قطعه کد زیر را به{' '}
+      <Link href="/app-deploy/php/tips#htaccess">
+        تنظیمات اختصاصی htaccess
+      </Link>{' '}
+      پروژه‌ی خود اضافه کنید.
+    </p>
+
+    <Highlight className="ini">{`<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+</IfModule>
+`}</Highlight>
+
+    <p>
+      برای کسب اطلاعات بیشتر{' '}
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+        target="_blank"
+        rel="noopener"
+      >
+        مستندات CORS
+      </a>{' '}
+      را مطالعه کنید.
     </p>
 
     <h3 id="default-php-modules">لیست اکستنشن‌های نصب شده</h3>
