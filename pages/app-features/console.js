@@ -29,7 +29,21 @@ export default () => (
       <Link href="/cli/app/#shell">shell</Link> لیارا CLI استفاده کنید.
     </p>
 
-    <Highlight className="bash">{`$ liara shell --command=/bin/bash`}</Highlight>
+    <Highlight className="bash">{`$ liara shell`}</Highlight>
+
+    <p>
+      پس از اجرای دستور فوق و انتخاب برنامه‌ی مورد نظر به‌صورت مستقیم به
+      خط فرمان برنامه با استفاده از{' '}
+      <span className="code">/bin/bash</span> متصل خواهید شد اما درصورتی
+      که تصمیم داشته باشید دستور به‌خصوصی را اجرا کنید یا در{' '}
+      <Link href="/app-deploy/docker/getting-started">
+        برنامه‌های Docker
+      </Link>{' '}
+      به <span className="code">/bin/sh</span> متصل شوید کافیست command
+      پیش‌فرض را به شکل زیر تغییر دهید:
+    </p>
+
+    <Highlight className="bash">{`$ liara shell --command=/bin/sh`}</Highlight>
 
     <h3>دسترسی به خط فرمان برنامه در پنل کاربری</h3>
     <p>
