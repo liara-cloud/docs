@@ -32,6 +32,7 @@ export default () => (
       <li><a href="#python-version">انتخاب نسخه‌ی Python</a></li>
       <li><a href="#set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
       <li><a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a></li>
+      <li><a href="#cors">رفع خطای CORS</a></li>
     </ul>
 
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
@@ -87,6 +88,30 @@ export default () => (
     <Notice variant="info">
       توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span> براساس ثانیه است.
     </Notice>
+
+    <h3 id="cors">رفع خطای CORS</h3>
+        <p>
+            درصورتی که پس نصب و پیکربندی پکیج{` `}
+            <a
+                href="https://pypi.org/project/Flask-Cors/"
+                target="_blank"
+                rel="noopener"
+            >
+                Flask-Cors
+            </a>
+            {` `}
+            با خطای CORS مواجه شده‌اید باید صحت resources را مورد بررسی
+            قرار دهید:{' '}
+        </p>
+        <Highlight className="python">{`from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.route("/")
+def helloWorld():
+  return "Hello, cross-origin-world!"`}</Highlight>
 
   </Layout>
 );
