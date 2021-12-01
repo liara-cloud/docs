@@ -1,8 +1,7 @@
 import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
-import Notice from "../../../components/Notice";
-import ZoomableImage from "../../../components/ZoomableImage";
+import Highlight from "react-highlight";
 
 export default () => (
   <Layout>
@@ -26,25 +25,22 @@ export default () => (
 
     <h3>اجرای Migrationها</h3>
     <p>
-      وقتی در Django مدلی تعریف می‌کنید یا تغییر میدهید نیاز دارید تا اصطلاحا
-      Migration ها را اجرا کنید.
+      زمانیکه در برنامه‌های Django یک Model جدید را تعریف می‌کنید یا یکی از Modelهای فعلی را تغییر می‌دهید نیاز است تا اصطلاحا
+      Migration ها را اجرا کنید. به‌منظور اجرای Migration ها در ابتدا دستور زیر را در مسیر اصلی پروژه‌ی لوکال خود اجرا کنید:
     </p>
-    <p>
-      کافیست ابتدا از طریق پنل لیارا، وارد بخش <b>خط فرمان</b> شده و سپس دستورات
-      لازم را وارد نمایید:
-    </p>
-    <pre>
-      <code>{`$ python manage.py migrate`}</code>
-    </pre>
-    <ZoomableImage
-      src="/static/django-migrate.png"
-      alt="اجرای دستورات migrations"
-    />
 
-    <Notice variant="info">
-      در نظر داشته باشید که هرزمان از طریق خط‌ فرمان لیارا متصل می‌شوید، در ریشه
-      برنامه قرار دارید.
-    </Notice>
+    <Highlight className="bash">{`$ python manage.py makemigrations`}</Highlight>
+
+    <p>پس از ایجاد موفق فایل‌های Migration و اطمینان از <Link href="/app-deploy/django/dbs">اتصال به دیتابیس</Link>، پروژه‌ی خود را با اجرای دستور زیر در سرویس تهیه شده مستقر کنید:</p>
+
+    <Highlight className="bash">{`$ liara deploy`}</Highlight>
+
+    <p>
+      درنهایت پس از استقرار موفق پروژه در سرویس تهیه شده می‌توانید دستور زیر را در <Link href="/app-features/console">خط فرمان</Link> برنامه اجرا کنید:
+    </p>
+
+    <Highlight className="bash">{`$ python manage.py migrate`}</Highlight>
+
     <br />
 
     <Link href="/app-deploy/django/disks">متوجه شدم، برو گام بعدی!</Link>
