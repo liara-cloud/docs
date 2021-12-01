@@ -15,14 +15,14 @@ export default () => (
                 alt="pusher"
             />
             <div className="page-title">
-                <h1>راه‌اندازی برنامه Pusher</h1>
+                <h1>برنامه‌های آماده Pusher</h1>
                 <span className="page-description">(Pusher one-click app)</span>
             </div>
         </div>
 
         <h3>🚀 راه‌اندازی</h3>
 
-        <p><a href="https://pws.soketi.app/" target="_blank">pWS</a> یک جایگزین رایگان و متن‌باز برای سرویس Pusher است که کاملا با پروتکل <a href="https://pusher.com/docs/channels/library_auth_reference/pusher-websockets-protocol/#version-7-2017-11" target="_blank">Pusher v7</a> سازگار شده و به شما در توسعه‌ی برنامه‌های Real-time کمک می‌کند.</p>
+        <p><a href="https://pws.soketi.app/" target="_blank" rel="noopener">pWS</a> یک جایگزین رایگان و متن‌باز برای سرویس Pusher است که کاملا با پروتکل <a href="https://pusher.com/docs/channels/library_auth_reference/pusher-websockets-protocol/#version-7-2017-11" target="_blank">Pusher v7</a> سازگار شده و به شما در توسعه‌ی برنامه‌های Real-time کمک می‌کند.</p>
 
         <ZoomableImage src="https://files.liara.ir/docs/pusher/create-new-pusher-one-click-app.gif"></ZoomableImage>
         <p>

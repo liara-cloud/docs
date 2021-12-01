@@ -17,12 +17,12 @@ export default () => (
                 alt="pusher"
             />
             <div className="page-title">
-                <h1>مستندات اتصال به Pusher در برنامه‌های Laravel</h1>
+                <h1>برنامه‌های آماده Pusher</h1>
                 <span className="page-description">(Pusher one-click app)</span>
             </div>
         </div>
 
-
+        <h3>اتصال به Pusher در برنامه‌های Laravel</h3>
         <p>
             به‌طور کلی برای استفاده از سرور Pusher در برنامه‌‌های Laravel باید قطعه کد زیر را در فایل <span className="code">config/app.php</span> از comment خارج کنید.
         </p>
