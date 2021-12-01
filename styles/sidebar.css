@@ -37,7 +37,7 @@
 .nav > .nav__link::before {
   margin-left: 8px;
   margin-right: 3px;
-  content: '';
+  content: "";
   display: inline-block;
   width: 4px;
   height: 4px;
@@ -67,7 +67,7 @@
 
 .nav__title::before {
   margin-left: 8px;
-  content: '';
+  content: "";
   display: inline-block;
   width: 10px;
   height: 6px;
@@ -94,7 +94,8 @@
   padding-right: 20px;
 }
 
-.nav__list .nav__title, .nav__list .nav__list {
+.nav__list .nav__title,
+.nav__list .nav__list {
   margin-right: 32px;
 }
 
@@ -102,11 +103,14 @@
   margin-right: 16px;
 }
 
-.nav__title, .nav__link, .nav__list {
+.nav__title,
+.nav__link,
+.nav__list {
   margin-bottom: 16px;
 }
 
-li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link {
+li:last-child > .nav__title:not(.nav__title--active),
+li:last-child > .nav__link {
   margin-bottom: 0;
 }
 
@@ -134,8 +138,11 @@ li:last-child > .nav__title:not(.nav__title--active), li:last-child > .nav__link
 
 .menu-button__icon {
   width: 18px;
-  margin-left: 10px;
+  margin-left: -25px;
   vertical-align: middle;
+  display: inline-block;
+  float: right;
+  margin-top: 4px;
 }
 
 @media (min-width: 1200px) {
