@@ -1,0 +1,19 @@
+.not_found-image {
+  width: 25vw;
+  margin: 50px auto 30px;
+}
+.not_found-image + p {
+  text-align: center;
+  font-size: 22px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .not_found-image {
+    width: 50vw;
+  }
+  .not_found-image + p {
+    font-size: 16px;
+  }
+}

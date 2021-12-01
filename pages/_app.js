@@ -7,6 +7,7 @@ import '../styles/notice.css'
 import '../styles/sidebar.css'
 import '../styles/label.css'
 import '../styles/api.css'
+import '../styles/404.css'
 import '../styles/asciinema.css'
 
 
