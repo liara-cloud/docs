@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema';
 
 export default () => (
     <Layout>
@@ -21,6 +22,7 @@ export default () => (
 
         <h4>مدیریت حساب‌های کاربری</h4>
         <Highlight className="bash">{`$ liara account`}</Highlight>
+        <Asciinema id="452924" />
         <p>
             با اجرای این دستور می‌توانید دستورات مرتبط با مدیریت حساب‌های کاربری را مشاهده کنید.
         </p>
@@ -50,6 +52,7 @@ export default () => (
 
         <h4 id="add">اضافه کردن یک حساب کاربری جدید</h4>
         <Highlight className="bash">{`$ liara account:add`}</Highlight>
+        <Asciinema id="452928" />
         <p>
             این دستور  از شما نام انتخابی، موقعیت مکانی، ایمیل و رمز عبور حساب ایجاد شده را می‌پرسد.
         </p>
@@ -94,7 +97,7 @@ export default () => (
 
         <h4 id="list">مشاهده‌ی لیستی از حساب‌های اضافه شده</h4>
         <Highlight className="bash">{`$ liara account:list`}</Highlight>
-
+        <Asciinema id="452933" />
         <h5>دستور <span className="code">liara account:list</span> یا به اختصار <span className="code">liara account:ls</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
@@ -121,7 +124,7 @@ export default () => (
 
         <h4 id="remove">حذف یکی از حساب‌های اضافه شده</h4>
         <Highlight className="bash">{`$ liara account:remove`}</Highlight>
-
+        <Asciinema id="452934" />
         <h5>دستور <span className="code">liara account:remove</span> یا به اختصار <span className="code">liara account:rm</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
@@ -138,7 +141,7 @@ export default () => (
 
         <h4 id="use">انتخاب یکی از حساب‌های اضافه شده به‌عنوان حساب اصلی</h4>
         <Highlight className="bash">{`$ liara account:use`}</Highlight>
-
+        <Asciinema id="452932" />
         <h5>دستور <span className="code">liara account:use</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">

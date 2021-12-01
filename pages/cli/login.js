@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema'
 
 export default () => (
     <Layout>
@@ -21,6 +22,9 @@ export default () => (
 
         <h4>ورود به حساب کاربری</h4>
         <Highlight className="bash">{`$ liara login`}</Highlight>
+
+        <Asciinema id="452857" />
+
         <p>
             این دستور از شما موقعیت جغرافیایی، ایمیل و رمز عبوری که با آن در
             لیارا ثبت نام کرده‌اید را می‌پرسد.

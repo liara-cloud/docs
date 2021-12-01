@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
+import Asciinema from "../../components/Asciinema";
+import Highlight from "react-highlight";
 
 export default () => (
   <Layout>
@@ -32,9 +34,10 @@ export default () => (
       بعد از نصب NodeJS، با استفاده از دستور زیر، آخرین نسخه CLI بر روی کامپیوتر
       شما نصب می‌گردد:
     </p>
-    <pre>
-      <code>npm install -g @liara/cli</code>
-    </pre>
+
+    <Highlight className="bash">npm install -g @liara/cli</Highlight>
+
+    <Asciinema id="452862" />
 
     <a name="upgrade"></a>
     <h3>ارتقا به نسخه‌ی جدیدتر</h3>
