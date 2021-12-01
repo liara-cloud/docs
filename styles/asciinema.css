@@ -1,16 +1,7 @@
 .asciinema_video {
   width: 100%;
   height: 400px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 35px;
+  margin-bottom: 35px;
   border-radius: 12px;
-}
-.asciinema_box {
-  position: relative;
-  cursor: pointer;
-}
-.asciinema_poster {
-  width: 100%;
-  height: 400px;
-  position: absolute;
 }

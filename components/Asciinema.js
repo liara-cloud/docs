@@ -1,30 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Asciinema({ id }) {
-  const [poster, setPoster] = useState(true);
-  const handlePoster = () => {
-    setPoster(false);
-  };
 
-  const display = poster ? "block" : "none";
+
   return (
-    <div>
-      <div className="asciinema_box">
-        <img
-          onClick={handlePoster}
-          style={{ display: display }}
-          className="asciinema_poster"
-          src={`https://asciinema.org/a/${id}.svg`}
-        />
-      </div>
       <iframe
         className="asciinema_video"
-        allowfullscreen="true"
-        webkitallowfullscreen="true"
-        mozallowfullscreen="true"
+        allowFullScreen="true"
+        webkitAllowFullScreen="true"
+        mozAllowFullScreen="true"
         src={`https://asciinema.org/a/${id}/iframe`}
       ></iframe>
-    </div>
+
   );
 }
 
