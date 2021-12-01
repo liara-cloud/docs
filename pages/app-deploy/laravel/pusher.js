@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../../components/Layout';
-import Highlight from 'react-highlight';
-import Notice from '../../../components/Notice';
 
 export default () => (
     <Layout>
