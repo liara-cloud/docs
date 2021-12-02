@@ -75,10 +75,14 @@ PG_DB_NAME=postgres`}</Highlight>
         <Highlight className="bash">{`node build/ace migration:run --force`}</Highlight>
         <h3>رفع خطای CORS</h3>
         <p>
-            درصورتی که CORS را در فایل پیکربندی برنامه‌های Adonis در مسیر <span className="code">config/cors.ts</span> فعال کرده باشید باید اطمینان حاصل کنید مقادیر <span>origin</span> و <span>methods</span> نیز به‌درستی در این فایل تنظیم شده باشند.
+            درصورتی که CORS را در فایل پیکربندی برنامه‌های AdonisJS در مسیر <span className="code">config/cors.ts</span> فعال کرده باشید باید اطمینان حاصل کنید مقادیر <span className="code">origin</span> و <span className="code">methods</span> نیز به‌درستی در این فایل تنظیم شده باشند:
         </p>
+        <Highlight>{`{
+  origin: '*',
+  methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE']
+}`}</Highlight>
         <p>
-            برای کسب اطلاعات بیشتر می‌توانید مستندات رسمی این فریم‌ورک را مطالعه کنید.
+            برای کسب اطلاعات بیشتر می‌توانید <a href="https://docs.adonisjs.com/guides/security/cors" target="_blank" rel="noopener">مستندات رسمی</a> این فریم‌ورک را مطالعه کنید.
         </p>
     </Layout>
 );
