@@ -151,6 +151,7 @@ server.listen().then(({ url }) => {
     </Highlight>
 
     <h3 id="cors">رفع خطای CORS</h3>
+    <h4>فریم‌ورک Express</h4>
     <p>
       با وجود انواع مختلف فریم‌ورک‌ها، برای رفع خطای CORS راه حل‌های متفاوتی وجود دارد. برای مثال در فریم‌ورک Express باید طبق <a href="https://expressjs.com/en/resources/middleware/cors.html" target="_blank">مستندات رسمی</a> این فریم‌ورک، پکیج <a href="https://www.npmjs.com/package/cors" target="_blank">cors</a> را نصب کرده:
     </p>
@@ -161,5 +162,40 @@ const cors = require('cors')
 const app = express()
 
 app.use(cors())`}</Highlight>
+
+    <h4>فریم‌ورک Fastify</h4>
+    <p>
+      به‌منظور رفع خطای CORS در فریم‌ورک Fastify باید به‌شکل زیر از
+      افزونه‌ی{' '}
+      <a
+        href="https://github.com/fastify/fastify-express"
+        target="_blank"
+        rel="noopener"
+      >
+        fastify-express
+      </a>{' '}
+      و پکیج{' '}
+      <a
+        href="https://www.npmjs.com/package/cors"
+        target="_blank"
+        rel="noopener"
+      >
+        cors
+      </a>{' '}
+      در برنامه‌ی خود استفاده کنید:
+    </p>
+    <Highlight className="javascript">{`await fastify.register(require('fastify-express'))
+fastify.use(require('cors')())`}</Highlight>
+    <p>
+      برای کسب اطلاعات بیشتر می‌توانید{' '}
+      <a
+        href="https://www.fastify.io/docs/latest/Middleware/"
+        target="_blank"
+        rel="noopener"
+      >
+        مستندات رسمی
+      </a>{' '}
+      این فریم‌ورک را مطالعه کنید.
+    </p>
   </Layout>
 );
