@@ -76,16 +76,20 @@ export default () => (
           <span>Strapi</span>
         </a>
       </Link>
+      <Link href="/instructions/adonis">
+        <a>
+          <img src="/static/platformicons/adonisjs.svg" alt="adonis" />
+          <span>Adonis</span>
+        </a>
+      </Link>
     </div>
 
     <Notice variant="info">
-      اگر قصد دارید نسخه‌ی پیش‌فرض NodeJS را تغییر دهید
-      و یا در رابطه با نحوه‌ی استقرار فریم‌ورک AdonisJS
-      بدانید، صفحه‌ی
+      اگر قصد دارید نسخه‌ی پیش‌فرض NodeJS را تغییر دهید می‌توانید مستندات
       {' '}
-      <Link href="/app-deploy/nodejs/tips">توضیحات و نکات تکمیلی</Link>
+      <Link href="/app-deploy/nodejs/tips#nodejs-version">انتخاب نسخه‌ی NodeJS</Link>
       {' '}
-      را مطالعه بفرمایید.
+      را در توضیحات و نکات تکمیلی این پلتفرم مطالعه بفرمایید.
     </Notice>
 
     <br />
