@@ -31,6 +31,7 @@ export default () => (
       <li><a href="#app-settings">تنظیمات مرتبط با ساختار برنامه</a></li>
       <li><a href="#bad-gateway">رفع خطای 502 Bad Gateway</a></li>
       <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
+      <li><a href="#cors">رفع خطای CORS</a></li>
     </ul>
 
     <h3 id="dotnet-version">انتخاب نسخه‌ی ASP.Net Core</h3>
@@ -160,6 +161,32 @@ https://aka.ms/dotnet-download`}
       استفاده کنید تا لیارا بداند که برنامه‌ی شما قرار است روی پورت 5000 اجرا
       شود.
     </p>
-
+    <h3 id="cors">رفع خطای CORS</h3>
+    <p>
+      در برنامه‌های ASP.Net Core به‌روش‌های مختلفی می‌توانید CORS را
+      فعال‌سازی کنید اما درصورتی که با خطای CORS مواجه شده‌اید بایستی
+      Origins و یا Methods تنظیم شده را مجدد مورد بررسی قرار دهید:
+    </p>
+    <Highlight className="c#">{`builder.Services.AddCors(options =>
+{
+  options.AddPolicy(name: "MyPolicy",
+    builder =>
+    {
+      builder.WithOrigins("http://example.com",
+                          "https://subdomain.example.com")
+              .WithMethods("PUT", "DELETE", "GET");
+    });
+});`}</Highlight>
+    <p>
+      برای کسب اطلاعات بیشتر می‌توانید{' '}
+      <a
+        href="https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-5.0#enable-cors-1"
+        target="_blank"
+        rel="noopener"
+      >
+        مستندات رسمی
+      </a>{' '}
+      این فریم‌ورک را مطالعه کنید.
+    </p>
   </Layout>
 );
