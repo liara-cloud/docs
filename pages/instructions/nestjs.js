@@ -42,5 +42,15 @@ export default () => (
             <span className="code">liara deploy --port 3000</span>
             را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
         </p>
+        <h3>رفع خطای CORS</h3>
+        <p>
+            درصورتی که در برنامه‌های NestJS با خطای CORS مواجه شده‌اید بایستی از
+            صحت مقادیر <span className="code">origin</span> و{' '}
+            <span className="code">methods</span> اطمینان حاصل کنید:
+        </p>
+        <Highlight className="javascript">{`app.enableCors({
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+});`}</Highlight>
     </Layout>
 );
