@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
+import Asciinema from '../../components/Asciinema';
 import Layout from '../../components/Layout';
 
 export default () => (
@@ -21,6 +22,7 @@ export default () => (
 
         <h4>مدیریت برنامه‌ها</h4>
         <Highlight className="bash">{`$ liara app`}</Highlight>
+        <Asciinema id="452889" />
         <p>
             با اجرای این دستور می‌توانید دستورات مرتبط با مدیریت برنامه‌ها را مشاهده کنید.
         </p>
@@ -69,7 +71,7 @@ export default () => (
 
         <h4 id="create">ایجاد یک برنامه جدید</h4>
         <Highlight className="bash">{`$ liara create`}</Highlight>
-
+        <Asciinema id="452892" />
         <p>
             این دستور از شما شناسه برنامه، پلتفرم و مشخصات سخت‌افزاری مورد نیاز را می‌پرسد.
         </p>
@@ -115,6 +117,8 @@ export default () => (
         <h4 id="delete">حذف یک برنامه</h4>
         <Highlight className="bash">{`$ liara delete`}</Highlight>
 
+        <Asciinema id="452910" />
+
         <h5>دستور <span className="code">liara app:delete</span> یا به اختصار <span className="code">liara delete</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
@@ -146,6 +150,8 @@ export default () => (
         <h4 id="list">مشاهده‌ی لیستی از برنامه‌های ایجاد شده</h4>
         <Highlight className="bash">{`$ liara app:list`}</Highlight>
 
+        <Asciinema id="452896" />
+
         <h5>دستور <span className="code">liara app:list</span> یا به اختصار <span className="code">liara app:ls</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
@@ -172,6 +178,8 @@ export default () => (
 
         <h4 id="logs">مشاهده‌ی لاگ‌های برنامه</h4>
         <Highlight className="bash">{`$ liara logs`}</Highlight>
+
+        <Asciinema id="452898" />
 
         <h5>دستور <span className="code">liara app:logs</span> یا به اختصار <span className="code">liara logs</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
@@ -208,7 +216,7 @@ export default () => (
 
         <h4 id="restart">ری‌استارت کردن برنامه</h4>
         <Highlight className="bash">{`$ liara restart`}</Highlight>
-
+        <Asciinema id="452899" />
         <h5>دستور <span className="code">liara app:restart</span> یا به اختصار <span className="code">liara restart</span> این پارامتر‌ها را می‌پذیرد</h5>
 
         <ol dir="ltr">
@@ -239,6 +247,8 @@ export default () => (
 
         <h4 id="shell">اتصال مستقیم به خط فرمان برنامه</h4>
         <Highlight className="bash">{`$ liara shell`}</Highlight>
+
+        <Asciinema id="452907" />
 
         <h5>دستور <span className="code">liara app:shell</span> یا به اختصار <span className="code">liara shell</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
@@ -275,7 +285,7 @@ export default () => (
 
         <h4 id="start">روشن کردن برنامه</h4>
         <Highlight className="bash">{`$ liara start`}</Highlight>
-
+        <Asciinema id="452900" />
         <h5>دستور <span className="code">liara app:start</span> یا به اختصار <span className="code">liara start</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">
@@ -306,7 +316,7 @@ export default () => (
 
         <h4 id="stop">خاموش کردن برنامه</h4>
         <Highlight className="bash">{`$ liara stop`}</Highlight>
-
+        <Asciinema id="452902" />
         <h5>دستور <span className="code">liara app:stop</span> یا به اختصار <span className="code">liara stop</span> این پارامتر‌ها را می‌پذیرد:</h5>
 
         <ol dir="ltr">

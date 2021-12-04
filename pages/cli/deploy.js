@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema';
 
 export default () => (
     <Layout>
@@ -21,6 +22,7 @@ export default () => (
 
         <h4>استقرار برنامه</h4>
         <Highlight className="bash">{`$ liara deploy`}</Highlight>
+        <Asciinema id="452876" />
         <p>
             این دستور از شما شناسه برنامه‌ای که قصد دارید پروژه‌تان در آن مستقر
             شود را می‌پرسد.

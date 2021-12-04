@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema';
 
 export default () => (
     <Layout>
@@ -17,12 +18,13 @@ export default () => (
 
         <h4>مدیریت دیسک‌ها</h4>
         <Highlight className="bash">{`$ liara disk`}</Highlight>
+        <Asciinema id="452878" />
         <p>
             با اجرای این دستور می‌توانید دستورات مرتبط با مدیریت دیسک‌ها را مشاهده کنید.
         </p>
 
         <ol dir="ltr">
-            <li>&nbsp;&nbsp;app:create</li>
+            <li>&nbsp;&nbsp;disk:create</li>
             <p dir="rtl" className="commandDescription">
                 ۱. <Link href="#create">ایجاد یک دیسک جدید</Link>
             </p>
@@ -30,6 +32,8 @@ export default () => (
 
         <h4 id="create">ایجاد یک دیسک جدید</h4>
         <Highlight className="bash">{`$ liara disk:create`}</Highlight>
+
+        <Asciinema id="452877" />
 
         <p>
             این دستور از شما شناسه برنامه، نام و اندازه دیسک مورد نیاز را می‌پرسد.

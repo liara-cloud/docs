@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
+import Asciinema from '../../components/Asciinema';
 import Layout from '../../components/Layout';
 
 export default () => (
@@ -21,6 +22,7 @@ export default () => (
 
         <h4>تکمیل خودکار دستورات</h4>
         <Highlight className="bash">{`$ liara autocomplete`}</Highlight>
+        <Asciinema id="452920" />
         <p>
             با اجرای این دستور می‌توانید راهنمای فعال‌سازی تکمیل خودکار دستورات
             لیارا CLI را در سیستم‌عامل فعلی خود مشاهده کنید.
