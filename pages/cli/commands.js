@@ -221,8 +221,32 @@ export default () => (
             </p>
         </ol>
 
+        <h3>مدیریت متغیرهای محیطی</h3>
+        <Highlight className="plaintext">{`$ liara env`}</Highlight>
+        <p>
+            با اجرای این دستور می‌توانید دستورات مرتبط با مدیریت متغیرهای محیطی برنامه‌ها را
+            مشاهده کنید.
+        </p>
+
+        <ol dir="ltr">
+            <li>&nbsp;&nbsp;env:list</li>
+            <p dir="rtl" className="commandDescription">
+                ۱. <Link href="/cli/env/#list">مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده</Link>
+            </p>
+
+            <li>&nbsp;&nbsp;env:set</li>
+            <p dir="rtl" className="commandDescription">
+                ۲. <Link href="/cli/env/#set">تنظیم و یا ویرایش متغیر محیطی</Link>
+            </p>
+
+            <li>&nbsp;&nbsp;env:unset</li>
+            <p dir="rtl" className="commandDescription">
+                ۳. <Link href="/cli/env/#unset">حذف متغیر محیطی</Link>
+            </p>
+        </ol>
+
         <h3>پلن‌های سرویس برنامه</h3>
-        <Highlight className="bash">{`$ liara disk:create`}</Highlight>
+        <Highlight className="bash">{`$ liara plan:list`}</Highlight>
 
         <p>
             با اجرای دستور <span className="code">liara plan:list</span> یا به

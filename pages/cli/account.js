@@ -118,7 +118,7 @@ export default () => (
 
             <li>&nbsp;&nbsp;--region=iran|germany</li>
             <p dir="rtl" className="commandDescription">
-                4. مشخص‌کردن موقعیت جغرافیایی
+                ۴. مشخص‌کردن موقعیت جغرافیایی
             </p>
         </ol>
 

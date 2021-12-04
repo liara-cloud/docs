@@ -143,7 +143,7 @@ export default () => (
 
             <li>&nbsp;&nbsp;--region=iran|germany</li>
             <p dir="rtl" className="commandDescription">
-                4. مشخص‌کردن موقعیت جغرافیایی
+                ۴. مشخص‌کردن موقعیت جغرافیایی
             </p>
         </ol>
 
@@ -172,7 +172,7 @@ export default () => (
 
             <li>&nbsp;&nbsp;--region=iran|germany</li>
             <p dir="rtl" className="commandDescription">
-                4. مشخص‌کردن موقعیت جغرافیایی
+                ۴. مشخص‌کردن موقعیت جغرافیایی
             </p>
         </ol>
 
@@ -346,7 +346,7 @@ export default () => (
         </ol>
 
         <br />
-        <Link href="/cli/plan">متوجه شدم، برو گام بعدی!</Link>
+        <Link href="/cli/env">متوجه شدم، برو گام بعدی!</Link>
 
     </Layout>
 );
