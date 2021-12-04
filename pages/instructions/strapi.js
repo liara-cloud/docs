@@ -3,9 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
 
-
-
-
 export default () => (
     <Layout>
         <Head>
@@ -56,5 +53,31 @@ export default () => (
         }
     ]
 }`}</Highlight>
+
+        <h3>رفع خطای CORS</h3>
+        <p>
+            CORS به‌صورت پیش‌فرض در برنامه‌های Strapi فعال است اما درصورتی که
+            تغییراتی در پیکربندی این برنامه به‌وجود آورده باشید باید از صحیح
+            بودن origin وارد شده نیز اطمینان حاصل کنید:
+        </p>
+        <Highlight>{`// config/middleware.js
+module.exports = {
+  settings: {
+    cors: {
+      origin: ["https://example.com", 'https://subdomain.example.com'],
+    },
+  },
+};`}</Highlight>
+        <p>
+            به‌منظور کسب اطلاعات بیشتر می‌توانید{' '}
+            <a
+                href="https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/required/middlewares.html#cors"
+                target="_blank"
+                rel="noopener"
+            >
+                مستندات رسمی
+            </a>{' '}
+            این سیستم مدیریت محتوا را مطالعه کنید.
+        </p>
     </Layout>
 );
