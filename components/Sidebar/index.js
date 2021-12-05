@@ -400,7 +400,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <ActiveLink href="/managing-multiple-acounts">مدیریت حساب‌های کاربری</ActiveLink>
+            <ActiveLink href="/managing-multiple-accounts">مدیریت حساب‌های کاربری</ActiveLink>
           </nav>
 
         </div>
