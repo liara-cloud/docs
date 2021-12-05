@@ -399,6 +399,10 @@ export default class Sidebar extends Component {
             <ActiveLink href="/production-checklist">چک‌لیست Production</ActiveLink>
           </nav>
 
+          <nav className="nav">
+            <ActiveLink href="/managing-multiple-acounts">مدیریت حساب‌های کاربری</ActiveLink>
+          </nav>
+
         </div>
       </aside>
     );
