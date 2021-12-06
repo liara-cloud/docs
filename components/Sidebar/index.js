@@ -392,7 +392,7 @@ export default class Sidebar extends Component {
           </nav>
 
           <nav className="nav">
-            <ActiveLink href="/migrate">انتقال بین موقعیت‌ها</ActiveLink>
+            <ActiveLink href="/migrate">انتقال سرویس‌‌‌ها</ActiveLink>
           </nav>
 
           <nav className="nav">
