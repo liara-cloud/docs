@@ -180,6 +180,7 @@ export default () => (
   ]
 }`}
     </Highlight>
+    
     <p>
       همچنین شما می‌توانید این فرایند را با استفاده از{' '}
       <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
@@ -187,7 +188,9 @@ export default () => (
     <Highlight className="bash">{`$ liara disk:create --name temp --size 1
 $ liara deploy --disks data:storage \\
                --disks logs:/app/logs \\
-               --disks temp:/tmp`}</Highlight>
+               --disks temp:/tmp`}
+    </Highlight>
+
     <Link href="/app-deploy/docker/domain">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
