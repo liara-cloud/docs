@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Notice from '../../components/Notice';
 import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema';
 
 export default () => (
     <Layout>
@@ -90,5 +91,21 @@ export default () => (
             توجه داشته باشید که حتما پس از راه‌اندازی Seq، وارد تنظیمات کاربران
             شده و authentication را فعال کنید.
         </Notice>
+
+        <h3>استقرار سریع</h3>
+        <p>
+            همچنین شما می‌توانید تمام مراحل فوق را با استفاده از{' '}
+            <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
+        </p>
+        <Highlight className="bash">
+            {
+                `$ liara deploy --app seq-server \\
+               --image datalust/seq:2021.2 \\
+               --port 80 \\
+               --disks data:/data \\
+               --detach`
+            }
+        </Highlight>
+        <Asciinema id="454252" />
     </Layout>
 );
