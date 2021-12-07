@@ -48,7 +48,7 @@ export default () => (
         </p>
         <Highlight className="json">
             {`{
-  "image": "getmeili/meilisearch:v0.22",
+  "image": "getmeili/meilisearch:v0.23.0",
   "app": "search-app",
   "port": 7700,
   "disks": [
