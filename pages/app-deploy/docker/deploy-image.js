@@ -61,6 +61,18 @@ export default () => (
 `}
         </Highlight>
 
+        <p>
+            همچنین شما می‌توانید به‌شکل زیر و بدون نیاز به فایل{' '}
+            <Link href="/app-deploy/docker/liarajson">liara.json</Link>،
+            ایمیج مورد نظرتان را به‌طور مستقیم در برنامه‌های Docker لیارا
+            مستقر کنید.
+        </p>
+
+        <Highlight className="bash">{`$ liara deploy --app search-app \\
+               --image getmeili/meilisearch:v0.23.0 \\
+               --port 7700 \\
+               --disks data:/data.ms`}</Highlight>
+
         <Notice variant="warning">
             توصیه می‌کنیم حتما در زمان استقرار image از تگ مشخصی استفاده کرده و
             تا حد امکان از تگ <span className="code">latest</span> استفاده نکنید
