@@ -1,6 +1,6 @@
 .label--red {
-  color: #E53E3E;
-  background-color: #FEB2B2;
+  color: #e53e3e;
+  background-color: #feb2b2;
   display: inline-block;
   border-radius: 4px;
   padding: 2px 8px;
@@ -8,8 +8,8 @@
 }
 
 .label--green {
-  color: #38A169;
-  background-color: #C6F6D5;
+  color: #38a169;
+  background-color: #c6f6d5;
   display: inline-block;
   border-radius: 4px;
   padding: 2px 8px;
@@ -17,8 +17,8 @@
 }
 
 .label--orange {
-  color: #D69E2E;
-  background-color: #FEFCBF;
+  color: #d69e2e;
+  background-color: #fefcbf;
   display: inline-block;
   border-radius: 4px;
   padding: 2px 8px;
@@ -26,8 +26,8 @@
 }
 
 .label--blue {
-  color: #3182CE;
-  background-color: #BEE3F8;
+  color: #3182ce;
+  background-color: #bee3f8;
   display: inline-block;
   border-radius: 4px;
   padding: 2px 8px;
@@ -41,4 +41,14 @@
   border-radius: 4px;
   padding: 2px 8px;
   font-family: Arial, Helvetica, sans-serif;
+}
+span.code {
+  border-radius: 4px;
+  direction: ltr;
+  letter-spacing: 1px;
+  margin: 0 4px;
+  color: #185783;
+  padding: 0px 8px;
+  display: inline-block;
+  background-color: #dbf0ff21;
 }
