@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="container flex flex-col md:flex-row mx-auto py-10 lg:px-0 xl:px-16 px-5 md:px-0">
           <div className="md:w-1/3">
             <a
-              href="/"
+              href="https://liara.ir/"
               title="صفحه&zwnj;ی اصلی سرویس ابری لیارا"
               className="flex items-center my-1 p-2"
             >
@@ -53,7 +53,7 @@ export default function Footer() {
               <div className="md:w-2/5 w-1/2">
                 <div>
                   <a
-                    href="/#plans"
+                    href="https://liara.ir/#plans"
                     title="پلن&zwnj;های سرویس ابری لیارا"
                     className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
                   >
@@ -62,7 +62,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <a
-                    href="/blog"
+                    href="https://liara.ir/blog"
                     title="وبلاگ سرویس ابری لیارا"
                     className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
                   >
@@ -71,7 +71,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <a
-                    href="/contact"
+                    href="https://liara.ir/contact"
                     title="ارتباط با سرویس ابری لیارا"
                     className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
                   >
@@ -100,7 +100,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <a
-                    href="/terms"
+                    href="https://liara.ir/terms"
                     title="قوانین و مقررات سرویس ابری لیارا"
                     className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
                   >
@@ -109,7 +109,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <a
-                    href="/about"
+                    href="https://liara.ir/about"
                     title="درباره سرویس ابری لیارا"
                     className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
                   >
