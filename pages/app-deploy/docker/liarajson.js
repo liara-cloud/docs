@@ -42,7 +42,7 @@ export default () => (
         <Highlight className="json">
             {`{
   "platform": "docker",
-  "image": "getmeili/meilisearch:v0.22",
+  "image": "getmeili/meilisearch:v0.23.0",
   "app": "search-app",
   "port": 7700,
   "disks": [

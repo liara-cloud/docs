@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Notice from '../../components/Notice';
 import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema';
 
 export default () => (
     <Layout>
@@ -100,5 +101,19 @@ export default () => (
             روی پورت <span className="code">8592</span> به دیتابیس خود دسترسی
             داشته باشید.
         </p>
+        <h3>استقرار سریع</h3>
+        <p>
+            همچنین شما می‌توانید تمام مراحل فوق را با استفاده از{' '}
+            <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
+        </p>
+        <Highlight className="bash">
+            {`$ liara deploy --app arango-db \\
+               --image arangodb:3.8.1 \\
+               --port 8529 \\
+               --disks arango:/var/lib/arangodb3 \\
+               --disks arango-apps:/var/lib/arangodb3-apps \\
+               --detach`}
+        </Highlight>
+        <Asciinema id="454514" />
     </Layout>
 );
