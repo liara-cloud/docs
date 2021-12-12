@@ -1,14 +1,13 @@
-import Layout from "../../components/Layout"
-import Head from "next/head"
-import Link from "next/link"
-import Highlight from "react-highlight"
+import Head from 'next/head';
+import Link from 'next/link';
+import Highlight from 'react-highlight';
+import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema';
 
 export default () => (
     <Layout>
         <Head>
-            <title>
-                استقرار Mattermost - سرویس ابری لیارا
-            </title>
+            <title>استقرار Mattermost - سرویس ابری لیارا</title>
         </Head>
 
         <div className="page-head">
@@ -22,40 +21,51 @@ export default () => (
                 <span className="page-description">(Docker Apps)</span>
             </div>
         </div>
-        
+
         <p>
-            اگر با Slack کار کرده باشید، Mattermost می‌تواند جایگزین خوبی برای آن باشد. Mattermost نرم‌افزاری برای چت و
-            گفتگوی درون تیمی یا سازمانی است.
+            <a
+                href="https://hub.docker.com/r/mattermost/mattermost-prod-app"
+                target="_blank"
+                rel="noopener"
+            >
+                Mattermost
+            </a>{' '}
+            نرم‌افزاری برای چت و گفتگوی درون تیمی یا سازمانی است که می‌تواند
+            جایگزین خوبی برای Slack باشد. برای استقرار Mattermost باید یک برنامه{' '}
+            <Link href="/app-deploy/docker/getting-started">Docker</Link> با نام
+            و پلن دلخواه‌تان بسازید ایجاد کرده و مراحل زیر را دنبال کنید.
         </p>
 
         <p>
-            برای استقرار این برنامه، ابتدا لازم است که از بخش «برنامه‌ها» یک برنامه از نوع <Link
-                href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
+            در قدم اول باید طبق مستندات{' '}
+            <Link href="/app-deploy/docker/disks#create-new-disk">
+                ساخت یک دیسک جدید
+            </Link>{' '}
+            عمل کرده و پنج دیسک با نام و فضای دلخواه ایجاد کنید و همچنین یک{' '}
+            <Link href="/databases/postgresql/install">دیتابیس PostgreSQL</Link>{' '}
+            راه‌اندازی کنید. سپس طبق مستندات{' '}
+            <Link href="/app-deploy/docker/envs">تنظیم متغیرها</Link>، متغیرهای
+            زیر را تنظیم کرده و بر روی دکمه‌ی ثبت تغییرات کلیک کنید.
         </p>
-        <p>
-            در مرحله بعد یک پایگاه داده PostgreSQL طبق مستندات «<Link href="/databases/postgresql/install">دیتابیس
-                PostgreSQL</Link>» بسازید.
-        </p>
-        <p>
-            سپس پنج دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
-        </p>
-        <p>
-            سپس طبق مستندات «<Link href="/app-deploy/docker/envs">تنظیم متغیرها (Environment Variables)</Link>» متغیرهای
-            زیر را تنظیم کنید.
-            <Highlight>
-                {`DB_HOST=[نام سرویس دیتابیس]
+
+        <Highlight className="config">
+            {`DB_HOST=[نام سرویس دیتابیس]
 MM_DBNAME=[نام دیتابیس]
 MM_USERNAME=[نام کاربری دیتابیس]
 MM_PASSWORD=[گذرواژه دیتابیس]`}
-            </Highlight>
-        </p>
+        </Highlight>
         <p>
-            در مرحله بعد یک فایل<span className="code">liara.json</span> طبق راهنمایی زیر بسازید و مشخصات مربوطه را در
-            این فایل وارد نمایید.
-            <Highlight>
-                {`{
-    "image": "mattermost/mattermost-prod-app:[نسخه مورد نظر]",
-    "app": "[نام برنامه]",
+            در مرحله بعد طبق مستندات{' '}
+            <Link href="/app-deploy/docker/deploy-image">
+                استقرار Image از DockerHub
+            </Link>{' '}
+            عمل کرده و پس از ایجاد فایل <span className="code">liara.json</span>{' '}
+            در مسیر دلخواه، آن را به شکل زیر پیکربندی کنید.
+        </p>
+        <Highlight className="json">
+            {`{
+    "image": "mattermost/mattermost-prod-app:v5.31.9",
+    "app": "mattermost-app",
     "port": 8000,
     "disks":[
         {
@@ -80,39 +90,44 @@ MM_PASSWORD=[گذرواژه دیتابیس]`}
         }
     ]
 }`}
-            </Highlight>
-        </p>
+        </Highlight>
         <p>
-            در نهایت، CMD و یا ترمینال
-            را در پوشه‌ای که <span className="code">liara.json</span>
-            را داخل آن قرار دادید باز کرده و سپس
-            دستور زیر را برای استقرار و اجرای برنامه وارد کنید:
+            در قدم آخر برای استقرار Mattermost بر روی لیارا کافیست دستور زیر را
+            در مسیر فایل <span className="code">liara.json</span> اجرا کنید.
         </p>
-        <pre>
-            <code>$ liara deploy</code>
-        </pre>
+        <Highlight className="bash">{`$ liara deploy`}</Highlight>
+        <h3>استقرار سریع</h3>
         <p>
-            <Link href="/cli/install">
-                راهنمای نصب Liara CLI
-            </Link>
+            همچنین شما می‌توانید تمام مراحل فوق را با استفاده از{' '}
+            <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
         </p>
+        <Highlight className="bash">
+            {`$ liara deploy --app mattermost-app \\
+                --port 8000 \\
+                --image mattermost/mattermost-prod-app:v5.31.9 \\
+                --disks data:/mattermost/data \\
+                --disks config:/mattermost/config \\
+                --disks client-plugins:/mattermost/client/plugins \\
+                --disks plugins:/mattermost/plugins \\
+                --disks logs:/mattermost/logs \\
+                --detach`}
+        </Highlight>
+        <Asciinema id="455586" />
         <h3>توجه داشته باشید که</h3>
         <ul>
             <li>
-                بین برنامه‌ها و دیتابیس‌ها شبکه‌ی خصوصی برقرار است که در صورت استقرار
-                میکروسرویس‌ها، ارتباط درون‌شبکه‌ای و استفاده از Mattermost، بسیار کاربردی است.
+                بین برنامه‌ها و دیتابیس‌ها شبکه‌ی خصوصی برقرار است که در صورت
+                استقرار میکروسرویس‌ها، ارتباط درون‌شبکه‌ای و استفاده از
+                Mattermost، بسیار کاربردی است.
             </li>
             <li>
-                در صفحه‌ی <Link href="/app-features/logs">لاگ‌ها</Link> امکان دنبال‌کردن زنده‌ی
-                لاگ‌های‌تان را دارید.
+                در صفحه‌ی <Link href="/app-features/logs">لاگ‌ها</Link> امکان
+                دنبال‌کردن زنده‌ی لاگ‌های‌تان را دارید.
             </li>
             <li>
-                بهتر است برای تعیین نسخه از <span className="code">latest</span> استفاده نکنید بلکه به صورت صریح شماره
-                نسخه مورد نظر را وارد نمایید.
-            </li>
-            <li>
-                برای اطلاع از تنظیمات بیشتر و نسخه‌های مختلف می‌توانید از مستندات مربوطه در <Link
-                    href="https://hub.docker.com/r/mattermost/mattermost-prod-app">Mattermost</Link> استفاده کنید.
+                بهتر است برای تعیین نسخه از <span className="code">latest</span>{' '}
+                استفاده نکنید بلکه به صورت صریح شماره نسخه مورد نظر را وارد
+                نمایید.
             </li>
         </ul>
     </Layout>
