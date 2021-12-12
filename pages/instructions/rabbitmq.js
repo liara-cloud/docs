@@ -1,14 +1,13 @@
-import Layout from "../../components/Layout"
-import Head from "next/head"
-import Link from "next/link"
-import Highlight from "react-highlight"
+import Head from 'next/head';
+import Link from 'next/link';
+import Highlight from 'react-highlight';
+import Layout from '../../components/Layout';
+import Asciinema from '../../components/Asciinema';
 
 export default () => (
     <Layout>
         <Head>
-            <title>
-                استقرار RabbitMQ - سرویس ابری لیارا
-            </title>
+            <title>استقرار RabbitMQ - سرویس ابری لیارا</title>
         </Head>
 
         <div className="page-head">
@@ -24,33 +23,50 @@ export default () => (
         </div>
 
         <p>
-            RabbitMQ یک نرم افزار برای انتقال پیام بین سیستم‌ها یا به عبارتی Message broker software است که با استفاده
-            از آن می‌توانیم بین سیستم های مختلف پیام ارسال کنیم و عملیات صف‌بندی را به‌خوبی انجام دهیم.
+            <a
+                href="https://hub.docker.com/r/bitnami/rabbitmq"
+                rel="noopener"
+                target="_blank"
+            >
+                RabbitMQ
+            </a>{' '}
+            یک نرم افزار برای انتقال پیام بین سیستم‌ها یا به عبارتی Message
+            broker software است که با استفاده از آن می‌توانیم بین سیستم های
+            مختلف پیام ارسال کنیم و عملیات صف‌بندی را به‌خوبی انجام دهیم.
         </p>
 
         <p>
-            برای استقرار این برنامه، ابتدا لازم است که از بخش «برنامه‌ها» یک برنامه از نوع <Link
-                href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن دلخواه‌تان بسازید.
-            <br />
-            سپس دو دیسک طبق مستندات «<Link href="/app-deploy/docker/disks">استفاده از دیسک‌ها</Link>» بسازید.
+            برای استقرار RabbitMQ باید یک برنامه{' '}
+            <Link href="/app-deploy/docker/getting-started">Docker</Link> با نام
+            و پلن دلخواه‌تان بسازید ایجاد کرده و مراحل زیر را دنبال کنید.
         </p>
         <p>
-            سپس طبق مستندات «<Link href="/app-deploy/docker/envs">تنظیم متغیرها (Environment Variables)</Link>» متغیرهای
-            زیر را تنظیم کنید.
-            <Highlight>
-                {`RABBITMQ_USERNAME=[نام کاربری دلخواه]
+            در قدم اول باید طبق مستندات{' '}
+            <Link href="/app-deploy/docker/disks#create-new-disk">
+                ساخت یک دیسک جدید
+            </Link>{' '}
+            عمل کرده و دو دیسک با نام و فضای دلخواه ایجاد کنید. سپس طبق مستندات{' '}
+            <Link href="/app-deploy/docker/envs">تنظیم متغیرها</Link>، متغیرهای
+            زیر را تنظیم کرده و بر روی دکمه‌ی ثبت تغییرات کلیک کنید.
+        </p>
+        <Highlight className="config">
+            {`RABBITMQ_USERNAME=[نام کاربری دلخواه]
 RABBITMQ_PASSWORD=[گذرواژه دلخواه]
 RABBITMQ_VM_MEMORY_HIGH_WATERMARK=0.6
 RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT=100000000`}
-            </Highlight>
-        </p>
+        </Highlight>
         <p>
-            در مرحله بعد یک فایل<span className="code">liara.json</span> طبق راهنمایی زیر بسازید و مشخصات مربوطه را در
-            این فایل وارد نمایید.
-            <Highlight>
-                {`{
-  "image": "bitnami/rabbitmq:[نسخه مورد نظر]",
-  "app": "[نام برنامه‌ای که ساخته‌اید]",
+            در مرحله بعد طبق مستندات{' '}
+            <Link href="/app-deploy/docker/deploy-image">
+                استقرار Image از DockerHub
+            </Link>{' '}
+            عمل کرده و پس از ایجاد فایل <span className="code">liara.json</span>{' '}
+            در مسیر دلخواه، آن را به شکل زیر پیکربندی کنید.
+        </p>
+        <Highlight>
+            {`{
+  "image": "bitnami/rabbitmq:3.9",
+  "app": "rabbitmq-app",
   "port": 15672,
   "disks": [
     {
@@ -63,39 +79,41 @@ RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT=100000000`}
     }
   ]
 }`}
-            </Highlight>
-        </p>
+        </Highlight>
         <p>
-            در نهایت، CMD و یا ترمینال
-            را در پوشه‌ای که <span className="code">liara.json</span>
-            را داخل آن قرار دادید باز کرده و سپس
-            دستور زیر را برای استقرار و اجرای برنامه وارد کنید:
+            در قدم آخر برای استقرار RabbitMQ بر روی لیارا کافیست دستور زیر را در
+            مسیر فایل <span className="code">liara.json</span> اجرا کنید.
         </p>
-        <pre>
-            <code>$ liara deploy</code>
-        </pre>
+        <Highlight className="bash">{`$ liara deploy`}</Highlight>
+        <h3>استقرار سریع</h3>
         <p>
-            <Link href="/cli/install">
-                راهنمای نصب Liara CLI
-            </Link>
+            همچنین شما می‌توانید تمام مراحل فوق را با استفاده از{' '}
+            <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
         </p>
+        <Highlight className="bash">
+            {`$ liara deploy --app rabbitmq-app \\
+                --port 15672 \\
+                --image bitnami/rabbitmq:3.9 \\
+                --disks rabbitmq:/opt/bitnami/rabbitmq \\
+                --disks bitnami:/bitnami \\
+                --detach`}
+        </Highlight>
+        <Asciinema id="455609" />
         <h3>توجه داشته باشید که</h3>
         <ul>
             <li>
-                بین برنامه‌ها و دیتابیس‌ها شبکه‌ی خصوصی برقرار است که در صورت استقرار
-                میکروسرویس‌ها، ارتباط درون‌شبکه‌ای و استفاده از RabbitMQ، بسیار کاربردی است.
+                بین برنامه‌ها و دیتابیس‌ها شبکه‌ی خصوصی برقرار است که در صورت
+                استقرار میکروسرویس‌ها، ارتباط درون‌شبکه‌ای و استفاده از
+                RabbitMQ، بسیار کاربردی است.
             </li>
             <li>
-                در صفحه‌ی <Link href="/app-features/logs">لاگ‌ها</Link> امکان دنبال‌کردن زنده‌ی
-                لاگ‌های‌تان را دارید.
+                در صفحه‌ی <Link href="/app-features/logs">لاگ‌ها</Link> امکان
+                دنبال‌کردن زنده‌ی لاگ‌های‌تان را دارید.
             </li>
             <li>
-                بهتر است برای تعیین نسخه از <span className="code">latest</span> استفاده نکنید بلکه به صورت صریح شماره
-                نسخه مورد نظر را وارد نمایید.
-            </li>
-            <li>
-                برای اطلاع از تنظیمات بیشتر و نسخه‌های مختلف می‌توانید از مستندات مربوطه در <Link
-                    href="https://hub.docker.com/r/bitnami/rabbitmq">Bitnami RabbitMQ</Link> استفاده کنید.
+                بهتر است برای تعیین نسخه از <span className="code">latest</span>{' '}
+                استفاده نکنید بلکه به صورت صریح شماره نسخه مورد نظر را وارد
+                نمایید.
             </li>
         </ul>
     </Layout>
