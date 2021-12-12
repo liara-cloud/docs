@@ -38,20 +38,20 @@ export default () => (
         </p>
         <p>
             در قدم اول باید طبق مستندات{' '}
-            <Link href="http://localhost:3005/app-deploy/docker/disks#create-new-disk">
+            <Link href="/app-deploy/docker/disks#create-new-disk">
                 ساخت یک دیسک جدید
             </Link>{' '}
             عمل کرده و یک دیسک با نام و فضای دلخواه ایجاد کنید. سپس طبق مستندات{' '}
             <Link href="/app-deploy/docker/envs">تنظیم متغیرها</Link>، متغیرهای
             زیر را تنظیم کرده و بر روی دکمه‌ی ثبت تغییرات کلیک کنید.
-            <Highlight className="config">
-                {`ELASTIC_USERNAME=[نام کاربری دلخواه]
+        </p>
+        <Highlight className="config">
+            {`ELASTIC_USERNAME=[نام کاربری دلخواه]
 ELASTIC_PASSWORD=[گذرواژه دلخواه]
 discovery.type=single-node
 path.repo=/usr/share/elasticsearch/backups
 xpack.security.enabled=true`}
-            </Highlight>
-        </p>
+        </Highlight>
         <p>
             در مرحله بعد طبق مستندات{' '}
             <Link href="/app-deploy/docker/deploy-image">
@@ -59,8 +59,10 @@ xpack.security.enabled=true`}
             </Link>{' '}
             عمل کرده و پس از ایجاد فایل <span className="code">liara.json</span>{' '}
             در مسیر دلخواه، آن را به شکل زیر پیکربندی کنید.
-            <Highlight className="json">
-                {`{
+        </p>
+
+        <Highlight className="json">
+            {`{
   "image": "elasticsearch:7.0.0",
   "app": "elastic-app",
   "port": 9200,
@@ -71,8 +73,8 @@ xpack.security.enabled=true`}
     }
   ]
 }`}
-            </Highlight>
-        </p>
+        </Highlight>
+
         <p>
             در قدم آخر برای استقرار Elasticsearch بر روی لیارا کافیست دستور زیر
             را در مسیر فایل <span className="code">liara.json</span> اجرا کنید.
