@@ -307,11 +307,14 @@ img.page-icon {
   color: #999;
 }
 .text-sm {
-  font-size: .875rem !important;
+  font-size: 0.875rem !important;
 }
 .bg-grey-lighter {
   background-color: #fafbfc;
 }
 .footer-icons a:hover {
   opacity: 1;
+}
+article ul {
+  list-style-type: disc;
 }
