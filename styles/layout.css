@@ -223,6 +223,8 @@ img.page-icon {
 .article ul {
   font-size: 0.8rem;
   line-height: 1.8em;
+  padding-inline-start: 40px;
+  margin-block-end: 1em;
 }
 
 @media (min-width: 768px) {
