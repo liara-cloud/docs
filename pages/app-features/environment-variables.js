@@ -8,7 +8,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات متغیرها Environment Variables - سرویس ابری لیارا
+        مستندات متغیرهای محیطی Environment Variables - سرویس ابری لیارا
       </title>
     </Head>
 
