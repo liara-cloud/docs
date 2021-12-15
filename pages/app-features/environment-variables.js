@@ -28,32 +28,39 @@ export default () => (
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
-        <a href="#set">تنظیم و یا ویرایش متغیرهای محیطی</a>
+        <a href="#list">مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده</a>
       </li>
       <li>
-        <a href="#list">مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده</a>
+        <a href="#set">تنظیم و یا ویرایش متغیرهای محیطی</a>
       </li>
       <li>
         <a href="#unset">حذف متغیرهای محیطی</a>
       </li>
     </ul>
 
+    <h3 id="list">مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده</h3>
+    <h4>مشاهده‌ی متغیرهای محیطی در پنل کاربری</h4>
+    <ZoomableImage src="https://files.liara.ir/docs/django/environment-variables-list.png" />
+    <p>
+      شما می‌توانید متغیرهای محیطی تنظیم شده را پس از ورود به صفحه‌ی{' '}
+      <strong>تنظیمات</strong> هر برنامه، در بخش <strong>متغیرها</strong>{' '}
+      مشاهده کنید. همچنین امکان <Link href="#unset">حذف</Link>،{' '}
+      <Link href="#set">ویرایش و اضافه کردن</Link> متغیرهای محیطی در این
+      بخش امکان‌پذیر هست.
+    </p>
+    <h4>مشاهده‌ی متغیرهای محیطی با استفاده از لیارا CLI</h4>
+    <Asciinema id="456274" />
+
     <h3 id="set">تنظیم و یا ویرایش متغیرهای محیطی</h3>
+    <h4>تنظیم و یا ویرایش متغیرهای محیطی در پنل کاربری</h4>
+    <ZoomableImage src="https://files.liara.ir/docs/django/set-and-edit-environment-variables.gif" />
     <h4>تنظیم و یا ویرایش متغیرهای محیطی با استفاده از لیارا CLI</h4>
     <Asciinema id="456070" />
-    <h4>تنظیم و یا ویرایش متغیرهای محیطی در پنل کاربری</h4>
-    <ZoomableImage src="" />
-
-    <h3 id="list">مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده</h3>
-    <h4>مشاهده‌ی متغیرهای محیطی با استفاده از لیارا CLI</h4>
-    <Asciinema id="456073" />
-    <h4>مشاهده‌ی متغیرهای محیطی در پنل کاربری</h4>
-    <ZoomableImage src="" />
 
     <h3 id="unset">حذف متغیرهای محیطی</h3>
+    <h4>حذف متغیرهای محیطی در پنل کاربری</h4>
+    <ZoomableImage src="https://files.liara.ir/docs/django/remove-an-environment-variable.gif" />
     <h4>حذف متغیرهای محیطی با استفاده از لیارا CLI</h4>
     <Asciinema id="456072" />
-    <h4>حذف متغیرهای محیطی در پنل کاربری</h4>
-    <ZoomableImage src="" />
   </Layout>
 );
