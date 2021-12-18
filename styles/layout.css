@@ -320,3 +320,8 @@ img.page-icon {
 article ul {
   list-style-type: disc;
 }
+video {
+  border-radius: 12px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
