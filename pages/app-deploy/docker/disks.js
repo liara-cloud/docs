@@ -138,7 +138,7 @@ export default () => (
   "disks": [
     {
       "name": "data",
-      "mountTo": "storage"
+      "mountTo": "/app/data"
     },
     {
       "name": "logs",
@@ -149,7 +149,7 @@ export default () => (
     </Highlight>
 
     <h4>اتصال چند دیسک به مسیرهای مختلف در زمان استقرار</h4>
-    <Highlight className="bash">{`$ liara deploy --disks data:storage --disks logs:/app/logs`}</Highlight>
+    <Highlight className="bash">{`$ liara deploy --disks data:/app/data --disks logs:/app/logs`}</Highlight>
 
     <h3 id="increase-tmp-size">
       افزایش فضای مسیر <span className="code">/tmp</span>
@@ -167,7 +167,7 @@ export default () => (
   "disks": [
     {
       "name": "data",
-      "mountTo": "storage"
+      "mountTo": "/app/data"
     },
     {
       "name": "logs",
@@ -180,13 +180,14 @@ export default () => (
   ]
 }`}
     </Highlight>
-    
+
     <p>
       همچنین شما می‌توانید این فرایند را با استفاده از{' '}
       <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
     </p>
-    <Highlight className="bash">{`$ liara disk:create --name temp --size 1
-$ liara deploy --disks data:storage \\
+    <Highlight className="bash">
+      {`$ liara disk:create --name temp --size 1
+$ liara deploy --disks data:/app/data \\
                --disks logs:/app/logs \\
                --disks temp:/tmp`}
     </Highlight>
