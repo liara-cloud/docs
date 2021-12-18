@@ -35,12 +35,12 @@ export default () => (
 
             <li>&nbsp;&nbsp;env:set</li>
             <p dir="rtl" className="commandDescription">
-                ۲. <Link href="#set">تنظیم و یا ویرایش متغیر محیطی</Link>
+                ۲. <Link href="#set">تنظیم و یا ویرایش متغیرهای محیطی</Link>
             </p>
 
             <li>&nbsp;&nbsp;env:unset</li>
             <p dir="rtl" className="commandDescription">
-                ۳. <Link href="#unset">حذف متغیر محیطی</Link>
+                ۳. <Link href="#unset">حذف متغیرهای محیطی</Link>
             </p>
         </ol>
 
@@ -77,7 +77,7 @@ export default () => (
             </p>
         </ol>
 
-        <h4 id="set">تنظیم و یا ویرایش متغیر محیطی</h4>
+        <h4 id="set">تنظیم و یا ویرایش متغیرهای محیطی</h4>
         <Highlight className="bash">{`$ liara env:set [ENV]`}</Highlight>
 
         <Asciinema id="453596" />
@@ -87,12 +87,12 @@ export default () => (
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
             <p dir="rtl" className="commandDescription">
-                ۱. شناسه برنامه‌ای که قصد تنظیم و یا ویرایش متغیر محیطی آن را دارید
+                ۱. شناسه برنامه‌ای که قصد تنظیم و یا ویرایش متغیرهای محیطی آن را دارید
             </p>
 
             <li>&nbsp;&nbsp;-f, --force</li>
             <p dir="rtl" className="commandDescription">
-                ۲. تنظیم و یا ویرایش متغیر محیطی یک برنامه بدون نیاز به تایید
+                ۲. تنظیم و یا ویرایش متغیرهای محیطی یک برنامه بدون نیاز به تایید
             </p>
 
             <li>&nbsp;&nbsp;-h, --help</li>
@@ -102,7 +102,7 @@ export default () => (
 
             <li>&nbsp;&nbsp;--api-token=</li>
             <p dir="rtl" className="commandDescription">
-                ۴. اجرای آنی عملیات تنظیم و یا ویرایش متغیر محیطی برنامه به کمک{' '}
+                ۴. اجرای آنی عملیات تنظیم و یا ویرایش متغیرهای محیطی برنامه به کمک{' '}
                 <a href="https://console.liara.ir/API" target="_blank">
                     api token
                 </a>{' '}
@@ -115,7 +115,7 @@ export default () => (
             </p>
         </ol>
 
-        <h4 id="unset">حذف متغیر محیطی</h4>
+        <h4 id="unset">حذف متغیرهای محیطی</h4>
         <Highlight className="bash">{`$ liara env:unset [KEY]`}</Highlight>
 
         <Asciinema id="453597" />
@@ -125,12 +125,12 @@ export default () => (
         <ol dir="ltr">
             <li>&nbsp;&nbsp;-a, --app</li>
             <p dir="rtl" className="commandDescription">
-                ۱. شناسه برنامه‌ای که قصد تنظیم و یا ویرایش متغیر محیطی آن را دارید
+                ۱. شناسه برنامه‌ای که قصد تنظیم و یا ویرایش متغیرهای محیطی آن را دارید
             </p>
 
             <li>&nbsp;&nbsp;-f, --force</li>
             <p dir="rtl" className="commandDescription">
-                ۲. حذف متغیر محیطی یک برنامه بدون نیاز به تایید
+                ۲. حذف متغیرهای محیطی یک برنامه بدون نیاز به تایید
             </p>
 
             <li>&nbsp;&nbsp;-h, --help</li>
@@ -140,7 +140,7 @@ export default () => (
 
             <li>&nbsp;&nbsp;--api-token=</li>
             <p dir="rtl" className="commandDescription">
-                ۴. اجرای آنی عملیات حذف متغیر محیطی برنامه به کمک{' '}
+                ۴. اجرای آنی عملیات حذف متغیرهای محیطی برنامه به کمک{' '}
                 <a href="https://console.liara.ir/API" target="_blank">
                     api token
                 </a>{' '}
