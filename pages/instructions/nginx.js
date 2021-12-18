@@ -1,8 +1,8 @@
-import Layout from '../../components/Layout';
-import Notice from '../../components/Notice';
 import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
+import Notice from '../../components/Notice';
+import Layout from '../../components/Layout';
 
 export default () => (
     <Layout>
@@ -144,15 +144,15 @@ scgi_temp_path        /tmp/scgi_temp;`}
             را به‌وجود می‌آورد تا هر بار IP جدید برنامه دریافت شده و مشکلی در
             هدایت ترافیک به‌وجود نیاید.
             <Highlight className="nginx">
-                {`  server {
-    resolver 127.0.0.11 ipv6=off valid=5s;
-    listen 80;
-    location / {
-	...
-	set $backend "http://app-name:port";
-	proxy_pass $backend;
-    }
-  }`}
+                {`server {
+  resolver 127.0.0.11 ipv6=off valid=5s;
+  listen 80;
+  location / {
+  ...
+  set $backend "http://app-name:port";
+  proxy_pass $backend;
+  }
+}`}
             </Highlight>
         </p>
     </Layout>

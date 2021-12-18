@@ -1,5 +1,8 @@
-import Layout from "../../../components/Layout";
-import Head from "next/head";
+import Head from 'next/head';
+import Link from 'next/link';
+import Highlight from 'react-highlight';
+import Notice from '../../../components/Notice';
+import Layout from '../../../components/Layout';
 
 export default () => (
   <Layout>
@@ -25,20 +28,29 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#nginx-conf">تنظیمات Nginx</a></li>
-      <li><a href="#enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</a></li>
+      <li>
+        <a href="#nginx-conf">تنظیمات Nginx</a>
+      </li>
+      <li>
+        <a href="#hsts">فعال‌سازی HSTS</a>
+      </li>
+      <li>
+        <a href="#enable-gzip-and-browser-caching">
+          فعال‌سازی gzip و Browser Caching
+        </a>
+      </li>
     </ul>
 
     <h3 id="nginx-conf">تنظیمات Nginx</h3>
     <p>
       استقرار برنامه‌های ReactJS، توسط وب‌سرور
       <span className="code">Nginx</span>
-      انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این وب‌سرور را
-      مطابق با نیازهای‌تان تنظیم کنید. برای این کار، کافیست که در ریشه‌ی
-      برنامه‌ی‌تان، فایلی با نام
+      انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این
+      وب‌سرور را مطابق با نیازهای‌تان تنظیم کنید. برای این کار، کافیست که
+      در ریشه‌ی برنامه‌ی‌تان، فایلی با نام
       <span className="code">liara_nginx.conf</span>
-      ایجاد کنید. به‌صورت پیش‌فرض، برای برنامه‌های ReactJS، این فایل به شکل زیر
-      تعریف شده‌است:
+      ایجاد کنید. به‌صورت پیش‌فرض، برای برنامه‌های ReactJS، این فایل به
+      شکل زیر تعریف شده‌است:
     </p>
     <pre>
       <code>
@@ -63,14 +75,39 @@ location /images {
       </code>
     </pre>
 
-    <h3 id="enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</h3>
+    <h3 id="hsts">فعال‌سازی HSTS</h3>
     <p>
-      برای کاهش اندازه‌ی صفحات وب، فعال‌سازی فشرده‌ساز gzip
-      و همین‌طور Browser Caching
-      بسیار توصیه می‌شود. برای این‌کار، کافیست که فایلی به‌نام
+      برای فعال‌سازی HSTS و جلوگیری از برخی حملات مرتبط با SSL می‌توانید
+      هدر <span className="code">Strict-Transport-Security</span> را
+      به‌شکل زیر در فایل <span className="code">liara_nginx.conf</span>
+      قرار داده و درنهایت دستور <span className="code">
+        liara deploy
+      </span>{' '}
+      را در مسیر اصلی پروژه اجرا کنید.
+    </p>
+    <Highlight className="nginx">
+      {`location / {
+  index index.html index.htm;
+  try_files $uri $uri/ /index.html =404;
+  add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+}`}
+    </Highlight>
+    <Notice variant="warning">
+      توجه داشته باشید که قبل از فعال‌سازی HSTS باید SSL را فعال کرده
+      باشید. <Link href="/domains/ssl">توضیحات بیشتر</Link>
+    </Notice>
+
+    <h3 id="enable-gzip-and-browser-caching">
+      فعال‌سازی gzip و Browser Caching
+    </h3>
+    <p>
+      برای کاهش اندازه‌ی صفحات وب، فعال‌سازی فشرده‌ساز gzip و همین‌طور
+      Browser Caching بسیار توصیه می‌شود. برای این‌کار، کافیست که فایلی
+      به‌نام
       <span className="code">liara_nginx.conf</span>
-      در ریشه‌ی برنامه‌ی‌تان، در کنار <span className="code">package.json</span>،
-      بسازید و بعد دستور<span className="code">liara deploy</span>
+      در ریشه‌ی برنامه‌ی‌تان، در کنار{' '}
+      <span className="code">package.json</span>، بسازید و بعد دستور
+      <span className="code">liara deploy</span>
       را وارد کنید.
     </p>
     <pre>
