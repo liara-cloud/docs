@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import Highlight from 'react-highlight';
+import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Notice from '../../components/Notice';
 import ZoomableImage from '../../components/ZoomableImage';
-import Link from 'next/link';
 
 export default () => (
   <Layout>
@@ -164,19 +163,68 @@ export default () => (
 
     <h3 id="spam-rate">درصد اسپم بودن ایمیل</h3>
     <p>
-      در <Link href="#inbox">صندوق ورودی</Link>،{' '}
-      <Link href="send-email">ارسال شده‌ها</Link> و صفحه‌ای که محتوای
-      ایمیل نمایش داده می‌شود می‌توانید درصد اسپم بودن ایمیل را مشاهده
-      کنید. اگر این درصد در ایمیل‌های ارسالی بیش از ۵۰ باشد، ایمیل از طرف
-      لیارا ارسال نخواهد شد که برای مطالعه در رابطه با نحوه‌ی بهبود ایمیل
-      می‌توانید به این{' '}
+      شما می‌توانید درصد اسپم بودن هر ایمیل را در صفحه‌های{' '}
+      <Link href="#inbox">صندوق ورودی</Link>،{' '}
+      <Link href="send-email">ارسال شده‌ها</Link> و صفحه‌‌ای که محتوای هر
+      ایمیل را نمایش می‌دهد، مشاهده کنید. چنانچه درصد اسپم بودن ایمیل‌های
+      ارسال شده توسط شما بیش از ۵۰ باشد، ایمیل شما از طرف لیارا ارسال
+      نخواهد شد.
+    </p>
+    <p>
+      برای مطالعه در رابطه با نحوه‌ی بهبود ایمیل می‌توانید این{' '}
       <a
         href="https://www.copernica.com/en/documentation/some-tips-to-lower-your-email-spam-score"
         target="_blank"
       >
-        لینک
+        مطلب
       </a>{' '}
-      مراجعه کنید.
+      را مطالعه کرده و همچنین ایمیل خود را با استفاده از ابزارهای زیر،
+      اعتبار سنجی کنید:
     </p>
+    <ul>
+      <li>
+        <a
+          href="https://www.barracudacentral.org/lookups"
+          target="_blank"
+          rel="noopener"
+        >
+          barracudacentral lookups
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.mail-tester.com/"
+          target="_blank"
+          rel="noopener"
+        >
+          mail-tester
+        </a>
+      </li>
+    </ul>
+    <p>
+      درصورتی که احساس کردید ایمیل‌های شما به مقصد مورد نظر ارسال نمی‌شود
+      باید به‌کمک ابزارهای زیر بررسی کنید که دامنه‌ی شما در لیست سیاه قرار
+      نگرفته باشد:
+    </p>
+    <ul>
+      <li>
+        <a
+          href="https://mxtoolbox.com/blacklists.aspx"
+          target="_blank"
+          rel="noopener"
+        >
+          mxtoolbox blacklists check
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.debouncer.com/blacklistlookup"
+          target="_blank"
+          rel="noopener"
+        >
+          debouncer blacklistlookup
+        </a>
+      </li>
+    </ul>
   </Layout>
 );
