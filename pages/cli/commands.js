@@ -236,12 +236,12 @@ export default () => (
 
             <li>&nbsp;&nbsp;env:set</li>
             <p dir="rtl" className="commandDescription">
-                ۲. <Link href="/cli/env/#set">تنظیم و یا ویرایش متغیر محیطی</Link>
+                ۲. <Link href="/cli/env/#set">تنظیم و یا ویرایش متغیرهای محیطی</Link>
             </p>
 
             <li>&nbsp;&nbsp;env:unset</li>
             <p dir="rtl" className="commandDescription">
-                ۳. <Link href="/cli/env/#unset">حذف متغیر محیطی</Link>
+                ۳. <Link href="/cli/env/#unset">حذف متغیرهای محیطی</Link>
             </p>
         </ol>
 

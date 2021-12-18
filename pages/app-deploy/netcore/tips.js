@@ -172,7 +172,7 @@ https://aka.ms/dotnet-download`}
   options.AddPolicy(name: "MyPolicy",
     builder =>
     {
-      builder.WithOrigins("http://example.com",
+      builder.WithOrigins("https://example.com",
                           "https://subdomain.example.com")
               .WithMethods("PUT", "DELETE", "GET");
     });
