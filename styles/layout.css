@@ -220,11 +220,19 @@ img.page-icon {
   direction: ltr;
 }
 
-.article ul {
+.article ul, .article ol {
   font-size: 0.8rem;
   line-height: 1.8em;
   padding-inline-start: 40px;
   margin-block-end: 1em;
+}
+
+.article ul {
+  list-style-type: disc;
+}
+
+.article ol {
+  list-style-type: decimal;
 }
 
 @media (min-width: 768px) {
@@ -265,7 +273,7 @@ img.page-icon {
     line-height: 2em;
   }
 
-  .article ul {
+  .article ul, .article ol {
     font-size: 16px;
     line-height: 2em;
   }
@@ -316,9 +324,6 @@ img.page-icon {
 }
 .footer-icons a:hover {
   opacity: 1;
-}
-article ul {
-  list-style-type: disc;
 }
 video {
   border-radius: 12px;
