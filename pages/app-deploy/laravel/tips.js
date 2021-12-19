@@ -46,6 +46,9 @@ export default () => (
                 <a href="#cors">رفع خطای CORS</a>
             </li>
             <li>
+                <a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a>
+            </li>
+            <li>
                 <a href="#optimization">بهینه کردن لاراول برای استقرار</a>
             </li>
             <li>
@@ -283,6 +286,50 @@ stdout_logfile=/tmp/laravel-worker.log`}
     RewriteRule ^ index.php [L]
 </IfModule>`}
         </Highlight>
+
+        <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
+        <p>
+            برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
+            می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
+            فایل <span className="code">public/.htaccess</span>
+            تنظیم کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
+        </p>
+
+        <Highlight className="plaintext">
+            {`<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>`}
+        </Highlight>
+
+        <Notice variant="warning">
+            توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
+            <span className="code">Strict-Transport-Security</span> باید SSL را
+            فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
+        </Notice>
+
         <h3 id="optimization">بهینه کردن لاراول برای استقرار</h3>
         <p>
             Laravel برای دیپلوی در محیط‌های production با اجرای چند دستور ساده
@@ -347,9 +394,9 @@ stdout_logfile=/tmp/laravel-worker.log`}
         </p>
         <Highlight className="php">
             {`<?php
-namespace App\Http\Middleware;
-use Illuminate\Http\Request;
-use Fideloper\Proxy\TrustProxies as Middleware;
+namespace App\\Http\\Middleware;
+use Illuminate\\Http\\Request;
+use Fideloper\\Proxy\\TrustProxies as Middleware;
 class TrustProxies extends Middleware
 {
     /**
