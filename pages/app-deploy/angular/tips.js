@@ -30,7 +30,7 @@ export default () => (
 
     <ul className="mt-0">
       <li><a href="#nginx-conf">تنظیمات Nginx</a></li>
-      <li><a href="#hsts">فعال‌سازی HSTS</a></li>
+      <li><a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a></li>
       <li><a href="#enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</a></li>
     </ul>
 
@@ -68,26 +68,30 @@ location /images {
       </code>
     </pre>
 
-    <h3 id="hsts">فعال‌سازی HSTS</h3>
+    <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
-      برای فعال‌سازی HSTS و جلوگیری از برخی حملات مرتبط با SSL می‌توانید
-      هدر <span className="code">Strict-Transport-Security</span> را
-      به‌شکل زیر در فایل <span className="code">liara_nginx.conf</span>
-      قرار داده و درنهایت دستور <span className="code">
-        liara deploy
-      </span>{' '}
-      را در مسیر اصلی پروژه اجرا کنید.
+      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
+      می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
+      <Link href="#nginx-conf">تنظیمات Nginx</Link> برنامه‌ی خود تنظیم
+      کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
     </p>
+
     <Highlight className="nginx">
-      {`location / {
+      {`add_header X-Frame-Options DENY always;
+add_header X-Content-Type-Options: nosniff;
+add_header X-XSS-Protection "1; mode=block" always;
+add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+
+location / {
   index index.html index.htm;
   try_files $uri $uri/ /index.html =404;
-  add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 }`}
     </Highlight>
+
     <Notice variant="warning">
-      توجه داشته باشید که قبل از فعال‌سازی HSTS باید SSL را فعال کرده
-      باشید. <Link href="/domains/ssl">توضیحات بیشتر</Link>
+      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
+      <span className="code">Strict-Transport-Security</span> باید SSL را
+      فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
     </Notice>
 
     <h3 id="enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</h3>

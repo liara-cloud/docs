@@ -49,7 +49,7 @@ export default () => (
         <a href="#nginx-customization">تنظیمات Nginx</a>
       </li>
       <li>
-        <a href="#hsts">فعال‌سازی HSTS</a>
+        <a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a>
       </li>
       <li>
         <a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a>
@@ -238,28 +238,32 @@ location / {
 }`}
     </Highlight>
 
-    <h3 id="hsts">فعال‌سازی HSTS</h3>
+    <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
-      برای فعال‌سازی HSTS و جلوگیری از برخی حملات مرتبط با SSL می‌توانید
-      هدر <span className="code">Strict-Transport-Security</span> را
-      به‌شکل زیر در فایل <span className="code">liara_nginx.conf</span>
-      قرار داده و درنهایت دستور <span className="code">
-        liara deploy
-      </span>{' '}
-      را در مسیر اصلی پروژه اجرا کنید.
+      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
+      می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
+      <Link href="#nginx-customization">تنظیمات Nginx</Link> برنامه‌ی خود تنظیم
+      کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
     </p>
+
     <Highlight className="nginx">
-      {`location / {
+      {`add_header X-Frame-Options DENY always;
+add_header X-Content-Type-Options: nosniff;
+add_header X-XSS-Protection "1; mode=block" always;
+add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+
+location / {
   try_files $uri @django_app;
-  add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 }
 location /static {
   alias /usr/src/app/staticfiles;
  }`}
     </Highlight>
+
     <Notice variant="warning">
-      توجه داشته باشید که قبل از فعال‌سازی HSTS باید SSL را فعال کرده
-      باشید. <Link href="/domains/ssl">توضیحات بیشتر</Link>
+      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
+      <span className="code">Strict-Transport-Security</span> باید SSL را
+      فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
     </Notice>
 
     <h3 id="max-upload-size">افزایش محدودیت حجم آپلود فایل</h3>
