@@ -1,5 +1,8 @@
-import Layout from "../../../components/Layout";
-import Head from "next/head";
+import Head from 'next/head';
+import Link from 'next/link';
+import Highlight from 'react-highlight';
+import Notice from '../../../components/Notice';
+import Layout from '../../../components/Layout';
 
 export default () => (
   <Layout>
@@ -27,6 +30,7 @@ export default () => (
 
     <ul className="mt-0">
       <li><a href="#nginx-conf">تنظیمات Nginx</a></li>
+      <li><a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a></li>
       <li><a href="#enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</a></li>
     </ul>
 
@@ -63,6 +67,32 @@ location /images {
 }`}
       </code>
     </pre>
+
+    <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
+    <p>
+      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
+      می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
+      <Link href="#nginx-conf">تنظیمات Nginx</Link> برنامه‌ی خود تنظیم
+      کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
+    </p>
+
+    <Highlight className="nginx">
+      {`add_header X-Frame-Options DENY always;
+add_header X-Content-Type-Options: nosniff;
+add_header X-XSS-Protection "1; mode=block" always;
+add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+
+location / {
+  index index.html index.htm;
+  try_files $uri $uri/ /index.html =404;
+}`}
+    </Highlight>
+
+    <Notice variant="warning">
+      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
+      <span className="code">Strict-Transport-Security</span> باید SSL را
+      فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
+    </Notice>
 
     <h3 id="enable-gzip-and-browser-caching">فعال‌سازی gzip و Browser Caching</h3>
     <p>
