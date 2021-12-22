@@ -10,10 +10,17 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "16"
       - name: update-liara
         env:
           LIARA_TOKEN: ${{ secrets.IRAN_API_TOKEN }}
         run: |
           npm i -g @liara/cli@2
           liara deploy --api-token="$LIARA_TOKEN" --region iran --detach
+      - name: search-liara
+        env:
+          MEILI_PRIVATE_KEY: ${{ secrets.MEILI_PRIVATE_KEY}}
+          MEILI_ROOT_URL: ${{ secrets.MEILI_ROOT_URL}}
+        run: |
+          npm i
+          npm run start:index-doc
