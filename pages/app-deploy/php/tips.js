@@ -30,6 +30,7 @@ export default () => (
       <li><a href="#set-timezone">تنظیم TimeZone</a></li>
       <li><a href="#php-ini">تنظیمات اختصاصی php.ini</a></li>
       <li><a href="#htaccess">تنظیمات اختصاصی htaccess</a></li>
+      <li><a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a></li>
       <li><a href="#cors">رفع خطای CORS</a></li>
       <li><a href="#default-php-modules">لیست اکستنشن‌های نصب شده</a></li>
     </ul>
@@ -114,6 +115,29 @@ max_execution_time = 600`}
       لیارا نیز منتقل کنید. اگر در این قسمت با مشکلی مواجه شدید، از طریق تیکت،
       مسأله را با پشتیبانی لیارا مطرح کنید.
     </p>
+
+    <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
+    <p>
+      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
+      می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
+      فایل <span className="code">.htaccess</span>
+      تنظیم کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
+    </p>
+
+    <Highlight className="plaintext">
+      {`<IfModule mod_headers.c>
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
+</IfModule>`}
+    </Highlight>
+
+    <Notice variant="warning">
+      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
+      <span className="code">Strict-Transport-Security</span> باید SSL را
+      فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
+    </Notice>
 
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
