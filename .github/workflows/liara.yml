@@ -18,9 +18,10 @@ jobs:
           npm i -g @liara/cli@2
           liara deploy --api-token="$LIARA_TOKEN" --region iran --detach
       - name: search-liara
+        working-directory: ./indexer
         env:
-          MEILI_PRIVATE_KEY: ${{ secrets.MEILI_PRIVATE_KEY}}
-          MEILI_ROOT_URL: ${{ secrets.MEILI_ROOT_URL}}
+          MEILI_PRIVATE_KEY: ${{ secrets.MEILI_PRIVATE_KEY }}
+          MEILI_ROOT_URL: ${{ secrets.MEILI_ROOT_URL }}
         run: |
           npm i
           npm run start:index-doc
