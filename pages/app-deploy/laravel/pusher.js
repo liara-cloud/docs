@@ -24,8 +24,8 @@ export default () => (
         <h3>اتصال به Pusher</h3>
 
         <p>
-            <a href="https://pws.soketi.app/" target="_blank" rel="noopener">
-                pWS
+            <a href="https://docs.soketi.app/" target="_blank" rel="noopener">
+                Soketi
             </a>{' '}
             یک جایگزین رایگان و متن‌باز برای سرویس Pusher است که کاملا با پروتکل{' '}
             <a
