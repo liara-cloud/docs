@@ -98,7 +98,7 @@ export default () => (
             <li>
                 <b>7.4 (پیش‌فرض)</b>
             </li>
-            <li>8.0 (آزمایشی)</li>
+            <li>8.0</li>
         </ul>
         <h3 id="php-ini-customization">تنظیمات اختصاصی php.ini</h3>
         <p>
