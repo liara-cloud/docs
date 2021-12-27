@@ -37,6 +37,9 @@ export default () => (
                 </a>
             </li>
             <li>
+                <a href="#deploy-lumen">استقرار برنامه‌های Lumen</a>
+            </li>
+            <li>
                 <a href="#queues">کار با Queue ها</a>
             </li>
             <li>
@@ -172,6 +175,18 @@ max_execution_time = 600`}
             با این تغییر، هر بار که دیپلوی کنید، لیارا از اجرای دستورات npm
             خودداری می‌کند.
         </p>
+        <h3 id="deploy-lumen">استقرار برنامه‌های Lumen</h3>
+        <p>
+            به‌منظور استقرار پروژه‌های توسعه داده شده با فریم‌ورک Lumen در
+            برنامه‌های Laravel لیارا تنها کافیست که ابزار{' '}
+            <Link href="/cli/install">Liara CLI</Link> را با اجرای دستور زیر به
+            آخرین نسخه به‌روزرسانی کرده:
+        </p>
+        <Highlight className="bash">{`npm i -g @liara/cli`}</Highlight>
+        <p>
+            و درنهایت دستور <span className="code">liara deploy</span> را در
+            مسیر اصلی پروژه اجرا کنید.
+        </p>
         <h3 id="queues">کار با Queue ها</h3>
         <p>
             یکی از امکانات مهم Laravel، قابلیت تعریف صف (Queue) است. در پلتفرم
@@ -286,15 +301,14 @@ stdout_logfile=/tmp/laravel-worker.log`}
     RewriteRule ^ index.php [L]
 </IfModule>`}
         </Highlight>
-
         <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
         <p>
             برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
-            می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
-            فایل <span className="code">public/.htaccess</span>
-            تنظیم کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
+            می‌توانید هدرهای امنیتی را مانند مثال زیر در فایل{' '}
+            <span className="code">public/.htaccess</span>
+            تنظیم کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین
+            کنید:
         </p>
-
         <Highlight className="plaintext">
             {`<IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -323,13 +337,11 @@ stdout_logfile=/tmp/laravel-worker.log`}
     RewriteRule ^ index.php [L]
 </IfModule>`}
         </Highlight>
-
         <Notice variant="warning">
             توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
             <span className="code">Strict-Transport-Security</span> باید SSL را
             فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
         </Notice>
-
         <h3 id="optimization">بهینه کردن لاراول برای استقرار</h3>
         <p>
             Laravel برای دیپلوی در محیط‌های production با اجرای چند دستور ساده
