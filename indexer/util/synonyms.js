@@ -41,4 +41,5 @@ export default {
   arangodb: [],
   seq: [],
   celery: ["سلری"],
+  php: ["پی اج پی"]
 };
