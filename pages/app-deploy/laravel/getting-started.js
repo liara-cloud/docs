@@ -36,32 +36,37 @@ export default () => (
     ></video>
     <p>
       در این بخش به شما کمک می‌کنیم که در سریع‌ترین زمان ممکن برنامه
-      Laravel ای‌ که نوشتید را روی بستر ابری لیارا مستقر کنید. در هر گام،
+      Laravel و یا Lumen ای‌ که نوشتید را روی بستر ابری لیارا مستقر کنید. در هر گام،
       شما با یک قابلیت مهم در لیارا آشنا می‌شوید و می‌توانید از آن‌ها در
       استقرار برنامه‌ی‌تان استفاده کنید.
     </p>
 
     <p>
-      در حال حاضر، این نسخه‌ها از Laravel در سرویس ابری لیارا پشتیبانی
+      در حال حاضر، این نسخه‌ها از Laravel و Lumen در سرویس ابری لیارا پشتیبانی
       می‌شود:
     </p>
 
     <ul dir="ltr">
-      <li>5.5.^</li>
-      <li>6.^</li>
-      <li>7.^</li>
-      <li>8.^</li>
+      <li>Laravel 5.5.^</li>
+      <li>Laravel 6.^</li>
+      <li>Laravel 7.^</li>
+      <li>Laravel 8.^</li>
     </ul>
 
-    <Notice variant="warning">
-      به‌منظور استقرار پروژه‌های توسعه داده شده با فریم‌ورک Lumen در
-      برنامه‌های Laravel لیارا تنها کافیست که ابزار{' '}
-      <Link href="/cli/install">Liara CLI</Link> را با اجرای دستور{' '}
-      <span className="code">npm i -g @liara/cli</span> به آخرین نسخه
-      به‌روزرسانی کرده و درنهایت دستور{' '}
-      <span className="code">liara deploy</span> را در مسیر اصلی پروژه
-      اجرا کنید.
-    </Notice>
+    <p>
+      همچنین، این نسخه‌ها از PHP را هم پشتیبانی می‌کنیم:
+      {' '}
+      <Link href="/app-deploy/laravel/tips#php-version">(تغییر نسخه‌ی PHP)</Link>
+    </p>
+
+    <ul dir="ltr">
+      <li>PHP 7.2</li>
+      <li>PHP 7.3</li>
+      <li>
+        <b>PHP 7.4 (پیش‌فرض)</b>
+      </li>
+      <li>PHP 8.0</li>
+    </ul>
 
     <Notice variant="info">
       اگر قصد دارید تنظیمات پیش‌فرض php.ini را تغییر دهید و یا با Queue ها
