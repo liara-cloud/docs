@@ -1,7 +1,8 @@
-import Layout from '../../components/Layout';
 import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
+import Layout from '../../components/Layout';
+import Notice from '../../components/Notice';
 
 export default () => (
     <Layout>
@@ -20,6 +21,12 @@ export default () => (
                 <span className="page-description">(Docker Apps)</span>
             </div>
         </div>
+
+        <Notice variant="warning">
+            در حال حاضر برنامه‌های Yii به‌صورت مستقیم در لیارا پشتیبانی نمی‌شوند
+            اما شما می‌توانید پروژه‌های توسعه داده شده با این فریم‌ورک را طبق
+            دستورالعمل زیر در لیارا مستقر کنید.
+        </Notice>
 
         <p>
             Yii یک فریم‌ورک قدرتمند و در عین حال انعطاف‌پذیر است که برای استقرار
