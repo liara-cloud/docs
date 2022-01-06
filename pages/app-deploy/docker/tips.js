@@ -35,7 +35,7 @@ export default () => (
             <Link href="/app-features/file-system">
                 فایل سیستم برنامه‌های لیارا
             </Link>{' '}
-            Read-Only است و شما نمی‌تونید از دستور
+            Read-Only است و شما نمی‌توانید از دستور
             <span className="code">VOLUME</span>
             در Dockerfile استفاده کنید و به‌جای آن باید از قابلیت «
             <Link href="/app-deploy/docker/disks">دیسک‌ها</Link>» استفاده کنید.
