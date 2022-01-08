@@ -47,10 +47,10 @@ export default () => (
     </p>
 
     <ul dir="ltr">
-      <li>5.5.^</li>
-      <li>6.^</li>
-      <li>7.^</li>
-      <li>8.^</li>
+      <li>Laravel and Lumen 5.5.^</li>
+      <li>Laravel and Lumen 6.^</li>
+      <li>Laravel and Lumen 7.^</li>
+      <li>Laravel and Lumen 8.^</li>
     </ul>
 
     <p>
