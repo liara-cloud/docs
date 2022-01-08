@@ -360,8 +360,8 @@ export default class Sidebar extends Component {
             <NavTitle href="/cicd">راه‌اندازی CI/CD</NavTitle>
             <ul className="nav__list">
               <li><ActiveLink href="/cicd/about">درباره CI/CD</ActiveLink></li>
-              <li><ActiveLink href="/cicd/gitlab">استفاده از GitLab</ActiveLink></li>
               <li><ActiveLink href="/cicd/github">استفاده از GitHub</ActiveLink></li>
+              <li><ActiveLink href="/cicd/gitlab">استفاده از GitLab</ActiveLink></li>
             </ul>
           </nav>
 
