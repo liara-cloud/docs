@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../components/Layout';
+import Notice from '../../components/Notice';
 import Asciinema from '../../components/Asciinema';
 
 export default () => (
@@ -21,6 +22,12 @@ export default () => (
                 <span className="page-description">(Docker Apps)</span>
             </div>
         </div>
+
+        <Notice variant="warning">
+            در حال حاضر RabbitMQ به‌صورت مستقیم در لیارا پشتیبانی نمی‌شود اما
+            شما می‌توانید این نرم‌افزار را را طبق دستورالعمل زیر در لیارا مستقر
+            کنید.
+        </Notice>
 
         <p>
             <a
