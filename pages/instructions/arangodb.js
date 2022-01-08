@@ -23,6 +23,12 @@ export default () => (
             </div>
         </div>
 
+        <Notice variant="warning">
+            در حال حاضر ArangoDB به‌صورت مستقیم در لیارا پشتیبانی نمی‌شود اما
+            شما می‌توانید این دیتابیس را را طبق دستورالعمل زیر در لیارا مستقر
+            کنید.
+        </Notice>
+
         <p>
             <a href="https://hub.docker.com/_/arangodb" target="_blank">
                 ArangoDB

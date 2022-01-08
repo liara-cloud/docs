@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../components/Layout';
+import Notice from '../../components/Notice';
 import Asciinema from '../../components/Asciinema';
 
 export default () => (
@@ -20,6 +21,12 @@ export default () => (
                 <span className="page-description">(Docker Apps)</span>
             </div>
         </div>
+
+        <Notice variant="warning">
+            در حال حاضر Kibana به‌صورت مستقیم در لیارا پشتیبانی نمی‌شود اما شما
+            می‌توانید این پلتفرم را را طبق دستورالعمل زیر در لیارا مستقر کنید.
+        </Notice>
+
         <p>
             Kibana یک پلتفرم است که با استفاده از آن می‌توان ساز و کارهایی مثل
             ایجاد گزارش، ایجاد نوتیفیکشن، مانیتورینگ بخش‌های مختلف رویدادها و
@@ -112,16 +119,13 @@ export default () => (
             <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
         </p>
         <Highlight className="bash">
-            {
-                `$ liara deploy --app kibana-platform \\
+            {`$ liara deploy --app kibana-platform \\
                --image bitnami/kibana:7 \\
                --port 5601 \\
                --disks kibana:/opt/bitnami/kibana \\
                --disks bitnami:/bitnami \\
-               --detach`
-            }
+               --detach`}
         </Highlight>
         <Asciinema id="454553" />
-
     </Layout>
 );
