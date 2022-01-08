@@ -101,11 +101,20 @@ const Index = () => (
           <span>PHP</span>
         </a>
       </Link>
-      <a href="/app-deploy/laravel/getting-started">
-        <img src="/static/platformicons/laravel.svg" alt="laravel" />
-        <span>Laravel</span>
-      </a>
-      <Link href="/instructions/yii">
+  
+      <Link href="/app-deploy/laravel/getting-started">
+        <a>
+          <img src="/static/platformicons/laravel.svg" alt="laravel" />
+          <span>Laravel</span>
+        </a>
+      </Link>
+      <Link href="/app-deploy/laravel/getting-started">
+        <a>
+          <img src="/static/platformicons/lumen.svg" alt="lumen" />
+          <span>Lumen</span>
+        </a>
+      </Link>
+      <Link href="/one-click-apps/wordpress/install">
         <a>
           <img src="/static/platformicons/yii.svg" alt="yii" />
           <span>Yii</span>
