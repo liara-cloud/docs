@@ -92,7 +92,7 @@ export default () => (
     <h3 id="supervisord-conf">استفاده از Supervisord</h3>
     <p>
       در صورتی که نیاز به Worker برای اجرای Background Job‌ها برای مثال با
-      Celery را دارید، می‌تونید یک فایل به‌نام
+      Celery را دارید، می‌توانید یک فایل به‌نام
       <span className="code">supervisor.conf</span>
       در کنار <span className="code">requirements.txt</span>
       بسازید و سپس دیپلوی کنید. در این‌صورت Supervisor اجرا شده و دستور
