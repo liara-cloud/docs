@@ -196,21 +196,23 @@ img.page-icon {
   flex-wrap: wrap;
 }
 .platforms a {
+  width: 81px;
+  height: 92px;
   color: #666666;
   text-align: center;
   padding: 0;
   border: none;
   display: block;
-  margin-left: 32px;
-  margin-bottom: 24px;
+  margin-left: 10px;
+  margin-bottom: 20px;
   border-radius: 12px;
 }
 .platforms img {
   max-width: none;
   border: none;
   border-radius: 12px;
-  width: 85px;
-  height: 85px;
+  width: 65px;
+  height: 65px;
 }
 .platforms span {
   line-height: 28px;
@@ -218,6 +220,15 @@ img.page-icon {
   display: block;
   font-weight: bold;
   direction: ltr;
+}
+
+.nav__title img, .nav__link img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-left: 7px;
+  display: inline-block;
+  vertical-align: -4px;
 }
 
 .article ul, .article ol {
