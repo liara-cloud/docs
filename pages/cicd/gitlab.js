@@ -53,7 +53,7 @@ export default () => (
       تعریف کنید. در پایین یک فایل نمونه می‌بینید:
     </p>
     <Highlight className="yaml">
-      {`image: node:12-alpine
+      {`image: node:16-alpine
 
 stages:
   - update-production
