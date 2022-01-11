@@ -26,7 +26,7 @@ export async function crawlingDocData() {
           const platform = $(".page-icon").attr("src");
           data.push({
             id: uuidv4(),
-            url: url + link,
+            url: link,
             platform:
               typeof platform != "undefined"
                 ? platform
@@ -44,7 +44,7 @@ export async function crawlingDocData() {
             const platform = $(".page-icon").attr("src");
             data.push({
               id: uuidv4(),
-              url: url + link,
+              url: link,
               platform:
                 typeof platform != "undefined"
                   ? platform
