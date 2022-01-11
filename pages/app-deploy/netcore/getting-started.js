@@ -34,7 +34,7 @@ export default () => (
     <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌کنیم:</p>
     <ul>
       <li>
-        6.0 <strong>(LTS)</strong> (آزمایشی)
+        6.0 <strong>(LTS)</strong>
       </li>
       <li>5.0</li>
       <li>
