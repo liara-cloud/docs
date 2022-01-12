@@ -184,6 +184,15 @@ export default () => (
     <ul>
       <li>
         <a
+          href="https://www.mailgenius.com/"
+          target="_blank"
+          rel="noopener"
+        >
+          mailgenius
+        </a>
+      </li>
+      <li>
+        <a
           href="https://www.barracudacentral.org/lookups"
           target="_blank"
           rel="noopener"
