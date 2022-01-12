@@ -1,6 +1,7 @@
-import Layout from '../components/Layout';
 import Head from 'next/head';
 import Link from 'next/link';
+import Layout from '../components/Layout';
+import ProjectIcon from "../components/ProjectIcon";
 
 const Index = () => (
   <Layout>
@@ -25,22 +26,19 @@ const Index = () => (
     <div className="platforms">
       <Link href="/app-deploy/react/getting-started">
         <a>
-          <img src="/static/platformicons/react.svg" alt="react" />
+          <ProjectIcon platform="react" />
           <span>React</span>
         </a>
       </Link>
       <Link href="/app-deploy/vue/getting-started">
         <a>
-          <img src="/static/platformicons/vue.svg" alt="vue" />
+          <ProjectIcon platform="vue" />
           <span>Vue</span>
         </a>
       </Link>
       <Link href="/app-deploy/angular/getting-started">
         <a>
-          <img
-            src="/static/platformicons/angularjs.svg"
-            alt="angularjs"
-          />
+          <ProjectIcon platform="angularjs" />
           <span>Angular</span>
         </a>
       </Link>
@@ -52,13 +50,13 @@ const Index = () => (
       </Link>
       <Link href="/app-deploy/static/getting-started">
         <a>
-          <img src="/static/platformicons/HTML5.svg" alt="HTML5" />
+          <ProjectIcon platform="HTML5" />
           <span>Static</span>
         </a>
       </Link>
       <Link href="/app-deploy/nodejs/getting-started">
         <a>
-          <img src="/static/platformicons/nodejs.svg" alt="nodejs" />
+          <ProjectIcon platform="nodejs" />
           <span>NodeJS</span>
         </a>
       </Link>
@@ -97,14 +95,14 @@ const Index = () => (
       </Link>
       <Link href="/app-deploy/php/getting-started">
         <a>
-          <img src="/static/platformicons/php.svg" alt="php" />
+          <ProjectIcon platform="php" />
           <span>PHP</span>
         </a>
       </Link>
-  
+
       <Link href="/app-deploy/laravel/getting-started">
         <a>
-          <img src="/static/platformicons/laravel.svg" alt="laravel" />
+          <ProjectIcon platform="laravel" />
           <span>Laravel</span>
         </a>
       </Link>
@@ -123,28 +121,25 @@ const Index = () => (
 
       <Link href="/app-deploy/django/getting-started">
         <a>
-          <img src="/static/platformicons/django.svg" alt="django" />
+          <ProjectIcon platform="django" />
           <span>Django</span>
         </a>
       </Link>
       <Link href="/app-deploy/flask/getting-started">
         <a>
-          <img src="/static/platformicons/flask.svg" alt="flask" />
+          <ProjectIcon platform="flask" />
           <span>Flask</span>
         </a>
       </Link>
       <Link href="/app-deploy/netcore/getting-started">
         <a>
-          <img
-            src="/static/platformicons/netcore.svg"
-            alt="netcore"
-          />
+          <ProjectIcon platform="netcore" />
           <span>.Net</span>
         </a>
       </Link>
       <Link href="/app-deploy/docker/getting-started">
         <a>
-          <img src="/static/platformicons/docker.svg" alt="Docker" />
+          <ProjectIcon platform="docker" />
           <span>Docker</span>
         </a>
       </Link>

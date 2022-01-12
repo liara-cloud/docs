@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Highlight from 'react-highlight';
 import Layout from '../../../components/Layout';
 import Notice from '../../../components/Notice';
+import ProjectIcon from "../../../components/ProjectIcon";
 import ZoomableImage from '../../../components/ZoomableImage';
 
 export default () => (
@@ -14,11 +15,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/django.svg"
-        alt="django"
-      />
+      <ProjectIcon platform="django" />
       <div className="page-title">
         <h1>برنامه‌های Django</h1>
         <span className="page-description">(Django Apps)</span>

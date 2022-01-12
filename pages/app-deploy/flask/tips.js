@@ -1,9 +1,9 @@
-import Layout from "../../../components/Layout";
-import Notice from "../../../components/Notice";
 import Head from "next/head";
 import Highlight from "react-highlight";
+import Layout from "../../../components/Layout";
+import Notice from "../../../components/Notice";
+import ProjectIcon from "../../../components/ProjectIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
-
 
 export default () => (
   <Layout>
@@ -14,11 +14,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/flask.svg"
-        alt="flask"
-      />
+      <ProjectIcon platform="flask" />
       <div className="page-title">
         <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>
@@ -90,20 +86,20 @@ export default () => (
     </Notice>
 
     <h3 id="cors">رفع خطای CORS</h3>
-        <p>
-            درصورتی که پس نصب و پیکربندی پکیج{` `}
-            <a
-                href="https://pypi.org/project/Flask-Cors/"
-                target="_blank"
-                rel="noopener"
-            >
-                Flask-Cors
-            </a>
-            {` `}
-            با خطای CORS مواجه شده‌اید باید صحت resources را مورد بررسی
-            قرار دهید:{' '}
-        </p>
-        <Highlight className="python">{`from flask import Flask
+    <p>
+      درصورتی که پس نصب و پیکربندی پکیج{` `}
+      <a
+        href="https://pypi.org/project/Flask-Cors/"
+        target="_blank"
+        rel="noopener"
+      >
+        Flask-Cors
+      </a>
+      {` `}
+      با خطای CORS مواجه شده‌اید باید صحت resources را مورد بررسی
+      قرار دهید:{' '}
+    </p>
+    <Highlight className="python">{`from flask import Flask
 from flask_cors import CORS
 
 app = Flask(__name__)

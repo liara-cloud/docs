@@ -1,7 +1,8 @@
-import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
   <Layout>
@@ -10,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/nodejs.svg"
-        alt="nodejs"
-      />
+      <ProjectIcon platform="nodejs" />
       <div className="page-title">
         <h1>برنامه‌های NodeJS</h1>
         <span className="page-description">(NodeJS Apps)</span>
@@ -42,7 +39,7 @@ export default () => (
     <p>
       در حال حاضر، این نسخه‌ها از NodeJS در سرویس ابری لیارا پشتیبانی می‌شود:
     </p>
-    
+
     <ul>
       <li>8</li>
       <li>10</li>

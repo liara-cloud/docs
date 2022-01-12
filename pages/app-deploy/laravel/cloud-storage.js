@@ -1,8 +1,9 @@
-import Layout from "../../../components/Layout";
-import Notice from "../../../components/Notice";
-import Highlight from "react-highlight";
 import Head from "next/head";
 import Link from "next/link";
+import Highlight from "react-highlight";
+import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
     <Layout>
@@ -11,19 +12,15 @@ export default () => (
         </Head>
 
         <div className="page-head">
-            <img
-                className="page-icon"
-                src="/static/platformicons/laravel.svg"
-                alt="laravel"
-            />
+            <ProjectIcon platform="laravel" />
             <div className="page-title">
                 <h1>برنامه‌های Laravel</h1>
                 <span className="page-description">(Laravel Apps)</span>
             </div>
         </div>
-        
+
         <h3>اتصال به سرویس فایل</h3>
-        
+
         <p>
             بدون شک اتصال برنامه به یک <Link href="/storage/object-storage/about">سرویس فایل</Link> مطمئن برای نگهداری داده‌های آپلود شده توسط کاربران که درنهایت باعث اطمینان خاطر صاحبان کسب و کار و بهبود عملکرد برنامه‌ می‌شود را باید یکی از اولویت‌های مهم دانست.
         </p>
@@ -83,7 +80,7 @@ BUCKET_NAME=<Name of you're bucket>`}
         </p>
 
         <Notice variant="warning">
-        توجه داشته باشید که فایل <span className="code">.env</span> پروژه‌ی لوکال شما بر روی برنامه‌ی تهیه شده مستقر نخواهد شد.
+            توجه داشته باشید که فایل <span className="code">.env</span> پروژه‌ی لوکال شما بر روی برنامه‌ی تهیه شده مستقر نخواهد شد.
         </Notice>
 
         <h3 id="how-to-use">نحوه‌ی استفاده</h3>

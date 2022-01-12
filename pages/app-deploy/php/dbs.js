@@ -1,8 +1,9 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
   <Layout>
@@ -13,11 +14,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/php.svg"
-        alt="php"
-      />
+      <ProjectIcon platform="php" />
       <div className="page-title">
         <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>

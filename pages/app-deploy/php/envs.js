@@ -1,8 +1,9 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
-import ZoomableImage from "../../../components/ZoomableImage";
 import Highlight from "react-highlight";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -14,11 +15,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/php.svg"
-        alt="php"
-      />
+      <ProjectIcon platform="php" />
       <div className="page-title">
         <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>
