@@ -1,6 +1,7 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -10,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/HTML5.svg"
-        alt="HTML5"
-      />
+      <ProjectIcon platform="HTML5" />
       <div className="page-title">
         <h1>برنامه‌های Static</h1>
         <span className="page-description">(Static Apps)</span>

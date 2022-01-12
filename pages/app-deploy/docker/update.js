@@ -1,7 +1,8 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
   <Layout>
@@ -10,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/docker.svg"
-        alt="docker"
-      />
+      <ProjectIcon platform="docker" />
       <div className="page-title">
         <h1>برنامه‌های Docker</h1>
         <span className="page-description">(Docker Apps)</span>

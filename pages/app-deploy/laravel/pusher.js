@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../../components/Layout';
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
     <Layout>
@@ -10,11 +11,7 @@ export default () => (
             </title>
         </Head>
         <div className="page-head">
-            <img
-                className="page-icon"
-                src="/static/platformicons/laravel.svg"
-                alt="laravel"
-            />
+            <ProjectIcon platform="laravel" />
             <div className="page-title">
                 <h1>برنامه‌های Laravel</h1>
                 <span className="page-description">(Laravel Apps)</span>
@@ -37,7 +34,7 @@ export default () => (
             سازگار شده و به شما در توسعه‌ی برنامه‌های Real-time کمک می‌کند.
             این سرویس، بدون نیاز به این‌که تغییری در کدهای‌تان اعمال کنید، به‌عنوان جایگزین پکیج Laravel Websockets هم عمل می‌کند.
         </p>
-        
+
         <h3>نحوه‌ی راه‌اندازی و استفاده</h3>
         <ol>
             <li>
@@ -48,11 +45,11 @@ export default () => (
                 عمل کرده و پیکربندی‌های امنیتی مورد نیاز را انجام دهید.
             </li>
             <li>
-            در قدم بعد، طبق مستندات{' '}
-            <Link href="/one-click-apps/pusher/laravel">
-                اتصال به Pusher در برنامه‌های Laravel
-            </Link>
-            ، برنامه‌ی Laravel خود را به این سرویس متصل کنید.
+                در قدم بعد، طبق مستندات{' '}
+                <Link href="/one-click-apps/pusher/laravel">
+                    اتصال به Pusher در برنامه‌های Laravel
+                </Link>
+                ، برنامه‌ی Laravel خود را به این سرویس متصل کنید.
             </li>
         </ol>
         <Link href="/app-deploy/laravel/tips">متوجه شدم، برو گام بعدی!</Link>

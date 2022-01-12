@@ -1,7 +1,8 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
   <Layout>
@@ -10,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/flask.svg"
-        alt="flask"
-      />
+      <ProjectIcon platform="flask" />
       <div className="page-title">
         <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>
@@ -23,7 +20,7 @@ export default () => (
 
     <h3>به‌روز‌رسانی برنامه</h3>
     <p>
-    به‌منظور به‌روزرسانی برنامه‌های خود می‌توانید به‌سادگی دستور{' '}
+      به‌منظور به‌روزرسانی برنامه‌های خود می‌توانید به‌سادگی دستور{' '}
       <span className="code">liara deploy</span> را در مسیر اصلی پروژه
       اجرا کنید تا فرایند استقرار برنامه آغاز شود.
     </p>

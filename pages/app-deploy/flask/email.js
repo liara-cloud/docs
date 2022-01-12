@@ -1,8 +1,9 @@
-import Notice from '../../../components/Notice';
-import Layout from '../../../components/Layout';
 import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
+import Notice from '../../../components/Notice';
+import Layout from '../../../components/Layout';
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
     <Layout>
@@ -13,11 +14,7 @@ export default () => (
         </Head>
 
         <div className="page-head">
-            <img
-                className="page-icon"
-                src="/static/platformicons/flask.svg"
-                alt="flask"
-            />
+            <ProjectIcon platform="flask" />
             <div className="page-title">
                 <h1>برنامه‌های Flask</h1>
                 <span className="page-description">(Flask Apps)</span>

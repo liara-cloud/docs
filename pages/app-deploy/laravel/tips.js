@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Highlight from 'react-highlight';
 import Layout from '../../../components/Layout';
 import Notice from '../../../components/Notice';
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
     <Layout>
@@ -12,11 +13,7 @@ export default () => (
             </title>
         </Head>
         <div className="page-head">
-            <img
-                className="page-icon"
-                src="/static/platformicons/laravel.svg"
-                alt="laravel"
-            />
+            <ProjectIcon platform="laravel" />
             <div className="page-title">
                 <h1>برنامه‌های Laravel</h1>
                 <span className="page-description">(Laravel Apps)</span>

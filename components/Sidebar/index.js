@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-
 import NavTitle from './NavTitle';
 import ActiveLink from './ActiveLink';
+import React, { Component } from 'react';
+import ProjectIcon from '../../components/ProjectIcon';
 
 export default class Sidebar extends Component {
   state = {
@@ -51,10 +51,7 @@ export default class Sidebar extends Component {
             <ul className="nav__list">
               <li>
                 <NavTitle href="/app-deploy/nodejs">
-                  <img
-                    src="/static/platformicons/nodejs.svg"
-                    alt="nodejs"
-                  />
+                  <ProjectIcon platform="nodejs" />
                   NodeJS
                 </NavTitle>
                 <ul className="nav__list">
@@ -117,10 +114,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/laravel">
-                  <img
-                    src="/static/platformicons/laravel.svg"
-                    alt="laravel"
-                  />
+                  <ProjectIcon platform="laravel" />
                   Laravel
                 </NavTitle>
                 <ul className="nav__list">
@@ -203,10 +197,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/php">
-                  <img
-                    src="/static/platformicons/php.svg"
-                    alt="php"
-                  />
+                  <ProjectIcon platform="php" />
                   PHP
                 </NavTitle>
                 <ul className="nav__list">
@@ -269,10 +260,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/django">
-                  <img
-                    src="/static/platformicons/django.svg"
-                    alt="django"
-                  />
+                  <ProjectIcon platform="django" />
                   Django
                 </NavTitle>
                 <ul className="nav__list">
@@ -340,10 +328,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/flask">
-                  <img
-                    src="/static/platformicons/flask.svg"
-                    alt="flask"
-                  />
+                  <ProjectIcon platform="flask" />
                   Flask
                 </NavTitle>
                 <ul className="nav__list">
@@ -406,10 +391,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/netcore">
-                  <img
-                    src="/static/platformicons/netcore.svg"
-                    alt="netcore"
-                  />
+                  <ProjectIcon platform="netcore" />
                   Net Core.
                 </NavTitle>
                 <ul className="nav__list">
@@ -472,10 +454,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/react">
-                  <img
-                    src="/static/platformicons/react.svg"
-                    alt="react"
-                  />
+                  <ProjectIcon platform="react" />
                   React
                 </NavTitle>
                 <ul className="nav__list">
@@ -518,10 +497,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/angular">
-                  <img
-                    src="/static/platformicons/angularjs.svg"
-                    alt="angular"
-                  />
+                  <ProjectIcon platform="angularjs" />
                   Angular
                 </NavTitle>
                 <ul className="nav__list">
@@ -564,10 +540,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/vue">
-                  <img
-                    src="/static/platformicons/vue.svg"
-                    alt="vue"
-                  />
+                  <ProjectIcon platform="vue" />
                   Vue
                 </NavTitle>
                 <ul className="nav__list">
@@ -610,10 +583,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/static">
-                  <img
-                    src="/static/platformicons/HTML5.svg"
-                    alt="static"
-                  />
+                  <ProjectIcon platform="HTML5" />
                   Static
                 </NavTitle>
                 <ul className="nav__list">
@@ -656,10 +626,7 @@ export default class Sidebar extends Component {
               </li>
               <li>
                 <NavTitle href="/app-deploy/docker">
-                  <img
-                    src="/static/platformicons/docker.svg"
-                    alt="docker"
-                  />
+                  <ProjectIcon platform="docker" />
                   Docker
                 </NavTitle>
                 <ul className="nav__list">

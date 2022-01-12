@@ -1,8 +1,9 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
-import Notice from "../../../components/Notice";
 import Highlight from "react-highlight";
+import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
   <Layout>
@@ -11,17 +12,13 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/flask.svg"
-        alt="flask"
-      />
+      <ProjectIcon platform="flask" />
       <div className="page-title">
         <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>
       </div>
     </div>
-    
+
     <h3>استقرار اولین برنامه</h3>
 
     <h4>فهرست عناوین:</h4>
@@ -123,7 +120,7 @@ export default () => (
     </p>
     <pre>
       <code>
-{`File "/usr/local/lib/python3.7/site-packages/gunicorn/util.py", line 350, in import_app
+        {`File "/usr/local/lib/python3.7/site-packages/gunicorn/util.py", line 350, in import_app
   __import__(module)
   ModuleNotFoundError: No module named 'app'`}
       </code>

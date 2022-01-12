@@ -1,8 +1,9 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
   <Layout>
@@ -13,11 +14,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/django.svg"
-        alt="django"
-      />
+      <ProjectIcon platform="django" />
       <div className="page-title">
         <h1>برنامه‌های Django</h1>
         <span className="page-description">(Django Apps)</span>
@@ -75,19 +72,19 @@ export default () => (
         حال برنامه‌ بعد از اضافه شدن این ENV می‌تواند به دیتابیس MySQL وصل شود.
       </p>
 
-    <Notice variant="info">
-      توجه داشته باشید برای اتصال به هر دیتابیس باید درایور‌های آن را نصب کرده
-      باشید. مثلا برای MySQL و PostgreSQL نیاز است تا مقادیر زیر در فایل
-      requirements.txt شما وجود داشته باشد. این یک فایل نمونه برای Django است:
-      <Highlight className="config">
-        {`Django == 3.0.7
+      <Notice variant="info">
+        توجه داشته باشید برای اتصال به هر دیتابیس باید درایور‌های آن را نصب کرده
+        باشید. مثلا برای MySQL و PostgreSQL نیاز است تا مقادیر زیر در فایل
+        requirements.txt شما وجود داشته باشد. این یک فایل نمونه برای Django است:
+        <Highlight className="config">
+          {`Django == 3.0.7
 psycopg2 == 2.8.5
 mysqlclient == 1.4.6‍`}
-      </Highlight>
-    </Notice>
-    <br />
+        </Highlight>
+      </Notice>
+      <br />
 
-    <li>
+      <li>
         <b>SQLite</b>
       </li>
       <p>
@@ -102,7 +99,7 @@ mysqlclient == 1.4.6‍`}
           <a>اطلاعات بیشتر درباره‌ی دیسک‌ها</a>
         </Link>
       </p>
-      </ul>
+    </ul>
 
     <Link href="/app-deploy/django/migrations">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
