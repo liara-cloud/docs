@@ -5,7 +5,7 @@
   "printWidth": 80,
   "singleQuote": false,
   "bracketSpacing": true,
-  "jsxBracketSameLine": false,
+  "bracketSameLine": false,
   "useTabs": false,
   "proseWrap": "preserve",
   "arrowParens": "avoid",
