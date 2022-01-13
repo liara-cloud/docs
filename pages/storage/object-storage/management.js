@@ -14,12 +14,26 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#using-file-service">فعال‌کردن سرویس فایل</a></li>
-      <li><a href="#dashboard">داشبورد مدیریت فایل</a></li>
-      <li><a href="#upload-download-view-files">آپلود، دانلود و مشاهده‌ی فایل‌ها</a></li>
-      <li><a href="#access">مدیریت سطح دسترسی هر باکت</a></li>
-      <li><a href="#files-addresses">آدرس فایل‌ها</a></li>
-      <li><a href="#files-domain">اضافه کردن دامنه اختصاصی به سرویس فایل</a></li>
+      <li>
+        <a href="#using-file-service">فعال‌کردن سرویس فایل</a>
+      </li>
+      <li>
+        <a href="#dashboard">داشبورد مدیریت فایل</a>
+      </li>
+      <li>
+        <a href="#upload-download-view-files">
+          آپلود، دانلود و مشاهده‌ی فایل‌ها
+        </a>
+      </li>
+      <li>
+        <a href="#access">مدیریت سطح دسترسی هر باکت</a>
+      </li>
+      <li>
+        <a href="#files-addresses">آدرس فایل‌ها</a>
+      </li>
+      <li>
+        <a href="#files-domain">اضافه کردن دامنه اختصاصی به سرویس فایل</a>
+      </li>
     </ul>
 
     <h3 id="using-file-service">فعال‌کردن سرویس</h3>

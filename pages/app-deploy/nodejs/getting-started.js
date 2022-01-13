@@ -44,7 +44,9 @@ export default () => (
       <li>8</li>
       <li>10</li>
       <li>12</li>
-      <li><b>14 (پیش‌فرض)</b></li>
+      <li>
+        <b>14 (پیش‌فرض)</b>
+      </li>
       <li>16</li>
     </ul>
 
@@ -82,10 +84,10 @@ export default () => (
     </div>
 
     <Notice variant="info">
-      اگر قصد دارید نسخه‌ی پیش‌فرض NodeJS را تغییر دهید می‌توانید مستندات
-      {' '}
-      <Link href="/app-deploy/nodejs/tips#nodejs-version">انتخاب نسخه‌ی NodeJS</Link>
-      {' '}
+      اگر قصد دارید نسخه‌ی پیش‌فرض NodeJS را تغییر دهید می‌توانید مستندات{" "}
+      <Link href="/app-deploy/nodejs/tips#nodejs-version">
+        انتخاب نسخه‌ی NodeJS
+      </Link>{" "}
       را در توضیحات و نکات تکمیلی این پلتفرم مطالعه بفرمایید.
     </Notice>
 

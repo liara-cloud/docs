@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import Highlight from 'react-highlight';
-import Notice from '../../../components/Notice';
-import Layout from '../../../components/Layout';
+import Head from "next/head";
+import Link from "next/link";
+import Highlight from "react-highlight";
+import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
 import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
@@ -42,12 +42,12 @@ export default () => (
     <p>
       استقرار برنامه‌های ReactJS، توسط وب‌سرور
       <span className="code">Nginx</span>
-      انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این
-      وب‌سرور را مطابق با نیازهای‌تان تنظیم کنید. برای این کار، کافیست که
-      در ریشه‌ی برنامه‌ی‌تان، فایلی با نام
+      انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این وب‌سرور را
+      مطابق با نیازهای‌تان تنظیم کنید. برای این کار، کافیست که در ریشه‌ی
+      برنامه‌ی‌تان، فایلی با نام
       <span className="code">liara_nginx.conf</span>
-      ایجاد کنید. به‌صورت پیش‌فرض، برای برنامه‌های ReactJS، این فایل به
-      شکل زیر تعریف شده‌است:
+      ایجاد کنید. به‌صورت پیش‌فرض، برای برنامه‌های ReactJS، این فایل به شکل زیر
+      تعریف شده‌است:
     </p>
     <pre>
       <code>
@@ -74,10 +74,10 @@ location /images {
 
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
-      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
-      می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
-      <Link href="#nginx-conf">تنظیمات Nginx</Link> برنامه‌ی خود تنظیم
-      کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
+      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping می‌توانید
+      هدرهای امنیتی را مانند مثال زیر در{" "}
+      <Link href="#nginx-conf">تنظیمات Nginx</Link> برنامه‌ی خود تنظیم کرده و
+      نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
     </p>
 
     <Highlight className="nginx">
@@ -93,21 +93,20 @@ location / {
     </Highlight>
 
     <Notice variant="warning">
-      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
-      <span className="code">Strict-Transport-Security</span> باید SSL را
-      فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
+      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{" "}
+      <span className="code">Strict-Transport-Security</span> باید SSL را فعال
+      کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
     </Notice>
 
     <h3 id="enable-gzip-and-browser-caching">
       فعال‌سازی gzip و Browser Caching
     </h3>
     <p>
-      برای کاهش اندازه‌ی صفحات وب، فعال‌سازی فشرده‌ساز gzip و همین‌طور
-      Browser Caching بسیار توصیه می‌شود. برای این‌کار، کافیست که فایلی
-      به‌نام
+      برای کاهش اندازه‌ی صفحات وب، فعال‌سازی فشرده‌ساز gzip و همین‌طور Browser
+      Caching بسیار توصیه می‌شود. برای این‌کار، کافیست که فایلی به‌نام
       <span className="code">liara_nginx.conf</span>
-      در ریشه‌ی برنامه‌ی‌تان، در کنار{' '}
-      <span className="code">package.json</span>، بسازید و بعد دستور
+      در ریشه‌ی برنامه‌ی‌تان، در کنار <span className="code">package.json</span>
+      ، بسازید و بعد دستور
       <span className="code">liara deploy</span>
       را وارد کنید.
     </p>

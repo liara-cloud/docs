@@ -20,7 +20,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
     setDefaultActive(
       document.querySelectorAll(".nav__title--active").length === 0
     );
-    document.addEventListener("keyup", (e) => {
+    document.addEventListener("keyup", e => {
       const { keyCode } = e;
       switch (keyCode) {
         case 191:
@@ -33,19 +33,19 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
     });
   }, []);
 
-  const handleMeiliSearch = (value) => {
+  const handleMeiliSearch = value => {
     const client = new MeiliSearch({
       host: "https://search.liara.ir",
       apiKey:
         "b4ce641bdfe9563cbe1f5701f9a9b53291ae420735087e10e7ab0305d72df96a",
     });
     const index = client.index("docs");
-    return index.search(value, { limit: 5 }).then((res) => {
+    return index.search(value, { limit: 5 }).then(res => {
       setResults(res.hits);
     });
   };
 
-  const handleChangeValue = (e) => {
+  const handleChangeValue = e => {
     const { value } = e.target;
     if (value != "") {
       handleMeiliSearch(value);
@@ -61,7 +61,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
     setSearchOpen(!searchOpen);
   };
 
-  const handleArrow = (arrow) => {
+  const handleArrow = arrow => {
     switch (arrow.keyCode) {
       case 38:
         const Negative = index > 0 ? index - 1 : results.length - 1;
@@ -87,10 +87,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
     setCurrent(results.filter((_, idx) => idx == index)["0"]);
   }, [results, index]);
 
-  const handleHover = (item) => {
+  const handleHover = item => {
     setCurrent(results.filter((_, idx) => idx == item)["0"]);
   };
-  const handleSuggestion = (value) => {
+  const handleSuggestion = value => {
     handleMeiliSearch(value);
     return (valueRef.current.value = value);
   };
@@ -127,7 +127,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
       </button>
       {searchOpen && (
         <>
-          <div className="search-box" onKeyDown={(e) => handleArrow(e)}>
+          <div className="search-box" onKeyDown={e => handleArrow(e)}>
             <input
               ref={valueRef}
               placeholder="جستجو"
@@ -154,10 +154,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                         href={item.element ? item.url + item.element : item.url}
                       >
                         <a
-                          className={`url_results ${current != undefined &&
+                          className={`url_results ${
+                            current != undefined &&
                             item.id == current.id &&
                             `current-result `
-                            }`}
+                          }`}
                           onMouseEnter={() => handleHover(index)}
                         >
                           <div className="platform_container">

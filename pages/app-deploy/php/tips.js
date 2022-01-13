@@ -23,13 +23,27 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#php-version">استقرار برنامه‌های PHP</a></li>
-      <li><a href="#set-timezone">تنظیم TimeZone</a></li>
-      <li><a href="#php-ini">تنظیمات اختصاصی php.ini</a></li>
-      <li><a href="#htaccess">تنظیمات اختصاصی htaccess</a></li>
-      <li><a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a></li>
-      <li><a href="#cors">رفع خطای CORS</a></li>
-      <li><a href="#default-php-modules">لیست اکستنشن‌های نصب شده</a></li>
+      <li>
+        <a href="#php-version">استقرار برنامه‌های PHP</a>
+      </li>
+      <li>
+        <a href="#set-timezone">تنظیم TimeZone</a>
+      </li>
+      <li>
+        <a href="#php-ini">تنظیمات اختصاصی php.ini</a>
+      </li>
+      <li>
+        <a href="#htaccess">تنظیمات اختصاصی htaccess</a>
+      </li>
+      <li>
+        <a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a>
+      </li>
+      <li>
+        <a href="#cors">رفع خطای CORS</a>
+      </li>
+      <li>
+        <a href="#default-php-modules">لیست اکستنشن‌های نصب شده</a>
+      </li>
     </ul>
 
     <h3 id="php-version">استقرار برنامه‌های PHP</h3>
@@ -115,9 +129,9 @@ max_execution_time = 600`}
 
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
-      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping
-      می‌توانید هدرهای امنیتی را مانند مثال زیر در{' '}
-      فایل <span className="code">.htaccess</span>
+      برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping می‌توانید
+      هدرهای امنیتی را مانند مثال زیر در فایل{" "}
+      <span className="code">.htaccess</span>
       تنظیم کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
     </p>
 
@@ -131,18 +145,16 @@ max_execution_time = 600`}
     </Highlight>
 
     <Notice variant="warning">
-      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{' '}
-      <span className="code">Strict-Transport-Security</span> باید SSL را
-      فعال کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
+      توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{" "}
+      <span className="code">Strict-Transport-Security</span> باید SSL را فعال
+      کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
     </Notice>
 
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
-      درصورتی که در برنامه‌ی PHP با خطای CORS مواجه شده‌اید، توصیه می‌شود
-      قطعه کد زیر را به{' '}
-      <Link href="/app-deploy/php/tips#htaccess">
-        تنظیمات اختصاصی htaccess
-      </Link>{' '}
+      درصورتی که در برنامه‌ی PHP با خطای CORS مواجه شده‌اید، توصیه می‌شود قطعه
+      کد زیر را به{" "}
+      <Link href="/app-deploy/php/tips#htaccess">تنظیمات اختصاصی htaccess</Link>{" "}
       پروژه‌ی خود اضافه کنید.
     </p>
 
@@ -152,14 +164,14 @@ max_execution_time = 600`}
 `}</Highlight>
 
     <p>
-      برای کسب اطلاعات بیشتر{' '}
+      برای کسب اطلاعات بیشتر{" "}
       <a
         href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
         target="_blank"
         rel="noopener"
       >
         مستندات CORS
-      </a>{' '}
+      </a>{" "}
       را مطالعه کنید.
     </p>
 

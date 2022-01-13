@@ -25,19 +25,28 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#python-version">انتخاب نسخه‌ی Python</a></li>
-      <li><a href="#set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
-      <li><a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a></li>
-      <li><a href="#cors">رفع خطای CORS</a></li>
+      <li>
+        <a href="#python-version">انتخاب نسخه‌ی Python</a>
+      </li>
+      <li>
+        <a href="#set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a>
+      </li>
+      <li>
+        <a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a>
+      </li>
+      <li>
+        <a href="#cors">رفع خطای CORS</a>
+      </li>
     </ul>
 
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
     <p>
-      به‌صورت پیش‌فرض برنامه‌ی شما روی Python 3.8 اجرا می‌شود.
-      در صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
-      می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
-      اضافه کنید. توجه داشته باشید که فایل <span className="code">liara.json</span>
-      را باید در کنار فایل <span className="code">requirements.txt</span> بسازید:
+      به‌صورت پیش‌فرض برنامه‌ی شما روی Python 3.8 اجرا می‌شود. در صورتی که قصد
+      دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید می‌توانید داخل
+      فایل <span className="code">liara.json</span> بخش زیر را اضافه کنید. توجه
+      داشته باشید که فایل <span className="code">liara.json</span>
+      را باید در کنار فایل <span className="code">requirements.txt</span>{" "}
+      بسازید:
     </p>
     <Highlight className="json">
       {`{
@@ -47,9 +56,7 @@ export default () => (
 }
 `}
     </Highlight>
-    <p>
-
-    </p>
+    <p></p>
     <ul>
       <li>3.7</li>
       <li>3.8</li>
@@ -76,13 +83,20 @@ export default () => (
     </pre>
     <h3 id="gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</h3>
     <p>
-      درصورتی که در برنامه‌ی Flask خود با خطای <span className="code">[CRITICAL] WORKER TIMEOUT</span> مواجه شده‌اید و به WORKER TIMEOUT بیشتر از ۳۰ ثانیه نیاز دارید می‌توانید وارد تنظیمات برنامه‌ی Flask خود شده و در بخش متغیرها، متغیر <span className="code">GUNICORN_TIMEOUT=60</span> را به‌شکل زیر اضافه کرده و درنهایت با کلیک بر روی دکمه ثبت تغییرات، WORKER TIMEOUT برنامه را افزایش دهید.
+      درصورتی که در برنامه‌ی Flask خود با خطای{" "}
+      <span className="code">[CRITICAL] WORKER TIMEOUT</span> مواجه شده‌اید و به
+      WORKER TIMEOUT بیشتر از ۳۰ ثانیه نیاز دارید می‌توانید وارد تنظیمات
+      برنامه‌ی Flask خود شده و در بخش متغیرها، متغیر{" "}
+      <span className="code">GUNICORN_TIMEOUT=60</span> را به‌شکل زیر اضافه کرده
+      و درنهایت با کلیک بر روی دکمه ثبت تغییرات، WORKER TIMEOUT برنامه را افزایش
+      دهید.
     </p>
 
     <ZoomableImage src="https://files.liara.ir/docs/flask/add-gunicorn-timeout-variable-to-flask-app.gif"></ZoomableImage>
 
     <Notice variant="info">
-      توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span> براساس ثانیه است.
+      توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span>{" "}
+      براساس ثانیه است.
     </Notice>
 
     <h3 id="cors">رفع خطای CORS</h3>
@@ -96,8 +110,7 @@ export default () => (
         Flask-Cors
       </a>
       {` `}
-      با خطای CORS مواجه شده‌اید باید صحت resources را مورد بررسی
-      قرار دهید:{' '}
+      با خطای CORS مواجه شده‌اید باید صحت resources را مورد بررسی قرار دهید:{" "}
     </p>
     <Highlight className="python">{`from flask import Flask
 from flask_cors import CORS
@@ -108,6 +121,5 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 @app.route("/")
 def helloWorld():
   return "Hello, cross-origin-world!"`}</Highlight>
-
   </Layout>
 );

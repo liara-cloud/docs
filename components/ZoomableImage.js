@@ -1,12 +1,12 @@
-import React, { Component, createRef } from 'react'
- 
+import React, { Component, createRef } from "react";
+
 let zoomInstance;
 
 export default class ZoomableImage extends Component {
-  imageRef = createRef()
+  imageRef = createRef();
   async componentDidMount() {
-    if( ! zoomInstance) {
-      const { default: zoom } = await import('medium-zoom')
+    if (!zoomInstance) {
+      const { default: zoom } = await import("medium-zoom");
       zoomInstance = zoom();
     }
 
@@ -20,6 +20,6 @@ export default class ZoomableImage extends Component {
   }
 
   render() {
-    return <img ref={this.imageRef} {...this.props} />
+    return <img ref={this.imageRef} {...this.props} />;
   }
 }

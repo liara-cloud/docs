@@ -31,16 +31,17 @@ export default () => (
     <p>
       همان‌طور که مشاهده می‌کنید، فیلد
       <span className="code">cron</span>
-      یک آرایه است و این یعنی می‌توانید یک یا چند کران‌جاب تعریف کنید.
-
-      بعد از تنظیم فایل <span className="code">liara.json</span>، باید دستور{" "}
+      یک آرایه است و این یعنی می‌توانید یک یا چند کران‌جاب تعریف کنید. بعد از
+      تنظیم فایل <span className="code">liara.json</span>، باید دستور{" "}
       <span className="code">liara deploy</span>
-      را اجرا کنید تا تغییرات‌تان روی سرور اعمال شود و jobهای‌تان اجرا شوند.
-      در قسمت لاگ‌ها هم هر زمان که یک job اجرا شود، لاگ‌های مختص به‌آن‌ها نمایش داده می‌شود.
+      را اجرا کنید تا تغییرات‌تان روی سرور اعمال شود و jobهای‌تان اجرا شوند. در
+      قسمت لاگ‌ها هم هر زمان که یک job اجرا شود، لاگ‌های مختص به‌آن‌ها نمایش
+      داده می‌شود.
     </p>
 
     <p>
-      بعد از اتمام فرایند استقرار، jobهایی که تعریف کرده‌اید را می‌توانید در صفحه‌ی تنظیمات مشاهده کنید:
+      بعد از اتمام فرایند استقرار، jobهایی که تعریف کرده‌اید را می‌توانید در
+      صفحه‌ی تنظیمات مشاهده کنید:
     </p>
 
     <ZoomableImage src="/static/cron-jobs.png" alt="بخش Cron Job ها" />
@@ -54,26 +55,48 @@ export default () => (
       </ul>
     </p>
     <Notice varint="info">
-    به‌زودی پشتیبانی سایر پلتفرم‌ها از این قابلیت را اضافه خواهیم کرد.
-      چنانچه پلتفرم مدنظر شما در این لیست نیست، می‌توانید با پشتیبانی از طریق تیکت ارتباط بگیرید تا پلتفرم مربوطه را اضافه کنیم.
+      به‌زودی پشتیبانی سایر پلتفرم‌ها از این قابلیت را اضافه خواهیم کرد. چنانچه
+      پلتفرم مدنظر شما در این لیست نیست، می‌توانید با پشتیبانی از طریق تیکت
+      ارتباط بگیرید تا پلتفرم مربوطه را اضافه کنیم.
     </Notice>
 
     <h3>بازه‌های زمانی رایج</h3>
     <p>
-      برای تعریف هر Job، ابتدا لازم است که زمان اجرای آن را تعریف کنید.
-      در Cron Job، تعریف زمان نحوه‌ی نگارش خاصی دارد که در زیر چند نمونه‌ی پر استفاده را عنوان کرده‌ایم:
+      برای تعریف هر Job، ابتدا لازم است که زمان اجرای آن را تعریف کنید. در Cron
+      Job، تعریف زمان نحوه‌ی نگارش خاصی دارد که در زیر چند نمونه‌ی پر استفاده را
+      عنوان کرده‌ایم:
     </p>
     <ul>
-      <li><span className="code">* * * * *</span>{' '}<a href="https://crontab.guru/every-1-minute" target="_blank">هر دقیقه</a></li>
-      <li><span className="code">0 * * * *</span>{' '}<a href="https://crontab.guru/every-1-hour" target="_blank">هر یک ساعت</a></li>
-      <li><span className="code">0 1 * * *</span>{' '}<a href="https://crontab.guru/every-day-at-1am" target="_blank">هر روز ساعت یک بامداد</a></li>
-      <li><span className="code">0 0 * * 0</span>{' '}<a href="https://crontab.guru/every-week" target="_blank">هر هفته روز یکشنبه</a></li>
+      <li>
+        <span className="code">* * * * *</span>{" "}
+        <a href="https://crontab.guru/every-1-minute" target="_blank">
+          هر دقیقه
+        </a>
+      </li>
+      <li>
+        <span className="code">0 * * * *</span>{" "}
+        <a href="https://crontab.guru/every-1-hour" target="_blank">
+          هر یک ساعت
+        </a>
+      </li>
+      <li>
+        <span className="code">0 1 * * *</span>{" "}
+        <a href="https://crontab.guru/every-day-at-1am" target="_blank">
+          هر روز ساعت یک بامداد
+        </a>
+      </li>
+      <li>
+        <span className="code">0 0 * * 0</span>{" "}
+        <a href="https://crontab.guru/every-week" target="_blank">
+          هر هفته روز یکشنبه
+        </a>
+      </li>
     </ul>
     <p>
-      با کمک وب‌سایت
-      {' '}
-      <a href="https://crontab.guru/" target="_blank">crontab.guru</a>
-      {' '}
+      با کمک وب‌سایت{" "}
+      <a href="https://crontab.guru/" target="_blank">
+        crontab.guru
+      </a>{" "}
       می‌توانید زمان دلخواه‌تان را بسازید.
     </p>
 
@@ -88,9 +111,8 @@ export default () => (
     <p>
       در نمونه‌ی بالا، یک دستور دلخواه مدیریتی به‌جنگو با نام
       <span className="code">remove-old-emails</span>
-      اضافه کرده‌ایم که هر هفته اجرا شود.
-      در لینک
-      زیر، می‌توانید مستندات مربوط به ساخت دستورات مدیریتی دلخواه مانند
+      اضافه کرده‌ایم که هر هفته اجرا شود. در لینک زیر، می‌توانید مستندات مربوط
+      به ساخت دستورات مدیریتی دلخواه مانند
       <span className="code">remove-old-emails</span>
       را مطالعه کنید:{" "}
       <a
@@ -112,8 +134,7 @@ export default () => (
     </Highlight>
     <p>
       در نمونه‌ی بالا، دو اسکریپت با نام‌های
-      <span className="code">job1.py</span>
-      و
+      <span className="code">job1.py</span>و
       <span className="code">job2.py</span>
       در ریشه‌ی برنامه داریم که هفته‌ای یک‌بار اجرا می‌شوند.
     </p>

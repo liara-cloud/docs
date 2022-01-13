@@ -18,7 +18,7 @@ export async function crawlingDocData() {
   });
 
   await Promise.all(
-    links.map(async (link) => {
+    links.map(async link => {
       const { body } = await got.get(url + link);
       const $ = load(body);
       if (!$("h4").text()) {

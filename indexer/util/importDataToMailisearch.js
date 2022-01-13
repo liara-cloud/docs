@@ -18,5 +18,5 @@ export async function importDataToMeiliSearch(index, jsonName) {
   await client.index(index).updateSynonyms(synonymsList);
   await client
     .index(index)
-    .updateDisplayedAttributes(["id","platform", "title", "url", "element"]);
+    .updateDisplayedAttributes(["id", "platform", "title", "url", "element"]);
 }

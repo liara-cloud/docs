@@ -14,10 +14,18 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#get-access-to-disk">دسترسی به دیسک‌ها با FTP</a></li>
-      <li><a href="#create-ftp-account">ایجاد دسترسی FTP</a></li>
-      <li><a href="#winscp">اتصال از طریق WinSCP</a></li>
-      <li><a href="#filezilla">اتصال از طریق FileZilla</a></li>
+      <li>
+        <a href="#get-access-to-disk">دسترسی به دیسک‌ها با FTP</a>
+      </li>
+      <li>
+        <a href="#create-ftp-account">ایجاد دسترسی FTP</a>
+      </li>
+      <li>
+        <a href="#winscp">اتصال از طریق WinSCP</a>
+      </li>
+      <li>
+        <a href="#filezilla">اتصال از طریق FileZilla</a>
+      </li>
     </ul>
 
     <h3 id="get-access-to-disk">دسترسی به دیسک‌ها با FTP</h3>

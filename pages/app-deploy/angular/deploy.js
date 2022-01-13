@@ -22,19 +22,21 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#installing-liara-cli">نصب Liara CLI</a></li>
-      <li><a href="#login">ورود به حساب کاربری</a></li>
-      <li><a href="#deploy">اولین استقرار</a></li>
+      <li>
+        <a href="#installing-liara-cli">نصب Liara CLI</a>
+      </li>
+      <li>
+        <a href="#login">ورود به حساب کاربری</a>
+      </li>
+      <li>
+        <a href="#deploy">اولین استقرار</a>
+      </li>
     </ul>
 
     <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
-      نصب کنید:
-      {' '}
-      <Link href="/cli/install">
-        توضیحات بیشتر
-      </Link>
+      نصب کنید: <Link href="/cli/install">توضیحات بیشتر</Link>
     </p>
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>

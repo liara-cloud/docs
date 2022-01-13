@@ -20,7 +20,7 @@ export default ({ children }) => {
       </Head>
 
       <main>
-        <Header setSearchOpen={setSearchOpen}  />
+        <Header setSearchOpen={setSearchOpen} />
         {useRouter().pathname === "/404" ? (
           <article>{children}</article>
         ) : (
