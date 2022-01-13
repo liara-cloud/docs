@@ -23,16 +23,11 @@ export async function crawlingDocData() {
       const $ = load(body);
       if (!$("h4").text()) {
         $("article > h3,h4").each(function (i, el) {
-          const platform = $(".page-icon").attr("src");
+          const platform = $("article .page-icon").attr("alt");
           data.push({
             id: uuidv4(),
             url: link,
-            platform:
-              typeof platform != "undefined"
-                ? platform
-                    .split("/")
-                    [platform.split("/").length - 1].split(".")[0]
-                : undefined,
+            platform,
             title: $(this).text(),
             body: $(this).nextUntil("h3").text(),
           });
@@ -41,16 +36,11 @@ export async function crawlingDocData() {
       if ($("h4").next().is("ul")) {
         $("article > *").each(function (i, el) {
           if (typeof $(this).attr("id") != "undefined") {
-            const platform = $(".page-icon").attr("src");
+            const platform = $("article .page-icon").attr("alt");
             data.push({
               id: uuidv4(),
               url: link,
-              platform:
-                typeof platform != "undefined"
-                  ? platform
-                      .split("/")
-                      [platform.split("/").length - 1].split(".")[0]
-                  : undefined,
+              platform,
               element: `#${$(this).attr("id")}`,
               title: $(this).text(),
               body: $(this).nextUntil("h3").text(),
