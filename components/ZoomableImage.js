@@ -4,7 +4,6 @@ let zoomInstance;
 
 export default class ZoomableImage extends Component {
   imageRef = createRef()
-
   async componentDidMount() {
     if( ! zoomInstance) {
       const { default: zoom } = await import('medium-zoom')
