@@ -1,15 +1,14 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import Layout from '../../components/Layout';
-import Asciinema from '../../components/Asciinema';
-import ZoomableImage from '../../components/ZoomableImage';
+import Head from "next/head";
+import Link from "next/link";
+import Layout from "../../components/Layout";
+import Asciinema from "../../components/Asciinema";
+import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات متغیرهای محیطی (Environment Variables) - سرویس ابری
-        لیارا
+        مستندات متغیرهای محیطی (Environment Variables) - سرویس ابری لیارا
       </title>
     </Head>
 
@@ -17,13 +16,12 @@ export default () => (
     <span className="page-description">(Environment Variables)</span>
 
     <p>
-      استفاده از متغیرهای محیطی (Environment Variables) به شما کمک می‌کند
-      تا برنامه‌ی خود را متناسب با محیط‌های مختلفی اعم از Development و{' '}
-      <Link href="/production-checklist">Production</Link> پیکربندی کنید و
-      یکی از متداول‌ترین کاربردهای این متغیرها، اتصال برنامه به دیتابیس
-      است. برای مثال در زمان توسعه معمولا به دیتابیس لوکال متصل هستید اما
-      پس از استقرار برنامه انتظار می‌رود که برنامه‌ی شما به دیتابیس
-      اصلی‌تان متصل شود.
+      استفاده از متغیرهای محیطی (Environment Variables) به شما کمک می‌کند تا
+      برنامه‌ی خود را متناسب با محیط‌های مختلفی اعم از Development و{" "}
+      <Link href="/production-checklist">Production</Link> پیکربندی کنید و یکی
+      از متداول‌ترین کاربردهای این متغیرها، اتصال برنامه به دیتابیس است. برای
+      مثال در زمان توسعه معمولا به دیتابیس لوکال متصل هستید اما پس از استقرار
+      برنامه انتظار می‌رود که برنامه‌ی شما به دیتابیس اصلی‌تان متصل شود.
     </p>
 
     <h4>فهرست عناوین:</h4>
@@ -43,11 +41,11 @@ export default () => (
     <h4>مشاهده‌ی متغیرهای محیطی در پنل کاربری</h4>
     <ZoomableImage src="https://files.liara.ir/docs/django/environment-variables-list.png" />
     <p>
-      شما می‌توانید متغیرهای محیطی تنظیم شده را پس از ورود به صفحه‌ی{' '}
-      <strong>تنظیمات</strong> هر برنامه، در بخش <strong>متغیرها</strong>{' '}
-      مشاهده کنید. همچنین امکان <Link href="#unset">حذف</Link>،{' '}
-      <Link href="#set">ویرایش و اضافه کردن</Link> متغیرهای محیطی در این
-      بخش امکان‌پذیر هست.
+      شما می‌توانید متغیرهای محیطی تنظیم شده را پس از ورود به صفحه‌ی{" "}
+      <strong>تنظیمات</strong> هر برنامه، در بخش <strong>متغیرها</strong> مشاهده
+      کنید. همچنین امکان <Link href="#unset">حذف</Link>،{" "}
+      <Link href="#set">ویرایش و اضافه کردن</Link> متغیرهای محیطی در این بخش
+      امکان‌پذیر هست.
     </p>
     <h4>مشاهده‌ی متغیرهای محیطی با استفاده از لیارا CLI</h4>
     <Asciinema id="456274" />

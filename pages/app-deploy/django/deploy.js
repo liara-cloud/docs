@@ -22,19 +22,21 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#installing-liara-cli">نصب Liara CLI</a></li>
-      <li><a href="#login">ورود به حساب کاربری</a></li>
-      <li><a href="#deploy">اولین استقرار</a></li>
+      <li>
+        <a href="#installing-liara-cli">نصب Liara CLI</a>
+      </li>
+      <li>
+        <a href="#login">ورود به حساب کاربری</a>
+      </li>
+      <li>
+        <a href="#deploy">اولین استقرار</a>
+      </li>
     </ul>
 
     <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
-      نصب کنید:
-      {' '}
-      <Link href="/cli/install">
-        توضیحات بیشتر
-      </Link>
+      نصب کنید: <Link href="/cli/install">توضیحات بیشتر</Link>
     </p>
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>
@@ -54,9 +56,9 @@ export default () => (
       <a href="https://console.liara.ir/apps/create" target="_blank">
         ایجاد برنامه‌ها در لیارا
       </a>{" "}
-      بروید و با انتخاب پلتفرم DJANGO و نوشتن شناسه برنامه‌ی موردنظرتان و در نهایت
-      انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش برای
-      برنامه آزمایشی‌مان، شناسه django-starter را انتخاب کردیم.
+      بروید و با انتخاب پلتفرم DJANGO و نوشتن شناسه برنامه‌ی موردنظرتان و در
+      نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
+      برای برنامه آزمایشی‌مان، شناسه django-starter را انتخاب کردیم.
     </p>
     <p>
       <b>گام دوم)</b> کافیست وارد ریشه برنامه‌ی‌تان شده و به وسیله دستور زیر
@@ -70,17 +72,24 @@ export default () => (
     <p>
       برنامه‌ی شما حتما باید فایل
       <span className="code">requirements.txt</span>
-      را داشته باشد و در این فایل باید لیست تمام پکیج‌هایی که استفاده کرده‌اید را وارد کنید.
-      برای برنامه‌های Django، دست کم باید پکیج Django را در این فایل عنوان کرده باشید.
-      یک نمونه‌ی پروژه‌ی Django که آماده‌ی مستقر شدن در لیارا است را در لینک زیر می‌توانید مشاهده کنید:
+      را داشته باشد و در این فایل باید لیست تمام پکیج‌هایی که استفاده کرده‌اید
+      را وارد کنید. برای برنامه‌های Django، دست کم باید پکیج Django را در این
+      فایل عنوان کرده باشید. یک نمونه‌ی پروژه‌ی Django که آماده‌ی مستقر شدن در
+      لیارا است را در لینک زیر می‌توانید مشاهده کنید:
     </p>
     <p dir="ltr">
-      <a href="https://github.com/liara-cloud/django-getting-started" target="_blank">https://github.com/liara-cloud/django-getting-started</a>
+      <a
+        href="https://github.com/liara-cloud/django-getting-started"
+        target="_blank"
+      >
+        https://github.com/liara-cloud/django-getting-started
+      </a>
     </p>
     <p>
-      بعد از وارد کردن دستور دیپلوی، Liara CLI به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
-      یک برنامه‌ی Django اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
-      مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
+      بعد از وارد کردن دستور دیپلوی، Liara CLI به صورت خودکار، تشخیص خواهد داد
+      که برنامه‌ی شما را باید به عنوان یک برنامه‌ی Django اجرا کند و عملیات
+      استقرار را آغاز خواهد کرد. اما اگر مشکلی در تشخیص وجود داشت، می‌توانید از
+      دستور زیر استفاده کنید:
     </p>
     <pre>
       <code>{`$ liara deploy --platform=django`}</code>

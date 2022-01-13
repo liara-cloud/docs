@@ -22,21 +22,27 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#installing-liara-cli">نصب Liara CLI</a></li>
-      <li><a href="#login">ورود به حساب کاربری</a></li>
-      <li><a href="#deploy">اولین استقرار</a></li>
-      <li><a href="#solution-folder">استقرار پوشه‌ی Solution</a></li>
-      <li><a href="#common-problem">خطاهای رایج در فرایند استقرار</a></li>
+      <li>
+        <a href="#installing-liara-cli">نصب Liara CLI</a>
+      </li>
+      <li>
+        <a href="#login">ورود به حساب کاربری</a>
+      </li>
+      <li>
+        <a href="#deploy">اولین استقرار</a>
+      </li>
+      <li>
+        <a href="#solution-folder">استقرار پوشه‌ی Solution</a>
+      </li>
+      <li>
+        <a href="#common-problem">خطاهای رایج در فرایند استقرار</a>
+      </li>
     </ul>
 
     <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
-      نصب کنید:
-      {' '}
-      <Link href="/cli/install">
-        توضیحات بیشتر
-      </Link>
+      نصب کنید: <Link href="/cli/install">توضیحات بیشتر</Link>
     </p>
     <pre>
       <code>{`$ npm install -g @liara/cli`}</code>
@@ -56,8 +62,8 @@ export default () => (
       <a href="https://console.liara.ir/apps/create" target="_blank">
         ایجاد برنامه‌ها در لیارا
       </a>{" "}
-      بروید و با انتخاب پلتفرم ASP.NET CORE و نوشتن شناسه برنامه‌ی موردنظرتان و در
-      نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
+      بروید و با انتخاب پلتفرم ASP.NET CORE و نوشتن شناسه برنامه‌ی موردنظرتان و
+      در نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
       برای برنامه آزمایشی‌مان، شناسه dotnet-starter را انتخاب کردیم.
     </p>
     <p>
@@ -72,16 +78,22 @@ export default () => (
     <p>
       برنامه‌ی شما حتما باید فایل
       <span className="code">.csproj</span>
-      را داشته باشد.
-      یک نمونه‌ی پروژه‌ی ASP.Net Core که آماده‌ی مستقر شدن در لیارا است را در لینک زیر می‌توانید مشاهده کنید:
+      را داشته باشد. یک نمونه‌ی پروژه‌ی ASP.Net Core که آماده‌ی مستقر شدن در
+      لیارا است را در لینک زیر می‌توانید مشاهده کنید:
     </p>
     <p dir="ltr">
-      <a href="https://github.com/liara-cloud/dotnetcore-starter" target="_blank">https://github.com/liara-cloud/dotnetcore-starter</a>
+      <a
+        href="https://github.com/liara-cloud/dotnetcore-starter"
+        target="_blank"
+      >
+        https://github.com/liara-cloud/dotnetcore-starter
+      </a>
     </p>
     <p>
-      بعد از وارد کردن دستور دیپلوی، Liara CLI به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
-      یک برنامه‌ی ASP.Net Core اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما
-      اگر مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
+      بعد از وارد کردن دستور دیپلوی، Liara CLI به صورت خودکار، تشخیص خواهد داد
+      که برنامه‌ی شما را باید به عنوان یک برنامه‌ی ASP.Net Core اجرا کند و
+      عملیات استقرار را آغاز خواهد کرد. اما اگر مشکلی در تشخیص وجود داشت،
+      می‌توانید از دستور زیر استفاده کنید:
     </p>
     <pre>
       <code>{`$ liara deploy --platform=netcore`}</code>

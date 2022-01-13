@@ -14,11 +14,21 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#liara-subdomain">زیردامنه‌ رایگان liara.run</a></li>
-      <li><a href="#add-domain">اضافه‌کردن دامنه‌</a></li>
-      <li><a href="#add-subdoamin">اضافه کردن زیر‌دامنه (Subdomain)</a></li>
-      <li><a href="#files-domain">اتصال دامنه به سرویس فایل</a></li>
-      <li><a href="#faq">سوالات متداول</a></li>
+      <li>
+        <a href="#liara-subdomain">زیردامنه‌ رایگان liara.run</a>
+      </li>
+      <li>
+        <a href="#add-domain">اضافه‌کردن دامنه‌</a>
+      </li>
+      <li>
+        <a href="#add-subdoamin">اضافه کردن زیر‌دامنه (Subdomain)</a>
+      </li>
+      <li>
+        <a href="#files-domain">اتصال دامنه به سرویس فایل</a>
+      </li>
+      <li>
+        <a href="#faq">سوالات متداول</a>
+      </li>
     </ul>
 
     <h3 id="liara-subdomain">
@@ -118,10 +128,8 @@ export default () => (
       </p>
 
       <Notice variant="info">
-        چنانچه ارائه‌دهنده‌ی خدمات DNS شما از رکورد CNAME
-        برای ریشه‌ی دامنه پشتیبانی نمی‌کند، شما می‌توانید از رکورد ALIAS
-        و یا ANAME
-        استفاده کنید.
+        چنانچه ارائه‌دهنده‌ی خدمات DNS شما از رکورد CNAME برای ریشه‌ی دامنه
+        پشتیبانی نمی‌کند، شما می‌توانید از رکورد ALIAS و یا ANAME استفاده کنید.
       </Notice>
 
       <ZoomableImage src="/static/domain-records.png" />

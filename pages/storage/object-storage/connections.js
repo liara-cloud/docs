@@ -21,12 +21,24 @@ export default () => (
     </p>
 
     <ul className="mt-0">
-      <li><a href="#node">Nodejs</a></li>
-      <li><a href="#laravel">Laravel</a></li>
-      <li><a href="#php">PHP</a></li>
-      <li><a href="#django">Django</a></li>
-      <li><a href="#flask">Flask</a></li>
-      <li><a href="#netcore">Net Core</a></li>
+      <li>
+        <a href="#node">Nodejs</a>
+      </li>
+      <li>
+        <a href="#laravel">Laravel</a>
+      </li>
+      <li>
+        <a href="#php">PHP</a>
+      </li>
+      <li>
+        <a href="#django">Django</a>
+      </li>
+      <li>
+        <a href="#flask">Flask</a>
+      </li>
+      <li>
+        <a href="#netcore">Net Core</a>
+      </li>
     </ul>
 
     <Notice variant="info">

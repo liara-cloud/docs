@@ -9,7 +9,6 @@ export default () => (
       <title>مستندات WordPress - سرویس ابری لیارا</title>
     </Head>
 
-
     <div className="page-head">
       <img
         className="page-icon"
@@ -26,9 +25,15 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#setup">نصب و اجرا</a></li>
-      <li><a href="#php-ini-customization">شخصی‌سازی تنظیمات php.ini</a></li>
-      <li><a href="#extensions">لیست اکستنشن‌های نصب شده</a></li>
+      <li>
+        <a href="#setup">نصب و اجرا</a>
+      </li>
+      <li>
+        <a href="#php-ini-customization">شخصی‌سازی تنظیمات php.ini</a>
+      </li>
+      <li>
+        <a href="#extensions">لیست اکستنشن‌های نصب شده</a>
+      </li>
     </ul>
 
     <h3 id="setup">نصب و اجرا</h3>

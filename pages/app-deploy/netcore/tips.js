@@ -24,11 +24,21 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#dotnet-version">انتخاب نسخه‌ی ASP.Net Core</a></li>
-      <li><a href="#app-settings">تنظیمات مرتبط با ساختار برنامه</a></li>
-      <li><a href="#bad-gateway">رفع خطای 502 Bad Gateway</a></li>
-      <li><a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a></li>
-      <li><a href="#cors">رفع خطای CORS</a></li>
+      <li>
+        <a href="#dotnet-version">انتخاب نسخه‌ی ASP.Net Core</a>
+      </li>
+      <li>
+        <a href="#app-settings">تنظیمات مرتبط با ساختار برنامه</a>
+      </li>
+      <li>
+        <a href="#bad-gateway">رفع خطای 502 Bad Gateway</a>
+      </li>
+      <li>
+        <a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a>
+      </li>
+      <li>
+        <a href="#cors">رفع خطای CORS</a>
+      </li>
     </ul>
 
     <h3 id="dotnet-version">انتخاب نسخه‌ی ASP.Net Core</h3>
@@ -63,8 +73,8 @@ export default () => (
 
     <Notice variant="warning">
       EOL مخفف عبارت END OF LIFE و به‌معنای پایان عمر یک نسخه است بنابراین
-      باوجود پشتیبانی از نسخه‌های EOL در لیارا توصیه می‌کنیم پروژه‌هایتان
-      را به نسخه‌های جدیدتر ارتقا دهید.
+      باوجود پشتیبانی از نسخه‌های EOL در لیارا توصیه می‌کنیم پروژه‌هایتان را به
+      نسخه‌های جدیدتر ارتقا دهید.
     </Notice>
 
     <h3 id="app-settings">تنظیمات مرتبط با ساختار برنامه</h3>
@@ -116,7 +126,10 @@ https://aka.ms/dotnet-download`}
 
     <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
     <p>
-      منطقه‌ی زمانی در برنامه‌های ASP.Net Core به‌طور پیش‌فرض بر روی Asia/Tehran تنظیم شده است اما شما می‌توانید منظقه‌ی زمانی برنامه‌ی خود را با استفاده از پارامتر <span className="code">timezone</span> در فایل <span className="code">liara.json</span> تغییر دهید:
+      منطقه‌ی زمانی در برنامه‌های ASP.Net Core به‌طور پیش‌فرض بر روی Asia/Tehran
+      تنظیم شده است اما شما می‌توانید منظقه‌ی زمانی برنامه‌ی خود را با استفاده
+      از پارامتر <span className="code">timezone</span> در فایل{" "}
+      <span className="code">liara.json</span> تغییر دهید:
     </p>
 
     <Highlight className="json">
@@ -165,9 +178,9 @@ https://aka.ms/dotnet-download`}
     </p>
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
-      در برنامه‌های ASP.Net Core به‌روش‌های مختلفی می‌توانید CORS را
-      فعال‌سازی کنید اما درصورتی که با خطای CORS مواجه شده‌اید بایستی
-      Origins و یا Methods تنظیم شده را مجدد مورد بررسی قرار دهید:
+      در برنامه‌های ASP.Net Core به‌روش‌های مختلفی می‌توانید CORS را فعال‌سازی
+      کنید اما درصورتی که با خطای CORS مواجه شده‌اید بایستی Origins و یا Methods
+      تنظیم شده را مجدد مورد بررسی قرار دهید:
     </p>
     <Highlight className="c#">{`builder.Services.AddCors(options =>
 {
@@ -180,14 +193,14 @@ https://aka.ms/dotnet-download`}
     });
 });`}</Highlight>
     <p>
-      برای کسب اطلاعات بیشتر می‌توانید{' '}
+      برای کسب اطلاعات بیشتر می‌توانید{" "}
       <a
         href="https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-5.0#enable-cors-1"
         target="_blank"
         rel="noopener"
       >
         مستندات رسمی
-      </a>{' '}
+      </a>{" "}
       این فریم‌ورک را مطالعه کنید.
     </p>
   </Layout>

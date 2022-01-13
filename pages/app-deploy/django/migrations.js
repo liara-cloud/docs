@@ -22,18 +22,25 @@ export default () => (
 
     <h3>اجرای Migrationها</h3>
     <p>
-      زمانیکه در برنامه‌های Django یک Model جدید را تعریف می‌کنید یا یکی از Modelهای فعلی را تغییر می‌دهید نیاز است تا اصطلاحا
-      Migration ها را اجرا کنید. به‌منظور اجرای Migration ها در ابتدا دستور زیر را در مسیر اصلی پروژه‌ی لوکال خود اجرا کنید:
+      زمانیکه در برنامه‌های Django یک Model جدید را تعریف می‌کنید یا یکی از
+      Modelهای فعلی را تغییر می‌دهید نیاز است تا اصطلاحا Migration ها را اجرا
+      کنید. به‌منظور اجرای Migration ها در ابتدا دستور زیر را در مسیر اصلی
+      پروژه‌ی لوکال خود اجرا کنید:
     </p>
 
     <Highlight className="bash">{`$ python manage.py makemigrations`}</Highlight>
 
-    <p>پس از ایجاد موفق فایل‌های Migration و اطمینان از <Link href="/app-deploy/django/dbs">اتصال به دیتابیس</Link>، پروژه‌ی خود را با اجرای دستور زیر در سرویس تهیه شده مستقر کنید:</p>
+    <p>
+      پس از ایجاد موفق فایل‌های Migration و اطمینان از{" "}
+      <Link href="/app-deploy/django/dbs">اتصال به دیتابیس</Link>، پروژه‌ی خود
+      را با اجرای دستور زیر در سرویس تهیه شده مستقر کنید:
+    </p>
 
     <Highlight className="bash">{`$ liara deploy`}</Highlight>
 
     <p>
-      درنهایت پس از استقرار موفق پروژه در سرویس تهیه شده می‌توانید دستور زیر را در <Link href="/app-features/console">خط فرمان</Link> برنامه اجرا کنید:
+      درنهایت پس از استقرار موفق پروژه در سرویس تهیه شده می‌توانید دستور زیر را
+      در <Link href="/app-features/console">خط فرمان</Link> برنامه اجرا کنید:
     </p>
 
     <Highlight className="bash">{`$ python manage.py migrate`}</Highlight>

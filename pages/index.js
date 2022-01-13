@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import Layout from '../components/Layout';
+import Head from "next/head";
+import Link from "next/link";
+import Layout from "../components/Layout";
 import ProjectIcon from "../components/ProjectIcon";
 
 const Index = () => (
@@ -13,15 +13,14 @@ const Index = () => (
 
     <h3>معرفی سرویس ابری لیارا</h3>
     <p>
-      سرویس ابری لیارا بستری را فراهم می‌کند تا شما بدون نیاز به پیکربندی
-      و تنظیمات، با نهایت سرعت، آسودگی و راحتی، برنامه‌ی خود را روی سرور
-      اجرا کنید.
+      سرویس ابری لیارا بستری را فراهم می‌کند تا شما بدون نیاز به پیکربندی و
+      تنظیمات، با نهایت سرعت، آسودگی و راحتی، برنامه‌ی خود را روی سرور اجرا
+      کنید.
     </p>
 
     <h3>برنامه‌هایی که پشتیبانی می‌کنیم</h3>
     <p>
-      برای مطالعه‌ی راهنمای اجرای هر برنامه، صفحه‌ی مربوط به آن را دنبال
-      کنید.
+      برای مطالعه‌ی راهنمای اجرای هر برنامه، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
     <div className="platforms">
       <Link href="/app-deploy/react/getting-started">
@@ -86,10 +85,7 @@ const Index = () => (
       </Link>
       <Link href="/instructions/adonis">
         <a>
-          <img
-            src="/static/platformicons/adonisjs.svg"
-            alt="adonis"
-          />
+          <img src="/static/platformicons/adonisjs.svg" alt="adonis" />
           <span>Adonis</span>
         </a>
       </Link>
@@ -158,8 +154,7 @@ const Index = () => (
     </div>
     <h3>دیتابیس‌هایی که پشتیبانی می‌کنیم</h3>
     <p>
-      برای مطالعه‌ی راهنمای اجرای هر دیتابیس، صفحه‌ی مربوط به آن را دنبال
-      کنید.
+      برای مطالعه‌ی راهنمای اجرای هر دیتابیس، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
     <div className="platforms">
       <Link href="/databases/mysql-mariadb/install">
@@ -170,19 +165,13 @@ const Index = () => (
       </Link>
       <Link href="/databases/mysql-mariadb/install">
         <a>
-          <img
-            src="/static/platformicons/mariadb.svg"
-            alt="mariadb"
-          />
+          <img src="/static/platformicons/mariadb.svg" alt="mariadb" />
           <span>MariaDB</span>
         </a>
       </Link>
       <Link href="/databases/postgresql/install">
         <a>
-          <img
-            src="/static/platformicons/postgres.svg"
-            alt="postgres"
-          />
+          <img src="/static/platformicons/postgres.svg" alt="postgres" />
           <span>PostgreSQL</span>
         </a>
       </Link>
@@ -194,10 +183,7 @@ const Index = () => (
       </Link>
       <Link href="/databases/mongodb/install">
         <a>
-          <img
-            src="/static/platformicons/mongodb.svg"
-            alt="mongodb"
-          />
+          <img src="/static/platformicons/mongodb.svg" alt="mongodb" />
           <span>MongoDB</span>
         </a>
       </Link>
@@ -209,28 +195,19 @@ const Index = () => (
       </Link>
       <Link href="/instructions/rabbitmq">
         <a>
-          <img
-            src="/static/platformicons/rabbitmq.svg"
-            alt="rabbitmq"
-          />
+          <img src="/static/platformicons/rabbitmq.svg" alt="rabbitmq" />
           <span>RabbitMQ</span>
         </a>
       </Link>
       <Link href="/instructions/elasticsearch">
         <a>
-          <img
-            src="/static/platformicons/elastic.svg"
-            alt="elasticsearch"
-          />
+          <img src="/static/platformicons/elastic.svg" alt="elasticsearch" />
           <span>Elastic</span>
         </a>
       </Link>
       <Link href="/instructions/arangodb">
         <a>
-          <img
-            src="/static/platformicons/arangodb.svg"
-            alt="arangodb"
-          />
+          <img src="/static/platformicons/arangodb.svg" alt="arangodb" />
           <span>ArangoDB</span>
         </a>
       </Link>
@@ -238,16 +215,13 @@ const Index = () => (
 
     <h3>برنامه‌های آماده‌ای که ارائه می‌کنیم</h3>
     <p>
-      برای مطالعه‌ی راهنمای نصب هر برنامه آماده، صفحه‌ی مربوط به آن را
-      دنبال کنید.
+      برای مطالعه‌ی راهنمای نصب هر برنامه آماده، صفحه‌ی مربوط به آن را دنبال
+      کنید.
     </p>
     <div className="platforms">
       <Link href="/one-click-apps/wordpress/install">
         <a>
-          <img
-            src="/static/platformicons/wordpress.svg"
-            alt="wordpress"
-          />
+          <img src="/static/platformicons/wordpress.svg" alt="wordpress" />
           <span>WordPress</span>
         </a>
       </Link>
@@ -259,10 +233,7 @@ const Index = () => (
       </Link>
       <Link href="/instructions/prestashop">
         <a>
-          <img
-            src="/static/platformicons/prestashop.svg"
-            alt="prestashop"
-          />
+          <img src="/static/platformicons/prestashop.svg" alt="prestashop" />
           <span>Prestashop</span>
         </a>
       </Link>
@@ -274,19 +245,13 @@ const Index = () => (
       </Link>
       <Link href="/one-click-apps/metabase">
         <a>
-          <img
-            src="/static/platformicons/metabase.svg"
-            alt="metabase"
-          />
+          <img src="/static/platformicons/metabase.svg" alt="metabase" />
           <span>Metabase</span>
         </a>
       </Link>
       <Link href="/instructions/grafana">
         <a>
-          <img
-            src="/static/platformicons/grafana.svg"
-            alt="grafana"
-          />
+          <img src="/static/platformicons/grafana.svg" alt="grafana" />
           <span>Grafana</span>
         </a>
       </Link>
@@ -298,19 +263,13 @@ const Index = () => (
       </Link>
       <Link href="/instructions/mattermost">
         <a>
-          <img
-            src="/static/platformicons/mattermost.svg"
-            alt="mattermost"
-          />
+          <img src="/static/platformicons/mattermost.svg" alt="mattermost" />
           <span>Mattermost</span>
         </a>
       </Link>
       <Link href="/one-click-apps/rocketchat">
         <a>
-          <img
-            src="/static/platformicons/rocketchat.svg"
-            alt="rocketchat"
-          />
+          <img src="/static/platformicons/rocketchat.svg" alt="rocketchat" />
           <span>Rocket.Chat</span>
         </a>
       </Link>
@@ -322,19 +281,13 @@ const Index = () => (
       </Link>
       <Link href="/one-click-apps/nextcloud">
         <a>
-          <img
-            src="/static/platformicons/nextcloud.svg"
-            alt="nextcloud"
-          />
+          <img src="/static/platformicons/nextcloud.svg" alt="nextcloud" />
           <span>NextCloud</span>
         </a>
       </Link>
       <Link href="/one-click-apps/imgproxy">
         <a>
-          <img
-            src="/static/platformicons/imgproxy.svg"
-            alt="imgproxy"
-          />
+          <img src="/static/platformicons/imgproxy.svg" alt="imgproxy" />
           <span>Imgproxy</span>
         </a>
       </Link>

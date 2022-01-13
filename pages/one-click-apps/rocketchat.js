@@ -9,7 +9,6 @@ export default () => (
       <title>مستندات RocketChat - سرویس ابری لیارا</title>
     </Head>
 
-
     <div className="page-head">
       <img
         className="page-icon"

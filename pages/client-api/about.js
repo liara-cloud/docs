@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import Head from "next/head";
 import Notice from "../../components/Notice";
-import Label from '../../components/Label';
+import Label from "../../components/Label";
 import Highlight from "react-highlight";
 import Link from "next/link";
 
@@ -22,13 +22,17 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#authentication">کلید احراز هویت</a></li>
-      <li><a href="#user-information">دریافت اطلاعات جامع کاربری</a></li>
+      <li>
+        <a href="#authentication">کلید احراز هویت</a>
+      </li>
+      <li>
+        <a href="#user-information">دریافت اطلاعات جامع کاربری</a>
+      </li>
     </ul>
 
     <Notice>
-      در صورتی که با هر گونه ابهامی در استفاده از API مواجه شدید، از طریق
-      تیکت با پشتیبانی لیارا ارتباط بگیرید.
+      در صورتی که با هر گونه ابهامی در استفاده از API مواجه شدید، از طریق تیکت
+      با پشتیبانی لیارا ارتباط بگیرید.
     </Notice>
 
     <h3 id="api-address">آدرس API</h3>
@@ -37,19 +41,21 @@ export default () => (
       <Highlight className="plaintext">
         {`https://api.iran.liara.ir/`}
       </Highlight>
-
       آدرس API برای دسترسی به برنامه‌های موقعیت آلمان:
-      <Highlight className="plaintext">
-        {`https://api.liara.ir/`}
-      </Highlight>
+      <Highlight className="plaintext">{`https://api.liara.ir/`}</Highlight>
     </p>
     <h3 id="authentication">کلید احراز هویت</h3>
     <p>
-      شما با مراجعه به پنل کاربری و وارد شدن به بخش API امکان مشاهده و دریافت Token اختصاصی حساب خودتان را دارید. به‌کمک این Token می‌توانید از سازوکارهای <Link href="/cicd/about">
+      شما با مراجعه به پنل کاربری و وارد شدن به بخش API امکان مشاهده و دریافت
+      Token اختصاصی حساب خودتان را دارید. به‌کمک این Token می‌توانید از
+      سازوکارهای{" "}
+      <Link href="/cicd/about">
         <a>CI/CD</a>
-      </Link> و تعامل با API لیارا استفاده کنید.
+      </Link>{" "}
+      و تعامل با API لیارا استفاده کنید.
       <br />
-      نحوه‌ی استفاده از این Token برای کار با APIها به این صورت است که آن را به‌شکل زیر در HEADERها به سمت endpoint مربوطه ارسال می‌کنید:
+      نحوه‌ی استفاده از این Token برای کار با APIها به این صورت است که آن را
+      به‌شکل زیر در HEADERها به سمت endpoint مربوطه ارسال می‌کنید:
       <br />
       <Highlight className="plaintext">
         {`Authorization: Bearer $TOKEN`}
@@ -61,7 +67,11 @@ export default () => (
       <Label variant="green">GET</Label>
       <span className="endpoint__path">/v1/me</span>
     </div>
-    <p>در این endpint شما می‌توانید به اطلاعات کاملی از حساب کاربری، پلن‌های قابل انتخاب به‌همراه قیمت، مشخصات هر پلن و نسخه‌های دیتابیس‌ها دسترسی داشته باشید. بنابراین از اطلاعاتی که از این endpoint دریافت می‌کنید می‌توانید در endpointهای دیگر استفاده کنید.</p>
-
+    <p>
+      در این endpint شما می‌توانید به اطلاعات کاملی از حساب کاربری، پلن‌های قابل
+      انتخاب به‌همراه قیمت، مشخصات هر پلن و نسخه‌های دیتابیس‌ها دسترسی داشته
+      باشید. بنابراین از اطلاعاتی که از این endpoint دریافت می‌کنید می‌توانید در
+      endpointهای دیگر استفاده کنید.
+    </p>
   </Layout>
 );

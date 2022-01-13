@@ -16,10 +16,18 @@ export default () => (
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
-      <li><a href="#create-disk">ساخت دیسک</a></li>
-      <li><a href="#mount-disk">تعریف مسیر دیسک</a></li>
-      <li><a href="#mount-multiple-disks">تعریف چندین دیسک</a></li>
-      <li><a href="#delete-disks">حذف‌ دیسک‌ها</a></li>
+      <li>
+        <a href="#create-disk">ساخت دیسک</a>
+      </li>
+      <li>
+        <a href="#mount-disk">تعریف مسیر دیسک</a>
+      </li>
+      <li>
+        <a href="#mount-multiple-disks">تعریف چندین دیسک</a>
+      </li>
+      <li>
+        <a href="#delete-disks">حذف‌ دیسک‌ها</a>
+      </li>
     </ul>
 
     <h3 id="create-disk">ساخت دیسک</h3>
