@@ -7,7 +7,8 @@
     "dev": "next dev -p 3005",
     "build": "next build && next export",
     "start": "next start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pretty": "prettier --write '**/*.js'"
   },
   "keywords": [],
   "author": "",
