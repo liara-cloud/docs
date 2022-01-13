@@ -10,7 +10,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
   const [results, setResults] = useState([]);
   const [defaultActive, setDefaultActive] = useState(false);
-  const [current, setCurrent] = useState("")
+  const [current, setCurrent] = useState("");
   const [index, setIndex] = useState(0);
   const router = useRouter();
   const valueRef = useRef();
@@ -67,14 +67,15 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         setIndex(Negative);
         break;
       case 40:
-        const Positive = index < results.length - 1  ? index + 1 : 0;
+        const Positive = index < results.length - 1 ? index + 1 : 0;
         setIndex(Positive);
         console.log(Positive);
         break;
       case 13:
-        const path =  current != undefined &&  current.element
-          ? current.url + current.element
-          :  current != undefined &&  current.url;
+        const path =
+          current != undefined && current.element
+            ? current.url + current.element
+            : current != undefined && current.url;
         current != undefined && router.push(path);
         break;
     }
