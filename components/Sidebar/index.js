@@ -166,7 +166,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                                 src={`/static/platformicons/${item.platform}.svg`}
                                 className="platform-search_logo"
                                 width="25"
-                                alt="nodejs"
+                                alt={item.platform}
                               />
                             )}
                             <p className="">{item.title}</p>
