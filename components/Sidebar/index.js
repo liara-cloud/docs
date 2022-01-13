@@ -67,14 +67,15 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         setIndex(Negative);
         break;
       case 40:
-        const Positive = index < 4 ? index + 1 : 0;
+        const Positive = index < results.length - 1  ? index + 1 : 0;
         setIndex(Positive);
+        console.log(Positive);
         break;
       case 13:
-        const path = current.element
+        const path =  current != undefined &&  current.element
           ? current.url + current.element
-          : current.url;
-        current != "" && router.push(path);
+          :  current != undefined &&  current.url;
+        current != undefined && router.push(path);
         break;
     }
   };
@@ -152,7 +153,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                       >
                         <a
                           className={`url_results ${
-                            current != "" &&
+                            current != undefined &&
                             item.id == current.id &&
                             `current-result `
                           }`}
