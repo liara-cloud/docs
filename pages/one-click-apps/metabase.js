@@ -2,6 +2,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import Link from "next/link";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -10,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/metabase.svg"
-        alt="metabase"
-      />
+      <PlatformIcon platform="metabase" />
       <div className="page-title">
         <h1>هوش تجاری (BI) با Metabase</h1>
         <span className="page-description">(Metabase one-click app)</span>

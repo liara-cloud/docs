@@ -3,7 +3,7 @@ import Head from "next/head";
 import Highlight from "react-highlight";
 import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
-import ProjectIcon from "../../../components/ProjectIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -14,7 +14,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <ProjectIcon platform="php" />
+      <PlatformIcon platform="php" />
       <div className="page-title">
         <h1>برنامه‌های PHP</h1>
         <span className="page-description">(PHP Apps)</span>

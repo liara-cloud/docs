@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
 import Asciinema from "../../components/Asciinema";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +12,7 @@ export default () => (
       <title>استقرار Kibana - سرویس ابری لیارا</title>
     </Head>
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/kibana.svg"
-        alt="kibana"
-      />
+      <PlatformIcon platform="kibana" />
       <div className="page-title">
         <h1>استقرار Kibana</h1>
         <span className="page-description">(Docker Apps)</span>

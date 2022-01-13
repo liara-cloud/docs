@@ -2,7 +2,7 @@ import Head from "next/head";
 import Highlight from "react-highlight";
 import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
-import ProjectIcon from "../../../components/ProjectIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -13,7 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <ProjectIcon platform="netcore" />
+      <PlatformIcon platform="netcore" />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>

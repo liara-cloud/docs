@@ -1,6 +1,7 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
+import Layout from "../../../components/Layout";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -12,11 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/wordpress.svg"
-        alt="wordpress"
-      />
+      <PlatformIcon platform="wordpress" />
       <div className="page-title">
         <h1>برنامه‌های آماده WordPress</h1>
         <span className="page-description">(WordPress one-click app)</span>

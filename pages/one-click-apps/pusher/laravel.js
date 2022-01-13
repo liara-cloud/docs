@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Layout from "../../../components/Layout";
 import Highlight from "react-highlight";
+import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
+import PlatformIcon from "../../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +12,7 @@ export default () => (
       </title>
     </Head>
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/pusher.svg"
-        alt="pusher"
-      />
+      <PlatformIcon platform="pusher" />
       <div className="page-title">
         <h1>برنامه‌های آماده Pusher</h1>
         <span className="page-description">(Pusher one-click app)</span>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
+import PlatformIcon from "../../components/PlatformIcon";
 import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
@@ -11,11 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/imgproxy.svg"
-        alt="imgproxy"
-      />
+      <PlatformIcon platform="imgproxy" />
       <div className="page-title">
         <h1>پردازش تصاویر با Imgproxy</h1>
         <span className="page-description">(Imgproxy one-click app)</span>
