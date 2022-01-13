@@ -23,7 +23,7 @@ export async function crawlingDocData() {
       const $ = load(body);
       if (!$("h4").text()) {
         $("article > h3,h4").each(function (i, el) {
-          const platform = $(".page-icon").attr("alt");
+          const platform = $("article .page-icon").attr("alt");
           data.push({
             id: uuidv4(),
             url: link,
@@ -36,7 +36,7 @@ export async function crawlingDocData() {
       if ($("h4").next().is("ul")) {
         $("article > *").each(function (i, el) {
           if (typeof $(this).attr("id") != "undefined") {
-            const platform = $(".page-icon").attr("alt");
+            const platform = $("article .page-icon").attr("alt");
             data.push({
               id: uuidv4(),
               url: link,
