@@ -58,12 +58,12 @@ const types = [
   // One-click-apps
   { logo: ghostIcon, alt: "ghost" },
   { logo: giteaIcon, alt: "gitea" },
-  { logo: metabaseIcon, alt: "metabase" },
   { logo: pusherIcon, alt: "pusher" },
   { logo: kibanaIcon, alt: "kibana" },
   { logo: chromeIcon, alt: "chrome" },
   { logo: grafanaIcon, alt: "grafana" },
   { logo: imgproxyIcon, alt: "imgproxy" },
+  { logo: metabaseIcon, alt: "metabase" },
   { logo: nextcloudIcon, alt: "nextcloud" },
   { logo: wordpressIcon, alt: "wordpress" },
   { logo: prestashopIcon, alt: "prestashop" },
