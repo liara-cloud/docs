@@ -5,6 +5,7 @@ import MeiliSearch from "meilisearch";
 import Link from "next/link";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
+import ProjectIcon from "../../components/ProjectIcon";
 
 const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -153,11 +154,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                         href={item.element ? item.url + item.element : item.url}
                       >
                         <a
-                          className={`url_results ${
-                            current != undefined &&
+                          className={`url_results ${current != undefined &&
                             item.id == current.id &&
                             `current-result `
-                          }`}
+                            }`}
                           onMouseEnter={() => handleHover(index)}
                         >
                           <div className="platform_container">
@@ -192,7 +192,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <NavTitle href="/app-deploy/nodejs">
-                <img src="/static/platformicons/nodejs.svg" alt="nodejs" />
+                <ProjectIcon platform="nodejs" />
                 NodeJS
               </NavTitle>
               <ul className="nav__list">
@@ -255,7 +255,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/laravel">
-                <img src="/static/platformicons/laravel.svg" alt="laravel" />
+                <ProjectIcon platform="laravel" />
                 Laravel
               </NavTitle>
               <ul className="nav__list">
@@ -338,7 +338,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/php">
-                <img src="/static/platformicons/php.svg" alt="php" />
+                <ProjectIcon platform="php" />
                 PHP
               </NavTitle>
               <ul className="nav__list">
@@ -401,7 +401,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/django">
-                <img src="/static/platformicons/django.svg" alt="django" />
+                <ProjectIcon platform="django" />
                 Django
               </NavTitle>
               <ul className="nav__list">
@@ -469,7 +469,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/flask">
-                <img src="/static/platformicons/flask.svg" alt="flask" />
+                <ProjectIcon platform="flask" />
                 Flask
               </NavTitle>
               <ul className="nav__list">
@@ -532,7 +532,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/netcore">
-                <img src="/static/platformicons/netcore.svg" alt="netcore" />
+                <ProjectIcon platform="netcore" />
                 Net Core.
               </NavTitle>
               <ul className="nav__list">
@@ -595,7 +595,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/react">
-                <img src="/static/platformicons/react.svg" alt="react" />
+                <ProjectIcon platform="react" />
                 React
               </NavTitle>
               <ul className="nav__list">
@@ -638,7 +638,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/angular">
-                <img src="/static/platformicons/angularjs.svg" alt="angular" />
+                <ProjectIcon platform="angularjs" />
                 Angular
               </NavTitle>
               <ul className="nav__list">
@@ -681,7 +681,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/vue">
-                <img src="/static/platformicons/vue.svg" alt="vue" />
+                <ProjectIcon platform="vue" />
                 Vue
               </NavTitle>
               <ul className="nav__list">
@@ -724,7 +724,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/static">
-                <img src="/static/platformicons/HTML5.svg" alt="static" />
+                <ProjectIcon platform="HTML5" />
                 Static
               </NavTitle>
               <ul className="nav__list">
@@ -767,7 +767,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/docker">
-                <img src="/static/platformicons/docker.svg" alt="docker" />
+                <ProjectIcon platform="docker" />
                 Docker
               </NavTitle>
               <ul className="nav__list">

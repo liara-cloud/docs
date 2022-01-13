@@ -1,8 +1,9 @@
-import Notice from '../../../components/Notice';
-import Layout from '../../../components/Layout';
 import Head from 'next/head';
 import Link from 'next/link';
 import Highlight from 'react-highlight';
+import Notice from '../../../components/Notice';
+import Layout from '../../../components/Layout';
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
     <Layout>
@@ -13,11 +14,7 @@ export default () => (
         </Head>
 
         <div className="page-head">
-            <img
-                className="page-icon"
-                src="/static/platformicons/nodejs.svg"
-                alt="nodejs"
-            />
+            <ProjectIcon platform="nodejs" />
             <div className="page-title">
                 <h1>برنامه‌های NodeJS</h1>
                 <span className="page-description">(NodeJS Apps)</span>
@@ -103,7 +100,7 @@ transporter.sendMail({
             <a href="https://nodemailer.com/smtp/" target="_blank">مستندات</a> این پکیج
             مراجعه کنید.
         </p>
-    
+
         <Link href="/app-deploy/nodejs/tips">متوجه شدم، برو گام بعدی!</Link>
     </Layout>
 );

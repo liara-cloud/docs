@@ -1,7 +1,8 @@
-import Layout from "../../../components/Layout";
 import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
+import Layout from "../../../components/Layout";
+import ProjectIcon from "../../../components/ProjectIcon";
 
 export default () => (
   <Layout>
@@ -12,11 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/django.svg"
-        alt="django"
-      />
+      <ProjectIcon platform="django" />
       <div className="page-title">
         <h1>برنامه‌های Django</h1>
         <span className="page-description">(Django Apps)</span>
