@@ -8,10 +8,8 @@ import { synonymsParser } from "./synonymsParser.js";
 export async function importDataToMeiliSearch(index, jsonName) {
   // read data
   const json = JSON.parse(await readFile(`./data/${jsonName}.json`));
-
   // parsing synonyms
   const synonymsList = synonymsParser(synonyms);
-
   await client.deleteIndexIfExists(index);
   await client.index(index).addDocuments(json);
   await client.index(index).updateStopWords(stopWords);
