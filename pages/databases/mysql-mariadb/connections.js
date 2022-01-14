@@ -1,8 +1,8 @@
-import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import DatabaseIcon from "../../../components/DatabaseIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
-import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -13,11 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/mysql.svg"
-        alt="mysql"
-      />
+      <DatabaseIcon database="mysql" />
       <div className="page-title">
         <h1>دیتابیس MySQL / MariaDB</h1>
         <span className="page-description">(MySQL / MariaDB Database)</span>

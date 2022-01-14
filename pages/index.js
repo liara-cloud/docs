@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import PlatformIcon from "../components/PlatformIcon";
+import DatabaseIcon from "../components/DatabaseIcon";
 
 const Index = () => (
   <Layout>
@@ -159,55 +160,55 @@ const Index = () => (
     <div className="platforms">
       <Link href="/databases/mysql-mariadb/install">
         <a>
-          <img src="/static/platformicons/mysql.svg" alt="mysql" />
+          <DatabaseIcon database="mysql" />
           <span>MySQL</span>
         </a>
       </Link>
       <Link href="/databases/mysql-mariadb/install">
         <a>
-          <img src="/static/platformicons/mariadb.svg" alt="mariadb" />
+          <DatabaseIcon database="mariadb" />
           <span>MariaDB</span>
         </a>
       </Link>
       <Link href="/databases/postgresql/install">
         <a>
-          <img src="/static/platformicons/postgres.svg" alt="postgres" />
+          <DatabaseIcon database="postgres" />
           <span>PostgreSQL</span>
         </a>
       </Link>
       <Link href="/databases/sqlserver/install">
         <a>
-          <img src="/static/platformicons/mssql.svg" alt="mssql" />
+          <DatabaseIcon database="mssql" />
           <span>SQL Server</span>
         </a>
       </Link>
       <Link href="/databases/mongodb/install">
         <a>
-          <img src="/static/platformicons/mongodb.svg" alt="mongodb" />
+          <DatabaseIcon database="mongodb" />
           <span>MongoDB</span>
         </a>
       </Link>
       <Link href="/databases/redis/install">
         <a>
-          <img src="/static/platformicons/redis.svg" alt="redis" />
+          <DatabaseIcon database="redis" />
           <span>Redis</span>
         </a>
       </Link>
       <Link href="/instructions/rabbitmq">
         <a>
-          <img src="/static/platformicons/rabbitmq.svg" alt="rabbitmq" />
+          <DatabaseIcon database="rabbitmq" />
           <span>RabbitMQ</span>
         </a>
       </Link>
       <Link href="/instructions/elasticsearch">
         <a>
-          <img src="/static/platformicons/elastic.svg" alt="elasticsearch" />
+          <DatabaseIcon database="elastic" />
           <span>Elastic</span>
         </a>
       </Link>
       <Link href="/instructions/arangodb">
         <a>
-          <img src="/static/platformicons/arangodb.svg" alt="arangodb" />
+          <DatabaseIcon database="arangodb" />
           <span>ArangoDB</span>
         </a>
       </Link>

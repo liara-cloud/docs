@@ -5,6 +5,7 @@ import MeiliSearch from "meilisearch";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import PlatformIcon from "../../components/PlatformIcon";
+import DatabaseIcon from "../../components/DatabaseIcon";
 import React, {
   useEffect,
   useState,
@@ -1030,16 +1031,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/rabbitmq">
-                <img src="/static/platformicons/rabbitmq.svg" alt="rabbitmq" />
+                <DatabaseIcon database="rabbitmq" />
                 RabbitMQ
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/elasticsearch">
-                <img
-                  src="/static/platformicons/elastic.svg"
-                  alt="elasticsearch"
-                />
+                <DatabaseIcon database="elastic" />
                 Elasticsearch
               </ActiveLink>
             </li>
@@ -1069,13 +1067,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/yii">
-                <img src="/static/platformicons/yii.svg" alt="yii" />
+                <PlatformIcon platform="yii" />
                 Yii
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/arangodb">
-                <img src="/static/platformicons/arangodb.svg" alt="arangodb" />
+                <DatabaseIcon database="arangodb" />
                 ArangoDB
               </ActiveLink>
             </li>
@@ -1087,7 +1085,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/celery">
-                <img src="/static/platformicons/celery.svg" alt="celery" />
+                <PlatformIcon platform="celery" />
                 Celery
               </ActiveLink>
             </li>
@@ -1110,8 +1108,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <NavTitle href="/databases/mysql-mariadb">
-                <img src="/static/platformicons/mysql.svg" alt="mysql" />
-                <img src="/static/platformicons/mariadb.svg" alt="mariadb" />
+                <DatabaseIcon database="mysql" />
+                <DatabaseIcon database="mariadb" />
                 MySQL / MariaDB
               </NavTitle>
               <ul className="nav__list">
@@ -1145,10 +1143,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/postgresql">
-                <img
-                  src="/static/platformicons/postgres.svg"
-                  alt="postgresql"
-                />
+                <DatabaseIcon database="postgres" />
                 PostgreSQL
               </NavTitle>
               <ul className="nav__list">
@@ -1177,7 +1172,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/sqlserver">
-                <img src="/static/platformicons/mssql.svg" alt="sql-server" />
+                <DatabaseIcon database="mssql" />
                 SQL Server
               </NavTitle>
               <ul className="nav__list">
@@ -1206,7 +1201,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/mongodb">
-                <img src="/static/platformicons/mongodb.svg" alt="mongodb" />
+                <DatabaseIcon database="mongodb" />
                 MongoDB
               </NavTitle>
               <ul className="nav__list">
@@ -1234,7 +1229,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/databases/redis">
-                <img src="/static/platformicons/redis.svg" alt="redis" />
+                <DatabaseIcon database="redis" />
                 Redis
               </NavTitle>
               <ul className="nav__list">

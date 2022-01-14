@@ -1,8 +1,8 @@
-import Layout from "../../components/Layout";
-import Notice from "../../components/Notice";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import Notice from "../../components/Notice";
+import Layout from "../../components/Layout";
 
 export default () => (
   <Layout>
