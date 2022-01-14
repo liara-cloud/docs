@@ -5,7 +5,13 @@ import MeiliSearch from "meilisearch";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import PlatformIcon from "../../components/PlatformIcon";
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  useMemo,
+} from "react";
 
 const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -13,6 +19,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [defaultActive, setDefaultActive] = useState(false);
   const [current, setCurrent] = useState("");
   const [index, setIndex] = useState(0);
+  const [value, setValue] = useState("");
+  const [notFound, setNotFound] = useState(false);
   const router = useRouter();
   const valueRef = useRef();
 
@@ -42,18 +50,18 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
     const index = client.index("docs");
     return index.search(value, { limit: 5 }).then(res => {
       setResults(res.hits);
+      setNotFound(value != "" && res.hits.length == 0);
     });
   };
-
   const handleChangeValue = e => {
     const { value } = e.target;
+    setValue(value);
     if (value != "") {
       handleMeiliSearch(value);
     }
     setResults("");
   };
-
-  const debouncedSave = useCallback(debounce(handleChangeValue, 250), []);
+  const debouncedSave = useCallback(debounce(handleChangeValue, 150), []);
   const toggleNav = () => {
     setNavOpen(!navOpen);
   };
@@ -76,14 +84,17 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           current != undefined && current.element
             ? current.url + current.element
             : current != undefined && current.url;
+
         current != undefined && router.push(path);
         break;
     }
   };
-
   useEffect(() => {
     if (results.length == 0) return;
     setCurrent(results.filter((_, idx) => idx == index)["0"]);
+    if (value == "") {
+      setValue(false);
+    }
   }, [results, index]);
 
   const handleHover = item => {
@@ -179,6 +190,17 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                       </Link>
                     </li>
                   ))}
+                {notFound && (
+                  <li>
+                    <a className="url_results">
+                      <div className="platform_container">
+                        <p className="">
+                          متاسفانه نتیجه ای برای جستجوی شما پیدا نشد
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
