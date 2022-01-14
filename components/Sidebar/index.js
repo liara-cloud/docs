@@ -70,7 +70,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
       case 40:
         const Positive = index < results.length - 1 ? index + 1 : 0;
         setIndex(Positive);
-        console.log(Positive);
         break;
       case 13:
         const path =
