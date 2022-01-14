@@ -171,6 +171,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                             )}
                             <p className="">{item.title}</p>
                           </div>
+                          <img
+                            src="/static/icons/arrow.svg"
+                            className="arrow-icon_result"
+                          />
                         </a>
                       </Link>
                     </li>

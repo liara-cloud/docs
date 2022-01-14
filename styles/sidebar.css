@@ -240,7 +240,7 @@ li:last-child > .nav__link {
   width: 100%;
 }
 .results ul li svg {
-  color: gray;
+  color: #808080;
   width: 20px;
   transform: rotate(180deg);
 }
@@ -250,7 +250,6 @@ li:last-child > .nav__link {
   border: 1px solid #d6d8dc;
   border-radius: 0.25rem;
 }
-
 
 .results ul li div p {
   font-size: 15px;
@@ -296,15 +295,15 @@ li:last-child > .nav__link {
   margin-left: 10px;
   margin-top: 10px;
 }
-.suggestion button  {
+.suggestion button {
   font-size: 12px;
   color: #fff;
-  border-radius: 0.40rem;
-  background-color:#0076ff;
+  border-radius: 0.4rem;
+  background-color: #0076ff;
   padding: 5px 10px;
-  transition: .2s;
+  transition: 0.2s;
 }
-.suggestion button:hover  {
+.suggestion button:hover {
   background-color: #218be5;
 }
 .platform-search_logo {
@@ -317,10 +316,18 @@ li:last-child > .nav__link {
   justify-content: space-between;
   width: 100%;
   padding: 15px 15px;
+  position: relative;
 }
 .platform_container {
   align-items: center;
   display: flex;
+}
+.url_results img.arrow-icon_result {
+  width: 15px;
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  transition: 0.2s;
 }
 
 @media (max-width: 1000px) {
