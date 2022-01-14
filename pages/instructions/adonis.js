@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
-import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/adonisjs.svg"
-        alt="Adonisjs"
-      />
+      <PlatformIcon platform="adonisjs" />
       <div className="page-title">
         <h1>استقرار برنامه‌های AdonisJS</h1>
         <span className="page-description">(AdonisJS Apps)</span>

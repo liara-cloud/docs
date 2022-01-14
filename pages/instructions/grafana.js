@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
 import Asciinema from "../../components/Asciinema";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -12,11 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/grafana.svg"
-        alt="grafana"
-      />
+      <PlatformIcon platform="grafana" />
       <div className="page-title">
         <h1>استقرار Grafana</h1>
         <span className="page-description">(Docker Apps)</span>

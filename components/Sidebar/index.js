@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import Link from "next/link";
 import NavTitle from "./NavTitle";
 import ActiveLink from "./ActiveLink";
 import MeiliSearch from "meilisearch";
-import Link from "next/link";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
-import ProjectIcon from "../../components/ProjectIcon";
+import PlatformIcon from "../../components/PlatformIcon";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 
 const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -196,7 +196,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <NavTitle href="/app-deploy/nodejs">
-                <ProjectIcon platform="nodejs" />
+                <PlatformIcon platform="nodejs" />
                 NodeJS
               </NavTitle>
               <ul className="nav__list">
@@ -259,7 +259,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/laravel">
-                <ProjectIcon platform="laravel" />
+                <PlatformIcon platform="laravel" />
                 Laravel
               </NavTitle>
               <ul className="nav__list">
@@ -342,7 +342,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/php">
-                <ProjectIcon platform="php" />
+                <PlatformIcon platform="php" />
                 PHP
               </NavTitle>
               <ul className="nav__list">
@@ -405,7 +405,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/django">
-                <ProjectIcon platform="django" />
+                <PlatformIcon platform="django" />
                 Django
               </NavTitle>
               <ul className="nav__list">
@@ -473,7 +473,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/flask">
-                <ProjectIcon platform="flask" />
+                <PlatformIcon platform="flask" />
                 Flask
               </NavTitle>
               <ul className="nav__list">
@@ -536,7 +536,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/netcore">
-                <ProjectIcon platform="netcore" />
+                <PlatformIcon platform="netcore" />
                 Net Core.
               </NavTitle>
               <ul className="nav__list">
@@ -599,7 +599,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/react">
-                <ProjectIcon platform="react" />
+                <PlatformIcon platform="react" />
                 React
               </NavTitle>
               <ul className="nav__list">
@@ -642,7 +642,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/angular">
-                <ProjectIcon platform="angularjs" />
+                <PlatformIcon platform="angularjs" />
                 Angular
               </NavTitle>
               <ul className="nav__list">
@@ -685,7 +685,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/vue">
-                <ProjectIcon platform="vue" />
+                <PlatformIcon platform="vue" />
                 Vue
               </NavTitle>
               <ul className="nav__list">
@@ -728,7 +728,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/static">
-                <ProjectIcon platform="HTML5" />
+                <PlatformIcon platform="HTML5" />
                 Static
               </NavTitle>
               <ul className="nav__list">
@@ -771,7 +771,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/docker">
-                <ProjectIcon platform="docker" />
+                <PlatformIcon platform="docker" />
                 Docker
               </NavTitle>
               <ul className="nav__list">
@@ -840,10 +840,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/one-click-apps/wordpress">
-                <img
-                  src="/static/platformicons/wordpress.svg"
-                  alt="wordpress"
-                />
+                <PlatformIcon platform="wordpress" />
                 WordPress
               </NavTitle>
               <ul className="nav__list">
@@ -871,7 +868,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/one-click-apps/headless-chrome">
-                <img src="/static/platformicons/chrome.svg" alt="chrome" />
+                <PlatformIcon platform="chrome" />
                 Headless Chrome
               </NavTitle>
               <ul className="nav__list">
@@ -904,7 +901,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/one-click-apps/pusher">
-                <img src="/static/platformicons/pusher.svg" alt="pusher" />
+                <PlatformIcon platform="pusher" />
                 Pusher
               </NavTitle>
               <ul className="nav__list">
@@ -922,37 +919,31 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/one-click-apps/imgproxy">
-                <img src="/static/platformicons/imgproxy.svg" alt="imgproxy" />
+                <PlatformIcon platform="imgproxy" />
                 Imgproxy
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/one-click-apps/rocketchat">
-                <img
-                  src="/static/platformicons/rocketchat.svg"
-                  alt="imgproxy"
-                />
+                <PlatformIcon platform="rocketchat" />
                 RocketChat
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/one-click-apps/metabase">
-                <img src="/static/platformicons/metabase.svg" alt="metabase" />
+                <PlatformIcon platform="metabase" />
                 Metabase
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/one-click-apps/nextcloud">
-                <img
-                  src="/static/platformicons/nextcloud.svg"
-                  alt="nextcloud"
-                />
+                <PlatformIcon platform="nextcloud" />
                 NextCloud
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/one-click-apps/gitea">
-                <img src="/static/platformicons/gitea.svg" alt="gitea" />
+                <PlatformIcon platform="gitea" />
                 Gitea
               </ActiveLink>
             </li>
@@ -969,49 +960,49 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <ActiveLink href="/instructions/nextjs">
-                <img src="/static/platformicons/next.svg" alt="nextjs" />
+                <PlatformIcon platform="next" />
                 NextJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/nuxtjs">
-                <img src="/static/platformicons/nuxt.svg" alt="nuxtjs" />
+                <PlatformIcon platform="nuxt" />
                 NuxtJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/nestjs">
-                <img src="/static/platformicons/nest.svg" alt="nestjs" />
+                <PlatformIcon platform="nest" />
                 NestJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/strapi">
-                <img src="/static/platformicons/strapi.svg" alt="strapi" />
+                <PlatformIcon platform="strapi" />
                 Strapi
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/gatsbyjs">
-                <img src="/static/platformicons/Gatsby.svg" alt="gatsbyjs" />
+                <PlatformIcon platform="gatsby" />
                 GatsbyJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/adonis">
-                <img src="/static/platformicons/adonisjs.svg" alt="adonis" />
+                <PlatformIcon platform="adonisjs" />
                 Adonis
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/nginx">
-                <img src="/static/platformicons/Go.svg" alt="nginx" />
+                <img src="/static/platformicons/nginx.svg" alt="nginx" />
                 Nginx
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/golang">
-                <img src="/static/platformicons/Go.svg" alt="golang" />
+                <PlatformIcon platform="go" />
                 Golang
               </ActiveLink>
             </li>
@@ -1032,31 +1023,25 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/kibana">
-                <img src="/static/platformicons/kibana.svg" alt="kibana" />
+                <PlatformIcon platform="kibana" />
                 Kibana
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/grafana">
-                <img src="/static/platformicons/grafana.svg" alt="grafana" />
+                <PlatformIcon platform="grafana" />
                 Grafana
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/prestashop">
-                <img
-                  src="/static/platformicons/prestashop.svg"
-                  alt="prestashop"
-                />
+                <PlatformIcon platform="prestashop" />
                 Prestashop
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/mattermost">
-                <img
-                  src="/static/platformicons/mattermost.svg"
-                  alt="mattermost"
-                />
+                <PlatformIcon platform="mattermost" />
                 Mattermost
               </ActiveLink>
             </li>

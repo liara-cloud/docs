@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Layout from "../../components/Layout";
-import ZoomableImage from "../../components/ZoomableImage";
 import Notice from "../../components/Notice";
+import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
+import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -10,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/nextcloud.svg"
-        alt="nextcloud"
-      />
+      <PlatformIcon platform="nextcloud" />
       <div className="page-title">
         <h1>فضای ذخیره‌سازی Nextcloud</h1>
         <span className="page-description">(Nextcloud one-click app)</span>

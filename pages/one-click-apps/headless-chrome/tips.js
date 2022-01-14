@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../../../components/Layout";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -10,11 +11,7 @@ export default () => (
       </title>
     </Head>
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/chrome.svg"
-        alt="chrome"
-      />
+      <PlatformIcon platform="chrome" />
       <div className="page-title">
         <h1>برنامه‌ی Headless Chrome</h1>
         <span className="page-description">

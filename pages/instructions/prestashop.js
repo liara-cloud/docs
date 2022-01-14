@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/prestashop.svg"
-        alt="prestashop"
-      />
+      <PlatformIcon platform="prestashop" />
       <div className="page-title">
         <h1>استقرار Prestashop</h1>
         <span className="page-description">(Docker Apps)</span>

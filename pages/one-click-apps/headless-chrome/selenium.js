@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Layout from "../../../components/Layout";
 import Highlight from "react-highlight";
+import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
+import PlatformIcon from "../../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +12,7 @@ export default () => (
       </title>
     </Head>
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/chrome.svg"
-        alt="chrome"
-      />
+      <PlatformIcon platform="chrome" />
       <div className="page-title">
         <h1>اتصال از طریق Selenium به برنامه‌ی Headless Chrome</h1>
         <span className="page-description">

@@ -1,8 +1,8 @@
-import Layout from "../../components/Layout";
-import Notice from "../../components/Notice";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/nest.svg"
-        alt="nestjs"
-      />
+      <PlatformIcon platform="nest" />
       <div className="page-title">
         <h1>استقرار برنامه‌های NestJS</h1>
         <span className="page-description">(NestJS Apps)</span>

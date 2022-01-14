@@ -4,7 +4,7 @@ import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
 import Asciinema from "../../../components/Asciinema";
-import ProjectIcon from "../../../components/ProjectIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -16,7 +16,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <ProjectIcon platform="docker" />
+      <PlatformIcon platform="docker" />
       <div className="page-title">
         <h1>برنامه‌های Docker</h1>
         <span className="page-description">(Docker Apps)</span>

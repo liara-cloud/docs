@@ -2,7 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
-import ProjectIcon from "../../../components/ProjectIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -14,7 +14,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <ProjectIcon platform="laravel" />
+      <PlatformIcon platform="laravel" />
       <div className="page-title">
         <h1>برنامه‌های Laravel</h1>
         <span className="page-description">(Laravel Apps)</span>

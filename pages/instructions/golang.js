@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/Go.svg"
-        alt="Golang"
-      />
+      <PlatformIcon platform="go" />
       <div className="page-title">
         <h1>استقرار برنامه‌های Golang</h1>
         <span className="page-description">(Golang Apps)</span>

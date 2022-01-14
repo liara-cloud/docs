@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import Layout from "../../../components/Layout";
-import ProjectIcon from "../../../components/ProjectIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -13,7 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <ProjectIcon platform="netcore" />
+      <PlatformIcon platform="netcore" />
       <div className="page-title">
         <h1>برنامه‌های ASP.Net Core</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>

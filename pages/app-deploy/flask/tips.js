@@ -2,7 +2,7 @@ import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
-import ProjectIcon from "../../../components/ProjectIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -14,7 +14,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <ProjectIcon platform="flask" />
+      <PlatformIcon platform="flask" />
       <div className="page-title">
         <h1>برنامه‌های Flask</h1>
         <span className="page-description">(Flask Apps)</span>
