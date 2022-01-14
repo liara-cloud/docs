@@ -43,7 +43,7 @@ const Index = () => (
       </Link>
       <Link href="/instructions/gatsbyjs">
         <a>
-          <img src="/static/platformicons/Gatsby.svg" alt="gatsby" />
+          <PlatformIcon platform="gatsby" />
           <span>GatsbyJS</span>
         </a>
       </Link>
@@ -61,31 +61,31 @@ const Index = () => (
       </Link>
       <Link href="/instructions/nestjs">
         <a>
-          <img src="/static/platformicons/nest.svg" alt="nestjs" />
+          <PlatformIcon platform="nest" />
           <span>NestJS</span>
         </a>
       </Link>
       <Link href="/instructions/nextjs">
         <a>
-          <img src="/static/platformicons/next.svg" alt="nextjs" />
+          <PlatformIcon platform="next" />
           <span>NextJS</span>
         </a>
       </Link>
       <Link href="/instructions/nuxtjs">
         <a>
-          <img src="/static/platformicons/nuxt.svg" alt="nuxtjs" />
+          <PlatformIcon platform="nuxt" />
           <span>NuxtJS</span>
         </a>
       </Link>
       <Link href="/instructions/strapi">
         <a>
-          <img src="/static/platformicons/strapi.svg" alt="strapi" />
+          <PlatformIcon platform="strapi" />
           <span>Strapi</span>
         </a>
       </Link>
       <Link href="/instructions/adonis">
         <a>
-          <img src="/static/platformicons/adonisjs.svg" alt="adonis" />
+          <PlatformIcon platform="adonisjs" />
           <span>Adonis</span>
         </a>
       </Link>
@@ -104,13 +104,13 @@ const Index = () => (
       </Link>
       <Link href="/app-deploy/laravel/getting-started">
         <a>
-          <img src="/static/platformicons/lumen.svg" alt="lumen" />
+          <PlatformIcon platform="lumen" />
           <span>Lumen</span>
         </a>
       </Link>
       <Link href="/instructions/yii">
         <a>
-          <img src="/static/platformicons/yii.svg" alt="yii" />
+          <PlatformIcon platform="yii" />
           <span>Yii</span>
         </a>
       </Link>
@@ -141,7 +141,7 @@ const Index = () => (
       </Link>
       <Link href="/instructions/golang">
         <a>
-          <img src="/static/platformicons/Go.svg" alt="golang" />
+          <PlatformIcon platform="go" />
           <span>Go</span>
         </a>
       </Link>

@@ -957,49 +957,49 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <ActiveLink href="/instructions/nextjs">
-                <img src="/static/platformicons/next.svg" alt="nextjs" />
+                <PlatformIcon platform="next" />
                 NextJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/nuxtjs">
-                <img src="/static/platformicons/nuxt.svg" alt="nuxtjs" />
+                <PlatformIcon platform="nuxt" />
                 NuxtJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/nestjs">
-                <img src="/static/platformicons/nest.svg" alt="nestjs" />
+                <PlatformIcon platform="nest" />
                 NestJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/strapi">
-                <img src="/static/platformicons/strapi.svg" alt="strapi" />
+                <PlatformIcon platform="strapi" />
                 Strapi
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/gatsbyjs">
-                <img src="/static/platformicons/Gatsby.svg" alt="gatsbyjs" />
+                <PlatformIcon platform="gatsby" />
                 GatsbyJS
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/adonis">
-                <img src="/static/platformicons/adonisjs.svg" alt="adonis" />
+                <PlatformIcon platform="adonisjs" />
                 Adonis
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/nginx">
-                <img src="/static/platformicons/Go.svg" alt="nginx" />
+                <img src="/static/platformicons/nginx.svg" alt="nginx" />
                 Nginx
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/golang">
-                <img src="/static/platformicons/Go.svg" alt="golang" />
+                <PlatformIcon platform="go" />
                 Golang
               </ActiveLink>
             </li>

@@ -1,7 +1,8 @@
-import Layout from "../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -10,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/next.svg"
-        alt="nextjs"
-      />
+      <PlatformIcon platform="next" />
       <div className="page-title">
         <h1>استقرار برنامه‌های NextJS</h1>
         <span className="page-description">(NextJS Apps)</span>

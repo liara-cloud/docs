@@ -69,6 +69,16 @@ const types = [
   { logo: prestashopIcon, alt: "prestashop" },
   { logo: mattermostIcon, alt: "mattermost" },
   { logo: rocketchatIcon, alt: "rocketchat" },
+  // Instructions
+  { logo: goIcon, alt: "go" },
+  { logo: yiiIcon, alt: "yii" },
+  { logo: nestIcon, alt: "nest" },
+  { logo: nextIcon, alt: "next" },
+  { logo: nuxtIcon, alt: "nuxt" },
+  { logo: lumenIcon, alt: "lumen" },
+  { logo: gatsbyIcon, alt: "gatsby" },
+  { logo: strapiIcon, alt: "strapi" },
+  { logo: adonisIcon, alt: "adonisjs" },
 ];
 
 export default function PlatformIcon({ platform }) {
