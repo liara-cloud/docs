@@ -40,11 +40,16 @@ export default () => (
       <span className="code">create-react-app</span>
       ساخته‌شده‌اند را روی لیارا مستقر کنید.
     </p>
-    <Notice variant="info">
-      برنامه‌های NextJS را باید در{" "}
-      <Link href="/app-deploy/nodejs/getting-started">پلتفرم NodeJS</Link> مستقر
-      کنید.
-    </Notice>
+
+    <div className="platforms">
+      <Link href="/instructions/nextjs">
+        <a>
+          <PlatformIcon platform="next" />
+          <span>NextJS</span>
+        </a>
+      </Link>
+    </div>
+
     <br />
 
     <Link href="/app-deploy/react/deploy">متوجه شدم، برو گام بعدی!</Link>
