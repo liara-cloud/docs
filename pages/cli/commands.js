@@ -96,9 +96,14 @@ export default () => (
         ۵. در نظر گرفتن پیامی برای این استقرار، مثلا fix the user login bug
       </p>
 
+      <li>&nbsp;&nbsp;-p, --port=port</li>
+      <p dir="rtl" className="commandDescription">
+        ۶. پورتی که برنامه‌ی شما بر روی آن Listen می‌کند
+      </p>
+
       <li>&nbsp;&nbsp;--api-token=</li>
       <p dir="rtl" className="commandDescription">
-        ۶. اجرای آنی عملیات استقرار به کمک{" "}
+        ۷. اجرای آنی عملیات استقرار به کمک{" "}
         <a href="https://console.liara.ir/API" target="_blank">
           api token
         </a>{" "}
@@ -107,28 +112,23 @@ export default () => (
 
       <li>&nbsp;&nbsp;--detach</li>
       <p dir="rtl" className="commandDescription">
-        ۶. عدم نمایش لاگ‌ها بعد از هر استقرار
+        ۸. عدم نمایش لاگ‌ها بعد از هر استقرار
       </p>
 
       <li>&nbsp;&nbsp;--path</li>
       <p dir="rtl" className="commandDescription">
-        ۷. آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید
+        ۹. آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید
       </p>
 
       <li>&nbsp;&nbsp;--platform</li>
       <p dir="rtl" className="commandDescription">
-        ۸. مشخص کردن پلتفرم [node, laravel, php, django, flask, netcore, react,
+        ۱۰. مشخص کردن پلتفرم [node, laravel, php, django, flask, netcore, react,
         angular, vue, static, docker]
-      </p>
-
-      <li>&nbsp;&nbsp;--port=port</li>
-      <p dir="rtl" className="commandDescription">
-        ۹. مشخص کردن port ای که برنامه شما به آن گوش می‌دهد.
       </p>
 
       <li>&nbsp;&nbsp;--region=iran|germany</li>
       <p dir="rtl" className="commandDescription">
-        ۱۰. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
+        ۱۱. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
       </p>
     </ol>
 
