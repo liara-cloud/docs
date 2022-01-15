@@ -2,7 +2,6 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import PlatformIcon from "../components/PlatformIcon";
-import DatabaseIcon from "../components/DatabaseIcon";
 
 const Index = () => (
   <Layout>
@@ -160,55 +159,55 @@ const Index = () => (
     <div className="platforms">
       <Link href="/databases/mysql-mariadb/install">
         <a>
-          <DatabaseIcon database="mysql" />
+          <PlatformIcon platform="mysql" />
           <span>MySQL</span>
         </a>
       </Link>
       <Link href="/databases/mysql-mariadb/install">
         <a>
-          <DatabaseIcon database="mariadb" />
+          <PlatformIcon platform="mariadb" />
           <span>MariaDB</span>
         </a>
       </Link>
       <Link href="/databases/postgresql/install">
         <a>
-          <DatabaseIcon database="postgres" />
+          <PlatformIcon platform="postgres" />
           <span>PostgreSQL</span>
         </a>
       </Link>
       <Link href="/databases/sqlserver/install">
         <a>
-          <DatabaseIcon database="mssql" />
+          <PlatformIcon platform="mssql" />
           <span>SQL Server</span>
         </a>
       </Link>
       <Link href="/databases/mongodb/install">
         <a>
-          <DatabaseIcon database="mongodb" />
+          <PlatformIcon platform="mongodb" />
           <span>MongoDB</span>
         </a>
       </Link>
       <Link href="/databases/redis/install">
         <a>
-          <DatabaseIcon database="redis" />
+          <PlatformIcon platform="redis" />
           <span>Redis</span>
         </a>
       </Link>
       <Link href="/instructions/rabbitmq">
         <a>
-          <DatabaseIcon database="rabbitmq" />
+          <PlatformIcon platform="rabbitmq" />
           <span>RabbitMQ</span>
         </a>
       </Link>
       <Link href="/instructions/elasticsearch">
         <a>
-          <DatabaseIcon database="elastic" />
+          <PlatformIcon platform="elastic" />
           <span>Elastic</span>
         </a>
       </Link>
       <Link href="/instructions/arangodb">
         <a>
-          <DatabaseIcon database="arangodb" />
+          <PlatformIcon platform="arangodb" />
           <span>ArangoDB</span>
         </a>
       </Link>

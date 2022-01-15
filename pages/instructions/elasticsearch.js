@@ -3,7 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
-import DatabaseIcon from "../../components/DatabaseIcon";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <DatabaseIcon database="elastic" />
+      <PlatformIcon platform="elastic" />
       <div className="page-title">
         <h1>استقرار Elasticsearch</h1>
         <span className="page-description">(Docker Apps)</span>
