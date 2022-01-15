@@ -37,6 +37,17 @@ export default () => (
       لیارا آشنا می‌شوید و می‌توانید از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
 
+    <div className="platforms">
+      <Link href="/instructions/gatsbyjs">
+        <a>
+          <PlatformIcon platform="gatsby" />
+          <span>GatsbyJS</span>
+        </a>
+      </Link>
+    </div>
+
+    <br />
+
     <Link href="/app-deploy/static/deploy">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
