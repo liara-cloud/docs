@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../../../components/Layout";
-import DatabaseIcon from "../../../components/DatabaseIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -10,7 +10,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <DatabaseIcon database="mssql" />
+      <PlatformIcon platform="mssql" />
       <div className="page-title">
         <h1>دیتابیس SQL Server</h1>
         <span className="page-description">(SQL Server Database)</span>

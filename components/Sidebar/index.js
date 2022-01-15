@@ -5,7 +5,6 @@ import MeiliSearch from "meilisearch";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import PlatformIcon from "../../components/PlatformIcon";
-import DatabaseIcon from "../../components/DatabaseIcon";
 import React, {
   useEffect,
   useState,
@@ -1031,13 +1030,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/rabbitmq">
-                <DatabaseIcon database="rabbitmq" />
+                <PlatformIcon platform="rabbitmq" />
                 RabbitMQ
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/elasticsearch">
-                <DatabaseIcon database="elastic" />
+                <PlatformIcon platform="elastic" />
                 Elasticsearch
               </ActiveLink>
             </li>
@@ -1073,7 +1072,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/arangodb">
-                <DatabaseIcon database="arangodb" />
+                <PlatformIcon platform="arangodb" />
                 ArangoDB
               </ActiveLink>
             </li>
@@ -1108,8 +1107,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <NavTitle href="/databases/mysql-mariadb">
-                <DatabaseIcon database="mysql" />
-                <DatabaseIcon database="mariadb" />
+                <PlatformIcon platform="mysql" />
+                <PlatformIcon platform="mariadb" />
                 MySQL / MariaDB
               </NavTitle>
               <ul className="nav__list">
@@ -1143,7 +1142,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/postgresql">
-                <DatabaseIcon database="postgres" />
+                <PlatformIcon platform="postgres" />
                 PostgreSQL
               </NavTitle>
               <ul className="nav__list">
@@ -1172,7 +1171,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/sqlserver">
-                <DatabaseIcon database="mssql" />
+                <PlatformIcon platform="mssql" />
                 SQL Server
               </NavTitle>
               <ul className="nav__list">
@@ -1201,7 +1200,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/mongodb">
-                <DatabaseIcon database="mongodb" />
+                <PlatformIcon platform="mongodb" />
                 MongoDB
               </NavTitle>
               <ul className="nav__list">
@@ -1229,7 +1228,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/databases/redis">
-                <DatabaseIcon database="redis" />
+                <PlatformIcon platform="redis" />
                 Redis
               </NavTitle>
               <ul className="nav__list">

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../../../components/Layout";
-import DatabaseIcon from "../../../components/DatabaseIcon";
+import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <DatabaseIcon database="postgres" />
+      <PlatformIcon platform="postgres" />
       <div className="page-title">
         <h1>دیتابیس PostgreSQL</h1>
         <span className="page-description">(PostgreSQL Database)</span>

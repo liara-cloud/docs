@@ -4,7 +4,7 @@ import Highlight from "react-highlight";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
 import Asciinema from "../../components/Asciinema";
-import DatabaseIcon from "../../components/DatabaseIcon";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -13,7 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <DatabaseIcon database="arangodb" />
+      <PlatformIcon platform="arangodb" />
       <div className="page-title">
         <h1>استقرار ArangoDB</h1>
         <span className="page-description">(Docker Apps)</span>
