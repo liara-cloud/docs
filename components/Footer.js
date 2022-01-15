@@ -128,7 +128,7 @@ export default function Footer() {
                   className="block opacity-50 m-2 lg:m-3 p-2"
                 >
                   <img
-                    src="https://liara.ir/wp-content/themes/liara-theme-v2/assets/img/footer/Twitter.svg"
+                    src="/static/layout/Twitter.svg"
                     alt="Twitter"
                     className="block"
                   />
