@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
 import Asciinema from "../../components/Asciinema";
+import DatabaseIcon from "../../components/DatabaseIcon";
 
 export default () => (
   <Layout>
@@ -12,11 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/rabbitmq.svg"
-        alt="rabbitmq"
-      />
+      <DatabaseIcon database="rabbitmq" />
       <div className="page-title">
         <h1>استقرار RabbitMQ</h1>
         <span className="page-description">(Docker Apps)</span>

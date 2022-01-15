@@ -33,7 +33,9 @@ import rocketchatIcon from "@liara/platformicons/svg/rocketchat.svg";
 // Instructions
 
 import goIcon from "@liara/platformicons/svg/go.svg";
+// import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
+import celeryIcon from "@liara/platformicons/svg/celery.svg";
 import nestIcon from "@liara/platformicons/svg/nest.svg";
 import nextIcon from "@liara/platformicons/svg/next.svg";
 import nuxtIcon from "@liara/platformicons/svg/nuxt.svg";
@@ -79,6 +81,8 @@ const types = [
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: strapiIcon, alt: "strapi" },
   { logo: adonisIcon, alt: "adonisjs" },
+  // { logo: seqIcon, alt: "seq" },
+  { logo: celeryIcon, alt: "celery" },
 ];
 
 export default function PlatformIcon({ platform }) {

@@ -1,8 +1,7 @@
-import Layout from "../../../components/Layout";
 import Head from "next/head";
-import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import DatabaseIcon from "../../../components/DatabaseIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
-import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -11,11 +10,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/redis.svg"
-        alt="redis"
-      />
+      <DatabaseIcon database="redis" />
       <div className="page-title">
         <h1>دیتابیس Redis</h1>
         <span className="page-description">(Redis key/value Database)</span>

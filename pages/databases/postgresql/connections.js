@@ -1,8 +1,8 @@
-import Layout from "../../../components/Layout";
-import Notice from "../../../components/Notice";
 import Head from "next/head";
+import Notice from "../../../components/Notice";
+import Layout from "../../../components/Layout";
+import DatabaseIcon from "../../../components/DatabaseIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
-import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -11,11 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/postgres.svg"
-        alt="postgres"
-      />
+      <DatabaseIcon database="postgres" />
       <div className="page-title">
         <h1>دیتابیس PostgreSQL</h1>
         <span className="page-description">(PostgreSQL Database)</span>

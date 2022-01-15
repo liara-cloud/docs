@@ -1,6 +1,7 @@
-import Layout from "../../../components/Layout";
 import Head from "next/head";
+import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
+import DatabaseIcon from "../../../components/DatabaseIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
@@ -12,11 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/mongodb.svg"
-        alt="mongodb"
-      />
+      <DatabaseIcon database="mongodb" />
       <div className="page-title">
         <h1>دیتابیس MongoDB</h1>
         <span className="page-description">(MongoDB Database)</span>
