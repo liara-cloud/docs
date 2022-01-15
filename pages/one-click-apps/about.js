@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Layout from "../../components/Layout";
 import Link from "next/link";
+import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -28,50 +29,80 @@ export default () => (
     <div className="platforms">
       <Link href="/one-click-apps/wordpress/install">
         <a>
-          <img src="/static/platformicons/wordpress.svg" alt="wordpress" />
+          <PlatformIcon platform="wordpress" />
           <span>WordPress</span>
-        </a>
-      </Link>
-      <Link href="/one-click-apps/pusher/install">
-        <a>
-          <img src="/static/platformicons/pusher.svg" alt="pusher" />
-          <span>Pusher</span>
         </a>
       </Link>
       <Link href="/one-click-apps/others">
         <a>
-          <img src="/static/platformicons/ghost.svg" alt="ghost" />
+          <PlatformIcon platform="ghost" />
           <span>Ghost</span>
+        </a>
+      </Link>
+      <Link href="/instructions/prestashop">
+        <a>
+          <PlatformIcon platform="prestashop" />
+          <span>Prestashop</span>
+        </a>
+      </Link>
+      <Link href="/one-click-apps/pusher/install">
+        <a>
+          <PlatformIcon platform="pusher" />
+          <span>Pusher</span>
+        </a>
+      </Link>
+      <Link href="/one-click-apps/metabase">
+        <a>
+          <PlatformIcon platform="metabase" />
+          <span>Metabase</span>
+        </a>
+      </Link>
+      <Link href="/instructions/grafana">
+        <a>
+          <PlatformIcon platform="grafana" />
+          <span>Grafana</span>
+        </a>
+      </Link>
+      <Link href="/instructions/kibana">
+        <a>
+          <PlatformIcon platform="kibana" />
+          <span>Kibana</span>
+        </a>
+      </Link>
+      <Link href="/instructions/mattermost">
+        <a>
+          <PlatformIcon platform="mattermost" />
+          <span>Mattermost</span>
         </a>
       </Link>
       <Link href="/one-click-apps/rocketchat">
         <a>
-          <img src="/static/platformicons/rocketchat.svg" alt="rocketchat" />
+          <PlatformIcon platform="rocketchat" />
           <span>Rocket.Chat</span>
         </a>
       </Link>
       <Link href="/one-click-apps/gitea">
         <a>
-          <img src="/static/platformicons/gitea.svg" alt="gitea" />
+          <PlatformIcon platform="gitea" />
           <span>Gitea</span>
-        </a>
-      </Link>
-      <Link href="/one-click-apps/metabase">
-        <a>
-          <img src="/static/platformicons/metabase.svg" alt="metabase" />
-          <span>Metabase</span>
-        </a>
-      </Link>
-      <Link href="/one-click-apps/headless-chrome/install">
-        <a>
-          <img src="/static/platformicons/chrome.svg" alt="Chrome" />
-          <span>Chrome</span>
         </a>
       </Link>
       <Link href="/one-click-apps/nextcloud">
         <a>
-          <img src="/static/platformicons/nextcloud.svg" alt="nextcloud" />
+          <PlatformIcon platform="nextcloud" />
           <span>NextCloud</span>
+        </a>
+      </Link>
+      <Link href="/one-click-apps/imgproxy">
+        <a>
+          <PlatformIcon platform="imgproxy" />
+          <span>Imgproxy</span>
+        </a>
+      </Link>
+      <Link href="/one-click-apps/headless-chrome/install">
+        <a>
+          <PlatformIcon platform="chrome" />
+          <span>Chrome</span>
         </a>
       </Link>
     </div>
