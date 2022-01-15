@@ -53,31 +53,31 @@ export default () => (
     <div className="platforms">
       <Link href="/instructions/nestjs">
         <a>
-          <img src="/static/platformicons/nest.svg" alt="nestjs" />
+          <PlatformIcon platform="nest" />
           <span>NestJS</span>
         </a>
       </Link>
       <Link href="/instructions/nextjs">
         <a>
-          <img src="/static/platformicons/next.svg" alt="nextjs" />
+          <PlatformIcon platform="next" />
           <span>NextJS</span>
         </a>
       </Link>
       <Link href="/instructions/nuxtjs">
         <a>
-          <img src="/static/platformicons/nuxt.svg" alt="nuxtjs" />
+          <PlatformIcon platform="nuxt" />
           <span>NuxtJS</span>
         </a>
       </Link>
       <Link href="/instructions/strapi">
         <a>
-          <img src="/static/platformicons/strapi.svg" alt="strapi" />
+          <PlatformIcon platform="strapi" />
           <span>Strapi</span>
         </a>
       </Link>
       <Link href="/instructions/adonis">
         <a>
-          <img src="/static/platformicons/adonisjs.svg" alt="adonis" />
+          <PlatformIcon platform="adonisjs" />
           <span>Adonis</span>
         </a>
       </Link>
