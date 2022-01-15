@@ -155,6 +155,15 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 اتصال دامنه
               </button>
               <button onClick={() => handleSuggestion("ci/cd")}>ci/cd</button>
+              <button onClick={() => handleSuggestion("ارسال ایمیل")}>
+                ارسال ایمیل
+              </button>
+              <button onClick={() => handleSuggestion("شبکه‌ی خصوصی")}>
+                شبکه‌ی خصوصی
+              </button>
+              <button onClick={() => handleSuggestion("cron job")}>
+                cron job
+              </button>
             </div>
             <div className="results">
               <ul>

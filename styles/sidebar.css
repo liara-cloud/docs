@@ -339,3 +339,12 @@ li:last-child > .nav__link {
     font-size: 13px;
   }
 }
+@media (max-width: 768px) {
+  .search-box {
+    width: 85%;
+    top: 5%;
+  }
+  .results ul li div p {
+    font-size: 13px;
+  }
+}
