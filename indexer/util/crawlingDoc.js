@@ -44,7 +44,7 @@ export async function crawlingDocData() {
           });
         }
       }
-      if ($('h4').next().is('ul')) {
+      if ($('h4').next().is('ul') || $('h4').next().is('p')) {
         $('article > *').each(function (i, el) {
           if (typeof $(this).attr('id') != 'undefined') {
             const platform = $('article .page-icon').attr('alt');
