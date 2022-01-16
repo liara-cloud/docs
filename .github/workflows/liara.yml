@@ -17,6 +17,9 @@ jobs:
         run: |
           npm i -g @liara/cli@2
           liara deploy --api-token="$LIARA_TOKEN" --region iran --detach
+      - name: Sleep for 60 seconds
+        run: sleep 60
+        shell: bash
       - name: search-liara
         working-directory: ./indexer
         env:
