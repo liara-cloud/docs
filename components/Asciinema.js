@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { AsciinemaPlayer } from "./Asciinema-player/asciinema-player";
 
 export default function Asciinema({ id }) {
-  return (
-    <iframe
-      className="asciinema_video"
-      allowFullScreen={true}
-      src={`https://asciinema.org/a/${id}/iframe`}
-    ></iframe>
-  );
+  const ref = useRef();
+  useEffect(() => {
+    AsciinemaPlayer.create(
+      `/casts/${id}.cast`,
+      document.getElementById(`${ref.current.id}`)
+    );
+  }, [id]);
+
+  return <div dir="ltr" ref={ref} id={`cast-${id}`}></div>;
 }
 
 // <Asciinema id="296170" />
