@@ -5,13 +5,7 @@ import MeiliSearch from "meilisearch";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import PlatformIcon from "../../components/PlatformIcon";
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  useRef,
-  useMemo,
-} from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 
 const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -86,6 +80,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             : current != undefined && current.url;
 
         current != undefined && router.push(path);
+        setSearchOpen(false);
         break;
     }
   };
@@ -173,6 +168,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                         href={item.element ? item.url + item.element : item.url}
                       >
                         <a
+                          onClick={() => setSearchOpen(false)}
                           className={`url_results ${
                             current != undefined &&
                             item.id == current.id &&
