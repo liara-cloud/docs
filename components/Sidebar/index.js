@@ -1064,12 +1064,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/instructions/grafana">
-                <PlatformIcon platform="grafana" />
-                Grafana
-              </ActiveLink>
-            </li>
-            <li>
               <ActiveLink href="/instructions/prestashop">
                 <PlatformIcon platform="prestashop" />
                 Prestashop
