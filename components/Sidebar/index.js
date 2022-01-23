@@ -975,6 +975,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/one-click-apps/mattermost">
+                <PlatformIcon platform="mattermost" />
+                Mattermost
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/one-click-apps/others">
                 دیگر برنامه‌ها
               </ActiveLink>
@@ -1061,12 +1067,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/instructions/prestashop">
                 <PlatformIcon platform="prestashop" />
                 Prestashop
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/instructions/mattermost">
-                <PlatformIcon platform="mattermost" />
-                Mattermost
               </ActiveLink>
             </li>
             <li>
