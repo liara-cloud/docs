@@ -255,7 +255,7 @@ const Index = () => (
           <span>Grafana</span>
         </a>
       </Link>
-      <Link href="/instructions/kibana">
+      <Link href="/one-click-apps/kibana">
         <a>
           <PlatformIcon platform="kibana" />
           <span>Kibana</span>
