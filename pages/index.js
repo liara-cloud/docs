@@ -249,7 +249,7 @@ const Index = () => (
           <span>Metabase</span>
         </a>
       </Link>
-      <Link href="/instructions/grafana">
+      <Link href="/one-click-apps/grafana">
         <a>
           <PlatformIcon platform="grafana" />
           <span>Grafana</span>
