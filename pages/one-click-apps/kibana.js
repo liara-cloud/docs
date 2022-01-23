@@ -1,0 +1,68 @@
+import Head from "next/head";
+import Notice from "../../components/Notice";
+import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
+import ZoomableImage from "../../components/ZoomableImage";
+
+export default () => (
+  <Layout>
+    <Head>
+      <title>مستندات نصب و راه‌اندازی Kibana - سرویس ابری لیارا</title>
+    </Head>
+    <div className="page-head">
+      <PlatformIcon platform="kibana" />
+      <div className="page-title">
+        <h1>پلتفرم Kibana</h1>
+        <span className="page-description">(Kibana one-click app)</span>
+      </div>
+    </div>
+
+    <p>
+      <a href="https://www.elastic.co/kibana/" target="_blank" rel="noopener">
+        Kibana
+      </a>{" "}
+      یک پلتفرم است که با استفاده از آن می‌توان ساز و کارهایی مثل ایجاد گزارش،
+      ایجاد نوتیفیکشن، مانیتورینگ بخش‌های مختلف رویدادها و ... را در اختیار
+      داشت. داده‌های kibana از طریق beats جمع آوری شده و با logstash به
+      elasticsearch منتقل می‌شود سپس kibana امکان رصد و مانیتورینگ را می‌دهد.
+    </p>
+
+    <h3>🚀 راه‌اندازی</h3>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <ZoomableImage src="https://files.liara.ir/docs/kibana/create-kibana-one-click-app.gif"></ZoomableImage>
+
+    <p>
+      برای راه‌اندازی برنامه‌ی آماده Kibana باید در بخش{" "}
+      <a href="https://console.liara.ir/apps" target="_blank">
+        برنامه‌های
+      </a>{" "}
+      کنسول لیارا بر روی دکمه‌ی <strong>ایجاد برنامه</strong> کلیک کرده و در
+      صفحه‌ی باز شده وارد بخش برنامه‌های آماده شوید. سپس برنامه‌ی Kibana را
+      انتخاب و یک شناسه‌ی یکتا برای برنامه‌ی خود درنظر بگیرید، همچنین پلن مورد
+      نظر خود را انتخاب کنید و در آخر بر روی دکمه‌ی{" "}
+      <strong>ایجاد برنامه</strong> کلیک کنید.
+    </p>
+
+    <p>
+      پس از راه‌اندازی برنامه‌ی آماده Kibana، نوبت به تنظیم مقدار متغیر{" "}
+      <span className="code">KIBANA_ELASTICSEARCH_URL</span> در تنظیمات متغیرهای
+      این برنامه می‌رسد.
+    </p>
+
+    <ZoomableImage src="https://files.liara.ir/docs/kibana/setup-kibana-app.gif"></ZoomableImage>
+
+    <Notice variant="info">
+      برای اتصال دامنه‌ی اختصاصی به این برنامه کافیست به{" "}
+      <a href="/domains/management" target="_blank">
+        مستندات دامنه‌ها
+      </a>{" "}
+      مراجعه کرده و طبق مستندات، دامنه‌ اختصاصی مورد نظرتان را به برنامه متصل
+      کنید.
+    </Notice>
+  </Layout>
+);

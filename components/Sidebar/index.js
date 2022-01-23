@@ -981,6 +981,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/one-click-apps/kibana">
+                <PlatformIcon platform="kibana" />
+                Kibana
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/one-click-apps/others">
                 دیگر برنامه‌ها
               </ActiveLink>
@@ -1049,12 +1055,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/instructions/elasticsearch">
                 <PlatformIcon platform="elastic" />
                 Elasticsearch
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/instructions/kibana">
-                <PlatformIcon platform="kibana" />
-                Kibana
               </ActiveLink>
             </li>
             <li>
