@@ -261,7 +261,7 @@ const Index = () => (
           <span>Kibana</span>
         </a>
       </Link>
-      <Link href="/instructions/mattermost">
+      <Link href="/one-click-apps/mattermost">
         <a>
           <PlatformIcon platform="mattermost" />
           <span>Mattermost</span>
