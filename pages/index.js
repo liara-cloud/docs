@@ -297,6 +297,12 @@ const Index = () => (
           <span>Chrome</span>
         </a>
       </Link>
+      <Link href="/one-click-apps/parse">
+        <a>
+          <PlatformIcon platform="parseserver" />
+          <span>Parse</span>
+        </a>
+      </Link>
     </div>
   </Layout>
 );
