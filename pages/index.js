@@ -231,7 +231,7 @@ const Index = () => (
           <span>Ghost</span>
         </a>
       </Link>
-      <Link href="/instructions/prestashop">
+      <Link href="/one-click-apps/prestashop">
         <a>
           <PlatformIcon platform="prestashop" />
           <span>Prestashop</span>
