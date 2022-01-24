@@ -114,7 +114,7 @@ export default () => (
       <Link href="/one-click-apps/vscode">
         <a>
           <PlatformIcon platform="vscode" />
-          <span>Code Server</span>
+          <span>Code</span>
         </a>
       </Link>
     </div>
