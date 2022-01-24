@@ -29,6 +29,7 @@ import wordpressIcon from "@liara/platformicons/svg/wordpress.svg";
 import prestashopIcon from "@liara/platformicons/svg/PrestaShop.svg";
 import mattermostIcon from "@liara/platformicons/svg/mattermost.svg";
 import rocketchatIcon from "@liara/platformicons/svg/rocketchat.svg";
+import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
@@ -83,6 +84,7 @@ const types = [
   { logo: prestashopIcon, alt: "prestashop" },
   { logo: mattermostIcon, alt: "mattermost" },
   { logo: rocketchatIcon, alt: "rocketchat" },
+  { logo: parseserverIcon, alt: "parseserver" },
   // Instructions
   { logo: goIcon, alt: "go" },
   { logo: yiiIcon, alt: "yii" },

@@ -39,7 +39,7 @@ export default () => (
           <span>Ghost</span>
         </a>
       </Link>
-      <Link href="/instructions/prestashop">
+      <Link href="/one-click-apps/prestashop">
         <a>
           <PlatformIcon platform="prestashop" />
           <span>Prestashop</span>
@@ -57,19 +57,19 @@ export default () => (
           <span>Metabase</span>
         </a>
       </Link>
-      <Link href="/instructions/grafana">
+      <Link href="/one-click-apps/grafana">
         <a>
           <PlatformIcon platform="grafana" />
           <span>Grafana</span>
         </a>
       </Link>
-      <Link href="/instructions/kibana">
+      <Link href="/one-click-apps/kibana">
         <a>
           <PlatformIcon platform="kibana" />
           <span>Kibana</span>
         </a>
       </Link>
-      <Link href="/instructions/mattermost">
+      <Link href="/one-click-apps/mattermost">
         <a>
           <PlatformIcon platform="mattermost" />
           <span>Mattermost</span>
