@@ -28,9 +28,18 @@ export default () => (
       در مسیر اصلی پروژه، بر روی لیارا مستقر کنید.
     </p>
     <p>
-      توجه داشته باشید که برای دیپلوی برنامه‌های Strapi نیازی به ایجاد تغییر در
-      فایل <span className="code">package.json</span> نیست و لیارا به‌طور کامل
-      از این CMS پشتیبانی می‌کند بنابراین تغییری در بخش{" "}
+      توجه داشته باشید که برای مواجه نشدن با خطای Read-only filesystem باید{" "}
+      <Link href="/app-deploy/nodejs/envs">متغیرهای محیطی</Link> زیر را تنظیم
+      کنید.
+    </p>
+    <Highlight className="plaintext">
+      {`JWT_SECRET
+API_TOKEN_SALT`}
+    </Highlight>
+    <p>
+      برای دیپلوی برنامه‌های Strapi نیازی به ایجاد تغییر در فایل{" "}
+      <span className="code">package.json</span> نیست و لیارا به‌طور کامل از این
+      CMS پشتیبانی می‌کند بنابراین تغییری در بخش{" "}
       <span className="code">scripts</span> ایجاد نکنید.
     </p>
     <Highlight className="json">{`"scripts": {
