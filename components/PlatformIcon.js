@@ -18,6 +18,7 @@ import angularIcon from "@liara/platformicons/svg/angularjs.svg";
 
 import ghostIcon from "@liara/platformicons/svg/ghost.svg";
 import giteaIcon from "@liara/platformicons/svg/gitea.svg";
+import vscodeIcon from "@liara/platformicons/svg/vscode.svg";
 import chromeIcon from "@liara/platformicons/svg/chrome.svg";
 import kibanaIcon from "@liara/platformicons/svg/kibana.svg";
 import pusherIcon from "@liara/platformicons/svg/pusher.svg";
@@ -73,6 +74,7 @@ const types = [
   // One-click-apps
   { logo: ghostIcon, alt: "ghost" },
   { logo: giteaIcon, alt: "gitea" },
+  { logo: vscodeIcon, alt: "vscode" },
   { logo: pusherIcon, alt: "pusher" },
   { logo: kibanaIcon, alt: "kibana" },
   { logo: chromeIcon, alt: "chrome" },
