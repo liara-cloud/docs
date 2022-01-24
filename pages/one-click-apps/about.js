@@ -111,6 +111,12 @@ export default () => (
           <span>Parse</span>
         </a>
       </Link>
+      <Link href="/one-click-apps/vscode">
+        <a>
+          <PlatformIcon platform="vscode" />
+          <span>Code Server</span>
+        </a>
+      </Link>
     </div>
   </Layout>
 );
