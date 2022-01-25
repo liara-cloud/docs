@@ -16,6 +16,7 @@ import angularIcon from "@liara/platformicons/svg/angularjs.svg";
 
 // One-click-apps
 
+import odooIcon from "./odoo.png";
 import ghostIcon from "@liara/platformicons/svg/ghost.svg";
 import giteaIcon from "@liara/platformicons/svg/gitea.svg";
 import vscodeIcon from "@liara/platformicons/svg/vscode.svg";
@@ -72,6 +73,7 @@ const types = [
   { logo: netcoreIcon, alt: "netcore" },
   { logo: angularIcon, alt: "angularjs" },
   // One-click-apps
+  { logo: odooIcon, alt: "odoo" },
   { logo: ghostIcon, alt: "ghost" },
   { logo: giteaIcon, alt: "gitea" },
   { logo: vscodeIcon, alt: "vscode" },
