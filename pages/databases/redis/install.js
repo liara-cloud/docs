@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../../../components/Layout";
+import Notice from "../../../components/Notice";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -20,26 +21,30 @@ export default () => (
     </div>
 
     <h3>نصب و راه‌اندازی</h3>
+
     <p>
-      برای راه‌اندازی Redis ابتدا وارد منوی <b>دیتابیس‌ها</b> شوید و سپس روی{" "}
-      <b>راه‌اندازی دیتابیس‌</b> کلیک کنید.
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
     </p>
-    <ZoomableImage
-      src="/static/databases/mysql-create-1.png"
-      alt="صفحه‌ لیست دیتابیس‌ها"
-    />
+    <ZoomableImage src="https://files.liara.ir/docs/redis/create-redis-database.gif" />
     <p>
-      سپس دیتابیس‌ <b>Redis</b> و نسخه مدنظرتان را انتخاب کنید و با انتخاب شناسه
-      برای دیتابیس‌‌تان و پلن دلخواه، دیتابیس را <b>راه‌اندازی و نصب</b> کنید.
+      برای راه‌اندازی دیتابیس Redis باید در بخش{" "}
+      <a href="https://console.liara.ir/databases" target="_blank">
+        دیتابیس‌های
+      </a>{" "}
+      کنسول لیارا بر روی دکمه‌ی <strong>راه‌اندازی دیتابیس</strong> کلیک کنید.
+      پس از انتخاب دیتابیس Redis نسخه‌ی مورد نظر خود را انتخاب کرده و همچنین یک
+      شناسه‌ی یکتا برای دیتابیس خود درنظر بگیرید. علاوه‌براین‌‌ها درصورتی که
+      سرعت و امنیت از شاخصه‌های کلیدی برنامه‌‌های شما هستند می‌توانید دسترسی از
+      طریق شبکه‌ی عمومی را در زمان راه‌اندازی دیتابیس غیرفعال کنید. در نهایت پس
+      از انتخاب پلن دیتابیس خود می‌توانید بر روی دکمه‌ی{" "}
+      <strong>راه‌اندازی و نصب</strong> کلیک کنید.
     </p>
-    <ZoomableImage
-      src="/static/databases/redis-create-1.png"
-      alt="صفحه‌ ساخت دیتابیس‌ها"
-    />
-    <p>
+
+    <Notice varient="info">
       ممکن است راه‌اندازی دیتابیس چند ثانیه‌ای زمان ببرد و بعد از آن دیتابیس شما
       آماده استفاده می‌شود.
-    </p>
+    </Notice>
 
     <h3>ماژول‌های نصب‌شده</h3>
     <p>ماژول‌های زیر به‌صورت پیش‌فرض روی سرویس‌های Redis نصب و فعال شده‌اند:</p>

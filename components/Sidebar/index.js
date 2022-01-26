@@ -1129,34 +1129,65 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <NavTitle href="/databases">دیتابیس‌ها</NavTitle>
           <ul className="nav__list">
             <li>
-              <NavTitle href="/databases/mysql-mariadb">
+              <NavTitle href="/databases/mysql">
                 <PlatformIcon platform="mysql" />
-                <PlatformIcon platform="mariadb" />
-                MySQL / MariaDB
+                MySQL
               </NavTitle>
               <ul className="nav__list">
                 <li>
-                  <ActiveLink href="/databases/mysql-mariadb/install">
+                  <ActiveLink href="/databases/mysql/install">
                     نصب و راه‌اندازی
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/databases/mysql-mariadb/connections">
+                  <ActiveLink href="/databases/mysql/connections">
                     راه‌های اتصال
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/databases/mysql-mariadb/backup">
-                    Backup
-                  </ActiveLink>
+                  <ActiveLink href="/databases/mysql/backup">Backup</ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/databases/mysql-mariadb/restore">
+                  <ActiveLink href="/databases/mysql/restore">
                     Restore
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/databases/mysql-mariadb/tips">
+                  <ActiveLink href="/databases/mysql/tips">
+                    توضیحات و نکات تکمیلی
+                  </ActiveLink>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <NavTitle href="/databases/mariadb">
+                <PlatformIcon platform="mariadb" />
+                MariaDB
+              </NavTitle>
+              <ul className="nav__list">
+                <li>
+                  <ActiveLink href="/databases/mariadb/install">
+                    نصب و راه‌اندازی
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/databases/mariadb/connections">
+                    راه‌های اتصال
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/databases/mariadb/backup">
+                    Backup
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/databases/mariadb/restore">
+                    Restore
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/databases/mariadb/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
                 </li>

@@ -157,13 +157,13 @@ const Index = () => (
       برای مطالعه‌ی راهنمای اجرای هر دیتابیس، صفحه‌ی مربوط به آن را دنبال کنید.
     </p>
     <div className="platforms">
-      <Link href="/databases/mysql-mariadb/install">
+      <Link href="/databases/mysql/install">
         <a>
           <PlatformIcon platform="mysql" />
           <span>MySQL</span>
         </a>
       </Link>
-      <Link href="/databases/mysql-mariadb/install">
+      <Link href="/databases/mariadb/install">
         <a>
           <PlatformIcon platform="mariadb" />
           <span>MariaDB</span>

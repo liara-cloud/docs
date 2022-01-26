@@ -7,20 +7,19 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات تهیه فایل پشتیبان از دیتابیس‌های MySQL / MariaDB - سرویس ابری
-        لیارا
+        مستندات تهیه فایل پشتیبان از دیتابیس‌های MariaDB - سرویس ابری لیارا
       </title>
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="mysql" />
+      <PlatformIcon platform="mariadb" />
       <div className="page-title">
-        <h1>دیتابیس MySQL / MariaDB</h1>
-        <span className="page-description">(MySQL / MariaDB Database)</span>
+        <h1>دیتابیس MariaDB</h1>
+        <span className="page-description">(MariaDB Database)</span>
       </div>
     </div>
 
-    <h3>MySQL / MariaDB Backup</h3>
+    <h3>MariaDB Backup</h3>
     <p>
       لیارا هر روز به صورت خودکار از دیتابیس‌های شما Backup یا همان فایل پشتیبان
       تهیه می‌کند. برای مشاهده این فایل‌ها کافیست به منوی <b>پشتیبان‌گیری</b> در
