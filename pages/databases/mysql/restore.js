@@ -7,20 +7,19 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های MySQL / MariaDB - سرویس
-        ابری لیارا
+        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های MySQL - سرویس ابری لیارا
       </title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="mysql" />
       <div className="page-title">
-        <h1>دیتابیس MySQL / MariaDB</h1>
-        <span className="page-description">(MySQL / MariaDB Database)</span>
+        <h1>دیتابیس MySQL</h1>
+        <span className="page-description">(MySQL Database)</span>
       </div>
     </div>
 
-    <h3>MySQL / MariaDB Restore</h3>
+    <h3>MySQL Restore</h3>
 
     <p>
       کافیست فایل پشتیبان مدنظرتان را دانلود کنید و بعد از خارج کردن آن از حالت

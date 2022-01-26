@@ -35,10 +35,14 @@ export default () => (
         </li>
 
         <li>
-          <Link href="/databases/mysql-mariadb/install">
-            <a>
-              MySQL/MariaDB (version 5.7 or higher - version 10.2 or higher)
-            </a>
+          <Link href="/databases/mysql/install">
+            <a>MySQL (version 5.7 or higher)</a>
+          </Link>
+        </li>
+
+        <li>
+          <Link href="/databases/mariadb/install">
+            <a>MariaDB (version 10.2 or higher)</a>
           </Link>
         </li>
 

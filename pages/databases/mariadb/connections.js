@@ -7,20 +7,18 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌های MySQL / MariaDB - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌های MariaDB - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="mysql" />
+      <PlatformIcon platform="mariadb" />
       <div className="page-title">
-        <h1>دیتابیس MySQL / MariaDB</h1>
-        <span className="page-description">(MySQL / MariaDB Database)</span>
+        <h1>دیتابیس MariaDB</h1>
+        <span className="page-description">(MariaDB Database)</span>
       </div>
     </div>
 
-    <h3>راه‌های اتصال به MySQL / MariaDB</h3>
+    <h3>راه‌های اتصال به MariaDB</h3>
     <p>
       در صورتی که قصد دارید داده‌های دیتابیس‌‌تان را ببینید و در یک محیط گرافیکی
       یا کامندلاینی به مدیریت دیتابیس‌‌تان بپردازید، می‌توانید از راه‌های زیر
