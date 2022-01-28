@@ -1145,11 +1145,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/databases/mysql/backup">Backup</ActiveLink>
+                  <ActiveLink href="/databases/mysql/backup">
+                    تهیه فایل پشتیبان
+                  </ActiveLink>
                 </li>
                 <li>
                   <ActiveLink href="/databases/mysql/restore">
-                    Restore
+                    بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
                 <li>
@@ -1178,12 +1180,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/databases/mariadb/backup">
-                    Backup
+                    تهیه فایل پشتیبان
                   </ActiveLink>
                 </li>
                 <li>
                   <ActiveLink href="/databases/mariadb/restore">
-                    Restore
+                    بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
                 <li>
@@ -1212,12 +1214,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/databases/postgresql/backup">
-                    Backup
+                    تهیه فایل پشتیبان
                   </ActiveLink>
                 </li>
                 <li>
                   <ActiveLink href="/databases/postgresql/restore">
-                    Restore
+                    بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
               </ul>
@@ -1241,12 +1243,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/databases/sqlserver/backup">
-                    Backup
+                    تهیه فایل پشتیبان
                   </ActiveLink>
                 </li>
                 <li>
                   <ActiveLink href="/databases/sqlserver/restore">
-                    Restore
+                    بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
               </ul>
@@ -1270,12 +1272,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/databases/mongodb/backup">
-                    Backup
+                    تهیه فایل پشتیبان
                   </ActiveLink>
                 </li>
                 <li>
                   <ActiveLink href="/databases/mongodb/restore">
-                    Restore
+                    بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
               </ul>
@@ -1297,11 +1299,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/databases/redis/backup">Backup</ActiveLink>
+                  <ActiveLink href="/databases/redis/backup">
+                    تهیه فایل پشتیبان
+                  </ActiveLink>
                 </li>
                 <li>
                   <ActiveLink href="/databases/redis/restore">
-                    Restore
+                    بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
               </ul>
