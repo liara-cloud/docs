@@ -33,8 +33,11 @@ export default () => (
       اما شما برای انجام این کار در لیارا باید به شکل زیر به برنامه‌ی Headless
       Chrome خود متصل شوید:
     </p>
+
     <Highlight className="javascript">
-      {`const browser = await puppeteer.connect({ browserWSEndpoint: 'wss://<liara-chrome-app-url>?token=<your-env-token>' });`}
+      {`const browser = await puppeteer.connect({
+    browserWSEndpoint: \`wss://<liara-chrome-app-url>?token=<your-env-token>\`,
+});`}
     </Highlight>
 
     <Notice variant="info">

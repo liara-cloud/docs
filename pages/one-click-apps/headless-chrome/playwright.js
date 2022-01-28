@@ -38,9 +38,7 @@ export default () => (
     </p>
 
     <Highlight className="javascript">
-      {`const browser = await pw.chromium.connect({
-  browserWSEndpoint: 'wss://<liara-chrome-app-url>?token=<your-env-token>',
-});`}
+      {`const browser = await pw.chromium.connect('wss://<liara-chrome-app-url>/playwright?token=<your-env-token>');`}
     </Highlight>
 
     <Notice variant="info">

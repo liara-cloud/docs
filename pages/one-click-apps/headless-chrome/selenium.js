@@ -32,14 +32,13 @@ export default () => (
 const fs = require('fs');
 
 const chromeCapabilities = webdriver.Capabilities.chrome();
-chromeCapabilities.set(
-  'chromeOptions', {
+chromeCapabilities.set('goog:chromeOptions', {
+    // Set args similar to puppeteer's for best performance
     args: [
       '--headless',
       '--no-sandbox',
     ],
-  }
-);
+});
 
 const driver = new webdriver.Builder()
   .forBrowser('chrome')
@@ -55,19 +54,18 @@ const driver = new webdriver.Builder()
 const fs = require('fs');
 
 const chromeCapabilities = webdriver.Capabilities.chrome();
-chromeCapabilities.set(
-  'chromeOptions', {
+chromeCapabilities.set('browserless:token', '<your-env-token>');
+chromeCapabilities.set('goog:chromeOptions', {
     args: [
       '--headless',
       '--no-sandbox',
     ],
-  }
-);
+});
 
 const driver = new webdriver.Builder()
   .forBrowser('chrome')
   .withCapabilities(chromeCapabilities)
-  .usingServer('https://<liara-chrome-app-url>/webdriver?token=<your-env-token>')
+  .usingServer('https://<liara-chrome-app-url>/webdriver')
   .build();
 `}
     </Highlight>
