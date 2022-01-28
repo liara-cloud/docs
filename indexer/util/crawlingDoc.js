@@ -1,9 +1,10 @@
 import { writeFile } from 'fs/promises';
 
-import { load } from 'cheerio';
 import got from 'got';
+import { load } from 'cheerio';
 import { v4 as uuidv4 } from 'uuid';
 
+import { excludedPages } from './excludedPages.js'
 // data
 const data = [];
 const links = [];
@@ -14,7 +15,9 @@ export async function crawlingDocData() {
   const { body } = await got.get(url);
   const $ = load(body);
   $('a.nav__link').each(function (i, el) {
-    links.push($(this).attr('href'));
+    if (!excludedPages.includes($(this).attr('href'))) {
+      links.push($(this).attr('href'));
+    }
   });
 
   await Promise.all(
