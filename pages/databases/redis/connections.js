@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
@@ -19,59 +20,62 @@ export default () => (
 
     <h3>راه‌های اتصال به Redis</h3>
     <p>
-      در صورتی که قصد دارید داده‌های دیتابیس‌‌تان را ببینید و در یک محیط گرافیکی
-      یا کامندلاینی به مدیریت دیتابیس‌‌تان بپردازید، می‌توانید از راه‌های زیر
-      اقدام کنید:
+      پس از نصب و راه‌اندازی یک دیتابیس جدید نوبت به مدیریت آن می‌رسد و شما
+      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های Redis یکی از ابزارهای
+      زیر را انتخاب کنید.
     </p>
-    <ul>
-      <li>
-        <b>استفاده از phpRedisAdmin</b>
-      </li>
-      <p>
-        لیارا برای دیتابیس Redis امکان راه‌اندازی phpRedisAdmin را به راحتی
-        فراهم کرده است. برای این کار کافیست که به صفحه دیتابیس مورد نظرتان بروید
-        و از بخش <b>راه‌اندازی phpRedisAdmin</b> آن را اجرا کنید.
-      </p>
-      <ZoomableImage
-        src="/static/databases/redis-admin.png"
-        alt="آماده شدن دیتابیس"
-      />
-      <p>
-        برای ورود به پنل کافیست در بخش UserName مقدار admin و در بخش Password
-        رمز عبور Redis را وارد کنید.
-      </p>
 
-      <br />
-      <li>
-        <b>استفاده از Redis-cli</b>
-      </li>
-      <p>بعد از نصب redis-cli کافیست برای اتصال دستور زیر را وارد کنید:</p>
-      <code>{`$ redis-cli -h REDIS_HOST -p REDIS_PORT -a REDIS_PASSWORD`}</code>
-      <br />
-      <ZoomableImage
-        src="/static/databases/redis-cli.png"
-        alt="اتصال به redis با cli"
-      />
-      <br />
-      <li>
-        <b>استفاده از پنل‌های رایگان و اپن‌سورس</b>
-      </li>
-      <p>
-        شما می‌توانید از پنل‌های موجود دیگر نیز برای اتصال به Redis در لیارا
-        استفاده کنید. برای نمونه لینک دو تا از این برنامه ها در زیر آمده است:
-      </p>
-      <ul>
-        <li>
-          <a href="https://github.com/luin/medis" target="_blank">
-            medis
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/marians/rebrow" target="_blank">
-            rebrow
-          </a>
-        </li>
-      </ul>
-    </ul>
+    <h4>phpRedisAdmin</h4>
+    <p>
+      ابزار phpRedisAdmin امکان مدیریت دیتابیس‌های Redis را در محیط وب فراهم
+      می‌کند. برای راه‌اندازی این ابزار در لیارا تنها کافیست وارد منوی{" "}
+      <strong>نحوه‌ی اتصال</strong> به دیتابیس شده و گزینه‌ی{" "}
+      <strong>راه‌اندازی phpRedisAdmin</strong> را فعال کنید.
+    </p>
+    <ZoomableImage
+      src="/static/databases/redis-admin.png"
+      alt="آماده شدن دیتابیس"
+    />
+    <p>
+      سپس می‌توانید با کلیک بر روی دکمه‌ی <strong>بازکردن phpRedisAdmin</strong>{" "}
+      و وارد کردن اطلاعات اتصال به دیتابیس‌تان از امکانات این ابزار استفاده
+      کنید.
+    </p>
+    <br />
+    <h4>Redis-cli</h4>
+    <p>
+      در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
+      Redis متصل شوید می‌توانید ابزار{" "}
+      <a href="https://redis.io/topics/rediscli" target="_blank" rel="noopener">
+        redis-cli
+      </a>{" "}
+      را نصب کرده و با اجرای دستور زیر به سرویس دیتابیس خود متصل شوید.
+    </p>
+
+    <Highlight className="bash">{`$ redis-cli -h REDIS_HOST -p REDIS_PORT -a REDIS_PASSWORD`}</Highlight>
+
+    <br />
+
+    <ZoomableImage
+      src="/static/databases/redis-cli.png"
+      alt="اتصال به redis با cli"
+    />
+
+    <h4>استفاده از پنل‌های رایگان و متن باز</h4>
+    <p>
+      همچنین شما می‌توانید از پنل‌های رایگان و متن‌باز مانند{" "}
+      <a href="https://github.com/luin/medis" rel="noopenner" target="_blank">
+        medis
+      </a>{" "}
+      و یا{" "}
+      <a
+        href="https://github.com/marians/rebrow"
+        rel="noopenner"
+        target="_blank"
+      >
+        rebrow
+      </a>{" "}
+      استفاده کنید.
+    </p>
   </Layout>
 );
