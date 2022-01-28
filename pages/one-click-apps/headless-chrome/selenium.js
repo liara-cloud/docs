@@ -54,14 +54,13 @@ const driver = new webdriver.Builder()
 const fs = require('fs');
 
 const chromeCapabilities = webdriver.Capabilities.chrome();
-chromeCapabilities.set('browserless:token', 'YOUR-API-TOKEN');
+chromeCapabilities.set('browserless:token', '<your-env-token>');
 chromeCapabilities.set('goog:chromeOptions', {
     args: [
       '--headless',
       '--no-sandbox',
     ],
-  }
-);
+});
 
 const driver = new webdriver.Builder()
   .forBrowser('chrome')
