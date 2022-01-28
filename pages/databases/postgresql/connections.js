@@ -38,25 +38,31 @@ export default () => (
     <p>
       سپس می‌توانید با کلیک بر روی دکمه‌ی <strong>بازکردن PGAdmin</strong> و
       وارد کردن اطلاعات اتصال به دیتابیس‌تان از امکانات این ابزار استفاده کنید.
-    </p>
-    <h4 id="adminer">Adminer</h4>
-    <p>
-      حال اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید می‌توانید
-      یکی از ابزارهای{" "}
+      همچنین شما می‌توانید از{" "}
       <a href="https://www.adminer.org/" target="_blank" rel="noopener">
         Adminer
       </a>{" "}
-      و یا{" "}
+      نیز برای مدیریت سرویس دیتابیس خود استفاده کنید.
+    </p>
+
+    <h4 id="database-management-tools">مدیریت دیتابیس از طریق سیستم‌عامل</h4>
+
+    <p>
+      حال اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید، ما به شما
+      ابزارهای{" "}
+      <a
+        href="https://www.navicat.com/en/products/navicat-for-postgresql"
+        target="_blank"
+        rel="noopener"
+      >
+        Navicat for PostgreSQL
+      </a>{" "}
+      و{" "}
       <a href="https://www.heidisql.com/" target="_blank" rel="noopener">
         HeidiSQL
       </a>{" "}
-      را انتخاب کنید. اتصال به دیتابیس با استفاده از این ابزارها بسیار ساده است
-      و برای مثال در ابزار Adminer پس از انتخاب گزینه‌ی PostgreSQL و وارد کردن
-      اطلاعات اتصال به دیتابیس می‌توانید بر روی دکمه‌ی Login کلیک کنید تا امکان
-      مدیریت داده‌های سرویس دیتابیس و استفاده از امکانات این ابزار برای شما
-      فراهم شود.
+      را پیشنهاد می‌کنیم.
     </p>
-    <ZoomableImage src="/static/databases/login-adminer.png" />
     <h4 id="psql">psql</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های

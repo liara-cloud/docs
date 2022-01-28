@@ -64,27 +64,5 @@ export default () => (
     <br />
 
     <ZoomableImage src="/static/databases/mongo-cli.png" />
-
-    <h4>استفاده از پنل‌های رایگان و متن باز</h4>
-
-    <p>
-      همچنین شما می‌توانید از پنل‌های رایگان و متن‌باز مانند{" "}
-      <a
-        href="https://github.com/mongo-express/mongo-express"
-        rel="noopenner"
-        target="_blank"
-      >
-        mongo-express
-      </a>{" "}
-      و یا{" "}
-      <a
-        href="https://github.com/mrvautin/adminMongo"
-        rel="noopenner"
-        target="_blank"
-      >
-        adminMongo
-      </a>{" "}
-      استفاده کنید.
-    </p>
   </Layout>
 );

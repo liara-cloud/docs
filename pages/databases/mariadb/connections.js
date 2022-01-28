@@ -45,7 +45,7 @@ export default () => (
       alt="پنل phpmyadmin"
     />
 
-    <h4 id="mysql-workbench">MySQL Workbench</h4>
+    <h4 id="database-management-tools">مدیریت دیتابیس از طریق سیستم‌عامل</h4>
     <p>
       حال اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید می‌توانید
       یکی از ابزارهای{" "}

@@ -61,21 +61,13 @@ export default () => (
       alt="اتصال به redis با cli"
     />
 
-    <h4>استفاده از پنل‌های رایگان و متن باز</h4>
+    <h4>استفاده از پنل رایگان و متن باز</h4>
     <p>
-      همچنین شما می‌توانید از پنل‌های رایگان و متن‌باز مانند{" "}
+      همچنین شما می‌توانید از پنل رایگان و متن‌باز{" "}
       <a href="https://github.com/luin/medis" rel="noopenner" target="_blank">
         medis
       </a>{" "}
-      و یا{" "}
-      <a
-        href="https://github.com/marians/rebrow"
-        rel="noopenner"
-        target="_blank"
-      >
-        rebrow
-      </a>{" "}
-      استفاده کنید.
+      نیز استفاده کنید.
     </p>
   </Layout>
 );
