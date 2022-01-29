@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -24,10 +25,12 @@ export default () => (
       می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های SQL Server یکی از
       ابزارهای زیر را انتخاب کنید.
     </p>
-    <h4 id="azure-data-studio">Azure Data Studio</h4>
+    <h4 id="database-management-tools">
+      مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+    </h4>
     <p>
-      اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید می‌توانید از
-      ابزار{" "}
+      اگر بخواهید سرویس دیتابیس را را با استفاده از رابط‌های کاربری گرافیکی
+      (GUI) مدیریت کنید می‌توانید از ابزار{" "}
       <a href="https://github.com/microsoft/azuredatastudio" target="_blank">
         Azure Data Studio
       </a>{" "}
@@ -52,9 +55,8 @@ export default () => (
     </p>
     <Highlight className="bash">{`$ sqlcmd -S DB_URL,DB_PORT -Usa -P DB_PASSWORD`}</Highlight>
 
-    <br />
+    <Asciinema id="465248" />
 
-    <ZoomableImage src="/static/databases/sqlcmd.png" />
     <p>
       همچنین شما می‌توانید با مراجعه به این بخش از{" "}
       <a

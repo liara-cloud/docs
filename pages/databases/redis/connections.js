@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -54,12 +55,7 @@ export default () => (
 
     <Highlight className="bash">{`$ redis-cli -h REDIS_HOST -p REDIS_PORT -a REDIS_PASSWORD`}</Highlight>
 
-    <br />
-
-    <ZoomableImage
-      src="/static/databases/redis-cli.png"
-      alt="اتصال به redis با cli"
-    />
+    <Asciinema id="465259" />
 
     <h4>استفاده از پنل رایگان و متن باز</h4>
     <p>

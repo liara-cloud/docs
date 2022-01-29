@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -25,10 +26,13 @@ export default () => (
       ابزارهای زیر را انتخاب کنید.
     </p>
 
-    <h4 id="robo-3t">Robo 3T</h4>
+    <h4 id="database-management-tools">
+      مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+    </h4>
+
     <p>
-      اگر بخواهید دیتابیس‌های MongoDB را در محیط سیستم‌عامل مدیریت کنید
-      می‌توانید از ابزار{" "}
+      اگر بخواهید دیتابیس‌های MongoDB را با استفاده از رابط‌های کاربری گرافیکی
+      (GUI) مدیریت کنید می‌توانید از ابزار{" "}
       <a href="https://robomongo.org/" target="_blank" rel="noopenner">
         Robo 3T
       </a>{" "}
@@ -59,10 +63,13 @@ export default () => (
       زیر به سرویس دیتابیس خود متصل شوید.
     </p>
     <Highlight className="bash">
-      {`$ mongo -u DB_USERNAME -p DB_PASSWORD --host DB_HOST --port DB_PORT --authenticationDatabase admin`}
+      {`$ mongo -u DB_USERNAME \\
+           --port DB_PORT \\
+           --host DB_HOST \\
+           -p DB_PASSWORD \\
+           --authenticationDatabase admin`}
     </Highlight>
-    <br />
 
-    <ZoomableImage src="/static/databases/mongo-cli.png" />
+    <Asciinema id="465250" />
   </Layout>
 );

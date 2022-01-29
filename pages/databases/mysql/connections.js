@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -45,10 +46,13 @@ export default () => (
       alt="پنل phpmyadmin"
     />
 
-    <h4 id="database-management-tools">مدیریت دیتابیس از طریق سیستم‌عامل</h4>
+    <h4 id="database-management-tools">
+      مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+    </h4>
+
     <p>
-      حال اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید می‌توانید
-      یکی از ابزارهای{" "}
+      حال اگر بخواهید سرویس دیتابیس را با استفاده از رابط‌های کاربری گرافیکی
+      (GUI) مدیریت کنید می‌توانید یکی از ابزارهای{" "}
       <a
         href="https://www.mysql.com/products/workbench/"
         target="_blank"
@@ -86,8 +90,6 @@ export default () => (
       {`$ mysql -u DB_USER -pDB_PASSWORD --host DB_HOST --port DB_PORT`}
     </Highlight>
 
-    <br />
-
-    <ZoomableImage src="/static/databases/mysql-cli.png" alt="mysql cli" />
+    <Asciinema id="465240" />
   </Layout>
 );

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -38,18 +39,14 @@ export default () => (
     <p>
       سپس می‌توانید با کلیک بر روی دکمه‌ی <strong>بازکردن PGAdmin</strong> و
       وارد کردن اطلاعات اتصال به دیتابیس‌تان از امکانات این ابزار استفاده کنید.
-      همچنین شما می‌توانید از{" "}
-      <a href="https://www.adminer.org/" target="_blank" rel="noopener">
-        Adminer
-      </a>{" "}
-      نیز برای مدیریت سرویس دیتابیس خود استفاده کنید.
     </p>
 
-    <h4 id="database-management-tools">مدیریت دیتابیس از طریق سیستم‌عامل</h4>
-
+    <h4 id="database-management-tools">
+      مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+    </h4>
     <p>
-      حال اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید، ما به شما
-      ابزارهای{" "}
+      حال اگر بخواهید سرویس دیتابیس را با استفاده از رابط‌های کاربری گرافیکی
+      (GUI) مدیریت کنید، ما به شما ابزارهای{" "}
       <a
         href="https://www.navicat.com/en/products/navicat-for-postgresql"
         target="_blank"
@@ -73,6 +70,6 @@ export default () => (
     <Highlight className="bash">{`$ psql -h DB_HOST -p DB_PORT -U DB_USERNAME -W postgres`}</Highlight>
     <p>بعد از وارد کردن دستور فوق، رمز عبور دیتابیس از شما پرسیده خواهد شد..</p>
 
-    <ZoomableImage src="/static/databases/psql-cli.png" />
+    <Asciinema id="465245" />
   </Layout>
 );
