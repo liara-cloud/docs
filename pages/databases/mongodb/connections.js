@@ -47,6 +47,9 @@ export default () => (
       استفاده کنید.
     </p>
 
+    <h5 id="mongodb-dbeaver">MongoDB Compass</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/mongodb/connect-to-mongodb-database-with-mongodb-compass.gif" />
+
     <h4>mongo cli</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
