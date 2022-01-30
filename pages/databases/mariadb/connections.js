@@ -52,14 +52,6 @@ export default () => (
     <p>
       حال اگر بخواهید دیتابیس‌های MariaDB را با استفاده از رابط‌های کاربری
       گرافیکی (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
-      <a
-        href="https://www.mysql.com/products/workbench/"
-        target="_blank"
-        rel="noopener"
-      >
-        MySQL Workbench
-      </a>
-      ،{" "}
       <a href="https://dbeaver.io/" target="_blank" rel="noopener">
         DBeaver
       </a>{" "}

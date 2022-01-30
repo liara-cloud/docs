@@ -74,6 +74,9 @@ export default () => (
     <h5 id="mysql-dbeaver">DBeaver</h5>
     <ZoomableImage src="https://files.liara.ir/docs/mysql/connect-to-mysql-database-with-dbeaver.gif" />
 
+    <h5 id="mysql-mysql-workbench">MySQL Workbench</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/mysql/connect-to-mysql-database-with-mysql-workbench.gif" />
+
     <h4 id="mysql-client">MySQL Command-Line Client</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
