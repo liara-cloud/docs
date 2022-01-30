@@ -52,7 +52,7 @@ export default () => (
 
     <p>
       حال اگر بخواهید دیتابیس‌های MySQL را با استفاده از رابط‌های کاربری گرافیکی
-      (GUI) مدیریت کنید می‌توانید یکی از ابزارهای{" "}
+      (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
       <a
         href="https://www.mysql.com/products/workbench/"
         target="_blank"
@@ -64,11 +64,11 @@ export default () => (
       <a href="https://dbeaver.io/" target="_blank" rel="noopener">
         DBeaver
       </a>{" "}
-      یا{" "}
+      و یا{" "}
       <a href="https://www.heidisql.com/" target="_blank" rel="noopener">
         HeidiSQL
       </a>{" "}
-      را انتخاب کنید.
+      استفاده کنید.
     </p>
 
     <h5 id="mysql-dbeaver">DBeaver</h5>

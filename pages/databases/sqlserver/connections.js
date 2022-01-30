@@ -30,7 +30,7 @@ export default () => (
     </h4>
     <p>
       حال اگر بخواهید دیتابیس‌های SQL Server را با استفاده از رابط‌های کاربری
-      گرافیکی (GUI) مدیریت کنید، می‌توانید ابزار{" "}
+      گرافیکی (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
       <a href="https://dbeaver.io/" target="_blank" rel="noopener">
         DBeaver
       </a>{" "}
@@ -38,7 +38,7 @@ export default () => (
       <a href="https://github.com/microsoft/azuredatastudio" target="_blank">
         Azure Data Studio
       </a>{" "}
-      را انتخاب کنید.
+      استفاده کنید.
     </p>
 
     <h5 id="sql-server-dbeaver">DBeaver</h5>

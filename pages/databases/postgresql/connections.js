@@ -46,7 +46,7 @@ export default () => (
     </h4>
     <p>
       حال اگر بخواهید دیتابیس‌های PostgreSQL را با استفاده از رابط‌های کاربری
-      گرافیکی (GUI) مدیریت کنید، می‌توانید ابزار{" "}
+      گرافیکی (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
       <a href="https://dbeaver.io/" target="_blank" rel="noopener">
         DBeaver
       </a>{" "}
@@ -54,7 +54,7 @@ export default () => (
       <a href="https://www.heidisql.com/" target="_blank" rel="noopener">
         HeidiSQL
       </a>{" "}
-      را انتخاب کنید.
+      استفاده کنید.
     </p>
 
     <h5 id="postgresql-dbeaver">DBeaver</h5>

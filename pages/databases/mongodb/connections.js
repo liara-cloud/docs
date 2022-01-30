@@ -32,30 +32,21 @@ export default () => (
 
     <p>
       اگر بخواهید دیتابیس‌های MongoDB را با استفاده از رابط‌های کاربری گرافیکی
-      (GUI) مدیریت کنید می‌توانید از ابزار{" "}
-      <a href="https://robomongo.org/" target="_blank" rel="noopenner">
+      (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
+      <a href="https://robomongo.org/" target="_blank" rel="noopener">
         Robo 3T
       </a>{" "}
-      که اکثر توسعه‌دهندگان آن را با نام سابقش یعنی RoboMongo می‌شناسند، استفاده
-      کنید. این ابزار رایگان و متن‌باز در تمامی سیستم‌عامل‌ها قابل اجرا هست و
-      شما می‌توانید به‌سادگی و با دنبال کردن مراحل زیر، با استفاده از این ابزار
-      به سرویس دیتابیس خود متصل شوید.
-      <p>
-        در هنگام بالاآمدن نرم‌افزار روی New Connection کلیک کنید و اطلاعات آن را
-        متناسب با اطلاعات دیتابیس‌ خودتان تکمیل کنید.
-      </p>
-      <ZoomableImage src="/static/databases/robo3t-auth1.png" />
-      <p>
-        در tab مربوط به Authentication کافیست Mode را روی حالت SCRAM-SHA-1 قرار
-        دهید و Database را با مقدار اولیه admin بدون تغییر خاصی باقی بگذارید.
-      </p>
-      <ZoomableImage src="/static/databases/robo3t-auth2.png" />
-      <p>
-        سپس کافیست روی Test کلیک کنید تا مطمئن شوید همه چیز با موفقیت انجام شده
-        است.
-      </p>
-      <ZoomableImage src="/static/databases/robo3t-test.png" />
+      و یا{" "}
+      <a
+        href="https://www.mongodb.com/products/compass"
+        target="_blank"
+        rel="noopener"
+      >
+        MongoDB Compass
+      </a>{" "}
+      استفاده کنید.
     </p>
+
     <h4>mongo cli</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
