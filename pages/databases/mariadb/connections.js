@@ -67,17 +67,12 @@ export default () => (
       <a href="https://www.heidisql.com/" target="_blank" rel="noopener">
         HeidiSQL
       </a>{" "}
-      را انتخاب کنید. اتصال به دیتابیس با استفاده از این ابزارها بسیار ساده است
-      و برای مثال در ابزار MySQL Workbench پس از وارد کردن اطلاعات اتصال به
-      دیتابیس می‌توانید روی دکمه‌ی <strong>Test Connection</strong> کلیک کرده و
-      به این شکل از صحت اطلاعات وارد شده اطمینان حاصل کنید. درنهایت می‌توانید
-      روی گزینه‌ی <strong>OK</strong> کلیک کنید تا امکان مدیریت داده‌های سرویس
-      دیتابیس و استفاده از امکانات این ابزار برای شما فراهم شود.
+      را انتخاب کنید.
     </p>
-    <ZoomableImage
-      src="/static/databases/mysql-workbrench.png"
-      alt="پنل phpmyadmin"
-    />
+
+    <h5 id="mariadb-dbeaver">DBeaver</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/mariadb/connect-to-mariadb-database-with-dbeaver.gif" />
+
     <h4 id="mysql-client">MySQL Command-Line Client</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های

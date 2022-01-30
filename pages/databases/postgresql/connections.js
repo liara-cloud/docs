@@ -46,20 +46,20 @@ export default () => (
     </h4>
     <p>
       حال اگر بخواهید سرویس دیتابیس را با استفاده از رابط‌های کاربری گرافیکی
-      (GUI) مدیریت کنید، ما به شما ابزارهای{" "}
-      <a
-        href="https://www.navicat.com/en/products/navicat-for-postgresql"
-        target="_blank"
-        rel="noopener"
-      >
-        Navicat for PostgreSQL
+      (GUI) مدیریت کنید، می‌توانید ابزار{" "}
+      <a href="https://dbeaver.io/" target="_blank" rel="noopener">
+        DBeaver
       </a>{" "}
-      و{" "}
+      و یا{" "}
       <a href="https://www.heidisql.com/" target="_blank" rel="noopener">
         HeidiSQL
       </a>{" "}
-      را پیشنهاد می‌کنیم.
+      را انتخاب کنید.
     </p>
+
+    <h5 id="postgresql-dbeaver">DBeaver</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/postgresql/connect-to-postgresql-database-with-dbeaver.gif" />
+
     <h4 id="psql">psql</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های

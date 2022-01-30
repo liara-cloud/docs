@@ -29,17 +29,20 @@ export default () => (
       مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
     </h4>
     <p>
-      اگر بخواهید سرویس دیتابیس را را با استفاده از رابط‌های کاربری گرافیکی
-      (GUI) مدیریت کنید می‌توانید از ابزار{" "}
+      حال اگر بخواهید سرویس دیتابیس را با استفاده از رابط‌های کاربری گرافیکی
+      (GUI) مدیریت کنید، می‌توانید ابزار{" "}
+      <a href="https://dbeaver.io/" target="_blank" rel="noopener">
+        DBeaver
+      </a>{" "}
+      و یا{" "}
       <a href="https://github.com/microsoft/azuredatastudio" target="_blank">
         Azure Data Studio
       </a>{" "}
-      استفاده کرده و با وارد کردن اطلاعات اتصال، به سرویس دیتابیس متصل شوید.
-      توجه داشته باشید که در فیلد Server پورت را با علامت{" "}
-      <span className="code">,</span> جدا کرده‌ایم. یعنی:{" "}
-      <span className="code">s11.liara.ir,34472</span>
+      را انتخاب کنید.
     </p>
-    <ZoomableImage src="/static/databases/sqlserver-azurestudio.png" />
+
+    <h5 id="sql-server-dbeaver">DBeaver</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/sql-server/connect-to-sql-server-database-with-dbeaver.gif" />
 
     <h4 id="sqlcmd">sqlcmd</h4>
     <p>
