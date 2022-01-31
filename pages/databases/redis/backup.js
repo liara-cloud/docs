@@ -28,7 +28,7 @@ export default () => (
       به‌صورت دستی اقدام به تهیه فایل پشتیبان کنید.
     </p>
     <ZoomableImage
-      src="/static/databases/mysql-liara-backup.png"
+      src="https://files.liara.ir/docs/redis/backup.gif"
       alt="redis backup page"
     />
   </Layout>
