@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -45,10 +46,13 @@ export default () => (
       alt="پنل phpmyadmin"
     />
 
-    <h4 id="mysql-workbench">MySQL Workbench</h4>
+    <h4 id="database-management-tools">
+      مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+    </h4>
+
     <p>
-      حال اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید می‌توانید
-      یکی از ابزارهای{" "}
+      حال اگر بخواهید دیتابیس‌های MySQL را با استفاده از رابط‌های کاربری گرافیکی
+      (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
       <a
         href="https://www.mysql.com/products/workbench/"
         target="_blank"
@@ -60,21 +64,19 @@ export default () => (
       <a href="https://dbeaver.io/" target="_blank" rel="noopener">
         DBeaver
       </a>{" "}
-      یا{" "}
+      و یا{" "}
       <a href="https://www.heidisql.com/" target="_blank" rel="noopener">
         HeidiSQL
       </a>{" "}
-      را انتخاب کنید. اتصال به دیتابیس با استفاده از این ابزارها بسیار ساده است
-      و برای مثال در ابزار MySQL Workbench پس از وارد کردن اطلاعات اتصال به
-      دیتابیس می‌توانید روی دکمه‌ی <strong>Test Connection</strong> کلیک کرده و
-      به این شکل از صحت اطلاعات وارد شده اطمینان حاصل کنید. درنهایت می‌توانید
-      روی گزینه‌ی <strong>OK</strong> کلیک کنید تا امکان مدیریت داده‌های سرویس
-      دیتابیس و استفاده از امکانات این ابزار برای شما فراهم شود.
+      استفاده کنید.
     </p>
-    <ZoomableImage
-      src="/static/databases/mysql-workbrench.png"
-      alt="پنل phpmyadmin"
-    />
+
+    <h5 id="mysql-dbeaver">DBeaver</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/mysql/connect-to-mysql-database-with-dbeaver.gif" />
+
+    <h5 id="mysql-mysql-workbench">MySQL Workbench</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/mysql/connect-to-mysql-database-with-mysql-workbench.gif" />
+
     <h4 id="mysql-client">MySQL Command-Line Client</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
@@ -86,8 +88,6 @@ export default () => (
       {`$ mysql -u DB_USER -pDB_PASSWORD --host DB_HOST --port DB_PORT`}
     </Highlight>
 
-    <br />
-
-    <ZoomableImage src="/static/databases/mysql-cli.png" alt="mysql cli" />
+    <Asciinema id="465240" />
   </Layout>
 );

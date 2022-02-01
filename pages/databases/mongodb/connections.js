@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -25,33 +26,30 @@ export default () => (
       ابزارهای زیر را انتخاب کنید.
     </p>
 
-    <h4 id="robo-3t">Robo 3T</h4>
+    <h4 id="database-management-tools">
+      مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+    </h4>
+
     <p>
-      اگر بخواهید دیتابیس‌های MongoDB را در محیط سیستم‌عامل مدیریت کنید
-      می‌توانید از ابزار{" "}
-      <a href="https://robomongo.org/" target="_blank" rel="noopenner">
+      اگر بخواهید دیتابیس‌های MongoDB را با استفاده از رابط‌های کاربری گرافیکی
+      (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
+      <a href="https://robomongo.org/" target="_blank" rel="noopener">
         Robo 3T
       </a>{" "}
-      که اکثر توسعه‌دهندگان آن را با نام سابقش یعنی RoboMongo می‌شناسند، استفاده
-      کنید. این ابزار رایگان و متن‌باز در تمامی سیستم‌عامل‌ها قابل اجرا هست و
-      شما می‌توانید به‌سادگی و با دنبال کردن مراحل زیر، با استفاده از این ابزار
-      به سرویس دیتابیس خود متصل شوید.
-      <p>
-        در هنگام بالاآمدن نرم‌افزار روی New Connection کلیک کنید و اطلاعات آن را
-        متناسب با اطلاعات دیتابیس‌ خودتان تکمیل کنید.
-      </p>
-      <ZoomableImage src="/static/databases/robo3t-auth1.png" />
-      <p>
-        در tab مربوط به Authentication کافیست Mode را روی حالت SCRAM-SHA-1 قرار
-        دهید و Database را با مقدار اولیه admin بدون تغییر خاصی باقی بگذارید.
-      </p>
-      <ZoomableImage src="/static/databases/robo3t-auth2.png" />
-      <p>
-        سپس کافیست روی Test کلیک کنید تا مطمئن شوید همه چیز با موفقیت انجام شده
-        است.
-      </p>
-      <ZoomableImage src="/static/databases/robo3t-test.png" />
+      و یا{" "}
+      <a
+        href="https://www.mongodb.com/products/compass"
+        target="_blank"
+        rel="noopener"
+      >
+        MongoDB Compass
+      </a>{" "}
+      استفاده کنید.
     </p>
+
+    <h5 id="mongodb-dbeaver">MongoDB Compass</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/mongodb/connect-to-mongodb-database-with-mongodb-compass.gif" />
+
     <h4>mongo cli</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
@@ -59,32 +57,13 @@ export default () => (
       زیر به سرویس دیتابیس خود متصل شوید.
     </p>
     <Highlight className="bash">
-      {`$ mongo -u DB_USERNAME -p DB_PASSWORD --host DB_HOST --port DB_PORT --authenticationDatabase admin`}
+      {`$ mongo -u DB_USERNAME \\
+           --port DB_PORT \\
+           --host DB_HOST \\
+           -p DB_PASSWORD \\
+           --authenticationDatabase admin`}
     </Highlight>
-    <br />
 
-    <ZoomableImage src="/static/databases/mongo-cli.png" />
-
-    <h4>استفاده از پنل‌های رایگان و متن باز</h4>
-
-    <p>
-      همچنین شما می‌توانید از پنل‌های رایگان و متن‌باز مانند{" "}
-      <a
-        href="https://github.com/mongo-express/mongo-express"
-        rel="noopenner"
-        target="_blank"
-      >
-        mongo-express
-      </a>{" "}
-      و یا{" "}
-      <a
-        href="https://github.com/mrvautin/adminMongo"
-        rel="noopenner"
-        target="_blank"
-      >
-        adminMongo
-      </a>{" "}
-      استفاده کنید.
-    </p>
+    <Asciinema id="465250" />
   </Layout>
 );

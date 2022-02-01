@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -24,19 +25,24 @@ export default () => (
       می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های SQL Server یکی از
       ابزارهای زیر را انتخاب کنید.
     </p>
-    <h4 id="azure-data-studio">Azure Data Studio</h4>
+    <h4 id="database-management-tools">
+      مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+    </h4>
     <p>
-      اگر بخواهید سرویس دیتابیس را در محیط سیستم‌عامل مدیریت کنید می‌توانید از
-      ابزار{" "}
+      حال اگر بخواهید دیتابیس‌های SQL Server را با استفاده از رابط‌های کاربری
+      گرافیکی (GUI) مدیریت کنید، می‌توانید از ابزار{" "}
+      <a href="https://dbeaver.io/" target="_blank" rel="noopener">
+        DBeaver
+      </a>{" "}
+      و یا{" "}
       <a href="https://github.com/microsoft/azuredatastudio" target="_blank">
         Azure Data Studio
       </a>{" "}
-      استفاده کرده و با وارد کردن اطلاعات اتصال، به سرویس دیتابیس متصل شوید.
-      توجه داشته باشید که در فیلد Server پورت را با علامت{" "}
-      <span className="code">,</span> جدا کرده‌ایم. یعنی:{" "}
-      <span className="code">s11.liara.ir,34472</span>
+      استفاده کنید.
     </p>
-    <ZoomableImage src="/static/databases/sqlserver-azurestudio.png" />
+
+    <h5 id="sql-server-dbeaver">DBeaver</h5>
+    <ZoomableImage src="https://files.liara.ir/docs/sql-server/connect-to-sql-server-database-with-dbeaver.gif" />
 
     <h4 id="sqlcmd">sqlcmd</h4>
     <p>
@@ -52,9 +58,8 @@ export default () => (
     </p>
     <Highlight className="bash">{`$ sqlcmd -S DB_URL,DB_PORT -Usa -P DB_PASSWORD`}</Highlight>
 
-    <br />
+    <Asciinema id="465248" />
 
-    <ZoomableImage src="/static/databases/sqlcmd.png" />
     <p>
       همچنین شما می‌توانید با مراجعه به این بخش از{" "}
       <a

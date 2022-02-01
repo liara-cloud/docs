@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -54,28 +55,15 @@ export default () => (
 
     <Highlight className="bash">{`$ redis-cli -h REDIS_HOST -p REDIS_PORT -a REDIS_PASSWORD`}</Highlight>
 
-    <br />
+    <Asciinema id="465259" />
 
-    <ZoomableImage
-      src="/static/databases/redis-cli.png"
-      alt="اتصال به redis با cli"
-    />
-
-    <h4>استفاده از پنل‌های رایگان و متن باز</h4>
+    <h4>استفاده از پنل رایگان و متن باز</h4>
     <p>
-      همچنین شما می‌توانید از پنل‌های رایگان و متن‌باز مانند{" "}
+      همچنین شما می‌توانید از پنل رایگان و متن‌باز{" "}
       <a href="https://github.com/luin/medis" rel="noopenner" target="_blank">
         medis
       </a>{" "}
-      و یا{" "}
-      <a
-        href="https://github.com/marians/rebrow"
-        rel="noopenner"
-        target="_blank"
-      >
-        rebrow
-      </a>{" "}
-      استفاده کنید.
+      نیز استفاده کنید.
     </p>
   </Layout>
 );
