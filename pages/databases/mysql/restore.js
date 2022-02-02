@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 
 export default () => (
@@ -22,22 +24,14 @@ export default () => (
     <h3>بازیابی فایل پشتیبان</h3>
 
     <p>
-      کافیست فایل پشتیبان مدنظرتان را دانلود کنید و بعد از خارج کردن آن از حالت
-      فشرده، به ازای هر دیتابیس، یک فایل dump دارید. برای بازگرداندن اطلاعات
-      مربوط به یک دیتابیس خاص که فرض می‌کنیم اسم آن در اینجا liaraDB است کافیست
-      دستور زیر را وارد کنید:
+      برای بازگردانی فایل پشتیبان در دیتابیس‌های MySQL می‌توانید به‌شکل زیر از
+      ابزار <span className="code">mysql-client</span> استفاده کنید.
     </p>
-    <code>
-      {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT < liaraDB.sql`}
-    </code>
-    <p>
-      همچنین می‌توانید برای راحتی بیشتر، از طریق پنل phpMyAdmin و از بخش import،
-      فایل هر دیتابیس را به همان حالت فشرده بارگذاری کنید.
-    </p>
-    <Notice variant="info">
-      در فایل بالا تصور کردیم شما میخواهید اطلاعات یک دیتابیس فرضی به نام
-      liaraDB را بازگردانی کنید. برای هر دیتابیس می‌توانید دستور بالا را با فایل
-      dump مربوط به همان دیتابیس انجام دهید.
-    </Notice>
+
+    <Highlight className="bash">
+      {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT < /path/to/backup-file.sql`}
+    </Highlight>
+
+    <Asciinema id="465863" />
   </Layout>
 );
