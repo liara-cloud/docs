@@ -35,7 +35,7 @@ export default () => (
     </p>
 
     <Highlight className="bash">
-      {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT < /path/to/backup-file.sql`}
+      {`$ rdb -c protocol /path/to/backup-file.dump | redis-cli -p REDIS_PORT -h REDIS_HOST -a REDIS_PASSWORD --pipe`}
     </Highlight>
 
     <Asciinema id="466080" />
