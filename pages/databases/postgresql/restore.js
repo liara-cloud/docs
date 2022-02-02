@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
+import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 
 export default () => (
@@ -22,28 +24,25 @@ export default () => (
 
     <h3>بازیابی فایل پشتیبان</h3>
     <p>
-      کافیست فایل پشتیبان مدنظرتان را دانلود کنید و بعد از خارج کردن آن از حالت
-      فشرده، به ازای هر دیتابیس، یک فایل dump دارید. برای بازگرداندن اطلاعات
-      مربوط به یک دیتابیس خاص که فرض می‌کنیم اسم آن در اینجا liaraDB است، کافیست
-      دستور زیر را وارد کنید:
+      برای بازگردانی فایل پشتیبان در دیتابیس‌های PostgreSQL می‌توانید به‌شکل زیر
+      از ابزار <span className="code">pg_restore</span> استفاده کنید.
     </p>
-    <code>
-      {`$ pg_restore -h DB_HOST -p DB_PORT -U DB_USERNAME -F c --create -d postgres liaraDB.dump`}
-    </code>
+
+    <Highlight className="bash">
+      {`$ pg_restore -h DB_HOST -p DB_PORT -U DB_USERNAME -F c --create -d postgres /path/to/backup-file.dump`}
+    </Highlight>
+
+    <Asciinema id="466058" />
+
     <Notice variant="info">
-      در فایل بالا تصور کردیم شما میخواهید اطلاعات یک دیتابیس فرضی به نام
-      liaraDB را بازگردانی کنید. برای هر دیتابیس می‌توانید دستور بالا را با فایل
-      dump مربوط به همان دیتابیس انجام دهید.
-    </Notice>
-    <Notice variant="info">
-      دستور pg_restore امکانات زیادی دارد که می‌توانید درباره آن در{" "}
+      برای کسب اطلاعات بیشتر می‌توانید{" "}
       <a
         href="https://www.postgresql.org/docs/current/app-pgrestore.html"
         target="_blank"
       >
-        مستندات pg_restore
+        مستندات ابزار pg_restore
       </a>{" "}
-      اطلاعات بیشتری کسب کنید.
+      را مطالعه کنید.
     </Notice>
   </Layout>
 );
