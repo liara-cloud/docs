@@ -1469,10 +1469,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/cicd/about">درباره CI/CD</ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/cicd/gitlab">استفاده از GitLab</ActiveLink>
+              <ActiveLink href="/cicd/github">استفاده از GitHub</ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/cicd/github">استفاده از GitHub</ActiveLink>
+              <ActiveLink href="/cicd/gitlab">استفاده از GitLab</ActiveLink>
             </li>
           </ul>
         </nav>
