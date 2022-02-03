@@ -28,17 +28,17 @@ export default () => (
       corruption تصمیم بگیرید فایل پشتیبان دیتابیس خود را بازیابی کنید.
     </p>
 
-    <h4 id="phpmyadmin">PHPMyAdmin</h4>
+    <h4 id="phpmyadmin">phpMyAdmin</h4>
     <p>
       بازیابی فایل پشتیبان در دیتابیس‌های MySQL و MariaDB یکی از قابلیت‌هایی است
-      که ابزار مشهور PHPMyAdmin در اختیار شما قرار می‌‌دهد و شما می‌توانید
+      که ابزار مشهور phpMyAdmin در اختیار شما قرار می‌‌دهد و شما می‌توانید
       به‌شکل زیر از این ابزار برای بازیابی فایل‌های پشتیبان استفاده کنید.
     </p>
 
     <ZoomableImage src="https://files.liara.ir/docs/mysql/restore-backup-into-mysql-database-with-phpmyadmin.gif" />
 
     <Notice variant="warning">
-      ابزار PHPMyAdmin برای بازیابی فایل‌های پشتیبان سنگین مناسب نیست. به‌همین
+      ابزار phpMyAdmin برای بازیابی فایل‌های پشتیبان سنگین مناسب نیست. به‌همین
       علت توصیه می‌کنیم به‌عنوان جایگزین از ابزار{" "}
       <a href="#mysql-client">MySQL Command-Line Client</a> استفاده کنید.
     </Notice>
