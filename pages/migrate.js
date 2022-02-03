@@ -167,7 +167,7 @@ $ tar -xzvf backup.tar.gz -C storage/uploads`}
       پوشه‌ای برای بازیابی در مرحله‌ی بعد نگه‌داری کنید. در مرحله‌ی بعد دیتابیس{" "}
       <span className="code">target-app-db</span> را با همان نسخه‌ی دیتابیس{" "}
       <span className="code">sorce-app-db</span> و پلن مورد نظر راه‌اندازی کنید.
-      درنهایت با استفاده از پنل‌های مدیریت دیتابیس اعم از PHPMyAdmin و PGAdmin،
+      درنهایت با استفاده از پنل‌های مدیریت دیتابیس اعم از phpMyAdmin و PGAdmin،
       فایل‌های <span className="code">sql</span> را در دیتابیس{" "}
       <span className="code">target-app-db</span> بازیابی کنید.
     </p>
