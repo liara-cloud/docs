@@ -44,6 +44,12 @@ export default () => (
           <span>GatsbyJS</span>
         </a>
       </Link>
+      <Link href="/instructions/gridsome">
+        <a>
+          <PlatformIcon platform="gridsome" />
+          <span>Gridsome</span>
+        </a>
+      </Link>
     </div>
 
     <br />
