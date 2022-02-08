@@ -1040,6 +1040,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/svelte">
+                <PlatformIcon platform="svelte" />
+                Svelte
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/nestjs">
                 <PlatformIcon platform="nest" />
                 NestJS

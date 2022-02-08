@@ -35,6 +35,7 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
+import svelteIcon from "./svelte.png";
 import goIcon from "@liara/platformicons/svg/go.svg";
 // import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -97,6 +98,7 @@ const types = [
   { logo: nuxtIcon, alt: "nuxt" },
   { logo: lumenIcon, alt: "lumen" },
   { logo: gatsbyIcon, alt: "gatsby" },
+  { logo: svelteIcon, alt: "svelte" },
   { logo: strapiIcon, alt: "strapi" },
   { logo: adonisIcon, alt: "adonisjs" },
   // { logo: seqIcon, alt: "seq" },
