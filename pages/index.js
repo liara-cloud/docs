@@ -53,6 +53,12 @@ const Index = () => (
           <span>Gridsome</span>
         </a>
       </Link>
+      <Link href="/instructions/eleventy">
+        <a>
+          <PlatformIcon platform="eleventy" />
+          <span>Eleventy</span>
+        </a>
+      </Link>
       <Link href="/app-deploy/static/getting-started">
         <a>
           <PlatformIcon platform="HTML5" />

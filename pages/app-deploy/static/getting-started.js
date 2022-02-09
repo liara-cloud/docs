@@ -50,6 +50,12 @@ export default () => (
           <span>Gridsome</span>
         </a>
       </Link>
+      <Link href="/instructions/eleventy">
+        <a>
+          <PlatformIcon platform="eleventy" />
+          <span>Eleventy</span>
+        </a>
+      </Link>
     </div>
 
     <br />

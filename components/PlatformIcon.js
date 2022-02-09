@@ -36,6 +36,7 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 // Instructions
 
 import svelteIcon from "./svelte.png";
+import eleventyIcon from "./eleventy.png";
 import goIcon from "@liara/platformicons/svg/go.svg";
 // import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -105,6 +106,7 @@ const types = [
   { logo: adonisIcon, alt: "adonisjs" },
   // { logo: seqIcon, alt: "seq" },
   { logo: celeryIcon, alt: "celery" },
+  { logo: eleventyIcon, alt: "eleventy" },
   // Databases
   { logo: mysqlIcon, alt: "mysql" },
   { logo: redisIcon, alt: "redis" },
