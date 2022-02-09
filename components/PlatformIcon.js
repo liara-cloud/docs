@@ -47,6 +47,7 @@ import lumenIcon from "@liara/platformicons/svg/lumen.svg";
 import gatsbyIcon from "@liara/platformicons/svg/gatsby.svg";
 import strapiIcon from "@liara/platformicons/svg/strapi.svg";
 import adonisIcon from "@liara/platformicons/svg/adonisjs.svg";
+import gridsomeIcon from "./gridsome.svg";
 
 // Databases
 
@@ -99,6 +100,7 @@ const types = [
   { logo: lumenIcon, alt: "lumen" },
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: svelteIcon, alt: "svelte" },
+  { logo: gridsomeIcon, alt: "gridsome" },
   { logo: strapiIcon, alt: "strapi" },
   { logo: adonisIcon, alt: "adonisjs" },
   // { logo: seqIcon, alt: "seq" },
