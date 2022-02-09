@@ -62,6 +62,12 @@ export default () => (
           <span>Hugo</span>
         </a>
       </Link>
+      <Link href="/instructions/jekyll">
+        <a>
+          <PlatformIcon platform="jekyll" />
+          <span>Jekyll</span>
+        </a>
+      </Link>
     </div>
 
     <br />

@@ -35,9 +35,10 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
+import hugoIcon from "./hugo.svg";
+import jekyllIcon from "./jekyll.svg";
 import svelteIcon from "./svelte.png";
 import eleventyIcon from "./eleventy.png";
-import hugoIcon from "./hugo.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
 // import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -101,6 +102,7 @@ const types = [
   { logo: hugoIcon, alt: "hugo" },
   { logo: nuxtIcon, alt: "nuxt" },
   { logo: lumenIcon, alt: "lumen" },
+  { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: svelteIcon, alt: "svelte" },
   { logo: gridsomeIcon, alt: "gridsome" },
