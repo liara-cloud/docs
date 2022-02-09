@@ -56,6 +56,12 @@ export default () => (
           <span>Eleventy</span>
         </a>
       </Link>
+      <Link href="/instructions/hugo">
+        <a>
+          <PlatformIcon platform="hugo" />
+          <span>Hugo</span>
+        </a>
+      </Link>
     </div>
 
     <br />
