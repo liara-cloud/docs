@@ -169,11 +169,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                       >
                         <a
                           onClick={() => setSearchOpen(false)}
-                          className={`url_results ${
-                            current != undefined &&
+                          className={`url_results ${current != undefined &&
                             item.id == current.id &&
                             `current-result `
-                          }`}
+                            }`}
                           onMouseEnter={() => handleHover(index)}
                         >
                           <div className="platform_container">
@@ -1067,6 +1066,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/instructions/gridsome">
                 <PlatformIcon platform="gridsome" />
                 Gridsome
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/instructions/eleventy">
+                <PlatformIcon platform="eleventy" />
+                Eleventy
               </ActiveLink>
             </li>
             <li>
