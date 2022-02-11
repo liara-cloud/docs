@@ -16,7 +16,7 @@ import angularIcon from "@liara/platformicons/svg/angularjs.svg";
 
 // One-click-apps
 
-import odooIcon from "./odoo.png";
+import odooIcon from "./odoo.svg";
 import ghostIcon from "@liara/platformicons/svg/ghost.svg";
 import giteaIcon from "@liara/platformicons/svg/gitea.svg";
 import vscodeIcon from "@liara/platformicons/svg/vscode.svg";
@@ -37,8 +37,8 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 import hugoIcon from "./hugo.svg";
 import jekyllIcon from "./jekyll.svg";
-import svelteIcon from "./svelte.png";
-import eleventyIcon from "./eleventy.png";
+import svelteIcon from "./svelte.svg";
+import eleventyIcon from "./eleventy.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
 // import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
