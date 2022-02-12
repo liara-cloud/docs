@@ -16,7 +16,7 @@ import angularIcon from "@liara/platformicons/svg/angularjs.svg";
 
 // One-click-apps
 
-import odooIcon from "./odoo.svg";
+import odooIcon from "@liara/platformicons/svg/odoo.svg";
 import ghostIcon from "@liara/platformicons/svg/ghost.svg";
 import giteaIcon from "@liara/platformicons/svg/gitea.svg";
 import vscodeIcon from "@liara/platformicons/svg/vscode.svg";
@@ -35,22 +35,23 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
-import hugoIcon from "./hugo.svg";
 import jekyllIcon from "./jekyll.svg";
-import svelteIcon from "./svelte.svg";
-import eleventyIcon from "./eleventy.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
 // import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
-import celeryIcon from "@liara/platformicons/svg/celery.svg";
+import hugoIcon from "@liara/platformicons/svg/hugo.svg";
 import nestIcon from "@liara/platformicons/svg/nest.svg";
 import nextIcon from "@liara/platformicons/svg/next.svg";
 import nuxtIcon from "@liara/platformicons/svg/nuxt.svg";
 import lumenIcon from "@liara/platformicons/svg/lumen.svg";
+import celeryIcon from "@liara/platformicons/svg/celery.svg";
+import svelteIcon from "@liara/platformicons/svg/svelte.svg";
 import gatsbyIcon from "@liara/platformicons/svg/gatsby.svg";
 import strapiIcon from "@liara/platformicons/svg/strapi.svg";
 import adonisIcon from "@liara/platformicons/svg/adonisjs.svg";
-import gridsomeIcon from "./gridsome.svg";
+import fastifyIcon from "@liara/platformicons/svg/fastify.svg";
+import eleventyIcon from "@liara/platformicons/svg/eleventy.svg";
+import gridsomeIcon from "@liara/platformicons/svg/gridsome.svg";
 
 // Databases
 import mysqlIcon from "@liara/platformicons/svg/mysql.svg";
@@ -103,6 +104,7 @@ const types = [
   { logo: lumenIcon, alt: "lumen" },
   { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
+  { logo: fastifyIcon, alt: "fastify" },
   { logo: svelteIcon, alt: "svelte" },
   { logo: gridsomeIcon, alt: "gridsome" },
   { logo: strapiIcon, alt: "strapi" },
