@@ -41,6 +41,12 @@ const Index = () => (
           <span>Angular</span>
         </a>
       </Link>
+      <Link href="/app-deploy/static/getting-started">
+        <a>
+          <PlatformIcon platform="HTML5" />
+          <span>Static</span>
+        </a>
+      </Link>
       <Link href="/instructions/gatsbyjs">
         <a>
           <PlatformIcon platform="gatsby" />
@@ -71,22 +77,10 @@ const Index = () => (
           <span>Jekyll</span>
         </a>
       </Link>
-      <Link href="/app-deploy/static/getting-started">
-        <a>
-          <PlatformIcon platform="HTML5" />
-          <span>Static</span>
-        </a>
-      </Link>
       <Link href="/app-deploy/nodejs/getting-started">
         <a>
           <PlatformIcon platform="nodejs" />
           <span>NodeJS</span>
-        </a>
-      </Link>
-      <Link href="/instructions/nestjs">
-        <a>
-          <PlatformIcon platform="nest" />
-          <span>NestJS</span>
         </a>
       </Link>
       <Link href="/instructions/nextjs">
@@ -99,6 +93,18 @@ const Index = () => (
         <a>
           <PlatformIcon platform="nuxt" />
           <span>NuxtJS</span>
+        </a>
+      </Link>
+      <Link href="/instructions/nestjs">
+        <a>
+          <PlatformIcon platform="nest" />
+          <span>NestJS</span>
+        </a>
+      </Link>
+      <Link href="/instructions/fastify">
+        <a>
+          <PlatformIcon platform="fastify" />
+          <span>Fastify</span>
         </a>
       </Link>
       <Link href="/instructions/svelte">

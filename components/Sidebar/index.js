@@ -1049,6 +1049,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/fastify">
+                <PlatformIcon platform="fastify" />
+                Fastify
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/strapi">
                 <PlatformIcon platform="strapi" />
                 Strapi

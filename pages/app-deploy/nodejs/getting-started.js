@@ -69,6 +69,12 @@ export default () => (
           <span>NuxtJS</span>
         </a>
       </Link>
+      <Link href="/instructions/fastify">
+        <a>
+          <PlatformIcon platform="fastify" />
+          <span>Fastify</span>
+        </a>
+      </Link>
       <Link href="/instructions/svelte">
         <a>
           <PlatformIcon platform="svelte" />
