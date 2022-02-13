@@ -308,6 +308,7 @@ li:last-child > .nav__link {
 }
 .platform-search_logo {
   margin-left: 10px;
+  overflow: hidden;
   width: 25px;
   border-radius: 5px;
 }

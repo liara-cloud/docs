@@ -53,7 +53,6 @@ import adonisIcon from "@liara/platformicons/svg/adonisjs.svg";
 import gridsomeIcon from "./gridsome.svg";
 
 // Databases
-
 import mysqlIcon from "@liara/platformicons/svg/mysql.svg";
 import mssqlIcon from "@liara/platformicons/svg/mssql.svg";
 import redisIcon from "@liara/platformicons/svg/redis.svg";

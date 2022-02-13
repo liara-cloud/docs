@@ -169,20 +169,18 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                       >
                         <a
                           onClick={() => setSearchOpen(false)}
-                          className={`url_results ${current != undefined &&
+                          className={`url_results ${
+                            current != undefined &&
                             item.id == current.id &&
                             `current-result `
-                            }`}
+                          }`}
                           onMouseEnter={() => handleHover(index)}
                         >
                           <div className="platform_container">
                             {item.platform && (
-                              <img
-                                src={`/static/platformicons/${item.platform}.svg`}
-                                className="platform-search_logo"
-                                width="25"
-                                alt={item.platform}
-                              />
+                              <div className="platform-search_logo" width="25">
+                                <PlatformIcon platform={item.platform} />
+                              </div>
                             )}
                             <p className="">{item.title}</p>
                           </div>
