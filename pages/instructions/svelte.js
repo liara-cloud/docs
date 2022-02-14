@@ -20,27 +20,29 @@ export default () => (
 
     <p>
       Svelte یک فریم‌ورک سریع و سبک برای ایجاد رابط‌های کاربری وب است که برخلاف
-      فریم‌ورک‌های React و Vue، از Virtual DOM استفاده نمی‌کند. حال برای استقرار
-      برنامه‌های Svelte در لیارا تنها کافی است که مراحل زیر را دنبال کنید:
+      فریم‌ورک‌های React و Vue، از Virtual DOM استفاده نمی‌کند. شما می‌توانید
+      برنامه‌های Svelte خود را با ایجاد برنامه‌های{" "}
+      <Link href="/app-deploy/nodejs/getting-started">NodeJS</Link> بر روی لیارا
+      دیپلوی کنید.
     </p>
 
-    <h3>build گرفتن از برنامه</h3>
-    <Highlight className="bash">{`$ npm run build`}</Highlight>
     <p>
-      با اجرای دستور فوق، فرایند build گرفتن از برنامه‌ی شما شروع خواهد شد و
-      درنهایت تمام فایل‌های استاتیک اعم از فایل‌های HTML/CSS/JS در پوشه‌ی{" "}
-      <span className="code">public</span> قرار داده می‌شوند.
+      توجه داشته باشید که برای دیپلوی برنامه‌های Svelte نیازی به ایجاد تغییر در
+      فایل <span className="code">package.json</span> نیست و لیارا به‌طور کامل
+      از این فریم‌ورک پشتیبانی می‌کند بنابراین تغییری در بخش{" "}
+      <span className="code">scripts</span> ایجاد نکنید.
     </p>
+    <Highlight className="json">{`"scripts": {
+  "build": "rollup -c",
+  "dev": "rollup -c -w",
+  "start": "sirv public --no-clear"
+},`}</Highlight>
 
-    <h3>دیپلوی برنامه در پلتفرم استاتیک</h3>
     <p>
-      حال شما می‌توانید خروجی نهایی را مانند برنامه‌های{" "}
-      <Link href="/app-deploy/static/getting-started">Static</Link> در لیارا
-      مستقر کنید.
+      حالت استاندارد npm scripts در برنامه‌های Svelte به‌شکل بالا است. حال دستور
+      <span className="code">liara deploy --port 3000 --platform node</span>
+      را در مسیر اصلی پروژه‌ی خود اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و
+      اجرا شود.
     </p>
-    <Highlight className="bash">
-      {`$ cd public
-$ liara deploy --platform=static`}
-    </Highlight>
   </Layout>
 );
