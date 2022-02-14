@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
 import Asciinema from "../../components/Asciinema";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -12,11 +13,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/seq.svg"
-        alt="seq"
-      />
+      <PlatformIcon platform="seq" />
       <div className="page-title">
         <h1>استقرار Seq</h1>
         <span className="page-description">(Docker Apps)</span>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -11,11 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <img
-        className="page-icon"
-        src="/static/platformicons/nginx.svg"
-        alt="nginx"
-      />
+      <PlatformIcon platform="nginx" />
       <div className="page-title">
         <h1>استقرار Nginx</h1>
         <span className="page-description">(Docker Apps)</span>

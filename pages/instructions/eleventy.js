@@ -52,16 +52,14 @@ export default () => (
 
     <h3>دیپلوی برنامه در پلتفرم استاتیک</h3>
     <p>
-      همان‌طور که گفته شد، Eleventy یک SSG (Static Site Generator) است بنابراین
-      خروجی نهایی شامل فایل‌های استاتیک خواهد بود که شما می‌توانید با اجرای
-      دستورهای:
-      <Highlight className="bash">
-        {`$ cd _site
-$ liara deploy --platform=static`}
-      </Highlight>
-      برنامه‌ی خود را مانند برنامه‌های{" "}
+      حال شما می‌توانید خروجی نهایی را مانند برنامه‌های{" "}
       <Link href="/app-deploy/static/getting-started">Static</Link> در لیارا
       مستقر کنید.
     </p>
+
+    <Highlight className="bash">
+      {`$ cd _site
+$ liara deploy --platform=static`}
+    </Highlight>
   </Layout>
 );

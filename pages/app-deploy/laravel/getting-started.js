@@ -52,6 +52,7 @@ export default () => (
       <li>Laravel and Lumen 6.^</li>
       <li>Laravel and Lumen 7.^</li>
       <li>Laravel and Lumen 8.^</li>
+      <li>Laravel and Lumen 9.^</li>
     </ul>
 
     <p>

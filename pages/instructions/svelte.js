@@ -20,11 +20,12 @@ export default () => (
 
     <p>
       Svelte یک فریم‌ورک سریع و سبک برای ایجاد رابط‌های کاربری وب است که برخلاف
-      فریم‌ورک‌های React و Vue در زمان build کامپایل می‌شود و شما می‌توانید
+      فریم‌ورک‌های React و Vue، از Virtual DOM استفاده نمی‌کند. شما می‌توانید
       برنامه‌های Svelte خود را با ایجاد برنامه‌های{" "}
       <Link href="/app-deploy/nodejs/getting-started">NodeJS</Link> بر روی لیارا
       دیپلوی کنید.
     </p>
+
     <p>
       توجه داشته باشید که برای دیپلوی برنامه‌های Svelte نیازی به ایجاد تغییر در
       فایل <span className="code">package.json</span> نیست و لیارا به‌طور کامل

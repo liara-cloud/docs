@@ -20,7 +20,7 @@ export default () => (
     </div>
 
     <p>
-      Fastify یک فریم‌ورک سریع با overhead بسیار کم است و شما می‌توانید
+      Fastify یک فریم‌ورک سریع با overhead بسیار کم است. شما می‌توانید
       برنامه‌های Fastify خود را با ایجاد برنامه‌های{" "}
       <Link href="/app-deploy/nodejs/getting-started">NodeJS</Link> بر روی لیارا
       دیپلوی کنید.
@@ -30,8 +30,14 @@ export default () => (
       توجه داشته باشید که برای اجرای برنامه باید حتما دستور اجرایی مورد نظر را
       در فیلد <span className="code">start</span> بخش{" "}
       <span className="code">scripts</span> فایل{" "}
-      <span className="code">package.json</span> وارد کرده باشید.
+      <span className="code">package.json</span> وارد کرده باشید:
     </p>
+
+    <Highlight className="json">
+      {`"scripts": {
+    "start": "node server.js"
+},`}
+    </Highlight>
 
     <p>
       همچنین باید مانند مثال زیر، مقدار <span className="code">0.0.0.0</span> را
