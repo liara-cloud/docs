@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
+import Asciinema from "../../components/Asciinema";
 
 export default () => (
   <Layout>
@@ -71,6 +72,8 @@ export default () => (
     <a href="https://asciinema.org/a/296170" target="_blank">
       <img src="https://asciinema.org/a/296170.svg" />
     </a>
+
+    <Asciinema id="296170" />
 
     <h3>بستن تونل‌ها</h3>
     <p>

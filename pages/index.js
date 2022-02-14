@@ -183,7 +183,7 @@ const Index = () => (
       </Link>
       <Link href="/instructions/nginx">
         <a>
-          <img src="/static/platformicons/nginx.svg" alt="Nginx" />
+          <PlatformIcon platform="nginx" />
           <span>Nginx</span>
         </a>
       </Link>
