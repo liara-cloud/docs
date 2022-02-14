@@ -34,16 +34,14 @@ export default () => (
 
     <h3>دیپلوی برنامه در پلتفرم استاتیک</h3>
     <p>
-      همان‌طور که گفته شد، Gatsby یک فریم‌ورک SSG (Static Site Generator) است
-      بنابراین خروجی نهایی شامل فایل‌های استاتیک HTML، CSS و JavaScript خواهد
-      بود که شما می‌توانید با اجرای دستورهای:
-      <Highlight className="bash">
-        {`$ cd public
-$ liara deploy --platform=static`}
-      </Highlight>
-      برنامه‌ی خود را مانند برنامه‌های{" "}
+      حال شما می‌توانید خروجی نهایی را مانند برنامه‌های{" "}
       <Link href="/app-deploy/static/getting-started">Static</Link> در لیارا
       مستقر کنید.
     </p>
+
+    <Highlight className="bash">
+      {`$ cd public
+$ liara deploy --platform=static`}
+    </Highlight>
   </Layout>
 );
