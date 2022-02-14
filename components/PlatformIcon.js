@@ -35,9 +35,9 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
-import jekyllIcon from "./jekyll.svg";
+import jekyllIcon from "@liara/platformicons/svg/jekyll.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
-// import seqIcon from "@liara/platformicons/svg/seq.svg";
+import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
 import hugoIcon from "@liara/platformicons/svg/hugo.svg";
 import nestIcon from "@liara/platformicons/svg/nest.svg";
@@ -112,7 +112,7 @@ const types = [
   { logo: gridsomeIcon, alt: "gridsome" },
   { logo: strapiIcon, alt: "strapi" },
   { logo: adonisIcon, alt: "adonisjs" },
-  // { logo: seqIcon, alt: "seq" },
+  { logo: seqIcon, alt: "seq" },
   { logo: celeryIcon, alt: "celery" },
   { logo: eleventyIcon, alt: "eleventy" },
   // Databases

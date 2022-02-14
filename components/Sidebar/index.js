@@ -1134,7 +1134,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/seq">
-                <img src="/static/platformicons/seq.svg" alt="seq" />
+                <PlatformIcon platform="seq" />
                 Seq
               </ActiveLink>
             </li>
