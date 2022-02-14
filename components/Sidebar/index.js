@@ -1098,7 +1098,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/nginx">
-                <img src="/static/platformicons/nginx.svg" alt="nginx" />
+                <PlatformIcon platform="nginx" />
                 Nginx
               </ActiveLink>
             </li>

@@ -43,6 +43,7 @@ import hugoIcon from "@liara/platformicons/svg/hugo.svg";
 import nestIcon from "@liara/platformicons/svg/nest.svg";
 import nextIcon from "@liara/platformicons/svg/next.svg";
 import nuxtIcon from "@liara/platformicons/svg/nuxt.svg";
+import nginxIcon from "@liara/platformicons/svg/nginx.svg";
 import lumenIcon from "@liara/platformicons/svg/lumen.svg";
 import celeryIcon from "@liara/platformicons/svg/celery.svg";
 import svelteIcon from "@liara/platformicons/svg/svelte.svg";
@@ -102,6 +103,7 @@ const types = [
   { logo: nextIcon, alt: "next" },
   { logo: hugoIcon, alt: "hugo" },
   { logo: nuxtIcon, alt: "nuxt" },
+  { logo: nginxIcon, alt: "nginx" },
   { logo: lumenIcon, alt: "lumen" },
   { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
