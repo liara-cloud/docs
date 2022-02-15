@@ -1055,6 +1055,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/remix">
+                <PlatformIcon platform="remix" />
+                Remix
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/strapi">
                 <PlatformIcon platform="strapi" />
                 Strapi

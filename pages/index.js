@@ -113,6 +113,12 @@ const Index = () => (
           <span>Svelte</span>
         </a>
       </Link>
+      <Link href="/instructions/remix">
+        <a>
+          <PlatformIcon platform="remix" />
+          <span>Remix</span>
+        </a>
+      </Link>
       <Link href="/instructions/strapi">
         <a>
           <PlatformIcon platform="strapi" />
