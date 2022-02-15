@@ -20,7 +20,7 @@ export default () => (
       به‌صورت دستی اقدام به تهیه فایل پشتیبان کنید.
     </p>
     <ZoomableImage
-      src="/static/disks/backup.png"
+      src="https://files.liara.ir/docs/disks/backup.gif"
       alt="صفحه‌ی پشتیبان‌گیری دیسک"
     />
     <h3>برگرداندن اطلاعات از طریق فایل پشتیبان</h3>
@@ -32,9 +32,5 @@ export default () => (
       <Link href="/storage/disks/ftp">دسترسی FTP</Link> به دیسک جدیدی منتقل
       کنید.
     </p>
-    <ZoomableImage
-      src="/static/disks/restore.png"
-      alt="صفحه‌ی دانلود فایل پشتیبان دیسک"
-    />
   </Layout>
 );
