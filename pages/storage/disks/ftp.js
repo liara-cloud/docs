@@ -1,5 +1,6 @@
-import Layout from "../../../components/Layout";
 import Head from "next/head";
+import Link from "next/link";
+import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
 import ZoomableImage from "../../../components/ZoomableImage";
 
@@ -37,40 +38,31 @@ export default () => (
     </p>
     <h3 id="create-ftp-account">ایجاد دسترسی FTP</h3>
     <p>
-      برای این کار ابتدا به بخش دیسک‌های برنامه‌تان در پنل بروید و روی دیسک
-      مدنظرتان کلیک کنید. سپس وارد قسمت <b>دسترسی FTP</b> شوید. و در این صفحه بر
-      روی دکمه ایجاد دسترسی FTP کلیک کنید:
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
     </p>
-    <ZoomableImage src="/static/disks/ftp1.png" alt="صفحه‌ی خالی دسترسی FTP" />
-    <p>در پنجره باز شده، نام کاربری مدنظرتان را وارد کنید:</p>
-    <ZoomableImage src="/static/disks/ftp2.jpg" alt="صفحه‌ی ساخت دسترسی FTP" />
-    <Notice variant="info">
-      توجه داشته باشید که نام کاربری باید بین ۵ الی ۱۶ کاراکتر و تنها شامل حروف
-      کوچک، عدد و ـ و همچنین یکتا باشد.
-    </Notice>
+    <ZoomableImage src="https://files.liara.ir/docs/disks/add-new-ftp-user.gif" />
     <p>
-      پس از وارد کردن نام کاربری مدنظرتان در صورت در دسترس بودن نام کاربری بر
-      روی دکمه ایجاد دسترسی کلیک کنید:
+      برای ایجاد دسترسی FTP، وارد بخش دیسک‌ها شده و روی دیسک مورد نظرتان کلیک
+      کنید. سپس وارد منوی <strong>دسترسی FTP</strong> شوید و بر روی دکمه‌ی{" "}
+      <strong>ایجاد دسترسی FTP</strong> کلیک کنید. در پنجره‌ی باز شده، نام
+      کاربری مدنظرتان را وارد کرده و درنهایت بر روی دکمه‌ی{" "}
+      <strong>ایجاد دسترسی</strong> کلیک کنید.
     </p>
-    <ZoomableImage src="/static/disks/ftp3.jpg" alt="صفحه‌ی دسترسی‌ها ‌FTP" />
-    <p>
-      همان‌طور که مشاهده می‌کنید، دسترسی FTP با نام کاربری
-      <span className="code">ftp_user</span>
-      ایجاد شده است:
-    </p>
-    <ZoomableImage src="/static/disks/ftp4.png" alt="صفحه‌ی ساخت دیسک" />
-    <Notice variant="info">
-      با کلیک بر روی دکمه‌ی "ایجاد دسترسی FTP" می‌توانید دسترسی‌های بیشتری ایجاد
-      کنید.
-    </Notice>
     <h3>اتصال به دیسک</h3>
     <p>
-      برای اتصال به دیسک از طریق FTP، می‌توانید از نرم‌افزار FileZilla و یا
-      WinSCP استفاده کنید.
+      برای اتصال به دیسک از طریق دسترسی FTP می‌توانید از نرم‌افزار{" "}
+      <Link href="#winscp">WinSCP</Link> و یا{" "}
+      <Link href="#filezilla">FileZilla</Link> استفاده کنید.
     </p>
     <h4 id="winscp">اتصال از طریق WinSCP</h4>
     <p>
-      برای دانلود WinSCP می‌توانیداز لینک روبرو استفاده کنید:{" "}
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <ZoomableImage src="https://files.liara.ir/docs/disks/connect-to-disks-with-winscp.gif" />
+    <p>
+      برای دانلود WinSCP می‌توانید از لینک روبرو استفاده کنید:{" "}
       <a
         href="https://files.liara.ir/liara/WinSCP.5.17.5.Build.10414.zip"
         target="_blank"
@@ -79,23 +71,19 @@ export default () => (
       </a>{" "}
     </p>
     <p>
-      بعد از دانلود و نصب WinSCP، هنگامی که نرم‌افزار را اجرا کنید با پنجره زیر
-      روبرو خواهید شد که همانند تصویر نام کاربری، رمز عبور، هاست و پورتی که در
-      صفحه‌ی دسترسی FTP در اختیارتان قرار گرفت را وارد کنید و متصل شوید:
+      پس از اجرای نرم‌افزار، روی <strong>New Session</strong> کلیک کنید و{" "}
+      <strong>File protocol</strong> را <strong>FTP</strong> قرار دهید. سپس
+      اطلاعات دسترسی FTP ایجاد شده در بخش قبل را در فیلدهای مربوطه وارد کرده و
+      درنهایت بر روی دکمه‌ی <strong>login</strong> کلیک کنید.
     </p>
-    <ZoomableImage
-      src="/static/disks/winscp-1.jpg"
-      alt="پنجره اتصال از طریق WinSCP"
-    />
-    <p>
-      اگر اطلاعات را بدرستی وارد کرده باشید با پنجره‌ای همانند پنجره زیر روبرو
-      خواهید شد:
-    </p>
-    <ZoomableImage
-      src="/static/disks/winscp-2.jpg"
-      alt="پنجره متصل به FTP در WinSCP"
-    />
+
     <h4 id="filezilla">اتصال از طریق FileZilla</h4>
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <ZoomableImage src="https://files.liara.ir/docs/disks/connect-to-disks-with-filezilla.gif" />
+
     <p>
       برای دانلود FileZilla برای ویندوز، با توجه به معماری سیستم‌تان یکی از دو
       نسخه زیر را دانلود و نصب کنید:
@@ -132,45 +120,12 @@ export default () => (
     </p>
 
     <p>
-      بعد از دانلود و نصب FileZilla، در پنجره اصلی وارد بخش{" "}
-      <span className="code">Site Manager</span> شوید:
+      پس از اجرای نرم‌افزار، اطلاعات دسترسی FTP ایجاد شده در بخش قبل را در
+      فیلدهای مربوطه وارد کرده و درنهایت بر روی دکمه‌ی{" "}
+      <strong>Quickconnect</strong> کلیک کنید.
     </p>
-    <ZoomableImage
-      src="/static/disks/filezilla-1.jpg"
-      alt="بخش Site Manager در FileZilla"
-    />
 
-    <p>
-      در پنجره باز شده، نام کاربری، رمز عبور، هاست و پورتی که در صفحه‌ی دسترسی
-      FTP در اختیارتان قرار گرفت را وارد کنید:
-    </p>
-    <ZoomableImage
-      src="/static/disks/filezilla-2.jpg"
-      alt="تب General در Site Manager FileZilla"
-    />
-
-    <p>
-      همچنین برای ارسال و دریافت دیتا نیاز داریم داریم تا{" "}
-      <span className="code">Transfer mode</span>را در تب{" "}
-      <span className="code">Transfer Settings</span> بر روی حالت{" "}
-      <span className="code">Passive</span> قرار دهیم:
-    </p>
-    <ZoomableImage
-      src="/static/disks/filezilla-3.jpg"
-      alt="بخش Transfer Settings در FileZilla"
-    />
-    <p>
-      بعد از این تنظیمات بر روی دکمه connect کلیک کنید تا به دیسک‌تان متصل
-      بشوید. اگر اطلاعات و تنظیمات را به درستی تنظیم کرده باشید با پنجره‌ای
-      همانند پنجره زیر روبرو خواهید شد:
-    </p>
-    <ZoomableImage
-      src="/static/disks/filezilla-4.jpg"
-      alt="پنجره متصل به FTP در FileZilla"
-    />
-
-    <br></br>
-    <Notice variant="info">
+    <Notice variant="warning">
       توجه کنید اگر دسترسی‌ای را پاک کنید اتصال کاربری که از طریق آن دسترسی متصل
       شده است قطع نمی‌شود.
     </Notice>
