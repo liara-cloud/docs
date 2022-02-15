@@ -48,6 +48,7 @@ import lumenIcon from "@liara/platformicons/svg/lumen.svg";
 import celeryIcon from "@liara/platformicons/svg/celery.svg";
 import svelteIcon from "@liara/platformicons/svg/svelte.svg";
 import jekyllIcon from "@liara/platformicons/svg/jekyll.svg";
+import blitzjsIcon from "@liara/platformicons/svg/blitz.svg";
 import gatsbyIcon from "@liara/platformicons/svg/gatsby.svg";
 import strapiIcon from "@liara/platformicons/svg/strapi.svg";
 import adonisIcon from "@liara/platformicons/svg/adonisjs.svg";
@@ -111,6 +112,8 @@ const types = [
   { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: svelteIcon, alt: "svelte" },
+  { logo: blitzjsIcon, alt: "blitz" },
+  { logo: gridsomeIcon, alt: "gridsome" },
   { logo: strapiIcon, alt: "strapi" },
   { logo: celeryIcon, alt: "celery" },
   { logo: adonisIcon, alt: "adonisjs" },

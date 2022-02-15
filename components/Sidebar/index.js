@@ -1061,6 +1061,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/blitzjs">
+                <PlatformIcon platform="blitz" />
+                BlitzJS
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/strapi">
                 <PlatformIcon platform="strapi" />
                 Strapi

@@ -119,6 +119,12 @@ const Index = () => (
           <span>Remix</span>
         </a>
       </Link>
+      <Link href="/instructions/blitzjs">
+        <a>
+          <PlatformIcon platform="blitz" />
+          <span>BlitzJS</span>
+        </a>
+      </Link>
       <Link href="/instructions/strapi">
         <a>
           <PlatformIcon platform="strapi" />
