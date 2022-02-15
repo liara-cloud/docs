@@ -35,7 +35,6 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
-import jekyllIcon from "@liara/platformicons/svg/jekyll.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
 import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -43,10 +42,12 @@ import hugoIcon from "@liara/platformicons/svg/hugo.svg";
 import nestIcon from "@liara/platformicons/svg/nest.svg";
 import nextIcon from "@liara/platformicons/svg/next.svg";
 import nuxtIcon from "@liara/platformicons/svg/nuxt.svg";
+import remixIcon from "@liara/platformicons/svg/remix.svg";
 import nginxIcon from "@liara/platformicons/svg/nginx.svg";
 import lumenIcon from "@liara/platformicons/svg/lumen.svg";
 import celeryIcon from "@liara/platformicons/svg/celery.svg";
 import svelteIcon from "@liara/platformicons/svg/svelte.svg";
+import jekyllIcon from "@liara/platformicons/svg/jekyll.svg";
 import gatsbyIcon from "@liara/platformicons/svg/gatsby.svg";
 import strapiIcon from "@liara/platformicons/svg/strapi.svg";
 import adonisIcon from "@liara/platformicons/svg/adonisjs.svg";
@@ -98,6 +99,7 @@ const types = [
   { logo: parseserverIcon, alt: "parseserver" },
   // Instructions
   { logo: goIcon, alt: "go" },
+  { logo: seqIcon, alt: "seq" },
   { logo: yiiIcon, alt: "yii" },
   { logo: nestIcon, alt: "nest" },
   { logo: nextIcon, alt: "next" },
@@ -105,15 +107,15 @@ const types = [
   { logo: nuxtIcon, alt: "nuxt" },
   { logo: nginxIcon, alt: "nginx" },
   { logo: lumenIcon, alt: "lumen" },
+  { logo: remixIcon, alt: "remix" },
   { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
-  { logo: fastifyIcon, alt: "fastify" },
   { logo: svelteIcon, alt: "svelte" },
-  { logo: gridsomeIcon, alt: "gridsome" },
   { logo: strapiIcon, alt: "strapi" },
-  { logo: adonisIcon, alt: "adonisjs" },
-  { logo: seqIcon, alt: "seq" },
   { logo: celeryIcon, alt: "celery" },
+  { logo: adonisIcon, alt: "adonisjs" },
+  { logo: fastifyIcon, alt: "fastify" },
+  { logo: gridsomeIcon, alt: "gridsome" },
   { logo: eleventyIcon, alt: "eleventy" },
   // Databases
   { logo: mysqlIcon, alt: "mysql" },
