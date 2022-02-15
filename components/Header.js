@@ -18,12 +18,17 @@ export default function Header({ setSearchOpen }) {
       </a>
       <nav className="header__nav">
         <div className="header__auth">
-          <a className="header__login" href="https://console.liara.ir/login">
+          <a
+            className="header__login"
+            href="https://console.liara.ir/login"
+            target="_blank"
+          >
             ورود
           </a>
           <a
             className="header__register"
             href="https://console.liara.ir/register"
+            target="_blank"
           >
             ایجاد حساب کاربری
           </a>
@@ -87,12 +92,14 @@ export default function Header({ setSearchOpen }) {
               <a
                 href="https://console.liara.ir/login"
                 className="header__login"
+                target="_blank"
               >
                 ورود
               </a>
               <a
                 href="https://console.liara.ir/register"
                 className="header__register"
+                target="_blank"
               >
                 ایجاد حساب کاربری
               </a>
