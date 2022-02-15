@@ -11,16 +11,16 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="blitzjs" />
+      <PlatformIcon platform="blitz" />
       <div className="page-title">
         <h1>استقرار برنامه‌های BlitzJS</h1>
         <span className="page-description">(BlitzJS Apps)</span>
       </div>
     </div>
     <p>
-      فریم‌ورک BlitzJS این امکان را در اختیار شما قرار می‌دهد تا تجربه‌ی کاربری
-      سریع و مدرنی را برای کاربران خود خلق کنید. حال شما می‌توانید برنامه‌های
-      BlitzJS را با ایجاد برنامه‌های{" "}
+      Blitz یک فریم‌ورک فول‌استک مبتنی بر NextJS است که در توسعه‌ی آن از Ruby on
+      Rails الهام گرفته شده است. حال شما می‌توانید برنامه‌های BlitzJS را با
+      ایجاد برنامه‌های{" "}
       <Link href="/app-deploy/nodejs/getting-started">NodeJS</Link> بر روی لیارا
       دیپلوی کنید.
     </p>
