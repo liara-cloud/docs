@@ -1438,7 +1438,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/storage/disks/backup-restore">
-                    Backup / Restore
+                    تهیه و بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
               </ul>
@@ -1473,7 +1473,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/storage/object-storage/backup-restore">
-                    Backup / Restore
+                    تهیه و بازیابی فایل پشتیبان
                   </ActiveLink>
                 </li>
               </ul>
