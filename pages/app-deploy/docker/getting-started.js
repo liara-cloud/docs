@@ -37,6 +37,27 @@ export default () => (
       کنید.
     </p>
 
+    <div className="platforms">
+      <Link href="/instructions/golang">
+        <a>
+          <PlatformIcon platform="go" />
+          <span>Go</span>
+        </a>
+      </Link>
+      <Link href="/instructions/nginx">
+        <a>
+          <PlatformIcon platform="nginx" />
+          <span>Nginx</span>
+        </a>
+      </Link>
+      <Link href="/instructions/fastapi">
+        <a>
+          <PlatformIcon platform="fastapi" />
+          <span>FastAPI</span>
+        </a>
+      </Link>
+    </div>
+
     <Link href="/app-deploy/docker/deploy">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
