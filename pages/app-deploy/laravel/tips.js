@@ -63,6 +63,9 @@ export default () => (
         <a href="#enable-caching">فعال‌سازی Caching</a>
       </li>
       <li>
+        <a href="#ffmpeg">نحوه‌ی استفاده از ماژول FFmpeg</a>
+      </li>
+      <li>
         <a href="#using-ignition-and-faker-packages">
           استفاده از پکیج‌های Ignition و Faker
         </a>
@@ -541,6 +544,39 @@ class TrustProxies extends Middleware
     <pre>
       <code>{`<script src="{{ mix('js/app.js') }}"></script>`}</code>
     </pre>
+    <h3 id="ffmpeg">نحوه‌ی استفاده از ماژول FFmpeg</h3>
+    <p>
+      ماژول FFmpeg به‌صورت پیش‌فرض در برنامه‌های Laravel نصب است و همچنین
+      متغیرهای محیطی <span className="code">FFMPEG_PATH</span> و{" "}
+      <span className="code">FFPROBE_PATH</span> در این پلتفرم تنظیم شده‌اند.
+      شما برای استفاده از این ماژول تنها کافیست پکیج{" "}
+      <a href="https://github.com/PHP-FFMpeg/PHP-FFMpeg" target="_blank">
+        php-ffmpeg
+      </a>{" "}
+      را با اجرای دستور زیر نصب کنید:
+    </p>
+    <Highlight className="bash">
+      {`composer require php-ffmpeg/php-ffmpeg`}
+    </Highlight>
+    <p>و به‌شکل زیر از این پکیج در پروژه‌ی خود استفاده کنید:</p>
+    <Highlight className="php">
+      {`use FFMpeg;
+
+$ffmpeg = FFMpeg::create([
+            'ffmpeg.binaries' => env('FFMPEG_PATH', '/usr/bin/ffmpeg'),
+            'ffprobe.binaries' => env('FFPROBE_PATH', '/usr/bin/ffprobe'),
+        ]);`}
+    </Highlight>
+    <p>
+      شما می‌توانید برای کسب اطلاعات بیشتر،{" "}
+      <a
+        href="https://github.com/PHP-FFMpeg/PHP-FFMpeg#documentation"
+        target="_blank"
+      >
+        مستندات این پکیج
+      </a>{" "}
+      را مطالعه کنید.
+    </p>
     <h3 id="using-ignition-and-faker-packages">
       استفاده از پکیج‌های Ignition و Faker
     </h3>
