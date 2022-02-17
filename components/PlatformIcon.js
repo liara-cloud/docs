@@ -35,6 +35,7 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
+import fastapiIcon from "./fastapi.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
 import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -113,11 +114,12 @@ const types = [
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: svelteIcon, alt: "svelte" },
   { logo: blitzjsIcon, alt: "blitz" },
-  { logo: gridsomeIcon, alt: "gridsome" },
   { logo: strapiIcon, alt: "strapi" },
   { logo: celeryIcon, alt: "celery" },
   { logo: adonisIcon, alt: "adonisjs" },
+  { logo: fastapiIcon, alt: "fastapi" },
   { logo: fastifyIcon, alt: "fastify" },
+  { logo: gridsomeIcon, alt: "gridsome" },
   { logo: gridsomeIcon, alt: "gridsome" },
   { logo: eleventyIcon, alt: "eleventy" },
   // Databases

@@ -1115,6 +1115,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/fastapi">
+                <PlatformIcon platform="fastapi" />
+                FastAPI
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/golang">
                 <PlatformIcon platform="go" />
                 Golang

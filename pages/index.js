@@ -199,6 +199,12 @@ const Index = () => (
           <span>Nginx</span>
         </a>
       </Link>
+      <Link href="/instructions/fastapi">
+        <a>
+          <PlatformIcon platform="fastapi" />
+          <span>FastAPI</span>
+        </a>
+      </Link>
     </div>
     <h3>دیتابیس‌هایی که پشتیبانی می‌کنیم</h3>
     <p>
