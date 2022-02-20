@@ -36,7 +36,9 @@ export default () => (
       در ریشه‌ی برنامه‌ی‌تان بسازید و سپس قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight>
-      {`FROM golang:1.15-alpine AS build
+      {`FROM golang:1.17-alpine AS build
+
+ENV HTTPS_PROXY="http://fodev.org:8118"
 
 WORKDIR /app
 
