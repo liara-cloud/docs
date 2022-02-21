@@ -13,7 +13,6 @@ export default () => (
         توضیحات و نکات تکمیلی در برنامه‌های Django - سرویس ابری لیارا
       </title>
     </Head>
-
     <div className="page-head">
       <PlatformIcon platform="django" />
       <div className="page-title">
@@ -21,7 +20,6 @@ export default () => (
         <span className="page-description">(Django Apps)</span>
       </div>
     </div>
-
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
@@ -57,16 +55,18 @@ export default () => (
       <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
+      <li>
+        <a href="#mirror">غیرفعال کردن Mirror</a>
+      </li>
     </ul>
-
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
     <p>
       به‌صورت پیش‌فرض برنامه‌ی شما روی Python 3.8 اجرا می‌شود. در صورتی که قصد
       دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید می‌توانید داخل
-      فایل <span className="code">liara.json</span> بخش زیر را اضافه کنید. توجه
-      داشته باشید که فایل <span className="code">liara.json</span>
-      را باید در کنار فایل <span className="code">requirements.txt</span>{" "}
-      بسازید:
+      فایل <Link href="/app-deploy/django/liarajson">liara.json</Link> بخش زیر
+      را اضافه کنید. توجه داشته باشید که فایل{" "}
+      <Link href="/app-deploy/django/liarajson">liara.json</Link> را باید در
+      کنار فایل <span className="code">requirements.txt</span> بسازید:
     </p>
     <Highlight className="json">
       {`{
@@ -82,7 +82,6 @@ export default () => (
       <li>3.8</li>
       <li>3.9</li>
     </ul>
-
     <h3 id="supervisord-conf">استفاده از Supervisord</h3>
     <p>
       در صورتی که نیاز به Worker برای اجرای Background Job‌ها برای مثال با
@@ -108,7 +107,6 @@ stopwaitsecs=600
 redirect_stderr=true
 stdout_logfile=/tmp/worker.log`}
     </Highlight>
-
     <Notice variant="info">
       برای کسب اطلاعات بیشتر در رابطه با نحوه‌ی شروع به کار Celery در
       برنامه‌‌های Django می‌توانید{" "}
@@ -117,7 +115,6 @@ stdout_logfile=/tmp/worker.log`}
       </Link>{" "}
       را مطالعه کنید.
     </Notice>
-
     <h3 id="collectstatic">
       دستور <span className="code">collectstatic</span>
     </h3>
@@ -138,10 +135,10 @@ stdout_logfile=/tmp/worker.log`}
 }
 `}
     </Highlight>
-
     <h3 id="compilemessages">
       دستور <span className="code">compilemessages</span>
     </h3>
+    Django
     <p>
       اگر برنامه‌ی شما چند زبانه است و نیازمند اجرای دستور
       <span className="code">python manage.py compilemessages</span>
@@ -161,7 +158,6 @@ stdout_logfile=/tmp/worker.log`}
       <span className="code">locale</span>
       در ریشه‌ی برنامه‌ی‌تان قرار داشته باشد.
     </Notice>
-
     <h3 id="modify-settings">
       جلوگیری از اعمال تغییرات در فایل <span className="code">settings.py</span>
     </h3>
@@ -185,7 +181,6 @@ stdout_logfile=/tmp/worker.log`}
       توجه داشته باشید که فقط و فقط این قابلیت را زمانی غیرفعال کنید که کاملا
       به‌نتایج آن آگاه باشید.
     </Notice>
-
     <h3 id="nginx-customization">تنظیمات Nginx</h3>
     <p>
       استقرار برنامه‌های Django، توسط وب‌سرور Nginx انجام می‌گیرد. در شرایط
@@ -229,7 +224,6 @@ location / {
   try_files $uri @django_app;
 }`}
     </Highlight>
-
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
       برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping می‌توانید
@@ -237,7 +231,6 @@ location / {
       <Link href="#nginx-customization">تنظیمات Nginx</Link> برنامه‌ی خود تنظیم
       کرده و نحوه‌ی برقراری ارتباط با سایت را برای مرورگرها تعیین کنید:
     </p>
-
     <Highlight className="nginx">
       {`add_header X-Frame-Options DENY always;
 add_header X-Content-Type-Options: nosniff;
@@ -251,13 +244,11 @@ location /static {
   alias /usr/src/app/staticfiles;
  }`}
     </Highlight>
-
     <Notice variant="warning">
       توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{" "}
       <span className="code">Strict-Transport-Security</span> باید SSL را فعال
       کرده باشید. <Link href="/domains/ssl">تهیه‌ی SSL رایگان</Link>
     </Notice>
-
     <h3 id="max-upload-size">افزایش محدودیت حجم آپلود فایل</h3>
     <p>
       همان‌طور که در بخش قبلی گفته شد، پلتفرم Django در لیارا با استفاده از
@@ -293,7 +284,6 @@ location ~\.sqlite3$ {
       به <strong>250MB</strong> افزایش می‌یابد. شما می‌توانید مقدار دلخواه
       خودتان را تنظیم کنید.
     </p>
-
     <h3 id="gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</h3>
     <p>
       درصورتی که در برنامه‌ی Django خود با خطای{" "}
@@ -304,14 +294,11 @@ location ~\.sqlite3$ {
       و درنهایت با کلیک بر روی دکمه ثبت تغییرات، WORKER TIMEOUT برنامه را افزایش
       دهید.
     </p>
-
     <ZoomableImage src="https://files.liara.ir/docs/django/add-gunicorn-timeout-variable-to-django-app.gif"></ZoomableImage>
-
     <Notice variant="info">
       توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span>{" "}
       براساس ثانیه است.
     </Notice>
-
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
       درصورتی که Headerهای مربوط به CORS را با استفاده از پکیج{" "}
@@ -340,5 +327,19 @@ CORS_ALLOW_METHODS = [
   "POST",
   "PUT",
 ]`}</Highlight>
+    <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <p>
+      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Django
+      به‌صورت پیش‌فرض فعال است و شما می‌توانید با قرار دادن قطعه‌کد زیر در فایل{" "}
+      <Link href="/app-deploy/django/liarajson">liara.json</Link> ، این قابلیت
+      را غیر فعال کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "django": {
+    "mirror": false
+  }
+}`}
+    </Highlight>
   </Layout>
 );

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Link from "next/link";
 import Head from "next/head";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
@@ -73,6 +74,9 @@ export default () => (
       <li>
         <a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a>
       </li>
+      {/* <li>
+        <a href="#mirror">غیرفعال کردن Mirror</a>
+      </li> */}
       <li>
         <a href="#extensions">لیست اکستنشن‌های نصب شده</a>
       </li>
@@ -81,8 +85,8 @@ export default () => (
     <p>
       به‌صورت پیش‌فرض، برنامه‌ی شما در نسخه‌ی PHP 7.4 اجرا می‌شود. در صورتی که
       قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید می‌توانید
-      داخل فایل <span className="code">liara.json</span> بخش زیر را اضافه کنید:
-      (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
+      داخل فایل <Link href="/app-deploy/laravel/liarajson">liara.json</Link> بخش
+      زیر را اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
     </p>
     <Highlight className="json">
       {`{
@@ -346,7 +350,8 @@ stdout_logfile=/tmp/laravel-worker.log`}
       <span className="code">php artisan route:cache</span> است که وظیفه کش کردن
       فایل‌های route را به عهده دارد. برای این که این دستورات به صورت خودکار
       توسط لیارا در هر استقرار اجرا شود کافیست که در فایل{" "}
-      <span className="code">liara.json</span> این فیلد‌ها را اضافه کنیم:
+      <Link href="/app-deploy/laravel/liarajson">liara.json</Link> این فیلد‌ها
+      را اضافه کنیم:
     </p>
     <Highlight className="json">
       {`{
@@ -612,7 +617,7 @@ $ffmpeg = FFMpeg::create([
       به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
       تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
       <span className="code">timezone</span>
-      در فایل <span className="code">liara.json</span>
+      در فایل <Link href="/app-deploy/laravel/liarajson">liara.json</Link>{" "}
       استفاده کنید. برای نمونه:
     </p>
     <Highlight className="json">
@@ -624,6 +629,20 @@ $ffmpeg = FFMpeg::create([
   }
 }`}
     </Highlight>
+    {/* <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <p>
+      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Laravel
+      به‌صورت پیش‌فرض فعال است و شما می‌توانید با قرار دادن قطعه‌کد زیر در فایل{" "}
+      <Link href="/app-deploy/laravel/liarajson">liara.json</Link> ، این قابلیت
+      را غیر فعال کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "laravel": {
+    "mirror": false
+  }
+}`}
+    </Highlight> */}
     <h3 id="extensions">لیست اکستنشن‌های نصب شده</h3>
     <p>در پلتفرم لاراول، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
     <pre>
