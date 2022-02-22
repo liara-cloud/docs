@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
@@ -41,13 +42,17 @@ export default () => (
       <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
+      <li>
+        <a href="#mirror">غیرفعال کردن Mirror</a>
+      </li>
     </ul>
 
     <h3 id="nodejs-version">انتخاب نسخه‌ی NodeJS</h3>
     <p>
       به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی ۱۶ این پلتفرم اجرا می‌شود. در
       صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
-      می‌توانید داخل فایل <span className="code">liara.json</span> بخش زیر را
+      می‌توانید داخل فایل{" "}
+      <Link href="/app-deploy/nodejs/liarajson">liara.json</Link> بخش زیر را
       اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
     </p>
     <Highlight className="json">
@@ -156,7 +161,7 @@ server.listen().then(({ url }) => {
       به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
       تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
       <span className="code">timezone</span>
-      در فایل <span className="code">liara.json</span>
+      در فایل <Link href="/app-deploy/nodejs/liarajson">liara.json</Link>{" "}
       استفاده کنید. برای نمونه:
     </p>
     <Highlight className="json">
@@ -228,5 +233,20 @@ fastify.use(require('cors')())`}</Highlight>
       </a>{" "}
       این فریم‌ورک را مطالعه کنید.
     </p>
+
+    <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <p>
+      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم NodoeJS
+      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در
+      فایل <Link href="/app-deploy/nodejs/liarajson">liara.json</Link>، این
+      قابلیت را غیر فعال کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "node": {
+    "mirror": false
+  }
+}`}
+    </Highlight>
   </Layout>
 );

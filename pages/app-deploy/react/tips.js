@@ -36,6 +36,9 @@ export default () => (
           فعال‌سازی gzip و Browser Caching
         </a>
       </li>
+      <li>
+        <a href="#mirror">غیرفعال کردن Mirror</a>
+      </li>
     </ul>
 
     <h3 id="nginx-conf">تنظیمات Nginx</h3>
@@ -144,5 +147,20 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
 }`}
       </code>
     </pre>
+
+    <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <p>
+      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم React
+      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در
+      فایل <Link href="/app-deploy/react/liarajson">liara.json</Link>، این
+      قابلیت را غیر فعال کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "react": {
+    "mirror": false
+  }
+}`}
+    </Highlight>
   </Layout>
 );
