@@ -147,8 +147,8 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
     <h3 id="mirror">غیرفعال کردن Mirror</h3>
     <p>
       Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Vue به‌صورت
-      پیش‌فرض فعال است و شما می‌توانید با قرار دادن قطعه‌کد زیر در فایل{" "}
-      <Link href="/app-deploy/vue/liarajson">liara.json</Link> ، این قابلیت را
+      پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در فایل{" "}
+      <Link href="/app-deploy/vue/liarajson">liara.json</Link>، این قابلیت را
       غیر فعال کنید:
     </p>
     <Highlight className="json">

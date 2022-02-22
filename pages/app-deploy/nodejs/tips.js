@@ -237,9 +237,9 @@ fastify.use(require('cors')())`}</Highlight>
     <h3 id="mirror">غیرفعال کردن Mirror</h3>
     <p>
       Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم NodoeJS
-      به‌صورت پیش‌فرض فعال است و شما می‌توانید با قرار دادن قطعه‌کد زیر در فایل{" "}
-      <Link href="/app-deploy/nodejs/liarajson">liara.json</Link> ، این قابلیت
-      را غیر فعال کنید:
+      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در
+      فایل <Link href="/app-deploy/nodejs/liarajson">liara.json</Link>، این
+      قابلیت را غیر فعال کنید:
     </p>
     <Highlight className="json">
       {`{

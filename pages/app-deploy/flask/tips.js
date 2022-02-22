@@ -131,9 +131,9 @@ def helloWorld():
     <h3 id="mirror">غیرفعال کردن Mirror</h3>
     <p>
       Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Flask
-      به‌صورت پیش‌فرض فعال است و شما می‌توانید با قرار دادن قطعه‌کد زیر در فایل{" "}
-      <Link href="/app-deploy/flask/liarajson">liara.json</Link> ، این قابلیت را
-      غیر فعال کنید:
+      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در
+      فایل <Link href="/app-deploy/flask/liarajson">liara.json</Link>، این
+      قابلیت را غیر فعال کنید:
     </p>
     <Highlight className="json">
       {`{
