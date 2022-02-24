@@ -35,7 +35,6 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
-import fastapiIcon from "./fastapi.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
 import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -53,6 +52,7 @@ import blitzjsIcon from "@liara/platformicons/svg/blitz.svg";
 import gatsbyIcon from "@liara/platformicons/svg/gatsby.svg";
 import strapiIcon from "@liara/platformicons/svg/strapi.svg";
 import adonisIcon from "@liara/platformicons/svg/adonisjs.svg";
+import fastapiIcon from "@liara/platformicons/svg/fastapi.svg";
 import fastifyIcon from "@liara/platformicons/svg/fastify.svg";
 import eleventyIcon from "@liara/platformicons/svg/eleventy.svg";
 import gridsomeIcon from "@liara/platformicons/svg/gridsome.svg";
