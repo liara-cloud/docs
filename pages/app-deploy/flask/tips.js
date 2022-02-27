@@ -36,6 +36,9 @@ export default () => (
         <a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a>
       </li>
       <li>
+        <a href="#nginx-customization">تنظیمات Nginx</a>
+      </li>
+      <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
@@ -102,6 +105,47 @@ export default () => (
       توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span>{" "}
       براساس ثانیه است.
     </Notice>
+
+    <h3 id="nginx-customization">تنظیمات Nginx</h3>
+    <p>
+      در برنامه‌های Flask لیارا از وب‌سرور Nginx استفاده می‌شود و پیکربندی
+      پیش‌فرض این وب‌سرور به‌شکل زیر است:
+    </p>
+    <Highlight className="nginx">
+      {`location / {
+  try_files $uri @flask_app;
+}
+
+location ~\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}`}
+    </Highlight>
+    <p>
+      حال شما می‌توانید یک فایل با نام{" "}
+      <span className="code">liara_nginx.conf</span>
+      در مسیر اصلی پروژه‌ی خود ایجاد کرده و پیکربندی وب‌سرور Nginx را متناسب با
+      نیاز خود تغییر دهید. برای مثال، برای فعال‌کردن فشرده‌سازی
+      <span className="code">gzip</span>
+      می‌توانید به‌شکل زیر عمل کنید:
+    </p>
+    <Highlight className="nginx">
+      {`gzip             on;
+gzip_disable     "msie6";
+gzip_vary        on;
+gzip_proxied     any;
+gzip_comp_level  6;
+gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
+location / {
+  try_files $uri @flask_app;
+}
+
+location ~\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}`}
+    </Highlight>
 
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
