@@ -53,30 +53,6 @@ const Index = () => (
           <span>GatsbyJS</span>
         </a>
       </Link>
-      <Link href="/instructions/gridsome">
-        <a>
-          <PlatformIcon platform="gridsome" />
-          <span>Gridsome</span>
-        </a>
-      </Link>
-      <Link href="/instructions/eleventy">
-        <a>
-          <PlatformIcon platform="eleventy" />
-          <span>Eleventy</span>
-        </a>
-      </Link>
-      <Link href="/instructions/hugo">
-        <a>
-          <PlatformIcon platform="hugo" />
-          <span>Hugo</span>
-        </a>
-      </Link>
-      <Link href="/instructions/jekyll">
-        <a>
-          <PlatformIcon platform="jekyll" />
-          <span>Jekyll</span>
-        </a>
-      </Link>
       <Link href="/app-deploy/nodejs/getting-started">
         <a>
           <PlatformIcon platform="nodejs" />
@@ -101,28 +77,10 @@ const Index = () => (
           <span>NestJS</span>
         </a>
       </Link>
-      <Link href="/instructions/fastify">
-        <a>
-          <PlatformIcon platform="fastify" />
-          <span>Fastify</span>
-        </a>
-      </Link>
       <Link href="/instructions/svelte">
         <a>
           <PlatformIcon platform="svelte" />
           <span>Svelte</span>
-        </a>
-      </Link>
-      <Link href="/instructions/remix">
-        <a>
-          <PlatformIcon platform="remix" />
-          <span>Remix</span>
-        </a>
-      </Link>
-      <Link href="/instructions/blitzjs">
-        <a>
-          <PlatformIcon platform="blitz" />
-          <span>BlitzJS</span>
         </a>
       </Link>
       <Link href="/instructions/strapi">
@@ -156,13 +114,6 @@ const Index = () => (
           <span>Lumen</span>
         </a>
       </Link>
-      <Link href="/instructions/yii">
-        <a>
-          <PlatformIcon platform="yii" />
-          <span>Yii</span>
-        </a>
-      </Link>
-
       <Link href="/app-deploy/django/getting-started">
         <a>
           <PlatformIcon platform="django" />
@@ -197,12 +148,6 @@ const Index = () => (
         <a>
           <PlatformIcon platform="nginx" />
           <span>Nginx</span>
-        </a>
-      </Link>
-      <Link href="/instructions/fastapi">
-        <a>
-          <PlatformIcon platform="fastapi" />
-          <span>FastAPI</span>
         </a>
       </Link>
     </div>
