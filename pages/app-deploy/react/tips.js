@@ -43,37 +43,45 @@ export default () => (
 
     <h3 id="nginx-conf">تنظیمات Nginx</h3>
     <p>
-      استقرار برنامه‌های ReactJS، توسط وب‌سرور
-      <span className="code">Nginx</span>
-      انجام می‌گیرد. در شرایط مختلف، ممکن است که نیاز داشته باشید این وب‌سرور را
-      مطابق با نیازهای‌تان تنظیم کنید. برای این کار، کافیست که در ریشه‌ی
-      برنامه‌ی‌تان، فایلی با نام
-      <span className="code">liara_nginx.conf</span>
-      ایجاد کنید. به‌صورت پیش‌فرض، برای برنامه‌های ReactJS، این فایل به شکل زیر
-      تعریف شده‌است:
+      در برنامه‌های React لیارا از وب‌سرور Nginx استفاده می‌شود و پیکربندی
+      پیش‌فرض این وب‌سرور به‌شکل زیر است:
     </p>
-    <pre>
-      <code>
-        {`location / {
+    <Highlight className="nginx">
+      {`location / {
   index index.html index.htm;
   try_files $uri $uri/ /index.html =404;
-}`}
-      </code>
-    </pre>
-    <p>که شما می‌توانید آن را به شیوه‌ی خودتان گسترش دهید:</p>
-    <pre>
-      <code>
-        {`location / {
-  # ...
 }
+
+location ~ /\.well-known {
+  allow all;
+}`}
+    </Highlight>
+
+    <p>
+      حال شما می‌توانید یک فایل با نام{" "}
+      <span className="code">liara_nginx.conf</span>
+      در مسیر اصلی پروژه‌ی خود ایجاد کرده و پیکربندی وب‌سرور Nginx را متناسب با
+      نیاز خود تغییر دهید:
+    </p>
+
+    <Highlight className="nginx">
+      {`location / {
+  index index.html index.htm;
+  try_files $uri $uri/ /index.html =404;
+}
+
+location ~ /\.well-known {
+  allow all;
+}
+
 location /api {
   # ...
 }
+
 location /images {
   # ...
 }`}
-      </code>
-    </pre>
+    </Highlight>
 
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
@@ -92,6 +100,10 @@ add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; prelo
 location / {
   index index.html index.htm;
   try_files $uri $uri/ /index.html =404;
+}
+
+location ~ /\.well-known {
+  allow all;
 }`}
     </Highlight>
 
@@ -113,9 +125,8 @@ location / {
       <span className="code">liara deploy</span>
       را وارد کنید.
     </p>
-    <pre>
-      <code>
-        {`gzip             on;
+    <Highlight className="nginx">
+      {`gzip             on;
 gzip_disable     "msie6";
 gzip_vary        on;
 gzip_proxied     any;
@@ -125,6 +136,10 @@ gzip_types       text/plain text/css application/json application/javascript app
 location / {
   index index.html index.htm;
   try_files $uri $uri/ /index.html =404;
+}
+
+location ~ /\.well-known {
+  allow all;
 }
 
 # cache.appcache, your document html and data
@@ -145,8 +160,7 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
   access_log off;
   add_header Cache-Control "public";
 }`}
-      </code>
-    </pre>
+    </Highlight>
 
     <h3 id="mirror">غیرفعال کردن Mirror</h3>
     <p>

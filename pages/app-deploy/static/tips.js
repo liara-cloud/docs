@@ -48,27 +48,35 @@ export default () => (
       ایجاد کنید. به‌صورت پیش‌فرض، برای برنامه‌های استاتیک، این فایل به شکل زیر
       تعریف شده‌است:
     </p>
-    <pre>
-      <code>
-        {`location / {
+    <Highlight className="nginx">
+      {`error_page 404 /404.html;
+location / {
   index  index.html index.htm;
-}`}
-      </code>
-    </pre>
-    <p>که شما می‌توانید آن را به شیوه‌ی خودتان گسترش دهید:</p>
-    <pre>
-      <code>
-        {`location / {
-  # ...
 }
+
+location ~ /\.well-known {
+  allow all;
+}`}
+    </Highlight>
+    <p>که شما می‌توانید آن را به شیوه‌ی خودتان گسترش دهید:</p>
+    <Highlight className="code">
+      {`error_page 404 /404.html;
+location / {
+  index  index.html index.htm;
+}
+
+location ~ /\.well-known {
+  allow all;
+}
+
 location /api {
   # ...
 }
+
 location /images {
   # ...
 }`}
-      </code>
-    </pre>
+    </Highlight>
 
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
@@ -84,8 +92,13 @@ add_header X-Content-Type-Options: nosniff;
 add_header X-XSS-Protection "1; mode=block" always;
 add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 
+error_page 404 /404.html;
 location / {
   index  index.html index.htm;
+}
+
+location ~ /\.well-known {
+  allow all;
 }`}
     </Highlight>
 
@@ -106,17 +119,21 @@ location / {
       <span className="code">liara deploy</span>
       را وارد کنید.
     </p>
-    <pre>
-      <code>
-        {`gzip             on;
+    <Highlight className="code">
+      {`gzip             on;
 gzip_disable     "msie6";
 gzip_vary        on;
 gzip_proxied     any;
 gzip_comp_level  6;
 gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
+error_page 404 /404.html;
 location / {
-  index index.html index.htm;
+  index  index.html index.htm;
+}
+
+location ~ /\.well-known {
+  allow all;
 }
 
 # cache.appcache, your document html and data
@@ -137,7 +154,6 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
   access_log off;
   add_header Cache-Control "public";
 }`}
-      </code>
-    </pre>
+    </Highlight>
   </Layout>
 );
