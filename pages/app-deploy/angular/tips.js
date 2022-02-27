@@ -42,7 +42,7 @@ export default () => (
       </li>
     </ul>
 
-    <h3 id="nginx-customization">تنظیمات Nginx</h3>
+    <h3 id="nginx-conf">تنظیمات Nginx</h3>
     <p>
       در برنامه‌های Angular لیارا از وب‌سرور Nginx استفاده می‌شود و پیکربندی
       پیش‌فرض این وب‌سرور به‌شکل زیر است:
