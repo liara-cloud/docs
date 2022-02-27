@@ -183,12 +183,8 @@ stdout_logfile=/tmp/worker.log`}
     </Notice>
     <h3 id="nginx-customization">تنظیمات Nginx</h3>
     <p>
-      استقرار برنامه‌های Django، توسط وب‌سرور Nginx انجام می‌گیرد. در شرایط
-      مختلف، ممکن است که نیاز داشته باشید این وب‌سرور را مطابق با نیازهای‌تان
-      تنظیم کنید. برای این کار، کافیست که در ریشه‌ی برنامه‌ی‌تان، فایلی با نام
-      <span className="code">liara_nginx.conf</span>
-      ایجاد کنید. به‌صورت پیش‌فرض، برای برنامه‌های Django، این فایل به شکل زیر
-      تعریف شده‌است:
+      در برنامه‌های Django لیارا از وب‌سرور Nginx استفاده می‌شود و پیکربندی
+      پیش‌فرض این وب‌سرور به‌شکل زیر است:
     </p>
     <Highlight className="nginx">
       {`location /static {
@@ -202,13 +198,19 @@ location / {
 location ~\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
+}
+
+location ~ /\.well-known {
+  allow all;
 }`}
     </Highlight>
     <p>
-      که شما می‌توانید آن را به شیوه‌ی خودتان گسترش دهید. برای مثال، برای
-      فعال‌کردن فشرده‌سازی
+      حال شما می‌توانید یک فایل با نام{" "}
+      <span className="code">liara_nginx.conf</span>
+      در مسیر اصلی پروژه‌ی خود ایجاد کرده و پیکربندی وب‌سرور Nginx را متناسب با
+      نیاز خود تغییر دهید. برای مثال، برای فعال‌کردن فشرده‌سازی
       <span className="code">gzip</span>
-      می‌توانید به این صورت عمل کنید:
+      می‌توانید به‌شکل زیر عمل کنید:
     </p>
     <Highlight className="nginx">
       {`gzip             on;
@@ -217,11 +219,22 @@ gzip_vary        on;
 gzip_proxied     any;
 gzip_comp_level  6;
 gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
 location /static {
   alias /usr/src/app/staticfiles;
 }
+
 location / {
   try_files $uri @django_app;
+}
+
+location ~\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+
+location ~ /\.well-known {
+  allow all;
 }`}
     </Highlight>
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
