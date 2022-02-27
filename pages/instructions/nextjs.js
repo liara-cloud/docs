@@ -84,6 +84,46 @@ export default () => (
       کنید.
     </p>
 
+    <h3 id="read-only">رفع خطای Read-only filesystem</h3>
+
+    <p>
+      در صورتی که برنامه‌تان برای ایجاد تغییر در مسیر{" "}
+      <span className="code">/app/.next</span> با خطای Read-only filesystem
+      مواجه شد باید با استفاده از قابلیت{" "}
+      <Link href="app-deploy/nodejs/disks">دیسک‌ها</Link> ، یک دیسک به مسیر{" "}
+      <span className="code">/app/.next</span> مونت کنید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "disks": [
+    {
+      "name": "disk-name",
+      "mountTo": "/app/.next"
+    }
+  ]
+}`}
+    </Highlight>
+
+    <p>
+      همچنین باید فایل <span className="code">package.json</span> پروژه‌تان را
+      به‌شکل زیر ویرایش کنید:
+    </p>
+
+    <Highlight className="json">
+      {`"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "rm -rf /app/.next/ && next start",
+  "lint": "next lint"
+},`}
+    </Highlight>
+
+    <p>
+      درنهایت می‌توانید با اجرای دستور{" "}
+      <span className="code">liara deploy --platform node --port 3000</span>،
+      پروژه‌ی خود را بر روی برنامه‌های NodeJS لیارا مستقر کنید.
+    </p>
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
       با وجود انواع مختلف فریم‌ورک‌ها، برای رفع خطای CORS راه حل‌های متفاوتی
