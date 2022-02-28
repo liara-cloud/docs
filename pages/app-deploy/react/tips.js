@@ -39,6 +39,9 @@ export default () => (
       <li>
         <a href="#mirror">غیرفعال کردن Mirror</a>
       </li>
+      <li>
+        <a href="#source-map">فعال کردن Source Map</a>
+      </li>
     </ul>
 
     <h3 id="nginx-conf">تنظیمات Nginx</h3>
@@ -176,5 +179,24 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
   }
 }`}
     </Highlight>
+
+    <h3 id="source-map">فعال کردن Source Map</h3>
+    <p>
+      Source Map در پلتفرم React لیارا به‌صورت پیش‌فرض غیرفعال است اما درصورت
+      نیاز به فعال کردن این قابلیت می‌توانید قطعه‌کد زیر را در فایل{" "}
+      <Link href="/app-deploy/react/liarajson">liara.json</Link> قرار دهید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "react": {
+      "sourceMap": true
+   }
+}`}
+    </Highlight>
+    <p>
+      در نهایت برای اعمال این تغییر کافیست دستور{" "}
+      <span className="code">liara deploy</span> را در مسیر اصلی پروژه‌تان اجرا
+      کنید.
+    </p>
   </Layout>
 );

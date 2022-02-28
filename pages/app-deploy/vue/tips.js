@@ -36,6 +36,9 @@ export default () => (
       <li>
         <a href="#mirror">غیرفعال کردن Mirror</a>
       </li>
+      <li>
+        <a href="#source-map">فعال کردن Source Map</a>
+      </li>
     </ul>
 
     <h3 id="nginx-conf">تنظیمات Nginx</h3>
@@ -172,5 +175,22 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
   }
 }`}
     </Highlight>
+
+    <h3 id="source-map">غیرفعال کردن Source Map</h3>
+    <p>
+      Source Map در پروژه‌های Vue به‌صورت پیش‌فرض فعال است و برای نیاز به
+      غیرفعال کردن این قابلیت می‌توانید قطعه‌کد زیر را در فایل{" "}
+      <span className="code">vue.config.js</span> به‌شکل زیر تغییر دهید:
+    </p>
+    <Highlight className="json">
+      {`module.exports = {
+  productionSourceMap: false
+};`}
+    </Highlight>
+    <p>
+      در نهایت برای اعمال این تغییر کافیست دستور{" "}
+      <span className="code">liara deploy</span> را در مسیر اصلی پروژه‌تان اجرا
+      کنید.
+    </p>
   </Layout>
 );
