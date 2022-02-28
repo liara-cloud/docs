@@ -180,7 +180,7 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
     <p>
       Source Map در پروژه‌های Vue به‌صورت پیش‌فرض فعال است و برای غیرفعال کردن
       این قابلیت می‌توانید قطعه‌کد زیر را در فایل{" "}
-      <span className="code">vue.config.js</span> به‌شکل زیر تغییر دهید:
+      <span className="code">vue.config.js</span> اضافه کنید:
     </p>
     <Highlight className="javascript">
       {`module.exports = {
