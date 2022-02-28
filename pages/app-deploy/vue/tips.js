@@ -37,7 +37,7 @@ export default () => (
         <a href="#mirror">غیرفعال کردن Mirror</a>
       </li>
       <li>
-        <a href="#source-map">فعال کردن Source Map</a>
+        <a href="#source-map">غیرفعال کردن Source Map</a>
       </li>
     </ul>
 
