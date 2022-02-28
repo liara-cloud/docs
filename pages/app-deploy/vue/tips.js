@@ -178,11 +178,11 @@ location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
 
     <h3 id="source-map">غیرفعال کردن Source Map</h3>
     <p>
-      Source Map در پروژه‌های Vue به‌صورت پیش‌فرض فعال است و برای نیاز به
-      غیرفعال کردن این قابلیت می‌توانید قطعه‌کد زیر را در فایل{" "}
+      Source Map در پروژه‌های Vue به‌صورت پیش‌فرض فعال است و برای غیرفعال کردن
+      این قابلیت می‌توانید قطعه‌کد زیر را در فایل{" "}
       <span className="code">vue.config.js</span> به‌شکل زیر تغییر دهید:
     </p>
-    <Highlight className="json">
+    <Highlight className="javascript">
       {`module.exports = {
   productionSourceMap: false
 };`}
