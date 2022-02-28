@@ -43,7 +43,7 @@ export default () => (
       در برنامه‌های React لیارا از وب‌سرور Nginx استفاده می‌شود و پیکربندی
       پیش‌فرض این وب‌سرور به‌شکل زیر است:
     </p>
-    <Highlight className="code">
+    <Highlight className="nginx">
       {`location / {
   index index.html index.htm;
   try_files $uri $uri/ /index.html =404;
@@ -121,7 +121,7 @@ location ~ /\.well-known {
       ، بسازید و بعد دستور<span className="code">liara deploy</span>
       را وارد کنید.
     </p>
-    <Highlight className="code">
+    <Highlight className="nginx">
       {`gzip             on;
 gzip_disable     "msie6";
 gzip_vary        on;
