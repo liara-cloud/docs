@@ -58,7 +58,7 @@ location ~ /\.well-known {
       در مسیر اصلی پروژه‌ی خود ایجاد کرده و پیکربندی وب‌سرور Nginx را متناسب با
       نیاز خود تغییر دهید:
     </p>
-    <Highlight className="code">
+    <Highlight className="nginx">
       {`error_page 404 /404.html;
 location / {
   index  index.html index.htm;
@@ -118,7 +118,7 @@ location ~ /\.well-known {
       <span className="code">liara deploy</span>
       را وارد کنید.
     </p>
-    <Highlight className="code">
+    <Highlight className="nginx">
       {`gzip             on;
 gzip_disable     "msie6";
 gzip_vary        on;
