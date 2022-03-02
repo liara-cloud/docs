@@ -36,8 +36,24 @@ export default () => (
       <Link href="/app-deploy/docker/getting-started">برنامه Docker</Link> با
       شناسه و پلن دلخواه‌تان ایجاد کنید. سپس یک فایل با نام
       <span className="code">Dockerfile</span>
-      در ریشه‌ی برنامه‌تان بسازید و برنامه‌ی خود را Dockerize‌ کنید.
+      در ریشه‌ی برنامه‌تان بسازید و برنامه‌ی خود را Dockerize‌ کنید. برای مثال
+      می‌توانید از قطعه‌کد زیر الگو بگیرید:
     </p>
+
+    <Highlight className="dockerfile">
+      {`FROM python:3.10
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade pip && \\
+    pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python", "main.py"]`}
+    </Highlight>
 
     <p>درنهایت دستور زیر را در مسیر اصلی پروژه‌ی خود اجرا کنید:</p>
     <Highlight className="bash">{`$ liara deploy`}</Highlight>
