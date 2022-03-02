@@ -114,6 +114,12 @@ const Index = () => (
           <span>Lumen</span>
         </a>
       </Link>
+      <Link href="/instructions/python">
+        <a>
+          <PlatformIcon platform="python" />
+          <span>Python</span>
+        </a>
+      </Link>
       <Link href="/app-deploy/django/getting-started">
         <a>
           <PlatformIcon platform="django" />
