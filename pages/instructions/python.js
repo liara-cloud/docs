@@ -8,30 +8,30 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های Python - سرویس ابری لیارا</title>
+      <title>استقرار اسکریپت‌های Python - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="python" />
       <div className="page-title">
-        <h1>استقرار برنامه‌های Python</h1>
+        <h1>استقرار اسکریپت‌های Python</h1>
         <span className="page-description">(Python Apps)</span>
       </div>
     </div>
 
     <Notice variant="warning">
-      در حال حاضر برنامه‌های Python به‌صورت مستقیم در لیارا پشتیبانی نمی‌شوند
-      اما شما می‌توانید پروژه‌های توسعه داده شده با این زبان برنامه‌نویسی را طبق
-      دستورالعمل زیر در لیارا مستقر کنید.
+      در حال حاضر اسکریپت‌های Python به‌صورت مستقیم در لیارا پشتیبانی نمی‌شوند
+      اما شما می‌توانید این اسکریپت‌ها را طبق دستورالعمل زیر در لیارا مستقر
+      کنید.
     </Notice>
 
     <Notice variant="info">
-      توجه داشته باشید که برای استقرار برنامه‌های Python در لیارا باید به نحوه‌ی
-      نوشتن <span className="code">Dockerfile</span> آشنا باشید.
+      توجه داشته باشید که برای استقرار اسکریپت‌های Python در لیارا باید به
+      نحوه‌ی نوشتن <span className="code">Dockerfile</span> آشنا باشید.
     </Notice>
 
     <p>
-      برای استقرار برنامه‌های Python در لیارا باید در ابتدا از بخش{" "}
+      برای استقرار اسکریپت‌های Python در لیارا باید در ابتدا از بخش{" "}
       <strong>برنامه‌ها</strong>، یک{" "}
       <Link href="/app-deploy/docker/getting-started">برنامه Docker</Link> با
       شناسه و پلن دلخواه‌تان ایجاد کنید. سپس یک فایل با نام
