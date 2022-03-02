@@ -35,6 +35,7 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 
 // Instructions
 
+import pythonIcon from "./python.svg";
 import goIcon from "@liara/platformicons/svg/go.svg";
 import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -110,6 +111,7 @@ const types = [
   { logo: nginxIcon, alt: "nginx" },
   { logo: lumenIcon, alt: "lumen" },
   { logo: remixIcon, alt: "remix" },
+  { logo: pythonIcon, alt: "python" },
   { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: svelteIcon, alt: "svelte" },
