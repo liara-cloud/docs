@@ -2,12 +2,21 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import PlatformIcon from "../components/PlatformIcon";
+import Seo from "../components/SEO/Seo";
 
 const Index = () => (
   <Layout>
     <Head>
       <title>مستندات - سرویس ابری لیارا</title>
     </Head>
+
+    {/* <Seo
+      title="مستندات"
+      desc="سرویس ابری لیارا بستری را فراهم می‌کند تا شما بدون نیاز به پیکربندی و
+      تنظیمات، با نهایت سرعت، آسودگی و راحتی، برنامه‌ی خود را روی سرور اجرا
+      کنید."
+      keyWords="لیارا,مستندات لیارا,سرویس ابری لیارا"
+    /> */}
 
     <h1>صفحه‌ی اصلی مستندات</h1>
 

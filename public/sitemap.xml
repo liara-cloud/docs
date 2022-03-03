@@ -1,0 +1,1420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/angular/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/angular/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/angular/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/angular/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/angular/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/angular/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/angular/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/dbs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/disks</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/envs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/migrations</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/django/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/deploy-image</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/disks</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/envs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/docker/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/dbs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/disks</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/envs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/flask/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/cloud-storage</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/dbs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/disks</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/envs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/https</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/migrations</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/pusher</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/laravel/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/dbs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/disks</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/envs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/netcore/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/dbs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/disks</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/envs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/nodejs/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/dbs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/disks</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/envs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/php/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/react/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/react/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/react/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/react/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/react/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/react/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/react/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/static/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/static/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/static/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/static/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/static/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/static/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/static/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/vue/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/vue/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/vue/getting-started</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/vue/liarajson</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/vue/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/vue/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-deploy/vue/update</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/applets</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/console</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/cron-jobs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/environment-variables</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/ffmpeg</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/file-system</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/fixed-ip</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/health-check</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/ignore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/logs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/private-network</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/app-features/zero-downtime-deployment</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cicd/about</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cicd/github</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cicd/gitlab</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/account</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/app</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/auto-complete</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/commands</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/deploy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/disk</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/env</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/login</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/cli/plan</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/client-api/about</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/client-api/app</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/client-api/database</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/client-api/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mariadb/backup</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mariadb/connections</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mariadb/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mariadb/restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mariadb/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mongodb/backup</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mongodb/connections</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mongodb/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mongodb/restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mysql/backup</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mysql/connections</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mysql/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mysql/restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/mysql/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/postgresql/backup</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/postgresql/connections</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/postgresql/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/postgresql/restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/redis/backup</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/redis/connections</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/redis/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/redis/restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/sqlserver/backup</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/sqlserver/connections</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/sqlserver/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/sqlserver/restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/databases/tunnel</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/domains/management</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/domains/ssl</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/errors/django-settings-file</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/adonis</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/arangodb</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/asgi</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/blitzjs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/celery</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/dotnet-published</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/elasticsearch</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/eleventy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/fastapi</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/fastify</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/gatsbyjs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/golang</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/gridsome</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/hugo</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/jekyll</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/nestjs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/nextjs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/nginx</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/nuxtjs</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/rabbitmq</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/remix</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/seq</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/strapi</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/svelte</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/voyager</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/instructions/yii</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/managing-multiple-accounts</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/migrate</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/about</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/gitea</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/grafana</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/headless-chrome/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/headless-chrome/playwright</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/headless-chrome/puppeteer</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/headless-chrome/selenium</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/headless-chrome/tips</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/imgproxy</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/kibana</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/mattermost</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/metabase</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/nextcloud</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/odoo</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/others</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/parse</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/prestashop</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/pusher/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/pusher/laravel</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/rocketchat</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/vscode</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/wordpress/domain</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/wordpress/email</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/wordpress/install</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/one-click-apps/wordpress/migrate-from-cpanel</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/production-checklist</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/disks/about</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/disks/backup-restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/disks/ftp</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/disks/increase-size</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/disks/management</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/disks/reduce-size</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/object-storage/about</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/object-storage/backup-restore</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/object-storage/cli</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/object-storage/connections</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/object-storage/increase-size</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/storage/object-storage/management</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+          <url>
+            <loc>https://docs.liara.ir/</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.7</priority>
+          </url>
+        
+  </urlset>
