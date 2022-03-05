@@ -22,6 +22,78 @@ export default () => (
 
     <h3> توضیحات و نکات تکمیلی</h3>
 
+    <h3 id="supercronic">پیکربندی Supercronic</h3>
+    <p>
+      گاهی اوقات ممکن است بخواهید کار خاصی در زمان خاص و یا به‌صورت دوره‌ای اجرا
+      شود. برای این کار در پلتفرم Docker می‌توانید از{" "}
+      <a
+        href="https://github.com/aptible/supercronic"
+        target="_blank"
+        rel="noopener"
+      >
+        Supercronic
+      </a>{" "}
+      استفاده کنید.
+    </p>
+
+    <p>
+      برای استفاده از Supercronic در لیارا تنها کافیست قطعه‌کد زیر را به{" "}
+      <span className="code">Dockerfile</span> پروژه‌ی خود اضافه کنید:
+    </p>
+
+    <Highlight className="dockerfile">
+      {`COPY --from=liaracloud/supercronic:v0.1.11 \\
+     /usr/local/bin/supercronic /usr/local/bin/supercronic`}
+    </Highlight>
+
+    <p>
+      برای مثال برای راه‌اندازی یک{" "}
+      <Link href="/instructions/asgi">ASGI server</Link> می‌توانید به‌شکل زیر
+      عمل کنید:
+    </p>
+
+    <Highlight className="dockerfile">{`FROM python:3.9
+
+WORKDIR /usr/src/app
+
+COPY --from=liaracloud/supercronic:v0.1.11 \\
+     /usr/local/bin/supercronic /usr/local/bin/supercronic
+
+COPY ./requirements.txt ./requirements.txt
+
+RUN python -m pip install --upgrade pip \\
+    && pip install --no-cache-dir --upgrade -r ./requirements.txt \\
+    && python -m pip install daphne
+
+COPY . .
+
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]`}</Highlight>
+    <p>
+      سپس می‌توانید یک فایل با نام <span className="code">crontab</span> در مسیر
+      اصلی پروژه‌ی خود ایجاد کرده و به‌شکل زیر Jobهای مورد نظر خود را اضافه
+      کنید:
+    </p>
+
+    <Highlight className="plaintext">
+      {`* * * * * cd $ROOT && echo $(date) >> /tmp/time.txt`}
+    </Highlight>
+
+    <p>
+      درنهایت باید یک فایل با نام <span className="code">entrypoint.sh</span> در
+      مسیر اصلی پروژه ایجاد کنید و به‌شکل زیر supercronic و برنامه‌تان را اجرا
+      کنید:
+    </p>
+
+    <Highlight className="bash">
+      {`#!/bin/bash
+
+supercronic /usr/src/app/crontab &
+
+daphne -b 0.0.0.0 -p 80 routeprinter:app`}
+    </Highlight>
+
     <h3 id="limits">محدودیت‌ها</h3>
     <h4>
       {" "}

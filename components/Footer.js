@@ -268,7 +268,6 @@ export default function Footer() {
                 title="هاست ابری لیارا را در توئیتر دنبال کنید."
                 target="_blank"
                 rel="noopener noreferrer"
-                rel="noopener noreferrer"
               >
                 <img
                   src="/static/layout/Twitter.svg"
@@ -283,7 +282,6 @@ export default function Footer() {
                 className="block opacity-50 m-2 lg:m-3 p-2"
                 title="هاست ابری لیارا را در تلگرام دنبال کنید."
                 target="_blank"
-                rel="noopener noreferrer"
                 rel="noopener noreferrer"
               >
                 <img
@@ -300,7 +298,6 @@ export default function Footer() {
                 title="هاست ابری لیارا را در اینستاگرام دنبال کنید."
                 target="_blank"
                 rel="noopener noreferrer"
-                rel="noopener noreferrer"
               >
                 <img
                   src="/static/layout/Instagram.svg"
@@ -315,7 +312,6 @@ export default function Footer() {
                 className="block opacity-50 m-2 lg:m-3 p-2"
                 title="هاست ابری لیارا را در گیت‌هاب دنبال کنید."
                 target="_blank"
-                rel="noopener noreferrer"
                 rel="noopener noreferrer"
               >
                 <img
