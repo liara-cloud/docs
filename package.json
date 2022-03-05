@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev -p 3005",
-    "build": "next build && next export",
+    "build": "npm run sitemap && next build && next export",
     "start": "next start",
     "prepare": "husky install",
-    "pretty": "prettier --write '**/*.js'"
+    "pretty": "prettier --write '**/*.js'",
+    "sitemap": "node sitemap/generate.js"
   },
   "keywords": [],
   "author": "",
