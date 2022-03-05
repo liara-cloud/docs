@@ -62,6 +62,6 @@ walk(path.join(__dirname, "../pages"), function (err, results) {
 
   fs.writeFile("./public/sitemap.xml", sitemap, function (err) {
     if (err) throw err;
-    console.log("Create...");
+    console.log("Generating sitemap...");
   });
 });
