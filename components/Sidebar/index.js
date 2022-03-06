@@ -197,7 +197,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     <a className="url_results">
                       <div className="platform_container">
                         <p className="">
-                          متاسفانه نتیجه ای برای جستجوی شما پیدا نشد
+                          متاسفانه نتیجه‌ای برای عبارتی که وارد کردید پیدا
+                          نکردیم.
                         </p>
                       </div>
                     </a>
