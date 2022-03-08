@@ -17,6 +17,12 @@ export default ({ children }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <script
+          async
+          defer
+          data-website-id="da7a8997-effb-43ea-a5e3-9a7627cc540e"
+          src="https://meta.liara.ir/umami.js"
+        ></script>
       </Head>
 
       <main>
