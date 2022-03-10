@@ -26,7 +26,7 @@ export default function Header({ setSearchOpen }) {
             ورود
           </a>
           <a
-            className="header__register"
+            className="header__register umami--click--docs-signup-button-d"
             href="https://console.liara.ir/register"
             target="_blank"
           >
@@ -37,6 +37,7 @@ export default function Header({ setSearchOpen }) {
           <a
             href="https://liara.ir/#plans"
             title="پلن&zwnj;های سرویس ابری لیارا"
+            className="umami--click--docs-palns-d"
           >
             پلن&zwnj;ها
           </a>
@@ -98,7 +99,7 @@ export default function Header({ setSearchOpen }) {
               </a>
               <a
                 href="https://console.liara.ir/register"
-                className="header__register"
+                className="header__register umami--click--docs-signup-button-m"
                 target="_blank"
               >
                 ایجاد حساب کاربری
@@ -107,7 +108,12 @@ export default function Header({ setSearchOpen }) {
             <nav>
               <ul>
                 <li className="header__floating-nav-link">
-                  <a href="https://liara.ir/#plans">پلن‌ها</a>
+                  <a
+                    href="https://liara.ir/#plans"
+                    className="umami--click--docs-palns-m"
+                  >
+                    پلن‌ها
+                  </a>
                 </li>
                 <li className="header__floating-nav-link">
                   <a href="https://docs.liara.ir">مستندات</a>
