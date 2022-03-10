@@ -195,12 +195,12 @@ location / {
   try_files $uri @django_app;
 }
 
-location ~\.sqlite3$ {
+location ~\\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
 }
 
-location ~ /\.well-known {
+location ~ /\\.well-known {
   allow all;
 }`}
     </Highlight>
@@ -228,12 +228,12 @@ location / {
   try_files $uri @django_app;
 }
 
-location ~\.sqlite3$ {
+location ~\\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
 }
 
-location ~ /\.well-known {
+location ~ /\\.well-known {
   allow all;
 }`}
     </Highlight>
@@ -286,11 +286,14 @@ location / {
   try_files $uri @django_app;
 }
 
-location ~\.sqlite3$ {
+location ~\\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
 }
-`}
+
+location ~ /\\.well-known {
+  allow all;
+}`}
     </Highlight>
     <p>
       با قرار دادن فایل بالا در ریشه‌ی برنامه‌ی‌تان حداکثر حجم مجاز آپلود فایل
