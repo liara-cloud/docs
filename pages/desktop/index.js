@@ -33,13 +33,7 @@ export default function Desktop() {
         </div>
       </div>
 
-      <div
-        style={{
-          marginTop: 30,
-          position: "relative",
-          height: 600,
-        }}
-      >
+      <div className="video-desktop-container">
         <video
           width="320"
           height="240"

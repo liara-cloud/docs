@@ -1,3 +1,9 @@
+.video-desktop-container {
+  margin: 30px 0px;
+  position: relative;
+  height: 600px;
+}
+
 .video-deploy {
   position: absolute;
   right: 40%;
