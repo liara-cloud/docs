@@ -1594,6 +1594,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
+          <ActiveLink href="/desktop">لیارا Desktop</ActiveLink>
+        </nav>
+
+        <nav className="nav">
           <ActiveLink href="/migrate">انتقال سرویس‌‌‌ها</ActiveLink>
         </nav>
 
