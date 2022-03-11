@@ -3,7 +3,8 @@
   right: 40%;
   top: 75px;
   opacity: 0;
-  transition: 0.4s;
+  transition: 1s;
+  box-shadow: 0 0 40px #00000025;
 }
 .video-deploy.show {
   opacity: 1;
@@ -13,8 +14,9 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  transition: 0.2s;
+  transition: 0.8s;
   z-index: 3;
+  box-shadow: 0 0 40px #00000025;
 }
 .first-video.blur {
   position: absolute;

@@ -43,9 +43,9 @@ export default function Desktop() {
         <video
           width="320"
           height="240"
-          controls
-          autoPlay
           onPlay={hendlePlay}
+          autoPlay
+          muted
           ref={firstVideo}
           className={`first-video ${secondVideo && `blur`}`}
         >
@@ -58,8 +58,10 @@ export default function Desktop() {
 
         <video
           width="320"
+          autoPlay
+          muted
+          loop
           height="240"
-          controls
           className={`video-deploy ${secondVideo && `show`}`}
         >
           <source
