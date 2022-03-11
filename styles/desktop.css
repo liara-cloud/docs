@@ -1,0 +1,24 @@
+.video-deploy {
+  position: absolute;
+  right: 40%;
+  top: 75px;
+  opacity: 0;
+  transition: 0.4s;
+}
+.video-deploy.show {
+  opacity: 1;
+}
+
+.first-video {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.2s;
+  z-index: 3;
+}
+.first-video.blur {
+  position: absolute;
+  left: 60%;
+  filter: blur(2px);
+  z-index: 0;
+}
