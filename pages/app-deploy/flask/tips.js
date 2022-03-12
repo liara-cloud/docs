@@ -39,6 +39,9 @@ export default () => (
         <a href="#nginx-customization">تنظیمات Nginx</a>
       </li>
       <li>
+        <a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a>
+      </li>
+      <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
@@ -119,6 +122,10 @@ export default () => (
 location ~\\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
 }`}
     </Highlight>
     <p>
@@ -144,6 +151,36 @@ location / {
 location ~\\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
+}`}
+    </Highlight>
+
+    <h3 id="max-upload-size">افزایش محدودیت حجم آپلود فایل</h3>
+    <p>
+      حداکثر حجم مجاز آپلود فایل در وب‌سرور Nginx به‌صورت پیش‌فرض{" "}
+      <strong>1MB</strong> در نظر گرفته شده است. برای تغییر این مقدار کافیست یک
+      فایل با نام <span className="code">liara_nginx.conf</span> در مسیر اصلی
+      پروژه‌ی خود ایجاد کنید و مقدار{" "}
+      <span className="code">client_max_body_size</span> را براساس نیاز خود
+      تنظیم کنید:
+    </p>
+    <Highlight className="nginx">
+      {`client_max_body_size 250M;
+
+location / {
+  try_files $uri @flask_app;
+}
+
+location ~\\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
 }`}
     </Highlight>
 
