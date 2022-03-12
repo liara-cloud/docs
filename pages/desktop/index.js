@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout";
 import Head from "next/head";
+import Notice from "../../components/Notice";
 
 export default function Desktop() {
   const [secondVideo, setSecondVideo] = useState(false);
@@ -15,10 +16,8 @@ export default function Desktop() {
     }
   }, [currentTime]);
 
-  const hendlePlay = () => {
-    setInterval(() => {
-      setCurrentTime(Math.round(firstVideo.current.currentTime), 1000);
-    });
+  const handleEndVideo = () => {
+    setCurrentTime(Math.round(firstVideo.current.currentTime));
   };
 
   return (
@@ -37,7 +36,7 @@ export default function Desktop() {
         <video
           width="320"
           height="240"
-          onPlay={hendlePlay}
+          onEnded={handleEndVideo}
           autoPlay
           muted
           ref={firstVideo}
@@ -52,10 +51,10 @@ export default function Desktop() {
 
         <video
           width="320"
+          height="240"
           autoPlay
           muted
           loop
-          height="240"
           className={`video-deploy ${secondVideo && `show`}`}
         >
           <source
@@ -79,6 +78,21 @@ export default function Desktop() {
           در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
           طلبد.{" "}
         </p>
+      </section>
+      <section className="download">
+        <Notice variant="info">
+          <h3>لینک های دانلود</h3>
+          <span className="alert-text">
+            (نسخه مک و لینوکس لیارا دسکتاپ بزودی منتشر میشود)
+          </span>
+          <br />
+          <button className="windows">
+            <a href="#link-download">
+              <img src="./static/windows.svg" width="20" />
+              دانلود برای ویندوز
+            </a>
+          </button>
+        </Notice>
       </section>
     </Layout>
   );

@@ -6,11 +6,12 @@
 
 .video-deploy {
   position: absolute;
-  right: 40%;
+  left: 50%;
+  transform: translateX(-50%);
   top: 75px;
   opacity: 0;
-  transition: 1s;
-  box-shadow: 0 0 40px #00000025;
+  transition: 2s;
+  box-shadow: 0 0 20px #00000015;
 }
 .video-deploy.show {
   opacity: 1;
@@ -20,13 +21,65 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  transition: 0.8s;
+  transition: 1s;
   z-index: 3;
-  box-shadow: 0 0 40px #00000025;
+  box-shadow: 0 0 20px #00000015;
 }
 .first-video.blur {
   position: absolute;
   left: 60%;
   filter: blur(2px);
   z-index: 0;
+}
+
+.download {
+  padding: 20px 0;
+}
+.download .windows:hover {
+  background: #3291ff;
+}
+
+.download .windows {
+  background: #276afd;
+  color: #fff;
+  padding: 10px 25px;
+  font-size: 18px;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 5px 0px;
+}
+.download .windows a {
+  color: #fff;
+  border-bottom: none;
+}
+.download .windows img {
+  display: inline-block;
+  border: none;
+  border-radius: 0;
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
+.download h3 {
+  display: inline-block;
+}
+.download .alert-text {
+  padding: 0 10px;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .video-desktop-container {
+    height: 475px;
+  }
+  .first-video {
+    width: 240px;
+  }
+  .video-deploy {
+    width: 240px;
+    top: 45px;
+  }
+  .download .windows {
+    font-size: 16px;
+    margin: 15px 0px 0px;
+  }
 }
