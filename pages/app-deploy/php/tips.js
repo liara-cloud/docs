@@ -114,7 +114,7 @@ max_execution_time = 600`}
 
     RewriteEngine on
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteCond %{REQUEST_FILENAME}\\.php -f
     RewriteRule ^(.*)$ $1.php [NC,L]
 
 </IfModule>`}

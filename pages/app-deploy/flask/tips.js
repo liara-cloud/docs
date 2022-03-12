@@ -116,7 +116,7 @@ export default () => (
   try_files $uri @flask_app;
 }
 
-location ~\.sqlite3$ {
+location ~\\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
 }`}
@@ -141,7 +141,7 @@ location / {
   try_files $uri @flask_app;
 }
 
-location ~\.sqlite3$ {
+location ~\\.sqlite3$ {
   deny all;
   error_page 403 =404 /;
 }`}

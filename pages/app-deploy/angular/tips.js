@@ -56,7 +56,7 @@ export default () => (
   try_files $uri $uri/ /index.html =404;
 }
 
-location ~ /\.well-known {
+location ~ /\\.well-known {
   allow all;
 }`}
     </Highlight>
@@ -72,7 +72,7 @@ location ~ /\.well-known {
   try_files $uri $uri/ /index.html =404;
 }
 
-location ~ /\.well-known {
+location ~ /\\.well-known {
   allow all;
 }
 
@@ -104,7 +104,7 @@ location / {
   try_files $uri $uri/ /index.html =404;
 }
 
-location ~ /\.well-known {
+location ~ /\\.well-known {
   allow all;
 }`}
     </Highlight>
@@ -139,24 +139,24 @@ location / {
   try_files $uri $uri/ /index.html =404;
 }
 
-location ~ /\.well-known {
+location ~ /\\.well-known {
   allow all;
 }
 
 # cache.appcache, your document html and data
-location ~* \.(?:manifest|appcache|html?|xml|json)$ {
+location ~* \\.(?:manifest|appcache|html?|xml|json)$ {
   expires -1;
 }
 
 # Media: images, icons, video, audio, HTC
-location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
+location ~* \\.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
   expires 1M;
   access_log off;
   add_header Cache-Control "public";
 }
 
 # CSS, Javascript and Fonts
-location ~* \.(?:css|js|otf|ttf|eot|woff|woff2)$ {
+location ~* \\.(?:css|js|otf|ttf|eot|woff|woff2)$ {
   expires 1y;
   access_log off;
   add_header Cache-Control "public";
