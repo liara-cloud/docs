@@ -20,9 +20,11 @@ export default () => (
     </div>
 
     <Notice variant="warning">
-      در حال حاضر اسکریپت‌های Python به‌صورت مستقیم در لیارا پشتیبانی نمی‌شوند
-      اما شما می‌توانید این اسکریپت‌ها را طبق دستورالعمل زیر در لیارا مستقر
-      کنید.
+      در حال حاضر پروژه‌های{" "}
+      <Link href="/app-deploy/django/getting-started">Django</Link> و{" "}
+      <Link href="/app-deploy/flask/getting-started">Flask</Link> به‌صورت مستقیم
+      در لیارا پشتیبانی می‌شوند اما برای استقرار اسکریپت‌های خام Python بایستی
+      مستندات زیر را دنبال کنید.
     </Notice>
 
     <Notice variant="info">
