@@ -20,7 +20,7 @@ export default () => (
     </div>
 
     <Notice variant="warning">
-      در حال حاضر پروژه‌های{" "}
+      در حال حاضر برنامه‌های{" "}
       <Link href="/app-deploy/django/getting-started">Django</Link> و{" "}
       <Link href="/app-deploy/flask/getting-started">Flask</Link> به‌صورت مستقیم
       در لیارا پشتیبانی می‌شوند اما برای استقرار اسکریپت‌های خام Python بایستی
