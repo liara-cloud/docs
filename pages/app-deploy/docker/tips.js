@@ -54,7 +54,9 @@ export default () => (
 
     <Highlight className="dockerfile">{`FROM python:3.9
 
-WORKDIR /usr/src/app
+ENV ROOT=/usr/src/app
+
+WORKDIR $ROOT
 
 COPY --from=liaracloud/supercronic:v0.1.11 \\
      /usr/local/bin/supercronic /usr/local/bin/supercronic
