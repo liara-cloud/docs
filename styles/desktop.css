@@ -11,8 +11,8 @@
   top: 75px;
   opacity: 0;
   transition: 2s;
-  box-shadow: 0 0 20px #00000015;
 }
+
 .video-deploy.show {
   opacity: 1;
 }
@@ -23,8 +23,8 @@
   transform: translateX(-50%);
   transition: 1s;
   z-index: 3;
-  box-shadow: 0 0 20px #00000015;
 }
+
 .first-video.blur {
   position: absolute;
   left: 60%;
@@ -32,6 +32,32 @@
   z-index: 0;
 }
 
+.replay-video {
+  display: inline-block;
+  position: absolute;
+  bottom: 3%;
+  right: 50%;
+  color: #276afd;
+  border: 1px solid #276afd;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: translateX(50%);
+  box-shadow: 0 0 10px #276afd23;
+}
+.replay-video div {
+  padding: 0px 30px 0px 5px;
+  margin: 0px 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  position: relative;
+}
+.replay-video div span {
+  position: absolute;
+  right: 5px;
+  top: -3px;
+  font-size: 22px;
+}
 .download {
   padding: 20px 0;
 }
@@ -44,7 +70,6 @@
   color: #fff;
   padding: 10px 25px;
   font-size: 18px;
-  width: 100%;
   border-radius: 0.5rem;
   margin: 5px 0px;
 }
@@ -67,9 +92,26 @@
   display: inline-block;
 }
 
+.video-desktop-container img.play-again {
+  position: absolute;
+  z-index: 99;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40%;
+  width: 85px;
+  border-radius: unset;
+  border: none;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .video-desktop-container {
     height: 475px;
+  }
+
+  .video-desktop-container img.play-again {
+    top: 30%;
+    width: 45px;
   }
   .first-video {
     width: 240px;
@@ -80,6 +122,7 @@
   }
   .download .windows {
     font-size: 16px;
-    margin: 15px 0px 0px;
+    margin: 15px 0px;
+    width: 100%;
   }
 }

@@ -3,20 +3,34 @@ import Layout from "../../components/Layout";
 import Head from "next/head";
 
 export default function Desktop() {
-  const [secondVideo, setSecondVideo] = useState(false);
+  // TODO : Combine videos in mobile device
+
+  const [showSecondVideo, setShowSecondVideo] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
+  const [durationEnded, setDurationEnded] = useState(false);
 
   const firstVideo = useRef();
+  const secondVideo = useRef();
 
   useEffect(() => {
     const duration = Math.round(firstVideo.current.duration);
-    if (currentTime === duration) {
-      setSecondVideo(true);
+    if (currentTime == duration) {
+      setShowSecondVideo(true);
+      secondVideo.current.play();
     }
   }, [currentTime]);
 
   const handleEndVideo = () => {
     setCurrentTime(Math.round(firstVideo.current.currentTime));
+  };
+
+  const handleReplayVideo = () => {
+    // Clear state
+    setShowSecondVideo(false);
+    setDurationEnded(false);
+    setCurrentTime("");
+
+    firstVideo.current.play();
   };
 
   return (
@@ -39,7 +53,7 @@ export default function Desktop() {
           autoPlay
           muted
           ref={firstVideo}
-          className={`first-video ${secondVideo && `blur`}`}
+          className={`first-video shadow-none ${showSecondVideo && `blur`}`}
         >
           <source
             src="https://files.liara.ir/docs/desktop/login-with-liara-desktop.mp4"
@@ -52,9 +66,10 @@ export default function Desktop() {
           width="400"
           height="240"
           autoPlay
+          onEnded={() => setDurationEnded(true)}
           muted
-          loop
-          className={`video-deploy ${secondVideo && `show`}`}
+          ref={secondVideo}
+          className={`video-deploy shadow-none ${showSecondVideo && `show`}`}
         >
           <source
             src="https://files.liara.ir/docs/desktop/deploy-with-liara-desktop.mp4"
@@ -62,7 +77,16 @@ export default function Desktop() {
           />
           laira desktop
         </video>
+        {durationEnded && (
+          <button onClick={handleReplayVideo} className="replay-video">
+            <div>
+              <span>&#8635;</span>
+              دوباره
+            </div>
+          </button>
+        )}
       </div>
+
       <section>
         <h1>نصب برنامه</h1>
         <p>
@@ -72,7 +96,7 @@ export default function Desktop() {
       </section>
       <section className="download">
         <h3>لینک های دانلود</h3>
-
+        <div />
         <button className="windows">
           <a href="#link-download">
             <img src="/static/windows.svg" width="20" />
