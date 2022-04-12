@@ -1576,6 +1576,21 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
+          <NavTitle href="/desktop">لیارا Desktop</NavTitle>
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/desktop/install">نصب و به‌روزرسانی</ActiveLink>
+            </li>
+            {/* <li>
+              <ActiveLink href="/desktop/login">ورود به حساب کاربری</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/desktop/deploy">استقرار برنامه</ActiveLink>
+            </li> */}
+          </ul>
+        </nav>
+
+        <nav className="nav">
           <NavTitle href="/client-api">لیارا API</NavTitle>
           <ul className="nav__list">
             <li>
