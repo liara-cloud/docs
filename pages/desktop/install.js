@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout";
 import Head from "next/head";
+import Notice from "../../components/Notice";
 
 export default function Desktop() {
   // TODO : Combine videos in mobile device
@@ -69,6 +70,7 @@ export default function Desktop() {
           onEnded={() => setDurationEnded(true)}
           muted
           ref={secondVideo}
+          onCa
           className={`video-deploy shadow-none ${showSecondVideo && `show`}`}
         >
           <source
@@ -98,14 +100,13 @@ export default function Desktop() {
         <h3>لینک های دانلود</h3>
         <div />
         <button className="windows">
-          <a href="#link-download">
+          <a href="https://desktop.liara.ir/releases/Liara-Desktop-latest-win-x64.exe.zip">
             <img src="/static/windows.svg" width="20" />
             دانلود برای ویندوز
           </a>
         </button>
-        <span className="alert-text">
-          (نسخه مک و لینوکس لیارا دسکتاپ بزودی منتشر میشود)
-        </span>
+
+        <Notice>نسخه مک و لینوکس لیارا دسکتاپ بزودی منتشر می‌شود.</Notice>
       </section>
     </Layout>
   );

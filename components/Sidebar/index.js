@@ -1581,12 +1581,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             <li>
               <ActiveLink href="/desktop/install">نصب و به‌روزرسانی</ActiveLink>
             </li>
-            <li>
+            {/* <li>
               <ActiveLink href="/desktop/login">ورود به حساب کاربری</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/desktop/deploy">استقرار برنامه</ActiveLink>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
