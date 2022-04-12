@@ -60,7 +60,6 @@ export default function Desktop() {
             src="https://files.liara.ir/docs/desktop/login-with-liara-desktop.mp4"
             type="video/mp4"
           />
-          laira desktop
         </video>
 
         <video
