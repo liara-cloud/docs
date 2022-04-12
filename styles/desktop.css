@@ -10,7 +10,10 @@
   transform: translateX(-50%);
   top: 75px;
   opacity: 0;
-  transition: 2s;
+  transition: 1s;
+  width: 285px;
+  box-shadow: 0 0 30px #0000002e;
+  border-radius: 8px;
 }
 
 .video-deploy.show {
@@ -21,7 +24,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  transition: 1s;
+  transition: 2s;
   z-index: 3;
 }
 
@@ -35,7 +38,7 @@
 .replay-video {
   display: inline-block;
   position: absolute;
-  bottom: 3%;
+  bottom: 0%;
   right: 50%;
   color: #276afd;
   border: 1px solid #276afd;
@@ -114,11 +117,14 @@
     width: 45px;
   }
   .first-video {
-    width: 240px;
+    width: 340px;
   }
   .video-deploy {
     width: 240px;
     top: 45px;
+  }
+  .replay-video {
+    bottom: -10px;
   }
   .download .windows {
     font-size: 16px;
