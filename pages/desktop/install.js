@@ -76,7 +76,6 @@ export default function Desktop() {
             src="https://files.liara.ir/docs/desktop/deploy-with-liara-desktop.mp4"
             type="video/mp4"
           />
-          laira desktop
         </video>
         {durationEnded && (
           <button onClick={handleReplayVideo} className="replay-video">
