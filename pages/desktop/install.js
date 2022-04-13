@@ -4,36 +4,6 @@ import Head from "next/head";
 import Notice from "../../components/Notice";
 
 export default function Desktop() {
-  // TODO : Combine videos in mobile device
-
-  const [showSecondVideo, setShowSecondVideo] = useState(false);
-  const [currentTime, setCurrentTime] = useState("");
-  const [durationEnded, setDurationEnded] = useState(false);
-
-  const firstVideo = useRef();
-  const secondVideo = useRef();
-
-  useEffect(() => {
-    const duration = Math.round(firstVideo.current.duration);
-    if (currentTime == duration) {
-      setShowSecondVideo(true);
-      secondVideo.current.play();
-    }
-  }, [currentTime]);
-
-  const handleEndVideo = () => {
-    setCurrentTime(Math.round(firstVideo.current.currentTime));
-  };
-
-  const handleReplayVideo = () => {
-    // Clear state
-    setShowSecondVideo(false);
-    setDurationEnded(false);
-    setCurrentTime("");
-
-    firstVideo.current.play();
-  };
-
   return (
     <Layout>
       <Head>
@@ -42,50 +12,14 @@ export default function Desktop() {
       <div className="page-head">
         <div className="page-title">
           <h1>نرم‌افزار دسکتاپ لیارا</h1>
-          <span className="page-description">(لیارا Desktop)</span>
+          <span className="page-description">(Liara Desktop)</span>
         </div>
       </div>
 
-      <div className="video-desktop-container">
-        <video
-          width="400"
-          height="240"
-          onEnded={handleEndVideo}
-          autoPlay
-          muted
-          ref={firstVideo}
-          className={`first-video shadow-none ${showSecondVideo && `blur`}`}
-        >
-          <source
-            src="https://files.liara.ir/docs/desktop/login-with-liara-desktop.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        <video
-          width="400"
-          height="240"
-          autoPlay
-          onEnded={() => setDurationEnded(true)}
-          muted
-          ref={secondVideo}
-          onCa
-          className={`video-deploy shadow-none ${showSecondVideo && `show`}`}
-        >
-          <source
-            src="https://files.liara.ir/docs/desktop/deploy-with-liara-desktop.mp4"
-            type="video/mp4"
-          />
-        </video>
-        {durationEnded && (
-          <button onClick={handleReplayVideo} className="replay-video">
-            <div>
-              <span>&#8635;</span>
-              دوباره
-            </div>
-          </button>
-        )}
-      </div>
+      <img
+        src="/static/liara-desktop.jpg"
+        style={{ border: "none", marginTop: 28, marginBottom: 16 }}
+      />
 
       <section>
         <h1>نصب برنامه</h1>
