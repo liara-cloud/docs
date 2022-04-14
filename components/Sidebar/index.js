@@ -1110,6 +1110,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/prisma">
+                {/* <PlatformIcon platform="" /> */}
+                Prisma
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/nginx">
                 <PlatformIcon platform="nginx" />
                 Nginx
