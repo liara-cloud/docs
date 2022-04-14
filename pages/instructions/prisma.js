@@ -51,26 +51,22 @@ export default () => (
     <p>
       همچنین باید متغیر
       <span className="code">DATABASE_URL</span>
-      را طبق مستندات <Link href="/app-deploy/nodejs/envs">
-        تنظیم متغیرها
-      </Link>، در متغیرهای محیطی برنامه‌ی Node.js خود تنظیم کنید:
+      را طبق مستندات <Link href="/app-deploy/nodejs/envs">تنظیم متغیرها</Link>،
+      در متغیرهای محیطی برنامه‌ی Node.js خود تنظیم کنید:
     </p>
     <Highlight className="plaintext">
       {`DATABASE_URL=postgresql://USERNAME:PASSWORD@HOST:PORT/postgres`}
     </Highlight>
     <p>
-      درنهایت می‌توانید با استفاده از ابزار{" "}
-      <Link href="/cli/install">Liara CLI</Link> و اجرای دستور
-      <span className="code">liara deploy</span>
-      یا با استفاده از نرم‌افزار{" "}
-      <Link href="/desktop/install">Liara Desktop</Link>، پروژه‌ی خود را در
-      لیارا مستقر کنید.
+      درنهایت می‌توانید با اجرای دستور
+      <span className="code">liara deploy</span>، پروژه‌ی خود را در لیارا مستقر
+      کنید.
     </p>
     <h2>اعمال Migrationها</h2>
     <p>
-      برای اعمال Migrationها بر روی دیتابیس باید دستور زیر را در{" "}
-      <Link href="/app-features/console">خط فرمان</Link> برنامه‌ی خود اجرا کنید:
+      پس از استقرار موفق پروژه می‌توانید دستور زیر را برای اعمال Migrationها در
+      خط فرمان سیستم خود اجرا کنید:
     </p>
-    <Highlight className="bash">{`npx prisma migrate deploy`}</Highlight>
+    <Highlight className="bash">{`liara shell -c "npx prisma migrate deploy"`}</Highlight>
   </Layout>
 );
