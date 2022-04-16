@@ -19,8 +19,12 @@ export default () => (
     </div>
 
     <p>
-      NextJS یک فریم‌ورک مبتنی بر React است که بسیاری از قابلیت‌ها مانند SSR را
-      برای شما به ارمغان می‌آورد. حال شما می‌توانید برنامه‌های NextJS خود را با
+      NextJS یک فریم‌ورک مبتنی بر React است که امکان پیاده‌سازی وبسایت‌های SSR و
+      SSG را برای شما فراهم می‌کند. حال شما می‌توانید برنامه‌های NextJS خود را
+      با استفاده از قابلیت Static HTML Export در لیارا دیپلوی کنید.
+    </p>
+
+    {/* حال شما می‌توانید برنامه‌های NextJS خود را با
       ایجاد برنامه‌های{" "}
       <Link href="/app-deploy/nodejs/getting-started">NodeJS</Link> بر روی لیارا
       دیپلوی کنید.
@@ -31,12 +35,14 @@ export default () => (
       از این فریم‌ورک پشتیبانی می‌کند بنابراین تغییری در بخش{" "}
       <span className="code">scripts</span> ایجاد نکنید.
     </p>
-    <Highlight className="json">{`"scripts": {
+    <Highlight className="json">
+      {`"scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-},`}</Highlight>
+},`}
+    </Highlight> 
 
     <p>
       حالت استاندارد npm scripts در برنامه‌های NextJS به‌شکل بالا است. در نهایت
@@ -44,7 +50,7 @@ export default () => (
       <span className="code">liara deploy --port 3000 --platform node</span>
       را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
     </p>
-
+*/}
     <h3>Static HTML Export</h3>
     <p>
       قابلیت{" "}
@@ -57,11 +63,13 @@ export default () => (
       این امکان را فراهم کرده تا شما از برنامه‌های NextJS خود، خروجی static HTML
       بگیرید و دیگر نیازی به سرور NodeJS نخواهید داشت. همچنین خروجی نهایی تقریبا
       از تمام ویژگی‌های ارائه شده در NextJS مانند dynamic routes، prefetching،
-      preloading و dynamic imports پشتیبانی می‌کند.
+      preloading و dynamic imports پشتیبانی می‌کند اما این روش مناسب صفحه‌های
+      لندینگ، وبلاگ‌ها، سامانه‌های خبری و وبسایت‌های مشابه است زیرا باید
+      داده‌های وبسایت در زمان build در دسترس باشند.
     </p>
     <p>
-      برای استفاده از این قابلیت بایستی اسکریپت build برنامه‌ی خود را در فایل{" "}
-      <span className="code">package.json</span> به‌شکل زیر تغییر دهید.
+      برای استفاده از این قابلیت باید اسکریپت build برنامه‌ی خود را در فایل{" "}
+      <span className="code">package.json</span> به‌شکل زیر ویرایش کنید:
     </p>
     <Highlight className="json">
       {`"scripts": {
@@ -84,7 +92,7 @@ export default () => (
       کنید.
     </p>
 
-    <h3 id="read-only">رفع خطای Read-only filesystem</h3>
+    {/* <h3 id="read-only">رفع خطای Read-only filesystem</h3>
 
     <p>
       در صورتی که برنامه‌تان برای ایجاد تغییر در مسیر{" "}
@@ -123,7 +131,7 @@ export default () => (
       درنهایت می‌توانید با اجرای دستور{" "}
       <span className="code">liara deploy --platform node --port 3000</span>،
       پروژه‌ی خود را بر روی برنامه‌های NodeJS لیارا مستقر کنید.
-    </p>
+    </p> */}
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
       با وجود انواع مختلف فریم‌ورک‌ها، برای رفع خطای CORS راه حل‌های متفاوتی
