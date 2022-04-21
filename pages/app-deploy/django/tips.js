@@ -305,14 +305,12 @@ location ~ /\\.well-known {
     </p>
     <h3 id="cors-media-files">رفع خطای CORS فایل‌های Media</h3>
     <p>
-      Django فایل‌های Media را serve نمی‌کند. در صورتی که با خطای CORS هنگام
-      serve این فایل‌ها با Nginx مواجه شدید، می‌توانید یک فایل با نام
-      <span className="code">liara_nginx.conf</span>
-      در کنار
-      <span className="code">requirements.txt</span>
-      بسازید و محتویات زیر را داخل آن قرار دهید و سپس دستور
-      <span className="code">liara deploy</span>
-      را وارد کنید:
+      مسئولیت ارائه فایل‌های رسانه (Media) به کاربران در پلتفرم Django برعهده‌ی
+      وب‌سرور Nginx است، حال اگر کاربران شما برای دسترسی به فایل‌های رسانه با
+      خطای CORS مواجه شدند باید <Link href="#nginx">تنظیمات Nginx</Link> پروژه‌ی
+      خود را شخصی‌سازی کنید. برای رفع این خطا، یک فایل با نام{" "}
+      <span className="code">liara_nginx.conf</span> در مسیر اصلی پروژه‌ی خود
+      ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight className="nginx">
       {`location /media {
@@ -338,11 +336,17 @@ location ~ /\\.well-known {
 }`}
     </Highlight>
     <p>
-      با قرار دادن فایل بالا در ریشه‌ی برنامه‌ی‌تان محتوای موجود در پوشه{" "}
-      <strong>media</strong> با Header
+      سپس برای اعمال این تغییرات، دستور{" "}
+      <span className="code">liara deploy</span> را در مسیر اصلی پروژه‌ی خود
+      اجرا کنید.
+    </p>
+    <p>
+      با اعمال این پیکربندی، فایل‌های قرار گرفته در پوشه‌ی{" "}
+      <span className="code">media</span>
+      با Header
       <span className="code">Access-Control-Allow-Origin</span>و مقدار
       <span className="code">*</span>
-      serve می‌شود. شما می‌توانید مقدار دلخواه خودتان را تنظیم کنید.
+      Serve می‌شوند. همچنین شما می‌توانید مقدار دلخواه خودتان را تنظیم کنید.
     </p>
     <h3 id="gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</h3>
     <p>
