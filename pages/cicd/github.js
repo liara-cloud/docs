@@ -107,16 +107,24 @@ jobs:
       <a href="https://console.liara.ir/API" target="_blank">
         کلید دسترسی به API
       </a>{" "}
-      حساب‌تان را در بخش Secret تنظیمات ریپازیتوری GitHub اضافه کنید و برای این
-      کار می‌توانید{" "}
-      <a
-        href="https://help.github.com/en/actions/configuring-and-managing-workflows/using-variables-and-secrets-in-a-workflow"
-        target="_blank"
-      >
-        مستندات Secrets and Variables
-      </a>{" "}
-      را مطالعه کنید.
+      حساب‌تان را در بخش Secret تنظیمات ریپازیتوری GitHub اضافه کنید.
     </p>
+    <p>
+      برای این کار وارد تنظیمات ریپازیتوری شوید و از منوی{" "}
+      <strong>Secrets</strong>، روی گزینه‌ی <strong>Actions</strong> کلیک کنید.
+    </p>
+    <ZoomableImage src="/static/github-action-secrets-setting.png" />
+    <p>
+      سپس برای تعریف یک Secret جدید، روی گزینه‌ی{" "}
+      <strong>New repository secret</strong> کلیک کنید. نام این Secret را{" "}
+      <strong>LIARA_API_TOKEN</strong> و مقدار آن را از صفحه‌ی{" "}
+      <a href="https://console.liara.ir/API" target="_blank">
+        کلید دسترسی به API
+      </a>{" "}
+      کپی کرده و در بخش Value قرار داده و بر روی گزینه‌ی{" "}
+      <strong>Add secret</strong> کلیک کنید.
+    </p>
+    <ZoomableImage src="/static/add-new-secret-in-github-action.png" />
     <p>
       در آخر با Push کردن فایل{" "}
       <span className="code">.github/workflows/liara.yaml</span> در ریپازیتوری
