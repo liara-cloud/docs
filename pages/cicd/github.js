@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
@@ -44,22 +45,22 @@ export default () => (
 
     <h3>راه‌اندازی CI/CD به وسیله GitHub</h3>
     <p>
-      برای راه اندازی CI/CD در GitHub به GitHub Actions نیاز دارید. از{" "}
+      برای راه‌اندازی CI/CD در GitHub از قابلیت{" "}
       <a href="https://github.com/features/actions" target="_blank">
-        این‌جا
+        GitHub Actions
       </a>{" "}
-      می‌توانید مستندات این ابزار را مطالعه کنید. در پایین به صورت کلی مراحل
-      ایجاد CI/CD به وسیله GitHub آمده است:
+      استفاده خواهیم کرد و شما نیز باید مراحل زیر را دنبال کنید.
     </p>
     <p>
-      <b>گام اول)</b> در ابتدا نیاز دارید که در ریشه برنامه‌ی‌تان دایرکتوری
-      github. و پوشه workflows را داخل آن ایجاد کنید:
-      <span className="code">.github/workflows/</span>. شما در این دایرکتوری
-      تمام Action های خود را تعریف می‌کنید. برای مثال فرض می‌کنیم فایلی به نام
-      liara.yaml را برای استقرار در لیارا در نظر گرفته اید:
+      در ابتدا یک پوشه با نام <strong>github.</strong> در مسیر اصلی پروژه‌‌تان
+      ایجاد کرده و سپس پوشه‌ی دیگری با نام <strong>workflows</strong> را داخل آن
+      ایجاد کنید تا مسیر <span className="code">.github/workflows</span> در
+      پروژه‌ی شما شکل بگیرد. در این مسیر می‌توان Actionهای مورد نظر را تعریف کرد
+      بنابراین یک فایل با نام <strong>liara.yaml</strong> را در این مسیر ایجاد
+      کرده و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight className="yaml">
-      {`name: CD-Example
+      {`name: CD-Liara
 on:
   push:
     branches: [master]
@@ -78,52 +79,58 @@ jobs:
 
         run: |
           npm i -g @liara/cli@2
-          liara deploy --api-token="$LIARA_TOKEN" --region iran --detach
+          liara deploy \\
+              --app="APP_NAME" \\
+              --api-token="$LIARA_TOKEN" \\
+              --region iran \\
+              --detach
 `}
     </Highlight>
-    <p>
-      همانطور که می‌بینید شما در این فایل همه اتفاقات را تعریف می‌کنید. مثلا در
-      فایل بالا ابزار Liara CLI را ابتدا نصب کرده‌ایم و سپس در ریشه برنامه دستور
-      deploy را اجرا کرده‌ایم. در همین فایل می‌شود Test ها را اجرا کرد و مطمئن
-      شد که برنامه‌ سالم است و اجازه آپدیت شدن دارد. GitHub Actions امکانات
-      بسیار خوبی برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
-    </p>
-    <Notice variant="info">
-      در نمونه‌ی بالا، موقعیت جغرافیایی «ایران» در نظر گرفته شده‌است. اگر شما از
-      موقعیت آلمان استفاده می‌کنید، لازم است که{" "}
-      <span className="code">germany</span>
-      را در پارامتر <span className="code">--region</span>
-      تنظیم کنید.
+    <Notice variant="warning">
+      ۱) در مثال فوق باید مقدار APP_NAME را با شناسه‌ی برنامه‌تان در لیارا
+      جایگزین کنید.
+      <hr />
+      ۲) همچنین موقعیت جغرافیایی پیش‌فرض، <strong>iran</strong> درنظر گرفته شده
+      است و اگر برنامه‌ی شما در موقعیت آلمان میزبانی شده باشد باید مقدار{" "}
+      <strong>germany</strong> را در پارامتر{" "}
+      <span className="code">--region</span> تنظیم کنید.
     </Notice>
     <p>
-      <b>گام دوم)</b> لیارا برای اجرای دستور deploy نیاز به نام یا همان شناسه
-      برنامه و api-token دارد. البته اگر از{" "}
-      <span className="code">liara.json</span> استفاده کرده باشید نیازی به بخش
-      شناسه نیست. کلید یا همان api-token شما در{" "}
-      <a href="https://console.liara.ir/API" target="_blank">
-        صفحه API
-      </a>{" "}
-      در حساب کاربری شما وجود دارد که به راحتی می‌توانید آن را کپی کنید. سپس
-      برای این که بتوانید از این اطلاعات در{" "}
-      <span className="code">liara.yaml</span> استفاده کنید باید این اطلاعات را
-      به بخش Secrets در GitHub منتقل کنید. می‌توانید درباره این موضوع در{" "}
-      <a
-        href="https://help.github.com/en/actions/configuring-and-managing-workflows/using-variables-and-secrets-in-a-workflow"
-        target="_blank"
-      >
-        مستندات Secrets and Variables
-      </a>{" "}
-      بیشتر مطالعه کنید. به صورت کلی شما هر key-value ای را که در بخش Secrets
-      تعریف کنید، در فایل <span className="code">liara.yaml</span> قابل استفاده
-      می‌شود. مثلا در فایل بالا ما یک Secret با نام‌ LIARA_API_TOKEN داریم.
+      همان‌طور که مشاهده می کنید، در قطعه‌کد فوق تمام مراحل لازم برای استقرار یک
+      پروژه در لیارا تعریف شده است. در ابتدا ابزار{" "}
+      <Link href="/cli/install">Liara CLI</Link> نصب شده و سپس دستور{" "}
+      <span className="code">liara deploy</span> اجرا می‌شود.
     </p>
     <p>
-      <b>گام سوم)</b> بعد از تعریف کردن همه موارد بالا با Push کردن فایل{" "}
-      <span className="code">.github/workflows/liara.yaml</span> برنامه شما وارد
-      یک فرایند CI/CD می‌شود. لیارا از هر Commit Message شما برای توضیح هر
-      استقرار استفاده می‌کند. استفاده از Commit Message های معنادار می‌تواند به
-      شما در کار تیمی برای راحت‌تر فهمیدن علت هر استقرار کمک کند.
+      پس از شخصی‌سازی مقدار APP_NAME و مشخص کردن موقعیت جغرافیایی در فایل{" "}
+      <strong>liara.yaml</strong> باید{" "}
+      <a href="https://console.liara.ir/API" target="_blank">
+        کلید دسترسی به API
+      </a>{" "}
+      حساب‌تان را در بخش Secret تنظیمات ریپازیتوری GitHub اضافه کنید.
     </p>
-    <ZoomableImage src="/static/deploy-message.png" />
+    <p>
+      برای این کار وارد تنظیمات ریپازیتوری شوید و از منوی{" "}
+      <strong>Secrets</strong>، روی گزینه‌ی <strong>Actions</strong> کلیک کنید.
+    </p>
+    <ZoomableImage src="/static/github-action-secrets-setting.png" />
+    <p>
+      سپس برای تعریف یک Secret جدید، روی گزینه‌ی{" "}
+      <strong>New repository secret</strong> کلیک کنید. نام این Secret را{" "}
+      <strong>LIARA_API_TOKEN</strong> و مقدار آن را از صفحه‌ی{" "}
+      <a href="https://console.liara.ir/API" target="_blank">
+        کلید دسترسی به API
+      </a>{" "}
+      کپی کرده و در بخش Value قرار داده و بر روی گزینه‌ی{" "}
+      <strong>Add secret</strong> کلیک کنید.
+    </p>
+    <ZoomableImage src="/static/add-new-secret-in-github-action.png" />
+    <p>
+      در آخر با Push کردن فایل{" "}
+      <span className="code">.github/workflows/liara.yaml</span> در ریپازیتوری
+      GitHub متوجه خواهید شد که یک Pipeline به‌صورت خودکار در تب Action
+      ریپازیتوری شما اجرا شده است و شما نیز می‌توانید مراحل استقرار پروژه‌ی خود
+      را در صفحه‌ی <strong>تاریخچه</strong> دنبال کنید.
+    </p>
   </Layout>
 );
