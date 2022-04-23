@@ -39,17 +39,15 @@ export default () => (
 
     <h3>راه‌اندازی CI/CD به وسیله GitLab</h3>
     <p>
-      برای راه اندازی CI/CD در GitLab شما به GitLab CI نیاز دارید. از{" "}
+      برای راه‌اندازی CI/CD در GitLab از قابلیت{" "}
       <a href="https://docs.gitlab.com/ee/ci/" target="_blank">
-        این‌جا
+        GitLab CI
       </a>{" "}
-      می‌توانید مستندات این ابزار را مطالعه کنید. در پایین به صورت کلی مراحل
-      ایجاد CI/CD به وسیله GitLab آمده است:
+      استفاده خواهیم کرد و شما نیز باید مراحل زیر را دنبال کنید.
     </p>
     <p>
-      <b>گام اول)</b> ابتدا نیاز دارید که فایلی تحت عنوان{" "}
-      <span className="code">.gitlab-ci.yml</span> در ریشه برنامه‌ی‌تان تعریف
-      کنید. در پایین یک فایل نمونه می‌بینید:
+      یک فایل با نام <span className="code">.gitlab-ci.yml</span> در مسیر اصلی
+      پروژه‌ی خود ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight className="yaml">
       {`image: node:16-alpine
@@ -64,60 +62,66 @@ deploy:
   script:
     - npm i -g @liara/cli@2
     - export http_proxy=http://proxy.liara.ir:6666
-    - liara deploy --app $APP_NAME --detach --region iran --api-token $TOKEN
+    - liara deploy --app APP_NAME --api-token $TOKEN --region iran --detach
 `}
     </Highlight>
+    <Notice variant="warning">
+      ۱) در مثال فوق باید مقدار APP_NAME را با شناسه‌ی برنامه‌تان در لیارا
+      جایگزین کنید.
+      <hr />
+      ۲) همچنین موقعیت جغرافیایی پیش‌فرض، <strong>iran</strong> درنظر گرفته شده
+      است و اگر برنامه‌ی شما در موقعیت آلمان میزبانی شده باشد باید مقدار{" "}
+      <strong>germany</strong> را در پارامتر{" "}
+      <span className="code">--region</span> تنظیم کنید.
+    </Notice>
+    <Notice variant="info">
+      ۱) ایران در لیست تحریم سرویس GitLab قرار دارد بنابراین برای استقرار
+      پروژه‌های خود در موقعیت ایران لیارا باید از پروکسی‌ای که در قطعه‌کد فوق
+      قرار داده شده استفاده کنید.
+      <hr />
+      ۲) برای استقرار پروژه در موقعیت آلمان، نیازی به تنظیم پروکسی نیست.
+      <hr />
+      ۳) همچنین اگر از سرویس Gitlab.com استفاده نمی‌کنید و GitLab را بر روی
+      سرورهای شخصی راه‌اندازی کرده باشید نیز نیازی به تنظیم پروکسی نیست.
+    </Notice>
     <p>
-      همانطور که می‌بینید شما در این فایل همه اتفاقات را تعریف می‌کنید. مثلا در
-      فایل بالا ابزار Liara CLI را ابتدا نصب کرده‌ایم و سپس در ریشه برنامه دستور
-      deploy را اجرا کرده‌ایم. در همین فایل می‌شود Test ها را اجرا کرد و مطمئن
-      شد که برنامه‌‍ سالم است و اجازه آپدیت شدن دارد. GitLab CI امکانات بسیار
-      خوبی برای CI/CD دارد و توصیه می‌کنیم حتما مستندات آن را مطالعه کنید.
+      همان‌طور که مشاهده می کنید، در قطعه‌کد فوق تمام مراحل لازم برای استقرار یک
+      پروژه در لیارا تعریف شده است. در ابتدا ابزار{" "}
+      <Link href="/cli/install">Liara CLI</Link> نصب شده و پس از تنظیم پروکسی
+      برای استقرار پروژه در موقعیت ایران، دستور{" "}
+      <span className="code">liara deploy</span> اجرا می‌شود.
     </p>
-    <Notice variant="info">
-      سرویس GitLab ایران را به‌لیست تحریم خود اضافه کرده و بنابراین برای
-      دیپلوی‌کردن در موقعیت ایران، لازم است که از پروکسی‌ای که در نمونه‌ی بالا
-      قرار داده شده حتما استفاده کنید. برای دیپلوی در موقعیت آلمان نیازی
-      به‌پروکسی نیست. همچنین اگر از GitLab.com استفاده نمی‌کنید و GitLab را
-      به‌صورت خصوصی در شرکت خودتان راه‌اندازی کرده‌اید، نیازی به‌پروکسی ندارید.
-    </Notice>
-    <Notice variant="info">
-      در نمونه‌ی بالا، موقعیت جغرافیایی «ایران» در نظر گرفته شده‌است. اگر شما از
-      موقعیت آلمان استفاده می‌کنید، لازم است که{" "}
-      <span className="code">germany</span>
-      را در پارامتر <span className="code">--region</span>
-      تنظیم کنید.
-    </Notice>
     <p>
-      <b>گام دوم)</b> لیارا برای اجرای دستور deploy نیاز به نام یا همان شناسه
-      برنامه و api-token دارد. البته اگر از{" "}
-      <span className="code">liara.json</span> استفاده کرده باشید نیازی به بخش
-      شناسه نیست. کلید یا همان api-token شما در{" "}
+      پس از شخصی‌سازی مقدار APP_NAME و مشخص کردن موقعیت جغرافیایی در فایل{" "}
+      <span className="code">.gitlab-ci.yml</span> باید{" "}
       <a href="https://console.liara.ir/API" target="_blank">
-        صفحه API
+        کلید دسترسی به API
       </a>{" "}
-      در حساب کاربری شما وجود دارد که به راحتی می‌توانید آن را کپی کنید. سپس
-      برای این که بتوانید از این اطلاعات در{" "}
-      <span className="code">.gitlab-ci.yml</span> استفاده کنید باید این اطلاعات
-      را به بخش Variables در GitLab منتقل کنید. می‌توانید درباره این موضوع در{" "}
-      <a
-        href="https://gitlab.com/help/ci/variables/README#variables"
-        target="_blank"
-      >
-        مستندات Variables
-      </a>{" "}
-      بیشتر مطالعه کنید. به صورت کلی شما هر key-value ای را که در بخش Variables
-      تعریف کنید، در فایل <span className="code">.gitlab-ci.yml</span> قابل
-      استفاده می‌شود. مثلا در فایل بالا ما دو Variable با نام‌های TOKEN و
-      APP_NAME داریم.
+      حساب‌تان را در بخش Variables تنظیمات CI/CD ریپازیتوری GitLab اضافه کنید.
     </p>
     <p>
-      <b>گام سوم)</b> بعد از تعریف کردن همه موارد بالا با Push کردن فایل{" "}
-      <span className="code">.gitlab-ci.yml</span> برنامه شما وارد یک فرایند
-      CI/CD می‌شود. لیارا از هر Commit Message شما برای توضیح هر استقرار استفاده
-      می‌کند. استفاده از Commit Message های معنادار می‌تواند به شما در کار تیمی
-      برای راحت‌تر فهمیدن علت هر استقرار کمک کند.
+      برای این کار وارد تنظیمات CI/CD ریپازیتوری شوید و کمی به پایین اسکرول
+      کنید. در بخش Variables بر روی گزینه‌ی Expand کلیک کنید تا گزینه‌ی Add
+      Variable نمایش داده شود.
     </p>
-    <ZoomableImage src="/static/deploy-message.png" />
+    <ZoomableImage src="/static/gitlab-ci-cd-variables-settings.png" />
+    <p>
+      حال برای تعریف یک Variable جدید، روی گزینه‌ی <strong>Add Variable</strong>{" "}
+      کلیک کنید. نام (Key) این Variable را <strong>TOKEN</strong> و مقدار آن را
+      از صفحه‌ی{" "}
+      <a href="https://console.liara.ir/API" target="_blank">
+        کلید دسترسی به API
+      </a>{" "}
+      کپی کرده و در بخش Value قرار دهید. پس از انتخاب گزینه‌های{" "}
+      <strong>Protect variable</strong> و <strong>Mask variable</strong>، بر روی
+      گزینه‌ی <strong>Add variable</strong> کلیک کنید.
+    </p>
+    <ZoomableImage src="/static/add-token-variable-in-gitlab-cicd-settings.png" />
+    <p>
+      در آخر با Push کردن فایل <span className="code">.gitlab-ci.yml</span> در
+      ریپازیتوری GitLab متوجه خواهید شد که یک Pipeline به‌صورت خودکار در منوی
+      CI/CD ریپازیتوری شما اجرا شده است و شما نیز می‌توانید مراحل استقرار
+      پروژه‌ی خود را در صفحه‌ی <strong>تاریخچه</strong> دنبال کنید.
+    </p>
   </Layout>
 );
