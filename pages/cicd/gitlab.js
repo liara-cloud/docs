@@ -101,7 +101,7 @@ deploy:
     </p>
     <p>
       برای این کار وارد تنظیمات CI/CD ریپازیتوری شوید و کمی به پایین اسکرول
-      کنید. در بخش Variables بر روی دکمه‌ی Expand کلیک کنید تا دکمه‌ی Add
+      کنید. در بخش Variables بر روی گزینه‌ی Expand کلیک کنید تا گزینه‌ی Add
       Variable نمایش داده شود.
     </p>
     <ZoomableImage src="/static/gitlab-ci-cd-variables-settings.png" />
