@@ -77,7 +77,7 @@ PG_DB_NAME=postgres`}</Highlight>
       <span className="code">methods</span> نیز به‌درستی در این فایل تنظیم شده
       باشند:
     </p>
-    <Highlight>{`{
+    <Highlight className="json">{`{
   origin: '*',
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE']
 }`}</Highlight>

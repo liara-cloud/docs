@@ -44,7 +44,7 @@ export default () => (
         تنظیم متغیرها (Environment Variables)
       </Link>
       » متغیرهای زیر را تنظیم کنید.
-      <Highlight>
+      <Highlight className="plaintext">
         {`ELASTIC_USERNAME=[نام کاربری دلخواه]
 ELASTIC_PASSWORD=[گذرواژه دلخواه]
 discovery.type=single-node
@@ -55,7 +55,7 @@ xpack.security.enabled=true`}
     <p>
       در مرحله بعد یک فایل<span className="code">liara.json</span> طبق راهنمایی
       زیر بسازید و مشخصات مربوطه را در این فایل وارد نمایید.
-      <Highlight>
+      <Highlight className="json">
         {`{
   "image": "elasticsearch:[نسخه مورد نظر]",
   "app": "[نام برنامه‌ای که ساخته‌اید]",ساخته‌اید
