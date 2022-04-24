@@ -54,7 +54,7 @@ export default () => (
       ، یک دیسک با نام و اندازه دلخواه ایجاد کرده و در قدم بعد دیسک ایجاد شده را
       در فایل <Link href="/app-deploy/php/disks#mount-disks">liara.json</Link>{" "}
       به مسیر assetManager basePath مونت کنید.
-      <Highlight>
+      <Highlight className="json">
         {`{
   "platform": "php",
   "disks": [

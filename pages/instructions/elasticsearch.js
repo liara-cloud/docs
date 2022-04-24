@@ -44,7 +44,7 @@ export default () => (
         تنظیم متغیرها (Environment Variables)
       </Link>
       » متغیرهای زیر را تنظیم کنید.
-      <Highlight>
+      <Highlight className="plaintext">
         {`ELASTIC_USERNAME=[نام کاربری دلخواه]
 ELASTIC_PASSWORD=[گذرواژه دلخواه]
 discovery.type=single-node

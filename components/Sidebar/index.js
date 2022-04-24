@@ -1116,6 +1116,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/flutter">
+                {/* <PlatformIcon platform="" /> */}
+                Flutter
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/nginx">
                 <PlatformIcon platform="nginx" />
                 Nginx
