@@ -55,7 +55,7 @@ xpack.security.enabled=true`}
     <p>
       در مرحله بعد یک فایل<span className="code">liara.json</span> طبق راهنمایی
       زیر بسازید و مشخصات مربوطه را در این فایل وارد نمایید.
-      <Highlight>
+      <Highlight className="json">
         {`{
   "image": "elasticsearch:[نسخه مورد نظر]",
   "app": "[نام برنامه‌ای که ساخته‌اید]",ساخته‌اید

@@ -77,7 +77,7 @@ API_TOKEN_SALT`}
       در پیکربندی این برنامه به‌وجود آورده باشید باید از صحیح بودن origin وارد
       شده نیز اطمینان حاصل کنید:
     </p>
-    <Highlight>{`// config/middleware.js
+    <Highlight className="javascript">{`// config/middleware.js
 module.exports = {
   settings: {
     cors: {
