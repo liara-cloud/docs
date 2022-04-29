@@ -36,6 +36,10 @@ import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
 // Instructions
 
 import pythonIcon from "./python.svg";
+
+import flutterIcon from "@liara/platformicons/flutter.svg";
+import prismaIcon from "@liara/platformicons/prisma.svg";
+
 import goIcon from "@liara/platformicons/svg/go.svg";
 import seqIcon from "@liara/platformicons/svg/seq.svg";
 import yiiIcon from "@liara/platformicons/svg/yii.svg";
@@ -112,6 +116,7 @@ const types = [
   { logo: lumenIcon, alt: "lumen" },
   { logo: remixIcon, alt: "remix" },
   { logo: pythonIcon, alt: "python" },
+  { logo: prismaIcon, alt: "prisma" },
   { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: svelteIcon, alt: "svelte" },
@@ -121,6 +126,7 @@ const types = [
   { logo: adonisIcon, alt: "adonisjs" },
   { logo: fastapiIcon, alt: "fastapi" },
   { logo: fastifyIcon, alt: "fastify" },
+  { logo: flutterIcon, alt: "flutter" },
   { logo: gridsomeIcon, alt: "gridsome" },
   { logo: gridsomeIcon, alt: "gridsome" },
   { logo: eleventyIcon, alt: "eleventy" },

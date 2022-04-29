@@ -1111,13 +1111,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/prisma">
-                {/* <PlatformIcon platform="" /> */}
+                <PlatformIcon platform="prisma" />
                 Prisma
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/flutter">
-                {/* <PlatformIcon platform="" /> */}
+                <PlatformIcon platform="flutter" />
                 Flutter
               </ActiveLink>
             </li>

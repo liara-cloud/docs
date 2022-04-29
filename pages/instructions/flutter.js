@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      {/* <PlatformIcon platform="" /> */}
+      <PlatformIcon platform="flutter" />
       <div className="page-title">
         <h1>استقرار برنامه‌های Flutter Web</h1>
         <span className="page-description">(Flutter Web Apps)</span>
