@@ -219,12 +219,6 @@ const Index = () => (
           <span>Elastic</span>
         </a>
       </Link>
-      <Link href="/instructions/arangodb">
-        <a>
-          <PlatformIcon platform="arangodb" />
-          <span>ArangoDB</span>
-        </a>
-      </Link>
     </div>
 
     <h3>برنامه‌های آماده‌ای که ارائه می‌کنیم</h3>
