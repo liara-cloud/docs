@@ -60,7 +60,7 @@ export default () => (
         <a href="#logs">مدیریت لاگ‌ها در Laravel</a>
       </li>
       <li>
-        <a href="#enable-caching">فعال‌سازی Caching</a>
+        <a href="#enable-gzip-and-caching">فعال‌سازی Gzip و Caching</a>
       </li>
       <li>
         <a href="#ffmpeg">نحوه‌ی استفاده از ماژول FFmpeg</a>
@@ -483,14 +483,14 @@ class TrustProxies extends Middleware
       </a>{" "}
       برای بررسی بیشتر مطالعه کنید.
     </Notice>
-    <h3 id="enable-caching">فعال‌سازی Caching</h3>
+    <h3 id="enable-gzip-and-caching">فعال‌سازی Gzip و Caching</h3>
     <p>
-      برای فعال‌سازی Caching در برنامه‌های Laravel باید تنظیمات مربوطه را در
-      فایل <span className="code">public/.htaccess</span> برنامه وارد کنید:
+      برای فعال‌سازی Gzip و Caching در برنامه‌های Laravel باید تنظیمات مربوطه را
+      در فایل <span className="code">public/.htaccess</span> برنامه وارد کنید:
     </p>
-    <pre>
-      <code>
-        {`<IfModule mod_deflate.c>
+    <Highlight className="htaccess">
+      {` # Enabling Gzip
+<IfModule mod_deflate.c>
  AddOutputFilterByType DEFLATE text/plain
  AddOutputFilterByType DEFLATE text/html
  AddOutputFilterByType DEFLATE text/xml
@@ -505,7 +505,7 @@ class TrustProxies extends Middleware
  AddOutputFilterByType DEFLATE application/x-shockwave-flash
 </IfModule>
 
-
+# Enabling Caching
 <IfModule mod_expires.c>
  ExpiresActive On
  ExpiresByType text/css "access plus 1 month"
@@ -528,8 +528,7 @@ class TrustProxies extends Middleware
   Header set Cache-Control "max-age=216000, private"
  </filesmatch>
 </ifmodule>`}
-      </code>
-    </pre>
+    </Highlight>
     <p>
       در قدم بعد باید قطعه کد زیر را به فایل{" "}
       <span className="code">webpack.mix.js</span> اضافه کنید:
