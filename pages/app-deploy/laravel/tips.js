@@ -489,7 +489,7 @@ class TrustProxies extends Middleware
       در فایل <span className="code">public/.htaccess</span> برنامه وارد کنید:
     </p>
     <Highlight className="htaccess">
-      {` # Enabling Gzip
+      {` # Enable Gzip
 <IfModule mod_deflate.c>
  AddOutputFilterByType DEFLATE text/plain
  AddOutputFilterByType DEFLATE text/html
@@ -505,7 +505,7 @@ class TrustProxies extends Middleware
  AddOutputFilterByType DEFLATE application/x-shockwave-flash
 </IfModule>
 
-# Enabling Caching
+# Enable Caching
 <IfModule mod_expires.c>
  ExpiresActive On
  ExpiresByType text/css "access plus 1 month"
