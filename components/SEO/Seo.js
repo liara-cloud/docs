@@ -28,9 +28,8 @@ export default function Seo({ title, desc, keyWords, openGraph, url }) {
 Seo.defaultProps = {
   lang: `fa`,
   meta: [],
-  title: `مستندات`,
-  desc: `سرویس ابری لیارا ارائه دهنده خدمات ابری  platform as a service یا PaaS و database as a service یا DBaaS در ایران.`,
+  title: ``,
+  desc: ``,
   openGraph: openGraphImage.src,
-  keyWords: `
-  سرویس ابری لیارا، ارائه دهنده خدمات ابری PaaS و DBaaS، سرویس ابری ساعتی، PaaS ساعتی، DBaaS ساعتی، object storage ساعتی، سرویس ابری PaaS، سرویس ابری DBaaS، سرویس ابری object storage، سرویس ابری PaaS در ایران، سرویس ابری DBaaS در ایران، سرویس ابری object storage در ایران، سرویس platform as a service، سرویس database as a service`,
+  keyWords: ``,
 };
