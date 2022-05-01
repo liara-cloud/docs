@@ -33,7 +33,7 @@ export default () => (
       <span className="code">Dockerfile</span>
       قرار دهید:
     </p>
-    <Highlight>
+    <Highlight className="dockerfile">
       {`FROM mcr.microsoft.com/dotnet/aspnet:5.0
 
 RUN apt-get update && \\

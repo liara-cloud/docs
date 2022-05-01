@@ -80,30 +80,6 @@ const Index = () => (
           <span>NuxtJS</span>
         </a>
       </Link>
-      <Link href="/instructions/nestjs">
-        <a>
-          <PlatformIcon platform="nest" />
-          <span>NestJS</span>
-        </a>
-      </Link>
-      <Link href="/instructions/svelte">
-        <a>
-          <PlatformIcon platform="svelte" />
-          <span>Svelte</span>
-        </a>
-      </Link>
-      <Link href="/instructions/strapi">
-        <a>
-          <PlatformIcon platform="strapi" />
-          <span>Strapi</span>
-        </a>
-      </Link>
-      <Link href="/instructions/adonis">
-        <a>
-          <PlatformIcon platform="adonisjs" />
-          <span>Adonis</span>
-        </a>
-      </Link>
       <Link href="/app-deploy/php/getting-started">
         <a>
           <PlatformIcon platform="php" />
@@ -115,12 +91,6 @@ const Index = () => (
         <a>
           <PlatformIcon platform="laravel" />
           <span>Laravel</span>
-        </a>
-      </Link>
-      <Link href="/app-deploy/laravel/getting-started">
-        <a>
-          <PlatformIcon platform="lumen" />
-          <span>Lumen</span>
         </a>
       </Link>
       <Link href="/instructions/python">
@@ -157,12 +127,6 @@ const Index = () => (
         <a>
           <PlatformIcon platform="go" />
           <span>Go</span>
-        </a>
-      </Link>
-      <Link href="/instructions/nginx">
-        <a>
-          <PlatformIcon platform="nginx" />
-          <span>Nginx</span>
         </a>
       </Link>
     </div>
@@ -217,12 +181,6 @@ const Index = () => (
         <a>
           <PlatformIcon platform="elastic" />
           <span>Elastic</span>
-        </a>
-      </Link>
-      <Link href="/instructions/arangodb">
-        <a>
-          <PlatformIcon platform="arangodb" />
-          <span>ArangoDB</span>
         </a>
       </Link>
     </div>

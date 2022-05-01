@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      {/* <PlatformIcon platform="" /> */}
+      <PlatformIcon platform="prisma" />
       <div className="page-title">
         <h1>استقرار Prisma</h1>
         <span className="page-description">(Prisma ORM)</span>

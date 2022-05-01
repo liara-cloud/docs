@@ -66,7 +66,7 @@ RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT=100000000`}
       عمل کرده و پس از ایجاد فایل <span className="code">liara.json</span> در
       مسیر دلخواه، آن را به شکل زیر پیکربندی کنید.
     </p>
-    <Highlight>
+    <Highlight className="json">
       {`{
   "image": "bitnami/rabbitmq:3.9",
   "app": "rabbitmq-app",
