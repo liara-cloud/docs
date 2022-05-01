@@ -50,6 +50,9 @@ export default () => (
         <a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a>
       </li>
       <li>
+        <a href="#cors-media-files">رفع خطای CORS فایل‌های Media</a>
+      </li>
+      <li>
         <a href="#gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</a>
       </li>
       <li>
@@ -299,6 +302,51 @@ location ~ /\\.well-known {
       با قرار دادن فایل بالا در ریشه‌ی برنامه‌ی‌تان حداکثر حجم مجاز آپلود فایل
       به <strong>250MB</strong> افزایش می‌یابد. شما می‌توانید مقدار دلخواه
       خودتان را تنظیم کنید.
+    </p>
+    <h3 id="cors-media-files">رفع خطای CORS فایل‌های Media</h3>
+    <p>
+      مسئولیت ارائه فایل‌های رسانه (Media) به کاربران در پلتفرم Django برعهده‌ی
+      وب‌سرور (Nginx) است، حال اگر کاربران شما برای دسترسی به فایل‌های رسانه با
+      خطای CORS مواجه شدند باید <Link href="#nginx">تنظیمات Nginx</Link> پروژه‌ی
+      خود را شخصی‌سازی کنید. برای رفع این خطا، یک فایل با نام{" "}
+      <span className="code">liara_nginx.conf</span> در مسیر اصلی پروژه‌ی خود
+      ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
+    </p>
+    <Highlight className="nginx">
+      {`location /media {
+  add_header Access-Control-Allow-Origin *;
+  alias /usr/src/app/media;
+}
+
+location /static {
+  alias /usr/src/app/staticfiles;
+}
+
+location / {
+  try_files $uri @django_app;
+}
+
+location ~\\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
+}`}
+    </Highlight>
+    <p>
+      سپس برای اعمال این تغییرات، دستور{" "}
+      <span className="code">liara deploy</span> را در مسیر اصلی پروژه‌ی خود
+      اجرا کنید.
+    </p>
+    <p>
+      با اعمال این پیکربندی، فایل‌های قرار گرفته در پوشه‌ی{" "}
+      <span className="code">media</span>
+      با Header
+      <span className="code">Access-Control-Allow-Origin</span>و مقدار
+      <span className="code">*</span>
+      Serve می‌شوند. همچنین شما می‌توانید مقدار دلخواه خودتان را تنظیم کنید.
     </p>
     <h3 id="gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</h3>
     <p>
