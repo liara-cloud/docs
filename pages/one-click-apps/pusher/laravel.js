@@ -59,8 +59,8 @@ export default () => (
       در قدم بعد باید مقادیر <span className="code">PUSHER_APP_KEY</span>،{" "}
       <span className="code">PUSHER_APP_SECRET</span> و{" "}
       <span className="code">PUSHER_APP_ID</span> را براساس موارد تنظیم شده در
-      زمان راه‌اندازی برنامه‌ی Pusher در فایل <span className="code">.env</span>{" "}
-      مقداردهی کنید و در نهایت می‌توانید به شکل زیر در فرانت‌اند برنامه‌ی خود به
+      تنظیمات متغیرهای برنامه‌ی Pusher، در تنظیمات متغیرهای برنامه‌ی Laravel
+      مقداردهی کنید. در نهایت می‌توانید به شکل زیر در فرانت‌اند برنامه‌ی خود به
       سرور Pusher متصل شوید:{" "}
     </p>
     <Highlight className="javascript">
