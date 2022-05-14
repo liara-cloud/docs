@@ -21,19 +21,76 @@ export default () => (
     <p>
       NextJS یک فریم‌ورک مبتنی بر React است که امکان پیاده‌سازی وبسایت‌های SSR و
       SSG را برای شما فراهم می‌کند. حال شما می‌توانید برنامه‌های NextJS خود را
-      با استفاده از قابلیت Static HTML Export در لیارا دیپلوی کنید.
+      با ایجاد برنامه‌های{" "}
+      <Link href="/app-deploy/docker/getting-started">Docker</Link> بر روی لیارا
+      مستقر کنید.
     </p>
 
-    {/* حال شما می‌توانید برنامه‌های NextJS خود را با
-      ایجاد برنامه‌های{" "}
-      <Link href="/app-deploy/nodejs/getting-started">NodeJS</Link> بر روی لیارا
-      دیپلوی کنید.
+    <p>
+      در قدم اول، یک فایل با نام <span className="code">Dockerfile</span> در
+      ریشه‌ی برنامه‌‌ی‌تان بسازید و سپس قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
+
+    <Highlight className="dockerfile">
+      {`FROM node:16-alpine AS deps
+
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package.json package-lock.json ./ 
+RUN npm ci
+
+FROM node:16-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN npm run build
+
+FROM node:16-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD ["node", "server.js"]`}
+    </Highlight>
+
+    <p>
+      در قدم بعد، قطعه‌کد زیر را به فایل{" "}
+      <span className="code">next.config.js</span> اضافه کنید:
+    </p>
+
+    <Highlight className="javascript">
+      {`module.exports = {
+  // ... rest of the configuration.
+  experimental: {
+    outputStandalone: true,
+  },
+}`}
+    </Highlight>
     <p>
       توجه داشته باشید که برای دیپلوی برنامه‌های NextJs نیازی به ایجاد تغییر در
-      فایل <span className="code">package.json</span> نیست و لیارا به‌طور کامل
-      از این فریم‌ورک پشتیبانی می‌کند بنابراین تغییری در بخش{" "}
-      <span className="code">scripts</span> ایجاد نکنید.
+      فایل <span className="code">package.json</span> نیست بنابراین تغییری در
+      بخش <span className="code">scripts</span> ایجاد نکنید.
     </p>
     <Highlight className="json">
       {`"scripts": {
@@ -42,15 +99,15 @@ export default () => (
     "start": "next start",
     "lint": "next lint"
 },`}
-    </Highlight> 
+    </Highlight>
 
     <p>
-      حالت استاندارد npm scripts در برنامه‌های NextJS به‌شکل بالا است. در نهایت
-      دستور
-      <span className="code">liara deploy --port 3000 --platform node</span>
-      را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
+      در مرحله‌ی آخر دستور
+      <span className="code">liara deploy --port 3000 --platform docker</span>
+      را در مسیر اصلی پروژه‌ی خود اجرا کنید تا برنامه‌ی شما در لیارا مستقر و
+      اجرا شود.
     </p>
-*/}
+
     <h3>Static HTML Export</h3>
     <p>
       قابلیت{" "}
