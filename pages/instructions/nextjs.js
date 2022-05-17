@@ -37,7 +37,7 @@ export default () => (
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package*.json ./ 
+COPY package.json package-lock.json ./ 
 RUN npm ci
 
 # If using yarn with a \`yarn.lock\` comment out above and use below instead
