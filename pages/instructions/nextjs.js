@@ -36,8 +36,13 @@ export default () => (
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY package.json package-lock.json ./ 
+
+COPY package*.json ./ 
 RUN npm ci
+
+# If using yarn with a \`yarn.lock\` comment out above and use below instead
+# COPY package.json yarn.lock ./
+# RUN yarn install --frozen-lockfile
 
 FROM node:16-alpine AS builder
 WORKDIR /app
@@ -47,6 +52,9 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm run build
+
+# If using yarn comment out above and use below instead
+# RUN yarn build
 
 FROM node:16-alpine AS runner
 WORKDIR /app
