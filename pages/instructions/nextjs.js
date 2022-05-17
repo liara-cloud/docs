@@ -18,6 +18,21 @@ export default () => (
       </div>
     </div>
 
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#deploy">استقرار برنامه‌های NextJS</a>
+      </li>
+      <li>
+        <a href="#static-html-export">قابلیت Static HTML Export</a>
+      </li>
+      <li>
+        <a href="#cors">رفع خطای CORS</a>
+      </li>
+    </ul>
+
+    <h3 id="deploy">استقرار برنامه‌های NextJS</h3>
+
     <p>
       NextJS یک فریم‌ورک مبتنی بر React است که امکان پیاده‌سازی وبسایت‌های SSR و
       SSG را برای شما فراهم می‌کند. حال شما می‌توانید برنامه‌های NextJS خود را
@@ -116,7 +131,7 @@ CMD ["node", "server.js"]`}
       اجرا شود.
     </p>
 
-    <h3>Static HTML Export</h3>
+    <h3 id="static-html-export">قابلیت Static HTML Export</h3>
     <p>
       قابلیت{" "}
       <a
