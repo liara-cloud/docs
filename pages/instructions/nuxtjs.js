@@ -18,6 +18,22 @@ export default () => (
         <span className="page-description">(NuxtJS Apps)</span>
       </div>
     </div>
+
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#deploy">استقرار برنامه‌های NuxtJS</a>
+      </li>
+      <li>
+        <a href="#static-site-generation">قابلیت Static Site Generation</a>
+      </li>
+      <li>
+        <a href="#cors">رفع خطای CORS</a>
+      </li>
+    </ul>
+
+    <h3 id="deploy">استقرار برنامه‌های NuxtJS</h3>
+
     <p>
       NuxtJS یک فریم‌ورک مبتنی بر Vue است که بسیاری از قابلیت‌ها مانند SSR را
       برای شما به ارمغان می‌آورد. حال شما می‌توانید برنامه‌های NuxtJS خود را با
@@ -44,7 +60,7 @@ export default () => (
       را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
     </p>
 
-    <h3>Static Site Generation</h3>
+    <h3 id="static-site-generation">قابلیت Static Site Generation</h3>
     <p>
       Static Site Generation این امکان را فراهم کرده تا شما از برنامه‌های NuxtJS
       خود، خروجی استاتیک بگیرید و دیگر نیازی به سرور NodeJS نخواهید داشت.
@@ -80,7 +96,9 @@ export default () => (
       کنید.
     </p>
 
-    <h3>Proxy کردن درخواست‌ها در برنامه‌های NuxtJS (رفع خطای CORS)</h3>
+    <h3 id="cors">
+      Proxy کردن درخواست‌ها در برنامه‌های NuxtJS (رفع خطای CORS)
+    </h3>
 
     <p>
       برای رفع خطای CORS در زمان Proxy کردن درخواست‌ها در برنامه‌های NuxtJS باید
