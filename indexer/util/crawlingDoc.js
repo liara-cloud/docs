@@ -48,9 +48,11 @@ export async function crawlingDocData() {
         }
       }
       if ($('h4').next().is('ul') || $('h4').next().is('p')) {
+        let counter = 0
+        const platform = $('article .page-icon').attr('alt');
         $('article > *').each(function (i, el) {
           if (typeof $(this).attr('id') != 'undefined') {
-            const platform = $('article .page-icon').attr('alt');
+            counter += 1
             data.push({
               id: uuidv4(),
               url: link,
@@ -61,6 +63,16 @@ export async function crawlingDocData() {
             });
           }
         });
+        if (counter == 0) {
+            data.push({
+              id: uuidv4(),
+              url: link,
+              platform,
+              title:
+                $('article .page-title > h1').text() || $('article > h1').text(),
+              body: $('article').text(),
+            });
+        }
       }
     })
   );
