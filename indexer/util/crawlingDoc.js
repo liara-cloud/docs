@@ -51,7 +51,7 @@ export async function crawlingDocData() {
         let counter = 0
         const platform = $('article .page-icon').attr('alt');
         $('article > *').each(function (i, el) {
-          if (typeof $(this).attr('id') != 'undefined') {
+          if (typeof $(this).attr('id') != 'undefined' && !$(this).attr('id').startsWith('cast')) {
             counter += 1
             data.push({
               id: uuidv4(),
