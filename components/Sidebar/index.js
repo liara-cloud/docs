@@ -45,8 +45,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
     return index.search(value, { limit: 5 }).then(res => {
       setResults(res.hits);
       setNotFound(value != "" && res.hits.length == 0);
+      if (res.hits.length == 0) {
+        setCurrent(undefined);
+      }
     });
   };
+
   const handleChangeValue = e => {
     const { value } = e.target;
     setValue(value);
