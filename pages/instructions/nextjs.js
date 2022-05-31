@@ -24,6 +24,9 @@ export default () => (
         <a href="#deploy">استقرار برنامه‌های NextJS</a>
       </li>
       <li>
+        <a href="#next-public-envs">نحوه‌ی استفاده از متغیرهای NEXT_PUBLIC</a>
+      </li>
+      <li>
         <a href="#static-html-export">قابلیت Static HTML Export</a>
       </li>
       <li>
@@ -129,6 +132,17 @@ CMD ["node", "server.js"]`}
       <span className="code">liara deploy --port 3000 --platform docker</span>
       را در مسیر اصلی پروژه‌ی خود اجرا کنید تا برنامه‌ی شما در لیارا مستقر و
       اجرا شود.
+    </p>
+
+    <h3 id="next-public-envs">نحوه‌ی استفاده از متغیرهای NEXT_PUBLIC</h3>
+    <p>
+      با اضافه شدن قابلیت لود متغیرهای محیطی از فایل env به برنامه‌های NextJS،
+      این امکان فراهم شده تا با قرار دادن پیشوند{" "}
+      <span className="code">NEXT_PUBLIC_</span> برای متغیرها، در فرانت‌اند
+      برنامه نیز به متغیرهای محیطی دسترسی پیدا کنید. برای تعریف و استفاده از
+      متغیرهای <span className="code">NEXT_PUBLIC</span> در لیارا باید یک فایل
+      با نام <span className="code">.env.production</span> در مسیر اصلی پروژه‌ی
+      خود تعریف کنید و متغیرهای مورد نظر خود را در این فایل مقداردهی کنید.
     </p>
 
     <h3 id="static-html-export">قابلیت Static HTML Export</h3>
