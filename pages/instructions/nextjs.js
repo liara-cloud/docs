@@ -138,11 +138,11 @@ CMD ["node", "server.js"]`}
     <p>
       با اضافه شدن قابلیت لود متغیرهای محیطی از فایل env به برنامه‌های NextJS،
       این امکان فراهم شده تا با قرار دادن پیشوند{" "}
-      <span className="code">NEXT_PUBLIC_</span> برای متغیرها، در فرانت‌اند
-      برنامه نیز به متغیرهای محیطی دسترسی پیدا کنید. برای تعریف و استفاده از
-      متغیرهای <span className="code">NEXT_PUBLIC</span> در لیارا باید یک فایل
-      با نام <span className="code">.env.production</span> در مسیر اصلی پروژه‌ی
-      خود تعریف کنید و متغیرهای مورد نظر خود را در این فایل مقداردهی کنید.
+      <span className="code">NEXT_PUBLIC_</span> برای متغیرها، در سمت مرورگر نیز
+      به متغیرهای محیطی دسترسی پیدا کنید. برای تعریف و استفاده از متغیرهای{" "}
+      <span className="code">NEXT_PUBLIC</span> در لیارا باید یک فایل با نام{" "}
+      <span className="code">.env.production</span> در مسیر اصلی پروژه‌ی خود
+      تعریف کنید و متغیرهای مورد نظر خود را در این فایل مقداردهی کنید.
     </p>
 
     <h3 id="static-html-export">قابلیت Static HTML Export</h3>
