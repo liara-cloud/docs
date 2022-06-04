@@ -35,6 +35,9 @@ export default () => (
           فعال‌سازی gzip و Browser Caching
         </a>
       </li>
+      <li>
+        <a href="#copy-after-build">انتقال خودکار فایل به مسیر build پروژه</a>
+      </li>
     </ul>
 
     <h3 id="nginx-conf">تنظیمات Nginx</h3>
@@ -153,6 +156,34 @@ location ~* \\.(?:css|js|otf|ttf|eot|woff|woff2)$ {
   access_log off;
   add_header Cache-Control "public";
 }`}
+    </Highlight>
+
+    <h3 id="copy-after-build">انتقال خودکار فایل به مسیر build پروژه</h3>
+
+    <p>
+      درصورتی که قصد داشته باشید پس از build شدن پروژه، فایلی را به‌صورت خودکار
+      به مسیر build انتقال دهید می‌توانید اسکریپت{" "}
+      <span className="code">build</span> پروژه‌ی خود را در فایل{" "}
+      <span className="code">package.json</span> به شکل زیر ویرایش کنید. در
+      مثال‌های زیر، فایل <span className="code">liara_nginx.conf</span> به‌صورت
+      خودکار از مسیر اصلی پروژه در پوشه‌ی <span className="code">build</span>{" "}
+      کپی می‌شود.
+    </p>
+
+    <h4>ویندوز:</h4>
+    <Highlight className="json">
+      {`"scripts": {
+  ...
+  "build": "react-scripts build && copy liara_nginx.conf ./build/",
+},`}
+    </Highlight>
+
+    <h4>لینوکس و مک:</h4>
+    <Highlight className="json">
+      {`"scripts": {
+  ...
+  "build": "react-scripts build && cp liara_nginx.conf ./build/",
+},`}
     </Highlight>
   </Layout>
 );
