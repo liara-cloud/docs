@@ -10,5 +10,5 @@ build:
 
 run:
 	docker container rm -f liara-docs
-	docker container run -p 8080:80 --name=liara-docs liara-docs:latest
+	docker container run -d -p 8080:80 --name=liara-docs liara-docs:latest
 .PHONY:run
