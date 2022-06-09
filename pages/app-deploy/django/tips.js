@@ -59,6 +59,9 @@ export default () => (
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
+        <a href="#asgi">استقرار برنامه‌های ASGI</a>
+      </li>
+      <li>
         <a href="#mirror">غیرفعال کردن Mirror</a>
       </li>
     </ul>
@@ -392,6 +395,14 @@ CORS_ALLOW_METHODS = [
   "POST",
   "PUT",
 ]`}</Highlight>
+    <h3 id="asgi">استقرار برنامه‌های ASGI</h3>
+    <p>
+      برای استقرار برنامه‌های ASGI در پلتفرم Django لیارا تنها باید{" "}
+      <span className="code">WSGI_APPLICATION</span> را از فایل{" "}
+      <span className="code">settings.py</span> برنامه حذف کنید و مسیر فایل
+      پیکربندی برنامه‌ی ASGI خود را در متغیر{" "}
+      <span className="code">ASGI_APPLICATION</span> مقداردهی کنید.
+    </p>
     <h3 id="mirror">غیرفعال کردن Mirror</h3>
     <p>
       Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Django

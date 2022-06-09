@@ -1186,9 +1186,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/instructions/asgi">ASGI</ActiveLink>
-            </li>
-            <li>
               <ActiveLink href="/instructions/dotnet-published">
                 استقرار فایل DLL
               </ActiveLink>
