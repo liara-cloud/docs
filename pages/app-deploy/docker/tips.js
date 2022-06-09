@@ -47,35 +47,8 @@ export default () => (
     </Highlight>
 
     <p>
-      برای مثال برای راه‌اندازی یک{" "}
-      <Link href="/instructions/asgi">ASGI server</Link> می‌توانید به‌شکل زیر
-      عمل کنید:
-    </p>
-
-    <Highlight className="dockerfile">{`FROM python:3.9
-
-ENV ROOT=/usr/src/app
-
-WORKDIR $ROOT
-
-COPY --from=liaracloud/supercronic:v0.1.11 \\
-     /usr/local/bin/supercronic /usr/local/bin/supercronic
-
-COPY ./requirements.txt ./requirements.txt
-
-RUN python -m pip install --upgrade pip \\
-    && pip install --no-cache-dir --upgrade -r ./requirements.txt \\
-    && python -m pip install daphne
-
-COPY . .
-
-RUN chmod +x /usr/src/app/entrypoint.sh
-
-ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]`}</Highlight>
-    <p>
-      سپس می‌توانید یک فایل با نام <span className="code">crontab</span> در مسیر
-      اصلی پروژه‌ی خود ایجاد کرده و به‌شکل زیر Jobهای مورد نظر خود را اضافه
-      کنید:
+      همچنین باید فایل <span className="code">crontab</span> را در مسیر اصلی
+      پروژه‌ی خود ایجاد کرده و به‌شکل زیر Jobهای مورد نظر خود را اضافه کنید:
     </p>
 
     <Highlight className="plaintext">
