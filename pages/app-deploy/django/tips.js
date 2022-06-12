@@ -145,7 +145,6 @@ stdout_logfile=/tmp/worker.log`}
     <h3 id="compilemessages">
       دستور <span className="code">compilemessages</span>
     </h3>
-    Django
     <p>
       اگر برنامه‌ی شما چند زبانه است و نیازمند اجرای دستور
       <span className="code">python manage.py compilemessages</span>
