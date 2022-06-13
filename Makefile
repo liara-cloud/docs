@@ -8,7 +8,7 @@ start: prepare
 	npm run dev
 .PHONY:start
 
-build: prepare
+build:
 	docker image build -t liara-docs --network=host .
 .PHONY:build
 
