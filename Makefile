@@ -1,10 +1,14 @@
-.DEFAULT_GOAL := start
+.DEFAULT_GOAL := build
 
-start:
+prepare:
+	[ -d node_modules ] || npm install
+.PHONY:prepare
+
+start: prepare
 	npm run dev
 .PHONY:start
 
-build:
+build: prepare
 	docker image build -t liara-docs --network=host .
 .PHONY:build
 
