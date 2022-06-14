@@ -69,6 +69,7 @@ export default () => (
         <b>PHP 7.4 (پیش‌فرض)</b>
       </li>
       <li>PHP 8.0</li>
+      <li>PHP 8.1</li>
     </ul>
 
     <Notice variant="info">
