@@ -114,6 +114,17 @@ CMD ["node", "server.js"]`}
 }`}
     </Highlight>
     <p>
+      همچنین یک فایل با نام <span className="code">liara.json</span> در مسیر
+      اصلی پروژه ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "port": 3000
+}`}
+    </Highlight>
+    <p>
       توجه داشته باشید که برای دیپلوی برنامه‌های NextJs نیازی به ایجاد تغییر در
       فایل <span className="code">package.json</span> نیست بنابراین تغییری در
       بخش <span className="code">scripts</span> ایجاد نکنید.
@@ -129,7 +140,7 @@ CMD ["node", "server.js"]`}
 
     <p>
       در مرحله‌ی آخر دستور
-      <span className="code">liara deploy --port 3000 --platform docker</span>
+      <span className="code">liara deploy</span>
       را در مسیر اصلی پروژه‌ی خود اجرا کنید تا برنامه‌ی شما در لیارا مستقر و
       اجرا شود.
     </p>
