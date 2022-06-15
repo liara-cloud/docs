@@ -6,13 +6,13 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات راه‌اندازی Pusher - سرویس ابری لیارا</title>
+      <title>مستندات راه‌اندازی Soketi - سرویس ابری لیارا</title>
     </Head>
     <div className="page-head">
-      <PlatformIcon platform="pusher" />
+      <PlatformIcon platform="soketi" />
       <div className="page-title">
-        <h1>برنامه‌های آماده Pusher</h1>
-        <span className="page-description">(Pusher one-click app)</span>
+        <h1>برنامه‌های آماده Soketi</h1>
+        <span className="page-description">(Soketi one-click app)</span>
       </div>
     </div>
 
@@ -34,9 +34,9 @@ export default () => (
 
     <ZoomableImage src="https://files.liara.ir/docs/pusher/create-new-pusher-one-click-app.gif"></ZoomableImage>
     <p>
-      برای راه‌اندازی برنامه‌ی Pusher باید در بخش برنامه‌های کنسول لیارا بر روی
+      برای راه‌اندازی برنامه‌ی Soketi باید در بخش برنامه‌های کنسول لیارا بر روی
       دکمه‌ی <b>ایجاد برنامه</b> کلیک کرده و در صفحه‌ی باز شده وارد بخش
-      برنامه‌های آماده شوید. سپس برنامه‌ی <b>Pusher</b> را انتخاب و یک شناسه‌ی
+      برنامه‌های آماده شوید. سپس برنامه‌ی <b>Soketi</b> را انتخاب و یک شناسه‌ی
       یکتا برای برنامه‌ی خود درنظر بگیرید، همچنین پلن مورد نظر خود را انتخاب
       کنید و در آخر بر روی دکمه‌ی <b>ایجاد برنامه</b> کلیک کنید.
     </p>

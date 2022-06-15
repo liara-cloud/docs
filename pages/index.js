@@ -209,10 +209,10 @@ const Index = () => (
           <span>Prestashop</span>
         </a>
       </Link>
-      <Link href="/one-click-apps/pusher/install">
+      <Link href="/one-click-apps/soketi/install">
         <a>
-          <PlatformIcon platform="pusher" />
-          <span>Pusher</span>
+          <PlatformIcon platform="soketi" />
+          <span>Soketi</span>
         </a>
       </Link>
       <Link href="/one-click-apps/metabase">

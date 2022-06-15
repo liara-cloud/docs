@@ -8,20 +8,20 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        سرویس ابری لیارا - مستندات اتصال به Pusher در برنامه‌های Laravel
+        سرویس ابری لیارا - مستندات اتصال به Soketi در برنامه‌های Laravel
       </title>
     </Head>
     <div className="page-head">
-      <PlatformIcon platform="pusher" />
+      <PlatformIcon platform="soketi" />
       <div className="page-title">
-        <h1>برنامه‌های آماده Pusher</h1>
-        <span className="page-description">(Pusher one-click app)</span>
+        <h1>برنامه‌های آماده Soketi</h1>
+        <span className="page-description">(Soketi one-click app)</span>
       </div>
     </div>
 
-    <h3>اتصال به Pusher در برنامه‌های Laravel</h3>
+    <h3>اتصال به Soketi در برنامه‌های Laravel</h3>
     <p>
-      به‌طور کلی برای استفاده از سرور Pusher در برنامه‌‌های Laravel باید قطعه کد
+      به‌طور کلی برای استفاده از سرور Soketi در برنامه‌‌های Laravel باید قطعه کد
       زیر را در فایل <span className="code">config/app.php</span> از comment
       خارج کنید.
     </p>
@@ -37,10 +37,10 @@ export default () => (
     </p>
 
     <p>
-      حال به‌منظور اتصال به Pusher در برنامه‌های Laravel باید درایور زیر را به
+      حال به‌منظور اتصال به Soketi در برنامه‌های Laravel باید درایور زیر را به
       فایل <span className="code">config/broadcasting.php</span> اضافه کرده و
-      آدرس برنامه‌ی Pusher را با{" "}
-      <span className="code">pusher-app-address</span> جایگزین کنید:{" "}
+      آدرس برنامه‌ی Soketi را با{" "}
+      <span className="code">soketi-app.iran.liara.run</span> جایگزین کنید:{" "}
     </p>
     <Highlight className="php">
       {`'pusher' => [
@@ -49,7 +49,7 @@ export default () => (
 'secret' => env('PUSHER_APP_SECRET'),
 'app_id' => env('PUSHER_APP_ID'),
 'options' => [
-    'host' => 'pusher-app.iran.liara.run',
+    'host' => 'soketi-app.iran.liara.run',
     'port' => 443,
     'scheme' => 'https'
     ],
@@ -59,9 +59,9 @@ export default () => (
       در قدم بعد باید مقادیر <span className="code">PUSHER_APP_KEY</span>،{" "}
       <span className="code">PUSHER_APP_SECRET</span> و{" "}
       <span className="code">PUSHER_APP_ID</span> را براساس موارد تنظیم شده در
-      تنظیمات متغیرهای برنامه‌ی Pusher، در تنظیمات متغیرهای برنامه‌ی Laravel
+      تنظیمات متغیرهای برنامه‌ی Soketi، در تنظیمات متغیرهای برنامه‌ی Laravel
       مقداردهی کنید. در نهایت می‌توانید به شکل زیر در فرانت‌اند برنامه‌ی خود به
-      سرور Pusher متصل شوید:{" "}
+      سرور Soketi متصل شوید:{" "}
     </p>
     <Highlight className="javascript">
       {`import Echo from 'laravel-echo';
@@ -72,7 +72,7 @@ window.Echo = new Echo({
   broadcaster: 'pusher',
   key: 'app-key',
   forceTLS: true,
-  wsHost: 'pusher-app.iran.liara.run',
+  wsHost: 'soketi-app.iran.liara.run',
   wsPort: 443,
   disableStats: true,
 });`}
@@ -81,7 +81,7 @@ window.Echo = new Echo({
     <Notice variant="warning">
       توجه داشته باشید که برای مقداردهی key و wsHost در فرانت‌اند برنامه
       به‌هیچ‌وجه از Laravel Mix استفاده نکنید و مقادیر app-key و
-      pusher-app-address را به‌طور مستقیم در قطعه کد فوق قرار دهید.
+      soketi-app.iran.liara.run را به‌طور مستقیم در قطعه کد فوق قرار دهید.
     </Notice>
   </Layout>
 );

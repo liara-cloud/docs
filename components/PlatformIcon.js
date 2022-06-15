@@ -46,6 +46,7 @@ import remixIcon from "@liara/platformicons/svg/remix.svg";
 import nginxIcon from "@liara/platformicons/svg/nginx.svg";
 import lumenIcon from "@liara/platformicons/svg/lumen.svg";
 import celeryIcon from "@liara/platformicons/svg/celery.svg";
+import soketiIcon from "@liara/platformicons/svg/soketi.svg";
 import pythonIcon from "@liara/platformicons/svg/python.svg";
 import prismaIcon from "@liara/platformicons/svg/prisma.svg";
 import svelteIcon from "@liara/platformicons/svg/svelte.svg";
@@ -105,6 +106,7 @@ const types = [
   // Instructions
   { logo: goIcon, alt: "go" },
   { logo: seqIcon, alt: "seq" },
+  { logo: soketiIcon, alt: "soketi" },
   { logo: yiiIcon, alt: "yii" },
   { logo: nestIcon, alt: "nest" },
   { logo: nextIcon, alt: "next" },

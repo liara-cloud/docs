@@ -358,8 +358,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/laravel/pusher">
-                    اتصال به Pusher
+                  <ActiveLink href="/app-deploy/laravel/soketi">
+                    اتصال به Soketi
                   </ActiveLink>
                 </li>
                 <li>
@@ -929,18 +929,18 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ul>
             </li>
             <li>
-              <NavTitle href="/one-click-apps/pusher">
-                <PlatformIcon platform="pusher" />
-                Pusher
+              <NavTitle href="/one-click-apps/soketi">
+                <PlatformIcon platform="soketi" />
+                Soketi
               </NavTitle>
               <ul className="nav__list">
                 <li>
-                  <ActiveLink href="/one-click-apps/pusher/install">
+                  <ActiveLink href="/one-click-apps/soketi/install">
                     راه‌اندازی
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/one-click-apps/pusher/laravel">
+                  <ActiveLink href="/one-click-apps/soketi/laravel">
                     اتصال از طریق Laravel
                   </ActiveLink>
                 </li>
