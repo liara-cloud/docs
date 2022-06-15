@@ -13,6 +13,6 @@ build:
 .PHONY:build
 
 run:
-	docker container rm -f liara-docs
+	docker container rm -f liara-docs || true
 	docker container run -d -p 8080:80 --name=liara-docs liara-docs:latest
 .PHONY:run
