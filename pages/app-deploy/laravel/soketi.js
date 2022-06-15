@@ -7,7 +7,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        سرویس ابری لیارا - مستندات اتصال به Pusher در برنامه‌های Laravel
+        سرویس ابری لیارا - مستندات اتصال به Soketi در برنامه‌های Laravel
       </title>
     </Head>
     <div className="page-head">
@@ -18,7 +18,7 @@ export default () => (
       </div>
     </div>
 
-    <h3>اتصال به Pusher</h3>
+    <h3>اتصال به Soketi</h3>
 
     <p>
       <a href="https://docs.soketi.app/" target="_blank" rel="noopener">
@@ -40,15 +40,15 @@ export default () => (
     <ol>
       <li>
         در ابتدا طبق{" "}
-        <Link href="/one-click-apps/pusher/install">
-          مستندات راه‌اندازی Pusher
+        <Link href="/one-click-apps/soketi/install">
+          مستندات راه‌اندازی Soketi
         </Link>{" "}
         عمل کرده و پیکربندی‌های امنیتی مورد نیاز را انجام دهید.
       </li>
       <li>
         در قدم بعد، طبق مستندات{" "}
-        <Link href="/one-click-apps/pusher/laravel">
-          اتصال به Pusher در برنامه‌های Laravel
+        <Link href="/one-click-apps/soketi/laravel">
+          اتصال به Soketi در برنامه‌های Laravel
         </Link>
         ، برنامه‌ی Laravel خود را به این سرویس متصل کنید.
       </li>

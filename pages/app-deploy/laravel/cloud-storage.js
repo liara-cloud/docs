@@ -123,6 +123,6 @@ BUCKET_NAME=<Name of you're bucket>`}
 Storage::disk('minio')->put('example.txt', 'Contents');`}
     </Highlight>
 
-    <Link href="/app-deploy/laravel/pusher">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/soketi">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
