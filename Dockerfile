@@ -3,10 +3,13 @@ FROM node:16-alpine AS builder
 
 WORKDIR /app
 
+COPY package*.json /app
+
+RUN npm ci
+
 COPY . /app
 
-RUN npm ci && npm run build
-
+RUN npm run build
 
 # 2) Run
 FROM liararepo/static-platform:base
