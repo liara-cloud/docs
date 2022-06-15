@@ -3,11 +3,11 @@ FROM node:16-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json /app
+COPY package*.json /app/
 
 RUN npm ci
 
-COPY . /app
+COPY . /app/
 
 RUN npm run build
 
