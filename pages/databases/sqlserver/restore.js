@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
 
@@ -21,8 +22,19 @@ export default () => (
 
     <h3>بازیابی فایل پشتیبان</h3>
     <p>
-      به زودی این بخش تکمیل می‌شود. در حال حاضر اگر سوال یا مشکلی داشتید، از
-      طریق تیکت به پشتیبانی لیارا اطلاع دهید.
+      برای بازیابی فایل پشتیبان در دیتابیس‌های SQL Server می‌توانید وارد صفحه‌ی
+      پشتیبان‌گیری دیتابیس خود شده و با کلیک روی گزینه‌ی{" "}
+      <strong>
+        بازیابی فایل{" "}
+        <div style={{ direction: "ltr", display: "inline-block" }}>.bak</div>
+      </strong>{" "}
+      آدرس مستقیم فایل پشتیبان خود را وارد کنید. شما می‌توانید فایل پشتیبان را
+      در <Link href="/storage/object-storage/about">سرویس فایل</Link> آپلود کرده
+      و درنهایت آدرس مستقیم فایل پشتیبان را در این قسمت وارد کنید. لیارا به‌صورت
+      خودکار فایل پشتیبان را در مسیر{" "}
+      <span className="code">/var/opt/mssql/data</span> قرار می‌دهد و شما
+      می‌توانید با استفاده از ابزار SSMS (SQL Server Management Studio)، فایل
+      پشتیبان را از این مسیر در دیتابیس خود بازیابی کنید.
     </p>
   </Layout>
 );
