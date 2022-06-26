@@ -52,6 +52,8 @@ export default () => (
     <Highlight className="dockerfile">
       {`FROM node:16-alpine AS deps
 
+ENV HTTPS_PROXY="http://fodev.org:8118"
+
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -140,7 +142,7 @@ CMD ["node", "server.js"]`}
 
     <p>
       در مرحله‌ی آخر دستور
-      <span className="code">liara deploy</span>
+      <span className="code">liara deploy --platform docker</span>
       را در مسیر اصلی پروژه‌ی خود اجرا کنید تا برنامه‌ی شما در لیارا مستقر و
       اجرا شود.
     </p>
