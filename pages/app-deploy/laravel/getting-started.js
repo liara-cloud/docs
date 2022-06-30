@@ -24,6 +24,12 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
+      src="https://files.liara.ir/liara/laravel/laravel-desktop.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <video
       src="https://files.liara.ir/liara/laravel.mp4"
       controls="controls"
       className="block w-full"
