@@ -23,7 +23,7 @@ export default () => (
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه NodeJS را با استفاده از
       ابزار <Link href="/app-deploy/nodejs/desktop">Liara Desktop</Link>، بر روی
-      هاست ابری لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح
+      سرویس ابری لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح
       می‌دهید یا تصمیم داشته باشید با{" "}
       <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار برنامه‌ی
       خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
