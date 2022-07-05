@@ -24,7 +24,9 @@ export default () => (
     <h3>استقرار با Liara Desktop</h3>
 
     <Notice variant="info">
-      در حال حاضر تنها نسخه‌ی ویندوز ابزار Liara Desktop منتشر شده است.
+      در حال حاضر تنها نسخه‌ی ویندوز ابزار Liara Desktop منتشر شده و برای
+      استقرار برنامه‌های Laravel در سیستم‌عامل لینوکس و مک می‌توانید از ابزار{" "}
+      <Link href="/app-deploy/laravel/cli">Liara CLI</Link> استفاده کنید.
     </Notice>
 
     <p>
