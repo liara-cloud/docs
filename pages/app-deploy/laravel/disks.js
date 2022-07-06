@@ -49,7 +49,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/liara/laravel-disks.mp4"
+      src="https://files.liara.ir/liara/laravel/laravel-disks.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
