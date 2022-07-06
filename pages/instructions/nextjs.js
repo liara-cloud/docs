@@ -112,9 +112,7 @@ CMD ["node", "server.js"]`}
     <Highlight className="javascript">
       {`module.exports = {
   // ... rest of the configuration.
-  experimental: {
-    outputStandalone: true,
-  },
+  output: 'standalone',
 }`}
     </Highlight>
     <p>
