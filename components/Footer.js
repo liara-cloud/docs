@@ -171,6 +171,33 @@ export default function Footer() {
             </div>
             <div>
               <a
+                href="https://liara.ir/landing/هاست-نکست-جی-اس-next"
+                title="هاست ابری نکست جی اس"
+                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
+              >
+                هاست NextJS
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://liara.ir/landing/هاست-ناکست-جی-اس-nuxt"
+                title="هاست ابری ناکست جی اس"
+                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
+              >
+                هاست NuxtJS
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://liara.ir/landing/هاست-گولنگ-golang"
+                title="هاست ابری گولنگ"
+                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
+              >
+                هاست Golang
+              </a>
+            </div>
+            <div>
+              <a
                 href="https://liara.ir/landing/هاست-ری-اکت-react"
                 title="هاست ابری ری اکت"
                 className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
