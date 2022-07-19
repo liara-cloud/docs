@@ -57,7 +57,7 @@ ENV HTTPS_PROXY="http://fodev.org:8118"
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package.json package-lock.json ./ 
+COPY package.json package-lock.json .npmrc* ./ 
 RUN npm ci
 
 # If using yarn with a \`yarn.lock\` comment out above and use below instead
