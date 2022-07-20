@@ -73,6 +73,11 @@ import rabbitmqIcon from "@liara/platformicons/svg/rabbitmq.svg";
 import postgresIcon from "@liara/platformicons/svg/postgres.svg";
 import arangodbIcon from "@liara/platformicons/svg/arangodb.svg";
 
+// CI/CD
+
+import githubIcon from "@liara/platformicons/svg/github.svg";
+import gitlabIcon from "@liara/platformicons/svg/gitlab.svg";
+
 const types = [
   // Apps
   { logo: phpIcon, alt: "php" },
@@ -140,6 +145,9 @@ const types = [
   { logo: postgresIcon, alt: "postgres" },
   { logo: rabbitmqIcon, alt: "rabbitmq" },
   { logo: arangodbIcon, alt: "arangodb" },
+  // CI/CD
+  { logo: githubIcon, alt: "github" },
+  { logo: gitlabIcon, alt: "gitlab" },
 ];
 
 export default function PlatformIcon({ platform }) {
