@@ -174,7 +174,7 @@ li:last-child > .nav__link {
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   border-radius: 0.5rem;
   border-width: 1px;
   border-color: #d6d8dc;
@@ -183,7 +183,6 @@ li:last-child > .nav__link {
   text-align: left;
   padding-right: 7px;
   padding-left: 7px;
-  width: 215px;
   margin-bottom: 15px;
 }
 .placeholder-search {
