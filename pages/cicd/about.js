@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -53,5 +54,19 @@ export default () => (
       </Link>{" "}
       می‌تواند در تجربه‌ای بهتر و حرفه‌ای‌تر به شما کمک کند.
     </p>
+    <div className="platforms">
+      <Link href="/cicd/github">
+        <a>
+          <PlatformIcon platform="github" />
+          <span>GitHub</span>
+        </a>
+      </Link>
+      <Link href="/cicd/gitlab">
+        <a>
+          <PlatformIcon platform="gitlab" />
+          <span>GitLab</span>
+        </a>
+      </Link>
+    </div>
   </Layout>
 );
