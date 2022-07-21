@@ -1497,7 +1497,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
               </ul>
             </li>
-            <li>
+            {/* <li>
               <NavTitle href="/storage/object-storage">Object Storage</NavTitle>
               <ul className="nav__list">
                 <li>
@@ -1531,6 +1531,39 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
               </ul>
+            </li> */}
+          </ul>
+        </nav>
+
+        <nav className="nav">
+          <NavTitle href="/buckets">ذخیره‌سازی ابری</NavTitle>
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/buckets/about">
+                درباره فضای ذخیره‌سازی ابری
+              </ActiveLink>
+            </li>
+            <li>
+              <NavTitle href="/buckets/management">
+                مدیریت فضای ذخیره‌سازی ابری
+              </NavTitle>
+              <ul className="nav__list">
+                <li>
+                  <ActiveLink href="/buckets/management/console">
+                    رابط کاربری اختصاصی
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/buckets/management/aws-sdk">
+                    AWS SDK
+                  </ActiveLink>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ActiveLink href="/buckets/tips">
+                توضیحات و نکات تکمیلی
+              </ActiveLink>
             </li>
           </ul>
         </nav>
