@@ -1561,9 +1561,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ul>
             </li>
             <li>
-              <ActiveLink href="/buckets/tips">
-                توضیحات و نکات تکمیلی
-              </ActiveLink>
+              <ActiveLink href="/buckets/keys">مدیریت کلیدها</ActiveLink>
             </li>
           </ul>
         </nav>

@@ -69,52 +69,5 @@ export default () => (
         </a>
       </Link>
     </div>
-
-    {/* <h3 id="node">مدیریت فضای ذخیره‌سازی ابری در NodeJS</h3>
-
-    <p>
-      برای مدیریت فضای ذخیره‌سازی ابری در NodeJS باید در ابتدا پکیج <a href="">aws-sdk/client-s3</a> را با اجرای دستور زیر، نصب کنید:
-    </p>
-    <Highlight className="bash">
-      {`#NPM
-$ npm i @aws-sdk/client-s3
-
-#YARN
-$ yarn add @aws-sdk/client-s3
-
-#PNPM
-$ pnpm add @aws-sdk/client-s3`}
-    </Highlight>
-
-    <h4>نمایش لیست باکت‌ها</h4>
-
-    <Highlight className="javascript">
-      {`const { S3Client, ListBucketsCommand } = require('@aws-sdk/client-s3');
-
-const client = new S3Client({
-    endpoint: LIARA_ENDPOINT,
-    credentials: {
-        accessKeyId: LIARA_ACCESS_KEY,
-        secretAccessKey: LIARA_SECRET_KEY,
-    },
-});
-
-const run = async () => {
-    try {
-        const data = await client.send(new ListBucketsCommand({}));
-        console.log('Success', data.Buckets);
-    } catch (err) {
-        console.log('Error', err);
-    }
-};
-
-run();`}
-    </Highlight>
-
-    https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
-
-    <h3 id="laravel">
-    مدیریت فضای ذخیره‌سازی ابری در Laravel
-    </h3> */}
   </Layout>
 );
