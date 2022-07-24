@@ -1563,6 +1563,14 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             <li>
               <ActiveLink href="/buckets/keys">مدیریت کلیدها</ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/buckets/resize">تغییر اندازه</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/buckets/access-policy">
+                تغییر سطح دسترسی
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 
