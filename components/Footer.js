@@ -241,6 +241,24 @@ export default function Footer() {
                 هاست Docker
               </a>
             </div>
+            <div>
+              <a
+                href="https://liara.ir/landing/هاست-دانلود-download-host"
+                title="هاست دانلود"
+                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
+              >
+                هاست دانلود
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://liara.ir/landing/هاست-ابری-cloud-hosting"
+                title="هاست ابری"
+                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
+              >
+                هاست ابری
+              </a>
+            </div>
           </div>
           <div className="md:w-2/6">
             <div
