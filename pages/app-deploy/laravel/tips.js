@@ -71,6 +71,9 @@ export default () => (
         </a>
       </li>
       <li>
+        <a href="#ziggy">نحوه‌ی استفاده از Ziggy</a>
+      </li>
+      <li>
         <a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a>
       </li>
       {/* <li>
@@ -611,6 +614,17 @@ $ffmpeg = FFMpeg::create([
       حال با اجرای دستور <span className="code">liara deploy</span>، فرایند
       استقرار آغاز خواهد شد.
     </p>
+    <h3 id="ziggy">نحوه‌ی استفاده از Ziggy</h3>
+    <p>
+      برای استفاده از Ziggy در لیارا تنها کافیست فایل مورد نظرتان را از مسیر{" "}
+      <span className="code">vendor/tightenco/ziggy/dist</span> در پوشه‌ی{" "}
+      <span className="code">resources/js</span> کپی کنید. برای مثال درصورتی که
+      فایل <span className="code">vue.m</span> را کپی کرده باشید می‌توانید
+      به‌شکل زیر آن را در برنامه‌ی خود ایمپورت کنید:
+    </p>
+    <Highlight className="javascript">
+      {`import { ZiggyVue } from './vue.m';`}
+    </Highlight>
     <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
     <p>
       به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
