@@ -41,13 +41,6 @@ export default () => (
         </a>
       </Link>
 
-      <Link href="/instructions/python#cloud-storage">
-        <a>
-          <PlatformIcon platform="python" />
-          <span>Python</span>
-        </a>
-      </Link>
-
       <Link href="/app-deploy/django/cloud-storage">
         <a>
           <PlatformIcon platform="django" />
@@ -62,10 +55,10 @@ export default () => (
         </a>
       </Link>
 
-      <Link href="/instructions/golang#cloud-storage">
+      <Link href="/app-deploy/netcore/cloud-storage">
         <a>
-          <PlatformIcon platform="go" />
-          <span>Go</span>
+          <PlatformIcon platform="netcore" />
+          <span>.NET</span>
         </a>
       </Link>
     </div>

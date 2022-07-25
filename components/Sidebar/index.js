@@ -635,6 +635,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/netcore/cloud-storage">
+                    اتصال به فضای ذخیره‌سازی ابری
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/netcore/domain">
                     اتصال دامنه
                   </ActiveLink>
