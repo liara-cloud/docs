@@ -194,6 +194,6 @@ $ liara deploy --disks data:uploads \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/php/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/cloud-storage">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
