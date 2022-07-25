@@ -275,6 +275,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/nodejs/cloud-storage">
+                    اتصال به فضای ذخیره‌سازی ابری
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/nodejs/domain">
                     اتصال دامنه
                   </ActiveLink>
