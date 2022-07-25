@@ -29,8 +29,8 @@ export default () => (
         <div style={{ direction: "ltr", display: "inline-block" }}>.bak</div>
       </strong>{" "}
       آدرس مستقیم فایل پشتیبان خود را وارد کنید. شما می‌توانید فایل پشتیبان را
-      در <Link href="/storage/object-storage/about">سرویس فایل</Link> آپلود کرده
-      و درنهایت آدرس مستقیم فایل پشتیبان را در این قسمت وارد کنید. لیارا به‌صورت
+      در <Link href="/buckets/about">فضای ذخیره‌سازی ابری</Link> آپلود کرده و
+      درنهایت آدرس مستقیم فایل پشتیبان را در این قسمت وارد کنید. لیارا به‌صورت
       خودکار فایل پشتیبان را در مسیر{" "}
       <span className="code">/var/opt/mssql/data</span> قرار می‌دهد و شما
       می‌توانید با استفاده از ابزار SSMS (SQL Server Management Studio)، فایل

@@ -364,7 +364,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/laravel/cloud-storage">
-                    اتصال به سرویس فایل
+                    اتصال به فضای ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -1536,7 +1536,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/buckets">ذخیره‌سازی ابری</NavTitle>
+          <NavTitle href="/buckets">فضای ذخیره‌سازی ابری</NavTitle>
           <ul className="nav__list">
             <li>
               <ActiveLink href="/buckets/about">
