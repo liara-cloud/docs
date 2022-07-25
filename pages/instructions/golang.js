@@ -33,7 +33,7 @@ export default () => (
     <p>
       سپس یک فایل با نام
       <span className="code">Dockerfile</span>
-      در ریشه‌ی برنامه‌ی‌تان بسازید و سپس قطعه‌کد زیر را در این فایل قرار دهید:
+      در ریشه‌ی برنامه‌ی‌تان بسازید و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight className="dockerfile">
       {`FROM golang:1.17-alpine AS build

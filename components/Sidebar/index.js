@@ -1160,6 +1160,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/streamlit">
+                <PlatformIcon platform="streamlit" />
+                Streamlit
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/rabbitmq">
                 <PlatformIcon platform="rabbitmq" />
                 RabbitMQ

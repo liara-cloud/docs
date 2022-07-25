@@ -1,5 +1,7 @@
 import React from "react";
 
+import streamlitIcon from "./streamlit.svg";
+
 // Apps
 
 import vueIcon from "@liara/platformicons/svg/vue.svg";
@@ -79,6 +81,7 @@ import githubIcon from "@liara/platformicons/svg/github.svg";
 import gitlabIcon from "@liara/platformicons/svg/gitlab.svg";
 
 const types = [
+  { logo: streamlitIcon, alt: "streamlit" },
   // Apps
   { logo: phpIcon, alt: "php" },
   { logo: vueIcon, alt: "vue" },
