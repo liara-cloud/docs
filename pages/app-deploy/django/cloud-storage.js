@@ -36,6 +36,9 @@ export default () => (
         <a href="#install-aws-sdk">نصب AWS SDK</a>
       </li>
       <li>
+        <a href="#filesystem-config">پیکربندی FileSystem</a>
+      </li>
+      <li>
         <a href="#set-keys">تنظیم کلیدها</a>
       </li>
       <li>
@@ -74,7 +77,7 @@ pip install django-storages`}</Highlight>
       در مرحله‌ی بعد، به‌منظور امنیت و کنترل راحت‌تر مقادیر باید مشخصات فضای
       ذخیره‌سازی ابری اعم از <Link href="/buckets/keys">کلیدها</Link> و آدرس
       اتصال به این سرویس را در بخش{" "}
-      <Link href="/app-deploy/Django/envs">متغیرهای برنامه</Link> تنظیم کنید.
+      <Link href="/app-deploy/django/envs">متغیرهای برنامه</Link> تنظیم کنید.
     </p>
     <Highlight className="plaintext">
       {`LIARA_ENDPOINT=<Liara Bucket Endpoint>
@@ -83,8 +86,37 @@ LIARA_ACCESS_KEY=<Access Key>
 LIARA_SECRET_KEY=<Secret Key>`}
     </Highlight>
 
+    <h3 id="filesystem-config">پیکربندی فایل‌سیستم</h3>
+
+    <p>
+      در مرحله‌ی آخر باید پیکربندی فایل‌سیستم برنامه‌‌تان را به‌شکل زیر در فایل{" "}
+      <span className="code">settings.py</span> ویرایش کنید:
+    </p>
+    <Highlight className="python">
+      {`INSTALLED_APPS = [
+  ...,
+  'storages',
+]
+
+AWS_S3_ENDPOINT_URL = os.environ.get(LIARA_ENDPOINT)
+AWS_STORAGE_BUCKET_NAME = os.environ.get(LIARA_BUCKET_NAME)
+AWS_ACCESS_KEY_ID = os.environ.get(LIARA_ACCESS_KEY)
+AWS_SECRET_ACCESS_KEY = os.environ.get(LIARA_SECRET_KEY)
+AWS_S3_OBJECT_PARAMETERS = {
+  'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
+    </Highlight>
+
     <h3 id="how-to-use">نحوه‌ی استفاده</h3>
-    <p>نمونه کد برای دریافت لیست باکت‌های ایجاد شده:</p>
+    <p>
+      می‌توان گفت که تغییر خاصی در نحوه‌ی استفاده‌ی شما به‌وجود نخواهد آمد. برای
+      مثال شما می‌توانید با استفاده از قطعه کد زیر، محتوای{" "}
+      <span className="code">Contents</span> را در فایلی با نام{" "}
+      <span className="code">example.txt</span> قرار داده و آن را در فضای
+      ذخیره‌سازی ابری ذخیره کنید:
+    </p>
 
     <Highlight className="python">{``}</Highlight>
 
