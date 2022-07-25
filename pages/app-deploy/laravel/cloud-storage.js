@@ -89,11 +89,11 @@ export default () => (
     </p>
     <Highlight className="env">
       {`FILESYSTEM_CLOUD=minio
-ENDPOINT_URL=<Liara API Endpoint>
+ENDPOINT_URL=<Liara Bucket Endpoint>
+BUCKET_NAME=<Bucket Name>
 ACCESS_KEY=<Access Key>
 SECRET_KEY=<Secret Key>
-DEFAULT_REGION=us-east-1
-BUCKET_NAME=<Name of you're bucket>`}
+DEFAULT_REGION=us-east-1`}
     </Highlight>
 
     <h4>در لیارا</h4>
