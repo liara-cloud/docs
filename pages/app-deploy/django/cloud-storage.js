@@ -36,10 +36,10 @@ export default () => (
         <a href="#install-aws-sdk">نصب AWS SDK</a>
       </li>
       <li>
-        <a href="#filesystem-config">پیکربندی FileSystem</a>
+        <a href="#set-keys">تنظیم کلیدها</a>
       </li>
       <li>
-        <a href="#set-keys">تنظیم کلیدها</a>
+        <a href="#filesystem-config">پیکربندی FileSystem</a>
       </li>
       <li>
         <a href="#how-to-use">نحوه‌ی استفاده</a>
@@ -89,8 +89,8 @@ LIARA_SECRET_KEY=<Secret Key>`}
     <h3 id="filesystem-config">پیکربندی فایل‌سیستم</h3>
 
     <p>
-      در مرحله‌ی آخر باید پیکربندی فایل‌سیستم برنامه‌‌تان را به‌شکل زیر در فایل{" "}
-      <span className="code">settings.py</span> ویرایش کنید:
+      در مرحله‌ی آخر باید فایل <span className="code">settings.py</span>{" "}
+      برنامه‌تان را به‌شکل زیر ویرایش کنید:
     </p>
     <Highlight className="python">
       {`INSTALLED_APPS = [
