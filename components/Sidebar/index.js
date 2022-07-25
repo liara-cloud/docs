@@ -1578,6 +1578,9 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/buckets/resize">تغییر اندازه</ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/buckets/domain">اتصال دامنه</ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/buckets/access-policy">
                 تغییر سطح دسترسی
               </ActiveLink>
