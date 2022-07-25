@@ -499,6 +499,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/django/cloud-storage">
+                    اتصال به فضای ذخیره‌سازی ابری
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/django/domain">
                     اتصال دامنه
                   </ActiveLink>
