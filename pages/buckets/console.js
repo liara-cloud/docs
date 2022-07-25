@@ -1,5 +1,5 @@
-import Layout from "../../../components/Layout";
-import Notice from "../../../components/Notice";
+import Layout from "../../components/Layout";
+import Notice from "../../components/Notice";
 import Head from "next/head";
 
 export default () => (
@@ -18,7 +18,7 @@ export default () => (
         <a href="#create-bucket">ایجاد باکت</a>
       </li>
       <li>
-        <a href="upload">آپلود فایل</a>
+        <a href="#upload">آپلود فایل</a>
       </li>
       <li>
         <a href="#download">دانلود فایل</a>
@@ -61,7 +61,7 @@ export default () => (
       </strong>{" "}
       کلیک کنید. در قدم بعد، یک شناسه یکتا برای باکت خود درنظر بگیرید و سطح
       دسترسی مورد نظرتان را انتخاب کنید. سطح دسترسی عمومی، مناسب فایل‌های
-      استاتیک وب‌سایت و مستندات عمومی است و از سطح دسترسی خصوصی می‌توانید برای
+      استاتیک وب‌سایت و فایل‌های عمومی است و از سطح دسترسی خصوصی می‌توانید برای
       وبسایت‌های فروش فایل و یا نگهداری از اطلاعات شخصی کاربران استفاده کنید. در
       نهایت پس از انتخاب پلن می‌توانید بر روی دکمه‌ی <strong>ایجاد باکت</strong>{" "}
       کلیک کنید.

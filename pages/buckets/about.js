@@ -47,9 +47,9 @@ export default () => (
 
     <p>
       در لیارا می‌توانید با استفاده از{" "}
-      <Link href="/buckets/management/console">رابط کاربری اختصاصی</Link> و یا
-      با استفاده از <Link href="/buckets/management/aws-sdk">AWS SDK</Link>،
-      فضای ذخیره‌سازی ابری را مدیریت کنید.
+      <Link href="/buckets/console">رابط کاربری اختصاصی</Link> و یا با استفاده
+      از <Link href="/buckets/aws-sdk">AWS SDK</Link>، فضای ذخیره‌سازی ابری را
+      مدیریت کنید.
     </p>
   </Layout>
 );

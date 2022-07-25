@@ -1544,21 +1544,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <NavTitle href="/buckets/management">
-                مدیریت فضای ذخیره‌سازی ابری
-              </NavTitle>
-              <ul className="nav__list">
-                <li>
-                  <ActiveLink href="/buckets/management/console">
-                    رابط کاربری اختصاصی
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/buckets/management/aws-sdk">
-                    AWS SDK
-                  </ActiveLink>
-                </li>
-              </ul>
+              <ActiveLink href="/buckets/console">
+                مدیریت فایل‌ها با رابط کاربری
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/buckets/aws-sdk">اتصال با AWS SDK</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/buckets/keys">مدیریت کلیدها</ActiveLink>

@@ -14,8 +14,7 @@ export default () => (
     <h2>تغییر سطح دسترسی</h2>
 
     <p>
-      شما در زمان{" "}
-      <Link href="/buckets/management/console#create-bucket">ایجاد باکت</Link>{" "}
+      شما در زمان <Link href="/buckets/console#create-bucket">ایجاد باکت</Link>{" "}
       می‌توانید سطح دسترسی هر باکت را مشخص کنید. حال درصورتی که قصد داشته باشید
       بعد از ایجاد باکت، سطح دسترسی باکت خود را تغییر دهید می‌توانید وارد{" "}
       <strong>تنظیمات</strong> باکت شوید و <strong>سطح دسترسی</strong> مورد
