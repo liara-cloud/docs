@@ -60,7 +60,7 @@ EXPOSE 8501
 
 COPY . .
 
-CMD [ "streamlit", "run", "WebSite.py"]`}
+CMD [ "streamlit", "run", "main.py"]`}
     </Highlight>
 
     <p>
