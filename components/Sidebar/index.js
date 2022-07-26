@@ -1585,6 +1585,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 تغییر سطح دسترسی
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/buckets/migrate">
+                ثبت درخواست انتقال
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 
