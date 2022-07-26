@@ -118,7 +118,10 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
       ذخیره‌سازی ابری ذخیره کنید:
     </p>
 
-    <Highlight className="python">{``}</Highlight>
+    <Highlight className="python">{`from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+
+path = default_storage.save('/', ContentFile(b'Contents'))`}</Highlight>
 
     <br />
 
