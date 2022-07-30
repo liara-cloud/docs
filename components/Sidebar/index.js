@@ -1517,7 +1517,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
               </ul>
             </li>
-            {/* <li>
+            <li>
               <NavTitle href="/storage/object-storage">Object Storage</NavTitle>
               <ul className="nav__list">
                 <li>
@@ -1551,7 +1551,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
               </ul>
-            </li> */}
+            </li>
           </ul>
         </nav>
 
