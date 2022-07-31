@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
+import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
 
 export default () => (
@@ -13,6 +14,7 @@ export default () => (
     <h2>مدیریت کلیدها</h2>
 
     <h3>ایجاد کلید</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/generate-keys.gif" />
     <p>
       برای اتصال به فضای ذخیره‌سازی ابری با استفاده از AWS SDK به کلیدهای Access
       Key و Secret Key نیاز خواهید داشت. حال برای ایجاد کلید باید وارد بخش{" "}
@@ -43,7 +45,7 @@ export default () => (
     </Notice>
 
     <h3>ساخت کلید جدید</h3>
-
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/revoke-keys.gif" />
     <p>
       درصورتی که به‌هر دلیلی Secret Key را از دست بدهید باید روی گزینه‌ی{" "}
       <svg
@@ -59,6 +61,7 @@ export default () => (
     </p>
 
     <h3>حذف کلید</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/delete-keys.gif" />
     <p>
       برای حذف کلید می‌توانید روی گزینه‌ی{" "}
       <svg
