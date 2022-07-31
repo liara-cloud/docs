@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
+import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
 
 export default () => (
@@ -11,6 +12,12 @@ export default () => (
     <h1>فضای ذخیره‌سازی ابری</h1>
 
     <h2>تغییر اندازه</h2>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/resize-bucket.gif" />
+
+    <Notice variant="warning">
+      توجه داشته باشید که در فضای ذخیره‌سازی ابری، امکان برگشت به پلن قبل وجود
+      ندارد.
+    </Notice>
 
     <p>
       برای تغییر اندازه و ارتقا پلن فضای ذخیره‌سازی ابری باید وارد باکت مورد
@@ -18,10 +25,5 @@ export default () => (
       درنهایت می‌توانید روی گزینه‌ی <strong>تایید</strong> کلیک کنید تا عملیات
       تغییر اندازه انجام شود.
     </p>
-
-    <Notice variant="warning">
-      توجه داشته باشید که در فضای ذخیره‌سازی ابری، امکان برگشت به پلن قبل وجود
-      ندارد.
-    </Notice>
   </Layout>
 );
