@@ -191,6 +191,8 @@ $ liara deploy --disks data:/app/data \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/django/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/django/cloud-storage">
+      متوجه شدم، برو گام بعدی!
+    </Link>
   </Layout>
 );

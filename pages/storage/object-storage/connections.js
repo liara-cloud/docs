@@ -65,7 +65,6 @@ export default () => (
 
       <Highlight className="javascript">
         {`$ npm install aws-sdk
-
 var AWS = require('aws-sdk');
 const s3 = new AWS.S3({
     accessKeyId: LIARA_ACCESS_KEY,
@@ -121,7 +120,6 @@ return [
       </li>
       <Highlight className="php">
         {`$ composer require aws/aws-sdk-php
-
 <?php
 require 'vendor/autoload.php';
 use Aws\S3\S3Client;
@@ -158,7 +156,6 @@ print_r($listResponse);`}
       <Highlight className="python">
         {`pip install boto3
 pip install django-storages
-
 # settings.py:
 INSTALLED_APPS = [
   'django.contrib.auth',
@@ -170,7 +167,6 @@ INSTALLED_APPS = [
   'storages',
   ...
 ]
-
 AWS_ACCESS_KEY_ID = os.environ.get(LIARA_ACCESS_KEY)
 AWS_SECRET_ACCESS_KEY = os.environ.get(LIARA_SECRET_KEY)
 AWS_STORAGE_BUCKET_NAME = os.environ.get(LIARA_BUCKET_NAME)
@@ -193,14 +189,11 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
       </li>
       <Highlight className="python">
         {`$ pip install boto3
-
 import boto3, os
-
 s3 = boto3.resource('s3',
         endpoint_url=os.environ.get(LIARA_ENDPOINT),
         aws_access_key_id=os.environ.get(LIARA_ACCESS_KEY),
         aws_secret_access_key=os.environ.get(LIARA_SECRET_KEY))
-
 for bucket in s3.buckets.all():
     print(bucket.name)`}
       </Highlight>
@@ -222,17 +215,14 @@ for bucket in s3.buckets.all():
 using System;
 using System.Threading.Tasks;
 using Amazon;
-
 class Program
 {
   private const string accessKey = Environment.GetEnvironmentVariable("LIARA_ACCESS_KEY");
   private const string secretKey = Environment.GetEnvironmentVariable("LIARA_SECRET_KEY");
-
   static void Main(string[] args)
   {
     Task.Run(MainAsync).GetAwaiter().GetResult();
   }
-
   private static async Task MainAsync()
   {
     var config = new AmazonS3Config
@@ -245,11 +235,8 @@ class Program
       accessKey,
       secretKey,
       config);
-
     amazonS3Client.ExceptionEvent += OnAmazonS3Exception;
-
     var listBucketResponse = await amazonS3Client.ListBucketsAsync();
-
     foreach (var bucket in listBucketResponse.Buckets)
     {
       // ...
