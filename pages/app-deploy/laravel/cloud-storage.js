@@ -65,7 +65,7 @@ export default () => (
     </p>
     <Highlight className="php">
       {`'cloud' => env('FILESYSTEM_CLOUD'),
-'minio' => [
+'liara' => [
     'driver' => 's3',
     'endpoint' => env('ENDPOINT_URL'),
     'use_path_style_endpoint' => true,
@@ -121,7 +121,7 @@ DEFAULT_REGION=us-east-1`}
     <Highlight className="php">
       {`use Illuminate\\Support\\Facades\\Storage;
 
-Storage::disk('minio')->put('example.txt', 'Contents');`}
+Storage::disk('liara')->put('example.txt', 'Contents');`}
     </Highlight>
 
     <br />

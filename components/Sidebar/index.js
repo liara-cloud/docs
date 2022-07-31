@@ -1556,7 +1556,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/buckets">فضای ذخیره‌سازی ابری</NavTitle>
+          <NavTitle href="/buckets">ذخیره‌سازی ابری</NavTitle>
           <ul className="nav__list">
             <li>
               <ActiveLink href="/buckets/about">

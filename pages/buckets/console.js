@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
+import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
 
 export default () => (
@@ -24,17 +25,18 @@ export default () => (
         <a href="#download">دانلود فایل</a>
       </li>
       <li>
-        <a href="#delete">حذف فایل</a>
-      </li>
-      <li>
         <a href="#view">مشاهده فایل</a>
       </li>
       <li>
         <a href="#share">اشتراک‌گذاری فایل</a>
       </li>
+      <li>
+        <a href="#delete">حذف فایل</a>
+      </li>
     </ul>
 
     <h3 id="create-bucket">ایجاد باکت</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/create-bucket.gif" />
     <p>
       باکت، فضایی برای ذخیره‌سازی فایل‌ها و اطلاعات است و شما می‌توانید آن را
       مانند یک پوشه درنظر بگیرید که امکان ساخت پوشه‌های بیشتری در آن وجود دارد.
@@ -68,6 +70,7 @@ export default () => (
     </p>
 
     <h3 id="upload">آپلود فایل</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/upload-file.gif" />
     <p>
       برای آپلود فایل از طریق رابط کاربری اختصاصی لیارا تنها کافیست وارد باکت
       مورد نظرتان شوید و روی گزینه‌ی <strong>آپلود فایل</strong> کلیک کنید،
@@ -76,6 +79,7 @@ export default () => (
     </p>
 
     <h3 id="download">دانلود فایل</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/download-file.gif" />
     <p>
       برای دانلود فایل از طریق رابط کاربری اختصاصی لیارا تنها کافیست وارد باکت
       مورد نظرتان شوید و در لیست فایل‌ها، روی گزینه‌ی{" "}
@@ -90,23 +94,8 @@ export default () => (
       کلیک کنید.
     </p>
 
-    <h3 id="delete">حذف فایل</h3>
-    <p>
-      برای حذف فایل از طریق رابط کاربری اختصاصی لیارا تنها کافیست وارد باکت مورد
-      نظرتان شوید و در لیست فایل‌ها، روی گزینه‌ی{" "}
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        style={{ display: "inline" }}
-      >
-        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
-      </svg>{" "}
-      کلیک کنید. درنهایت درصورتی که از حذف این فایل اطمینان داشتید باید روی
-      گزینه‌ی <strong>حذف فایل</strong> کلیک کنید.
-    </p>
-
     <h3 id="view">مشاهده فایل</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/view-file.gif" />
     <p>
       برای مشاهده فایل از طریق رابط کاربری اختصاصی لیارا تنها کافیست وارد باکت
       مورد نظرتان شوید و در لیست فایل‌ها، روی گزینه‌ی{" "}
@@ -122,6 +111,7 @@ export default () => (
     </p>
 
     <h3 id="share">اشتراک‌گذاری فایل</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/share-file.gif" />
     <p>
       برای اشتراک‌گذاری فایل از طریق رابط کاربری اختصاصی لیارا تنها کافیست وارد
       باکت مورد نظرتان شوید و در لیست فایل‌ها، روی گزینه‌ی{" "}
@@ -142,5 +132,22 @@ export default () => (
       توجه داشته باشید که برای دسترسی به لینک دائمی فایل‌ها باید سطح دسترسی
       باکت، <strong>عمومی</strong> باشد.
     </Notice>
+
+    <h3 id="delete">حذف فایل</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/delete-file.gif" />
+    <p>
+      برای حذف فایل از طریق رابط کاربری اختصاصی لیارا تنها کافیست وارد باکت مورد
+      نظرتان شوید و در لیست فایل‌ها، روی گزینه‌ی{" "}
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        style={{ display: "inline" }}
+      >
+        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
+      </svg>{" "}
+      کلیک کنید. درنهایت درصورتی که از حذف این فایل اطمینان داشتید باید روی
+      گزینه‌ی <strong>حذف فایل</strong> کلیک کنید.
+    </p>
   </Layout>
 );
