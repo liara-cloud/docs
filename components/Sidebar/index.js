@@ -1571,7 +1571,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             <li>
               <ActiveLink href="/buckets/aws-sdk">اتصال با AWS SDK</ActiveLink>
             </li>
-            <li>
+            {/* <li>
               <ActiveLink href="/buckets/keys">مدیریت کلیدها</ActiveLink>
             </li>
             <li>
@@ -1589,7 +1589,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/buckets/migrate">
                 ثبت درخواست انتقال
               </ActiveLink>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
