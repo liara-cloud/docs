@@ -15,6 +15,12 @@ export default () => (
 
     <h3>ایجاد کلید</h3>
     <ZoomableImage src="https://files.liara.ir/docs/buckets/generate-keys.gif" />
+
+    <Notice variant="warning">
+      توجه داشته باشید که Secret Key تنها یک‌بار به شما نمایش داده می‌شود
+      بنابراین آن را در جایی مطمئن ذخیره کنید.
+    </Notice>
+
     <p>
       برای اتصال به فضای ذخیره‌سازی ابری با استفاده از AWS SDK به کلیدهای Access
       Key و Secret Key نیاز خواهید داشت. حال برای ایجاد کلید باید وارد بخش{" "}
@@ -38,11 +44,6 @@ export default () => (
       <strong>تایید</strong> کلیک کنید تا کلیدهای Access Key و Secret Key ساخته
       شوند.
     </p>
-
-    <Notice variant="warning">
-      توجه داشته باشید که Secret Key تنها یک‌بار به شما نمایش داده می‌شود
-      بنابراین آن را در جایی مطمئن ذخیره کنید.
-    </Notice>
 
     <h3>ساخت کلید جدید</h3>
     <ZoomableImage src="https://files.liara.ir/docs/buckets/revoke-keys.gif" />

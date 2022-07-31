@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
+import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -12,6 +13,12 @@ export default () => (
     <h1>فضای ذخیره‌سازی ابری</h1>
 
     <h2>تغییر سطح دسترسی</h2>
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/change-access-policy.gif" />
+
+    <Notice variant="warning">
+      توجه داشته باشید که برای دسترسی به لینک دائمی فایل‌ها باید سطح دسترسی
+      باکت، <strong>عمومی</strong> باشد.
+    </Notice>
 
     <p>
       شما در زمان <Link href="/buckets/console#create-bucket">ایجاد باکت</Link>{" "}
@@ -21,10 +28,5 @@ export default () => (
       نظرتان را انتخاب کنید. درنهایت می‌توانید روی گزینه‌ی{" "}
       <strong>تایید</strong> کلیک کنید تا عملیات تغییر سطح دسترسی انجام شود.
     </p>
-
-    <Notice variant="warning">
-      توجه داشته باشید که برای دسترسی به لینک دائمی فایل‌ها باید سطح دسترسی
-      باکت، <strong>عمومی</strong> باشد.
-    </Notice>
   </Layout>
 );
