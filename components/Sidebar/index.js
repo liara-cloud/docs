@@ -1223,11 +1223,21 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/dotnet-published">
+                <PlatformIcon platform="netcore" />
                 استقرار فایل DLL
               </ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/instructions/voyager">Voyager</ActiveLink>
+              <ActiveLink href="/instructions/voyager">
+                <PlatformIcon platform="laravel" />
+                Voyager
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/instructions/vite">
+                <PlatformIcon platform="vite" />
+                Vite
+              </ActiveLink>
             </li>
           </ul>
         </nav>
