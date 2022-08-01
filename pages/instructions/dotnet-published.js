@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -9,7 +10,14 @@ export default () => (
       <title>استقرار فایل DLL - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>استقرار فایل DLL</h1>
+    <div className="page-head">
+      <PlatformIcon platform="netcore" />
+      <div className="page-title">
+        <h1>استقرار فایل DLL</h1>
+        <span className="page-description">(ASP.Net Core Apps)</span>
+      </div>
+    </div>
+
     <p>
       در پلتفرم ASP.Net Core لیارا، ابتدا کل سورس‌کد شما به‌سرور آپلود شده و سپس
       فرایند publish آغاز می‌شود. اما چنانچه قبلا برنامه‌ی‌تان را publish

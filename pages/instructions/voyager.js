@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
 
 export default () => (
   <Layout>
@@ -9,7 +10,14 @@ export default () => (
       <title>استفاده از Voyager در برنامه‌های Laravel - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>استفاده از Voyager در برنامه‌های Laravel</h1>
+    <div className="page-head">
+      <PlatformIcon platform="laravel" />
+      <div className="page-title">
+        <h1>استفاده از Voyager در برنامه‌های Laravel</h1>
+        <span className="page-description">(Laravel Apps)</span>
+      </div>
+    </div>
+
     <p>
       شما برای استفاده از پکیج{" "}
       <a href="https://github.com/the-control-group/voyager" target="_blank">
