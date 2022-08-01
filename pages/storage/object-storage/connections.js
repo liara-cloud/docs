@@ -2,6 +2,7 @@ import Layout from "../../../components/Layout";
 import Head from "next/head";
 import Notice from "../../../components/Notice";
 import Highlight from "react-highlight";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -11,6 +12,11 @@ export default () => (
 
     <h1>آبجکت استوریج</h1>
     <span className="page-description">(Object Storage)</span>
+
+    <Notice variant="danger">
+      از این پس سرویس فایل در لیارا ارائه نمی‌شود و می‌توانید به‌عنوان جایگزین
+      از <Link href="/buckets/about">فضای ذخیره‌سازی ابری</Link> استفاده کنید.
+    </Notice>
 
     <h3>استاندارد S3</h3>
     <p>
