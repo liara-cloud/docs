@@ -88,7 +88,7 @@ export default () => (
       کنید:
     </p>
     <Highlight className="env">
-      {`FILESYSTEM_CLOUD=minio
+      {`FILESYSTEM_CLOUD=liara
 ENDPOINT_URL=<Liara Bucket Endpoint>
 BUCKET_NAME=<Bucket Name>
 ACCESS_KEY=<Access Key>
