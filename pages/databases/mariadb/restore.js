@@ -51,7 +51,7 @@ export default () => (
       ابزار <span className="code">mysql-client</span> استفاده کنید.
     </p>
     <Highlight className="bash">
-      {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT < /path/to/backup-file.sql`}
+      {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT --database DB_NAME < /path/to/backup-file.sql`}
     </Highlight>
 
     <Asciinema id="465864" />
