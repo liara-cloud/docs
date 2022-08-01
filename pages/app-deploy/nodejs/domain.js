@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Head from "next/head";
-import Highlight from "react-highlight";
-import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
@@ -22,20 +20,24 @@ export default () => (
 
     <h3>اتصال دامنه به برنامه</h3>
     <p>
-      لیارا یک زیردامنه‌ی رایگان با پشتیبانی از SSL به هر برنامه‌ی ایجاد شده
-      اختصاص می‌دهد که شما می‌توانید این آدرس را در بخش اطلاعات کلی هر برنامه
-      مشاهده کنید و به‌کمک این دامنه، تست و بررسی برنامه برای شما ساده‌تر خواهد
-      شد. همچنین این امکان برای شما وجود خواهد داشت که آدرس برنامه را برای
-      دوستان و کارفرمایان خود ارسال کنید.
+      برای اتصال دامنه به برنامه‌های NodeJS در لیارا باید وارد برنامه‌ی مورد
+      نظرتان شوید و از منوی سمت راست، روی گزینه‌ی <strong>دامنه‌ها</strong> کلیک
+      کنید. سپس روی گزینه‌ی{" "}
+      <strong>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          style={{ display: "inline" }}
+        >
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+        </svg>
+        افزودن دامنه
+      </strong>{" "}
+      کلیک کرده و نام دامنه‌تان (مثلا example.com) را وارد کنید. درنهایت با کلیک
+      روی گزینه‌ی <strong>ایجاد دامنه</strong>، دامنه شما در لیارا اضافه می‌شود
+      و همچنین به صفحه‌ی <strong>مدیریت دامنه</strong> هدایت می‌شوید.
     </p>
-    <ZoomableImage src="/static/nodejs-default-domain.png" />
-    <p>
-      اما برای اتصال دامنه‌ی اختصاصی به برنامه باید طبق مستندات{" "}
-      <Link href="/domains/management#add-domain">اضافه‌کردن دامنه‌</Link> عمل
-      کنید. البته پلتفرم NodeJS نکات و توضیحات بیشتری دارد که در بخش بعدی یعنی{" "}
-      <b>توضیحات و نکات تکمیلی</b> به آن‌ها پرداخته‌ایم.
-    </p>
-
     <Link href="/app-deploy/nodejs/email">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
