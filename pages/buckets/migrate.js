@@ -16,7 +16,7 @@ export default () => (
 
     <h3>ثبت درخواست انتقال</h3>
 
-    <ZoomableImage src="https://files.liara.ir/docs/buckets/migrate-from-object-storage-to-buckets.gif.gif" />
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/migrate-from-object-storage-to-buckets.gif" />
 
     <p>
       برای انتقال داده‌ها و فایل‌ها از سرویس فایل به فضای ذخیره‌سازی ابری در
