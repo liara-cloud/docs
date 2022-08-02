@@ -1,4 +1,5 @@
 import Layout from "../../components/Layout";
+import ZoomableImage from "../../components/ZoomableImage";
 import Head from "next/head";
 
 export default () => (
@@ -14,6 +15,8 @@ export default () => (
     <h2>انتقال فایل‌ها از سرویس فایل به فضای ذخیره‌سازی ابری</h2>
 
     <h3>ثبت درخواست انتقال</h3>
+
+    <ZoomableImage src="https://files.liara.ir/docs/buckets/migrate-from-object-storage-to-buckets.gif.gif" />
 
     <p>
       برای انتقال داده‌ها و فایل‌ها از سرویس فایل به فضای ذخیره‌سازی ابری در
