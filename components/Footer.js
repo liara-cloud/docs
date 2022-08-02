@@ -282,7 +282,7 @@ export default function Footer() {
               >
                 ۰۲۵-۳۷۸۳۸۹۴۶
               </span>{" "}
-              <span className="text-black text-sm px-1">(۹ الی ۲۱)</span>
+              <span className="text-black text-sm px-1">(۹ الی ۱۷)</span>
             </div>
             <div className="my-1 p-1">
               <span className="text-grey text-sm">ایمیل واحد پشتیبانی:</span>{" "}
