@@ -1,37 +1,3 @@
-import Link from "next/link";
-import Head from "next/head";
-import Layout from "../../../components/Layout";
-import PlatformIcon from "../../../components/PlatformIcon";
-import ZoomableImage from "../../../components/ZoomableImage";
+import Domain from "../../../components/PlatformDomain";
 
-export default () => (
-  <Layout>
-    <Head>
-      <title>مستندات اتصال دامنه به برنامه‌های Docker - سرویس ابری لیارا</title>
-    </Head>
-
-    <div className="page-head">
-      <PlatformIcon platform="docker" />
-      <div className="page-title">
-        <h1>برنامه‌های Docker</h1>
-        <span className="page-description">(Docker Apps)</span>
-      </div>
-    </div>
-
-    <h3>اتصال دامنه به برنامه</h3>
-    <p>
-      لیارا یک زیردامنه‌ی رایگان با پشتیبانی از SSL به هر برنامه‌ی ایجاد شده
-      اختصاص می‌دهد که شما می‌توانید این آدرس را در بخش اطلاعات کلی هر برنامه
-      مشاهده کنید و به‌کمک این دامنه، تست و بررسی برنامه برای شما ساده‌تر خواهد
-      شد. همچنین این امکان برای شما وجود خواهد داشت که آدرس برنامه را برای
-      دوستان و کارفرمایان خود ارسال کنید.
-    </p>
-    <ZoomableImage src="/static/docker-default-domain.png" />
-    <p>
-      اما برای اتصال دامنه‌ی اختصاصی به برنامه باید طبق مستندات{" "}
-      <Link href="/domains/management#add-domain">اضافه‌کردن دامنه‌</Link> عمل
-      کنید. البته توصیه ما این‌ است که تمام بخش‌های برنامه خود را با موفقیت روی
-      لیارا مستقر کنید و سپس به کار‌های مربوط به اتصال دامنه بپردازید.
-    </p>
-  </Layout>
-);
+export default () => <Domain platform="docker" />;
