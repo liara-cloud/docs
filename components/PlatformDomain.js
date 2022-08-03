@@ -186,8 +186,6 @@ export default function Domain({ platform }) {
         لیارا با موفقیت صورت گرفته است.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/docs/domain/check-api-dns-records.gif" />
-
       <Notice variant="info">
         ۱. توجه داشته باشید که درصورت استفاده از CDN باید گواهی SSL را نیز از
         سرویس‌دهنده‌ی DNS فعلی‌تان تهیه کنید.
