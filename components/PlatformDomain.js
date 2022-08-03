@@ -77,7 +77,7 @@ export default function Domain({ platform }) {
         می‌شود و همچنین به صفحه‌ی <strong>مدیریت دامنه</strong> هدایت می‌شوید.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/liara/domain/add-domain.gif" />
+      <ZoomableImage src="https://files.liara.ir/docs/domain/add-domain.gif" />
 
       <p>
         در این مرحله باید رکوردهای DNS درخواست شده را با استفاده از یک سرویس DNS
@@ -98,7 +98,7 @@ export default function Domain({ platform }) {
         لیارا با موفقیت صورت گرفته است.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/liara/domain/check-dns-records.gif" />
+      <ZoomableImage src="https://files.liara.ir/docs/domain/check-dns-records.gif" />
 
       <Notice variant="info">
         ۱. توجه داشته باشید که درصورت استفاده از CDN باید گواهی SSL را نیز از
@@ -117,7 +117,7 @@ export default function Domain({ platform }) {
         کنید.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/liara/domain/add-www-subdomain.gif" />
+      <ZoomableImage src="https://files.liara.ir/docs/domain/add-www-subdomain.gif" />
 
       <h3 id="enable-ssl">تهیه گواهی SSL</h3>
 
@@ -133,7 +133,7 @@ export default function Domain({ platform }) {
         <strong>تهیه گواهی SSL</strong> کلیک کنید.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/liara/domain/enable-ssl.gif" />
+      <ZoomableImage src="https://files.liara.ir/docs/domain/enable-ssl.gif" />
 
       <p>
         درنهایت وب‌سایت شما بعد از فعال شدن موفقیت‌آمیز گواهی SSL بر روی پروتکل
@@ -165,7 +165,7 @@ export default function Domain({ platform }) {
         می‌شود و همچنین به صفحه‌ی <strong>مدیریت دامنه</strong> هدایت می‌شوید.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/liara/domain/add-api-subdomain.gif" />
+      <ZoomableImage src="https://files.liara.ir/docs/domain/add-api-subdomain.gif" />
 
       <p>
         در این مرحله نیز باید رکوردهای DNS درخواست شده را با استفاده از یک سرویس
@@ -186,7 +186,7 @@ export default function Domain({ platform }) {
         لیارا با موفقیت صورت گرفته است.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/liara/domain/check-api-dns-records.gif" />
+      <ZoomableImage src="https://files.liara.ir/docs/domain/check-api-dns-records.gif" />
 
       <Notice variant="info">
         ۱. توجه داشته باشید که درصورت استفاده از CDN باید گواهی SSL را نیز از
