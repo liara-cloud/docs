@@ -68,7 +68,6 @@ export default () => (
 'liara' => [
     'driver' => 's3',
     'endpoint' => env('ENDPOINT_URL'),
-    'use_path_style_endpoint' => true,
     'key' => env('ACCESS_KEY'),
     'secret' => env('SECRET_KEY'),
     'region' => env('DEFAULT_REGION'),

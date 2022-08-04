@@ -98,8 +98,7 @@ class Program
     var config = new AmazonS3Config
     {
       RegionEndpoint = RegionEndpoint.USEast1,
-      ServiceURL = Environment.GetEnvironmentVariable("LIARA_ENDPOINT"),
-      ForcePathStyle = true
+      ServiceURL = Environment.GetEnvironmentVariable("LIARA_ENDPOINT")
     };
     var amazonS3Client = new AmazonS3Client(
       accessKey,

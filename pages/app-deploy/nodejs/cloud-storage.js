@@ -85,7 +85,6 @@ const config = {
     accessKeyId: process.env(LIARA_ACCESS_KEY),
     secretAccessKey: process.env(LIARA_SECRET_KEY),
     region: "default",
-    s3ForcePathStyle: true,
 }
 
 const client = new AWS.S3(config);

@@ -91,7 +91,6 @@ $client = new S3Client([
         'key' => LIARA_ACCESS_KEY
         'secret' => LIARA_SECRET_KEY
     ],
-    'use_path_style_endpoint' => true
 ]);
 
 $listResponse = $client->listBuckets();
