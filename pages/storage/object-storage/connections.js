@@ -15,7 +15,7 @@ export default () => (
 
     <Notice variant="danger">
       از این پس سرویس فایل در لیارا ارائه نمی‌شود و می‌توانید به‌عنوان جایگزین
-      از <Link href="/buckets/about">فضای ذخیره‌سازی ابری</Link> استفاده کنید.
+      از <Link href="/buckets/about">ذخیره‌سازی ابری</Link> استفاده کنید.
     </Notice>
 
     <h3>استاندارد S3</h3>

@@ -275,8 +275,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/nodejs/cloud-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                  <ActiveLink href="/app-deploy/nodejs/object-storage">
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -368,8 +368,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/laravel/cloud-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                  <ActiveLink href="/app-deploy/laravel/object-storage">
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -431,8 +431,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/php/cloud-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                  <ActiveLink href="/app-deploy/php/object-storage">
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -504,8 +504,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/django/cloud-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                  <ActiveLink href="/app-deploy/django/object-storage">
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -635,8 +635,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/cloud-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                  <ActiveLink href="/app-deploy/netcore/object-storage">
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -1570,7 +1570,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <ActiveLink href="/buckets/about">
-                درباره فضای ذخیره‌سازی ابری
+                درباره ذخیره‌سازی ابری
               </ActiveLink>
             </li>
             <li>
@@ -1593,29 +1593,15 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-            <ActiveLink href="/buckets/migrate">
+              <ActiveLink href="/buckets/migrate">
                 ثبت درخواست انتقال
               </ActiveLink>
-            </li> 
+            </li>
             {/*
             <li>
               <ActiveLink href="/buckets/domain">اتصال دامنه</ActiveLink>
             </li>
               */}
-          </ul>
-        </nav>
-
-        <nav className="nav">
-          <NavTitle href="/domains">دامنه‌ها</NavTitle>
-          <ul className="nav__list">
-            <li>
-              <ActiveLink href="/domains/management">
-                مدیریت دامنه‌ها
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/domains/ssl">مدیریت SSL‌ها</ActiveLink>
-            </li>
           </ul>
         </nav>
 
@@ -1705,6 +1691,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/client-api/domain">دامنه‌ها</ActiveLink>
             </li>
           </ul>
+        </nav>
+
+        <nav className="nav">
+          <ActiveLink href="/domains">مدیریت دامنه‌ها</ActiveLink>
         </nav>
 
         <nav className="nav">

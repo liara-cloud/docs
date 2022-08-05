@@ -193,7 +193,7 @@ $ liara deploy --disks data:uploads \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/nodejs/cloud-storage">
+    <Link href="/app-deploy/nodejs/object-storage">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

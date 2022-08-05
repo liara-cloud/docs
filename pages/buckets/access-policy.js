@@ -7,10 +7,10 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>تغییر سطح دسترسی فضای ذخیره‌سازی ابری - سرویس ابری لیارا</title>
+      <title>تغییر سطح دسترسی ذخیره‌سازی ابری - سرویس ابری لیارا</title>
     </Head>
 
-    <h1>فضای ذخیره‌سازی ابری</h1>
+    <h1>ذخیره‌سازی ابری</h1>
 
     <h2>تغییر سطح دسترسی</h2>
     <ZoomableImage src="https://files.liara.ir/docs/buckets/change-access-policy.gif" />
