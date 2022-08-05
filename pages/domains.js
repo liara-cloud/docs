@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "../../components/Layout";
-import PlatformIcon from "../../components/PlatformIcon";
+import Layout from "../components/Layout";
+import PlatformIcon from "../components/PlatformIcon";
 
 export default () => (
   <Layout>
