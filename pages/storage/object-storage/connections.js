@@ -15,7 +15,7 @@ export default () => (
 
     <Notice variant="danger">
       از این پس سرویس فایل در لیارا ارائه نمی‌شود و می‌توانید به‌عنوان جایگزین
-      از <Link href="/buckets/about">فضای ذخیره‌سازی ابری</Link> استفاده کنید.
+      از <Link href="/buckets/about">ذخیره‌سازی ابری</Link> استفاده کنید.
     </Notice>
 
     <h3>استاندارد S3</h3>
@@ -75,7 +75,8 @@ var AWS = require('aws-sdk');
 const s3 = new AWS.S3({
     accessKeyId: LIARA_ACCESS_KEY,
     secretAccessKey: LIARA_SECRET_KEY,
-    endpoint: LIARA_ENDPOINT
+    endpoint: LIARA_ENDPOINT,
+    s3ForcePathStyle: true
 });
  
 s3.listBuckets(function(err, data) {
@@ -233,7 +234,8 @@ class Program
     var config = new AmazonS3Config
     {
       RegionEndpoint = RegionEndpoint.USEast1,
-      ServiceURL = Environment.GetEnvironmentVariable("LIARA_ENDPOINT")
+      ServiceURL = Environment.GetEnvironmentVariable("LIARA_ENDPOINT"),
+      ForcePathStyle = true
     };
     var amazonS3Client = new AmazonS3Client(
       accessKey,

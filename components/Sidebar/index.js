@@ -276,7 +276,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/nodejs/object-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -369,7 +369,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/laravel/object-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -432,7 +432,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/php/object-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -505,7 +505,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/django/object-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -636,7 +636,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/netcore/object-storage">
-                    اتصال به فضای ذخیره‌سازی ابری
+                    اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
@@ -1570,7 +1570,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <ActiveLink href="/buckets/about">
-                درباره فضای ذخیره‌سازی ابری
+                درباره ذخیره‌سازی ابری
               </ActiveLink>
             </li>
             <li>
