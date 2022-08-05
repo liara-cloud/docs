@@ -1606,20 +1606,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/domains">دامنه‌ها</NavTitle>
-          <ul className="nav__list">
-            <li>
-              <ActiveLink href="/domains/management">
-                مدیریت دامنه‌ها
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/domains/ssl">مدیریت SSL‌ها</ActiveLink>
-            </li>
-          </ul>
-        </nav>
-
-        <nav className="nav">
           <NavTitle href="/cicd">راه‌اندازی CI/CD</NavTitle>
           <ul className="nav__list">
             <li>
@@ -1705,6 +1691,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/client-api/domain">دامنه‌ها</ActiveLink>
             </li>
           </ul>
+        </nav>
+
+        <nav className="nav">
+          <ActiveLink href="/domains">مدیریت دامنه‌ها</ActiveLink>
         </nav>
 
         <nav className="nav">
