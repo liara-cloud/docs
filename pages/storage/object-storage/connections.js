@@ -75,8 +75,7 @@ var AWS = require('aws-sdk');
 const s3 = new AWS.S3({
     accessKeyId: LIARA_ACCESS_KEY,
     secretAccessKey: LIARA_SECRET_KEY,
-    endpoint: LIARA_ENDPOINT,
-    s3ForcePathStyle: true
+    endpoint: LIARA_ENDPOINT
 });
  
 s3.listBuckets(function(err, data) {
@@ -234,8 +233,7 @@ class Program
     var config = new AmazonS3Config
     {
       RegionEndpoint = RegionEndpoint.USEast1,
-      ServiceURL = Environment.GetEnvironmentVariable("LIARA_ENDPOINT"),
-      ForcePathStyle = true
+      ServiceURL = Environment.GetEnvironmentVariable("LIARA_ENDPOINT")
     };
     var amazonS3Client = new AmazonS3Client(
       accessKey,

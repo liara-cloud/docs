@@ -275,7 +275,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/nodejs/cloud-storage">
+                  <ActiveLink href="/app-deploy/nodejs/object-storage">
                     اتصال به فضای ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
@@ -368,7 +368,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/laravel/cloud-storage">
+                  <ActiveLink href="/app-deploy/laravel/object-storage">
                     اتصال به فضای ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
@@ -431,7 +431,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/php/cloud-storage">
+                  <ActiveLink href="/app-deploy/php/object-storage">
                     اتصال به فضای ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
@@ -504,7 +504,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/django/cloud-storage">
+                  <ActiveLink href="/app-deploy/django/object-storage">
                     اتصال به فضای ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
@@ -635,7 +635,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/cloud-storage">
+                  <ActiveLink href="/app-deploy/netcore/object-storage">
                     اتصال به فضای ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
@@ -1593,10 +1593,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-            <ActiveLink href="/buckets/migrate">
+              <ActiveLink href="/buckets/migrate">
                 ثبت درخواست انتقال
               </ActiveLink>
-            </li> 
+            </li>
             {/*
             <li>
               <ActiveLink href="/buckets/domain">اتصال دامنه</ActiveLink>

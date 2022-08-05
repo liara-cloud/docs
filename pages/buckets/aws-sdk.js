@@ -20,42 +20,42 @@ export default () => (
     </p>
 
     <div className="platforms">
-      <Link href="/app-deploy/nodejs/cloud-storage">
+      <Link href="/app-deploy/nodejs/object-storage">
         <a>
           <PlatformIcon platform="nodejs" />
           <span>NodeJS</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/php/cloud-storage">
+      <Link href="/app-deploy/php/object-storage">
         <a>
           <PlatformIcon platform="php" />
           <span>PHP</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/laravel/cloud-storage">
+      <Link href="/app-deploy/laravel/object-storage">
         <a>
           <PlatformIcon platform="laravel" />
           <span>Laravel</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/django/cloud-storage">
+      <Link href="/app-deploy/django/object-storage">
         <a>
           <PlatformIcon platform="django" />
           <span>Django</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/flask/cloud-storage">
+      <Link href="/app-deploy/flask/object-storage">
         <a>
           <PlatformIcon platform="flask" />
           <span>Flask</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/netcore/cloud-storage">
+      <Link href="/app-deploy/netcore/object-storage">
         <a>
           <PlatformIcon platform="netcore" />
           <span>.NET</span>

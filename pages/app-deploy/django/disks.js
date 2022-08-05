@@ -191,7 +191,7 @@ $ liara deploy --disks data:/app/data \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/django/cloud-storage">
+    <Link href="/app-deploy/django/object-storage">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
