@@ -46,6 +46,7 @@ export default () => (
       <li>
         <b>16 (پیش‌فرض)</b>
       </li>
+      <li>18</li>
     </ul>
 
     <div className="platforms">

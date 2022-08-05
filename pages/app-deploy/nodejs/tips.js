@@ -74,6 +74,7 @@ export default () => (
       <li>
         <b>16 (پیش‌فرض)</b>
       </li>
+      <li>18</li>
     </ul>
 
     <h3 id="build-script">ES6 و build کردن برنامه</h3>
