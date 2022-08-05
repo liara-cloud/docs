@@ -106,6 +106,8 @@ export default function Domain({ platform }) {
         <br />
         ۲. درصورت استفاده از CDN می‌توانید تیک قرمز رنگ و خطای تنظیم نشدن
         رکوردها را نادیده بگیرید.
+        <br />
+        ۳. در سرویس Cloudflare، تنظیمات SSL را همیشه روی Flexible تنظیم کنید.
       </Notice>
 
       <h3 id="add-www">ساخت زیردامنه‌ی www</h3>
@@ -192,6 +194,8 @@ export default function Domain({ platform }) {
         <br />
         ۲. درصورت استفاده از CDN می‌توانید تیک قرمز رنگ و خطای تنظیم نشدن
         رکوردها را نادیده بگیرید.
+        <br />
+        ۳. در سرویس Cloudflare، تنظیمات SSL را همیشه روی Flexible تنظیم کنید.
       </Notice>
 
       <h3 id="faq">
