@@ -8,15 +8,15 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات استقرار برنامه‌های NodeJS با استفاده از ابزار Liara Desktop -
+        مستندات استقرار برنامه‌های Django با استفاده از ابزار Liara Desktop -
         سرویس ابری لیارا
       </title>
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="nodejs" />
+      <PlatformIcon platform="django" />
       <div className="page-title">
-        <h1>برنامه‌های NodeJS</h1>
+        <h1>برنامه‌های Django</h1>
         <span className="page-description">(Liara Desktop)</span>
       </div>
     </div>
@@ -25,8 +25,8 @@ export default () => (
 
     <Notice variant="info">
       در حال حاضر تنها نسخه‌ی ویندوز ابزار Liara Desktop منتشر شده و برای
-      استقرار برنامه‌های Nodejs در سیستم‌عامل لینوکس و مک می‌توانید از ابزار{" "}
-      <Link href="/app-deploy/nodejs/cli">Liara CLI</Link> استفاده کنید.
+      استقرار برنامه‌های Django در سیستم‌عامل لینوکس و مک می‌توانید از ابزار{" "}
+      <Link href="/app-deploy/django/cli">Liara CLI</Link> استفاده کنید.
     </Notice>
 
     <p>
@@ -35,12 +35,12 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/liara/nodejs/nodejs-desktop.mp4"
+      src="https://files.liara.ir/liara/django/django-desktop.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/nodejs/cli">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/django/cli">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

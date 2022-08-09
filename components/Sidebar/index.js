@@ -464,8 +464,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/django/deploy">
-                    استقرار اولین برنامه
+                  <ActiveLink href="/app-deploy/django/desktop">
+                    استقرار با Liara Desktop
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/django/cli">
+                    استقرار با Liara CLI
                   </ActiveLink>
                 </li>
                 <li>
