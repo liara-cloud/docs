@@ -27,13 +27,13 @@ export default () => (
       زیر ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/liara/django-mysql.mp4"
+      src="https://files.liara.ir/liara/django/django-postgresql.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
     ></video>
     <video
-      src="https://files.liara.ir/liara/django-sqlite.mp4"
+      src="https://files.liara.ir/liara/django/django-sqlite.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

@@ -116,6 +116,6 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/nodejs/deploy">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/desktop">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
