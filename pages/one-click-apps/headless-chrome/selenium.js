@@ -29,7 +29,6 @@ export default () => (
 
     <Highlight className="javascript">
       {`const webdriver = require('selenium-webdriver');
-const fs = require('fs');
 
 const chromeCapabilities = webdriver.Capabilities.chrome();
 chromeCapabilities.set('goog:chromeOptions', {
@@ -51,7 +50,6 @@ const driver = new webdriver.Builder()
     </p>
     <Highlight className="javascript">
       {`const webdriver = require('selenium-webdriver');
-const fs = require('fs');
 
 const chromeCapabilities = webdriver.Capabilities.chrome();
 chromeCapabilities.set('browserless:token', '<your-env-token>');
