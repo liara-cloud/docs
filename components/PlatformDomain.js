@@ -57,6 +57,14 @@ export default function Domain({ platform }) {
       </ul>
 
       <h3 id="add-domain">اضافه کردن دامنه</h3>
+
+      <video
+        src="https://files.liara.ir/liara/domain/domain.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+      ></video>
+
       <p>
         برای اتصال دامنه به برنامه مورد نظرتان در لیارا باید وارد این برنامه
         شوید و از منوی سمت راست، روی گزینه‌ی <strong>دامنه‌ها</strong> کلیک
@@ -77,7 +85,7 @@ export default function Domain({ platform }) {
         می‌شود و همچنین به صفحه‌ی <strong>مدیریت دامنه</strong> هدایت می‌شوید.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/docs/domain/add-domain.gif" />
+      {/* <ZoomableImage src="https://files.liara.ir/docs/domain/add-domain.gif" /> */}
 
       <p>
         در این مرحله باید رکوردهای DNS درخواست شده را با استفاده از یک سرویس DNS
@@ -98,7 +106,7 @@ export default function Domain({ platform }) {
         لیارا با موفقیت صورت گرفته است.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/docs/domain/check-dns-records.gif" />
+      {/* <ZoomableImage src="https://files.liara.ir/docs/domain/check-dns-records.gif" /> */}
 
       <Notice variant="info">
         ۱. توجه داشته باشید که درصورت استفاده از CDN باید گواهی SSL را نیز از
@@ -119,7 +127,7 @@ export default function Domain({ platform }) {
         کنید.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/docs/domain/add-www-subdomain.gif" />
+      {/* <ZoomableImage src="https://files.liara.ir/docs/domain/add-www-subdomain.gif" /> */}
 
       <h3 id="enable-ssl">تهیه گواهی SSL</h3>
 
@@ -135,7 +143,7 @@ export default function Domain({ platform }) {
         <strong>تهیه گواهی SSL</strong> کلیک کنید.
       </p>
 
-      <ZoomableImage src="https://files.liara.ir/docs/domain/enable-ssl.gif" />
+      {/* <ZoomableImage src="https://files.liara.ir/docs/domain/enable-ssl.gif" /> */}
 
       <p>
         درنهایت وب‌سایت شما بعد از فعال شدن موفقیت‌آمیز گواهی SSL بر روی پروتکل
