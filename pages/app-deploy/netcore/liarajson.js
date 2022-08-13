@@ -38,10 +38,9 @@ export default () => (
     </p>
     <Highlight className="json">
       {`{
-  "platform": "netcore",
-  "app": "dotnets-starter",
-}
-`}
+    "platform": "netcore",
+    "app": "dotnets-starter"
+}`}
     </Highlight>
     <p>
       در این فایل، پلتفرم، پورت و نام برنامه‌ی‌تان را مشخص می‌کنید. لیارا در هر

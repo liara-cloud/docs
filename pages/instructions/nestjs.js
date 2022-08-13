@@ -35,7 +35,17 @@ export default () => (
 },`}</Highlight>
 
     <p>
-      همچنین، توجه داشته باشید که لیارا به صورت خودکار دستور
+      همچنین در فایل <span className="code">main.ts</span> باید{" "}
+      <span className="code">0.0.0.0</span> را به‌عنوان آدرس هاست در متد{" "}
+      <span className="code">listen</span> وارد کنید:
+    </p>
+
+    <Highlight className="json">
+      {`await app.listen(3000, '0.0.0.0');`}
+    </Highlight>
+
+    <p>
+      توجه داشته باشید که لیارا به صورت خودکار دستور
       <span className="code">npm run build</span>
       را اجرا می‌کند و نیازی نیست که تغییر خاصی برای اجرای این دستور اعمال کنید.
       در نهایت دستور
