@@ -673,8 +673,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/react/deploy">
-                    استقرار اولین برنامه
+                  <ActiveLink href="/app-deploy/react/desktop">
+                    استقرار با Liara Desktop
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/react/cli">
+                    استقرار با Liara CLI
                   </ActiveLink>
                 </li>
                 <li>
@@ -716,8 +721,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/angular/deploy">
-                    استقرار اولین برنامه
+                  <ActiveLink href="/app-deploy/angular/desktop">
+                    استقرار با Liara Desktop
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/angular/cli">
+                    استقرار با Liara CLI
                   </ActiveLink>
                 </li>
                 <li>
@@ -759,8 +769,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/vue/deploy">
-                    استقرار اولین برنامه
+                  <ActiveLink href="/app-deploy/vue/desktop">
+                    استقرار با Liara Desktop
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/vue/cli">
+                    استقرار با Liara CLI
                   </ActiveLink>
                 </li>
                 <li>
