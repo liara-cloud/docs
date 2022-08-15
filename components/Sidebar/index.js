@@ -396,8 +396,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/php/deploy">
-                    استقرار اولین برنامه
+                  <ActiveLink href="/app-deploy/php/desktop">
+                    استقرار با Liara Desktop
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/php/cli">
+                    استقرار با Liara CLI
                   </ActiveLink>
                 </li>
                 <li>
