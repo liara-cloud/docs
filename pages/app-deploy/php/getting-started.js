@@ -38,10 +38,22 @@ export default () => (
     </p>
 
     <ul>
+      <li>7.2</li>
+      <li>7.3</li>
+      <li>7.4</li>
       <li>
-        <b>7.2 (پیش‌فرض)</b>
+        <b>8.0 (پیش‌فرض)</b>
       </li>
+      <li>8.1</li>
     </ul>
+
+    <Notice variant="info">
+      اگر قصد دارید نسخه‌ی پیش‌فرض PHP را تغییر دهید می‌توانید مستندات{" "}
+      <Link href="/app-deploy/php/tips#php-version">انتخاب نسخه‌ی PHP</Link> را
+      در توضیحات و نکات تکمیلی این پلتفرم مطالعه بفرمایید.
+    </Notice>
+
+    <br />
 
     <Link href="/app-deploy/php/desktop">متوجه شدم، برو گام بعدی!</Link>
   </Layout>

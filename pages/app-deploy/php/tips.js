@@ -24,16 +24,22 @@ export default () => (
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
-        <a href="#php-version">استقرار برنامه‌های PHP</a>
+        <a href="#deploy-php">استقرار برنامه‌های PHP</a>
       </li>
       <li>
-        <a href="#set-timezone">تنظیم TimeZone</a>
+        <a href="#php-version">انتخاب نسخه‌ی PHP</a>
+      </li>
+      <li>
+        <a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a>
       </li>
       <li>
         <a href="#php-ini">تنظیمات اختصاصی php.ini</a>
       </li>
       <li>
         <a href="#htaccess">تنظیمات اختصاصی htaccess</a>
+      </li>
+      <li>
+        <a href="#queues">کار با Queue ها</a>
       </li>
       <li>
         <a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a>
@@ -46,7 +52,7 @@ export default () => (
       </li>
     </ul>
 
-    <h3 id="php-version">استقرار برنامه‌های PHP</h3>
+    <h3 id="deploy-php">استقرار برنامه‌های PHP</h3>
     <p>
       توجه داشته باشید که لازم است در ریشه‌ی برنامه‌ی‌تان حداقل یک فایل با نام
       <span className="code">index.php</span>
@@ -63,16 +69,46 @@ export default () => (
       همراه دیتابیس را تهیه و نصب کنید.
     </Notice>
 
-    <h3 id="set-timezone">تنظیم TimeZone</h3>
+    <h3 id="php-version">انتخاب نسخه‌ی PHP</h3>
     <p>
-      برای تنظیم TimeZone به ایران می‌توانید در برنامه‌ی‌تان از این تابع PHP
-      استفاده کنید:
+      به‌صورت پیش‌فرض، برنامه‌ی شما با استفاده از PHP 8.0 اجرا می‌شود. در صورتی
+      که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید می‌توانید
+      در فایل <Link href="/app-deploy/php/liarajson">liara.json</Link> بخش زیر
+      را اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
     </p>
-    <Highlight className="php">
-      {`<?php
-date_default_timezone_set("Asia/tehran");`}
+    <Highlight className="json">
+      {`{
+  "php": {
+    "version": "7.2"
+  }
+}`}
     </Highlight>
+    <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌شود:</p>
+    <ul>
+      <li>7.2</li>
+      <li>7.3</li>
+      <li>7.4</li>
+      <li>
+        <b>8.0 (پیش‌فرض)</b>
+      </li>
+      <li>8.1</li>
+    </ul>
 
+    <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <p>
+      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
+      تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
+      <span className="code">timezone</span>
+      در فایل <Link href="/app-deploy/php/liarajson">liara.json</Link> استفاده
+      کنید. برای نمونه:
+    </p>
+    <Highlight className="json">
+      {`{
+  "php": {
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+    </Highlight>
     <h3 id="php-ini">تنظیمات اختصاصی php.ini</h3>
     <p>
       از طریق ایجاد یک فایل با نام
@@ -126,6 +162,49 @@ max_execution_time = 600`}
       لیارا نیز منتقل کنید. اگر در این قسمت با مشکلی مواجه شدید، از طریق تیکت،
       مسأله را با پشتیبانی لیارا مطرح کنید.
     </p>
+
+    <h3 id="queues">کار با Queue ها</h3>
+    <p>
+      Supervisor در پلتفرم PHP لیارا نصب شده و شما با ایجاد یک فایل به نام{" "}
+      <span className="code">supervisor.conf</span> در ریشه‌ی برنامه‌، می‌توانید
+      تنظیمات صف‌های مختلف‌تان را در آن وارد کنید. در نهایت با یک‌بار
+      دیپلوی‌کردن، صف‌های شما شروع به کار خواهند کرد.
+    </p>
+    <p>
+      Supervisor برنامه‌ی بسیار مفیدی است که سعی می‌کند صف‌های شما را همیشه در
+      حال اجرا نگه‌دارد. اگر به هر دلیلی صف‌های‌تان به خطا بخورند و خاموش شوند،
+      Supervisor آن‌ها را دوباره ایجاد و فعال می‌کند.
+    </p>
+    <p>
+      از بخش <Link href="/apps/console">خط فرمان (کنسول)</Link> برنامه‌ی‌تان هم
+      می‌توانید با <span className="code">supervisorctl</span> کار کنید و وضعیت
+      صف‌های‌تان را مشاهده کنید.
+    </p>
+    <pre>
+      <code>{`$ supervisorctl status`}</code>
+    </pre>
+    <p>یک نمونه کانفیگ ساده برای تعریف صف:</p>
+    <Highlight className="ini">
+      {`[program:php-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=cd $ROOT && php queues.php
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+numprocs=1
+user=www-data
+redirect_stderr=true
+stdout_logfile=/tmp/php-worker.log`}
+    </Highlight>
+    <p>برای کسب اطلاعات بیشتر می‌توانید به لینک زیر مراجعه کنید:</p>
+    <ul>
+      <li>
+        <a href="http://supervisord.org/" target="_blank">
+          مستندات Supervisor
+        </a>
+      </li>
+    </ul>
 
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
@@ -182,13 +261,19 @@ max_execution_time = 600`}
         {`[PHP Modules]
 amqp
 apcu
+ast
 bcmath
+bz2
 calendar
 Core
 ctype
 curl
 date
+dba
 dom
+ds
+enchant
+ev
 exif
 fileinfo
 filter
@@ -197,6 +282,7 @@ gd
 gettext
 gmp
 gnupg
+grpc
 hash
 iconv
 igbinary
@@ -206,46 +292,62 @@ intl
 json
 ldap
 libxml
+mailparse
 mbstring
 mcrypt
 memcached
 mongodb
+msgpack
 mysqli
 mysqlnd
 openssl
 pcntl
+pcov
 pcre
 PDO
-pdo_dblib
 pdo_mysql
 pdo_pgsql
 pdo_sqlite
 pgsql
 Phar
 posix
+pspell
+rdkafka
 readline
 redis
 Reflection
 session
+shmop
 SimpleXML
+snmp
 soap
 sockets
 sodium
+SourceGuardian
 SPL
 sqlite3
 standard
+swoole
+sysvmsg
+sysvsem
+sysvshm
+tidy
 tokenizer
+uploadprogress
+uuid
 xml
 xmlreader
+xmlrpc
 xmlwriter
+xsl
 yaml
 Zend OPcache
 zip
 zlib
+
 [Zend Modules]
 SourceGuardian
-Zend OPcache
-the ionCube PHP Loader + ionCube24`}
+Zend OPcache`}
       </code>
     </pre>
   </Layout>
