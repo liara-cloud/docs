@@ -50,6 +50,7 @@ export default () => (
       در حال حاضر، پلتفرم‌های زیر از این قابلیت پشتیبانی می‌کنند:
       <ul>
         <li>Laravel</li>
+        <li>PHP</li>
         <li>Django</li>
         <li>Flask</li>
       </ul>
@@ -98,6 +99,20 @@ export default () => (
         crontab.guru
       </a>{" "}
       می‌توانید زمان دلخواه‌تان را بسازید.
+    </p>
+
+    <h3>نمونه‌ی Cron Job برای پلتفرم PHP</h3>
+    <Highlight className="json">
+      {`{
+  "cron": [
+    "0 1 * * * cd $ROOT && php update_price.php >> /dev/null 2>&1"
+  ]
+}`}
+    </Highlight>
+    <p>
+      در نمونه‌ی بالا، یک اسکریپت با نام‌های
+      <span className="code">update_price.php</span>
+      در ریشه‌ی برنامه داریم که هر روز ساعت یک بامداد اجرا می‌شود.
     </p>
 
     <h3>نمونه‌ی Cron Job برای پلتفرم Django</h3>
