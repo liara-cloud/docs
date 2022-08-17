@@ -27,7 +27,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/liara/php-mysql.mp4"
+      src="https://files.liara.ir/liara/php/php-mariadb.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
