@@ -582,6 +582,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/flask/object-storage">
+                    اتصال به ذخیره‌سازی ابری
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/flask/domain">
                     اتصال دامنه
                   </ActiveLink>

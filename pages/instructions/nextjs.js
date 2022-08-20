@@ -189,8 +189,22 @@ CMD ["node", "server.js"]`}
 },`}
     </Highlight>
     <p>
-      و درنهایت دستور <span className="code">npm run build</span> را اجرا کنید
-      تا خروجی‌های نهایی در مسیر پیش‌فرض <span className="code">out</span> قرار
+      همچنین توجه داشته باشید در زمان استفاده از قابلیت Static HTML Export،
+      امکان بهینه‌سازی تصاویر وجود ندارد بنابراین باید قابلیت بهینه‌سازی تصاویر
+      را در فایل <span className="code">next.config.js</span> غیرفعال کنید:
+    </p>
+    <Highlight className="json">
+      {`module.exports = {
+  experimental: {
+    images: {
+      unoptimized: true,
+    },
+  },
+}`}
+    </Highlight>
+    <p>
+      درنهایت دستور <span className="code">npm run build</span> را اجرا کنید تا
+      خروجی‌های نهایی در مسیر پیش‌فرض <span className="code">out</span> قرار
       بگیرند.
     </p>
     <p>
