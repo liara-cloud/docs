@@ -26,7 +26,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/liara/docker-image.mp4"
+      src="https://files.liara.ir/liara/docker/docker-image.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
@@ -44,17 +44,16 @@ export default () => (
     </p>
     <Highlight className="json">
       {`{
-  "image": "getmeili/meilisearch:v0.23.0",
-  "app": "search-app",
-  "port": 7700,
-  "disks": [
-    {
-      "name": "data",
-      "mountTo": "/data.ms"
-    }
-  ]
-}
-`}
+    "app": "search-app",
+    "image": "getmeili/meilisearch:v0.28",
+    "port": 7700,
+    "disks": [
+        {
+            "name": "data",
+            "mountTo": "/meili_data"
+        }
+    ]
+}`}
     </Highlight>
 
     <p>
@@ -64,9 +63,9 @@ export default () => (
     </p>
 
     <Highlight className="bash">{`$ liara deploy --app search-app \\
-               --image getmeili/meilisearch:v0.23.0 \\
+               --image getmeili/meilisearch:v0.28 \\
                --port 7700 \\
-               --disks data:/data.ms`}</Highlight>
+               --disks data:/meili_data`}</Highlight>
 
     <Notice variant="warning">
       توصیه می‌کنیم حتما در زمان استقرار image از تگ مشخصی استفاده کرده و تا حد
