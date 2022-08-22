@@ -93,6 +93,15 @@ export default function Footer() {
             </div>
             <div>
               <a
+                href="https://liara.ir/sla"
+                title="توافق‌نامه سطح کیفیت"
+                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
+              >
+                توافق‌نامه سطح کیفیت
+              </a>
+            </div>
+            <div>
+              <a
                 href="https://status.liara.ir"
                 title="وضعیت یا uptime هاست ابری لیارا"
                 className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
