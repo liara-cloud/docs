@@ -890,6 +890,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/docker/compose">
+                    استقرار Docker Compose
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/docker/envs">
                     تنظیم متغیرها (env)
                   </ActiveLink>
