@@ -100,15 +100,15 @@ export default function Footer() {
                 توافق‌نامه سطح کیفیت
               </a>
             </div>
-            <div>
-              <a
-                href="https://status.liara.ir"
-                title="وضعیت یا uptime هاست ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                وضعیت سرورها
-              </a>
-            </div>
+//             <div>
+//               <a
+//                 href="https://status.liara.ir"
+//                 title="وضعیت یا uptime هاست ابری لیارا"
+//                 className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
+//               >
+//                 وضعیت سرورها
+//               </a>
+//             </div>
           </div>
           <div className="md:w-1/6 my-5 md:my-0">
             <div className="text-black text-sm my-1 p-1">خرید هاست</div>
