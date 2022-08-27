@@ -96,7 +96,17 @@ client.listBuckets(
 );`}
     </Highlight>
 
-    <br />
+    <p>
+      شما می‌توانید برای کسب اطلاعات بیشتر،{" "}
+      <a
+        href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-creating-buckets.html#s3-example-creating-buckets-scenario"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        مثال‌ها و مستندات این پکیج
+      </a>{" "}
+      را مطالعه کنید.
+    </p>
 
     <Link href="/app-deploy/nodejs/domain">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
