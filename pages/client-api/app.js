@@ -23,6 +23,9 @@ export default () => (
         <a href="#stop-app">خاموش کردن برنامه</a>
       </li>
       <li>
+        <a href="#deploy-source">استقرار سورس‌کد</a>
+      </li>
+      <li>
         <a href="#update-environment-variable">به‌روزرسانی متغیرهای برنامه</a>
       </li>
       <li>
@@ -154,6 +157,76 @@ export default () => (
         <td>0</td>
         <td className="endpoint-inputs__description"></td>
       </tr>
+    </table>
+
+    <br />
+    <hr />
+
+    <h4 id="deploy-source">استقرار سورس‌کد</h4>
+
+    <div className="endpoint">
+      <Label variant="blue">POST</Label>
+      <span className="endpoint__path">
+        /v1/projects/<span className="endpoint__param">{`{app-name}`}</span>
+        /sources
+      </span>
+    </div>
+
+    <h5>ورودی‌ها</h5>
+    <table className="endpoint-inputs">
+      <tr className="endpoint-inputs__group">
+        <td colSpan={3}>URL</td>
+      </tr>
+      <tr>
+        <td>app-name</td>
+        <td className="endpoint-inputs__description">نام برنامه</td>
+      </tr>
+      <tr className="endpoint-inputs__group">
+        <td colSpan={3}>BODY</td>
+      </tr>
+      <tr>
+        <td>data:</td>
+        <td>file.tar.gz</td>
+        <td className="endpoint-inputs__description"></td>
+      </tr>
+    </table>
+
+    <br />
+
+    <div className="endpoint">
+      <Label variant="blue">POST</Label>
+      <span className="endpoint__path">
+        /v1/projects/<span className="endpoint__param">{`{app-name}`}</span>
+        /releases
+      </span>
+    </div>
+
+    <h5>ورودی‌ها</h5>
+    <table className="endpoint-inputs">
+      <tr className="endpoint-inputs__group">
+        <td colSpan={3}>URL</td>
+      </tr>
+      <tr>
+        <td>app-name</td>
+        <td className="endpoint-inputs__description">نام برنامه</td>
+      </tr>
+      <tr className="endpoint-inputs__group">
+        <td colSpan={3}>BODY</td>
+      </tr>
+      <tr>
+        <td>sourceID</td>
+        <td>913ca858-0888-479f-9d9b-aeedca62ca85</td>
+      </tr>
+      <tr>
+        <td>port</td>
+        <td>3000</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>node</td>
+      </tr>
+
+      <td className="endpoint-inputs__description"></td>
     </table>
 
     <br />
