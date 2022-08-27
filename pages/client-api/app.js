@@ -182,6 +182,14 @@ export default () => (
         <td className="endpoint-inputs__description">نام برنامه</td>
       </tr>
       <tr className="endpoint-inputs__group">
+        <td colSpan={3}>HEADER</td>
+      </tr>
+      <tr>
+        <td>Content-Type</td>
+        <td>multipart/form-data</td>
+        <td className="endpoint-inputs__description"></td>
+      </tr>
+      <tr className="endpoint-inputs__group">
         <td colSpan={3}>BODY</td>
       </tr>
       <tr>
@@ -191,6 +199,7 @@ export default () => (
       </tr>
     </table>
 
+    <br />
     <br />
 
     <div className="endpoint">
