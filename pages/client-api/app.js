@@ -185,7 +185,7 @@ export default () => (
         <td colSpan={3}>BODY</td>
       </tr>
       <tr>
-        <td>data:</td>
+        <td>file</td>
         <td>file.tar.gz</td>
         <td className="endpoint-inputs__description"></td>
       </tr>
