@@ -26,7 +26,14 @@ export default () => (
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
       ‌را مشاهده کنید.
     </p>
-    <ZoomableImage src="https://files.liara.ir/docs/mongodb/create-mongodb-database.gif" />
+
+    <video
+      src="https://files.liara.ir/liara/mongodb/create-mongodb.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       برای راه‌اندازی دیتابیس MongoDB باید در بخش{" "}
       <a href="https://console.liara.ir/databases" target="_blank">
