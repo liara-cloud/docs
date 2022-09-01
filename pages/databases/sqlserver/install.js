@@ -26,7 +26,14 @@ export default () => (
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
       ‌را مشاهده کنید.
     </p>
-    <ZoomableImage src="https://files.liara.ir/docs/sql-server/create-sql-server-database.gif" />
+
+    <video
+      src="https://files.liara.ir/liara/mssql/create-mssql.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       برای راه‌اندازی دیتابیس SQL Server باید در بخش{" "}
       <a href="https://console.liara.ir/databases" target="_blank">
