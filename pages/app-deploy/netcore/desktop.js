@@ -26,9 +26,7 @@ export default () => (
     <Notice variant="info">
       در حال حاضر تنها نسخه‌ی ویندوز ابزار Liara Desktop منتشر شده و برای
       استقرار برنامه‌های .NET در سیستم‌عامل لینوکس و مک می‌توانید از ابزار{" "}
-      {/* <Link href="/app-deploy/netcore/cli"> */}
-      Liara CLI {/* </Link> */}
-      استفاده کنید.
+      <Link href="/app-deploy/netcore/cli">Liara CLI</Link> استفاده کنید.
     </Notice>
 
     <p>
@@ -43,6 +41,6 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/netcore/envs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/cli">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );

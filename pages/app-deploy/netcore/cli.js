@@ -29,12 +29,12 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
 
-    {/* <video
+    <video
       src="https://files.liara.ir/liara/dotnet/dotnet-cli.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
-    ></video> */}
+    ></video>
 
     <Link href="/app-deploy/netcore/envs">متوجه شدم، برو گام بعدی!</Link>
   </Layout>

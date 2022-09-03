@@ -619,11 +619,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     استقرار با Liara Desktop
                   </ActiveLink>
                 </li>
-                {/* <li>
+                <li>
                   <ActiveLink href="/app-deploy/netcore/cli">
                     استقرار با Liara CLI
                   </ActiveLink>
-                </li> */}
+                </li>
                 <li>
                   <ActiveLink href="/app-deploy/netcore/envs">
                     تنظیم متغیرها (env)
