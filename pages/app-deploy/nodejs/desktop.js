@@ -8,16 +8,16 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات استقرار برنامه‌های NodeJS با استفاده از ابزار Liara Desktop -
-        سرویس ابری لیارا
+        مستندات پروژه در پلتفرم NodeJS با استفاده از ابزار Liara Desktop - سرویس
+        ابری لیارا
       </title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="nodejs" />
       <div className="page-title">
-        <h1>برنامه‌های NodeJS</h1>
-        <span className="page-description">(Liara Desktop)</span>
+        <h1>پلتفرم NodeJS</h1>
+        <span className="page-description">(NodeJS Platform)</span>
       </div>
     </div>
 
@@ -25,8 +25,8 @@ export default () => (
 
     <Notice variant="info">
       در حال حاضر تنها نسخه‌ی ویندوز ابزار Liara Desktop منتشر شده و برای
-      استقرار برنامه‌های Nodejs در سیستم‌عامل لینوکس و مک می‌توانید از ابزار{" "}
-      <Link href="/app-deploy/nodejs/cli">Liara CLI</Link> استفاده کنید.
+      استقرار پروژه در پلتفرم Nodejs در سیستم‌عامل لینوکس و مک می‌توانید از
+      ابزار <Link href="/app-deploy/nodejs/cli">Liara CLI</Link> استفاده کنید.
     </Notice>
 
     <p>

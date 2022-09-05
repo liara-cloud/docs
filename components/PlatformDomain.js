@@ -26,19 +26,19 @@ export default function Domain({ platform }) {
     <Layout>
       <Head>
         <title>
-          مستندات اتصال دامنه به برنامه‌های {type.uCase} - سرویس ابری لیارا
+          مستندات اتصال دامنه به پلتفرم {type.uCase} - سرویس ابری لیارا
         </title>
       </Head>
 
       <div className="page-head">
         <PlatformIcon platform={type.icon} />
         <div className="page-title">
-          <h1>برنامه‌های {type.uCase}</h1>
-          <span className="page-description">({type.uCase} Apps)</span>
+          <h1>پلتفرم {type.uCase}</h1>
+          <span className="page-description">({type.uCase} Platform)</span>
         </div>
       </div>
 
-      <h2>اتصال دامنه به برنامه‌های {type.uCase}</h2>
+      <h2>اتصال دامنه به پلتفرم {type.uCase}</h2>
 
       <h4>فهرست عناوین:</h4>
       <ul className="mt-0">
@@ -66,7 +66,7 @@ export default function Domain({ platform }) {
       ></video>
 
       <p>
-        برای اتصال دامنه به برنامه مورد نظرتان در لیارا باید وارد این برنامه
+        برای اتصال دامنه به پلتفرم مورد نظرتان در لیارا باید وارد این پلتفرم
         شوید و از منوی سمت راست، روی گزینه‌ی <strong>دامنه‌ها</strong> کلیک
         کنید. سپس روی گزینه‌ی{" "}
         <strong>
@@ -154,9 +154,9 @@ export default function Domain({ platform }) {
 
       <p>
         حال درصورتی که قصد داشته باشید زیردامنه‌‌ی دیگری (مثلا:{" "}
-        <span className="code">api</span>) را به برنامه‌ی خود متصل کنید، باید
-        طبق مراحل <strong>اضافه کردن دامنه</strong>، وارد این برنامه شوید و از
-        منوی سمت راست، روی گزینه‌ی <strong>دامنه‌ها</strong> کلیک کنید. سپس روی
+        <span className="code">api</span>) را به پلتفرم خود متصل کنید، باید طبق
+        مراحل <strong>اضافه کردن دامنه</strong>، وارد این پلتفرم شوید و از منوی
+        سمت راست، روی گزینه‌ی <strong>دامنه‌ها</strong> کلیک کنید. سپس روی
         گزینه‌ی{" "}
         <strong>
           <svg

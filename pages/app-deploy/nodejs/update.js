@@ -7,22 +7,22 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات به‌روزرسانی در برنامه‌های NodeJS - سرویس ابری لیارا</title>
+      <title>مستندات به‌روزرسانی در پلتفرم NodeJS - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="nodejs" />
       <div className="page-title">
-        <h1>برنامه‌های NodeJS</h1>
-        <span className="page-description">(NodeJS Apps)</span>
+        <h1>پلتفرم NodeJS</h1>
+        <span className="page-description">(NodeJS Platform)</span>
       </div>
     </div>
 
-    <h3>به‌روز‌رسانی برنامه</h3>
+    <h3>به‌روز‌رسانی پلتفرم</h3>
     <p>
-      به‌منظور به‌روزرسانی برنامه‌های خود می‌توانید به‌سادگی دستور{" "}
+      به‌منظور به‌روزرسانی پلتفرم خود می‌توانید به‌سادگی دستور{" "}
       <span className="code">liara deploy</span> را در مسیر اصلی پروژه اجرا کنید
-      تا فرایند استقرار برنامه آغاز شود.
+      تا فرایند استقرار پروژه‌تان آغاز شود.
     </p>
     <p>
       {" "}

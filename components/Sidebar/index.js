@@ -220,7 +220,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
         <nav className="nav">
           <NavTitle active={defaultActive} href="/app-deploy">
-            برنامه‌ها
+            پلتفرم
           </NavTitle>
           <ul className="nav__list">
             <li>
@@ -261,7 +261,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/nodejs/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -339,7 +339,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/laravel/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -422,7 +422,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/php/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -495,7 +495,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/django/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -548,7 +548,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/flask/deploy">
-                    استقرار اولین برنامه
+                    اولین استقرار
                   </ActiveLink>
                 </li>
                 <li>
@@ -568,7 +568,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/flask/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -641,7 +641,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/netcore/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -709,7 +709,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/react/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -757,7 +757,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/angular/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -805,7 +805,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/vue/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -853,7 +853,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/static/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -916,7 +916,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
                 <li>
                   <ActiveLink href="/app-deploy/docker/update">
-                    به‌روزرسانی برنامه
+                    به‌روزرسانی پلتفرم
                   </ActiveLink>
                 </li>
                 <li>
@@ -940,11 +940,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/one-click-apps">برنامه‌های آماده</NavTitle>
+          <NavTitle href="/one-click-apps">پلتفرم آماده</NavTitle>
           <ul className="nav__list">
             <li>
               <ActiveLink href="/one-click-apps/about">
-                درباره برنامه‌های آماده
+                درباره پلتفرم آماده
               </ActiveLink>
             </li>
             <li>
@@ -1100,7 +1100,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/one-click-apps/others">
-                دیگر برنامه‌ها
+                دیگر پلتفرم‌ها
               </ActiveLink>
             </li>
           </ul>
@@ -1293,7 +1293,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/databases">دیتابیس‌ها</NavTitle>
+          <NavTitle href="/databases">دیتابیس</NavTitle>
           <ul className="nav__list">
             <li>
               <NavTitle href="/databases/mysql">
@@ -1481,7 +1481,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/app-features">ویژگی‌های برنامه</NavTitle>
+          <NavTitle href="/app-features">ویژگی‌های پلتفرم</NavTitle>
           <ul className="nav__list">
             <li>
               <ActiveLink href="/app-features/file-system">
@@ -1680,19 +1680,19 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/cli/login">ورود به حساب کاربری</ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/cli/deploy">استقرار برنامه</ActiveLink>
+              <ActiveLink href="/cli/deploy">اولین استقرار</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/cli/disk">مدیریت دیسک‌ها</ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/cli/app">مدیریت برنامه‌ها</ActiveLink>
+              <ActiveLink href="/cli/app">مدیریت پلتفرم</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/cli/env">مدیریت متغیرهای محیطی</ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/cli/plan">پلن‌های سرویس برنامه</ActiveLink>
+              <ActiveLink href="/cli/plan">پلن‌های سرویس پلتفرم</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/cli/account">
@@ -1732,10 +1732,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/client-api/about">شروع به کار</ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/client-api/app">برنامه‌ها</ActiveLink>
+              <ActiveLink href="/client-api/app">پلتفرم</ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/client-api/database">دیتابیس‌ها</ActiveLink>
+              <ActiveLink href="/client-api/database">دیتابیس</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/client-api/domain">دامنه‌ها</ActiveLink>

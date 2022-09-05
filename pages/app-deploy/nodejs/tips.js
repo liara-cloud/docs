@@ -7,16 +7,14 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        توضیحات و نکات تکمیلی در برنامه‌های NodeJS - سرویس ابری لیارا
-      </title>
+      <title>توضیحات و نکات تکمیلی پلتفرم NodeJS - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="nodejs" />
       <div className="page-title">
-        <h1>برنامه‌های NodeJS</h1>
-        <span className="page-description">(NodeJS Apps)</span>
+        <h1>پلتفرم NodeJS</h1>
+        <span className="page-description">(NodeJS Platform)</span>
       </div>
     </div>
 
@@ -28,7 +26,7 @@ export default () => (
         <a href="#nodejs-version">انتخاب نسخه‌ی NodeJS</a>
       </li>
       <li>
-        <a href="#build-script">ES6 و build کردن برنامه</a>
+        <a href="#build-script">ES6 و build کردن پروژه</a>
       </li>
       <li>
         <a href="#proxy">تنظیمات TrustedProxies</a>
@@ -49,11 +47,10 @@ export default () => (
 
     <h3 id="nodejs-version">انتخاب نسخه‌ی NodeJS</h3>
     <p>
-      به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی ۱۶ این پلتفرم اجرا می‌شود. در
-      صورتی که قصد دارید نسخه دیگری را برای اجرای برنامه‌ی‌تان استفاده کنید
-      می‌توانید داخل فایل{" "}
-      <Link href="/app-deploy/nodejs/liarajson">liara.json</Link> بخش زیر را
-      اضافه کنید: (فایل زیر برای یک برنامه تستی در نظر گرفته شده است.)
+      به‌صورت پیش‌فرض، پروژه‌ی شما با نسخه‌ی ۱۶ NodeJS اجرا می‌شود. در صورتی که
+      قصد دارید نسخه دیگری را برای اجرای پروژه‌تان استفاده کنید می‌توانید در
+      فایل <Link href="/app-deploy/nodejs/liarajson">liara.json</Link> بخش زیر
+      را اضافه کنید: (فایل زیر برای یک پلتفرم تستی در نظر گرفته شده است.)
     </p>
     <Highlight className="json">
       {`{
@@ -77,12 +74,12 @@ export default () => (
       <li>18</li>
     </ul>
 
-    <h3 id="build-script">ES6 و build کردن برنامه</h3>
+    <h3 id="build-script">ES6 و build کردن پروژه</h3>
     <p>
-      اگر برنامه‌ی‌تان را با ES6 و یا بالاتر نوشته‌اید و برنامه‌ی‌تان قبل از
-      اجرا شدن، نیاز به build شدن دارد، باید یک اسکریپت دیگر با نام
+      اگر پروژه‌تان را با ES6 و یا بالاتر نوشته‌اید و این پروژه قبل از اجرا شدن،
+      نیاز به build شدن دارد، باید یک اسکریپت دیگر با نام
       <span className="code">build</span>
-      تعریف کنید و دستورات لازم برای build شدن برنامه‌ی‌تان را داخل{" "}
+      تعریف کنید و دستورات لازم برای build شدن پروژه‌تان را در{" "}
       <span className="code">package.json</span> تعریف کنید.
       <br />
       برای نمونه:
@@ -102,9 +99,9 @@ export default () => (
       <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">
         Reverse proxy
       </a>{" "}
-      لیارا به برنامه‌ی شما هدایت می‌شود باید در زمان استفاده از فریم‌ورک‌های
+      لیارا به پروژه‌ی شما هدایت می‌شود باید در زمان استفاده از فریم‌ورک‌های
       مختلف برای مشاهده‌ی IP واقعی کاربران و بسیاری از قابلیت‌های دیگر تعیین
-      کنید که برنامه‌ی شما در پشت یک Reverse proxy راه‌اندازی شده است.
+      کنید که پروژه‌ی شما در پشت یک Reverse proxy راه‌اندازی شده است.
     </p>
 
     <h4>فریم‌ورک Express</h4>
@@ -194,7 +191,7 @@ server.listen().then(({ url }) => {
       را نصب کرده:
     </p>
     <Highlight className="bash">{`$ npm i cors`}</Highlight>
-    <p>و به‌شکل زیر از آن در برنامه‌ی خود استفاده کنید:</p>
+    <p>و به‌شکل زیر از آن در پروژه‌ی خود استفاده کنید:</p>
     <Highlight className="javascript">{`const express = require('express')
 const cors = require('cors')
 const app = express()
@@ -219,7 +216,7 @@ app.use(cors())`}</Highlight>
       >
         cors
       </a>{" "}
-      در برنامه‌ی خود استفاده کنید:
+      در در پروژه‌ی خود استفاده کنید:
     </p>
     <Highlight className="javascript">{`await fastify.register(require('fastify-express'))
 fastify.use(require('cors')())`}</Highlight>

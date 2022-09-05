@@ -8,25 +8,25 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات اتصال به ذخیره‌سازی ابری در برنامه‌های NodeJS - سرویس ابری لیارا
+        مستندات اتصال به ذخیره‌سازی ابری در پلتفرم NodeJS - سرویس ابری لیارا
       </title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="nodejs" />
       <div className="page-title">
-        <h1>برنامه‌های NodeJS</h1>
-        <span className="page-description">(NodeJS Apps)</span>
+        <h1>پلتفرم NodeJS</h1>
+        <span className="page-description">(NodeJS Platform)</span>
       </div>
     </div>
 
     <h3>اتصال به ذخیره‌سازی ابری</h3>
 
     <p>
-      بدون شک اتصال برنامه به یک{" "}
+      بدون شک اتصال پروژه به یک{" "}
       <Link href="/buckets/about">ذخیره‌سازی ابری</Link> مطمئن برای نگهداری و
       ارائه فایل‌های استاتیک وب‌سایت یا داده‌های آپلود شده توسط کاربران، باعث
-      اطمینان خاطر صاحبان کسب و کار و بهبود عملکرد برنامه‌ می‌شود.
+      اطمینان خاطر صاحبان کسب و کار و بهبود عملکرد پروژه می‌شود.
     </p>
 
     <h4>فهرست عناوین:</h4>
@@ -64,7 +64,7 @@ export default () => (
       در مرحله‌ی بعد، به‌منظور امنیت و کنترل راحت‌تر مقادیر باید مشخصات فضای
       ذخیره‌سازی ابری اعم از <Link href="/buckets/keys">کلیدها</Link> و آدرس
       اتصال به این سرویس را در بخش{" "}
-      <Link href="/app-deploy/nodejs/envs">متغیرهای برنامه</Link> تنظیم کنید.
+      <Link href="/app-deploy/nodejs/envs">متغیرهای پلتفرم</Link> تنظیم کنید.
     </p>
     <Highlight className="plaintext">
       {`LIARA_ENDPOINT=<Liara Bucket Endpoint>

@@ -8,21 +8,21 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات سرویس ایمیل در برنامه‌های NodeJS - سرویس ابری لیارا</title>
+      <title>مستندات سرویس ایمیل در پلتفرم NodeJS - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="nodejs" />
       <div className="page-title">
-        <h1>برنامه‌های NodeJS</h1>
-        <span className="page-description">(NodeJS Apps)</span>
+        <h1>پلتفرم NodeJS</h1>
+        <span className="page-description">(NodeJS Platform)</span>
       </div>
     </div>
 
     <h3>ارسال ایمیل</h3>
 
     <p>
-      برای استفاده از سرویس ایمیل در برنامه‌های NodeJS باید پس از{" "}
+      برای استفاده از سرویس ایمیل در پلتفرم NodeJS باید پس از{" "}
       <Link href="/app-features/email#create-email">ایجاد سرویس ایمیل</Link>، در
       ابتدا پکیج{" "}
       <Link href="https://www.npmjs.com/package/nodemailer">nodemailer</Link> را
@@ -33,7 +33,7 @@ export default () => (
       در قدم بعد باید اطلاعات{" "}
       <Link href="/app-features/email#settings">دسترسی SMTP</Link> را طبق
       مستندات <Link href="/app-deploy/nodejs/envs">تنظیم متغیرها</Link> در
-      تنظیمات برنامه اضافه کنید.
+      تنظیمات پلتفرم اضافه کنید.
     </p>
 
     <Highlight className="plaintext">
