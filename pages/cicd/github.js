@@ -78,8 +78,8 @@ jobs:
           LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}\
 
         run: |
-          npm i -g @liara/cli@2
-          liara deploy --app="APP_NAME" --api-token="$LIARA_TOKEN" --region iran --detach
+          npm i -g @liara/cli@3
+          liara deploy --app="APP_NAME" --api-token="$LIARA_TOKEN" --detach
 `}
     </Highlight>
     <Notice variant="warning">
