@@ -60,9 +60,9 @@ deploy:
   only:
     - master
   script:
-    - npm i -g @liara/cli@2
+    - npm i -g @liara/cli@3
     - export http_proxy=http://proxy.liara.ir:6666
-    - liara deploy --app APP_NAME --api-token $TOKEN --region iran --detach
+    - liara deploy --app APP_NAME --api-token $TOKEN --detach
 `}
     </Highlight>
     <Notice variant="warning">
