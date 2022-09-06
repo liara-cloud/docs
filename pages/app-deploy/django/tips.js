@@ -13,13 +13,15 @@ export default () => (
         توضیحات و نکات تکمیلی در برنامه‌های Django - سرویس ابری لیارا
       </title>
     </Head>
+
     <div className="page-head">
       <PlatformIcon platform="django" />
       <div className="page-title">
-        <h1>برنامه‌های Django</h1>
-        <span className="page-description">(Django Apps)</span>
+        <h1>پلتفرم Django</h1>
+        <span className="page-description">(Django Platform)</span>
       </div>
     </div>
+
     <h3>🎯 توضیحات و نکات تکمیلی</h3>
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">

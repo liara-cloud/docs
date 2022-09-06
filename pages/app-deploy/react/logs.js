@@ -13,11 +13,10 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="react" />
       <div className="page-title">
-        <h1>برنامه‌های ReactJS</h1>
-        <span className="page-description">(ReactJS Apps)</span>
+        <h1>پلتفرم ReactJS</h1>
+        <span className="page-description">(ReactJS Platform)</span>
       </div>
     </div>
-
     <h3>مشاهده لاگ‌های برنامه</h3>
     <p>
       لاگ بخش مهمی از هر برنامه است و به برنامه‌نویسان کمک می‌کند تا بتوانند

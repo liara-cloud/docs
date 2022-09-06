@@ -12,8 +12,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="flask" />
       <div className="page-title">
-        <h1>برنامه‌های Flask</h1>
-        <span className="page-description">(Flask Apps)</span>
+        <h1>پلتفرم Flask</h1>
+        <span className="page-description">(Flask Platform)</span>
       </div>
     </div>
 

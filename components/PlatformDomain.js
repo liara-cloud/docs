@@ -12,7 +12,7 @@ export default function Domain({ platform }) {
     { lCase: "flask", uCase: "Flask", icon: "flask", next: "email" },
     { lCase: "laravel", uCase: "Laravel", icon: "laravel", next: "email" },
     { lCase: "php", uCase: "PHP", icon: "php", next: "email" },
-    { lCase: "netcore", uCase: "ASP.Net Core", icon: "netcore", next: "email" },
+    { lCase: "netcore", uCase: ".Net", icon: "netcore", next: "email" },
     { lCase: "react", uCase: "React", icon: "react", next: "tips" },
     { lCase: "vue", uCase: "Vue", icon: "vue", next: "tips" },
     { lCase: "static", uCase: "Static", icon: "HTML5", next: "tips" },
@@ -33,8 +33,8 @@ export default function Domain({ platform }) {
       <div className="page-head">
         <PlatformIcon platform={type.icon} />
         <div className="page-title">
-          <h1>برنامه‌های {type.uCase}</h1>
-          <span className="page-description">({type.uCase} Apps)</span>
+          <h1>پلتفرم {type.uCase}</h1>
+          <span className="page-description">({type.uCase} Platform)</span>
         </div>
       </div>
 

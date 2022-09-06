@@ -16,8 +16,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="vue" />
       <div className="page-title">
-        <h1>برنامه‌های Vue</h1>
-        <span className="page-description">(Liara Desktop)</span>
+        <h1>پلتفرم VueJS</h1>
+        <span className="page-description">(VueJS Platform)</span>
       </div>
     </div>
 

@@ -10,11 +10,12 @@ export default () => (
         سرویس ابری لیارا - مستندات اتصال به Soketi در برنامه‌های Laravel
       </title>
     </Head>
+
     <div className="page-head">
       <PlatformIcon platform="laravel" />
       <div className="page-title">
-        <h1>برنامه‌های Laravel</h1>
-        <span className="page-description">(Laravel Apps)</span>
+        <h1>پلتفرم Laravel</h1>
+        <span className="page-description">(Laravel Platform)</span>
       </div>
     </div>
 
