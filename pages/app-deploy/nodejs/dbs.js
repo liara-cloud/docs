@@ -15,8 +15,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="nodejs" />
       <div className="page-title">
-        <h1>برنامه‌های NodeJS</h1>
-        <span className="page-description">(NodeJS Apps)</span>
+        <h1>پلتفرم NodeJS</h1>
+        <span className="page-description">(NodeJS Platform)</span>
       </div>
     </div>
 

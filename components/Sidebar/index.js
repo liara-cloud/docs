@@ -220,7 +220,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
         <nav className="nav">
           <NavTitle active={defaultActive} href="/app-deploy">
-            برنامه‌ها
+            پلتفرم
           </NavTitle>
           <ul className="nav__list">
             <li>
@@ -1293,7 +1293,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/databases">دیتابیس‌ها</NavTitle>
+          <NavTitle href="/databases">دیتابیس</NavTitle>
           <ul className="nav__list">
             <li>
               <NavTitle href="/databases/mysql">

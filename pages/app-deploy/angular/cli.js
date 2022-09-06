@@ -17,8 +17,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="angularjs" />
       <div className="page-title">
-        <h1>برنامه‌های Angular</h1>
-        <span className="page-description">(Liara CLI)</span>
+        <h1>پلتفرم Angular</h1>
+        <span className="page-description">(Angular Platform)</span>
       </div>
     </div>
 

@@ -18,8 +18,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="docker" />
       <div className="page-title">
-        <h1>برنامه‌های Docker</h1>
-        <span className="page-description">(Docker Apps)</span>
+        <h1>پلتفرم Docker</h1>
+        <span className="page-description">(Docker Platform)</span>
       </div>
     </div>
 

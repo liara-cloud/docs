@@ -16,8 +16,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="HTML5" />
       <div className="page-title">
-        <h1>برنامه‌های Static</h1>
-        <span className="page-description">(Liara Desktop)</span>
+        <h1>پلتفرم Static</h1>
+        <span className="page-description">(Static Platform)</span>
       </div>
     </div>
 

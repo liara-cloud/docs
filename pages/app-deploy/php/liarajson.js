@@ -15,8 +15,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="php" />
       <div className="page-title">
-        <h1>برنامه‌های PHP</h1>
-        <span className="page-description">(PHP Apps)</span>
+        <h1>پلتفرم PHP</h1>
+        <span className="page-description">(PHP Platform)</span>
       </div>
     </div>
 

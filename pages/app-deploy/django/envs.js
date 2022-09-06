@@ -18,10 +18,11 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="django" />
       <div className="page-title">
-        <h1>برنامه‌های Django</h1>
-        <span className="page-description">(Django Apps)</span>
+        <h1>پلتفرم Django</h1>
+        <span className="page-description">(Django Platform)</span>
       </div>
     </div>
+
     <h3>تنظیم متغیرها (Environment Variables)</h3>
     <p>
       متغیرهای محیطی یا همان Environment Variables به شما کمک می‌کنند تا

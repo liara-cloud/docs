@@ -16,8 +16,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>برنامه‌های ASP.Net Core</h1>
-        <span className="page-description">(ASP.Net Core Apps)</span>
+        <h1>پلتفرم .Net</h1>
+        <span className="page-description">(.Net Platform)</span>
       </div>
     </div>
 

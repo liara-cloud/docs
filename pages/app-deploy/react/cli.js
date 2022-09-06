@@ -17,8 +17,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="react" />
       <div className="page-title">
-        <h1>برنامه‌های React</h1>
-        <span className="page-description">(Liara CLI)</span>
+        <h1>پلتفرم ReactJS</h1>
+        <span className="page-description">(ReactJS Platform)</span>
       </div>
     </div>
 
