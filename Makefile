@@ -17,3 +17,10 @@ run:
 	docker container run -d -p 8080:80 --name=liara-docs liara-docs:latest
 	@echo "Liara-docs bind to: http://localhost:8080"
 .PHONY:run
+
+rebase:
+	@git switch master
+	@git fetch upstream
+	@git rebase upstream/master
+	@git push origin master
+.PHONY:rebase
