@@ -52,6 +52,9 @@ export default () => (
         <a href="#max-upload-size">افزایش محدودیت حجم آپلود فایل</a>
       </li>
       <li>
+        <a href="#set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a>
+      </li>
+      <li>
         <a href="#cors-media-files">رفع خطای CORS فایل‌های Media</a>
       </li>
       <li>
@@ -308,6 +311,25 @@ location ~ /\\.well-known {
       به <strong>250MB</strong> افزایش می‌یابد. شما می‌توانید مقدار دلخواه
       خودتان را تنظیم کنید.
     </p>
+
+    <h3 id="set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>
+    <p>
+      به صورت پیش‌فرض، منطقه‌ی زمانی بر روی Asia/Tehran تنظیم شده است. برای
+      تغییر مقدار پیش‌فرض، می‌توانید از پارامتر
+      <span className="code">timezone</span>
+      در فایل <Link href="/app-deploy/django/liarajson">liara.json</Link>{" "}
+      استفاده کنید. برای نمونه:
+    </p>
+    <Highlight className="json">
+      {`{
+  "platform": "django",
+  "app": "django-starter",
+  "django": {
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+    </Highlight>
+
     <h3 id="cors-media-files">رفع خطای CORS فایل‌های Media</h3>
     <p>
       مسئولیت ارائه فایل‌های رسانه (Media) به کاربران در پلتفرم Django برعهده‌ی

@@ -1647,6 +1647,9 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 ثبت درخواست انتقال
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/buckets/backup">تهیه فایل پشتیبان</ActiveLink>
+            </li>
             {/*
             <li>
               <ActiveLink href="/buckets/domain">اتصال دامنه</ActiveLink>

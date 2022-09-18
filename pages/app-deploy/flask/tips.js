@@ -82,16 +82,14 @@ export default () => (
       در فایل <Link href="/app-deploy/flask/liarajson">liara.json</Link> استفاده
       کنید. برای نمونه:
     </p>
-    <pre>
-      <code>
-        {`{
+    <Highlight className="json">
+      {`{
   "app": "flask-starter",
   "flask": {
     "timezone": "America/Los_Angeles"
   }
 }`}
-      </code>
-    </pre>
+    </Highlight>
     <h3 id="gunicorn-timeout">افزایش زمان تایم‌اوت Gunicorn</h3>
     <p>
       درصورتی که در برنامه‌ی Flask خود با خطای{" "}
