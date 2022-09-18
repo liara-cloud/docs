@@ -56,7 +56,7 @@ export default () => (
           <span>NestJS</span>
         </a>
       </Link>
-      <Link href="/instructions/nextjs">
+      <Link href="/app-deploy/nextjs/getting-started">
         <a>
           <PlatformIcon platform="next" />
           <span>NextJS</span>
