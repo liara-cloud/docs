@@ -1,7 +1,8 @@
-import Layout from "../../components/Layout";
 import Head from "next/head";
-import Asciinema from "../../components/Asciinema";
 import Highlight from "react-highlight";
+import Layout from "../../components/Layout";
+import Asciinema from "../../components/Asciinema";
+import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -21,9 +22,8 @@ export default () => (
         Rclone
       </a>{" "}
       یک ابزار تحت command-line است که می‌توانید به‌کمک آن، فایل‌های درون فضای
-      ذخیره‌سازی ابری را مدیریت کنید. حال برای تهیه‌ی فایل پشتیبان از
-      باکت‌های‌تان در لیارا می‌توانید طبق دستورالعمل زیر از این ابزار استفاده
-      کنید.
+      ذخیره‌سازی ابری را مدیریت کنید. حال برای تهیه‌ی فایل پشتیبان از باکت ایجاد
+      شده در لیارا می‌توانید طبق دستورالعمل زیر از این ابزار استفاده کنید.
     </p>
     <p>
       در ابتدا از صفحه‌ی{" "}
@@ -47,16 +47,50 @@ export default () => (
       <span className="code">
         rclone copy [remote]:[bucket-name] /path/to/folder
       </span>{" "}
-      یک نسخه از فایل‌های موجود در فضای ذخیره‌سازی ابری لیارا را در لوکال خود
-      داشته باشید. برای مثال اگر یک باکت با نام{" "}
-      <span className="code">novels</span> در لیارا داشته باشید، می‌توانید با
-      اجرای دستور زیر، تمامی فایل‌های موجود در فضای ذخیره‌سازی ابری را در دسکتاپ
-      خود کپی کنید.
+      یک نسخه از فایل‌های موجود در باکت موردنظرتان را در لوکال ذخیره کنید. برای
+      مثال اگر یک باکت با نام <span className="code">novels</span> در لیارا
+      داشته باشید، می‌توانید با اجرای دستور زیر، تمامی فایل‌های موجود در این
+      باکت را در دسکتاپ خود کپی کنید.
     </p>
 
     <Highlight className="bash">
       {`rclone copy liara:novels ~/Desktop/novels`}
     </Highlight>
-    {/* <h4 id="s3-browser">S3 Browser</h4> */}
+
+    <h4 id="s3-browser">S3 Browser</h4>
+    <p>
+      <a
+        href="https://s3browser.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        S3 Browser
+      </a>{" "}
+      یک رابط گرافیکی برای مدیریت فضای ذخیره‌سازی مبتنی بر پروتکل S3 در
+      سیستم‌عامل ویندوز است. حال برای تهیه‌ی فایل پشتیبان از باکت ایجاد شده در
+      لیارا می‌توانید طبق دستورالعمل زیر از این ابزار استفاده کنید.
+    </p>
+
+    <p>
+      بعد از نصب و اجرای S3 Browser باید از منوی <strong>Accounts</strong> روی
+      گزینه‌ی <strong>Add New Account</strong> کلیک کرده و اطلاعات درخواست شده
+      را وارد کنید.
+    </p>
+
+    <ZoomableImage
+      src="/static/buckets/add-new-s3-browser-account.png"
+      alt="اضافه کردن یک باکت جدید در s3 browser"
+    />
+
+    <p>
+      بعد از اضافه شدن حساب می‌توانید با کلیک راست روی باکت موردنظرتان و انتخاب
+      گزینه‌ی <strong>Download all files to</strong>، تمامی فایل‌های موجود در
+      این باکت را در مسیر موردنظرتان ذخیره کنید.
+    </p>
+
+    <ZoomableImage
+      src="/static/buckets/save-bucket-files-into-local-folder.png"
+      alt="دانلود تمام داده‌های باکت در لوکال"
+    />
   </Layout>
 );
