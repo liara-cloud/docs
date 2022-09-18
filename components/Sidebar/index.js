@@ -1289,6 +1289,9 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Vite
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/instructions/websocket">WebSocket</ActiveLink>
+            </li>
           </ul>
         </nav>
 
