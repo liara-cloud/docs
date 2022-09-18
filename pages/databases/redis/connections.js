@@ -60,7 +60,11 @@ export default () => (
     <h4>استفاده از پنل رایگان و متن باز</h4>
     <p>
       همچنین شما می‌توانید از پنل رایگان و متن‌باز{" "}
-      <a href="https://github.com/luin/medis" rel="noopenner" target="_blank">
+      <a
+        href="https://github.com/luin/medis"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         medis
       </a>{" "}
       نیز استفاده کنید.
