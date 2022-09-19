@@ -297,6 +297,34 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ul>
             </li>
             <li>
+              <NavTitle href="/app-deploy/nextjs">
+                <PlatformIcon platform="next" />
+                NextJS
+              </NavTitle>
+              <ul className="nav__list">
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/getting-started">
+                    شروع به کار
+                  </ActiveLink>
+                </li>
+                {/* <li>
+                  <ActiveLink href="/app-deploy/nextjs/desktop">
+                    استقرار با Liara Desktop
+                  </ActiveLink>
+                </li> */}
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/cli">
+                    استقرار با Liara CLI
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/tips">
+                    توضیحات و نکات تکمیلی
+                  </ActiveLink>
+                </li>
+              </ul>
+            </li>
+            <li>
               <NavTitle href="/app-deploy/laravel">
                 <PlatformIcon platform="laravel" />
                 Laravel
@@ -1109,12 +1137,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         <nav className="nav">
           <NavTitle href="/instructions">دستورالعمل‌ها</NavTitle>
           <ul className="nav__list">
-            <li>
-              <ActiveLink href="/instructions/nextjs">
-                <PlatformIcon platform="next" />
-                NextJS
-              </ActiveLink>
-            </li>
             <li>
               <ActiveLink href="/instructions/nuxtjs">
                 <PlatformIcon platform="nuxt" />
