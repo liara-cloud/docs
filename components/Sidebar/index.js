@@ -307,11 +307,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     شروع به کار
                   </ActiveLink>
                 </li>
-                <li>
+                {/* <li>
                   <ActiveLink href="/app-deploy/nextjs/desktop">
                     استقرار با Liara Desktop
                   </ActiveLink>
-                </li>
+                </li> */}
                 <li>
                   <ActiveLink href="/app-deploy/nextjs/cli">
                     استقرار با Liara CLI

@@ -22,9 +22,8 @@ export default () => (
 
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه NextJS را با استفاده از
-      ابزار <Link href="/app-deploy/nextjs/desktop">Liara Desktop</Link>، بر روی
-      سرویس ابری لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح
-      می‌دهید یا تصمیم داشته باشید با{" "}
+      ابزار Liara Desktop، بر روی سرویس ابری لیارا مستقر کنید. البته درصورتی که
+      استفاده از Terminal را ترجیح می‌دهید یا تصمیم داشته باشید با{" "}
       <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار برنامه‌ی
       خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
       <Link href="/cicd/gitlab">GitLab</Link> بسپرید، امکان استفاده از ابزار{" "}
@@ -33,6 +32,6 @@ export default () => (
       از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
 
-    <Link href="/app-deploy/nextjs/desktop">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nextjs/cli">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
