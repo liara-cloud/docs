@@ -575,8 +575,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/flask/deploy">
-                    استقرار اولین برنامه
+                  <ActiveLink href="/app-deploy/flask/cli">
+                    استقرار با Liara CLI
                   </ActiveLink>
                 </li>
                 <li>
