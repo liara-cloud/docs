@@ -43,6 +43,9 @@ export default () => (
         <a href="#apps">لینک‌کردن پوشه‌ی storage به پوشه‌ی public</a>
       </li>
       <li>
+        <a href="#octane">راه‌اندازی Laravel octane</a>
+      </li>
+      <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
@@ -257,6 +260,24 @@ stdout_logfile=/tmp/laravel-worker.log`}
       <span className="code">php artisan storage:link</span>
       را اجرا می‌کند و نیازی نیست که اقدام خاصی انجام دهید.
     </p>
+    <h3 id="octane">راه‌اندازی Laravel octane</h3>
+    <p>
+      برای راه‌اندازی Laravel octane با سرور Swoole باید یک فایل با نام{" "}
+      <Link href="/app-deploy/laravel/liarajson">liara.json</Link> در مسیر اصلی
+      پروژه‌ی خود ایجاد کرده و فیلد <span className="code">args</span> را به‌شکل
+      زیر در این فایل اضافه کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "args": [ "php artisan octane:start --server=swoole --host=0.0.0.0 --port=80" ]
+}`}
+    </Highlight>
+    <p>
+      درنهایت با اجرای دستور زیر در{" "}
+      <Link href="/app-features/console">خط فرمان</Link> برنامه‌ی خود می‌توانید
+      وضعیت Laravel octane را بررسی کنید:
+    </p>
+    <Highlight className="bash">{`php artisan octane:status`}</Highlight>
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
       برای رفع خطای CORS در برنامه‌های Laravel، دو راه حل مختلف پیش روی شما قرار
