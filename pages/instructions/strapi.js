@@ -49,7 +49,7 @@ API_TOKEN_SALT`}
     "strapi": "strapi"
 },`}</Highlight>
 
-    <h3>استفاده از دیتابیس SQLite</h3>
+    <h3 id="sqlite">استفاده از دیتابیس SQLite</h3>
     <p>
       برای استفاده از دیتابیس SQLite باید در نظر داشته باشید که فایل سیستم
       برنامه‌های لیارا، <Link href="/app-features/file-system">Read-Only</Link>{" "}
@@ -71,7 +71,7 @@ API_TOKEN_SALT`}
     ]
 }`}</Highlight>
 
-    <h3>رفع خطای CORS</h3>
+    <h3 id="cors">رفع خطای CORS</h3>
     <p>
       CORS به‌صورت پیش‌فرض در برنامه‌های Strapi فعال است اما درصورتی که تغییراتی
       در پیکربندی این برنامه به‌وجود آورده باشید باید از صحیح بودن origin وارد
@@ -96,5 +96,38 @@ module.exports = {
       </a>{" "}
       این سیستم مدیریت محتوا را مطالعه کنید.
     </p>
+
+    <h3 id="buckets">اتصال به ذخیره‌سازی ابری</h3>
+    <p>
+      برای اتصال برنامه‌های Strapi به ذخیره‌سازی ابری لیارا می‌توانید از پلاگین{" "}
+      <a
+        href="https://market.strapi.io/providers/@strapi-provider-upload-aws-s3"
+        target="_blank"
+        rel="noopener"
+      >
+        AWS S3
+      </a>{" "}
+      استفاده کرده و به‌شکل زیر این پلاگین را در فایل{" "}
+      <span className="code">config/plugins.js</span> پیکربندی کنید:
+    </p>
+    <Highlight className="javascript">
+      {`module.exports = ({ env }) => ({
+  // ...
+  upload: {
+    config: {
+      provider: 'aws-s3',
+      providerOptions: {
+        accessKeyId: env('LIARA_ACCESS_KEY_ID'),
+        secretAccessKey: env('LIARA_ACCESS_SECRET'),
+        endpoint: env('LIARA_ENDPOINT'),
+        params: {
+          Bucket: env('LIARA_BUCKET'),
+        },
+      },
+    },
+  },
+  // ...
+});`}
+    </Highlight>
   </Layout>
 );
