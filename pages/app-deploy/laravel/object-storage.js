@@ -55,7 +55,7 @@ export default () => (
       زیر نصب خواهد شد:
     </p>
     <Highlight className="shell">
-      {`composer require --with-all-dependencies league/flysystem-aws-s3-v3 "^1.0"`}
+      {`composer require league/flysystem-aws-s3-v3 "^3.0"`}
     </Highlight>
 
     <h3 id="filesystem-config">پیکربندی FileSystem</h3>
@@ -64,10 +64,9 @@ export default () => (
       در مسیر <span className="code">config/filesystems.php</span> اضافه کنید:
     </p>
     <Highlight className="php">
-      {`'cloud' => env('FILESYSTEM_CLOUD'),
-'liara' => [
+      {`'liara' => [
     'driver' => 's3',
-    'endpoint' => 'https://' . env('ENDPOINT_URL'),
+    'endpoint' => env('ENDPOINT_URL'),
     'key' => env('ACCESS_KEY'),
     'secret' => env('SECRET_KEY'),
     'region' => env('DEFAULT_REGION'),
@@ -77,9 +76,7 @@ export default () => (
 
     <h3 id="set-env-variable">تنظیم مشخصات ذخیره‌سازی ابری</h3>
 
-    <h4>
-      در فایل <span className="code">.env</span> پروژه
-    </h4>
+    <h4>در لوکال</h4>
     <p>
       درنهایت باید متغیرهای تنظیم شده در فایل{" "}
       <span className="code">config/filesystems.php</span> را به‌منظور امنیت و
@@ -87,11 +84,10 @@ export default () => (
       کنید:
     </p>
     <Highlight className="env">
-      {`FILESYSTEM_CLOUD=liara
-ENDPOINT_URL=<Liara Bucket Endpoint>
-BUCKET_NAME=<Bucket Name>
+      {`ENDPOINT_URL=https://storage.iran.liara.space
 ACCESS_KEY=<Access Key>
 SECRET_KEY=<Secret Key>
+BUCKET_NAME=<Bucket Name>
 DEFAULT_REGION=us-east-1`}
     </Highlight>
 
