@@ -307,11 +307,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     شروع به کار
                   </ActiveLink>
                 </li>
-                {/* <li>
+                <li>
                   <ActiveLink href="/app-deploy/nextjs/desktop">
                     استقرار با Liara Desktop
                   </ActiveLink>
-                </li> */}
+                </li>
                 <li>
                   <ActiveLink href="/app-deploy/nextjs/cli">
                     استقرار با Liara CLI
@@ -572,6 +572,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/flask/getting-started">
                     شروع به کار
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/flask/desktop">
+                    استقرار با Liara Desktop
                   </ActiveLink>
                 </li>
                 <li>

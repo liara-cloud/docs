@@ -34,12 +34,12 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
 
-    {/* <video
+    <video
       src="https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
-    ></video> */}
+    ></video>
 
     <Link href="/app-deploy/nextjs/cli">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
