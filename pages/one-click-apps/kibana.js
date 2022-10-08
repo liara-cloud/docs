@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
 import PlatformIcon from "../../components/PlatformIcon";
@@ -23,8 +24,9 @@ export default () => (
       </a>{" "}
       یک پلتفرم است که با استفاده از آن می‌توان ساز و کارهایی مثل ایجاد گزارش،
       ایجاد نوتیفیکشن، مانیتورینگ بخش‌های مختلف رویدادها و ... را در اختیار
-      داشت. داده‌های kibana از طریق beats جمع آوری شده و با logstash به
-      elasticsearch منتقل می‌شود سپس kibana امکان رصد و مانیتورینگ را می‌دهد.
+      داشت. داده‌های kibana از طریق beats جمع آوری شده و با logstash به{" "}
+      <Link href="/databases/elasticsearch/install">Elasticsearch</Link> منتقل
+      می‌شود سپس kibana امکان رصد و مانیتورینگ را می‌دهد.
     </p>
 
     <h3>🚀 راه‌اندازی</h3>

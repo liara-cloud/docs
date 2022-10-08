@@ -173,16 +173,16 @@ const Index = () => (
           <span>Redis</span>
         </a>
       </Link>
+      <Link href="/databases/elasticsearch/install">
+        <a>
+          <PlatformIcon platform="elastic" />
+          <span>Elastic</span>
+        </a>
+      </Link>
       <Link href="/instructions/rabbitmq">
         <a>
           <PlatformIcon platform="rabbitmq" />
           <span>RabbitMQ</span>
-        </a>
-      </Link>
-      <Link href="/instructions/elasticsearch">
-        <a>
-          <PlatformIcon platform="elastic" />
-          <span>Elastic</span>
         </a>
       </Link>
     </div>
