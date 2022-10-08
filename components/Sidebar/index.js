@@ -1269,12 +1269,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/instructions/elasticsearch">
-                <PlatformIcon platform="elastic" />
-                Elasticsearch
-              </ActiveLink>
-            </li>
-            <li>
               <ActiveLink href="/instructions/yii">
                 <PlatformIcon platform="yii" />
                 Yii
@@ -1479,6 +1473,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
               </ul>
             </li>
+
             <li>
               <NavTitle href="/databases/redis">
                 <PlatformIcon platform="redis" />
@@ -1503,6 +1498,20 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/databases/redis/restore">
                     بازیابی فایل پشتیبان
+                  </ActiveLink>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <NavTitle href="/databases/elasticsearch">
+                <PlatformIcon platform="elastic" />
+                Elastic
+              </NavTitle>
+              <ul className="nav__list">
+                <li>
+                  <ActiveLink href="/databases/elasticsearch/install">
+                    نصب و راه‌اندازی
                   </ActiveLink>
                 </li>
               </ul>
