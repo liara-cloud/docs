@@ -47,6 +47,9 @@ export default () => (
       <li>
         <a href="#mirror">غیرفعال کردن Mirror</a>
       </li>
+      <li>
+        <a href="#main-module">تعیین نام ماژول</a>
+      </li>
     </ul>
 
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
@@ -219,6 +222,53 @@ def helloWorld():
       {`{
   "flask": {
     "mirror": false
+  }
+}`}
+    </Highlight>
+
+    <h3 id="main-module">تعیین نام ماژول</h3>
+    <p>
+      درصورتی که از نام دیگری به‌جز <span className="code">app</span> و{" "}
+      <span className="code">app.py</span>به‌عنوان نام ماژول اصلی برنامه‌تان
+      استفاده کرده باشید نیاز هست یک فایل با نام{" "}
+      <Link href="/app-deploy/flask/liarajson">liara.json</Link> در مسیر اصلی
+      پروژه‌تان ایجاد کرده و به‌شکل زیر ماژول اصلی برنامه‌تان را تعیین کنید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "flask": {
+    "appModule": "FILE_NAME:FLASK_INSTANCE"
+  }
+}`}
+    </Highlight>
+
+    <p>
+      برای مثال درصورتی که Flask instance با نام{" "}
+      <span className="code">app</span> در فایل{" "}
+      <span className="code">server.py</span> تعریف کرده باشید:
+    </p>
+
+    <Highlight className="python">
+      {`import os
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template('index.html')`}
+    </Highlight>
+
+    <p>
+      باید به‌شکل زیر نام ماژول را در فایل{" "}
+      <span className="code">liara.json</span>تعیین کنید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "flask": {
+    "appModule": "server:app"
   }
 }`}
     </Highlight>
