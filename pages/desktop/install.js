@@ -30,15 +30,48 @@ export default function Desktop() {
       </section>
       <section className="download">
         <h3>لینک های دانلود</h3>
-        <div />
-        <button className="windows">
-          <a href="https://desktop.liara.ir/releases/Liara-Desktop-latest-win-x64.exe.zip">
-            <img src="/static/windows.svg" width="20" />
-            دانلود برای ویندوز
-          </a>
-        </button>
 
-        <Notice>نسخه مک و لینوکس لیارا دسکتاپ بزودی منتشر می‌شود.</Notice>
+        <div className="md:flex items-start justify-between mt-10">
+          <div className="os-container mt-14 md:mt-1 flex flex-col items-center justify-start">
+            <img src="/static/windows.svg" id="icon-os" width={120} />
+            <button>
+              <a href="https://desktop.liara.ir/releases/Liara-Desktop-latest-win-x64.exe.zip">
+                <img src="/static/download.svg" width={20} />
+                ویندوز
+              </a>
+            </button>
+          </div>
+          <div className="os-container  mt-14 md:mt-1 flex flex-col items-center justify-start">
+            <img src="/static/linux.svg" id="icon-os" width={110} />
+            <button>
+              <a href="http://desktop.liara.ir/releases/Liara-Desktop-latest-linux-arm64.deb.zip">
+                <img src="/static/download.svg" width={20} />
+                لینوکس (arm64)
+              </a>
+            </button>
+            <button className="">
+              <a href="http://desktop.liara.ir/releases/Liara-Desktop-latest-linux-amd64.deb.zip">
+                <img src="/static/download.svg" width={20} />
+                لینوکس (amd64)
+              </a>
+            </button>
+          </div>
+          <div className="os-container mt-14 md:mt-1 flex flex-col items-center justify-start">
+            <img src="/static/mac.svg" id="icon-os" width={110} />
+            <button>
+              <a href="http://desktop.liara.ir/releases/Liara-Desktop-latest-mac-arm64.dmg.zip">
+                <img src="/static/download.svg" width={20} />
+                مک (arm64)
+              </a>
+            </button>
+            <button>
+              <a href="http://desktop.liara.ir/releases/Liara-Desktop-latest-mac-x64.dmg.zip">
+                <img src="/static/download.svg" width={20} />
+                مک (x64)
+              </a>
+            </button>
+          </div>
+        </div>
       </section>
     </Layout>
   );

@@ -108,6 +108,34 @@
   cursor: pointer;
 }
 
+#icon-os {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.os-container button {
+  margin: 20px 0px 5px;
+}
+.os-container a {
+  background: #353744;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+.os-container a img {
+  display: inline-block;
+  border: none;
+  border-radius: 0;
+  margin-left: 20px;
+}
+.os-container a:hover {
+  background: #414556;
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .video-desktop-container {
     height: 475px;
