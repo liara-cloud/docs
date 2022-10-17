@@ -65,7 +65,14 @@ export default () => (
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
       ‌را مشاهده کنید.
     </p>
-    <ZoomableImage src="https://files.liara.ir/docs/metabase/create-metabase-one-click-app.gif"></ZoomableImage>
+
+    <video
+      src="https://files.liara.ir/liara/metabase/create-metabase.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       برای راه‌اندازی برنامه‌ی آماده Metabase باید در بخش{" "}
       <a href="https://console.liara.ir/apps" target="_blank">
@@ -77,10 +84,5 @@ export default () => (
       نظر خود را انتخاب کنید و در آخر بر روی دکمه‌ی{" "}
       <strong>ایجاد برنامه</strong> کلیک کنید.
     </p>
-    <p>
-      پس از راه‌اندازی برنامه، نوبت به پیکربندی Metabase می‌رسد و شما باید
-      دیتابیس مورد نظر خود را در این مرحله به Metabase معرفی کنید.
-    </p>
-    <ZoomableImage src="https://files.liara.ir/docs/metabase/setup-metabase-app.gif"></ZoomableImage>
   </Layout>
 );
