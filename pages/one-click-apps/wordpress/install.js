@@ -39,7 +39,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/liara/wordpress.mp4"
+      src="https://files.liara.ir/liara/wordpress/create-wordpress.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

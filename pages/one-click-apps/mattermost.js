@@ -32,7 +32,12 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
 
-    <ZoomableImage src="https://files.liara.ir/docs/mattermost/create-mattermost-one-click-app.gif"></ZoomableImage>
+    <video
+      src="https://files.liara.ir/liara/mattermost/create-mattermost.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <p>
       برای راه‌اندازی نرم‌افزار چت و ارتباطات تیمی Mattermost کافیست این برنامه

@@ -31,6 +31,19 @@ export default () => (
       مراجعه کنید.
     </p>
     <h3>نصب و اجرا</h3>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/liara/rocketchat/create-rocketchat.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       کافیست از بخش <b>برنامه‌های آماده</b> روی ROCKET.CHAT کلیک کنید و سپس
       شناسه برنامه‌‌ی موردنظرتان را وارد کنید، مثلا{" "}
