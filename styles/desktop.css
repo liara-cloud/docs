@@ -114,26 +114,28 @@
   border-radius: 0;
 }
 
-.os-container button {
-  margin: 20px 0px 5px;
-}
 .os-container a {
-  background: #353744;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  border: none;
+  color: #fff !important;
+  border-bottom: none;
+  margin: 0;
+  background-color: #0070f3;
+  font-size: 14px;
+  padding: 6px 20px;
   border-radius: 8px;
+  white-space: nowrap;
+  text-align: center;
+  display: block;
+  margin-bottom: 8px;
+  min-width: 160px;
 }
 .os-container a img {
   display: inline-block;
   border: none;
   border-radius: 0;
-  margin-left: 20px;
+  margin-left: 5px;
 }
-.os-container a:hover {
-  background: #414556;
-  color: #fff;
+.os-container div {
+  margin-top: 38px;
 }
 
 @media (max-width: 768px) {
