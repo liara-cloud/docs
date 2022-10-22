@@ -56,6 +56,19 @@ export default function Domain({ platform }) {
         </li>
       </ul>
 
+      <Notice variant="warning">
+        در حال حاضر به‌دلیل اختلال در زیرساخت کشور امکان استفاده از سرویس
+        Cloudflare وجود ندارد و به‌عنوان جایگزین می‌توانید از{" "}
+        <a
+          href="https://console.liara.ir/zones"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          سرویس DNS لیارا
+        </a>{" "}
+        استفاده کنید.
+      </Notice>
+
       <h3 id="add-domain">اضافه کردن دامنه</h3>
 
       <video
