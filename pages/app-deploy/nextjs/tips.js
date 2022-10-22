@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
+import Notice from "../../../components/Notice";
 import PlatformIcon from "../../../components/PlatformIcon";
 
 export default () => (
@@ -29,6 +30,11 @@ export default () => (
       </li>
       <li>
         <a href="#static-html-export">قابلیت Static HTML Export</a>
+      </li>
+      <li>
+        <a href="#next-config">
+          جلوگیری از اعمال تغییرات در فایل next.config.js
+        </a>
       </li>
       <li>
         <a href="#cors">رفع خطای CORS</a>
@@ -100,6 +106,28 @@ export default () => (
       <span className="code">liara deploy --path out</span> بر روی لیارا مستقر
       کنید.
     </p>
+
+    <h3 id="next-config">جلوگیری از اعمال تغییرات در فایل next.config.js</h3>
+    <p>
+      لیارا به‌صورت خودکار فایل
+      <span className="code">next.config.js</span>
+      برنامه‌ی شما را پیدا کرده و در این فایل، تنظیماتی را اضافه می‌کند تا
+      برنامه برای اجرا آماده شود. چنانچه قصد جلوگیری از اعمال این تغییرات را
+      دارید، باید فایل <span className="code">liara.json</span> زیر را به‌ریشه‌ی
+      برنامه‌ی‌تان اضافه کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "next": {
+    "modifyConfig": false
+  }
+}
+`}
+    </Highlight>
+    <Notice variant="warning">
+      توجه داشته باشید که فقط و فقط این قابلیت را زمانی غیرفعال کنید که کاملا
+      به‌نتایج آن آگاه باشید.
+    </Notice>
 
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
