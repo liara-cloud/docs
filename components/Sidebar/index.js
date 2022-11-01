@@ -1790,7 +1790,15 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <ActiveLink href="/dns">DNS </ActiveLink>
+          <NavTitle href="/dns">DNS</NavTitle>
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/dns/add-domain">افزودن دامنه</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/dns/records">رکوردهای DNS</ActiveLink>
+            </li>
+          </ul>
         </nav>
 
         <nav className="nav">
