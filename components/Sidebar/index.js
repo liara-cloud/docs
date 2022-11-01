@@ -1786,10 +1786,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <ActiveLink href="/domains">مدیریت دامنه‌ها</ActiveLink>
-        </nav>
-
-        <nav className="nav">
           <NavTitle href="/dns">DNS</NavTitle>
           <ul className="nav__list">
             <li>
@@ -1799,6 +1795,10 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/dns/records">رکوردهای DNS</ActiveLink>
             </li>
           </ul>
+        </nav>
+
+        <nav className="nav">
+          <ActiveLink href="/domains">مدیریت دامنه‌ها</ActiveLink>
         </nav>
 
         <nav className="nav">
