@@ -21,25 +21,15 @@ export default () => (
     <table className="endpoint-inputs">
       <tr className="endpoint-inputs__group">
         <td>A record</td>
-        <td style={{ textAlign: "center" }}>مثال</td>
+        <td style={{ direction: "rtl" }}>مثال</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          example.com یا @
-        </td>
+        <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
         <td>Contents</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          93.184.216.34
-        </td>
+        <td className="endpoint-inputs__description">93.184.216.34</td>
       </tr>
     </table>
 
@@ -51,23 +41,15 @@ export default () => (
     <table className="endpoint-inputs">
       <tr className="endpoint-inputs__group">
         <td>AAAA record</td>
-        <td style={{ textAlign: "center" }}>مثال</td>
+        <td style={{ direction: "rtl" }}>مثال</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          example.com یا @
-        </td>
+        <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
         <td>Contents</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
+        <td className="endpoint-inputs__description">
           2606:2800:220:1:248:1893:25c8:1946
         </td>
       </tr>
@@ -81,25 +63,15 @@ export default () => (
     <table className="endpoint-inputs">
       <tr className="endpoint-inputs__group">
         <td>ALIAS record</td>
-        <td style={{ textAlign: "center" }}>مثال</td>
+        <td style={{ direction: "rtl" }}>مثال</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          example.com یا @
-        </td>
+        <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
         <td>Contents</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          to.liara.zone
-        </td>
+        <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
     </table>
 
@@ -111,25 +83,15 @@ export default () => (
     <table className="endpoint-inputs">
       <tr className="endpoint-inputs__group">
         <td>CNAME record</td>
-        <td style={{ textAlign: "center" }}>مثال</td>
+        <td style={{ direction: "rtl" }}>مثال</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          www.example.com یا @
-        </td>
+        <td className="endpoint-inputs__description">www.example.com یا @</td>
       </tr>
       <tr>
         <td>Contents</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          to.liara.zone
-        </td>
+        <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
     </table>
 
@@ -138,7 +100,7 @@ export default () => (
     <table className="endpoint-inputs">
       <tr className="endpoint-inputs__group">
         <td>MX record</td>
-        <td>مثال</td>
+        <td style={{ direction: "rtl" }}>مثال</td>
       </tr>
       <tr>
         <td>Name</td>
@@ -161,7 +123,7 @@ export default () => (
     <table className="endpoint-inputs">
       <tr className="endpoint-inputs__group">
         <td>SRV record</td>
-        <td style={{ textAlign: "center" }}>مثال</td>
+        <td style={{ direction: "rtl" }}>مثال</td>
       </tr>
       <tr>
         <td>Name</td>
@@ -193,23 +155,15 @@ export default () => (
     <table className="endpoint-inputs">
       <tr className="endpoint-inputs__group">
         <td>TXT record</td>
-        <td style={{ textAlign: "center" }}>مثال</td>
+        <td style={{ direction: "rtl" }}>مثال</td>
       </tr>
       <tr>
         <td>Name</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
-          liara-challenge
-        </td>
+        <td className="endpoint-inputs__description">liara-challenge</td>
       </tr>
       <tr>
         <td>Contents</td>
-        <td
-          className="endpoint-inputs__description"
-          style={{ direction: "ltr", textAlign: "center" }}
-        >
+        <td className="endpoint-inputs__description">
           b4a78b-5dcb70-799744-179f58
         </td>
       </tr>
