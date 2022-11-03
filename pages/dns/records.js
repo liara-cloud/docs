@@ -28,7 +28,7 @@ export default () => (
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
-        <td>Contents</td>
+        <td>IPv4</td>
         <td className="endpoint-inputs__description">93.184.216.34</td>
       </tr>
     </table>
@@ -48,7 +48,7 @@ export default () => (
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
-        <td>Contents</td>
+        <td>IPv6</td>
         <td className="endpoint-inputs__description">
           2606:2800:220:1:248:1893:25c8:1946
         </td>
@@ -70,7 +70,7 @@ export default () => (
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
-        <td>Contents</td>
+        <td>Domain</td>
         <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
     </table>
@@ -87,10 +87,10 @@ export default () => (
       </tr>
       <tr>
         <td>Name</td>
-        <td className="endpoint-inputs__description">www.example.com یا @</td>
+        <td className="endpoint-inputs__description">www.example.com</td>
       </tr>
       <tr>
-        <td>Contents</td>
+        <td>Domain</td>
         <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
     </table>
@@ -104,15 +104,15 @@ export default () => (
       </tr>
       <tr>
         <td>Name</td>
-        <td className="endpoint-inputs__description"></td>
+        <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
-        <td>Contents</td>
-        <td className="endpoint-inputs__description"></td>
+        <td>Domain</td>
+        <td className="endpoint-inputs__description">mail.iran.liara.ir</td>
       </tr>
       <tr>
         <td>Priority</td>
-        <td className="endpoint-inputs__description"></td>
+        <td className="endpoint-inputs__description">10</td>
       </tr>
     </table>
 
@@ -127,23 +127,23 @@ export default () => (
       </tr>
       <tr>
         <td>Name</td>
-        <td className="endpoint-inputs__description"></td>
+        <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
       <tr>
-        <td>Contents</td>
-        <td className="endpoint-inputs__description"></td>
+        <td>Domain</td>
+        <td className="endpoint-inputs__description">smtp.iran.liara.ir</td>
       </tr>
       <tr>
         <td>Priority</td>
-        <td className="endpoint-inputs__description"></td>
+        <td className="endpoint-inputs__description">0</td>
       </tr>
       <tr>
         <td>Port</td>
-        <td className="endpoint-inputs__description"></td>
+        <td className="endpoint-inputs__description">587</td>
       </tr>
       <tr>
         <td>Weight</td>
-        <td className="endpoint-inputs__description"></td>
+        <td className="endpoint-inputs__description">5</td>
       </tr>
     </table>
 
@@ -162,7 +162,7 @@ export default () => (
         <td className="endpoint-inputs__description">liara-challenge</td>
       </tr>
       <tr>
-        <td>Contents</td>
+        <td>Content</td>
         <td className="endpoint-inputs__description">
           b4a78b-5dcb70-799744-179f58
         </td>
