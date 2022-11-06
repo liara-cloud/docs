@@ -96,6 +96,13 @@ export default () => (
           <span>Docker</span>
         </a>
       </Link>
+
+      <Link href="/one-click-apps/wordpress/domain">
+        <a>
+          <PlatformIcon platform="wordpress" />
+          <span>WordPress</span>
+        </a>
+      </Link>
     </div>
   </Layout>
 );
