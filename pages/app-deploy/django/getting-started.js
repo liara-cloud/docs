@@ -45,6 +45,7 @@ export default () => (
       </li>
       <li>3.9</li>
       <li>3.10</li>
+      <li>3.11</li>
     </ul>
 
     <Notice variant="info">

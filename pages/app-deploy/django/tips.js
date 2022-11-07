@@ -93,6 +93,7 @@ export default () => (
       <li>3.8</li>
       <li>3.9</li>
       <li>3.10</li>
+      <li>3.11</li>
     </ul>
     <h3 id="supervisord-conf">استفاده از Supervisord</h3>
     <p>
