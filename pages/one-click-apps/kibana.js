@@ -52,7 +52,7 @@ export default () => (
     </p>
 
     <Notice variant="info">
-      {`در اولین ورود به Kibana می‌توانید از نام کاربری و رمزعبور این دیتابیس استفاده کنید اما پیشنهاد می‌کنیم بعد از ورود، در آدرس app/management/security/users/ یک کاربر جدید با سطح دسترسی kibana_admin بسازید و از این پس با این کاربر به Kibana وارد شوید.`}
+      {`در اولین ورود به Kibana می‌توانید از نام کاربری elastic و رمزعبور دیتابیس Elasticsearch استفاده کنید اما پیشنهاد می‌کنیم بعد از ورود، در آدرس app/management/security/users/ یک کاربر جدید با سطح دسترسی kibana_admin بسازید و از این پس با این کاربر به Kibana وارد شوید.`}
     </Notice>
 
     <Notice variant="info">
