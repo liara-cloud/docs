@@ -55,6 +55,13 @@ export default () => (
         </a>
       </Link>
 
+      <Link href="/app-deploy/nextjs/domain">
+        <a>
+          <PlatformIcon platform="next" />
+          <span>NextJS</span>
+        </a>
+      </Link>
+
       <Link href="/app-deploy/php/domain">
         <a>
           <PlatformIcon platform="php" />
