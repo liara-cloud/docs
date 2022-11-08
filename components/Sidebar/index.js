@@ -1789,7 +1789,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <NavTitle href="/dns">DNS</NavTitle>
           <ul className="nav__list">
             <li>
-              <ActiveLink href="/dns/add-domain">افزودن دامنه</ActiveLink>
+              <ActiveLink href="/dns/add-zone">افزودن دامنه</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/dns/records">رکوردهای DNS</ActiveLink>
