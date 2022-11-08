@@ -18,6 +18,7 @@ export default function Domain({ platform }) {
     { lCase: "static", uCase: "Static", icon: "HTML5", next: "tips" },
     { lCase: "angular", uCase: "Angular", icon: "angularjs", next: "tips" },
     { lCase: "docker", uCase: "Docker", icon: "docker", next: "tips" },
+    { lCase: "nextjs", uCase: "NextJS", icon: "next", next: "tips" },
   ];
 
   const type = platforms.find(type => type.lCase === platform);

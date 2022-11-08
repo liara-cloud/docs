@@ -318,6 +318,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/nextjs/domain">
+                    اتصال دامنه
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/nextjs/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
