@@ -45,7 +45,7 @@ export default () => (
     <p>
       درنهایت شما می‌توانید با اجرای دستور{" "}
       <span className="code">
-        rclone copy [remote]:[bucket-name] /path/to/folder
+        rclone copy -PM [remote]:[bucket-name] /path/to/folder
       </span>{" "}
       یک نسخه از فایل‌های موجود در باکت موردنظرتان را در لوکال ذخیره کنید. برای
       مثال اگر یک باکت با نام <span className="code">novels</span> در لیارا
@@ -54,7 +54,7 @@ export default () => (
     </p>
 
     <Highlight className="bash">
-      {`rclone copy liara:novels ~/Desktop/novels`}
+      {`rclone copy -PM liara:novels ~/Desktop/novels`}
     </Highlight>
 
     <h4 id="s3-browser">S3 Browser</h4>
