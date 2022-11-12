@@ -21,5 +21,38 @@ export default () => (
     </div>
 
     <h2>اتصال برنامه‌های WordPress به ذخیره‌سازی ابری</h2>
+
+    <p>
+      برای اتصال برنامه‌ی WordPress به ذخیره‌سازی ابری لیارا می‌توانید از
+      پلاگین‌های موجود مانند{" "}
+      <a
+        href="https://wordpress.org/plugins/ilab-media-tools/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Media Cloud
+      </a>{" "}
+      استفاده کنید.
+    </p>
+
+    <ZoomableImage src="/static/wp-plus/install-and-activate-media-cloud-plugin.png" />
+
+    <p>
+      بعد از نصب و فعال‌سازی این پلاگین تنها کافی است مراحل زیر را دنبال کنید:
+    </p>
+
+    <ZoomableImage src="/static/wp-plus/welcome-to-media-cloud.png" />
+
+    <ZoomableImage src="/static/wp-plus/skip-opt-media-cloud-plugin.png" />
+
+    <ZoomableImage src="/static/wp-plus/choose-s3-provider.png" />
+
+    <ZoomableImage src="/static/wp-plus/get-started-media-cloud.png" />
+
+    <ZoomableImage src="/static/wp-plus/config-s3-credentials.png" />
+
+    <ZoomableImage src="/static/wp-plus/test-media-cloud.png" />
+
+    <ZoomableImage src="/static/wp-plus/finish-and-exit-media-cloud.png" />
   </Layout>
 );
