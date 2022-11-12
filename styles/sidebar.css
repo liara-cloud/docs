@@ -77,6 +77,7 @@
   background-position: center center;
   transform: rotate(90deg);
 }
+
 .nav__title--active::before {
   transform: rotate(0deg);
 }
@@ -120,6 +121,7 @@ li:last-child > .nav__link {
   vertical-align: middle;
   filter: grayscale(1);
 }
+
 .platform-icon.active {
   filter: grayscale(0);
 }
@@ -133,7 +135,7 @@ li:last-child > .nav__link {
   margin-bottom: 16px;
   border-radius: 8px;
   font-family: inherit;
-  background-color: #0076ff;
+  background: linear-gradient(90deg, #2b5589 0%, #1a2129 100%);
 }
 
 .menu-button__icon {
@@ -161,6 +163,7 @@ li:last-child > .nav__link {
   .hide-nav {
     display: none;
   }
+
   .search-sidebar {
     display: none !important;
   }
@@ -185,21 +188,20 @@ li:last-child > .nav__link {
   padding-left: 7px;
   margin-bottom: 15px;
 }
+
 .placeholder-search {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
 }
+
 .placeholder-search svg {
   width: 1rem;
   height: 1rem;
 }
+
 .placeholder-search span {
   padding-right: 7px;
-}
-
-.search-sidebar:hover {
-  border-color: #0076ff;
 }
 
 .search-box-effect {
@@ -222,6 +224,7 @@ li:last-child > .nav__link {
   left: 50%;
   transform: translateX(-50%);
 }
+
 .results ul {
   border-end-end-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
@@ -230,6 +233,7 @@ li:last-child > .nav__link {
   margin-top: 15px;
   border-radius: 10px;
 }
+
 .results ul li {
   background-color: #fff;
   transition: 0.2s;
@@ -238,11 +242,13 @@ li:last-child > .nav__link {
   justify-content: space-between;
   width: 100%;
 }
+
 .results ul li svg {
   color: #808080;
   width: 20px;
   transform: rotate(180deg);
 }
+
 .shortcut {
   padding: 1px 8px;
   font-size: 12px;
@@ -253,15 +259,19 @@ li:last-child > .nav__link {
 .results ul li div p {
   font-size: 15px;
 }
+
 .current-result {
   background-color: #bfdcf5;
 }
+
 .results ul li:hover div span {
   color: #0076ff;
 }
+
 .results ul .current-result div span {
   color: #0076ff;
 }
+
 .search-box-effect {
   position: fixed;
   z-index: 10;
@@ -271,29 +281,35 @@ li:last-child > .nav__link {
   left: 0;
   background-color: #000000b4;
 }
+
 .search-box .search-input {
   width: 100%;
   padding: 15px;
   margin-top: 10px;
   border-radius: 0.5rem;
 }
+
 .search-box .search-input:focus {
   outline: none;
 }
+
 .suggestion {
   display: flex;
   padding-top: 5px;
   flex-wrap: wrap;
 }
+
 .suggestion {
   margin-right: 50%;
   width: 100%;
   transform: translateX(50%);
 }
+
 .suggestion button {
   margin-left: 10px;
   margin-top: 10px;
 }
+
 .suggestion button {
   font-size: 12px;
   color: #fff;
@@ -302,15 +318,18 @@ li:last-child > .nav__link {
   padding: 5px 10px;
   transition: 0.2s;
 }
+
 .suggestion button:hover {
   background-color: #218be5;
 }
+
 .platform-search_logo {
   margin-left: 10px;
   overflow: hidden;
   width: 25px;
   border-radius: 5px;
 }
+
 .url_results {
   display: flex;
   justify-content: space-between;
@@ -318,10 +337,12 @@ li:last-child > .nav__link {
   padding: 15px 15px;
   position: relative;
 }
+
 .platform_container {
   align-items: center;
   display: flex;
 }
+
 .url_results img.arrow-icon_result {
   width: 15px;
   position: absolute;
@@ -335,15 +356,18 @@ li:last-child > .nav__link {
     width: 75%;
     top: 10%;
   }
+
   .results ul li div p {
     font-size: 13px;
   }
 }
+
 @media (max-width: 768px) {
   .search-box {
     width: 85%;
     top: 5%;
   }
+
   .results ul li div p {
     font-size: 13px;
   }

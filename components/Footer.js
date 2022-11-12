@@ -4,22 +4,22 @@ import { ThemeContext } from "./root/theme.context";
 
 const socialMediaList = [
   {
-    icon: <img src="static/social/twitter.svg" />,
+    icon: <img src="/static/social/twitter.svg" />,
     title: "توییتر",
     link: "#twitter",
   },
   {
-    icon: <img src="static/social/instagram.svg" />,
+    icon: <img src="/static/social/instagram.svg" />,
     title: "اینستاگرام",
     link: "#instagram",
   },
   {
-    icon: <img src="static/social/telegram.svg" />,
+    icon: <img src="/static/social/telegram.svg" />,
     title: "تلگرام",
     link: "#telegram",
   },
   {
-    icon: <img src="static/social/github.svg" />,
+    icon: <img src="/static/social/github.svg" />,
     title: "گیتهاب",
     link: "#github",
   },
@@ -107,7 +107,8 @@ const Footer = () => {
     <footer>
       <div
         style={{
-          maxWidth: 1100,
+          maxWidth: 1400,
+          paddingRight: 30,
           margin: "0 auto",
           position: "relative",
           zIndex: 11,
@@ -115,7 +116,7 @@ const Footer = () => {
       >
         <div className="footer-container">
           <div>
-            <img src={`static/liara-logo-${theme}.svg`} alt="liara-logo" />
+            <img src={`/static/liara-logo-${theme}.svg`} alt="liara-logo" />
             <div>
               {socialMediaList.map(item => (
                 <a key={item.link} href={item.link}>

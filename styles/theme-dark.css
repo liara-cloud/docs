@@ -37,8 +37,12 @@
 }
 
 .dark-mode .header #menu .menu-text a {
-  color: #d0e0ef !important;
   font-weight: 300;
+}
+
+.dark-mode .menu-button {
+  background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
+  color: #181818;
 }
 
 .dark-mode .header div:first-child span {
@@ -86,7 +90,7 @@
 }
 
 .dark-mode .sidebar nav span {
-  color: #fff;
+  color: #d7d8d9;
 }
 
 .dark-mode .article p,
@@ -97,7 +101,11 @@
 .dark-mode .article h5,
 .dark-mode .article h6,
 .dark-mode .article li {
-  color: #fff;
+  color: #e3e3e3ef;
+}
+
+.dark-mode a.nav__link--active span {
+  color: #28c1f5;
 }
 
 .dark-mode .article a span {

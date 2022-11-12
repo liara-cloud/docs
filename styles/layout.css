@@ -73,6 +73,7 @@ p {
 .article h6 {
   margin: 30px 0 10px 0;
 }
+
 .article h1:first-child,
 .article h2:first-child,
 .article h3:first-child,
@@ -87,16 +88,20 @@ p {
   font-size: 0.8rem;
   line-height: 1.8em;
 }
+
 .article *:last-child {
   margin-bottom: 0;
 }
+
 .article a {
   color: var(--secondary);
   border-bottom: 1px dashed;
 }
+
 .article a:hover {
   color: #1076bd;
 }
+
 .article img {
   max-width: 100%;
   margin: 0 auto;
@@ -144,13 +149,16 @@ span.code {
   width: 100%;
   border-collapse: collapse;
 }
+
 .table th,
 .table td {
   padding: 6px;
 }
+
 .table thead {
   background-color: #eee;
 }
+
 .table-responsive {
   display: block;
   width: 100%;
@@ -195,6 +203,7 @@ img.page-icon {
   display: flex;
   flex-wrap: wrap;
 }
+
 .platforms a {
   width: 81px;
   height: 92px;
@@ -207,6 +216,7 @@ img.page-icon {
   margin-bottom: 20px;
   border-radius: 12px;
 }
+
 .platforms img {
   max-width: none;
   border: none;
@@ -214,6 +224,7 @@ img.page-icon {
   width: 65px;
   height: 65px;
 }
+
 .platforms span {
   line-height: 28px;
   margin-top: 4px;
@@ -262,10 +273,11 @@ img.page-icon {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   main {
-    width: 1200px;
+    width: 1400px;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   .wrapper {
@@ -307,12 +319,15 @@ img.page-icon {
   h1 {
     font-size: 1.3em;
   }
+
   h2 {
     font-size: 1.2em;
   }
+
   h3 {
     font-size: 1em;
   }
+
   h4 {
     font-size: 0.9em;
   }
@@ -327,18 +342,23 @@ img.page-icon {
 .container {
   width: 100% !important;
 }
+
 .text-grey {
   color: #999;
 }
+
 .text-sm {
   font-size: 0.875rem !important;
 }
+
 .bg-grey-lighter {
   background-color: #fafbfc;
 }
+
 .footer-icons a:hover {
   opacity: 1;
 }
+
 video {
   border-radius: 12px;
   margin-top: 15px;
@@ -364,6 +384,7 @@ video {
   align-items: center;
   margin-top: 15px;
 }
+
 .footer-container div a img {
   margin-left: 10px;
 }
@@ -398,6 +419,7 @@ video {
   flex-wrap: wrap;
   align-content: flex-start;
 }
+
 .footer-col-container div a {
   display: inline-block;
   width: max-content;
@@ -408,6 +430,7 @@ div.animate-play-container {
   position: relative;
   height: 300px;
 }
+
 div.footer-animate-container {
   position: absolute;
   z-index: -1;
@@ -459,6 +482,7 @@ div.footer-animate-lines {
   0% {
     transform: rotateX(45deg) translateY(-50%);
   }
+
   to {
     transform: rotateX(45deg) translateY(0);
   }
@@ -468,10 +492,12 @@ div.footer-animate-lines {
   .footer-container {
     grid-template-columns: 1fr;
   }
+
   .footer-container div {
     margin: 10px;
     height: max-content !important;
   }
+
   .footer-container div.col-4 {
     display: none;
   }
