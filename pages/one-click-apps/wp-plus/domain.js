@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Head from "next/head";
-import Layout from "../../../components/Layout";
-import Notice from "../../../components/Notice";
-import PlatformIcon from "../../../components/PlatformIcon";
-import ZoomableImage from "../../../components/ZoomableImage";
+import Layout from "../../components/Layout";
+import Notice from "../../components/Notice";
+import PlatformIcon from "../../components/PlatformIcon";
+import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
   <Layout>

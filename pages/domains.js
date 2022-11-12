@@ -104,7 +104,7 @@ export default () => (
         </a>
       </Link>
 
-      <Link href="/one-click-apps/wordpress/domain">
+      <Link href="/wp-plus/domain">
         <a>
           <PlatformIcon platform="wordpress" />
           <span>WordPress</span>
