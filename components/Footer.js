@@ -1,383 +1,170 @@
-import React from "react";
+import React, { Fragment, useContext } from "react";
 import Link from "next/link";
+import { ThemeContext } from "./root/theme.context";
 
-export default function Footer() {
+const socialMediaList = [
+  {
+    icon: <img src="static/social/twitter.svg" />,
+    title: "توییتر",
+    link: "#twitter",
+  },
+  {
+    icon: <img src="static/social/instagram.svg" />,
+    title: "اینستاگرام",
+    link: "#instagram",
+  },
+  {
+    icon: <img src="static/social/telegram.svg" />,
+    title: "تلگرام",
+    link: "#telegram",
+  },
+  {
+    icon: <img src="static/social/github.svg" />,
+    title: "گیتهاب",
+    link: "#github",
+  },
+];
+const cols = [
+  {
+    id: 0,
+    title: "برنامه ها (PaaS)",
+    children: [
+      { title: "react", link: "/landing/هاست-ری-اکت-react/" },
+      { title: "PostgreSQL", link: "/" },
+      { title: "NodeJS", link: "/" },
+      { title: "NodeJS", link: "/" },
+      { title: "NodeJS", link: "/" },
+      { title: "NodeJS", link: "/" },
+      { title: "NodeJS", link: "/" },
+      { title: "PostgreSQL", link: "/" },
+      { title: "MariaDB", link: "/" },
+      { title: "PostgreSQL", link: "/" },
+    ],
+  },
+  {
+    id: 1,
+    title: "دیتابیس‌ها (DBaaS)",
+    children: [
+      { title: "MySQL", link: "/landing/dbaas/mysql" },
+      { title: "MariaDB", link: "/" },
+      { title: "PostgreSQL", link: "/" },
+      { title: "MSSQL", link: "/" },
+      { title: "Redis", link: "/" },
+      { title: "RabbitMQ", link: "/" },
+      { title: "Elastic", link: "/" },
+    ],
+  },
+  {
+    id: 2,
+    title: "برنامه های آماده (1-Click Apps)",
+    children: [
+      { title: "Wordpress", link: "/" },
+      { title: "Wordpress", link: "/" },
+      { title: "Wordpress", link: "/" },
+      { title: "Wordpress", link: "/" },
+      { title: "Wordpress", link: "/" },
+      { title: "Wordpress", link: "/" },
+      { title: "Wordpress", link: "/" },
+      { title: "Wordpress", link: "/" },
+    ],
+  },
+  {
+    id: 3,
+    title: "سایر محصولات",
+    children: [
+      { title: "سرویس ایمیل", link: "/" },
+      { title: "سامانه نام دامنه", link: "/landing/products/dns" },
+      {
+        title: "سرویس ذخیره سازی ابری",
+        link: "/landing/products/object-storage",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "",
+    children: [],
+  },
+  {
+    id: 5,
+    title: "دسترسی سریع",
+    children: [
+      { title: "پلن‌ها", link: "/pricing" },
+      { title: "وبلاگ", link: "/blog" },
+      { title: "مستندات", link: "/" },
+      { title: "درباره ما", link: "/about" },
+      { title: "ارتباط با ما", link: "/contact" },
+      { title: "قوانین و مقررات", link: "/terms" },
+      { title: "توافق‌نامه سطح کیفیت", link: "/sla" },
+    ],
+  },
+];
+
+const Footer = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="">
-      <footer
-        dir="rtl"
-        id="footer"
-        className="mt-5 border-t border-grey-light bg-grey-lighter "
+    <footer>
+      <div
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 11,
+        }}
       >
-        <div className="container flex flex-col md:flex-row mx-auto pt-10 lg:px-0 xl:px-16 px-5 md:px-0">
-          <div className="md:w-2/6">
-            <a
-              href="https://liara.ir/"
-              title="صفحه&zwnj;ی اصلی سرویس ابری لیارا"
-              className="flex items-center my-1 p-2"
-            >
-              <img
-                src="/static/layout/footer-logo.svg"
-                alt="سرویس ابری لیارا"
-                className="h-9 sm:h-11 ml-3"
-              />
-              <div>
-                <h5 className="m-0 pb-2 text-base font-normal text-black">
-                  سرویس ابری لیارا
-                </h5>
-                <p className="m-0 text-sm font-normal text-grey">
-                  ارائه دهنده خدمات ابری PaaS و DBaaS
-                </p>
-              </div>
-            </a>
-            <div className="flex items-center justify-center">
-              <div className="w-1/3 pt-3 px-2"></div>
-              <div className="w-1/3 pt-3 px-2"></div>
+        <div className="footer-container">
+          <div>
+            <img src={`static/liara-logo-${theme}.svg`} alt="liara-logo" />
+            <div>
+              {socialMediaList.map(item => (
+                <a key={item.link} href={item.link}>
+                  {item.icon}
+                  {item.title}
+                </a>
+              ))}
             </div>
           </div>
-          <div className="md:w-1/6 my-5 md:my-0">
-            <div className="text-black text-sm my-1 p-1">دسترسی سریع</div>
-            <div>
-              <a
-                href="https://liara.ir/#plans"
-                title="پلن&zwnj;های هاست ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                پلن&zwnj;ها
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/blog"
-                title="وبلاگ هاست ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                وبلاگ
-              </a>
-            </div>
-            <div>
-              <a
-                href="/"
-                title="مستندات هاست ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                مستندات
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/about"
-                title="درباره هاست ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                درباره ما
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/contact"
-                title="ارتباط با سرویس ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                ارتباط با ما
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/terms"
-                title="قوانین و مقررات هاست ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                قوانین و مقررات
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/sla"
-                title="توافق‌نامه سطح کیفیت"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                توافق‌نامه سطح کیفیت
-              </a>
-            </div>
-            {/* <div>
-              <a
-                href="https://status.liara.ir"
-                title="وضعیت یا uptime هاست ابری لیارا"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                وضعیت سرورها
-              </a>
-            </div> */}
-          </div>
-          <div className="md:w-1/6 my-5 md:my-0">
-            <div className="text-black text-sm my-1 p-1">خرید هاست</div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-نود-جی-اس-node"
-                title="هاست ابری نود جی اس"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست NodeJS
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-پی-اچ-پی-php"
-                title="هاست ابری پی اچ پی"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست PHP
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-لاراول-laravel"
-                title="هاست ابری لاراول"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست Laravel
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-پایتون-python"
-                title="هاست ابری پایتون"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست Python
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-جنگو-django"
-                title="هاست ابری جنگو"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست Django
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-فلسک-flask"
-                title="هاست ابری فلسک"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست Flask
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-دات-نت-dotnet"
-                title="هاست ابری دات نت"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست{" "}
-                <span className="inline-block" style={{ direction: "ltr" }}>
-                  .Net
-                </span>
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-نکست-جی-اس-next"
-                title="هاست ابری نکست جی اس"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست NextJS
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-ناکست-جی-اس-nuxt"
-                title="هاست ابری ناکست جی اس"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست NuxtJS
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-گولنگ-golang"
-                title="هاست ابری گولنگ"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست Golang
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-ری-اکت-react"
-                title="هاست ابری ری اکت"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست React
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-ویو-جی-اس-vue"
-                title="هاست ابری ویو جی اس"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست VueJS
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-انگولار-angular"
-                title="هاست ابری انگولار"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست Angular
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-وردپرس-wordpress"
-                title="هاست ابری وردپرس"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست WordPress
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-داکر-docker"
-                title="هاست ابری داکر"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست Docker
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-دانلود-download-host"
-                title="هاست دانلود"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست دانلود
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://liara.ir/landing/هاست-ابری-cloud-hosting"
-                title="هاست ابری"
-                className="inline-block text-grey text-sm font-normal my-1 p-1 hover:text-black"
-              >
-                هاست ابری
-              </a>
-            </div>
-          </div>
-          <div className="md:w-2/6">
+
+          {cols.map(item => (
             <div
-              title="ارتباط با هاست ابری لیارا"
-              className="text-black text-sm my-1 p-1"
+              className={`footer-col-container col-${item.id}`}
+              key={item.id}
             >
-              ارتباط با ما
+              <h5>{item.title}</h5>
+              <div>
+                {item.children.map(link => (
+                  <Link href={link.link}>{link.title}</Link>
+                ))}
+              </div>
             </div>
-            <div className="my-1 p-1">
-              <span className="text-grey text-sm">آدرس:</span>{" "}
-              <span title="آدرس هاست ابری لیارا" className="text-black text-sm">
+          ))}
+          <div className="footer-col-container">
+            <h5>ارتباط با ما</h5>
+            <div>
+              <h6>آدرس:</h6>
+              <p style={{ marginTop: 12, lineHeight: "28px" }}>
                 قم، میدان جانبازان، خیابان شهیدان فاطمی، نبش کوچه ۱۲، پلاک ۴،
                 طبقه سوم، واحد ۳
-              </span>
-            </div>
-            <div className="my-1 p-1">
-              <span className="text-grey text-sm">شماره تماس واحد فروش:</span>{" "}
-              <span
-                title="شماره تماس واحد فروش سرویس ابری لیارا"
-                className="ltr inline-block text-black text-sm"
-              >
-                ۰۲۵-۳۷۸۳۸۹۴۶
-              </span>{" "}
-              <span className="text-black text-sm px-1">(۹ الی ۱۷)</span>
-            </div>
-            <div className="my-1 p-1">
-              <span className="text-grey text-sm">ایمیل واحد پشتیبانی:</span>{" "}
-              <span
-                title="ایمیل واحد پشتیبانی سرویس ابری لیارا"
-                className="text-black text-sm"
-              >
-                support[@]liara.ir
-              </span>
-            </div>
-            <div className="my-1 p-1">
-              <span className="text-grey text-sm">ایمیل واحد فروش:</span>{" "}
-              <span
-                title="ایمیل واحد فروش سرویس ابری لیارا"
-                className="text-black text-sm"
-              >
-                sales[@]liara.ir
-              </span>
+              </p>
+              <h6>ایمیل واحد پشتیبانی:</h6>
+              <p style={{ marginTop: 12 }}>support[@]liara.ir</p>
+              <h6>ایمیل واحد پشتیبانی:</h6>
+              <p style={{ marginTop: 12 }}>support[@]liara.ir</p>
             </div>
           </div>
         </div>
-        <div className="container flex justify-center mx-auto pb-10 lg:px-0 xl:px-16 px-5 md:px-0">
-          <ul className="list-reset footer-icons flex mt-5 mx-0 mb-0">
-            <li className="m-0">
-              <a
-                href="https://twitter.com/liara_cloud"
-                className="block opacity-50 m-2 lg:m-3 p-2"
-                title="هاست ابری لیارا را در توئیتر دنبال کنید."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/static/layout/Twitter.svg"
-                  className="block"
-                  alt="Twitter"
-                />
-              </a>
-            </li>
-            <li className="m-0">
-              <a
-                href="https://t.me/liara_cloud"
-                className="block opacity-50 m-2 lg:m-3 p-2"
-                title="هاست ابری لیارا را در تلگرام دنبال کنید."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/static/layout/Telegram.svg"
-                  className="block"
-                  alt="Telegram"
-                />
-              </a>
-            </li>
-            <li className="m-0">
-              <a
-                href="https://www.instagram.com/liara_cloud"
-                className="block opacity-50 m-2 lg:m-3 p-2"
-                title="هاست ابری لیارا را در اینستاگرام دنبال کنید."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/static/layout/Instagram.svg"
-                  className="block"
-                  alt="Instagram"
-                />
-              </a>
-            </li>
-            <li className="m-0">
-              <a
-                href="https://github.com/liara-cloud"
-                className="block opacity-50 m-2 lg:m-3 p-2"
-                title="هاست ابری لیارا را در گیت‌هاب دنبال کنید."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/static/layout/GitHub.svg"
-                  className="block"
-                  alt="GitHub"
-                />
-              </a>
-            </li>
-          </ul>
+      </div>
+      <div className="animate-play-container">
+        <div className="footer-animate-container">
+          <div className="footer-animate-grid">
+            <div className="animate-fade" />
+            <div className="footer-animate-lines" />
+          </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
-}
+};
+
+export default Footer;

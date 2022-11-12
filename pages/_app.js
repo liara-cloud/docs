@@ -1,3 +1,5 @@
+import ThemeProvider from "../components/root/theme.context";
+
 import "highlight.js/styles/atom-one-light.css";
 import "../styles/asciinema-player.css";
 import "../styles/layout.css";
@@ -10,7 +12,12 @@ import "../styles/api.css";
 import "../styles/404.css";
 import "../styles/desktop.css";
 import "../styles/mega.css";
+import "../styles/theme-dark.css";
 
 export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider>
+      <Component {...pageProps} />;
+    </ThemeProvider>
+  );
 }
