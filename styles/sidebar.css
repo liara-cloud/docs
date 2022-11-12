@@ -209,8 +209,9 @@ li:last-child > .nav__link {
   height: 100vh;
   background-color: #00000070;
   position: fixed;
-  top: 0;
+  top: 0px;
   right: 0;
+  backdrop-filter: blur(5px);
 }
 
 .search-box {
@@ -218,7 +219,7 @@ li:last-child > .nav__link {
   z-index: 22;
   width: 40%;
   height: 60px;
-  z-index: 11;
+  z-index: 100;
   top: 15%;
   border-radius: 0.5rem;
   left: 50%;
@@ -274,7 +275,7 @@ li:last-child > .nav__link {
 
 .search-box-effect {
   position: fixed;
-  z-index: 10;
+  z-index: 99;
   width: 100vw;
   height: 100vh;
   top: 0;

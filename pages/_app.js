@@ -1,6 +1,6 @@
 import ThemeProvider from "../components/root/theme.context";
 
-import "highlight.js/styles/atom-one-light.css";
+import "highlight.js/styles/atom-one-dark.css";
 import "../styles/asciinema-player.css";
 import "../styles/layout.css";
 import "../styles/fontiran.css";
