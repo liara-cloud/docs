@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
 import PlatformIcon from "../../components/PlatformIcon";
 import ZoomableImage from "../../components/ZoomableImage";
@@ -41,18 +42,30 @@ export default () => (
       بعد از نصب و فعال‌سازی این پلاگین تنها کافی است مراحل زیر را دنبال کنید:
     </p>
 
-    <ZoomableImage src="/static/wp-plus/welcome-to-media-cloud.png" />
+    <Notice variant="info">
+      {`در فیلد Custom endpoint باید آدرس https://storage.iran.liara.space را وارد کنید.`}
+    </Notice>
 
-    <ZoomableImage src="/static/wp-plus/skip-opt-media-cloud-plugin.png" />
+    <p style={{ direction: "ltr" }}>
+      <strong>
+        Skip freemius {">"} Next {">"} Choose S3 Compatible Storage Provider{" "}
+        {">"} Next {">"} Enter S3 Credentials {">"} Next {">"} Finish & Exit
+        Wizard
+      </strong>
+    </p>
 
-    <ZoomableImage src="/static/wp-plus/choose-s3-provider.png" />
+    {/* <ZoomableImage src="/static/wp-plus/skip-opt-media-cloud-plugin.png" /> */}
 
-    <ZoomableImage src="/static/wp-plus/get-started-media-cloud.png" />
+    {/* <ZoomableImage src="/static/wp-plus/welcome-to-media-cloud.png" /> */}
+
+    {/* <ZoomableImage src="/static/wp-plus/choose-s3-provider.png" /> */}
+
+    {/* <ZoomableImage src="/static/wp-plus/get-started-media-cloud.png" /> */}
 
     <ZoomableImage src="/static/wp-plus/config-s3-credentials.png" />
 
-    <ZoomableImage src="/static/wp-plus/test-media-cloud.png" />
+    {/* <ZoomableImage src="/static/wp-plus/test-media-cloud.png" /> */}
 
-    <ZoomableImage src="/static/wp-plus/finish-and-exit-media-cloud.png" />
+    {/* <ZoomableImage src="/static/wp-plus/finish-and-exit-media-cloud.png" /> */}
   </Layout>
 );
