@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Notice from "../../../components/Notice";
-import Layout from "../../../components/Layout";
-import PlatformIcon from "../../../components/PlatformIcon";
-import ZoomableImage from "../../../components/ZoomableImage";
+import Notice from "../../components/Notice";
+import Layout from "../../components/Layout";
+import PlatformIcon from "../../components/PlatformIcon";
+import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -13,8 +13,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="wordpress" />
       <div className="page-title">
-        <h1>برنامه‌های آماده WordPress</h1>
-        <span className="page-description">(WordPress one-click app)</span>
+        <h1>وردپرس پلاس</h1>
+        <span className="page-description">(WordPress plus)</span>
       </div>
     </div>
 

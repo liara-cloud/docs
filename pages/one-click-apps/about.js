@@ -27,12 +27,6 @@ export default () => (
     </p>
 
     <div className="platforms">
-      <Link href="/one-click-apps/wordpress/install">
-        <a>
-          <PlatformIcon platform="wordpress" />
-          <span>WordPress</span>
-        </a>
-      </Link>
       <Link href="/one-click-apps/others">
         <a>
           <PlatformIcon platform="ghost" />

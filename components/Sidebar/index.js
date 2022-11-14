@@ -986,34 +986,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <NavTitle href="/one-click-apps/wordpress">
-                <PlatformIcon platform="wordpress" />
-                WordPress
-              </NavTitle>
-              <ul className="nav__list">
-                <li>
-                  <ActiveLink href="/one-click-apps/wordpress/install">
-                    نصب و راه‌اندازی
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/one-click-apps/wordpress/migrate-from-cpanel">
-                    انتقال از cPanel
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/one-click-apps/wordpress/domain">
-                    اتصال دامنه
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/one-click-apps/wordpress/email">
-                    ارسال ایمیل
-                  </ActiveLink>
-                </li>
-              </ul>
-            </li>
-            <li>
               <NavTitle href="/one-click-apps/headless-chrome">
                 <PlatformIcon platform="chrome" />
                 Headless Chrome
@@ -1139,6 +1111,32 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             <li>
               <ActiveLink href="/one-click-apps/others">
                 دیگر برنامه‌ها
+              </ActiveLink>
+            </li>
+          </ul>
+        </nav>
+
+        <nav className="nav">
+          <NavTitle href="/wp-plus">وردپرس پلاس</NavTitle>
+
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/wp-plus/install">نصب و راه‌اندازی</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/wp-plus/migrate-from-cpanel">
+                انتقال از cPanel
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/wp-plus/domain">اتصال دامنه</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/wp-plus/email">ارسال ایمیل</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/wp-plus/object-storage">
+                اتصال به ذخیره‌سازی ابری
               </ActiveLink>
             </li>
           </ul>
