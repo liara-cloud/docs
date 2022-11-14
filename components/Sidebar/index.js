@@ -1121,12 +1121,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
           <ul className="nav__list">
             <li>
-              <ActiveLink href="/wp-plus/install">نصب و راه‌اندازی</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/wp-plus/migrate-from-cpanel">
-                انتقال از cPanel
-              </ActiveLink>
+              <ActiveLink href="/wp-plus/install">راه‌اندازی</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/wp-plus/domain">اتصال دامنه</ActiveLink>
@@ -1135,8 +1130,18 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/wp-plus/email">ارسال ایمیل</ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/wp-plus/migrate-from-cpanel">
+                انتقال از cPanel
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/wp-plus/object-storage">
                 اتصال به ذخیره‌سازی ابری
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/wp-plus/duplicator">
+                بسته نصب آسان (duplicator)
               </ActiveLink>
             </li>
           </ul>
