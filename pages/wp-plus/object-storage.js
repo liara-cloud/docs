@@ -42,10 +42,6 @@ export default () => (
       بعد از نصب و فعال‌سازی این پلاگین تنها کافی است مراحل زیر را دنبال کنید:
     </p>
 
-    <Notice variant="info">
-      {`در فیلد Custom endpoint باید آدرس https://storage.iran.liara.space را وارد کنید.`}
-    </Notice>
-
     <p style={{ direction: "ltr" }}>
       <strong>
         Skip freemius {">"} Next {">"} Choose S3 Compatible Storage Provider{" "}
@@ -54,6 +50,11 @@ export default () => (
       </strong>
     </p>
 
+    <Notice variant="info">
+      {`در فیلد Custom endpoint باید آدرس https://storage.iran.liara.space را وارد کنید.`}
+    </Notice>
+
+    <br />
     {/* <ZoomableImage src="/static/wp-plus/skip-opt-media-cloud-plugin.png" /> */}
 
     {/* <ZoomableImage src="/static/wp-plus/welcome-to-media-cloud.png" /> */}
