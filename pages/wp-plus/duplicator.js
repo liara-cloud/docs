@@ -40,7 +40,7 @@ export default () => (
       دسترسی FTP می‌توانید با استفاده از نرم‌افزارهایی مثل{" "}
       <Link href="/storage/disks/ftp#filezilla">FileZilla</Link> یا{" "}
       <Link href="/storage/disks/ftp#winscp">WinSCP</Link> به محتوای برنامه‌ی
-      WordPress دسترسی پیدا کنید.
+      وردپرس دسترسی پیدا کنید.
     </p>
     <p>
       حال باید تمامی فایل‌ها و پوشه‌ها را انتخاب کرده و آن‌ها را حذف کنید. سپس

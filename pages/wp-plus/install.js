@@ -1,13 +1,15 @@
 import Head from "next/head";
+import Link from "next/link";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
 import PlatformIcon from "../../components/PlatformIcon";
 import ZoomableImage from "../../components/ZoomableImage";
+import Highlight from "react-highlight";
 
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات WordPress - سرویس ابری لیارا</title>
+      <title>مستندات راه‌اندازی وردپرس - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -18,12 +20,12 @@ export default () => (
       </div>
     </div>
 
-    <h3>نصب و راه‌اندازی</h3>
+    <h2>راه‌اندازی و پیکربندی وردپرس</h2>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
-        <a href="#setup">نصب و اجرا</a>
+        <a href="#setup">راه‌اندازی وردپرس</a>
       </li>
       <li>
         <a href="#php-ini-customization">شخصی‌سازی تنظیمات php.ini</a>
@@ -33,69 +35,64 @@ export default () => (
       </li>
     </ul>
 
-    <h3 id="setup">نصب و اجرا</h3>
+    <h3 id="setup">راه‌اندازی وردپرس</h3>
+
     <p>
+      برای راه‌اندازی برنامه وردپرس در لیارا می‌توانید از منوی سرویس{" "}
+      <a
+        href="https://console.liara.ir/wp-plus"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        وردپرس پلاس
+      </a>
+      ، روی گزینه‌ی <strong>راه‌اندازی وردپرس</strong> کلیک کنید. در بخش{" "}
+      <strong>شناسه‌ی سایت</strong>، یک شناسه‌ی یکتا برای این سرویس انتخاب کنید
+      و از بخش <strong>انتخاب پلن</strong>، پلن‌های مورد نظرتان را انتخاب کنید.
+      درنهایت روی گزینه‌ی <strong>راه‌اندازی و نصب وردپرس</strong> کلیک کنید و
+      منتظر بمانید تا برنامه به‌طور کامل راه‌اندازی شود.
+    </p>
+
+    <p>
+      <strong>راهنما:</strong> برای نصب قالب با استفاده از بسته نصب آسان
+      (duplicator)، <Link href="/wp-plus/duplicator">مستندات</Link> مربوطه را
+      مطالعه کنید.
+    </p>
+    {/* <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
       ‌را مشاهده کنید.
-    </p>
+    </p> 
     <video
       src="https://files.liara.ir/liara/wordpress/create-wordpress.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
-    ></video>
-    <p>
-      کافیست از بخش <b>برنامه‌های آماده</b> روی WORDPRESS کلیک کنید و سپس شناسه
-      برنامه‌‌ی موردنظرتان را وارد کنید، مثلا{" "}
-      <span className="code">my-blog</span>. سپس در بخش <b>انتخاب دیتابیس</b>{" "}
-      می‌توانید انتخاب کنید که به صورت خودکار دیتابیس توسط لیارا ایجاد شود یا
-      این که خودتان یک دیتابیس اجرا کنید و WordPress را به آن متصل کنید. توصیه
-      ما این است که اجازه دهید لیارا به صورت خودکار برای شما دیتابیس بسازد زیرا
-      فرایند را بسیار ساده و سریع‌تر می‌کند و همچنین به صورت خودکار برنامه
-      WordPress شما به دیتابیس‌ متصل می‌شود و شما می‌توانید به صورت مستقیم بدون
-      درگیری با بخش‌های مرتبط با کانفیگ دیتابیس، وارد پنل WordPress شوید.
-    </p>
-    <ZoomableImage src="/static/wp-add.jpg" />
-
-    <p>
-      بعد از طی کردن مراحل بالا و با کلیک روی دکمه <b>ایجاد برنامه،</b> وارد
-      صفحه ‌ای شبیه زیر می‌شوید:
-    </p>
-    <ZoomableImage src="/static/wp-install.png" />
-    <p>بعد از اتمام موفقیت‌آمیز، می‌توانید لینک برنامه‌ی‌تان را مشاهده کنید.</p>
+    ></video> 
+    <ZoomableImage src="/static/wp-add.jpg" /> 
+    <ZoomableImage src="/static/wp-install.png" /> */}
 
     <h3 id="php-ini-customization">
-      شخصی‌سازی تنظیمات <span className="code">php.ini</span>
+      شخصی‌سازی تنظیمات <spapn className="code">php.ini</spapn>
     </h3>
     <p>
-      با ورود به بخش{" "}
-      <a href="/app-features/environment-variables">تنظیمات برنامه</a>، این
-      امکان را دارید که تنظیمات
-      <span className="code">php.ini</span>
-      را تغییر و گسترش دهید. برای مثال، ممکن است بخواهید که «حداکثر حجم مجاز
-      برای آپلود فایل» در سایت وردپرسی‌تان را شخصی‌سازی کنید.
+      برای شخصی‌سازی تنظیمات <strong>php.ini</strong> می‌توانید وارد{" "}
+      <strong>تنظیمات</strong> برنامه شوید و پیکربندی پیش‌فرض را نسبت به
+      نیازمندی‌تان ویرایش کنید. برای مثال برای افزایش{" "}
+      <strong>حداکثر حجم مجاز برای آپلود فایل</strong> به{" "}
+      <strong>۲۵۶ مگابایت</strong> می‌توانید مقادیر{" "}
+      <strong>upload_max_filesize</strong> و <strong>post_max_size</strong> را
+      به‌شکل زیر ویرایش کنید:
     </p>
-    <pre>
-      <code>
-        {`file_uploads = On
+    <Highlight className="plaintext">
+      {`file_uploads = On
 memory_limit = 64M
-upload_max_filesize = 64M
-post_max_size = 64M
+upload_max_filesize = 256M
+post_max_size = 256M
 max_execution_time = 600`}
-      </code>
-    </pre>
-
-    <Notice variant="info">
-      شما می‌توانید به هر برنامه آماده‌ای که در لیارا ایجاد می‌کنید، دامنه
-      اختصاصی متصل کنید. کافیست به{" "}
-      <a href="/domains/management" target="_blank">
-        مستندات دامنه‌ها
-      </a>{" "}
-      مراجعه کنید و طبق مستندات، دامنه‌ اختصاصی را به برنامه متصل کنید.
-    </Notice>
+    </Highlight>
 
     <h3 id="extensions">لیست اکستنشن‌های نصب شده</h3>
-    <p>در برنامه‌ی آماده‌ی وردپرس، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
+    <p>در برنامه‌های وردپرس پلاس، اکستنشن‌های PHP زیر نصب شده‌ است:</p>
     <pre>
       <code>{`[PHP Modules]
 bcmath
