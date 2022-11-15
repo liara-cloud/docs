@@ -8,9 +8,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال دامنه به برنامه‌های WordPress - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال دامنه به برنامه‌های وردپرس - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -21,7 +19,7 @@ export default () => (
       </div>
     </div>
 
-    <h2>اتصال دامنه به برنامه‌های WordPress</h2>
+    <h2>اتصال دامنه به برنامه‌های وردپرس</h2>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
@@ -42,7 +40,7 @@ export default () => (
     <h3 id="add-domain">اضافه کردن دامنه</h3>
 
     <Notice variant="warning">
-      بعد از اتصال دامنه به برنامه‌های WordPress باید در تنظیمات عمومی این سیستم
+      بعد از اتصال دامنه به برنامه‌های وردپرس باید در تنظیمات عمومی این سیستم
       مدیریت محتوا، مقادیر نشانی وردپرس (URL) و نشانی سایت (URL) را با آدرس
       دامنه‌ی اختصاصی خود جایگزین کنید.
     </Notice>

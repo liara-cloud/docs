@@ -8,9 +8,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات سرویس ایمیل در برنامه‌های WordPress - سرویس ابری لیارا
-      </title>
+      <title>مستندات سرویس ایمیل در برنامه‌های وردپرس - سرویس ابری لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -24,7 +22,7 @@ export default () => (
     <h3>ارسال ایمیل</h3>
 
     <p>
-      در سیستم مدیریت محتوای WordPress تعداد زیادی پلاگین برای استفاده از{" "}
+      در سیستم مدیریت محتوای وردپرس تعداد زیادی پلاگین برای استفاده از{" "}
       <Link href="/app-features/email#settings">دسترسی SMTP</Link> وجود دارد که
       پیشنهاد ما استفاده از{" "}
       <a href="https://wordpress.org/plugins/wp-mail-smtp/" target="_blank">
