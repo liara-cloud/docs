@@ -41,15 +41,15 @@ export default () => (
 
     <h3 id="migrate-files">انتقال فایل‌ها</h3>
     <p>
-      برای انتقال فایل‌های برنامه WordPress خود از cPanel به لیارا باید وارد
-      حساب کاربری cPanel شده و از بخش مدیریت فایل (File Manager)، تمام فایل‌های
-      مربوط به برنامه در مسیر <span className="code">public_html</span> هاستینگ
-      را به‌صورت zip شده، دانلود کنید.
+      برای انتقال فایل‌های برنامه وردپرس خود از cPanel به لیارا باید وارد حساب
+      کاربری cPanel شده و از بخش مدیریت فایل (File Manager)، تمام فایل‌های مربوط
+      به برنامه در مسیر <span className="code">public_html</span> هاستینگ را
+      به‌صورت zip شده، دانلود کنید.
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/compress-and-download-all-files-in-file-manager.gif" />
 
     <p>
-      در مرحله‌ی بعد باید فایل‌های اولیه برنامه‌ی WordPress را با اجرای دستور{" "}
+      در مرحله‌ی بعد باید فایل‌های اولیه برنامه‌ی وردپرس را با اجرای دستور{" "}
       <span className="code">rm -rf *</span> در خط فرمان، حذف کنید.{" "}
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/delete-all-files-of-one-click-wordpress-app.gif"></ZoomableImage>
@@ -95,7 +95,7 @@ export default () => (
     <p>
       درنهایت برای Import کردن داده‌های دیتابیس قبلی برنامه‌ی خود به دیتابیس
       فعلی بایستی با استفاده از phpMyAdmin به دیتابیس فعلی متصل شده و فایل{" "}
-      <span className="code">.sql</span> را در دیتابیس wordpress ایمپورت کنید.
+      <span className="code">.sql</span> را در دیتابیس وردپرس ایمپورت کنید.
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/import-mysql-database-using-phpmyadmin.gif" />
 
@@ -103,8 +103,8 @@ export default () => (
 
     <h4 id="load-problem">لود نشدن صحیح برنامه</h4>
     <p>
-      درصورتی که دامنه‌ی قبلی خود را به برنامه WordPress متصل نکرده باشید باید
-      در جدول <span className="code">wp_options</span> آدرس فعلی برنامه را وارد
+      درصورتی که دامنه‌ی قبلی خود را به برنامه وردپرس متصل نکرده باشید باید در
+      جدول <span className="code">wp_options</span> آدرس فعلی برنامه را وارد
       کرده و درنهایت برنامه را ری‌استارت کنید.
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/wordpress/last-migration-steps.gif"></ZoomableImage>
@@ -124,7 +124,7 @@ export default () => (
     <h4 id="permissions">خطاهای مربوط به دسترسی فایل‌</h4>
     <p>
       درصورتی که با خطاهای مربوط به دسترسی فایل (File Permission) در برنامه‌ی
-      WordPress مواجه شدید، دستورهای زیر را با استفاده از خط فرمان اجرا کنید:
+      وردپرس مواجه شدید، دستورهای زیر را با استفاده از خط فرمان اجرا کنید:
     </p>
     <pre>
       <code>
