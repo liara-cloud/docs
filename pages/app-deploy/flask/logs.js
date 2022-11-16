@@ -43,6 +43,8 @@ def logs():
       فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
-    <Link href="/app-deploy/flask/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

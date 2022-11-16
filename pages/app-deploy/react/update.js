@@ -41,6 +41,8 @@ export default () => (
       که شما <span className="code">--message</span> را خالی گذاشته باشید.
     </p>
 
-    <Link href="/app-deploy/react/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/react/domain">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

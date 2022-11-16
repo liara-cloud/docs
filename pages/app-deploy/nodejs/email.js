@@ -97,6 +97,8 @@ transporter.sendMail({
       این پکیج مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/nodejs/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/tips">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

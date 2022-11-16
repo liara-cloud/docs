@@ -40,6 +40,8 @@ export default () => (
       روی Branch جاری شما برای توضیحات استقرار استفاده می‌کند.
     </p>
 
-    <Link href="/app-deploy/flask/dbs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/dbs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

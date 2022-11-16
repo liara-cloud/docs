@@ -103,6 +103,8 @@ def index():
       این کتابخانه مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/flask/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/tips">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

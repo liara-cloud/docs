@@ -97,6 +97,8 @@ export default () => (
 
     <p dir="ltr">https://php-starter.liara.run</p>
 
-    <Link href="/app-deploy/php/envs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/envs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

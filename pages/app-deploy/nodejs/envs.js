@@ -46,6 +46,8 @@ export default () => (
       استفاده می‌شوند. به این شیوه که LIARA_URL را اضافه کردید می‌توانید هر ENV
       دیگری را نیز به برنامه اضافه کنید.
     </p>
-    <Link href="/app-deploy/nodejs/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

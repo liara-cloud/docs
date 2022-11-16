@@ -53,6 +53,8 @@ export default () => (
       برنامه‌ی‌تان باید آن را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/nodejs/update">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/update">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

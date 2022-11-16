@@ -3,8 +3,16 @@ import PlatformIcon from "./PlatformIcon";
 import { ThemeContext } from "./root/theme.context";
 
 const products = [
-  { title: "سامانه نام دامنه", badge: "DNS", href: "/" },
-  { title: "ذخیره‌سازی ابری", badge: "Object Storage", href: "/" },
+  {
+    title: "سامانه نام دامنه",
+    badge: "DNS",
+    href: "https://liara.ir/landing/products/dns",
+  },
+  {
+    title: "ذخیره‌سازی ابری",
+    badge: "Object Storage",
+    href: "https://liara.ir/landing/products/object-storage",
+  },
   // {title : "برنامه‌های آماده" ,badge: "1-Click Apps", href: '/' , hasChildren: true , style: {width: "650" , right: "100" , height: "350"} , children: []},
   {
     title: "دیتابیس‌ها",
@@ -16,42 +24,42 @@ const products = [
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
       {
         title: "MySQL",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/dbaas/mysql",
+        href: "https://liara.ir/landing/dbaas/mysql",
       },
     ],
   },
@@ -65,62 +73,62 @@ const products = [
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
       {
         title: "React",
         icon: <PlatformIcon platform="react" />,
-        href: "/landing/هاست-ری-اکت-react/",
+        href: "https://liara.ir/landing/هاست-ری-اکت-react/",
       },
     ],
   },
@@ -234,7 +242,7 @@ const Mega = () => {
           onMouseEnter={() => item.hasChildren && setStyle(item.style)}
         >
           <div className="menu-text">
-            <a href="#">
+            <a href={item.href}>
               {item.title}
               <span>({item.badge})</span>
             </a>
@@ -270,7 +278,12 @@ const Mega = () => {
             height: `${style.height}px`,
             right: `${style.right}px`,
           }}
-        ></div>
+        >
+          <span
+            id="menu-arrow"
+            style={{ right: `${Number(style.right) + 18}px` }}
+          />
+        </div>
       </div>
     </section>
   );

@@ -53,6 +53,8 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/netcore/disks">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/disks">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

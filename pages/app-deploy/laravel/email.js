@@ -67,7 +67,7 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
     </p>
 
     <Link href="/app-deploy/laravel/object-storage">
-      متوجه شدم، برو گام بعدی!
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
     </Link>
   </Layout>
 );

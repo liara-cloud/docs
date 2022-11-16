@@ -73,9 +73,10 @@ section#menu .sub-menu-holder div {
   display: flex;
   /* flex-basis: var(--item-width); */
   box-sizing: border-box;
-  padding: 10px 20px;
+  padding-left: 45px;
   justify-content: center;
   perspective: 200px;
+  padding-bottom: 40px;
 }
 
 section .menu-item {
@@ -86,9 +87,10 @@ section .menu-item {
   display: flex;
   /* flex-basis: var(--item-width); */
   box-sizing: border-box;
-  padding: 10px 0px 10px 40px;
+  padding-left: 45px;
   justify-content: center;
   perspective: 200px;
+  padding-bottom: 40px;
 }
 
 section .menu-text,
@@ -205,6 +207,16 @@ section
   #sub-menu-holder
   #sub-menu-bottom {
   height: 7.5em;
+}
+
+span#menu-arrow {
+  position: absolute;
+  background: #fff;
+  width: 16px;
+  height: 16px;
+  top: -7px;
+  transform: rotate(45deg);
+  border-radius: 2px;
 }
 
 .bottom-container {

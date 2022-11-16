@@ -40,6 +40,8 @@ export default () => (
       فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
-    <Link href="/app-deploy/nodejs/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

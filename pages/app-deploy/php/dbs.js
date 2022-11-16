@@ -77,6 +77,8 @@ $database = new Medoo([
     </Notice>
     <br />
 
-    <Link href="/app-deploy/php/disks">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/disks">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

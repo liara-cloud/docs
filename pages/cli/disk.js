@@ -80,6 +80,8 @@ export default () => (
       </p>
     </ol>
 
-    <Link href="/cli/app">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/cli/app">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

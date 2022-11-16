@@ -91,6 +91,8 @@ for bucket in s3.buckets.all():
 
     <br />
 
-    <Link href="/app-deploy/flask/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/domain">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

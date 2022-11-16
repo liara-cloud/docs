@@ -5,7 +5,15 @@ import MeiliSearch from "meilisearch";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import PlatformIcon from "../../components/PlatformIcon";
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import { ThemeContext } from "../root/theme.context";
+
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  useContext,
+} from "react";
 
 const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -17,6 +25,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [notFound, setNotFound] = useState(false);
   const router = useRouter();
   const valueRef = useRef();
+
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     setDefaultActive(
@@ -492,7 +502,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/django">
-                <PlatformIcon platform="django" />
+                <PlatformIcon platform="django" invert={theme !== "dark"} />
                 Django
               </NavTitle>
               <ul className="nav__list">
@@ -570,7 +580,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/flask">
-                <PlatformIcon platform="flask" />
+                <PlatformIcon platform="flask" invert={theme !== "dark"} />
                 Flask
               </NavTitle>
               <ul className="nav__list">
@@ -1062,13 +1072,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/one-click-apps/gitea">
-                <PlatformIcon platform="gitea" />
+                <PlatformIcon platform="gitea" invert={theme !== "dark"} />
                 Gitea
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/one-click-apps/mattermost">
-                <PlatformIcon platform="mattermost" />
+                <PlatformIcon platform="mattermost" invert={theme !== "dark"} />
                 Mattermost
               </ActiveLink>
             </li>
@@ -1104,7 +1114,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/one-click-apps/odoo">
-                <PlatformIcon platform="odoo" />
+                <PlatformIcon platform="odoo" invert={theme !== "dark"} />
                 Odoo
               </ActiveLink>
             </li>
@@ -1175,13 +1185,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/fastify">
-                <PlatformIcon platform="fastify" />
+                <PlatformIcon platform="fastify" invert={theme !== "dark"} />
                 Fastify
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/remix">
-                <PlatformIcon platform="remix" />
+                <PlatformIcon platform="remix" invert={theme !== "dark"} />
                 Remix
               </ActiveLink>
             </li>
@@ -1211,7 +1221,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/eleventy">
-                <PlatformIcon platform="eleventy" />
+                <PlatformIcon platform="eleventy" invert={theme !== "dark"} />
                 Eleventy
               </ActiveLink>
             </li>
@@ -1253,7 +1263,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/fastapi">
-                <PlatformIcon platform="fastapi" />
+                <PlatformIcon platform="fastapi" invert={theme !== "dark"} />
                 FastAPI
               </ActiveLink>
             </li>
@@ -1295,7 +1305,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/seq">
-                <PlatformIcon platform="seq" />
+                <PlatformIcon platform="seq" invert={theme !== "dark"} />
                 Seq
               </ActiveLink>
             </li>
@@ -1339,7 +1349,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <NavTitle href="/databases/mysql">
-                <PlatformIcon platform="mysql" />
+                <PlatformIcon platform="mysql" invert={theme !== "dark"} />
                 MySQL
               </NavTitle>
               <ul className="nav__list">
@@ -1436,7 +1446,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/sqlserver">
-                <PlatformIcon platform="mssql" />
+                <PlatformIcon platform="mssql" invert={theme !== "dark"} />
                 SQL Server
               </NavTitle>
               <ul className="nav__list">

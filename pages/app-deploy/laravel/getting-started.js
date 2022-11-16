@@ -72,6 +72,8 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/laravel/desktop">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/desktop">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

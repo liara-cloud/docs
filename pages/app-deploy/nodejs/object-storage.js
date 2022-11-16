@@ -293,6 +293,8 @@ app.listen(3000, function () {
       را مطالعه کنید.
     </p>
 
-    <Link href="/app-deploy/nodejs/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/domain">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

@@ -51,6 +51,8 @@ def show_envs():
       دیگری را نیز به برنامه اضافه کنید.
     </p>
 
-    <Link href="/app-deploy/flask/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

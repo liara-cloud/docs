@@ -194,6 +194,8 @@ $ liara deploy --disks data:uploads \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/php/object-storage">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/object-storage">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

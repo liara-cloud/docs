@@ -81,6 +81,38 @@
   background: transparent;
 }
 
+.dark-mode .article a.next-page {
+  font-size: 14px;
+  background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding: 10px 15px;
+  border: none;
+  border: 1px solid #87fcc4;
+  border-radius: 8px;
+  float: left;
+}
+
+.dark-mode .article a.next-page:hover {
+  background-color: #87fcc422;
+}
+
+.article a.next-page {
+  font-size: 14px;
+  padding: 10px 15px;
+  border: none;
+  border: 1px solid #181818;
+  border-radius: 8px;
+  float: left;
+  color: #181818;
+}
+
+.article a.next-page:hover {
+  background-color: #18181805;
+}
+
 .sidebar {
   position: relative;
 }

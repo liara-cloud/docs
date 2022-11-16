@@ -36,6 +36,8 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/nextjs/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nextjs/domain">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

@@ -194,7 +194,7 @@ $ liara deploy --disks data:uploads \\
     </Highlight>
 
     <Link href="/app-deploy/nodejs/object-storage">
-      متوجه شدم، برو گام بعدی!
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
     </Link>
   </Layout>
 );

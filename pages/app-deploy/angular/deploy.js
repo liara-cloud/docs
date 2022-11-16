@@ -99,6 +99,8 @@ export default () => (
     </p>
     <p dir="ltr">https://angular-starter.liara.run</p>
 
-    <Link href="/app-deploy/angular/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/angular/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

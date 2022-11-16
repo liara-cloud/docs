@@ -121,6 +121,8 @@ Storage::disk('liara')->put('example.txt', 'Contents');`}
 
     <br />
 
-    <Link href="/app-deploy/laravel/soketi">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/soketi">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

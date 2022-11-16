@@ -154,6 +154,8 @@ export default () => (
     <p dir="ltr">https://nodejs-starter.liara.run</p>
     */}
 
-    <Link href="/app-deploy/static/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/static/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

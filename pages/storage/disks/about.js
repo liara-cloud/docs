@@ -33,6 +33,8 @@ export default () => (
       متصل کنید.
     </p>
 
-    <Link href="/storage/disks/management">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/storage/disks/management">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

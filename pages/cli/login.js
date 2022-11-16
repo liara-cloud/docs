@@ -65,6 +65,8 @@ export default () => (
     </ol>
 
     <br />
-    <Link href="/cli/deploy">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/cli/deploy">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

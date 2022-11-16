@@ -155,14 +155,17 @@ const types = [
   { logo: gitlabIcon, alt: "gitlab" },
 ];
 
-export default function PlatformIcon({ platform }) {
+export default function PlatformIcon({ platform, invert }) {
   const type = types.find(type => type.alt === platform);
   return (
     <img
       className="page-icon"
       src={type.logo.src}
       alt={type.alt}
-      style={{ pointerEvents: "none" }}
+      style={{
+        pointerEvents: "none",
+        filter: `${invert ? "invert(.8)" : "inherit"}`,
+      }}
     />
   );
 }

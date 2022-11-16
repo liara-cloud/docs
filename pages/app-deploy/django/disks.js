@@ -192,7 +192,7 @@ $ liara deploy --disks data:/app/data \\
     </Highlight>
 
     <Link href="/app-deploy/django/object-storage">
-      متوجه شدم، برو گام بعدی!
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
     </Link>
   </Layout>
 );

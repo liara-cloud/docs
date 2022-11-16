@@ -24,12 +24,13 @@ const socialMediaList = [
     link: "#github",
   },
 ];
+7;
 const cols = [
   {
     id: 0,
     title: "برنامه ها (PaaS)",
     children: [
-      { title: "react", link: "/landing/هاست-ری-اکت-react/" },
+      { title: "react", link: "https://liara.ir/landing/هاست-ری-اکت-react/" },
       { title: "PostgreSQL", link: "/" },
       { title: "NodeJS", link: "/" },
       { title: "NodeJS", link: "/" },
@@ -45,7 +46,7 @@ const cols = [
     id: 1,
     title: "دیتابیس‌ها (DBaaS)",
     children: [
-      { title: "MySQL", link: "/landing/dbaas/mysql" },
+      { title: "MySQL", link: "https://liara.ir/landing/dbaas/mysql" },
       { title: "MariaDB", link: "/" },
       { title: "PostgreSQL", link: "/" },
       { title: "MSSQL", link: "/" },
@@ -73,10 +74,13 @@ const cols = [
     title: "سایر محصولات",
     children: [
       { title: "سرویس ایمیل", link: "/" },
-      { title: "سامانه نام دامنه", link: "/landing/products/dns" },
+      {
+        title: "سامانه نام دامنه",
+        link: "https://liara.ir/landing/products/dns",
+      },
       {
         title: "سرویس ذخیره سازی ابری",
-        link: "/landing/products/object-storage",
+        link: "https://liara.ir/landing/products/object-storage",
       },
     ],
   },

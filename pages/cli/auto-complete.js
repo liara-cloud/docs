@@ -26,6 +26,8 @@ export default () => (
       با اجرای این دستور می‌توانید راهنمای فعال‌سازی تکمیل خودکار دستورات لیارا
       CLI را در سیستم‌عامل فعلی خود مشاهده کنید.
     </p>
-    <Link href="/cli/commands">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/cli/commands">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

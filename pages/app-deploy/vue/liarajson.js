@@ -47,6 +47,8 @@ export default () => (
       را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/vue/update">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/vue/update">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

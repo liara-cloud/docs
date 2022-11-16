@@ -48,6 +48,8 @@ export default () => (
     </Notice>
     <br />
 
-    <Link href="/app-deploy/laravel/disks">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/disks">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );
