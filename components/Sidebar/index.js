@@ -1135,6 +1135,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/wp-plus/wp-rocket">
+                افزونه WP Rocket (رایگان)
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/wp-plus/object-storage">
                 اتصال به ذخیره‌سازی ابری
               </ActiveLink>
