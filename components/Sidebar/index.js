@@ -1326,6 +1326,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             <li>
               <ActiveLink href="/instructions/websocket">WebSocket</ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/instructions/basic-auth">
+                Basic auth
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 
