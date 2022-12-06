@@ -4,7 +4,7 @@
   "platform": "docker",
   "healthCheck": {
     "command": "curl --fail http://localhost || exit 1",
-    "interval": 15,
+    "interval": 30,
     "timeout": 5,
     "retries": 2,
     "startPeriod": 5
