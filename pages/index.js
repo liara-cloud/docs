@@ -107,13 +107,13 @@ const Index = () => {
         </Link>
         <Link href="/app-deploy/django/getting-started">
           <a>
-            <PlatformIcon platform="django" invert={theme !== "dark"} />
+            <PlatformIcon platform="django" />
             <span>Django</span>
           </a>
         </Link>
         <Link href="/app-deploy/flask/getting-started">
           <a>
-            <PlatformIcon platform="flask" invert={theme !== "dark"} />
+            <PlatformIcon platform="flask" />
             <span>Flask</span>
           </a>
         </Link>
@@ -144,7 +144,7 @@ const Index = () => {
       <div className="platforms">
         <Link href="/databases/mysql/install">
           <a>
-            <PlatformIcon platform="mysql" invert={theme !== "dark"} />
+            <PlatformIcon platform="mysql" />
             <span>MySQL</span>
           </a>
         </Link>
@@ -162,7 +162,7 @@ const Index = () => {
         </Link>
         <Link href="/databases/sqlserver/install">
           <a>
-            <PlatformIcon platform="mssql" invert={theme !== "dark"} />
+            <PlatformIcon platform="mssql" />
             <span>SQL Server</span>
           </a>
         </Link>

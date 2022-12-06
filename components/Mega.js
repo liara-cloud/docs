@@ -15,8 +15,8 @@ const products = [
   },
   // {title : "برنامه‌های آماده" ,badge: "1-Click Apps", href: '/' , hasChildren: true , style: {width: "650" , right: "100" , height: "350"} , children: []},
   {
-    title: "دیتابیس‌ها",
-    badge: "DBAAS",
+    title: "دیتابیس‌",
+    badge: "DBaaS",
     href: "/",
     hasChildren: true,
     style: { width: "550", right: "50", height: "270" },
@@ -64,8 +64,8 @@ const products = [
     ],
   },
   {
-    title: "برنامه‌ها",
-    badge: "PAAS",
+    title: "پلتفرم",
+    badge: "PaaS",
     href: "/",
     hasChildren: true,
     style: { width: "550", right: "0", height: "350" },

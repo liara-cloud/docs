@@ -175,7 +175,7 @@ img.page-icon {
   width: 64px;
   margin-left: 12px;
   border: none !important;
-  padding: 12px;
+  padding: 8px;
 }
 
 .page-title {
@@ -296,7 +296,7 @@ img.page-icon {
     width: 70%;
     border-radius: 12px;
     margin-bottom: 24px;
-    padding-left: 4rem;
+    padding-left: 30px;
   }
 
   .article p {
@@ -398,23 +398,22 @@ video {
 
 .footer-col-container h5 {
   font-size: 17px;
-  font-weight: 300;
-  color: #808686;
+  color: #181818;
+  margin-top: 15px;
+  font-weight: 400;
 }
 
 .footer-col-container h6 {
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .footer-col-container p {
   margin-top: 5px;
   font-size: 14px;
   font-weight: 300;
-  color: #181818;
-  margin-top: 8px !important;
-  line-height: 25px !important;
+  color: #a0acb7;
 }
 
 .footer-col-container div {
@@ -458,6 +457,22 @@ div.animate-fade {
     rgba(14, 20, 22, 0) 0,
     #fff 80%
   );
+}
+
+.footer-bg-container {
+  background: radial-gradient(
+      87.68% 101.73% at 51.86% -0.36%,
+      rgba(32, 106, 190, 0.38) 0%,
+      rgba(13, 30, 51, 0) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  width: 100%;
+  height: 800px;
+  transform: rotate(180deg);
+  position: absolute;
+  top: 0px !important;
+  right: 0;
+  z-index: -9999;
 }
 
 .footer-animate-grid {

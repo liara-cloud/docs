@@ -10,13 +10,12 @@
 }
 
 .header button.grad {
-  background: linear-gradient(90deg, #2b5589 0%, #1a2129 100%);
-  /* background: radial-gradient(circle at -8.9% 51.2%, #87FCC4 0%, #87FCC4 15.9%, #28C1F5 15.9%, #28C1F5 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);  color: #181818; */
+  background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
+  color: #111;
+  padding: 7px 25px;
   border-radius: 8px;
-  color: #fff;
-  padding: 7px 20px;
-  font-weight: 4000;
-  font-size: 14px;
+  font-weight: bold !important;
+  font-size: 16px !important;
   cursor: pointer;
 }
 
@@ -33,8 +32,8 @@
 
 .header div:first-child a {
   transition: 0.2s;
-  font-weight: 400 !important;
-  font-size: 14px;
+  font-size: 16px !important;
+  font-weight: bold !important;
   color: #181818;
   font-weight: 300;
 }
@@ -234,7 +233,7 @@
 
 @media (min-width: 1200px) {
   .header {
-    padding: 2rem 4rem 0;
+    padding: 20px;
   }
 
   .header__logo img {
@@ -286,6 +285,7 @@ button.theme-mode {
 .bg-app {
   background-color: var(--bg);
   color: var(--text);
+  align-self: baseline;
   transition: color, background-color var(--transition-duration);
 }
 

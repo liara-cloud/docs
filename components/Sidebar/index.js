@@ -502,7 +502,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/django">
-                <PlatformIcon platform="django" invert={theme !== "dark"} />
+                <PlatformIcon platform="django" />
                 Django
               </NavTitle>
               <ul className="nav__list">
@@ -580,7 +580,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <NavTitle href="/app-deploy/flask">
-                <PlatformIcon platform="flask" invert={theme !== "dark"} />
+                <PlatformIcon platform="flask" />
                 Flask
               </NavTitle>
               <ul className="nav__list">
@@ -1072,13 +1072,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/one-click-apps/gitea">
-                <PlatformIcon platform="gitea" invert={theme !== "dark"} />
+                <PlatformIcon platform="gitea" />
                 Gitea
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/one-click-apps/mattermost">
-                <PlatformIcon platform="mattermost" invert={theme !== "dark"} />
+                <PlatformIcon platform="mattermost" />
                 Mattermost
               </ActiveLink>
             </li>
@@ -1114,7 +1114,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/one-click-apps/odoo">
-                <PlatformIcon platform="odoo" invert={theme !== "dark"} />
+                <PlatformIcon platform="odoo" />
                 Odoo
               </ActiveLink>
             </li>
@@ -1185,13 +1185,13 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/fastify">
-                <PlatformIcon platform="fastify" invert={theme !== "dark"} />
+                <PlatformIcon platform="fastify" />
                 Fastify
               </ActiveLink>
             </li>
             <li>
               <ActiveLink href="/instructions/remix">
-                <PlatformIcon platform="remix" invert={theme !== "dark"} />
+                <PlatformIcon platform="remix" />
                 Remix
               </ActiveLink>
             </li>
@@ -1221,7 +1221,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/eleventy">
-                <PlatformIcon platform="eleventy" invert={theme !== "dark"} />
+                <PlatformIcon platform="eleventy" />
                 Eleventy
               </ActiveLink>
             </li>
@@ -1263,7 +1263,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/fastapi">
-                <PlatformIcon platform="fastapi" invert={theme !== "dark"} />
+                <PlatformIcon platform="fastapi" />
                 FastAPI
               </ActiveLink>
             </li>
@@ -1305,7 +1305,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/seq">
-                <PlatformIcon platform="seq" invert={theme !== "dark"} />
+                <PlatformIcon platform="seq" />
                 Seq
               </ActiveLink>
             </li>
@@ -1349,7 +1349,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <NavTitle href="/databases/mysql">
-                <PlatformIcon platform="mysql" invert={theme !== "dark"} />
+                <PlatformIcon platform="mysql" />
                 MySQL
               </NavTitle>
               <ul className="nav__list">
@@ -1446,7 +1446,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
             <li>
               <NavTitle href="/databases/sqlserver">
-                <PlatformIcon platform="mssql" invert={theme !== "dark"} />
+                <PlatformIcon platform="mssql" />
                 SQL Server
               </NavTitle>
               <ul className="nav__list">

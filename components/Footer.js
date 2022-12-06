@@ -28,7 +28,7 @@ const socialMediaList = [
 const cols = [
   {
     id: 0,
-    title: "برنامه ها (PaaS)",
+    title: "پلتفرم (PaaS)",
     children: [
       { title: "react", link: "https://liara.ir/landing/هاست-ری-اکت-react/" },
       { title: "PostgreSQL", link: "/" },
@@ -44,7 +44,7 @@ const cols = [
   },
   {
     id: 1,
-    title: "دیتابیس‌ها (DBaaS)",
+    title: "دیتابیس‌ (DBaaS)",
     children: [
       { title: "MySQL", link: "https://liara.ir/landing/dbaas/mysql" },
       { title: "MariaDB", link: "/" },
@@ -57,7 +57,7 @@ const cols = [
   },
   {
     id: 2,
-    title: "برنامه های آماده (1-Click Apps)",
+    title: "برنامه های آماده (One Click Apps)",
     children: [
       { title: "Wordpress", link: "/" },
       { title: "Wordpress", link: "/" },
@@ -165,6 +165,7 @@ const Footer = () => {
           <div className="footer-animate-grid">
             <div className="animate-fade" />
             <div className="footer-animate-lines" />
+            <div className="footer-bg-container" />
           </div>
         </div>
       </div>

@@ -25,11 +25,6 @@
 .dark-mode .header button.grad {
   background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
   color: #111;
-  padding: 7px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
 }
 
 .dark-mode .header div:first-child a {
@@ -174,4 +169,15 @@
     rgba(14, 20, 22, 0) 0,
     #181818 80%
   );
+}
+
+.dark-mode .footer-col-container h5 {
+  background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  display: inline-block;
+  font-weight: 300;
+  margin-top: 15px;
 }

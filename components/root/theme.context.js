@@ -13,7 +13,12 @@ export default function ThemeProvider({ children }) {
   return (
     <ThemeContext.Provider value={value}>
       <div className={theme === "dark" ? "dark-mode" : ""}>
-        {theme === "dark" && <div className="background-gradient-first"></div>}
+        {
+          <div
+            className="background-gradient-first"
+            style={{ visibility: theme !== "dark" ? "hidden" : "visible" }}
+          ></div>
+        }
         {children}
       </div>
     </ThemeContext.Provider>
