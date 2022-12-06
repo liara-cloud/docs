@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   list-style-type: none;
+  margin-top: 6px;
 }
 
 .header div:first-child li {
@@ -346,7 +347,7 @@ header .menu-sm-device .action-sm-menu img {
 }
 
 .mian-menu {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 @media (max-width: 820px) {

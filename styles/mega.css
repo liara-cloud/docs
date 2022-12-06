@@ -56,6 +56,7 @@ section#menu .sub-menu-holder div {
 
 .item-list-container img {
   width: 50px;
+  max-height: 60px;
   border-radius: 12px;
   margin-left: 10px;
 }
@@ -73,7 +74,7 @@ section#menu .sub-menu-holder div {
   display: flex;
   /* flex-basis: var(--item-width); */
   box-sizing: border-box;
-  padding-left: 45px;
+  padding-left: 40px;
   justify-content: center;
   perspective: 200px;
   padding-bottom: 40px;
@@ -87,7 +88,7 @@ section .menu-item {
   display: flex;
   /* flex-basis: var(--item-width); */
   box-sizing: border-box;
-  padding-left: 45px;
+  padding-left: 40px;
   justify-content: center;
   perspective: 200px;
   padding-bottom: 40px;
@@ -96,7 +97,7 @@ section .menu-item {
 section .menu-text,
 section .menu-text a {
   font-size: 16px;
-  font-weight: 300;
+
   color: white;
   text-decoration: none;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -106,10 +107,9 @@ section .menu-text a {
 
 section .menu-text a span {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
-  background: linear-gradient(90deg, #2b5589 0%, #1a2129 100%);
-  opacity: 0.45;
+  background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

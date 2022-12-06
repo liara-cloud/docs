@@ -8,10 +8,10 @@ export default function Header({ setSearchOpen }) {
   const [showSidebar, setShowSidebar] = useState(false);
 
   const links = [
-    { title: "قیمت‌ها", href: "/pricing" },
+    { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
     { title: "مستندات", href: "/" },
-    { title: "وبلاگ", href: "/blog" },
-    { title: "ورود", href: "/" },
+    { title: "وبلاگ", href: "https://liara.ir/blog/" },
+    { title: "ورود", href: "https://console.liara.ir/" },
   ];
 
   const handleToggleSidebar = () => {

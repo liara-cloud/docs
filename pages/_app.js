@@ -3,7 +3,7 @@ import ThemeProvider from "../components/root/theme.context";
 import "highlight.js/styles/atom-one-dark.css";
 import "../styles/asciinema-player.css";
 import "../styles/layout.css";
-import "../styles/fontiran.css";
+import "../styles/fonts.css";
 import "../styles/header.css";
 import "../styles/notice.css";
 import "../styles/sidebar.css";

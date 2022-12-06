@@ -42,7 +42,7 @@
 
 .dark-mode .header div:first-child span {
   display: block;
-  font-size: 12px;
+
   text-align: center;
   background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
   -webkit-background-clip: text;
