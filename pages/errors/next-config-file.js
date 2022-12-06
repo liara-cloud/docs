@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import Notice from "../../components/Notice";
 
 export default () => (
   <Layout>
@@ -36,15 +37,28 @@ export default () => (
     </Highlight>
 
     <p>
-      در مرحله‌ی بعد نیاز هست قطعه‌کد زیر را به فایل{" "}
-      <span className="code">next.config.js</span> اضافه کنید:
+      در مرحله‌ی بعد نیاز هست قطعه‌کد زیر را متناسب با نسخه‌ی NextJS پروژه‌تان،
+      به فایل <span className="code">next.config.js</span> اضافه کنید:
+    </p>
+
+    <p style={{ direction: "ltr" }}>
+      <strong>{"NextJS >= 12.2"}</strong>
+    </p>
+    <Highlight className="json">
+      {`module.exports = {
+  output: 'standalone',
+}`}
+    </Highlight>
+
+    <p style={{ direction: "ltr" }}>
+      <strong>{"NextJS < 12.2"}</strong>
     </p>
 
     <Highlight className="json">
       {`module.exports = {
-  // ...
-  output: 'standalone',
-  // ...
+  experimental: {
+    outputStandalone: true,
+  },
 }`}
     </Highlight>
 
