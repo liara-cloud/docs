@@ -1,5 +1,12 @@
 {
   "app": "the-docs",
   "port": 80,
-  "platform": "docker"
+  "platform": "docker",
+  "healthCheck": {
+    "command": "curl --fail http://localhost || exit 1",
+    "interval": 15,
+    "timeout": 5,
+    "retries": 2,
+    "startPeriod": 5
+  }
 }
