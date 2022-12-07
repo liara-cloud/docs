@@ -33,6 +33,6 @@ export default () => (
       از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
 
-    <Link href="/app-deploy/nextjs/cli">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nextjs/desktop">متوجه شدم، برو گام بعدی!</Link>
   </Layout>
 );
