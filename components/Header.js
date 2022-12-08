@@ -22,7 +22,7 @@ export default function Header({ setSearchOpen }) {
     <Fragment>
       <header className="header">
         <div className="mian-menu" style={{ position: "relative", zIndex: 2 }}>
-          <Link href="/">
+          <Link href="https://liara.ir/">
             <a>
               <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
             </a>

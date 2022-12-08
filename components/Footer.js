@@ -30,57 +30,212 @@ const cols = [
     id: 0,
     title: "پلتفرم (PaaS)",
     children: [
-      { title: "react", link: "https://liara.ir/landing/هاست-ری-اکت-react/" },
-      { title: "PostgreSQL", link: "/" },
-      { title: "NodeJS", link: "/" },
-      { title: "NodeJS", link: "/" },
-      { title: "NodeJS", link: "/" },
-      { title: "NodeJS", link: "/" },
-      { title: "NodeJS", link: "/" },
-      { title: "PostgreSQL", link: "/" },
-      { title: "MariaDB", link: "/" },
-      { title: "PostgreSQL", link: "/" },
+      {
+        title: "PHP",
+        link: "https://liara.irhttps://liara.ir/landing/هاست-پی-اچ-پی-php/",
+        alt: "هاست ابری پی‌اچ‌چی‌",
+      },
+      {
+        title: "VueJS",
+        link: "https://liara.ir/landing/هاست-ویو-جی-اس-vue/",
+        alt: "هاست ابری ویو",
+      },
+      {
+        title: "Flask",
+        link: "https://liara.ir/landing/هاست-فلسک-flask/",
+        alt: "هاست ابری فلسک",
+      },
+      {
+        title: ".Net",
+        link: "https://liara.ir/landing/هاست-دات-نت-dotnet/",
+        alt: "هاست ابری دات‌نت‌",
+      },
+      {
+        title: "ReactJS",
+        link: "https://liara.ir/landing/هاست-ری-اکت-react/",
+        alt: "هاست ابری ری‌اکت",
+      },
+      {
+        title: "Angular",
+        link: "https://liara.ir/landing/هاست-انگولار-angular/",
+        alt: "هاست ابری انگولار",
+      },
+      {
+        title: "NodeJS",
+        link: "https://liara.ir/landing/هاست-نود-جی-اس-node/",
+        alt: "هاست ابری نودجی‌اس",
+      },
+      {
+        title: "Laravel",
+        link: "https://liara.ir/landing/هاست-لاراول-laravel/",
+        alt: "هاست ابری لاراول",
+      },
+      {
+        title: "Python",
+        link: "https://liara.ir/landing/هاست-پایتون-python/",
+        alt: "هاست ابری پایتون",
+      },
+      {
+        title: "Django",
+        link: "https://liara.ir/landing/هاست-جنگو-django/",
+        alt: "هاست ابری جنگو",
+      },
+      {
+        title: "NextJS",
+        link: "https://liara.ir/landing/هاست-نکست-جی-اس-next",
+        alt: "هاست ابری نکست",
+      },
+      {
+        title: "NuxtJS",
+        link: "https://liara.ir/landing/هاست-ناکست-جی-اس-nuxt",
+        alt: "هاست ابری ناکست",
+      },
+      {
+        title: "Golang",
+        link: "https://liara.ir/landing/هاست-گولنگ-golang",
+        alt: "هاست ابری گولنگ",
+      },
+      {
+        title: "Docker",
+        link: "https://liara.ir/landing/هاست-داکر-docker",
+        alt: "هاست ابری داکر",
+      },
     ],
   },
   {
     id: 1,
     title: "دیتابیس‌ (DBaaS)",
     children: [
-      { title: "MySQL", link: "https://liara.ir/landing/dbaas/mysql" },
-      { title: "MariaDB", link: "/" },
-      { title: "PostgreSQL", link: "/" },
-      { title: "MSSQL", link: "/" },
-      { title: "Redis", link: "/" },
-      { title: "RabbitMQ", link: "/" },
-      { title: "Elastic", link: "/" },
+      {
+        title: "MySQL",
+        link: "https://liara.ir/landing/dbaas/mysql",
+        alt: "دیتابیس مای‌اس‌کیو‌ال",
+      },
+      {
+        title: "MariaDB",
+        link: "https://liara.ir/landing/dbaas/mariadb",
+        alt: "دیتابیس ماریا",
+      },
+      {
+        title: "PostgreSQL",
+        link: "https://liara.ir/landing/dbaas/postgre-sql",
+        alt: "دیتابیس پستگرس",
+      },
+      {
+        title: "SQL Server",
+        link: "https://liara.ir/landing/dbaas/sql-server",
+        alt: "دیتابیس اس کیو ال سرور",
+      },
+      {
+        title: "MongoDB",
+        link: "https://liara.ir/landing/dbaas/mongo",
+        alt: "دیتابیس مونگو",
+      },
+      {
+        title: "Redis",
+        link: "https://liara.ir/landing/dbaas/redis",
+        alt: "دیتابیس ردیس",
+      },
+      {
+        title: "RabbitMQ",
+        link: "https://liara.ir/landing/dbaas/rabbit",
+        alt: "دیتابیس ربیت ام کیو",
+      },
+      {
+        title: "Elastic",
+        link: "https://liara.ir/landing/dbaas/elastic",
+        alt: "دیتابیس الاستیک",
+      },
     ],
   },
   {
     id: 2,
-    title: "برنامه های آماده (One Click Apps)",
+    title: "برنامه‌های‌ آماده (One Click Apps)",
     children: [
-      { title: "Wordpress", link: "/" },
-      { title: "Wordpress", link: "/" },
-      { title: "Wordpress", link: "/" },
-      { title: "Wordpress", link: "/" },
-      { title: "Wordpress", link: "/" },
-      { title: "Wordpress", link: "/" },
-      { title: "Wordpress", link: "/" },
-      { title: "Wordpress", link: "/" },
+      { title: "Ghost", link: "/one-click-apps/others", alt: "هاست ابری گوست" },
+      { title: "Gitea", link: "/one-click-apps/gitea", alt: "هاست ابری گیتی" },
+      {
+        title: "Soketi",
+        link: "/one-click-apps/soketi/install",
+        alt: "هاست ابری سوکتی",
+      },
+      {
+        title: "Grafana",
+        link: "/one-click-apps/grafana",
+        alt: "هاست ابری گرافانا",
+      },
+      { title: "Parse", link: "/one-click-apps/parse", alt: "هاست ابری پارس" },
+      { title: "Odoo", link: "/one-click-apps/odoo", alt: "هاست ابری اودو" },
+      {
+        title: "Code",
+        link: "/one-click-apps/vscode",
+        alt: "هاست ابری کد سرور",
+      },
+      {
+        title: "Metabase",
+        link: "/one-click-apps/metabase",
+        alt: "هاست ابری متابیس",
+      },
+      {
+        title: "Kibana",
+        link: "/one-click-apps/kibana",
+        alt: "هاست ابری کیبانا",
+      },
+      {
+        title: "Mattermost",
+        link: "/one-click-apps/mattermost",
+        alt: "هاست ابری مترموست",
+      },
+      {
+        title: "RocketChat",
+        link: "/one-click-apps/rocketchat",
+        alt: "هاست ابری راکت‌چت‌",
+      },
+      {
+        title: "Nextcloud",
+        link: "/one-click-apps/nextcloud",
+        alt: "هاست ابری نکست کلود",
+      },
+      {
+        title: "Imgproxy",
+        link: "/one-click-apps/imgproxy",
+        alt: "هاست ابری ای‌ام‌جی پروکسی",
+      },
+      {
+        title: "Prestashop",
+        link: "/one-click-apps/prestashop",
+        alt: "هاست ابری پرستاشاپ",
+      },
+      {
+        title: "Chrome",
+        link: "/one-click-apps/headless-chrome/install",
+        alt: "هاست ابری کروم",
+      },
     ],
   },
   {
     id: 3,
     title: "سایر محصولات",
     children: [
-      { title: "سرویس ایمیل", link: "/" },
+      {
+        title: "ایمیل",
+        link: "https://liara.ir/landing/products/email",
+        alt: "ایمیل لیارا",
+      },
+      {
+        title: "وردپرس پلاس",
+        link: "https://liara.ir/landing/products/wp-plus",
+        alt: "وردپرس پلاس لیارا",
+      },
       {
         title: "سامانه نام دامنه",
         link: "https://liara.ir/landing/products/dns",
+        alt: "سامانه نام دامنه لیارا",
       },
       {
-        title: "سرویس ذخیره سازی ابری",
+        title: "ذخیره سازی ابری",
         link: "https://liara.ir/landing/products/object-storage",
+        alt: "ذخیره سازی ابری لیارا",
       },
     ],
   },
@@ -93,13 +248,33 @@ const cols = [
     id: 5,
     title: "دسترسی سریع",
     children: [
-      { title: "پلن‌ها", link: "/pricing" },
-      { title: "وبلاگ", link: "/blog" },
-      { title: "مستندات", link: "/" },
-      { title: "درباره ما", link: "/about" },
-      { title: "ارتباط با ما", link: "/contact" },
-      { title: "قوانین و مقررات", link: "/terms" },
-      { title: "توافق‌نامه سطح کیفیت", link: "/sla" },
+      {
+        title: "پلن‌ها",
+        link: "https://liara.ir/pricing",
+        alt: "پلن های لیارا",
+      },
+      { title: "وبلاگ", link: "https://liara.ir/blog", alt: "وبلاگ لیارا" },
+      { title: "مستندات", link: "/", alt: "مستندات لیارا" },
+      {
+        title: "درباره ما",
+        link: "https://liara.ir/about",
+        alt: "درباره لیارا",
+      },
+      {
+        title: "ارتباط با ما",
+        link: "https://liara.ir/contact",
+        alt: "ارتباط با لیارا",
+      },
+      {
+        title: "قوانین و مقررات",
+        link: "https://liara.ir/terms",
+        alt: "قوانین و مقررات لیارا",
+      },
+      {
+        title: "توافق‌نامه سطح کیفیت",
+        link: "https://liara.ir/sla",
+        alt: "توافق‌نامه سطح کیفیت لیارا",
+      },
     ],
   },
 ];
@@ -139,7 +314,9 @@ const Footer = () => {
               <h5>{item.title}</h5>
               <div>
                 {item.children.map(link => (
-                  <Link href={link.link}>{link.title}</Link>
+                  <Link href={link.link} title={link.alt}>
+                    {link.title}
+                  </Link>
                 ))}
               </div>
             </div>

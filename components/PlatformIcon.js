@@ -31,7 +31,7 @@ import imgproxyIcon from "./../public/static/platforms-glassicon/imgproxy.svg";
 import metabaseIcon from "./../public/static/platforms-glassicon/metabase.svg";
 import nextcloudIcon from "./../public/static/platforms-glassicon/nextcloud.svg";
 import wordpressIcon from "./../public/static/platforms-glassicon/wordpress.svg";
-import prestashopIcon from "./../public/static/platforms/prestashop.svg";
+import prestashopIcon from "./../public/static/platforms-glassicon/prestashop.svg";
 import mattermostIcon from "./../public/static/platforms-glassicon/mattermost.svg";
 import rocketchatIcon from "./../public/static/platforms-glassicon/rocket.chat.svg";
 import parseserverIcon from "./../public/static/platforms-glassicon/parse.svg";

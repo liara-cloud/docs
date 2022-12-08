@@ -400,7 +400,7 @@ video {
   font-size: 17px;
   color: #181818;
   margin-top: 15px;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .footer-col-container h6 {
@@ -430,6 +430,7 @@ video {
   display: inline-block;
   width: max-content;
   margin-left: 20px;
+  font-weight: 300;
 }
 
 div.animate-play-container {
@@ -461,11 +462,10 @@ div.animate-fade {
 
 .footer-bg-container {
   background: radial-gradient(
-      87.68% 101.73% at 51.86% -0.36%,
-      rgba(32, 106, 190, 0.38) 0%,
-      rgba(13, 30, 51, 0) 100%
-    )
-    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    87.68% 101.73% at 51.86% -0.36%,
+    rgba(32, 106, 190, 0.38) 0%,
+    rgba(13, 30, 51, 0) 100%
+  );
   width: 100%;
   height: 800px;
   transform: rotate(180deg);
