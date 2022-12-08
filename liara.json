@@ -1,5 +1,5 @@
 {
-  "app": "the-docs",
+  "app": "docs-beta",
   "port": 80,
   "platform": "docker",
   "healthCheck": {
