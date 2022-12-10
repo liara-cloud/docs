@@ -1559,6 +1559,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/app-features/private-registry">
+                رجیستری خصوصی
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/app-features/console">خط فرمان</ActiveLink>
             </li>
             <li>
