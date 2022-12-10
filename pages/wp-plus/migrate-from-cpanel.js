@@ -40,14 +40,14 @@ export default () => (
       </li>
     </ul>
 
-    <p>
+    <Notice variant="info">
       برای انتقال رایگان برنامه‌ی وردپرس خود از cPanel به لیارا می‌توانید{" "}
       <a href="https://console.liara.ir/tickets" target="_blank" rel="noopener">
         تیکت
       </a>{" "}
       ثبت کنید. در غیراینصورت و برای انتقال فوری وبسایت خود می‌توانید طبق
       مستندات زیر عمل کنید.
-    </p>
+    </Notice>
 
     <h3 id="migrate-files">انتقال فایل‌ها</h3>
     <p>
