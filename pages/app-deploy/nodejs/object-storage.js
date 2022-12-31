@@ -112,15 +112,13 @@ client.putObject(params, (err, data) => {
   if (err) console.error(err, err.stack);
   else console.log(data);
 });
-
 `}
     </Highlight>
 
     <h3 id="download-file">دریافت فایل با AWS SDK</h3>
     <p>نمونه کد جهت دریافت فایل:</p>
     <Highlight className="javascript">
-      {`
-const params = {
+      {`const params = {
   Bucket: process.env(LIARA_BUCKET_NAME),
   Key: "objectkey"
 };
@@ -137,16 +135,13 @@ try {
 client.getObject(params, (err, data) => {
   if (err) console.error(err, err.stack);
   else console.log(data);
-});
-      `}
+});`}
     </Highlight>
 
     <h3 id="get-download-url">دریافت لینک دانلود فایل توسط AWS SDK</h3>
     <p>نمونه کد جهت دریافت لینک دانلود فایل:</p>
     <Highlight className="javascript">
-      {`
-
-const params = {
+      {`const params = {
   Bucket:  process.env(LIARA_BUCKET_NAME),
   Key: "objectkey"
   Expires: 60, // expires in 60 seconds
@@ -164,15 +159,13 @@ try {
 client.getSignedUrl('getObject', params, (err, data) => {
   if (err) console.error(err, err.stack);
   else console.log(data);
-});
-      `}
+});`}
     </Highlight>
 
     <h3 id="list-file">دریافت لیست فایل‌های آپلود شده توسط AWS SDK</h3>
     <p>نمونه کد جهت دریافت لیست فایل‌های آپلود شده:</p>
     <Highlight className="javascript">
-      {`
-const params = {
+      {`const params = {
   Bucket:  process.env(LIARA_BUCKET_NAME), 
 };      
 
@@ -188,15 +181,13 @@ try {
 client.listObjectsV2(params, (err, data) => {
   if (err) console.error(err, err.stack);
   else console.log(data);
-});
-      `}
+});`}
     </Highlight>
 
     <h3 id="delete-file">حذف فایل توسط AWS SDK</h3>
     <p>نمونه کد جهت حذف فایل:</p>
     <Highlight className="javascript">
-      {`
-const params = {
+      {`const params = {
   Bucket: process.env(LIARA_BUCKET_NAME),
   Key: 'objectKey',
 };
@@ -212,9 +203,7 @@ try {
 client.deleteObject(params, (err, data) => {
   if (err) console.error(err, err.stack);
   else console.log(data);
-});
-
-      `}
+});`}
     </Highlight>
 
     <h3 id="how-to-use">دریافت لیست باکت ها توسط AWS SDK</h3>
@@ -243,9 +232,7 @@ client.listBuckets(
     <h3 id="upload-file-multer-3">آپلود فایل از طریق multer-s3</h3>
     <p>نمونه کد برای آپلود فایل از طریق multer-s3:</p>
     <Highlight>
-      {`
-
-import AWS from 'aws-sdk';
+      {`import AWS from 'aws-sdk';
 import multer from 'multer';
 import express from 'express';
 import multerS3 from 'multer-s3';
@@ -291,9 +278,7 @@ app.post('/upload', upload.single('objectKey'), function (req, res) {
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
-});
-
-      `}
+});`}
     </Highlight>
 
     <p>
