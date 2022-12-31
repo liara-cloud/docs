@@ -118,8 +118,12 @@ export default () => (
       پیش‌فرض این وب‌سرور به‌شکل زیر است:
     </p>
     <Highlight className="nginx">
-      {`location / {
-  try_files $uri @flask_app;
+      {`location /public {
+  alias /usr/src/app/public;
+}
+      
+location / {
+  try_files /dev/null @flask_app;
 }
 
 location ~\\.sqlite3$ {
@@ -147,8 +151,12 @@ gzip_proxied     any;
 gzip_comp_level  6;
 gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
+location /public {
+  alias /usr/src/app/public;
+}
+
 location / {
-  try_files $uri @flask_app;
+  try_files /dev/null @flask_app;
 }
 
 location ~\\.sqlite3$ {
@@ -173,8 +181,12 @@ location ~ /\\.well-known {
     <Highlight className="nginx">
       {`client_max_body_size 250M;
 
+location /public {
+  alias /usr/src/app/public;
+}
+
 location / {
-  try_files $uri @flask_app;
+  try_files /dev/null @flask_app;
 }
 
 location ~\\.sqlite3$ {
