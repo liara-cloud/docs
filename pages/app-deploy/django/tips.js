@@ -204,7 +204,7 @@ stdout_logfile=/tmp/worker.log`}
 }
 
 location / {
-  try_files $uri @django_app;
+  try_files /dev/null @django_app;
 }
 
 location ~\\.sqlite3$ {
@@ -237,7 +237,7 @@ location /static {
 }
 
 location / {
-  try_files $uri @django_app;
+  try_files /dev/null @django_app;
 }
 
 location ~\\.sqlite3$ {
@@ -263,7 +263,7 @@ add_header X-XSS-Protection "1; mode=block" always;
 add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 
 location / {
-  try_files $uri @django_app;
+  try_files /dev/null @django_app;
 }
 location /static {
   alias /usr/src/app/staticfiles;
@@ -295,7 +295,7 @@ location /static {
 }
 
 location / {
-  try_files $uri @django_app;
+  try_files /dev/null @django_app;
 }
 
 location ~\\.sqlite3$ {
@@ -351,7 +351,7 @@ location /static {
 }
 
 location / {
-  try_files $uri @django_app;
+  try_files /dev/null @django_app;
 }
 
 location ~\\.sqlite3$ {
