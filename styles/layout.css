@@ -173,9 +173,8 @@ span.code {
 
 img.page-icon {
   width: 64px;
-  margin-left: 12px;
   border: none !important;
-  padding: 8px;
+  padding: 10px;
 }
 
 .page-title {
@@ -212,19 +211,22 @@ img.page-icon {
   text-align: center;
   padding: 0;
   border: none;
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: end;
   margin-left: 10px;
   margin-bottom: 20px;
   border-radius: 12px;
+  padding-top: 10px;
 }
 
 .platforms img {
   max-width: none;
   border: none;
-  border-radius: 12px;
-  width: 65px;
-  height: 65px;
-  /* background: #303030; */
+  width: auto;
+  max-width: 60px;
+  max-height: 65px;
 }
 
 .platforms span {
