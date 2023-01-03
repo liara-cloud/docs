@@ -11,7 +11,7 @@ export default function Header({ setSearchOpen }) {
     { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
     { title: "مستندات", href: "/" },
     { title: "وبلاگ", href: "https://liara.ir/blog/" },
-    { title: "ورود", href: "https://console.liara.ir/" },
+    { title: "ورود", href: "https://console.liara.ir/login" },
   ];
 
   const handleToggleSidebar = () => {
@@ -33,7 +33,14 @@ export default function Header({ setSearchOpen }) {
                 <a href={item.href}>{item.title}</a>
               </li>
             ))}
-            <button className="grad">ایجاد حساب کاربری</button>
+            <button className="grad">
+              <a
+                style={{ color: "#181818 !important" }}
+                href="https://console.liara.ir/register"
+              >
+                ایجاد حساب کاربری
+              </a>
+            </button>
           </ul>
         </div>
         <nav>
