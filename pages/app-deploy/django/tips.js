@@ -373,14 +373,10 @@ location ~ /\\.well-known {
       ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight className="nginx">
-      {`location /media {
-  add_header Access-Control-Allow-Origin *;
-  alias /usr/src/app/media;
-}
-
-client_max_body_size 100M;
+      {`client_max_body_size 100M;
 
 location /media {
+  add_header Access-Control-Allow-Origin *;
   alias /usr/src/app/media;
 }
 
