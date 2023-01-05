@@ -47,6 +47,8 @@ export default () => (
 
 WORKDIR /usr/src/app
 
+RUN apt-get update && apt-get install build-essential -y
+
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir --upgrade pip && \\

@@ -199,7 +199,13 @@ stdout_logfile=/tmp/worker.log`}
       پیش‌فرض این وب‌سرور به‌شکل زیر است:
     </p>
     <Highlight className="nginx">
-      {`location /static {
+      {`client_max_body_size 100M;
+
+location /media {
+  alias /usr/src/app/media;
+}
+
+location /static {
   alias /usr/src/app/staticfiles;
 }
 
@@ -232,6 +238,12 @@ gzip_proxied     any;
 gzip_comp_level  6;
 gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
+client_max_body_size 100M;
+
+location /media {
+  alias /usr/src/app/media;
+}
+
 location /static {
   alias /usr/src/app/staticfiles;
 }
@@ -262,12 +274,28 @@ add_header X-Content-Type-Options: nosniff;
 add_header X-XSS-Protection "1; mode=block" always;
 add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 
+client_max_body_size 100M;
+
+location /media {
+  alias /usr/src/app/media;
+}
+
+location /static {
+  alias /usr/src/app/staticfiles;
+}
+
 location / {
   try_files /dev/null @django_app;
 }
-location /static {
-  alias /usr/src/app/staticfiles;
- }`}
+
+location ~\\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
+}`}
     </Highlight>
     <Notice variant="warning">
       توجه داشته باشید که قبل از فعال‌سازی HSTS با تنظیم هدر{" "}
@@ -289,6 +317,10 @@ location /static {
     </p>
     <Highlight className="nginx">
       {`client_max_body_size 250M;
+
+location /media {
+  alias /usr/src/app/media;
+}
 
 location /static {
   alias /usr/src/app/staticfiles;
@@ -343,6 +375,12 @@ location ~ /\\.well-known {
     <Highlight className="nginx">
       {`location /media {
   add_header Access-Control-Allow-Origin *;
+  alias /usr/src/app/media;
+}
+
+client_max_body_size 100M;
+
+location /media {
   alias /usr/src/app/media;
 }
 
