@@ -60,6 +60,7 @@ export default () => (
       </li>
       <li>PHP 8.0</li>
       <li>PHP 8.1</li>
+      <li>PHP 8.2</li>
     </ul>
 
     <Notice variant="info">

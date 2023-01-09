@@ -98,7 +98,7 @@ export default () => (
   "platform": "laravel",
   "app": "laravel-starter",
   "laravel": {
-    "phpVersion": "8.1"
+    "phpVersion": "8.2"
   }
 }`}
     </Highlight>
@@ -111,6 +111,7 @@ export default () => (
       </li>
       <li>8.0</li>
       <li>8.1</li>
+      <li>8.2</li>
     </ul>
     <h3 id="php-ini-customization">تنظیمات اختصاصی php.ini</h3>
     <p>

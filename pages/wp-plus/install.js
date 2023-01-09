@@ -28,6 +28,9 @@ export default () => (
         <a href="#setup">راه‌اندازی وردپرس</a>
       </li>
       <li>
+        <a href="#php-version">انتخاب نسخه‌ی PHP</a>
+      </li>
+      <li>
         <a href="#php-ini-customization">شخصی‌سازی تنظیمات php.ini</a>
       </li>
       <li>
@@ -70,6 +73,20 @@ export default () => (
     ></video> 
     <ZoomableImage src="/static/wp-add.jpg" /> 
     <ZoomableImage src="/static/wp-install.png" /> */}
+
+    <h3 id="php-version">انتخاب نسخه‌ی PHP</h3>
+    <p>
+      در زمان راه‌اندازی برنامه‌های وردپرس پلاس می‌توانید نسخه‌ی PHP مورد نظر
+      خود را انتخاب کنید و درصورتی که بعد از راه‌اندازی، نیاز به به‌روزرسانی
+      نسخه‌ی PHP وجود داشت می‌توانید از منوی تنظیمات، نسخه‌ی دیگری از PHP را
+      برای اجرای برنامه وردپرس خود انتخاب کنید.
+    </p>
+
+    <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌کنیم:</p>
+    <ul>
+      <li>7.4</li>
+      <li>8.1</li>
+    </ul>
 
     <h3 id="php-ini-customization">
       شخصی‌سازی تنظیمات <spapn className="code">php.ini</spapn>
