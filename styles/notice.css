@@ -7,6 +7,13 @@
   border-right: 2px solid #ccc;
 }
 
+.dark-mode .notice {
+  background-color: #cccccc33;
+  border-right: 1px solid #ccc;
+  color: #ccc;
+  border-radius: 6px;
+}
+
 .notice--info {
   background-color: #e7f3fe;
   border-right: 2px solid #218be5;
@@ -22,6 +29,26 @@
   border-right: 2px solid #e5212b;
 }
 
+.dark-mode .notice--info {
+  border: 1px solid #28c1f5;
+  background: #28c1f533;
+  border-radius: 6px;
+  color: #28c1f5;
+}
+
+.dark-mode .notice--warning {
+  border: 1px solid #fdea4f;
+  background-color: #ffe82633;
+  border-radius: 6px;
+  color: #fdea4f;
+}
+
+.dark-mode .notice--danger {
+  background-color: #fa485133;
+  border-right: 1px solid #fa4851;
+  border-radius: 6px;
+  color: #fa4851;
+}
 
 @media (min-width: 1200px) {
   .notice {
