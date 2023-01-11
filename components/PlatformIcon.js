@@ -40,7 +40,7 @@ import parseserverIcon from "@liara/platformicons/glass/png/parse.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
-import hugoIcon from "@liara/platformicons/glass/png/hugo.png";
+import hugoIcon from "@liara/platformicons/glass/png/Hugo.png";
 import nestIcon from "@liara/platformicons/glass/png/nestjs.png";
 import remixIcon from "@liara/platformicons/glass/png/remix.png";
 import nginxIcon from "@liara/platformicons/glass/png/ngnix.png";
@@ -55,7 +55,7 @@ import flutterIcon from "@liara/platformicons/glass/png/flutter.png";
 import adonisIcon from "@liara/platformicons/glass/png/adonisjs.png";
 import fastapiIcon from "@liara/platformicons/glass/png/fastapi.png";
 import fastifyIcon from "@liara/platformicons/glass/png/fastify.png";
-import eleventyIcon from "@liara/platformicons/glass/png/eleventy.png";
+import eleventyIcon from "@liara/platformicons/glass/png/Eleventy.png";
 import gridsomeIcon from "@liara/platformicons/glass/png/gridsome.png";
 import goIcon from "@liara/platformicons/glass/png/golang.png";
 import nextIcon from "@liara/platformicons/glass/png/nextjs.png";

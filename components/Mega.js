@@ -285,6 +285,12 @@ const Mega = () => {
           <div className="menu-text">
             <a href={item.href}>
               {item.title}
+              {item.hasChildren && (
+                <span style={{ display: "inline-block", marginRight: "10px" }}>
+                  {" "}
+                  &#9662;
+                </span>
+              )}
               <span>({item.badge})</span>
             </a>
           </div>

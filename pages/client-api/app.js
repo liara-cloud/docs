@@ -63,7 +63,7 @@ export default () => (
         <td>node-app</td>
         <td className="endpoint-inputs__description"></td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group ">
         <td>planID</td>
         <td>ir-small</td>
         <td className="endpoint-inputs__description"></td>
@@ -226,7 +226,7 @@ export default () => (
         <td>sourceID</td>
         <td>913ca858-0888-479f-9d9b-aeedca62ca85</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group ">
         <td>port</td>
         <td>3000</td>
       </tr>
@@ -270,7 +270,7 @@ export default () => (
         <td>app-name</td>
         <td className="endpoint-inputs__description"></td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group ">
         <td>variables</td>
         <td>{`[
         {

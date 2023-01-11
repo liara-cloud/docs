@@ -32,7 +32,7 @@ export default function Desktop() {
         </div>
       </div>
       <img
-        src="/static/liara-desktop.jpg"
+        src="/static/liara-desktop.png"
         style={{ border: "none", marginTop: 28, marginBottom: 16 }}
       />
       <section>

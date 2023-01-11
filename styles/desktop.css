@@ -49,6 +49,7 @@
   transform: translateX(50%);
   box-shadow: 0 0 10px #276afd23;
 }
+
 .replay-video div {
   padding: 0px 30px 0px 5px;
   margin: 0px 5px;
@@ -56,15 +57,18 @@
   font-size: 14px;
   position: relative;
 }
+
 .replay-video div span {
   position: absolute;
   right: 5px;
   top: -3px;
   font-size: 22px;
 }
+
 .download {
   padding: 20px 0;
 }
+
 .download .windows:hover {
   background: #3291ff;
 }
@@ -77,10 +81,12 @@
   border-radius: 0.5rem;
   margin: 5px 0px;
 }
+
 .download .windows a {
   color: #fff;
   border-bottom: none;
 }
+
 .download .windows img {
   display: inline-block;
   border: none;
@@ -88,9 +94,11 @@
   margin-left: 10px;
   margin-bottom: 3px;
 }
+
 .download h3 {
   display: inline-block;
 }
+
 .download .alert-text {
   padding: 0 10px;
   display: inline-block;
@@ -129,6 +137,20 @@
   min-width: 160px;
 }
 
+.dark-mode .os-container a {
+  color: #87fcc4 !important;
+  border: 1px solid #87fcc4;
+  background: transparent;
+}
+
+.dark-mode .os-container a img {
+  opacity: 0.6;
+}
+
+.dark-mode .os-container a:hover {
+  background: #222;
+}
+
 .os-container a:hover {
   background: #3291ff;
 }
@@ -139,6 +161,7 @@
   border-radius: 0;
   margin-left: 5px;
 }
+
 .os-container div {
   margin-top: 38px;
 }
@@ -152,16 +175,20 @@
     top: 30%;
     width: 45px;
   }
+
   .first-video {
     width: 340px;
   }
+
   .video-deploy {
     width: 240px;
     top: 45px;
   }
+
   .replay-video {
     bottom: -10px;
   }
+
   .download .windows {
     font-size: 16px;
     margin: 15px 0px;
