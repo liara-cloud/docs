@@ -55,8 +55,8 @@ section#menu .sub-menu-holder div {
 }
 
 .item-list-container img {
-  width: 50px;
-  max-height: 60px;
+  width: 55px;
+  /* max-height: 60px; */
   border-radius: 12px;
   margin-left: 10px;
 }

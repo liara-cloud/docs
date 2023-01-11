@@ -94,6 +94,30 @@
   background-color: #87fcc422;
 }
 
+.dark-mode code {
+  background-color: #2d333b;
+  color: #ccc;
+}
+
+.dark-mode .search-box .search-input {
+  background-color: #2d333b;
+  color: #ccc;
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 0.5rem;
+}
+
+.dark-mode .results ul li {
+  background-color: #2d333b;
+  color: #ccc;
+}
+
+.results ul .platform-search_logo img {
+  width: 50px;
+  padding: 2px;
+}
+
 .article a.next-page {
   font-size: 14px;
   padding: 10px 15px;
@@ -145,17 +169,20 @@
 }
 
 .dark-mode .suggestion button {
-  background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
-  color: #181818;
+  border: 1px solid #87fcc4;
+  background-color: transparent;
+  color: #87fcc4;
+}
+
+.dark-mode .suggestion button:hover {
+  border: 1px solid #87fcc4;
+  background-color: #87fcc422;
+  color: #87fcc4;
 }
 
 .dark-mode .results .current-result {
   background: #87fcc433;
   border-bottom: 1px solid #87fcc4;
-}
-
-.dark-mode .plaintext {
-  color: #181818;
 }
 
 .dark-mode .footer-animate-container {

@@ -178,7 +178,7 @@ span.code {
 }
 
 img.page-icon {
-  width: 64px;
+  width: 94px;
   border: none !important;
   padding: 10px;
 }
@@ -231,8 +231,7 @@ img.page-icon {
   max-width: none;
   border: none;
   width: auto;
-  max-width: 60px;
-  max-height: 65px;
+  max-width: 70px;
 }
 
 .platforms span {
