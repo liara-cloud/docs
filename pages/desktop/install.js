@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout";
 import Head from "next/head";
+import Highlight from "react-highlight";
 import Notice from "../../components/Notice";
 
 const links = {
@@ -30,12 +31,10 @@ export default function Desktop() {
           <span className="page-description">(Liara Desktop)</span>
         </div>
       </div>
-
       <img
         src="/static/liara-desktop.jpg"
         style={{ border: "none", marginTop: 28, marginBottom: 16 }}
       />
-
       <section>
         <h1>نصب برنامه</h1>
         <p>
@@ -88,6 +87,13 @@ export default function Desktop() {
           </div>
         </div>
       </section>
+      <p>
+        {" "}
+        <strong>توجه</strong>:‌ برای استفاده از نسخه مک (arm64) نیاز هست بعد از
+        دانلود و نصب برنامه، یکبار دستور زیر را در ترمینال اجرا بفرمایید:
+      </p>
+
+      <Highlight className="bash">xattr -rc /Applications/Liara.app</Highlight>
     </Layout>
   );
 }
