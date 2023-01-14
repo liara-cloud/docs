@@ -179,13 +179,18 @@ const Mega = () => {
   const [style, setStyle] = useState({});
   const { theme, setTheme } = useContext(ThemeContext);
 
+  const handleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+    localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <section id="menu">
       <div className={`bg-app ${theme === "dark" && "dark"}`}>
         <button
           title="Toggle Theme"
           className="theme-mode"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={handleTheme}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

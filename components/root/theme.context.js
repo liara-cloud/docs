@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const ThemeContext = React.createContext();
 
 export default function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    theme && setTheme(theme);
+  }, []);
 
   const value = {
     theme,
