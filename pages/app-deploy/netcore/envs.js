@@ -11,7 +11,7 @@ export default () => (
     <Head>
       <title>
         مستندات تنظیم متغیرها (Environment Variables) در برنامه‌های .Net Core -
-        سرویس ابری لیارا
+        لیارا
       </title>
     </Head>
 

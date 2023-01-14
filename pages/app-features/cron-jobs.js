@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات Cron Job ها - سرویس ابری لیارا</title>
+      <title>مستندات Cron Job ها - لیارا</title>
     </Head>
 
     <h1>Cron Job ها</h1>

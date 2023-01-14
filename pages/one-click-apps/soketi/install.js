@@ -6,7 +6,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات راه‌اندازی Soketi - سرویس ابری لیارا</title>
+      <title>مستندات راه‌اندازی Soketi - لیارا</title>
     </Head>
     <div className="page-head">
       <PlatformIcon platform="soketi" />

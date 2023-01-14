@@ -7,7 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات استقرار برنامه‌های Vue - سرویس ابری لیارا</title>
+      <title>مستندات استقرار برنامه‌های Vue - لیارا</title>
     </Head>
 
     <div className="page-head">

@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های Hugo - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های Hugo - لیارا</title>
     </Head>
 
     <div className="page-head">

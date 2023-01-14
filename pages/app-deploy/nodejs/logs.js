@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های NodeJS - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های NodeJS - لیارا</title>
     </Head>
 
     <div className="page-head">

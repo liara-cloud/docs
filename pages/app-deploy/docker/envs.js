@@ -10,7 +10,7 @@ export default () => (
     <Head>
       <title>
         مستندات تنظیم متغیرها (Environment Variables) در برنامه‌های Docker -
-        سرویس ابری لیارا
+        لیارا
       </title>
     </Head>
 

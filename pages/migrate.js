@@ -7,7 +7,7 @@ import Notice from "../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات انتقال سرویس‌ها - سرویس ابری لیارا</title>
+      <title>مستندات انتقال سرویس‌ها - لیارا</title>
     </Head>
 
     <h1>انتقال سرویس‌ها</h1>

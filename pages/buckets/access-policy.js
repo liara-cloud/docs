@@ -7,7 +7,7 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>تغییر سطح دسترسی ذخیره‌سازی ابری - سرویس ابری لیارا</title>
+      <title>تغییر سطح دسترسی ذخیره‌سازی ابری - لیارا</title>
     </Head>
 
     <h1>ذخیره‌سازی ابری</h1>

@@ -10,9 +10,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استفاده از دیسک‌ها در برنامه‌های PHP - سرویس ابری لیارا
-      </title>
+      <title>مستندات استفاده از دیسک‌ها در برنامه‌های PHP - لیارا</title>
     </Head>
 
     <div className="page-head">

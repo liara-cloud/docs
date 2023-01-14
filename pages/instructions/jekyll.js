@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های Jekyll - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های Jekyll - لیارا</title>
     </Head>
 
     <div className="page-head">

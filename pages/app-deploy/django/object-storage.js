@@ -8,7 +8,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات اتصال به ذخیره‌سازی ابری در برنامه‌های Django - سرویس ابری لیارا
+        مستندات اتصال به ذخیره‌سازی ابری در برنامه‌های Django - لیارا
       </title>
     </Head>
 
@@ -92,7 +92,7 @@ LIARA_SECRET_KEY=<Secret Key>`}
       برنامه‌تان را به‌شکل زیر ویرایش کنید:
     </p>
     <Highlight className="python">
-      {`INSTALLED_APPS = [
+      {`INSTALLED_APPS = [ 
   ...,
   'storages',
 ]

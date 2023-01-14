@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات به‌روز‌رسانی در برنامه‌های Angular - سرویس ابری لیارا
-      </title>
+      <title>مستندات به‌روز‌رسانی در برنامه‌های Angular - لیارا</title>
     </Head>
 
     <div className="page-head">

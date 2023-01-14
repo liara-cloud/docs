@@ -9,7 +9,7 @@ export default () => (
     <Head>
       <title>
         مستندات استقرار برنامه‌های Flask با استفاده از ابزار Liara Desktop -
-        سرویس ابری لیارا
+        لیارا
       </title>
     </Head>
 

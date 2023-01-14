@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استفاده از Voyager در برنامه‌های Laravel - سرویس ابری لیارا</title>
+      <title>استفاده از Voyager در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">

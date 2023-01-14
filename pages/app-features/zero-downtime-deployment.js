@@ -7,7 +7,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات استقرار بدون اختلال Zero Downtime Deployment - سرویس ابری لیارا
+        مستندات استقرار بدون اختلال Zero Downtime Deployment - لیارا
       </title>
     </Head>
 

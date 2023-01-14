@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>نحوه استفاده از ابزار Vite - سرویس ابری لیارا</title>
+      <title>نحوه استفاده از ابزار Vite - لیارا</title>
     </Head>
 
     <div className="page-head">

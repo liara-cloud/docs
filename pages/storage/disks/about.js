@@ -5,7 +5,7 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات دیسک‌ها - سرویس ابری لیارا</title>
+      <title>مستندات دیسک‌ها - لیارا</title>
     </Head>
 
     <h1>دیسک‌ها</h1>

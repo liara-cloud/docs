@@ -8,7 +8,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات استفاده از فایل liara.json در برنامه‌های PHP - سرویس ابری لیارا
+        مستندات استفاده از فایل liara.json در برنامه‌های PHP - لیارا
       </title>
     </Head>
 

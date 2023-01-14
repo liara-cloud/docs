@@ -10,9 +10,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استفاده از دیسک‌ها در برنامه‌های Laravel - سرویس ابری لیارا
-      </title>
+      <title>مستندات استفاده از دیسک‌ها در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">

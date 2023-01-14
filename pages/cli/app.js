@@ -7,9 +7,7 @@ import Layout from "../../components/Layout";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات مدیریت برنامه‌ها با استفاده از لیارا CLI - سرویس ابری لیارا
-      </title>
+      <title>مستندات مدیریت برنامه‌ها با استفاده از لیارا CLI - لیارا</title>
     </Head>
 
     <div className="page-head">

@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استقرار Docker Compose در برنامه‌های Docker - سرویس ابری لیارا
-      </title>
+      <title>مستندات استقرار Docker Compose در برنامه‌های Docker - لیارا</title>
     </Head>
 
     <div className="page-head">

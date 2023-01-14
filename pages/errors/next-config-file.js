@@ -7,7 +7,7 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>خطای Could not modify config file - سرویس ابری لیارا</title>
+      <title>خطای Could not modify config file - لیارا</title>
     </Head>
 
     <h1>خطای Could not modify config file</h1>

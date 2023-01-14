@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useState } from "react";
 import Link from "next/link";
 import Mega from "./Mega";
 import { ThemeContext } from "./root/theme.context";
+import SmMenu from "./SmMenu";
 
 export default function Header({ setSearchOpen }) {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -48,7 +49,15 @@ export default function Header({ setSearchOpen }) {
         </nav>
         <div className="menu-sm-device">
           <Link href="/">
-            <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
+            <a
+              style={
+                !showSidebar
+                  ? { visibility: "inherit" }
+                  : { visibility: "hidden" }
+              }
+            >
+              <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
+            </a>
           </Link>
           <div className="action-sm-menu" onClick={handleToggleSidebar}>
             <img
@@ -61,10 +70,11 @@ export default function Header({ setSearchOpen }) {
           </div>
         </div>
       </header>
-      <div
+      {/* <div
         className="sm-sidebar"
         style={{ transform: `translateX(${showSidebar ? 0 : `70vw`})` }}
-      />
+      /> */}
+      <SmMenu showSidebar={showSidebar} />
     </Fragment>
   );
 }

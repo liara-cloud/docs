@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات رکوردهای DNS در سرویس DNS - سرویس ابری لیارا</title>
+      <title>مستندات رکوردهای DNS در سرویس DNS - لیارا</title>
     </Head>
 
     <h1>DNS</h1>

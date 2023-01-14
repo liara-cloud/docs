@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار Prestashop - سرویس ابری لیارا</title>
+      <title>استقرار Prestashop - لیارا</title>
     </Head>
 
     <div className="page-head">

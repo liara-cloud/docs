@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        سرویس ابری لیارا - مستندات اتصال به Headless Chrome از طریق Selenium
-      </title>
+      <title>لیارا - مستندات اتصال به Headless Chrome از طریق Selenium</title>
     </Head>
     <div className="page-head">
       <PlatformIcon platform="chrome" />

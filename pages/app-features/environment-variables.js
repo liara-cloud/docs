@@ -7,9 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات متغیرهای محیطی (Environment Variables) - سرویس ابری لیارا
-      </title>
+      <title>مستندات متغیرهای محیطی (Environment Variables) - لیارا</title>
     </Head>
 
     <h1>متغیرهای محیطی</h1>

@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های Gridsome - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های Gridsome - لیارا</title>
     </Head>
 
     <div className="page-head">

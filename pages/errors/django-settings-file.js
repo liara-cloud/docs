@@ -6,7 +6,7 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>خطای Multiple Settings Files - سرویس ابری لیارا</title>
+      <title>خطای Multiple Settings Files - لیارا</title>
     </Head>
 
     <h1>خطای Multiple Settings Files</h1>

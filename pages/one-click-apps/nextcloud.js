@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات NextCloud - سرویس ابری لیارا</title>
+      <title>مستندات NextCloud - لیارا</title>
     </Head>
 
     <div className="page-head">

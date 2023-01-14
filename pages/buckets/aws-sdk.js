@@ -6,7 +6,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مدیریت ذخیره‌سازی ابری - سرویس ابری لیارا</title>
+      <title>مدیریت ذخیره‌سازی ابری - لیارا</title>
     </Head>
 
     <h1>ذخیره‌سازی ابری</h1>

@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات اتصال به دیتابیس‌های MySQL - سرویس ابری لیارا</title>
+      <title>مستندات اتصال به دیتابیس‌های MySQL - لیارا</title>
     </Head>
 
     <div className="page-head">

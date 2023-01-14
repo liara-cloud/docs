@@ -8,7 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات سرویس ایمیل در برنامه‌های Flask - سرویس ابری لیارا</title>
+      <title>مستندات سرویس ایمیل در برنامه‌های Flask - لیارا</title>
     </Head>
 
     <div className="page-head">

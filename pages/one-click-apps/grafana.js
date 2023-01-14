@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات نصب و راه‌اندازی Grafana - سرویس ابری لیارا</title>
+      <title>مستندات نصب و راه‌اندازی Grafana - لیارا</title>
     </Head>
 
     <div className="page-head">

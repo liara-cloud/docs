@@ -8,7 +8,7 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات نصب و راه‌ندازی لیارا CLI - سرویس ابری لیارا</title>
+      <title>مستندات نصب و راه‌ندازی لیارا CLI - لیارا</title>
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>

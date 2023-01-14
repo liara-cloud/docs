@@ -7,9 +7,7 @@ import Asciinema from "../../components/Asciinema";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات مدیریت دیسک‌ها با استفاده از لیارا CLI - سرویس ابری لیارا
-      </title>
+      <title>مستندات مدیریت دیسک‌ها با استفاده از لیارا CLI - لیارا</title>
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>

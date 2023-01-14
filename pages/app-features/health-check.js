@@ -8,7 +8,7 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات بررسی سلامت برنامه Health Check - سرویس ابری لیارا</title>
+      <title>مستندات بررسی سلامت برنامه Health Check - لیارا</title>
     </Head>
 
     <h1>بررسی سلامت</h1>

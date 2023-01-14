@@ -8,7 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات استقرار Image از DockerHub - سرویس ابری لیارا</title>
+      <title>مستندات استقرار Image از DockerHub - لیارا</title>
     </Head>
 
     <div className="page-head">

@@ -11,7 +11,7 @@ export default () => (
     <Head>
       <title>
         مستندات تنظیم متغیرها (Environment Variables) در برنامه‌های Flask -
-        سرویس ابری لیارا
+        لیارا
       </title>
     </Head>
 

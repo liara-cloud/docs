@@ -97,7 +97,6 @@ section .menu-item {
 section .menu-text,
 section .menu-text a {
   font-size: 16px;
-
   color: white;
   text-decoration: none;
   text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);

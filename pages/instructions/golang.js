@@ -8,7 +8,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های Golang - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های Golang - لیارا</title>
     </Head>
 
     <div className="page-head">

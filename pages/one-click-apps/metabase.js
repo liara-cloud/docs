@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>نصب و راه‌اندازی Metabase - سرویس ابری لیارا</title>
+      <title>نصب و راه‌اندازی Metabase - لیارا</title>
     </Head>
 
     <div className="page-head">

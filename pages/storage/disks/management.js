@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات مدیریت دیسک‌ها - سرویس ابری لیارا</title>
+      <title>مستندات مدیریت دیسک‌ها - لیارا</title>
     </Head>
 
     <h1>مدیریت دیسک‌ها</h1>

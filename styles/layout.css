@@ -407,7 +407,7 @@ video {
   font-size: 17px;
   color: #181818;
   margin-top: 15px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .footer-col-container h6 {
@@ -437,7 +437,8 @@ video {
   display: inline-block;
   width: max-content;
   margin-left: 20px;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 15px;
 }
 
 div.animate-play-container {

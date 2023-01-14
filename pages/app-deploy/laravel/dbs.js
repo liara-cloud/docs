@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌ها در برنامه‌های Laravel - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌ها در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">

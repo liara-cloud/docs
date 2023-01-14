@@ -7,7 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات شروع به کار برنامه‌های Angular - سرویس ابری لیارا</title>
+      <title>مستندات شروع به کار برنامه‌های Angular - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -23,8 +23,8 @@ export default () => (
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه Angular را با استفاده از
       ابزار <Link href="/app-deploy/angular/desktop">Liara Desktop</Link>، بر
-      روی سرویس ابری لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را
-      ترجیح می‌دهید یا تصمیم داشته باشید با{" "}
+      روی لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح
+      می‌دهید یا تصمیم داشته باشید با{" "}
       <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار برنامه‌ی
       خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
       <Link href="/cicd/gitlab">GitLab</Link> بسپرید، امکان استفاده از ابزار{" "}

@@ -9,9 +9,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های MySQL - سرویس ابری لیارا
-      </title>
+      <title>مستندات بازگردانی فایل پشتیبان در دیتابیس‌های MySQL - لیارا</title>
     </Head>
 
     <div className="page-head">

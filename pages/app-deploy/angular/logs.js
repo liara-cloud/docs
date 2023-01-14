@@ -7,7 +7,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Angular - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Angular - لیارا</title>
     </Head>
 
     <div className="page-head">

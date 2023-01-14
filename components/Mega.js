@@ -286,11 +286,17 @@ const Mega = () => {
             <a href={item.href}>
               {item.title}
               {item.hasChildren && (
-                <span style={{ display: "inline-block", marginRight: "10px" }}>
-                  {" "}
-                  &#9662;
-                </span>
+                <img
+                  src={"/static/arrow-mega.svg"}
+                  style={{
+                    display: "inline-block",
+                    marginRight: "10px",
+                    width: "8px",
+                    marginTop: "0px",
+                  }}
+                />
               )}
+
               <span>({item.badge})</span>
             </a>
           </div>

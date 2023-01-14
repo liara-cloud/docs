@@ -13,6 +13,7 @@ import "../styles/404.css";
 import "../styles/desktop.css";
 import "../styles/mega.css";
 import "../styles/theme-dark.css";
+import "../styles/sm-menu.css";
 
 export default function MyApp({ Component, pageProps }) {
   return (

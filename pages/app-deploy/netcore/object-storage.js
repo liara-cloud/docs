@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به ذخیره‌سازی ابری در برنامه‌های .Net - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به ذخیره‌سازی ابری در برنامه‌های .Net - لیارا</title>
     </Head>
 
     <div className="page-head">

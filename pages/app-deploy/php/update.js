@@ -7,7 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات به‌روزرسانی در برنامه‌های PHP - سرویس ابری لیارا</title>
+      <title>مستندات به‌روزرسانی در برنامه‌های PHP - لیارا</title>
     </Head>
 
     <div className="page-head">

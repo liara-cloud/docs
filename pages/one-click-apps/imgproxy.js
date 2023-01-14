@@ -8,7 +8,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات پردازش تصاویر با Imgproxy - سرویس ابری لیارا</title>
+      <title>مستندات پردازش تصاویر با Imgproxy - لیارا</title>
     </Head>
 
     <div className="page-head">

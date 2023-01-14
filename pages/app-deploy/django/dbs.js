@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌ها در برنامه‌های Django - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌ها در برنامه‌های Django - لیارا</title>
     </Head>
 
     <div className="page-head">

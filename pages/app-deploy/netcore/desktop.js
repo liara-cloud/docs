@@ -9,7 +9,7 @@ export default () => (
     <Head>
       <title>
         مستندات استقرار برنامه‌های ASP.Net Core با استفاده از ابزار Liara
-        Desktop - سرویس ابری لیارا
+        Desktop - لیارا
       </title>
     </Head>
 

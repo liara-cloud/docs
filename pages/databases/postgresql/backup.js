@@ -6,9 +6,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات تهیه فایل پشتیبان از دیتابیس‌های PostgreSQL - سرویس ابری لیارا
-      </title>
+      <title>مستندات تهیه فایل پشتیبان از دیتابیس‌های PostgreSQL - لیارا</title>
     </Head>
 
     <div className="page-head">
