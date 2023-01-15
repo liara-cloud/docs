@@ -7,7 +7,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Vue - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Vue - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -27,6 +27,8 @@ export default () => (
     <ZoomableImage src="/static/vue-logs.png" />
     <br />
 
-    <Link href="/app-deploy/vue/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/vue/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

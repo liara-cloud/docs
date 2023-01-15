@@ -6,9 +6,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        توضیحات و نکات تکمیلی در برنامه‌های Headless Chrome - سرویس ابری لیارا
-      </title>
+      <title>توضیحات و نکات تکمیلی در برنامه‌های Headless Chrome - لیارا</title>
     </Head>
     <div className="page-head">
       <PlatformIcon platform="chrome" />

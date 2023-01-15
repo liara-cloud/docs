@@ -7,7 +7,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Angular - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Angular - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -28,6 +28,8 @@ export default () => (
     <ZoomableImage src="/static/angular-logs.png" />
     <br />
 
-    <Link href="/app-deploy/angular/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/angular/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

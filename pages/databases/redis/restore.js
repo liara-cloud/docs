@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات بازگردانی فایل پشتیبان در دیتابیس‌های Redis - سرویس ابری لیارا
-      </title>
+      <title>مستندات بازگردانی فایل پشتیبان در دیتابیس‌های Redis - لیارا</title>
     </Head>
 
     <div className="page-head">

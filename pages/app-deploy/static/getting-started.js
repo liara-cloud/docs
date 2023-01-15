@@ -6,7 +6,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات شروع به کار برنامه‌های Static - سرویس ابری لیارا</title>
+      <title>مستندات شروع به کار برنامه‌های Static - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -68,6 +68,8 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/static/desktop">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/static/desktop">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

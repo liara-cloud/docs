@@ -11,7 +11,7 @@ export default () => (
     <Head>
       <title>
         مستندات تنظیم متغیرها (Environment Variables) در برنامه‌های Django -
-        سرویس ابری لیارا
+        لیارا
       </title>
     </Head>
 
@@ -53,6 +53,8 @@ export default () => (
       ایجاد می‌شود و شما می‌توانید مقدار آن‌ را به دلخواه خود عوض کنید.
     </Notice>
     <br />
-    <Link href="/app-deploy/django/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/django/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

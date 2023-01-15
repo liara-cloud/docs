@@ -8,7 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات استقرار برنامه‌های Docker - سرویس ابری لیارا</title>
+      <title>مستندات استقرار برنامه‌های Docker - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -100,6 +100,8 @@ export default () => (
     </p>
     <p dir="ltr">https://docker-starter.liara.run</p>
 
-    <Link href="/app-deploy/docker/deploy-image">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/docker/deploy-image">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

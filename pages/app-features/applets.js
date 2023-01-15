@@ -6,7 +6,7 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات برنامک‌ها Applets - سرویس ابری لیارا</title>
+      <title>مستندات برنامک‌ها Applets - لیارا</title>
     </Head>
 
     <h1>برنامک‌ها</h1>

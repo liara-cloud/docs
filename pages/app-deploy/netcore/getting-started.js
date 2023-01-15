@@ -7,7 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات شروع به کار برنامه‌های .Net Core - سرویس ابری لیارا</title>
+      <title>مستندات شروع به کار برنامه‌های .Net Core - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -23,10 +23,10 @@ export default () => (
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه .NET را با استفاده از ابزار{" "}
       <Link href="/app-deploy/netcore/desktop">Liara Desktop</Link>، بر روی
-      سرویس ابری لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح
-      می‌دهید یا تصمیم داشته باشید با{" "}
-      <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار برنامه‌ی
-      خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
+      لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا
+      تصمیم داشته باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>،
+      مسئولیت استقرار برنامه‌ی خود را به سرویس{" "}
+      <Link href="/cicd/github">GitHub</Link> و یا{" "}
       <Link href="/cicd/gitlab">GitLab</Link> بسپرید، امکان استفاده از ابزار{" "}
       <Link href="/app-deploy/netcore/cli">Liara CLI</Link> وجود دارد. در ادامه
       در هر گام، با یک ویژگی هاست ابری .NET لیارا آشنا خواهید شد و می‌توانید از
@@ -63,6 +63,8 @@ export default () => (
       نسخه‌های جدیدتر ارتقا دهید.
     </Notice>
     <br />
-    <Link href="/app-deploy/netcore/desktop">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/desktop">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

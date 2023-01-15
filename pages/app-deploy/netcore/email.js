@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات سرویس ایمیل در برنامه‌های .Net Core - سرویس ابری لیارا
-      </title>
+      <title>مستندات سرویس ایمیل در برنامه‌های .Net Core - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -67,6 +65,8 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
       مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/netcore/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/tips">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

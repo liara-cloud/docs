@@ -8,7 +8,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار Nginx - سرویس ابری لیارا</title>
+      <title>استقرار Nginx - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -139,10 +139,9 @@ scgi_temp_path        /tmp/scgi_temp;`}
 
     <h4>تنظیم resolver</h4>
     <p>
-      با توجه به احتمال تغییر IP برنامک‌ها در سرویس ابری لیارا، تنظیم resolver
-      در فایل <span className="code">nginx.conf</span> این امکان را به‌وجود
-      می‌آورد تا هر بار IP جدید برنامه دریافت شده و مشکلی در هدایت ترافیک
-      به‌وجود نیاید.
+      با توجه به احتمال تغییر IP برنامک‌ها در لیارا، تنظیم resolver در فایل{" "}
+      <span className="code">nginx.conf</span> این امکان را به‌وجود می‌آورد تا
+      هر بار IP جدید برنامه دریافت شده و مشکلی در هدایت ترافیک به‌وجود نیاید.
       <Highlight className="nginx">
         {`server {
   resolver 127.0.0.11 ipv6=off valid=5s;

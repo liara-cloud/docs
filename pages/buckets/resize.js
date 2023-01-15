@@ -6,7 +6,7 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>تغییر اندازه ذخیره‌سازی ابری - سرویس ابری لیارا</title>
+      <title>تغییر اندازه ذخیره‌سازی ابری - لیارا</title>
     </Head>
 
     <h1>ذخیره‌سازی ابری</h1>

@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استقرار Docker Compose در برنامه‌های Docker - سرویس ابری لیارا
-      </title>
+      <title>مستندات استقرار Docker Compose در برنامه‌های Docker - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -35,6 +33,8 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/docker/envs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/docker/envs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

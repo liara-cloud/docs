@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌ها در برنامه‌های PHP - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌ها در برنامه‌های PHP - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -77,6 +75,8 @@ $database = new Medoo([
     </Notice>
     <br />
 
-    <Link href="/app-deploy/php/disks">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/disks">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

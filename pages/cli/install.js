@@ -8,7 +8,7 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات نصب و راه‌ندازی لیارا CLI - سرویس ابری لیارا</title>
+      <title>مستندات نصب و راه‌ندازی لیارا CLI - لیارا</title>
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>
@@ -96,6 +96,8 @@ npx @liara/cli deploy`}
     </Notice>
 
     <br />
-    <Link href="/cli/login">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/cli/login">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

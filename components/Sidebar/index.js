@@ -5,7 +5,15 @@ import MeiliSearch from "meilisearch";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import PlatformIcon from "../../components/PlatformIcon";
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import { ThemeContext } from "../root/theme.context";
+
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  useContext,
+} from "react";
 
 const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -17,6 +25,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [notFound, setNotFound] = useState(false);
   const router = useRouter();
   const valueRef = useRef();
+
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     setDefaultActive(

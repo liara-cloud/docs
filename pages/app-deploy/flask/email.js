@@ -8,7 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات سرویس ایمیل در برنامه‌های Flask - سرویس ابری لیارا</title>
+      <title>مستندات سرویس ایمیل در برنامه‌های Flask - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -103,6 +103,8 @@ def index():
       این کتابخانه مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/flask/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/tips">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

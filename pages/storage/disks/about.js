@@ -5,7 +5,7 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات دیسک‌ها - سرویس ابری لیارا</title>
+      <title>مستندات دیسک‌ها - لیارا</title>
     </Head>
 
     <h1>دیسک‌ها</h1>
@@ -33,6 +33,8 @@ export default () => (
       متصل کنید.
     </p>
 
-    <Link href="/storage/disks/management">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/storage/disks/management">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

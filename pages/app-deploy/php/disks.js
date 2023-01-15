@@ -10,9 +10,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استفاده از دیسک‌ها در برنامه‌های PHP - سرویس ابری لیارا
-      </title>
+      <title>مستندات استفاده از دیسک‌ها در برنامه‌های PHP - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -194,6 +192,8 @@ $ liara deploy --disks data:uploads \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/php/object-storage">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/object-storage">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

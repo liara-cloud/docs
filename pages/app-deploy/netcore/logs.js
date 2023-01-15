@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های .Net Core - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های .Net Core - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -46,6 +46,8 @@ export default () => (
       در فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
-    <Link href="/app-deploy/netcore/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

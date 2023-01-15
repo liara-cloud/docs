@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات سرویس ایمیل در برنامه‌های Laravel - سرویس ابری لیارا
-      </title>
+      <title>مستندات سرویس ایمیل در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -67,7 +65,7 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
     </p>
 
     <Link href="/app-deploy/laravel/object-storage">
-      متوجه شدم، برو گام بعدی!
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
     </Link>
   </Layout>
 );

@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌ها در برنامه‌های Laravel - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌ها در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -58,6 +56,8 @@ DB_PASSWORD=xxxxxxxxxxxx
     </Notice>
     <br />
 
-    <Link href="/app-deploy/laravel/migrations">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/migrations">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

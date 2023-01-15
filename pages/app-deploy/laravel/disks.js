@@ -10,9 +10,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استفاده از دیسک‌ها در برنامه‌های Laravel - سرویس ابری لیارا
-      </title>
+      <title>مستندات استفاده از دیسک‌ها در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -209,6 +207,8 @@ $ liara deploy --disks data:storage \\
       را اجرا می‌کند و نیازی نیست که اقدام خاصی انجام دهید.
     </p>
 
-    <Link href="/app-deploy/laravel/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/domain">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

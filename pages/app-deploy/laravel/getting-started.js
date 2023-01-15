@@ -7,7 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات شروع به کار برنامه‌های Laravel - سرویس ابری لیارا</title>
+      <title>مستندات شروع به کار برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -23,19 +23,16 @@ export default () => (
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه Laravel یا Lumen را با
       استفاده از ابزار{" "}
       <Link href="/app-deploy/laravel/desktop">Liara Desktop</Link>، بر روی
-      سرویس ابری لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح
-      می‌دهید یا تصمیم داشته باشید با{" "}
-      <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار برنامه‌ی
-      خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
+      لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا
+      تصمیم داشته باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>،
+      مسئولیت استقرار برنامه‌ی خود را به سرویس{" "}
+      <Link href="/cicd/github">GitHub</Link> و یا{" "}
       <Link href="/cicd/gitlab">GitLab</Link> بسپرید، امکان استفاده از ابزار{" "}
       <Link href="/app-deploy/laravel/cli">Liara CLI</Link> وجود دارد. در ادامه
       در هر گام، با یک ویژگی هاست ابری Laravel لیارا آشنا خواهید شد و می‌توانید
       از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
-    <p>
-      در حال حاضر، این نسخه‌ها از Laravel و Lumen در سرویس ابری لیارا پشتیبانی
-      می‌شود:
-    </p>
+    <p>در حال حاضر، این نسخه‌ها از Laravel و Lumen در لیارا پشتیبانی می‌شود:</p>
 
     <ul dir="ltr">
       <li>Laravel and Lumen 5.5.^</li>
@@ -72,6 +69,8 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/laravel/desktop">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/desktop">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

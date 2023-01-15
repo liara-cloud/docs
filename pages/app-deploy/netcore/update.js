@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات به‌روزرسانی در برنامه‌های .Net Core - سرویس ابری لیارا
-      </title>
+      <title>مستندات به‌روزرسانی در برنامه‌های .Net Core - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -43,6 +41,8 @@ export default () => (
       که شما <span className="code">--message</span> را خالی گذاشته باشید.
     </p>
 
-    <Link href="/app-deploy/netcore/dbs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/dbs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

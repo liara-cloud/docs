@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        توضیحات و نکات تکمیلی در برنامه‌های React - سرویس ابری لیارا
-      </title>
+      <title>توضیحات و نکات تکمیلی در برنامه‌های React - لیارا</title>
     </Head>
 
     <div className="page-head">

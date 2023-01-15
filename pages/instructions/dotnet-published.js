@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار فایل DLL - سرویس ابری لیارا</title>
+      <title>استقرار فایل DLL - لیارا</title>
     </Head>
 
     <div className="page-head">

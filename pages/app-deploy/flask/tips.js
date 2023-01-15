@@ -9,9 +9,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        توضیحات و نکات تکمیلی در برنامه‌های Flask - سرویس ابری لیارا
-      </title>
+      <title>توضیحات و نکات تکمیلی در برنامه‌های Flask - لیارا</title>
     </Head>
 
     <div className="page-head">

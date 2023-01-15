@@ -8,7 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات استقرار برنامه‌های Flask - سرویس ابری لیارا</title>
+      <title>مستندات استقرار برنامه‌های Flask - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -163,6 +163,8 @@ export default () => (
       <code>$ gunicorn myname:app</code>
     </pre>
 
-    <Link href="/app-deploy/flask/envs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/envs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

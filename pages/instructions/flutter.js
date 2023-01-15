@@ -8,7 +8,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های Flutter Web - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های Flutter Web - لیارا</title>
     </Head>
 
     <div className="page-head">

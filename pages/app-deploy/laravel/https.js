@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات پیکربندی https در برنامه‌های Laravel - سرویس ابری لیارا
-      </title>
+      <title>مستندات پیکربندی https در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -40,6 +38,8 @@ export default () => (
       لیارا مقدار آن را تغییر داده باشید.
     </p>
 
-    <Link href="/app-deploy/laravel/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

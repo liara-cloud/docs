@@ -7,7 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات استقرار برنامه‌های Django - سرویس ابری لیارا</title>
+      <title>مستندات استقرار برنامه‌های Django - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -113,6 +113,8 @@ export default () => (
 
     <p dir="ltr">https://django-starter.liara.run</p>
 
-    <Link href="/app-deploy/django/envs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/django/envs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

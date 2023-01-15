@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات به‌روزرسانی در برنامه‌های Laravel - سرویس ابری لیارا
-      </title>
+      <title>مستندات به‌روزرسانی در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -42,6 +40,8 @@ export default () => (
       روی Branch جاری شما برای توضیحات استقرار استفاده می‌کند.
     </p>
 
-    <Link href="/app-deploy/laravel/dbs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/dbs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

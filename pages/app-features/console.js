@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات خط فرمان - سرویس ابری لیارا</title>
+      <title>مستندات خط فرمان - لیارا</title>
     </Head>
 
     <h1>خط فرمان</h1>

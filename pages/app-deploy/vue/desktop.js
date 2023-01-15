@@ -35,6 +35,8 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/vue/cli">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/vue/cli">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

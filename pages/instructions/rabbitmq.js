@@ -9,7 +9,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار RabbitMQ - سرویس ابری لیارا</title>
+      <title>استقرار RabbitMQ - لیارا</title>
     </Head>
 
     <div className="page-head">

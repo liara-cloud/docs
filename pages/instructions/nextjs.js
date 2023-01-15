@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های NextJS - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های NextJS - لیارا</title>
     </Head>
 
     <div className="page-head">

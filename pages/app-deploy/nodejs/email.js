@@ -8,7 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات سرویس ایمیل در برنامه‌های NodeJS - سرویس ابری لیارا</title>
+      <title>مستندات سرویس ایمیل در برنامه‌های NodeJS - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -97,6 +97,8 @@ transporter.sendMail({
       این پکیج مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/nodejs/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/tips">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

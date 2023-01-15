@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به ذخیره‌سازی ابری در برنامه‌های .Net - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به ذخیره‌سازی ابری در برنامه‌های .Net - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -127,6 +125,8 @@ class Program
 
     <br />
 
-    <Link href="/app-deploy/netcore/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/domain">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

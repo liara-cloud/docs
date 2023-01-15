@@ -8,7 +8,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات مدیریت متغیرهای محیطی با استفاده از لیارا CLI - سرویس ابری لیارا
+        مستندات مدیریت متغیرهای محیطی با استفاده از لیارا CLI - لیارا
       </title>
     </Head>
 
@@ -163,6 +163,8 @@ export default () => (
     </ol>
 
     <br />
-    <Link href="/cli/plan">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/cli/plan">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

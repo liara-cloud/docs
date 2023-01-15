@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Laravel - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Laravel - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -48,6 +48,8 @@ export default () => (
       لیارا در بخش <b>توضیحات و نکات تکمیلی</b> بیشتر توضیح داده‌ایم.
     </p>
 
-    <Link href="/app-deploy/laravel/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

@@ -6,7 +6,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>CI/CD مستندات - سرویس ابری لیارا</title>
+      <title>CI/CD مستندات - لیارا</title>
     </Head>
 
     <h1>درباره CI/CD</h1>

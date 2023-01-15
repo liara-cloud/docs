@@ -5,7 +5,7 @@ import Head from "next/head";
 export default () => (
   <Layout>
     <Head>
-      <title>ماژول FFMPEG - سرویس ابری لیارا</title>
+      <title>ماژول FFMPEG - لیارا</title>
     </Head>
 
     <h3>ماژول FFMPEG</h3>

@@ -8,7 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات سرویس ایمیل در برنامه‌های PHP - سرویس ابری لیارا</title>
+      <title>مستندات سرویس ایمیل در برنامه‌های PHP - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -112,6 +112,8 @@ try {
       این کتابخانه مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/php/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/tips">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

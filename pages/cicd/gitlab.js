@@ -8,7 +8,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات CI/CD در GitLab - سرویس ابری لیارا</title>
+      <title>مستندات CI/CD در GitLab - لیارا</title>
     </Head>
 
     <h1>فرآیند CI/CD</h1>

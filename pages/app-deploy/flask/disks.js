@@ -10,9 +10,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استفاده از دیسک‌ها در برنامه‌های Flask - سرویس ابری لیارا
-      </title>
+      <title>مستندات استفاده از دیسک‌ها در برنامه‌های Flask - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -183,7 +181,7 @@ $ liara deploy --disks data:uploads \\
     </Highlight>
 
     <Link href="/app-deploy/flask/object-storage">
-      متوجه شدم، برو گام بعدی!
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
     </Link>
   </Layout>
 );

@@ -5,7 +5,7 @@ import Layout from "../../components/Layout";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات فایل‌ سیستم - سرویس ابری لیارا</title>
+      <title>مستندات فایل‌ سیستم - لیارا</title>
     </Head>
 
     <h1>فایل ‌سیستم</h1>

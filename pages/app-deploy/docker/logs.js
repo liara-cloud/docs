@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Docker - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Docker - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -39,6 +39,8 @@ export default () => (
       مهم‌تر را نیز علاوه بر کنسول در فایل نیز نگهداری کنید.
     </p>
 
-    <Link href="/app-deploy/docker/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/docker/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

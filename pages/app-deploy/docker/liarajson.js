@@ -61,6 +61,8 @@ export default () => (
       برنامه‌ی‌تان باید آن را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/docker/update">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/docker/update">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

@@ -9,7 +9,7 @@ export default () => (
     <Head>
       <title>
         مستندات استقرار برنامه‌های ASP.Net Core با استفاده از ابزار Liara
-        Desktop - سرویس ابری لیارا
+        Desktop - لیارا
       </title>
     </Head>
 
@@ -35,6 +35,8 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/netcore/cli">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/netcore/cli">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

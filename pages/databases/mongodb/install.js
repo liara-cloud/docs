@@ -7,9 +7,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات نصب و راه‌اندازی دیتابیس‌های MongoDB - سرویس ابری لیارا
-      </title>
+      <title>مستندات نصب و راه‌اندازی دیتابیس‌های MongoDB - لیارا</title>
     </Head>
 
     <div className="page-head">

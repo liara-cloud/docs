@@ -6,9 +6,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات نصب و راه‌اندازی دیتابیس‌های Elasticsearch - سرویس ابری لیارا
-      </title>
+      <title>مستندات نصب و راه‌اندازی دیتابیس‌های Elasticsearch - لیارا</title>
     </Head>
 
     <div className="page-head">

@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار Prisma - سرویس ابری لیارا</title>
+      <title>استقرار Prisma - لیارا</title>
     </Head>
 
     <div className="page-head">

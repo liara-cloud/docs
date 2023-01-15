@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>ارتباط از طریق WebSocket - سرویس ابری لیارا</title>
+      <title>ارتباط از طریق WebSocket - لیارا</title>
     </Head>
 
     <div className="page-head">

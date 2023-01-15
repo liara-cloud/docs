@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های Strapi - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های Strapi - لیارا</title>
     </Head>
 
     <div className="page-head">

@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌ها در برنامه‌های Flask - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌ها در برنامه‌های Flask - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -94,6 +92,8 @@ mongo = PyMongo(app, uri=os.getenv('MONGO_URI'))`}
 
     <br />
 
-    <Link href="/app-deploy/flask/disks">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/disks">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

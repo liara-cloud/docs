@@ -8,9 +8,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌ها در برنامه‌های Django - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌ها در برنامه‌های Django - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -101,6 +99,8 @@ mysqlclient == 1.4.6‍`}
       </p>
     </ul>
 
-    <Link href="/app-deploy/django/migrations">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/django/migrations">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

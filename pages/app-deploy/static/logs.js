@@ -7,7 +7,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Static - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Static - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -28,6 +28,8 @@ export default () => (
     <ZoomableImage src="/static/static-logs.png" />
     <br />
 
-    <Link href="/app-deploy/static/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/static/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

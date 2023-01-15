@@ -7,9 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات شروع به کار Celery در برنامه‌های Django - سرویس ابری لیارا
-      </title>
+      <title>مستندات شروع به کار Celery در برنامه‌های Django - لیارا</title>
     </Head>
 
     <div className="page-head">

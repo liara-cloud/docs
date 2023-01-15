@@ -1,137 +1,78 @@
-import React, { useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
+import Link from "next/link";
+import Mega from "./Mega";
+import { ThemeContext } from "./root/theme.context";
+import SmMenu from "./SmMenu";
 
 export default function Header({ setSearchOpen }) {
-  const [navOpen, setnavOpen] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  const toggleNav = () => {
-    setnavOpen(!navOpen);
+  const links = [
+    { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
+    { title: "مستندات", href: "/" },
+    { title: "وبلاگ", href: "https://liara.ir/blog/" },
+    { title: "ورود", href: "https://console.liara.ir/login" },
+  ];
+
+  const handleToggleSidebar = () => {
+    setShowSidebar(!showSidebar);
   };
 
   return (
-    <header className="header">
-      <a href="https://liara.ir">
-        <div className="header__logo">
-          <img src="/static/layout/liara-logo.svg" alt="سرویس ابری لیارا" />
-          <h2>سرویس ابری لیارا</h2>
-        </div>
-        <h2 className="header__slogan">ارائه دهنده خدمات ابری PaaS و DBaaS</h2>
-      </a>
-      <nav className="header__nav">
-        <div className="header__auth">
-          <a
-            className="header__login"
-            href="https://console.liara.ir/login"
-            target="_blank"
-          >
-            ورود
-          </a>
-          <a
-            className="header__register umami--click--docs-signup-button-d"
-            href="https://console.liara.ir/register"
-            target="_blank"
-          >
-            ایجاد حساب کاربری
-          </a>
-        </div>
-        <div className="header__links">
-          <a
-            href="https://liara.ir/#plans"
-            title="پلن&zwnj;های سرویس ابری لیارا"
-            className="umami--click--docs-palns-d"
-          >
-            پلن&zwnj;ها
-          </a>
-          <a href="https://docs.liara.ir" title="مستندات سرویس ابری لیارا">
-            مستندات
-          </a>
-          <a href="https://liara.ir/blog" title="وبلاگ سرویس ابری لیارا">
-            وبلاگ
-          </a>
-          <a
-            href="https://liara.ir/terms"
-            title="قوانین و مقررات سرویس ابری لیارا"
-          >
-            قوانین و مقررات
-          </a>
-          <a href="https://liara.ir/contact" title="ارتباط با سرویس ابری لیارا">
-            ارتباط با ما
-          </a>
-        </div>
-        <div
-          className={`header__floating-nav-wrapper ${
-            navOpen ? "header__floating-nav-wrapper--open" : ""
-          }`}
-        >
-          <img
-            src="/static/icons/search.svg"
-            alt=""
-            className="search_header"
-            onClick={() => setSearchOpen(true)}
-          />
-          <div className="header__menu-toggle">
-            <img
-              onClick={toggleNav}
-              src="/static/layout/menu.svg"
-              alt="open-menu"
-              id="open-menu"
-            />
-            <img
-              src="/static/layout/closemenu.svg"
-              alt="close-menu"
-              id="close-menu"
-            />
-          </div>
-
-          <div onClick={toggleNav} className="header__overlay"></div>
-
-          <div className="header__floating-nav">
-            <a href="https://liara.ir" className="header__logo">
-              <img src="/static/layout/liara-logo.svg" alt="سرویس ابری لیارا" />
-              <h2>سرویس ابری لیارا</h2>
+    <Fragment>
+      <header className="header">
+        <div className="mian-menu" style={{ position: "relative", zIndex: 2 }}>
+          <Link href="https://liara.ir/">
+            <a>
+              <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
             </a>
-            <div className="header__auth">
-              <a
-                href="https://console.liara.ir/login"
-                className="header__login"
-                target="_blank"
-              >
-                ورود
-              </a>
-              <a
-                href="https://console.liara.ir/register"
-                className="header__register umami--click--docs-signup-button-m"
-                target="_blank"
-              >
-                ایجاد حساب کاربری
-              </a>
-            </div>
-            <nav>
-              <ul>
-                <li className="header__floating-nav-link">
-                  <a
-                    href="https://liara.ir/#plans"
-                    className="umami--click--docs-palns-m"
-                  >
-                    پلن‌ها
-                  </a>
-                </li>
-                <li className="header__floating-nav-link">
-                  <a href="https://docs.liara.ir">مستندات</a>
-                </li>
-                <li className="header__floating-nav-link">
-                  <a href="https://liara.ir/blog">وبلاگ</a>
-                </li>
-                <li className="header__floating-nav-link">
-                  <a href="https://liara.ir/terms">قوانین و مقررات</a>
-                </li>
-                <li className="header__floating-nav-link">
-                  <a href="https://liara.ir/contact">ارتباط با ما</a>
-                </li>
-              </ul>
-            </nav>
+          </Link>
+          <ul>
+            {links.map(item => (
+              <li key={item.title}>
+                <a href={item.href}>{item.title}</a>
+              </li>
+            ))}
+            <a
+              style={{ color: "#181818 !important" }}
+              href="https://console.liara.ir/register"
+            >
+              <button className="grad">ایجاد حساب کاربری</button>
+            </a>
+          </ul>
+        </div>
+        <nav>
+          <Mega />
+        </nav>
+        <div className="menu-sm-device">
+          <Link href="/">
+            <a
+              style={
+                !showSidebar
+                  ? { visibility: "inherit" }
+                  : { visibility: "hidden" }
+              }
+            >
+              <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
+            </a>
+          </Link>
+          <div className="action-sm-menu" onClick={handleToggleSidebar}>
+            <img
+              src={
+                showSidebar
+                  ? `/static/menu-close-${theme}.svg`
+                  : `/static/menu-open-${theme}.svg`
+              }
+            />
           </div>
         </div>
-      </nav>
-    </header>
+      </header>
+      {/* <div
+        className="sm-sidebar"
+        style={{ transform: `translateX(${showSidebar ? 0 : `70vw`})` }}
+      /> */}
+      <SmMenu showSidebar={showSidebar} />
+    </Fragment>
   );
 }

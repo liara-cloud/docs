@@ -10,9 +10,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استفاده از دیسک‌ها در برنامه‌های Docker - سرویس ابری لیارا
-      </title>
+      <title>مستندات استفاده از دیسک‌ها در برنامه‌های Docker - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -183,6 +181,8 @@ $ liara deploy --disks data:/app/data \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/docker/domain">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/docker/domain">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

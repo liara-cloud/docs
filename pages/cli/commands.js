@@ -6,7 +6,7 @@ import Layout from "../../components/Layout";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات خلاصه دستورات لیارا CLI - سرویس ابری لیارا</title>
+      <title>مستندات خلاصه دستورات لیارا CLI - لیارا</title>
     </Head>
 
     <h1>رابط خط فرمان لیارا</h1>

@@ -7,9 +7,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات نصب و راه‌اندازی دیتابیس‌های Redis - سرویس ابری لیارا
-      </title>
+      <title>مستندات نصب و راه‌اندازی دیتابیس‌های Redis - لیارا</title>
     </Head>
 
     <div className="page-head">

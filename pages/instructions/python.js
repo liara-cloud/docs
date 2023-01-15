@@ -8,7 +8,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار اسکریپت‌های Python - سرویس ابری لیارا</title>
+      <title>استقرار اسکریپت‌های Python - لیارا</title>
     </Head>
 
     <div className="page-head">

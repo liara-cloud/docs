@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار Mattermost - سرویس ابری لیارا</title>
+      <title>استقرار Mattermost - لیارا</title>
     </Head>
 
     <div className="page-head">

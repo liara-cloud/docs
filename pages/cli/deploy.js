@@ -7,9 +7,7 @@ import Asciinema from "../../components/Asciinema";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات استقرار برنامه با استفاده از لیارا CLI - سرویس ابری لیارا
-      </title>
+      <title>مستندات استقرار برنامه با استفاده از لیارا CLI - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -95,6 +93,8 @@ export default () => (
     </ol>
 
     <br />
-    <Link href="/cli/disk">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/cli/disk">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

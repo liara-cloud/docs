@@ -7,9 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        مستندات اتصال به دیتابیس‌ها در برنامه‌های NodeJS - سرویس ابری لیارا
-      </title>
+      <title>مستندات اتصال به دیتابیس‌ها در برنامه‌های NodeJS - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -103,6 +101,8 @@ MongoClient.connect(mongoDSN, function(err, client) {
 
     <br />
 
-    <Link href="/app-deploy/nodejs/disks">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/nodejs/disks">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

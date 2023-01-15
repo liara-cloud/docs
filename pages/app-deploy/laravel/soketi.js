@@ -6,9 +6,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        سرویس ابری لیارا - مستندات اتصال به Soketi در برنامه‌های Laravel
-      </title>
+      <title>لیارا - مستندات اتصال به Soketi در برنامه‌های Laravel</title>
     </Head>
 
     <div className="page-head">
@@ -54,6 +52,8 @@ export default () => (
         ، برنامه‌ی Laravel خود را به این سرویس متصل کنید.
       </li>
     </ol>
-    <Link href="/app-deploy/laravel/tips">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/laravel/tips">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

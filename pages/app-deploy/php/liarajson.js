@@ -8,7 +8,7 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات استفاده از فایل liara.json در برنامه‌های PHP - سرویس ابری لیارا
+        مستندات استفاده از فایل liara.json در برنامه‌های PHP - لیارا
       </title>
     </Head>
 
@@ -49,6 +49,8 @@ export default () => (
       را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/php/update">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/php/update">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

@@ -8,7 +8,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار Elasticsearch - سرویس ابری لیارا</title>
+      <title>استقرار Elasticsearch - لیارا</title>
     </Head>
 
     <div className="page-head">

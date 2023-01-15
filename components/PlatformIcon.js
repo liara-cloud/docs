@@ -1,80 +1,80 @@
-import React from "react";
+import React, { Component } from "react";
 
-import streamlitIcon from "./streamlit.svg";
-import viteIcon from "./vite.svg";
+import streamlitIcon from "@liara/platformicons/glass/png/streamlit.png";
+import viteIcon from "@liara/platformicons/glass/png/vite.png";
 
 // Apps
 
-import vueIcon from "@liara/platformicons/svg/vue.svg";
-import phpIcon from "@liara/platformicons/svg/php.svg";
-import nodeIcon from "@liara/platformicons/svg/nodejs.svg";
-import reactIcon from "@liara/platformicons/svg/react.svg";
-import flaskIcon from "@liara/platformicons/svg/flask.svg";
-import staticIcon from "@liara/platformicons/svg/HTML5.svg";
-import dockerIcon from "@liara/platformicons/svg/docker.svg";
-import djangoIcon from "@liara/platformicons/svg/django.svg";
-import netcoreIcon from "@liara/platformicons/svg/dotnet.svg";
-import laravelIcon from "@liara/platformicons/svg/laravel.svg";
-import angularIcon from "@liara/platformicons/svg/angularjs.svg";
+import vueIcon from "@liara/platformicons/glass/png/vuejs.png";
+import phpIcon from "@liara/platformicons/glass/png/php.png";
+import nodeIcon from "@liara/platformicons/glass/png/nodejs.png";
+import reactIcon from "@liara/platformicons/glass/png/react.png";
+import flaskIcon from "@liara/platformicons/glass/png/flask.png";
+import staticIcon from "@liara/platformicons/glass/png/static.png";
+import dockerIcon from "@liara/platformicons/glass/png/docker.png";
+import djangoIcon from "@liara/platformicons/glass/png/django.png";
+import netcoreIcon from "@liara/platformicons/glass/png/dotnet.png";
+import laravelIcon from "@liara/platformicons/glass/png/laravel.png";
+import angularIcon from "@liara/platformicons/glass/png/angular.png";
 
 // One-click-apps
 
-import odooIcon from "@liara/platformicons/svg/odoo.svg";
-import ghostIcon from "@liara/platformicons/svg/ghost.svg";
-import giteaIcon from "@liara/platformicons/svg/gitea.svg";
-import vscodeIcon from "@liara/platformicons/svg/vscode.svg";
-import chromeIcon from "@liara/platformicons/svg/chrome.svg";
-import kibanaIcon from "@liara/platformicons/svg/kibana.svg";
-import pusherIcon from "@liara/platformicons/svg/pusher.svg";
-import grafanaIcon from "@liara/platformicons/svg/grafana.svg";
-import imgproxyIcon from "@liara/platformicons/svg/imgproxy.svg";
-import metabaseIcon from "@liara/platformicons/svg/metabase.svg";
-import nextcloudIcon from "@liara/platformicons/svg/nextcloud.svg";
-import wordpressIcon from "@liara/platformicons/svg/wordpress.svg";
-import prestashopIcon from "@liara/platformicons/svg/PrestaShop.svg";
-import mattermostIcon from "@liara/platformicons/svg/mattermost.svg";
-import rocketchatIcon from "@liara/platformicons/svg/rocketchat.svg";
-import parseserverIcon from "@liara/platformicons/svg/parseserver.svg";
+import odooIcon from "@liara/platformicons/glass/png/odoo.png";
+import ghostIcon from "@liara/platformicons/glass/png/ghost.png";
+import giteaIcon from "@liara/platformicons/glass/png/gitea.png";
+import vscodeIcon from "@liara/platformicons/glass/png/vscode.png";
+import chromeIcon from "@liara/platformicons/glass/png/chrome.png";
+import kibanaIcon from "@liara/platformicons/glass/png/kibana.png";
+import pusherIcon from "./../public/static/platforms/pusher.svg";
+import grafanaIcon from "@liara/platformicons/glass/png/grafana.png";
+import imgproxyIcon from "@liara/platformicons/glass/png/imgproxy.png";
+import metabaseIcon from "@liara/platformicons/glass/png/metabase.png";
+import nextcloudIcon from "@liara/platformicons/glass/png/nextcloud.png";
+import wordpressIcon from "@liara/platformicons/glass/png/wordpress.png";
+import prestashopIcon from "@liara/platformicons/glass/png/prestashop.png";
+import mattermostIcon from "@liara/platformicons/glass/png/mattermost.png";
+import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
+import parseserverIcon from "@liara/platformicons/glass/png/parse.png";
 
 // Instructions
 
-import goIcon from "@liara/platformicons/svg/go.svg";
-import seqIcon from "@liara/platformicons/svg/seq.svg";
-import yiiIcon from "@liara/platformicons/svg/yii.svg";
-import hugoIcon from "@liara/platformicons/svg/hugo.svg";
-import nestIcon from "@liara/platformicons/svg/nest.svg";
-import nextIcon from "@liara/platformicons/svg/next.svg";
-import nuxtIcon from "@liara/platformicons/svg/nuxt.svg";
-import remixIcon from "@liara/platformicons/svg/remix.svg";
-import nginxIcon from "@liara/platformicons/svg/nginx.svg";
-import lumenIcon from "@liara/platformicons/svg/lumen.svg";
-import celeryIcon from "@liara/platformicons/svg/celery.svg";
-import soketiIcon from "@liara/platformicons/svg/soketi.svg";
-import pythonIcon from "@liara/platformicons/svg/python.svg";
-import prismaIcon from "@liara/platformicons/svg/prisma.svg";
-import svelteIcon from "@liara/platformicons/svg/svelte.svg";
-import jekyllIcon from "@liara/platformicons/svg/jekyll.svg";
-import blitzjsIcon from "@liara/platformicons/svg/blitz.svg";
-import gatsbyIcon from "@liara/platformicons/svg/gatsby.svg";
-import strapiIcon from "@liara/platformicons/svg/strapi.svg";
-import flutterIcon from "@liara/platformicons/svg/flutter.svg";
-import adonisIcon from "@liara/platformicons/svg/adonisjs.svg";
-import fastapiIcon from "@liara/platformicons/svg/fastapi.svg";
-import fastifyIcon from "@liara/platformicons/svg/fastify.svg";
-import eleventyIcon from "@liara/platformicons/svg/eleventy.svg";
-import gridsomeIcon from "@liara/platformicons/svg/gridsome.svg";
+import seqIcon from "@liara/platformicons/glass/png/seq.png";
+import yiiIcon from "@liara/platformicons/glass/png/yii.png";
+import hugoIcon from "@liara/platformicons/glass/png/Hugo.png";
+import nestIcon from "@liara/platformicons/glass/png/nestjs.png";
+import remixIcon from "@liara/platformicons/glass/png/remix.png";
+import nginxIcon from "@liara/platformicons/glass/png/ngnix.png";
+import lumenIcon from "./../public/static/platforms/lumen.svg";
+import celeryIcon from "@liara/platformicons/glass/png/celery.png";
+import prismaIcon from "@liara/platformicons/glass/png/prisma.png";
+import svelteIcon from "@liara/platformicons/glass/png/svelte.png";
+import jekyllIcon from "@liara/platformicons/glass/png/jekyll.png";
+import blitzjsIcon from "@liara/platformicons/glass/png/blitzjs.png";
+import strapiIcon from "@liara/platformicons/glass/png/strapi.png";
+import flutterIcon from "@liara/platformicons/glass/png/flutter.png";
+import adonisIcon from "@liara/platformicons/glass/png/adonisjs.png";
+import fastapiIcon from "@liara/platformicons/glass/png/fastapi.png";
+import fastifyIcon from "@liara/platformicons/glass/png/fastify.png";
+import eleventyIcon from "@liara/platformicons/glass/png/Eleventy.png";
+import gridsomeIcon from "@liara/platformicons/glass/png/gridsome.png";
+import goIcon from "@liara/platformicons/glass/png/golang.png";
+import nextIcon from "@liara/platformicons/glass/png/nextjs.png";
+import nuxtIcon from "@liara/platformicons/glass/png/nuxtjs.png";
+import soketiIcon from "@liara/platformicons/glass/png/soketi.png";
+import pythonIcon from "@liara/platformicons/glass/png/python.png";
+import gatsbyIcon from "@liara/platformicons/glass/png/gatsby.png";
 
 // Databases
 
-import mysqlIcon from "@liara/platformicons/svg/mysql.svg";
-import mssqlIcon from "@liara/platformicons/svg/mssql.svg";
-import redisIcon from "@liara/platformicons/svg/redis.svg";
-import mongodbIcon from "@liara/platformicons/svg/mongodb.svg";
-import mariadbIcon from "@liara/platformicons/svg/mariadb.svg";
-import elasticIcon from "@liara/platformicons/svg/elastic.svg";
-import rabbitmqIcon from "@liara/platformicons/svg/rabbitmq.svg";
-import postgresIcon from "@liara/platformicons/svg/postgres.svg";
-import arangodbIcon from "@liara/platformicons/svg/arangodb.svg";
+import mysqlIcon from "@liara/platformicons/glass/png/mysql.png";
+import mssqlIcon from "@liara/platformicons/glass/png/mssql.png";
+import arangodbIcon from "@liara/platformicons/glass/png/arangodb.png";
+import redisIcon from "@liara/platformicons/glass/png/redis.png";
+import mongodbIcon from "@liara/platformicons/glass/png/mongodb.png";
+import mariadbIcon from "@liara/platformicons/glass/png/mariadb.png";
+import elasticIcon from "@liara/platformicons/glass/png/elastic.png";
+import rabbitmqIcon from "@liara/platformicons/glass/png/rabbitmq.png";
+import postgresIcon from "@liara/platformicons/glass/png/postgresql.png";
 
 // CI/CD
 
@@ -113,7 +113,9 @@ const types = [
   { logo: mattermostIcon, alt: "mattermost" },
   { logo: rocketchatIcon, alt: "rocketchat" },
   { logo: parseserverIcon, alt: "parseserver" },
+
   // Instructions
+
   { logo: goIcon, alt: "go" },
   { logo: seqIcon, alt: "seq" },
   { logo: soketiIcon, alt: "soketi" },
@@ -157,12 +159,15 @@ const types = [
 
 export default function PlatformIcon({ platform }) {
   const type = types.find(type => type.alt === platform);
+
   return (
     <img
       className="page-icon"
       src={type.logo.src}
       alt={type.alt}
-      style={{ pointerEvents: "none" }}
+      style={{
+        pointerEvents: "none",
+      }}
     />
   );
 }

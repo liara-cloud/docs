@@ -4,9 +4,7 @@ import Head from "next/head";
 
 export default () => (
   <Layout>
-    <Head>
-      {/* <title>اتصال دامنه به ذخیره‌سازی ابری - سرویس ابری لیارا</title> */}
-    </Head>
+    <Head>{/* <title>اتصال دامنه به ذخیره‌سازی ابری - لیارا</title> */}</Head>
 
     {/* <h1>ذخیره‌سازی ابری</h1> */}
 

@@ -7,7 +7,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات نصب و راه‌اندازی Odoo - سرویس ابری لیارا</title>
+      <title>مستندات نصب و راه‌اندازی Odoo - لیارا</title>
     </Head>
     <div className="page-head">
       <PlatformIcon platform="odoo" />

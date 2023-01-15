@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>استقرار برنامه‌های GatsbyJS - سرویس ابری لیارا</title>
+      <title>استقرار برنامه‌های GatsbyJS - لیارا</title>
     </Head>
 
     <div className="page-head">

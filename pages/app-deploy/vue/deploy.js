@@ -7,7 +7,7 @@ import PlatformIcon from "../../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات استقرار برنامه‌های Vue - سرویس ابری لیارا</title>
+      <title>مستندات استقرار برنامه‌های Vue - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -100,6 +100,8 @@ export default () => (
 
     <p dir="ltr">https://vue-starter.liara.run</p>
 
-    <Link href="/app-deploy/vue/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/vue/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

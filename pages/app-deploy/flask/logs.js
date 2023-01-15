@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Flask - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Flask - لیارا</title>
     </Head>
 
     <div className="page-head">
@@ -43,6 +43,8 @@ def logs():
       فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
-    <Link href="/app-deploy/flask/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/flask/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

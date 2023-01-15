@@ -8,7 +8,7 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات API لیارا - سرویس ابری لیارا</title>
+      <title>مستندات API لیارا - لیارا</title>
     </Head>
 
     <h1>API لیارا</h1>

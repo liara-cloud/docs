@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات رکوردهای DNS در سرویس DNS - سرویس ابری لیارا</title>
+      <title>مستندات رکوردهای DNS در سرویس DNS - لیارا</title>
     </Head>
 
     <h1>DNS</h1>
@@ -27,7 +27,7 @@ export default () => (
         <td>Name</td>
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>IPv4</td>
         <td className="endpoint-inputs__description">93.184.216.34</td>
       </tr>
@@ -47,7 +47,7 @@ export default () => (
         <td>Name</td>
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>IPv6</td>
         <td className="endpoint-inputs__description">
           2606:2800:220:1:248:1893:25c8:1946
@@ -69,7 +69,7 @@ export default () => (
         <td>Name</td>
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>Domain</td>
         <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
@@ -89,7 +89,7 @@ export default () => (
         <td>Name</td>
         <td className="endpoint-inputs__description">www.example.com</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>Domain</td>
         <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
@@ -106,7 +106,7 @@ export default () => (
         <td>Name</td>
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>Domain</td>
         <td className="endpoint-inputs__description">mail.iran.liara.ir</td>
       </tr>
@@ -129,7 +129,7 @@ export default () => (
         <td>Name</td>
         <td className="endpoint-inputs__description">example.com یا @</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>Domain</td>
         <td className="endpoint-inputs__description">smtp.iran.liara.ir</td>
       </tr>
@@ -137,7 +137,7 @@ export default () => (
         <td>Priority</td>
         <td className="endpoint-inputs__description">0</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>Port</td>
         <td className="endpoint-inputs__description">587</td>
       </tr>
@@ -161,7 +161,7 @@ export default () => (
         <td>Name</td>
         <td className="endpoint-inputs__description">liara-challenge</td>
       </tr>
-      <tr>
+      <tr className="endpoint-inputs__group">
         <td>Content</td>
         <td className="endpoint-inputs__description">
           b4a78b-5dcb70-799744-179f58

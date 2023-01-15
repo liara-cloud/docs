@@ -8,11 +8,16 @@
   margin-left: 8px;
 }
 
+.dark-mode .endpoint__path {
+  color: #ccc;
+}
+
 .endpoint__param {
   color: var(--secondary);
 }
 
-.endpoint-inputs, .endpoint-inputs td {
+.endpoint-inputs,
+.endpoint-inputs td {
   border-collapse: collapse;
   padding: 8px;
 }
@@ -24,7 +29,21 @@
 
 .endpoint-inputs__group {
   font-weight: bold;
-  background-color: #e2f5ff !important;
+  background-color: #efeffe !important;
+}
+
+.dark-mode .endpoint-inputs__group {
+  font-weight: bold;
+  background-color: #2a2c36 !important;
+}
+
+.dark-mode .endpoint-inputs__group {
+  font-weight: bold;
+  background-color: #2a2c36 !important;
+}
+
+.dark-mode .endpoint-inputs td {
+  color: #ccc !important;
 }
 
 .endpoint-inputs td {
@@ -39,5 +58,3 @@
   direction: rtl;
   font-size: 12px !important;
 }
-
-

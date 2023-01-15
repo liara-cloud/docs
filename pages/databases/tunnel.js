@@ -8,7 +8,7 @@ import Asciinema from "../../components/Asciinema";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات اتصال امن به دیتابیس‌های ابری - سرویس ابری لیارا</title>
+      <title>مستندات اتصال امن به دیتابیس‌های ابری - لیارا</title>
     </Head>
 
     <h1>اتصال امن به دیتابیس‌ها</h1>

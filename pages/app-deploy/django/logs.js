@@ -8,7 +8,7 @@ import ZoomableImage from "../../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات لاگ‌ها در برنامه‌های Django - سرویس ابری لیارا</title>
+      <title>مستندات لاگ‌ها در برنامه‌های Django - لیارا</title>
     </Head>
     <div className="page-head">
       <PlatformIcon platform="django" />
@@ -35,6 +35,8 @@ export default () => (
       پیاده‌سازی برنامه‌ی‌تان و تصمیمات شما است. ممکن است لاگ‌های مهم‌تر را در
       فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
-    <Link href="/app-deploy/django/liarajson">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/django/liarajson">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );

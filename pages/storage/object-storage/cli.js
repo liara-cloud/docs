@@ -6,7 +6,7 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات استفاده از MinIO CLI - سرویس ابری لیارا</title>
+      <title>مستندات استفاده از MinIO CLI - لیارا</title>
     </Head>
 
     <h1>آبجکت استوریج</h1>

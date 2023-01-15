@@ -7,7 +7,7 @@ import Link from "next/link";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات اتصال به آبجکت استوریج - سرویس ابری لیارا</title>
+      <title>مستندات اتصال به آبجکت استوریج - لیارا</title>
     </Head>
 
     <h1>آبجکت استوریج</h1>

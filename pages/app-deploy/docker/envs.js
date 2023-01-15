@@ -10,7 +10,7 @@ export default () => (
     <Head>
       <title>
         مستندات تنظیم متغیرها (Environment Variables) در برنامه‌های Docker -
-        سرویس ابری لیارا
+        لیارا
       </title>
     </Head>
 
@@ -49,6 +49,8 @@ export default () => (
       خودکار ری‌استارت می‌شود و این متغیر محیطی در استقرار جدید قابل استفاده
       خواهد بود.
     </p>
-    <Link href="/app-deploy/docker/logs">متوجه شدم، برو گام بعدی!</Link>
+    <Link href="/app-deploy/docker/logs">
+      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    </Link>
   </Layout>
 );
