@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات رجیستری خصوصی - سرویس ابری لیارا</title>
+      <title>مستندات رجیستری خصوصی - لیارا</title>
     </Head>
 
     <h1>رجیستری خصوصی</h1>

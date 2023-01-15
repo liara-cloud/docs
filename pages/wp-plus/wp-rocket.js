@@ -7,7 +7,7 @@ import PlatformIcon from "../../components/PlatformIcon";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات فعال‌سازی افزونه WP Rocket - سرویس ابری لیارا</title>
+      <title>مستندات فعال‌سازی افزونه WP Rocket - لیارا</title>
     </Head>
 
     <div className="page-head">

@@ -9,7 +9,7 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات راه‌اندازی وردپرس - سرویس ابری لیارا</title>
+      <title>مستندات راه‌اندازی وردپرس - لیارا</title>
     </Head>
 
     <div className="page-head">

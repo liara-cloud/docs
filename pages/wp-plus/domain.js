@@ -8,7 +8,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات اتصال دامنه به برنامه‌های وردپرس - سرویس ابری لیارا</title>
+      <title>مستندات اتصال دامنه به برنامه‌های وردپرس - لیارا</title>
     </Head>
 
     <div className="page-head">

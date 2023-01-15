@@ -6,7 +6,7 @@ import Layout from "../../components/Layout";
 export default () => (
   <Layout>
     <Head>
-      <title>فعال‌ سازی Basic auth - سرویس ابری لیارا</title>
+      <title>فعال‌ سازی Basic auth - لیارا</title>
     </Head>
 
     <div className="page-head">

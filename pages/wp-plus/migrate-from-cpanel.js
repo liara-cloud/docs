@@ -8,7 +8,7 @@ import Highlight from "react-highlight";
 export default () => (
   <Layout>
     <Head>
-      <title>انتقال از cPanel - سرویس ابری لیارا</title>
+      <title>انتقال از cPanel - لیارا</title>
     </Head>
 
     <div className="page-head">

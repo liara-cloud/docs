@@ -8,9 +8,7 @@ import ZoomableImage from "../../components/ZoomableImage";
 export default () => (
   <Layout>
     <Head>
-      <title>
-        نصب قالب با استفاده از بسته نصب آسان (duplicator) - سرویس ابری لیارا
-      </title>
+      <title>نصب قالب با استفاده از بسته نصب آسان (duplicator) - لیارا</title>
     </Head>
 
     <div className="page-head">
