@@ -34,14 +34,12 @@ export default function Header({ setSearchOpen }) {
                 <a href={item.href}>{item.title}</a>
               </li>
             ))}
-            <button className="grad">
-              <a
-                style={{ color: "#181818 !important" }}
-                href="https://console.liara.ir/register"
-              >
-                ایجاد حساب کاربری
-              </a>
-            </button>
+            <a
+              style={{ color: "#181818 !important" }}
+              href="https://console.liara.ir/register"
+            >
+              <button className="grad">ایجاد حساب کاربری</button>
+            </a>
           </ul>
         </div>
         <nav>

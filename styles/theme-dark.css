@@ -24,11 +24,15 @@
 
 .dark-mode .header button.grad {
   background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
-  color: #111;
+  color: #111 !important;
 }
 
 .dark-mode .header div:first-child a {
-  color: #fff !important;
+  color: #fff;
+}
+
+.dark-mode .header div:first-child button.grad {
+  color: #111;
 }
 
 .dark-mode .header #menu .menu-text a {
