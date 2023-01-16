@@ -296,7 +296,7 @@ const Mega = () => {
                   style={{
                     display: "inline-block",
                     marginRight: "10px",
-                    width: "8px",
+                    width: "12px",
                     marginTop: "0px",
                   }}
                 />
