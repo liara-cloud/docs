@@ -18,6 +18,13 @@ export default () => (
     </div>
 
     <p>
+      <Notice variant="warning">
+        این برنامه‌ی آماده دیگر در لیارا ارائه نمی‌شود. در صورت تمایل، می‌توانید
+        Docker Image رسمی آن را در پلتفرم Docker مستقر کنید.
+      </Notice>
+    </p>
+
+    <p>
       <a href="https://parseplatform.org/" target="_blank" rel="noopener">
         Parse
       </a>{" "}
