@@ -273,6 +273,13 @@ img.page-icon {
   list-style-type: decimal;
 }
 
+@media (max-width: 992px) {
+  .platforms {
+    justify-content: center;
+    padding-top: 20px;
+  }
+}
+
 @media (min-width: 768px) {
   main {
     width: 768px;
