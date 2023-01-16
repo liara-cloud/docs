@@ -164,7 +164,6 @@ const cols = [
         link: "/one-click-apps/grafana",
         alt: "هاست ابری گرافانا",
       },
-      { title: "Parse", link: "/one-click-apps/parse", alt: "هاست ابری پارس" },
       { title: "Odoo", link: "/one-click-apps/odoo", alt: "هاست ابری اودو" },
       {
         title: "Code",

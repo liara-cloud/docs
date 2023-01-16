@@ -12,7 +12,11 @@ export default function Header({ setSearchOpen }) {
     { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
     { title: "مستندات", href: "/" },
     { title: "وبلاگ", href: "https://liara.ir/blog/" },
-    { title: "ورود", href: "https://console.liara.ir/login" },
+    {
+      title: "ورود",
+      href: "https://console.liara.ir/login",
+      isGradientLink: true,
+    },
   ];
 
   const handleToggleSidebar = () => {
@@ -30,7 +34,10 @@ export default function Header({ setSearchOpen }) {
           </Link>
           <ul>
             {links.map(item => (
-              <li key={item.title}>
+              <li
+                key={item.title}
+                className={item.isGradientLink ? "gradient-text" : ""}
+              >
                 <a href={item.href}>{item.title}</a>
               </li>
             ))}

@@ -211,7 +211,9 @@ const SmMenu = ({ showSidebar }) => {
             </button>
           </a>
 
-          <a href="https://console.liara.ir/login">ورود</a>
+          <a href="https://console.liara.ir/login" className="gradient-text">
+            ورود
+          </a>
         </div>
         <ul className="page-links">
           {links.map((item, id) => (
