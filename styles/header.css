@@ -261,8 +261,10 @@ button.grad {
 }
 
 .search_header {
-  width: 22px;
+  width: 25px;
   cursor: pointer;
+  margin-left: 15px;
+  transition: all 0.4s;
 }
 
 button.theme-mode {

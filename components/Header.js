@@ -57,14 +57,23 @@ export default function Header({ setSearchOpen }) {
               <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
             </a>
           </Link>
-          <div className="action-sm-menu" onClick={handleToggleSidebar}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <img
-              src={
-                showSidebar
-                  ? `/static/menu-close-${theme}.svg`
-                  : `/static/menu-open-${theme}.svg`
-              }
+              src="/static/icons/search.svg"
+              alt=""
+              style={showSidebar ? { opacity: "0" } : { opacity: "1" }}
+              className="search_header"
+              onClick={() => setSearchOpen(true)}
             />
+            <div className="action-sm-menu" onClick={handleToggleSidebar}>
+              <img
+                src={
+                  showSidebar
+                    ? `/static/menu-close-${theme}.svg`
+                    : `/static/menu-open-${theme}.svg`
+                }
+              />
+            </div>
           </div>
         </div>
       </header>
