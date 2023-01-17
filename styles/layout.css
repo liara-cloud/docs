@@ -15,6 +15,7 @@ body {
   margin: 0;
   background-color: white;
   font-family: Yekan Bakh;
+  overflow-x: hidden;
 }
 
 a {
