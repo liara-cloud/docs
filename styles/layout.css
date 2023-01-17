@@ -293,17 +293,24 @@ img.page-icon {
     margin: 0 auto;
   }
 }
+@media (min-width: 1200px) {
+  main {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1200px) {
+  .wrapper {
+    flex-direction: row;
+    margin-top: 40px;
+  }
+}
 
 @media (min-width: 1400px) {
   main {
     width: 1400px;
     margin: 0 auto;
     overflow: hidden;
-  }
-
-  .wrapper {
-    flex-direction: row;
-    margin-top: 40px;
   }
 
   .article {

@@ -147,7 +147,7 @@ li:last-child > .nav__link {
   margin-top: 4px;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .sidebar {
     width: 30%;
     margin-top: 24px;
