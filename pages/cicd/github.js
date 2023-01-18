@@ -17,19 +17,6 @@ export default () => (
     </span>
 
     <Notice variant="info">
-      برای مشاهده‌ی نمونه‌ای واقعی از موضوعات گفته شده در زیر، مقاله{" "}
-      <b>
-        <a
-          href="https://liara.ir/blog/%d8%b1%d8%a7%d9%87%e2%80%8c%d8%a7%d9%86%d8%af%d8%a7%d8%b2%db%8c-ci-cd-%d8%a8%d9%87-%d9%88%d8%b3%db%8c%d9%84%d9%87-gitlab-%d9%88-github-%d8%af%d8%b1-%d9%84%db%8c%d8%a7%d8%b1%d8%a7/"
-          target="_blank"
-        >
-          راه‌اندازی CI/CD به وسیله GitLab و GitHub در لیارا
-        </a>
-      </b>{" "}
-      را در وبلاگ لیارا مطالعه کنید.
-    </Notice>
-
-    <Notice variant="info">
       ریپازیتوری{" "}
       <b>
         <a
