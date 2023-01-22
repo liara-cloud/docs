@@ -18,6 +18,47 @@ export default () => (
       </div>
     </div>
 
+    <h3>مشخص کردن مسیر Dockerfile</h3>
+
+    <p>
+      گاهی اوقات ممکن است بخواهید چندین پروژه که در یک
+      <span className="code">monorepo</span>
+      قرار دارند رو با
+      <span className="code">Dockerfile</span>
+      های مختلفی دیپلوی کنید و یا از نام و مسیر دلخواه برای
+      <span className="code">Dockerfile</span>
+      تون استفاده کنید. برای این کار می‌تونید از یکی از دو روش زیر استفاده کنید:
+    </p>
+    <p>
+      ۱) یک فایل با نام
+      <span className="code">liara.json</span>
+      در ریشه‌ی پروژه‌تون ایجاد کرده وقطعه‌کد زیر رو درون این فایل قرار بدید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "build": {
+     "dockerfile": "path/to/Dockerfile"
+  }
+}
+`}
+    </Highlight>
+
+    <p>
+      ۲) در دستور
+      <span className="code">liara deploy</span>
+      مسیر
+      <span className="code">Dockerfile</span>
+      رو با پارامتر
+      <span className="code">--dockerfile</span>
+      مشخص کنید.
+    </p>
+
+    <Highlight className="bash">
+      {`liara deploy --platform=docker --dockerfile="path/to/Dockerfile"`}
+    </Highlight>
+
     <h3> توضیحات و نکات تکمیلی</h3>
 
     <h3 id="supercronic">پیکربندی Supercronic</h3>
