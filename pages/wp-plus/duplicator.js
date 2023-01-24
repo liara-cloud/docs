@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Highlight from "react-highlight";
 import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
 import PlatformIcon from "../../components/PlatformIcon";
@@ -29,6 +30,9 @@ export default () => (
       <li>
         <a href="#config">نصب قالب</a>
       </li>
+      <li>
+        <a href="#too-many-redirects">خطای err_too_many_redirects</a>
+      </li>
     </ul>
 
     <h3 id="installer">آپلود بسته نصب آسان</h3>
@@ -57,5 +61,17 @@ export default () => (
       <strong>دیتابیس</strong> شوید و اطلاعات دیتابیس را از منوی{" "}
       <strong>نحوه‌ی اتصال</strong> کپی کنید.
     </Notice>
+
+    <h3 id="too-many-redirects">خطای err_too_many_redirects</h3>
+    <p>
+      درصورتی که برنامه‌ی شما با خطای too many redirects مواجه شد باید قطعه کد
+      زیر را با استفاده از دسترسی FTP به فایل <strong>wp-config.php</strong>{" "}
+      اضافه کرده و مجدد برنامه را بررسی کنید. درصورتی که خطا رفع نشد، می‌توانید
+      ازطریق <a href="https://console.liara.ir/tickets">تیکت</a> با پشتیبان‌های
+      فنی در ارتباط باشید.
+    </p>
+    <Highlight className="php">{`$_SERVER['HTTPS'] = 'on';`}</Highlight>
+    <br />
+    {/* <ZoomableImage src="https://files.liara.ir/docs/wordpress/debugging-err-too-many-redirects.gif"></ZoomableImage> */}
   </Layout>
 );
