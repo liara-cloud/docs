@@ -10,7 +10,7 @@ export default function Header({ setSearchOpen }) {
 
   const links = [
     { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
-    { title: "مستندات", href: "/" },
+    { title: "مستندات", href: "/", isActive: true },
     { title: "وبلاگ", href: "https://liara.ir/blog/" },
     {
       title: "ورود",
@@ -36,7 +36,13 @@ export default function Header({ setSearchOpen }) {
             {links.map(item => (
               <li
                 key={item.title}
-                className={item.isGradientLink ? "gradient-text" : ""}
+                className={
+                  item.isGradientLink
+                    ? "gradient-text"
+                    : item.isActive
+                    ? "active-link"
+                    : ""
+                }
               >
                 <a href={item.href}>{item.title}</a>
               </li>

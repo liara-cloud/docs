@@ -325,6 +325,21 @@ header div.menu-sm-device {
   display: none;
 }
 
+header .active-link {
+  position: relative;
+}
+
+header .active-link:after {
+  content: "";
+  right: -12px;
+  width: 6px;
+  height: 6px;
+  background: #87fcc4;
+  border-radius: 16px;
+  top: 12px;
+  position: absolute;
+}
+
 .action-sm-menu {
   background: none;
   border: none;
