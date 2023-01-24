@@ -16,7 +16,7 @@ const SmMenu = ({ showSidebar }) => {
   };
 
   const links = [
-    { title: "پلن ها", href: "https://liara.ir/pricing" },
+    { title: "قیمت‌ها", href: "https://liara.ir/pricing" },
     { title: "وبلاگ", href: "https://liara.ir/blog" },
     { title: "مستندات", href: "https://docs.liara.ir" },
     {

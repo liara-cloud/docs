@@ -6,22 +6,22 @@ const socialMediaList = [
   {
     icon: <img src="/static/social/twitter.svg" />,
     title: "توییتر",
-    link: "#twitter",
+    link: "https://twitter.com/liara_cloud",
   },
   {
     icon: <img src="/static/social/instagram.svg" />,
     title: "اینستاگرام",
-    link: "#instagram",
+    link: "https://www.instagram.com/liara_cloud/",
   },
   {
     icon: <img src="/static/social/telegram.svg" />,
     title: "تلگرام",
-    link: "#telegram",
+    link: "https://t.me/liara_cloud",
   },
   {
     icon: <img src="/static/social/github.svg" />,
     title: "گیتهاب",
-    link: "#github",
+    link: "https://github.com/liara-cloud",
   },
 ];
 7;
