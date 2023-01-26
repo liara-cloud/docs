@@ -79,7 +79,7 @@ export default () => (
     <Highlight className="json">
       {`{
   "php": {
-    "version": "7.2"
+    "version": "8.2"
   }
 }`}
     </Highlight>
@@ -92,6 +92,7 @@ export default () => (
         <b>8.0 (پیش‌فرض)</b>
       </li>
       <li>8.1</li>
+      <li>8.2</li>
     </ul>
 
     <h3 id="timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>

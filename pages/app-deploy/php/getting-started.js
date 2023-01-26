@@ -45,6 +45,7 @@ export default () => (
         <b>8.0 (پیش‌فرض)</b>
       </li>
       <li>8.1</li>
+      <li>8.2</li>
     </ul>
 
     <Notice variant="info">
