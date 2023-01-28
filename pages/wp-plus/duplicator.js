@@ -70,7 +70,8 @@ export default () => (
       ازطریق <a href="https://console.liara.ir/tickets">تیکت</a> با پشتیبان‌های
       فنی در ارتباط باشید.
     </p>
-    <Highlight className="php">{`$_SERVER['HTTPS'] = 'on';`}</Highlight>
+    <Highlight className="php">{`$_SERVER['HTTPS'] = 'on';
+/* That's all, stop editing! Happy publishing. <-- قبل از این کامنت */`}</Highlight>
     <br />
     {/* <ZoomableImage src="https://files.liara.ir/docs/wordpress/debugging-err-too-many-redirects.gif"></ZoomableImage> */}
   </Layout>
