@@ -16,8 +16,8 @@ const SmMenu = ({ showSidebar }) => {
   };
 
   const links = [
-    { title: "قیمت‌ها", href: "https://liara.ir/pricing" },
-    { title: "وبلاگ", href: "https://liara.ir/blog" },
+    { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
+    { title: "وبلاگ", href: "https://liara.ir/blog/" },
     { title: "مستندات", href: "https://docs.liara.ir" },
     {
       title: "پلتفرم",
@@ -117,49 +117,49 @@ const SmMenu = ({ showSidebar }) => {
       children: [
         {
           title: "MySQL",
-          href: "https://liara.ir/landing/dbaas/mysql",
+          href: "https://liara.ir/landing/هاست-ابری-mysql",
           alt: "دیتابیس مای‌اس‌کیو‌ال",
           icon: "mysql",
         },
         {
           title: "MariaDB",
-          href: "https://liara.ir/landing/dbaas/mariadb",
+          href: "https://liara.ir/landing/هاست-ابری-mariadb",
           alt: "دیتابیس ماریا",
           icon: "mariadb",
         },
         {
           title: "PostgreSQL",
-          href: "https://liara.ir/landing/dbaas/postgre-sql",
+          href: "https://liara.ir/landing/هاست-ابری-postgre-sql",
           alt: "دیتابیس پستگرس",
           icon: "postgres",
         },
         {
           title: "MSSQL",
-          href: "https://liara.ir/landing/dbaas/sql-server",
+          href: "https://liara.ir/landing/هاست-ابری-sql-server",
           alt: "دیتابیس اس کیو ال سرور",
           icon: "mssql",
         },
         {
           title: "MongoDB",
-          href: "https://liara.ir/landing/dbaas/mongo",
+          href: "https://liara.ir/landing/هاست-ابری-mongo",
           alt: "دیتابیس مونگو",
           icon: "mongodb",
         },
         {
           title: "Redis",
-          href: "https://liara.ir/landing/dbaas/redis",
+          href: "https://liara.ir/landing/هاست-ابری-redis",
           alt: "دیتابیس ردیس",
           icon: "redis",
         },
         {
           title: "RabbitMQ",
-          href: "https://liara.ir/landing/dbaas/rabbit",
+          href: "https://liara.ir/landing/هاست-ابری-rabbit",
           alt: "دیتابیس ربیت ام کیو",
           icon: "rabbitmq",
         },
         {
           title: "Elastic",
-          href: "https://liara.ir/landing/dbaas/elastic",
+          href: "https://liara.ir/landing/هاست-ابری-elastic-search",
           alt: "دیتابیس الاستیک",
           icon: "elastic",
         },
@@ -168,22 +168,22 @@ const SmMenu = ({ showSidebar }) => {
     {
       title: "سامانه نام دامنه",
       badge: "DNS",
-      href: "https://liara.ir/landing/products/dns",
+      href: "https://liara.ir/products/dns/",
     },
     {
       title: " ایمیل",
       badge: "Email",
-      href: "https://liara.ir/landing/products/email",
+      href: "https://liara.ir/products/email/",
     },
     {
       title: "وردپرس پلاس",
       badge: "WP Plus",
-      href: "https://liara.ir/landing/products/wp-plus",
+      href: "https://liara.ir/products/wp-plus/",
     },
     {
       title: "ذخیره‌سازی ابری",
       badge: "Object Storage",
-      href: "https://liara.ir/landing/products/object-storage",
+      href: "https://liara.ir/products/object-storage/",
     },
   ];
 

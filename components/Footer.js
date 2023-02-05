@@ -108,42 +108,42 @@ const cols = [
     children: [
       {
         title: "MySQL",
-        link: "https://liara.ir/landing/dbaas/mysql",
+        link: "https://liara.ir/landing/هاست-ابری-mysql",
         alt: "دیتابیس مای‌اس‌کیو‌ال",
       },
       {
         title: "MariaDB",
-        link: "https://liara.ir/landing/dbaas/mariadb",
+        link: "https://liara.ir/landing/هاست-ابری-mariadb",
         alt: "دیتابیس ماریا",
       },
       {
         title: "PostgreSQL",
-        link: "https://liara.ir/landing/dbaas/postgre-sql",
+        link: "https://liara.ir/landing/هاست-ابری-postgre-sql",
         alt: "دیتابیس پستگرس",
       },
       {
         title: "SQL Server",
-        link: "https://liara.ir/landing/dbaas/sql-server",
+        link: "https://liara.ir/landing/هاست-ابری-sql-server",
         alt: "دیتابیس اس کیو ال سرور",
       },
       {
         title: "MongoDB",
-        link: "https://liara.ir/landing/dbaas/mongo",
+        link: "https://liara.ir/landing/هاست-ابری-mongo",
         alt: "دیتابیس مونگو",
       },
       {
         title: "Redis",
-        link: "https://liara.ir/landing/dbaas/redis",
+        link: "https://liara.ir/landing/هاست-ابری-redis",
         alt: "دیتابیس ردیس",
       },
       {
         title: "RabbitMQ",
-        link: "https://liara.ir/landing/dbaas/rabbit",
+        link: "https://liara.ir/landing/هاست-ابری-rabbit",
         alt: "دیتابیس ربیت ام کیو",
       },
       {
         title: "Elastic",
-        link: "https://liara.ir/landing/dbaas/elastic",
+        link: "https://liara.ir/landing/هاست-ابری-elastic-search",
         alt: "دیتابیس الاستیک",
       },
     ],
@@ -218,22 +218,22 @@ const cols = [
     children: [
       {
         title: "ایمیل",
-        link: "https://liara.ir/landing/products/email",
+        link: "https://liara.ir/products/email/",
         alt: "ایمیل لیارا",
       },
       {
         title: "وردپرس پلاس",
-        link: "https://liara.ir/landing/products/wp-plus",
+        link: "https://liara.ir/products/wp-plus/",
         alt: "وردپرس پلاس لیارا",
       },
       {
         title: "سامانه نام دامنه",
-        link: "https://liara.ir/landing/products/dns",
+        link: "https://liara.ir/products/dns/",
         alt: "سامانه نام دامنه لیارا",
       },
       {
         title: "ذخیره سازی ابری",
-        link: "https://liara.ir/landing/products/object-storage",
+        link: "https://liara.ir/products/object-storage/",
         alt: "ذخیره سازی ابری لیارا",
       },
     ],
