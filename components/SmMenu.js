@@ -166,7 +166,7 @@ const SmMenu = ({ showSidebar }) => {
       ],
     },
     {
-      title: "سامانه نام دامنه",
+      title: "سامانه مدیریت دامنه",
       badge: "DNS",
       href: "https://liara.ir/products/dns/",
     },

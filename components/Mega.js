@@ -4,7 +4,7 @@ import { ThemeContext } from "./root/theme.context";
 
 const products = [
   {
-    title: "سامانه نام دامنه",
+    title: "سامانه مدیریت دامنه",
     badge: "DNS",
     href: "https://liara.ir/products/dns/",
   },
