@@ -433,14 +433,17 @@ const Section = props => {
       </div>
       <div className="platform-videos-container">
         {links.map(item => (
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div
+            onClick={() => handleClickButton(item.link)}
+            style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+          >
             {platfrom && (
               <span>
                 <PlatformIcon platform={platfrom} />
               </span>
             )}
             <p style={{ marginRight: 15 }}>{item.videoTitle}</p>
-            <button onClick={() => handleClickButton(item.link)}>
+            <button>
               <img src={"static/play.svg"} />
               ویدیو
             </button>
