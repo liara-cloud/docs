@@ -10,6 +10,12 @@ export default () => (
       <title>مستندات ایمیل Transactional Email - لیارا</title>
     </Head>
 
+    <Notice variant="warning">
+      مستندات زیر برای سرویس ایمیل قدیمی لیاراست. توصیه می‌کنیم از این پس، از{" "}
+      <Link href="https://console.liara.ir/mail">محصول جدید ایمیل لیارا</Link>{" "}
+      استفاده کنید.
+    </Notice>
+
     <h1>ایمیل</h1>
     <span className="page-description">(Transactional Email)</span>
 
