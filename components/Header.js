@@ -3,14 +3,21 @@ import Link from "next/link";
 import Mega from "./Mega";
 import { ThemeContext } from "./root/theme.context";
 import SmMenu from "./SmMenu";
+import { useRouter } from "next/router";
 
 export default function Header({ setSearchOpen }) {
   const { theme, setTheme } = useContext(ThemeContext);
   const [showSidebar, setShowSidebar] = useState(false);
+  const router = useRouter();
 
   const links = [
     { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
-    { title: "مستندات", href: "/", isActive: true },
+    {
+      title: "ویدیوها",
+      href: "/tv",
+      isActive: router.pathname.includes("/tv"),
+    },
+    { title: "مستندات", href: "/", isActive: !router.pathname.includes("/tv") },
     { title: "وبلاگ", href: "https://liara.ir/blog/" },
     {
       title: "ورود",
@@ -44,7 +51,7 @@ export default function Header({ setSearchOpen }) {
                     : ""
                 }
               >
-                <a href={item.href}>{item.title}</a>
+                <Link href={item.href}>{item.title}</Link>
               </li>
             ))}
             <a

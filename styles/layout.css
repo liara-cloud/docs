@@ -572,7 +572,7 @@ div.footer-animate-lines {
   border: none !important;
   border-radius: 0 !important;
   width: 7px;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
 .platform-videos-container div {
@@ -597,6 +597,34 @@ div.footer-animate-lines {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 22;
+}
+
+.dialog-container div {
+  display: flex;
+  align-items: center;
+}
+
+.dialog-container button {
+  color: #ccc;
+  font-size: 14px;
+  padding: 8px 16px;
+  margin-left: 12px;
+  border-radius: 7.5px;
+  background-color: #55555596;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dialog-container button img {
+  border: none !important;
+  border-radius: 0 !important;
+  width: 9px;
+  margin-left: 8px;
+}
+
+.dialog-container a {
+  border: none;
 }
 
 .bg-disable-dialog {

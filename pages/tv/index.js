@@ -15,8 +15,26 @@ const Videos = () => {
       </Head>
 
       <Section
+        name={"اضافه کردن دامنه"}
+        style={{ marginTop: 40 }}
+        badge={"اتصال دامنه"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "سرویس DNS لیارا",
+            link: "https://files.liara.ir/liara/domain/dns.mp4",
+          },
+          {
+            videoTitle: "سرویس DNS کلودفلر",
+            link: "https://files.liara.ir/liara/elastic/create-elastic.mp4",
+          },
+        ]}
+      />
+
+      <Section
         name={"پلتفرم NodeJS"}
         platfrom="nodejs"
+        style={{ marginTop: 40 }}
         badge={"NodeJS Platform"}
         setOpenDialog={setOpenDialog}
         links={[
@@ -363,27 +381,23 @@ const Videos = () => {
         ]}
       />
 
-      <Section
-        name={"اضافه کردن دامنه"}
-        style={{ marginTop: 40 }}
-        badge={"اتصال دامنه"}
-        setOpenDialog={setOpenDialog}
-        links={[
-          {
-            videoTitle: "سرویس DNS لیارا",
-            link: "https://files.liara.ir/liara/domain/dns.mp4",
-          },
-          {
-            videoTitle: "سرویس DNS کلودفلر",
-            link: "https://files.liara.ir/liara/elastic/create-elastic.mp4",
-          },
-        ]}
-      />
-
       {openDialog.isOpen && (
         <Fragment>
           <Dialog>
+            <div>
+              <button onClick={() => setOpenDialog(INIT_OPEN_DIALOG)}>
+                <img src={"static/close.svg"} />
+                بستن
+              </button>
+              {/* <a download="liara-video" href={openDialog.src}>
+                    <button>
+                        <img src={"static/download-video.svg"} />
+                        دانلود
+                    </button>
+                </a> */}
+            </div>
             <video
+              autoPlay
               src={openDialog.src}
               controls="controls"
               className="block w-full"
