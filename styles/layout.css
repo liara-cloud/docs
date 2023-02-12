@@ -294,12 +294,14 @@ img.page-icon {
     margin: 0 auto;
   }
 }
+
 @media (min-width: 1200px) {
   main {
     width: 1200px;
     margin: 0 auto;
   }
 }
+
 @media (min-width: 1200px) {
   .wrapper {
     flex-direction: row;
@@ -523,6 +525,96 @@ div.footer-animate-lines {
   animation: 15s linear 0s infinite normal none running play;
 }
 
+.platform-videos-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.platform-videos-container div span {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #48556a;
+  max-height: 45px;
+}
+
+.platform-videos-container div p {
+  font-size: 16px;
+}
+
+.platform-videos-container div span img {
+  max-width: 65px;
+}
+
+.platform-videos-container button {
+  color: #ccc;
+  font-size: 14px;
+  border: 1px soilid #ccc;
+  padding: 8px 16px;
+  margin-right: 10px;
+  margin-left: 12px;
+  border-radius: 7.5px;
+  background-color: #cccccc11;
+  position: absolute;
+  left: 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.platform-videos-container button:hover {
+  background-color: #cccccc22;
+}
+
+.platform-videos-container button img {
+  border: none !important;
+  border-radius: 0 !important;
+  width: 7px;
+  margin-left: 5px;
+}
+
+.platform-videos-container div {
+  display: flex;
+  position: relative;
+  align-items: center;
+  /* padding: 10px; */
+  width: 47%;
+  max-height: 70px;
+  border-radius: 8px;
+  border: 1px solid #48556a;
+}
+
+.platform-videos-container div:hover {
+  border: 1px solid #54637b;
+  background-color: #54637b1d;
+}
+
+.dialog-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 22;
+}
+
+.bg-disable-dialog {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  cursor: pointer;
+  left: 0;
+  z-index: 20;
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 0 0px #18181872;
+}
+
+.dialog-container video {
+  width: 700px;
+}
+
 @keyframes play {
   0% {
     transform: rotateX(45deg) translateY(-50%);
@@ -545,5 +637,24 @@ div.footer-animate-lines {
 
   .footer-container div.col-4 {
     display: none;
+  }
+
+  .platform-videos-container {
+    display: block;
+  }
+
+  .platform-videos-container div {
+    width: 100%;
+    padding: 5px 0px;
+    margin-top: 15px;
+  }
+
+  .dialog-container {
+    width: 85%;
+    top: 35%;
+  }
+
+  .dialog-container video {
+    width: 100%;
   }
 }
