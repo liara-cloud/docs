@@ -43,6 +43,12 @@ export default {
 }`}
     </Highlight>
 
+    <p>
+      سپس دستور
+      <span className="code">liara deploy --platform=react</span>
+      را اجرا کنید.
+    </p>
+
     <h2 id="vue">برنامه‌های Vue</h2>
 
     <Highlight className="javascript">
@@ -55,5 +61,11 @@ export default {
     }
 }`}
     </Highlight>
+
+    <p>
+      سپس دستور
+      <span className="code">liara deploy --platform=vue</span>
+      را اجرا کنید.
+    </p>
   </Layout>
 );
