@@ -26,7 +26,7 @@ const Videos = () => {
           },
           {
             videoTitle: "سرویس DNS کلودفلر",
-            link: "https://files.liara.ir/liara/elastic/create-elastic.mp4",
+            link: "https://files.liara.ir/liara/domain/domain.mp4",
           },
         ]}
       />
