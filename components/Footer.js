@@ -248,7 +248,7 @@ const cols = [
     title: "دسترسی سریع",
     children: [
       {
-        title: "پلن‌ها",
+        title: "قیمت‌ها",
         link: "https://liara.ir/pricing",
         alt: "پلن های لیارا",
       },
@@ -328,10 +328,14 @@ const Footer = () => {
                 قم، میدان جانبازان، خیابان شهیدان فاطمی، نبش کوچه ۱۲، پلاک ۴،
                 طبقه سوم، واحد ۳
               </p>
-              <h6>ایمیل واحد پشتیبانی:</h6>
-              <p style={{ marginTop: 12 }}>support[@]liara.ir</p>
-              <h6>ایمیل واحد پشتیبانی:</h6>
-              <p style={{ marginTop: 12 }}>support[@]liara.ir</p>
+              <h6>شماره تماس واحد فروش:</h6>
+              <a style={{ margin: 0, padding: 0 }} href="tel:025337838946">
+                <p style={{ marginTop: 12 }}>۰۲۵-۳۷۸۳۸۹۴۶ (۹ الی ۱۷)</p>
+              </a>
+              <h6>ایمیل واحد فروش:</h6>
+              <a style={{ margin: 0, padding: 0 }} href="mailto:sales@liara.ir">
+                <p style={{ marginTop: 12 }}>sales[@]liara.ir</p>
+              </a>
             </div>
           </div>
         </div>
