@@ -32,7 +32,7 @@ const cols = [
     children: [
       {
         title: "PHP",
-        link: "https://liara.irhttps://liara.ir/landing/هاست-پی-اچ-پی-php/",
+        link: "https://liara.ir/landing/هاست-پی-اچ-پی-php/",
         alt: "هاست ابری پی‌اچ‌چی‌",
       },
       {
