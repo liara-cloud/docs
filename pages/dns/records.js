@@ -131,7 +131,7 @@ export default () => (
       </tr>
       <tr className="endpoint-inputs__group">
         <td>Domain</td>
-        <td className="endpoint-inputs__description">smtp.iran.liara.ir</td>
+        <td className="endpoint-inputs__description">smtp.liara.ir</td>
       </tr>
       <tr>
         <td>Priority</td>

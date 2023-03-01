@@ -37,7 +37,7 @@ export default () => (
     </p>
 
     <Highlight className="plaintext">
-      {`MAIL_HOST=smtp.iran.liara.ir
+      {`MAIL_HOST=smtp.liara.ir
 MAIL_PORT=587
 MAIL_SECURITY=tls
 MAIL_USER=my-app

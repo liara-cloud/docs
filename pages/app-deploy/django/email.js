@@ -32,7 +32,7 @@ export default () => (
 
     <Highlight className="plaintext">
       {`EMAIL_BACKEND = ‘django.core.mail.backends.smtp.EmailBackend’
-EMAIL_HOST=smtp.iran.liara.ir
+EMAIL_HOST=smtp.liara.ir
 EMAIL_PORT=587
 EMAIL_HOST_USER=my-app
 EMAIL_HOST_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
