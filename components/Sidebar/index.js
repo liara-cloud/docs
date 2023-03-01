@@ -49,7 +49,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
     const client = new MeiliSearch({
       host: "https://search.liara.ir",
       apiKey:
-        "b4ce641bdfe9563cbe1f5701f9a9b53291ae420735087e10e7ab0305d72df96a",
+        "99d6377d6dc5499ecc31451349b8957ebb2e29e67a5d92eb445737e25c1e7bb2",
     });
     const index = client.index("docs");
     return index.search(value, { limit: 5 }).then(res => {
