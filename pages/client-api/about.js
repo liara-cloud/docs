@@ -37,12 +37,10 @@ export default () => (
 
     <h3 id="api-address">آدرس API</h3>
     <p>
-      آدرس API برای دسترسی به برنامه‌های موقعیت ایران:
+      آدرس API برای دسترسی به برنامه‌ها:
       <Highlight className="plaintext">
         {`https://api.iran.liara.ir/`}
       </Highlight>
-      آدرس API برای دسترسی به برنامه‌های موقعیت آلمان:
-      <Highlight className="plaintext">{`https://api.liara.ir/`}</Highlight>
     </p>
     <h3 id="authentication">کلید احراز هویت</h3>
     <p>
