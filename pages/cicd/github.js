@@ -69,14 +69,17 @@ jobs:
           liara deploy --app="APP_NAME" --api-token="$LIARA_TOKEN" --detach
 `}
     </Highlight>
-    <Notice variant="warning">
-      ۱) در مثال فوق باید مقدار APP_NAME را با شناسه‌ی برنامه‌تان در لیارا
-      جایگزین کنید.
-      <hr />
-      ۲) همچنین موقعیت جغرافیایی پیش‌فرض، <strong>iran</strong> درنظر گرفته شده
-      است و اگر برنامه‌ی شما در موقعیت آلمان میزبانی شده باشد باید مقدار{" "}
-      <strong>germany</strong> را در پارامتر{" "}
-      <span className="code">--region</span> تنظیم کنید.
+    <Notice variant="info">
+      در مثال فوق باید مقدار APP_NAME را با شناسه‌ی برنامه‌تان در لیارا جایگزین
+      کنید.
+    </Notice>
+    <Notice variant="info">
+      در صورت نیاز به تنظیم پورتی مانند ۳۰۰۰ که برنامه‌ی شما روی آن اجرا می‌شود
+      لازم است پارامتر
+      <span className="code">--port=3000</span>
+      را هم برای دستور
+      <span className="code">liara deploy</span>
+      تنظیم کنید.
     </Notice>
     <p>
       همان‌طور که مشاهده می کنید، در قطعه‌کد فوق تمام مراحل لازم برای استقرار یک
