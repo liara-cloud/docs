@@ -1845,6 +1845,26 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
+          <NavTitle href="/email">ایمیل</NavTitle>
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/email/create-mail-server">
+                ساخت سرور ایمیل
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/email/send-email">ارسال ایمیل</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/email/inbound-email">دریافت ایمیل</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/email/tips">توضیحات و نکات تکمیلی</ActiveLink>
+            </li>
+          </ul>
+        </nav>
+
+        <nav className="nav">
           <ActiveLink href="/domains">مدیریت دامنه‌ها</ActiveLink>
         </nav>
 
