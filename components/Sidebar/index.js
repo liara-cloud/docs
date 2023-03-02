@@ -71,7 +71,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
 
     return client
       .index("docs")
-      .search(value, { limit: 5 })
+      .search(value, { limit: 10 })
       .then(res => {
         setResults(res.hits);
         setNotFound(value != "" && res.hits.length == 0);
