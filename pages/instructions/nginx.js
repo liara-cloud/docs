@@ -81,6 +81,7 @@ http {
 
   log_format  main  '$request_method $status $http_x_forwarded_for "$request_uri" "$http_referer" "$http_user_agent"';
 
+  server_tokens     off;
   sendfile        on;
   keepalive_timeout  65;
   gzip  on;
