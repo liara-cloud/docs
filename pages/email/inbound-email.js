@@ -44,8 +44,8 @@ export default () => (
     <ZoomableImage src="/static/mail-server-forwarder.png" />
 
     <p>
-      برای اضافه کردن فوروارد، روی گزینه‌ی ایجاد فوروارد کلیک کرده و نشانی مقصد
-      را وارد کنید.
+      برای اضافه کردن فوروارد، روی گزینه‌ی <b>ایجاد فوروارد</b> کلیک کرده و
+      نشانی مقصد را وارد کنید.
     </p>
 
     <ZoomableImage src="/static/mail-server-add-forwarder.png" />
