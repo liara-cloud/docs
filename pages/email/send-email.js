@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/Layout";
+import Notice from "../../components/Notice";
+import PlatformIcon from "../../components/PlatformIcon";
 import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
@@ -22,6 +24,12 @@ export default () => (
       </li>
       <li>
         <a href="#add-smtp-user">افزودن کاربر SMTP</a>
+      </li>
+      <li>
+        <a href="#smtp-server-address">اطلاعات دسترسی به سرور SMTP</a>
+      </li>
+      <li>
+        <a href="#mail-server-platform">آموزش استفاده در پلتفرم‌ها</a>
       </li>
     </ul>
 
@@ -54,16 +62,89 @@ export default () => (
     <h3 id="add-smtp-user">افزودن کاربر SMTP</h3>
 
     <p>
-      برای ارسال ایمیل از طریق <b>SMTP</b> نیاز هست در این قسمت دسترسی{" "}
-      <b>SMTP</b> بسازید. امکان ساخت چندین کاربر <b>SMTP</b> وجود داره.
+      برای ارسال ایمیل از طریق پروتکل <b>SMTP</b> نیاز هست در این قسمت یک دسترسی
+      ایجاد کنید. در نظر داشته باشید امکان ساخت چندین کاربر <b>SMTP</b> ممکن
+      هست.
     </p>
 
     <ZoomableImage src="/static/mail-server-smtp.png" />
 
-    {/* TODO:
-      - How to create SMTP users?
-      - Where to find SMTP server host and port?
-      - List platform logos and link to their respective docs
-    */}
+    <p>
+      برای اضافه کردن کاربر <b>SMTP</b>، روی گزینه‌ی افزودن کاربر <b>SMTP</b>{" "}
+      کلیک کنید. در این قسمت نیاز هست توضیحاتی برای کاربر <b>SMTP</b> وارد کنید
+      تا در آینده کاربرد آن را فراموش نکنید. در نهایت روی گزینه‌ی{" "}
+      <b>ساخت کاربر</b> کلیک کنید.
+    </p>
+
+    <ZoomableImage src="/static/mail-server-smtp-desc.png" />
+
+    <br />
+    <Notice variant="warning">
+      توجه داشته باشید که Password تنها یک‌بار به شما نمایش داده می‌شود بنابراین
+      آن را در جایی مطمئن ذخیره کنید.
+    </Notice>
+
+    <br />
+
+    <ZoomableImage src="/static/mail-server-add-smtp.png" />
+
+    <h3 id="smtp-server-address">اطلاعات دسترسی به سرور SMTP</h3>
+
+    <p>
+      در این بخش اطلاعات لازم برای استفاده از دسترسی SMTP نمایش داده می‌شود.
+    </p>
+
+    <ZoomableImage src="/static/mail-server-smtp-address.png" />
+
+    <h3 id="mail-server-platform">آموزش استفاده در پلتفرم‌ها</h3>
+
+    <p>
+      برای کسب اطلاعات بیشتر در رابطه با نحوه‌ی استفاده از دسترسی SMTP، روی
+      پلتفرم مورد نظرتان کلیک کنید.
+    </p>
+
+    <div className="platforms">
+      <Link href="/app-deploy/nodejs/object-storage">
+        <a>
+          <PlatformIcon platform="nodejs" />
+          <span>NodeJS</span>
+        </a>
+      </Link>
+
+      <Link href="/app-deploy/php/object-storage">
+        <a>
+          <PlatformIcon platform="php" />
+          <span>PHP</span>
+        </a>
+      </Link>
+
+      <Link href="/app-deploy/laravel/object-storage">
+        <a>
+          <PlatformIcon platform="laravel" />
+          <span>Laravel</span>
+        </a>
+      </Link>
+
+      <Link href="/app-deploy/django/object-storage">
+        <a>
+          <PlatformIcon platform="django" />
+          <span>Django</span>
+        </a>
+      </Link>
+
+      <Link href="/app-deploy/flask/object-storage">
+        <a>
+          <PlatformIcon platform="flask" />
+          <span>Flask</span>
+        </a>
+      </Link>
+
+      <Link href="/app-deploy/netcore/object-storage">
+        <a>
+          <PlatformIcon platform="netcore" />
+          <span>.NET</span>
+        </a>
+      </Link>
+    </div>
   </Layout>
 );
