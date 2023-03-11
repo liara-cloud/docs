@@ -1619,9 +1619,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             <li>
               <ActiveLink href="/app-features/applets">برنامک‌ها</ActiveLink>
             </li>
-            <li>
-              <ActiveLink href="/app-features/email">ایمیل</ActiveLink>
-            </li>
           </ul>
         </nav>
 
