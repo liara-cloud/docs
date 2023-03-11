@@ -1623,77 +1623,35 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/storage">ذخیره‌سازی</NavTitle>
+          <NavTitle href="/storage/disks">دیسک‌ها</NavTitle>
           <ul className="nav__list">
             <li>
-              <NavTitle href="/storage/disks">دیسک‌ها (Disks)</NavTitle>
-              <ul className="nav__list">
-                <li>
-                  <ActiveLink href="/storage/disks/about">
-                    درباره دیسک
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/disks/management">
-                    مدیریت دیسک‌ها
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/disks/increase-size">
-                    افزایش حجم دیسک‌ها
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/disks/reduce-size">
-                    کاهش حجم دیسک‌ها
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/disks/ftp">
-                    اتصال به دیسک‌ها با FTP
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/disks/backup-restore">
-                    تهیه و بازیابی فایل پشتیبان
-                  </ActiveLink>
-                </li>
-              </ul>
+              <ActiveLink href="/storage/disks/about">درباره دیسک</ActiveLink>
             </li>
             <li>
-              <NavTitle href="/storage/object-storage">Object Storage</NavTitle>
-              <ul className="nav__list">
-                <li>
-                  <ActiveLink href="/storage/object-storage/about">
-                    درباره آبجکت استوریج
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/object-storage/management">
-                    مدیریت آبجکت استوریج
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/object-storage/connections">
-                    راه‌های اتصال
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/object-storage/increase-size">
-                    افزایش حجم
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/object-storage/cli">
-                    MinIO CLI
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/storage/object-storage/backup-restore">
-                    تهیه و بازیابی فایل پشتیبان
-                  </ActiveLink>
-                </li>
-              </ul>
+              <ActiveLink href="/storage/disks/management">
+                مدیریت دیسک‌ها
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/storage/disks/increase-size">
+                افزایش حجم دیسک‌ها
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/storage/disks/reduce-size">
+                کاهش حجم دیسک‌ها
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/storage/disks/ftp">
+                اتصال به دیسک‌ها با FTP
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/storage/disks/backup-restore">
+                تهیه و بازیابی فایل پشتیبان
+              </ActiveLink>
             </li>
           </ul>
         </nav>
