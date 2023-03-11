@@ -20,7 +20,7 @@ export default () => (
         <a href="#mail-server-account">اضافه کردن نشانی</a>
       </li>
       <li>
-        <a href="#send-email-console">ارسال ایمیل از طریق پنل اختصاصی لیارا</a>
+        <a href="#send-email-console">ارسال سریع ایمیل از کنسول لیارا</a>
       </li>
       <li>
         <a href="#add-smtp-user">افزودن کاربر SMTP</a>
@@ -36,8 +36,12 @@ export default () => (
     <h3 id="mail-server-account">اضافه کردن نشانی‌</h3>
 
     <p>
-      در این قسمت می‌توانید برای اهداف ارسال ایمیل‌تون نشانی دلخواه ایجاد کنید.
-      به عنوان مثال:‌ <b>info, support, sales</b>
+      در این قسمت می‌توانید برای اهداف ارسال و دریافت ایمیل نشانی دلخواه ایجاد
+      کنید. به عنوان مثال:‌ <b>info, support, sales</b>
+      <br />
+      توجه داشته باشید که تنها از این نشانی‌ها می‌توانید در بخش
+      <span className="code">From</span>
+      ایمیل‌های ارسالی استفاده کنید.
     </p>
 
     <ZoomableImage src="/static/mail-server-account.png" />
@@ -49,7 +53,7 @@ export default () => (
 
     <ZoomableImage src="/static/mail-server-account-add.png" />
 
-    <h3 id="send-email-console">ارسال ایمیل از طریق پنل اختصاصی لیارا</h3>
+    <h3 id="send-email-console">ارسال سریع ایمیل از کنسول لیارا</h3>
 
     <p>
       شما می‌توانید در این بخش با تعیین عنوان، فرستنده، گیرنده و محتوا به‌منظور
@@ -104,42 +108,42 @@ export default () => (
     </p>
 
     <div className="platforms">
-      <Link href="/app-deploy/nodejs/object-storage">
+      <Link href="/app-deploy/nodejs/email">
         <a>
           <PlatformIcon platform="nodejs" />
           <span>NodeJS</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/php/object-storage">
+      <Link href="/app-deploy/php/email">
         <a>
           <PlatformIcon platform="php" />
           <span>PHP</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/laravel/object-storage">
+      <Link href="/app-deploy/laravel/email">
         <a>
           <PlatformIcon platform="laravel" />
           <span>Laravel</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/django/object-storage">
+      <Link href="/app-deploy/django/email">
         <a>
           <PlatformIcon platform="django" />
           <span>Django</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/flask/object-storage">
+      <Link href="/app-deploy/flask/email">
         <a>
           <PlatformIcon platform="flask" />
           <span>Flask</span>
         </a>
       </Link>
 
-      <Link href="/app-deploy/netcore/object-storage">
+      <Link href="/app-deploy/netcore/email">
         <a>
           <PlatformIcon platform="netcore" />
           <span>.NET</span>

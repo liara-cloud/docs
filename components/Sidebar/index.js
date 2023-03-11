@@ -1760,7 +1760,54 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/cli">لیارا CLI</NavTitle>
+          <NavTitle href="/dns">DNS</NavTitle>
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/dns/add-zone">افزودن دامنه</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/dns/records">رکوردهای DNS</ActiveLink>
+            </li>
+          </ul>
+        </nav>
+
+        <nav className="nav">
+          <NavTitle href="/email">ایمیل</NavTitle>
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/email/create-mail-server">
+                ساخت سرور ایمیل
+              </ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/email/send-email">ارسال ایمیل</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/email/inbound-email">دریافت ایمیل</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/email/tips">توضیحات و نکات تکمیلی</ActiveLink>
+            </li>
+          </ul>
+        </nav>
+
+        <nav className="nav">
+          <NavTitle href="/desktop">Desktop</NavTitle>
+          <ul className="nav__list">
+            <li>
+              <ActiveLink href="/desktop/install">نصب و به‌روزرسانی</ActiveLink>
+            </li>
+            {/* <li>
+              <ActiveLink href="/desktop/login">ورود به حساب کاربری</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href="/desktop/deploy">استقرار برنامه</ActiveLink>
+            </li> */}
+          </ul>
+        </nav>
+
+        <nav className="nav">
+          <NavTitle href="/cli">CLI</NavTitle>
           <ul className="nav__list">
             <li>
               <ActiveLink href="/cli/install">نصب و به‌روزرسانی</ActiveLink>
@@ -1800,22 +1847,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/desktop">لیارا Desktop</NavTitle>
-          <ul className="nav__list">
-            <li>
-              <ActiveLink href="/desktop/install">نصب و به‌روزرسانی</ActiveLink>
-            </li>
-            {/* <li>
-              <ActiveLink href="/desktop/login">ورود به حساب کاربری</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/desktop/deploy">استقرار برنامه</ActiveLink>
-            </li> */}
-          </ul>
-        </nav>
-
-        <nav className="nav">
-          <NavTitle href="/client-api">لیارا API</NavTitle>
+          <NavTitle href="/client-api">API</NavTitle>
           <ul className="nav__list">
             <li>
               <ActiveLink href="/client-api/about">شروع به کار</ActiveLink>
@@ -1828,38 +1860,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/client-api/domain">دامنه‌ها</ActiveLink>
-            </li>
-          </ul>
-        </nav>
-
-        <nav className="nav">
-          <NavTitle href="/dns">DNS</NavTitle>
-          <ul className="nav__list">
-            <li>
-              <ActiveLink href="/dns/add-zone">افزودن دامنه</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/dns/records">رکوردهای DNS</ActiveLink>
-            </li>
-          </ul>
-        </nav>
-
-        <nav className="nav">
-          <NavTitle href="/email">ایمیل</NavTitle>
-          <ul className="nav__list">
-            <li>
-              <ActiveLink href="/email/create-mail-server">
-                ساخت سرور ایمیل
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/email/send-email">ارسال ایمیل</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/email/inbound-email">دریافت ایمیل</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/email/tips">توضیحات و نکات تکمیلی</ActiveLink>
             </li>
           </ul>
         </nav>
