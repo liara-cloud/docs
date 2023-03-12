@@ -95,11 +95,6 @@ export default () => (
         </a>{" "}
         بدون ورود به حساب کاربری
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۶. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
-      </p>
     </ol>
 
     <h4 id="list">مشاهده‌ی لیستی از حساب‌های اضافه شده</h4>
@@ -124,11 +119,6 @@ export default () => (
       <li>&nbsp;&nbsp;--sort</li>
       <p dir="rtl" className="commandDescription">
         ۳. مرتب سازی لیست حساب‌های اضافه شده براساس Name, Email, Region, Current
-      </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۴. مشخص‌کردن موقعیت جغرافیایی
       </p>
     </ol>
 

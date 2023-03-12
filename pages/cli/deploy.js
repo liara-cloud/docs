@@ -85,11 +85,6 @@ export default () => (
         ۱۰. مشخص کردن پلتفرم [node, laravel, php, django, flask, netcore, react,
         angular, vue, static, docker]
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۱۱. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
-      </p>
     </ol>
 
     <br />
