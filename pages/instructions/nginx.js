@@ -108,8 +108,8 @@ http {
     </Notice>
     <p>
       درنهایت با اجرای دستور{" "}
-      <span className="code">liara deploy --platform=docker</span> در مسیر اصلی
-      پروژه، Nginx بر روی برنامه‌ی Docker تهیه شده مستقر خواهد شد.
+      <span className="code">liara deploy --platform=docker --port=80</span> در
+      مسیر اصلی پروژه، Nginx بر روی برنامه‌ی Docker تهیه شده مستقر خواهد شد.
     </p>
     <h3>توضیحات و نکات تکمیلی</h3>
     <h4>تنظیم مسیر tmp به‌عنوان مقصدی برای ذخیره‌ی فایل‌های موقتی</h4>
