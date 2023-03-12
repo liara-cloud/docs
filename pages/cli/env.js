@@ -73,11 +73,6 @@ export default () => (
       <p dir="rtl" className="commandDescription">
         ۴. مرتب سازی لیست متغیرهای محیطی فعلی اضافه شده براساس Key و یا Value
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۵. مشخص‌کردن موقعیت جغرافیایی برنامه
-      </p>
     </ol>
 
     <h4 id="set">تنظیم و یا ویرایش متغیرهای محیطی</h4>
@@ -114,11 +109,6 @@ export default () => (
         </a>{" "}
         بدون ورود به حساب کاربری
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۵. مشخص‌کردن موقعیت جغرافیایی
-      </p>
     </ol>
 
     <h4 id="unset">حذف متغیرهای محیطی</h4>
@@ -154,11 +144,6 @@ export default () => (
           api token
         </a>{" "}
         بدون ورود به حساب کاربری
-      </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۵. مشخص‌کردن موقعیت جغرافیایی
       </p>
     </ol>
 

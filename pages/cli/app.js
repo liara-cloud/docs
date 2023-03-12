@@ -111,11 +111,6 @@ export default () => (
         ۵. مشخص کردن پلتفرم [node, laravel, php, django, flask, netcore, react,
         angular, vue, static, docker] (مناسب ci/cd)
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۶. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
-      </p>
     </ol>
 
     <h4 id="delete">حذف یک برنامه</h4>
@@ -147,11 +142,6 @@ export default () => (
         </a>{" "}
         بدون ورود به حساب کاربری
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۴. مشخص‌کردن موقعیت جغرافیایی
-      </p>
     </ol>
 
     <h4 id="list">مشاهده‌ی لیستی از برنامه‌های ایجاد شده</h4>
@@ -178,11 +168,6 @@ export default () => (
       <li>&nbsp;&nbsp;--sort</li>
       <p dir="rtl" className="commandDescription">
         ۳. مرتب سازی لیست حساب‌های اضافه شده براساس Name, Platform, Plan, ...
-      </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۴. مشخص‌کردن موقعیت جغرافیایی
       </p>
     </ol>
 
@@ -220,11 +205,6 @@ export default () => (
         </a>{" "}
         بدون ورود به حساب کاربری
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۵. مشخص‌کردن موقعیت جغرافیایی
-      </p>
     </ol>
 
     <h4 id="restart">ری‌استارت کردن برنامه</h4>
@@ -253,11 +233,6 @@ export default () => (
           api token
         </a>{" "}
         بدون ورود به حساب کاربری
-      </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۴. مشخص‌کردن موقعیت جغرافیایی
       </p>
     </ol>
 
@@ -295,11 +270,6 @@ export default () => (
         </a>{" "}
         بدون ورود به حساب کاربری
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۵. مشخص‌کردن موقعیت جغرافیایی
-      </p>
     </ol>
 
     <h4 id="start">روشن کردن برنامه</h4>
@@ -329,11 +299,6 @@ export default () => (
         </a>{" "}
         بدون ورود به حساب کاربری
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۴. مشخص‌کردن موقعیت جغرافیایی
-      </p>
     </ol>
 
     <h4 id="stop">خاموش کردن برنامه</h4>
@@ -362,11 +327,6 @@ export default () => (
           api token
         </a>{" "}
         بدون ورود به حساب کاربری
-      </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۴. مشخص‌کردن موقعیت جغرافیایی
       </p>
     </ol>
 

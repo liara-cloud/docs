@@ -52,11 +52,6 @@ export default () => (
         </a>{" "}
         (مناسب ci/cd)
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۵. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
-      </p>
     </ol>
 
     <h3>استقرار برنامه</h3>
@@ -125,11 +120,6 @@ export default () => (
         ۱۰. مشخص کردن پلتفرم [node, laravel, php, django, flask, netcore, react,
         angular, vue, static, docker]
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۱۱. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
-      </p>
     </ol>
 
     <h3>ایجاد دیسک</h3>
@@ -172,11 +162,6 @@ export default () => (
           api token
         </a>{" "}
         بدون ورود به حساب کاربری (مناسب ci/cd)
-      </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۶. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
       </p>
     </ol>
 

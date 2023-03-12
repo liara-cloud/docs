@@ -55,11 +55,6 @@ export default () => (
         </a>{" "}
         (مناسب ci/cd)
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۵. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
-      </p>
     </ol>
 
     <br />

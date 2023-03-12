@@ -71,11 +71,6 @@ export default () => (
         </a>{" "}
         بدون ورود به حساب کاربری (مناسب ci/cd)
       </p>
-
-      <li>&nbsp;&nbsp;--region=iran|germany</li>
-      <p dir="rtl" className="commandDescription">
-        ۶. مشخص‌کردن موقعیت جغرافیایی (مناسب ci/cd)
-      </p>
     </ol>
 
     <Link href="/cli/app">
