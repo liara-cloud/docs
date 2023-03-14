@@ -105,6 +105,12 @@ deploy:
       <strong>Protect variable</strong> و <strong>Mask variable</strong>، بر روی
       گزینه‌ی <strong>Add variable</strong> کلیک کنید.
     </p>
+    <Notice variant="warning">
+      با انتخاب گزینه‌ی <strong>Protect variable</strong> متغیر{" "}
+      <strong>TOKEN</strong> فقط در branchها و tagهای protected در دسترس خواهد
+      بود.
+    </Notice>
+    <br />
     <ZoomableImage src="/static/add-token-variable-in-gitlab-cicd-settings.png" />
     <p>
       در آخر با Push کردن فایل <span className="code">.gitlab-ci.yml</span> در
