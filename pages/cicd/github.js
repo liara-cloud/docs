@@ -88,8 +88,7 @@ jobs:
       <span className="code">liara deploy</span> اجرا می‌شود.
     </p>
     <p>
-      پس از شخصی‌سازی مقدار APP_NAME و مشخص کردن موقعیت جغرافیایی در فایل{" "}
-      <strong>liara.yaml</strong> باید{" "}
+      پس از شخصی‌سازی مقدار APP_NAME در فایل <strong>liara.yaml</strong> باید{" "}
       <a href="https://console.liara.ir/API" target="_blank">
         کلید دسترسی به API
       </a>{" "}
