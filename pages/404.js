@@ -1,11 +1,24 @@
 import React from "react";
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 export default function notFound() {
   return (
     <Layout>
-      <img className="not_found-image" src="/static/404.svg" />
-      <p>.متاسفانه صفحه‌ی مورد نظر شما را پیدا نکردیم</p>
+      <div className="notfound-container">
+        <section>
+          <img src="/static/404.png" style={{ marginTop: "-20px" }} />
+          <h3>صفحه مورد نظر یافت نشد :(</h3>
+          <div style={{ position: "relative", zIndex: 22 }}>
+            <Link href="/">
+              <button className="grad" style={{ padding: "10px 40px" }}>
+                برو به خانه
+              </button>
+            </Link>
+          </div>
+        </section>
+        <img className="no-signal" src="/static/noSignal.webp" />
+      </div>
     </Layout>
   );
 }
