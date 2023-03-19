@@ -289,7 +289,7 @@ const Index = () => {
           </div>
         </div>
         <div className="min-products-container">
-          <Link href="http://localhost:3005/dns/add-zone">
+          <Link href="/dns/add-zone">
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}
@@ -308,7 +308,7 @@ const Index = () => {
               </div>
             </div>
           </Link>
-          <Link href="http://localhost:3005/buckets/about">
+          <Link href="/buckets/about">
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}
@@ -327,7 +327,7 @@ const Index = () => {
               </div>
             </div>
           </Link>
-          <Link href="http://localhost:3005/email/create-mail-server">
+          <Link href="/email/create-mail-server">
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}
@@ -346,7 +346,7 @@ const Index = () => {
               </div>
             </div>
           </Link>
-          <Link href="http://localhost:3005/wp-plus/install">
+          <Link href="/wp-plus/install">
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}
