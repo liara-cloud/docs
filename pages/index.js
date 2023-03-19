@@ -352,6 +352,24 @@ const Index = () => {
               </div>
             </div>
           </Link>
+          <Link href="http://localhost:3005/wp-plus/install">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/wp-plus.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-5px" }}>
+                    وردپرس پلاس{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (WPPlus)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </Layout>
