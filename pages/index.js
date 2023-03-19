@@ -7,44 +7,190 @@ import PlatformIcon from "../components/PlatformIcon";
 
 const DATA_SECTIONS = {
   PAAS: [
-    { platform: "react", href: "/" },
-    { platform: "vue", href: "/" },
-    { platform: "php", href: "/" },
-    { platform: "flask", href: "/" },
-    { platform: "netcore", href: "/" },
-    { platform: "angularjs", href: "/" },
-    { platform: "nodejs", href: "/" },
-    { platform: "laravel", href: "/" },
-    { platform: "python", href: "/" },
-    { platform: "next", href: "/" },
-    { platform: "nuxt", href: "/" },
-    { platform: "go", href: "/" },
-    { platform: "docker", href: "/" },
+    {
+      platform: "react",
+      title: "React",
+      href: "https://docs.liara.ir/app-deploy/react/getting-started",
+    },
+    {
+      platform: "vue",
+      title: "Vue",
+      href: "https://docs.liara.ir/app-deploy/vue/getting-started",
+    },
+    {
+      platform: "php",
+      title: "PHP",
+      href: "https://docs.liara.ir/app-deploy/php/getting-started",
+    },
+    {
+      platform: "flask",
+      title: "Flask",
+      href: "https://docs.liara.ir/app-deploy/flask/getting-started",
+    },
+    {
+      platform: "netcore",
+      title: "Dotnet",
+      href: "https://docs.liara.ir/app-deploy/netcore/getting-started",
+    },
+    {
+      platform: "angularjs",
+      title: "Angular",
+      href: "https://docs.liara.ir/app-deploy/angular/getting-started",
+    },
+    {
+      platform: "nodejs",
+      title: "Node",
+      href: "https://docs.liara.ir/app-deploy/nodejs/getting-started",
+    },
+    {
+      platform: "HTML5",
+      title: "Static",
+      href: "https://docs.liara.ir/app-deploy/static/getting-started",
+    },
+    {
+      platform: "laravel",
+      title: "Laravel",
+      href: "https://docs.liara.ir/app-deploy/laravel/getting-started",
+    },
+    {
+      platform: "python",
+      title: "Python",
+      href: "https://docs.liara.ir/instructions/python",
+    },
+    {
+      platform: "next",
+      title: "Next",
+      href: "https://docs.liara.ir/app-deploy/nextjs/getting-started",
+    },
+    {
+      platform: "nuxt",
+      title: "Nuxt",
+      href: "https://docs.liara.ir/instructions/nuxtjs",
+    },
+    {
+      platform: "go",
+      title: "Go",
+      href: "https://docs.liara.ir/instructions/golang",
+    },
+    {
+      platform: "docker",
+      title: "Docker",
+      href: "https://docs.liara.ir/app-deploy/docker/getting-started",
+    },
   ],
   DBAAS: [
-    { platform: "mariadb", href: "/" },
-    { platform: "postgres", href: "/" },
-    { platform: "mysql", href: "/" },
-    { platform: "mongodb", href: "/" },
-    { platform: "mssql", href: "/" },
-    { platform: "redis", href: "/" },
-    { platform: "arangodb", href: "/" },
-    { platform: "rabbitmq", href: "/" },
+    {
+      platform: "mariadb",
+      title: "MariaDB",
+      href: "https://docs.liara.ir/databases/mariadb/install",
+    },
+    {
+      platform: "postgres",
+      title: "Postgres",
+      href: "https://docs.liara.ir/databases/postgresql/install",
+    },
+    {
+      platform: "mysql",
+      title: "MySQL",
+      href: "https://docs.liara.ir/databases/mysql/install",
+    },
+    {
+      platform: "mongodb",
+      title: "MongoDB",
+      href: "https://docs.liara.ir/databases/mongodb/install",
+    },
+    {
+      platform: "mssql",
+      title: "MSSQL",
+      href: "https://docs.liara.ir/databases/sqlserver/install",
+    },
+    {
+      platform: "redis",
+      title: "Redis",
+      href: "https://docs.liara.ir/databases/redis/install",
+    },
+    {
+      platform: "elastic",
+      title: "Elastic",
+      href: "https://docs.liara.ir/databases/elasticsearch/install",
+    },
+    {
+      platform: "rabbitmq",
+      title: "RabbitMQ",
+      href: "https://docs.liara.ir/instructions/rabbitmq",
+    },
   ],
   ONE_CLICK_APP: [
-    { platform: "ghost", href: "/" },
-    { platform: "prestashop", href: "/" },
-    { platform: "soketi", href: "/" },
-    { platform: "grafana", href: "/" },
-    { platform: "kibana", href: "/" },
-    { platform: "mattermost", href: "/" },
-    { platform: "rocketchat", href: "/" },
-    { platform: "gitea", href: "/" },
-    { platform: "nextcloud", href: "/" },
-    { platform: "imgproxy", href: "/" },
-    { platform: "chrome", href: "/" },
-    { platform: "vscode", href: "/" },
-    { platform: "odoo", href: "/" },
+    {
+      platform: "ghost",
+      title: "Ghost",
+      href: "https://docs.liara.ir/one-click-apps/others",
+    },
+    {
+      platform: "prestashop",
+      title: "Presta",
+      href: "https://docs.liara.ir/one-click-apps/prestashop",
+    },
+    {
+      platform: "soketi",
+      title: "Soketi",
+      href: "https://docs.liara.ir/one-click-apps/soketi/install",
+    },
+    {
+      platform: "grafana",
+      title: "Grafana",
+      href: "https://docs.liara.ir/one-click-apps/grafana",
+    },
+    {
+      platform: "kibana",
+      title: "Kibana",
+      href: "https://docs.liara.ir/one-click-apps/kibana",
+    },
+    {
+      platform: "mattermost",
+      title: "Mattermost",
+      href: "https://docs.liara.ir/one-click-apps/metabase",
+    },
+    {
+      platform: "rocketchat",
+      title: "Rocket.Chat",
+      href: "https://docs.liara.ir/one-click-apps/rocketchat",
+    },
+    {
+      platform: "metabase",
+      title: "Metabase",
+      href: "https://docs.liara.ir/one-click-apps/metabase",
+    },
+    {
+      platform: "gitea",
+      title: "Gitea",
+      href: "https://docs.liara.ir/one-click-apps/gitea",
+    },
+    {
+      platform: "nextcloud",
+      title: "Next Cloud",
+      href: "https://docs.liara.ir/one-click-apps/nextcloud",
+    },
+    {
+      platform: "imgproxy",
+      title: "ImgProxy",
+      href: "https://docs.liara.ir/one-click-apps/imgproxy",
+    },
+    {
+      platform: "chrome",
+      title: "Chrome",
+      href: "https://docs.liara.ir/one-click-apps/headless-chrome/install",
+    },
+    {
+      platform: "vscode",
+      title: "Code",
+      href: "https://docs.liara.ir/one-click-apps/vscode",
+    },
+    {
+      platform: "odoo",
+      title: "Odoo",
+      href: "https://docs.liara.ir/one-click-apps/odoo",
+    },
   ],
 };
 
@@ -77,125 +223,64 @@ const Index = () => {
 
       <div className="products-container">
         <div className="product-item-container">
-          <div className="product-item-container_head">
-            <div>
-              <h1>پلتفرم (PaaS)</h1>
-              <p>
-                لیارا کارهای سخت و پیچیده را انجام می‌دهد، شما فقط کافیست روی
-                توسعه‌ی برنامه‌های‌تان متمرکز باشید. تفاوتی نمی‌کند از چه زبان
-                برنامه‌نویسی و یا فریم‌ورکی استفاده می‌کنید، می‌توانید تنها با
-                چند کلیک، پروژه‌های خود را روی سرورهای ابری اجرا کنید و یا اگر
-                Dockerfile خودتان را دارید
-              </p>
+          <div className="product-item-container_content">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img src="/static/paas.svg" />
+              <h2>
+                پلتفرم{" "}
+                <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                  (PaaS)
+                </span>
+              </h2>
             </div>
-            <img src="/static/paas.svg" />
           </div>
           <div className="product-item-container_body">
             {DATA_SECTIONS.PAAS.map(item => (
               <Link href={item.href}>
                 <a>
                   <PlatformIcon platform={item.platform} />
+                  <p>{item.title}</p>
                 </a>
               </Link>
             ))}
           </div>
         </div>
         <div className="product-item-container">
-          <div className="product-item-container_head">
-            <div>
-              <h1> دیتابیس (DBaaS)</h1>
-              <p>
-                لیارا کارهای سخت و پیچیده را انجام می‌دهد، شما فقط کافیست روی
-                توسعه‌ی برنامه‌های‌تان متمرکز باشید. تفاوتی نمی‌کند از چه زبان
-                برنامه‌نویسی و یا فریم‌ورکی استفاده می‌کنید، می‌توانید تنها با
-                چند کلیک، پروژه‌های خود را روی سرورهای ابری اجرا کنید و یا اگر
-                Dockerfile خودتان را دارید
-              </p>
+          <div className="product-item-container_content">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img src="/static/dbaas.svg" style={{ height: 55 }} />
+              <h2 style={{ marginRight: "-10px" }}>
+                {" "}
+                دیتابیس{" "}
+                <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                  (DBaaS)
+                </span>
+              </h2>
             </div>
-            <img
-              src="/static/dbaas.svg"
-              style={{ marginLeft: 10, padding: 10 }}
-            />
           </div>
           <div className="product-item-container_body">
             {DATA_SECTIONS.DBAAS.map(item => (
               <Link href={item.href}>
                 <a>
                   <PlatformIcon platform={item.platform} />
+                  <p>{item.title}</p>
                 </a>
               </Link>
             ))}
           </div>
         </div>
         <div className="product-item-container">
-          <div className="product-item-container_head">
-            <div>
-              <h1> سامانه مدیریت دامنه (DNS)</h1>
-              <p>
-                لیارا کارهای سخت و پیچیده را انجام می‌دهد، شما فقط کافیست روی
-                توسعه‌ی برنامه‌های‌تان متمرکز باشید. تفاوتی نمی‌کند از چه زبان
-                برنامه‌نویسی و یا فریم‌ورکی استفاده می‌کنید، می‌توانید تنها با
-                چند کلیک، پروژه‌های خود را روی سرورهای ابری اجرا کنید و یا اگر
-                Dockerfile خودتان را دارید
-              </p>
-            </div>
-            <img
-              src="/static/dns.svg"
-              style={{ marginLeft: 10, padding: 10 }}
-            />
-          </div>
-        </div>
-        <div className="product-item-container">
-          <div className="product-item-container_head">
-            <div>
-              <h1> ذخیره‌سازی ابری (Object Storage)</h1>
-              <p>
-                لیارا کارهای سخت و پیچیده را انجام می‌دهد، شما فقط کافیست روی
-                توسعه‌ی برنامه‌های‌تان متمرکز باشید. تفاوتی نمی‌کند از چه زبان
-                برنامه‌نویسی و یا فریم‌ورکی استفاده می‌کنید، می‌توانید تنها با
-                چند کلیک، پروژه‌های خود را روی سرورهای ابری اجرا کنید و یا اگر
-                Dockerfile خودتان را دارید
-              </p>
-            </div>
-            <img
-              src="/static/storage.svg"
-              style={{ marginLeft: 10, padding: 10 }}
-            />
-          </div>
-        </div>
-        <div className="product-item-container">
-          <div className="product-item-container_head">
-            <div>
-              <h1> ایمیل (Email)</h1>
-              <p>
-                لیارا کارهای سخت و پیچیده را انجام می‌دهد، شما فقط کافیست روی
-                توسعه‌ی برنامه‌های‌تان متمرکز باشید. تفاوتی نمی‌کند از چه زبان
-                برنامه‌نویسی و یا فریم‌ورکی استفاده می‌کنید، می‌توانید تنها با
-                چند کلیک، پروژه‌های خود را روی سرورهای ابری اجرا کنید و یا اگر
-                Dockerfile خودتان را دارید
-              </p>
-            </div>
-            <img
-              src="/static/email.svg"
-              style={{ marginLeft: 10, padding: "0 10px", paddingRight: 20 }}
-            />
-          </div>
-        </div>
-        <div className="product-item-container">
-          <div className="product-item-container_head">
-            <div>
-              <h1>
+          <div className="product-item-container_content">
+            <div
+              style={{ display: "flex", alignItems: "center", marginRight: 12 }}
+            >
+              <h2>
                 {" "}
-                برنامه‌های آماده
-                <span dir="ltr">(1-Click App)</span>
-              </h1>
-              <p>
-                لیارا کارهای سخت و پیچیده را انجام می‌دهد، شما فقط کافیست روی
-                توسعه‌ی برنامه‌های‌تان متمرکز باشید. تفاوتی نمی‌کند از چه زبان
-                برنامه‌نویسی و یا فریم‌ورکی استفاده می‌کنید، می‌توانید تنها با
-                چند کلیک، پروژه‌های خود را روی سرورهای ابری اجرا کنید و یا اگر
-                Dockerfile خودتان را دارید
-              </p>
+                برنامه‌های آماده{" "}
+                <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                  (1-Click App)
+                </span>
+              </h2>
             </div>
           </div>
           <div className="product-item-container_body">
@@ -203,10 +288,70 @@ const Index = () => {
               <Link href={item.href}>
                 <a>
                   <PlatformIcon platform={item.platform} />
+                  <p>{item.title}</p>
                 </a>
               </Link>
             ))}
           </div>
+        </div>
+        <div className="min-products-container">
+          <Link href="http://localhost:3005/dns/add-zone">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/dns.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-10px" }}>
+                    {" "}
+                    سامانه مدیریت دامنه{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (DNS)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link href="http://localhost:3005/buckets/about">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/storage.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-10px" }}>
+                    {" "}
+                    ذخیره‌سازی ابری{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (Object Storage)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link href="http://localhost:3005/email/create-mail-server">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/email.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-5px" }}>
+                    {" "}
+                    ایمیل{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (Email)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </Layout>
