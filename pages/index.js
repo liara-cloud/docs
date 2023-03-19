@@ -224,8 +224,9 @@ const Index = () => {
       <div className="products-container">
         <div className="product-item-container">
           <div className="product-item-container_content">
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img src="/static/paas.svg" />
+            <div
+              style={{ display: "flex", alignItems: "center", marginRight: 12 }}
+            >
               <h2>
                 پلتفرم{" "}
                 <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
@@ -247,9 +248,10 @@ const Index = () => {
         </div>
         <div className="product-item-container">
           <div className="product-item-container_content">
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img src="/static/dbaas.svg" style={{ height: 55 }} />
-              <h2 style={{ marginRight: "-10px" }}>
+            <div
+              style={{ display: "flex", alignItems: "center", marginRight: 12 }}
+            >
+              <h2>
                 {" "}
                 دیتابیس{" "}
                 <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
