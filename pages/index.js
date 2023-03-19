@@ -213,14 +213,6 @@ const Index = () => {
 
       <h1 style={{ fontSize: 28 }}>صفحه‌ی اصلی مستندات</h1>
 
-      <h3 style={{ fontSize: 24 }}>معرفی لیارا</h3>
-      <p style={{ fontSize: 18 }}>
-        لیارا بستری را فراهم می‌کند تا شما بدون نیاز به پیکربندی و تنظیمات، با
-        نهایت سرعت، آسودگی و راحتی، برنامه‌ی خود را روی سرور اجرا کنید.
-      </p>
-
-      <h3 style={{ fontSize: 24 }}> محصولاتی که ارائه می‌کنیم</h3>
-
       <div className="products-container">
         <div className="product-item-container">
           <div className="product-item-container_content">

@@ -699,14 +699,7 @@ div.footer-animate-lines {
 
 .product-item-container_body a {
   border: none;
-  filter: grayscale(1);
-  opacity: 0.5;
   cursor: pointer;
-}
-
-.products-container .product-item-container_body a:hover {
-  filter: grayscale(0);
-  opacity: 1;
 }
 
 .products-container .product-item-container p {
@@ -723,6 +716,10 @@ div.footer-animate-lines {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 30px;
+}
+
+.min-products-container div.product-item-container:hover {
+  background-color: #54637b1d;
 }
 
 @media (max-width: 820px) {
