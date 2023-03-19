@@ -27,14 +27,10 @@ export default ({ children }) => {
 
       <main>
         <Header setSearchOpen={setSearchOpen} />
-        {useRouter().pathname === "/404" ? (
-          <article>{children}</article>
-        ) : (
-          <div className="wrapper">
-            <Sidebar searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
-            <article className="article">{children}</article>
-          </div>
-        )}
+        <div className="wrapper">
+          <Sidebar searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
+          <article className="article">{children}</article>
+        </div>
       </main>
       <Footer />
     </Fragment>

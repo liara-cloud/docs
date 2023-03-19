@@ -2,9 +2,197 @@ import Head from "next/head";
 import Link from "next/link";
 import { useContext } from "react";
 import Layout from "../components/Layout";
-import PlatformIcon from "../components/PlatformIcon";
 import { ThemeContext } from "../components/root/theme.context";
-import Seo from "../components/SEO/Seo";
+import PlatformIcon from "../components/PlatformIcon";
+
+const DATA_SECTIONS = {
+  PAAS: [
+    {
+      platform: "react",
+      title: "React",
+      href: "https://docs.liara.ir/app-deploy/react/getting-started",
+    },
+    {
+      platform: "vue",
+      title: "Vue",
+      href: "https://docs.liara.ir/app-deploy/vue/getting-started",
+    },
+    {
+      platform: "php",
+      title: "PHP",
+      href: "https://docs.liara.ir/app-deploy/php/getting-started",
+    },
+    {
+      platform: "flask",
+      title: "Flask",
+      href: "https://docs.liara.ir/app-deploy/flask/getting-started",
+    },
+    {
+      platform: "netcore",
+      title: "Dotnet",
+      href: "https://docs.liara.ir/app-deploy/netcore/getting-started",
+    },
+    {
+      platform: "angularjs",
+      title: "Angular",
+      href: "https://docs.liara.ir/app-deploy/angular/getting-started",
+    },
+    {
+      platform: "nodejs",
+      title: "Node",
+      href: "https://docs.liara.ir/app-deploy/nodejs/getting-started",
+    },
+    {
+      platform: "HTML5",
+      title: "Static",
+      href: "https://docs.liara.ir/app-deploy/static/getting-started",
+    },
+    {
+      platform: "laravel",
+      title: "Laravel",
+      href: "https://docs.liara.ir/app-deploy/laravel/getting-started",
+    },
+    {
+      platform: "python",
+      title: "Python",
+      href: "https://docs.liara.ir/instructions/python",
+    },
+    {
+      platform: "next",
+      title: "Next",
+      href: "https://docs.liara.ir/app-deploy/nextjs/getting-started",
+    },
+    {
+      platform: "nuxt",
+      title: "Nuxt",
+      href: "https://docs.liara.ir/instructions/nuxtjs",
+    },
+    {
+      platform: "go",
+      title: "Go",
+      href: "https://docs.liara.ir/instructions/golang",
+    },
+    {
+      platform: "docker",
+      title: "Docker",
+      href: "https://docs.liara.ir/app-deploy/docker/getting-started",
+    },
+  ],
+  DBAAS: [
+    {
+      platform: "mariadb",
+      title: "MariaDB",
+      href: "https://docs.liara.ir/databases/mariadb/install",
+    },
+    {
+      platform: "postgres",
+      title: "Postgres",
+      href: "https://docs.liara.ir/databases/postgresql/install",
+    },
+    {
+      platform: "mysql",
+      title: "MySQL",
+      href: "https://docs.liara.ir/databases/mysql/install",
+    },
+    {
+      platform: "mongodb",
+      title: "MongoDB",
+      href: "https://docs.liara.ir/databases/mongodb/install",
+    },
+    {
+      platform: "mssql",
+      title: "MSSQL",
+      href: "https://docs.liara.ir/databases/sqlserver/install",
+    },
+    {
+      platform: "redis",
+      title: "Redis",
+      href: "https://docs.liara.ir/databases/redis/install",
+    },
+    {
+      platform: "elastic",
+      title: "Elastic",
+      href: "https://docs.liara.ir/databases/elasticsearch/install",
+    },
+    {
+      platform: "rabbitmq",
+      title: "RabbitMQ",
+      href: "https://docs.liara.ir/instructions/rabbitmq",
+    },
+  ],
+  ONE_CLICK_APP: [
+    {
+      platform: "ghost",
+      title: "Ghost",
+      href: "https://docs.liara.ir/one-click-apps/others",
+    },
+    {
+      platform: "prestashop",
+      title: "Presta",
+      href: "https://docs.liara.ir/one-click-apps/prestashop",
+    },
+    {
+      platform: "soketi",
+      title: "Soketi",
+      href: "https://docs.liara.ir/one-click-apps/soketi/install",
+    },
+    {
+      platform: "grafana",
+      title: "Grafana",
+      href: "https://docs.liara.ir/one-click-apps/grafana",
+    },
+    {
+      platform: "kibana",
+      title: "Kibana",
+      href: "https://docs.liara.ir/one-click-apps/kibana",
+    },
+    {
+      platform: "mattermost",
+      title: "Mattermost",
+      href: "https://docs.liara.ir/one-click-apps/metabase",
+    },
+    {
+      platform: "rocketchat",
+      title: "Rocket.Chat",
+      href: "https://docs.liara.ir/one-click-apps/rocketchat",
+    },
+    {
+      platform: "metabase",
+      title: "Metabase",
+      href: "https://docs.liara.ir/one-click-apps/metabase",
+    },
+    {
+      platform: "gitea",
+      title: "Gitea",
+      href: "https://docs.liara.ir/one-click-apps/gitea",
+    },
+    {
+      platform: "nextcloud",
+      title: "Next Cloud",
+      href: "https://docs.liara.ir/one-click-apps/nextcloud",
+    },
+    {
+      platform: "imgproxy",
+      title: "ImgProxy",
+      href: "https://docs.liara.ir/one-click-apps/imgproxy",
+    },
+    {
+      platform: "chrome",
+      title: "Chrome",
+      href: "https://docs.liara.ir/one-click-apps/headless-chrome/install",
+    },
+    {
+      platform: "vscode",
+      title: "Code",
+      href: "https://docs.liara.ir/one-click-apps/vscode",
+    },
+    {
+      platform: "odoo",
+      title: "Odoo",
+      href: "https://docs.liara.ir/one-click-apps/odoo",
+    },
+  ],
+};
 
 const Index = () => {
   const { theme } = useContext(ThemeContext);
@@ -20,267 +208,171 @@ const Index = () => {
       desc="لیارا بستری را فراهم می‌کند تا شما بدون نیاز به پیکربندی و
       تنظیمات، با نهایت سرعت، آسودگی و راحتی، برنامه‌ی خود را روی سرور اجرا
       کنید."
-      keyWords="لیارا,مستندات لیارا,لیارا"
+      keyWords="لیارا,مستندات لیارا,لیارا
     /> */}
 
-      <h1>صفحه‌ی اصلی مستندات</h1>
+      <h1 style={{ fontSize: 28 }}>صفحه‌ی اصلی مستندات</h1>
 
-      <h3>معرفی لیارا</h3>
-      <p>
+      <h3 style={{ fontSize: 24 }}>معرفی لیارا</h3>
+      <p style={{ fontSize: 18 }}>
         لیارا بستری را فراهم می‌کند تا شما بدون نیاز به پیکربندی و تنظیمات، با
         نهایت سرعت، آسودگی و راحتی، برنامه‌ی خود را روی سرور اجرا کنید.
       </p>
 
-      <h3>پلتفرم‌هایی که ارائه می‌کنیم</h3>
-      <p>
-        برای مطالعه‌ی راهنمای اجرای برنامه در هر پلتفرم، صفحه‌ی مربوط به آن را
-        دنبال کنید.
-      </p>
-      <div className="platforms">
-        <Link href="/app-deploy/react/getting-started">
-          <a>
-            <PlatformIcon platform="react" />
-            <span>React</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/vue/getting-started">
-          <a>
-            <PlatformIcon platform="vue" />
-            <span>Vue</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/angular/getting-started">
-          <a>
-            <PlatformIcon platform="angularjs" />
-            <span>Angular</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/static/getting-started">
-          <a>
-            <PlatformIcon platform="HTML5" />
-            <span>Static</span>
-          </a>
-        </Link>
-        <Link href="/instructions/gatsbyjs">
-          <a>
-            <PlatformIcon platform="gatsby" />
-            <span>GatsbyJS</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/nodejs/getting-started">
-          <a>
-            <PlatformIcon platform="nodejs" />
-            <span>NodeJS</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/nextjs/getting-started">
-          <a>
-            <PlatformIcon platform="next" />
-            <span>NextJS</span>
-          </a>
-        </Link>
-        <Link href="/instructions/nuxtjs">
-          <a>
-            <PlatformIcon platform="nuxt" />
-            <span>NuxtJS</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/php/getting-started">
-          <a>
-            <PlatformIcon platform="php" />
-            <span>PHP</span>
-          </a>
-        </Link>
+      <h3 style={{ fontSize: 24 }}> محصولاتی که ارائه می‌کنیم</h3>
 
-        <Link href="/app-deploy/laravel/getting-started">
-          <a>
-            <PlatformIcon platform="laravel" />
-            <span>Laravel</span>
-          </a>
-        </Link>
-        <Link href="/instructions/python">
-          <a>
-            <PlatformIcon platform="python" />
-            <span>Python</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/django/getting-started">
-          <a>
-            <PlatformIcon platform="django" />
-            <span>Django</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/flask/getting-started">
-          <a>
-            <PlatformIcon platform="flask" />
-            <span>Flask</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/netcore/getting-started">
-          <a>
-            <PlatformIcon platform="netcore" />
-            <span>.Net</span>
-          </a>
-        </Link>
-        <Link href="/app-deploy/docker/getting-started">
-          <a>
-            <PlatformIcon platform="docker" />
-            <span>Docker</span>
-          </a>
-        </Link>
-        <Link href="/instructions/golang">
-          <a>
-            <PlatformIcon platform="go" />
-            <span>Go</span>
-          </a>
-        </Link>
-      </div>
-      <h3>دیتابیس‌هایی که ارائه می‌کنیم</h3>
-      <p>
-        برای مطالعه‌ی راهنمای راه‌اندازی هر دیتابیس، صفحه‌ی مربوط به آن را دنبال
-        کنید.
-      </p>
-      <div className="platforms">
-        <Link href="/databases/mysql/install">
-          <a>
-            <PlatformIcon platform="mysql" />
-            <span>MySQL</span>
-          </a>
-        </Link>
-        <Link href="/databases/mariadb/install">
-          <a>
-            <PlatformIcon platform="mariadb" />
-            <span>MariaDB</span>
-          </a>
-        </Link>
-        <Link href="/databases/postgresql/install">
-          <a>
-            <PlatformIcon platform="postgres" />
-            <span>PostgreSQL</span>
-          </a>
-        </Link>
-        <Link href="/databases/sqlserver/install">
-          <a>
-            <PlatformIcon platform="mssql" />
-            <span>SQL Server</span>
-          </a>
-        </Link>
-        <Link href="/databases/mongodb/install">
-          <a>
-            <PlatformIcon platform="mongodb" />
-            <span>MongoDB</span>
-          </a>
-        </Link>
-        <Link href="/databases/redis/install">
-          <a>
-            <PlatformIcon platform="redis" />
-            <span>Redis</span>
-          </a>
-        </Link>
-        <Link href="/databases/elasticsearch/install">
-          <a>
-            <PlatformIcon platform="elastic" />
-            <span>Elastic</span>
-          </a>
-        </Link>
-        <Link href="/instructions/rabbitmq">
-          <a>
-            <PlatformIcon platform="rabbitmq" />
-            <span>RabbitMQ</span>
-          </a>
-        </Link>
-      </div>
-
-      <h3>برنامه‌های آماده‌ای که ارائه می‌کنیم</h3>
-      <p>
-        برای مطالعه‌ی راهنمای نصب هر برنامه آماده، صفحه‌ی مربوط به آن را دنبال
-        کنید.
-      </p>
-      <div className="platforms">
-        <Link href="/one-click-apps/others">
-          <a>
-            <PlatformIcon platform="ghost" />
-            <span>Ghost</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/prestashop">
-          <a>
-            <PlatformIcon platform="prestashop" />
-            <span>Prestashop</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/soketi/install">
-          <a>
-            <PlatformIcon platform="soketi" />
-            <span>Soketi</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/metabase">
-          <a>
-            <PlatformIcon platform="metabase" />
-            <span>Metabase</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/grafana">
-          <a>
-            <PlatformIcon platform="grafana" />
-            <span>Grafana</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/kibana">
-          <a>
-            <PlatformIcon platform="kibana" />
-            <span>Kibana</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/mattermost">
-          <a>
-            <PlatformIcon platform="mattermost" />
-            <span>Mattermost</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/rocketchat">
-          <a>
-            <PlatformIcon platform="rocketchat" />
-            <span>Rocket.Chat</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/gitea">
-          <a>
-            <PlatformIcon platform="gitea" />
-            <span>Gitea</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/nextcloud">
-          <a>
-            <PlatformIcon platform="nextcloud" />
-            <span>NextCloud</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/imgproxy">
-          <a>
-            <PlatformIcon platform="imgproxy" />
-            <span>Imgproxy</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/headless-chrome/install">
-          <a>
-            <PlatformIcon platform="chrome" />
-            <span>Chrome</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/vscode">
-          <a>
-            <PlatformIcon platform="vscode" />
-            <span>Code</span>
-          </a>
-        </Link>
-        <Link href="/one-click-apps/odoo">
-          <a>
-            <PlatformIcon platform="odoo" />
-            <span>Odoo</span>
-          </a>
-        </Link>
+      <div className="products-container">
+        <div className="product-item-container">
+          <div className="product-item-container_content">
+            <div
+              style={{ display: "flex", alignItems: "center", marginRight: 12 }}
+            >
+              <h2>
+                پلتفرم{" "}
+                <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                  (PaaS)
+                </span>
+              </h2>
+            </div>
+          </div>
+          <div className="product-item-container_body">
+            {DATA_SECTIONS.PAAS.map(item => (
+              <Link href={item.href}>
+                <a>
+                  <PlatformIcon platform={item.platform} />
+                  <p>{item.title}</p>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="product-item-container">
+          <div className="product-item-container_content">
+            <div
+              style={{ display: "flex", alignItems: "center", marginRight: 12 }}
+            >
+              <h2>
+                {" "}
+                دیتابیس{" "}
+                <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                  (DBaaS)
+                </span>
+              </h2>
+            </div>
+          </div>
+          <div className="product-item-container_body">
+            {DATA_SECTIONS.DBAAS.map(item => (
+              <Link href={item.href}>
+                <a>
+                  <PlatformIcon platform={item.platform} />
+                  <p>{item.title}</p>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="product-item-container">
+          <div className="product-item-container_content">
+            <div
+              style={{ display: "flex", alignItems: "center", marginRight: 12 }}
+            >
+              <h2>
+                {" "}
+                برنامه‌های آماده{" "}
+                <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                  (1-Click App)
+                </span>
+              </h2>
+            </div>
+          </div>
+          <div className="product-item-container_body">
+            {DATA_SECTIONS.ONE_CLICK_APP.map(item => (
+              <Link href={item.href}>
+                <a>
+                  <PlatformIcon platform={item.platform} />
+                  <p>{item.title}</p>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="min-products-container">
+          <Link href="http://localhost:3005/dns/add-zone">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/dns.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-10px" }}>
+                    {" "}
+                    سامانه مدیریت دامنه{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (DNS)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link href="http://localhost:3005/buckets/about">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/storage.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-10px" }}>
+                    {" "}
+                    ذخیره‌سازی ابری{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (Object Storage)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link href="http://localhost:3005/email/create-mail-server">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/email.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-5px" }}>
+                    {" "}
+                    ایمیل{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (Email)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
+          <Link href="http://localhost:3005/wp-plus/install">
+            <div
+              className="product-item-container"
+              style={{ cursor: "pointer" }}
+            >
+              <div className="product-item-container_content">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <img src="/static/wp-plus.svg" style={{ height: 55 }} />
+                  <h2 style={{ marginRight: "-5px" }}>
+                    وردپرس پلاس{" "}
+                    <span dir="ltr" style={{ color: "#aaa", fontSize: 16 }}>
+                      (WPPlus)
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
       </div>
     </Layout>
   );
