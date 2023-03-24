@@ -65,7 +65,7 @@ export default () => (
       <Link href="/app-deploy/netcore/envs">متغیرهای برنامه</Link> تنظیم کنید.
     </p>
     <Highlight className="plaintext">
-      {`LIARA_ENDPOINT=<Liara Bucket Endpoint>
+      {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
 LIARA_BUCKET_NAME=<Bucket Name>
 LIARA_ACCESS_KEY=<Access Key>
 LIARA_SECRET_KEY=<Secret Key>`}
