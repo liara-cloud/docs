@@ -8,6 +8,11 @@ import PlatformIcon from "../components/PlatformIcon";
 const DATA_SECTIONS = {
   PAAS: [
     {
+      platform: "django",
+      title: "Django",
+      href: "https://docs.liara.ir/app-deploy/django/getting-started",
+    },
+    {
       platform: "react",
       title: "React",
       href: "https://docs.liara.ir/app-deploy/react/getting-started",
