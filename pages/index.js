@@ -23,13 +23,18 @@ const DATA_SECTIONS = {
       href: "https://docs.liara.ir/app-deploy/php/getting-started",
     },
     {
+      platform: "django",
+      title: "Django",
+      href: "https://docs.liara.ir/app-deploy/django/getting-started",
+    },
+    {
       platform: "flask",
       title: "Flask",
       href: "https://docs.liara.ir/app-deploy/flask/getting-started",
     },
     {
       platform: "netcore",
-      title: "Dotnet",
+      title: "Dot Net",
       href: "https://docs.liara.ir/app-deploy/netcore/getting-started",
     },
     {
