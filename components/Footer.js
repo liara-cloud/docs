@@ -152,7 +152,7 @@ const cols = [
     id: 2,
     title: "برنامه‌های‌ آماده (One Click Apps)",
     children: [
-      { title: "Ghost", link: "/one-click-apps/others", alt: "هاست ابری گوست" },
+      { title: "Ghost", link: "/one-click-apps/ghost", alt: "هاست ابری گوست" },
       { title: "Gitea", link: "/one-click-apps/gitea", alt: "هاست ابری گیتی" },
       {
         title: "Soketi",
