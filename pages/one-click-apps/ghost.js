@@ -36,6 +36,8 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
 
+    <ZoomableImage src="https://files.liara.ir/docs/ghost/create-ghost-one-click-app.gif" />
+
     <p>
       برای راه‌اندازی برنامه‌ی آماده Ghost باید در بخش{" "}
       <a href="https://console.liara.ir/apps" target="_blank">
