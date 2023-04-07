@@ -117,6 +117,12 @@ export default () => (
           <span>Odoo</span>
         </a>
       </Link>
+      <Link href="/one-click-apps/ghost">
+        <a>
+          <PlatformIcon platform="ghost" />
+          <span>Ghost</span>
+        </a>
+      </Link>
     </div>
   </Layout>
 );
