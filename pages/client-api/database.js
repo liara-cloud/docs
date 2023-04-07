@@ -95,7 +95,7 @@ export default () => (
     <div className="endpoint">
       <Label variant="red">DELETE</Label>
       <span className="endpoint__path">
-        /v1/projects/<span className="endpoint__param">{`{database-id}`}</span>
+        /v1/databases/<span className="endpoint__param">{`{database-id}`}</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@ export default () => (
     <div className="endpoint">
       <Label variant="blue">POST</Label>
       <span className="endpoint__path">
-        /v1/projects/<span className="endpoint__param">{`{database-id}`}</span>
+        /v1/databases/<span className="endpoint__param">{`{database-id}`}</span>
         /actions/scale
       </span>
     </div>
@@ -148,7 +148,7 @@ export default () => (
     <div className="endpoint">
       <Label variant="blue">POST</Label>
       <span className="endpoint__path">
-        /v1/projects/<span className="endpoint__param">{`{database-id}`}</span>
+        /v1/databases/<span className="endpoint__param">{`{database-id}`}</span>
         /actions/scale
       </span>
     </div>
