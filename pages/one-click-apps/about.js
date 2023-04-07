@@ -120,7 +120,7 @@ export default () => (
       <Link href="/one-click-apps/ghost">
         <a>
           <PlatformIcon platform="ghost" />
-          <span>ghost</span>
+          <span>Ghost</span>
         </a>
       </Link>
     </div>
