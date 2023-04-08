@@ -30,31 +30,27 @@ export default () => (
       <ul>
         <li>
           <Link href="/databases/mongodb/install">
-            <a>MongoDB (version 3.6 or higher)</a>
+            MongoDB (version 3.6 or higher)
           </Link>
         </li>
 
         <li>
           <Link href="/databases/mysql/install">
-            <a>MySQL (version 5.7 or higher)</a>
+            MySQL (version 5.7 or higher)
           </Link>
         </li>
 
         <li>
           <Link href="/databases/mariadb/install">
-            <a>MariaDB (version 10.2 or higher)</a>
+            MariaDB (version 10.2 or higher)
           </Link>
         </li>
 
         <li>
-          <Link href="/databases/postgresql/install">
-            <a>PostgreSQL</a>
-          </Link>
+          <Link href="/databases/postgresql/install">PostgreSQL</Link>
         </li>
         <li>
-          <Link href="/databases/sqlserver/install">
-            <a>SQL Server</a>
-          </Link>
+          <Link href="/databases/sqlserver/install">SQL Server</Link>
         </li>
         <li>SQLite</li>
         <li>...</li>

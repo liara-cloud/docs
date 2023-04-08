@@ -318,7 +318,7 @@ const Footer = () => {
               <h5>{item.title}</h5>
               <div>
                 {item.children.map(link => (
-                  <Link href={link.link} title={link.alt}>
+                  <Link href={link.link} title={link.alt} legacyBehavior>
                     {link.title}
                   </Link>
                 ))}

@@ -35,17 +35,15 @@ export default () => (
 
     <div className="platforms">
       <Link href="/app-deploy/nextjs/getting-started">
-        <a>
-          <PlatformIcon platform="next" />
-          <span>NextJS</span>
-        </a>
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
       </Link>
     </div>
 
     <br />
 
-    <Link href="/app-deploy/react/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/react/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

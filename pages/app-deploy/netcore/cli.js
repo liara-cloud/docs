@@ -36,8 +36,8 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/netcore/envs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/netcore/envs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

@@ -73,8 +73,8 @@ export default () => (
       </p>
     </ol>
 
-    <Link href="/cli/app">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/cli/app" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

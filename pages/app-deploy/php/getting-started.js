@@ -56,8 +56,8 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/php/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/php/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

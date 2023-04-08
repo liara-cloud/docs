@@ -200,29 +200,26 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     <li key={index}>
                       <Link
                         href={item.element ? item.url + item.element : item.url}
+                        onClick={() => setSearchOpen(false)}
+                        className={`url_results ${
+                          current != undefined &&
+                          item.id == current.id &&
+                          `current-result `
+                        }`}
+                        onMouseEnter={() => handleHover(index)}
                       >
-                        <a
-                          onClick={() => setSearchOpen(false)}
-                          className={`url_results ${
-                            current != undefined &&
-                            item.id == current.id &&
-                            `current-result `
-                          }`}
-                          onMouseEnter={() => handleHover(index)}
-                        >
-                          <div className="platform_container">
-                            {item.platform && (
-                              <div className="platform-search_logo" width="25">
-                                <PlatformIcon platform={item.platform} />
-                              </div>
-                            )}
-                            <p className="">{item.title}</p>
-                          </div>
-                          <img
-                            src="/static/icons/arrow.svg"
-                            className="arrow-icon_result"
-                          />
-                        </a>
+                        <div className="platform_container">
+                          {item.platform && (
+                            <div className="platform-search_logo" width="25">
+                              <PlatformIcon platform={item.platform} />
+                            </div>
+                          )}
+                          <p className="">{item.title}</p>
+                        </div>
+                        <img
+                          src="/static/icons/arrow.svg"
+                          className="arrow-icon_result"
+                        />
                       </Link>
                     </li>
                   ))}

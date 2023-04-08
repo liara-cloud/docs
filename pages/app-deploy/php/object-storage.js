@@ -97,8 +97,8 @@ print_r($listResponse);`}
 
     <br />
 
-    <Link href="/app-deploy/php/domain">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/php/domain" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

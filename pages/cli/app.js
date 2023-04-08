@@ -331,8 +331,8 @@ export default () => (
     </ol>
 
     <br />
-    <Link href="/cli/env">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/cli/env" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

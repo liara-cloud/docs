@@ -73,8 +73,8 @@ send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@examp
       مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/django/tips">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/django/tips" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

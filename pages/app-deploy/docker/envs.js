@@ -49,8 +49,8 @@ export default () => (
       خودکار ری‌استارت می‌شود و این متغیر محیطی در استقرار جدید قابل استفاده
       خواهد بود.
     </p>
-    <Link href="/app-deploy/docker/logs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/docker/logs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

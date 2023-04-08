@@ -33,8 +33,8 @@ export default () => (
       از آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
 
-    <Link href="/app-deploy/angular/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/angular/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

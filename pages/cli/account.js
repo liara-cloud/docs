@@ -162,8 +162,8 @@ export default () => (
     </ol>
 
     <br />
-    <Link href="/cli/auto-complete">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/cli/auto-complete" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

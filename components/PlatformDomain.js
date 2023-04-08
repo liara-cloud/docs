@@ -258,8 +258,11 @@ export default function Domain({ platform }) {
 
       <br />
 
-      <Link href={`/app-deploy/${type.lCase}/${type.next}`}>
-        <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+      <Link
+        href={`/app-deploy/${type.lCase}/${type.next}`}
+        className="next-page"
+      >
+        متوجه شدم، برو گام بعدی!
       </Link>
     </Layout>
   );

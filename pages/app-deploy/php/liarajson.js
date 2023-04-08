@@ -49,8 +49,8 @@ export default () => (
       را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/php/update">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/php/update" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

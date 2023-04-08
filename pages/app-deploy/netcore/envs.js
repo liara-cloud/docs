@@ -63,8 +63,8 @@ else
       مستقر می‌شوند.
     </Notice>
     <br />
-    <Link href="/app-deploy/netcore/logs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/netcore/logs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

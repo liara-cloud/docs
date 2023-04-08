@@ -63,8 +63,8 @@ export default () => (
       نسخه‌های جدیدتر ارتقا دهید.
     </Notice>
     <br />
-    <Link href="/app-deploy/netcore/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/netcore/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

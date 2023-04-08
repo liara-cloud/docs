@@ -34,27 +34,21 @@ export default () => (
     </p>
     <div className="platforms">
       <Link href="/instructions/golang">
-        <a>
-          <PlatformIcon platform="go" />
-          <span>Go</span>
-        </a>
+        <PlatformIcon platform="go" />
+        <span>Go</span>
       </Link>
       <Link href="/instructions/nginx">
-        <a>
-          <PlatformIcon platform="nginx" />
-          <span>Nginx</span>
-        </a>
+        <PlatformIcon platform="nginx" />
+        <span>Nginx</span>
       </Link>
       <Link href="/instructions/fastapi">
-        <a>
-          <PlatformIcon platform="fastapi" />
-          <span>FastAPI</span>
-        </a>
+        <PlatformIcon platform="fastapi" />
+        <span>FastAPI</span>
       </Link>
     </div>
 
-    <Link href="/app-deploy/docker/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/docker/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

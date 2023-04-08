@@ -35,8 +35,8 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/docker/cli">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/docker/cli" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

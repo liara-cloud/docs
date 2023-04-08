@@ -124,8 +124,8 @@ path = default_storage.save('/example.txt', ContentFile(b'Contents'))`}</Highlig
 
     <br />
 
-    <Link href="/app-deploy/django/domain">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/django/domain" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

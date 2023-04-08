@@ -39,8 +39,8 @@ export default () => (
       مهم‌تر را نیز علاوه بر کنسول در فایل نیز نگهداری کنید.
     </p>
 
-    <Link href="/app-deploy/docker/liarajson">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/docker/liarajson" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

@@ -109,45 +109,33 @@ export default () => (
 
     <div className="platforms">
       <Link href="/app-deploy/nodejs/email">
-        <a>
-          <PlatformIcon platform="nodejs" />
-          <span>NodeJS</span>
-        </a>
+        <PlatformIcon platform="nodejs" />
+        <span>NodeJS</span>
       </Link>
 
       <Link href="/app-deploy/php/email">
-        <a>
-          <PlatformIcon platform="php" />
-          <span>PHP</span>
-        </a>
+        <PlatformIcon platform="php" />
+        <span>PHP</span>
       </Link>
 
       <Link href="/app-deploy/laravel/email">
-        <a>
-          <PlatformIcon platform="laravel" />
-          <span>Laravel</span>
-        </a>
+        <PlatformIcon platform="laravel" />
+        <span>Laravel</span>
       </Link>
 
       <Link href="/app-deploy/django/email">
-        <a>
-          <PlatformIcon platform="django" />
-          <span>Django</span>
-        </a>
+        <PlatformIcon platform="django" />
+        <span>Django</span>
       </Link>
 
       <Link href="/app-deploy/flask/email">
-        <a>
-          <PlatformIcon platform="flask" />
-          <span>Flask</span>
-        </a>
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
       </Link>
 
       <Link href="/app-deploy/netcore/email">
-        <a>
-          <PlatformIcon platform="netcore" />
-          <span>.NET</span>
-        </a>
+        <PlatformIcon platform="netcore" />
+        <span>.NET</span>
       </Link>
     </div>
   </Layout>

@@ -35,41 +35,31 @@ export default () => (
 
     <div className="platforms">
       <Link href="/instructions/gatsbyjs">
-        <a>
-          <PlatformIcon platform="gatsby" />
-          <span>GatsbyJS</span>
-        </a>
+        <PlatformIcon platform="gatsby" />
+        <span>GatsbyJS</span>
       </Link>
       <Link href="/instructions/gridsome">
-        <a>
-          <PlatformIcon platform="gridsome" />
-          <span>Gridsome</span>
-        </a>
+        <PlatformIcon platform="gridsome" />
+        <span>Gridsome</span>
       </Link>
       <Link href="/instructions/eleventy">
-        <a>
-          <PlatformIcon platform="eleventy" />
-          <span>Eleventy</span>
-        </a>
+        <PlatformIcon platform="eleventy" />
+        <span>Eleventy</span>
       </Link>
       <Link href="/instructions/hugo">
-        <a>
-          <PlatformIcon platform="hugo" />
-          <span>Hugo</span>
-        </a>
+        <PlatformIcon platform="hugo" />
+        <span>Hugo</span>
       </Link>
       <Link href="/instructions/jekyll">
-        <a>
-          <PlatformIcon platform="jekyll" />
-          <span>Jekyll</span>
-        </a>
+        <PlatformIcon platform="jekyll" />
+        <span>Jekyll</span>
       </Link>
     </div>
 
     <br />
 
-    <Link href="/app-deploy/static/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/static/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

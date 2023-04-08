@@ -163,8 +163,8 @@ export default () => (
       <code>$ gunicorn myname:app</code>
     </pre>
 
-    <Link href="/app-deploy/flask/envs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/flask/envs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

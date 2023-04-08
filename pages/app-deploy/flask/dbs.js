@@ -36,9 +36,7 @@ export default () => (
         این کار، یک پوشه‌ی اختصاصی برای دیتابیس‌تان بسازید و فایل دیتابیس را
         داخل آن قرار بدهید و سپس آن پوشه را به عنوان دیسک تعریف کرده و دیپلوی
         کنید.{" "}
-        <Link href="/storage/disks/about">
-          <a>اطلاعات بیشتر درباره‌ی دیسک‌ها</a>
-        </Link>
+        <Link href="/storage/disks/about">اطلاعات بیشتر درباره‌ی دیسک‌ها</Link>
       </p>
       <li id="postgresql">
         <b>PostgreSQL</b>
@@ -92,8 +90,8 @@ mongo = PyMongo(app, uri=os.getenv('MONGO_URI'))`}
 
     <br />
 
-    <Link href="/app-deploy/flask/disks">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/flask/disks" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

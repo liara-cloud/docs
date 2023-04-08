@@ -100,8 +100,8 @@ export default () => (
 
     <p dir="ltr">https://react-starter.liara.run</p>
 
-    <Link href="/app-deploy/react/logs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/react/logs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );
