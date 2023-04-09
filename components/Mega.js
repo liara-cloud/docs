@@ -282,8 +282,9 @@ const Mega = () => {
           </svg>
         </button>
       </div>
-      {products.map(item => (
+      {products.map((item, idx) => (
         <div
+          key={idx}
           className={!item.hasChildren ? "field-menu" : "menu-item"}
           onMouseEnter={() => item.hasChildren && setStyle(item.style)}
         >
