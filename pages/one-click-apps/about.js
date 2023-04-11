@@ -92,10 +92,8 @@ export default () => (
         <span>Ghost</span>
       </Link>
       <Link href="/one-click-apps/n8n">
-        <a>
-          <PlatformIcon platform="n8n" />
-          <span>n8n</span>
-        </a>
+        <PlatformIcon platform="n8n" />
+        <span>n8n</span>
       </Link>
     </div>
   </Layout>
