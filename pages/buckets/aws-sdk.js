@@ -21,45 +21,33 @@ export default () => (
 
     <div className="platforms">
       <Link href="/app-deploy/nodejs/object-storage">
-        <a>
-          <PlatformIcon platform="nodejs" />
-          <span>NodeJS</span>
-        </a>
+        <PlatformIcon platform="nodejs" />
+        <span>NodeJS</span>
       </Link>
 
       <Link href="/app-deploy/php/object-storage">
-        <a>
-          <PlatformIcon platform="php" />
-          <span>PHP</span>
-        </a>
+        <PlatformIcon platform="php" />
+        <span>PHP</span>
       </Link>
 
       <Link href="/app-deploy/laravel/object-storage">
-        <a>
-          <PlatformIcon platform="laravel" />
-          <span>Laravel</span>
-        </a>
+        <PlatformIcon platform="laravel" />
+        <span>Laravel</span>
       </Link>
 
       <Link href="/app-deploy/django/object-storage">
-        <a>
-          <PlatformIcon platform="django" />
-          <span>Django</span>
-        </a>
+        <PlatformIcon platform="django" />
+        <span>Django</span>
       </Link>
 
       <Link href="/app-deploy/flask/object-storage">
-        <a>
-          <PlatformIcon platform="flask" />
-          <span>Flask</span>
-        </a>
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
       </Link>
 
       <Link href="/app-deploy/netcore/object-storage">
-        <a>
-          <PlatformIcon platform="netcore" />
-          <span>.NET</span>
-        </a>
+        <PlatformIcon platform="netcore" />
+        <span>.NET</span>
       </Link>
     </div>
   </Layout>

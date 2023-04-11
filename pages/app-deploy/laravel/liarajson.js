@@ -50,8 +50,8 @@ export default () => (
       را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/laravel/update">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/laravel/update" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

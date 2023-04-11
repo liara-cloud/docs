@@ -28,106 +28,72 @@ export default () => (
 
     <div className="platforms">
       <Link href="/one-click-apps/others">
-        <a>
-          <PlatformIcon platform="ghost" />
-          <span>Ghost</span>
-        </a>
+        <PlatformIcon platform="ghost" />
+        <span>Ghost</span>
       </Link>
       <Link href="/one-click-apps/prestashop">
-        <a>
-          <PlatformIcon platform="prestashop" />
-          <span>Prestashop</span>
-        </a>
+        <PlatformIcon platform="prestashop" />
+        <span>Prestashop</span>
       </Link>
       <Link href="/one-click-apps/soketi/install">
-        <a>
-          <PlatformIcon platform="soketi" />
-          <span>Soketi</span>
-        </a>
+        <PlatformIcon platform="soketi" />
+        <span>Soketi</span>
       </Link>
       <Link href="/one-click-apps/metabase">
-        <a>
-          <PlatformIcon platform="metabase" />
-          <span>Metabase</span>
-        </a>
+        <PlatformIcon platform="metabase" />
+        <span>Metabase</span>
       </Link>
       <Link href="/one-click-apps/grafana">
-        <a>
-          <PlatformIcon platform="grafana" />
-          <span>Grafana</span>
-        </a>
+        <PlatformIcon platform="grafana" />
+        <span>Grafana</span>
       </Link>
       <Link href="/one-click-apps/kibana">
-        <a>
-          <PlatformIcon platform="kibana" />
-          <span>Kibana</span>
-        </a>
+        <PlatformIcon platform="kibana" />
+        <span>Kibana</span>
       </Link>
       <Link href="/one-click-apps/mattermost">
-        <a>
-          <PlatformIcon platform="mattermost" />
-          <span>Mattermost</span>
-        </a>
+        <PlatformIcon platform="mattermost" />
+        <span>Mattermost</span>
       </Link>
       <Link href="/one-click-apps/rocketchat">
-        <a>
-          <PlatformIcon platform="rocketchat" />
-          <span>Rocket.Chat</span>
-        </a>
+        <PlatformIcon platform="rocketchat" />
+        <span>Rocket.Chat</span>
       </Link>
       <Link href="/one-click-apps/gitea">
-        <a>
-          <PlatformIcon platform="gitea" />
-          <span>Gitea</span>
-        </a>
+        <PlatformIcon platform="gitea" />
+        <span>Gitea</span>
       </Link>
       <Link href="/one-click-apps/nextcloud">
-        <a>
-          <PlatformIcon platform="nextcloud" />
-          <span>NextCloud</span>
-        </a>
+        <PlatformIcon platform="nextcloud" />
+        <span>NextCloud</span>
       </Link>
       <Link href="/one-click-apps/imgproxy">
-        <a>
-          <PlatformIcon platform="imgproxy" />
-          <span>Imgproxy</span>
-        </a>
+        <PlatformIcon platform="imgproxy" />
+        <span>Imgproxy</span>
       </Link>
       <Link href="/one-click-apps/headless-chrome/install">
-        <a>
-          <PlatformIcon platform="chrome" />
-          <span>Chrome</span>
-        </a>
+        <PlatformIcon platform="chrome" />
+        <span>Chrome</span>
       </Link>
       <Link href="/one-click-apps/parse">
-        <a>
-          <PlatformIcon platform="parseserver" />
-          <span>Parse</span>
-        </a>
+        <PlatformIcon platform="parseserver" />
+        <span>Parse</span>
       </Link>
       <Link href="/one-click-apps/vscode">
-        <a>
-          <PlatformIcon platform="vscode" />
-          <span>Code</span>
-        </a>
+        <PlatformIcon platform="vscode" />
+        <span>Code</span>
       </Link>
       <Link href="/one-click-apps/odoo">
-        <a>
-          <PlatformIcon platform="odoo" />
-          <span>Odoo</span>
-        </a>
+        <PlatformIcon platform="odoo" />
+        <span>Odoo</span>
       </Link>
       <Link href="/one-click-apps/ghost">
-        <a>
-          <PlatformIcon platform="ghost" />
-          <span>Ghost</span>
-        </a>
+        <PlatformIcon platform="ghost" />
+        <span>Ghost</span>
       </Link>
       <Link href="/one-click-apps/n8n">
-        <a>
-          <PlatformIcon platform="n8n" />
-          <span>n8n</span>
-        </a>
+        <PlatformIcon platform="n8n" />
+        <span>n8n</span>
       </Link>
     </div>
   </Layout>

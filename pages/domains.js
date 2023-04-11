@@ -21,94 +21,68 @@ export default () => (
 
     <div className="platforms">
       <Link href="/app-deploy/react/domain">
-        <a>
-          <PlatformIcon platform="react" />
-          <span>React</span>
-        </a>
+        <PlatformIcon platform="react" />
+        <span>React</span>
       </Link>
 
       <Link href="/app-deploy/vue/domain">
-        <a>
-          <PlatformIcon platform="vue" />
-          <span>Vue</span>
-        </a>
+        <PlatformIcon platform="vue" />
+        <span>Vue</span>
       </Link>
 
       <Link href="/app-deploy/angular/domain">
-        <a>
-          <PlatformIcon platform="angularjs" />
-          <span>Angular</span>
-        </a>
+        <PlatformIcon platform="angularjs" />
+        <span>Angular</span>
       </Link>
 
       <Link href="/app-deploy/static/domain">
-        <a>
-          <PlatformIcon platform="HTML5" />
-          <span>Static</span>
-        </a>
+        <PlatformIcon platform="HTML5" />
+        <span>Static</span>
       </Link>
 
       <Link href="/app-deploy/nodejs/domain">
-        <a>
-          <PlatformIcon platform="nodejs" />
-          <span>NodeJS</span>
-        </a>
+        <PlatformIcon platform="nodejs" />
+        <span>NodeJS</span>
       </Link>
 
       <Link href="/app-deploy/nextjs/domain">
-        <a>
-          <PlatformIcon platform="next" />
-          <span>NextJS</span>
-        </a>
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
       </Link>
 
       <Link href="/app-deploy/php/domain">
-        <a>
-          <PlatformIcon platform="php" />
-          <span>PHP</span>
-        </a>
+        <PlatformIcon platform="php" />
+        <span>PHP</span>
       </Link>
 
       <Link href="/app-deploy/laravel/domain">
-        <a>
-          <PlatformIcon platform="laravel" />
-          <span>Laravel</span>
-        </a>
+        <PlatformIcon platform="laravel" />
+        <span>Laravel</span>
       </Link>
 
       <Link href="/app-deploy/django/domain">
-        <a>
-          <PlatformIcon platform="django" />
-          <span>Django</span>
-        </a>
+        <PlatformIcon platform="django" />
+        <span>Django</span>
       </Link>
 
       <Link href="/app-deploy/flask/domain">
-        <a>
-          <PlatformIcon platform="flask" />
-          <span>Flask</span>
-        </a>
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
       </Link>
 
       <Link href="/app-deploy/netcore/domain">
-        <a>
-          <PlatformIcon platform="netcore" />
-          <span>.Net</span>
-        </a>
+        <PlatformIcon platform="netcore" />
+        <span>.Net</span>
       </Link>
 
       <Link href="/app-deploy/docker/domain">
-        <a>
-          <PlatformIcon platform="docker" />
-          <span>Docker</span>
-        </a>
+        <PlatformIcon platform="docker" />
+        <span>Docker</span>
       </Link>
 
       <Link href="/wp-plus/domain">
-        <a>
-          <PlatformIcon platform="wordpress" />
-          <span>WordPress</span>
-        </a>
+        <PlatformIcon platform="wordpress" />
+        <span>WordPress</span>
       </Link>
     </div>
   </Layout>

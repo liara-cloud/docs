@@ -88,8 +88,8 @@ export default () => (
     </ol>
 
     <br />
-    <Link href="/cli/disk">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/cli/disk" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

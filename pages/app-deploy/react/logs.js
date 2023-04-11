@@ -27,8 +27,8 @@ export default () => (
     <ZoomableImage src="/static/react-logs.png" />
     <br />
 
-    <Link href="/app-deploy/react/liarajson">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/react/liarajson" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

@@ -48,24 +48,18 @@ export default () => (
       صحبت کردیم بهره‌مند شوید. علاوه‌براین‌ها مطالعه‌ی یکی از قابلیت‌های لیارا
       به‌نام{" "}
       <Link href="/app-features/zero-downtime-deployment">
-        <a>
-          <b>استقرار بدون اختلال</b>
-        </a>
+        <b>استقرار بدون اختلال</b>
       </Link>{" "}
       می‌تواند در تجربه‌ای بهتر و حرفه‌ای‌تر به شما کمک کند.
     </p>
     <div className="platforms">
       <Link href="/cicd/github">
-        <a>
-          <PlatformIcon platform="github" />
-          <span>GitHub</span>
-        </a>
+        <PlatformIcon platform="github" />
+        <span>GitHub</span>
       </Link>
       <Link href="/cicd/gitlab">
-        <a>
-          <PlatformIcon platform="gitlab" />
-          <span>GitLab</span>
-        </a>
+        <PlatformIcon platform="gitlab" />
+        <span>GitLab</span>
       </Link>
     </div>
   </Layout>

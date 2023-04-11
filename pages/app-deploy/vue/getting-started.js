@@ -35,17 +35,15 @@ export default () => (
 
     <div className="platforms">
       <Link href="/instructions/nuxtjs">
-        <a>
-          <PlatformIcon platform="nuxt" />
-          <span>NuxtJS</span>
-        </a>
+        <PlatformIcon platform="nuxt" />
+        <span>NuxtJS</span>
       </Link>
     </div>
 
     <br />
 
-    <Link href="/app-deploy/vue/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/vue/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

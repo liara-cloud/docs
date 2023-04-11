@@ -52,8 +52,8 @@ export default () => (
         ، برنامه‌ی Laravel خود را به این سرویس متصل کنید.
       </li>
     </ol>
-    <Link href="/app-deploy/laravel/tips">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/laravel/tips" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

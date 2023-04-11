@@ -101,8 +101,8 @@ MongoClient.connect(mongoDSN, function(err, client) {
 
     <br />
 
-    <Link href="/app-deploy/nodejs/disks">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/nodejs/disks" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

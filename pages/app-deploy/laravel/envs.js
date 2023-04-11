@@ -70,8 +70,8 @@ export default () => (
       اضافه کنید.
     </p>
 
-    <Link href="/app-deploy/laravel/https">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/laravel/https" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

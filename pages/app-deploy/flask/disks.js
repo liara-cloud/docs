@@ -180,8 +180,8 @@ $ liara deploy --disks data:uploads \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/flask/object-storage">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/flask/object-storage" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

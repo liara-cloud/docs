@@ -10,7 +10,7 @@ export default function notFound() {
           <img src="/static/404.png" style={{ marginTop: "-20px" }} />
           <h3>صفحه مورد نظر یافت نشد :(</h3>
           <div style={{ position: "relative", zIndex: 22 }}>
-            <Link href="/">
+            <Link href="/" legacyBehavior>
               <button className="grad" style={{ padding: "10px 40px" }}>
                 برو به خانه
               </button>

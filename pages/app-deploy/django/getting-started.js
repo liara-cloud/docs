@@ -58,8 +58,8 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/django/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/django/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

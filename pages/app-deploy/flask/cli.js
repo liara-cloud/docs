@@ -36,8 +36,8 @@ export default () => (
       width="100%"
     ></video>
 
-    <Link href="/app-deploy/flask/envs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/flask/envs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

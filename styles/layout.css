@@ -221,7 +221,7 @@ img.page-icon {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   margin-left: 10px;
   margin-bottom: 20px;
   border-radius: 12px;

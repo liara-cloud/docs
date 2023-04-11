@@ -48,8 +48,8 @@ export default () => (
       لیارا در بخش <b>توضیحات و نکات تکمیلی</b> بیشتر توضیح داده‌ایم.
     </p>
 
-    <Link href="/app-deploy/laravel/liarajson">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/laravel/liarajson" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

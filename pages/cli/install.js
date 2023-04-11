@@ -96,8 +96,8 @@ npx @liara/cli deploy`}
     </Notice>
 
     <br />
-    <Link href="/cli/login">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/cli/login" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

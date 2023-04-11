@@ -51,58 +51,40 @@ export default () => (
 
     <div className="platforms">
       <Link href="/instructions/nestjs">
-        <a>
-          <PlatformIcon platform="nest" />
-          <span>NestJS</span>
-        </a>
+        <PlatformIcon platform="nest" />
+        <span>NestJS</span>
       </Link>
       <Link href="/app-deploy/nextjs/getting-started">
-        <a>
-          <PlatformIcon platform="next" />
-          <span>NextJS</span>
-        </a>
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
       </Link>
       <Link href="/instructions/nuxtjs">
-        <a>
-          <PlatformIcon platform="nuxt" />
-          <span>NuxtJS</span>
-        </a>
+        <PlatformIcon platform="nuxt" />
+        <span>NuxtJS</span>
       </Link>
       <Link href="/instructions/fastify">
-        <a>
-          <PlatformIcon platform="fastify" />
-          <span>Fastify</span>
-        </a>
+        <PlatformIcon platform="fastify" />
+        <span>Fastify</span>
       </Link>
       <Link href="/instructions/svelte">
-        <a>
-          <PlatformIcon platform="svelte" />
-          <span>Svelte</span>
-        </a>
+        <PlatformIcon platform="svelte" />
+        <span>Svelte</span>
       </Link>
       <Link href="/instructions/remix">
-        <a>
-          <PlatformIcon platform="remix" />
-          <span>Remix</span>
-        </a>
+        <PlatformIcon platform="remix" />
+        <span>Remix</span>
       </Link>
       <Link href="/instructions/blitzjs">
-        <a>
-          <PlatformIcon platform="blitz" />
-          <span>BlitzJS</span>
-        </a>
+        <PlatformIcon platform="blitz" />
+        <span>BlitzJS</span>
       </Link>
       <Link href="/instructions/strapi">
-        <a>
-          <PlatformIcon platform="strapi" />
-          <span>Strapi</span>
-        </a>
+        <PlatformIcon platform="strapi" />
+        <span>Strapi</span>
       </Link>
       <Link href="/instructions/adonis">
-        <a>
-          <PlatformIcon platform="adonisjs" />
-          <span>Adonis</span>
-        </a>
+        <PlatformIcon platform="adonisjs" />
+        <span>Adonis</span>
       </Link>
     </div>
 
@@ -116,8 +98,8 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/nodejs/desktop">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/nodejs/desktop" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

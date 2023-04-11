@@ -181,8 +181,8 @@ $ liara deploy --disks data:MyStaticFiles \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/netcore/domain">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/netcore/domain" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

@@ -28,8 +28,8 @@ export default () => (
     <ZoomableImage src="/static/angular-logs.png" />
     <br />
 
-    <Link href="/app-deploy/angular/liarajson">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/angular/liarajson" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

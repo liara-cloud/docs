@@ -65,8 +65,8 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
       مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/netcore/tips">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/netcore/tips" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

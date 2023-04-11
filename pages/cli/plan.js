@@ -25,8 +25,8 @@ export default () => (
       سرویس برنامه را مشاهده کنید.
     </p>
 
-    <Link href="/cli/account">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/cli/account" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

@@ -35,9 +35,7 @@ export default function Header({ setSearchOpen }) {
       <header className="header">
         <div className="mian-menu" style={{ position: "relative", zIndex: 2 }}>
           <Link href="https://liara.ir/">
-            <a>
-              <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
-            </a>
+            <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
           </Link>
           <ul>
             {links.map(item => (
@@ -51,7 +49,9 @@ export default function Header({ setSearchOpen }) {
                     : ""
                 }
               >
-                <Link href={item.href}>{item.title}</Link>
+                <Link href={item.href} legacyBehavior>
+                  {item.title}
+                </Link>
               </li>
             ))}
             <a
@@ -66,16 +66,15 @@ export default function Header({ setSearchOpen }) {
           <Mega />
         </nav>
         <div className="menu-sm-device">
-          <Link href="/">
-            <a
-              style={
-                !showSidebar
-                  ? { visibility: "inherit" }
-                  : { visibility: "hidden" }
-              }
-            >
-              <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
-            </a>
+          <Link
+            href="/"
+            style={
+              !showSidebar
+                ? { visibility: "inherit" }
+                : { visibility: "hidden" }
+            }
+          >
+            <img src={`/static/liara-logo-${theme}.svg`} alt="logo" />
           </Link>
           <div style={{ display: "flex", alignItems: "center" }}>
             <img

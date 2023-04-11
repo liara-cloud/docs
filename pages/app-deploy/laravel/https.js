@@ -38,8 +38,8 @@ export default () => (
       لیارا مقدار آن را تغییر داده باشید.
     </p>
 
-    <Link href="/app-deploy/laravel/logs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/laravel/logs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

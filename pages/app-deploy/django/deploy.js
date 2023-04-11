@@ -113,8 +113,8 @@ export default () => (
 
     <p dir="ltr">https://django-starter.liara.run</p>
 
-    <Link href="/app-deploy/django/envs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/django/envs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

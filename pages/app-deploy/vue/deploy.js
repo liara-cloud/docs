@@ -100,8 +100,8 @@ export default () => (
 
     <p dir="ltr">https://vue-starter.liara.run</p>
 
-    <Link href="/app-deploy/vue/logs">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/vue/logs" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

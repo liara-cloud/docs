@@ -9,7 +9,7 @@
 section#menu {
   display: flex;
   transform-style: preserve-3d;
-  justify-content: end;
+  justify-content: flex-end;
   position: relative;
   z-index: 2;
   perspective: 2000px;

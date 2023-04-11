@@ -48,8 +48,8 @@ export default () => (
       را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/angular/update">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/angular/update" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );

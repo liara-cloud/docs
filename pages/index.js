@@ -238,12 +238,10 @@ const Index = () => {
             </div>
           </div>
           <div className="product-item-container_body">
-            {DATA_SECTIONS.PAAS.map(item => (
-              <Link href={item.href}>
-                <a>
-                  <PlatformIcon platform={item.platform} />
-                  <p>{item.title}</p>
-                </a>
+            {DATA_SECTIONS.PAAS.map((item, idx) => (
+              <Link key={idx} href={item.href}>
+                <PlatformIcon platform={item.platform} />
+                <p>{item.title}</p>
               </Link>
             ))}
           </div>
@@ -263,12 +261,10 @@ const Index = () => {
             </div>
           </div>
           <div className="product-item-container_body">
-            {DATA_SECTIONS.DBAAS.map(item => (
-              <Link href={item.href}>
-                <a>
-                  <PlatformIcon platform={item.platform} />
-                  <p>{item.title}</p>
-                </a>
+            {DATA_SECTIONS.DBAAS.map((item, idx) => (
+              <Link key={idx} href={item.href}>
+                <PlatformIcon platform={item.platform} />
+                <p>{item.title}</p>
               </Link>
             ))}
           </div>
@@ -288,18 +284,16 @@ const Index = () => {
             </div>
           </div>
           <div className="product-item-container_body">
-            {DATA_SECTIONS.ONE_CLICK_APP.map(item => (
-              <Link href={item.href}>
-                <a>
-                  <PlatformIcon platform={item.platform} />
-                  <p>{item.title}</p>
-                </a>
+            {DATA_SECTIONS.ONE_CLICK_APP.map((item, idx) => (
+              <Link key={idx} href={item.href}>
+                <PlatformIcon platform={item.platform} />
+                <p>{item.title}</p>
               </Link>
             ))}
           </div>
         </div>
         <div className="min-products-container">
-          <Link href="/dns/add-zone">
+          <Link href="/dns/add-zone" legacyBehavior>
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}
@@ -318,7 +312,7 @@ const Index = () => {
               </div>
             </div>
           </Link>
-          <Link href="/buckets/about">
+          <Link href="/buckets/about" legacyBehavior>
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}
@@ -337,7 +331,7 @@ const Index = () => {
               </div>
             </div>
           </Link>
-          <Link href="/email/create-mail-server">
+          <Link href="/email/create-mail-server" legacyBehavior>
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}
@@ -356,7 +350,7 @@ const Index = () => {
               </div>
             </div>
           </Link>
-          <Link href="/wp-plus/install">
+          <Link href="/wp-plus/install" legacyBehavior>
             <div
               className="product-item-container"
               style={{ cursor: "pointer" }}

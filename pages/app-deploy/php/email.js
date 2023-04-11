@@ -112,8 +112,8 @@ try {
       این کتابخانه مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/php/tips">
-      <a className="next-page">متوجه شدم، برو گام بعدی!</a>
+    <Link href="/app-deploy/php/tips" className="next-page">
+      متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
 );
