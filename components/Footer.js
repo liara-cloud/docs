@@ -210,6 +210,11 @@ const cols = [
         link: "/one-click-apps/headless-chrome/install",
         alt: "هاست ابری کروم",
       },
+      {
+        title: "n8n",
+        link: "/one-click-apps/n8n",
+        alt: "هاست ابری ان‌ایت‌ان",
+      },
     ],
   },
   {

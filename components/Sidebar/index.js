@@ -1139,6 +1139,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/one-click-apps/n8n">
+                <PlatformIcon platform="n8n" />
+                n8n
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/one-click-apps/others">
                 دیگر برنامه‌ها
               </ActiveLink>

@@ -35,6 +35,7 @@ import prestashopIcon from "@liara/platformicons/glass/png/prestashop.png";
 import mattermostIcon from "@liara/platformicons/glass/png/mattermost.png";
 import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
 import parseserverIcon from "@liara/platformicons/glass/png/parse.png";
+import n8nIcon from "@liara/platformicons/svg/n8n.svg";
 
 // Instructions
 
@@ -113,6 +114,7 @@ const types = [
   { logo: mattermostIcon, alt: "mattermost" },
   { logo: rocketchatIcon, alt: "rocketchat" },
   { logo: parseserverIcon, alt: "parseserver" },
+  { logo: n8nIcon, alt: "n8n" },
 
   // Instructions
 

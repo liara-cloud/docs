@@ -196,6 +196,11 @@ const DATA_SECTIONS = {
       title: "Ghost",
       href: "/one-click-apps/ghost",
     },
+    {
+      platform: "n8n",
+      title: "n8n",
+      href: "/one-click-apps/n8n",
+    },
   ],
 };
 
