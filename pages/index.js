@@ -286,7 +286,10 @@ const Index = () => {
           <div className="product-item-container_body">
             {DATA_SECTIONS.ONE_CLICK_APP.map((item, idx) => (
               <Link key={idx} href={item.href}>
-                <PlatformIcon platform={item.platform} />
+                <PlatformIcon
+                  style={{ width: "77px", height: "77px" }}
+                  platform={item.platform}
+                />
                 <p>{item.title}</p>
               </Link>
             ))}

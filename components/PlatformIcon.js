@@ -159,7 +159,7 @@ const types = [
   { logo: gitlabIcon, alt: "gitlab" },
 ];
 
-export default function PlatformIcon({ platform }) {
+export default function PlatformIcon({ platform, style = {} }) {
   const type = types.find(type => type.alt === platform);
 
   return (
@@ -168,6 +168,7 @@ export default function PlatformIcon({ platform }) {
       src={type.logo.src}
       alt={type.alt}
       style={{
+        ...style,
         pointerEvents: "none",
       }}
     />

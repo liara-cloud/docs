@@ -69,13 +69,13 @@
   margin: 0 auto;
 }
 
-.sm-menu-container ul.page-links div ul li a {
+.sm-menu-container ul.page-links div ul li div {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.sm-menu-container ul.page-links div ul li a img {
+.sm-menu-container ul.page-links div ul li div img {
   width: 25px;
   max-height: 25px;
 }

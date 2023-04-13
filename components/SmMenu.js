@@ -243,10 +243,12 @@ const SmMenu = ({ showSidebar }) => {
                     >
                       {item.children.map((child, i) => (
                         <li key={i}>
-                          <a href={child.href}>
+                          <div
+                            onClick={() => window.open(child.href, "_blank")}
+                          >
                             <PlatformIcon platform={child.icon} />
                             {child.title}
-                          </a>
+                          </div>
                         </li>
                       ))}
                     </ul>
