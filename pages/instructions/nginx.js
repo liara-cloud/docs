@@ -60,44 +60,48 @@ COPY nginx.conf /etc/nginx/nginx.conf`}</Highlight>
       </li>
     </ul>
 
-    <Highlight className="nginx">{`user  nginx;
-worker_processes  auto;
+    <Highlight className="nginx">{`user nginx;
+worker_processes auto;
 
-pid        /tmp/nginx.pid;
+pid /tmp/nginx.pid;
 
 events {
-  worker_connections  1024;
+
+	worker_connections 1024;
 }
 
 http {
-  client_body_temp_path /tmp/client_temp;
-  proxy_temp_path       /tmp/proxy_temp_path;
-  fastcgi_temp_path     /tmp/fastcgi_temp;
-  uwsgi_temp_path       /tmp/uwsgi_temp;
-  scgi_temp_path        /tmp/scgi_temp;
 
-  include       /etc/nginx/mime.types;
-  default_type  application/octet-stream;
+	client_body_temp_path /tmp/client_temp;
+	proxy_temp_path /tmp/proxy_temp_path;
+	fastcgi_temp_path /tmp/fastcgi_temp;
+	uwsgi_temp_path /tmp/uwsgi_temp;
+	scgi_temp_path /tmp/scgi_temp;
 
-  log_format  main  '$request_method $status $http_x_forwarded_for "$request_uri" "$http_referer" "$http_user_agent"';
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
 
-  server_tokens     off;
-  sendfile        on;
-  keepalive_timeout  65;
-  gzip  on;
-  access_log /dev/stdout;
-  error_log stderr;
+	log_format main '$request_method $status $http_x_forwarded_for "$request_uri" "$http_referer" "$http_user_agent"';
 
-  server {
-    resolver 127.0.0.11 ipv6=off valid=5s;
-    listen 80;
-    location / {
-	proxy_set_header Host            $host;
-	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	set $backend "http://app-name:port";
-	proxy_pass $backend;
-    }
-  }
+	server_tokens off;
+	sendfile on;
+	keepalive_timeout 65;
+	gzip on;
+	access_log /dev/stdout;
+	error_log stderr;
+
+	server {
+
+		resolver 127.0.0.11 ipv6=off valid=5s;
+		listen 80;
+		location / {
+
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			set $backend "http://app-name:port";
+			proxy_pass $backend;
+		}
+	}
 }`}</Highlight>
 
     <Notice variant="warning">
