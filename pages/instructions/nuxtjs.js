@@ -42,9 +42,9 @@ export default () => (
       دیپلوی کنید.
     </p>
     <p>
-      توجه داشته باشید که برای دیپلوی برنامه‌های NuxtJs نیازی به ایجاد تغییر در
-      فایل <span className="code">package.json</span> نیست و لیارا به‌طور کامل
-      از این فریم‌ورک پشتیبانی می‌کند بنابراین تغییری در بخش{" "}
+      توجه داشته باشید که برای دیپلوی برنامه‌های <strong>Nuxt 2</strong> نیازی
+      به ایجاد تغییر در فایل <span className="code">package.json</span> نیست و
+      لیارا به‌طور کامل از این فریم‌ورک پشتیبانی می‌کند بنابراین تغییری در بخش{" "}
       <span className="code">scripts</span> ایجاد نکنید.
     </p>
     <Highlight className="json">{`"scripts": {
@@ -54,8 +54,17 @@ export default () => (
 },`}</Highlight>
 
     <p>
-      حالت استاندارد npm scripts در برنامه‌های NuxtJS به‌شکل بالا است. در نهایت
-      دستور
+      ولی برای دیپلوی برنامه‌های <strong>Nuxt 3</strong> باید در بخش{" "}
+      <span className="code">scripts</span> فایل{" "}
+      <span className="code">package.json</span> مقدار{" "}
+      <span className="code">start</span> را به شکل زیر تغییر دهید:
+    </p>
+    <Highlight className="json">{`"scripts": {
+    "start": "node .output/server/index.mjs"
+},`}</Highlight>
+
+    <p>
+      در نهایت دستور
       <span className="code">liara deploy --port 3000 --platform node</span>
       را اجرا کنید تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
     </p>
