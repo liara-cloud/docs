@@ -68,7 +68,7 @@ RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT=100000000`}
     </p>
     <Highlight className="json">
       {`{
-  "image": "bitnami/rabbitmq:3.9",
+  "image": "bitnami/rabbitmq:3.11",
   "app": "rabbitmq-app",
   "port": 15672,
   "disks": [
@@ -96,7 +96,7 @@ RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT=100000000`}
     <Highlight className="bash">
       {`$ liara deploy --app rabbitmq-app \\
                 --port 15672 \\
-                --image bitnami/rabbitmq:3.9 \\
+                --image bitnami/rabbitmq:3.11 \\
                 --disks rabbitmq:/opt/bitnami/rabbitmq \\
                 --disks bitnami:/bitnami \\
                 --detach`}
