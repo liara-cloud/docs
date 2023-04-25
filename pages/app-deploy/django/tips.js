@@ -430,7 +430,10 @@ location ~ /\\.well-known {
     <h3 id="gunicorn-max-requests">تنظیم مقدار Gunicorn max_request</h3>
 
     <p>
-      در صورتی که در برنا‌مه‌ی Django خود نیاز به ری‌استارت{" "}
+      یکی از راه‌های جلوگیری از Memory leak و مصرف بالای RAM در Gunicorn، تنظیم
+      پارامتر max_requests است. با تنظیم این پارامتر، با رسیدن تعداد درخواست‌های
+      هر یک از Threadهای Gunicorn به این عدد، آن Thread ری‌استارت شده و حافظه‌ی
+      RAM آن خالی می‌شود. در صورتی که در برنا‌مه‌ی Django خود نیاز به ری‌استارت{" "}
       <span className="code">WORKER THREAD</span> بعد از تعداد مشخصی Request
       دارید، می‌تونید وارد تنظیمات برنامه‌ی Django شده و در بخش متغیر‌ها، متغیر{" "}
       <span className="code">GUNICORN_MAX_REQUESTS=1000</span> را اضافه کرده و
