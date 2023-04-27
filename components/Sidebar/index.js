@@ -1693,6 +1693,9 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/buckets/domain">اتصال دامنه</ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/buckets/migrate">
                 ثبت درخواست انتقال
               </ActiveLink>
