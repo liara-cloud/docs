@@ -11,7 +11,7 @@ const Videos = () => {
   return (
     <Layout>
       <Head>
-        <title>مستندات - ویدیو</title>
+        <title>مستندات - آموزش استفاده از لیارا</title>
       </Head>
 
       <Section
