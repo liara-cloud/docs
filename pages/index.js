@@ -201,6 +201,11 @@ const DATA_SECTIONS = {
       title: "n8n",
       href: "/one-click-apps/n8n",
     },
+    {
+      platform: "pocketbase",
+      title: "PocketBase",
+      href: "/one-click-apps/pocketbase",
+    },
   ],
 };
 

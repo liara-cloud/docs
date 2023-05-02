@@ -19,25 +19,24 @@ import angularIcon from "@liara/platformicons/glass/png/angular.png";
 
 // One-click-apps
 
+import n8nIcon from "@liara/platformicons/svg/n8n.svg";
 import odooIcon from "@liara/platformicons/glass/png/odoo.png";
+import pusherIcon from "./../public/static/platforms/pusher.svg";
 import ghostIcon from "@liara/platformicons/glass/png/ghost.png";
 import giteaIcon from "@liara/platformicons/glass/png/gitea.png";
 import vscodeIcon from "@liara/platformicons/glass/png/vscode.png";
 import chromeIcon from "@liara/platformicons/glass/png/chrome.png";
 import kibanaIcon from "@liara/platformicons/glass/png/kibana.png";
-import pusherIcon from "./../public/static/platforms/pusher.svg";
 import grafanaIcon from "@liara/platformicons/glass/png/grafana.png";
 import imgproxyIcon from "@liara/platformicons/glass/png/imgproxy.png";
 import metabaseIcon from "@liara/platformicons/glass/png/metabase.png";
+import parseserverIcon from "@liara/platformicons/glass/png/parse.png";
 import nextcloudIcon from "@liara/platformicons/glass/png/nextcloud.png";
 import wordpressIcon from "@liara/platformicons/glass/png/wordpress.png";
+import pocketbaseIcon from "@liara/platformicons/glass/png/pocketbase.png";
 import prestashopIcon from "@liara/platformicons/glass/png/prestashop.png";
 import mattermostIcon from "@liara/platformicons/glass/png/mattermost.png";
 import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
-import parseserverIcon from "@liara/platformicons/glass/png/parse.png";
-import n8nIcon from "@liara/platformicons/svg/n8n.svg";
-
-// Instructions
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -98,6 +97,7 @@ const types = [
   { logo: netcoreIcon, alt: "netcore" },
   { logo: angularIcon, alt: "angularjs" },
   // One-click-apps
+  { logo: n8nIcon, alt: "n8n" },
   { logo: odooIcon, alt: "odoo" },
   { logo: ghostIcon, alt: "ghost" },
   { logo: giteaIcon, alt: "gitea" },
@@ -110,11 +110,11 @@ const types = [
   { logo: metabaseIcon, alt: "metabase" },
   { logo: nextcloudIcon, alt: "nextcloud" },
   { logo: wordpressIcon, alt: "wordpress" },
+  { logo: pocketbaseIcon, alt: "pocketbase" },
   { logo: prestashopIcon, alt: "prestashop" },
   { logo: mattermostIcon, alt: "mattermost" },
   { logo: rocketchatIcon, alt: "rocketchat" },
   { logo: parseserverIcon, alt: "parseserver" },
-  { logo: n8nIcon, alt: "n8n" },
 
   // Instructions
 
