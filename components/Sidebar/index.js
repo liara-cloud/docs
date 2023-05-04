@@ -1142,6 +1142,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/one-click-apps/pocketbase">
+                <PlatformIcon platform="pocketbase" />
+                PocketBase
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/one-click-apps/others">
                 دیگر برنامه‌ها
               </ActiveLink>

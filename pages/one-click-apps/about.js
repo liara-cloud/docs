@@ -95,6 +95,10 @@ export default () => (
         <PlatformIcon platform="n8n" />
         <span>n8n</span>
       </Link>
+      <Link href="/one-click-apps/pocketbase">
+        <PlatformIcon platform="pocketbase" />
+        <span>PocketBase</span>
+      </Link>
     </div>
   </Layout>
 );

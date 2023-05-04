@@ -215,6 +215,11 @@ const cols = [
         link: "/one-click-apps/n8n",
         alt: "هاست ابری ان‌ایت‌ان",
       },
+      {
+        title: "PocketBase",
+        link: "/one-click-apps/pocketbase",
+        alt: "هاست ابری پاکت‌بیس",
+      },
     ],
   },
   {
