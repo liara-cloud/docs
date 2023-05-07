@@ -13,7 +13,7 @@ export default function Header({ setSearchOpen }) {
   const links = [
     { title: "قیمت‌ها", href: "https://liara.ir/pricing/" },
     {
-      title: "ویدیوها",
+      title: "آموزش",
       href: "/tv",
       isActive: router.pathname.includes("/tv"),
     },

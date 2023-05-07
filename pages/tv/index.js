@@ -33,7 +33,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم NodeJS"}
-        platfrom="nodejs"
+        platform="nodejs"
         style={{ marginTop: 40 }}
         badge={"NodeJS Platform"}
         setOpenDialog={setOpenDialog}
@@ -59,7 +59,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم NextJS"}
-        platfrom="next"
+        platform="next"
         style={{ marginTop: 40 }}
         badge={"NextJS Platform"}
         setOpenDialog={setOpenDialog}
@@ -77,7 +77,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Laravel"}
-        platfrom="laravel"
+        platform="laravel"
         style={{ marginTop: 40 }}
         badge={"Laravel Platform"}
         setOpenDialog={setOpenDialog}
@@ -103,7 +103,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم PHP"}
-        platfrom="php"
+        platform="php"
         style={{ marginTop: 40 }}
         badge={"PHP Platform"}
         setOpenDialog={setOpenDialog}
@@ -129,7 +129,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Django"}
-        platfrom="django"
+        platform="django"
         style={{ marginTop: 40 }}
         badge={"Django Platform"}
         setOpenDialog={setOpenDialog}
@@ -159,7 +159,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Flask"}
-        platfrom="flask"
+        platform="flask"
         style={{ marginTop: 40 }}
         badge={"Flask Platform"}
         setOpenDialog={setOpenDialog}
@@ -177,7 +177,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم .Net"}
-        platfrom="netcore"
+        platform="netcore"
         style={{ marginTop: 40 }}
         badge={".Net Platform"}
         setOpenDialog={setOpenDialog}
@@ -195,7 +195,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم React"}
-        platfrom="react"
+        platform="react"
         style={{ marginTop: 40 }}
         badge={"React Platform"}
         setOpenDialog={setOpenDialog}
@@ -213,7 +213,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Angular"}
-        platfrom="angularjs"
+        platform="angularjs"
         style={{ marginTop: 40 }}
         badge={"Angular Platform"}
         setOpenDialog={setOpenDialog}
@@ -231,7 +231,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Vue"}
-        platfrom="vue"
+        platform="vue"
         style={{ marginTop: 40 }}
         badge={"Vue Platform"}
         setOpenDialog={setOpenDialog}
@@ -249,7 +249,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Static"}
-        platfrom="HTML5"
+        platform="HTML5"
         style={{ marginTop: 40 }}
         badge={"Static Platform"}
         setOpenDialog={setOpenDialog}
@@ -267,7 +267,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Docker"}
-        platfrom="docker"
+        platform="docker"
         style={{ marginTop: 40 }}
         badge={"Docker Platform"}
         setOpenDialog={setOpenDialog}
@@ -284,99 +284,45 @@ const Videos = () => {
       />
 
       <Section
-        name={"دیتابیس MySQL"}
-        platfrom="mysql"
+        name={"راه‌اندازی دیتابیس "}
         style={{ marginTop: 40 }}
-        badge={"MySQL Database"}
+        badge={"Databases"}
         setOpenDialog={setOpenDialog}
         links={[
           {
             videoTitle: "راه‌اندازی MySQL",
             link: "https://files.liara.ir/liara/mysql/create-mysql.mp4",
+            platform: "mysql",
           },
-        ]}
-      />
-
-      <Section
-        name={"دیتابیس MariaDB"}
-        platfrom="mariadb"
-        style={{ marginTop: 40 }}
-        badge={"MariaDB Database"}
-        setOpenDialog={setOpenDialog}
-        links={[
           {
             videoTitle: "راه‌اندازی MariaDB",
             link: "https://files.liara.ir/liara/mariadb/create-mariadb.mp4",
+            platform: "mariadb",
           },
-        ]}
-      />
-
-      <Section
-        name={"دیتابیس PostgreSQL"}
-        platfrom="postgres"
-        style={{ marginTop: 40 }}
-        badge={"PostgreSQL Database"}
-        setOpenDialog={setOpenDialog}
-        links={[
           {
             videoTitle: "راه‌اندازی MariaDB",
             link: "https://files.liara.ir/liara/postgresql/create-postgresql.mp4",
+            platform: "postgres",
           },
-        ]}
-      />
-
-      <Section
-        name={"دیتابیس SQL Server"}
-        platfrom="mssql"
-        style={{ marginTop: 40 }}
-        badge={"SQL Server Database"}
-        setOpenDialog={setOpenDialog}
-        links={[
           {
             videoTitle: "راه‌اندازی SQL Server",
             link: "https://files.liara.ir/liara/mssql/create-mssql.mp4",
+            platform: "mssql",
           },
-        ]}
-      />
-
-      <Section
-        name={"دیتابیس MongoDB"}
-        platfrom="mongodb"
-        style={{ marginTop: 40 }}
-        badge={"MongoDB Database"}
-        setOpenDialog={setOpenDialog}
-        links={[
           {
             videoTitle: "راه‌اندازی MongoDB",
             link: "https://files.liara.ir/liara/mongodb/create-mongodb.mp4",
+            platform: "mongodb",
           },
-        ]}
-      />
-
-      <Section
-        name={"دیتابیس Redis"}
-        platfrom="redis"
-        style={{ marginTop: 40 }}
-        badge={"Redis Database"}
-        setOpenDialog={setOpenDialog}
-        links={[
           {
             videoTitle: "راه‌اندازی Redis",
             link: "https://files.liara.ir/liara/redis/create-redis.mp4",
+            platform: "redis",
           },
-        ]}
-      />
-
-      <Section
-        name={"دیتابیس Elasticsearch"}
-        platfrom="elastic"
-        style={{ marginTop: 40 }}
-        badge={"Elasticsearch Database"}
-        setOpenDialog={setOpenDialog}
-        links={[
           {
             videoTitle: "راه‌اندازی Elasticsearch",
             link: "https://files.liara.ir/liara/elastic/create-elastic.mp4",
+            platform: "elastic",
           },
         ]}
       />
@@ -417,7 +363,7 @@ const Videos = () => {
 export default Videos;
 
 const Section = props => {
-  const { name, badge, links, platfrom, style, setOpenDialog } = props;
+  const { name, badge, links, platform, style, setOpenDialog } = props;
 
   const handleClickButton = src => {
     setOpenDialog({ isOpen: true, src });
@@ -437,9 +383,14 @@ const Section = props => {
             onClick={() => handleClickButton(item.link)}
             style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
           >
-            {platfrom && (
+            {platform && (
               <span>
-                <PlatformIcon platform={platfrom} />
+                <PlatformIcon platform={platform} />
+              </span>
+            )}
+            {item.platform && (
+              <span>
+                <PlatformIcon platform={item.platform} />
               </span>
             )}
             <p style={{ marginRight: 15 }}>{item.videoTitle}</p>
