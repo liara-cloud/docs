@@ -11,7 +11,23 @@ export default () => (
 
     <h1>ذخیره‌سازی ابری</h1>
 
-    <h2>اتصال دامنه</h2>
+    <h3 id="add-domain">اضافه کردن دامنه</h3>
+
+    <h5 id="add-domain">سرویس DNS لیارا</h5>
+    <video
+      src="https://files.liara.ir/liara/domain/dns.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <h5 id="add-domain">سرویس DNS کلودفلر</h5>
+    <video
+      src="https://files.liara.ir/liara/domain/domain.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <p>
       برای اتصال دامنه به باکت مورد نظرتان ابتدا وارد باکت شده و در بخش{" "}
