@@ -46,19 +46,28 @@ export default () => (
 
     <ZoomableImage src="/static/cron-jobs.png" alt="بخش Cron Job ها" />
 
-    <p>
-      در حال حاضر، پلتفرم‌های زیر از این قابلیت پشتیبانی می‌کنند:
-      <ul>
-        <li>Laravel</li>
-        <li>PHP</li>
-        <li>Django</li>
-        <li>Flask</li>
-      </ul>
-    </p>
+    <p>در حال حاضر، پلتفرم‌های زیر از این قابلیت پشتیبانی می‌کنند:</p>
+    <ul>
+      <li>Laravel</li>
+      <li>PHP</li>
+      <li>Django</li>
+      <li>Flask</li>
+    </ul>
     <Notice varint="info">
       به‌زودی پشتیبانی سایر پلتفرم‌ها از این قابلیت را اضافه خواهیم کرد. چنانچه
       پلتفرم مدنظر شما در این لیست نیست، می‌توانید با پشتیبانی از طریق تیکت
       ارتباط بگیرید تا پلتفرم مربوطه را اضافه کنیم.
+    </Notice>
+    <Notice variant="info">
+      برای پلتفرم NodeJS، می‌توانید از پکیج‌هایی مانند{" "}
+      <a href="https://www.npmjs.com/package/cron" target="_blank">
+        Cron
+      </a>{" "}
+      و یا{" "}
+      <a href="https://www.npmjs.com/package/agenda" target="_blank">
+        Agenda
+      </a>{" "}
+      استفاده کنید.
     </Notice>
 
     <h3>بازه‌های زمانی رایج</h3>
