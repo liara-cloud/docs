@@ -92,6 +92,27 @@ export default () => (
       <li>obj</li>
     </ul>
     <p>
+      در پلتفرم Django و Flask، علاوه‌بر پوشه‌هایی که به‌صورت پیش‌فرض نادیده
+      گرفته می‌شوند، پوشه‌ها و فایل‌های زیر هم نادیده گرفته می‌شوند:
+    </p>
+    <ul style={{ direction: "ltr" }}>
+      <li>venv</li>
+      <li>/venv</li>
+      <li>.venv</li>
+      <li>.env</li>
+      <li>ENV</li>
+      <li>.python-version</li>
+      <li>.cache</li>
+      <li>__pycache__</li>
+      <li>lib</li>
+      <li>lib64</li>
+      <li>*.py[cod]</li>
+      <li>*$py.class</li>
+      <li>pip-log.txt</li>
+      <li>pip-delete-this-directory.txt</li>
+      <li>celerybeat-schedule</li>
+    </ul>
+    <p>
       اما شما می‌توانید عکس این الگوها و در واقع pattern ها را به فایل
       <span className="code">.gitignore</span>
       اضافه کنید و Liara CLI را مجبور کنید که آن‌ها را آپلود کند. برای مثال، اگر
