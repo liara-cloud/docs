@@ -36,9 +36,7 @@ export default () => (
       در ریشه‌ی برنامه‌ی‌تان بسازید و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight className="dockerfile">
-      {`FROM golang:1.17-alpine AS build
-
-ENV HTTPS_PROXY="http://fodev.org:8118"
+      {`FROM golang:1.19-alpine AS build
 
 WORKDIR /app
 
