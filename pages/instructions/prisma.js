@@ -44,7 +44,7 @@ export default () => (
       <span className="code">package.json</span>
       اسکریپت
       <span className="code">prebuild</span>
-      رو به‌صورت زیر اضافه کنید:
+      را به‌صورت زیر اضافه کنید:
     </p>
     <Highlight className="json">
       {`"scripts": {
