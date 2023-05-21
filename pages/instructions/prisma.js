@@ -38,14 +38,17 @@ export default () => (
       {`npx prisma migrate dev --name init --create-only`}
     </Highlight>
     <p>
-      سپس باید دستور
-      <span className="code">npx prisma generate</span>
-      را به اسکریپت <span className="code">build</span> اضافه کنید:
+      سپس باید در بخش
+      <span className="code">scripts</span>
+      فایل
+      <span className="code">package.json</span>
+      اسکریپت
+      <span className="code">prebuild</span>
+      را به‌صورت زیر اضافه کنید:
     </p>
     <Highlight className="json">
       {`"scripts": {
-  "build" : "npx tsc && npx prisma generate",
-  "start" : "node dist/index.js"
+  "prebuild" : "npx prisma generate",
 },`}
     </Highlight>
     <p>
