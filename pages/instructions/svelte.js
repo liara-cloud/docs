@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Highlight from "react-highlight";
+import Notice from "../../components/Notice";
 import Layout from "../../components/Layout";
 import PlatformIcon from "../../components/PlatformIcon";
 
@@ -17,6 +18,14 @@ export default () => (
         <span className="page-description">(Svelte Apps)</span>
       </div>
     </div>
+    <Notice variant="info">
+      در لیارا امکان استقرار برنامه‌ی svelteKit امکان پذیر هست. برای استقرار
+      پروژه‌ svelteKit نیاز هست طبق{" "}
+      <a href="/instructions/sveltekit" target="_blank">
+        مستندات{" "}
+      </a>{" "}
+      آن عمل کنید.
+    </Notice>
 
     <p>
       Svelte یک فریم‌ورک سریع و سبک برای ایجاد رابط‌های کاربری وب است که برخلاف
