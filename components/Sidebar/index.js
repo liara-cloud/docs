@@ -1207,6 +1207,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/sveltekit">
+                <PlatformIcon platform="svelte" />
+                SvelteKit
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/nestjs">
                 <PlatformIcon platform="nest" />
                 NestJS
