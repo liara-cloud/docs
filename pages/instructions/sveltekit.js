@@ -45,9 +45,9 @@ export default () => (
     <p>
       زمانی که برنامه SvelteKit خود را با استفاده از Static Adapter بسازید،
       مجموعه‌ای از فایل‌های HTML، CSS و JavaScript استاتیک ایجاد می‌شود که
-      نماینده برنامه شما می‌باشند. برای استقرار پروژه استاتیک نیاز هست ابتدا
+      نماینده برنامه شما می‌باشند. برای استقرار پروژه استاتیک نیاز است ابتدا
       دستور <span className="code">npm run build</span> را اجرا کرده و سپس وارد
-      مسیر Build برنامه‌تون شده و دستور
+      مسیر Build برنامه‌تان شده و دستور
       <span className="code">liara deploy --platform static</span> را اجرا کنید
       تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
     </p>
@@ -64,9 +64,9 @@ export default () => (
       داده از سمت سرور تولید می‌شوند.
     </p>
     <p>
-      برای استقرار پروژه NodeJS نیاز هست در فایل{" "}
+      برای استقرار پروژه NodeJS نیاز است در فایل{" "}
       <span className="code">package.json</span>، اسکریپت{" "}
-      <span className="code">start</span> رو به شکل زیر تغییر:
+      <span className="code">start</span> را به شکل زیر تغییر:
     </p>
     <Highlight className="json">{`"start": "node build/index.js",`}</Highlight>
 

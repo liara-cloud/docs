@@ -19,8 +19,8 @@ export default () => (
       </div>
     </div>
     <Notice variant="info">
-      در لیارا امکان استقرار برنامه‌ی svelteKit امکان پذیر هست. برای استقرار
-      پروژه‌ svelteKit نیاز هست طبق{" "}
+      در لیارا امکان استقرار برنامه‌ی svelteKit امکان پذیر است. برای استقرار
+      پروژه‌ svelteKit نیاز است طبق{" "}
       <a href="/instructions/sveltekit" target="_blank">
         مستندات{" "}
       </a>{" "}
