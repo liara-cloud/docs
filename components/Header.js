@@ -19,11 +19,11 @@ export default function Header({ setSearchOpen }) {
     },
     { title: "مستندات", href: "/", isActive: !router.pathname.includes("/tv") },
     { title: "وبلاگ", href: "https://liara.ir/blog/" },
-    {
-      title: "ورود",
-      href: "https://console.liara.ir/login",
-      isGradientLink: true,
-    },
+    // {
+    //   title: "ورود",
+    //   href: "https://console.liara.ir/login",
+    //   isGradientLink: true,
+    // },
   ];
 
   const handleToggleSidebar = () => {
@@ -56,9 +56,9 @@ export default function Header({ setSearchOpen }) {
             ))}
             <a
               style={{ color: "#181818 !important" }}
-              href="https://console.liara.ir/register"
+              href="https://console.liara.ir/login"
             >
-              <button className="grad">ایجاد حساب کاربری</button>
+              <button className="grad">ورود به پنل‌ کاربری</button>
             </a>
           </ul>
         </div>
