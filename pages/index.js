@@ -149,7 +149,7 @@ const DATA_SECTIONS = {
     {
       platform: "mattermost",
       title: "Mattermost",
-      href: "/one-click-apps/metabase",
+      href: "/one-click-apps/mattermost",
     },
     {
       platform: "rocketchat",
