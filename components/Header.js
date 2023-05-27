@@ -58,7 +58,9 @@ export default function Header({ setSearchOpen }) {
               style={{ color: "#181818 !important" }}
               href="https://console.liara.ir/login"
             >
-              <button className="grad">ورود به پنل‌ کاربری</button>
+              <button className="grad" style={{ fontWeight: "600 !important" }}>
+                ورود به پنل‌ کاربری
+              </button>
             </a>
           </ul>
         </div>
