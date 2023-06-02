@@ -63,6 +63,10 @@ export default () => (
       <a href="https://www.npmjs.com/package/cron" target="_blank">
         Cron
       </a>{" "}
+      ،
+      <a href="https://www.npmjs.com/package/croner" target="_blank">
+        Croner
+      </a>{" "}
       و یا{" "}
       <a href="https://www.npmjs.com/package/agenda" target="_blank">
         Agenda
