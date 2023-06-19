@@ -135,7 +135,7 @@ export default () => (
       وردپرس مواجه شدید، دستورهای زیر را با استفاده از خط فرمان اجرا کنید:
     </p>
     <Highlight className="bash">
-      {`chown www-data:www-data  -R *
+      {`chown www-data:www-data -R *
 find . -type d -exec chmod 755 {} \\;
 find . -type f -exec chmod 644 {} \\;`}
     </Highlight>
