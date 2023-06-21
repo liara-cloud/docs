@@ -72,7 +72,8 @@ window.Echo = new Echo({
   forceTLS: true,
   wsHost: 'soketi-app.iran.liara.run',
   wsPort: 443,
-  disableStats: true,
+  cluster: 'eu',
+  enableStats: false,
 });`}
     </Highlight>
 
