@@ -23,19 +23,23 @@ export default () => (
 
     <p>
       برای استفاده از سرویس ایمیل در برنامه‌های Django باید پس از{" "}
-      <Link href="/app-features/email#create-email">ایجاد سرویس ایمیل</Link>،
-      اطلاعات <Link href="/app-features/email#settings">دسترسی SMTP</Link> را
+      <Link href="/email/create-mail-server#create-mail-server">
+        ایجاد سرویس ایمیل
+      </Link>{" "}
+      و ساخت <Link href="/email/send-email#add-smtp-user">دسترسی SMTP</Link>،
+      اطلاعات{" "}
+      <Link href="/email/send-email#smtp-server-address">دسترسی SMTP</Link> را
       طبق مستندات <Link href="/app-deploy/django/envs">تنظیم متغیرها</Link> در
       تنظیمات برنامه اضافه کرده و از آن‌ها در فایل{" "}
       <span className="code">settings.py</span> استفاده کنید.
     </p>
 
     <Highlight className="plaintext">
-      {`EMAIL_BACKEND = ‘django.core.mail.backends.smtp.EmailBackend’
-EMAIL_HOST=smtp.liara.ir
+      {`EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST=smtp.c1.liara.email
 EMAIL_PORT=587
-EMAIL_HOST_USER=my-app
-EMAIL_HOST_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
+EMAIL_HOST_USER=YOUR_USERNAME
+EMAIL_HOST_PASSWORD=YOUR_PASSWORD
 EMAIL_USE_TLS=True`}
     </Highlight>
 
@@ -54,8 +58,14 @@ EMAIL_USE_TLS=True`}
 
     <Notice variant="warning">
       قابل ذکر است که مقدار <span className="code">from@example.com</span> در
-      قطعه کد زیر باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+      قطعه کد زیر باید یکی از{" "}
+      <Link href="/email/send-email#mail-server-account">
+        نشانی‌های اضافه شده
+      </Link>{" "}
+      در سرویس ایمیل باشد.
     </Notice>
+
+    <br />
 
     <Highlight className="python">
       {`from django.core.mail import send_mail
@@ -63,9 +73,23 @@ send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@examp
     </Highlight>
 
     <p>
+      در صورتی که از پکیج{" "}
+      <a href="https://github.com/pennersr/django-allauth" target="_blank">
+        django-allauth
+      </a>{" "}
+      برای احراز هویت و ارسال ایمیل تایید حساب کاربری استفاده می‌کنید، نیاز است
+      مقدار <span className="code">from</span> را در فایل{" "}
+      <span className="code">settings.py</span> به‌صورت زیر مشخص کنید:
+    </p>
+
+    <Highlight className="python">
+      {`DEFAULT_FROM_EMAIL = 'from@example.com'`}
+    </Highlight>
+
+    <p>
       برای اطلاعات بیشتر می‌توانید به{" "}
       <a
-        href="https://docs.djangoproject.com/en/3.2/topics/email/"
+        href="https://docs.djangoproject.com/en/4.2/topics/email/"
         target="_blank"
       >
         مستندات Django
