@@ -602,7 +602,7 @@ $ffmpeg = FFMpeg::create([
       </a>{" "}
       را مطالعه کنید.
     </p>
-    <h3 id="using-ignition-and-faker-packages">نصب پکیج‌های Dev</h3>
+    <h3 id="installing-dev-dependencies">نصب پکیج‌های Dev</h3>
     <p>
       شما برای نصب پکیج‌هایی که در بخش
       <span className="code">require-dev</span> فایل{" "}
