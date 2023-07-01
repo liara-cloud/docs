@@ -606,7 +606,7 @@ $ffmpeg = FFMpeg::create([
     <p>
       شما برای نصب پکیج‌هایی که در بخش
       <span className="code">require-dev</span> فایل{" "}
-      <span className="code">composer.json</span> قرار دارد، باید تنظیمات زیر را
+      <span className="code">composer.json</span> قرار دارد (مانند Faker و Ignition)، باید تنظیمات زیر را
       در فایل <Link href="/app-deploy/laravel/liarajson">liara.json</Link> قرار
       بدهید:
     </p>
