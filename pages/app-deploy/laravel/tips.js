@@ -67,7 +67,7 @@ export default () => (
         <a href="#ffmpeg">نحوه‌ی استفاده از ماژول FFmpeg</a>
       </li>
       <li>
-        <a href="#using-ignition-and-faker-packages">نصب پکیج‌های Dev</a>
+        <a href="#installing-dev-dependencies">نصب پکیج‌های Dev</a>
       </li>
       <li>
         <a href="#ziggy">نحوه‌ی استفاده از Ziggy</a>
