@@ -67,9 +67,7 @@ export default () => (
         <a href="#ffmpeg">نحوه‌ی استفاده از ماژول FFmpeg</a>
       </li>
       <li>
-        <a href="#using-ignition-and-faker-packages">
-          استفاده از پکیج‌های Ignition و Faker
-        </a>
+        <a href="#installing-dev-dependencies">نصب پکیج‌های Dev</a>
       </li>
       <li>
         <a href="#ziggy">نحوه‌ی استفاده از Ziggy</a>
@@ -604,36 +602,22 @@ $ffmpeg = FFMpeg::create([
       </a>{" "}
       را مطالعه کنید.
     </p>
-    <h3 id="using-ignition-and-faker-packages">
-      استفاده از پکیج‌های Ignition و Faker
-    </h3>
+    <h3 id="installing-dev-dependencies">نصب پکیج‌های Dev</h3>
     <p>
-      شما برای استفاده از پکیج‌های{" "}
-      <a href="https://github.com/facade/ignition" target="_blank">
-        Ignition
-      </a>{" "}
-      و{" "}
-      <a href="https://github.com/FakerPHP/Faker" target="_blank">
-        Faker
-      </a>{" "}
-      در لیارا باید ابتدا این پکیج‌ها را از بخش{" "}
+      شما برای نصب پکیج‌هایی که در بخش
       <span className="code">require-dev</span> فایل{" "}
-      <span className="code">composer.json</span> به بخش{" "}
-      <span className="code">require</span> انتقال دهید:
+      <span className="code">composer.json</span> قرار دارد (مانند Faker و Ignition)، باید تنظیمات زیر را
+      در فایل <Link href="/app-deploy/laravel/liarajson">liara.json</Link> قرار
+      بدهید:
     </p>
     <Highlight className="json">
-      {`"require": {
-        ...
-        "facade/ignition": "^2.5",
-        "fakerphp/faker": "^1.9.1",
-},`}
+      {`{
+  "laravel": {
+    "installDevDependencies": true
+  }
+}
+`}
     </Highlight>
-    <p>سپس برای اعمال این تغییرات، دستور زیر را در لوکال خود اجرا کنید:</p>
-    <code>{`composer update`}</code>
-    <p>
-      حال با اجرای دستور <span className="code">liara deploy</span>، فرایند
-      استقرار آغاز خواهد شد.
-    </p>
     <h3 id="ziggy">نحوه‌ی استفاده از Ziggy</h3>
     <p>
       برای استفاده از Ziggy در لیارا تنها کافیست فایل مورد نظرتان را از مسیر{" "}
