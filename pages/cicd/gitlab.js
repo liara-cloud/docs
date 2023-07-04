@@ -37,7 +37,7 @@ export default () => (
       پروژه‌ی خود ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
     <Highlight className="yaml">
-      {`image: node:16-alpine
+      {`image: node:18-alpine
 
 stages:
   - update-production
