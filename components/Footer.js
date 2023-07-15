@@ -343,13 +343,9 @@ const Footer = () => {
                 قم، خیابان رسالت، کوچه ۱، فرعی اول، پلاک ۱۲، طبقه منفی ۱
               </p>
               <h6>شماره تماس واحد فروش:</h6>
-              {/* <a style={{ margin: 0, padding: 0 }} href="tel:025337838946">
-                    <p style={{ marginTop: 12 }}>۰۲۵-۳۷۸۳۸۹۴۶ (۹ الی ۱۷)</p>
-                  </a> */}
-              <p style={{ marginTop: 12 }}>
-                {" "}
-                در حال حاضر برای ارتباط با ما، تیکت بزنید.
-              </p>
+              <a style={{ margin: 0, padding: 0 }} href="tel:02532920344">
+                <p style={{ marginTop: 12 }}>۰۲۵-۳۲۹۲۰۳۴۴ (۹ الی ۱۷)</p>
+              </a>
               <h6>ایمیل واحد فروش:</h6>
               <a style={{ margin: 0, padding: 0 }} href="mailto:sales@liara.ir">
                 <p style={{ marginTop: 12 }}>sales[@]liara.ir</p>
