@@ -39,10 +39,10 @@ export default () => (
     </p>
 
     <Highlight className="plaintext">
-      {`MAIL_SERVER=smtp.liara.ir
+      {`MAIL_SERVER=smtp.c1.liara.email
 MAIL_PORT=587
-MAIL_USERNAME=my-app
-MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
+MAIL_USERNAME=YOUR_USERNAME
+MAIL_PASSWORD=YOUR_PASSWORD
 MAIL_USE_TLS=True`}
     </Highlight>
 
@@ -72,11 +72,11 @@ import os
 
 app = Flask(__name__)
 
-app.config['MAIL_SERVER']= os.environ.get('MAIL_SERVER')
-app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS')
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS') == 'True'
 app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
 
