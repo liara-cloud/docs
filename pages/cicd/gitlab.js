@@ -47,7 +47,7 @@ deploy:
   only:
     - master
   script:
-    - npm i -g @liara/cli@3
+    - npm i -g @liara/cli@4
     - export http_proxy=http://proxy.liara.ir:6666
     - liara deploy --app APP_NAME --api-token $TOKEN --detach
 `}

@@ -50,7 +50,8 @@ export default () => (
       {`name: CD-Liara
 on:
   push:
-    branches: [master]
+    branches:
+      - master
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -65,7 +66,7 @@ jobs:
           LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}\
 
         run: |
-          npm i -g @liara/cli@3
+          npm i -g @liara/cli@4
           liara deploy --app="APP_NAME" --api-token="$LIARA_TOKEN" --detach
 `}
     </Highlight>
