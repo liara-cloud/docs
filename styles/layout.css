@@ -176,6 +176,7 @@ span.code {
 .page-head img {
   max-width: 65px;
   height: fit-content;
+  max-height: 65px;
   align-self: center;
 }
 
