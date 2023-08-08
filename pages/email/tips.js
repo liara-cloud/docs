@@ -150,7 +150,7 @@ export default () => (
       </tr>
     </table>
 
-    <h3 id="common-email-problems">مشکلات رایج ایمیل</h3>
+    <h3 id="common-email-problems">مشکلات رایج در ارسال ایمیل</h3>
 
     <p>
       ممکن است چندین دلیل وجود داشته باشد که ایمیل شما ارسال نشود و یا ایمیل شما
