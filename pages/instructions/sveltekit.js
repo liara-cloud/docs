@@ -41,34 +41,48 @@ export default () => (
       توسعه برنامه‌های وب را تجربه کنید.
     </p>
 
-    <h3>Static Adapter</h3>
+    <h3>adapter-static</h3>
     <p>
-      زمانی که برنامه SvelteKit خود را با استفاده از Static Adapter بسازید،
-      مجموعه‌ای از فایل‌های HTML، CSS و JavaScript استاتیک ایجاد می‌شود که
-      نماینده برنامه شما می‌باشند. برای استقرار پروژه استاتیک نیاز است ابتدا
-      دستور <span className="code">npm run build</span> را اجرا کرده و سپس وارد
-      مسیر Build برنامه‌تان شده و دستور
+      adapter-static یک خروجی استاتیک شامل فقط فایل‌های JS/HTML/CSS تحویل شما
+      می‌دهد. برای استقرار پروژه استاتیک نیاز است ابتدا دستور{" "}
+      <span className="code">npm run build</span> را اجرا کرده و سپس وارد مسیر
+      Build برنامه‌تان شده و دستور
       <span className="code">liara deploy --platform static</span> را اجرا کنید
       تا برنامه‌ی شما به لیارا منتقل شده و اجرا شود.
     </p>
 
-    <h3>Node Server Adapter</h3>
+    <h3>adapter-node</h3>
     <p>
-      در SvelteKit، Node Server Adapter یک adapter است که به شما امکان می‌دهد
-      برنامه SvelteKit خود را به عنوان یک سرور Node.js اجرا کنید. این یکی از
-      گزینه‌های استقراری است که توسط SvelteKit ارائه می‌شود.زمانی که از Node
-      Server Adapter استفاده می‌کنید، برنامه SvelteKit شما در یک محیط سرور
-      Node.js اجرا می‌شود. به این ترتیب، سرور درخواست‌های ورودی را پردازش کرده و
-      صفحات و فایل‌های SvelteKit مناسب را به صورت پویا ارائه می‌دهد. برای هر
-      درخواست، عملیات رندر سمت سرور (SSR) انجام شده و محتواهای پویا و دریافت
-      داده از سمت سرور تولید می‌شوند.
+      adapter-node یک adapter است که به شما امکان می‌دهد برنامه SvelteKit خود را
+      به عنوان یک سرور Node.js اجرا کنید. این یکی از گزینه‌های استقراری است که
+      توسط SvelteKit ارائه می‌شود.زمانی که از Node Server Adapter استفاده
+      می‌کنید، برنامه SvelteKit شما در یک محیط سرور Node.js اجرا می‌شود. به این
+      ترتیب، سرور درخواست‌های ورودی را پردازش کرده و صفحات و فایل‌های SvelteKit
+      مناسب را به صورت پویا ارائه می‌دهد. برای هر درخواست، عملیات رندر سمت سرور
+      (SSR) انجام شده و محتواهای پویا و دریافت داده از سمت سرور تولید می‌شوند.
     </p>
     <p>
-      برای استقرار پروژه NodeJS نیاز است در فایل{" "}
-      <span className="code">package.json</span>، اسکریپت{" "}
-      <span className="code">start</span> را به شکل زیر تغییر:
+      ابتدا اطمینان حاصل کنید که در فایل{" "}
+      <span className="code">svelte.config.js</span> از{" "}
+      <span className="code">adapter-node</span> استفاده کرده‌اید:
     </p>
-    <Highlight className="json">{`"start": "node build/index.js",`}</Highlight>
+    <Highlight className="code">{`import adapter from '@sveltejs/adapter-node';`}</Highlight>
+
+    <p>
+      سپس دستور <span className="code">start</span> را به قسمت{" "}
+      <span className="code">scripts</span> در فایل{" "}
+      <span className="code">package.json</span> اضافه کنید.
+    </p>
+    <Highlight className="json">{`
+    ...
+    "scripts": {
+      "dev": "vite dev",
+      "build": "vite build",
+      "preview": "vite preview",
+      "start": "node build/index.js"
+    },
+    "devDependencies": {
+      ...`}</Highlight>
 
     <p>
       سپس دستور{" "}
