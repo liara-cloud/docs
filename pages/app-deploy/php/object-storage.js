@@ -76,10 +76,12 @@ LIARA_SECRET_KEY=<Secret Key>`}
 
     <Highlight className="php">
       {`<?php
+// Require the Composer autoloader.
 require 'vendor/autoload.php';
 
 use AwsS3S3Client;
 
+// Instantiate an S3 client.
 $client = new S3Client([
     'region' => 'us-east-1',
     'version' => '2006-03-01',
@@ -90,10 +92,49 @@ $client = new S3Client([
     ],
 ]);
 
-$listResponse = $client->listBuckets();
+$result = $client->listBuckets([/* ... */]);
+$promise = $client->listBucketsAsync([/* ... */]);
 
-print_r($listResponse);`}
+print_r($result);
+print_r($promise);`}
     </Highlight>
+    <p>نمونه کد برای آپلود فایل در باکت‌های ایجاد شده:</p>
+
+    <Highlight className="php">
+      {`<?php
+// Require the Composer autoloader.
+require 'vendor/autoload.php';
+
+use AwsS3S3Client;
+
+// Instantiate an S3 client.
+$client = new S3Client([
+    'region' => 'us-east-1',
+    'version' => '2006-03-01',
+    'endpoint' => LIARA_ENDPOINT,
+    'credentials' => [
+        'key' => LIARA_ACCESS_KEY
+        'secret' => LIARA_SECRET_KEY
+    ],
+]);
+
+try {
+  $client->putObject([
+      'Bucket' => 'my-bucket',
+      'Key'    => 'my-object',
+      'Body'   => fopen('/path/to/file', 'r')
+  ]);
+} catch (AwsS3ExceptionS3Exception $e) {
+  echo "There was an error uploading the file.";
+}`}
+    </Highlight>
+
+    <br />
+
+    <Link href="https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.S3.S3Client.html">
+      برای اطلاعات بیشتر درمورد نحوه استفاده، می‌توانید به مستندات AWS مراجعه
+      کنید.
+    </Link>
 
     <br />
 
