@@ -93,7 +93,7 @@ $client = new S3Client([
     'version' => '2006-03-01',
     'endpoint' => LIARA_ENDPOINT,
     'credentials' => [
-        'key' => LIARA_ACCESS_KEY
+        'key' => LIARA_ACCESS_KEY,
         'secret' => LIARA_SECRET_KEY
     ],
 ]);
@@ -151,7 +151,7 @@ $client = new S3Client([
     'version' => '2006-03-01',
     'endpoint' => LIARA_ENDPOINT,
     'credentials' => [
-        'key' => LIARA_ACCESS_KEY
+        'key' => LIARA_ACCESS_KEY,
         'secret' => LIARA_SECRET_KEY
     ],
 ]);
