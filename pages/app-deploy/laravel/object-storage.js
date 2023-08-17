@@ -45,6 +45,23 @@ export default () => (
       <li>
         <a href="#how-to-use">نحوه‌ی استفاده</a>
       </li>
+      <li>
+        <a href="#retrieving-files">بازیابی فایل‌ها توسط Amazon S3 Driver</a>
+      </li>
+      <li>
+        <a href="#download-files">دانلود فایل‌ توسط Amazon S3 Driver</a>
+      </li>
+      <li>
+        <a href="#list-files">
+          دریافت لیست فایل‌‌های آپلود شده توسط Amazon S3 Driver
+        </a>
+      </li>
+      <li>
+        <a href="#remove-files">حذف فایل توسط Amazon S3 Driver</a>
+      </li>
+      <li>
+        <a href="#upload-files">آپلود فایل </a>
+      </li>
     </ul>
 
     <h3 id="install-s3-driver">نصب Amazon S3 Driver</h3>
@@ -106,6 +123,11 @@ DEFAULT_REGION=us-east-1`}
     </Notice>
 
     <h3 id="how-to-use">نحوه‌ی استفاده</h3>
+
+    <Notice variant="warning">
+      توجه داشته باشید همه مسیر‌های فایل، باید نسبت به روت باکت مشخص شوند.
+    </Notice>
+
     <p>
       می‌توان گفت که تغییر خاصی در نحوه‌ی استفاده‌ی شما به‌وجود نخواهد آمد. برای
       مثال شما می‌توانید با استفاده از قطعه کد زیر، محتوای{" "}
@@ -118,6 +140,108 @@ DEFAULT_REGION=us-east-1`}
 
 Storage::disk('liara')->put('example.txt', 'Contents');`}
     </Highlight>
+
+    <h3 id="retrieving-files">بازیابی فایل‌ها توسط Amazon S3 Driver</h3>
+    <p>نمونه کد برای بازیابی فایل‌ها:</p>
+
+    <br />
+
+    <Highlight className="php">
+      {`use Illuminate\\Support\\Facades\\Storage;
+
+$contents = Storage::get('file.jpg');`}
+    </Highlight>
+
+    <p>
+      اگر فایلی دارید که محتوای آن JSON باشد ، می‌توانید با متد{" "}
+      <span className="code">json</span> آن‌ها را بازیابی کنید:
+    </p>
+    <Highlight className="php">
+      {`use Illuminate\\Support\\Facades\\Storage;
+
+$orders = Storage::json('orders.json');`}
+    </Highlight>
+
+    <h3 id="download-files">دانلود فایل‌ توسط Amazon S3 Driver</h3>
+    <p>نمونه کد برای دانلود فایل:</p>
+    <Highlight className="php">
+      {`use Illuminate\\Support\\Facades\\Storage;
+
+return Storage::download('file.jpg');`}
+    </Highlight>
+
+    <h3 id="list-files">
+      دریافت لیست فایل‌‌های آپلود شده توسط Amazon S3 Driver
+    </h3>
+    <p>نمونه کد برای دریافت لیست فایل‌های آپلود شده:</p>
+    <Highlight className="php">
+      {`use Illuminate\\Support\\Facades\\Storage;
+
+$files = Storage::files($directory);
+
+$files = Storage::allFiles($directory);`}
+    </Highlight>
+
+    <h3 id="remove-files">حذف فایل توسط Amazon S3 Driver</h3>
+    <p>نمونه کد برای دریافت لیست فایل‌های آپلود شده:</p>
+    <Highlight className="php">
+      {`use Illuminate\\Support\\Facades\\Storage;
+
+$files = Storage::files($directory);
+
+$files = Storage::allFiles($directory);`}
+    </Highlight>
+
+    <h3 id="upload-files">آپلود فایل </h3>
+    <p>
+      لاراول ذخیره فایل‌های آپلود شده را با استفاده از روش
+      <span className="code">store</span> در نمونه فایل آپلود شده بسیار آسان
+      می‌کند.
+    </p>
+    <Highlight className="php">
+      {`<?php
+
+namespace App\\Http\\Controllers;
+  
+use App\\Http\\Controllers\\Controller;
+use Illuminate\\Http\Request;
+  
+class UserAvatarController extends Controller
+  {
+      /**
+      * Update the avatar for the user.
+      */
+      public function update(Request $request): string
+      {
+          $path = $request->file('avatar')->store('avatars');
+  
+          return $path;
+      }
+}`}
+    </Highlight>
+    <p>
+      همچنین شما می‌توانید متد <span className="code">putFile</span>
+      را در نمای <span className="code">Storage</span>
+      فراخوانی کنید تا همانند مثال بالا، فرآیند آپلود کردن را انجام بدید.
+    </p>
+    <Highlight className="php">
+      {`use Illuminate\\Support\\Facades\\Storage;
+$path = Storage::putFile('avatars', $request->file('avatar'));`}
+    </Highlight>
+
+    <br />
+
+    <p>
+      شما می‌توانید برای کسب اطلاعات بیشتر،{" "}
+      <a
+        href="https://laravel.com/docs/10.x/filesystem"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        مثال‌ها و مستندات این پکیج
+      </a>{" "}
+      را مطالعه کنید.
+    </p>
 
     <br />
 
