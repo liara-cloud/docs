@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -53,7 +54,7 @@ export default () => (
         <a href="#delete-file">حذف فایل</a>
       </li>
       <li>
-        <a href="#how-to-use">دریافت لیست باکت ها </a>
+        <a href="#how-to-use">دریافت لیست باکت‌ها </a>
       </li>
       <li>
         <a href="#upload-file-multer-3">آپلود فایل توسط multer-s3</a>
@@ -75,14 +76,27 @@ export default () => (
       </a>{" "}
       را نصب کنید.
     </p>
-    <Highlight className="shell">{`npm i aws-sdk`}</Highlight>
+    <Highlight className="shell">{`npm install @aws-sdk/client-s3`}</Highlight>
 
     <h3 id="set-keys">تنظیم کلیدها</h3>
     <p>
-      در مرحله‌ی بعد، به‌منظور امنیت و کنترل راحت‌تر مقادیر باید مشخصات فضای
-      ذخیره‌سازی ابری اعم از <Link href="/buckets/keys">کلیدها</Link> و آدرس
-      اتصال به این سرویس را در بخش{" "}
-      <Link href="/app-deploy/nodejs/envs">متغیرهای برنامه</Link> تنظیم کنید.
+      اگر باکت شما خصوصی باشد، برای دسترسی به باکت، نیاز به کلید دسترسی دارید.
+      برای ساخت کلید، به صفحه ذخیره‌سازی ابری بروید و طبق عکس‌ها کلید خود را
+      بسازید.
+    </p>
+    <p>به قسمت کلیدها رفته:</p>
+    <ZoomableImage src="/static/flask/get_key1.png" />
+    <p>یک کلید جدید بسازید.</p>
+    <ZoomableImage src="/static/flask/get_key2.png" />
+    <p>
+      کلید های ساخته شده را کپی کنید. توجه داشته باشید که SECRET_KEY تنها یک بار
+      نمایش داده می‌شود و پس از آن باید کلید را درجایی مطمئن ذخیره کنید.
+    </p>
+    <ZoomableImage src="/static/flask/get_key3.png" />
+    <h3 id="set-env">تنظیم متغیر های محیطی</h3>
+    <p>
+      در این مرحله باید کلیدها، نام باکت و endpoint لیارا را در فایل .env ذخیره
+      کنید
     </p>
     <Highlight className="plaintext">
       {`LIARA_ENDPOINT=<Liara Bucket Endpoint>
@@ -94,139 +108,217 @@ LIARA_SECRET_KEY=<Secret Key>`}
     <h3 id="upload-file"> آپلود فایل با AWS SDK</h3>
     <p>نمونه کد جهت آپلود فایل:</p>
     <Highlight className="javascript">
-      {`const params = {
-  Body: '<Binary String>', 
-  Bucket:  process.env(LIARA_BUCKET_NAME), 
-  Key: "objectkey"
+      {`const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+
+const params = {
+	Body: "<Binary String>",
+	Bucket: process.env.LIARA_BUCKET_NAME,
+	Key: "objectkey",
 };
 
 // async/await
 try {
-  await client.putObject(params).promise();
+  await client.send(new PutObjectCommand(params));
 } catch (error) {
-  console.log(error);
+	console.log(error);
 }
 
 // callback
-client.putObject(params, (err, data) => {
-  if (err) console.error(err, err.stack);
-  else console.log(data);
-});
-`}
+client.send(new PutObjectCommand(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+});`}
     </Highlight>
 
     <h3 id="download-file">دریافت فایل با AWS SDK</h3>
     <p>نمونه کد جهت دریافت فایل:</p>
     <Highlight className="javascript">
-      {`const params = {
+      {`const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+const params = {
   Bucket: process.env(LIARA_BUCKET_NAME),
   Key: "objectkey"
 };
 
 // async/await
 try {
-  const object = await client.getObject(params).promise();
-  console.log(object)
+  const data = await client.send(new GetObjectCommand(params));
+  console.log(data.Body.toString());
 } catch (error) {
   console.log(error);
 }
 
 // callback
-client.getObject(params, (err, data) => {
-  if (err) console.error(err, err.stack);
-  else console.log(data);
+client.send(new GetObjectCommand(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data.Body.toString());
+  }
 });`}
     </Highlight>
 
     <h3 id="get-download-url">دریافت لینک دانلود فایل توسط AWS SDK</h3>
     <p>نمونه کد جهت دریافت لینک دانلود فایل:</p>
     <Highlight className="javascript">
-      {`const params = {
+      {`const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+const params = {
   Bucket:  process.env(LIARA_BUCKET_NAME),
   Key: "objectkey"
   Expires: 60, // expires in 60 seconds
 };
 
 // async/await
-try {
-  const object = await client.getSignedUrlPromise('getObject', params);
-  console.log(object);
-} catch (error) {
-  console.log(error);
-}
+const command = new GetObjectCommand(params);
+const url = await client.getSignedUrl(command);
 
 // callback
-client.getSignedUrl('getObject', params, (err, data) => {
-  if (err) console.error(err, err.stack);
-  else console.log(data);
+const command = new GetObjectCommand(params);
+
+client.getSignedUrl(command, (error, url) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(url);
+  }
 });`}
     </Highlight>
 
     <h3 id="list-file">دریافت لیست فایل‌های آپلود شده توسط AWS SDK</h3>
     <p>نمونه کد جهت دریافت لیست فایل‌های آپلود شده:</p>
     <Highlight className="javascript">
-      {`const params = {
-  Bucket:  process.env(LIARA_BUCKET_NAME), 
-};      
+      {`const { S3Client, ListObjectsV2Command } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+
+const params = {
+  Bucket: process.env.LIARA_BUCKET_NAME
+};
 
 // async/await
 try {
-  const objects = await client.listObjectsV2(params).promise();
-  console.log(objects);
+  const data = await client.send(new ListObjectsV2Command(params));
+  const files = data.Contents.map((file) => file.Key);
+  console.log(files);
 } catch (error) {
   console.log(error);
 }
 
 // callback
-client.listObjectsV2(params, (err, data) => {
-  if (err) console.error(err, err.stack);
-  else console.log(data);
+client.send(new ListObjectsV2Command(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    const files = data.Contents.map((file) => file.Key);
+    console.log(files);
+  }
 });`}
     </Highlight>
 
     <h3 id="delete-file">حذف فایل توسط AWS SDK</h3>
     <p>نمونه کد جهت حذف فایل:</p>
     <Highlight className="javascript">
-      {`const params = {
-  Bucket: process.env(LIARA_BUCKET_NAME),
-  Key: 'objectKey',
+      {`const { S3Client, DeleteObjectCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+
+const params = {
+  Bucket: process.env.LIARA_BUCKET_NAME,
+  Key: "objectkey"
 };
 
 // async/await
 try {
-  await client.deleteObject(params).promise();
+  await client.send(new DeleteObjectCommand(params));
+  console.log("File deleted successfully");
 } catch (error) {
   console.log(error);
 }
 
 // callback
-client.deleteObject(params, (err, data) => {
-  if (err) console.error(err, err.stack);
-  else console.log(data);
-});`}
+client.send(new DeleteObjectCommand(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("File deleted successfully");
+  }
+});
+`}
     </Highlight>
 
     <h3 id="how-to-use">دریافت لیست باکت ها توسط AWS SDK</h3>
     <p>نمونه کد برای دریافت لیست باکت‌های ایجاد شده:</p>
 
     <Highlight className="javascript">
-      {`const AWS = require('aws-sdk');
+      {`const { S3Client, ListBucketsCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
 
-const config = {
-    endpoint: process.env(LIARA_ENDPOINT),
-    accessKeyId: process.env(LIARA_ACCESS_KEY),
-    secretAccessKey: process.env(LIARA_SECRET_KEY),
-    region: "default",
-}
+const client = new S3Client({
+	region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY,
+	},
+});
 
-const client = new AWS.S3(config);
 
-client.listBuckets(
-    (err, data) => {
-        if (err) console.error(err, err.stack);
-        else console.log(data);
-    }
-);`}
+client.send(new ListBucketsCommand({}), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    const buckets = data.Buckets.map((bucket) => bucket.Name);
+    console.log(buckets); // List of bucket names
+  }
+});`}
     </Highlight>
 
     <h3 id="upload-file-multer-3">آپلود فایل از طریق multer-s3</h3>
