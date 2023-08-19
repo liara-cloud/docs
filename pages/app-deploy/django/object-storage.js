@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -35,10 +36,10 @@ export default () => (
         <a href="#install-aws-sdk">نصب AWS SDK</a>
       </li>
       <li>
-        <a href="#set-keys">تنظیم کلیدها</a>
+        <a href="#get-keys">دریافت کلیدها</a>
       </li>
       <li>
-        <a href="#filesystem-config">پیکربندی FileSystem</a>
+        <a href="#set-env">تنظیم متغیرها</a>
       </li>
       <li>
         <a href="#how-to-use">نحوه‌ی استفاده</a>
@@ -71,21 +72,21 @@ export default () => (
     <Highlight className="shell">{`pip install boto3
 pip install django-storages`}</Highlight>
 
-    <h3 id="set-keys">تنظیم کلیدها</h3>
+    <h3 id="get-keys">دریافت کلیدها</h3>
     <p>
-      در مرحله‌ی بعد، به‌منظور امنیت و کنترل راحت‌تر مقادیر باید مشخصات فضای
-      ذخیره‌سازی ابری اعم از <Link href="/buckets/keys">کلیدها</Link> و آدرس
-      اتصال به این سرویس را در بخش{" "}
-      <Link href="/app-deploy/django/envs">متغیرهای برنامه</Link> تنظیم کنید.
+      اگر باکت شما خصوصی باشد، برای دسترسی به باکت، نیاز به کلید دسترسی دارید.
+      بسازیم. برای ساخت کلید، به صفحه ذخیره‌سازی ابری رفته و طبق عکس‌ها کلید خود
+      را بسازید.
     </p>
-    <Highlight className="plaintext">
-      {`LIARA_ENDPOINT=<Liara Bucket Endpoint>
-LIARA_BUCKET_NAME=<Bucket Name>
-LIARA_ACCESS_KEY=<Access Key>
-LIARA_SECRET_KEY=<Secret Key>`}
-    </Highlight>
-
-    <h3 id="filesystem-config">پیکربندی فایل‌سیستم</h3>
+    <p>به قسمت کلیدها رفته:</p>
+    <ZoomableImage src="/static/flask/get_key1.png" />
+    <p>یک کلید جدید بسازید.</p>
+    <ZoomableImage src="/static/flask/get_key2.png" />
+    <p>
+      کلید های ساخته شده را ذخیره کنید. توجه داشته باشید که SECRET_KEY تنها یک
+      بار نمایش داده میشود و پس از آن باید کلید را درجایی مطمئن ذخیره کنید.
+    </p>
+    <h3 id="set-env">تنظیم متغیرها</h3>
 
     <p>
       در مرحله‌ی آخر باید فایل <span className="code">settings.py</span>{" "}
@@ -97,15 +98,13 @@ LIARA_SECRET_KEY=<Secret Key>`}
   'storages',
 ]
 
-AWS_S3_ENDPOINT_URL = "https://" + os.environ.get(LIARA_ENDPOINT)
-AWS_STORAGE_BUCKET_NAME = os.environ.get(LIARA_BUCKET_NAME)
-AWS_ACCESS_KEY_ID = os.environ.get(LIARA_ACCESS_KEY)
-AWS_SECRET_ACCESS_KEY = os.environ.get(LIARA_SECRET_KEY)
-AWS_S3_OBJECT_PARAMETERS = {
-  'CacheControl': 'max-age=86400',
-}
-AWS_LOCATION = 'static'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
+# Object storage
+
+STORAGES = {"default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
+AWS_S3_ENDPOINT_URL = os.getenv("LIARA_ENDPOINT")
+AWS_S3_ACCESS_KEY_ID = os.getenv("LIARA_ACCESS_KEY")
+AWS_S3_SECRET_ACCESS_KEY = os.getenv("LIARA_SECRET_KEY")
+AWS_STORAGE_BUCKET_NAME = os.getenv("LIARA_BUCKET_NAME")`}
     </Highlight>
 
     <h3 id="how-to-use">نحوه‌ی استفاده</h3>
@@ -122,6 +121,20 @@ from django.core.files.storage import default_storage
 
 path = default_storage.save('/example.txt', ContentFile(b'Contents'))`}</Highlight>
 
+    <p>برای استفاده از object storage در مدل‌ها، به شکل زیر میتوان عمل کرد.</p>
+    <Highlight className="python">{`from django.db import models
+
+
+class Storage(models.Model):
+    my_file = models.FileField()
+`}</Highlight>
+    <p>
+      برای ذخیره فایل در object storage میتوانید مانند قبل عمل کرده، و فایل های
+      آپلود شده به طور خودکار در ذخیره‌سازی ابری لیارا قرار می‌گیرند. همچنین
+      میتوانید به طور مستقیم از کتابخانه boto3 نیز استفاده کنید. نحوه استفاده از
+      این کتابخناه در مستندات flask آورده شده است؛ میتوانید به این{" "}
+      <a href="/app-deploy/flask/object-storage">لینک</a> مراجعه کنید.
+    </p>
     <br />
 
     <Link href="/app-deploy/django/domain" className="next-page">
