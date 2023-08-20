@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -37,13 +38,16 @@ export default () => (
         <a href="#install-s3-driver">نصب Amazon S3 Driver</a>
       </li>
       <li>
+        <a href="#set-keys">تنظیم کلیدها</a>
+      </li>
+      <li>
         <a href="#filesystem-config">پیکربندی FileSystem</a>
       </li>
       <li>
         <a href="#set-env-variable">تنظیم مشخصات ذخیره‌سازی ابری</a>
       </li>
       <li>
-        <a href="#how-to-use">نحوه‌ی استفاده</a>
+        <a href="#upload-files">آپلود فایل توسط Amazon S3 Driver</a>
       </li>
       <li>
         <a href="#retrieving-files">بازیابی فایل‌ها توسط Amazon S3 Driver</a>
@@ -59,9 +63,6 @@ export default () => (
       <li>
         <a href="#remove-files">حذف فایل توسط Amazon S3 Driver</a>
       </li>
-      <li>
-        <a href="#upload-files">آپلود فایل </a>
-      </li>
     </ul>
 
     <h3 id="install-s3-driver">نصب Amazon S3 Driver</h3>
@@ -74,6 +75,22 @@ export default () => (
     <Highlight className="shell">
       {`composer require league/flysystem-aws-s3-v3 "^3.0"`}
     </Highlight>
+
+    <h3 id="set-keys">تنظیم کلیدها</h3>
+    <p>
+      اگر باکت شما خصوصی باشد، برای دسترسی به باکت، نیاز به کلید دسترسی دارید.
+      برای ساخت کلید، به صفحه ذخیره‌سازی ابری بروید و طبق عکس‌ها کلید خود را
+      بسازید.
+    </p>
+    <p>به قسمت کلیدها رفته:</p>
+    <ZoomableImage src="/static/flask/get_key1.png" />
+    <p>یک کلید جدید بسازید.</p>
+    <ZoomableImage src="/static/flask/get_key2.png" />
+    <p>
+      کلید های ساخته شده را کپی کنید. توجه داشته باشید که SECRET_KEY تنها یک بار
+      نمایش داده می‌شود و پس از آن باید کلید را درجایی مطمئن ذخیره کنید.
+    </p>
+    <ZoomableImage src="/static/flask/get_key3.png" />
 
     <h3 id="filesystem-config">پیکربندی FileSystem</h3>
     <p>
@@ -122,7 +139,7 @@ DEFAULT_REGION=us-east-1`}
       شما بر روی برنامه‌ی تهیه شده مستقر نخواهد شد.
     </Notice>
 
-    <h3 id="how-to-use">نحوه‌ی استفاده</h3>
+    <h3 id="upload-files">آپلود فایل توسط Amazon S3 Driver</h3>
 
     <Notice variant="warning">
       توجه داشته باشید همه مسیر‌های فایل، باید نسبت به روت باکت مشخص شوند.
@@ -183,50 +200,16 @@ $files = Storage::allFiles($directory);`}
     </Highlight>
 
     <h3 id="remove-files">حذف فایل توسط Amazon S3 Driver</h3>
-    <p>نمونه کد برای دریافت لیست فایل‌های آپلود شده:</p>
+    <p>نمونه کد برای حذف فایل‌های آپلود شده:</p>
     <Highlight className="php">
       {`use Illuminate\\Support\\Facades\\Storage;
 
-$files = Storage::files($directory);
+Storage::disk('liara')->delete('path/file.jpg');
 
-$files = Storage::allFiles($directory);`}
-    </Highlight>
+// Or you can use:
+Storage::delete('file.jpg');
 
-    <h3 id="upload-files">آپلود فایل </h3>
-    <p>
-      لاراول ذخیره فایل‌های آپلود شده را با استفاده از روش
-      <span className="code">store</span> در نمونه فایل آپلود شده بسیار آسان
-      می‌کند.
-    </p>
-    <Highlight className="php">
-      {`<?php
-
-namespace App\\Http\\Controllers;
-  
-use App\\Http\\Controllers\\Controller;
-use Illuminate\\Http\Request;
-  
-class UserAvatarController extends Controller
-  {
-      /**
-      * Update the avatar for the user.
-      */
-      public function update(Request $request): string
-      {
-          $path = $request->file('avatar')->store('avatars');
-  
-          return $path;
-      }
-}`}
-    </Highlight>
-    <p>
-      همچنین شما می‌توانید متد <span className="code">putFile</span>
-      را در نمای <span className="code">Storage</span>
-      فراخوانی کنید تا همانند مثال بالا، فرآیند آپلود کردن را انجام بدید.
-    </p>
-    <Highlight className="php">
-      {`use Illuminate\\Support\\Facades\\Storage;
-$path = Storage::putFile('avatars', $request->file('avatar'));`}
+Storage::delete(['file.jpg', 'file2.jpg']);`}
     </Highlight>
 
     <br />
