@@ -36,7 +36,13 @@ export default () => (
         <a href="#set-keys">تنظیم کلیدها</a>
       </li>
       <li>
-        <a href="#how-to-use">نحوه‌ی استفاده</a>
+        <a href="#list-buckets">لیست باکت‌ها</a>
+      </li>
+      <li>
+        <a href="#upload-files">آپلود فایل</a>
+      </li>
+      <li>
+        <a href="#remove-files">حذف فایل</a>
       </li>
     </ul>
 
@@ -71,15 +77,44 @@ LIARA_ACCESS_KEY=<Access Key>
 LIARA_SECRET_KEY=<Secret Key>`}
     </Highlight>
 
-    <h3 id="how-to-use">نحوه‌ی استفاده</h3>
+    <h3 id="list-buckets">لیست باکت‌ها</h3>
     <p>نمونه کد برای دریافت لیست باکت‌های ایجاد شده:</p>
 
     <Highlight className="php">
       {`<?php
+// Require the Composer autoloader.
 require 'vendor/autoload.php';
 
-use AwsS3S3Client;
+use Aws\\S3\\S3Client;
 
+// Instantiate an S3 client.
+$client = new S3Client([
+    'region' => 'us-east-1',
+    'version' => '2006-03-01',
+    'endpoint' => LIARA_ENDPOINT,
+    'credentials' => [
+        'key' => LIARA_ACCESS_KEY,
+        'secret' => LIARA_SECRET_KEY
+    ],
+]);
+
+$result = $client->listBuckets([/* ... */]);
+$promise = $client->listBucketsAsync([/* ... */]);
+
+print_r($result);
+print_r($promise);`}
+    </Highlight>
+
+    <h3 id="upload-files">آپلود فایل</h3>
+    <p>نمونه کد برای آپلود فایل در باکت‌های ایجاد شده:</p>
+    <Highlight className="php">
+      {`<?php
+// Require the Composer autoloader.
+require 'vendor/autoload.php';
+
+use Aws\\S3\\S3Client;
+
+// Instantiate an S3 client.
 $client = new S3Client([
     'region' => 'us-east-1',
     'version' => '2006-03-01',
@@ -90,10 +125,56 @@ $client = new S3Client([
     ],
 ]);
 
-$listResponse = $client->listBuckets();
-
-print_r($listResponse);`}
+try {
+  $client->putObject([
+      'Bucket' => 'my-bucket',
+      'Key'    => 'my-object',
+      'Body'   => fopen('/path/to/file', 'r')
+  ]);
+} catch (AwsS3ExceptionS3Exception $e) {
+  echo "There was an error uploading the file.";
+}`}
     </Highlight>
+
+    <h3 id="remove-files">حذف فایل</h3>
+    <p>نمونه کد برای حذف فایل در باکت‌های ایجاد شده:</p>
+    <Highlight className="php">
+      {`<?php
+// Require the Composer autoloader.
+require 'vendor/autoload.php';
+
+use Aws\\S3\\S3Client;
+
+// Instantiate an S3 client.
+$client = new S3Client([
+    'region' => 'us-east-1',
+    'version' => '2006-03-01',
+    'endpoint' => LIARA_ENDPOINT,
+    'credentials' => [
+        'key' => LIARA_ACCESS_KEY,
+        'secret' => LIARA_SECRET_KEY
+    ],
+]);
+
+$result = $client->deleteObject([
+  'Bucket' => 'ExampleBucket',
+  'Key' => 'HappyFace.jpg',
+]);`}
+    </Highlight>
+
+    <br />
+
+    <p>
+      شما می‌توانید برای کسب اطلاعات بیشتر،{" "}
+      <a
+        href="https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.S3.S3Client.html"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        مثال‌ها و مستندات این پکیج
+      </a>{" "}
+      را مطالعه کنید.
+    </p>
 
     <br />
 

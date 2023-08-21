@@ -49,6 +49,46 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
       ایمیل لیارا به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
     </p>
 
+    <p>نمونه کد ارسال ایمیل:</p>
+
+    <Highlight className="csharp">
+      {`using System;
+using MailKit.Net.Smtp;
+using MimeKit;
+
+class Program
+{
+    static void Main()
+    {
+        DotNetEnv.Env.Load();
+        string mail_host = Environment.GetEnvironmentVariable("MAIL_HOST");
+        string username = Environment.GetEnvironmentVariable("MAIL_USERNAME");
+        string password = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
+        string port = Environment.GetEnvironmentVariable("MAIL_PORT");
+        string enc = Environment.GetEnvironmentVariable("IS_ENCRYPTED");
+        
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress("Sender Name", "sender@examle.com"));
+        message.To.Add(new MailboxAddress("Recipient Name", "recipient@example.com"));
+        message.Subject = "Hello, World!";
+        message.Body = new TextPart("plain")
+        {
+            Text = "This is the message body."
+        };
+
+        using (var client = new SmtpClient())
+        {
+            client.Connect(mail_host, int.Parse(port), bool.Parse(enc);
+            client.Authenticate(username, password);
+
+            client.Send(message);
+
+            client.Disconnect(true);
+        }
+    }
+}`}
+    </Highlight>
+
     <Notice variant="warning">
       قابل ذکر است که فیلد <span className="code">from</span> باید یکی از
       نشانی‌های اضافه شده در سرویس ایمیل باشد.

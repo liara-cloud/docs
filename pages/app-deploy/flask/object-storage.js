@@ -149,7 +149,6 @@ for file in files["Contents"]:
     ExpiresIn=12 * 60 * 60,  # 12 hours
 )`}
     </Highlight>
-
     <p>دریافت لینک دائمی فایل. توجه کنید که دسترسی باکت باید public باشد:</p>
     <Highlight className="python">
       {`filename_encoded = quote(filename)
