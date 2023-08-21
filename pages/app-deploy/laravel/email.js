@@ -198,7 +198,7 @@ class SendEmailController extends Controller
     Mail::to('receiver-email-id')->send(new NotifyMail());
   
     if (Mail::failures()) {
-      echo "Sorry! Please try again latter";
+      echo "Sorry! Please try again later.";
     }else{
         echo "Great! Successfully send in your mail";
       }
