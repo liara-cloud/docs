@@ -31,7 +31,7 @@ export default () => (
 
     <Highlight className="plaintext">
       {`MAIL_DRIVER=smtp
-MAIL_HOST=smtp.liara.ir
+MAIL_HOST=smtp.c1.liara.email
 MAIL_PORT=587
 MAIL_ENCRYPTION=tls
 MAIL_USERNAME=my-app
@@ -112,14 +112,17 @@ class NotifyMail extends Mailable
     <p>
       با هر نامی که می خواهید، یک الگوی ایمیل ایجاد کنید؛ که می خواهید بفرستید.
       فراموش نکنید که نام قالب ارسالی ایمیل‌تان را در کلاس{" "}
-      <span className="code">build</span> در کد بالا اضافه کنید.
+      <span className="code">build</span> در کد بالا اضافه کنید. برای مثال:
     </p>
 
+    <Highlight className="php">{`return $this->view('view.name');`}</Highlight>
+
+    <p>به:</p>
+
     <Highlight className="php">
-      {`return $this->view('view.name');
-to
-return $this->view('emails.demoMail');`}
+      {`return $this->view('emails.demoMail');`}
     </Highlight>
+
     <p>
       در مرحله بعد، باید یک قالب ایمیل با نام
       <span className="code">demoMail.blade.php</span>
@@ -137,7 +140,7 @@ return $this->view('emails.demoMail');`}
     <Highlight className="php">
       {`use App\\Http\\Controllers\\SendEmailController;
 
-Route::get('send-email', [SendEmailController::class, 'index']);`}
+Route::post('send-email', [SendEmailController::class, 'index']);`}
     </Highlight>
 
     <h3>ایجاد یک دایرکتوری و blade view</h3>
