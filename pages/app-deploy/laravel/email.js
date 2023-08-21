@@ -157,7 +157,7 @@ Route::post('send-email', [SendEmailController::class, 'index']);`}
       {`<!DOCTYPE html>
 <html>
 <head>
-  <title>Laravel 10 Send Email Example</title>
+  <title>Laravel email example with Liara</title>
 </head>
 <body>
 
