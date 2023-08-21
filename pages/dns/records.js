@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../../components/Layout";
+import ZoomableImage from "../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -32,6 +33,8 @@ export default () => (
         <td className="endpoint-inputs__description">93.184.216.34</td>
       </tr>
     </table>
+    <br />
+    <ZoomableImage src="/static/record/a.png" />
 
     <p>
       با استفاده از رکورد AAAA می‌توانید یک و یا چند IPv6 را به یک دامنه اختصاص
@@ -54,6 +57,8 @@ export default () => (
         </td>
       </tr>
     </table>
+    <br />
+    <ZoomableImage src="/static/record/aaaa.png" />
 
     <p>
       با استفاده از رکورد ALIAS می‌توانید یک و یا چند نام دامنه را به ریشه‌ی
@@ -74,6 +79,8 @@ export default () => (
         <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
     </table>
+    <br />
+    <ZoomableImage src="/static/record/alias.png" />
 
     <p>
       با استفاده از رکورد CNAME می‌توانید یک و یا چند نام دامنه را به یک
@@ -94,6 +101,8 @@ export default () => (
         <td className="endpoint-inputs__description">to.liara.zone</td>
       </tr>
     </table>
+    <br />
+    <ZoomableImage src="/static/record/cname.png" />
 
     <p>با استفاده از رکورد MX می‌توانید آدرس ایمیل سرور مقصد را مشخص کنید.</p>
 
@@ -115,6 +124,8 @@ export default () => (
         <td className="endpoint-inputs__description">10</td>
       </tr>
     </table>
+    <br />
+    <ZoomableImage src="/static/record/mx.png" />
 
     <p>
       با استفاده از رکورد SRV می‌توانید نام دامنه را به یک سرویس ارتباط دهید.
@@ -146,6 +157,8 @@ export default () => (
         <td className="endpoint-inputs__description">5</td>
       </tr>
     </table>
+    <br />
+    <ZoomableImage src="/static/record/srv.png" />
 
     <p>
       با استفاده از رکورد TXT می‌توانید محتوای دلخواه خود را به دامنه نسبت
@@ -168,5 +181,7 @@ export default () => (
         </td>
       </tr>
     </table>
+    <br />
+    <ZoomableImage src="/static/record/txt.png" />
   </Layout>
 );
