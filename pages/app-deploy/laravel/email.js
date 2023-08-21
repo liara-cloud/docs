@@ -161,8 +161,8 @@ Route::post('send-email', [SendEmailController::class, 'index']);`}
 </head>
 <body>
 
-  <h1>This is test mail from Tutsmake.com</h1>
-  <p>Laravel 10 send email example</p>
+  <h1>This is a test mail to see how Liara works.</h1>
+  <p>Laravel 10 send email example.</p>
 
 </body>
 </html> `}
