@@ -47,7 +47,7 @@ export default () => (
         <a href="#set-env-variable">تنظیم مشخصات ذخیره‌سازی ابری</a>
       </li>
       <li>
-        <a href="#upload-files">آپلود فایل توسط Amazon S3 Driver</a>
+        <a href="#how-to-use">نحوه استفاده</a>
       </li>
       <li>
         <a href="#retrieving-files">بازیابی فایل‌ها توسط Amazon S3 Driver</a>
@@ -62,6 +62,9 @@ export default () => (
       </li>
       <li>
         <a href="#remove-files">حذف فایل توسط Amazon S3 Driver</a>
+      </li>
+      <li>
+        <a href="#upload-files">آپلود فایل توسط Amazon S3 Driver</a>
       </li>
     </ul>
 
@@ -139,7 +142,7 @@ DEFAULT_REGION=us-east-1`}
       شما بر روی برنامه‌ی تهیه شده مستقر نخواهد شد.
     </Notice>
 
-    <h3 id="upload-files">آپلود فایل توسط Amazon S3 Driver</h3>
+    <h3 id="how-to-use">نحوه استفاده</h3>
 
     <Notice variant="warning">
       توجه داشته باشید همه مسیر‌های فایل، باید نسبت به روت باکت مشخص شوند.
@@ -210,6 +213,31 @@ Storage::disk('liara')->delete('path/file.jpg');
 Storage::delete('file.jpg');
 
 Storage::delete(['file.jpg', 'file2.jpg']);`}
+    </Highlight>
+
+    <h3 id="upload-files">آپلود فایل توسط Amazon S3 Driver</h3>
+    <p>نمونه کد برای آپلود فایل:</p>
+    <Highlight className="php">
+      {`<?php
+
+namespace App\\Http\\Controllers;
+  
+use Illuminate\\Support\\Facades\\Storage;
+use App\\Http\\Controllers\\Controller;
+use Illuminate\\Http\Request;
+  
+class UserAvatarController extends Controller
+  {
+      /**
+      * Update the avatar for the user.
+      */
+      public function update(Request $request): string
+      {
+        $path = Storage::putFile('avatars', $request->file('avatar'));
+  
+          return $path;
+      }
+}`}
     </Highlight>
 
     <br />
