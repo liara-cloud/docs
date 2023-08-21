@@ -200,7 +200,7 @@ class SendEmailController extends Controller
     if (Mail::failures()) {
       echo "Sorry! Please try again later.";
     }else{
-        echo "Great! Successfully send in your mail";
+        echo "Great! Your email has been sent successfully.";
       }
   } 
 }`}
