@@ -65,16 +65,15 @@ export default () => (
 
     <h3 id="get-keys">دریافت کلیدها</h3>
     <p>
-      اگر باکت شما خصوصی باشد، برای دسترسی به باکت، نیاز به کلید دسترسی دارید.
-      برای ساخت کلید، به صفحه ذخیره‌سازی ابری بروید و طبق عکس‌ها کلید خود را
-      بسازید.
+      اگر باکت شما خصوصی باشد، برای دسترسی به باکت، نیاز به کلید دارید. برای
+      ساخت کلید، به صفحه ذخیره‌سازی ابری بروید و طبق عکس‌ها کلیدخود را بسازید.
     </p>
     <p>به قسمت کلیدها رفته:</p>
     <ZoomableImage src="/static/flask/get_key1.png" />
     <p>یک کلید جدید بسازید.</p>
     <ZoomableImage src="/static/flask/get_key2.png" />
     <p>
-      کلید های ساخته شده را کپی کنید. توجه داشته باشید که SECRET_KEY تنها یک بار
+      کلیدهای ساخته‌شده را کپی کنید. توجه داشته باشید که SECRET_KEY تنها یک بار
       نمایش داده می‌شود و پس از آن باید کلید را درجایی مطمئن ذخیره کنید.
     </p>
     <ZoomableImage src="/static/flask/get_key3.png" />
@@ -90,8 +89,8 @@ LIARA_ACCESS_KEY=<Access Key>
 LIARA_SECRET_KEY=<Secret Key>`}
     </Highlight>
     <p>
-      لطفا توجه داشته باشید که باید هریک از مقادیر بالا را با متغیر های
-      باکت‌خودتون‌ جایگزین کنید. به عنوان مثال، یک فایل .env میتواند به شکل زیر
+      لطفا توجه داشته‌باشید که باید هریک از مقادیر بالا را با متغیر های
+      باکت‌خودتان‌ جایگزین کنید. به عنوان مثال، یک فایل .env می‌تواند به شکل زیر
       باشد:
     </p>
     <Highlight className="plaintext">
@@ -102,7 +101,7 @@ LIARA_SECRET_KEY="82c963df-1122-4c31-868b-0124a28ad57d""`}
     </Highlight>
 
     <h3 id="how-to-use">نحوه‌ی استفاده</h3>
-    <p>راه اندازی اولیه و اتصال به باکت:</p>
+    <p>راه‌اندازی اولیه و اتصال به باکت:</p>
 
     <Highlight className="python">
       {`from dotenv import load_dotenv
@@ -135,7 +134,7 @@ s3 = boto3.client(
       {`s3.download_file(LIARA_BUCKET_NAME, filename_in_bucket, filename_in_system)`}
     </Highlight>
 
-    <p>دریافت لیست فایل های یک باکت:</p>
+    <p>دریافت لیست فایل‌های یک باکت:</p>
     <Highlight className="python">
       {`files = s3.list_objects(Bucket=LIARA_BUCKET_NAME)
 for file in files["Contents"]:
@@ -150,8 +149,7 @@ for file in files["Contents"]:
     ExpiresIn=12 * 60 * 60,  # 12 hours
 )`}
     </Highlight>
-
-    <p>دریافت لینک دائمی فایل. توجه کنیم که دسترسی باکت باید public باشد:</p>
+    <p>دریافت لینک دائمی فایل. توجه کنید که دسترسی باکت باید public باشد:</p>
     <Highlight className="python">
       {`filename_encoded = quote(filename)
 permanent_url = f"https://{LIARA_BUCKET_NAME}.{LIARA_ENDPOINT.replace('https://', '')}/{filename_encoded}"`}
