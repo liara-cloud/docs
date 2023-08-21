@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -36,13 +37,13 @@ export default () => (
         <a href="#set-keys">تنظیم کلیدها</a>
       </li>
       <li>
-        <a href="#list-buckets">لیست باکت‌ها</a>
+        <a href="#list-buckets">دریافت لیست باکت‌ها توسط AWS SDK</a>
       </li>
       <li>
-        <a href="#upload-files">آپلود فایل</a>
+        <a href="#upload-files">آپلود فایل توسط AWS SDK</a>
       </li>
       <li>
-        <a href="#remove-files">حذف فایل</a>
+        <a href="#remove-files">حذف فایل توسط AWS SDK</a>
       </li>
     </ul>
 
@@ -77,7 +78,22 @@ LIARA_ACCESS_KEY=<Access Key>
 LIARA_SECRET_KEY=<Secret Key>`}
     </Highlight>
 
-    <h3 id="list-buckets">لیست باکت‌ها</h3>
+    <p>
+      همچنین اگر باکت شما خصوصی باشد، برای دسترسی به باکت، نیاز به کلید دسترسی
+      دارید. برای ساخت کلید، به صفحه ذخیره‌سازی ابری بروید و طبق عکس‌ها کلید خود
+      را بسازید.
+    </p>
+    <p>به قسمت کلیدها رفته:</p>
+    <ZoomableImage src="/static/flask/get_key1.png" />
+    <p>یک کلید جدید بسازید.</p>
+    <ZoomableImage src="/static/flask/get_key2.png" />
+    <p>
+      کلید های ساخته شده را کپی کنید. توجه داشته باشید که SECRET_KEY تنها یک بار
+      نمایش داده می‌شود و پس از آن باید کلید را درجایی مطمئن ذخیره کنید.
+    </p>
+    <ZoomableImage src="/static/flask/get_key3.png" />
+
+    <h3 id="list-buckets">دریافت لیست باکت‌ها توسط AWS SDK</h3>
     <p>نمونه کد برای دریافت لیست باکت‌های ایجاد شده:</p>
 
     <Highlight className="php">
@@ -105,7 +121,7 @@ print_r($result);
 print_r($promise);`}
     </Highlight>
 
-    <h3 id="upload-files">آپلود فایل</h3>
+    <h3 id="upload-files">آپلود فایل توسط AWS SDK</h3>
     <p>نمونه کد برای آپلود فایل در باکت‌های ایجاد شده:</p>
     <Highlight className="php">
       {`<?php
@@ -120,7 +136,7 @@ $client = new S3Client([
     'version' => '2006-03-01',
     'endpoint' => LIARA_ENDPOINT,
     'credentials' => [
-        'key' => LIARA_ACCESS_KEY
+        'key' => LIARA_ACCESS_KEY,
         'secret' => LIARA_SECRET_KEY
     ],
 ]);
@@ -136,7 +152,7 @@ try {
 }`}
     </Highlight>
 
-    <h3 id="remove-files">حذف فایل</h3>
+    <h3 id="remove-files">حذف فایل توسط AWS SDK</h3>
     <p>نمونه کد برای حذف فایل در باکت‌های ایجاد شده:</p>
     <Highlight className="php">
       {`<?php
