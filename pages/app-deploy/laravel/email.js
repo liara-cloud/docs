@@ -56,6 +56,153 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
       نشانی‌های اضافه شده در سرویس ایمیل باشد.
     </Notice>
 
+    <h3>ایجاد پروژه‌ی لاراولی</h3>
+    <p>
+      ترمینال را باز کرده و با استفاده از دستور زیر یک پروژه لاراولی ایجاد کنید.
+    </p>
+    <Highlight className="php">
+      {`composer create-project --prefer-dist laravel/laravel blog`}
+    </Highlight>
+
+    <h3>ایجاد کلاس Mailable</h3>
+    <p>ترمینال را باز کرده و با استفاده از دستور زیر این کلاس را ایجاد کنید.</p>
+    <Highlight className="php">{`php artisan make:mail NotifyMail`}</Highlight>
+    <p>
+      هنگامی که کلاس <span className="code">notifyMail</span> را ایجاد کردید،
+      سپس به دایرکتوری
+      <span className="code">app/mail</span> بروید و فایل
+      <span className="code">notifyMail.php</span> را باز کنید و کد زیر را به آن
+      اضافه کنید:
+    </p>
+    <Highlight className="php">
+      {`<?php
+
+namespace App\\Mail;
+  
+use Illuminate\\Bus\\Queueable;
+use Illuminate\\Contracts\\Queue\\ShouldQueue;
+use Illuminate\\Mail\\Mailable;
+use Illuminate\\Queue\\SerializesModels;
+  
+class NotifyMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+      * Create a new message instance.
+      *
+      * @return void
+    */
+    public function __construct()
+    {
+      //
+    }
+  
+    /**
+      * Build the message.
+      *
+      * @return $this
+    */
+    public function build()
+    {
+      return $this->view('view.name');
+    }
+}`}
+    </Highlight>
+    <p>
+      با هر نامی که می خواهید، یک الگوی ایمیل ایجاد کنید؛ که می خواهید بفرستید.
+      فراموش نکنید که نام قالب ارسالی ایمیل‌تان را در کلاس{" "}
+      <span className="code">build</span> در کد بالا اضافه کنید.
+    </p>
+
+    <Highlight className="php">
+      {`return $this->view('view.name');
+to
+return $this->view('emails.demoMail');`}
+    </Highlight>
+    <p>
+      در مرحله بعد، باید یک قالب ایمیل با نام
+      <span className="code">demoMail.blade.php</span>
+      در دایرکتوری <span className="code">resources/views/emails</span>
+      ایجاد کنید. به همین دلیل، ایمیل نام view را اضافه کنید.
+    </p>
+
+    <h3>اضافه کردن Route</h3>
+    <p>
+      در این مرحله، <span className="code">/web.php</span> را باز کنید، بنابراین
+      به دایرکتوری
+      <span className="code">routes</span>
+      بروید. و سپس مسیرهای زیر را برای ارسال ایمیل اضافه کنید:
+    </p>
+    <Highlight className="php">
+      {`use App\\Http\\Controllers\\SendEmailController;
+
+Route::get('send-email', [SendEmailController::class, 'index']);`}
+    </Highlight>
+
+    <h3>ایجاد یک دایرکتوری و blade view</h3>
+    <p>
+      در این مرحله، دایرکتوری به‌نام <span className="code">email</span> داخل
+      دایرکتوری
+      <span className="code">resources/views</span> ایجاد کنید. سپس یک فایل
+      به‌نام
+      <span className="code">demoMail.blade.php</span> در داخل
+      <span className="code">resources/views/emails</span> ایجاد کنید. و کد زیر
+      را داخل آن وارد کنید.
+    </p>
+    <Highlight className="php">
+      {`<!DOCTYPE html>
+<html>
+<head>
+  <title>Laravel 10 Send Email Example</title>
+</head>
+<body>
+
+  <h1>This is test mail from Tutsmake.com</h1>
+  <p>Laravel 10 send email example</p>
+
+</body>
+</html> `}
+    </Highlight>
+
+    <h3>ایجاد کنترلر ارسال ایمیل</h3>
+    <p>ترمینال را باز کرده و با استفاده از دستور زیر کنترلر را ایجاد کنید.</p>
+    <Highlight className="php">
+      {`php artisan make:controller SendEmailController`}
+    </Highlight>
+    <p>
+      سپس به دایرکتوری <span className="code">app/Http/Controllers</span> بروید
+      و<span className="code">SendEmailController.php</span> را باز کنید. سپس کد
+      زیر را در داخل آن وارد کنید:
+    </p>
+    <Highlight className="php">
+      {`<?php
+
+namespace App\\Http\\Controllers;
+  
+use Illuminate\\Http\\Request;
+  
+use Mail;
+  
+use App\\Mail\\NotifyMail;
+  
+  
+class SendEmailController extends Controller
+{
+      
+  public function index()
+  {
+    Mail::to('receiver-email-id')->send(new NotifyMail());
+  
+    if (Mail::failures()) {
+      echo "Sorry! Please try again latter";
+    }else{
+        echo "Great! Successfully send in your mail";
+      }
+  } 
+}`}
+    </Highlight>
+
     <p>
       برای اطلاعات بیشتر می‌توانید به{" "}
       <a href="https://laravel.com/docs/8.x/mail" target="_blank">
