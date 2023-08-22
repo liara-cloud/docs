@@ -36,7 +36,7 @@ export default () => (
       width="100%"
     ></video>
 
-    {/* <h3 id="installing-liara-cli">نصب Liara CLI</h3>
+    <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌ راحتی
       نصب کنید: <Link href="/cli/install">توضیحات بیشتر</Link>
@@ -61,8 +61,10 @@ export default () => (
       </a>{" "}
       بروید و با انتخاب پلتفرم LARAVEL و نوشتن شناسه برنامه‌ی موردنظرتان و در
       نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
-      برای برنامه آزمایشی‌مان، شناسه laravel-starter را انتخاب کردیم.
+      برای برنامه آزمایشی‌مان، شناسه laravel-starter را انتخاب کردیم. همچنین شما
+      می‌توانید از طریق Liara CLI با دستور زیر برنامه‌ی خود را ایجاد کنید.
     </p>
+    <Highlight className="json">{`liara create`}</Highlight>
     <p>
       <b>گام دوم)</b> کافیست وارد ریشه برنامه‌ی‌تان شده و به وسیله دستور زیر
       اولین استقرار خود را اجرا کنید. بعد از وارد کردن، دستور از شما شناسه
@@ -100,8 +102,6 @@ export default () => (
     </p>
 
     <p dir="ltr">https://laravel-starter.liara.run</p>
-
-    */}
 
     <Link href="/app-deploy/laravel/envs" className="next-page">
       متوجه شدم، برو گام بعدی!
