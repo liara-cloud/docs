@@ -58,7 +58,7 @@ export default () => (
       ) را داشته‌باشید کافیست تیک آن را در بخش تنظیمات بزنید.
       <br />
       <ZoomableImage
-        src="/static/databases/mongo-oplogs.png"
+        src="/static/databases/mongo.png"
         alt="فعال کردن replicaset"
       />
     </Notice>

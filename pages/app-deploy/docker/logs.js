@@ -26,7 +26,7 @@ export default () => (
       لاگ‌های آن‌ها را مشاهده و دنبال کنید.
     </p>
 
-    <ZoomableImage src="/static/logs.png" alt="بخش لاگ‌ها" />
+    <ZoomableImage src="/static/docker-log.png" alt="بخش لاگ‌ها" />
 
     <p>
       لیارا تنها لاگ‌هایی را می‌تواند نمایش دهد که بر روی stdout و یا stderr

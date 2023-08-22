@@ -37,7 +37,7 @@ export default () => (
 
     <h3 id="list">مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده</h3>
     <h4>مشاهده‌ی متغیرهای محیطی در پنل کاربری</h4>
-    <ZoomableImage src="https://files.liara.ir/docs/django/environment-variables-list.png" />
+    <ZoomableImage src="/static/node-env.png" />
     <p>
       شما می‌توانید متغیرهای محیطی تنظیم شده را پس از ورود به صفحه‌ی{" "}
       <strong>تنظیمات</strong> هر برنامه، در بخش <strong>متغیرها</strong> مشاهده

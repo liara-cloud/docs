@@ -33,7 +33,7 @@ export default () => (
       دیتابیس شده و گزینه‌ی <strong>راه‌اندازی phpMyAdmin</strong> را فعال کنید.
     </p>
     <ZoomableImage
-      src="/static/databases/mysql-create-4.png"
+      src="/static/databases/mysql-php-myadmin.png"
       alt="آماده شدن دیتابیس"
     />
     <p>

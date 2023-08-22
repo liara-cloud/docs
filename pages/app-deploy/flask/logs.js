@@ -35,7 +35,7 @@ def logs():
 `}
     </Highlight>
     <p>سپس با رفرش کردن سایت می‌توانید آن‌هارا در منوی لاگ‌های لیارا ببینید:</p>
-    <ZoomableImage src="/static/flask-logs.png" alt="نمایش لاگ‌ها در لیارا" />
+    <ZoomableImage src="/static/flask-log.png" alt="نمایش لاگ‌ها در لیارا" />
 
     <p>
       مدیریت Log ها در Flask می‌تواند روش‌های مختلفی داشته باشد و وابسته به

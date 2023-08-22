@@ -43,7 +43,7 @@ export default () => (
       <strong>ثبت تغییرات</strong>، یک متغیر محیطی به برنامه‌ی شما اضافه خواهد
       شد.
     </p>
-    <ZoomableImage src="/static/php-env.png" />
+    <ZoomableImage src="/static/node-env.png" />
     <p>
       پس از کلیک بر روی دکمه <strong>ثبت تغییرات</strong>، برنامه‌ی‌ شما به صورت
       خودکار ری‌استارت می‌شود و این متغیر محیطی در استقرار جدید قابل استفاده

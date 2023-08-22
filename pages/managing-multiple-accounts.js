@@ -34,7 +34,7 @@ export default () => (
       روی پروفایل فعلی خود، بر روی دکمه‌ی <strong>افزودن حساب کاربری</strong>{" "}
       کلیک کرده و حساب‌های دیگری را در کنار حساب فعلی اضافه کنید.
     </p>
-    <ZoomableImage src="/static/managing-multiple-account.png" />
+    <ZoomableImage src="/static/managing-account.png" />
 
     <h3 id="cli">مدیریت حساب‌های کاربری در لیارا CLI</h3>
     <p>

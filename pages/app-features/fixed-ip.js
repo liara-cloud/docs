@@ -47,7 +47,7 @@ export default () => (
       کلیک کنید.
     </p>
 
-    <ZoomableImage src="/static/fixed-ip.png" alt="آی‌پی ثابت" />
+    <ZoomableImage src="/static/fix-ip.png" alt="آی‌پی ثابت" />
 
     <h3>آی‌پی ثابت اشتراکی</h3>
     <p>

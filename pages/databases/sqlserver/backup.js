@@ -26,7 +26,7 @@ export default () => (
       به‌صورت دستی اقدام به تهیه فایل پشتیبان کنید.
     </p>
     <ZoomableImage
-      src="/static/databases/mysql-liara-backup.png"
+      src="/static/databases/back-up.png"
       alt="sql server backup page"
     />
   </Layout>

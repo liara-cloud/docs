@@ -25,7 +25,7 @@ export default () => (
       می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده کنید:
     </p>
 
-    <ZoomableImage src="/static/static-logs.png" />
+    <ZoomableImage src="/static/static-log.png" />
     <br />
 
     <Link href="/app-deploy/static/liarajson" className="next-page">

@@ -33,7 +33,7 @@ export default () => (
       <strong>راه‌اندازی PGAdmin</strong> را فعال کنید.
     </p>
     <ZoomableImage
-      src="/static/databases/pgadmin.png"
+      src="/static/databases/pg-admin.png"
       alt="آماده شدن دیتابیس"
     />
     <p>

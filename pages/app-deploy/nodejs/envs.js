@@ -35,7 +35,7 @@ export default () => (
       <b>ثبت تغییرات</b> یک ENV به برنامه‌ی‌تان اضافه کنید. برای نمونه، ENV ای
       با عنوان LIARA_URL و مقدار https://liara.ir را به این صورت اضافه کنید.
     </p>
-    <ZoomableImage src="/static/php-env.png" />
+    <ZoomableImage src="/static/node-env.png" />
     <p> حالا به راحتی می‌توانید از‌ آن در برنامه‌ی‌تان استفاده کنید:</p>
     <Highlight className="js">
       {`console.log(\`app listening on port 8000 on \${process.env.LIARA_URL}\`)`}
