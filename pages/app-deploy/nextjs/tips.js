@@ -130,7 +130,7 @@ export default () => (
       به‌نتایج آن آگاه باشید.
     </Notice>
 
-    <h3 id="next-cache">افزایش فضای مسیر کش</h3>
+    <h3 id="next-cache">افزایش فضای مسیر Cache</h3>
     <p>
       فریم‌ورک Next.js به‌صورت پیش‌فرض فایل‌های کش را در مسیر
       <span className="code">.next/cache</span>
