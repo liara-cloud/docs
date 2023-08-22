@@ -36,8 +36,8 @@ export default () => (
       width="100%"
     ></video>
 
-    {/* <p>
-    <h3 id="installing-liara-cli">نصب Liara CLI</h3>
+    <p>
+      <h3 id="installing-liara-cli">نصب Liara CLI</h3>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید: <Link href="/cli/install">توضیحات بیشتر</Link>
     </p>
@@ -59,10 +59,12 @@ export default () => (
       <a href="https://console.liara.ir/apps/create" target="_blank">
         ایجاد برنامه‌ها در لیارا
       </a>{" "}
-      بروید و با انتخاب پلتفرم NODEJS و نوشتن شناسه برنامه‌ی موردنظرتان و در
+      بروید و با انتخاب پلتفرم ANGULAR و نوشتن شناسه برنامه‌ی موردنظرتان و در
       نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
-      برای برنامه آزمایشی‌مان، شناسه nodejs-starter را انتخاب کردیم.
+      برای برنامه آزمایشی‌مان، شناسه angular-starter را انتخاب کردیم. همچنین شما
+      می‌توانید از طریق Liara CLI با دستور زیر برنامه‌ی خود را ایجاد کنید.
     </p>
+    <Highlight className="json">{`liara create`}</Highlight>
     <p>
       <b>گام دوم)</b> داخل فایل
       <span className="code">package.json</span>
@@ -76,16 +78,42 @@ export default () => (
     </p>
     <Highlight className="json">
       {`{
-  "name": "app",
-  "version": "0.1.0",
-  "description": "My application",
-
+  "name": "angular-getting-started",
+  "version": "0.0.0",
   "scripts": {
-    "start": "node server.js"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
-
+  "private": true,
   "dependencies": {
-    "express": "4"
+    "@angular/animations": "~13.1.0",
+    "@angular/common": "~13.1.0",
+    "@angular/compiler": "~13.1.0",
+    "@angular/core": "~13.1.0",
+    "@angular/forms": "~13.1.0",
+    "@angular/platform-browser": "~13.1.0",
+    "@angular/platform-browser-dynamic": "~13.1.0",
+    "@angular/router": "~13.1.0",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~13.1.2",
+    "@angular/cli": "~13.1.2",
+    "@angular/compiler-cli": "~13.1.0",
+    "@types/jasmine": "~3.10.0",
+    "@types/node": "^12.11.1",
+    "jasmine-core": "~3.10.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.1.0",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~4.5.2"
   }
 }`}
     </Highlight>
@@ -93,41 +121,28 @@ export default () => (
       بعد از این‌که برنامه‌ی شما آپلود شد، لیارا برای شما دستور
       <span className="code">npm start</span>
       را اجرا می‌کند. شما باید داخل این اسکریپت، دستوری بنویسید که باعث اجرا شدن
-      برنامه‌ی‌تان شود. مثلا اگر یک فایل
-      <span className="code">server.js</span>
-      در برنامه‌ی‌تان وجود دارد که باید توسط node اجرا شود، باید
-      <span className="code">node server.js</span>
-      را داخل فیلد
-      <span className="code">start</span>
-      قرار دهید. (مانند نمونه‌ی بالا)
+      برنامه‌ی‌تان شود.(مانند نمونه‌ی بالا)
     </p>
     <Notice variant="warning">
       توجه داشته باشید که لیارا به‌طور خودکار در فرایند استقرار برنامه‌های
-      NodeJS دستور <span className="code">npm run build</span> را اجرا می‌کند.
+      Angular دستور <span className="code">npm run build</span> را اجرا می‌کند.
     </Notice>
     <p>
       <b>گام سوم)</b> کافیست وارد ریشه برنامه‌ی‌تان شده و به وسیله دستور زیر
       اولین استقرار خود را اجرا کنید. بعد از وارد کردن این دستور، از شما شناسه
-      برنامه‌ موردنظرتان پرسیده می‌شود و بعد از انتخاب شناسه، پورتی که برنامه‌ی
-      شما روی آن
-      <span className="code">listen</span>
-      می‌کند و اصطلاحا گوش می‌دهد پرسیده خواهد شد. برای مثال، چنانچه در لوکال و
-      روی کامپیوتر خودتان برنامه روی پورت
-      <span className="code">8000</span>
-      اجرا می‌شود، باید
-      <span className="code">8000</span>
-      را به عنوان پاسخ وارد کنید.
+      برنامه‌ موردنظرتان پرسیده می‌شود و بعد از انتخاب شناسه، لیارا عملیات
+      استقرار را شروع می‌کند.
     </p>
     <pre>
       <code>{`$ liara deploy`}</code>
     </pre>
     <p>
       Liara CLI به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
-      یک برنامه‌ی NodeJS اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
+      یک برنامه‌ی Angular اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
       مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
     </p>
     <pre>
-      <code>{`$ liara deploy --platform=node`}</code>
+      <code>{`$ liara deploy --platform=angular`}</code>
     </pre>
     <Notice variant="info">
       برنامه‌ی شما حتما باید دارای فایل
@@ -149,10 +164,9 @@ export default () => (
       برنامه شما یک زیردامنه رایگان اختصاص می‌دهد که به وسیله آن می‌توانید مطمئن
       شوید که برنامه‌ی‌تان به صورت صحیح به بستر لیارا منتقل شده است یا خیر. این
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
-    </p> 
+    </p>
 
-    <p dir="ltr">https://nodejs-starter.liara.run</p>
-    */}
+    <p dir="ltr">https://angular-starter.liara.run</p>
 
     <Link href="/app-deploy/angular/logs" className="next-page">
       متوجه شدم، برو گام بعدی!
