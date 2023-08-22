@@ -35,6 +35,9 @@ export default () => (
         </a>
       </li>
       <li>
+        <a href="#next-cache">افزایش فضای مسیر Cache</a>
+      </li>
+      <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
     </ul>
@@ -126,6 +129,26 @@ export default () => (
       توجه داشته باشید که فقط و فقط این قابلیت را زمانی غیرفعال کنید که کاملا
       به‌نتایج آن آگاه باشید.
     </Notice>
+
+    <h3 id="next-cache">افزایش فضای مسیر Cache</h3>
+    <p>
+      فریم‌ورک Next.js به‌صورت پیش‌فرض فایل‌های کش (Cache) را در مسیر
+      <span className="code">.next/cache</span>
+      ذخیره می‌کند. در لیارا به‌دلیل{" "}
+      <a href="/app-features/file-system">ReadOnly</a> بودن فایل سیستم این مسیر
+      قابل نوشتن نیست. به‌همین دلیل این مسیر به مسیر
+      <span className="code">/tmp</span>
+      لینک شده است.
+      <span className="code">/tmp</span>
+      در فایل‌سیستم هر برنامه، قابل نوشتن است و درواقع{" "}
+      <Link href="/app-features/file-system">ReadOnly</Link> نیست، اما محدودیت
+      ۱۰۰ مگابایتی دارد. این محدودیت به‌این معناست که اگر حجم فایل‌های کش شما
+      بزرگ‌تر از ۱۰۰ مگابایت باشد، با خطا مواجه خواهید شد. برای رفع این محدودیت،
+      می‌توانید از قابلیت <Link href="/app-deploy/nodejs/disks">دیسک‌ها</Link>{" "}
+      استفاده کنید و دیسکی با اندازه‌ی دلخواه‌تان بسازید و به‌پوشه‌ی
+      <span className="code">/tmp</span>
+      متصل کنید.
+    </p>
 
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
