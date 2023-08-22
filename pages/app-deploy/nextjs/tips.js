@@ -35,7 +35,7 @@ export default () => (
         </a>
       </li>
       <li>
-        <a href="#next-cache">افزایش فضای مسیر کش</a>
+        <a href="#next-cache">افزایش فضای مسیر Cache</a>
       </li>
       <li>
         <a href="#cors">رفع خطای CORS</a>
