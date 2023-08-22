@@ -85,8 +85,28 @@ pip install django-storages`}</Highlight>
       کلیدهای ساخته‌شده را ذخیره کنید. توجه داشته‌باشید که SECRET_KEY تنها یک
       بار نمایش داده می‌شود و پس از آن باید کلید را درجایی مطمئن ذخیره کنید.
     </p>
-    <h3 id="set-env">تنظیم متغیرها</h3>
-
+    <h3 id="set-env">تنظیم متغیر‌های محیطی</h3>
+    <p>
+      در این مرحله باید کلیدها، نام باکت و endpoint لیارا را در فایل .env ذخیره
+      کنید
+    </p>
+    <Highlight className="plaintext">
+      {`LIARA_ENDPOINT=<Liara Bucket Endpoint>
+LIARA_BUCKET_NAME=<Bucket Name>
+LIARA_ACCESS_KEY=<Access Key>
+LIARA_SECRET_KEY=<Secret Key>`}
+    </Highlight>
+    <p>
+      لطفا توجه داشته‌باشید که باید هریک از مقادیر بالا را با متغیر های
+      باکت‌خودتان‌ جایگزین کنید. به عنوان مثال، یک فایل .env می‌تواند به شکل زیر
+      باشد:
+    </p>
+    <Highlight className="plaintext">
+      {`LIARA_ENDPOINT="https://storage.iran.liara.space"
+LIARA_BUCKET_NAME="my-personal-files
+LIARA_ACCESS_KEY="nad4u71et9dgc3go"
+LIARA_SECRET_KEY="82c963df-1122-4c31-868b-0124a28ad57d""`}
+    </Highlight>
     <p>
       در مرحله‌ی آخر باید فایل <span className="code">settings.py</span>{" "}
       برنامه‌تان را به‌ شکل زیر ویرایش کنید:
