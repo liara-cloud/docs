@@ -36,8 +36,8 @@ export default () => (
       width="100%"
     ></video>
 
-    {/* <p>
-    <h3 id="installing-liara-cli">نصب Liara CLI</h3>
+    <p>
+      <h3 id="installing-liara-cli">نصب Liara CLI</h3>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید: <Link href="/cli/install">توضیحات بیشتر</Link>
     </p>
@@ -59,10 +59,12 @@ export default () => (
       <a href="https://console.liara.ir/apps/create" target="_blank">
         ایجاد برنامه‌ها در لیارا
       </a>{" "}
-      بروید و با انتخاب پلتفرم NODEJS و نوشتن شناسه برنامه‌ی موردنظرتان و در
+      بروید و با انتخاب پلتفرم REACT و نوشتن شناسه برنامه‌ی موردنظرتان و در
       نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
-      برای برنامه آزمایشی‌مان، شناسه nodejs-starter را انتخاب کردیم.
+      برای برنامه آزمایشی‌مان، شناسه react-starter را انتخاب کردیم. همچنین شما
+      می‌توانید از طریق Liara CLI با دستور زیر برنامه‌ی خود را ایجاد کنید.
     </p>
+    <Highlight className="json">{`liara create`}</Highlight>
     <p>
       <b>گام دوم)</b> داخل فایل
       <span className="code">package.json</span>
@@ -76,16 +78,41 @@ export default () => (
     </p>
     <Highlight className="json">
       {`{
-  "name": "app",
+  "name": "react-getting-started",
   "version": "0.1.0",
-  "description": "My application",
-
-  "scripts": {
-    "start": "node server.js"
-  },
-
+  "private": true,
   "dependencies": {
-    "express": "4"
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }`}
     </Highlight>
@@ -93,41 +120,28 @@ export default () => (
       بعد از این‌که برنامه‌ی شما آپلود شد، لیارا برای شما دستور
       <span className="code">npm start</span>
       را اجرا می‌کند. شما باید داخل این اسکریپت، دستوری بنویسید که باعث اجرا شدن
-      برنامه‌ی‌تان شود. مثلا اگر یک فایل
-      <span className="code">server.js</span>
-      در برنامه‌ی‌تان وجود دارد که باید توسط node اجرا شود، باید
-      <span className="code">node server.js</span>
-      را داخل فیلد
-      <span className="code">start</span>
-      قرار دهید. (مانند نمونه‌ی بالا)
+      برنامه‌ی‌تان شود.(مانند نمونه‌ی بالا)
     </p>
     <Notice variant="warning">
-      توجه داشته باشید که لیارا به‌طور خودکار در فرایند استقرار برنامه‌های
-      NodeJS دستور <span className="code">npm run build</span> را اجرا می‌کند.
+      توجه داشته باشید که لیارا به‌طور خودکار در فرایند استقرار برنامه‌های React
+      دستور <span className="code">npm run build</span> را اجرا می‌کند.
     </Notice>
     <p>
       <b>گام سوم)</b> کافیست وارد ریشه برنامه‌ی‌تان شده و به وسیله دستور زیر
       اولین استقرار خود را اجرا کنید. بعد از وارد کردن این دستور، از شما شناسه
-      برنامه‌ موردنظرتان پرسیده می‌شود و بعد از انتخاب شناسه، پورتی که برنامه‌ی
-      شما روی آن
-      <span className="code">listen</span>
-      می‌کند و اصطلاحا گوش می‌دهد پرسیده خواهد شد. برای مثال، چنانچه در لوکال و
-      روی کامپیوتر خودتان برنامه روی پورت
-      <span className="code">8000</span>
-      اجرا می‌شود، باید
-      <span className="code">8000</span>
-      را به عنوان پاسخ وارد کنید.
+      برنامه‌ موردنظرتان پرسیده می‌شود و بعد از انتخاب شناسه، لیارا عملیات
+      استقرار را شروع می‌کند.
     </p>
     <pre>
       <code>{`$ liara deploy`}</code>
     </pre>
     <p>
       Liara CLI به صورت خودکار، تشخیص خواهد داد که برنامه‌ی شما را باید به عنوان
-      یک برنامه‌ی NodeJS اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
+      یک برنامه‌ی React اجرا کند و عملیات استقرار را آغاز خواهد کرد. اما اگر
       مشکلی در تشخیص وجود داشت، می‌توانید از دستور زیر استفاده کنید:
     </p>
     <pre>
-      <code>{`$ liara deploy --platform=node`}</code>
+      <code>{`$ liara deploy --platform=react`}</code>
     </pre>
     <Notice variant="info">
       برنامه‌ی شما حتما باید دارای فایل
@@ -149,10 +163,9 @@ export default () => (
       برنامه شما یک زیردامنه رایگان اختصاص می‌دهد که به وسیله آن می‌توانید مطمئن
       شوید که برنامه‌ی‌تان به صورت صحیح به بستر لیارا منتقل شده است یا خیر. این
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
-    </p> 
+    </p>
 
-    <p dir="ltr">https://nodejs-starter.liara.run</p>
-    */}
+    <p dir="ltr">https://react-starter.liara.run</p>
 
     <Link href="/app-deploy/react/logs" className="next-page">
       متوجه شدم، برو گام بعدی!
