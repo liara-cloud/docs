@@ -54,6 +54,11 @@ export default () => (
       <code>{`$ liara login`}</code>
     </pre>
     <h3 id="deploy">اولین استقرار</h3>
+    <Notice variant="warning">
+      توجه داشته باشید؛ در لیارا برنامه‌های React به دو روش
+      <span className="code">Vite</span> و
+      <span className="code">Create-React</span> ایجاد می‌شوند.
+    </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
       <a href="https://console.liara.ir/apps/create" target="_blank">
@@ -80,7 +85,6 @@ export default () => (
       {`{
   "name": "react-getting-started",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -95,24 +99,6 @@ export default () => (
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }`}
     </Highlight>

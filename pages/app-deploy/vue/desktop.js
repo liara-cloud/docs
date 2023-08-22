@@ -47,6 +47,11 @@ export default () => (
       کرده، سپس از طریق مروگر، وارد حساب‌تان شوید.
     </p>
     <h3 id="deploy">اولین استقرار</h3>
+    <Notice variant="warning">
+      توجه داشته باشید؛ در لیارا برنامه‌های Vue به دو روش
+      <span className="code">Vite</span> و<span className="code">Vue-Cli</span>{" "}
+      ایجاد می‌شوند.
+    </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
       <a href="https://console.liara.ir/apps/create" target="_blank">
@@ -71,7 +76,6 @@ export default () => (
       {`{
   "name": "vue-getting-started",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -89,26 +93,7 @@ export default () => (
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }`}
     </Highlight>
     <p>

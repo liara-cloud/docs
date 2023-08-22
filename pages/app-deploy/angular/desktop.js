@@ -47,6 +47,10 @@ export default () => (
       کرده، سپس از طریق مروگر، وارد حساب‌تان شوید.
     </p>
     <h3 id="deploy">اولین استقرار</h3>
+    <Notice variant="warning">
+      توجه داشته باشید؛ در لیارا برنامه‌های Angular به روش
+      <span className="code">Ng</span> ایجاد می‌شوند.
+    </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
       <a href="https://console.liara.ir/apps/create" target="_blank">
@@ -70,7 +74,7 @@ export default () => (
     <Highlight className="json">
       {`{
   "name": "angular-getting-started",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -78,7 +82,6 @@ export default () => (
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.0",
     "@angular/common": "~13.1.0",
