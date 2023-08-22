@@ -44,7 +44,7 @@ export default () => (
       صفحه‌ی تنظیمات مشاهده کنید:
     </p>
 
-    <ZoomableImage src="/static/cron-jobs.png" alt="بخش Cron Job ها" />
+    <ZoomableImage src="/static/cron-job.png" alt="بخش Cron Job ها" />
 
     <p>در حال حاضر، پلتفرم‌های زیر از این قابلیت پشتیبانی می‌کنند:</p>
     <ul>

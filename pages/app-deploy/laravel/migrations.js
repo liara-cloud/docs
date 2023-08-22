@@ -34,10 +34,15 @@ export default () => (
     <pre>
       <code>{`$ php artisan migrate`}</code>
     </pre>
+
+    <br />
+
     <ZoomableImage
-      src="/static/laravel-migrate-success.png"
+      src="/static/laravel-migrate.png"
       alt="اجرای دستورات migrations"
     />
+
+    <br />
 
     <Notice variant="info">
       در نظر داشته باشید که هرزمان از طریق خط‌ فرمان لیارا متصل می‌شوید، در ریشه

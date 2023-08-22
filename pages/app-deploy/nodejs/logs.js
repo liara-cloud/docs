@@ -32,7 +32,7 @@ export default () => (
       سپس با رفرش کردن چندباره سایت می‌توانید آن‌هارا در منوی لاگ‌های لیارا
       ببینید:
     </p>
-    <ZoomableImage src="/static/nodejs-logs.png" />
+    <ZoomableImage src="/static/node-log.png" />
 
     <p>
       مدیریت Log ها در NodeJS می‌تواند روش‌های مختلفی داشته باشد و وابسته به

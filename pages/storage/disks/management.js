@@ -37,10 +37,10 @@ export default () => (
       بسازید. اگر برای اولین‌بار وارد صفحه‌ی دیسک‌ها شوید، با چنین صفحه‌ای رو به
       رو می‌شوید:
     </p>
-    <ZoomableImage src="/static/disks/1.png" alt="صفحه‌ی خالی دیسک‌ها" />
+    <ZoomableImage src="/static/disks/disk-1.png" alt="صفحه‌ی خالی دیسک‌ها" />
 
     <p>با کلیک روی دکمه‌ی «ساخت دیسک» می‌توانید اولین دیسک‌تان را بسازید.</p>
-    <ZoomableImage src="/static/disks/2.png" alt="صفحه‌ی ساخت دیسک" />
+    <ZoomableImage src="/static/disks/disk-2.png" alt="صفحه‌ی ساخت دیسک" />
 
     <p>
       همان‌طور که مشاهده می‌کنید، نام دیسک را در تصویر برابر با
@@ -48,7 +48,7 @@ export default () => (
       قرار داده‌ایم و اندازه‌ی آن را ۲ گیگابایت وارد کرده‌ایم. با کلیک روی
       دکمه‌ی «ساخت دیسک»، دیسک ساخته می‌شود و در صفحه‌ی دیسک‌ها قابل مشاهده است.
     </p>
-    <ZoomableImage src="/static/disks/3.png" alt="صفحه‌ی دیسک‌ها" />
+    <ZoomableImage src="/static/disks/disk-3.png" alt="صفحه‌ی دیسک‌ها" />
 
     <Notice variant="info">
       توجه کنید که این دیسک در وضعیت «آماده به کار» قرار دارد و باید مسیر آن را
@@ -62,7 +62,7 @@ export default () => (
       ساخته‌ایم، الان فضای کمتری را برای ساخت دیسک خواهیم داشت که در تصویر زیر
       مشخص است. این فضا کاملا وابسته به پلن انتخابی شما برای برنامه‌تان است.
     </p>
-    <ZoomableImage src="/static/disks/4.png" alt="صفحه‌ی ساخت دیسک" />
+    <ZoomableImage src="/static/disks/disk-4.png" alt="صفحه‌ی ساخت دیسک" />
     <Notice variant="info">
       در صورتی که قصد دارید <span className="code">500 MB</span> فضا یعنی کمتر
       از <span className="code">1 GB</span> رزرو کنید کافیست که اندازه دیسک را{" "}
@@ -158,6 +158,6 @@ export default () => (
       </Highlight>
       برای حذف کافیست از طریق پنل دیسک‌ها گزینه <b>حذف دیسک</b> را انتخاب کنیم:
     </p>
-    <ZoomableImage src="/static/disks/remove.png" alt="صفحه‌ی حذف دیسک" />
+    <ZoomableImage src="/static/disks/disk-5.png" alt="صفحه‌ی حذف دیسک" />
   </Layout>
 );

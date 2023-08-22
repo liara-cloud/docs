@@ -59,7 +59,7 @@ export default () => (
       <br />
       <br />
       <ZoomableImage
-        src="/static/laravel-app-key.png"
+        src="/static/laravel-env.png"
         alt="اولین متغیر محیطی در برنامه‌های لاراولی"
       />
     </p>

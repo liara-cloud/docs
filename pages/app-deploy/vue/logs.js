@@ -24,7 +24,7 @@ export default () => (
       راحت‌تر از اتفاقات رخ‌ داده در برنامه‌ی‌شان آگاه شوند. به صورت خلاصه شما
       می‌توانید لاگ‌های برنامه‌ی‌تان را در بخش لاگ‌های پنل لیارا مشاهده کنید:
     </p>
-    <ZoomableImage src="/static/vue-logs.png" />
+    <ZoomableImage src="/static/vue-log.png" />
     <br />
 
     <Link href="/app-deploy/vue/liarajson" className="next-page">

@@ -38,7 +38,7 @@ export default () => (
 }`}
     </Highlight>
     <p>با رفرش سایت می‌توانید آن‌ها را در منوی لاگ‌های لیارا ببینید:</p>
-    <ZoomableImage src="/static/dotnet-logs.png" />
+    <ZoomableImage src="/static/dotnet-log.png" />
 
     <p>
       مدیریت Log ها در ASP.Net Core می‌تواند روش‌های مختلفی داشته باشد و وابسته

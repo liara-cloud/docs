@@ -67,7 +67,7 @@ axios
     </p>
 
     <ZoomableImage
-      src="/static/disable-database-access-from-public-network.png"
+      src="/static/db-access.png"
       alt="غیرفعال کردن دسترسی از طریق شبکه‌ی عمومی در زمان راه‌اندازی دیتابیس"
     ></ZoomableImage>
 
@@ -82,7 +82,7 @@ axios
     </p>
 
     <ZoomableImage
-      src="/static/how-to-connect-database-from-private-network.png"
+      src="/static/db-connect.png"
       alt="غیرفعال کردن دسترسی از طریق شبکه‌ی عمومی در زمان راه‌اندازی دیتابیس"
     ></ZoomableImage>
   </Layout>

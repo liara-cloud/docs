@@ -29,7 +29,7 @@ export default () => (
     <p>
       سپس با رفرش کردن سایت می‌توانیم آن‌ها را در منوی لاگ‌های لیارا ببینیم:
     </p>
-    <ZoomableImage src="/static/django-logs.png" />
+    <ZoomableImage src="/static/django-log.png" />
     <p>
       مدیریت Log ها در Django می‌تواند روش‌های مختلفی داشته باشد و وابسته به
       پیاده‌سازی برنامه‌ی‌تان و تصمیمات شما است. ممکن است لاگ‌های مهم‌تر را در

@@ -39,7 +39,7 @@ echo "Home page.";
       سپس با رفرش کردن چندباره سایت می‌توانیم آن‌هارا در منوی لاگ‌های لیارا
       ببینیم:
     </p>
-    <ZoomableImage src="/static/php-logs.png" />
+    <ZoomableImage src="/static/php-log.png" />
 
     <p>
       مدیریت Log ها در PHP می‌تواند روش‌های مختلفی داشته باشد و وابسته به

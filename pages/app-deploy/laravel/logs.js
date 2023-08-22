@@ -39,7 +39,7 @@ export default () => (
     <p>
       سپس با رفرش کردن سایت می‌توانید آن‌ها را در منوی لاگ‌های لیارا ببینید:
     </p>
-    <ZoomableImage src="/static/liara-logs.png" alt="نمایش لاگ‌ها در لیارا" />
+    <ZoomableImage src="/static/laravel-log.png" alt="نمایش لاگ‌ها در لیارا" />
 
     <p>
       البته ممکن است شما لاگ‌ها را داخل کنسول قرار ندهید و آن‌ها‌ را در فایل

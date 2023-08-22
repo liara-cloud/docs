@@ -34,7 +34,7 @@ export default () => (
       <strong>راه‌اندازی phpRedisAdmin</strong> را فعال کنید.
     </p>
     <ZoomableImage
-      src="/static/databases/redis-admin.png"
+      src="/static/databases/php-redis-admin.png"
       alt="آماده شدن دیتابیس"
     />
     <p>

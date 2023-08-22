@@ -22,7 +22,10 @@ export default () => (
       فقط امکان افزایش حجم را دارید درنتیجه باید حجم جدید بیشتر از حجم فعلی‌تان
       باشد.
     </p>
-    <ZoomableImage src="/static/disks/scale.png" alt="صفحه‌ی افزایش حجم دیسک" />
+    <ZoomableImage
+      src="/static/disks/disk-scale.png"
+      alt="صفحه‌ی افزایش حجم دیسک"
+    />
     <p>
       {" "}
       برای مثال همان‌طور که در تصویر بالا مشخص است فضای کل دیسک ما{" "}
