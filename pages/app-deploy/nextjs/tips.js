@@ -132,7 +132,7 @@ export default () => (
 
     <h3 id="next-cache">افزایش فضای مسیر Cache</h3>
     <p>
-      فریم‌ورک Next.js به‌صورت پیش‌فرض فایل‌های کش را در مسیر
+      فریم‌ورک Next.js به‌صورت پیش‌فرض فایل‌های کش (Cache) را در مسیر
       <span className="code">.next/cache</span>
       ذخیره می‌کند. در لیارا به‌دلیل{" "}
       <a href="/app-features/file-system">ReadOnly</a> بودن فایل سیستم این مسیر
