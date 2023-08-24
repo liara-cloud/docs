@@ -734,6 +734,17 @@ div.footer-animate-lines {
   background-color: #54637b1d;
 }
 
+/* zoom image */
+
+.medium-zoom--opened .medium-zoom-overlay {
+  background-color: #181818f0 !important;
+  z-index: 100;
+}
+
+.medium-zoom-image.medium-zoom-image--opened {
+  z-index: 999 !important;
+}
+
 @media (max-width: 820px) {
   .footer-container {
     grid-template-columns: 1fr;
