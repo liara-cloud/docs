@@ -77,57 +77,81 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
     <Highlight className="php">
       {`<?php
 
-namespace App\\Mail;
-  
-use Illuminate\\Bus\\Queueable;
-use Illuminate\\Contracts\\Queue\\ShouldQueue;
-use Illuminate\\Mail\\Mailable;
-use Illuminate\\Queue\\SerializesModels;
-  
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
+
 class NotifyMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-      * Create a new message instance.
-      *
-      * @return void
-    */
+     * Create a new message instance.
+     */
     public function __construct()
     {
-      //
+        //
     }
-  
+
     /**
-      * Build the message.
-      *
-      * @return $this
-    */
-    public function build()
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
     {
-      return $this->view('view.name');
+        return new Envelope(
+            subject: 'Notify Mail',
+        );
     }
-}`}
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            view: 'view.name',
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     */
+    public function attachments(): array
+    {
+        return [];
+    }
+}
+`}
     </Highlight>
     <p>
       با هر نامی که می خواهید، یک الگوی ایمیل ایجاد کنید؛ که می خواهید بفرستید.
-      فراموش نکنید که نام قالب ارسالی ایمیل‌تان را در کلاس{" "}
-      <span className="code">build</span> در کد بالا اضافه کنید. برای مثال:
+      برای مثال:
     </p>
 
-    <Highlight className="php">{`return $this->view('view.name');`}</Highlight>
+    <Highlight className="php">{`return new Content(
+            view: 'view.name',
+        );`}</Highlight>
 
     <p>به:</p>
 
     <Highlight className="php">
-      {`return $this->view('emails.demoMail');`}
+      {`return new Content(
+            view: 'emails.demoMail',
+        );`}
     </Highlight>
 
     <p>
       در مرحله بعد، باید یک قالب ایمیل با نام
       <span className="code">demoMail.blade.php</span>
       در دایرکتوری <span className="code">resources/views/emails</span>
-      ایجاد کنید. به همین دلیل، ایمیل نام view را اضافه کنید.
+      ایجاد کنید.
     </p>
 
     <h3>اضافه کردن Route</h3>
@@ -195,13 +219,9 @@ class SendEmailController extends Controller
       
   public function index()
   {
-    Mail::to('receiver-email-id')->send(new NotifyMail());
+    Mail::to('destination@gmail.com')->send(new NotifyMail());
   
-    if (Mail::failures()) {
-      echo "Sorry! Please try again later.";
-    }else{
-        echo "Great! Your email has been sent successfully.";
-      }
+    return "Great! Your email has been sent successfully.";
   } 
 }`}
     </Highlight>
