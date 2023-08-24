@@ -105,7 +105,7 @@ module.exports = {
         target="_blank"
         rel="noopener"
       >
-        AWS S3
+        Amazon S3
       </a>{" "}
       استفاده کرده و به‌شکل زیر این پلاگین را در فایل{" "}
       <span className="code">config/plugins.js</span> پیکربندی کنید:
