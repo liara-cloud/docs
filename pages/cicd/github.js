@@ -118,5 +118,53 @@ jobs:
       ریپازیتوری شما اجرا شده است و شما نیز می‌توانید مراحل استقرار پروژه‌ی خود
       را در صفحه‌ی <strong>تاریخچه</strong> دنبال کنید.
     </p>
+
+    <h3>راه‌اندازی CI/CD به ازای هر branch</h3>
+    <p>
+      برای راه‌اندازی CI/CD در برنچ‌های مختلف، می‌توان فایل{" "}
+      <span className="code">.github/workflows/liara.yaml</span> را به شکل زیر
+      ویرایش کرد:
+    </p>
+    <Highlight className="yaml">
+      {`name: CD-Liara
+
+on:
+  push:
+    branches:
+      - master
+      - test
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Liara CLI
+        run: npm i -g @liara/cli@4
+
+      - name: Deploy
+        env:
+          LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}
+        run: |
+          if [ \${{ github.ref }} == 'refs/heads/master' ]; then
+            liara deploy --app="test-js" --api-token="$LIARA_TOKEN" --port 3000 --detach
+          elif [ \${{ github.ref }} == 'refs/heads/test' ]; then
+            liara deploy --app="test-branch" --api-token="$LIARA_TOKEN" --port 3000 --detach
+          fi
+`}
+    </Highlight>
+    <Notice variant="info">
+      توجه داشته باشید که در اینجا، نام branch ها master و test انتخاب‌‌شده است.
+      شما باید نسبت به پروژه‌خود، نام این branch ها را تغییر دهید.
+    </Notice>
+    <Notice variant="info">
+      در دو دستور <span className="code">liara deploy</span> نام اپ‌ها متفاوت
+      انتخاب‌‌شده است. شما باید با توجه برنامه‌خود، نام اپ‌ها را تغییر دهید.
+    </Notice>
   </Layout>
 );
