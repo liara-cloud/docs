@@ -64,9 +64,10 @@ export default () => (
     </p>
     <h3 id="deploy">اولین استقرار</h3>
     <Notice variant="warning">
-      توجه داشته باشید؛ در لیارا برنامه‌های Vue به دو روش
-      <span className="code">Vite</span> و<span className="code">Vue-Cli</span>{" "}
-      ایجاد می‌شوند.
+      توجه داشته باشید؛ تنها برنامه‌هایی که با دو روش
+      <span className="code">Vite</span> و یا
+      <span className="code">vue-cli</span>
+      ساخته شده باشند، در پلتفرم Vue لیارا قابل اجرا خواهند بود.
     </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
@@ -88,17 +89,42 @@ export default () => (
       <span className="code">start</span>
       تعریف کنید.
     </p>
+    <p>
+      نمونه فایل package.json استفاده شده از{" "}
+      <span className="code">vue-cli</span>:
+    </p>
     <Highlight className="json">
       {`{
   "name": "vue-getting-started",
   "version": "0.1.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0"
+  }
+}`}
+    </Highlight>
+    <p>
+      نمونه فایل package.json استفاده شده از <span className="code">Vite</span>:
+    </p>
+    <Highlight className="json">
+      {`{
+  "name": "vue-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "vite preview",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^8.7.1",
+    "vite": "^2.9.8"
   }
 }`}
     </Highlight>

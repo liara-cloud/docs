@@ -64,8 +64,9 @@ export default () => (
     </p>
     <h3 id="deploy">اولین استقرار</h3>
     <Notice variant="warning">
-      توجه داشته باشید؛ در لیارا برنامه‌های NextJS به روش
-      <span className="code">Create-Next-App</span> ایجاد می‌شوند.
+      توجه داشته باشید؛ تنها برنامه‌هایی که با
+      <span className="code">create-next-app</span>
+      ساخته شده باشند، در پلتفرم Next لیارا قابل اجرا خواهند بود.
     </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}

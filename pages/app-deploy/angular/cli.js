@@ -71,8 +71,9 @@ export default () => (
     </pre>
     <h3 id="deploy">اولین استقرار</h3>
     <Notice variant="warning">
-      توجه داشته باشید؛ در لیارا برنامه‌های Angular به روش
-      <span className="code">Ng</span> ایجاد می‌شوند.
+      توجه داشته باشید؛ تنها برنامه‌هایی که با
+      <span className="code">Angular CLI</span>
+      ساخته شده باشند، در پلتفرم Angular لیارا قابل اجرا خواهند بود.
     </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}

@@ -71,9 +71,10 @@ export default () => (
     </pre>
     <h3 id="deploy">اولین استقرار</h3>
     <Notice variant="warning">
-      توجه داشته باشید؛ در لیارا برنامه‌های React به دو روش
-      <span className="code">Vite</span> و
-      <span className="code">Create-React</span> ایجاد می‌شوند.
+      توجه داشته باشید؛ تنها برنامه‌هایی که با دو روش
+      <span className="code">Vite</span> و یا
+      <span className="code">create-react-app</span>
+      ساخته شده باشند، در پلتفرم React لیارا قابل اجرا خواهند بود.
     </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
@@ -97,6 +98,10 @@ export default () => (
       <span className="code">start</span>
       تعریف کنید.
     </p>
+    <p>
+      نمونه فایل package.json استفاده شده از{" "}
+      <span className="code">create-react-app</span>:
+    </p>
     <Highlight className="json">
       {`{
   "name": "react-getting-started",
@@ -110,6 +115,29 @@ export default () => (
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
+  }
+}`}
+    </Highlight>
+    <p>
+      نمونه فایل package.json استفاده شده از <span className="code">Vite</span>:
+    </p>
+    <Highlight className="json">
+      {`{
+  "name": "react-getting-started",
+  "version": "0.1.0",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "vite": "^2.4.4", 
+    "@vitejs.plugin-react-refresh": "^1.3.1" 
+  },
+  "scripts": {
+    "start": "vite preview",
+    "build": "vite build"
   }
 }`}
     </Highlight>
