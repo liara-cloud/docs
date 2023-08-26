@@ -74,7 +74,7 @@ export default () => (
       توجه داشته باشید، در پلتفرم <span className="code">Static</span> می‌توانید
       برنامه‌هایی که فقط فایل‌های
       <span className="code">HTML</span>, <span className="code">CSS</span> و
-      <span className="code">JavaScript</span> دارند را دپلوی کنید.
+      <span className="code">JavaScript</span> دارند را دیپلوی کنید.
     </Notice>
     <p>
       <b>گام اول)</b> کافیست به بخش{" "}
