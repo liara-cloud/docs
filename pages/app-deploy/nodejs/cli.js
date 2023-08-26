@@ -22,7 +22,23 @@ export default () => (
       </div>
     </div>
 
-    <h3>استقرار با Liara CLI</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#video">استقرار با Liara CLI</a>
+      </li>
+      <li>
+        <a href="#installing-liara-cli">نصب Liara CLI</a>
+      </li>
+      <li>
+        <a href="#login">ورود به حساب کاربری</a>
+      </li>
+      <li>
+        <a href="#deploy">اولین استقرار</a>
+      </li>
+    </ul>
+
+    <h3 id="video">استقرار با Liara CLI</h3>
 
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
@@ -36,8 +52,8 @@ export default () => (
       width="100%"
     ></video>
 
-    {/* <p>
-    <h3 id="installing-liara-cli">نصب Liara CLI</h3>
+    <p>
+      <h3 id="installing-liara-cli">نصب Liara CLI</h3>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی
       نصب کنید: <Link href="/cli/install">توضیحات بیشتر</Link>
     </p>
@@ -61,8 +77,10 @@ export default () => (
       </a>{" "}
       بروید و با انتخاب پلتفرم NODEJS و نوشتن شناسه برنامه‌ی موردنظرتان و در
       نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
-      برای برنامه آزمایشی‌مان، شناسه nodejs-starter را انتخاب کردیم.
+      برای برنامه آزمایشی‌مان، شناسه nodejs-starter را انتخاب کردیم. همچنین شما
+      می‌توانید از طریق Liara CLI با دستور زیر برنامه‌ی خود را ایجاد کنید.
     </p>
+    <Highlight className="json">{`liara create`}</Highlight>
     <p>
       <b>گام دوم)</b> داخل فایل
       <span className="code">package.json</span>
@@ -149,10 +167,9 @@ export default () => (
       برنامه شما یک زیردامنه رایگان اختصاص می‌دهد که به وسیله آن می‌توانید مطمئن
       شوید که برنامه‌ی‌تان به صورت صحیح به بستر لیارا منتقل شده است یا خیر. این
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
-    </p> 
+    </p>
 
     <p dir="ltr">https://nodejs-starter.liara.run</p>
-    */}
 
     <Link href="/app-deploy/nodejs/envs" className="next-page">
       متوجه شدم، برو گام بعدی!
