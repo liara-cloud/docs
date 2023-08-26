@@ -22,7 +22,23 @@ export default () => (
       </div>
     </div>
 
-    <h3>استقرار با Liara CLI</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#video">استقرار با Liara CLI</a>
+      </li>
+      <li>
+        <a href="#installing-liara-cli">نصب Liara CLI</a>
+      </li>
+      <li>
+        <a href="#login">ورود به حساب کاربری</a>
+      </li>
+      <li>
+        <a href="#deploy">اولین استقرار</a>
+      </li>
+    </ul>
+
+    <h3 id="video">استقرار با Liara CLI</h3>
 
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
@@ -87,21 +103,11 @@ export default () => (
   "version": "0.1.0",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
   }
 }`}
     </Highlight>

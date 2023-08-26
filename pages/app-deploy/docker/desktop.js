@@ -22,7 +22,23 @@ export default () => (
       </div>
     </div>
 
-    <h3>استقرار با Liara Desktop</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#video">استقرار با Liara Desktop</a>
+      </li>
+      <li>
+        <a href="#installing-liara-desktop">نصب Liara Desktop</a>
+      </li>
+      <li>
+        <a href="#login">ورود به حساب کاربری</a>
+      </li>
+      <li>
+        <a href="#deploy">اولین استقرار</a>
+      </li>
+    </ul>
+
+    <h3 id="video">استقرار با Liara Desktop</h3>
 
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
@@ -37,7 +53,7 @@ export default () => (
     ></video>
 
     <p>
-      <h3 id="installing-liara-cli">نصب Liara Desktop</h3>
+      <h3 id="installing-liara-desktop">نصب Liara Desktop</h3>
       شما می‌توانید از طریق این <Link href="/desktop/install">لینک</Link>؛ Liara
       Desktop را؛ متناسب با سیستم عامل خود دانلود و نصب کنید.
     </p>

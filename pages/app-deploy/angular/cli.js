@@ -22,7 +22,23 @@ export default () => (
       </div>
     </div>
 
-    <h3>استقرار با Liara CLI</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#video">استقرار با Liara CLI</a>
+      </li>
+      <li>
+        <a href="#installing-liara-cli">نصب Liara CLI</a>
+      </li>
+      <li>
+        <a href="#login">ورود به حساب کاربری</a>
+      </li>
+      <li>
+        <a href="#deploy">اولین استقرار</a>
+      </li>
+    </ul>
+
+    <h3 id="video">استقرار با Liara CLI</h3>
 
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
@@ -88,8 +104,7 @@ export default () => (
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
     "@angular/animations": "~13.1.0",
@@ -99,23 +114,13 @@ export default () => (
     "@angular/forms": "~13.1.0",
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
-    "@angular/router": "~13.1.0",
-    "rxjs": "~7.4.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "@angular/router": "~13.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.1.2",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.0",
-    "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
-    "jasmine-core": "~3.10.0",
-    "karma": "~6.3.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.1.0",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
   }
 }`}
