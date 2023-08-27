@@ -121,9 +121,13 @@ jobs:
 
     <h3>راه‌اندازی CI/CD به ازای هر branch</h3>
     <p>
-      برای راه‌اندازی CI/CD در برنچ‌های مختلف، می‌توان فایل{" "}
+      در برخی موارد، شاید لازم باشد چند محیط جداگانه برای برنامه‌تان ایجاد کنید.
+      به عنوان مثال ممکن است برنامه‌تان در سه محیط test, staging و production
+      قرارداشته باشد و بخواهید برای هر محیط یک CI/CD جدا راه‌اندازی کنید. در این
+      صورت، ابتدا باید سه اپ و سه branch جدا ایجاد کنید. در این حالت، هر branch
+      به یک اپ اشاره دارد. سپس می‌بایست فایل{" "}
       <span className="code">.github/workflows/liara.yaml</span> را به شکل زیر
-      ویرایش کرد:
+      تغییر دهید:
     </p>
     <Highlight className="yaml">
       {`name: CD-Liara
@@ -133,6 +137,7 @@ on:
     branches:
       - master
       - test
+      - staging
 
 jobs:
   deploy:
@@ -152,19 +157,24 @@ jobs:
           LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}
         run: |
           if [ \${{ github.ref }} == 'refs/heads/master' ]; then
-            liara deploy --app="test-js" --api-token="$LIARA_TOKEN" --port 3000 --detach
+            liara deploy --app="my-production-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
           elif [ \${{ github.ref }} == 'refs/heads/test' ]; then
-            liara deploy --app="test-branch" --api-token="$LIARA_TOKEN" --port 3000 --detach
+            liara deploy --app="my-test-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
+          elif [ \${{ github.ref }} == 'refs/heads/staging' ]; then
+            liara deploy --app="my-staging-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
           fi
 `}
     </Highlight>
     <Notice variant="info">
-      توجه داشته باشید که در اینجا، نام branch ها master و test انتخاب‌‌شده است.
-      شما باید نسبت به پروژه‌خود، نام این branch ها را تغییر دهید.
+      توجه داشته باشید که در این مثال، branch های master, test و staging به
+      ترتیب برای محیط‌های production, test و staging انتخاب‌شده اند. شما
+      می‌توانید با توجه به اپ خود، نام branch ها را تغییر دهید.
     </Notice>
     <Notice variant="info">
-      در دو دستور <span className="code">liara deploy</span> نام اپ‌ها متفاوت
-      انتخاب‌‌شده است. شما باید با توجه برنامه‌خود، نام اپ‌ها را تغییر دهید.
+      در سه دستور <span className="code">liara deploy</span> نام اپ‌ها برای
+      محیط‌های production, test و staging به ترتیب my-production-app,
+      my-test-app و my-staging-app انتخاب‌‌شده است. شما باید با توجه برنامه‌‌های
+      خود، نام اپ‌ها را تغییر دهید.
     </Notice>
   </Layout>
 );
