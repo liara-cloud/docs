@@ -118,5 +118,63 @@ jobs:
       ریپازیتوری شما اجرا شده است و شما نیز می‌توانید مراحل استقرار پروژه‌ی خود
       را در صفحه‌ی <strong>تاریخچه</strong> دنبال کنید.
     </p>
+
+    <h3>راه‌اندازی CI/CD به ازای هر branch</h3>
+    <p>
+      در برخی موارد، شاید لازم باشد چند محیط جداگانه برای برنامه‌تان ایجاد کنید.
+      به عنوان مثال ممکن است برنامه‌تان در سه محیط test, staging و production
+      قرارداشته باشد و بخواهید برای هر محیط یک CI/CD جدا راه‌اندازی کنید. در این
+      صورت، ابتدا باید سه اپ و سه branch جدا ایجاد کنید. در این حالت، هر branch
+      به یک اپ اشاره دارد. سپس می‌بایست فایل{" "}
+      <span className="code">.github/workflows/liara.yaml</span> را به شکل زیر
+      تغییر دهید:
+    </p>
+    <Highlight className="yaml">
+      {`name: CD-Liara
+
+on:
+  push:
+    branches:
+      - master
+      - test
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Liara CLI
+        run: npm i -g @liara/cli@4
+
+      - name: Deploy
+        env:
+          LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}
+        run: |
+          if [ \${{ github.ref }} == 'refs/heads/master' ]; then
+            liara deploy --app="my-production-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
+          elif [ \${{ github.ref }} == 'refs/heads/test' ]; then
+            liara deploy --app="my-test-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
+          elif [ \${{ github.ref }} == 'refs/heads/staging' ]; then
+            liara deploy --app="my-staging-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
+          fi
+`}
+    </Highlight>
+    <Notice variant="info">
+      توجه داشته باشید که در این مثال، branch های master, test و staging به
+      ترتیب برای محیط‌های production, test و staging انتخاب‌شده اند. شما
+      می‌توانید با توجه به اپ خود، نام branch ها را تغییر دهید.
+    </Notice>
+    <Notice variant="info">
+      در سه دستور <span className="code">liara deploy</span> نام اپ‌ها برای
+      محیط‌های production, test و staging به ترتیب my-production-app,
+      my-test-app و my-staging-app انتخاب‌‌شده است. شما باید با توجه برنامه‌‌های
+      خود، نام اپ‌ها را تغییر دهید.
+    </Notice>
   </Layout>
 );
