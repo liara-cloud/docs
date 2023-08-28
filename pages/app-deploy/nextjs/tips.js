@@ -161,7 +161,7 @@ export default () => (
       >
         next/image
       </a>{" "}
-      باعث افزایش مصرف منابع RAM برنامه‌تون می‌شود. ولی می‌توانید طبق{" "}
+      باعث افزایش مصرف منابع RAM برنامه‌‌ی شما می‌شود. ولی می‌توانید طبق{" "}
       <a
         href="https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl"
         target="_blank"
