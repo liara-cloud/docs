@@ -38,6 +38,9 @@ export default () => (
         <a href="#next-cache">افزایش فضای مسیر Cache</a>
       </li>
       <li>
+        <a href="#next-isr">استفاده از قابلیت ISR</a>
+      </li>
+      <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
     </ul>
@@ -149,6 +152,52 @@ export default () => (
       <span className="code">/tmp</span>
       متصل کنید.
     </p>
+
+    <Notice variant="warning">
+      توجه داشته باشید که استفاده از ماژول{" "}
+      <a
+        href="https://nextjs.org/docs/pages/api-reference/components/image"
+        target="_blank"
+      >
+        next/image
+      </a>{" "}
+      باعث افزایش مصرف منابع RAM برنامه‌تون می‌شود. ولی می‌توانید طبق{" "}
+      <a
+        href="https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl"
+        target="_blank"
+      >
+        مستندات
+      </a>{" "}
+      Next.js تنظیمات minimumCacheTTL را اعمال کنید تا فایل‌های کش (Cache) برای
+      مدت بیشتری نگهداری شوند.
+    </Notice>
+
+    <h3 id="next-isr">استفاده از قابلیت ISR</h3>
+    <p>
+      برای استفاده از{" "}
+      <a
+        href="https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration"
+        target="_blank"
+      >
+        قابلیت ISR
+      </a>{" "}
+      فریم‌ورک Next.js در پلتفرم لیارا نیاز است به مسیری که صفحات ساخته شده در
+      آن ذخیره می‌شوند، <Link href="/app-deploy/nodejs/disks">دیسک</Link> مونت
+      کنید. چرا که فایل سیستم لیارا{" "}
+      <a href="/app-features/file-system">ReadOnly</a> است و امکان نوشتن در آن
+      مسیر به‌صورت پیش‌فرض وجود ندارد.
+      <br />
+      اگر از مسیر <span className="code">pages</span> برای ساخت صفحات استفاده
+      می‌کنید، نیاز است دیسک را به مسیر{" "}
+      <span className="code">.next/server/pages</span> مونت کنید. ولی در صورت
+      استفاده از مسیر <span className="code">app</span> نیاز است دیسک را به مسیر{" "}
+      <span className="code">.next/server/app</span> مونت کنید.
+    </p>
+
+    <Notice variant="info">
+      لازم به ذکر است که با هر بار دیپلوی یا ری‌استارت برنامه‌تون، فایل‌های کش
+      (Cache) شده و صفحات ساخته شده در این مسیرها حذف خواهند شد.
+    </Notice>
 
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
