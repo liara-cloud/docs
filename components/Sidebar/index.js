@@ -4,7 +4,6 @@ import ActiveLink from "./ActiveLink";
 import MeiliSearch from "meilisearch";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
-import PocketBase from "pocketbase";
 import UAParser from "ua-parser-js";
 import PlatformIcon from "../../components/PlatformIcon";
 import { ThemeContext } from "../root/theme.context";
@@ -21,8 +20,6 @@ const client = new MeiliSearch({
   host: "https://search.liara.ir",
   apiKey: "99d6377d6dc5499ecc31451349b8957ebb2e29e67a5d92eb445737e25c1e7bb2",
 });
-
-const pb = new PocketBase("https://events.iran.liara.run");
 
 const Sidebar = ({ searchOpen, setSearchOpen }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -63,11 +60,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
       os: userAgent.getOS().name,
       osVersion: userAgent.getOS().version,
     };
-    pb.collection("search_terms")
-      .create(eventData)
-      .catch(error => {
-        console.error("Could not collect the event.", eventData, error);
-      });
 
     return client
       .index("docs")

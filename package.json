@@ -20,7 +20,6 @@
     "medium-zoom": "^1.0.8",
     "meilisearch": "^0.32.3",
     "next": "^13.4.4",
-    "pocketbase": "^0.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-highlight": "^0.15.0",
