@@ -20,6 +20,18 @@ export default () => (
     </div>
 
     <h3>اتصال به دیتابیس‌ها</h3>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        اتصال به <a href="#postgres">PostgreSQL</a>
+      </li>
+      <li>
+        اتصال به <a href="#mysql">mysql</a>
+      </li>
+      <li>
+        اتصال به <a href="#sqlite">sqlite</a>
+      </li>
+    </ul>
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیو‌های آموزشی
       زیر ‌را مشاهده کنید.
@@ -37,7 +49,7 @@ export default () => (
       width="100%"
     ></video>
     <ul>
-      <li>
+      <li id="postgres">
         <b>PostgreSQL</b>
       </li>
       <p>
@@ -53,7 +65,7 @@ export default () => (
         حال برنامه‌ بعد از اضافه شدن این ENV می‌تواند به دیتابیس PostgreSQL وصل
         شود.
       </p>
-      <li>
+      <li id="mysql">
         <b>MySQL</b>
       </li>
       <p>
@@ -82,7 +94,7 @@ mysqlclient == 1.4.6‍`}
       </Notice>
       <br />
 
-      <li>
+      <li id="sqlite">
         <b>SQLite</b>
       </li>
       <p>
