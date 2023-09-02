@@ -48,52 +48,71 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
+    <br />
+    <Notice variant="info">
+      توجه داشته باشید برای اتصال به هر دیتابیس باید درایور‌های آن را نصب کرده
+      باشید. مثلا برای MySQL و PostgreSQL نیاز است تا مقادیر زیر در فایل
+      requirements.txt شما وجود داشته باشد. این یک فایل نمونه برای Django است:
+      <Highlight className="config">
+        {`Django == 3.0.7
+psycopg2 == 2.8.5
+mysqlclient == 1.4.6‍`}
+      </Highlight>
+    </Notice>
+    <br />
     <ul>
       <li id="postgres">
         <b>PostgreSQL</b>
       </li>
       <p>
-        {" "}
-        برای اتصال به دیتابیس PostgreSQL کافیست اطلاعات اتصال به آن را در بخش
-        متغیرهای محیطی یا همان ENVs وارد کنید:
+        در ابتدا باید driver دیتابیس PostgreSQL را نصب کنید. برای این کار دستور
+        <span className="code">pip install psycopg2</span> اجرا کنید‍. سپس
+        تنظیمات دیتابیس‌تان در فایل <span className="code">settings.py</span> را
+        به شکل زیر تغییر دهید:
       </p>
-      <Highlight className="config">
-        {`DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/NAME`}
+      <Highlight className="python">
+        {`DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': '<database_name>',
+       'USER': '<database_username>',
+       'PASSWORD': '<password>',
+       'HOST': '<database_hostname_or_ip>',
+       'PORT': '<database_port>',
+   }
+}`}
       </Highlight>
-      <p>
-        {" "}
-        حال برنامه‌ بعد از اضافه شدن این ENV می‌تواند به دیتابیس PostgreSQL وصل
-        شود.
-      </p>
+      <Notice variant="info">
+        هر کدام از این متغیر‌ها را باید با توجه به اطلاعات دیتابیس‌تان تغییر
+        دهید.
+      </Notice>
+      <br />
       <li id="mysql">
         <b>MySQL</b>
       </li>
       <p>
-        {" "}
-        برای اتصال به دیتابیس MySQL کافیست اطلاعات اتصال به آن را در بخش
-        متغیرهای محیطی یا همان ENVs وارد کنید:
+        در ابتدا باید driver دیتابیس MySQL را نصب کنید. برای این کار دستور{" "}
+        <span className="code">pip install mysqlclient</span> اجرا کنید‍. سپس
+        تنظیمات دیتابیس‌تان در فایل <span className="code">settings.py</span> را
+        به شکل زیر تغییر دهید:
       </p>
-
-      <Highlight className="config">
-        {`DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME`}
+      <Highlight className="python">
+        {`DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': '<database_name>',
+       'USER': '<database_username>',
+       'PASSWORD': '<password>',
+       'HOST': '<database_hostname_or_ip>',
+       'PORT': '<database_port>',
+   }
+}`}
       </Highlight>
-      <p>
-        {" "}
-        حال برنامه‌ بعد از اضافه شدن این ENV می‌تواند به دیتابیس MySQL وصل شود.
-      </p>
-
       <Notice variant="info">
-        توجه داشته باشید برای اتصال به هر دیتابیس باید درایور‌های آن را نصب کرده
-        باشید. مثلا برای MySQL و PostgreSQL نیاز است تا مقادیر زیر در فایل
-        requirements.txt شما وجود داشته باشد. این یک فایل نمونه برای Django است:
-        <Highlight className="config">
-          {`Django == 3.0.7
-psycopg2 == 2.8.5
-mysqlclient == 1.4.6‍`}
-        </Highlight>
+        هر کدام از این متغیر‌ها را باید با توجه به اطلاعات دیتابیس‌تان تغییر
+        دهید.
       </Notice>
       <br />
-
       <li id="sqlite">
         <b>SQLite</b>
       </li>
@@ -107,6 +126,20 @@ mysqlclient == 1.4.6‍`}
         کنید.{" "}
         <Link href="/storage/disks/about">اطلاعات بیشتر درباره‌ی دیسک‌ها</Link>
       </p>
+      <p>
+        به عنوان مثال، برای تغییر مسیر قرار‌گیری فایل دیتابیس به پوشه data
+        می‌توانید تنظیمات دیتابیس‌تان را در فایل{" "}
+        <span className="code">settings.py</span> به این شکل تغثییر دهید:
+      </p>
+      <Highlight className="python">
+        {`DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
+    }
+
+}`}
+      </Highlight>
     </ul>
 
     <Link href="/app-deploy/django/migrations" className="next-page">
