@@ -195,7 +195,7 @@ const client = new S3Client({
 });
 const params = {
   Bucket:  process.env(LIARA_BUCKET_NAME),
-  Key: "objectkey"
+  Key: "objectkey",
   Expires: 60, // expires in 60 seconds
 };
 
