@@ -1,67 +1,65 @@
-var fs = require("fs");
-var path = require("path");
+const fs = require("fs").promises;
+const path = require("path");
 
-function walk(dir, done) {
-  var results = [];
-  fs.readdir(dir, function (err, list) {
-    if (err) return done(err);
-    var i = 0;
-    (function next() {
-      var file = list[i++];
-      if (!file) return done(null, results);
-      file = path.resolve(dir, file);
-      fs.stat(file, function (err, stat) {
-        if (stat && stat.isDirectory()) {
-          walk(file, function (err, res) {
-            results = results.concat(res);
-            next();
-          });
-        } else {
-          results.push(file);
-          next();
-        }
-      });
-    })();
-  });
+async function walk(dir) {
+  const results = [];
+  const list = await fs.readdir(dir);
+  for (const file of list) {
+    const filePath = path.resolve(dir, file);
+    const stat = await fs.stat(filePath);
+    if (stat.isDirectory()) {
+      const subResults = await walk(filePath);
+      results.push(...subResults);
+    } else {
+      results.push(filePath);
+    }
+  }
+  return results;
 }
 
-let content = [];
-walk(path.join(__dirname, "../pages"), function (err, results) {
-  const siteUrl = "https://docs.liara.ir";
-  if (err) throw err;
-  for (let i = 0; i < results.length; i++) {
-    const replaceSlash = results[i].replace(/\\/g, "/");
-    const sort = replaceSlash.split("pages")[1].slice(0, -3);
+async function generateSitemap() {
+  try {
+    const dir = path.join(__dirname, "../pages");
+    const results = await walk(dir);
 
-    content.push(sort);
-  }
-  const Final = content.filter(staticPage => {
-    return ![
+    const siteUrl = "https://docs.liara.ir";
+    const ignoredPages = [
       "/404",
       "/_app",
       "/sitemap.xml/index",
       "/index",
       "/sitemap.xml",
-    ].includes(staticPage);
-  });
-  Final.push("/");
+    ];
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${Final.map(url => {
-      return `
-          <url>
-            <loc>${siteUrl + url}</loc>
-            <changefreq>daily</changefreq>
-            <priority>0.7</priority>
-          </url>
-        `;
-    }).join("")}
-  </urlset>
-`;
+    const content = results
+      .map(filePath =>
+        filePath.replace(/\\/g, "/").split("pages").pop().slice(0, -3)
+      )
+      .filter(staticPage => !ignoredPages.includes(staticPage));
 
-  fs.writeFile("./public/sitemap.xml", sitemap, function (err) {
-    if (err) throw err;
+    content.push("/");
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${content
+        .map(url => {
+          return `
+            <url>
+              <loc>${siteUrl + path.posix.join(url, "/")}</loc>
+              <changefreq>daily</changefreq>
+              <priority>0.7</priority>
+            </url>
+          `;
+        })
+        .join("")}
+    </urlset>
+  `;
+
+    await fs.writeFile("./public/sitemap.xml", sitemap);
     console.log("Generating sitemap...");
-  });
-});
+  } catch (err) {
+    console.error("Error generating sitemap:", err);
+  }
+}
+
+generateSitemap();
