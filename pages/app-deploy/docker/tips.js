@@ -18,21 +18,38 @@ export default () => (
       </div>
     </div>
 
-    <h3>مشخص کردن مسیر Dockerfile</h3>
+    <h3>🎯 توضیحات و نکات تکمیلی</h3>
+
+    <h4>فهرست عناوین:</h4>
+
+    <ul className="mt-0">
+      <li>
+        <a href="#dockerfile-path">مشخص کردن مسیر Dockerfile</a>
+      </li>
+      <li>
+        <a href="#supercronic">پیکربندی Supercronic</a>
+      </li>
+      <li>
+        <a href="#limits">محدودیت‌ها</a>
+      </li>
+    </ul>
+
+    <h3 id="dockerfile-path">مشخص کردن مسیر Dockerfile</h3>
 
     <p>
       گاهی اوقات ممکن است بخواهید چندین پروژه که در یک
       <span className="code">monorepo</span>
-      قرار دارند رو با
+      قرار دارند را با
       <span className="code">Dockerfile</span>
-      های مختلفی دیپلوی کنید و یا از نام و مسیر دلخواه برای
+      های مختلفی دیپلوی کنید یا از نام و مسیر دلخواه برای
       <span className="code">Dockerfile</span>
-      تون استفاده کنید. برای این کار می‌تونید از یکی از دو روش زیر استفاده کنید:
+      تان استفاده کنید. برای این کار می‌توانید از یکی از دو روش زیر استفاده
+      کنید:
     </p>
     <p>
       ۱) یک فایل با نام
       <span className="code">liara.json</span>
-      در ریشه‌ی پروژه‌تون ایجاد کرده وقطعه‌کد زیر رو درون این فایل قرار بدید:
+      در ریشه‌ پروژه‌تان ایجاد کرده و قطعه‌کد زیر را درون این فایل قرار بدید:
     </p>
 
     <Highlight className="json">
@@ -50,7 +67,7 @@ export default () => (
       <span className="code">liara deploy</span>
       مسیر
       <span className="code">Dockerfile</span>
-      رو با پارامتر
+      را با پارامتر
       <span className="code">--dockerfile</span>
       مشخص کنید.
     </p>
@@ -58,8 +75,6 @@ export default () => (
     <Highlight className="bash">
       {`liara deploy --platform=docker --dockerfile="path/to/Dockerfile"`}
     </Highlight>
-
-    <h3> توضیحات و نکات تکمیلی</h3>
 
     <h3 id="supercronic">پیکربندی Supercronic</h3>
     <p>
