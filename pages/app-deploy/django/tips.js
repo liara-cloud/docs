@@ -83,7 +83,7 @@ export default () => (
     <Highlight className="json">
       {`{
   "django": {
-    "pythonVersion": "3.7"
+    "pythonVersion": "3.11"
   }
 }
 `}
@@ -92,7 +92,9 @@ export default () => (
     <ul>
       <li>3.7</li>
       <li>3.8</li>
-      <li>3.9</li>
+      <li>
+        <b>3.9 (پیش‌فرض)</b>
+      </li>
       <li>3.10</li>
       <li>3.11</li>
     </ul>

@@ -43,10 +43,10 @@ export default () => (
       <li>10</li>
       <li>12</li>
       <li>14</li>
+      <li>16</li>
       <li>
-        <b>16 (پیش‌فرض)</b>
+        <b>18 (پیش‌فرض)</b>
       </li>
-      <li>18</li>
     </ul>
 
     <div className="platforms">
