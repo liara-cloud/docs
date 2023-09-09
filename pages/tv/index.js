@@ -395,7 +395,7 @@ const Section = props => {
             )}
             <p style={{ marginRight: 15 }}>{item.videoTitle}</p>
             <button>
-              <img src={"static/play.svg"} />
+              <img src={"/static/play.svg"} />
               ویدیو
             </button>
           </div>
