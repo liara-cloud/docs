@@ -20,6 +20,7 @@ import angularIcon from "@liara/platformicons/glass/png/angular.png";
 // One-click-apps
 
 import matomoIcon from "/public/static/platforms/matomo.svg";
+import unleashIcon from "/public/static/platforms/unleash.svg";
 import n8nIcon from "@liara/platformicons/svg/n8n.svg";
 import odooIcon from "@liara/platformicons/glass/png/odoo.png";
 import pusherIcon from "./../public/static/platforms/pusher.svg";
@@ -116,6 +117,8 @@ const types = [
   { logo: mattermostIcon, alt: "mattermost" },
   { logo: rocketchatIcon, alt: "rocketchat" },
   { logo: parseserverIcon, alt: "parseserver" },
+  { logo: matomoIcon, alt: "matomo" },
+  { logo: unleashIcon, alt: "unleash" },
 
   // Instructions
 
@@ -158,7 +161,6 @@ const types = [
   // CI/CD
   { logo: githubIcon, alt: "github" },
   { logo: gitlabIcon, alt: "gitlab" },
-  { logo: matomoIcon, alt: "matomo" },
 ];
 
 export default function PlatformIcon({ platform, style = {} }) {

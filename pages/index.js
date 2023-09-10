@@ -211,6 +211,11 @@ const DATA_SECTIONS = {
       title: "Matomo",
       href: "/one-click-apps/matomo",
     },
+    {
+      platform: "unleash",
+      title: "Unleash",
+      href: "/one-click-apps/unleash",
+    },
   ],
 };
 
