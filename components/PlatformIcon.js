@@ -19,6 +19,8 @@ import angularIcon from "@liara/platformicons/glass/png/angular.png";
 
 // One-click-apps
 
+import matomoIcon from "@liara/platformicons/svg/matomo.svg";
+import unleashIcon from "@liara/platformicons/svg/unleash.svg";
 import n8nIcon from "@liara/platformicons/svg/n8n.svg";
 import odooIcon from "@liara/platformicons/glass/png/odoo.png";
 import pusherIcon from "./../public/static/platforms/pusher.svg";
@@ -115,6 +117,8 @@ const types = [
   { logo: mattermostIcon, alt: "mattermost" },
   { logo: rocketchatIcon, alt: "rocketchat" },
   { logo: parseserverIcon, alt: "parseserver" },
+  { logo: matomoIcon, alt: "matomo" },
+  { logo: unleashIcon, alt: "unleash" },
 
   // Instructions
 

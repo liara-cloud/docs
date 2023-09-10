@@ -206,6 +206,16 @@ const DATA_SECTIONS = {
       title: "PocketBase",
       href: "/one-click-apps/pocketbase",
     },
+    {
+      platform: "matomo",
+      title: "Matomo",
+      href: "/one-click-apps/matomo",
+    },
+    {
+      platform: "unleash",
+      title: "Unleash",
+      href: "/one-click-apps/unleash",
+    },
   ],
 };
 
