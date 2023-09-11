@@ -72,7 +72,7 @@ export default function Domain({ platform }) {
 
       <h5 id="add-domain">سرویس DNS لیارا</h5>
       <video
-        src="https://files.liara.ir/liara/domain/dns.mp4"
+        src="https://files.liara.ir/tutorials/DNS/Liara%20DNS.mp4"
         controls="controls"
         className="block w-full"
         width="100%"
@@ -80,7 +80,15 @@ export default function Domain({ platform }) {
 
       <h5 id="add-domain">سرویس DNS کلودفلر</h5>
       <video
-        src="https://files.liara.ir/liara/domain/domain.mp4"
+        src="https://files.liara.ir/tutorials/DNS/ArvanCloud%20DNS.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+      ></video>
+
+      <h5 id="add-domain">سرویس DNS ابرآروان</h5>
+      <video
+        src="https://files.liara.ir/tutorials/DNS/ArvanCloud%20DNS.mp4"
         controls="controls"
         className="block w-full"
         width="100%"

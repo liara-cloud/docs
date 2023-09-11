@@ -25,6 +25,19 @@ export default () => (
     </Notice>
 
     <h3>راه‌اندازی CI/CD به وسیله GitLab</h3>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/tutorials/CI%20CD/gitlab.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       برای راه‌اندازی CI/CD در GitLab از قابلیت{" "}
       <a href="https://docs.gitlab.com/ee/ci/" target="_blank">

@@ -26,7 +26,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/liara/postgresql/create-postgresql.mp4"
+      src="https://files.liara.ir/tutorials/DATABASES/POSTGRESQL.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
