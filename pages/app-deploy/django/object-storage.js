@@ -103,9 +103,9 @@ LIARA_SECRET_KEY=<Secret Key>`}
     </p>
     <Highlight className="plaintext">
       {`LIARA_ENDPOINT="https://storage.iran.liara.space"
-LIARA_BUCKET_NAME="my-personal-files
+LIARA_BUCKET_NAME="my-personal-files"
 LIARA_ACCESS_KEY="nad4u71et9dgc3go"
-LIARA_SECRET_KEY="82c963df-1122-4c31-868b-0124a28ad57d""`}
+LIARA_SECRET_KEY="82c963df-1122-4c31-868b-0124a28ad57d"`}
     </Highlight>
     <p>
       در مرحله‌ی آخر باید فایل <span className="code">settings.py</span>{" "}
@@ -118,7 +118,7 @@ LIARA_SECRET_KEY="82c963df-1122-4c31-868b-0124a28ad57d""`}
 ]
 
 # Object storage
-
+# django >= 4.2
 STORAGES = {"default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
 AWS_S3_ENDPOINT_URL = os.getenv("LIARA_ENDPOINT")
 AWS_S3_ACCESS_KEY_ID = os.getenv("LIARA_ACCESS_KEY")
