@@ -27,6 +27,12 @@ export default () => (
         <a href="#dockerfile-path">مشخص کردن مسیر Dockerfile</a>
       </li>
       <li>
+        <a href="#cache-status">مشخص کردن وضعیت Cache</a>
+      </li>
+      <li>
+        <a href="#commands">اجرا کردن دستورات با Args</a>
+      </li>
+      <li>
         <a href="#supercronic">پیکربندی Supercronic</a>
       </li>
       <li>
@@ -74,6 +80,84 @@ export default () => (
 
     <Highlight className="bash">
       {`liara deploy --platform=docker --dockerfile="path/to/Dockerfile"`}
+    </Highlight>
+
+    <h3 id="cache-status">مشخص کردن وضعیت Cache</h3>
+
+    <p>
+      می‌توانید مشخص کنید که در هنگام فرآیند بیلد از کش استفاده شود یا خیر. برای
+      این کار می‌توانید از یکی از دو روش زیر استفاده کنید:
+    </p>
+    <p>
+      ۱) یک فایل با نام
+      <span className="code">liara.json</span>
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "build": {
+    "cache": false // default true
+  }
+}
+`}
+    </Highlight>
+
+    <p>
+      ۲) در دستور
+      <span className="code">liara deploy</span>
+      مسیر
+      <span className="code">Dockerfile</span>
+      را با پارامتر
+      <span className="code">--dockerfile</span>
+      مشخص کنید.
+    </p>
+
+    <Highlight className="bash">
+      {`liara deploy --platform=docker --cache=false`}
+    </Highlight>
+
+    <h3 id="commands">اجرا کردن دستورات با Args</h3>
+
+    <p>
+      گاهی اوقات لازم است بخواهید در هنگام بیلد دستوراتی را اجرا کنید. برای این
+      کار می‌توانید از یکی از دو روش زیر استفاده کنید:
+    </p>
+    <p>
+      ۱) یک فایل با نام
+      <span className="code">liara.json</span>
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "build": {
+    "args": [
+      "sh",
+      "-c",
+      "sleep 10 && /entrypoint.sh run"
+    ]
+  }
+}
+`}
+    </Highlight>
+
+    <p>
+      ۲) در دستور
+      <span className="code">liara deploy</span>
+      مسیر
+      <span className="code">Dockerfile</span>
+      را با پارامتر
+      <span className="code">--dockerfile</span>
+      مشخص کنید.
+    </p>
+
+    <Highlight className="bash">
+      {`liara deploy --platform=docker --args="sh -c sleep 10 && /entrypoint.sh run"`}
     </Highlight>
 
     <h3 id="supercronic">پیکربندی Supercronic</h3>
