@@ -33,7 +33,7 @@ export default () => (
         <a href="#arg">شخصی سازی ARG در هنگام بیلد</a>
       </li>
       <li>
-        <a href="#commands">اجرا کردن دستورات با Args</a>
+        <a href="#override-entrypoint">تغییر ENTRYPOINT</a>
       </li>
       <li>
         <a href="#supercronic">پیکربندی Supercronic</a>
