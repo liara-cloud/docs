@@ -30,6 +30,9 @@ export default () => (
         <a href="#cache-status">مشخص کردن وضعیت Cache</a>
       </li>
       <li>
+        <a href="#arg">شخصی سازی ARG در هنگام بیلد</a>
+      </li>
+      <li>
         <a href="#commands">اجرا کردن دستورات با Args</a>
       </li>
       <li>
@@ -55,7 +58,8 @@ export default () => (
     <p>
       ۱) یک فایل با نام
       <span className="code">liara.json</span>
-      در ریشه‌ پروژه‌تان ایجاد کرده و قطعه‌کد زیر را درون این فایل قرار بدید:
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
     </p>
 
     <Highlight className="json">
@@ -108,10 +112,10 @@ export default () => (
     <p>
       ۲) در دستور
       <span className="code">liara deploy</span>
-      مسیر
-      <span className="code">Dockerfile</span>
+      وضعیت
+      <span className="code">Cache</span>
       را با پارامتر
-      <span className="code">--dockerfile</span>
+      <span className="code">--cache</span>
       مشخص کنید.
     </p>
 
@@ -119,11 +123,11 @@ export default () => (
       {`liara deploy --platform=docker --cache=false`}
     </Highlight>
 
-    <h3 id="commands">اجرا کردن دستورات با Args</h3>
+    <h3 id="arg">شخصی سازی ARG در هنگام بیلد</h3>
 
     <p>
-      گاهی اوقات لازم است بخواهید در هنگام بیلد دستوراتی را اجرا کنید. برای این
-      کار می‌توانید از یکی از دو روش زیر استفاده کنید:
+      شما می‌توانید در هنگام بیلد ARG‌های‌تان را با استفاده از یکی از دو روش‌های
+      زیر شخصی سازی کنید:
     </p>
     <p>
       ۱) یک فایل با نام
@@ -136,11 +140,7 @@ export default () => (
       {`{
   "platform": "docker",
   "build": {
-    "args": [
-      "sh",
-      "-c",
-      "sleep 10 && /entrypoint.sh run"
-    ]
+    "args": ["APP_VERSION=2.0.0"]
   }
 }
 `}
@@ -149,10 +149,45 @@ export default () => (
     <p>
       ۲) در دستور
       <span className="code">liara deploy</span>
-      مسیر
-      <span className="code">Dockerfile</span>
-      را با پارامتر
-      <span className="code">--dockerfile</span>
+      با پارامتر
+      <span className="code">build-arg</span>
+      ARG‌های‌تان را شخصی سازی کنید.
+    </p>
+
+    <Highlight className="bash">
+      {`liara deploy --platform=docker --build-arg="APP_VERSION=2.0.0"`}
+    </Highlight>
+
+    <h3 id="commands">اجرا کردن دستورات با Args</h3>
+
+    <p>
+      برای مقداردهی build argها در زمان استقرار، می‌توانید از یکی از دو روش زیر
+      استفاده کنید:
+    </p>
+    <p>
+      ۱) یک فایل با نام
+      <span className="code">liara.json</span>
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "args": [
+    "sh",
+    "-c",
+    "sleep 10 && /entrypoint.sh run"
+  ]
+}
+`}
+    </Highlight>
+
+    <p>
+      ۲) در دستور
+      <span className="code">liara deploy</span>
+      دستورات‌تان را با پارامتر
+      <span className="code">--args</span>
       مشخص کنید.
     </p>
 
