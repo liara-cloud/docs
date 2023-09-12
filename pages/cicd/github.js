@@ -31,6 +31,20 @@ export default () => (
     </Notice>
 
     <h3>راه‌اندازی CI/CD به وسیله GitHub</h3>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/tutorials/CI%20CD/Github%20CI%20CD.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+
     <p>
       برای راه‌اندازی CI/CD در GitHub از قابلیت{" "}
       <a href="https://github.com/features/actions" target="_blank">

@@ -46,7 +46,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/liara/php/php-cli.mp4"
+      src="https://files.liara.ir/tutorials/PHP/php-CLI.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

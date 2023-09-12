@@ -37,13 +37,13 @@ export default () => (
       زیر ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/liara/django/django-postgresql.mp4"
+      src="https://files.liara.ir/tutorials/Django/Django-PostgreSQL-DataBase.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
     ></video>
     <video
-      src="https://files.liara.ir/liara/django/django-sqlite.mp4"
+      src="https://files.liara.ir/tutorials/Django/Django-SQLite3-Database.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

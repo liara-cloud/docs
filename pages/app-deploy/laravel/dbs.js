@@ -25,7 +25,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/liara/laravel/laravel-mariadb.mp4"
+      src="https://files.liara.ir/tutorials/Laravel/laravel-database.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
