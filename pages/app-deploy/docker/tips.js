@@ -158,7 +158,7 @@ export default () => (
       {`liara deploy --platform=docker --build-arg="APP_VERSION=2.0.0"`}
     </Highlight>
 
-    <h3 id="commands">اجرا کردن دستورات با Args</h3>
+    <h3 id="override-entrypoint">تغییر ENTRYPOINT</h3>
 
     <p>
       برای تغییر ENTRYPOINT ایمیجی که قصد اجرای آن را دارید، می‌توانید از یکی از دو روش زیر
