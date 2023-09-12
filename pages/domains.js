@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
+import Notice from "../components/Notice";
 import PlatformIcon from "../components/PlatformIcon";
 
 export default () => (
@@ -11,6 +12,23 @@ export default () => (
 
     <h1>دامنه‌ها</h1>
     <span className="page-description">(Domain Management)</span>
+
+    <h3>پسوند (TLD) های غیر قابل استفاده</h3>
+
+    <ul className="mt-0">
+      <li>xyz.</li>
+      <li>gq.</li>
+      <li>cf.</li>
+      <li>ga.</li>
+      <li>ml.</li>
+      <li>tk.</li>
+    </ul>
+
+    <Notice variant="warning">
+      به دلیل رایگان بودن دوره‌ای این نوع دامنه‌ها ، و اینکه از آن‌ها برای{" "}
+      <span className="code">Abuse</span> کردن سرور‌های لیارا استفاده می‌شود ،
+      لیارا از آن‌ها پشتیبانی نمی‌کند.
+    </Notice>
 
     <h3>مدیریت دامنه‌ها</h3>
 
