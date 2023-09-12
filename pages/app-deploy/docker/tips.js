@@ -24,10 +24,10 @@ export default () => (
 
     <ul className="mt-0">
       <li>
-        <a href="#dockerfile-path">مشخص کردن مسیر Dockerfile</a>
+        <a href="#dockerfile-path">مشخص کردن مسیر Dockerfile در هنگام بیلد</a>
       </li>
       <li>
-        <a href="#cache-status">مشخص کردن وضعیت Cache</a>
+        <a href="#cache-status">مشخص کردن وضعیت Cache در هنگام بیلد</a>
       </li>
       <li>
         <a href="#arg">شخصی سازی ARG در هنگام بیلد</a>
@@ -43,7 +43,7 @@ export default () => (
       </li>
     </ul>
 
-    <h3 id="dockerfile-path">مشخص کردن مسیر Dockerfile</h3>
+    <h3 id="dockerfile-path">مشخص کردن مسیر Dockerfile در هنگام بیلد</h3>
 
     <p>
       گاهی اوقات ممکن است بخواهید چندین پروژه که در یک
@@ -86,7 +86,7 @@ export default () => (
       {`liara deploy --platform=docker --dockerfile="path/to/Dockerfile"`}
     </Highlight>
 
-    <h3 id="cache-status">مشخص کردن وضعیت Cache</h3>
+    <h3 id="cache-status">مشخص کردن وضعیت Cache در هنگام بیلد</h3>
 
     <p>
       می‌توانید مشخص کنید که در هنگام فرآیند بیلد از کش استفاده شود یا خیر. برای
