@@ -13,7 +13,7 @@ export default () => (
     <h1>دامنه‌ها</h1>
     <span className="page-description">(Domain Management)</span>
 
-    <h3>دامنه‌های غیرقابل پشتیبانی</h3>
+    <h3>پسوند (TLD) های غیر قابل استفاده</h3>
 
     <ul className="mt-0">
       <li>xyz.</li>
