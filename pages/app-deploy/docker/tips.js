@@ -24,7 +24,16 @@ export default () => (
 
     <ul className="mt-0">
       <li>
-        <a href="#dockerfile-path">مشخص کردن مسیر Dockerfile</a>
+        <a href="#dockerfile-path">مشخص کردن مسیر Dockerfile در هنگام بیلد</a>
+      </li>
+      <li>
+        <a href="#cache-status">مشخص کردن وضعیت Cache در هنگام بیلد</a>
+      </li>
+      <li>
+        <a href="#arg">شخصی سازی ARG در هنگام بیلد</a>
+      </li>
+      <li>
+        <a href="#override-entrypoint">تغییر ENTRYPOINT</a>
       </li>
       <li>
         <a href="#supercronic">پیکربندی Supercronic</a>
@@ -34,7 +43,7 @@ export default () => (
       </li>
     </ul>
 
-    <h3 id="dockerfile-path">مشخص کردن مسیر Dockerfile</h3>
+    <h3 id="dockerfile-path">مشخص کردن مسیر Dockerfile در هنگام بیلد</h3>
 
     <p>
       گاهی اوقات ممکن است بخواهید چندین پروژه که در یک
@@ -49,7 +58,8 @@ export default () => (
     <p>
       ۱) یک فایل با نام
       <span className="code">liara.json</span>
-      در ریشه‌ پروژه‌تان ایجاد کرده و قطعه‌کد زیر را درون این فایل قرار بدید:
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
     </p>
 
     <Highlight className="json">
@@ -74,6 +84,115 @@ export default () => (
 
     <Highlight className="bash">
       {`liara deploy --platform=docker --dockerfile="path/to/Dockerfile"`}
+    </Highlight>
+
+    <h3 id="cache-status">مشخص کردن وضعیت Cache در هنگام بیلد</h3>
+
+    <p>
+      می‌توانید مشخص کنید که در هنگام فرآیند بیلد از کش استفاده شود یا خیر. برای
+      این کار می‌توانید از یکی از دو روش زیر استفاده کنید:
+    </p>
+    <p>
+      ۱) یک فایل با نام
+      <span className="code">liara.json</span>
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "build": {
+    "cache": false // default true
+  }
+}
+`}
+    </Highlight>
+
+    <p>
+      ۲) در دستور
+      <span className="code">liara deploy</span>
+      وضعیت
+      <span className="code">Cache</span>
+      را با پارامتر
+      <span className="code">--cache</span>
+      مشخص کنید.
+    </p>
+
+    <Highlight className="bash">
+      {`liara deploy --platform=docker --cache=false`}
+    </Highlight>
+
+    <h3 id="arg">شخصی سازی ARG در هنگام بیلد</h3>
+
+    <p>
+      شما می‌توانید در هنگام بیلد ARG‌های‌تان را با استفاده از یکی از دو روش‌های
+      زیر شخصی سازی کنید:
+    </p>
+    <p>
+      ۱) یک فایل با نام
+      <span className="code">liara.json</span>
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "build": {
+    "args": ["APP_VERSION=2.0.0"]
+  }
+}
+`}
+    </Highlight>
+
+    <p>
+      ۲) در دستور
+      <span className="code">liara deploy</span>
+      با پارامتر
+      <span className="code">build-arg</span>
+      ARG‌های‌تان را شخصی سازی کنید.
+    </p>
+
+    <Highlight className="bash">
+      {`liara deploy --platform=docker --build-arg="APP_VERSION=2.0.0"`}
+    </Highlight>
+
+    <h3 id="override-entrypoint">تغییر ENTRYPOINT</h3>
+
+    <p>
+      برای تغییر ENTRYPOINT ایمیجی که قصد اجرای آن را دارید، می‌توانید از یکی از دو روش زیر
+      استفاده کنید:
+    </p>
+    <p>
+      ۱) یک فایل با نام
+      <span className="code">liara.json</span>
+      در ریشه‌ پروژه‌تان ایجاد کرده و نمونه قطعه‌کد زیر را درون این فایل قرار
+      بدید:
+    </p>
+
+    <Highlight className="json">
+      {`{
+  "platform": "docker",
+  "args": [
+    "sh",
+    "-c",
+    "sleep 10 && /entrypoint.sh run"
+  ]
+}
+`}
+    </Highlight>
+
+    <p>
+      ۲) در دستور
+      <span className="code">liara deploy</span>
+      دستورات‌تان را با پارامتر
+      <span className="code">--args</span>
+      مشخص کنید.
+    </p>
+
+    <Highlight className="bash">
+      {`liara deploy --platform=docker --args="sh -c sleep 10 && /entrypoint.sh run"`}
     </Highlight>
 
     <h3 id="supercronic">پیکربندی Supercronic</h3>
