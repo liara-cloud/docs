@@ -1,6 +1,6 @@
 import knex from "knex";
 
-import { envConfig } from "../configs/envConfig";
+import { envConfig } from "../configs/envConfig.js";
 
 export default class VectorDatabase {
   async connect() {
