@@ -43,6 +43,9 @@ export default () => (
       <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
+      <li>
+        <a href="#next-static-assets">Static Assets</a>
+      </li>
     </ul>
 
     <h3 id="next-public-envs">نحوه‌ی استفاده از متغیرهای NEXT_PUBLIC</h3>
@@ -247,5 +250,49 @@ async function handler(req, res) {
 }
 
 export default handler`}</Highlight>
+
+    <h3 id="next-static-assets">Static Assets</h3>
+    <p>
+      در Next.js می‌توانید فایل‌های استاتیک مانند تصاویر را در یک پوشه به نام
+      <span className="code">public</span> در مسیر اصلی پروژه قرار دهید. سپس
+      فایل‌های موجود در مسیر
+      <span className="code">public</span> از طریق روت دامنه با شروع از{" "}
+      <span className="code">(/)</span> در دسترس هستند. برای مثال اگر شما یک
+      فایل به نام <span className="code">example.png</span> در پوشه‌ی{" "}
+      <span className="code">public</span> داشته باشید، می‌توانید طبق مسیر زیر
+      به این فایل دسترسی داشته باشید:
+    </p>
+
+    <Highlight className="bash">{`https://yourdomain.com/example.png`}</Highlight>
+
+    <p>
+      برای دسترسی به فایل <span className="code">example.png</span> در سورس‌کد:
+    </p>
+
+    <Highlight className="javascript">
+      {`
+import Image from 'next/image'
+
+export function Example() {
+  return <Image src="/example.png" width="64" height="64" />
+}`}
+    </Highlight>
+
+    <p>
+      {" "}
+      پوشه <span className="code">public</span> برای <strong>robots.txt</strong>{" "}
+      ،<strong>favicon.ico</strong> ،<strong>Google Site Verification</strong>{" "}
+      مفید است. نام این پوشه حتما باید <span className="code">public</span>{" "}
+      نام‌گذاری شود و نام آن را نمی توان تغییر داد و تنها مسیری است که برای
+      ارائه فایل‌های استاتیک استفاده می شود.
+    </p>
+
+    <p>
+      توجه داشته باشید که فقط فایل‌های استاتیکی که در پوشه‌ی{" "}
+      <span className="code">public</span> در زمان <strong>Build</strong> هستند
+      توسط Next.js ارائه می شوند. فایل‌های اضافه شده در زمان اجرا، در دسترس
+      نخواهند بود. برای ذخیره‌ی دائمی فایل‌ها، توصیه می‌‌شود از سرویس
+      <Link href="/buckets/about"> ذخیره‌ سازی ابری</Link> لیارا استفاده کنید.
+    </p>
   </Layout>
 );
