@@ -335,7 +335,7 @@ const Footer = () => {
               </div>
             </div>
           ))}
-          <div className="footer-col-container">
+          {/* <div className="footer-col-container">
             <h5>ارتباط با ما</h5>
             <div>
               <h6>آدرس:</h6>
@@ -351,7 +351,7 @@ const Footer = () => {
                 <p style={{ marginTop: 12 }}>sales[@]liara.ir</p>
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="animate-play-container">
