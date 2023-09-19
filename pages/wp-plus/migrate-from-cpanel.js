@@ -41,12 +41,7 @@ export default () => (
     </ul>
 
     <Notice variant="info">
-      برای انتقال رایگان برنامه‌ی وردپرس خود از cPanel به لیارا می‌توانید{" "}
-      <a href="https://console.liara.ir/tickets" target="_blank" rel="noopener">
-        تیکت
-      </a>{" "}
-      ثبت کنید. در غیراینصورت و برای انتقال فوری وبسایت خود می‌توانید طبق
-      مستندات زیر عمل کنید.
+      برای انتقال وبسایت خود می‌توانید طبق مستندات زیر عمل کنید.
     </Notice>
 
     <h3 id="migrate-files">انتقال فایل‌ها</h3>
@@ -121,9 +116,7 @@ export default () => (
     <p>
       درصورتی که برنامه‌ی شما با خطای too many redirects مواجه شد باید قطعه کد
       زیر را با استفاده از دسترسی FTP به فایل <strong>wp-config.php</strong>{" "}
-      اضافه کرده و مجدد برنامه را بررسی کنید. درصورتی که خطا رفع نشد، می‌توانید
-      ازطریق <a href="https://console.liara.ir/tickets">تیکت</a> با پشتیبان‌های
-      فنی در ارتباط باشید.
+      اضافه کرده و مجدد برنامه را بررسی کنید.
     </p>
     <Highlight className="php">{`$_SERVER['HTTPS'] = 'on';`}</Highlight>
     <br />
@@ -139,10 +132,6 @@ export default () => (
 find . -type d -exec chmod 755 {} \\;
 find . -type f -exec chmod 644 {} \\;`}
     </Highlight>
-    <p>
-      اگر هنوزهم خطا برقرار بود می‌توانید از طریق{" "}
-      <a href="https://console.liara.ir/tickets">تیکت</a> با ما در ارتباط باشید.
-    </p>
     <br />
     {/* <ZoomableImage src="https://files.liara.ir/docs/wordpress/make-change-in-file-and-directory-permission.gif"></ZoomableImage> */}
   </Layout>

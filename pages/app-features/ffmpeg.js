@@ -18,10 +18,5 @@ export default () => (
       <li>Flask</li>
       <li>NodeJS</li>
     </ul>
-    <Notice variant="info">
-      چنانچه در پلتفرم دیگری به این ماژول نیاز دارید، می‌توانید از طریق{" "}
-      <a href="https://console.liara.ir/tickets">تیکت</a> با ما در ارتباط باشید
-      تا پشتیبانی از این ماژول را در پلتفرم‌های دیگر اضافه کنیم.
-    </Notice>
   </Layout>
 );

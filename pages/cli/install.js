@@ -89,12 +89,6 @@ npx liara deploy`}
 npx @liara/cli deploy`}
       </code>
     </pre>
-
-    <Notice variant="info">
-      در صورتی که موفق به نصب CLI نمی‌شوید، از طریق تیکت با پشتیبانی لیارا
-      ارتباط بگیرید.
-    </Notice>
-
     <br />
     <Link href="/cli/login" className="next-page">
       متوجه شدم، برو گام بعدی!

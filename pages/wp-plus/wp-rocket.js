@@ -38,11 +38,7 @@ export default () => (
       برای نصب افزونه WP Rocket در برنامه‌‌های وردپرس که با روش‌های{" "}
       <Link href="/wp-plus/migrate-from-cpanel">انتقال از cPanel</Link> یا{" "}
       <Link href="/wp-plus/duplicator">بسته نصب آسان (duplicator)</Link> در
-      لیارا راه‌اندازی شده، نیاز هست{" "}
-      <a href="https://console.liara.ir/tickets" target="_blank" rel="noopener">
-        تیکت
-      </a>{" "}
-      ثبت کنید.
+      لیارا راه‌اندازی شده، نیاز هست در بخش راهنما، یک گزارش ثبت کنید.
     </Notice>
   </Layout>
 );
