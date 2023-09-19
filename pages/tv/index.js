@@ -285,7 +285,7 @@ const Videos = () => {
 
       <Section
         name={"راه اندازی CI/CD"}
-        platform="git"
+        platform="github"
         style={{ marginTop: 40 }}
         badge={"Continuous Integration and Continuous Delivery"}
         setOpenDialog={setOpenDialog}
