@@ -24,7 +24,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/tutorials/NodeJS/database-nodejs.mp4"
+      src="https://files.liara.ir/liara/nodejs/nodejs-mongodb.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

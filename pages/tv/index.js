@@ -284,6 +284,24 @@ const Videos = () => {
       />
 
       <Section
+        name={"راه اندازی CI/CD"}
+        platform="git"
+        style={{ marginTop: 40 }}
+        badge={"Continuous Integration and Continuous Delivery"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "راه اندازی CI/CD به وسیله GitHub",
+            link: "https://files.liara.ir/liara/CICD/cicd-github.mp4",
+          },
+          {
+            videoTitle: "راه اندازی CI/CD به وسیله GitLab",
+            link: "https://files.liara.ir/liara/CICD/cicd-gitlab.mp4",
+          },
+        ]}
+      />
+
+      <Section
         name={"راه‌اندازی دیتابیس "}
         style={{ marginTop: 40 }}
         badge={"Databases"}

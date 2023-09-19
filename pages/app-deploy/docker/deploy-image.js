@@ -26,7 +26,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/tutorials/Docker/Dockerhub-meilisearch.mp4"
+      src="https://files.liara.ir/liara/docker/docker-image.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

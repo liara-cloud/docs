@@ -32,22 +32,12 @@ export default () => (
         اتصال به <a href="#sqlite">sqlite</a>
       </li>
     </ul>
+
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیو‌های آموزشی
-      زیر ‌را مشاهده کنید.
+       ‌را مشاهده کنید.
     </p>
-    <video
-      src="https://files.liara.ir/tutorials/Django/Django-PostgreSQL-DataBase.mp4"
-      controls="controls"
-      className="block w-full"
-      width="100%"
-    ></video>
-    <video
-      src="https://files.liara.ir/tutorials/Django/Django-SQLite3-Database.mp4"
-      controls="controls"
-      className="block w-full"
-      width="100%"
-    ></video>
+    
     <br />
     <Notice variant="info">
       توجه داشته باشید برای اتصال به هر دیتابیس باید درایور‌های آن را نصب کرده
@@ -64,6 +54,14 @@ mysqlclient == 1.4.6‍`}
       <li id="postgres">
         <b>PostgreSQL</b>
       </li>
+
+      <video
+      src="https://files.liara.ir/liara/django/django-postgresql.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+      ></video>
+
       <p>
         در ابتدا باید driver دیتابیس PostgreSQL را نصب کنید. برای این کار دستور
         <span className="code">pip install psycopg2</span> اجرا کنید‍. سپس
@@ -116,6 +114,14 @@ mysqlclient == 1.4.6‍`}
       <li id="sqlite">
         <b>SQLite</b>
       </li>
+
+      <video
+      src="https://files.liara.ir/liara/django/django-sqlite.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+      ></video>
+
       <p>
         برای استفاده از SQLite باید در نظر داشته باشید که فایل سیستم برنامه‌های
         لیارا، <a href="/app-features/file-system">Read-Only</a> است. به عبارتی،

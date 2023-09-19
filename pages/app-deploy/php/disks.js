@@ -44,7 +44,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/tutorials/PHP/php-Disks.mp4"
+      src="https://files.liara.ir/liara/php/php-disks.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

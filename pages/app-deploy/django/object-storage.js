@@ -51,7 +51,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
     <video
-      src="https://files.liara.ir/tutorials/Object%20Storage/Object%20Storage%20Django.mp4"
+      src="https://files.liara.ir/liara/django/django-object-storage.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
