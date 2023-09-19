@@ -1374,7 +1374,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/json-server">
-                JsonServer
+                JSON Server
               </ActiveLink>
             </li>
             <li>
