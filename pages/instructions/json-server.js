@@ -6,17 +6,17 @@ import Notice from "../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>ایجاد برنامه JsonServer - لیارا</title>
+      <title>ایجاد برنامه JSON Server - لیارا</title>
     </Head>
 
     <div className="page-head">
       <div className="page-title">
-        <h1>JsonServer</h1>
+        <h1>JSON Server</h1>
       </div>
     </div>
 
     <p>
-      با استفاده از برنامه JsonServer می‌توانید به راحتی یک REST API جعلی در
+      با استفاده از برنامه JSON Server می‌توانید به راحتی یک REST API جعلی در
       کمتر از یک دقیقه ایجاد کنید.
     </p>
 
