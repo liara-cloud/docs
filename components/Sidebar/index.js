@@ -1373,6 +1373,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/json-server">
+                JSON Server
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/websocket">WebSocket</ActiveLink>
             </li>
             <li>
