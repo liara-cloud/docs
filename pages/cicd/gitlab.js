@@ -32,7 +32,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/CI%20CD/gitlab.mp4"
+      src="https://files.liara.ir/liara/CICD/cicd-gitlab.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

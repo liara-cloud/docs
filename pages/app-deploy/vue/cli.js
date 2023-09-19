@@ -46,7 +46,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/Vue/Vue-CLI.mp4"
+      src="https://files.liara.ir/liara/vue/vue-cli.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

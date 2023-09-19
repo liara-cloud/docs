@@ -38,7 +38,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/CI%20CD/Github%20CI%20CD.mp4"
+      src="https://files.liara.ir/liara/CICD/cicd-github.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

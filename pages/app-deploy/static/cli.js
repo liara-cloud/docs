@@ -46,7 +46,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/Static/Static-CLI.mp4"
+      src="https://files.liara.ir/liara/static/static-cli.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

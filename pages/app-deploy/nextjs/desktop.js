@@ -46,7 +46,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/NextJS/nextJS-desktop.mp4"
+      src="https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

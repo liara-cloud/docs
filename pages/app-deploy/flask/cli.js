@@ -49,7 +49,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/Flask/Flask-CLI.mp4"
+      src="https://files.liara.ir/liara/flask/flask-cli.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

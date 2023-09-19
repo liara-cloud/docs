@@ -46,6 +46,17 @@ export default () => (
       </li>
     </ul>
 
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/flask/flask-object-storage.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <h3 id="install-aws-sdk">نصب AWS SDK</h3>
     <p>
       از آنجا که ذخیره‌سازی ابری لیارا یک سرویس Object storage سازگار با پروتکل

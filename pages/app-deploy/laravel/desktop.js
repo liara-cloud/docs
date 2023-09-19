@@ -46,7 +46,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/Laravel/Laravel-Desktop.mp4"
+      src="https://files.liara.ir/liara/laravel/laravel-desktop.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

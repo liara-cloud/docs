@@ -46,7 +46,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/tutorials/Docker/Docker-Desktop.mp4"
+      src="https://files.liara.ir/liara/docker/docker-desktop.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
