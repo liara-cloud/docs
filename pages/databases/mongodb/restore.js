@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Highlight from "react-highlight";
+import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
 import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
@@ -21,7 +22,7 @@ export default () => (
       </div>
     </div>
 
-    <h3>بازیابی فایل پشتیبان</h3>
+    <h3>بازیابی فایل پشتیبان با ابزار mongorestore</h3>
     <p>
       برای بازگردانی فایل پشتیبان در دیتابیس‌های MongoDB می‌توانید به‌شکل زیر از
       ابزار <span className="code">mongorestore</span> استفاده کنید.
@@ -38,5 +39,23 @@ export default () => (
     </Highlight>
 
     <Asciinema id="465642" />
+
+    <h3>بازیابی فایل پشتیبان از طریق MongoDB Compass</h3>
+
+    <Notice variant="warning">
+      توجه داشته باشید از فایل‌هایی با فرمت‌های{" "}
+      <span className="code">CSV</span> و <span className="code">JSON</span>
+      برای بازگردانی فایل‌های پشتیبان از طریق{" "}
+      <span className="code">MongoDB Compass</span> استفاده می‌شود.
+    </Notice>
+
+    <p>
+      برای بازگردانی فایل‌های پشتیبان وارد نرم افزار{" "}
+      <span className="code">MongoDB Compass</span> شده و طریق شبکه عمومی به
+      دیتابیس‌تان متصل شوید، سپس بعد از انتخاب دیتابیس مورد نظر، کالکشن مورد نظر
+      را انتخاب کنید و فایل پشتیبانی‌تان را انتخاب کنید.
+    </p>
+
+    <ZoomableImage src="https://files.liara.ir/docs/mongodb/compass-restore.gif" />
   </Layout>
 );
