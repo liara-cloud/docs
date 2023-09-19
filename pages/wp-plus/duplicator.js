@@ -66,9 +66,7 @@ export default () => (
     <p>
       درصورتی که برنامه‌ی شما با خطای too many redirects مواجه شد باید قطعه کد
       زیر را با استفاده از دسترسی FTP به فایل <strong>wp-config.php</strong>{" "}
-      اضافه کرده و مجدد برنامه را بررسی کنید. درصورتی که خطا رفع نشد، می‌توانید
-      ازطریق <a href="https://console.liara.ir/tickets">تیکت</a> با پشتیبان‌های
-      فنی در ارتباط باشید.
+      اضافه کرده و مجدد برنامه را بررسی کنید.
     </p>
     <Highlight className="php">{`$_SERVER['HTTPS'] = 'on';
 /* That's all, stop editing! Happy publishing. <-- قبل از این کامنت */`}</Highlight>
