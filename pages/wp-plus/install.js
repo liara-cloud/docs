@@ -37,6 +37,17 @@ export default () => (
         <a href="#extensions">لیست اکستنشن‌های نصب شده</a>
       </li>
     </ul>
+    
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/wordpress/wordpress-plus.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h3 id="setup">راه‌اندازی وردپرس</h3>
 

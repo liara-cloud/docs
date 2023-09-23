@@ -35,6 +35,23 @@ export default () => (
     <h3 id="deploy">استقرار برنامه‌های NuxtJS</h3>
 
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوهای آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/nuxtjs/nuxtjs-cli.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <video
+      src="https://files.liara.ir/liara/nuxtjs/nuxtjs-desktop.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <p>
       NuxtJS یک فریم‌ورک مبتنی بر Vue است که بسیاری از قابلیت‌ها مانند SSR را
       برای شما به ارمغان می‌آورد. حال شما می‌توانید برنامه‌های NuxtJS خود را با
       ایجاد برنامه‌های{" "}

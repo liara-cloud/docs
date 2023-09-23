@@ -22,6 +22,17 @@ export default () => (
     <h3>ارسال ایمیل</h3>
 
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/wordpress/wordpress-email-server.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <p>
       در سیستم مدیریت محتوای وردپرس تعداد زیادی پلاگین برای استفاده از{" "}
       <Link href="/app-features/email#settings">دسترسی SMTP</Link> وجود دارد که
       پیشنهاد ما استفاده از{" "}

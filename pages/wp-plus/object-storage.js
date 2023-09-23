@@ -22,6 +22,17 @@ export default () => (
     <h2>اتصال برنامه‌های وردپرس به ذخیره‌سازی ابری</h2>
 
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/wordpress/wordpress-object-storage.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <p>
       برای اتصال برنامه‌ی وردپرس به ذخیره‌سازی ابری لیارا می‌توانید از
       پلاگین‌های موجود مانند{" "}
       <a
