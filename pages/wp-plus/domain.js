@@ -10,7 +10,6 @@ export default () => (
     <Head>
       <title>مستندات اتصال دامنه به برنامه‌های وردپرس - لیارا</title>
     </Head>
-
     <div className="page-head">
       <PlatformIcon platform="wordpress" />
       <div className="page-title">
@@ -18,9 +17,7 @@ export default () => (
         <span className="page-description">(WordPress plus)</span>
       </div>
     </div>
-
     <h2>اتصال دامنه به برنامه‌های وردپرس</h2>
-
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
@@ -35,16 +32,16 @@ export default () => (
       <li>
         <a href="#add-subdomain">اضافه کردن زیردامنه‌ی دلخواه</a>
       </li>
+      <li>
+        <a href="#change-siteurl">تغییر دامنه سایت</a>
+      </li>
     </ul>
-
     <h3 id="add-domain">اضافه کردن دامنه</h3>
-
     <Notice variant="warning">
       بعد از اتصال دامنه به برنامه‌های وردپرس باید در تنظیمات عمومی این سیستم
       مدیریت محتوا، مقادیر نشانی وردپرس (URL) و نشانی سایت (URL) را با آدرس
       دامنه‌ی اختصاصی خود جایگزین کنید.
     </Notice>
-
     <h5 id="add-domain">سرویس DNS لیارا</h5>
     <video
       src="https://files.liara.ir/liara/domain/dns.mp4"
@@ -52,7 +49,6 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
-
     <h5 id="add-domain">سرویس DNS کلودفلر</h5>
     <video
       src="https://files.liara.ir/liara/domain/domain.mp4"
@@ -60,7 +56,6 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
-
     <p>
       برای اتصال دامنه به برنامه مورد نظرتان در لیارا باید وارد این برنامه شوید
       و از منوی سمت راست، روی گزینه‌ی <strong>دامنه‌ها</strong> کلیک کنید. سپس
@@ -80,7 +75,6 @@ export default () => (
       کلیک روی گزینه‌ی <strong>ایجاد دامنه</strong>، دامنه شما در لیارا اضافه
       می‌شود و همچنین به صفحه‌ی <strong>مدیریت دامنه</strong> هدایت می‌شوید.
     </p>
-
     <p>
       در این مرحله باید رکوردهای DNS درخواست شده را با استفاده از یک سرویس DNS
       مانند Cloudflare بر روی دامنه‌تان تنظیم کنید. درنهایت پس از ثبت رکوردهای
@@ -99,7 +93,6 @@ export default () => (
       کلیک کنید و با تغییر تیک‌های قرمز رنگ به سبز، یعنی اتصال دامنه‌ی شما به
       لیارا با موفقیت صورت گرفته است.
     </p>
-
     <Notice variant="info">
       ۱. توجه داشته باشید که درصورت استفاده از CDN باید گواهی SSL را نیز از
       سرویس‌دهنده‌ی DNS فعلی‌تان تهیه کنید.
@@ -109,40 +102,30 @@ export default () => (
       <br />
       ۳. در سرویس Cloudflare، تنظیمات SSL را همیشه روی Flexible تنظیم کنید.
     </Notice>
-
     <h3 id="add-www">ساخت زیردامنه‌ی www</h3>
-
     <p>
       درصورتی که ریشه دامنه‌تان (مثلا: example.com) را در لیارا اضافه کرده باشید
       می‌توانید در صفحه‌ی مدیریت این دامنه، زیردامنه‌ی{" "}
       <span className="code">www</span> را تنها با یک کلیک در لیارا اضافه کنید.
     </p>
-
     {/* <ZoomableImage src="https://files.liara.ir/docs/domain/add-www-subdomain.gif" /> */}
-
     <h3 id="enable-ssl">تهیه گواهی SSL</h3>
-
     <p>
       لیارا این امکان را به شما می‌دهد تا برای دامنه‌ها و زیردامنه‌های اختصاصی‌
       خود تنها با یک کلیک و بدون هیچ تنظیماتی، SSL رایگان تهیه کنید. تمدید SSL
       نیز در زمان مناسب و به صورت خودکار توسط لیارا انجام خواهد شد.
     </p>
-
     <p>
       برای تهیه‌ی و فعال‌سازی گواهی SSL باید در صفحه‌ی{" "}
       <strong>مدیریت دامنه</strong>، روی گزینه‌ی <strong>تهیه گواهی SSL</strong>{" "}
       کلیک کنید.
     </p>
-
     {/* <ZoomableImage src="https://files.liara.ir/docs/domain/enable-ssl.gif" /> */}
-
     <p>
       درنهایت وب‌سایت شما بعد از فعال شدن موفقیت‌آمیز گواهی SSL بر روی پروتکل
       HTTPS در دسترس قرار می‌گیرد.
     </p>
-
     <h3 id="add-subdomain">اضافه کردن زیردامنه‌ی دلخواه</h3>
-
     <p>
       حال درصورتی که قصد داشته باشید زیردامنه‌‌ی دیگری (مثلا:{" "}
       <span className="code">api</span>) را به برنامه‌ی خود متصل کنید، باید طبق
@@ -185,7 +168,6 @@ export default () => (
       کلیک کنید و با تغییر تیک‌های قرمز رنگ به سبز، یعنی اتصال دامنه‌ی شما به
       لیارا با موفقیت صورت گرفته است.
     </p>
-
     <Notice variant="info">
       ۱. توجه داشته باشید که درصورت استفاده از CDN باید گواهی SSL را نیز از
       سرویس‌دهنده‌ی DNS فعلی‌تان تهیه کنید.
@@ -195,7 +177,6 @@ export default () => (
       <br />
       ۳. در سرویس Cloudflare، تنظیمات SSL را همیشه روی Flexible تنظیم کنید.
     </Notice>
-
     <h3 id="faq">
       از دامنه‌های
       <span className="code">.ir</span>
@@ -205,7 +186,6 @@ export default () => (
       بله. محدودیتی از لحاظ TLD وجود ندارد و می‌توانید از هر پسوند دلخواهی
       استفاده کنید.
     </p>
-
     <h3>
       حتی بعد از تغییر DNS ها، وضعیت همچنان «در انتظار تغییر DNS ها...» است.
     </h3>
@@ -223,7 +203,39 @@ export default () => (
       </a>{" "}
       استفاده کنید.
     </Notice>
-
+    <h3 id="change-siteurl">تغییر دامنه سایت</h3>
+    <p>
+      در صورتی که دامنه پیش‌فرض سایت را تغییر داده باشید؛ نیاز هست تنظیمات
+      WordPress را نیز تغییر دهید. برای این کار می‌توانید از دو روش زیر اقدام
+      کنید:
+    </p>
+    <p>
+      روش اول:
+      <br />
+      ۱. وارد پنل ادمین برنامه WordPress خود شوید.
+      <br />
+      ۲. از قسمت تنظیمات (settings) وارد بخش عمومی (general) شوید.
+      <br />
+      ۳. مقادیر <span className="code">
+        نشانی وردپرس (WordPress Address)
+      </span> و <span className="code">نشانی سایت (Site Address)</span> را به
+      دامنه مورد نظرتان تغییر دهید.
+    </p>
+    <br />
+    <ZoomableImage src="https://kinsta.com/wp-content/uploads/2020/06/General-settings-WordPress-URL.jpg" />
+    <br />
+    <p>
+      روش دوم:
+      <br />
+      ۱. وارد پنل دیتابیس برنامه خود شوید.
+      <br />
+      ۲. از پخش نحوه اتصال، به دیتابیس خود متصل شوید.
+      <br />
+      ۳. جدول <span className="code">wp_options</span> را پیدا کنید.
+      <br />
+      ۴. مقادیر <span className="code">siteurl</span> و{" "}
+      <span className="code">home</span> را به دامنه مورد نظرتان تغییر دهید.
+    </p>
     <br />
   </Layout>
 );
