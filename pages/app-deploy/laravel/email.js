@@ -31,7 +31,6 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
-<<<<<<< HEAD
 
     <Notice variant="info">
       پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
@@ -40,8 +39,6 @@ export default () => (
       </Link>{" "}
       قابل مشاهده و دسترسی هستند.{" "}
     </Notice>
-=======
->>>>>>> ab61379725d092d054b91b0f34c65465bd8678c1
 
     <p>
       برای استفاده از سرویس ایمیل در برنامه‌های Laravel باید پس از{" "}

@@ -32,7 +32,6 @@ export default () => (
       width="100%"
     ></video>
 
-<<<<<<< HEAD
     <Notice variant="info">
       پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
       <Link href="https://github.com/liara-cloud/django-getting-started/tree/email-server">
@@ -41,8 +40,6 @@ export default () => (
       قابل مشاهده و دسترسی هستند.{" "}
     </Notice>
 
-=======
->>>>>>> ab61379725d092d054b91b0f34c65465bd8678c1
     <p>
       برای استفاده از سرویس ایمیل در برنامه‌های Django باید پس از{" "}
       <Link href="/email/create-mail-server#create-mail-server">
