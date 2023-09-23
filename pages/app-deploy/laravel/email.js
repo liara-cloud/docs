@@ -19,7 +19,18 @@ export default () => (
       </div>
     </div>
 
-    <h3>ارسال ایمیل در لاراول ۱۰</h3>
+    <h3>ارسال ایمیل در لاراول</h3>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/laravel/laravel-email-server.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <p>
       برای استفاده از سرویس ایمیل در برنامه‌های Laravel باید پس از{" "}

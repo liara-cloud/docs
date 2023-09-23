@@ -22,6 +22,17 @@ export default () => (
     <h3>ارسال ایمیل</h3>
 
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/flask/flask-email-server.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <p>
       برای استفاده از سرویس ایمیل در برنامه‌های Flask باید پس از{" "}
       <Link href="/app-features/email#create-email">ایجاد سرویس ایمیل</Link>، در
       ابتدا کتابخانه{" "}
