@@ -52,6 +52,14 @@ export default () => (
       width="100%"
     ></video>
 
+    <Notice variant="info">
+      یک نمونه پروژه‌ی Angular که آماده مستقر شدن در لیارا است را می‌توانید در{" "}
+      <Link href="https://github.com/liara-cloud/angular-getting-started">
+        اینجا
+      </Link>{" "}
+      مشاهده کنید.{" "}
+    </Notice>
+
     <p>
       <h3 id="installing-liara-desktop">نصب Liara Desktop</h3>
       شما می‌توانید از طریق این <Link href="/desktop/install">لینک</Link>؛ Liara

@@ -50,6 +50,14 @@ export default () => (
       width="100%"
     ></video>
 
+    <Notice variant="info">
+      پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
+      <Link href="https://github.com/liara-cloud/php-getting-started/tree/diskSetup">
+        اینجا
+      </Link>{" "}
+      قابل مشاهده و دسترسی هستند.{" "}
+    </Notice>
+
     <p>
       <Link href="/app-features/file-system">فایل سیستم برنامه‌های لیارا</Link>{" "}
       Read-Only است یعنی بعد از استقرار برنامه تنها می‌توانیم فایل‌ها و

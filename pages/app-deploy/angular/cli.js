@@ -44,13 +44,20 @@ export default () => (
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
       ‌را مشاهده کنید.
     </p>
-
     <video
       src="https://files.liara.ir/liara/angular/angular-cli.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
     ></video>
+
+    <Notice variant="info">
+      یک نمونه پروژه‌ی Angular که آماده مستقر شدن در لیارا است را می‌توانید در{" "}
+      <Link href="https://github.com/liara-cloud/angular-getting-started">
+        اینجا
+      </Link>{" "}
+      مشاهده کنید.{" "}
+    </Notice>
 
     <p>
       <h3 id="installing-liara-cli">نصب Liara CLI</h3>

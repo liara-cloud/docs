@@ -58,6 +58,14 @@ export default () => (
       width="100%"
     ></video>
 
+    <Notice variant="info">
+      پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
+      <Link href="https://github.com/liara-cloud/dotnet-getting-started.git">
+        اینجا
+      </Link>{" "}
+      قابل مشاهده و دسترسی هستند.{" "}
+    </Notice>
+
     <h3 id="installing-liara-cli">نصب Liara CLI</h3>
     <p>
       اگر Liara CLI را نصب ندارید می‌توانید با اجرای دستور زیر آن‌ را به‌راحتی

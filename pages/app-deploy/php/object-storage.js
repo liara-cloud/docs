@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
@@ -57,6 +58,14 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
+
+    <Notice variant="info">
+      پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
+      <Link href="https://github.com/liara-cloud/php-getting-started/tree/object-storage">
+        اینجا
+      </Link>{" "}
+      قابل مشاهده و دسترسی هستند.{" "}
+    </Notice>
 
     <h3 id="install-aws-sdk">نصب AWS SDK</h3>
     <p>

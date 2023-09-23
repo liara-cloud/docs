@@ -32,6 +32,14 @@ export default () => (
       width="100%"
     ></video>
 
+    <Notice variant="info">
+      پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
+      <Link href="https://github.com/liara-cloud/nodejs-getting-started/tree/email-server">
+        اینجا
+      </Link>{" "}
+      قابل مشاهده و دسترسی هستند.{" "}
+    </Notice>
+
     <p>
       برای استفاده از سرویس ایمیل در برنامه‌های NodeJS باید پس از{" "}
       <Link href="/app-features/email#create-email">ایجاد سرویس ایمیل</Link>، در
