@@ -52,6 +52,14 @@ export default () => (
       width="100%"
     ></video>
 
+    <Notice variant="info">
+      پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
+      <Link href="https://github.com/liara-cloud/vue-getting-started.git">
+        اینجا
+      </Link>{" "}
+      قابل مشاهده و دسترسی هستند.{" "}
+    </Notice>
+
     <p>
       <h3 id="installing-liara-desktop">نصب Liara Desktop</h3>
       شما می‌توانید از طریق این <Link href="/desktop/install">لینک</Link>؛ Liara

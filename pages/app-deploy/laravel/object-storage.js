@@ -79,6 +79,14 @@ export default () => (
       width="100%"
     ></video>
 
+    <Notice variant="info">
+      پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
+      <Link href="https://github.com/liara-cloud/laravel-getting-started/tree/object-storage">
+        اینجا
+      </Link>{" "}
+      قابل مشاهده و دسترسی هستند.{" "}
+    </Notice>
+
     <h3 id="install-s3-driver">نصب Amazon S3 Driver</h3>
     <p>
       ذخیره‌سازی ابری لیارا یک Object Storage است که ساختار آن توسط کمپانی

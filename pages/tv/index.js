@@ -28,6 +28,10 @@ const Videos = () => {
             videoTitle: "سرویس DNS کلودفلر",
             link: "https://files.liara.ir/liara/domain/domain.mp4",
           },
+          {
+            videoTitle: "سرویس DNS ابرآروان",
+            link: "https://files.liara.ir/liara/domain/arvancloud-dns.mp4",
+          },
         ]}
       />
 
@@ -53,6 +57,32 @@ const Videos = () => {
           {
             videoTitle: "استفاده از دیسک‌ها",
             link: "https://files.liara.ir/liara/nodejs/nodejs-disks.mp4",
+          },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/nodejs/nodejs-object-storage.mp4",
+          },
+          {
+            videoTitle: "ارسال ایمیل",
+            link: "https://files.liara.ir/liara/nodejs/nodejs-emailserver.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"NuxtJS Framework"}
+        platform="nuxt"
+        style={{ marginTop: 40 }}
+        badge={"NuxtJS"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "استقرار با Liara CLI",
+            link: "https://files.liara.ir/liara/nuxtjs/nuxtjs-cli.mp4",
+          },
+          {
+            videoTitle: "استقرار با Liara Desktop",
+            link: "https://files.liara.ir/liara/nuxtjs/nuxtjs-desktop.mp4",
           },
         ]}
       />
@@ -98,6 +128,14 @@ const Videos = () => {
             videoTitle: "استفاده از دیسک‌ها",
             link: "https://files.liara.ir/liara/laravel/laravel-disks.mp4",
           },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/laravel/laravel-object-storage.mp4",
+          },
+          {
+            videoTitle: "ارسال ایمیل",
+            link: "https://files.liara.ir/liara/laravel/laravel-email-server.mp4",
+          },
         ]}
       />
 
@@ -123,6 +161,14 @@ const Videos = () => {
           {
             videoTitle: "استفاده از دیسک‌ها",
             link: "https://files.liara.ir/liara/php/php-disks.mp4",
+          },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/php/php-object-storage.mp4",
+          },
+          {
+            videoTitle: "ارسال ایمیل",
+            link: "https://files.liara.ir/liara/php/php-email-server.mp4",
           },
         ]}
       />
@@ -154,6 +200,14 @@ const Videos = () => {
             videoTitle: "استفاده از دیسک‌ها",
             link: "https://files.liara.ir/liara/django/django-disks.mp4",
           },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/django/django-object-storage.mp4",
+          },
+          {
+            videoTitle: "ارسال ایمیل",
+            link: "https://files.liara.ir/liara/django/django-email-server.mp4",
+          },
         ]}
       />
 
@@ -172,14 +226,22 @@ const Videos = () => {
             videoTitle: "استقرار با Liara Desktop",
             link: "https://files.liara.ir/liara/flask/flask-desktop.mp4",
           },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/flask/flask-object-storage.mp4",
+          },
+          {
+            videoTitle: "ارسال ایمیل",
+            link: "https://files.liara.ir/liara/flask/flask-email-server.mp4",
+          },
         ]}
       />
 
       <Section
-        name={"پلتفرم .Net"}
+        name={"پلتفرم Net."}
         platform="netcore"
         style={{ marginTop: 40 }}
-        badge={".Net Platform"}
+        badge={"DotNetCore Platform"}
         setOpenDialog={setOpenDialog}
         links={[
           {
@@ -189,6 +251,14 @@ const Videos = () => {
           {
             videoTitle: "استقرار با Liara Desktop",
             link: "https://files.liara.ir/liara/dotnet/dotnet-desktop.mp4",
+          },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/dotnet/dotnet-object-storage.mp4",
+          },
+          {
+            videoTitle: "ارسال ایمیل",
+            link: "https://files.liara.ir/liara/dotnet/dotnet-email-server.mp4",
           },
         ]}
       />
@@ -280,12 +350,41 @@ const Videos = () => {
             videoTitle: "استقرار با Liara Desktop",
             link: "https://files.liara.ir/liara/docker/docker-desktop.mp4",
           },
+          {
+            videoTitle: "استقرار image از DockerHub",
+            link: "https://files.liara.ir/liara/docker/docker-image.mp4",
+          },
+          {
+            videoTitle: "استقرار Docker Compose",
+            link: "https://files.liara.ir/liara/docker/docker-compose.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"وردپرس پلاس"}
+        platform="wordpress"
+        style={{ marginTop: 40 }}
+        badge={"WordPress Plus"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "راه اندازی WordPress Plus",
+            link: "https://files.liara.ir/liara/wordpress/wordpress-plus.mp4",
+          },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/wordpress/wordpress-object-storage.mp4",
+          },
+          {
+            videoTitle: "ارسال ایمیل",
+            link: "https://files.liara.ir/liara/wordpress/wordpress-email-server.mp4",
+          },
         ]}
       />
 
       <Section
         name={"راه اندازی CI/CD"}
-        platform="github"
         style={{ marginTop: 40 }}
         badge={"Continuous Integration and Continuous Delivery"}
         setOpenDialog={setOpenDialog}
@@ -293,10 +392,12 @@ const Videos = () => {
           {
             videoTitle: "راه اندازی CI/CD به وسیله GitHub",
             link: "https://files.liara.ir/liara/CICD/cicd-github.mp4",
+            platform: "github",
           },
           {
             videoTitle: "راه اندازی CI/CD به وسیله GitLab",
             link: "https://files.liara.ir/liara/CICD/cicd-gitlab.mp4",
+            platform: "gitlab",
           },
         ]}
       />
@@ -318,7 +419,7 @@ const Videos = () => {
             platform: "mariadb",
           },
           {
-            videoTitle: "راه‌اندازی MariaDB",
+            videoTitle: "راه‌اندازی Postgres",
             link: "https://files.liara.ir/liara/postgresql/create-postgresql.mp4",
             platform: "postgres",
           },

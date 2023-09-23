@@ -50,6 +50,15 @@ export default () => (
       width="100%"
     ></video>
 
+    <Notice variant="info">
+      یک نمونه استفاده از Diskها در Django که آماده‌ی استقرار است را می‌توانید
+      در{" "}
+      <Link href="https://github.com/liara-cloud/django-getting-started/tree/diskSetup">
+        اینجا
+      </Link>{" "}
+      مشاهده کنید.{" "}
+    </Notice>
+
     <p>
       <Link href="/app-features/file-system">فایل سیستم برنامه‌های لیارا</Link>{" "}
       Read-Only است یعنی بعد از استقرار برنامه تنها می‌توانیم فایل‌ها و
