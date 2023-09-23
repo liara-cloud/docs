@@ -285,7 +285,6 @@ const Videos = () => {
 
       <Section
         name={"راه اندازی CI/CD"}
-        platform="github"
         style={{ marginTop: 40 }}
         badge={"Continuous Integration and Continuous Delivery"}
         setOpenDialog={setOpenDialog}
@@ -293,10 +292,12 @@ const Videos = () => {
           {
             videoTitle: "راه اندازی CI/CD به وسیله GitHub",
             link: "https://files.liara.ir/liara/CICD/cicd-github.mp4",
+            platform: "github",
           },
           {
             videoTitle: "راه اندازی CI/CD به وسیله GitLab",
             link: "https://files.liara.ir/liara/CICD/cicd-gitlab.mp4",
+            platform: "gitlab",
           },
         ]}
       />
