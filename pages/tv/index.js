@@ -451,7 +451,7 @@ const Videos = () => {
           <Dialog>
             <div>
               <button onClick={() => setOpenDialog(INIT_OPEN_DIALOG)}>
-                <img src={"static/close.svg"} />
+                <img src={"/static/close.svg"} />
                 بستن
               </button>
               {/* <a download="liara-video" href={openDialog.src}>
