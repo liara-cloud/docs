@@ -63,12 +63,21 @@ MAIL_USER=my-app
 MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
     </Highlight>
 
+    <p>
+      اگر که از فایل env. برای بارگذاری متغیرهای محیطی در پروژه اصلی استفاده
+      می‌کنید؛ می‌توانید با استفاده از دستور زیر، پکیج DotEnv را نصب کنید.
+    </p>
+
     <Notice variant="info">
       توجه داشته باشید که مقادیر <span className="code">MAIL_USER</span> و{" "}
       <span className="code">MAIL_PASSWORD</span> در هر سرویس ایمیل ایجاد شده
       متفاوت است بنابراین باید آن‌ها را با مقادیر ارائه شده در تنظیمات سرویس
       ایمیل‌تان جایگزین کنید.
     </Notice>
+
+    <Highlight className="shell">
+      {`composer require vlucas/phpdotenv`}
+    </Highlight>
 
     <p>
       در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از
@@ -85,27 +94,35 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
     <Highlight className="php">
       {`<?php
 
-use PHPMailer\\PHPMailer\\PHPMailer;
-use PHPMailer\\PHPMailer\\SMTP;
-use PHPMailer\\PHPMailer\\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 require_once "vendor/autoload.php";
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$mailHost = $_ENV['MAIL_HOST'];
+$mailPort = $_ENV['MAIL_PORT'];
+$mailUser = $_ENV['MAIL_USER'];
+$mailPassword = $_ENV['MAIL_PASSWORD'];
+$mailSecurity = $_ENV['MAIL_SECURITY'];
 
 $mail = new PHPMailer(true);
 
 $mail->isSMTP();
-$mail->SMTPAuth = true;
-$mail->SMTPSecure = getenv('MAIL_SECURITY');
-$mail->Port = getenv('MAIL_PORT');
-$mail->Host = getenv('MAIL_HOST');
-$mail->Username = getenv('MAIL_USER');
-$mail->Password = getenv('MAIL_PASSWORD');
+$mail->SMTPAuth   = true;
+$mail->SMTPSecure = $mailSecurity;
+$mail->Port       = $mailPort;
+$mail->Host       = $mailHost;
+$mail->Username   = $mailUser;
+$mail->Password   = $mailPassword;
 
-$mail->From = "from@example.com";
-$mail->FromName = "MyName";
 
-$mail->addAddress("destination@host.name", "destination name");
+$mail->From     = "your email";
+$mail->FromName = "your email name";
 
+$mail->addAddress("destination email", "destination name");
 $mail->isHTML(false);
 
 $mail->Subject = "Mailing with PHPMailer";
