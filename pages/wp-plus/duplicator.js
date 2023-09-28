@@ -35,6 +35,17 @@ export default () => (
       </li>
     </ul>
 
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/wordpress/wordpress-duplicator.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <h3 id="installer">آپلود بسته نصب آسان</h3>
     <p>
       برای آپلود بسته نصب آسان وارد برنامه شده و از منوی{" "}

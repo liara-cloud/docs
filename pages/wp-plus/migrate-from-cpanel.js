@@ -20,6 +20,17 @@ export default () => (
     </div>
 
     <h3>انتقال از cPanel</h3>
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/liara/wordpress/wordpress-cpanel.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">

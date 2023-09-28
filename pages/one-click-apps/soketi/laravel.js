@@ -18,6 +18,18 @@ export default () => (
     </div>
 
     <h3>اتصال به Soketi در برنامه‌های Laravel</h3>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/soketi/laravel-soketi.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       به‌طور کلی برای استفاده از سرور Soketi در برنامه‌‌های Laravel باید قطعه کد
       زیر را در فایل <span className="code">config/app.php</span> از comment

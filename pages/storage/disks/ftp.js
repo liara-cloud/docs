@@ -28,6 +28,16 @@ export default () => (
         <a href="#filezilla">اتصال از طریق FileZilla</a>
       </li>
     </ul>
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/ftp/ftp-access.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h3 id="get-access-to-disk">دسترسی به دیسک‌ها با FTP</h3>
     <p>
@@ -37,11 +47,6 @@ export default () => (
       تا هر کدام از اعضای تیم‌تان دسترسی منحصر به خودش را داشته باشد.
     </p>
     <h3 id="create-ftp-account">ایجاد دسترسی FTP</h3>
-    <p>
-      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
-      ‌را مشاهده کنید.
-    </p>
-    <ZoomableImage src="https://files.liara.ir/docs/disks/add-new-ftp-user.gif" />
     <p>
       برای ایجاد دسترسی FTP، وارد بخش دیسک‌ها شده و روی دیسک مورد نظرتان کلیک
       کنید. سپس وارد منوی <strong>دسترسی FTP</strong> شوید و بر روی دکمه‌ی{" "}
@@ -56,11 +61,6 @@ export default () => (
       <Link href="#filezilla">FileZilla</Link> استفاده کنید.
     </p>
     <h4 id="winscp">اتصال از طریق WinSCP</h4>
-    <p>
-      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
-      ‌را مشاهده کنید.
-    </p>
-    <ZoomableImage src="https://files.liara.ir/docs/disks/connect-to-disks-with-winscp.gif" />
     <p>
       برای دانلود WinSCP می‌توانید از لینک روبرو استفاده کنید:{" "}
       <a
@@ -78,12 +78,6 @@ export default () => (
     </p>
 
     <h4 id="filezilla">اتصال از طریق FileZilla</h4>
-    <p>
-      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
-      ‌را مشاهده کنید.
-    </p>
-    <ZoomableImage src="https://files.liara.ir/docs/disks/connect-to-disks-with-filezilla.gif" />
-
     <p>
       برای دانلود FileZilla برای ویندوز، با توجه به معماری سیستم‌تان یکی از دو
       نسخه زیر را دانلود و نصب کنید:
