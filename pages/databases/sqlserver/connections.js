@@ -42,7 +42,12 @@ export default () => (
     </p>
 
     <h5 id="sql-server-management-studio">SQL Server Management Studio</h5>
-    <ZoomableImage src="https://files.liara.ir/docs/sql-server/connect-to-sql-server-database-with-ssms.gif" />
+    <video
+      src="https://files.liara.ir/liara/mssql/mssql-local.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h5 id="sql-server-dbeaver">DBeaver</h5>
     <ZoomableImage src="https://files.liara.ir/docs/sql-server/connect-to-sql-server-database-with-dbeaver.gif" />

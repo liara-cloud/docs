@@ -49,12 +49,18 @@ export default () => (
     </p>
 
     <Highlight className="plaintext">
-      {`MAIL_HOST=smtp.liara.ir
+      {`MAIL_HOST=smtp.c1.liara.email
 MAIL_PORT=587
-IS_ENCRYPTED=true
 MAIL_USERNAME=my-app
-MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
+MAIL_PASSWORD=my-pass`}
     </Highlight>
+
+    <p>
+      اگر که از فایل env. برای بارگذاری متغیرهای محیطی در پروژه اصلی استفاده
+      می‌کنید؛ می‌توانید با استفاده از دستور زیر، پکیج DotEnv را نصب کنید.
+    </p>
+
+    <Highlight className="shell">{`dotnet add package dotenv.net`}</Highlight>
 
     <Notice variant="info">
       توجه داشته باشید که مقادیر <span className="code">MAIL_USERNAME</span> و{" "}
@@ -72,45 +78,51 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
 
     <Highlight className="csharp">
       {`using System;
-using MailKit.Net.Smtp;
-using MimeKit;
+using System.Net;
+using System.Net.Mail;
+using System.IO;
+using dotenv.net;
 
 class Program
 {
     static void Main()
     {
-        DotNetEnv.Env.Load();
-        string mail_host = Environment.GetEnvironmentVariable("MAIL_HOST");
-        string username = Environment.GetEnvironmentVariable("MAIL_USERNAME");
-        string password = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
-        string port = Environment.GetEnvironmentVariable("MAIL_PORT");
-        string enc = Environment.GetEnvironmentVariable("IS_ENCRYPTED");
-        
-        var message = new MimeMessage();
-        message.From.Add(new MailboxAddress("Sender Name", "sender@examle.com"));
-        message.To.Add(new MailboxAddress("Recipient Name", "recipient@example.com"));
-        message.Subject = "Hello, World!";
-        message.Body = new TextPart("plain")
+        DotEnv.Load(); // loading env variables 
+
+        string mailHost = Environment.GetEnvironmentVariable("MAIL_HOST");
+        int mailPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT"));
+        string mailUser = Environment.GetEnvironmentVariable("MAIL_USERNAME");
+        string mailPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
+
+        // SMTP Conf
+        SmtpClient client = new SmtpClient(mailHost)
         {
-            Text = "This is the message body."
+            Port = mailPort,
+            Credentials = new NetworkCredential(mailUser, mailPassword),
+            EnableSsl = true
         };
 
-        using (var client = new SmtpClient())
+        // Creating and Sending Email  
+        MailMessage message = new MailMessage("from@test.com", "to@test.com",
+         "hello", "hello from dotnet!");
+        try
         {
-            client.Connect(mail_host, int.Parse(port), bool.Parse(enc);
-            client.Authenticate(username, password);
-
             client.Send(message);
-
-            client.Disconnect(true);
+            Console.WriteLine("email sent successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"error in sending email: {ex.Message}");
         }
     }
 }`}
     </Highlight>
 
     <Notice variant="warning">
-      قابل ذکر است که فیلد <span className="code">from</span> باید یکی از
-      نشانی‌های اضافه شده در سرویس ایمیل باشد.
+      قابل ذکر است که به جای <span className="code">from@test.com</span> باید
+      یکی از نشانی‌های اضافه شده در سرویس ایمیل قرار بگیرد. همچنین{" "}
+      <span className="code">to@test.com</span> ایمیل دریافت کننده محتوا است. در
+      کد فوق می‌توانید با SSL به صورت امن از ایمیل تراکنشی استفاده
     </Notice>
 
     <p>

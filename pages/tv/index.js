@@ -136,6 +136,10 @@ const Videos = () => {
             videoTitle: "ارسال ایمیل",
             link: "https://files.liara.ir/liara/laravel/laravel-email-server.mp4",
           },
+          {
+            videoTitle: "اتصال به Soketi",
+            link: "https://files.liara.ir/liara/soketi/laravel-soketi.mp4",
+          },
         ]}
       />
 
@@ -260,6 +264,10 @@ const Videos = () => {
             videoTitle: "ارسال ایمیل",
             link: "https://files.liara.ir/liara/dotnet/dotnet-email-server.mp4",
           },
+          {
+            videoTitle: "استفاده از دیسک‌ها",
+            link: "https://files.liara.ir/liara/dotnet/dotnet-disks.mp4",
+          },
         ]}
       />
 
@@ -379,6 +387,14 @@ const Videos = () => {
           {
             videoTitle: "ارسال ایمیل",
             link: "https://files.liara.ir/liara/wordpress/wordpress-email-server.mp4",
+          },
+          {
+            videoTitle: "نصب قالب با استفاده از duplicator  ",
+            link: "https://files.liara.ir/liara/wordpress/wordpress-duplicator.mp4",
+          },
+          {
+            videoTitle: "انتقال از cPanel به لیارا",
+            link: "https://files.liara.ir/liara/wordpress/wordpress-cpanel.mp4",
           },
         ]}
       />
