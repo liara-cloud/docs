@@ -265,7 +265,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/dotnet/dotnet-email-server.mp4",
           },
           {
-            videoTitle: "استفاده از دیسک ها",
+            videoTitle: "استفاده از دیسک‌ها",
             link: "https://files.liara.ir/liara/dotnet/dotnet-disks.mp4",
           },
         ]}
