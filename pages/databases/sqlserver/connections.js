@@ -50,7 +50,20 @@ export default () => (
     ></video>
 
     <h5 id="sql-server-dbeaver">DBeaver</h5>
-    <ZoomableImage src="https://files.liara.ir/docs/sql-server/connect-to-sql-server-database-with-dbeaver.gif" />
+    <video
+      src="https://files.liara.ir/liara/mssql/mssql-dbeaver.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <h5 id="sql-server-azure">Azure Data Studio</h5>
+    <video
+      src="https://files.liara.ir/liara/mssql/mssql-azure.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h4 id="sqlcmd">sqlcmd</h4>
     <p>

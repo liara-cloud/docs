@@ -26,25 +26,13 @@ export default () => (
       ابزارهای زیر را انتخاب کنید.
     </p>
     <h4 id="phpmyadmin">phpMyAdmin</h4>
-    <p>
-      اکثر توسعه‌دهندگان با ابزار مشهور phpMyAdmin که امکان مدیریت دیتابیس‌های
-      MySQL و MariaDB را در محیط وب فراهم می‌کند، آشنا هستند. برای راه‌اندازی
-      این ابزار در لیارا تنها کافیست وارد منوی <strong>نحوه‌ی اتصال</strong> به
-      دیتابیس شده و گزینه‌ی <strong>راه‌اندازی phpMyAdmin</strong> را فعال کنید.
-    </p>
-    <ZoomableImage
-      src="/static/databases/mysql-php-myadmin.png"
-      alt="آماده شدن دیتابیس"
-    />
-    <p>
-      سپس می‌توانید با کلیک بر روی دکمه‌ی <strong>باز کردن phpMyAdmin</strong> و
-      وارد کردن نام کاربری و رمز عبور دیتابیس‌تان از امکانات این ابزار استفاده
-      کنید.
-    </p>
-    <ZoomableImage
-      src="/static/databases/mysql-phpmyadmin.png"
-      alt="پنل phpmyadmin"
-    />
+
+    <video
+      src="https://files.liara.ir/liara/mariadb/mariadb-phpmyadmin.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h4 id="database-management-tools">
       مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
@@ -63,7 +51,12 @@ export default () => (
     </p>
 
     <h5 id="mariadb-dbeaver">DBeaver</h5>
-    <ZoomableImage src="https://files.liara.ir/docs/mariadb/connect-to-mariadb-database-with-dbeaver.gif" />
+    <video
+      src="https://files.liara.ir/liara/mariadb/mariadb-dbeaver.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h4 id="mysql-client">MySQL Command-Line Client</h4>
     <p>
@@ -76,6 +69,11 @@ export default () => (
       {`$ mysql -u DB_USER -pDB_PASSWORD --host DB_HOST --port DB_PORT`}
     </Highlight>
 
-    <Asciinema id="465244" />
+    <video
+      src="https://files.liara.ir/liara/mariadb/mariadb-mysqlcmd.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
   </Layout>
 );
