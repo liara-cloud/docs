@@ -26,6 +26,17 @@ export default () => (
       زیر را انتخاب کنید.
     </p>
 
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/redis/redis-cli.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <h4>phpRedisAdmin</h4>
     <p>
       ابزار phpRedisAdmin امکان مدیریت دیتابیس‌های Redis را در محیط وب فراهم
