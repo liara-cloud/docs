@@ -419,45 +419,159 @@ const Videos = () => {
       />
 
       <Section
-        name={"راه‌اندازی دیتابیس "}
+        name={"دیتابیس MySQL"}
         style={{ marginTop: 40 }}
-        badge={"Databases"}
+        badge={"MySQL"}
         setOpenDialog={setOpenDialog}
+        platform="mysql"
         links={[
           {
-            videoTitle: "راه‌اندازی MySQL",
+            videoTitle: "راه اندازی MySQL",
             link: "https://files.liara.ir/liara/mysql/create-mysql.mp4",
-            platform: "mysql",
           },
           {
-            videoTitle: "راه‌اندازی MariaDB",
+            videoTitle: "اتصال به MySQL با PHPMyAdmin",
+            link: "https://files.liara.ir/liara/mysql/mysql-phpmyadmin.mp4",
+          },
+          {
+            videoTitle: "اتصال به MySQL با DBeaver",
+            link: "https://files.liara.ir/liara/mysql/mysql-dbeaver.mp4",
+          },
+          {
+            videoTitle: "اتصال به MySQL با MySQL Workbench",
+            link: "https://files.liara.ir/liara/mysql/mysql-workbench.mp4",
+          },
+          {
+            videoTitle: "اتصال به MySQL با MySQL CLI",
+            link: "https://files.liara.ir/liara/mysql/mysql-cmd.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"دیتابیس MariaDB"}
+        style={{ marginTop: 40 }}
+        badge={"MariaDB"}
+        setOpenDialog={setOpenDialog}
+        platform="mariadb"
+        links={[
+          {
+            videoTitle: "راه اندازی MariaDB",
             link: "https://files.liara.ir/liara/mariadb/create-mariadb.mp4",
-            platform: "mariadb",
           },
           {
-            videoTitle: "راه‌اندازی Postgres",
+            videoTitle: "اتصال به MariaDB با PHPMyAdmin",
+            link: "https://files.liara.ir/liara/mariadb/mariadb-phpmyadmin.mp4",
+          },
+          {
+            videoTitle: "اتصال به MariaDB با DBeaver",
+            link: "https://files.liara.ir/liara/mariadb/mariadb-dbeaver.mp4",
+          },
+          {
+            videoTitle: "اتصال به MariaDB با MySQL CLI",
+            link: "https://files.liara.ir/liara/mariadb/mariadb-mysqlcmd.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"دیتابیس PostgreSQL"}
+        style={{ marginTop: 40 }}
+        badge={"PostgreSQL"}
+        setOpenDialog={setOpenDialog}
+        platform="postgres"
+        links={[
+          {
+            videoTitle: "راه اندازی Postgres",
             link: "https://files.liara.ir/liara/postgresql/create-postgresql.mp4",
-            platform: "postgres",
           },
           {
-            videoTitle: "راه‌اندازی SQL Server",
+            videoTitle: "اتصال به Postgres با PGAdmin",
+            link: "https://files.liara.ir/liara/postgresql/postgres-pgadmin.mp4",
+          },
+          {
+            videoTitle: "اتصال به Postgres با DBeaver",
+            link: "https://files.liara.ir/liara/postgresql/postgres-dbeaver.mp4",
+          },
+          {
+            videoTitle: "اتصال به Postgres با PSQL",
+            link: "https://files.liara.ir/liara/postgresql/postgres-psql.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"دیتابیس SQL Server"}
+        style={{ marginTop: 40 }}
+        badge={"Microsoft SQL Server"}
+        setOpenDialog={setOpenDialog}
+        platform="mssql"
+        links={[
+          {
+            videoTitle: "راه اندازی SQL Server",
             link: "https://files.liara.ir/liara/mssql/create-mssql.mp4",
-            platform: "mssql",
           },
           {
-            videoTitle: "راه‌اندازی MongoDB",
+            videoTitle: "اتصال به SQL Server با MS",
+            link: "https://files.liara.ir/liara/mssql/mssql-local.mp4",
+          },
+          {
+            videoTitle: "اتصال به SQL Server با DBeaver",
+            link: "https://files.liara.ir/liara/mssql/mssql-dbeaver.mp4",
+          },
+          {
+            videoTitle: "اتصال به SQL Server با Azure",
+            link: "https://files.liara.ir/liara/mssql/mssql-azure.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"دیتابیس MongoDB"}
+        style={{ marginTop: 40 }}
+        badge={"MongoDB"}
+        setOpenDialog={setOpenDialog}
+        platform="mongodb"
+        links={[
+          {
+            videoTitle: "راه اندازی MongoDB",
             link: "https://files.liara.ir/liara/mongodb/create-mongodb.mp4",
-            platform: "mongodb",
           },
           {
-            videoTitle: "راه‌اندازی Redis",
+            videoTitle: "MongoDB-CLI & MongoDB Compass",
+            link: "https://files.liara.ir/liara/mongodb/mongodb-compass.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"دیتابیس Redis"}
+        style={{ marginTop: 40 }}
+        badge={"Redis"}
+        setOpenDialog={setOpenDialog}
+        platform="redis"
+        links={[
+          {
+            videoTitle: "راه اندازی Redis",
             link: "https://files.liara.ir/liara/redis/create-redis.mp4",
-            platform: "redis",
           },
           {
-            videoTitle: "راه‌اندازی Elasticsearch",
+            videoTitle: "Redis-CLI & PHPRedisAdmin",
+            link: "https://files.liara.ir/liara/redis/redis-cli.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"دیتابیس Elastic"}
+        style={{ marginTop: 40 }}
+        badge={"Elastic"}
+        setOpenDialog={setOpenDialog}
+        platform="elastic"
+        links={[
+          {
+            videoTitle: "راه اندازی Elastic",
             link: "https://files.liara.ir/liara/elastic/create-elastic.mp4",
-            platform: "elastic",
           },
         ]}
       />

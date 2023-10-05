@@ -26,20 +26,13 @@ export default () => (
       ابزارهای زیر را انتخاب کنید.
     </p>
     <h4 id="pgadmin">PGAdmin</h4>
-    <p>
-      ابزار PGAdmin امکان مدیریت دیتابیس‌های PostgreSQL را در محیط وب فراهم
-      می‌کند. برای راه‌اندازی این ابزار در لیارا تنها کافیست وارد منوی{" "}
-      <strong>نحوه‌ی اتصال</strong> به دیتابیس شده و گزینه‌ی{" "}
-      <strong>راه‌اندازی PGAdmin</strong> را فعال کنید.
-    </p>
-    <ZoomableImage
-      src="/static/databases/pg-admin.png"
-      alt="آماده شدن دیتابیس"
-    />
-    <p>
-      سپس می‌توانید با کلیک بر روی دکمه‌ی <strong>بازکردن PGAdmin</strong> و
-      وارد کردن اطلاعات اتصال به دیتابیس‌تان از امکانات این ابزار استفاده کنید.
-    </p>
+
+    <video
+      src="https://files.liara.ir/liara/postgresql/postgres-pgadmin.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h4 id="database-management-tools">
       مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
@@ -58,7 +51,12 @@ export default () => (
     </p>
 
     <h5 id="postgresql-dbeaver">DBeaver</h5>
-    <ZoomableImage src="https://files.liara.ir/docs/postgresql/connect-to-postgresql-database-with-dbeaver.gif" />
+    <video
+      src="https://files.liara.ir/liara/postgresql/postgres-dbeaver.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <h4 id="psql">psql</h4>
     <p>
@@ -70,6 +68,11 @@ export default () => (
     <Highlight className="bash">{`$ psql -h DB_HOST -p DB_PORT -U DB_USERNAME -W postgres`}</Highlight>
     <p>بعد از وارد کردن دستور فوق، رمز عبور دیتابیس از شما پرسیده خواهد شد..</p>
 
-    <Asciinema id="465245" />
+    <video
+      src="https://files.liara.ir/liara/postgresql/postgres-psql.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
   </Layout>
 );

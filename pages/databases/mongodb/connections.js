@@ -47,6 +47,17 @@ export default () => (
       استفاده کنید.
     </p>
 
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/mongodb/mongodb-compass.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <h5 id="mongodb-dbeaver">MongoDB Compass</h5>
     <ZoomableImage src="https://files.liara.ir/docs/mongodb/connect-to-mongodb-database-with-mongodb-compass.gif" />
 
@@ -57,7 +68,7 @@ export default () => (
       زیر به سرویس دیتابیس خود متصل شوید.
     </p>
     <Highlight className="bash">
-      {`$ mongo -u DB_USERNAME \\
+      {`$ mongosh -u DB_USERNAME \\
            --port DB_PORT \\
            --host DB_HOST \\
            -p DB_PASSWORD \\
