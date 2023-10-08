@@ -18,6 +18,26 @@ export default () => (
         </span>
       </div>
     </div>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوهای آموزشی
+      زیر ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/liara/headlesschrome/nodejs-hc.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <video
+      src="https://files.liara.ir/liara/headlesschrome/python-pyppeteer.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       برای اتصال از طریق Puppeteer به برنامه‌ی Headless Chrome باید تغییری در
       کدهای قبلی خود ایجاد کنیم. برای مثال قطعه کد زیر را درنظر بگیرید که ما با
