@@ -44,7 +44,6 @@ export default () => (
       width="100%"
     ></video>
 
-
     <p>
       برای راه‌اندازی CI/CD در GitHub از قابلیت{" "}
       <a href="https://github.com/features/actions" target="_blank">
@@ -95,6 +94,11 @@ jobs:
       را هم برای دستور
       <span className="code">liara deploy</span>
       تنظیم کنید.
+    </Notice>
+    <Notice variant="warning">
+      توجه داشته باشید، که اگر branch پیش فرض ریپازیتوری‌تان برابر با main است،
+      باید آن را در فایل liara.yaml تغییر دهید در غیر اینصورت branch پیش فرض‌تان
+      را برابر با master قرار دهید.
     </Notice>
     <p>
       همان‌طور که مشاهده می کنید، در قطعه‌کد فوق تمام مراحل لازم برای استقرار یک
