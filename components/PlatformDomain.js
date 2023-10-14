@@ -26,7 +26,7 @@ export default function Domain({ platform }) {
   return (
     <Layout>
       <Head>
-        <title>مستندات اتصال دامنه به برنامه‌های {type.uCase} - لیارا</title>
+        <title>مستندات اتصال دامنه به برنامه‌ها - لیارا</title>
       </Head>
 
       <div className="page-head">
@@ -37,7 +37,7 @@ export default function Domain({ platform }) {
         </div>
       </div>
 
-      <h2>اتصال دامنه به برنامه‌های {type.uCase}</h2>
+      <h2>اتصال دامنه به برنامه‌</h2>
 
       <h4>فهرست عناوین:</h4>
       <ul className="mt-0">

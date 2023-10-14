@@ -181,7 +181,7 @@ $ liara deploy --disks data:/app/data \\
                --disks temp:/tmp`}
     </Highlight>
 
-    <Link href="/app-deploy/docker/domain" className="next-page">
+    <Link href="/app-deploy/docker/tips" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

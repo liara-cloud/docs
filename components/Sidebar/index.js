@@ -299,11 +299,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/nodejs/domain">
-                    اتصال دامنه
-                  </ActiveLink>
-                </li>
-                <li>
                   <ActiveLink href="/app-deploy/nodejs/email">
                     ارسال ایمیل
                   </ActiveLink>
@@ -334,11 +329,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/nextjs/cli">
                     استقرار با Liara CLI
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/app-deploy/nextjs/domain">
-                    اتصال دامنه
                   </ActiveLink>
                 </li>
                 <li>
@@ -407,11 +397,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/laravel/disks">
                     استفاده از دیسک‌ها
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/app-deploy/laravel/domain">
-                    اتصال دامنه
                   </ActiveLink>
                 </li>
                 <li>
@@ -493,11 +478,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/php/domain">
-                    اتصال دامنه
-                  </ActiveLink>
-                </li>
-                <li>
                   <ActiveLink href="/app-deploy/php/email">
                     ارسال ایمیل
                   </ActiveLink>
@@ -571,11 +551,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/django/domain">
-                    اتصال دامنه
-                  </ActiveLink>
-                </li>
-                <li>
                   <ActiveLink href="/app-deploy/django/email">
                     ارسال ایمیل
                   </ActiveLink>
@@ -641,11 +616,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/flask/object-storage">
                     اتصال به ذخیره‌سازی ابری
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/app-deploy/flask/domain">
-                    اتصال دامنه
                   </ActiveLink>
                 </li>
                 <li>
@@ -717,11 +687,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/domain">
-                    اتصال دامنه
-                  </ActiveLink>
-                </li>
-                <li>
                   <ActiveLink href="/app-deploy/netcore/email">
                     ارسال ایمیل
                   </ActiveLink>
@@ -770,11 +735,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/react/domain">
-                    اتصال دامنه
-                  </ActiveLink>
-                </li>
-                <li>
                   <ActiveLink href="/app-deploy/react/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
@@ -815,11 +775,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/angular/update">
                     به‌روزرسانی برنامه
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/app-deploy/angular/domain">
-                    اتصال دامنه
                   </ActiveLink>
                 </li>
                 <li>
@@ -866,11 +821,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/vue/domain">
-                    اتصال دامنه
-                  </ActiveLink>
-                </li>
-                <li>
                   <ActiveLink href="/app-deploy/vue/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
@@ -911,11 +861,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/static/update">
                     به‌روزرسانی برنامه
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/app-deploy/static/domain">
-                    اتصال دامنه
                   </ActiveLink>
                 </li>
                 <li>
@@ -979,11 +924,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/docker/disks">
                     استفاده از دیسک‌ها
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/app-deploy/docker/domain">
-                    اتصال دامنه
                   </ActiveLink>
                 </li>
                 <li>
@@ -1165,9 +1105,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
           <ul className="nav__list">
             <li>
               <ActiveLink href="/wp-plus/install">راه‌اندازی</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/wp-plus/domain">اتصال دامنه</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/wp-plus/email">ارسال ایمیل</ActiveLink>
@@ -1717,9 +1654,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/buckets/access-policy">
                 تغییر سطح دسترسی
               </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/buckets/domain">اتصال دامنه</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/buckets/migrate">
