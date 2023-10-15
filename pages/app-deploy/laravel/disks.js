@@ -216,7 +216,7 @@ $ liara deploy --disks data:storage \\
       را اجرا می‌کند و نیازی نیست که اقدام خاصی انجام دهید.
     </p>
 
-    <Link href="/app-deploy/laravel/domain" className="next-page">
+    <Link href="/app-deploy/laravel/email" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

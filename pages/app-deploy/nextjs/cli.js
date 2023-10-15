@@ -162,7 +162,7 @@ export default () => (
 
     <p dir="ltr">https://nextjs-starter.liara.run</p>
 
-    <Link href="/app-deploy/nextjs/domain" className="next-page">
+    <Link href="/app-deploy/nextjs/tips" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

@@ -57,7 +57,6 @@ export default () => (
       width="100%"
     ></video>
 
-
     <h3 id="install-aws-sdk">نصب AWS SDK</h3>
     <p>
       از آنجا که ذخیره‌سازی ابری لیارا یک سرویس Object storage سازگار با پروتکل
@@ -168,7 +167,7 @@ class Storage(models.Model):
     </p>
     <br />
 
-    <Link href="/app-deploy/django/domain" className="next-page">
+    <Link href="/app-deploy/django/email" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

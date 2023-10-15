@@ -270,7 +270,7 @@ class Program
 
     <br />
 
-    <Link href="/app-deploy/netcore/domain" className="next-page">
+    <Link href="/app-deploy/netcore/email" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

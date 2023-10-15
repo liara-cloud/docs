@@ -298,7 +298,7 @@ if __name__ == "__main__":
 
     <br />
 
-    <Link href="/app-deploy/flask/domain" className="next-page">
+    <Link href="/app-deploy/flask/email" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

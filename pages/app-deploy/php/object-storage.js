@@ -437,7 +437,7 @@ try {
 
     <br />
 
-    <Link href="/app-deploy/php/domain" className="next-page">
+    <Link href="/app-deploy/php/email" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
