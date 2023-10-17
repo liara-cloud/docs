@@ -70,7 +70,7 @@ export default () => (
       اضافه کنید.
     </p>
 
-    <Link href="/app-deploy/laravel/https" className="next-page">
+    <Link href="/app-deploy/laravel/logs" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

@@ -365,11 +365,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/laravel/https">
-                    پیکربندی HTTPS
-                  </ActiveLink>
-                </li>
-                <li>
                   <ActiveLink href="/app-deploy/laravel/logs">
                     مشاهده لاگ‌ها
                   </ActiveLink>
