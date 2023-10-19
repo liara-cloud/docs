@@ -9,7 +9,6 @@ export default () => (
     <Head>
       <title>استقرار برنامه‌های NestJS - لیارا</title>
     </Head>
-
     <div className="page-head">
       <PlatformIcon platform="nest" />
       <div className="page-title">
@@ -17,6 +16,19 @@ export default () => (
         <span className="page-description">(NestJS Apps)</span>
       </div>
     </div>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/liara/nestjs/nestjs.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       NestJS یک فریم‌ورک قابل اعتماد و مقیاس‌پذیر با NodeJS است که بسیاری از
       قابلیت‌ها را برای شما به ارمغان می‌آورد. حال شما می‌توانید برنامه‌های
