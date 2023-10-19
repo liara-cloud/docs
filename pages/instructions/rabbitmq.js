@@ -26,6 +26,18 @@ export default () => (
     </Notice>
 
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/liara/rabbitmq/rabbitmq.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <p>
       <a
         href="https://hub.docker.com/r/bitnami/rabbitmq"
         rel="noopener"
@@ -38,28 +50,33 @@ export default () => (
       کنیم و عملیات صف‌بندی را به‌خوبی انجام دهیم.
     </p>
 
+    <h2>قدم اول: ساخت برنامه داکر</h2>
     <p>
-      برای استقرار RabbitMQ باید یک برنامه{" "}
-      <Link href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن
-      دلخواه‌تان بسازید ایجاد کرده و مراحل زیر را دنبال کنید.
+      برای استقرار RabbitMQ درابتدا باید یک برنامه{" "}
+      <Link href="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D8%AF%D8%A7%DA%A9%D8%B1-docker/">
+        Docker
+      </Link>{" "}
+      با نام و پلن دلخواه‌تان بسازید.
     </p>
+
+    <Notice variant="info">
+      {" "}
+      برای ساخت یک برنامه داکر{" "}
+      <Link href="/app-deploy/docker/getting-started/">اینجا</Link> کلیک کنید.
+    </Notice>
+
+    <h2>قدم دوم: ساخت دیسک</h2>
     <p>
-      در قدم اول باید طبق مستندات{" "}
+      در اینجا باید طبق مستندات{" "}
       <Link href="/app-deploy/docker/disks#create-new-disk">
         ساخت یک دیسک جدید
       </Link>{" "}
-      عمل کرده و دو دیسک با نام و فضای دلخواه ایجاد کنید. سپس طبق مستندات{" "}
-      <Link href="/app-deploy/docker/envs">تنظیم متغیرها</Link>، متغیرهای زیر را
-      تنظیم کرده و بر روی دکمه‌ی ثبت تغییرات کلیک کنید.
+      عمل کرده و یک دیسک با نام و فضای دلخواه ایجاد کنید.
     </p>
-    <Highlight className="config">
-      {`RABBITMQ_USERNAME=[نام کاربری دلخواه]
-RABBITMQ_PASSWORD=[گذرواژه دلخواه]
-RABBITMQ_VM_MEMORY_HIGH_WATERMARK=0.6
-RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT=100000000`}
-    </Highlight>
+
+    <h2>قدم سوم: پیکربندی فایل liara.json</h2>
     <p>
-      در مرحله بعد طبق مستندات{" "}
+      در این مرحله باید طبق مستندات{" "}
       <Link href="/app-deploy/docker/deploy-image">
         استقرار Image از DockerHub
       </Link>{" "}
@@ -68,40 +85,23 @@ RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT=100000000`}
     </p>
     <Highlight className="json">
       {`{
-  "image": "bitnami/rabbitmq:3.11",
-  "app": "rabbitmq-app",
-  "port": 15672,
-  "disks": [
-    {
-      "name": "[نام دیسک اول]",
-      "mountTo": "/opt/bitnami/rabbitmq"
-    },
-    {
-      "name": "[نام دیسک دوم]",
-      "mountTo": "/bitnami"
-    }
-  ]
+    "app":"rabbitmq-app", // در اینجا، باید شناسه برنامه خود را مشخص کنید
+    "image": "rabbitmq:3.12-management", // در اینجا، نسخه دقیق برنامه را وارد کنید
+    "port": 15672,
+    "disks": [
+        {
+            "name": "rabbit", // در اینجا، شناسه دیسک خود را وارد کنید
+            "mountTo": "/var/lib/rabbitmq"
+        }
+    ]
 }`}
     </Highlight>
+    <h2>قدم چهارم: استقرار برنامه</h2>
     <p>
       در قدم آخر برای استقرار RabbitMQ بر روی لیارا کافیست دستور زیر را در مسیر
       فایل <span className="code">liara.json</span> اجرا کنید.
     </p>
     <Highlight className="bash">{`$ liara deploy`}</Highlight>
-    <h3>استقرار سریع</h3>
-    <p>
-      همچنین شما می‌توانید تمام مراحل فوق را با استفاده از{" "}
-      <Link href="/cli/install">لیارا CLI</Link> انجام دهید:
-    </p>
-    <Highlight className="bash">
-      {`$ liara deploy --app rabbitmq-app \\
-                --port 15672 \\
-                --image bitnami/rabbitmq:3.11 \\
-                --disks rabbitmq:/opt/bitnami/rabbitmq \\
-                --disks bitnami:/bitnami \\
-                --detach`}
-    </Highlight>
-    <Asciinema id="455609" />
     <h5>توجه داشته باشید که</h5>
     <ul>
       <li>
