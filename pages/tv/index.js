@@ -573,6 +573,24 @@ const Videos = () => {
             videoTitle: "راه اندازی Elastic",
             link: "https://files.liara.ir/liara/elastic/create-elastic.mp4",
           },
+          {
+            videoTitle: "اتصال به Elastic با Python",
+            link: "https://files.liara.ir/liara/elastic/elastic-python.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"میان‌افزار RabbitMQ"}
+        style={{ marginTop: 40 }}
+        badge={"rabbitmq middleware"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "راه اندازی RabbitMQ",
+            link: "https://files.liara.ir/liara/rabbitmq/rabbitmq.mp4",
+            platform: "rabbitmq",
+          },
         ]}
       />
 
