@@ -70,10 +70,10 @@ const Videos = () => {
       />
 
       <Section
-        name={"NuxtJS Framework"}
+        name={"فریم‌ورک NuxtJS"}
         platform="nuxt"
         style={{ marginTop: 40 }}
-        badge={"NuxtJS"}
+        badge={"NuxtJS Framework"}
         setOpenDialog={setOpenDialog}
         links={[
           {
@@ -88,7 +88,7 @@ const Videos = () => {
       />
 
       <Section
-        name={"پلتفرم NextJS"}
+        name={"فریم‌ورک NextJS"}
         platform="next"
         style={{ marginTop: 40 }}
         badge={"NextJS Platform"}
@@ -139,6 +139,10 @@ const Videos = () => {
           {
             videoTitle: "اتصال به Soketi",
             link: "https://files.liara.ir/liara/soketi/laravel-soketi.mp4",
+          },
+          {
+            videoTitle: "فعال‌سازی SSR با استفاده از Inertia",
+            link: "https://files.liara.ir/liara/laravel/laravel-inertia-ssr.mp4",
           },
         ]}
       />
@@ -321,6 +325,20 @@ const Videos = () => {
           {
             videoTitle: "استقرار با Liara Desktop",
             link: "https://files.liara.ir/liara/vue/vue-desktop.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"فریم‌ورک NestJS"}
+        platform="nest"
+        style={{ marginTop: 40 }}
+        badge={"NestJS Framework"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "استقرار با Liara CLI",
+            link: "https://files.liara.ir/liara/nestjs/nestjs.mp4",
           },
         ]}
       />

@@ -44,6 +44,11 @@ export default () => (
         <a href="#octane">راه‌اندازی Laravel octane</a>
       </li>
       <li>
+        <a href="#inertia-ssr">
+          فعال‌سازی SSR با استفاده از Inertia در Laravel
+        </a>
+      </li>
+      <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
@@ -275,6 +280,34 @@ stdout_logfile=/tmp/laravel-worker.log`}
       وضعیت Laravel octane را بررسی کنید:
     </p>
     <Highlight className="bash">{`php artisan octane:status`}</Highlight>
+    <h3 id="inertia-ssr">فعال‌سازی SSR با استفاده از Inertia در Laravel</h3>
+    <p>
+      اگر که در برنامه خود از کتابخانه{" "}
+      <a
+        href="https://liara.ir/blog/inertia-%da%86%db%8c%d8%b3%d8%aa%d8%9f-%da%a9%d8%a7%d8%b1%d8%a8%d8%b1%d8%af-inertsia-%d8%af%d8%b1-laravel"
+        target="_blank"
+      >
+        Inertia.JS
+      </a>{" "}
+      استفاده می‌کنید و قصد دارید که از قابلیت SSR در برنامه لاراول خود بهره
+      ببرید، کافیست که فایل <span className="code">liara.json</span> را در مسیر
+      اصلی پروژه ایجاد کنید و یا اگر از قبل ایجاد کرده‌اید، فقط قطعه کد زیر را
+      به آن اضافه کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "laravel": {
+    "ssr": true
+  }
+}`}
+    </Highlight>
+    <p>همچنین، می‌توانید ویدیوی آموزشی زیر را مشاهده کنید:</p>
+    <video
+      src="https://files.liara.ir/liara/laravel/laravel-inertia-ssr.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
       برای رفع خطای CORS در برنامه‌های Laravel، دو راه حل مختلف پیش روی شما قرار
@@ -606,9 +639,9 @@ $ffmpeg = FFMpeg::create([
     <p>
       شما برای نصب پکیج‌هایی که در بخش
       <span className="code">require-dev</span> فایل{" "}
-      <span className="code">composer.json</span> قرار دارد (مانند Faker و Ignition)، باید تنظیمات زیر را
-      در فایل <Link href="/app-deploy/laravel/liarajson">liara.json</Link> قرار
-      بدهید:
+      <span className="code">composer.json</span> قرار دارد (مانند Faker و
+      Ignition)، باید تنظیمات زیر را در فایل{" "}
+      <Link href="/app-deploy/laravel/liarajson">liara.json</Link> قرار بدهید:
     </p>
     <Highlight className="json">
       {`{
