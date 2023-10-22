@@ -1769,21 +1769,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/client-api">API</NavTitle>
-          <ul className="nav__list">
-            <li>
-              <ActiveLink href="/client-api/about">شروع به کار</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/client-api/app">برنامه‌ها</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/client-api/database">دیتابیس‌ها</ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/client-api/domain">دامنه‌ها</ActiveLink>
-            </li>
-          </ul>
+          <ActiveLink href="/openapi">API</ActiveLink>
         </nav>
 
         <nav className="nav">

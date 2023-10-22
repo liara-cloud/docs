@@ -1,7 +1,6 @@
-import Layout from "../../components/Layout";
+import Layout from "../components/Layout";
 import Head from "next/head";
-import Notice from "../../components/Notice";
-import Label from "../../components/Label";
+import Label from "../components/Label";
 import Highlight from "react-highlight";
 import Link from "next/link";
 
@@ -15,7 +14,7 @@ export default () => (
     <span className="page-description">(Liara API)</span>
 
     <p>
-      وب‌سرویس و در واقع API ما به شما دسترسی کامل به امکانات پلتفرم ابری لیارا
+      وب‌سرویس و در واقع API ما به شما دسترسی کامل به امکانات زیرساخت ابری لیارا
       را می‌دهد. با استفاده از این API، می‌توانید در برنامه‌ها و سرویس‌های
       خودتان از لیارا به عنوان فراهم‌کننده‌ی زیر ساخت استفاده کنید.
     </p>
@@ -28,15 +27,18 @@ export default () => (
       <li>
         <a href="#user-information">دریافت اطلاعات جامع کاربری</a>
       </li>
+      <li>
+        <a href="#openapi">مستندات OpenAPI</a>
+      </li>
     </ul>
 
     <h3 id="api-address">آدرس API</h3>
     <p>
-      آدرس API برای دسترسی به برنامه‌ها:
-      <Highlight className="plaintext">
-        {`https://api.iran.liara.ir/`}
-      </Highlight>
+      هر کدام از محصولات لیارا، آدرس API مخصوص خود را دارند. برای مثال، آدرس API
+      برای دسترسی به برنامه‌ها:
     </p>
+    <Highlight className="plaintext">{`https://api.iran.liara.ir/`}</Highlight>
+
     <h3 id="authentication">کلید احراز هویت</h3>
     <p>
       شما با مراجعه به پنل کاربری و وارد شدن به بخش API امکان مشاهده و دریافت
@@ -47,10 +49,10 @@ export default () => (
       نحوه‌ی استفاده از این Token برای کار با APIها به این صورت است که آن را
       به‌شکل زیر در HEADERها به سمت endpoint مربوطه ارسال می‌کنید:
       <br />
-      <Highlight className="plaintext">
-        {`Authorization: Bearer $TOKEN`}
-      </Highlight>
     </p>
+    <Highlight className="plaintext">
+      {`Authorization: Bearer $TOKEN`}
+    </Highlight>
 
     <h3 id="user-information">دریافت اطلاعات جامع کاربری</h3>
     <div className="endpoint">
@@ -62,6 +64,21 @@ export default () => (
       انتخاب به‌همراه قیمت، مشخصات هر پلن و نسخه‌های دیتابیس‌ها دسترسی داشته
       باشید. بنابراین از اطلاعاتی که از این endpoint دریافت می‌کنید می‌توانید در
       endpointهای دیگر استفاده کنید.
+    </p>
+
+    <h3 id="openapi">مستندات OpenAPI</h3>
+    <p>
+      مستندات API لیارا در آدرس زیر در دسترس است:
+      <br />
+      <a href="https://openapi.liara.ir/" target="_blank">
+        https://openapi.liara.ir
+      </a>
+    </p>
+    <p>
+      ما برای نوشتن این مستندات از OpenAPI Specification v3 استفاده کرده‌ایم که
+      در <a href="https://github.com/liara-cloud/openapi">GitHub</a> در دسترس
+      است. بنابراین، می‌توانید فایل‌های Yaml موجود در ریپازیتوری گیت‌هاب را در
+      Postman وارد کنید تا مستقیما به تمام Endpointها دسترسی داشته باشید.
     </p>
   </Layout>
 );
