@@ -64,7 +64,7 @@ export default () => (
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -79,8 +79,8 @@ jobs:
           LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}\
 
         run: |
-          npm i -g @liara/cli@4
-          liara deploy --app="APP_NAME" --api-token="$LIARA_TOKEN" --detach
+          npm i -g @liara/cli@5
+          liara deploy --app="APP_NAME" --api-token="$LIARA_TOKEN" --no-app-logs
 `}
     </Highlight>
     <Notice variant="info">
@@ -153,7 +153,7 @@ jobs:
 on:
   push:
     branches:
-      - master
+      - main
       - test
       - staging
 
@@ -168,18 +168,18 @@ jobs:
           node-version: "18"
 
       - name: Install Liara CLI
-        run: npm i -g @liara/cli@4
+        run: npm i -g @liara/cli@5
 
       - name: Deploy
         env:
           LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}
         run: |
           if [ \${{ github.ref }} == 'refs/heads/master' ]; then
-            liara deploy --app="my-production-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
+            liara deploy --app="my-production-app" --api-token="$LIARA_TOKEN" --no-app-logs
           elif [ \${{ github.ref }} == 'refs/heads/test' ]; then
-            liara deploy --app="my-test-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
+            liara deploy --app="my-test-app" --api-token="$LIARA_TOKEN" --no-app-logs
           elif [ \${{ github.ref }} == 'refs/heads/staging' ]; then
-            liara deploy --app="my-staging-app" --api-token="$LIARA_TOKEN" --port 3000 --detach
+            liara deploy --app="my-staging-app" --api-token="$LIARA_TOKEN" --no-app-logs
           fi
 `}
     </Highlight>

@@ -16,8 +16,8 @@ jobs:
         env:
           LIARA_TOKEN: ${{ secrets.IRAN_API_TOKEN }}
         run: |
-          npm i -g @liara/cli@4
-          liara deploy --api-token="$LIARA_TOKEN" --detach
+          npm i -g @liara/cli@5
+          liara deploy --api-token="$LIARA_TOKEN" --no-app-logs
       - name: Sleep for 60 seconds
         run: sleep 60
         shell: bash
