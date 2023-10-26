@@ -70,6 +70,9 @@ export default () => (
       <li>
         <a href="#mirror">غیرفعال کردن Mirror</a>
       </li>
+      <li>
+        <a href="#gdal">استفاده از GDAL</a>
+      </li>
     </ul>
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
     <p>
@@ -480,6 +483,41 @@ CORS_ALLOW_METHODS = [
       پیکربندی برنامه‌ی ASGI خود را در متغیر{" "}
       <span className="code">ASGI_APPLICATION</span> مقداردهی کنید.
     </p>
+    <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <p>
+      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Django
+      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در
+      فایل <Link href="/app-deploy/django/liarajson">liara.json</Link>، این
+      قابلیت را غیر فعال کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "django": {
+    "mirror": false
+  }
+}`}
+    </Highlight>
+
+    <h3 id="gdal">استفاده از GDAL</h3>
+    <p>
+      برای استفاده از GDAL در پلتفرم Django یک فایل به نام{" "}
+      <Link href="/app-deploy/django/liarajson">liara.json</Link> ایجاد کرده و
+      محتویات زیر را به آن اضافه کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+    "django": {
+        "geospatial": true
+    }
+}`}
+    </Highlight>
+    <Notice variant="info">
+      توجه داشته باشید که نسخه پکیج GDAL با نسخه Python باید سازگار باشند. در
+      پلتفرم Django نسخه پیش‌فرض Python برابر با 3.9 و نسخه متناسب پکیج GDAL
+      برابر با 3.6.0 است. در صورتی که نسخه Python را تغییر دهید، پکیج GDAL را
+      نیز باید متناسب با نسخه Python انتخاب کنید.
+    </Notice>
+
     <h3 id="mirror">غیرفعال کردن Mirror</h3>
     <p>
       Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Django
