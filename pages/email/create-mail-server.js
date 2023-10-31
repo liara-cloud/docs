@@ -52,6 +52,17 @@ export default () => (
     <h3 id="create-mail-server">ساخت سرور ایمیل</h3>
 
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید؛ می‌توانید ویدیوی آموزشی
+      زیر ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/liara/email-server/email-service-interface.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <p>
       وارد قسمت <b>ایمیل</b> شده و بر روی گزینه‌ی <b>ایجاد سرور ایمیل</b> کلیک
       کنید.
     </p>

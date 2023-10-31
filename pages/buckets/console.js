@@ -34,7 +34,17 @@ export default () => (
         <a href="#delete">حذف فایل</a>
       </li>
     </ul>
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید؛ می‌توانید ویدیوی آموزشی
+      زیر ‌را مشاهده کنید.
+    </p>
 
+    <video
+      src="https://files.liara.ir/liara/object-storage/interface.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
     <h3 id="create-bucket">ایجاد باکت</h3>
     <ZoomableImage src="https://files.liara.ir/docs/buckets/create-bucket.gif" />
     <p>
