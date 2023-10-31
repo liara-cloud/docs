@@ -36,6 +36,52 @@ const Videos = () => {
       />
 
       <Section
+        name={"صفر تا صد استقرار برنامه‌های Laravel در لیارا"}
+        platform="laravel"
+        style={{ marginTop: 40 }}
+        badge={"Laravel Platform"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
+            link: "https://files.liara.ir/liara/laravel/cource/e00-intro-to-project.mp4",
+          },
+          {
+            videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از Local",
+            link: "https://files.liara.ir/liara/laravel/cource/e01-connect-to-liara-db.mp4",
+          },
+          {
+            videoTitle: "جلسه 2: بازیابی دیتابیس در لیارا",
+            link: "https://files.liara.ir/liara/laravel/cource/e02-restoring-liara-database.mp4",
+          },
+          {
+            videoTitle: "جلسه 3:اتصال به DNS و Email Server",
+            link: "https://files.liara.ir/liara/laravel/cource/e03-connect-to-emailserver.mp4",
+          },
+          {
+            videoTitle: "جلسه 4: استقرار پروژه در لیارا",
+            link: "https://files.liara.ir/liara/laravel/cource/e04-deployment-in-liara.mp4",
+          },
+          {
+            videoTitle: "جلسه 5: استفاده از Diskها در پروژه ",
+            link: "https://files.liara.ir/liara/laravel/cource/e05-using-disks-in-liara.mp4",
+          },
+          {
+            videoTitle: "جلسه 6: استفاده از باکت لیارا به جای دیسک‌ها",
+            link: "https://files.liara.ir/liara/laravel/cource/e06-using-buckets-in-liara.mp4",
+          },
+          {
+            videoTitle: "جلسه 7: اتصال دامنه به برنامه در لیارا",
+            link: "https://files.liara.ir/liara/laravel/cource/e07-domains-and-more-options.mp4",
+          },
+          {
+            videoTitle: "جلسه 8: راه‌اندازی CI/CD در برنامه",
+            link: "https://files.liara.ir/liara/laravel/cource/e08-cicd-feature-in-liara.mp4",
+          },
+        ]}
+      />
+
+      <Section
         name={"صفر تا صد استقرار برنامه‌های Django در لیارا"}
         platform="django"
         style={{ marginTop: 40 }}
@@ -143,6 +189,20 @@ const Videos = () => {
           {
             videoTitle: "استقرار با Liara Desktop",
             link: "https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"فریم‌ورک NestJS"}
+        platform="nest"
+        style={{ marginTop: 40 }}
+        badge={"NestJS Framework"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "استقرار با Liara CLI",
+            link: "https://files.liara.ir/liara/nestjs/nestjs.mp4",
           },
         ]}
       />
@@ -367,20 +427,6 @@ const Videos = () => {
           {
             videoTitle: "استقرار با Liara Desktop",
             link: "https://files.liara.ir/liara/vue/vue-desktop.mp4",
-          },
-        ]}
-      />
-
-      <Section
-        name={"فریم‌ورک NestJS"}
-        platform="nest"
-        style={{ marginTop: 40 }}
-        badge={"NestJS Framework"}
-        setOpenDialog={setOpenDialog}
-        links={[
-          {
-            videoTitle: "استقرار با Liara CLI",
-            link: "https://files.liara.ir/liara/nestjs/nestjs.mp4",
           },
         ]}
       />
