@@ -36,6 +36,47 @@ const Videos = () => {
       />
 
       <Section
+        name={"صفر تا صد استقرار برنامه‌های NodeJS در لیارا"}
+        platform="nodejs"
+        style={{ marginTop: 40 }}
+        badge={"NodeJS Platform"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
+            link: "https://files.liara.ir/liara/nodejs/cource/e00-intro-to-project.mp4",
+          },
+          {
+            videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از Local",
+            link: "https://files.liara.ir/liara/nodejs/cource/e01-connect-to-database.mp4",
+          },
+          {
+            videoTitle: "جلسه 2: اتصال به DNS و Email Server",
+            link: "https://files.liara.ir/liara/nodejs/cource/e02-using-dns-and-email-server.mp4",
+          },
+          {
+            videoTitle: "جلسه 3: استقرار پروژه در لیارا",
+            link: "https://files.liara.ir/liara/nodejs/cource/e03-deployment-in-liara.mp4",
+          },
+          {
+            videoTitle: "جلسه 4: استفاده از Diskها در پروژه ",
+            link: "https://files.liara.ir/liara/nodejs/cource/e04-using-disks.mp4",
+          },
+          {
+            videoTitle: "جلسه 5: استفاده از باکت لیارا به جای دیسک‌ها",
+            link: "https://files.liara.ir/liara/nodejs/cource/e05-using-buckets.mp4",
+          },
+          {
+            videoTitle: "جلسه 6: اتصال دامنه به برنامه در لیارا",
+            link: "https://files.liara.ir/liara/nodejs/cource/e06-domain.mp4",
+          },
+          {
+            videoTitle: "جلسه 7: راه‌اندازی CI/CD در برنامه",
+            link: "https://files.liara.ir/liara/nodejs/cource/e07-cicd-feature.mp4",
+          },
+        ]}
+      />
+      <Section
         name={"صفر تا صد استقرار برنامه‌های Laravel در لیارا"}
         platform="laravel"
         style={{ marginTop: 40 }}
