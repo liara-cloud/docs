@@ -1,0 +1,93 @@
+import React, { Fragment, useState } from "react";
+import Layout from "../../../components/Layout";
+import Head from "next/head";
+import { Dialog, Section } from "..";
+
+const INIT_OPEN_DIALOG = { isOpen: false, src: "" };
+
+const Laravel = () => {
+  const [openDialog, setOpenDialog] = useState(INIT_OPEN_DIALOG);
+
+  return (
+    <Layout>
+      <Head>
+        <title>مستندات - آموزش استفاده از لیارا</title>
+      </Head>
+
+      <img
+        style={{ borderColor: "#ffffff22", marginLeft: 20 }}
+        src="/static/course/laravel.png"
+      />
+      <Section
+        name={"صفر تا صد استقرار برنامه‌های Laravel در لیارا"}
+        style={{ marginTop: 40 }}
+        badge={"Laravel Platform"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
+            link: "https://files.liara.ir/liara/laravel/cource/e00-intro-to-project.mp4",
+          },
+          {
+            videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از Local",
+            link: "https://files.liara.ir/liara/laravel/cource/e01-connect-to-liara-db.mp4",
+          },
+          {
+            videoTitle: "جلسه 2: بازیابی دیتابیس در لیارا",
+            link: "https://files.liara.ir/liara/laravel/cource/e02-restoring-liara-database.mp4",
+          },
+          {
+            videoTitle: "جلسه 3:اتصال به DNS و Email Server",
+            link: "https://files.liara.ir/liara/laravel/cource/e03-connect-to-emailserver.mp4",
+          },
+          {
+            videoTitle: "جلسه 4: استقرار پروژه در لیارا",
+            link: "https://files.liara.ir/liara/laravel/cource/e04-deployment-in-liara.mp4",
+          },
+          {
+            videoTitle: "جلسه 5: استفاده از Diskها در پروژه ",
+            link: "https://files.liara.ir/liara/laravel/cource/e05-using-disks-in-liara.mp4",
+          },
+          {
+            videoTitle: "جلسه 6: استفاده از باکت لیارا به جای دیسک‌ها",
+            link: "https://files.liara.ir/liara/laravel/cource/e06-using-buckets-in-liara.mp4",
+          },
+          {
+            videoTitle: "جلسه 7: اتصال دامنه به برنامه در لیارا",
+            link: "https://files.liara.ir/liara/laravel/cource/e07-domains-and-more-options.mp4",
+          },
+          {
+            videoTitle: "جلسه 8: راه‌اندازی CI/CD در برنامه",
+            link: "https://files.liara.ir/liara/laravel/cource/e08-cicd-feature-in-liara.mp4",
+          },
+        ]}
+      />
+
+      {openDialog.isOpen && (
+        <Fragment>
+          <Dialog>
+            <div>
+              <button onClick={() => setOpenDialog(INIT_OPEN_DIALOG)}>
+                <img src={"/static/close.svg"} />
+                بستن
+              </button>
+            </div>
+            <video
+              autoPlay
+              src={openDialog.src}
+              controls="controls"
+              className="block w-full"
+              width="100%"
+            ></video>
+          </Dialog>
+          <div
+            className="bg-disable-dialog"
+            onClick={() => setOpenDialog(INIT_OPEN_DIALOG)}
+          ></div>
+        </Fragment>
+      )}
+    </Layout>
+  );
+};
+
+export default Laravel;

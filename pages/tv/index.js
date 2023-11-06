@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import Layout from "../../components/Layout";
 import Head from "next/head";
 import PlatformIcon from "../../components/PlatformIcon";
+import Link from "next/link";
 
 const INIT_OPEN_DIALOG = { isOpen: false, src: "" };
 
@@ -13,6 +14,34 @@ const Videos = () => {
       <Head>
         <title>مستندات - آموزش استفاده از لیارا</title>
       </Head>
+
+      <section>
+        <div className="page-head">
+          <div className="page-title pb-4">
+            <h1>آموزش جامع استقرار</h1>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3  gap-5">
+          <Link style={{ border: "none" }} href="/tv/courses/node">
+            <img
+              style={{ borderColor: "#ffffff22" }}
+              src="/static/course/nodejs.png"
+            />
+          </Link>
+          <Link style={{ border: "none" }} href="/tv/courses/laravel">
+            <img
+              style={{ borderColor: "#ffffff22" }}
+              src="/static/course/laravel.png"
+            />
+          </Link>
+          <Link style={{ border: "none" }} href="/tv/courses/django">
+            <img
+              style={{ borderColor: "#ffffff22" }}
+              src="/static/course/django.png"
+            />
+          </Link>
+        </div>
+      </section>
 
       <Section
         name={"اضافه کردن دامنه"}
@@ -31,135 +60,6 @@ const Videos = () => {
           {
             videoTitle: "سرویس DNS ابرآروان",
             link: "https://files.liara.ir/liara/domain/arvancloud-dns.mp4",
-          },
-        ]}
-      />
-
-      <Section
-        name={"صفر تا صد استقرار برنامه‌های NodeJS در لیارا"}
-        platform="nodejs"
-        style={{ marginTop: 40 }}
-        badge={"NodeJS Platform"}
-        setOpenDialog={setOpenDialog}
-        links={[
-          {
-            videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
-            link: "https://files.liara.ir/liara/nodejs/cource/e00-intro-to-project.mp4",
-          },
-          {
-            videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از Local",
-            link: "https://files.liara.ir/liara/nodejs/cource/e01-connect-to-database.mp4",
-          },
-          {
-            videoTitle: "جلسه 2: اتصال به DNS و Email Server",
-            link: "https://files.liara.ir/liara/nodejs/cource/e02-using-dns-and-email-server.mp4",
-          },
-          {
-            videoTitle: "جلسه 3: استقرار پروژه در لیارا",
-            link: "https://files.liara.ir/liara/nodejs/cource/e03-deployment-in-liara.mp4",
-          },
-          {
-            videoTitle: "جلسه 4: استفاده از Diskها در پروژه ",
-            link: "https://files.liara.ir/liara/nodejs/cource/e04-using-disks.mp4",
-          },
-          {
-            videoTitle: "جلسه 5: استفاده از باکت لیارا به جای دیسک‌ها",
-            link: "https://files.liara.ir/liara/nodejs/cource/e05-using-buckets.mp4",
-          },
-          {
-            videoTitle: "جلسه 6: اتصال دامنه به برنامه در لیارا",
-            link: "https://files.liara.ir/liara/nodejs/cource/e06-domain.mp4",
-          },
-          {
-            videoTitle: "جلسه 7: راه‌اندازی CI/CD در برنامه",
-            link: "https://files.liara.ir/liara/nodejs/cource/e07-cicd-feature.mp4",
-          },
-        ]}
-      />
-      <Section
-        name={"صفر تا صد استقرار برنامه‌های Laravel در لیارا"}
-        platform="laravel"
-        style={{ marginTop: 40 }}
-        badge={"Laravel Platform"}
-        setOpenDialog={setOpenDialog}
-        links={[
-          {
-            videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
-            link: "https://files.liara.ir/liara/laravel/cource/e00-intro-to-project.mp4",
-          },
-          {
-            videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از Local",
-            link: "https://files.liara.ir/liara/laravel/cource/e01-connect-to-liara-db.mp4",
-          },
-          {
-            videoTitle: "جلسه 2: بازیابی دیتابیس در لیارا",
-            link: "https://files.liara.ir/liara/laravel/cource/e02-restoring-liara-database.mp4",
-          },
-          {
-            videoTitle: "جلسه 3:اتصال به DNS و Email Server",
-            link: "https://files.liara.ir/liara/laravel/cource/e03-connect-to-emailserver.mp4",
-          },
-          {
-            videoTitle: "جلسه 4: استقرار پروژه در لیارا",
-            link: "https://files.liara.ir/liara/laravel/cource/e04-deployment-in-liara.mp4",
-          },
-          {
-            videoTitle: "جلسه 5: استفاده از Diskها در پروژه ",
-            link: "https://files.liara.ir/liara/laravel/cource/e05-using-disks-in-liara.mp4",
-          },
-          {
-            videoTitle: "جلسه 6: استفاده از باکت لیارا به جای دیسک‌ها",
-            link: "https://files.liara.ir/liara/laravel/cource/e06-using-buckets-in-liara.mp4",
-          },
-          {
-            videoTitle: "جلسه 7: اتصال دامنه به برنامه در لیارا",
-            link: "https://files.liara.ir/liara/laravel/cource/e07-domains-and-more-options.mp4",
-          },
-          {
-            videoTitle: "جلسه 8: راه‌اندازی CI/CD در برنامه",
-            link: "https://files.liara.ir/liara/laravel/cource/e08-cicd-feature-in-liara.mp4",
-          },
-        ]}
-      />
-
-      <Section
-        name={"صفر تا صد استقرار برنامه‌های Django در لیارا"}
-        platform="django"
-        style={{ marginTop: 40 }}
-        badge={"Django Platform"}
-        setOpenDialog={setOpenDialog}
-        links={[
-          {
-            videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
-            link: "https://files.liara.ir/liara/django/cource/e0-intro-to-project.mp4",
-          },
-          {
-            videoTitle: "جلسه 1: اتصال به سرویس DNS و Email",
-            link: "https://files.liara.ir/liara/django/cource/e1-dns-and-email-services.mp4",
-          },
-          {
-            videoTitle: "جلسه 2: استقرار برنامه در لیارا",
-            link: "https://files.liara.ir/liara/django/cource/e2-deployment-in-liara.mp4",
-          },
-          {
-            videoTitle: "جلسه 3: فعال‌سازی حالت Live ایمیل",
-            link: "https://files.liara.ir/liara/django/cource/e3-convert-email-to-live-mode.mp4",
-          },
-          {
-            videoTitle: "جلسه 4: اتصال دامنه به برنامه",
-            link: "https://files.liara.ir/liara/django/cource/e4-connect-to-domain.mp4",
-          },
-          {
-            videoTitle: "جلسه 5: مدیریت دیسک‌ها با دسترسی FTP",
-            link: "https://files.liara.ir/liara/django/cource/e5-managing-disks-using-ftp-access.mp4",
-          },
-          {
-            videoTitle: "جلسه 6: استفاده از باکت لیارا به جای دیسک‌ها",
-            link: "https://files.liara.ir/liara/django/cource/e6-using-s3-instead-of-disks.mp4",
-          },
-          {
-            videoTitle: "جلسه 7: راه‌اندازی CI/CD در برنامه",
-            link: "https://files.liara.ir/liara/django/cource/e7-using-cicd-feature.mp4",
           },
         ]}
       />
@@ -749,12 +649,6 @@ const Videos = () => {
                 <img src={"/static/close.svg"} />
                 بستن
               </button>
-              {/* <a download="liara-video" href={openDialog.src}>
-                    <button>
-                        <img src={"static/download-video.svg"} />
-                        دانلود
-                    </button>
-                </a> */}
             </div>
             <video
               autoPlay
@@ -776,7 +670,7 @@ const Videos = () => {
 
 export default Videos;
 
-const Section = props => {
+export const Section = props => {
   const { name, badge, links, platform, style, setOpenDialog } = props;
 
   const handleClickButton = src => {
@@ -795,7 +689,12 @@ const Section = props => {
         {links.map(item => (
           <div
             onClick={() => handleClickButton(item.link)}
-            style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              cursor: "pointer",
+              width: "100%",
+            }}
           >
             {platform && (
               <span>
@@ -819,6 +718,6 @@ const Section = props => {
   );
 };
 
-const Dialog = ({ children }) => {
+export const Dialog = ({ children }) => {
   return <div className="dialog-container">{children}</div>;
 };

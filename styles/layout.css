@@ -537,7 +537,8 @@ div.footer-animate-lines {
 }
 
 .platform-videos-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 15px;
   margin-top: 25px;
