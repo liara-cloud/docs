@@ -6,6 +6,34 @@ import Link from "next/link";
 
 const INIT_OPEN_DIALOG = { isOpen: false, src: "" };
 
+const PLATFORM_TAGS = [
+  { title: "NodeJS", alt: "nodejs" },
+  { title: "NuxtJS", alt: "nuxt" },
+  { title: "NextJS", alt: "next" },
+  { title: "NestJS", alt: "nest" },
+  { title: "Laravel", alt: "laravel" },
+  { title: "PHP", alt: "php" },
+  { title: "Django", alt: "django" },
+  { title: "Flask", alt: "flask" },
+  { title: "Net.", alt: "netcore" },
+  { title: "React", alt: "react" },
+  { title: "Angular", alt: "angularjs" },
+  { title: "Vue", alt: "vue" },
+  { title: "Static", alt: "HTML5" },
+  { title: "Docker", alt: "docker" },
+  { title: "WP Plus", alt: "wordpress" },
+];
+const DB_TAGS = [
+  { title: "MySQL", alt: "mysql" },
+  { title: "MariaDB", alt: "mariadb" },
+  { title: "PostgreSQL", alt: "postgres" },
+  { title: "SQL Server", alt: "mssql" },
+  { title: "MongoDB", alt: "mongodb" },
+  { title: "Redis", alt: "redis" },
+  { title: "Elastic", alt: "elastic" },
+  { title: "RabbitMQ", alt: "rabbitmq" },
+];
+
 const Videos = () => {
   const [openDialog, setOpenDialog] = useState(INIT_OPEN_DIALOG);
 
@@ -43,6 +71,48 @@ const Videos = () => {
         </div>
       </section>
 
+      <section className="mt-10">
+        <div className="page-head">
+          <div className="page-title pb-4">
+            <h1>پلتفرم‌ها</h1>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {PLATFORM_TAGS.map(item => (
+            <a
+              id="tags"
+              dir="ltr"
+              href={`#${item.alt}`}
+              className="flex border border-gray-700 hover:border-gray-600 rounded-md py-1 px-3 text-white items-center"
+            >
+              <span className="text-gray-400 mr-1">#</span>
+              {item.title}
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <div className="page-head">
+          <div className="page-title pb-4">
+            <h1>دیتابیس‌ها</h1>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {DB_TAGS.map(item => (
+            <a
+              id="tags"
+              dir="ltr"
+              href={`#${item.alt}`}
+              className="flex border border-gray-700 hover:border-gray-600 rounded-md py-1 px-3 text-white items-center"
+            >
+              <span className="text-gray-400 mr-1">#</span>
+              {item.title}
+            </a>
+          ))}
+        </div>
+      </section>
+
       <Section
         name={"اضافه کردن دامنه"}
         style={{ marginTop: 40 }}
@@ -60,6 +130,25 @@ const Videos = () => {
           {
             videoTitle: "سرویس DNS ابرآروان",
             link: "https://files.liara.ir/liara/domain/arvancloud-dns.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"راه اندازی CI/CD"}
+        style={{ marginTop: 40 }}
+        badge={"Continuous Integration and Continuous Delivery"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "راه اندازی CI/CD به وسیله GitHub",
+            link: "https://files.liara.ir/liara/CICD/cicd-github.mp4",
+            platform: "github",
+          },
+          {
+            videoTitle: "راه اندازی CI/CD به وسیله GitLab",
+            link: "https://files.liara.ir/liara/CICD/cicd-gitlab.mp4",
+            platform: "gitlab",
           },
         ]}
       />
@@ -447,25 +536,6 @@ const Videos = () => {
       />
 
       <Section
-        name={"راه اندازی CI/CD"}
-        style={{ marginTop: 40 }}
-        badge={"Continuous Integration and Continuous Delivery"}
-        setOpenDialog={setOpenDialog}
-        links={[
-          {
-            videoTitle: "راه اندازی CI/CD به وسیله GitHub",
-            link: "https://files.liara.ir/liara/CICD/cicd-github.mp4",
-            platform: "github",
-          },
-          {
-            videoTitle: "راه اندازی CI/CD به وسیله GitLab",
-            link: "https://files.liara.ir/liara/CICD/cicd-gitlab.mp4",
-            platform: "gitlab",
-          },
-        ]}
-      />
-
-      <Section
         name={"دیتابیس MySQL"}
         style={{ marginTop: 40 }}
         badge={"MySQL"}
@@ -679,7 +749,7 @@ export const Section = props => {
 
   return (
     <Fragment>
-      <div style={style} className="page-head">
+      <div style={style} id={platform} className="page-head">
         <div className="page-title">
           <h1>{name}</h1>
           <span className="page-description">({badge})</span>

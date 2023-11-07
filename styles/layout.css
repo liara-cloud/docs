@@ -734,6 +734,11 @@ div.footer-animate-lines {
   background-color: #54637b1d;
 }
 
+#tags {
+  color: white;
+  border-bottom: 1px solid #374151;
+}
+
 /* zoom image */
 
 .medium-zoom--opened .medium-zoom-overlay {
