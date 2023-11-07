@@ -739,6 +739,12 @@ div.footer-animate-lines {
   border-bottom: 1px solid #374151;
 }
 
+#init-a {
+  color: white;
+  font-weight: 300;
+  border-bottom: none !important;
+}
+
 /* zoom image */
 
 .medium-zoom--opened .medium-zoom-overlay {

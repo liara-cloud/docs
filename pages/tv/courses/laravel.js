@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import Layout from "../../../components/Layout";
 import Head from "next/head";
 import { Dialog, Section } from "..";
+import Link from "next/link";
 
 const INIT_OPEN_DIALOG = { isOpen: false, src: "" };
 
@@ -13,6 +14,15 @@ const Laravel = () => {
       <Head>
         <title>مستندات - آموزش استفاده از لیارا</title>
       </Head>
+
+      <button
+        style={{ background: "#cccccc11" }}
+        className="mb-2 py-1 px-4 rounded-md"
+      >
+        <Link id="init-a" href={"/tv"}>
+          <span>بازگشت</span>
+        </Link>
+      </button>
 
       <img
         style={{ borderColor: "#ffffff22", marginLeft: 20 }}
