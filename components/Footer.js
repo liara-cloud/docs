@@ -270,11 +270,6 @@ const cols = [
         alt: "درباره لیارا",
       },
       {
-        title: "ارتباط با ما",
-        link: "https://liara.ir/contact",
-        alt: "ارتباط با لیارا",
-      },
-      {
         title: "قوانین و مقررات",
         link: "https://liara.ir/terms",
         alt: "قوانین و مقررات لیارا",
@@ -335,23 +330,19 @@ const Footer = () => {
               </div>
             </div>
           ))}
-          {/* <div className="footer-col-container">
+          <div className="footer-col-container">
             <h5>ارتباط با ما</h5>
             <div>
               <h6>آدرس:</h6>
               <p style={{ marginTop: 12, lineHeight: "28px" }}>
                 قم، خیابان رسالت، کوچه ۱، فرعی اول، پلاک ۱۲، طبقه منفی ۱
               </p>
-              <h6>شماره تماس واحد فروش:</h6>
-              <a style={{ margin: 0, padding: 0 }} href="tel:02532920344">
-                <p style={{ marginTop: 12 }}>۰۲۵-۳۲۹۲۰۳۴۴ (۹ الی ۱۷)</p>
-              </a>
               <h6>ایمیل واحد فروش:</h6>
               <a style={{ margin: 0, padding: 0 }} href="mailto:sales@liara.ir">
                 <p style={{ marginTop: 12 }}>sales[@]liara.ir</p>
               </a>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
       <div className="animate-play-container">
