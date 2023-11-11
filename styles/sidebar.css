@@ -180,7 +180,7 @@ li:last-child > .nav__link {
   width: 90%;
   border-radius: 0.5rem;
   border-width: 1px;
-  border-color: #d6d8dc;
+  border-color: #49556a;
   cursor: pointer;
   color: #b1b6be;
   text-align: left;
@@ -253,7 +253,8 @@ li:last-child > .nav__link {
 .shortcut {
   padding: 1px 8px;
   font-size: 12px;
-  border: 1px solid #d6d8dc;
+  border: 1px solid #ffffff83;
+  color: #ffffff83;
   border-radius: 0.25rem;
 }
 

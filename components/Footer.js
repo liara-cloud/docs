@@ -24,7 +24,7 @@ const socialMediaList = [
     link: "https://github.com/liara-cloud",
   },
 ];
-7;
+
 const cols = [
   {
     id: 0,
