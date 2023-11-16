@@ -39,6 +39,9 @@ export default () => (
       <li>
         <a href="#how-to-use">نحوه‌ی استفاده</a>
       </li>
+      <li>
+        <a href="#how-to-use-in-controller">نحوه استفاده در کنترلر</a>
+      </li>
     </ul>
 
     <p>
@@ -267,6 +270,83 @@ class Program
     }
 }`}
     </Highlight>
+
+    <h3 id="how-to-use-in-controller">نحوه‌ی استفاده در کنترلر</h3>
+    <p>
+      اگر که یک برنامه Net. تحت وب دارید و قصد دارید که آن را به فضای ذخیره‌سازی
+      ابری لیارا متصل کنید؛ کافیست که در کنترلر مربوطه، کد زیر را به برنامه
+      اضافه کنید:
+    </p>
+
+    <Highlight className="csharp">
+      {`using Amazon.S3;
+using Amazon.S3.Model;
+using DotNetEnv; // for install, run dotnet add package DotNetEnv
+
+namespace yourprojectname.Controllers; // در اینجا نام پروژه خود را وارد کنید
+
+public class yourController : Controller 
+{
+    public async Task<ActionResult> Insert(IFormFile image)
+    {
+        // check if image exists or not
+        if (post.Image != null && post.Image.Length > 0)
+        {
+            // loading env variables
+            Env.Load();
+
+            // creating AmazonS3Config instance
+            var config = new AmazonS3Config
+            {
+                ServiceURL = Env.GetString("LIARA_ENDPOINT"),
+                ForcePathStyle = true,
+                SignatureVersion = "4"
+            };
+
+            var credentials  = new Amazon.Runtime.BasicAWSCredentials(Env.GetString("LIARA_ACCESS_KEY"), Env.GetString("LIARA_SECRET_KEY"));
+            using var client = new AmazonS3Client(credentials, config);
+            string objectKey = Guid.NewGuid().ToString() + post.Image.FileName;
+            try
+                {
+                    
+                    using var memoryStream = new MemoryStream();
+                    await post.Image.CopyToAsync(memoryStream).ConfigureAwait(false);
+
+                    PutObjectRequest request = new PutObjectRequest
+                    {
+                        BucketName = Env.GetString("LIARA_BUCKET_NAME"),
+                        Key = objectKey,
+                        InputStream = memoryStream,
+                    };
+                    
+                    // uploading image in bucket
+                    await client.PutObjectAsync(request);
+                    Console.WriteLine($"File '{objectKey}' uploaded successfully.");
+                }
+
+            catch (AmazonS3Exception e)
+                {
+                    Console.WriteLine($"Error: {e.Message}");
+                }
+            // getting image url    
+            string fileUrl = $"{Env.GetString("LIARA_ENDPOINT")}/{Env.GetString("LIARA_BUCKET_NAME")}/{objectKey}";    
+            post.ImagePath = fileUrl;
+        }
+        
+        return RedirectToAction(nameof(Index));
+    }
+}
+    
+    `}
+    </Highlight>
+
+    <p>
+      در کد فوق، در کنترلری به نام yourController عملیات آپلود عکس در باکت انجام
+      می‌شود؛ در نهایت شما می‌توانید لینک دائمی عکس آپلود شده را در متغیری به
+      نام fileUrl داشته باشید؛ البته در صورتی که سطح دسترسی باکت خود را بر روی
+      عمومی تنظیم کرده باشید؛ البته کد فوق فقط برای آپلود عکس نیست و می‌توانید
+      آن را برای هر فایل دلخواه دیگری، تعمیم بدهید.
+    </p>
 
     <br />
 

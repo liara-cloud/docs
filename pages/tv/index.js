@@ -704,9 +704,9 @@ const Videos = () => {
       />
 
       <Section
-        name={"میان‌افزار RabbitMQ"}
+        name={"RabbitMQ"}
         style={{ marginTop: 40 }}
-        badge={"rabbitmq middleware"}
+        badge={"rabbitmq"}
         setOpenDialog={setOpenDialog}
         links={[
           {

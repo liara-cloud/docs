@@ -126,6 +126,69 @@ class Program
     </Notice>
 
     <p>
+      اگر که یک برنامه Net. تحت وب دارید و قصد دارید که در کنترلر مدنظرتان، از
+      سرویس ایمیل لیارا استفاده کنید؛ کافیست قطعه کد زیر را در کنترلرتان به کار
+      ببرید.
+    </p>
+    <Highlight className="csharp">
+      {`using MimeKit;
+using MailKit.Net.Smtp;
+using DotNetEnv; // for install this, run: dotnet install add package DotNetEnv
+
+namespace your_project_name.Controllers; // در اینجا نام پروژه خود را وارد کنید
+
+public class TestController : Controller
+{
+    [HttpPost]
+    public IActionResult SendEmail(string email)
+    {   
+        // Email Information  
+        Env.Load();
+        string senderName  = Env.GetString("SENDER_NAME");
+        string senderEmail = Env.GetString("SENDER_ADDRESS");
+        string subject     = Env.GetString("EMAIL_SUBJECT");
+        string body        = Env.GetString("EMAIL_BODY");
+
+        // Email Instance
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(senderName, senderEmail));
+        message.To.Add(new MailboxAddress("Recipient", email));
+        message.Subject = subject;
+
+        // Creating The Body 
+        message.Body = new TextPart("plain")
+        {
+            Text = body
+        };
+
+        try
+        {
+            // Sending Email 
+            using (var client = new SmtpClient())
+            {
+                client.Connect(Env.GetString("MAIL_HOST"), Env.GetInt("MAIL_PORT"), false);
+                client.Authenticate(Env.GetString("MAIL_USERNAME"), Env.GetString("MAIL_PASSWORD"));
+                client.Send(message);
+                client.Disconnect(true);
+            }
+
+            ViewBag.Message = "Email Sent Successfully.";
+        }
+        catch (Exception ex)
+        {
+            ViewBag.Message = $"Error In Sending Email: {ex.Message}";
+        }
+
+
+        return RedirectToAction("Index");
+    }
+
+}
+
+      `}
+    </Highlight>
+
+    <p>
       برای اطلاعات بیشتر می‌توانید به{" "}
       <a
         href="https://github.com/jstedfast/MailKit#sending-messages"
