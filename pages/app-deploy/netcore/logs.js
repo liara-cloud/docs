@@ -14,8 +14,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -41,9 +41,9 @@ export default () => (
     <ZoomableImage src="/static/dotnet-log.png" />
 
     <p>
-      مدیریت Log ها در ASP.Net Core می‌تواند روش‌های مختلفی داشته باشد و وابسته
-      به پیاده‌سازی برنامه‌ی‌تان و تصمیمات شما است. ممکن است لاگ‌های مهم‌تر را
-      در فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
+      مدیریت Log ها در Net. می‌تواند روش‌های مختلفی داشته باشد و وابسته به
+      پیاده‌سازی برنامه‌ی‌تان و تصمیمات شما است. ممکن است لاگ‌های مهم‌تر را در
+      فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
     <Link href="/app-deploy/netcore/liarajson" className="next-page">

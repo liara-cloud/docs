@@ -16,8 +16,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -190,8 +190,9 @@ $ liara deploy --disks data:MyStaticFiles \\
                --disks logs:logs \\
                --disks temp:/tmp`}
     </Highlight>
+    <br></br>
 
-    <Link href="/app-deploy/netcore/domain" className="next-page">
+    <Link href="/app-deploy/netcore/object-storage" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

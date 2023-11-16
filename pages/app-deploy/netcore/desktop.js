@@ -8,16 +8,16 @@ export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات استقرار برنامه‌های ASP.Net Core با استفاده از ابزار Liara
-        Desktop - لیارا
+        مستندات استقرار برنامه‌های .Net Core با استفاده از ابزار Liara Desktop -
+        لیارا
       </title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -73,7 +73,8 @@ export default () => (
     <h3 id="login">ورود به حساب کاربری</h3>
     <p>
       برای ورود به حساب کاربری از طریق Liara Desktop، ابتدا نرم‌افزار را اجرا
-      کرده، سپس از طریق مروگر، وارد حساب‌تان شوید.
+      کرده، سپس بر روی گزینه ورود با مرورگر کلیک کرده و از طریق مرورگر، وارد
+      حساب‌تان شوید.
     </p>
     <h3 id="deploy">اولین استقرار</h3>
     <p>
@@ -81,15 +82,16 @@ export default () => (
       <a href="https://console.liara.ir/apps/create" target="_blank">
         ایجاد برنامه‌ها در لیارا
       </a>{" "}
-      بروید و با انتخاب پلتفرم ASP.NET CORE و نوشتن شناسه برنامه‌ی موردنظرتان و
-      در نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
-      برای برنامه آزمایشی‌مان، شناسه dotnet-starter را انتخاب کردیم.
+      بروید و با انتخاب پلتفرم NET. و نوشتن شناسه برنامه‌ی موردنظرتان و در نهایت
+      انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش برای
+      برنامه آزمایشی‌مان، شناسه dotnet-getting-started را انتخاب کردیم.
     </p>
     <p>
-      <b>گام دوم)</b>
+      <b>گام دوم) </b>
       در قدم بعدی کافیست Liara Desktop را اجرا کرده و پوشه پروژه‌تان را انتخاب
       کنید. بعد از انتخاب پروژه‌تان، از شما شناسه برنامه‌ موردنظرتان پرسیده
-      می‌شود و بعد از انتخاب شناسه، لیارا عملیات استقرار را شروع می‌کند.
+      می‌شود و بعد از انتخاب شناسه و تعیین پورت برنامه، لیارا عملیات استقرار را
+      شروع می‌کند.
     </p>
     <p>
       برنامه‌ی شما حتما باید فایل
@@ -99,17 +101,16 @@ export default () => (
     </p>
     <p dir="ltr">
       <a
-        href="https://github.com/liara-cloud/dotnetcore-starter"
+        href="https://github.com/liara-cloud/dotnet-getting-started.git"
         target="_blank"
       >
-        https://github.com/liara-cloud/dotnetcore-starter
+        DotNet-Getting-Started
       </a>
     </p>
     <p>
       بعد از وارد کردن دستور دیپلوی، Liara Desktop به صورت خودکار، تشخیص خواهد
-      داد که برنامه‌ی شما را باید به عنوان یک برنامه‌ی ASP.Net Core اجرا کند و
-      عملیات استقرار را آغاز خواهد کرد. اما اگر مشکلی در تشخیص وجود داشت،
-      می‌توانید از دستور زیر استفاده کنید:
+      داد که برنامه‌ی شما را باید به عنوان یک برنامه‌ی Net. اجرا کند و عملیات
+      استقرار را آغاز خواهد کرد.
     </p>
     <Notice variant="info">
       لیارا به صورت خودکار پکیج‌های برنامه‌ی شما را نصب می‌کند. پس نیازی ندارید
@@ -141,7 +142,7 @@ export default () => (
       اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">https://dotnet-starter.liara.run</p>
+    <p dir="ltr">https://dotnet-getting-started.iran.liara.run</p>
 
     <Link href="/app-deploy/netcore/cli" className="next-page">
       متوجه شدم، برو گام بعدی!

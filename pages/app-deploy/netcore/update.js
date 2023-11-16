@@ -13,8 +13,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -26,10 +26,10 @@ export default () => (
     </p>
     <p>
       {" "}
-      برای این که در هر استقرار بتوانید بعدا متوجه شوید علت این استقرار چه بوده،
-      می‌توانید از message در دستور deploy استفاده کنید. فرض کنید استقرار مد نظر
-      شما به علت رفع باگ auth کاربران بوده. این‌گونه می‌توانیم نسخه‌ی جدید را
-      همراه با یک پیام توضیح مستقر کنیم:
+      برای این که در هر استقرار بتوانید بعداً متوجه شوید علت این استقرار چه
+      بوده، می‌توانید از message در دستور deploy استفاده کنید. فرض کنید استقرار
+      مد نظر شما به علت رفع باگ auth کاربران بوده. این‌گونه می‌توانیم نسخه‌ی
+      جدید را همراه با یک پیام توضیح مستقر کنیم:
     </p>
     <Highlight className="shell">
       {`$ liara deploy --message="Fix auth bug in login api"`}

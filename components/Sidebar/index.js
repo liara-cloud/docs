@@ -628,7 +628,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             <li>
               <NavTitle href="/app-deploy/netcore">
                 <PlatformIcon platform="netcore" />
-                Net Core.
+                Net.
               </NavTitle>
               <ul className="nav__list">
                 <li>

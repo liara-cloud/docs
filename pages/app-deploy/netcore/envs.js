@@ -18,8 +18,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 

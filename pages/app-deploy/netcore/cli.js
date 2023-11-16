@@ -17,8 +17,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -77,8 +77,8 @@ export default () => (
     <h3 id="login">ورود به حساب کاربری</h3>
     <p>
       برای ورود به حساب کاربری خود به وسیله Liara CLI کافیست دستور زیر را وارد
-      کنید و ایمیل و رمزعبوری که با آن حساب کاربری خود را ایجاد کرده‌اید را وارد
-      نمایید:
+      کنید که پس از آن یک صفحه در مرورگرتان باز می‌شود که برای تایید حساب
+      کاربری‌تان است:
     </p>
     <pre>
       <code>{`$ liara login`}</code>
@@ -89,16 +89,18 @@ export default () => (
       <a href="https://console.liara.ir/apps/create" target="_blank">
         ایجاد برنامه‌ها در لیارا
       </a>{" "}
-      بروید و با انتخاب پلتفرم ASP.NET CORE و نوشتن شناسه برنامه‌ی موردنظرتان و
-      در نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
-      برای برنامه آزمایشی‌مان، شناسه dotnet-starter را انتخاب کردیم. همچنین شما
-      می‌توانید از طریق Liara CLI با دستور زیر برنامه‌ی خود را ایجاد کنید.
+      بروید و با انتخاب پلتفرم NET. و نوشتن شناسه برنامه‌ی موردنظرتان و در نهایت
+      انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش برای
+      برنامه آزمایشی‌مان، شناسه dotnet-getting-started را انتخاب کردیم. همچنین
+      شما می‌توانید از طریق Liara CLI با دستور زیر برنامه‌ی خود را ایجاد کنید.
     </p>
-    <Highlight className="json">{`liara create`}</Highlight>
+    <pre>
+      <code>{`$ liara create`}</code>
+    </pre>
 
     <p>
       <b>گام دوم)</b> کافیست وارد ریشه برنامه‌ی‌تان شده و به وسیله دستور زیر
-      اولین استقرار خود را اجرا کنید. این دستور از شما شناسه‌ی برنامه‌ای را که
+      اولین استقرار خود را انجام دهید. این دستور از شما شناسه‌ی برنامه‌ای را که
       قصد دارید در آن استقرار را انجام دهید، می‌پرسد و سپس فرایند استقرار آغاز
       می‌شود:
     </p>
@@ -113,17 +115,17 @@ export default () => (
     </p>
     <p dir="ltr">
       <a
-        href="https://github.com/liara-cloud/dotnetcore-starter"
+        href="https://github.com/liara-cloud/dotnet-getting-started"
         target="_blank"
       >
-        https://github.com/liara-cloud/dotnetcore-starter
+        https://github.com/liara-cloud/dotnet-getting-started
       </a>
     </p>
     <p>
       بعد از وارد کردن دستور دیپلوی، Liara CLI به صورت خودکار، تشخیص خواهد داد
-      که برنامه‌ی شما را باید به عنوان یک برنامه‌ی ASP.Net Core اجرا کند و
-      عملیات استقرار را آغاز خواهد کرد. اما اگر مشکلی در تشخیص وجود داشت،
-      می‌توانید از دستور زیر استفاده کنید:
+      که برنامه‌ی شما را باید به عنوان یک برنامه‌ی Net. اجرا کند و عملیات
+      استقرار را آغاز خواهد کرد. اما اگر مشکلی در تشخیص وجود داشت، می‌توانید از
+      دستور زیر استفاده کنید:
     </p>
     <pre>
       <code>{`$ liara deploy --platform=netcore`}</code>
@@ -162,7 +164,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">https://dotnet-starter.liara.run</p>
+    <p dir="ltr">https://dotnet-getting-started.iran.liara.run</p>
 
     <Link href="/app-deploy/netcore/envs" className="next-page">
       متوجه شدم، برو گام بعدی!

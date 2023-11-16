@@ -13,8 +13,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -23,7 +23,7 @@ export default () => (
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
-        <a href="#dotnet-version">انتخاب نسخه‌ی ASP.Net Core</a>
+        <a href="#dotnet-version">انتخاب نسخه‌ی Net.</a>
       </li>
       <li>
         <a href="#app-settings">تنظیمات مرتبط با ساختار برنامه</a>
@@ -39,7 +39,7 @@ export default () => (
       </li>
     </ul>
 
-    <h3 id="dotnet-version">انتخاب نسخه‌ی ASP.Net Core</h3>
+    <h3 id="dotnet-version">انتخاب نسخه‌ی Net.</h3>
     <p>
       به‌صورت پیش‌فرض، برنامه‌ی شما روی نسخه‌ی ۳.۱ این پلتفرم اجرا می‌شود.
       می‌توانید داخل فایل <span className="code"> liara.json</span>
@@ -80,8 +80,8 @@ export default () => (
     <p>
       لیارا به صورت خودکار سعی می‌کند که تنظیمات مناسب برنامه‌ی شما را تشخیص دهد
       و برنامه‌ی شما را در بهترین حالت مستقر کند. اما با توجه به تنوع ساختار
-      برنامه‌های ASP.Net Core، ممکن است که برخی از این تشخیصات خودکار با مشکل
-      مواجه شوند و لیارا نتواند برنامه‌ی شما را به درستی مستقر کند.
+      برنامه‌های Net. ممکن است که برخی از این تشخیصات خودکار با مشکل مواجه شوند
+      و لیارا نتواند برنامه‌ی شما را به درستی مستقر کند.
     </p>
     <p>در چنین حالاتی ممکن است با خطاهایی مانند خطای زیر روبه‌رو شوید:</p>
     <pre>
@@ -148,7 +148,7 @@ https://aka.ms/dotnet-download`}
       سورس‌کدتان تنظیم و شخصی‌سازی کرده‌اید.
     </p>
     <p>
-      به‌صورت پیش‌فرض، برنامه‌های ASP.Net Core روی آدرس
+      به‌صورت پیش‌فرض، برنامه‌های Net. روی آدرس
       <span className="code">http://0.0.0.0:80</span>
       اجرا می‌شوند. اگر شما این آدرس را برای مثال به
       <span className="code">http://localhost:5000</span>
@@ -177,9 +177,9 @@ https://aka.ms/dotnet-download`}
     </p>
     <h3 id="cors">رفع خطای CORS</h3>
     <p>
-      در برنامه‌های ASP.Net Core به‌روش‌های مختلفی می‌توانید CORS را فعال‌سازی
-      کنید اما درصورتی که با خطای CORS مواجه شده‌اید بایستی Origins و یا Methods
-      تنظیم شده را مجدد مورد بررسی قرار دهید:
+      در برنامه‌های Net. به‌روش‌های مختلفی می‌توانید CORS را فعال‌سازی کنید اما
+      درصورتی که با خطای CORS مواجه شده‌اید بایستی Origins و یا Methods تنظیم
+      شده را مجدد مورد بررسی قرار دهید:
     </p>
     <Highlight className="c#">{`builder.Services.AddCors(options =>
 {

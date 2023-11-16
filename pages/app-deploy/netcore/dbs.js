@@ -14,16 +14,16 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
     <h3>اتصال به دیتابیس‌ها</h3>
     <p>
       به‌ندرت پیش‌ می‌آید که در برنامه‌ای از دیتابیس استفاده نشده‌باشد. اگر در
-      برنامه ASP.Net Core از دیتابیس استفاده کرده‌اید می‌توانید به‌ این ‌صورت به
-      آن متصل شوید.
+      برنامه Net. از دیتابیس استفاده کرده‌اید می‌توانید به‌ این ‌صورت به آن متصل
+      شوید.
     </p>
     <ul>
       <li>

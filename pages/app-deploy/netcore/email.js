@@ -14,8 +14,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -122,7 +122,7 @@ class Program
       قابل ذکر است که به جای <span className="code">from@test.com</span> باید
       یکی از نشانی‌های اضافه شده در سرویس ایمیل قرار بگیرد. همچنین{" "}
       <span className="code">to@test.com</span> ایمیل دریافت کننده محتوا است. در
-      کد فوق می‌توانید با SSL به صورت امن از ایمیل تراکنشی استفاده
+      کد فوق می‌توانید با SSL به صورت امن از ایمیل تراکنشی استفاده کنید.
     </Notice>
 
     <p>

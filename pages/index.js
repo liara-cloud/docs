@@ -34,7 +34,7 @@ const DATA_SECTIONS = {
     },
     {
       platform: "netcore",
-      title: "Dot Net",
+      title: "DotNet",
       href: "/app-deploy/netcore/getting-started",
     },
     {

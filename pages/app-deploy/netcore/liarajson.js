@@ -16,8 +16,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -30,7 +30,7 @@ export default () => (
       اگرچه کاربرد‌های این فایل بیشتر از این‌هاست ولی در اینجا به همین نکته
       بسنده می‌کنیم و در بخش{" "}
       <Link href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</Link> درباره
-      تمام کاربرد‌های آن در برنامه‌های ASP.NET Core توضیح داده‌ایم.
+      تمام کاربرد‌های آن در برنامه‌های NET. توضیح داده‌ایم.
     </p>
     <p>
       کافیست وارد ریشه برنامه‌ی‌تان شده و یک فایل به نام{" "}
@@ -39,15 +39,16 @@ export default () => (
     <Highlight className="json">
       {`{
     "platform": "netcore",
-    "app": "dotnets-starter"
+    "app": "dotnet-getting-started",
+    "port": 80
 }`}
     </Highlight>
     <p>
-      در این فایل، پلتفرم، پورت و نام برنامه‌ی‌تان را مشخص می‌کنید. لیارا در هر
-      بار اجرای دستور <span className="code">liara deploy</span> ابتدا محتویات
-      این فایل‌ را چک می‌کند و سپس عملیات استقرار را آغاز می‌کند. توجه داشته
-      باشید مقادیر app و port در مثال بالا تستی است و شما متناسب با شناسه و پورت
-      برنامه‌ی‌تان باید آن را تغییر دهید.
+      در این فایل، پلتفرم، شناسه و پورت برنامه‌ی‌تان را مشخص می‌کنید. لیارا در
+      هر بار اجرای دستور <span className="code">liara deploy</span> ابتدا
+      محتویات این فایل‌ را چک می‌کند و سپس عملیات استقرار را آغاز می‌کند. توجه
+      داشته باشید مقادیر app و port در مثال بالا برای مثال است و شما متناسب با
+      شناسه و پورت برنامه‌ی‌تان باید آن را تغییر دهید.
     </p>
 
     <Link href="/app-deploy/netcore/update" className="next-page">

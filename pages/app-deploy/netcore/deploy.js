@@ -13,8 +13,8 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="netcore" />
       <div className="page-title">
-        <h1>پلتفرم .Net</h1>
-        <span className="page-description">(.Net Platform)</span>
+        <h1>پلتفرم Net.</h1>
+        <span className="page-description">(DotNet Platform)</span>
       </div>
     </div>
 
@@ -132,7 +132,7 @@ export default () => (
       آدرس بر اساس شناسه برنامه‌ی شما است، برای نمونه:
     </p>
 
-    <p dir="ltr">https://dotnet-starter.liara.run</p>
+    <p dir="ltr">https://dotnet-getting-started.iran.liara.run</p>
 
     <Link href="/app-deploy/netcore/envs" className="next-page">
       متوجه شدم، برو گام بعدی!
