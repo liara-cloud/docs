@@ -28,7 +28,7 @@ export default () => (
     <Highlight className="json">
       {`{
   "build": {
-     "location": "iran"
+     "location": "germany"
   }
 }
 `}
