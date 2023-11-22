@@ -62,6 +62,9 @@ const Videos = () => {
               src="/static/course/laravel.png"
             />
           </Link>
+        </div>
+        <br></br>
+        <div className="grid md:grid-cols-3  gap-5">
           <Link style={{ border: "none" }} href="/tv/courses/django">
             <img
               style={{ borderColor: "#ffffff22" }}
@@ -72,6 +75,12 @@ const Videos = () => {
             <img
               style={{ borderColor: "#ffffff22" }}
               src="/static/course/dotnet.png"
+            />
+          </Link>
+          <Link style={{ border: "none" }} href="/tv/courses/flask">
+            <img
+              style={{ borderColor: "#ffffff22" }}
+              src="/static/course/flask.png"
             />
           </Link>
         </div>
