@@ -68,6 +68,27 @@ export default () => (
         و حالا با اضافه‌شدن این متغیر، می‌توانید آن را از داخل کدهای‌تان
         فراخوانی کرده و با آن به دیتابیس متصل شوید.
       </p>
+      <p>
+        البته می‌توانید برای اتصال به دیتابیس MySQL در برنامه Flask خود، از
+        ماژول flask_mysqldb نیز استفاده کنید. برای استفاده از این ماژول در ابتدا
+        باید آن را نصب کنید:
+      </p>
+      <Highlight className="bash">{`pip install flask_mysqldb`}</Highlight>
+      <p>
+        پس از نصب ماژول می‌توانید با استفاده از قطعه کد زیر، تنظیمات مربوط به
+        دیتابیس را در برنامه، انجام دهید:
+      </p>
+      <Highlight className="python">
+        {`from flask_mysqldb import MySQL
+# MySQL configuration
+app.config['MYSQL_HOST']     = os.getenv('DB_HOST', 'localhost')
+app.config['MYSQL_USER']     = os.getenv('DB_USER', 'root')
+app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD', '')
+app.config['MYSQL_DB']       = os.getenv('DB_NAME', 'db')
+app.config['MYSQL_PORT']     = int(os.getenv('DB_PORT', 3306)) 
+mysql = MySQL(app)`}
+      </Highlight>
+      <p>در برنامه فوق از متغیرهای محیطی برای مقداردهی استفاده می‌شود.</p>
       <li id="mongodb">
         <b>MongoDB</b>
       </li>
