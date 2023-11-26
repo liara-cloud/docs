@@ -57,6 +57,7 @@ export default () => (
     </pre>
     <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌کنیم:</p>
     <ul>
+      <li>8.0</li>
       <li>7.0</li>
       <li>
         6.0 <strong>(LTS)</strong>
