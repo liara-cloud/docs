@@ -47,6 +47,7 @@ export default () => (
     <p>در حال حاضر، این نسخه‌ها از NET. در لیارا پشتیبانی می‌شود:</p>
 
     <ul>
+      <li>8.0</li>
       <li>7.0</li>
       <li>
         6.0 <strong>(LTS)</strong>
