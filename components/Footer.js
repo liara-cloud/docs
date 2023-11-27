@@ -4,9 +4,9 @@ import { ThemeContext } from "./root/theme.context";
 
 const socialMediaList = [
   {
-    icon: <img src="/static/social/twitter.svg" />,
-    title: "توییتر",
-    link: "https://twitter.com/liara_cloud",
+    icon: <img src="/static/social/linkedin.svg" />,
+    title: "لینکدین",
+    link: "https://www.linkedin.com/company/liara-cloud/",
   },
   {
     icon: <img src="/static/social/instagram.svg" />,
@@ -302,7 +302,7 @@ const Footer = () => {
             <img src={`/static/liara-logo-${theme}.svg`} alt="liara-logo" />
             <div>
               {socialMediaList.map(item => (
-                <a key={item.link} href={item.link}>
+                <a key={item.link} terget="_blank" href={item.link}>
                   {item.icon}
                   {item.title}
                 </a>
