@@ -928,6 +928,69 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 </li>
               </ul>
             </li>
+            <li>
+              <NavTitle href="/app-deploy/golang">
+                <PlatformIcon platform="go" />
+                Golang
+              </NavTitle>
+              <ul className="nav__list">
+                <li>
+                  <ActiveLink href="/app-deploy/golang/getting-started">
+                    شروع به کار
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/desktop">
+                    استقرار با Liara Desktop
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/cli">
+                    استقرار با Liara CLI
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/envs">
+                    تنظیم متغیرها (env)
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/logs">
+                    مشاهده لاگ‌ها
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/liarajson">
+                    استفاده از فایل liara.json
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/update">
+                    به‌روزرسانی برنامه
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/dbs">
+                    اتصال به دیتابیس
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/disks">
+                    استفاده از دیسک‌ها
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/object-storage">
+                    اتصال به ذخیره‌سازی ابری
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/golang/email">
+                    ارسال ایمیل
+                  </ActiveLink>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
 
