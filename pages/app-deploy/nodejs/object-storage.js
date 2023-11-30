@@ -203,36 +203,26 @@ client.send(new GetObjectCommand(params), (error, data) => {
     <p>نمونه کد جهت دریافت لینک دانلود فایل:</p>
     <Highlight className="javascript">
       {`const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 require("dotenv").config();
 
+const filename = "example_filename.png"; // change this to your filename
+
 const client = new S3Client({
-    region: "default",
-	endpoint: process.env.LIARA_ENDPOINT,
-	credentials: {
-		accessKeyId: process.env.LIARA_ACCESS_KEY,
-		secretAccessKey: process.env.LIARA_SECRET_KEY
-	},
+  region: "default",
+  endpoint: process.env.LIARA_ENDPOINT,
+  credentials: {
+    accessKeyId: process.env.LIARA_ACCESS_KEY,
+    secretAccessKey: process.env.LIARA_SECRET_KEY,
+  },
 });
 const params = {
-  Bucket:  process.env(LIARA_BUCKET_NAME),
-  Key: "objectkey",
-  Expires: 60, // expires in 60 seconds
+  Bucket: process.env.LIARA_BUCKET_NAME,
+  Key: filename,
 };
 
-// async/await
 const command = new GetObjectCommand(params);
-const url = await client.getSignedUrl(command);
-
-// callback
-const command = new GetObjectCommand(params);
-
-client.getSignedUrl(command, (error, url) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(url);
-  }
-});`}
+getSignedUrl(client, command).then((url) => console.log(url));`}
     </Highlight>
 
     <h3 id="list-file">دریافت لیست فایل‌های آپلود شده توسط AWS SDK</h3>
