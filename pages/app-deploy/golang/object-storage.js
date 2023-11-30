@@ -101,43 +101,44 @@ LIARA_SECRET_KEY=82c963df-1122-4c31-868b-0124a28ad57d`}
     <Highlight className="go">
       {`func upload_using_s3(fileContent *bytes.Reader, fileName string) error {
 
-err := godotenv.Load()
-if err != nil {log.Fatal("Error loading .env file")}
+  err := godotenv.Load()
+  if err != nil {
+      log.Fatal("Error loading .env file")}
 
-cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-west-2"))
-if err != nil {
-return err
-}
+  cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-west-2"))
+  if err != nil {
+    return err
+  }
 
-// Define AWS credentials and bucket information
-awsAccessKeyID     := os.Getenv("LIARA_ACCESS_KEY")     
-awsSecretAccessKey := os.Getenv("LIARA_SECRET_KEY")  
-endpoint           := os.Getenv("LIARA_ENDPOINT")
-bucketName         := os.Getenv("LIARA_BUCKET_NAME")     
+  // Define AWS credentials and bucket information
+  awsAccessKeyID     := os.Getenv("LIARA_ACCESS_KEY")     
+  awsSecretAccessKey := os.Getenv("LIARA_SECRET_KEY")  
+  endpoint           := os.Getenv("LIARA_ENDPOINT")
+  bucketName         := os.Getenv("LIARA_BUCKET_NAME")     
 
-// Initialize S3 client with custom configuration
-cfg.Credentials = aws.CredentialsProviderFunc(func(ctx context.Context) (aws.Credentials, error) {
-return aws.Credentials{
-  AccessKeyID:     awsAccessKeyID,
-  SecretAccessKey: awsSecretAccessKey,
-}, nil
-})
+  // Initialize S3 client with custom configuration
+  cfg.Credentials = aws.CredentialsProviderFunc(func(ctx context.Context) (aws.Credentials, error) {
+    return aws.Credentials{
+    AccessKeyID:     awsAccessKeyID,
+    SecretAccessKey: awsSecretAccessKey,
+    }, nil
+  })
 
-cfg.BaseEndpoint = aws.String(endpoint)
+  cfg.BaseEndpoint = aws.String(endpoint)
 
-client := s3.NewFromConfig(cfg)
+  client := s3.NewFromConfig(cfg)
 
-// Specify the destination key in the bucket
-destinationKey := "uploads/" + fileName
+  // Specify the destination key in the bucket
+  destinationKey := "uploads/" + fileName
 
-// Use the S3 client to upload the file
-_, err = client.PutObject(context.TODO(), &s3.PutObjectInput{
-Bucket: aws.String(bucketName),
-Key:    aws.String(destinationKey),
-Body:   fileContent,
-})
+  // Use the S3 client to upload the file
+  _, err = client.PutObject(context.TODO(), &s3.PutObjectInput{
+  Bucket: aws.String(bucketName),
+  Key:    aws.String(destinationKey),
+  Body:   fileContent,
+  })
 
-return err
+  return err
 }`}
     </Highlight>
 

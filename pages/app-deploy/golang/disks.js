@@ -83,14 +83,15 @@ export default () => (
       <span className="code">media</span> باید قطعه کد زیر را در فایل ‌
       <span className="code">liara.json</span> قرار داده و با اجرای دستور{" "}
       <span className="code">liara deploy</span> سورس‌کد خود را بر روی برنامه‌ی
-      تهیه شده مستقر کنید.
+      تهیه شده مستقر کنید. این نکته را در نظر داشته باشید که{" "}
+      <span className="code">app</span> نام مسیر کاری داخل کانتینر است.
     </p>
 
     <Highlight className="json">
       {`{
   "disks": [
     {
-      "name": "data",
+      "name": "/app/data",
       "mountTo": "media"
     }
   ]

@@ -38,13 +38,6 @@ export default () => (
     </p>
     <ZoomableImage src="/static/node-env.png" />
     <p>
-      {" "}
-      حالا برای اینکه بتوانید در برنامه go متغیرهای محیطی را بارگذاری کنید،
-      بایستی در ابتدا کتابخانه <span className="code">DotEnv</span> را نصب کنید؛
-      برای این کار کافیست که دستور زیر را در مسیر اصلی برنامه اجرا کنید:
-    </p>
-    <Highlight className="go">{`$ go get github.com/joho/godotenv`}</Highlight>
-    <p>
       اکنون می‌توانید با استفاده از قطعه کد زیر متغیرهای محیطی خود را در برنامه
       بارگذاری کنید:
     </p>
@@ -53,22 +46,14 @@ export default () => (
       {`package main
 
 import (
-	"fmt"
 	"log"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	liaraURL := os.Getenv("LIARA_URL")
-	fmt.Println("LIARA_URL:", liaraURL)
+    log.Fatal(liaraURL)
 }`}
     </Highlight>
 
