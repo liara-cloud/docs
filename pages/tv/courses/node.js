@@ -3,6 +3,7 @@ import Layout from "../../../components/Layout";
 import Head from "next/head";
 import { Dialog, Section } from "..";
 import Link from "next/link";
+import Notice from "../../../components/Notice";
 
 const INIT_OPEN_DIALOG = { isOpen: false, src: "" };
 
@@ -68,6 +69,14 @@ const Node = () => {
           },
         ]}
       />
+      <br></br>
+      <Notice variant="info">
+        پروژه و کدهای مورد استفاده در دوره فوق در{" "}
+        <Link href="https://github.com/liara-cloud/nodejs-getting-started/tree/blog">
+          https://github.com/liara-cloud/nodejs-getting-started/tree/blog
+        </Link>{" "}
+        قابل مشاهده و دسترسی می‌باشد.{" "}
+      </Notice>
 
       {openDialog.isOpen && (
         <Fragment>

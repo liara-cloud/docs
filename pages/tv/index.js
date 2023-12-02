@@ -49,7 +49,7 @@ const Videos = () => {
             <h1>آموزش جامع استقرار</h1>
           </div>
         </div>
-        <div className="grid md:grid-cols-2  gap-5">
+        <div className="grid md:grid-cols-3  gap-5">
           <Link style={{ border: "none" }} href="/tv/courses/node">
             <img
               style={{ borderColor: "#ffffff22" }}
@@ -62,13 +62,16 @@ const Videos = () => {
               src="/static/course/laravel.png"
             />
           </Link>
-        </div>
-        <br></br>
-        <div className="grid md:grid-cols-3  gap-5">
           <Link style={{ border: "none" }} href="/tv/courses/django">
             <img
               style={{ borderColor: "#ffffff22" }}
               src="/static/course/django.png"
+            />
+          </Link>
+          <Link style={{ border: "none" }} href="/tv/courses/golang">
+            <img
+              style={{ borderColor: "#ffffff22" }}
+              src="/static/course/go.png"
             />
           </Link>
           <Link style={{ border: "none" }} href="/tv/courses/dotnet">

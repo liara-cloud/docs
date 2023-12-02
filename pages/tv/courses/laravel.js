@@ -3,6 +3,7 @@ import Layout from "../../../components/Layout";
 import Head from "next/head";
 import { Dialog, Section } from "..";
 import Link from "next/link";
+import Notice from "../../../components/Notice";
 
 const INIT_OPEN_DIALOG = { isOpen: false, src: "" };
 
@@ -72,6 +73,14 @@ const Laravel = () => {
           },
         ]}
       />
+      <br></br>
+      <Notice variant="info">
+        پروژه مورد استفاده در دوره فوق در{" "}
+        <Link href="https://github.com/liara-cloud/laravel-getting-started/tree/laravel-social-media">
+          https://github.com/liara-cloud/laravel-getting-started/tree/laravel-social-media
+        </Link>{" "}
+        قابل دسترسی می‌باشد.{" "}
+      </Notice>
 
       {openDialog.isOpen && (
         <Fragment>

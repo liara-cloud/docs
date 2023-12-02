@@ -7,7 +7,7 @@ import Notice from "../../../components/Notice";
 
 const INIT_OPEN_DIALOG = { isOpen: false, src: "" };
 
-const dotnet = () => {
+const flask = () => {
   const [openDialog, setOpenDialog] = useState(INIT_OPEN_DIALOG);
 
   return (
@@ -27,50 +27,25 @@ const dotnet = () => {
 
       <img
         style={{ borderColor: "#ffffff22", marginLeft: 20 }}
-        src="/static/course/dotnet.png"
+        src="/static/course/go.png"
       />
       <Section
-        name={"صفر تا صد استقرار برنامه‌های Net. در لیارا"}
+        name={"صفر تا صد استقرار برنامه‌های Golang در لیارا"}
         style={{ marginTop: 40 }}
-        badge={"DotNet Platform"}
+        badge={"Golang Platform"}
         setOpenDialog={setOpenDialog}
         links={[
           {
             videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
-            link: "https://files.liara.ir/liara/dotnet/cource/e00-intro-to-project.mp4",
-          },
-          {
-            videoTitle: "جلسه 1: اتصال به سرویس DNS و Email",
-            link: "https://files.liara.ir/liara/dotnet/cource/e01-email-and-dns.mp4",
-          },
-          {
-            videoTitle: "جلسه 2: اتصال به Object Storage",
-            link: "https://files.liara.ir/liara/dotnet/cource/e02-bucket.mp4",
-          },
-          {
-            videoTitle: "جلسه 3: استقرار کامل برنامه در لیارا",
-            link: "https://files.liara.ir/liara/dotnet/cource/e03-deployment-in-liara.mp4",
-          },
-          {
-            videoTitle: "جلسه 4: بارگذاری متغیرهای محیطی در لیارا",
-            link: "https://files.liara.ir/liara/dotnet/cource/e04-loading-env-variables.mp4",
-          },
-          {
-            videoTitle: "جلسه 5: اتصال دامنه به برنامه در لیارا",
-            link: "https://files.liara.ir/liara/dotnet/cource/e05-domain.mp4",
-          },
-          {
-            videoTitle: "جلسه 6: راه‌اندازی CI/CD در برنامه",
-            link: "https://files.liara.ir/liara/dotnet/cource/e06-cicd-feature.mp4",
+            link: "https://files.liara.ir/liara/golang/course/e00-intro-to-project.mp4",
           },
         ]}
       />
-
       <br></br>
       <Notice variant="info">
         پروژه و کدهای مورد استفاده در دوره فوق در{" "}
-        <Link href="https://github.com/liara-cloud/dotnet-getting-started/tree/blog">
-          https://github.com/liara-cloud/dotnet-getting-started/tree/blog
+        <Link href="https://github.com/liara-cloud/golang-getting-started">
+          https://github.com/liara-cloud/golang-getting-started
         </Link>{" "}
         قابل مشاهده و دسترسی می‌باشد.{" "}
       </Notice>
@@ -102,4 +77,4 @@ const dotnet = () => {
   );
 };
 
-export default dotnet;
+export default flask;
