@@ -335,7 +335,7 @@ const Footer = () => {
             <div>
               <h6>آدرس:</h6>
               <p style={{ marginTop: 12, lineHeight: "28px" }}>
-                قم، خیابان رسالت، کوچه ۱، فرعی اول، پلاک ۱۲، طبقه منفی ۱
+                قم، خیابان سپاه، کوچه ۳، پلاک ۲، طبقه ۱
               </p>
               <h6>ایمیل واحد فروش:</h6>
               <a style={{ margin: 0, padding: 0 }} href="mailto:sales@liara.ir">
