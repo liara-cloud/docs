@@ -17,6 +17,8 @@ export default () => (
       <li>Laravel</li>
       <li>Flask</li>
       <li>NodeJS</li>
+      <li>Django</li>
+      <li>.Net</li>
     </ul>
   </Layout>
 );
