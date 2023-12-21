@@ -75,7 +75,7 @@ const DATA_SECTIONS = {
     {
       platform: "go",
       title: "Go",
-      href: "/instructions/golang",
+      href: "/app-deploy/golang/getting-started",
     },
     {
       platform: "docker",
