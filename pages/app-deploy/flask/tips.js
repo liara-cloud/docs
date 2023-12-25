@@ -48,6 +48,9 @@ export default () => (
       <li>
         <a href="#main-module">تعیین نام ماژول</a>
       </li>
+      <li>
+        <a href="#proxy">تنظیمات TrustedProxies</a>
+      </li>
     </ul>
 
     <h3 id="python-version">انتخاب نسخه‌ی Python</h3>
@@ -284,6 +287,39 @@ def index():
     "appModule": "server:app"
   }
 }`}
+    </Highlight>
+
+    <h3 id="proxy">تنظیمات TrustedProxies</h3>
+    <p>
+      با توجه به این نکته که تمامی درخواست‌ها توسط{" "}
+      <a href="https://en.wikipedia.org/wiki/Reverse_proxy" target="_blank">
+        Reverse proxy
+      </a>{" "}
+      لیارا به برنامه‌ی شما هدایت می‌شود باید در زمان استفاده از فریم‌ورک‌های
+      مختلف برای مشاهده‌ی IP واقعی کاربران و بسیاری از قابلیت‌های دیگر تعیین
+      کنید که برنامه‌ی شما در پشت یک Reverse proxy راه‌اندازی شده است.
+    </p>
+        
+    <Highlight className="python">
+      {`from flask import Flask, request
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+app = Flask(__name__)
+
+# Use ProxyFix middleware to handle proxy headers
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
+
+@app.route('/')
+def index():
+    # Access client's IP from X-Forwarded-For or X-Real-IP headers
+    client_ip = request.headers.get('X-Forwarded-For').split(',')[0] or 
+        request.headers.get('X-Real-IP') or 
+        request.remote_addr
+
+    return f'Client IP: {client_ip}'
+
+if __name__ == '__main__':
+    app.run(debug=True)`}
     </Highlight>
   </Layout>
 );
