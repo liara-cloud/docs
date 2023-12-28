@@ -252,6 +252,10 @@ const Videos = () => {
             videoTitle: "استقرار با Liara CLI",
             link: "https://files.liara.ir/liara/nestjs/nestjs.mp4",
           },
+          {
+            videoTitle: "استقرار با Liara Desktop",
+            link: "https://files.liara.ir/liara/nestjs/nestjs-desktop.mp4",
+          },
         ]}
       />
 
