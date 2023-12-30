@@ -62,6 +62,9 @@ export default () => (
         <a href="#gunicorn-max-requests">تنظیم مقدار Gunicorn max_request</a>
       </li>
       <li>
+        <a href="#gunicorn-workers">تنظیم مقدار Gunicorn workers</a>
+      </li>
+      <li>
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
@@ -445,6 +448,14 @@ location ~ /\\.well-known {
       در نهایت روی دکمه ثبت تغییرات کلیک کنید. همچنین توجه داشته باشید که مقدار
       پیش‌فرض برابر با <span className="code">GUNICORN_MAX_REQUESTS=10000</span>{" "}
       است.
+    </p>
+
+    <h3 id="gunicorn-workers">تنظیم مقدار Gunicorn workers</h3>
+
+    <p>
+      برای تنظیم تعداد worker‌های gunicorn می‌توانید از متغیر محیطی{" "}
+      <span className="code">GUNICORN_WORKERS</span> استفاده کنید. مقدار پیش‌فرض
+      این متغیر برابر با ۳ هست.
     </p>
 
     <h3 id="cors">رفع خطای CORS</h3>
