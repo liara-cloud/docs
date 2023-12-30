@@ -455,7 +455,7 @@ location ~ /\\.well-known {
     <p>
       برای تنظیم تعداد worker‌های gunicorn می‌توانید از متغیر محیطی{" "}
       <span className="code">GUNICORN_WORKERS</span> استفاده کنید. مقدار پیش‌فرض
-      این متغیر برابر با ۳ هست.
+      این متغیر برابر با ۳ است.
     </p>
 
     <h3 id="cors">رفع خطای CORS</h3>
