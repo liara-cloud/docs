@@ -39,7 +39,7 @@ import pocketbaseIcon from "@liara/platformicons/glass/png/pocketbase.png";
 import prestashopIcon from "@liara/platformicons/glass/png/prestashop.png";
 import mattermostIcon from "@liara/platformicons/glass/png/mattermost.png";
 import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
-import uptimekumaIcon from "@liara/platformicons/svg/uptime-kuma.svg";
+import uptimekumaIcon from "../public/static/platforms/uptime-kuma.svg";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
