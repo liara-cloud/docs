@@ -216,6 +216,11 @@ const DATA_SECTIONS = {
       title: "Unleash",
       href: "/one-click-apps/unleash",
     },
+    {
+      platform: "uptimekuma",
+      title: "Uptime Kuma",
+      href: "/one-click-apps/uptime-kuma",
+    },
   ],
 };
 
