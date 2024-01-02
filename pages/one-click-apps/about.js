@@ -13,11 +13,11 @@ export default () => (
     <span className="page-description">(One-Click Apps)</span>
 
     <h1>درباره برنامه‌های آماده</h1>
-    <p>
+    <p align="justify">
       در صفحه‌ی ساخت برنامه، بخشی با نام <b>برنامه‌های آماده</b> وجود دارد که
       شما می‌توانید برنامه‌های کاربردی خاصی را به سادگی و فقط با یک کلیک ایجاد
-      کنید. برای مثال شما می‌توانید با یک کلیک WordPress را نصب و اجرا کنید.
-      دیتابیس به صورت خودکار برای شما ایجاد و WordPress به آن متصل می‌شود.
+      کنید. برای مثال شما می‌توانید با یک کلیک سرویس pocketbase را راه‌اندازی
+      کنید و از آن استفاده کنید.
     </p>
 
     <h3>برنامه‌های آماده‌ای که ارائه می‌کنیم</h3>
@@ -98,6 +98,10 @@ export default () => (
       <Link href="/one-click-apps/pocketbase">
         <PlatformIcon platform="pocketbase" />
         <span>PocketBase</span>
+      </Link>
+      <Link href="/one-click-apps/uptime-kuma">
+        <PlatformIcon platform="uptimekuma" />
+        <span>UptimeKuma</span>
       </Link>
     </div>
   </Layout>
