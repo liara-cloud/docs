@@ -149,6 +149,10 @@ const Videos = () => {
             videoTitle: "سرویس DNS ابرآروان",
             link: "https://files.liara.ir/liara/domain/arvancloud-dns.mp4",
           },
+          {
+            videoTitle: "اتصال دامنه به برنامه وردپرس",
+            link: "https://files.liara.ir/liara/domain/domain-wp.mp4",
+          },
         ]}
       />
 
@@ -553,6 +557,10 @@ const Videos = () => {
           {
             videoTitle: "انتقال از cPanel به لیارا",
             link: "https://files.liara.ir/liara/wordpress/wordpress-cpanel.mp4",
+          },
+          {
+            videoTitle: "اتصال دامنه به برنامه WordPress Plus",
+            link: "https://files.liara.ir/liara/domain/domain-wp.mp4",
           },
         ]}
       />
