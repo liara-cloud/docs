@@ -118,8 +118,9 @@ export default () => (
     <h4 id="load-problem">لود نشدن صحیح برنامه</h4>
     <p>
       درصورتی که دامنه‌ی قبلی خود را به برنامه وردپرس متصل نکرده باشید باید در
-      جدول <strong>wp_options</strong> آدرس فعلی برنامه را وارد کرده و درنهایت
-      برنامه را ری‌استارت کنید.
+      جدول <strong>wp_options</strong> فیلد‌های <strong>siteUrl</strong> و{" "}
+      <strong>homeUrl</strong> آدرس فعلی برنامه را وارد کرده و درنهایت برنامه را
+      ری‌استارت کنید.
     </p>
     {/* <ZoomableImage src="https://files.liara.ir/docs/wordpress/last-migration-steps.gif"></ZoomableImage> */}
 

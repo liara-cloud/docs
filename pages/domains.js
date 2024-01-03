@@ -30,6 +30,9 @@ export default () => (
       <li>
         <a href="#add-subdomain">اضافه کردن زیردامنه‌ی دلخواه</a>
       </li>
+      <li>
+        <a href="#wp-change-domain">تغییر دامنه در برنامه‌های وردپرس پلاس</a>
+      </li>
     </ul>
 
     {/* <Notice variant="warning">
@@ -255,5 +258,14 @@ export default () => (
       <span className="code">Abuse</span> کردن سرور‌های لیارا استفاده می‌شود ،
       لیارا از آن‌ها پشتیبانی نمی‌کند.
     </Notice>
+
+    <h3 id="wp-change-domain">تغییر دامنه در برنامه‌های وردپرس پلاس</h3>
+
+    <p>
+      درصورتی که دامنه‌ی قبلی خود را به برنامه وردپرس متصل نکرده باشید باید در
+      جدول <strong>wp_options</strong> فیلد‌های <strong>siteUrl</strong> و{" "}
+      <strong>homeUrl</strong> آدرس فعلی برنامه را وارد کرده و درنهایت برنامه را
+      ری‌استارت کنید.
+    </p>
   </Layout>
 );
