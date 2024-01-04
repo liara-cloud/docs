@@ -157,6 +157,19 @@ const Videos = () => {
       />
 
       <Section
+        name={"رابط کاربری لیارا"}
+        style={{ marginTop: 40 }}
+        badge={"Liara User Interface"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "مدیریت حساب‌های کاربری در لیارا",
+            link: "https://files.liara.ir/liara/liara-features/managing-multiple-accounts.mp4",
+          },
+        ]}
+      />
+
+      <Section
         name={"راه اندازی CI/CD"}
         style={{ marginTop: 40 }}
         badge={"Continuous Integration and Continuous Delivery"}
