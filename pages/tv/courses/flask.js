@@ -56,23 +56,19 @@ const flask = () => {
             link: "https://files.liara.ir/liara/flask/course/e04-use-bucket.mp4",
           },
           {
-            videoTitle: "جلسه 5: استقرار و تغییر موقعیت build برنامه در لیارا",
+            videoTitle: "جلسه 5: استقرار کامل برنامه در لیارا",
             link: "https://files.liara.ir/liara/flask/course/e05-deployment-in-liara.mp4",
           },
           {
-            videoTitle: "جلسه 6: بارگذاری فایل env. و استفاده از دیسک‌ها",
-            link: "https://files.liara.ir/liara/flask/course/e06-load-envs-use-disks.mp4",
-          },
-          {
-            videoTitle: "جلسه 7: مدیریت دیسک‌ها با استفاده از FTP Access",
+            videoTitle: "جلسه 6: مدیریت دیسک‌ها با استفاده از FTP Access",
             link: "https://files.liara.ir/liara/flask/course/e07-ftp-access-to-disks.mp4",
           },
           {
-            videoTitle: "جلسه 8: اتصال دامنه خریداری شده به برنامه",
+            videoTitle: "جلسه 7: اتصال دامنه خریداری شده به برنامه",
             link: "https://files.liara.ir/liara/flask/course/e08-connect-domain-to-app.mp4",
           },
           {
-            videoTitle: "جلسه 9: راه‌اندازی CI/CD در برنامه",
+            videoTitle: "جلسه 8: راه‌اندازی CI/CD در برنامه",
             link: "https://files.liara.ir/liara/flask/course/e09-cicd-feature.mp4",
           },
         ]}
