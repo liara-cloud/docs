@@ -73,7 +73,7 @@ const Django = () => {
       <Notice variant="info">
         پروژه مورد استفاده در دوره فوق در{" "}
         <Link href="https://github.com/liara-cloud/django-getting-started/tree/django-blog">
-          https://github.com/liara-cloud/django-getting-started/tree/django-blog
+          گیت‌هاب لیارا
         </Link>{" "}
         قابل مشاهده و دسترسی می‌باشد.{" "}
       </Notice>

@@ -85,7 +85,7 @@ const flask = () => {
       <Notice variant="info">
         پروژه و کدهای مورد استفاده در دوره فوق در{" "}
         <Link href="https://github.com/liara-cloud/golang-getting-started">
-          https://github.com/liara-cloud/golang-getting-started
+          گیت‌هاب لیارا
         </Link>{" "}
         قابل مشاهده و دسترسی می‌باشد.{" "}
       </Notice>
