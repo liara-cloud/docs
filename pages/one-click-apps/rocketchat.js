@@ -38,7 +38,7 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/liara/rocketchat/create-rocketchat.mp4"
+      src="https://files.liara.ir/liara/rocketchat/rocketchat.mp4"
       controls="controls"
       className="block w-full"
       width="100%"

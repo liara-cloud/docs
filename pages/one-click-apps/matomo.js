@@ -34,7 +34,7 @@ export default () => (
       ‌را مشاهده کنید.
     </p>
 
-    <ZoomableImage src="https://files.liara.ir/docs/matomo/create.gif"></ZoomableImage>
+    <ZoomableImage src="https://files.liara.ir/docs/matomo/create-matomo-one-click-app.gif"></ZoomableImage>
 
     <p>
       برای راه‌اندازی برنامه‌ی آماده Matomo باید در بخش{" "}
