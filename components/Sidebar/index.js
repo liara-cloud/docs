@@ -1653,7 +1653,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/app-features/applets">برنامک‌ها</ActiveLink>
+              <ActiveLink href="/app-features/applets">رویدادها</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/app-features/build-location">
