@@ -33,6 +33,17 @@ export default () => (
       <li>
         <a href="#unset">حذف متغیرهای محیطی</a>
       </li>
+      <li>
+        <a href="#upload">
+          بارگذاری متغیرهای محیطی با استفاده از آپلود فایل env.
+        </a>
+      </li>
+      <li>
+        <a href="#copy">بارگذاری متغیرهای محیطی با استفاده از copy/paste</a>
+      </li>
+      <li>
+        <a href="#ready">بارگذاری متغیرهای محیطی با استفاده از envهای آماده</a>
+      </li>
     </ul>
 
     <h3 id="list">مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده</h3>
@@ -59,5 +70,14 @@ export default () => (
     <ZoomableImage src="https://files.liara.ir/docs/django/remove-an-environment-variable.gif" />
     <h4>حذف متغیرهای محیطی با استفاده از لیارا CLI</h4>
     <Asciinema id="456072" />
+
+    <h3 id="upload">بارگذاری متغیرهای محیطی با استفاده از آپلود فایل env.</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/envs/upload-env-files.gif" />
+
+    <h3 id="copy">بارگذاری متغیرهای محیطی با استفاده از copy/paste</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/envs/copy-paste-envs.gif" />
+
+    <h3 id="ready">بارگذاری متغیرهای محیطی با استفاده از envهای آماده</h3>
+    <ZoomableImage src="https://files.liara.ir/docs/envs/ready-envs.gif" />
   </Layout>
 );

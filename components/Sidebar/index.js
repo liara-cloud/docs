@@ -1160,11 +1160,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Uptime Kuma
               </ActiveLink>
             </li>
-            <li>
-              <ActiveLink href="/one-click-apps/others">
-                دیگر برنامه‌ها
-              </ActiveLink>
-            </li>
           </ul>
         </nav>
 
@@ -1653,7 +1648,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/app-features/applets">رویدادها</ActiveLink>
+              <ActiveLink href="/app-features/events">رویدادها</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/app-features/build-location">
