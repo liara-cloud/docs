@@ -1051,6 +1051,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     اتصال از طریق Laravel
                   </ActiveLink>
                 </li>
+                <li>
+                  <ActiveLink href="/one-click-apps/soketi/tips">
+                    توضیحات و نکات تکمیلی
+                  </ActiveLink>
+                </li>
               </ul>
             </li>
             <li>
