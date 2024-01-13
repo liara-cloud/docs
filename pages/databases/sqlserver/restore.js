@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -36,5 +37,9 @@ export default () => (
       Management Studio)، فایل پشتیبان را از این مسیر در دیتابیس خود بازیابی
       کنید.
     </p>
+    <ZoomableImage
+      src="https://files.liara.ir/docs/sql-server/mssql-re.gif"
+      alt="postgres backup page"
+    />
   </Layout>
 );

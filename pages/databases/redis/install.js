@@ -3,6 +3,7 @@ import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -61,5 +62,11 @@ export default () => (
       <li>RedisTimeseries</li>
       <li>RedisAI</li>
     </ul>
+
+    <br />
+
+    <Link href="/databases/redis/connections" className="next-page">
+      متوجه شدم، برو گام بعدی!
+    </Link>
   </Layout>
 );

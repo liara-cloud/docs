@@ -4,6 +4,7 @@ import Layout from "../../../components/Layout";
 import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -92,5 +93,11 @@ export default () => (
       ، به لیست کامل‌تری از ابزارهای اتصال به دیتابیس‌های SQL Server دست پیدا
       کنید.
     </p>
+
+    <br />
+
+    <Link href="/databases/sqlserver/backup" className="next-page">
+      متوجه شدم، برو گام بعدی!
+    </Link>
   </Layout>
 );

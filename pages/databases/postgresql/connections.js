@@ -4,6 +4,7 @@ import Layout from "../../../components/Layout";
 import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -74,5 +75,11 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
+
+    <br />
+
+    <Link href="/databases/postgresql/backup" className="next-page">
+      متوجه شدم، برو گام بعدی!
+    </Link>
   </Layout>
 );

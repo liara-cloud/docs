@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -26,8 +27,14 @@ export default () => (
       به‌صورت دستی اقدام به تهیه فایل پشتیبان کنید.
     </p>
     <ZoomableImage
-      src="/static/databases/back-up.png"
+      src="https://files.liara.ir/docs/sql-server/mssql-backup.gif"
       alt="sql server backup page"
     />
+
+    <br />
+
+    <Link href="/databases/sqlserver/restore" className="next-page">
+      متوجه شدم، برو گام بعدی!
+    </Link>
   </Layout>
 );
