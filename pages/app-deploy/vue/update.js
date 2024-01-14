@@ -41,7 +41,7 @@ export default () => (
       که شما <span className="code">--message</span> را خالی گذاشته باشید.
     </p>
 
-    <Link href="/app-deploy/vue/domain" className="next-page">
+    <Link href="/app-deploy/vue/tips" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

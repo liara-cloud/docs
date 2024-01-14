@@ -1051,6 +1051,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     اتصال از طریق Laravel
                   </ActiveLink>
                 </li>
+                <li>
+                  <ActiveLink href="/one-click-apps/soketi/tips">
+                    توضیحات و نکات تکمیلی
+                  </ActiveLink>
+                </li>
               </ul>
             </li>
             <li>
@@ -1153,11 +1158,6 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/one-click-apps/uptime-kuma">
                 <PlatformIcon platform="uptimekuma" />
                 Uptime Kuma
-              </ActiveLink>
-            </li>
-            <li>
-              <ActiveLink href="/one-click-apps/others">
-                دیگر برنامه‌ها
               </ActiveLink>
             </li>
           </ul>
@@ -1648,7 +1648,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
-              <ActiveLink href="/app-features/applets">برنامک‌ها</ActiveLink>
+              <ActiveLink href="/app-features/events">رویدادها</ActiveLink>
             </li>
             <li>
               <ActiveLink href="/app-features/build-location">

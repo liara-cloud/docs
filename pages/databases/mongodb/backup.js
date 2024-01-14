@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -29,5 +30,11 @@ export default () => (
       src="https://files.liara.ir/docs/mongodb/backup.gif"
       alt="mongodb backup page"
     />
+
+    <br />
+
+    <Link href="/databases/mongodb/restore" className="next-page">
+      متوجه شدم، برو گام بعدی!
+    </Link>
   </Layout>
 );

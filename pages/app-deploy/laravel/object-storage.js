@@ -49,23 +49,6 @@ export default () => (
       <li>
         <a href="#how-to-use">نحوه استفاده</a>
       </li>
-      <li>
-        <a href="#retrieving-files">بازیابی فایل‌ها توسط Amazon S3 Driver</a>
-      </li>
-      <li>
-        <a href="#download-files">دانلود فایل‌ توسط Amazon S3 Driver</a>
-      </li>
-      <li>
-        <a href="#list-files">
-          دریافت لیست فایل‌‌های آپلود شده توسط Amazon S3 Driver
-        </a>
-      </li>
-      <li>
-        <a href="#remove-files">حذف فایل توسط Amazon S3 Driver</a>
-      </li>
-      <li>
-        <a href="#upload-files">آپلود فایل توسط Amazon S3 Driver</a>
-      </li>
     </ul>
 
     <p>
@@ -163,101 +146,216 @@ DEFAULT_REGION=us-east-1`}
 
     <h3 id="how-to-use">نحوه استفاده</h3>
 
-    <Notice variant="warning">
-      توجه داشته باشید همه مسیر‌های فایل، باید نسبت به روت باکت مشخص شوند.
-    </Notice>
-
     <p>
-      می‌توان گفت که تغییر خاصی در نحوه‌ی استفاده‌ی شما به‌وجود نخواهد آمد. برای
-      مثال شما می‌توانید با استفاده از قطعه کد زیر، محتوای{" "}
-      <span className="code">Contents</span> را در فایلی با نام{" "}
-      <span className="code">example.txt</span> قرار داده و آن را در فضای
-      ذخیره‌سازی ابری خود ذخیره کنید:
+      در پروژه خود می‌توانید یک کنترلر به نام{" "}
+      <span className="code">S3Controller.php</span> در مسیر
+      <span className="code">app/Http/Controllers</span> ایجاد کنید. بعد از
+      ایجاد فایل مذکور، کافیست تا محتوای آن را به شکل زیر بنویسید:
     </p>
-    <Highlight className="php">
-      {`use Illuminate\\Support\\Facades\\Storage;
 
-Storage::disk('liara')->put('example.txt', 'Contents');`}
-    </Highlight>
-
-    <h3 id="retrieving-files">بازیابی فایل‌ها توسط Amazon S3 Driver</h3>
-    <p>نمونه کد برای بازیابی فایل‌ها:</p>
-
-    <br />
-
-    <Highlight className="php">
-      {`use Illuminate\\Support\\Facades\\Storage;
-
-$contents = Storage::get('file.jpg');`}
-    </Highlight>
-
-    <p>
-      اگر فایلی دارید که محتوای آن JSON باشد ، می‌توانید با متد{" "}
-      <span className="code">json</span> آن‌ها را بازیابی کنید:
-    </p>
-    <Highlight className="php">
-      {`use Illuminate\\Support\\Facades\\Storage;
-
-$orders = Storage::json('orders.json');`}
-    </Highlight>
-
-    <h3 id="download-files">دانلود فایل‌ توسط Amazon S3 Driver</h3>
-    <p>نمونه کد برای دانلود فایل:</p>
-    <Highlight className="php">
-      {`use Illuminate\\Support\\Facades\\Storage;
-
-return Storage::download('file.jpg');`}
-    </Highlight>
-
-    <h3 id="list-files">
-      دریافت لیست فایل‌‌های آپلود شده توسط Amazon S3 Driver
-    </h3>
-    <p>نمونه کد برای دریافت لیست فایل‌های آپلود شده:</p>
-    <Highlight className="php">
-      {`use Illuminate\\Support\\Facades\\Storage;
-
-$files = Storage::files($directory);
-
-$files = Storage::allFiles($directory);`}
-    </Highlight>
-
-    <h3 id="remove-files">حذف فایل توسط Amazon S3 Driver</h3>
-    <p>نمونه کد برای حذف فایل‌های آپلود شده:</p>
-    <Highlight className="php">
-      {`use Illuminate\\Support\\Facades\\Storage;
-
-Storage::disk('liara')->delete('path/file.jpg');
-
-// Or you can use:
-Storage::delete('file.jpg');
-
-Storage::delete(['file.jpg', 'file2.jpg']);`}
-    </Highlight>
-
-    <h3 id="upload-files">آپلود فایل توسط Amazon S3 Driver</h3>
-    <p>نمونه کد برای آپلود فایل:</p>
-    <Highlight className="php">
+    <Highlight className="code">
       {`<?php
 
-namespace App\\Http\\Controllers;
-  
-use Illuminate\\Support\\Facades\\Storage;
-use App\\Http\\Controllers\\Controller;
-use Illuminate\\Http\Request;
-  
-class UserAvatarController extends Controller
-  {
-      /**
-      * Update the avatar for the user.
-      */
-      public function update(Request $request): string
-      {
-        $path = Storage::putFile('avatars', $request->file('avatar'));
-  
-          return $path;
-      }
-}`}
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class S3Controller extends Controller
+{
+    public function showUserInterface()
+    {
+        return view('userinterface');
+    }
+
+    public function uploadFile(Request $request)
+    {
+        $request->validate([
+            'upload_file' => 'required|max:2048', // Adjust the file size validation as needed
+        ]);
+
+        $file = $request->file('upload_file');
+        $fileName = $file->getClientOriginalName();
+
+        Storage::disk('liara')->put($fileName, file_get_contents($file));
+
+        return redirect()->route('user.interface')->with('success', 'File uploaded successfully');
+    }
+
+    public function showObjects()
+    {
+        $objects = Storage::disk('liara')->allFiles('');
+    
+        $files = [];
+        foreach ($objects as $object) {
+            $files[] = [
+                'name' => $object,
+                'download_link' => Storage::disk('liara')->temporaryUrl($object, now()->addMinutes(5)),
+            ];
+        }
+    
+        return view('userinterface', ['files' => $files]);
+    }
+    
+
+    public function downloadFile(Request $request)
+    {
+        $fileName = $request->input('download_file');
+        return Storage::disk('liara')->download($fileName);
+    }
+
+    public function deleteFile(Request $request)
+    {
+        $fileName = $request->input('delete_file');
+        Storage::disk('liara')->delete($fileName);
+        
+        return redirect()->route('user.interface')->with('success', 'File deleted successfully');
+    }
+}
+`}
     </Highlight>
+
+    <p>
+      اکنون، می‌بایست یک فایل به نام{" "}
+      <span className="code">userinterface.blade.php</span> در مسیر{" "}
+      <span className="code">resources/views/</span>
+      ایجاد کنید و قطعه کد زیر را درون آن قرار دهید:
+    </p>
+
+    <Highlight className="code">
+      {`<!-- resources/views/userinterface.blade.php -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S3 Controller User Interface</title>
+
+    <!-- Add some simple styles for a cleaner look -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .error-message {
+            color: #f44336;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>S3 Controller User Interface</h1>
+
+    @if(session('success'))
+        <div style="color: green">{{ session('success') }}</div>
+    @endif
+
+    <form action="{{ route('upload.file') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="upload_file" style="margin-right: 10px;">
+        <button type="submit">Upload File</button>
+        @error('upload_file')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </form>
+
+    <form action="{{ route('show.objects') }}" method="post" style="margin-top: 20px;">
+        @csrf
+        <button type="submit">Show Objects</button>
+    </form>
+
+    @if(isset($files) && count($files) > 0)
+        <ul>
+            @foreach($files as $file)
+                <li>
+                    <span>{{ $file['name'] }}</span>
+                    <div>
+                        <form action="{{ route('download.file') }}" method="post" style="display: inline-block;">
+                            @csrf
+                            <input type="hidden" name="download_file" value="{{ $file['name'] }}">
+                            <button type="submit">Download</button>
+                        </form>
+                        <form action="{{ route('delete.file') }}" method="post" style="display: inline-block;">
+                            @csrf
+                            <input type="hidden" name="delete_file" value="{{ $file['name'] }}">
+                            <button type="submit" style="background-color: #f44336;">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+    @endif
+</body>
+</html>
+`}
+    </Highlight>
+    <p>
+      پس از این کار، کافیست تا قطعه کد زیر را در فایل{" "}
+      <span className="code">web.php</span> در مسیر{" "}
+      <span className="code">routes</span> وارد کنید:
+    </p>
+    <Highlight className="code">
+      {`use App\Http\Controllers\S3Controller;
+
+Route::get('/userinterface', function () {
+    return view('userinterface');
+});
+
+Route::get('/userinterface', [S3Controller::class, 'showUserInterface'])->name('user.interface');
+Route::post('/upload-file', [S3Controller::class, 'uploadFile'])->name('upload.file');
+Route::post('/show-objects', [S3Controller::class, 'showObjects'])->name('show.objects');
+Route::post('/retrieve-file', [S3Controller::class, 'retrieveFile'])->name('retrieve.file');
+Route::post('/delete-file', [S3Controller::class, 'deleteFile'])->name('delete.file');
+Route::post('/download-file', [S3Controller::class, 'downloadFile'])->name('download.file');
+`}
+    </Highlight>
+    <p>
+      تمامی کارها انجام شده است و اگر متغیرهای محیطی را به درستی تنظیم
+      کرده‌باشید؛ می‌توانید پس از اجرای برنامه، در مسیر{" "}
+      <span className="code">/userinterface</span> از فضای ذخیره‌سازی ابری لیارا
+      استفاده کنید؛ با استفاده از قطعه کدهای فوق، شما می‌توانید فایل‌های
+      مدنظرتان را در فضای ذخیره‌سازی ابری لیارا آپلود کنید، دانلود کنید، حذف
+      کنید و یا یک لیست از آن‌ها داشته باشید. بدیهی است که برای تغییر قابلیت‌ها
+      و موارد استفاده، می‌توانید کدهای بالا را شخصی‌سازی کنید.
+    </p>
 
     <br />
 

@@ -4,6 +4,7 @@ import Layout from "../../../components/Layout";
 import Asciinema from "../../../components/Asciinema";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -76,5 +77,11 @@ export default () => (
     </Highlight>
 
     <Asciinema id="465250" />
+
+    <br />
+
+    <Link href="/databases/mongodb/backup" className="next-page">
+      متوجه شدم، برو گام بعدی!
+    </Link>
   </Layout>
 );

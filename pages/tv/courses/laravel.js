@@ -77,7 +77,7 @@ const Laravel = () => {
       <Notice variant="info">
         پروژه مورد استفاده در دوره فوق در{" "}
         <Link href="https://github.com/liara-cloud/laravel-getting-started/tree/laravel-social-media">
-          https://github.com/liara-cloud/laravel-getting-started/tree/laravel-social-media
+          گیت‌هاب لیارا
         </Link>{" "}
         قابل دسترسی می‌باشد.{" "}
       </Notice>

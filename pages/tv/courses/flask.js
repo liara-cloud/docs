@@ -78,7 +78,7 @@ const flask = () => {
       <Notice variant="info">
         پروژه و کدهای مورد استفاده در دوره فوق در{" "}
         <Link href="https://github.com/liara-cloud/flask-getting-started/tree/blog">
-          https://github.com/liara-cloud/flask-getting-started/tree/blog
+          گیت‌هاب لیارا
         </Link>{" "}
         قابل مشاهده و دسترسی می‌باشد.{" "}
       </Notice>
