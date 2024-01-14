@@ -40,25 +40,7 @@ export default () => (
         <a href="#set-keys">تنظیم کلیدها</a>
       </li>
       <li>
-        <a href="#upload-file"> آپلود فایل </a>
-      </li>
-      <li>
-        <a href="#download-file"> دریافت فایل</a>
-      </li>
-      <li>
-        <a href="#get-download-url"> دریافت لینک دانلود فایل</a>
-      </li>
-      <li>
-        <a href="#list-file">دریافت لیست فایل های آپلود شده </a>
-      </li>
-      <li>
-        <a href="#delete-file">حذف فایل</a>
-      </li>
-      <li>
-        <a href="#how-to-use">دریافت لیست باکت‌ها </a>
-      </li>
-      <li>
-        <a href="#upload-file-multer-3">آپلود فایل توسط multer-s3</a>
+        <a href="#how-to-use">نحوه استفاده</a>
       </li>
     </ul>
 
@@ -95,18 +77,22 @@ export default () => (
     <ZoomableImage src="/static/flask/get_key3.png" />
     <h3 id="set-env">تنظیم متغیر های محیطی</h3>
     <p>
-      در این مرحله باید کلیدها، نام باکت و endpoint لیارا را در فایل .env ذخیره
-      کنید
+      در این مرحله باید کلیدها، نام باکت و endpoint لیارا را در فایل env. ذخیره
+      کنید:
     </p>
     <Highlight className="plaintext">
-      {`LIARA_ENDPOINT=<Liara Bucket Endpoint>
+      {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
 LIARA_BUCKET_NAME=<Bucket Name>
 LIARA_ACCESS_KEY=<Access Key>
 LIARA_SECRET_KEY=<Secret Key>`}
     </Highlight>
 
-    <h3 id="upload-file"> آپلود فایل با AWS SDK</h3>
-    <p>نمونه کد جهت آپلود فایل:</p>
+    <h3 id="how-to-use">نحوه استفاده</h3>
+
+    <p>
+      قطعه کد نمونه‌ای در ادامه برای شما تهیه شده است، که با آن،می‌توانید با
+      استفاده از دسترسی S3 به باکت خود متصل شوید و آن را مدیریت کنید:
+    </p>
     <Highlight className="javascript">
       {`import React, { useState, useEffect } from 'react';
 import { S3 } from 'aws-sdk';
@@ -119,12 +105,17 @@ const Upload = () => {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [allFiles, setAllFiles] = useState([]);
   const [buckets, setBuckets] = useState([]);
-
+  
+  const ACCESSKEY = 'your-access-key';                    // or process.env.LIARA_ACCESS_KEY;
+  const SECRETKEY = 'your-secret-ky';                    //  or process.env.LIARA_SECRET_KEY;
+  const ENDPOINT  = 'https://storage.iran.liara.space'; //   or process.env.LIARA_ENDPOINT;
+  const BUCKET    = 'your-bucket-name';                //    or process.env.LIARA_BUCKET_NAME;
+  
   const fetchBuckets = async () => {
     const s3 = new S3({
-      accessKeyId: process.env.LIARA_ACCESS_KEY,
-      secretAccessKey: process.env.LIARA_SECRET_KEY,
-      endpoint: process.env.LIARA_ENDPOINT,
+      accessKeyId: ACCESSKEY,
+      secretAccessKey: SECRETKEY,
+      endpoint: ENDPOINT,
     });
     try {
       const response = await s3.listBuckets().promise();
@@ -136,13 +127,13 @@ const Upload = () => {
 
   const fetchAllFiles = async () => {
     const s3 = new S3({
-      accessKeyId: process.env.LIARA_ACCESS_KEY,
-      secretAccessKey: process.env.LIARA_SECRET_KEY,
-      endpoint: process.env.LIARA_ENDPOINT,
+      accessKeyId: ACCESSKEY,
+      secretAccessKey: SECRETKEY,
+      endpoint: ENDPOINT,
     });
 
     try {
-      const response = await s3.listObjectsV2({ Bucket: process.env.LIARA_BUCKET_NAME }).promise();
+      const response = await s3.listObjectsV2({ Bucket: BUCKET }).promise();
       setAllFiles(response.Contents);
     } catch (error) {
       console.error('Error fetching files: ', error);
@@ -169,20 +160,20 @@ const Upload = () => {
       }
 
       const s3 = new S3({
-        accessKeyId: process.env.LIARA_ACCESS_KEY,
-        secretAccessKey: process.env.LIARA_SECRET_KEY,
-        endpoint: process.env.LIARA_ENDPOINT,
+        accessKeyId: ACCESSKEY,
+        secretAccessKey: SECRETKEY,
+        endpoint: ENDPOINT,
       });
 
       const params = {
-        Bucket: process.env.LIARA_BUCKET_NAME,
+        Bucket: BUCKET,
         Key: file.name,
         Body: file,
       };
 
       const response = await s3.upload(params).promise();
       const signedUrl = s3.getSignedUrl('getObject', {
-        Bucket: process.env.LIARA_BUCKET_NAME,
+        Bucket: BUCKET,
         Key: file.name,
         Expires: 3600,
       });
@@ -191,7 +182,7 @@ const Upload = () => {
 
       // Get permanent link
       const permanentSignedUrl = s3.getSignedUrl('getObject', {
-        Bucket: process.env.LIARA_BUCKET_NAME,
+        Bucket: BUCKET,
         Key: file.name,
         Expires: 31536000, // 1 year
       });
@@ -216,12 +207,12 @@ const Upload = () => {
   const handleDeleteFile = async (file) => {
     try {
       const s3 = new S3({
-        accessKeyId: process.env.LIARA_ACCESS_KEY,
-        secretAccessKey: process.env.LIARA_SECRET_KEY,
-        endpoint: process.env.LIARA_ENDPOINT,
+        accessKeyId: ACCESSKEY,
+        secretAccessKey: SECRETKEY,
+        endpoint: ENDPOINT,
       });
 
-      await s3.deleteObject({ Bucket: process.env.LIARA_BUCKET_NAME, Key: file.Key }).promise();
+      await s3.deleteObject({ Bucket: BUCKET, Key: file.Key }).promise();
 
       // Update the list of uploaded files
       setUploadedFiles((prevFiles) =>
@@ -269,9 +260,9 @@ const Upload = () => {
           <ul>
             {uploadedFiles.map((uploadedFile) => {
               const s3 = new S3({
-                accessKeyId: process.env.LIARA_ACCESS_KEY,
-                secretAccessKey: process.env.LIARA_SECRET_KEY,
-                endpoint: process.env.LIARA_ENDPOINT,
+                accessKeyId: ACCESSKEY,
+                secretAccessKey: SECRETKEY,
+                endpoint: ENDPOINT,
               });
 
               return (
@@ -279,7 +270,7 @@ const Upload = () => {
                   {uploadedFile.Key}{' '}
                   <a
                     href={s3.getSignedUrl('getObject', {
-                      Bucket: process.env.LIARA_BUCKET_NAME,
+                      Bucket: BUCKET,
                       Key: uploadedFile.Key,
                       Expires: 3600,
                     })}
@@ -302,9 +293,9 @@ const Upload = () => {
           <ul>
             {allFiles.map((file) => {
               const s3 = new S3({
-                accessKeyId: process.env.LIARA_ACCESS_KEY,
-                secretAccessKey: process.env.LIARA_SECRET_KEY,
-                endpoint: process.env.LIARA_ENDPOINT,
+                accessKeyId: ACCESSKEY,
+                secretAccessKey: SECRETKEY,
+                endpoint: ENDPOINT,
               });
 
               return (
@@ -312,7 +303,7 @@ const Upload = () => {
                   {file.Key}{' '}
                   <a
                     href={s3.getSignedUrl('getObject', {
-                      Bucket: process.env.LIARA_BUCKET_NAME,
+                      Bucket: BUCKET,
                       Key: file.Key,
                       Expires: 3600,
                     })}
@@ -346,231 +337,17 @@ const Upload = () => {
 export default Upload;
 `}
     </Highlight>
-
-    <h3 id="download-file">دریافت فایل با AWS SDK</h3>
-    <p>نمونه کد جهت دریافت فایل:</p>
-    <Highlight className="javascript">
-      {`const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
-require("dotenv").config();
-
-const client = new S3Client({
-    region: "default",
-	endpoint: process.env.LIARA_ENDPOINT,
-	credentials: {
-		accessKeyId: process.env.LIARA_ACCESS_KEY,
-		secretAccessKey: process.env.LIARA_SECRET_KEY
-	},
-});
-const params = {
-  Bucket: process.env(LIARA_BUCKET_NAME),
-  Key: "objectkey"
-};
-
-// async/await
-try {
-  const data = await client.send(new GetObjectCommand(params));
-  console.log(data.Body.toString());
-} catch (error) {
-  console.log(error);
-}
-
-// callback
-client.send(new GetObjectCommand(params), (error, data) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log(data.Body.toString());
-  }
-});`}
-    </Highlight>
-
-    <h3 id="get-download-url">دریافت لینک دانلود فایل توسط AWS SDK</h3>
-    <p>نمونه کد جهت دریافت لینک دانلود فایل:</p>
-    <Highlight className="javascript">
-      {`const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
-const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-require("dotenv").config();
-
-const filename = "example_filename.png"; // change this to your filename
-
-const client = new S3Client({
-  region: "default",
-  endpoint: process.env.LIARA_ENDPOINT,
-  credentials: {
-    accessKeyId: process.env.LIARA_ACCESS_KEY,
-    secretAccessKey: process.env.LIARA_SECRET_KEY,
-  },
-});
-const params = {
-  Bucket: process.env.LIARA_BUCKET_NAME,
-  Key: filename,
-};
-
-const command = new GetObjectCommand(params);
-getSignedUrl(client, command).then((url) => console.log(url));`}
-    </Highlight>
-
-    <h3 id="list-file">دریافت لیست فایل‌های آپلود شده توسط AWS SDK</h3>
-    <p>نمونه کد جهت دریافت لیست فایل‌های آپلود شده:</p>
-    <Highlight className="javascript">
-      {`const { S3Client, ListObjectsV2Command } = require("@aws-sdk/client-s3");
-require("dotenv").config();
-
-const client = new S3Client({
-    region: "default",
-	endpoint: process.env.LIARA_ENDPOINT,
-	credentials: {
-		accessKeyId: process.env.LIARA_ACCESS_KEY,
-		secretAccessKey: process.env.LIARA_SECRET_KEY
-	},
-});
-
-const params = {
-  Bucket: process.env.LIARA_BUCKET_NAME
-};
-
-// async/await
-try {
-  const data = await client.send(new ListObjectsV2Command(params));
-  const files = data.Contents.map((file) => file.Key);
-  console.log(files);
-} catch (error) {
-  console.log(error);
-}
-
-// callback
-client.send(new ListObjectsV2Command(params), (error, data) => {
-  if (error) {
-    console.log(error);
-  } else {
-    const files = data.Contents.map((file) => file.Key);
-    console.log(files);
-  }
-});`}
-    </Highlight>
-
-    <h3 id="delete-file">حذف فایل توسط AWS SDK</h3>
-    <p>نمونه کد جهت حذف فایل:</p>
-    <Highlight className="javascript">
-      {`const { S3Client, DeleteObjectCommand } = require("@aws-sdk/client-s3");
-require("dotenv").config();
-
-const client = new S3Client({
-    region: "default",
-	endpoint: process.env.LIARA_ENDPOINT,
-	credentials: {
-		accessKeyId: process.env.LIARA_ACCESS_KEY,
-		secretAccessKey: process.env.LIARA_SECRET_KEY
-	},
-});
-
-const params = {
-  Bucket: process.env.LIARA_BUCKET_NAME,
-  Key: "objectkey"
-};
-
-// async/await
-try {
-  await client.send(new DeleteObjectCommand(params));
-  console.log("File deleted successfully");
-} catch (error) {
-  console.log(error);
-}
-
-// callback
-client.send(new DeleteObjectCommand(params), (error, data) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("File deleted successfully");
-  }
-});
-`}
-    </Highlight>
-
-    <h3 id="how-to-use">دریافت لیست باکت‌ها توسط AWS SDK</h3>
-    <p>نمونه کد برای دریافت لیست باکت‌های ایجاد شده:</p>
-
-    <Highlight className="javascript">
-      {`const { S3Client, ListBucketsCommand } = require("@aws-sdk/client-s3");
-require("dotenv").config();
-
-const client = new S3Client({
-	region: "default",
-	endpoint: process.env.LIARA_ENDPOINT,
-	credentials: {
-		accessKeyId: process.env.LIARA_ACCESS_KEY,
-		secretAccessKey: process.env.LIARA_SECRET_KEY,
-	},
-});
-
-
-client.send(new ListBucketsCommand({}), (error, data) => {
-  if (error) {
-    console.log(error);
-  } else {
-    const buckets = data.Buckets.map((bucket) => bucket.Name);
-    console.log(buckets); // List of bucket names
-  }
-});`}
-    </Highlight>
-
-    <h3 id="upload-file-multer-3">آپلود فایل از طریق multer-s3</h3>
-    <p>نمونه کد برای آپلود فایل از طریق multer-s3:</p>
-    <Highlight>
-      {`import AWS from 'aws-sdk';
-import multer from 'multer';
-import express from 'express';
-import multerS3 from 'multer-s3';
-
-const config = {
-  endpoint: process.env(LIARA_ENDPOINT),
-  accessKeyId: process.env(LIARA_ACCESS_KEY),
-  secretAccessKey: process.env(LIARA_SECRET_KEY),
-  region: "default",
-};
-
-const app = express();
-const s3 = new AWS.S3(config);
-
-const upload = multer({
-  storage: multerS3({
-    s3,
-    bucket: process.env(LIARA_BUCKET_NAME),
-    key: function (req, file, cb) {
-      console.log(file);
-      cb(null, file.originalname);
-    },
-  }),
-});
-
-
-// route
-app.post('/upload', upload.single('objectKey'), function (req, res) {
-  console.log(req.file);
-
-  return res.send({
-    status: 'success',
-    message: 'file uploaded!',
-    url: {
-      size: req.file.size,
-      url: req.file.location,
-      name: req.file.key,
-      type: req.file.mimetype,
-    },
-  });
-});
-
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});`}
-    </Highlight>
+    <p>
+      با استفاده از قطعه کد فوق، شما قادر خواهید بود که فایل‌های خود را درون
+      باکت آپلود کنید، دانلود کنید، با استفاده از لینک‌های موقت و یا دائمی (در
+      صورتی که سطح دسترسی باکت عمومی باشد)، فایل‌های خود را به اشتراک بگذارید و
+      یا آن‌ها را حذف کنید.
+    </p>
 
     <p>
       شما می‌توانید برای کسب اطلاعات بیشتر،{" "}
       <a
-        href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-creating-buckets.html#s3-example-creating-buckets-scenario"
+        href="https://vercel.com/templates/next.js/aws-s3-image-upload-nextjs"
         rel="noopener noreferrer"
         target="_blank"
       >
