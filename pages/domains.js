@@ -74,6 +74,14 @@ export default () => (
       width="100%"
     ></video>
 
+    <h4>اتصال دامنه به برنامه وردپرس</h4>
+    <video
+      src="https://files.liara.ir/liara/domain/domain-wp.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       برای اتصال دامنه به برنامه مورد نظرتان در لیارا باید وارد این برنامه شوید
       و از منوی سمت راست، روی گزینه‌ی <strong>دامنه‌ها</strong> کلیک کنید. سپس

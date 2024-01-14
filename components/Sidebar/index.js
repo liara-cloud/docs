@@ -332,6 +332,41 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/nextjs/envs">
+                    تنظیم متغیرها (env)
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/logs">
+                    مشاهده لاگ‌ها
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/liarajson">
+                    استفاده از فایل liara.json
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/update">
+                    به‌روزرسانی برنامه
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/dbs">
+                    اتصال به دیتابیس
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/object-storage">
+                    اتصال به ذخیره‌سازی ابری
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/email">
+                    ارسال ایمیل
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/nextjs/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
