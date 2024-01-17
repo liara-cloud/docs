@@ -45,9 +45,17 @@ export default () => (
         <span>Flask</span>
       </Link>
 
+      <Link href="/app-deploy/nextjs/object-storage">
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
+      </Link>
       <Link href="/app-deploy/netcore/object-storage">
         <PlatformIcon platform="netcore" />
         <span>.NET</span>
+      </Link>
+      <Link href="/app-deploy/golang/object-storage">
+        <PlatformIcon platform="go" />
+        <span>Golang</span>
       </Link>
     </div>
   </Layout>
