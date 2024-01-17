@@ -221,6 +221,11 @@ const DATA_SECTIONS = {
       title: "Uptime Kuma",
       href: "/one-click-apps/uptime-kuma",
     },
+    {
+      platform: "ackee",
+      title: "Ackee",
+      href: "/one-click-apps/ackee",
+    },
   ],
 };
 

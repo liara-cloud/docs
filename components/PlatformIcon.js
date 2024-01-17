@@ -40,6 +40,7 @@ import prestashopIcon from "@liara/platformicons/glass/png/prestashop.png";
 import mattermostIcon from "@liara/platformicons/glass/png/mattermost.png";
 import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
 import uptimekumaIcon from "../public/static/platforms/uptime-kuma.svg";
+import ackeeIcon from "../public/static/platforms/ackee.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -121,8 +122,9 @@ const types = [
   { logo: matomoIcon, alt: "matomo" },
   { logo: unleashIcon, alt: "unleash" },
   { logo: uptimekumaIcon, alt: "uptimekuma" },
-  // Instructions
+  { logo: ackeeIcon, alt: "ackee" },
 
+  // Instructions
   { logo: goIcon, alt: "go" },
   { logo: seqIcon, alt: "seq" },
   { logo: soketiIcon, alt: "soketi" },

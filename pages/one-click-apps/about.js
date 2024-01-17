@@ -103,6 +103,10 @@ export default () => (
         <PlatformIcon platform="uptimekuma" />
         <span>UptimeKuma</span>
       </Link>
+      <Link href="/one-click-apps/ackee">
+        <PlatformIcon platform="ackee" />
+        <span>Ackee</span>
+      </Link>
     </div>
   </Layout>
 );

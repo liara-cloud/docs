@@ -1195,6 +1195,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Uptime Kuma
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/ackee">
+                <PlatformIcon platform="ackee" />
+                Ackee
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 
