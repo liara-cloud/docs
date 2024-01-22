@@ -47,6 +47,34 @@ const Laravel = () => {
             videoTitle: "جلسه 2: اتصال به ایمیل‌سرور لیارا",
             link: "https://files.liara.ir/liara/nextjs/course/nextjs-e03.mp4",
           },
+          {
+            videoTitle: "جلسه 3: بازیابی دیتابیس MongoDB",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e04.mp4",
+          },
+          {
+            videoTitle: "جلسه 4: اتصال به Object Storage",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e05.mp4",
+          },
+          {
+            videoTitle: "جلسه 5: استقرار برنامه در لیارا",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e06.mp4",
+          },
+          {
+            videoTitle: "جلسه 6: اجرای موفق برنامه در لیارا",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e07.mp4",
+          },
+          {
+            videoTitle: "جلسه 7: قراردهی برنامه در حالت Production",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e08.mp4",
+          },
+          {
+            videoTitle: "جلسه 8: اتصال دامنه به برنامه",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e09.mp4",
+          },
+          {
+            videoTitle: "جلسه 9: راه‌اندازی CI/CD در برنامه",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e10.mp4",
+          },
         ]}
       />
       <br></br>
