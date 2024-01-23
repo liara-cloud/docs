@@ -3,6 +3,7 @@ import Link from "next/link";
 import Layout from "../../components/Layout";
 import Asciinema from "../../components/Asciinema";
 import ZoomableImage from "../../components/ZoomableImage";
+import Notice from "../../components/Notice";
 
 export default () => (
   <Layout>
@@ -35,10 +36,12 @@ export default () => (
         <a href="#writable_filesystem">writable کردن فایل‌سیستم لیارا</a>
       </li>
       <li>
-        <a href="#postgres">حداکثر فضای write در فایل سیستم writable</a>
+        <a href="#maximum_writable_space">
+          حداکثر فضای write در فایل سیستم writable
+        </a>
       </li>
       <li>
-        <a href="#postgres">پلتفرم‌های Docker و NextJS</a>
+        <a href="#docker_nextjs_filesystem">پلتفرم‌های Docker و NextJS</a>
       </li>
     </ul>
 
@@ -57,7 +60,7 @@ export default () => (
       شکست روبرو می‌شود.
     </p>
     <Asciinema id="readonly-file-system-error" />
-
+    <br></br>
     <p>
       بهترین روش برای آپدیت برنامه و ایجاد تغییرات در آن، این است که تغییرات در
       لوکال انجام و سپس در لیارا مستقر شوند. با توجه به این که لیارا تنها
@@ -72,8 +75,8 @@ export default () => (
     <p>
       با وجود Read-Only بودن فایل سیستم برنامه‌های لیارا، دایرکتوری
       <span className="code">/tmp</span> از این قاعده مستثنی است. می‌توانید از
-      این دایرکتوری که در همه پلن‌های ارائه شده، فضایی برابر 100 مگابایت دارد،
-      برای ذخیره سازی لاگ‌ها، فایل‌ها آپلودی موقتی و غیره استفاده کنید.
+      این دایرکتوری که در همه پلن‌ها ارائه شده است و فضایی برابر 100 مگابایت
+      دارد، برای ذخیره سازی لاگ‌ها، فایل‌های آپلودی موقتی و غیره استفاده کنید.
     </p>
 
     <h2 id="disks">دیسک‌ها</h2>
@@ -97,9 +100,43 @@ export default () => (
       <strong>فایل‌سیستم Read Only</strong> را غیر فعال کنید:
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/filesystem/disable-read-only-filesystem.gif" />
+    <br></br>
     <p>
       پس از انجام این‌کار، شما قادر خواهید بود تا تغییرات جدیدی رو بر روی پروژه،
       اعمال کنید:
+    </p>
+    <Asciinema id="writable-file-system" />
+    <br></br>
+    <p>
+      البته توجه داشته باشید که این تغییرات صرفاً موقتی هستند و پس از متوقف شدن
+      برنامه، به هر دلیلی (از جمله ری‌استارت شدن، استقرار مجدد و یا خاموش شدن)
+      ممکن است از بین بروند. و شما تا زمانی می‌توانید از این تغییرات استفاده
+      کنید که برنامه‌تان روشن و در حال اجرا، باشد.
+    </p>
+
+    <h2 id="maximum_writable_space">
+      حداکثر فضای write در فایل سیستم writable
+    </h2>
+    <p>
+      پس از این‌که فایل‌سیستم لیارا را از حالت Read-Only به Writable تغییر
+      می‌دهید؛ به صورت کلی 500 مگابایت فضای ذخیره‌سازی به برنامه شما تخصیص داده
+      می‌شود و شما می‌توانید تا سقف 500 مگابایت، داده جدید به برنامه خود در حالت
+      Writable اضافه کنید. هرچند که این تغییرات موقتی هستند و دائمی نیستند.
+    </p>
+    <Notice variant="info">
+      توجه داشته باشید که این 500 مگابایت فضای تخصیص داده شده، جدا از فضای
+      گرفته‌شده سورس کد پروژه شما است و شما افزون بر فضای اشغال‌شده سورس کد خود،
+      می‌توانید از 500 مگابایت فضای تخصیص داده شده، استفاده کنید.
+    </Notice>
+
+    <h2 id="docker_nextjs_filesystem">پلتفرم‌های Docker و NextJS</h2>
+    <p>
+      بر خلاف پلتفرم‌های دیگر در لیارا، که به صورت پیش‌فرض، فایل‌سیستم Read-Only
+      دارند؛ فایل‌سیستم پلتفرم‌های{" "}
+      <Link href="/app-deploy/docker/getting-started/">Docker</Link> و{" "}
+      <Link href="/app-deploy/nextjs/getting-started/">NextJS</Link> به صورت
+      پیش‌فرض writable است و شما می‌توانید تغییرات موقتی را بدون انجام کار اضافی
+      دیگری، در پروژه خود، اعمال کنید.
     </p>
   </Layout>
 );
