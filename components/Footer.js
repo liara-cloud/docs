@@ -220,6 +220,16 @@ const cols = [
         link: "/one-click-apps/pocketbase",
         alt: "هاست ابری پاکت‌بیس",
       },
+      {
+        title: "Ackee",
+        link: "/one-click-apps/ackee/",
+        alt: "هاست ابری آکی",
+      },
+      {
+        title: "Uptime Kuma",
+        link: "/one-click-apps/uptime-kuma/",
+        alt: "هاست ابری آپ‌تایم کوما",
+      },
     ],
   },
   {
