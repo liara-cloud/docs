@@ -428,6 +428,10 @@ const Videos = () => {
             videoTitle: "ارسال ایمیل",
             link: "https://files.liara.ir/liara/flask/flask-email-server.mp4",
           },
+          {
+            videoTitle: "استفاده از دیسک‌ها",
+            link: "https://files.liara.ir/liara/flask/flask-disks.mp4",
+          },
         ]}
       />
 
