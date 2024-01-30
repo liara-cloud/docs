@@ -594,6 +594,10 @@ const Videos = () => {
             videoTitle: "اتصال دامنه به برنامه WordPress Plus",
             link: "https://files.liara.ir/liara/domain/domain-wp.mp4",
           },
+          {
+            videoTitle: "نصب Varnish Cache بر روی WordPress",
+            link: "https://files.liara.ir/liara/wordpress/wordpress-varnish.mp4",
+          },
         ]}
       />
 
