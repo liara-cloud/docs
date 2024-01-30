@@ -1207,6 +1207,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Appsmith
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/varnish">
+                <PlatformIcon platform="varnish" />
+                Varnish Cache
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 

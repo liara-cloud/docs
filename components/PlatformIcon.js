@@ -42,6 +42,7 @@ import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
 import uptimekumaIcon from "../public/static/platforms/uptime-kuma.svg";
 import ackeeIcon from "../public/static/platforms/ackee.png";
 import appsmithIcon from "../public/static/platforms/appsmith.png";
+import varnishIcon from "../public/static/platforms/varnish.svg";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -125,6 +126,7 @@ const types = [
   { logo: uptimekumaIcon, alt: "uptimekuma" },
   { logo: ackeeIcon, alt: "ackee" },
   { logo: appsmithIcon, alt: "appsmith" },
+  { logo: varnishIcon, alt: "varnish" },
 
   // Instructions
   { logo: goIcon, alt: "go" },

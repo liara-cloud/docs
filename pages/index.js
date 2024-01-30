@@ -231,6 +231,11 @@ const DATA_SECTIONS = {
       title: "Appsmith",
       href: "/one-click-apps/appsmith",
     },
+    {
+      platform: "varnish",
+      title: "Varnish",
+      href: "/one-click-apps/varnish",
+    },
   ],
 };
 
