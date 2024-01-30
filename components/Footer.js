@@ -230,6 +230,16 @@ const cols = [
         link: "/one-click-apps/uptime-kuma/",
         alt: "هاست ابری آپ‌تایم کوما",
       },
+      {
+        title: "Appsmith",
+        link: "/one-click-apps/appsmith/",
+        alt: "هاست ابری اپ‌اسمیث",
+      },
+      {
+        title: "Varnish Cache",
+        link: "/one-click-apps/varnish/",
+        alt: "هاست ابری وارنیش‌کش",
+      },
     ],
   },
   {

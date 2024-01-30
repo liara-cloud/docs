@@ -456,7 +456,7 @@ video {
   line-height: 18px;
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 330px;
   flex-wrap: wrap;
   align-content: flex-start;
 }
