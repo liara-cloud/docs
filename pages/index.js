@@ -226,6 +226,11 @@ const DATA_SECTIONS = {
       title: "Ackee",
       href: "/one-click-apps/ackee",
     },
+    {
+      platform: "appsmith",
+      title: "Appsmith",
+      href: "/one-click-apps/appsmith",
+    },
   ],
 };
 

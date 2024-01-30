@@ -1201,6 +1201,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Ackee
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/appsmith">
+                <PlatformIcon platform="appsmith" />
+                Appsmith
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 
