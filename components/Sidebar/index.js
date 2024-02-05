@@ -1219,6 +1219,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 RabbitMQ
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/apacheanswer">
+                <PlatformIcon platform="apacheanswer" />
+                Apache Answer
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 

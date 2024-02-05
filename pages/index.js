@@ -119,11 +119,6 @@ const DATA_SECTIONS = {
       title: "Elastic",
       href: "/databases/elasticsearch/install",
     },
-    {
-      platform: "rabbitmq",
-      title: "RabbitMQ",
-      href: "/instructions/rabbitmq",
-    },
   ],
   ONE_CLICK_APP: [
     {
@@ -240,6 +235,11 @@ const DATA_SECTIONS = {
       platform: "rabbitmq",
       title: "RabbitMQ",
       href: "/one-click-apps/rabbitmq",
+    },
+    {
+      platform: "apacheanswer",
+      title: "ApacheAnswer",
+      href: "/one-click-apps/apacheanswer",
     },
   ],
 };

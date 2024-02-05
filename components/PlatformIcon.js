@@ -43,6 +43,7 @@ import uptimekumaIcon from "../public/static/platforms/uptime-kuma.svg";
 import ackeeIcon from "../public/static/platforms/ackee.png";
 import appsmithIcon from "../public/static/platforms/appsmith.png";
 import varnishIcon from "../public/static/platforms/varnish.svg";
+import apacheanswerIcon from "../public/static/platforms/apache-answer.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -127,6 +128,7 @@ const types = [
   { logo: ackeeIcon, alt: "ackee" },
   { logo: appsmithIcon, alt: "appsmith" },
   { logo: varnishIcon, alt: "varnish" },
+  { logo: apacheanswerIcon, alt: "apacheanswer" },
 
   // Instructions
   { logo: goIcon, alt: "go" },
