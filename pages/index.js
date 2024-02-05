@@ -236,6 +236,11 @@ const DATA_SECTIONS = {
       title: "Varnish",
       href: "/one-click-apps/varnish",
     },
+    {
+      platform: "rabbitmq",
+      title: "RabbitMQ",
+      href: "/one-click-apps/rabbitmq",
+    },
   ],
 };
 

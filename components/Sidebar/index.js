@@ -1213,6 +1213,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Varnish Cache
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/rabbitmq">
+                <PlatformIcon platform="rabbitmq" />
+                RabbitMQ
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 
