@@ -1225,6 +1225,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Apache Answer
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/nocodb">
+                <PlatformIcon platform="nocodb" />
+                NOCODB
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 

@@ -241,6 +241,11 @@ const DATA_SECTIONS = {
       title: "ApacheAnswer",
       href: "/one-click-apps/apacheanswer",
     },
+    {
+      platform: "nocodb",
+      title: "NOCODB",
+      href: "/one-click-apps/nocodb",
+    },
   ],
 };
 

@@ -44,6 +44,7 @@ import ackeeIcon from "../public/static/platforms/ackee.png";
 import appsmithIcon from "../public/static/platforms/appsmith.png";
 import varnishIcon from "../public/static/platforms/varnish.svg";
 import apacheanswerIcon from "../public/static/platforms/apache-answer.png";
+import nocodbIcon from "../public/static/platforms/nocodb.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -129,6 +130,7 @@ const types = [
   { logo: appsmithIcon, alt: "appsmith" },
   { logo: varnishIcon, alt: "varnish" },
   { logo: apacheanswerIcon, alt: "apacheanswer" },
+  { logo: nocodbIcon, alt: "nocodb" },
 
   // Instructions
   { logo: goIcon, alt: "go" },
