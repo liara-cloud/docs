@@ -246,6 +246,11 @@ const DATA_SECTIONS = {
       title: "NOCODB",
       href: "/one-click-apps/nocodb",
     },
+    {
+      platform: "chroma",
+      title: "Chroma",
+      href: "/one-click-apps/chroma",
+    },
   ],
 };
 

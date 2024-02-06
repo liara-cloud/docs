@@ -107,6 +107,30 @@ export default () => (
         <PlatformIcon platform="ackee" />
         <span>Ackee</span>
       </Link>
+      <Link href="/one-click-apps/appsmith">
+        <PlatformIcon platform="appsmith" />
+        <span>Appsmith</span>
+      </Link>
+      <Link href="/one-click-apps/varnish">
+        <PlatformIcon platform="varnish" />
+        <span>VarnishCache</span>
+      </Link>
+      <Link href="/one-click-apps/rabbitmq">
+        <PlatformIcon platform="rabbitmq" />
+        <span>RabbitMQ</span>
+      </Link>
+      <Link href="/one-click-apps/apacheanswer">
+        <PlatformIcon platform="apacheanswer" />
+        <span>ApacheAnswer</span>
+      </Link>
+      <Link href="/one-click-apps/nocodb">
+        <PlatformIcon platform="nocodb" />
+        <span>NOCODB</span>
+      </Link>
+      <Link href="/one-click-apps/chroma">
+        <PlatformIcon platform="chroma" />
+        <span>Chroma</span>
+      </Link>
     </div>
   </Layout>
 );

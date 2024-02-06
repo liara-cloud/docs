@@ -1231,6 +1231,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 NOCODB
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/chroma">
+                <PlatformIcon platform="chroma" />
+                Chroma
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 
