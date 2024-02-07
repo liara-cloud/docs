@@ -690,6 +690,10 @@ div.footer-animate-lines {
   gap: 5px;
 }
 
+.product-item-container_body.clickapps {
+  grid-template-columns: repeat(10, 1fr);
+}
+
 .product-item-container_body p {
   font-size: 14px;
   margin-top: -10px !important;
@@ -790,7 +794,7 @@ div.footer-animate-lines {
   }
 
   .product-item-container_body {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr) !important;
   }
 
   .min-products-container {

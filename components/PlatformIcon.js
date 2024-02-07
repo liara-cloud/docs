@@ -19,9 +19,9 @@ import angularIcon from "@liara/platformicons/glass/png/angular.png";
 
 // One-click-apps
 
-import matomoIcon from "@liara/platformicons/svg/matomo.svg";
-import unleashIcon from "@liara/platformicons/svg/unleash.svg";
-import n8nIcon from "@liara/platformicons/svg/n8n.svg";
+import matomoIcon from "@liara/platformicons/glass/png/matomo.png";
+import unleashIcon from "@liara/platformicons/glass/png/unleash.png";
+import n8nIcon from "@liara/platformicons/glass/png/n8n.png";
 import odooIcon from "@liara/platformicons/glass/png/odoo.png";
 import pusherIcon from "./../public/static/platforms/pusher.svg";
 import ghostIcon from "@liara/platformicons/glass/png/ghost.png";
@@ -39,13 +39,13 @@ import pocketbaseIcon from "@liara/platformicons/glass/png/pocketbase.png";
 import prestashopIcon from "@liara/platformicons/glass/png/prestashop.png";
 import mattermostIcon from "@liara/platformicons/glass/png/mattermost.png";
 import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
-import uptimekumaIcon from "../public/static/platforms/uptime-kuma.svg";
+import uptimekumaIcon from "@liara/platformicons/glass/png/kuma.png";
 import ackeeIcon from "../public/static/platforms/ackee.png";
-import appsmithIcon from "../public/static/platforms/appsmith.png";
-import varnishIcon from "../public/static/platforms/varnish.svg";
-import apacheanswerIcon from "../public/static/platforms/apache-answer.png";
-import nocodbIcon from "../public/static/platforms/nocodb.png";
-import chromaIcon from "../public/static/platforms/chroma.png";
+import appsmithIcon from "@liara/platformicons/glass/png/appsmith.png";
+import varnishIcon from "@liara/platformicons/glass/png/varnish.png";
+import apacheanswerIcon from "@liara/platformicons/glass/png/apache.png";
+import nocodbIcon from "@liara/platformicons/glass/png/nocodb.png";
+import chromaIcon from "@liara/platformicons/glass/png/chroma.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";

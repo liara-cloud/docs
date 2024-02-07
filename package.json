@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@liara/platformicons": "^3.8.1",
+    "@liara/platformicons": "^3.11.0",
     "lodash.debounce": "^4.0.8",
     "medium-zoom": "^1.1.0",
     "meilisearch": "^0.36.0",

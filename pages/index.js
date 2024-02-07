@@ -333,7 +333,7 @@ const Index = () => {
               </h2>
             </div>
           </div>
-          <div className="product-item-container_body">
+          <div className="clickapps product-item-container_body">
             {DATA_SECTIONS.ONE_CLICK_APP.map((item, idx) => (
               <Link key={idx} href={item.href}>
                 <PlatformIcon
