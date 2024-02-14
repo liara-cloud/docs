@@ -45,17 +45,17 @@ export default () => (
       <a href="#mysql-client">MySQL Command-Line Client</a> استفاده کنید.
     </Notice>
 
-    <h4 id="mysql-client">MySQL Command-Line Client</h4>
+    <h4 id="mysql-client">MariaDB Command-Line Client</h4>
     <p>
       در صورتی که قصد داشته باشید فایل پشتیبان را از طریق خط فرمان سیستم‌عامل
       خود در دیتابیس‌های MySQL و MariaDB بازیابی کنید می‌توانید به‌شکل زیر از
-      ابزار <span className="code">mysql-client</span> استفاده کنید.
+      ابزار <span className="code">mariadb-client</span> استفاده کنید.
     </p>
     <Highlight className="bash">
-      {`$ mysql -u DB_USER -pDB_PASS -h DB_HOST -P DB_PORT --database DB_NAME < /path/to/backup-file.sql`}
+      {`$ mariadb --host=DB_HOST --port=DB_PORT --user=DB_USER --password=DB_PASSWORD < DB_NAME.sql`}
     </Highlight>
 
-    <Asciinema id="465864" />
+    <Asciinema id="mariadb-restore" />
 
     <br />
 
