@@ -42,14 +42,14 @@ export default () => (
     <Notice variant="warning">
       ابزار phpMyAdmin برای بازیابی فایل‌های پشتیبان سنگین مناسب نیست. به‌همین
       علت توصیه می‌کنیم به‌عنوان جایگزین از ابزار{" "}
-      <a href="#mysql-client">MySQL Command-Line Client</a> استفاده کنید.
+      <a href="#mysql-client">MariaDB Command-Line Client</a> استفاده کنید.
     </Notice>
 
     <h4 id="mysql-client">MariaDB Command-Line Client</h4>
     <p>
       در صورتی که قصد داشته باشید فایل پشتیبان را از طریق خط فرمان سیستم‌عامل
-      خود در دیتابیس‌های MySQL و MariaDB بازیابی کنید می‌توانید به‌شکل زیر از
-      ابزار <span className="code">mariadb-client</span> استفاده کنید.
+      خود در دیتابیس‌ MariaDB بازیابی کنید می‌توانید به‌شکل زیر از ابزار{" "}
+      <span className="code">mariadb-client</span> استفاده کنید.
     </p>
     <Highlight className="bash">
       {`$ mariadb --host=DB_HOST --port=DB_PORT --user=DB_USER --password=DB_PASSWORD < DB_NAME.sql`}

@@ -181,6 +181,10 @@ const Videos = () => {
             videoTitle: "مدیریت حساب‌های کاربری در لیارا",
             link: "https://files.liara.ir/liara/liara-features/managing-multiple-accounts.mp4",
           },
+          {
+            videoTitle: "کاهش حجم دیسک‌ها",
+            link: "https://files.liara.ir/liara/disks/reduce-disk-size.mp4",
+          },
         ]}
       />
 
@@ -431,6 +435,24 @@ const Videos = () => {
           {
             videoTitle: "استفاده از دیسک‌ها",
             link: "https://files.liara.ir/liara/flask/flask-disks.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"پلتفرم Python"}
+        platform="python"
+        style={{ marginTop: 40 }}
+        badge={"Python Platform"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "استقرار با Liara CLI",
+            link: "https://files.liara.ir/liara/python/python-desktop.mp4",
+          },
+          {
+            videoTitle: "استقرار با Liara Desktop",
+            link: "https://files.liara.ir/liara/python/python-cli.mp4",
           },
         ]}
       />

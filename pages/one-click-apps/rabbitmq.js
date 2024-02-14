@@ -39,6 +39,13 @@ export default () => (
 
     <ZoomableImage src="https://files.liara.ir/docs/rabbitmq/rabbitmq.gif"></ZoomableImage>
 
+    <video
+      src="https://files.liara.ir/liara/rabbitmq/rabbitmq.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       برای راه‌اندازی برنامه‌ی آماده RabbitMQ باید در بخش{" "}
       <a href="https://console.liara.ir/apps" target="_blank">
