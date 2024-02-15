@@ -15,7 +15,7 @@ const PLATFORM_TAGS = [
   { title: "PHP", alt: "php" },
   { title: "Django", alt: "django" },
   { title: "Flask", alt: "flask" },
-  { title: "Net.", alt: "netcore" },
+  { title: ".Net", alt: "netcore" },
   { title: "React", alt: "react" },
   { title: "Angular", alt: "angularjs" },
   { title: "Vue", alt: "vue" },
@@ -31,7 +31,6 @@ const DB_TAGS = [
   { title: "MongoDB", alt: "mongodb" },
   { title: "Redis", alt: "redis" },
   { title: "Elastic", alt: "elastic" },
-  { title: "RabbitMQ", alt: "rabbitmq" },
 ];
 
 const Videos = () => {
@@ -77,10 +76,10 @@ const Videos = () => {
               src="/static/course/laravel.png"
             />
           </Link>
-          <Link style={{ border: "none" }} href="/tv/courses/docker">
+          <Link style={{ border: "none" }} href="/tv/courses/php">
             <img
               style={{ borderColor: "#ffffff22" }}
-              src="/static/course/docker.png"
+              src="/static/course/php.png"
             />
           </Link>
           <Link style={{ border: "none" }} href="/tv/courses/golang">
@@ -786,11 +785,41 @@ const Videos = () => {
       />
 
       <Section
-        name={"RabbitMQ"}
+        name={"برنامه‌های آماده"}
         style={{ marginTop: 40 }}
-        badge={"rabbitmq"}
+        badge={"one-click-apps"}
         setOpenDialog={setOpenDialog}
         links={[
+          {
+            videoTitle: "اتصال به Headless Chrome با Puppeteer",
+            link: "https://files.liara.ir/liara/headlesschrome/nodejs-hc.mp4",
+            platform: "chrome",
+          },
+          {
+            videoTitle: "اتصال به Headless Chrome با Pyppeteer",
+            link: "https://files.liara.ir/liara/headlesschrome/python-pyppeteer.mp4",
+            platform: "chrome",
+          },
+          {
+            videoTitle: "راه‌اندازی RocketChat",
+            link: "https://files.liara.ir/liara/rocketchat/rocketchat.mp4",
+            platform: "rocketchat",
+          },
+          {
+            videoTitle: "راه‌اندازی Metabase",
+            link: "https://files.liara.ir/liara/metabase/create-metabase.mp4",
+            platform: "metabase",
+          },
+          {
+            videoTitle: "راه‌اندازی Mattermost",
+            link: "https://files.liara.ir/liara/mattermost/create-mattermost.mp4",
+            platform: "mattermost",
+          },
+          {
+            videoTitle: "راه‌اندازی Varnish Cache",
+            link: "https://files.liara.ir/liara/wordpress/wordpress-varnish.mp4",
+            platform: "varnish",
+          },
           {
             videoTitle: "راه اندازی RabbitMQ",
             link: "https://files.liara.ir/liara/rabbitmq/rabbitmq.mp4",

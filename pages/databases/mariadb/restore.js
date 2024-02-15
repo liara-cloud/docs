@@ -52,7 +52,7 @@ export default () => (
       <span className="code">mariadb-client</span> استفاده کنید.
     </p>
     <Highlight className="bash">
-      {`$ mariadb --host=DB_HOST --port=DB_PORT --user=DB_USER --password=DB_PASSWORD < DB_NAME.sql`}
+      {`$ mariadb -h DB_HOST -P DB_PORT -u DB_USER -pDB_PASSWORD < backup.sql`}
     </Highlight>
 
     <Asciinema id="mariadb-restore" />
