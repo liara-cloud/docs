@@ -22,6 +22,7 @@ const PLATFORM_TAGS = [
   { title: "Static", alt: "HTML5" },
   { title: "Docker", alt: "docker" },
   { title: "WP Plus", alt: "wordpress" },
+  { title: "One Click Apps", alt: "1clickapps" },
 ];
 const DB_TAGS = [
   { title: "MySQL", alt: "mysql" },
@@ -789,6 +790,7 @@ const Videos = () => {
         style={{ marginTop: 40 }}
         badge={"one-click-apps"}
         setOpenDialog={setOpenDialog}
+        id="1clickapps"
         links={[
           {
             videoTitle: "اتصال به Headless Chrome با Puppeteer",
@@ -858,7 +860,7 @@ const Videos = () => {
 export default Videos;
 
 export const Section = props => {
-  const { name, badge, links, platform, style, setOpenDialog } = props;
+  const { name, badge, links, platform, style, setOpenDialog, id } = props;
 
   const handleClickButton = src => {
     setOpenDialog({ isOpen: true, src });
@@ -866,7 +868,7 @@ export const Section = props => {
 
   return (
     <Fragment>
-      <div style={style} id={platform} className="page-head">
+      <div style={style} id={platform || id} className="page-head">
         <div className="page-title">
           <h1>{name}</h1>
           <span className="page-description">({badge})</span>
