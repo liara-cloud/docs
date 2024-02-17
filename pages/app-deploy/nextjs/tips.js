@@ -106,6 +106,28 @@ export default () => (
   },
 }`}
     </Highlight>
+
+    <p>
+      همچنین اگر شما از Next Image استفاده می‌کنید باید هاست‌های‌تان را در فایل{" "}
+      <span className="code">next.config.js</span>
+      اضافه کنید. برای مثال نمونه کد زیر به تمام هاست‌ها اجازه دسترسی می‌دهد که
+      شما می‌توانید این مورد به صورت دلخواه تغییر بدید.
+    </p>
+    <Highlight className="json">
+      {`module.exports = {
+  experimental: {
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "**",
+        },
+      ],
+    },
+  },
+}`}
+    </Highlight>
+
     <p>
       درنهایت دستور <span className="code">npm run build</span> را اجرا کنید تا
       خروجی‌های نهایی در مسیر پیش‌فرض <span className="code">out</span> قرار
