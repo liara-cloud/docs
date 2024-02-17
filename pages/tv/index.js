@@ -803,6 +803,11 @@ const Videos = () => {
             platform: "chrome",
           },
           {
+            videoTitle: "اتصال به Headless Chrome با Selenium",
+            link: "https://files.liara.ir/liara/headlesschrome/headless-chrome-selenium.mp4",
+            platform: "chrome",
+          },
+          {
             videoTitle: "راه‌اندازی RocketChat",
             link: "https://files.liara.ir/liara/rocketchat/rocketchat.mp4",
             platform: "rocketchat",

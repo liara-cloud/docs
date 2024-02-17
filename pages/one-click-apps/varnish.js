@@ -69,29 +69,37 @@ export default () => (
       Varnish به برنامه‌تان، متصل نخواهد شد.
     </Notice>
 
+    <h3 id="set-server-port">تنظیم آدرس سرور و پورت</h3>
+    <p>
+      در حین ساخت برنامه Varnish Cache از شما خواسته می‌شود تا آدرس سرور و پورتی
+      که برنامه در آن به درخواست کاربران listen می‌کند را وارد کنید؛ دقت داشته
+      باشید که در اینجا باید حتماً شناسه برنامه مد نظر را در فیلد آدرس سرور وارد
+      کنید. در فیلد پورت هم کافیست تا پورت آن برنامه را بنویسید.
+    </p>
+    <ZoomableImage src="https://files.liara.ir/docs/varnish/varnish-conf.png"></ZoomableImage>
+
     <h3 id="envs">تنظیم متغیرهای محیطی Varnish Cache</h3>
     <p>
       پس از ساخت برنامه Varnish Cache کافیست که وارد قسمت{" "}
       <strong>تنظیمات</strong> آن در پنل‌کاربری شوید و در قسمت متغیرهای محیطی،
-      متغیرهای محیطی موجود را بر حسب اطلاعات زیر، تغییر دهید:
+      متغیرهای محیطی موجود را، طبق نیاز خود تغییر دهید:
     </p>
     <ul>
       <li>
-        <span className="code">VARNISH_BACKEND_HOST</span>: مقدار این متغیر باید
-        شناسه برنامه مد نظر شما باشد.
+        <span className="code">VARNISH_BACKEND_HOST</span>: برابر با مقدار شناسه
+        برنامه هدف که آن را در حین ساخت varnish cache مشخص کردید.
       </li>
       <li>
-        <span className="code">VARNISH_BACKEND_PORT</span>: مقدار این متغیر باید
-        پورتی باشد که برنامه شما در آن به درخواست کاربران listen می‌کند.
+        <span className="code">VARNISH_BACKEND_PORT</span>: برابر با پورت برنامه
+        هدف که آن را در حین ساخت varnish caceh مشخص کردید.
       </li>
       <li>
-        <span className="code">VARNISH_TTL</span>: در این متغیر باید مقدار
-        time-to-live را مشخص کنید. 120 برای دو دقیقه (مقدار استاندارد) مناسب
-        است.
+        <span className="code">VARNISH_TTL</span>: مقدار time-to-live که به صورت
+        پیش‌فرض برابر با 3600 است.
       </li>
       <li>
-        <span className="code">VARNISH_SIZE</span>: در این متغیر باید اندازه
-        حافظه cache را مشخص کنید (مقدار استاندارد آن 2G است).
+        <span className="code">VARNISH_SIZE</span>: مقدار حافظه cache که به صورت
+        پیش‌فرض برابر با 2 گیگابایت است.
       </li>
     </ul>
     <Notice variant="info">

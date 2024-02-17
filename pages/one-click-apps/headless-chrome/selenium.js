@@ -106,6 +106,19 @@ const driver = new webdriver.Builder()
       <span className="code">TOKEN</span> همان token شما خواهد بود.
     </p>
     <h2 id="python">اتصال به Headless Chrome با کتابخانه Selenium در Python</h2>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="https://files.liara.ir/liara/headlesschrome/headless-chrome-selenium.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       در ابتدا، برای استفاده از کتابخانه Selenium، شما بایستی آن را با استفاده
       از pip نصب کنید:
