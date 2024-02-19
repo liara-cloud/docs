@@ -41,9 +41,6 @@ export default () => (
         <a href="#next-isr">استفاده از قابلیت ISR</a>
       </li>
       <li>
-        <a href="#cors">رفع خطای CORS</a>
-      </li>
-      <li>
         <a href="#next-static-assets">Static Assets</a>
       </li>
     </ul>
@@ -228,55 +225,6 @@ export default () => (
       لازم به ذکر است که با هر بار دیپلوی یا ری‌استارت برنامه‌تون، فایل‌های کش
       (Cache) شده و صفحات ساخته شده در این مسیرها حذف خواهند شد.
     </Notice>
-
-    <h3 id="cors">رفع خطای CORS</h3>
-    <p>
-      با وجود انواع مختلف فریم‌ورک‌ها، برای رفع خطای CORS راه حل‌های متفاوتی
-      وجود دارد. برای مثال در فریم‌ورک NextJS باید طبق{" "}
-      <a
-        href="https://nextjs.org/docs/api-routes/api-middlewares#connectexpress-middleware-support"
-        target="_blank"
-      >
-        مستندات رسمی
-      </a>{" "}
-      این فریم‌ورک، پکیج{" "}
-      <a href="https://www.npmjs.com/package/cors" target="_blank">
-        cors
-      </a>{" "}
-      را نصب کرده:
-    </p>
-    <Highlight className="bash">{`$ npm i cors`}</Highlight>
-    <p>و به‌شکل زیر از آن در برنامه‌ی خود استفاده کنید:</p>
-    <Highlight className="javascript">{`import Cors from 'cors'
-
-// Initializing the cors middleware
-const cors = Cors({
-  methods: ['GET', 'HEAD'],
-})
-
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result)
-      }
-
-      return resolve(result)
-    })
-  })
-}
-
-async function handler(req, res) {
-  // Run the middleware
-  await runMiddleware(req, res, cors)
-
-  // Rest of the API logic
-  res.json({ message: 'Hello Everyone!' })
-}
-
-export default handler`}</Highlight>
 
     <h3 id="next-static-assets">Static Assets</h3>
     <p>
