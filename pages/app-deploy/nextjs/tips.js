@@ -43,6 +43,9 @@ export default () => (
       <li>
         <a href="#next-static-assets">Static Assets</a>
       </li>
+      <li>
+        <a href="#econnreset">رفع خطای ECONNRESET</a>
+      </li>
     </ul>
 
     <h3 id="next-public-envs">بیلد متغیر‌های محیطی برای مرورگر</h3>
@@ -268,6 +271,12 @@ export function Example() {
       توسط Next.js ارائه می شوند. فایل‌های اضافه شده در زمان اجرا، در دسترس
       نخواهند بود. برای ذخیره‌ی دائمی فایل‌ها، توصیه می‌‌شود از سرویس
       <Link href="/buckets/about"> ذخیره‌ سازی ابری</Link> لیارا استفاده کنید.
+    </p>
+
+    <h3 id="econnreset">رفع خطای ECONNRESET</h3>
+    <p>
+      این خطا به دلیل رسیدن به حداکثر محدودیت منابع رخ می‌دهد و با ارتقا پلن،
+      رفع می‌شود.
     </p>
   </Layout>
 );
