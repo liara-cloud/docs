@@ -153,7 +153,6 @@ const cols = [
     title: "برنامه‌های‌ آماده (One Click Apps)",
     children: [
       { title: "Ghost", link: "/one-click-apps/ghost", alt: "هاست ابری گوست" },
-      { title: "Gitea", link: "/one-click-apps/gitea", alt: "هاست ابری گیتی" },
       {
         title: "Soketi",
         link: "/one-click-apps/soketi/install",
@@ -186,59 +185,9 @@ const cols = [
         alt: "هاست ابری مترموست",
       },
       {
-        title: "RocketChat",
-        link: "/one-click-apps/rocketchat",
-        alt: "هاست ابری راکت‌چت‌",
-      },
-      {
-        title: "Nextcloud",
-        link: "/one-click-apps/nextcloud",
-        alt: "هاست ابری نکست کلود",
-      },
-      {
-        title: "Imgproxy",
-        link: "/one-click-apps/imgproxy",
-        alt: "هاست ابری ای‌ام‌جی پروکسی",
-      },
-      {
-        title: "Prestashop",
-        link: "/one-click-apps/prestashop",
-        alt: "هاست ابری پرستاشاپ",
-      },
-      {
-        title: "Chrome",
-        link: "/one-click-apps/headless-chrome/install",
-        alt: "هاست ابری کروم",
-      },
-      {
-        title: "n8n",
-        link: "/one-click-apps/n8n",
-        alt: "هاست ابری ان‌ایت‌ان",
-      },
-      {
-        title: "PocketBase",
-        link: "/one-click-apps/pocketbase",
-        alt: "هاست ابری پاکت‌بیس",
-      },
-      {
-        title: "Ackee",
-        link: "/one-click-apps/ackee/",
-        alt: "هاست ابری آکی",
-      },
-      {
-        title: "Uptime Kuma",
-        link: "/one-click-apps/uptime-kuma/",
-        alt: "هاست ابری آپ‌تایم کوما",
-      },
-      {
-        title: "Appsmith",
-        link: "/one-click-apps/appsmith/",
-        alt: "هاست ابری اپ‌اسمیث",
-      },
-      {
-        title: "Varnish Cache",
-        link: "/one-click-apps/varnish/",
-        alt: "هاست ابری وارنیش‌کش",
+        title: "بیشتر",
+        link: "/#1clickapps",
+        alt: "برنامه های آماده",
       },
     ],
   },

@@ -319,7 +319,7 @@ const Index = () => {
             ))}
           </div>
         </div>
-        <div className="product-item-container">
+        <div name="1clickapps" className="product-item-container">
           <div className="product-item-container_content">
             <div
               style={{ display: "flex", alignItems: "center", marginRight: 12 }}
