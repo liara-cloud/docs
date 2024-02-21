@@ -62,7 +62,7 @@ export default ({ children }) => {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <img style={telegramStyle} src={"./static/telegram.svg"} />
+          <img style={telegramStyle} src={"/static/telegram.svg"} />
         </a>
 
         <div className="wrapper">
