@@ -75,6 +75,10 @@ const Laravel = () => {
             videoTitle: "جلسه 9: راه‌اندازی CI/CD در برنامه",
             link: "https://files.liara.ir/liara/nextjs/course/nextjs-e10.mp4",
           },
+          {
+            videoTitle: "جلسه 10: توضیحات و نکات تکمیلی",
+            link: "https://files.liara.ir/liara/nextjs/course/nextjs-e11.mp4",
+          },
         ]}
       />
       <br></br>

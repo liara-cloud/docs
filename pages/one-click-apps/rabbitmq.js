@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import PlatformIcon from "../../components/PlatformIcon";
 import ZoomableImage from "../../components/ZoomableImage";
 import Highlight from "react-highlight";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -45,6 +46,14 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
+
+    <Notice variant="info">
+      پروژه مورد استفاده در ویدیوی فوق در{" "}
+      <Link href="https://github.com/liara-cloud/rabbitmq-getting-started.git">
+        گیت‌هاب لیارا
+      </Link>{" "}
+      قابل دسترسی می‌باشد.{" "}
+    </Notice>
 
     <p>
       برای راه‌اندازی برنامه‌ی آماده RabbitMQ باید در بخش{" "}
