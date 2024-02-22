@@ -158,6 +158,18 @@ export default () => (
 }
 `}
     </Highlight>
+    <p>
+      سپس کد زیر را به فایل <span className="code">next.config.js</span>{" "}
+      پروژه‌تان اضافه کنید:
+    </p>
+    <Highlight className="javascript">
+      {`module.exports = {
+  // ...
+  output: 'standalone',
+  // ...
+}
+`}
+    </Highlight>
     <Notice variant="warning">
       توجه داشته باشید که فقط و فقط این قابلیت را زمانی غیرفعال کنید که کاملا
       به‌نتایج آن آگاه باشید.
