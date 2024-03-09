@@ -52,6 +52,9 @@ export default () => (
         <a href="#django">استفاده از Imgproxy در برنامه‌های Django</a>
       </li>
       <li>
+        <a href="#laravel">استفاده از Imgproxy در برنامه‌های Laravel</a>
+      </li>
+      <li>
         <a href="#tips">توضیحات و نکات تکمیلی</a>
       </li>
     </ul>
@@ -157,6 +160,107 @@ class Image(models.Model):
       <span className="code">img_proxy_conf</span> موجود در کد فوق را با توجه به
       نیاز خود تغییر دهید.
     </p>
+
+    <h3 id="laravel">استفاده از Imgproxy در برنامه‌های Laravel</h3>
+    <p>
+      برای استفاده از Imgproxy در ابتدا بایستی متغیرهای محیطی زیر را به فایل{" "}
+      <span className="code">.env</span> یا بخش متغیرهای محیطی برنامه خود اضافه
+      کنید:{" "}
+    </p>
+    <Highlight className="plaintext">
+      {`ENDPOINT_URL=your-host-address 
+IMGPROXY_URL=your-imgproxy-address`}
+    </Highlight>
+    <Notice variant="warning">
+      دقت داشته باشید که مقدار <span className="code">ENDPOINT</span> را حتماً
+      با <span className="code">http</span> یا{" "}
+      <span className="code">https</span> وارد کنید و همچنین مقدار{" "}
+      <span className="code">IMGPROXY_URL</span> باید برابر با آدرس کامل برنامه
+      Imgproxy باشد.
+    </Notice>
+    <p>قطعه کد زیر یک مثال برای مقدار این متغیرهای محیطی است:</p>
+    <Highlight className="plaintext">
+      {`ENDPOINT_URL=https://laravel-app.liara.run
+IMGPROXY_URL=https://imgproxy-app.liara.run`}
+    </Highlight>
+
+    <p>
+      اکنون کافیست تا در دایرکتوری <span className="code">config</span> یک فایل
+      به نام <span className="code">custom.php</span> ایجاد کنید و قطعه کد زیر
+      را درون آن قرار دهید:
+    </p>
+    <Highlight className="php">
+      {`<?php
+
+return [
+    'img_proxy_conf' => [
+        'signature' => '_',
+        'options' => 'resize:fill:300:400:0',
+        'gravity' => 'gravity:sm',
+    ],
+];
+`}
+    </Highlight>
+    <p>
+      دقت داشته باشید که مقادیر درون{" "}
+      <span className="code">img_proxy_conf</span> برای مثال آورده شده‌اند و شما
+      می‌توانید مقادیر آن را متناسب با نیازهای خود تغییر دهید.
+    </p>
+    <p>
+      اکنون، می‌توانید از imgproxy در برنامه خود استفاده کنید؛ قطعه کد زیر،
+      مثالی از استفاده imgproxy در کنترلر برنامه laravel است:
+    </p>
+    <Highlight className="php">
+      {`<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Photo;
+use Illuminate\Support\Facades\Storage;
+
+class PhotoController extends Controller
+{
+    public function store(Request $request)
+    {
+        $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $imgProxyConf = config('custom.img_proxy_conf');
+        $options = $imgProxyConf['options'];
+        $gravity = $imgProxyConf['gravity'];
+        $signature = $imgProxyConf['signature'];
+
+
+        $phototemp = $request->file('photo')->store('public/photos');
+        $photoPath_ = env('ENDPOINT_URL') . Storage::url($phototemp);
+        $photoPath = env('IMGPROXY_URL') . '/' . $signature . '/' . $options . '/' . $gravity . '/plain/' . $photoPath_;
+
+
+        Photo::create([
+            'path' => $photoPath,
+        ]);
+
+        return redirect()->route('photo.index');
+    }
+    
+    public function index()
+    {
+        $photos = Photo::all();
+        return view('photos.index', compact('photos'));
+    }
+}
+`}
+    </Highlight>
+
+    <Notice variant="info">
+      سورس کامل قطعه کد فوق در{" "}
+      <Link href="https://github.com/liara-cloud/imgproxy-getting-started/tree/laravel-app">
+        گیت‌هاب لیارا
+      </Link>{" "}
+      موجود است که می‌توانید از آن استفاده کنید.
+    </Notice>
 
     <h3 id="tips">🎯 توضیحات و نکات تکمیلی</h3>
     <h4 id="url-signature">اضافه کردن URL signature</h4>
