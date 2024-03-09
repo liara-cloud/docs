@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import Notice from "../../components/Notice";
 import PlatformIcon from "../../components/PlatformIcon";
 import ZoomableImage from "../../components/ZoomableImage";
+import Link from "next/link";
 
 export default () => (
   <Layout>
@@ -42,7 +43,20 @@ export default () => (
       را مطالعه کنید.
     </p>
 
-    <h3>🚀 راه‌اندازی</h3>
+    <h3>فهرست عناوین:</h3>
+    <ul className="mt-0">
+      <li>
+        <a href="#install">راه‌اندازی Imgproxy</a>
+      </li>
+      <li>
+        <a href="#django">استفاده از Imgproxy در برنامه‌های Django</a>
+      </li>
+      <li>
+        <a href="#tips">توضیحات و نکات تکمیلی</a>
+      </li>
+    </ul>
+
+    <h3 id="insta">🚀 راه‌اندازی Imgproxy</h3>
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
       ‌را مشاهده کنید.
@@ -62,7 +76,89 @@ export default () => (
       <strong>ایجاد برنامه</strong> کلیک کنید.
     </p>
 
-    <h3>🎯 توضیحات و نکات تکمیلی</h3>
+    <h3 id="django">استفاده از Imgproxy در برنامه‌های Django</h3>
+    <p>
+      برای استفاده از Imgproxy در برنامه‌های Django، نیاز به نصب ماژول و یا
+      کتابخانه خاصی نیست! در ادامه، یک مثال از نحوه استفاده Imgproxy آمده است:
+    </p>
+
+    <p>
+      در ابتدا، کافیست تا متغیرهای <span className="code">ENDPOINT</span> و{" "}
+      <span className="code">IMGPROXY_URL</span> را به شکل زیر به فایل{" "}
+      <span className="code">settings.py</span> اضافه کنید:
+    </p>
+
+    <Highlight className="python">
+      {`import os
+ENDPOINT     = os.getenv("ENDPOINT", 'http://127.0.0.1:8000')
+IMGPROXY_URL = os.getenv("IMGPROXY_URL", "")`}
+    </Highlight>
+
+    <Notice variant="warning">
+      دقت داشته باشید که مقدار <span className="code">ENDPOINT</span> را حتماً
+      با <span className="code">http</span> یا{" "}
+      <span className="code">https</span> وارد کنید و همچنین مقدار{" "}
+      <span className="code">IMGPROXY_URL</span> باید برابر با آدرس کامل برنامه
+      Imgproxy باشد.
+    </Notice>
+
+    <p>
+      برای مثال، اگر که از فایل <span className="code">.env</span> استفاده
+      می‌کنید، مقادیر دو متغیر فوق را باید همانند مقادیر زیر وارد کنید:
+    </p>
+    <Highlight className="plaintext">
+      {`ENDPOINT=https://django-app-test.liara.run
+IMGPROXY_URL=https://imgproxy-app.liara.run`}
+    </Highlight>
+
+    <p>
+      اکنون می‌توانید از Imgproxy در برنامه خود استفاده کنید؛ برای مثال، قطعه کد
+      زیر در فایل models.py به کار رفته است:
+    </p>
+    <Highlight className="python">
+      {`from django.db import models
+from django.conf import settings
+
+img_proxy_conf = {
+    "signature": "_",
+    "options": "resize:fill:300:400:0",
+    "gravity": "gravity:sm",}
+
+class Image(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='')
+    full_path = models.CharField(max_length=255)
+    final_result = models.CharField(max_length=255)
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            self.full_path = f"{settings.ENDPOINT}{self.image.url}"
+            if settings.IMGPROXY_URL != "":
+                self.final_result = (
+                    f"{settings.IMGPROXY_URL}/{img_proxy_conf['signature']}/"
+                    f"{img_proxy_conf['options']}/{img_proxy_conf['gravity']}/plain/"
+                    f"{self.full_path}")
+            else:
+                self.final_result = self.image.url
+        super().save(*args, **kwargs)
+`}
+    </Highlight>
+    <Notice variant="info">
+      سورس کامل قطعه کد فوق در{" "}
+      <Link href="https://github.com/liara-cloud/imgproxy-getting-started.git">
+        گیت‌هاب لیارا
+      </Link>{" "}
+      موجود است که می‌توانید از آن استفاده کنید.
+    </Notice>
+
+    <p>
+      در نظر داشته باشید که کد فوق، یک مثال از کاربرد Imgproxy است و شما
+      می‌توانید فیلد <span className="code">option</span> درون دیکشنری{" "}
+      <span className="code">img_proxy_conf</span> موجود در کد فوق را با توجه به
+      نیاز خود تغییر دهید.
+    </p>
+
+    <h3 id="tips">🎯 توضیحات و نکات تکمیلی</h3>
     <h4 id="url-signature">اضافه کردن URL signature</h4>
 
     <p>
