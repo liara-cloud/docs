@@ -64,6 +64,7 @@ p {
   padding: 0 20px;
   margin-top: 24px;
   background-color: white;
+  width: 100%;
 }
 
 .article h1,
@@ -794,7 +795,7 @@ div.footer-animate-lines {
   }
 
   .product-item-container_body {
-    grid-template-columns: repeat(5, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
   }
 
   .min-products-container {
