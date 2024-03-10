@@ -55,6 +55,9 @@ export default () => (
         <a href="#laravel">استفاده از Imgproxy در برنامه‌های Laravel</a>
       </li>
       <li>
+        <a href="#nodejs">استفاده از Imgproxy در برنامه‌های NodeJS</a>
+      </li>
+      <li>
         <a href="#tips">توضیحات و نکات تکمیلی</a>
       </li>
     </ul>
@@ -257,6 +260,84 @@ class PhotoController extends Controller
     <Notice variant="info">
       سورس کامل قطعه کد فوق در{" "}
       <Link href="https://github.com/liara-cloud/imgproxy-getting-started/tree/laravel-app">
+        گیت‌هاب لیارا
+      </Link>{" "}
+      موجود است که می‌توانید از آن استفاده کنید.
+    </Notice>
+
+    <h3 id="nodejs">استفاده از Imgproxy در برنامه‌های NodeJS</h3>
+    <p>
+      برای استفاده از Imgproxy باید همانند دو پلتفرم دیگر، متغیرهای محیطی زیر را
+      به فایل <span className="code">.env</span> یا بخش متغیرهای محیطی برنامه
+      خود اضافه کنید:
+    </p>
+
+    <Highlight className="plaintext">
+      {`ENDPOINT_URL=https://laravel-app.liara.run
+IMGPROXY_URL=https://imgproxy-app.liara.run`}
+    </Highlight>
+
+    <Notice variant="warning">
+      در نظر داشته باشید که مقدار متغیرهای محیطی فوق، فرضی هستند و باید آن‌ها را
+      با مقادیر خود، جایگزین کنید.
+    </Notice>
+
+    <p>اکنون می‌توانید تنظیمات مربوط به Imgproxy را در برنامه خود وارد کنید:</p>
+    <Highlight className="js">
+      {`const ENDPOINT_URL = process.env.ENDPOINT_URL;
+const IMGPROXY_URL = process.env.IMGPROXY_URL;
+
+const img_proxy_conf = {
+    "signature": "_",
+    "options": "resize:fill:300:400:0",
+    "gravity": "gravity:sm"
+};
+
+const imgproxy_conf = \`\${IMGPROXY_URL}/\${img_proxy_conf.signature}/\${img_proxy_conf.options}/\${img_proxy_conf.gravity}/plain/\`;
+`}
+    </Highlight>
+
+    <p>
+      دقت داشته باشید که مقادیر درون{" "}
+      <span className="code">img_proxy_conf</span> برای مثال آورده شده‌اند و شما
+      می‌توانید مقادیر آن را متناسب با نیازهای خود تغییر دهید.
+    </p>
+    <p>
+      در نهایت، می‌توانید با استفاده از قطعه کد زیر، از imgproxy در برنامه خود
+      استفاده کنید:
+    </p>
+
+    <Highlight className="js">
+      {`app.get('/images', (req, res) => {
+    fs.readdir('./public/uploads', (err, files) => {
+        if (err) {
+            console.error('Error reading directory:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        const imageFiles = files.filter(file => {
+            const extname = path.extname(file);
+            return ['.jpg', '.jpeg', '.png', '.gif'].includes(extname.toLowerCase());
+        });
+
+        const processedImages = imageFiles.map(image => {
+            const temp = \`\${ENDPOINT_URL}/public/uploads/\${image}\`;
+            return \`\${imgproxy_conf}\${temp}\`;
+        });
+
+        processedImages.forEach(image => {
+            console.log(image);
+        });
+
+        res.render('images', { images: processedImages });
+    });
+});`}
+    </Highlight>
+
+    <Notice variant="info">
+      سورس کامل قطعه کد فوق در{" "}
+      <Link href="https://github.com/liara-cloud/imgproxy-getting-started/tree/nodejs-app">
         گیت‌هاب لیارا
       </Link>{" "}
       موجود است که می‌توانید از آن استفاده کنید.
