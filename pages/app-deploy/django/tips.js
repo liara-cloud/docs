@@ -270,6 +270,13 @@ location ~ /\\.well-known {
   allow all;
 }`}
     </Highlight>
+
+    <Notice variant="warning">
+      این نکته را در نظر داشته باشید که امکان تغییر تنظیمات nginx از ابتدا وجود
+      ندارد. شما می‌توانید تنها برخی از این تنظیمات را شخصی‌سازی کنید. در نهایت،
+      فایل تنظیمات شما داخل بلاک server در تنظیمات اصلی، include خواهد شد.
+    </Notice>
+
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
       برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping می‌توانید
