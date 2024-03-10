@@ -30,23 +30,15 @@ export default () => (
       remote برای ما فراهم کرده است.
     </p>
 
-    <p>
-      یکی دیگر از جذابیت‌های Imgproxy، امکان شخصی‌سازی این برنامه با استفاده از
-      متغیرهای محیطی است که برای کسب اطلاعات بیشتر می‌توانید{" "}
-      <a
-        href="https://docs.imgproxy.net/configuration"
-        target="_blank"
-        rel="noopener"
-      >
-        مستندات پیکربندی Imgproxy
-      </a>{" "}
-      را مطالعه کنید.
-    </p>
-
     <h3>فهرست عناوین:</h3>
     <ul className="mt-0">
       <li>
         <a href="#install">راه‌اندازی Imgproxy</a>
+      </li>
+      <li>
+        <a href="#bucket">
+          استفاده از Imgproxy بر روی فضای ذخیره‌سازی ابری لیارا
+        </a>
       </li>
       <li>
         <a href="#django">استفاده از Imgproxy در برنامه‌های Django</a>
@@ -80,6 +72,47 @@ export default () => (
       انتخاب و یک شناسه‌ی یکتا برای برنامه‌ی خود درنظر بگیرید، همچنین پلن مورد
       نظر خود را انتخاب کنید و در آخر بر روی دکمه‌ی{" "}
       <strong>ایجاد برنامه</strong> کلیک کنید.
+    </p>
+
+    <h3 id="bucket">استفاده از Imgproxy بر روی فضای ذخیره‌سازی ابری لیارا</h3>
+    <p>
+      برای استفاده از Imgproxy بر روی عکس‌های ذخیره‌شده در فضای ذخیره‌سازی ابری
+      لیارا نیاز به انجام هیچ‌کار خاصی نیست؛ فقط کافیست تا آدرس دائمی (یا موقت)
+      عکس ذخیره شده را در انتهای URL پیکربندی شده Imgproxy قرار دهید؛ به عنوان
+      مثال، فرض کنید که این URL برابر با مقدار زیر است:
+    </p>
+    <Highlight className="plaintext">
+      {`https://imgproxy-app.liara.run/_/resize:fill:300:400:0/gravity:sm/plain/`}
+    </Highlight>
+    <p>
+      حال، فرض کنیم که URL عکس ذخیره‌شده در لیارا نیز، برابر با مقدار زیر است:
+    </p>
+
+    <Highlight className="plaintext">
+      {`https://bucket.storage.iran.liara.space/liara-poster.png`}
+    </Highlight>
+
+    <p>
+      اکنون، برای اعمال Imgproxy بر روی عکس مد نظر خود، کافیست تا URL پیکربندی
+      شده Imgproxy را قبل از URL عکس مدنظر خود قرار دهید:
+    </p>
+
+    <Highlight className="plaintext">
+      {`https://imgproxy-app.liara.run/_/resize:fill:300:400:0/gravity:sm/plain/https://bucket.storage.iran.liara.space/liara-poster.png`}
+    </Highlight>
+
+    <p>
+      بدین نحو، تمامی تغییرات اعمال می‌شوند و شما می‌توانید با استفاده از URL
+      فوق، به عکس نهایی خود دسترسی داشته باشید. برای کسب اطلاعات بیشتر و اعمال
+      دیگر تغییرات می‌توانید{" "}
+      <a
+        href="https://docs.imgproxy.net/usage/processing"
+        target="_blank"
+        rel="noopener"
+      >
+        مستندات پیکربندی Imgproxy
+      </a>{" "}
+      را مطالعه کنید.
     </p>
 
     <h3 id="django">استفاده از Imgproxy در برنامه‌های Django</h3>
