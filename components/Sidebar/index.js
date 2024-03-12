@@ -1807,6 +1807,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/buckets/transfer">
+                انتقال باکت به باکت
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/buckets/backup">تهیه فایل پشتیبان</ActiveLink>
             </li>
             {/*
