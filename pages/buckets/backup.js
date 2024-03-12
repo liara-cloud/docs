@@ -23,6 +23,19 @@ export default () => (
       ذخیره‌سازی ابری را مدیریت کنید. حال برای تهیه‌ی فایل پشتیبان از باکت ایجاد
       شده در لیارا می‌توانید طبق دستورالعمل زیر از این ابزار استفاده کنید.
     </p>
+
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+
+    <video
+      src="files.liara.ir/liara/rclone/rclone-bucket-backup.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <p>
       در ابتدا از صفحه‌ی{" "}
       <a
@@ -38,7 +51,7 @@ export default () => (
       <span className="code">remote</span> جدید را پیکربندی کنید.
     </p>
 
-    <Asciinema id="522043" />
+    <Asciinema id="rclone-backup-bucket" />
 
     <p>
       درنهایت شما می‌توانید با اجرای دستور{" "}
