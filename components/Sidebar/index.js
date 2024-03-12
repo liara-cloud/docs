@@ -1767,6 +1767,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/storage/disks/transfer-to-bucket">
+                انتقال فایل‌ها از دیسک به باکت
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/storage/disks/backup-restore">
                 تهیه و بازیابی فایل پشتیبان
               </ActiveLink>
