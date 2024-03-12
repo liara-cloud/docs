@@ -21,7 +21,7 @@ export default () => (
       </a>{" "}
       یک ابزار تحت command-line است که می‌توانید به‌کمک آن، فایل‌های درون فضای
       ذخیره‌سازی ابری را مدیریت کنید. حال برای تهیه‌ی فایل پشتیبان از باکت ایجاد
-      شده در لیارا می‌توانید طبق دستورالعمل زیر از این ابزار استفاده کنید.
+      شده در لیارا می‌توانید طبق دستورالعمل‌های زیر از این ابزار استفاده کنید.
     </p>
 
     <p>
@@ -30,7 +30,7 @@ export default () => (
     </p>
 
     <video
-      src="files.liara.ir/liara/rclone/rclone-bucket-backup.mp4"
+      src="https://files.liara.ir/liara/rclone/rclone-bucket-backup.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
@@ -48,7 +48,7 @@ export default () => (
       ، آخرین نسخه‌ی این ابزار را متناسب با سیستم‌عامل فعلی‌تان دانلود کرده و آن
       را نصب کنید. در قدم بعد باید با اجرای دستور{" "}
       <span className="code">rclone config</span> یک{" "}
-      <span className="code">remote</span> جدید را پیکربندی کنید.
+      <span className="code">remote</span> جدید را پیکربندی کنید:
     </p>
 
     <Asciinema id="rclone-backup-bucket" />
@@ -59,14 +59,16 @@ export default () => (
         rclone copy -PM [remote]:[bucket-name] /path/to/folder
       </span>{" "}
       یک نسخه از فایل‌های موجود در باکت موردنظرتان را در لوکال ذخیره کنید. برای
-      مثال اگر یک باکت با نام <span className="code">novels</span> در لیارا
+      مثال اگر یک باکت با نام <span className="code">app-bucket</span> در لیارا
       داشته باشید، می‌توانید با اجرای دستور زیر، تمامی فایل‌های موجود در این
-      باکت را در دسکتاپ خود کپی کنید.
+      باکت را در سیستم خود کپی کنید.
     </p>
 
     <Highlight className="bash">
-      {`rclone copy -PM liara:novels ~/Desktop/novels`}
+      {`rclone copy -PM r1:app-bucket myfiles/`}
     </Highlight>
+
+    <Asciinema id="rclone-bucket-backup-execute" />
 
     <h4 id="s3-browser">S3 Browser</h4>
     <p>
