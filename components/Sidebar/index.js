@@ -1728,6 +1728,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/app-features/events">رویدادها</ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/app-features/custom-dns-servers">
+                تنظیم DNS Server
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/app-features/build-location">
                 تعیین موقعیت build
               </ActiveLink>
