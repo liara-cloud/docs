@@ -251,6 +251,11 @@ const DATA_SECTIONS = {
       title: "Chroma",
       href: "/one-click-apps/chroma",
     },
+    {
+      platform: "meilisearch",
+      title: "Meilisearch",
+      href: "/one-click-apps/meilisearch",
+    },
   ],
 };
 

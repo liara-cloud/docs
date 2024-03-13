@@ -1237,6 +1237,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 Chroma
               </ActiveLink>
             </li>
+            <li>
+              <ActiveLink href="/one-click-apps/meilisearch">
+                <PlatformIcon platform="meilisearch" />
+                MeiliSearch
+              </ActiveLink>
+            </li>
           </ul>
         </nav>
 

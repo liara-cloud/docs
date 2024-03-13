@@ -46,6 +46,7 @@ import varnishIcon from "@liara/platformicons/glass/png/varnish.png";
 import apacheanswerIcon from "@liara/platformicons/glass/png/apache.png";
 import nocodbIcon from "@liara/platformicons/glass/png/nocodb.png";
 import chromaIcon from "@liara/platformicons/glass/png/chroma.png";
+import meilisearchIcon from "../public/static/platforms/meilisearch.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -133,6 +134,7 @@ const types = [
   { logo: apacheanswerIcon, alt: "apacheanswer" },
   { logo: nocodbIcon, alt: "nocodb" },
   { logo: chromaIcon, alt: "chroma" },
+  { logo: meilisearchIcon, alt: "meilisearch" },
 
   // Instructions
   { logo: goIcon, alt: "go" },
