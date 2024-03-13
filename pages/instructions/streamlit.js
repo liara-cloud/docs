@@ -3,6 +3,7 @@ import Link from "next/link";
 import Highlight from "react-highlight";
 import Layout from "../../components/Layout";
 import PlatformIcon from "../../components/PlatformIcon";
+import Notice from "../../components/Notice";
 
 export default () => (
   <Layout>
@@ -22,55 +23,91 @@ export default () => (
       <a href="https://streamlit.io/" target="_blank" rel="noopener noreferrer">
         Streamlit
       </a>{" "}
-      یک پکیج است که با زبان Python توسعه داده شده و به شما کمک می‌کند تا در
-      سریع‌ترین زمان ممکن، داده‌ها را به نمایش بگذارید. برای استقرار برنامه‌های
-      Streamlit در لیارا ابتدا لازم است که از بخش <strong>برنامه‌ها</strong>، یک
-      برنامه <Link href="/app-deploy/docker/getting-started">Docker</Link> با
-      نام و پلن دلخواه‌تان بسازید
+      یک ابزار توسعه وب بسیار قدرتمند برای ساخت وب اپلیکیشن‌های داده محور با
+      استفاده از Python است. این ابزار به شما امکان می‌دهد تا به راحتی و با
+      استفاده از کتابخانه‌های محبوبی مانند Pandas و Matplotlib و Plotly و ....،
+      اپلیکیشن‌های داده‌محور خود را طراحی کنید.
     </p>
+
     <p>
-      سپس یک فایل با نام
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید:
+    </p>
+    <video
+      src="https://files.liara.ir/liara/streamlit/streamlit.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
+    <p>
+      برای استقرار برنامه‌های Streamlit در لیارا ابتدا لازم است که از بخش{" "}
+      <strong>برنامه‌ها</strong>، یک برنامه{" "}
+      <Link href="/app-deploy/docker/getting-started">Docker</Link> با نام و پلن
+      دلخواه‌تان بسازید.
+    </p>
+
+    <Notice variant="warning">
+      توجه داشته باشید که برای شخصی‌سازی برنامه Streamlit، پلن انتخابی‌تان باید
+      شامل فضای دیسک باشد.
+    </Notice>
+
+    <p>
+      پس از این‌کار ، کافیست در برنامه داکری که ایجاد کرده‌اید، دربخش{" "}
+      <strong>دیسک‌ها</strong> بر روی <strong>ایجاد دیسک</strong> کلیک کرده و یک
+      دیسک با نام <span className="code">data</span> و میزان فضای{" "}
+      <span className="code">2GB</span> ایجاد کنید.
+    </p>
+
+    <p>
+      پس از ساخت برنامه و دیسک مذکور، در لوکال در یک دایرکتوری خالی، یک فایل با
+      نام
       <span className="code">Dockerfile</span>
-      در ریشه‌ی برنامه‌ی‌تان بسازید و قطعه‌کد زیر را در این فایل قرار دهید:
+      بسازید و قطعه‌کد زیر را در این فایل قرار دهید:
     </p>
 
     <Highlight className="dockerfile">
-      {`FROM python:3.9
+      {`# Use Python 3.9 slim as the base image
+FROM python:3.9-slim
 
-WORKDIR /usr/src/app
+# Set the working directory to /app
+WORKDIR /app
 
-COPY requirements.txt .
+# Install necessary packages
+RUN apt-get update && apt-get install -y \\
+    build-essential \\
+    curl \\
+    software-properties-common \\
+    git \\
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir --upgrade pip && \\
-    pip install --no-cache-dir -r requirements.txt
+# Clone the Streamlit example repository
+RUN git clone https://github.com/streamlit/streamlit-example.git .
 
-# streamlit-specific commands
-RUN mkdir -p /root/.streamlit
-RUN bash -c 'echo -e "\\
-[general]\\n\\
-email = \\"\\"\\n\\
-" > /root/.streamlit/credentials.toml'
-RUN bash -c 'echo -e "\\
-[server]\\n\\
-enableCORS = false\\n\\
-" > /root/.streamlit/config.toml'
+# Install Python dependencies
+RUN pip3 install -r requirements.txt
 
-# exposing default port for streamlit
-EXPOSE 8501
+# Healthcheck to verify the application is running
+HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-COPY . .
-
-CMD [ "streamlit", "run", "main.py"]`}
+# Entry point command to start the Streamlit application
+ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]`}
     </Highlight>
 
     <p>
       در قدم بعد، یک فایل با نام <span className="code">liara.json</span> در
-      مسیر اصلی پروژه ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
+      کنار <span className="code">Dockerfile</span> ایجاد کرده و قطعه‌کد زیر را
+      در این فایل قرار دهید:
     </p>
     <Highlight className="json">
       {`{
-  "platform": "docker",
-  "port": 8501
+    "port": 8501,
+    "disks":[
+        {
+            "name": "data",
+            "mountTo": "/app/"
+        }
+    ]
 }`}
     </Highlight>
 
@@ -80,5 +117,13 @@ CMD [ "streamlit", "run", "main.py"]`}
       را در مسیر اصلی پروژه‌ی خود اجرا کنید تا برنامه‌ی شما در لیارا مستقر و
       اجرا شود.
     </p>
+
+    <Notice variant="info">
+      در نظر داشته باشید که برای شخصی‌سازی فایل{" "}
+      <span className="code">streamlit_app.py</span> باید برای دیسک یک{" "}
+      <Link href="/storage/disks/ftp/">دسترسی FTP</Link> ایجاد کنید و با استفاده
+      از برنامه‌هایی مثل Filezilla یا WinSCP به دیسک متصل شوید و تغییرات
+      مدنظرتان را در فایل مذکور اعمال نمایید.
+    </Notice>
   </Layout>
 );
