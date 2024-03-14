@@ -23,6 +23,7 @@ const PLATFORM_TAGS = [
   { title: "Docker", alt: "docker" },
   { title: "WP Plus", alt: "wordpress" },
   { title: "One Click Apps", alt: "1clickapps" },
+  { title: "Rclone", alt: "rclone" },
 ];
 const DB_TAGS = [
   { title: "MySQL", alt: "mysql" },
@@ -831,6 +832,37 @@ const Videos = () => {
             videoTitle: "راه اندازی RabbitMQ",
             link: "https://files.liara.ir/liara/rabbitmq/rabbitmq.mp4",
             platform: "rabbitmq",
+          },
+          {
+            videoTitle: "راه اندازی Streamlit",
+            link: "https://files.liara.ir/liara/streamlit/streamlit.mp4",
+            platform: "streamlit",
+          },
+        ]}
+      />
+
+      <Section
+        name={"Rclone"}
+        style={{ marginTop: 40 }}
+        badge={"rclone command-line program"}
+        setOpenDialog={setOpenDialog}
+        id="rclone"
+        links={[
+          {
+            videoTitle: "انتقال فایل‌ها از دیسک به باکت",
+            link: "https://files.liara.ir/liara/rclone/rclone-transfer-files-from-disk-to-bucket.mp4",
+          },
+          {
+            videoTitle: "انتقال فایل‌ها از یک باکت به باکت دیگر",
+            link: "https://files.liara.ir/liara/rclone/rclone-transfer-files-between-buckets.mp4",
+          },
+          {
+            videoTitle: "انتقال باکت به باکت در دو اکانت مختلف",
+            link: "https://files.liara.ir/liara/rclone/rclone-transfer-files-between-buckets-across-accounts.mp4",
+          },
+          {
+            videoTitle: "تهیه فایل پشتیبان از باکت",
+            link: "https://files.liara.ir/liara/rclone/rclone-bucket-backup.mp4",
           },
         ]}
       />
