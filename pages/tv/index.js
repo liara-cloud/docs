@@ -24,6 +24,7 @@ const PLATFORM_TAGS = [
   { title: "WP Plus", alt: "wordpress" },
   { title: "One Click Apps", alt: "1clickapps" },
   { title: "Rclone", alt: "rclone" },
+  { title: "Python", alt: "python" },
 ];
 const DB_TAGS = [
   { title: "MySQL", alt: "mysql" },
@@ -181,6 +182,10 @@ const Videos = () => {
           {
             videoTitle: "مدیریت حساب‌های کاربری در لیارا",
             link: "https://files.liara.ir/liara/liara-features/managing-multiple-accounts.mp4",
+          },
+          {
+            videoTitle: "آشنایی با تعرفه‌ها و پلن‌های لیارا",
+            link: "https://files.liara.ir/liara/pricing/pricing.mp4",
           },
           {
             videoTitle: "کاهش حجم دیسک‌ها",
@@ -837,6 +842,11 @@ const Videos = () => {
             videoTitle: "راه اندازی Streamlit",
             link: "https://files.liara.ir/liara/streamlit/streamlit.mp4",
             platform: "streamlit",
+          },
+          {
+            videoTitle: "اتصال به Soketi در برنامه Laravel",
+            link: "https://files.liara.ir/liara/soketi/laravel-soketi.mp4",
+            platform: "soketi",
           },
         ]}
       />
