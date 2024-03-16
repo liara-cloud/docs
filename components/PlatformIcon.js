@@ -46,7 +46,7 @@ import varnishIcon from "@liara/platformicons/glass/png/varnish.png";
 import apacheanswerIcon from "@liara/platformicons/glass/png/apache.png";
 import nocodbIcon from "@liara/platformicons/glass/png/nocodb.png";
 import chromaIcon from "@liara/platformicons/glass/png/chroma.png";
-import meilisearchIcon from "@liara/platformicons/svg/meilisearch.svg";
+import meilisearchIcon from "./../public/static/platforms/meilisearch.svg";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
