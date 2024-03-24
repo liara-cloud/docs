@@ -581,6 +581,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/django/websocket">
+                    وب‌سوکت
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/django/email">
                     ارسال ایمیل
                   </ActiveLink>

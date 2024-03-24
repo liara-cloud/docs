@@ -298,7 +298,7 @@ class Storage(models.Model):
     </p>
     <br />
 
-    <Link href="/app-deploy/django/email" className="next-page">
+    <Link href="/app-deploy/django/websocket" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
