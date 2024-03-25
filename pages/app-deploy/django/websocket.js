@@ -47,6 +47,17 @@ export default () => (
       </li>
     </ul>
 
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/django/django-websocket.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+
     <h3 id="build-websocket">ساخت برنامه WebSocket در جنگو</h3>
     <p>
       در ابتدا، باید با استفاده از دستور زیر، در یک محیط مجازی، یک پروژه Django
