@@ -31,6 +31,9 @@ export default () => (
         <a href="#add-subdomain">اضافه کردن زیردامنه‌ی دلخواه</a>
       </li>
       <li>
+        <a href="#disable-default-subdomain">غیرفعال کردن زیردامنه پیش‌فرض</a>
+      </li>
+      <li>
         <a href="#wp-change-domain">تغییر دامنه در برنامه‌های وردپرس پلاس</a>
       </li>
     </ul>
@@ -266,6 +269,20 @@ export default () => (
       <span className="code">Abuse</span> کردن سرور‌های لیارا استفاده می‌شود ،
       لیارا از آن‌ها پشتیبانی نمی‌کند.
     </Notice>
+
+    <h3 id="disable-default-subdomain">غیرفعال کردن زیردامنه پیش‌فرض</h3>
+    <p>
+      پس از ساخت هر برنامه در لیارا، یک زیر دامنه پیش‌فرض به برنامه با استفاده
+      از شناسه آن و پسوند <span className="code">.liara.run</span> اختصاص داده
+      می‌شود که شما می‌توانید از آن استفاده کنید:
+    </p>
+    <ZoomableImage src="https://files.liara.ir/liara/liara-features/default-subdomain-example.png" />
+    <p>
+      برای جلوگیری از مشکلات SEO، بهتر است که پس از اتصال دامنه خود به برنامه،
+      این زیردامنه را غیرفعال کنید. برای این کار، کافیست تا در قسمت{" "}
+      <strong>تنظیمات، بخش زیردامنه پیش‌فرض</strong> آن را غیر فعال کنید:
+    </p>
+    <ZoomableImage src="https://files.liara.ir/liara/liara-features/disable-default-subdomain.png" />
 
     <h3 id="wp-change-domain">تغییر دامنه در برنامه‌های وردپرس پلاس</h3>
 
