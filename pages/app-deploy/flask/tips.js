@@ -111,7 +111,7 @@ export default () => (
     <ZoomableImage src="https://files.liara.ir/docs/flask/add-gunicorn-timeout-variable-to-flask-app.gif"></ZoomableImage>
 
     <Notice variant="info">
-      توجه داشته باشید که متغیر <span className="code">GUNICORN_TIEMOUT</span>{" "}
+      توجه داشته باشید که متغیر <span className="code">GUNICORN_TIMEOUT</span>{" "}
       براساس ثانیه است.
     </Notice>
 
@@ -299,7 +299,7 @@ def index():
       مختلف برای مشاهده‌ی IP واقعی کاربران و بسیاری از قابلیت‌های دیگر تعیین
       کنید که برنامه‌ی شما در پشت یک Reverse proxy راه‌اندازی شده است.
     </p>
-        
+
     <Highlight className="python">
       {`from flask import Flask, request
 from werkzeug.middleware.proxy_fix import ProxyFix

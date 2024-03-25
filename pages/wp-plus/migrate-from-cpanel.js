@@ -44,7 +44,9 @@ export default () => (
         <a href="#load-problem">لود نشدن صحیح برنامه</a>
       </li>
       <li>
-        <a href="#too-many-redirects">خطای err_too_many_redirects</a>
+        <a href="#too-many-redirects">
+          خطای err_too_many_redirects و لود نشدن فایل‌های CSS
+        </a>
       </li>
       <li>
         <a href="#permissions">خطاهای مربوط به دسترسی فایل</a>
@@ -124,11 +126,14 @@ export default () => (
     </p>
     {/* <ZoomableImage src="https://files.liara.ir/docs/wordpress/last-migration-steps.gif"></ZoomableImage> */}
 
-    <h4 id="too-many-redirects">خطای err_too_many_redirects</h4>
+    <h4 id="too-many-redirects">
+      خطای err_too_many_redirects و لود نشدن فایل‌های CSS
+    </h4>
     <p>
-      درصورتی که برنامه‌ی شما با خطای too many redirects مواجه شد باید قطعه کد
-      زیر را با استفاده از دسترسی FTP به فایل <strong>wp-config.php</strong>{" "}
-      اضافه کرده و مجدد برنامه را بررسی کنید.
+      درصورتی که برنامه‌ی شما با خطای too many redirects مواجه شد و یا فایل‌های
+      CSS درون برنامه‌تان به درستی لود نشد؛ باید قطعه کد زیر را با استفاده از
+      دسترسی FTP به فایل <strong>wp-config.php</strong> اضافه کرده و مجدد برنامه
+      را بررسی کنید.
     </p>
     <Highlight className="php">{`$_SERVER['HTTPS'] = 'on';`}</Highlight>
     <br />
