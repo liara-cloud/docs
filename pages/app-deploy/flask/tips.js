@@ -65,7 +65,7 @@ export default () => (
     <Highlight className="json">
       {`{
   "flask": {
-    "pythonVersion": "3.11"
+    "pythonVersion": "3.12"
   }
 }
 `}
@@ -74,11 +74,12 @@ export default () => (
     <ul>
       <li>3.7</li>
       <li>3.8</li>
+      <li>3.9</li>
       <li>
-        <b>3.9 (پیش‌فرض)</b>
+        <b>3.10 (پیش‌فرض)</b>
       </li>
-      <li>3.10</li>
       <li>3.11</li>
+      <li>3.12</li>
     </ul>
 
     <h3 id="set-timezone">تنظیم منطقه‌ی زمانی (TimeZone)</h3>

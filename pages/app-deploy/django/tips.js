@@ -89,7 +89,7 @@ export default () => (
     <Highlight className="json">
       {`{
   "django": {
-    "pythonVersion": "3.11"
+    "pythonVersion": "3.12"
   }
 }
 `}
@@ -98,11 +98,12 @@ export default () => (
     <ul>
       <li>3.7</li>
       <li>3.8</li>
+      <li>3.9</li>
       <li>
-        <b>3.9 (پیش‌فرض)</b>
+        <b>3.10 (پیش‌فرض)</b>
       </li>
-      <li>3.10</li>
       <li>3.11</li>
+      <li>3.12</li>
     </ul>
     <h3 id="supervisord-conf">استفاده از Supervisord</h3>
     <p>
@@ -535,20 +536,5 @@ CORS_ALLOW_METHODS = [
       برابر با 3.6.0 است. در صورتی که نسخه Python را تغییر دهید، پکیج GDAL را
       نیز باید متناسب با نسخه Python انتخاب کنید.
     </Notice>
-
-    <h3 id="mirror">غیرفعال کردن Mirror</h3>
-    <p>
-      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Django
-      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در
-      فایل <Link href="/app-deploy/django/liarajson">liara.json</Link>، این
-      قابلیت را غیر فعال کنید:
-    </p>
-    <Highlight className="json">
-      {`{
-  "django": {
-    "mirror": false
-  }
-}`}
-    </Highlight>
   </Layout>
 );
