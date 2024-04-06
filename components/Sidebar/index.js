@@ -385,8 +385,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/laravel/desktop">
-                    استقرار با Liara Desktop
+                  <ActiveLink href="/app-deploy/laravel/browser">
+                    استقرار با مرورگر
                   </ActiveLink>
                 </li>
                 <li>
