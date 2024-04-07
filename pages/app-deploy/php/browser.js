@@ -23,7 +23,6 @@ export default () => (
     </div>
 
     <h4>فهرست عناوین:</h4>
-    <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
         <a href="#video">ویدیوی آموزشی استقرار با مرورگر</a>
