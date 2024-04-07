@@ -788,8 +788,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/angular/desktop">
-                    استقرار با Liara Desktop
+                  <ActiveLink href="/app-deploy/angular/browser">
+                    استقرار با مرورگر
                   </ActiveLink>
                 </li>
                 <li>
@@ -831,8 +831,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/vue/desktop">
-                    استقرار با Liara Desktop
+                  <ActiveLink href="/app-deploy/vue/browser">
+                    استقرار با مرورگر
                   </ActiveLink>
                 </li>
                 <li>

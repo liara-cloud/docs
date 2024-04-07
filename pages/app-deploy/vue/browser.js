@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
+import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
@@ -17,28 +18,21 @@ export default () => (
     <div className="page-head">
       <PlatformIcon platform="vue" />
       <div className="page-title">
-        <h1>پلتفرم VueJS</h1>
+        <h1>پلتفرم Vue</h1>
         <span className="page-description">(VueJS Platform)</span>
       </div>
     </div>
-
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
-        <a href="#video">استقرار با Liara Desktop</a>
+        <a href="#video">ویدیوی آموزشی استقرار با مرورگر</a>
       </li>
       <li>
-        <a href="#installing-liara-desktop">نصب Liara Desktop</a>
-      </li>
-      <li>
-        <a href="#login">ورود به حساب کاربری</a>
-      </li>
-      <li>
-        <a href="#deploy">اولین استقرار</a>
+        <a href="#how-to-deploy">پنج گام استقرار برنامه با مرورگر</a>
       </li>
     </ul>
 
-    <h3 id="video">استقرار با Liara Desktop</h3>
+    <h3 id="video">ویدیوی آموزشی استقرار با مرورگر</h3>
 
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
@@ -60,17 +54,7 @@ export default () => (
       قابل مشاهده و دسترسی هستند.{" "}
     </Notice>
 
-    <p>
-      <h3 id="installing-liara-desktop">نصب Liara Desktop</h3>
-      شما می‌توانید از طریق این <Link href="/desktop/install">لینک</Link>؛ Liara
-      Desktop را؛ متناسب با سیستم عامل خود دانلود و نصب کنید.
-    </p>
-    <h3 id="login">ورود به حساب کاربری</h3>
-    <p>
-      برای ورود به حساب کاربری از طریق Liara Desktop، ابتدا نرم‌افزار را اجرا
-      کرده، سپس از طریق مروگر، وارد حساب‌تان شوید.
-    </p>
-    <h3 id="deploy">اولین استقرار</h3>
+    <h3 id="how-to-deploy">پنج گام استقرار برنامه با مرورگر</h3>
     <Notice variant="warning">
       توجه داشته باشید؛ تنها برنامه‌هایی که با دو روش
       <span className="code">Vite</span> و یا
@@ -111,7 +95,7 @@ export default () => (
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "vue": "^3.3.11"
   }
 }`}
     </Highlight>
@@ -121,18 +105,20 @@ export default () => (
     <Highlight className="json">
       {`{
   "name": "vue-getting-started",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "vite preview",
-    "build": "vite build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "vue": "^3.3.11"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^8.7.1",
-    "vite": "^2.9.8"
+    "@vitejs/plugin-vue": "^4.5.2",
+    "vite": "^5.0.10"
   }
 }`}
     </Highlight>
@@ -143,14 +129,41 @@ export default () => (
       برنامه‌ی‌تان شود.(مانند نمونه‌ی بالا)
     </p>
     <Notice variant="warning">
-      توجه داشته باشید که لیارا به‌طور خودکار در فرایند استقرار برنامه‌های Vue
-      دستور <span className="code">npm run build</span> را اجرا می‌کند.
+      توجه داشته باشید که اگر اسکریپت build را در فایل{" "}
+      <span className="code">package.json</span> خود تعریف کرده باشید، لیارا
+      به‌طور خودکار در فرایند استقرار برنامه‌های Vue دستور{" "}
+      <span className="code">npm run build</span> را اجرا می‌کند.
     </Notice>
     <p>
-      <b>گام سوم)</b> در قدم بعدی کافیست Liara Desktop را اجرا کرده و پوشه
-      پروژه‌تان را انتخاب کنید. بعد از انتخاب پروژه‌تان، از شما شناسه برنامه‌
-      موردنظرتان پرسیده می‌شود و بعد از انتخاب شناسه، لیارا عملیات استقرار را
-      شروع می‌کند.
+      <b>گام سوم)</b> در این گام، بایستی پوشه پروژه خود را حتماً درون یک فایل با
+      فرمت <span className="code">zip</span>
+      قرار دهید؛ سپس فایل zip را کشیده و در مرورگر رها کنید؛ یا می‌توانید بر روی
+      گزینه انتخاب فایل کلیک کرده و فایل zip مد نظر خود را انتخاب کنید.
+    </p>
+    <ZoomableImage src="https://files.liara.ir/liara/drag-and-drop/drag_and_drop_project.gif"></ZoomableImage>
+
+    <p>
+      <b>گام چهارم)</b> پس از اینکه فایل zip پروژه‌تان به صورت کامل در لیارا
+      آپلود شد، به صفحه جدیدی هدایت می‌شوید؛ در این صفحه کافیست تا بخش‌های زیر
+      را نیز بر اساس نیازهای برنامه خود، تنظیم کنید:
+    </p>
+    <ul>
+      <li>
+        <b>تنظیمات پلتفرم:</b> اگر که به{" "}
+        <span className="code">source map</span> نیاز دارید، می‌توانید در این
+        بخش، آن را فعال کنید. همچنین، برای تجربه استقرار سریع‌تر نیز، توصیه
+        می‌شود که از mirror اختصاصی لیارا برای نصب پکیج‌های npm استفاده کنید.
+      </li>
+      <li>
+        <b>تنظیمات build: </b> در این بخش می‌توانید{" "}
+        <a href="/app-features/build-location">موقعیت build</a> برنامه خود را
+        مشخص کنید.
+      </li>
+    </ul>
+    <p>
+      <b>گام پنجم و پایانی) </b> در نهایت، کافیست که بر روی گزینه{" "}
+      <span className="code">شروع عملیات استقرار</span> کلیک کنید تا استقرار
+      برنامه‌تان آغاز شود
     </p>
     <Notice variant="info">
       برنامه‌ی شما حتما باید دارای فایل
@@ -168,13 +181,14 @@ export default () => (
       نمانید.
     </Notice>
     <p>
-      <b>گام چهارم و پایانی)</b> بعد از انجام گام‌های قبلی، لیارا به برنامه شما
-      یک زیردامنه رایگان اختصاص می‌دهد که به وسیله آن می‌توانید مطمئن شوید که
-      برنامه‌ی‌تان به صورت صحیح به بستر لیارا منتقل شده است یا خیر. این آدرس بر
-      اساس شناسه برنامه‌ی شما است، برای نمونه:
+      بعد از انجام گام‌های قبلی، لیارا به برنامه شما یک زیردامنه رایگان اختصاص
+      می‌دهد که به وسیله آن می‌توانید مطمئن شوید که برنامه‌ی‌تان به صورت صحیح به
+      بستر لیارا منتقل شده است یا خیر. این آدرس بر اساس شناسه برنامه‌ی شما است،
+      برای نمونه:
     </p>
 
-    <p dir="ltr">https://vue-starter.liara.run</p>
+    <Highlight className="shell">{`https://vue-starter.liara.run`}</Highlight>
+    <br />
 
     <Link href="/app-deploy/vue/cli" className="next-page">
       متوجه شدم، برو گام بعدی!
