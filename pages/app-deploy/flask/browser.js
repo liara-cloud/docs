@@ -1,24 +1,25 @@
 import Head from "next/head";
 import Link from "next/link";
+import Highlight from "react-highlight";
 import Notice from "../../../components/Notice";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
-import Highlight from "react-highlight";
 import ZoomableImage from "../../../components/ZoomableImage";
 
 export default () => (
   <Layout>
     <Head>
       <title>
-        مستندات استقرار برنامه‌های Django با استفاده از مرورگر - لیارا
+        مستندات استقرار برنامه‌های Flask با استفاده از ابزار Liara Desktop -
+        لیارا
       </title>
     </Head>
 
     <div className="page-head">
       <PlatformIcon platform="django" />
       <div className="page-title">
-        <h1>پلتفرم Django</h1>
-        <span className="page-description">(Django Platform)</span>
+        <h1>پلتفرم Flask</h1>
+        <span className="page-description">(Flask Platform)</span>
       </div>
     </div>
 
@@ -40,14 +41,15 @@ export default () => (
     </p>
 
     <video
-      src="https://files.liara.ir/liara/django/django-desktop.mp4"
+      src="https://files.liara.ir/liara/flask/flask-desktop.mp4"
       controls="controls"
       className="block w-full"
       width="100%"
     ></video>
+
     <Notice variant="info">
       پروژه و کدهای مورد استفاده در ویدیوی فوق در{" "}
-      <Link href="https://github.com/liara-cloud/django-getting-started">
+      <Link href="https://github.com/liara-cloud/flask-getting-started">
         اینجا
       </Link>{" "}
       قابل مشاهده و دسترسی هستند.{" "}
@@ -59,17 +61,17 @@ export default () => (
       <a href="https://console.liara.ir/apps/create" target="_blank">
         ایجاد برنامه‌ها در لیارا
       </a>{" "}
-      بروید و با انتخاب پلتفرم Django و نوشتن شناسه برنامه‌ی موردنظرتان و در
+      بروید و با انتخاب پلتفرم Flask و نوشتن شناسه برنامه‌ی موردنظرتان و در
       نهایت انتخاب پلن، برنامه خود را ایجاد کنید. برای نمونه، ما در این آموزش
-      برای برنامه آزمایشی‌مان، شناسه django-starter را انتخاب کردیم.
+      برای برنامه آزمایشی‌مان، شناسه flask-starter را انتخاب کردیم.
     </p>
     <p>
       <b>گام دوم)</b> برنامه‌ی شما حتما باید فایل
       <span className="code">requirements.txt</span>
       را داشته باشد و در این فایل باید لیست تمام پکیج‌هایی که استفاده کرده‌اید
-      را وارد کنید. برای برنامه‌های Django، دست کم باید پکیج Django را در این
-      فایل عنوان کرده باشید. می‌توانید با استفاده از اجرای دستور زیر، البته
-      زمانی که محیط مجازی برنامه‌تان فعال است، فایل{" "}
+      را وارد کنید. برای برنامه‌های Flask، دست کم باید پکیج Flask را در این فایل
+      عنوان کرده باشید. می‌توانید با استفاده از اجرای دستور زیر، البته زمانی که
+      محیط مجازی برنامه‌تان فعال است، فایل{" "}
       <span className="code">requirements.txt</span> را ایجاد کنید:
     </p>
     <Highlight className="shell">{`pip freeze > requirements.txt`}</Highlight>
@@ -89,13 +91,16 @@ export default () => (
     <ul>
       <li>
         <b>تنظیمات دیسک‌ها: </b>اگر که در برنامه خود،{" "}
-        <a href="/app-deploy/django/disks">دیسک</a> تعریف کردید؛ می‌توانید در
-        این بخش، آن را به برنامه خود متصل کنید.
+        <a href="/app-deploy/flask/disks">دیسک</a> تعریف کردید؛ می‌توانید در این
+        بخش، آن را به برنامه خود متصل کنید.
       </li>
       <li>
-        <b>تنظیمات پلتفرم:</b> در این بخش، می‌توانید یک‌سری قابلیت‌ها را از جمله
-        تعیین نسخه Python تا قابلیت GDAL را در برنامه خود مشخص و فعال (یا
-        غیرفعال) کنید.
+        <b>تنظیمات پلتفرم:</b> در این بخش، می‌توانید نسخه Python و همچنین منطقه
+        زمانی مدنظرتان را بر اساس نیازهای برنامه خود تنظیم کنید. همچنین اگر نام
+        ماژول اصلی برنامه‌تان، نام دیگری به جز{" "}
+        <span className="code">app.py</span> است حتماً باید نام آن را در فیلد
+        تعیین نام ماژول، مشخص کنید. برای تجربه سرعت بالاتر هم، توصیه می‌شود که
+        برای نصب پکیج‌های pip، از mirror اختصاصی لیارا استفاده کنید.
       </li>
       <li>
         <b>تنظیمات build: </b> در این بخش می‌توانید{" "}
@@ -132,13 +137,10 @@ export default () => (
       بستر لیارا منتقل شده است یا خیر. این آدرس بر اساس شناسه برنامه‌ی شما است،
       برای نمونه:
     </p>
-
-    <Highlight className="shell">
-      {`https://django-starter.liara.run`}
-    </Highlight>
+    <Highlight className="shell">{`https://flask-starter.liara.run`}</Highlight>
     <br />
 
-    <Link href="/app-deploy/django/cli" className="next-page">
+    <Link href="/app-deploy/flask/cli" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
