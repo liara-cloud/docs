@@ -677,8 +677,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/desktop">
-                    استقرار با Liara Desktop
+                  <ActiveLink href="/app-deploy/netcore/browser">
+                    استقرار با مرورگر
                   </ActiveLink>
                 </li>
                 <li>
