@@ -917,8 +917,8 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/docker/desktop">
-                    استقرار با Liara Desktop
+                  <ActiveLink href="/app-deploy/docker/browser">
+                    استقرار با مرورگر
                   </ActiveLink>
                 </li>
                 <li>
