@@ -33,6 +33,9 @@ export default () => (
       <li>
         <a href="#too-many-redirects">خطای err_too_many_redirects</a>
       </li>
+      <li>
+        <a href="#tips">توضیحات و نکات تکمیلی</a>
+      </li>
     </ul>
 
     <p>
@@ -81,7 +84,16 @@ export default () => (
     </p>
     <Highlight className="php">{`$_SERVER['HTTPS'] = 'on';
 /* That's all, stop editing! Happy publishing. <-- قبل از این کامنت */`}</Highlight>
-    <br />
+
+    <h3 id="tips">توضیحات و نکات تکمیلی</h3>
+    <h4>دامنه برنامه</h4>
+    <p>
+      برای جلوگیری از مشکلات اتصال دامنه خریداری شده به برنامه وردپرسی خود،
+      حتماً قبل از نصب با duplicator، دامنه خود را به برنامه متصل کنید و پس از
+      آن، دامنه پیش‌فرض لیارا را، غیرفعال کنید. با این کار، جداول برنامه وردپرسی
+      پس از راه‌اندازی با duplicator، طبق دامنه مورد نظر شما تنظیم خواهند شد.
+    </p>
+
     {/* <ZoomableImage src="https://files.liara.ir/docs/wordpress/debugging-err-too-many-redirects.gif"></ZoomableImage> */}
   </Layout>
 );

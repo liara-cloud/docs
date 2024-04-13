@@ -4,6 +4,7 @@ import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import PlatformIcon from "../../../components/PlatformIcon";
 import ZoomableImage from "../../../components/ZoomableImage";
+import Notice from "../../../components/Notice";
 
 export default () => (
   <Layout>
@@ -33,12 +34,13 @@ export default () => (
       برای افزودن یک ENV کافیست که به بخش تنظیمات برنامه‌ی‌تان بروید و یک key به
       عنوان اسم و یک value به عنوان مقدار اضافه کنید، و با زدن دکمه{" "}
       <b>ثبت تغییرات</b> یک ENV به برنامه‌ی‌تان اضافه کنید. برای نمونه، ENV ای
-      با عنوان LIARA_URL و مقدار https://liara.ir را به این صورت اضافه کنید.
+      با عنوان NEXT_PUBLIC_LIARA_URL و مقدار https://liara.ir را به این صورت
+      اضافه کنید.
     </p>
-    <ZoomableImage src="/static/node-env.png" />
+    <ZoomableImage src="https://files.liara.ir/liara/nextjs/nextjs-envs.png" />
     <p> حالا به راحتی می‌توانید از‌ آن در برنامه‌ی‌تان استفاده کنید:</p>
     <Highlight className="js">
-      {`console.log(\`app listening on port 3000 on \${process.env.LIARA_URL}\`)`}
+      {`console.log(\`app listening on port 3000 on \${process.env.NEXT_PUBLIC_LIARA_URL}\`)`}
     </Highlight>
     <p>
       بعد از کلیک روی دکمه <b>ثبت تغییرات</b> برنامه‌ی‌ شما به صورت خودکار
@@ -46,6 +48,14 @@ export default () => (
       استفاده می‌شوند. به این شیوه که LIARA_URL را اضافه کردید می‌توانید هر ENV
       دیگری را نیز به برنامه اضافه کنید.
     </p>
+    <Notice variant="warning">
+      توجه داشته باشید که متغیرهای محیطی برنامه حتماً باید با عبارت{" "}
+      <span className="code">NEXT_PUBLIC_</span>
+      شروع شوند تا به درستی بارگذاری شوند. همچنین اگر که بعد از استقرار، متغیر
+      محیطی جدیدی را تعریف کردید؛ برای بارگذاری درست آن، باید برنامه را یک‌بار
+      ری‌استارت کنید.
+    </Notice>
+    <br />
     <Link href="/app-deploy/nextjs/logs" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
