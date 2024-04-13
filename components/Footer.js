@@ -302,14 +302,18 @@ const Footer = () => {
           <div className="footer-col-container">
             <h5>ارتباط با ما</h5>
             <div>
-              <h6>آدرس:</h6>
-              <p style={{ marginTop: 12, lineHeight: "28px" }}>
-                قم، خیابان سپاه، کوچه ۳، پلاک ۲، طبقه ۱
-              </p>
               <h6>ایمیل واحد فروش:</h6>
               <a style={{ margin: 0, padding: 0 }} href="mailto:sales@liara.ir">
                 <p style={{ marginTop: 12 }}>sales[@]liara.ir</p>
               </a>
+              <h6>تلفن واحد فروش:</h6>
+              <a style={{ margin: 0, padding: 0 }} href="tel:02533557619">
+                <p style={{ marginTop: 12 }}>۰۲۵-۳۳۵۵۷۶۱۹ (۹ الی ۱۷)</p>
+              </a>
+              <h6>آدرس:</h6>
+              <p style={{ marginTop: 12, lineHeight: "28px" }}>
+                قم، خیابان سپاه، کوچه ۳، پلاک ۲، طبقه ۱
+              </p>
             </div>
           </div>
         </div>
