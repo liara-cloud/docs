@@ -25,6 +25,8 @@ const PLATFORM_TAGS = [
   { title: "One Click Apps", alt: "1clickapps" },
   { title: "Rclone", alt: "rclone" },
   { title: "Python", alt: "python" },
+  { title: "Strapi", alt: "strapi" },
+  { title: "Prisma", alt: "prisma" },
 ];
 const DB_TAGS = [
   { title: "MySQL", alt: "mysql" },
@@ -442,6 +444,20 @@ const Videos = () => {
       />
 
       <Section
+        name={"Prisma ORM"}
+        platform="prisma"
+        style={{ marginTop: 40 }}
+        badge={"Prisma ORM"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "استقرار برنامه‌های Prisma در لیارا",
+            link: "https://files.liara.ir/liara/prisma/prisma.mp4",
+          },
+        ]}
+      />
+
+      <Section
         name={"پلتفرم Python"}
         platform="python"
         style={{ marginTop: 40 }}
@@ -621,6 +637,28 @@ const Videos = () => {
           {
             videoTitle: "نصب Varnish Cache بر روی WordPress",
             link: "https://files.liara.ir/liara/wordpress/wordpress-varnish.mp4",
+          },
+        ]}
+      />
+
+      <Section
+        name={"سیستم مدیریت محتوای Strapi"}
+        platform="strapi"
+        style={{ marginTop: 40 }}
+        badge={"Strapi CMS"}
+        setOpenDialog={setOpenDialog}
+        links={[
+          {
+            videoTitle: "استقرار برنامه‌های Strapi در لیارا",
+            link: "https://files.liara.ir/liara/strapi/strapi-sqlite.mp4",
+          },
+          {
+            videoTitle: "اتصال برنامه Strapi به دیتابیس MongoDB",
+            link: "https://files.liara.ir/liara/strapi/strapi-mongodb.mp4",
+          },
+          {
+            videoTitle: "اتصال برنامه Strapi به فضای ذخیره‌سازی ابری لیارا",
+            link: "https://files.liara.ir/liara/strapi/strapi-s3.mp4",
           },
         ]}
       />
