@@ -124,12 +124,7 @@ LIARA_SECRET_KEY="82c963df-1122-4c31-868b-0124a28ad57d"`}
       برنامه‌تان را به‌ شکل زیر ویرایش کنید:
     </p>
     <Highlight className="python">
-      {`INSTALLED_APPS = [
-    # other apps,
-    'storages',
-]
-
-# load .env file
+      {`# load .env file
 # pip install python-dotenv 
 if DEBUG == True:
     from dotenv import load_dotenv
@@ -149,7 +144,14 @@ AWS_S3_ENDPOINT_URL     = LIARA_ENDPOINT
 AWS_S3_REGION_NAME      = 'us-east-1'  
 
 # Django-storages configuration
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
+STORAGES = {
+  "default": {
+      "BACKEND": "storages.backends.s3.S3Storage",
+  },
+  "staticfiles": {
+      "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+  },
+}`}
     </Highlight>
 
     <h3 id="how-to-use">نحوه‌ی استفاده</h3>
