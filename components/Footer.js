@@ -239,14 +239,19 @@ const cols = [
         alt: "درباره لیارا",
       },
       {
-        title: "قوانین و مقررات",
+        title: "شرایط استفاده از خدمات",
         link: "https://liara.ir/terms",
-        alt: "قوانین و مقررات لیارا",
+        alt: "شرایط استفاده از خدمات لیارا",
       },
       {
         title: "توافق‌نامه سطح کیفیت",
         link: "https://liara.ir/sla",
         alt: "توافق‌نامه سطح کیفیت لیارا",
+      },
+      {
+        title: "سیاست حفظ حریم خصوصی",
+        link: "https://liara.ir/privacy-policy",
+        alt: "سیاست حفظ حریم خصوصی لیارا",
       },
     ],
   },
@@ -308,7 +313,9 @@ const Footer = () => {
               </a>
               <h6>تلفن واحد فروش:</h6>
               <a style={{ margin: 0, padding: 0 }} href="tel:02533557619">
-                <p style={{ marginTop: 12 }}>۰۲۵-۳۳۵۵۷۶۱۹ (۹ الی ۱۷)</p>
+                <p style={{ marginTop: 12 }}>
+                  ۰۲۵-۳۳۵۵۷۶۱۹ (روزهای کاری ۹ الی ۱۷)
+                </p>
               </a>
               <h6>آدرس:</h6>
               <p style={{ marginTop: 12, lineHeight: "28px" }}>
