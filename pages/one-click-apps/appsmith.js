@@ -94,5 +94,32 @@ export default () => (
       کنید:
     </p>
     <Highlight className="json">{`liara deploy`}</Highlight>
+
+    <h4 id="set-envs">پیکربندی و تنظیم متغیرهای Appsmith</h4>
+    <p>
+      در ابتدا، کافیست که وارد بخش <b>دیسک‌ها</b> برنامه‌ Appsmith خود در لیارا
+      شوید سپس، بر روی دیسک data کلیک کنید و یک <a href="">دسترسی FTP</a> جدید
+      ایجاد کنید. سپس با استفاده از دسترسی FTP به دیسک متصل شوید و به مسیر زیر
+      بروید:
+    </p>
+    <Highlight className="shell">{`configuration/docker.env`}</Highlight>
+    <p>
+      پس از بازکردن فایل <span className="code">docker.env</span> با ادیتور
+      مدنظرتان، کافیست تا متغیرهای موجود در آن را بنا به نیاز خود، تغییر دهید یا
+      مقداردهی کنید. به عنوان مثال. برای اضافه کردن کلید API Google Maps فقط
+      کافیست که قطعه کد زیر را در فایل مذکور، وارد کنید:
+    </p>
+    <Highlight className="shell">
+      {`APPSMITH_GOOGLE_MAPS_API_KEY=YOUR_API_KEY`}
+    </Highlight>
+    <p>
+      و به جای عبارت <span className="code">YOUR_API_KEY</span> مقدار Google API
+      key خود را وارد کنید.
+    </p>
+    <p>
+      در نهایت کافیست تا تغییرات را ذخیره کنید و در بخش <b>اطلاعات کلی</b> در
+      لیارا، برنامه Appsmith خود را ری‌استارت کنید تا تغییرات در برنامه‌تان لحاظ
+      شوند.
+    </p>
   </Layout>
 );
