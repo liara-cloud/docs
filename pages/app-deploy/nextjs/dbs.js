@@ -46,6 +46,9 @@ export default () => (
       <li>
         <a href="#redis">اتصال به دیتابیس Redis</a>
       </li>
+      <li>
+        <a href="#connection-pooling">استفاده از Connection Pooling</a>
+      </li>
     </ul>
 
     <h4 id="mysql">اتصال به دیتابیس MySQL</h4>
@@ -394,7 +397,7 @@ let client;
 async function connectToDatabase() {
   try {
     if (!client) {
-      client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      client = new MongoClient(uri, {});
       await client.connect();
     }
 
@@ -525,6 +528,85 @@ export async function getStaticProps() {
 }
 `}
     </Highlight>
+
+    <h4 id="connection-pooling">استفاده از Connection Pooling</h4>
+    <p>
+      شما می‌توانید در برنامه NodeJS خود، قابلیت Connection Pooling را نیز فعال
+      کنید. در Connection Pooling برنامه به جای ایجاد یک ارتباط (Connection)
+      جدید برای انجام عملیات دیتابیسی و بستن آن پس از پایان عملیات، از
+      ارتباط‌هایی که قبلاً ایجاد شده‌اند، استفاده می‌کند.
+    </p>
+
+    <p>
+      استفاده از Connection Pooling کارایی برنامه را افزایش می‌دهد و تاثیر بسیار
+      زیادی در بهینه‌سازی و کاهش منابع مورد استفاده برنامه و دیتابیس دارد.
+      بنابراین توصیه می‌شود که حتماً در حالت Production، از این قابلیت، استفاده
+      کنید. در ادامه، به نحوه فعال‌سازی این قابلیت با توجه به نوع هر دیتابیس،
+      خواهیم پرداخت:
+    </p>
+
+    <ul className="mt-0">
+      <li>
+        <a href="#mysql-cp">قابلیت Connection Pooling در دیتابیس MySQL</a>
+      </li>
+      <li>
+        <a href="#mongodb-cp">قابلیت Connection Pooling در دیتابیس MongoDB</a>
+      </li>
+    </ul>
+
+    <h5 id="mysql-cp">قابلیت Connection Pooling در دیتابیس MySQL</h5>
+    <p>
+      برای فعال‌سازی این قابلیت در دیتابیس MySQL می‌توانید در{" "}
+      <span className="code">pages/api/db.js</span> از قطعه کد زیر استفاده کنید:
+    </p>
+    <Highlight className="js">
+      {`import mysql from 'mysql2/promise';
+
+const dbConfig = {
+  uri: 'mysql://root:pass@host:port/db-name',
+  connectionLimit: 10, 
+};
+
+let pool;
+
+async function connectToDatabase() {
+  try {
+    if (!pool) {
+      pool = mysql.createPool({ ...dbConfig, waitForConnections: true });
+      console.log('Created MySQL connection pool');
+    }
+
+    const connection = await pool.getConnection();
+    console.log('Acquired connection from pool');
+
+    connection.release(); 
+
+    return pool;
+  } catch (error) {
+    console.error('Error connecting to MySQL database:', error);
+    throw error;
+  }
+}
+
+export default connectToDatabase;
+`}
+    </Highlight>
+
+    <h5 id="mongodb-cp">قابلیت Connection Pooling در دیتابیس MongoDB</h5>
+    <p>
+      برای فعال‌سازی این قابلیت در دیتابیس MongoDB فقط کافیست قطعه کد اتصال به
+      دیتابیس را به شکل زیر بنویسید:
+    </p>
+    <Highlight className="js">
+      {`client = new MongoClient(uri, {maxpoolSize: 10});`}
+    </Highlight>
+
+    <Notice variant="warning">
+      توجه داشته باشید که در قطعه کد‌های مربوط به دیتابیس‌های MariaDB و
+      PostgreSQL و MSSQL قابلیت Connection Pooling فعال است. پس نیازی به تغییر
+      آن‌ها نیست.
+    </Notice>
+
     <br />
     <Link href="/app-deploy/nextjs/object-storage" className="next-page">
       متوجه شدم، برو گام بعدی!
