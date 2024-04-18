@@ -313,7 +313,9 @@ const Footer = () => {
               </a>
               <h6>تلفن واحد فروش:</h6>
               <a style={{ margin: 0, padding: 0 }} href="tel:02533557619">
-                <p style={{ marginTop: 12 }}>۰۲۵-۳۳۵۵۷۶۱۹ (۹ الی ۱۷)</p>
+                <p style={{ marginTop: 12 }}>
+                  ۰۲۵-۳۳۵۵۷۶۱۹ (روزهای کاری ۹ الی ۱۷)
+                </p>
               </a>
               <h6>آدرس:</h6>
               <p style={{ marginTop: 12, lineHeight: "28px" }}>
