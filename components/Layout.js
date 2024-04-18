@@ -9,16 +9,16 @@ import Sidebar from "./Sidebar";
 export default ({ children }) => {
   const [searchOpen, setSearchOpen] = useState(false);
 
-  const telegramStyle = {
-    width: "55px",
-    position: "fixed",
-    left: "30px",
-    bottom: "30px",
-    border: "1px solid #2aabee",
-    padding: "9px",
-    borderRadius: "45px",
-    zIndex: 99,
-  };
+  // const telegramStyle = {
+  //   width: "55px",
+  //   position: "fixed",
+  //   left: "30px",
+  //   bottom: "30px",
+  //   border: "1px solid #2aabee",
+  //   padding: "9px",
+  //   borderRadius: "45px",
+  //   zIndex: 99,
+  // };
 
   return (
     <Fragment>
@@ -39,13 +39,13 @@ export default ({ children }) => {
       <main>
         <Header setSearchOpen={setSearchOpen} />
 
-        <a
+        {/* <a
           href="https://t.me/liaracommunity"
           target="_blank"
           rel="noreferrer noopener"
         >
           <img style={telegramStyle} src={"/static/telegram.svg"} />
-        </a>
+        </a> */}
 
         <div className="wrapper">
           <Sidebar searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
