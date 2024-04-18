@@ -531,7 +531,7 @@ export async function getStaticProps() {
 
     <h4 id="connection-pooling">استفاده از Connection Pooling</h4>
     <p>
-      شما می‌توانید در برنامه NodeJS خود، قابلیت Connection Pooling را نیز فعال
+      شما می‌توانید در برنامه NextJS خود، قابلیت Connection Pooling را نیز فعال
       کنید. در Connection Pooling برنامه به جای ایجاد یک ارتباط (Connection)
       جدید برای انجام عملیات دیتابیسی و بستن آن پس از پایان عملیات، از
       ارتباط‌هایی که قبلاً ایجاد شده‌اند، استفاده می‌کند.
