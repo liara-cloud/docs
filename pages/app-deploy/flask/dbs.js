@@ -33,6 +33,12 @@ export default () => (
       <li>
         <a href="#mongodb">اتصال به MongoDB</a>
       </li>
+      <li>
+        <a href="#redis">اتصال به Redis</a>
+      </li>
+      <li>
+        <a href="#elastic">اتصال به Elasticsearch</a>
+      </li>
     </ul>
 
     <h4 id="sqlite">SQLite</h4>
@@ -162,55 +168,194 @@ if __name__ == '__main__':
 
     <h4 id="mysql">MySQL/MariaDB</h4>
     <p>
-      برای اتصال به دیتابیس MySQL یا MariaDB کافیست اطلاعات اتصال به آن را در
-      بخش متغیرهای محیطی یا همان ENVs وارد کنید:
+      برای اتصال به دیتابیس MySQL یا MariaDB کافیست تا در ابتدا متغیرهای محیطی
+      زیر را در برنامه خود تنظیم کنید؛ در نظر داشته باشید که مقادیر متغیرهای
+      زیر، فرضی هستند:
     </p>
     <Highlight className="config">
-      {`DATABASE_URL=mysql://USER:PASSWORD@HOST:PORT/NAME`}
+      {`DB_HOST=annapurna.liara.cloud
+DB_PORT=32933
+DB_NAME=gallant_ramanujan
+DB_USER=root
+DB_PASS=UIhfscObpnZhhHG4bo6BOyvF`}
     </Highlight>
     <p>
-      و حالا با اضافه‌شدن این متغیر، می‌توانید آن را از داخل کدهای‌تان فراخوانی
-      کرده و با آن به دیتابیس متصل شوید.
+      پس از اضافه کردن متغیرهای محیطی به برنامه، می‌توانید همانند قطعه کد زیر،
+      به دیتابیس خود متصل شوید:
     </p>
-    <p>
-      البته می‌توانید برای اتصال به دیتابیس MySQL در برنامه Flask خود، از ماژول
-      flask_mysqldb نیز استفاده کنید. برای استفاده از این ماژول در ابتدا باید آن
-      را نصب کنید:
-    </p>
-    <Highlight className="bash">{`pip install flask_mysqldb`}</Highlight>
-    <p>
-      پس از نصب ماژول می‌توانید با استفاده از قطعه کد زیر، تنظیمات مربوط به
-      دیتابیس را در برنامه، انجام دهید:
-    </p>
+
     <Highlight className="python">
-      {`from flask_mysqldb import MySQL
-# MySQL configuration
-app.config['MYSQL_HOST']     = os.getenv('DB_HOST', 'localhost')
-app.config['MYSQL_USER']     = os.getenv('DB_USER', 'root')
-app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD', '')
-app.config['MYSQL_DB']       = os.getenv('DB_NAME', 'db')
-app.config['MYSQL_PORT']     = int(os.getenv('DB_PORT', 3306)) 
-mysql = MySQL(app)`}
+      {`from mysql.connector import pooling
+from flask import Flask
+import os
+
+app = Flask(__name__)
+
+def get_connection():
+    try:
+        connection_pool = pooling.MySQLConnectionPool(pool_size=1,
+                                                      pool_reset_session=True,
+                                                      host=os.getenv("DB_HOST"),
+                                                      port=os.getenv("DB_PORT"),
+                                                      database=os.getenv("DB_NAME"),
+                                                      user=os.getenv("DB_USER"),
+                                                      password=os.getenv("DB_PASS"))
+        return connection_pool.get_connection()
+    except Exception as e:
+        print(str(e))
+        return None
+
+@app.route('/')
+def index():
+    conn = get_connection()
+    if conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            result = cursor.fetchall()
+            conn.close()
+            return 'connected' if result else 'not connected'
+    else:
+        return 'not connected'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+`}
     </Highlight>
-    <p>در برنامه فوق از متغیرهای محیطی برای مقداردهی استفاده می‌شود.</p>
 
     <h4 id="mongodb">MongoDB</h4>
     <p>
-      {" "}
-      اگر از این پایگاه داده استفاده کرده‌اید کافیست اطلاعات اتصال به دیتابیس
-      MongoDB را در بخش env ها وارد کنید:
+      برای اتصال به دیتابیس MongoDB، در ابتدا باید متغیر محیطی زیر را به برنامه
+      خود اضافه کنید؛ در نظر داشته باشید که مقدار متغیر زیر، فرضی است و باید آن
+      را با مقدار واقعی دیتابیس خود، جایگزین کنید:
     </p>
-    <Highlight className="config">
-      {`MONGO_URI="mongodb://USERNAME:PASSWORD@HOST:PORT/DB_NAME?authSource=admin"`}
+    <Highlight className="shell">
+      {`MONGO_URI="mongodb://root:1Oi24kh57useWrr0NDdrviUY@annapurna.liara.cloud:34626/my-app?authSource=admin"`}
     </Highlight>
     <p>
-      و سپس در برنامه به وسیله درایور و کتابخانه مدنظرتان متصل شوید (ما برای
-      نمونه از Flask-PyMongo استفاده کرده‌ایم.)
+      برای برقراری ارتباط با دیتابیس MongoDB در برنامه‌های Flask، ماژول‌های
+      زیادی وجود دارد؛ توصیه ما استفاده از ماژول pymongo است؛ برای نصب این
+      ماژول، کافیست تا دستور زیر را اجرا کنید:
+    </p>
+    <Highlight className="shell">{`pip install pymongo`}</Highlight>
+
+    <p>
+      در نهایت، می‌توانید با استفاده از قطعه کد زیر، به دیتابیس خود متصل شوید و
+      از آن استفاده کنید:
     </p>
     <Highlight className="python">
-      {`if(os.getenv('MONGO_URI') is None):
-    return 'MONGO_URI not set!'
-mongo = PyMongo(app, uri=os.getenv('MONGO_URI'))`}
+      {`from flask import Flask
+from pymongo import MongoClient
+import os
+
+app = Flask(__name__)
+
+mongodb_uri = os.getenv("MONGO_URI")
+
+mongodb_client = MongoClient(mongodb_uri, maxPoolSize=10, minPoolSize=10)
+
+@app.route('/')
+def show_connection_status():
+    try:
+        database = mongodb_client['test']
+        collection = database['test']
+        data = {'name': 'John Doe', 'age': 30, 'city': 'New York'}
+        collection.insert_one(data)
+        return "connected"
+    except Exception as e:
+        print(f"Error connecting to MongoDB: {e}")
+        return "failed to connect"
+
+if __name__ == '__main__':
+    app.run(debug=True)
+`}
+    </Highlight>
+
+    <h4 id="redis">Redis</h4>
+    <p>
+      برای استفاده از دیتابیس Redis، در ابتدا باید متغیر محیطی زیر را با مقدار
+      واقعی URI در دیتابیس خود، به برنامه‌تان اضافه کنید:
+    </p>
+    <Highlight className="shell">
+      {`REDIS_URI=redis://:aLsc5QKG7z4ubKeLSLBwx9ob@rediso:6379/0`}
+    </Highlight>
+
+    <p>
+      برای اتصال به دیتابیس هم، می‌توانید از ماژول redis استفاده کنید که برای
+      نصب آن، باید دستور زیر را اجرا کنید:
+    </p>
+    <Highlight className="shell">{`pip install redis`}</Highlight>
+
+    <p>
+      در نهایت، می‌توانید با استفاده از قطعه کد زیر، به دیتابیس متصل شوید و از
+      آن استفاده کنید:
+    </p>
+    <Highlight className="python">
+      {`from flask import Flask
+import redis
+import os
+
+app = Flask(__name__)
+
+redis_uri = os.getenv('REDIS_URI')
+
+redis_client = redis.StrictRedis.from_url(redis_uri)
+
+@app.route('/')
+def test_redis_connection():
+    try:
+        redis_client.ping()
+        return "Connected to Redis successfully!"
+    except Exception as e:
+        print(f"Error connecting to Redis: {e}")
+        return "Failed to connect to Redis."
+
+if __name__ == '__main__':
+    app.run(debug=True)
+`}
+    </Highlight>
+
+    <h4 id="elastic">Elasticsearch</h4>
+    <p>
+      برای استفاده از این دیتابیس، باید URI آن را طبق قطعه کد زیر، به متغیرهای
+      محیطی برنامه خود، اضافه کنید:
+    </p>
+    <Highlight className="shell">
+      {`ELASTIC_URI=http://elastic:91UUoKa1jWaHSecnbkEW9NWw@annapurna.liara.cloud:32119/`}
+    </Highlight>
+
+    <p>
+      در ادامه، می‌توانید با نصب ماژول Elasticsearch با استفاده از قطعه کد زیر،
+      از دیتابیس استفاده کنید:
+    </p>
+    <Highlight className="shell">{`pip install elasticsearch`}</Highlight>
+
+    <p>
+      در نهایت، می‌توانید با استفاده از قطعه کد زیر، به دیتابیس موردنظرتان متصل
+      شده و کارهای مدنظرتان را انجام دهید:
+    </p>
+    <Highlight className="python">
+      {`from flask import Flask, jsonify
+from elasticsearch import Elasticsearch, TransportError
+import os
+
+app = Flask(__name__)
+
+ELASTIC_URI = os.getenv('ELASRIC_URI')
+es_client = Elasticsearch(ELASTIC_URI)
+
+@app.route('/')
+def check_elasticsearch_connection():
+    try:
+        if es_client.ping():
+            return jsonify({'status': 'success', 'message': 'Connected to Elasticsearch'})
+        else:
+            return jsonify({'status': 'error', 'message': 'Failed to connect to Elasticsearch'})
+    except TransportError as e:
+        return jsonify({'status': 'error', 'message': f'Error connecting to Elasticsearch: {str(e)}'})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+`}
     </Highlight>
 
     <br />
