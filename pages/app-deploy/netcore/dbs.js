@@ -49,6 +49,9 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools`}
         <a href="#mysql">اتصال به MySQL/MariaDB</a>
       </li>
       <li>
+        <a href="#sqlite">اتصال به SQLite</a>
+      </li>
+      <li>
         <a href="#tips">توضیحات و نکات تکمیلی</a>
       </li>
     </ul>
@@ -229,6 +232,77 @@ builder.Services.AddDbContext<your-db-Context>(options =>
       <b>appsettings.json</b> مقدار اطلاعات شبکه خصوصی را قرار داده و سپس برنامه
       خود را در لیارا، مستقر کنید.
     </Notice>
+
+    <h4 id="sqlite">SQLite</h4>
+    <p>
+      استفاده از دیتابیس SQLite در پروژه‌های بزرگ و یا مهم توصیه نمی‌شود؛ اما
+      اگر که یک پروژه کوچک یا موقتی دارید، می‌توانید از این دیتابیس بهره ببرید؛
+      در ابتدا بایستی پکیج مربوط به آن را با اجرای دستور زیر، نصب کنید:
+    </p>
+    <Highlight className="shell">
+      {`dotnet add package Microsoft.EntityFrameworkCore.SQLite`}
+    </Highlight>
+
+    <p>
+      در ادامه، باید در فایل <b>appsettings.json</b> اطلاعات مربوط به دیتابیس
+      مثل دایرکتوری و نام آن را وارد کنید؛ به عنوان مثال:
+    </p>
+    <Highlight className="json">
+      {`{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "Production": "Data Source=db/MvcMovieContext-69c678d9-0976-406c-9d44-239ed1395d90.db"
+    }
+}`}
+    </Highlight>
+
+    <p>
+      سپس، باید دایرکتوری مربوط به دیتابیس را ایجاد کنید تا در حین استقرار، به
+      مشکل نخورد؛ در ادامه نیز، باید قطعه کد زیر را در فایل Program.cs وارد
+      کنید:
+    </p>
+    <Highlight className="csharp">
+      {`using Microsoft.EntityFrameworkCore;
+using your-context.Data;
+var builder = WebApplication.CreateBuilder(args);
+    builder.Services.AddDbContext<your-context>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("Production")));
+
+builder.Services.AddControllersWithViews();
+var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<your-context>();
+    dbContext.Database.Migrate();  
+}`}
+    </Highlight>
+    <p>
+      سپس، در بخش <b>دیسک‌ها</b> در برنامه Net. در لیارا، باید یک دیسک به نام
+      database و اندازه مورد نظرتان ایجاد کنید. و پس از آن یک فایل به نام
+      liara.json در مسیر اصلی پروژه خود، ایجاد کنید و قطعه کد زیر را، درون آن،
+      قرار دهید:
+    </p>
+    <Highlight className="json">
+      {`{
+    "disks": [
+        {
+            "name": "database",
+            "mountTo": "db"
+        }
+    ]
+}`}
+    </Highlight>
+    <p>
+      در نهایت با استفاده از دستور liara deploy، برنامه خود را در لیارا مستقر
+      کنید و به دیتابیس خود متصل شوید.
+    </p>
 
     <h4 id="tips">توضیحات و نکات تکمیلی</h4>
     <h5>قابلیت Connection Pooling</h5>
