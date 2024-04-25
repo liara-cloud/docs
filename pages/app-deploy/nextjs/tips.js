@@ -46,6 +46,9 @@ export default () => (
       <li>
         <a href="#econnreset">رفع خطای ECONNRESET</a>
       </li>
+      <li>
+        <a href="#nodejs-version">نسخه NodeJS</a>
+      </li>
     </ul>
 
     <h3 id="next-public-envs">بیلد متغیر‌های محیطی برای مرورگر</h3>
@@ -289,6 +292,12 @@ export function Example() {
     <p>
       این خطا به دلیل رسیدن به حداکثر محدودیت منابع رخ می‌دهد و با ارتقا پلن،
       رفع می‌شود.
+    </p>
+
+    <h3 id="nodejs-version">نسخه NodeJS</h3>
+    <p>
+      در نظر داشته باشید که برنامه Angularتان با نسخه NodeJS 20 در دسترس قرار
+      می‌گیرد.
     </p>
   </Layout>
 );

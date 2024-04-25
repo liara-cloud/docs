@@ -246,6 +246,18 @@ const Videos = () => {
             videoTitle: "ارسال ایمیل",
             link: "https://files.liara.ir/liara/nodejs/nodejs-emailserver.mp4",
           },
+          {
+            videoTitle: "اتصال به دیتابیس MySQL/MariaDB",
+            link: "https://files.liara.ir/liara/nodejs/nodejs-mysql.mp4",
+          },
+          {
+            videoTitle: "اتصال به دیتابیس PostgreSQL",
+            link: "https://files.liara.ir/liara/nodejs/nodejs-postgres.mp4",
+          },
+          {
+            videoTitle: "اتصال به دیتابیس SQLite",
+            link: "https://files.liara.ir/liara/nodejs/nodejs-sqlite.mp4",
+          },
         ]}
       />
 

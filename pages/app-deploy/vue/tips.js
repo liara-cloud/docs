@@ -39,6 +39,9 @@ export default () => (
       <li>
         <a href="#source-map">غیرفعال کردن Source Map</a>
       </li>
+      <li>
+        <a href="#nodejs-version">نسخه NodeJS</a>
+      </li>
     </ul>
 
     <h3 id="nginx-conf">تنظیمات Nginx</h3>
@@ -191,6 +194,12 @@ location ~* \\.(?:css|js|otf|ttf|eot|woff|woff2)$ {
       در نهایت برای اعمال این تغییر کافیست دستور{" "}
       <span className="code">liara deploy</span> را در مسیر اصلی پروژه‌تان اجرا
       کنید.
+    </p>
+
+    <h3 id="nodejs-version">نسخه NodeJS</h3>
+    <p>
+      در نظر داشته باشید که برنامه Angularتان با نسخه NodeJS 20 در دسترس قرار
+      می‌گیرد.
     </p>
   </Layout>
 );

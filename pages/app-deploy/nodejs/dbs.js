@@ -46,6 +46,16 @@ export default () => (
     </ul>
 
     <h4 id="mysql">MySQL/MariaDB</h4>
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/nodejs/nodejs-mysql.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
 
     <p>
       {" "}
@@ -176,6 +186,16 @@ process.on('SIGINT', () => {
 
     <h4 id="postgres">PostgreSQL</h4>
     <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/nodejs/nodejs-postgres.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <p>
       برای اتصال به دیتابیس Postgres، می‌توانید از پکیج pg استفاده کنید، برای
       نصب این پکیج، کافیست تا در مسیر اصلی پروژه خود، دستور زیر را اجرا کنید:
     </p>
@@ -304,6 +324,16 @@ app.listen(PORT, () => {
     </Highlight>
 
     <h4 id="sqlite">SQLite</h4>
+    <p>
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
+    </p>
+    <video
+      src="https://files.liara.ir/liara/nodejs/nodejs-sqlite.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
     <p>
       برای اتصال موفق به دیتابیس SQLite در برنامه‌های NodeJS کافیست تا گام‌های
       زیر را طی کنید:
