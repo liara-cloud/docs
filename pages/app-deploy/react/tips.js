@@ -202,7 +202,7 @@ location ~* \\.(?:css|js|otf|ttf|eot|woff|woff2)$ {
 
     <h3 id="nodejs-version">نسخه NodeJS</h3>
     <p>
-      در نظر داشته باشید که برنامه Angularتان با نسخه NodeJS 20 در دسترس قرار
+      در نظر داشته باشید که برنامه React با نسخه NodeJS 20 در دسترس قرار
       می‌گیرد.
     </p>
   </Layout>
