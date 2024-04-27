@@ -722,6 +722,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/netcore/websocket">
+                    وب‌سوکت
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/netcore/email">
                     ارسال ایمیل
                   </ActiveLink>

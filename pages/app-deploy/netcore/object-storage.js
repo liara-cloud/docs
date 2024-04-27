@@ -419,7 +419,7 @@ public class yourController : Controller
 
     <br />
 
-    <Link href="/app-deploy/netcore/email" className="next-page">
+    <Link href="/app-deploy/netcore/websocket" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
