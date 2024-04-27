@@ -52,6 +52,9 @@ export default () => (
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
+        <a href="#419-expire">رفع خطای 419Page Expired</a>
+      </li>
+      <li>
         <a href="#http-security-headers">تنظیم هدرهای امنیتی HTTP</a>
       </li>
       <li>
@@ -355,6 +358,20 @@ stdout_logfile=/tmp/laravel-worker.log`}
     RewriteRule ^ index.php [L]
 </IfModule>`}
     </Highlight>
+    <h3 id="419-expire">رفع خطای 419Page Expired</h3>
+    <p>
+      خطای{" "}
+      <span className="code">
+        419 Sorry, your session has expired. Please refresh and try again.
+      </span>{" "}
+      معمولاً زمانی پیش می‌آید که اعتبار سنجی CSRF در برنامه شما، موفق نباشد و
+      یا به خطا بخورد. معمولاً یکی از دلایل اصلی این خطا، در session ها است. اگر
+      session به درستی ایجاد نشود و یا منقضی شود؛ این خطا، نمایش داده می‌شود.
+    </p>
+    <p>
+      یکی از راه‌حل‌ها برای رفع این مشکل، اضافه کردن متغیر محیطی با مقدار{" "}
+      <span className="code">SESSION_DRIVER=cookie</span> به برنامه است.
+    </p>
     <h3 id="http-security-headers">تنظیم هدرهای امنیتی HTTP</h3>
     <p>
       برای جلوگیری از حملاتی مانند Clickjacking، XSS، SSL Striping می‌توانید
