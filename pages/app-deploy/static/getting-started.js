@@ -22,11 +22,11 @@ export default () => (
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه Static
       (HTML/CSS/JavaScript) را با استفاده از ابزار{" "}
-      <Link href="/app-deploy/static/desktop">Liara Desktop</Link>، بر روی سرویس
-      ابری لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح
-      می‌دهید یا تصمیم داشته باشید با{" "}
-      <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار برنامه‌ی
-      خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
+      <Link href="/app-deploy/static/browser">مرورگر</Link>، بر روی سرویس ابری
+      لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا
+      تصمیم داشته باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>،
+      مسئولیت استقرار برنامه‌ی خود را به سرویس{" "}
+      <Link href="/cicd/github">GitHub</Link> و یا{" "}
       <Link href="/cicd/gitlab">GitLab</Link> بسپرید، امکان استفاده از ابزار{" "}
       <Link href="/app-deploy/static/cli">Liara CLI</Link> وجود دارد. در ادامه
       در هر گام، با یک ویژگی پلتفرم Static لیارا آشنا خواهید شد و می‌توانید از
@@ -58,7 +58,7 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/static/desktop" className="next-page">
+    <Link href="/app-deploy/static/browser" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

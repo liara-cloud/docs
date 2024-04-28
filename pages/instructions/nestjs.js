@@ -28,13 +28,6 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
-    <video
-      src="https://files.liara.ir/liara/nestjs/nestjs-desktop.mp4"
-      controls="controls"
-      className="block w-full"
-      width="100%"
-    ></video>
-
     <p>
       NestJS یک فریم‌ورک قابل اعتماد و مقیاس‌پذیر با NodeJS است که بسیاری از
       قابلیت‌ها را برای شما به ارمغان می‌آورد. حال شما می‌توانید برنامه‌های

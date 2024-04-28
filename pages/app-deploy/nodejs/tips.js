@@ -59,7 +59,7 @@ export default () => (
   "app": "nodejs-starter",
   "port": 8000,
   "node": {
-    "version": "14"
+    "version": "22"
   }
 }`}
     </Highlight>
@@ -74,6 +74,7 @@ export default () => (
       <li>
         <b>20 (پیش‌فرض)</b>
       </li>
+      <li>22</li>
     </ul>
 
     <h3 id="build-script">ES6 و build کردن برنامه</h3>

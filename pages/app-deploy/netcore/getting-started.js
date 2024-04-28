@@ -23,8 +23,7 @@ export default () => (
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه
       <Link href="https://dotnet.microsoft.com/en-us/"> NET. </Link> را با
-      استفاده از ابزار{" "}
-      <Link href="/app-deploy/netcore/desktop">Liara Desktop</Link>، بر روی
+      استفاده از <Link href="/app-deploy/netcore/browser">مرورگر</Link>، بر روی
       لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا
       تصمیم داشته باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>،
       مسئولیت استقرار برنامه‌ی خود را به سرویس{" "}
@@ -75,7 +74,7 @@ export default () => (
       نسخه‌های جدیدتر ارتقا دهید.
     </Notice>
     <br />
-    <Link href="/app-deploy/netcore/desktop" className="next-page">
+    <Link href="/app-deploy/netcore/browser" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

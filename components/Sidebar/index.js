@@ -1896,10 +1896,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
         </nav>
 
         <nav className="nav">
-          <NavTitle href="/desktop">Desktop</NavTitle>
+          <NavTitle href="/browser">Browser</NavTitle>
           <ul className="nav__list">
             <li>
-              <ActiveLink href="/desktop/install">نصب و به‌روزرسانی</ActiveLink>
+              <ActiveLink href="/browser/about">
+                درباره استقرار با مرورگر
+              </ActiveLink>
             </li>
             {/* <li>
               <ActiveLink href="/desktop/login">ورود به حساب کاربری</ActiveLink>

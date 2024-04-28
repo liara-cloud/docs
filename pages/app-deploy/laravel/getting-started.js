@@ -21,8 +21,7 @@ export default () => (
     <h3>🚀 شروع به کار</h3>
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه Laravel یا Lumen را با
-      استفاده از ابزار{" "}
-      <Link href="/app-deploy/laravel/desktop">Liara Desktop</Link>، بر روی
+      استفاده از <Link href="/app-deploy/laravel/browser">مرورگر</Link>، بر روی
       لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا
       تصمیم داشته باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>،
       مسئولیت استقرار برنامه‌ی خود را به سرویس{" "}
@@ -82,7 +81,7 @@ export default () => (
 
     <br />
 
-    <Link href="/app-deploy/laravel/desktop" className="next-page">
+    <Link href="/app-deploy/laravel/browser" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
