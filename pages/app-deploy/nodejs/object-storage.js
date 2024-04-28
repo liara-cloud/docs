@@ -394,7 +394,7 @@ app.listen(3000, function () {
       را مطالعه کنید.
     </p>
 
-    <Link href="/app-deploy/nodejs/email" className="next-page">
+    <Link href="/app-deploy/nodejs/websocket" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

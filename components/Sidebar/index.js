@@ -299,6 +299,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/nodejs/websocket">
+                    وب‌سوکت
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/nodejs/email">
                     ارسال ایمیل
                   </ActiveLink>
