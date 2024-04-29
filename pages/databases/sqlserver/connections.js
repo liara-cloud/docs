@@ -23,9 +23,25 @@ export default () => (
     <h3>راه‌های اتصال به SQL Server</h3>
     <p>
       پس از نصب و راه‌اندازی یک دیتابیس جدید نوبت به مدیریت آن می‌رسد و شما
-      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های SQL Server یکی از
-      ابزارهای زیر را انتخاب کنید.
+      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های SQL Server از ابزارهای
+      مختلفی استفاده کنید.
     </p>
+
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#database-management-tools">
+          مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+        </a>
+      </li>
+      <li>
+        <a href="#sqlcmd">اتصال به SQL CMD</a>
+      </li>
+      <li>
+        <a href="#db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</a>
+      </li>
+    </ul>
+
     <h4 id="database-management-tools">
       مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
     </h4>
@@ -94,8 +110,39 @@ export default () => (
       کنید.
     </p>
 
-    <br />
+    <h3 id="db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</h3>
+    <div className="platforms">
+      <Link href="/app-deploy/nodejs/dbs/#mssql">
+        <PlatformIcon platform="nodejs" />
+        <span>NodeJS</span>
+      </Link>
+      <Link href="/app-deploy/nextjs/dbs/#mssql">
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
+      </Link>
+      <Link href="/app-deploy/laravel/dbs/">
+        <PlatformIcon platform="laravel" />
+        <span>Laravel</span>
+      </Link>
+      <Link href="/app-deploy/django/dbs/#mssql">
+        <PlatformIcon platform="django" />
+        <span>Django</span>
+      </Link>
+      <Link href="/app-deploy/flask/dbs/#postgres">
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
+      </Link>
+      <Link href="/app-deploy/netcore/dbs/#mssql">
+        <PlatformIcon platform="netcore" />
+        <span>.NET</span>
+      </Link>
+      <Link href="/app-deploy/golang/dbs/#sqlserver">
+        <PlatformIcon platform="go" />
+        <span>Golang</span>
+      </Link>
+    </div>
 
+    <br />
     <Link href="/databases/sqlserver/backup" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>

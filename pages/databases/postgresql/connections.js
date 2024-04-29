@@ -23,9 +23,28 @@ export default () => (
     <h3>راه‌های اتصال به PostgreSQL</h3>
     <p>
       پس از نصب و راه‌اندازی یک دیتابیس جدید نوبت به مدیریت آن می‌رسد و شما
-      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های PostgreSQL یکی از
-      ابزارهای زیر را انتخاب کنید.
+      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های PostgreSQL از ابزارهای
+      مختلفی، استفاده کنید.
     </p>
+
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#pgadmin">اتصال به PGAdmin</a>
+      </li>
+      <li>
+        <a href="#database-management-tools">
+          مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+        </a>
+      </li>
+      <li>
+        <a href="#psql">اتصال به PSQL</a>
+      </li>
+      <li>
+        <a href="#db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</a>
+      </li>
+    </ul>
+
     <h4 id="pgadmin">PGAdmin</h4>
 
     <video
@@ -75,6 +94,42 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
+
+    <h3 id="db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</h3>
+    <div className="platforms">
+      <Link href="/app-deploy/nodejs/dbs/#postgres">
+        <PlatformIcon platform="nodejs" />
+        <span>NodeJS</span>
+      </Link>
+      <Link href="/app-deploy/nextjs/dbs/#postgres">
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
+      </Link>
+      <Link href="/app-deploy/laravel/dbs/">
+        <PlatformIcon platform="laravel" />
+        <span>Laravel</span>
+      </Link>
+      <Link href="/app-deploy/php/dbs/#postgres">
+        <PlatformIcon platform="php" />
+        <span>PHP</span>
+      </Link>
+      <Link href="/app-deploy/django/dbs/#postgres">
+        <PlatformIcon platform="django" />
+        <span>Django</span>
+      </Link>
+      <Link href="/app-deploy/flask/dbs/#postgres">
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
+      </Link>
+      <Link href="/app-deploy/netcore/dbs/#postgres">
+        <PlatformIcon platform="netcore" />
+        <span>.NET</span>
+      </Link>
+      <Link href="/app-deploy/golang/dbs/#postgres">
+        <PlatformIcon platform="go" />
+        <span>Golang</span>
+      </Link>
+    </div>
 
     <br />
 

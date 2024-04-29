@@ -23,9 +23,28 @@ export default () => (
     <h3>راه‌های اتصال به MariaDB</h3>
     <p>
       پس از نصب و راه‌اندازی یک دیتابیس جدید نوبت به مدیریت آن می‌رسد و شما
-      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های MariaDB یکی از
-      ابزارهای زیر را انتخاب کنید.
+      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های MariaDB از ابزارهای
+      مختلفی، استفاده کنید.
     </p>
+
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#phpmyadmin">اتصال به phpMyAdmin</a>
+      </li>
+      <li>
+        <a href="#database-management-tools">
+          مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+        </a>
+      </li>
+      <li>
+        <a href="#mysql-client">اتصال به MySQL-CLI</a>
+      </li>
+      <li>
+        <a href="#db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</a>
+      </li>
+    </ul>
+
     <h4 id="phpmyadmin">phpMyAdmin</h4>
 
     <video
@@ -76,6 +95,42 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
+
+    <h3 id="db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</h3>
+    <div className="platforms">
+      <Link href="/app-deploy/nodejs/dbs/#mysql">
+        <PlatformIcon platform="nodejs" />
+        <span>NodeJS</span>
+      </Link>
+      <Link href="/app-deploy/nextjs/dbs/#mariadb">
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
+      </Link>
+      <Link href="/app-deploy/laravel/dbs/">
+        <PlatformIcon platform="laravel" />
+        <span>Laravel</span>
+      </Link>
+      <Link href="/app-deploy/php/dbs/#mysql">
+        <PlatformIcon platform="php" />
+        <span>PHP</span>
+      </Link>
+      <Link href="/app-deploy/django/dbs/#mysql">
+        <PlatformIcon platform="django" />
+        <span>Django</span>
+      </Link>
+      <Link href="/app-deploy/flask/dbs/#mysql">
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
+      </Link>
+      <Link href="/app-deploy/netcore/dbs/#mysql">
+        <PlatformIcon platform="netcore" />
+        <span>.NET</span>
+      </Link>
+      <Link href="/app-deploy/golang/dbs/#mysql">
+        <PlatformIcon platform="go" />
+        <span>Golang</span>
+      </Link>
+    </div>
 
     <br />
 

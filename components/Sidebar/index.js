@@ -1685,6 +1685,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                     نصب و راه‌اندازی
                   </ActiveLink>
                 </li>
+                <li>
+                  <ActiveLink href="/databases/elasticsearch/connections">
+                    راه‌های اتصال
+                  </ActiveLink>
+                </li>
               </ul>
             </li>
           </ul>

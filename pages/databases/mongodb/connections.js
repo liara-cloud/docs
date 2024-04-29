@@ -23,9 +23,24 @@ export default () => (
     <h3>راه‌های اتصال به MongoDB</h3>
     <p>
       پس از نصب و راه‌اندازی یک دیتابیس جدید نوبت به مدیریت آن می‌رسد و شما
-      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های MongoDB یکی از
-      ابزارهای زیر را انتخاب کنید.
+      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های MongoDB از ابزارهای
+      مختلفی، استفاده کنید.
     </p>
+
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#database-management-tools">
+          مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
+        </a>
+      </li>
+      <li>
+        <a href="#mongo-cli">اتصال به Mongo-CLI</a>
+      </li>
+      <li>
+        <a href="#db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</a>
+      </li>
+    </ul>
 
     <h4 id="database-management-tools">
       مدیریت دیتابیس با استفاده از رابط‌های کاربری گرافیکی (GUI)
@@ -62,7 +77,7 @@ export default () => (
     <h5 id="mongodb-dbeaver">MongoDB Compass</h5>
     <ZoomableImage src="https://files.liara.ir/docs/mongodb/connect-to-mongodb-database-with-mongodb-compass.gif" />
 
-    <h4>mongo cli</h4>
+    <h4 id="mongo-cli">mongo cli</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
       MongoDB متصل شوید می‌توانید ابزار Mongo Shell را نصب کرده و با اجرای دستور
@@ -78,8 +93,27 @@ export default () => (
 
     <Asciinema id="465250" />
 
-    <br />
+    <h3 id="db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</h3>
+    <div className="platforms">
+      <Link href="/app-deploy/nodejs/dbs/#mongodb">
+        <PlatformIcon platform="nodejs" />
+        <span>NodeJS</span>
+      </Link>
+      <Link href="/app-deploy/nextjs/dbs/#mongodb">
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
+      </Link>
+      <Link href="/app-deploy/php/dbs/#mongodb">
+        <PlatformIcon platform="php" />
+        <span>PHP</span>
+      </Link>
+      <Link href="/app-deploy/flask/dbs/#mongodb">
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
+      </Link>
+    </div>
 
+    <br />
     <Link href="/databases/mongodb/backup" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>

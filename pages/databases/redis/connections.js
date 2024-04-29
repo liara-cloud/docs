@@ -23,10 +23,26 @@ export default () => (
     <h3>راه‌های اتصال به Redis</h3>
     <p>
       پس از نصب و راه‌اندازی یک دیتابیس جدید نوبت به مدیریت آن می‌رسد و شما
-      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های Redis یکی از ابزارهای
-      زیر را انتخاب کنید.
+      می‌توانید برای مشاهده و مدیریت داده‌های دیتابیس‌های Redis از ابزارهای
+      مختلفی، استفاده کنید.
     </p>
+    <h4>فهرست عناوین:</h4>
+    <ul className="mt-0">
+      <li>
+        <a href="#phpredisadmin">اتصال به Redis با PHPRedisAdmin</a>
+      </li>
+      <li>
+        <a href="#redis-cli">اتصال به Redis-CLI</a>
+      </li>
+      <li>
+        <a href="#medis">پنل Medis</a>
+      </li>
+      <li>
+        <a href="#db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</a>
+      </li>
+    </ul>
 
+    <h4 id="phpredisadmin">PHPRedisAdmin</h4>
     <p>
       در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
       ‌را مشاهده کنید.
@@ -37,8 +53,6 @@ export default () => (
       className="block w-full"
       width="100%"
     ></video>
-
-    <h4>phpRedisAdmin</h4>
     <p>
       ابزار phpRedisAdmin امکان مدیریت دیتابیس‌های Redis را در محیط وب فراهم
       می‌کند. برای راه‌اندازی این ابزار در لیارا تنها کافیست وارد منوی{" "}
@@ -55,7 +69,8 @@ export default () => (
       کنید.
     </p>
     <br />
-    <h4>Redis-cli</h4>
+
+    <h4 id="redis-cli">Redis-cli</h4>
     <p>
       در صورتی که قصد داشته باشید از طریق خط فرمان سیستم‌عامل خود به دیتابیس‌های
       Redis متصل شوید می‌توانید ابزار{" "}
@@ -69,7 +84,7 @@ export default () => (
 
     <Asciinema id="465259" />
 
-    <h4>استفاده از پنل رایگان و متن باز</h4>
+    <h4 id="medis">استفاده از پنل رایگان و متن باز</h4>
     <p>
       همچنین شما می‌توانید از پنل رایگان و متن‌باز{" "}
       <a
@@ -82,8 +97,27 @@ export default () => (
       نیز استفاده کنید.
     </p>
 
-    <br />
+    <h3 id="db-platforms">اتصال به دیتابیس در پلتفرم‌های مختلف</h3>
+    <div className="platforms">
+      <Link href="/app-deploy/nextjs/dbs/#redis">
+        <PlatformIcon platform="next" />
+        <span>NextJS</span>
+      </Link>
+      <Link href="/app-deploy/php/dbs/#redis">
+        <PlatformIcon platform="php" />
+        <span>PHP</span>
+      </Link>
+      <Link href="/app-deploy/flask/dbs/#redis">
+        <PlatformIcon platform="flask" />
+        <span>Flask</span>
+      </Link>
+      <Link href="/app-deploy/golang/dbs/#redis">
+        <PlatformIcon platform="go" />
+        <span>Golang</span>
+      </Link>
+    </div>
 
+    <br />
     <Link href="/databases/redis/backup" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
