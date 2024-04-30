@@ -439,7 +439,7 @@ location ~ /\\.well-known {
     </p>
     <ZoomableImage src="https://files.liara.ir/docs/django/add-gunicorn-timeout-variable-to-django-app.gif"></ZoomableImage>
     <Notice variant="info">
-      توجه داشته باشید که متغیر <span className="code">GUNICORN_TIMEO UT</span>{" "}
+      توجه داشته باشید که متغیر <span className="code">GUNICORN_TIMEOUT</span>{" "}
       براساس ثانیه است.
     </Notice>
 
