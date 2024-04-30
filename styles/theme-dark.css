@@ -82,20 +82,16 @@
 
 .dark-mode .article a.next-page {
   font-size: 14px;
-  background: linear-gradient(92deg, #87fcc4 0%, #28c1f5 98.77%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  background: #87fcc412;
   padding: 10px 15px;
   border: none;
-  border: 1px solid #87fcc4;
   border-radius: 8px;
   float: left;
+  color: #87fcc4;
 }
 
 .dark-mode .article a.next-page:hover {
-  background-color: #87fcc422;
+  background-color: #87fcc423;
 }
 
 .dark-mode code {
