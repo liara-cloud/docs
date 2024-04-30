@@ -199,7 +199,7 @@ public class TestController : Controller
       مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/netcore/tips" className="next-page">
+    <Link href="/app-deploy/netcore/entity-framework" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

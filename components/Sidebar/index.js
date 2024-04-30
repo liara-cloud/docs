@@ -737,6 +737,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/netcore/entity-framework">
+                    Entity Framework
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/netcore/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>

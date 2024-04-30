@@ -514,6 +514,10 @@ const Videos = () => {
             videoTitle: "استفاده از دیسک‌ها",
             link: "https://files.liara.ir/liara/dotnet/dotnet-disks.mp4",
           },
+          {
+            videoTitle: "استقرار برنامه ASP EF .NET Core",
+            link: "https://files.liara.ir/liara/dotnet/dotnet-ef.mp4",
+          },
         ]}
       />
 
@@ -611,6 +615,10 @@ const Videos = () => {
           {
             videoTitle: "استقرار Docker Compose",
             link: "https://files.liara.ir/liara/docker/docker-compose.mp4",
+          },
+          {
+            videoTitle: "تنظیم reverse proxy با استفاده از Nginx",
+            link: "https://files.liara.ir/liara/docker/reverse-proxy.mp4",
           },
         ]}
       />
