@@ -26,31 +26,41 @@ export default () => (
     </p>
 
     <p>
-      حال برای راه‌اندازی Nginx در{" "}
-      <Link href="/app-deploy/docker/getting-started">برنامه‌های Docker</Link>{" "}
-      لیارا کافیست یک پروژه‌ی جدید در مسیر دلخواه خود ایجاد کرده و دو فایل با
-      نام‌های
-      <span className="code">Dockerfile</span> و{" "}
-      <span className="code">nginx.conf</span> را با محتوای مربوطه در این پروژه
-      قرار دهید.
+      در صورتی که تمایلی به خواندن آموزش متنی ندارید می‌توانید ویدیوی آموزشی زیر
+      ‌را مشاهده کنید.
     </p>
 
-    <ul>
-      <li>
-        <span className="code">Dockerfile</span>:
-      </li>
-    </ul>
+    <video
+      src="https://files.liara.ir/liara/docker/reverse-proxy.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <Notice variant="info">
+      فایل‌های مورد استفاده در ویدیوی فوق، در{" "}
+      <a href="https://github.com/liara-cloud/docker-getting-started/tree/nginx">
+        گیت‌هاب لیارا
+      </a>{" "}
+      قابل دسترسی هستند.
+    </Notice>
+    <p>
+      برای راه‌اندازی Nginx در{" "}
+      <Link href="/app-deploy/docker/getting-started">برنامه‌های Docker</Link>{" "}
+      لیارا کافیست یک پروژه‌ی جدید در مسیر دلخواه خود ایجاد کرده و دو فایل با
+      نام‌های Dockerfile و nginx.conf را با محتوای مربوطه در این پروژه قرار
+      دهید.
+    </p>
+    <p>
+      به عنوان مثال، در ادامه قطعه کدهای مربوطه برای اعمال reverse proxy بر روی
+      یک برنامه، آمده است:
+    </p>
 
+    <p> محتوای Dockerfile:</p>
     <Highlight className="dockerfile">{`FROM nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf`}</Highlight>
 
-    <ul>
-      <li>
-        <span className="code">nginx.conf</span>:
-      </li>
-    </ul>
-
+    <p>محتوای nginx.conf:</p>
     <Highlight className="nginx">{`user nginx;
 worker_processes auto;
 
@@ -106,24 +116,22 @@ http {
       <span className="code">liara deploy --platform=docker --port=80</span> در
       مسیر اصلی پروژه، Nginx بر روی برنامه‌ی Docker تهیه شده مستقر خواهد شد.
     </p>
+    <Notice variant="info">
+      توجه داشته باشید که هم برنامه داکر شامل Nginx و هم برنامه هدف شما حتماً
+      باید درون یک شبکه خصوصی، قرار داشته باشند تا در نهایت بتوانند به یکدیگر،
+      متصل شوند.
+    </Notice>
+
     <h3>توضیحات و نکات تکمیلی</h3>
-    <h4>تنظیم مسیر tmp به‌عنوان مقصدی برای ذخیره‌ی فایل‌های موقتی</h4>
+    <h5>تنظیم مسیر tmp به‌عنوان مقصدی برای ذخیره‌ی فایل‌های موقتی</h5>
     <p>
       با مشاهده‌ی فایل <span className="code">nginx.conf</span> متوجه خواهید که
       در موارد مختلف از مسیر tmp به‌عنوان مقصدی برای ذخیره‌ی فایل‌های موقتی
-      استفاده شده است و توجه داشته باشید که حتما پیکربندی زیر را لحاظ کنید تا با
-      خطای <span className="code">Read-only file system</span> مواجه نشوید.
+      استفاده شده است. البته شما می‌توانید مسیر دیگری را برای این‌کار انتخاب
+      کنید؛ چرا که فایل‌سیستم برنامه‌های داکر در لیارا، به صورت پیش‌فرض،
+      writable است، قطعه کد زیر، نمونه‌ای از تنظیم مسیر ذخیره‌سازی، به پوشه tmp
+      است:
     </p>
-
-    <Notice variant="info">
-      با وجود Read-Only بودن فایل‌سیستم برنامه‌های لیارا، دایرکتوری{" "}
-      <span className="code">/tmp</span> از این قاعده مستثنی است و شما می‌توانید
-      از این دایرکتوری که در همه پلن‌های ارائه شده، فضایی برابر ۱۰۰ مگابایت
-      دارد، برای ذخیره لاگ‌ها، فایل‌ها آپلودی موقتی و غیره استفاده کنید.{" "}
-      <Link href="/app-deploy/docker/disks#increase-tmp-size">
-        توضیحات بیشتر
-      </Link>
-    </Notice>
 
     <Highlight className="nginx">
       {`client_body_temp_path /tmp/client_temp;
@@ -133,13 +141,15 @@ uwsgi_temp_path       /tmp/uwsgi_temp;
 scgi_temp_path        /tmp/scgi_temp;`}
     </Highlight>
 
-    <h4>تنظیم resolver</h4>
+    <h5>تنظیم resolver</h5>
     <p>
-      با توجه به احتمال تغییر IP برنامک‌ها در لیارا، تنظیم resolver در فایل{" "}
-      <span className="code">nginx.conf</span> این امکان را به‌وجود می‌آورد تا
-      هر بار IP جدید برنامه دریافت شده و مشکلی در هدایت ترافیک به‌وجود نیاید.
-      <Highlight className="nginx">
-        {`server {
+      با توجه به احتمال تغییر IP برنامه در لیارا (در زیر ساخت قدیمی)، تنظیم
+      resolver در فایل <span className="code">nginx.conf</span> این امکان را
+      به‌وجود می‌آورد تا هر بار IP جدید برنامه دریافت شده و مشکلی در هدایت
+      ترافیک به‌وجود نیاید.
+    </p>
+    <Highlight className="nginx">
+      {`server {
   resolver 127.0.0.11 ipv6=off valid=5s;
   listen 80;
   location / {
@@ -148,7 +158,6 @@ scgi_temp_path        /tmp/scgi_temp;`}
   proxy_pass $backend;
   }
 }`}
-      </Highlight>
-    </p>
+    </Highlight>
   </Layout>
 );
