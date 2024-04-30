@@ -26,7 +26,7 @@ export default () => (
       کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا تصمیم داشته
       باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار
       برنامه‌ی خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
-      <Link href="/cicd/gitlab">GitLab</Link> بسپرید، امکان استفاده از ابزار{" "}
+      <Link href="/cicd/gitlab">GitLab</Link> بسپارید، امکان استفاده از ابزار{" "}
       <Link href="/app-deploy/django/cli">Liara CLI</Link> وجود دارد. البته این
       نکته را در نظر داشته باشید که برای استقرار برنامه‌های golang در لیارا از
       پلتفرم <a href="/app-deploy/docker/getting-started"> Docker </a> استفاده

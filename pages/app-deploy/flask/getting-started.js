@@ -25,7 +25,7 @@ export default () => (
       کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا تصمیم داشته
       باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>، مسئولیت استقرار
       برنامه‌ی خود را به سرویس <Link href="/cicd/github">GitHub</Link> و یا{" "}
-      <Link href="/cicd/gitlab">GitLab</Link> بسپرید، امکان استفاده از ابزار{" "}
+      <Link href="/cicd/gitlab">GitLab</Link> بسپارید، امکان استفاده از ابزار{" "}
       <Link href="/app-deploy/flask/cli">Liara CLI</Link> وجود دارد. در ادامه در
       هر گام، با یک ویژگی هاست ابری Flask لیارا آشنا خواهید شد و می‌توانید از
       آن‌ها در برنامه‌ی‌تان استفاده کنید.
