@@ -30,11 +30,6 @@ export default () => (
         <a href="#static-html-export">قابلیت Static HTML Export</a>
       </li>
       <li>
-        <a href="#next-config">
-          جلوگیری از اعمال تغییرات در فایل next.config.js
-        </a>
-      </li>
-      <li>
         <a href="#next-cache">افزایش فضای مسیر Cache</a>
       </li>
       <li>
@@ -143,40 +138,6 @@ export default () => (
       <span className="code">liara deploy --path out</span> بر روی لیارا مستقر
       کنید.
     </p>
-
-    <h3 id="next-config">جلوگیری از اعمال تغییرات در فایل next.config.js</h3>
-    <p>
-      لیارا به‌صورت خودکار فایل
-      <span className="code">next.config.js</span>
-      برنامه‌ی شما را پیدا کرده و در این فایل، تنظیماتی را اضافه می‌کند تا
-      برنامه برای اجرا آماده شود. چنانچه قصد جلوگیری از اعمال این تغییرات را
-      دارید، باید فایل <span className="code">liara.json</span> زیر را به‌ریشه‌ی
-      برنامه‌ی‌تان اضافه کنید:
-    </p>
-    <Highlight className="json">
-      {`{
-  "next": {
-    "modifyConfig": false
-  }
-}
-`}
-    </Highlight>
-    <p>
-      سپس کد زیر را به فایل <span className="code">next.config.js</span>{" "}
-      پروژه‌تان اضافه کنید:
-    </p>
-    <Highlight className="javascript">
-      {`module.exports = {
-  // ...
-  output: 'standalone',
-  // ...
-}
-`}
-    </Highlight>
-    <Notice variant="warning">
-      توجه داشته باشید که فقط و فقط این قابلیت را زمانی غیرفعال کنید که کاملا
-      به‌نتایج آن آگاه باشید.
-    </Notice>
 
     <h3 id="next-cache">افزایش فضای مسیر Cache</h3>
     <p>
