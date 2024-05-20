@@ -38,15 +38,20 @@ export default () => (
     </p>
 
     <ul>
-      <li>7.2</li>
-      <li>7.3</li>
+      <li>7.2 (بدون آپدیت)</li>
+      <li>7.3 (بدون آپدیت)</li>
       <li>7.4</li>
       <li>
         <b>8.0 (پیش‌فرض)</b>
       </li>
       <li>8.1</li>
       <li>8.2</li>
+      <li>8.3</li>
     </ul>
+
+    <Notice variant="infor">
+      در نظر داشته باشید که ionCube در PHP 8.3 پشتیبانی نمی‌شود.
+    </Notice>
 
     <Notice variant="info">
       اگر قصد دارید نسخه‌ی پیش‌فرض PHP را تغییر دهید می‌توانید مستندات{" "}

@@ -108,14 +108,19 @@ export default () => (
     </Highlight>
     <p>در حال حاضر، از نسخه‌های زیر پشتیبانی می‌کنیم:</p>
     <ul>
-      <li>7.2</li>
-      <li>7.3</li>
+      <li>7.2 (بدون آپدیت)</li>
+      <li>7.3 (بدون آپدیت)</li>
       <li>
         <b>7.4 (پیش‌فرض)</b>
       </li>
       <li>8.0</li>
       <li>8.1</li>
       <li>8.2</li>
+      <li>8.3</li>
+
+      <Notice variant="infor">
+        در نظر داشته باشید که ionCube در PHP 8.3 پشتیبانی نمی‌شود.
+      </Notice>
     </ul>
     <h3 id="php-ini-customization">تنظیمات اختصاصی php.ini</h3>
     <p>

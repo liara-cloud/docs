@@ -62,15 +62,20 @@ export default () => (
     </p>
 
     <ul dir="ltr">
-      <li>PHP 7.2</li>
-      <li>PHP 7.3</li>
+      <li>PHP 7.2 (بدون آپدیت)</li>
+      <li>PHP 7.3 (بدون آپدیت)</li>
       <li>
         <b>PHP 7.4 (پیش‌فرض)</b>
       </li>
       <li>PHP 8.0</li>
       <li>PHP 8.1</li>
       <li>PHP 8.2</li>
+      <li>PHP 8.3</li>
     </ul>
+
+    <Notice variant="infor">
+      در نظر داشته باشید که ionCube در PHP 8.3 پشتیبانی نمی‌شود.
+    </Notice>
 
     <Notice variant="info">
       اگر قصد دارید تنظیمات پیش‌فرض php.ini را تغییر دهید و یا با Queue ها کار
