@@ -48,7 +48,7 @@ export default () => (
     </p>
 
     <ul>
-      <li>3.7</li>
+      <li>3.7 (بدون آپدیت)</li>
       <li>3.8</li>
       <li>3.9</li>
       <li>
