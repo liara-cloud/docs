@@ -1,0 +1,127 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import { GoCheckCircle } from "react-icons/go";
+
+<Layout>
+
+        ## متن
+        <hr className="mb-2" />
+        <h1>h1</h1>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <p>این متن تگ p است</p>
+        <p className="text-[gray]">این متن gray است</p>
+  
+        <div className="h-10" />
+
+
+        ## سکشن    
+        <hr className="mb-2" />
+        <Section id="name" title="این متن را hover کنید" />
+        
+
+        ## دکمه‌ها
+        <hr className="mb-2" />
+        <Button style={{ marginLeft: 10 }}> دکمه </Button>
+        <Button variant="link"> لینک دکمه </Button>
+
+        <div className="h-10" />
+
+        ## هشدار‌ها
+        <hr className="mb-2" />
+        <Alert variant="info"> این هشدار info است </Alert>
+         <div className="h-2" />
+        <Alert variant="warning"> این هشدار warning است </Alert>
+         <div className="h-2" />
+        <Alert variant="success"> این هشدار success است </Alert>
+         <div className="h-2" />
+        <Alert variant="error"> این هشدار error است </Alert>
+
+        <div className="h-10" />
+        ## کد
+        <hr className="mb-2" />
+        <div dir="ltr">
+        <Highlight  className="json">
+{`{
+ "account": "account_name",                              
+ "email": "email@liara.ir",                              
+ "fullname": "Amirali Gholi",                              
+ "email": "email@liara.ir",                              
+}`}
+        </Highlight>
+                <div className="h-2" />
+<Highlight  className="js">
+{`const nextConfig = {
+  reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+};`}
+</Highlight>
+        </div>
+
+        <div className="h-10" />
+
+        ## Tab
+              <hr className="mb-2" />
+        <Tabs 
+                tabs={["ایتم ۳", "ایتم ۲", "ایتم ۱"]} 
+                content={[
+                "توضیحات ایتم شماره ۱",
+                <>
+                <h2>توضیحات </h2>
+                <p>شماره ۲ </p>
+                </>,
+                "توضیحات ایتم شماره ۳"]} 
+        />
+        <div className="h-10" />
+
+        ## کارت
+              <hr className="mb-2" />
+        <Card>
+                این متن است
+        </Card>
+        <Card className={"mt-2 flex gap-2"}>
+                <GoCheckCircle className="text-[22px] text-[gray]" />
+                این متن همراه لوگو است
+        </Card>
+
+        <div className="h-10" />
+
+        ## مرحله‌ای
+        <hr className="mb-2" />
+        <Step  steps={[
+               {
+                step: "۱",
+                content: (
+                <>
+                        <h3>ایتم شماره ۱</h3>
+                        <p>توضیحات مربوط به شماره ۱</p>
+                </>
+                )
+                },
+                {
+                step: "۲",
+                content: (
+                <>
+                        <h3>ایتم شماره ۱</h3>
+                        <p>توضیحات مربوط به شماره ۱</p>
+                </>
+                )
+                }
+        ]}/>
+        <div className="h-10" />
+
+        ## important
+        <hr className="mb-2" />  
+        لورم ایپسوم <Important>متن</Important>ساختگی با تولید سادگی نامفهوم از <Important>صنعت چاپ</Important>و با استفاده از طراحان گرافیک است   
+             
+              
+
+
+</Layout>

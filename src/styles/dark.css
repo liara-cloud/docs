@@ -1,0 +1,112 @@
+.dark body {
+    background: #181818 !important;
+    color: #eee;
+}
+
+.dark #welcome-continer {
+    background-image: url('/static/images/bg-main-dark.webp');
+    border-color: #282828;
+
+}
+
+
+.dark .logo-sidebar {
+    filter: invert(1);
+}
+
+.dark hr {
+    border-color: #fff2;
+}
+
+.dark pre code {
+    border: 1px solid #fff1;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #222222, #181818) !important;
+}
+
+.dark #tab>div {
+    border-color: #fff1;
+}
+
+.dark #tab>div button {
+    color: #eee;
+}
+
+.dark #tab>div button.active {
+    color: #fff;
+    border-color: #eee;
+}
+
+
+.dark sidebar {
+    border-color: #fff1;
+    background: #222 !important;
+}
+
+.dark sidebar .badge {
+    border-color: #fff2;
+    background: linear-gradient(45deg, #333, #222);
+}
+
+.dark body header {
+    background: #222 !important;
+    color: #eee;
+    border-bottom-color: #fff1;
+}
+
+.dark body header #search {
+    color: gray;
+    border-color: #fff2;
+
+}
+
+.dark body header #search div.badge-cmd-k {
+    background: #333 !important;
+    border-color: transparent;
+    color: gray;
+}
+
+.dark body header #search:hover {
+    background: #303030 !important;
+}
+
+.dark #card {
+    border-color: #fff1;
+    background: linear-gradient(45deg, #222222, #181818);
+    color: #eee;
+}
+
+.dark #card:hover {
+    border-color: #fff3;
+    background: linear-gradient(45deg, #282828, #222);
+}
+
+.dark button.fill {
+    background: #fff;
+    color: #181818;
+}
+
+.dark button.link {
+    background: #ffffff11;
+    color: #fff;
+}
+
+.dark button.link:hover {
+    background: #ffffff19;
+}
+
+.hljs-attr {
+    color: #181818 !important;
+}
+
+.dark .hljs-attr {
+    color: #eee !important;
+}
+
+.dark #steps .stroke {
+    border-color: #fff1;
+}
+
+.dark .important {
+    background: #fff2;
+}
