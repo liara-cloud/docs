@@ -7,19 +7,15 @@ const Sidebar = () => {
   const router = useRouter();
 
   const handleSidebarContent = () => {
-    if (router.route.startsWith("/paas/"))
-    {
-      if (router.route.startsWith("/paas/nodejs/")) {
-        return "nodejs";
-      } 
-      else {
-        return "paas";
-      }
-    }  
-    return "home";
+    const route = router.route.substring(1);
+    const [_, sidebar_name] = route.split("/");
+
+    if (router.route.startsWith("/paas/")) {
+      return data.paas[sidebar_name];
+    }
+
+    return data.home;
   };
-
-
 
   return (
     <sidebar className="py-4 p-8 bg-[#fbfbfb] top-0 fixed block w-[300px] h-[100vh] border-l border-[#00000015]">
@@ -32,7 +28,7 @@ const Sidebar = () => {
       </div>
       <div id="sidebar-items">
         <ul className="mt-8">
-          {data[handleSidebarContent()].map(item => {
+          {handleSidebarContent().map(item => {
             if (item.hr) {
               return <hr className="my-4" />;
             }
