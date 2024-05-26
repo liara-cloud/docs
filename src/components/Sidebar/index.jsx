@@ -7,9 +7,19 @@ const Sidebar = () => {
   const router = useRouter();
 
   const handleSidebarContent = () => {
-    if (router.route.startsWith("/paas/")) return "paas";
+    if (router.route.startsWith("/paas/"))
+    {
+      if (router.route.startsWith("/paas/nodejs/")) {
+        return "nodejs";
+      } 
+      else {
+        return "paas";
+      }
+    }  
     return "home";
   };
+
+
 
   return (
     <sidebar className="py-4 p-8 bg-[#fbfbfb] top-0 fixed block w-[300px] h-[100vh] border-l border-[#00000015]">
