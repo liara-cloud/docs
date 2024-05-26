@@ -11,12 +11,15 @@ import {
   GoCode,
   GoBrowser,
   GoArrowRight,
-  GoInfo
+  GoInfo,
+  GoNote,
+  GoCodespaces,
+  GoWorkflow,
+  GoPackageDependents,
+  GoSync
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
-import { FaFloppyDisk } from "react-icons/fa6";
-import { CgDetailsMore } from "react-icons/cg";
 import { GrOverview, GrIntegration, GrUpdate } from "react-icons/gr";
 import { MdManageAccounts, MdDomain, MdOutlineMoveDown } from "react-icons/md";
 import { FaNodeJs } from "react-icons/fa";
@@ -107,7 +110,7 @@ export default {
     }
   ],
   paas: {
-    "about": [
+    about: [
       {
         badge: (
           <div className="flex items-center gap-2">
@@ -189,7 +192,7 @@ export default {
       },
       {
         title: "Golang",
-        icon: <IconContainer alt="HTML5" />,
+        icon: <IconContainer alt="go" />,
         link: "/paas/overview"
       },
       {
@@ -202,22 +205,22 @@ export default {
       },
       {
         title: "جزئیات پلتفرم",
-        icon: <CgDetailsMore />,
+        icon: <GoNote />,
         link: "/"
       },
       {
         title: "مدیریت دیسک‌",
-        icon: <FaFloppyDisk />,
+        icon: <GoCodespaces />,
         link: "/"
       },
       {
         title: "مدیریت دامنه‌",
-        icon: <MdDomain />,
+        icon: <GoGlobe />,
         link: "/"
       },
       {
         title: "قابلیت CI/CD",
-        icon: <GrIntegration />,
+        icon: <GoWorkflow />,
         link: "/"
       },
       {
@@ -225,16 +228,16 @@ export default {
       },
       {
         title: "به‌روزرسانی پلتفرم",
-        icon: <GrUpdate />,
+        icon: <GoSync />,
         link: "/"
       },
       {
         title: "انتقال پلتفرم",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoPackageDependents />,
         link: "/"
       }
     ],
-    "nodejs": [
+    nodejs: [
       {
         badge: (
           <div className="flex items-center gap-2">
