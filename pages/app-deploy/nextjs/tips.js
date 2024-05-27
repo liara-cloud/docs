@@ -44,6 +44,9 @@ export default () => (
       <li>
         <a href="#nodejs-version">نسخه NodeJS</a>
       </li>
+      <li>
+        <a href="#mirror">غیرفعال کردن Mirror</a>
+      </li>
     </ul>
 
     <h3 id="next-public-envs">بیلد متغیر‌های محیطی برای مرورگر</h3>
@@ -260,5 +263,20 @@ export function Example() {
       در نظر داشته باشید که برنامه NextJS با نسخه NodeJS 20 در دسترس قرار
       می‌گیرد.
     </p>
+
+    <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <p>
+      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم NextJS
+      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در
+      فایل <Link href="/app-deploy/nodejs/liarajson">liara.json</Link>، این
+      قابلیت را غیر فعال کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "next": {
+    "mirror": false
+  }
+}`}
+    </Highlight>
   </Layout>
 );
