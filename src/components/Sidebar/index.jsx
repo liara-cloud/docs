@@ -27,7 +27,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <sidebar className="py-4 p-8 bg-[#fbfbfb] top-0 fixed block w-[300px] h-[100vh] border-l border-[#00000015]">
+    <sidebar className="py-4 p-8 overflow-auto bg-[#fbfbfb] top-0 fixed block w-[300px] h-[100vh] border-l border-[#00000015]">
       <div
         className={`transition-all duration-300 ease-in-out transform ${!isVisible
           ? "translate-x-[100px] opacity-0"
