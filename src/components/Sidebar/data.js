@@ -24,12 +24,12 @@ import {
   GoProjectTemplate,
   GoZap,
   GoFileSymlinkFile,
-  GoSquareFill,
-  GoBug, 
+  GoPackage ,
+  GoBug,
+  GoPaperclip,
+  GoMegaphone
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
-
-import { MdManageAccounts, MdDomain, MdOutlineMoveDown } from "react-icons/md";
 
 import PlatformIcon from "../Common/icons";
 
@@ -268,59 +268,8 @@ export default {
         link: "/paas/nodejs/getting-started"
       },
       {
-        hr: true
-      },
-      {
-        badge: "نحوه"
-      },
-      {
-        title: "ساخت برنامه",
-        icon: < GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "استقرار برنامه",
-        icon: <GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "استفاده از متغیرهای محیطی",
-        icon: <GoSquareFill   />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "اتصال به دیتابیس",
-        icon: <GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "استفاده از دیسک",
-        icon: <GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "راه‌اندازی برنامه Websocket",
-        icon: <GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "build برنامه با ES6",
-        icon: <GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "استفاده از TypeScript",
-        icon: <GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "پیکربندی TrustedProxies",
-        icon: <GoSquareFill  />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "انتخاب نسخه NodeJS",
-        icon: <GoSquareFill  />,
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
         link: "/paas/nodejs/getting-started"
       },
       {
@@ -329,44 +278,88 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoDatabase  />
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "اتصال به دیتابیس",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "راه‌اندازی برنامه Websocket",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "build برنامه با ES6",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "استفاده از TypeScript",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "انتخاب نسخه NodeJS",
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
             اتصال به دیتابیس 
           </div>
         )
       },
       {
         title: "دیتابیس MongoDB",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "دیتابیس MySQL/MariaDB",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "دیتابیس PostgreSQL",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "دیتابیس MSSQL",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "دیتابیس SQLite",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "ماژول Prisma",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "ماژول Sequelize",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
@@ -382,12 +375,71 @@ export default {
       },
       {
         title: "رفع خطای CORS",
-        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "رفع خطای Get query missing در GraphQL",
-        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Addonis",
+        icon: <IconContainer alt="adonisjs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "BlitzJS",
+        icon: <IconContainer alt="blitz" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "Fastify",
+        icon: <IconContainer alt="fastify" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "Hapi",
+        icon: <IconContainer alt="fastify" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NestJS",
+        icon: <IconContainer alt="nest" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NuxtJS",
+        icon: <IconContainer alt="nuxt" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "Remix",
+        icon: <IconContainer alt="remix" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "Strapi",
+        icon: <IconContainer alt="strapi" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "Svelte",
+        icon: <IconContainer alt="svelte" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "Svelte Kit",
+        icon: <IconContainer alt="svelte" />,
         link: "/paas/nodejs/getting-started"
       },
     ]

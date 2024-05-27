@@ -1,6 +1,71 @@
 import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft
+} from "react-icons/go";
 
 <Layout>
-    
+# شروع به کار با پلتفرم NodeJS
+<hr className="mb-2" />
+
+پلتفرم NodeJS یک محیط اجرایی سمت سرور برای JavaScript است که بر اساس موتور V8 گوگل کروم ساخته شده است و امکان اجرای کد JS خارج از مرورگر را فراهم می‌کند. 
+شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
+<ul className="pr-4">
+        <li
+        style={{
+            listStyle: "persian",
+            textDecoration: "underline",
+            textDecorationColor: "#9ca3af"
+        }}
+        >
+        <Link
+            className="flex w-[max-content] items-center gap-2 text-[18px]  mt-4"
+            key={'داداظ اکبری'}
+            href={'dadazlocacs'}
+        >
+            {'item.title'}
+
+            <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+        </Link>
+        </li>
+    </ul>
+
+
+- [استقرار سریع یک برنامه NodeJS در لیارا](./quick-start.md)
+
+- [استقرار قدم به قدم برنامه‌های NodeJS در لیارا](./how-tos/create-app.md)
+
+لیارا به‌طور کامل از NodeJS و تمامی فریم‌ورک‌ها و ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛ در ادامه، مستندات مربوط به ابزارها و فریم‌ورک‌های NodeJS برای شما قرار گرفته است:
+
+- [NuxtJS](./related-apps/NuxtJS)
+- [Svelte](./related-apps/Svelte)
+- [SvelteKit](./related-apps/SvelteKit)
+- [NestJS](./related-apps/NestJS)
+- [Fastify](./related-apps/Fastify)
+- [Remix](./related-apps/Remix)
+- [BlitzJS](./related-apps/BlitzJS)
+- [Strapi](./related-apps/Strapi)
+- [Addonis](./related-apps/Addonis)
+
+
+> [!TIP]
+> همچنین بخوانید: [لینک‌های مفید برای توسعه‌دهندگان برنامه‌های NodeJS](./related-links.md)
+
 
 </Layout>
