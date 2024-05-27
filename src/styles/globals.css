@@ -19,7 +19,12 @@
 html {
   min-height: 100%;
 }
-
+p {
+  line-height: 30px;
+}
+hr {
+  margin: 20px 0 !important;
+}
 
 body {
   direction: rtl;

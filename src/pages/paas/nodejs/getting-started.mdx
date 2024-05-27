@@ -8,6 +8,7 @@ import Card from "@/components/Common/card";
 import Important from "@/components/Common/important";
 import Highlight from "react-highlight";
 import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
 
 import {
   GoContainer,
@@ -16,7 +17,7 @@ import {
   GoServer,
   GoMail,
   GoGlobe,
-  GoArrowLeft
+  GoArrowLeft,
 } from "react-icons/go";
 
 <Layout>
@@ -25,47 +26,114 @@ import {
 
 پلتفرم NodeJS یک محیط اجرایی سمت سرور برای JavaScript است که بر اساس موتور V8 گوگل کروم ساخته شده است و امکان اجرای کد JS خارج از مرورگر را فراهم می‌کند. 
 شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+<br />
+
+<div className="grid grid-cols-2 gap-4">
+            {[
+    {
+      text: 'استقرار سریع یک برنامه NodeJS در لیارا',
+      link: './quick-start',
+    },
+    {
+      text: 'استقرار قدم به قدم برنامه‌های NodeJS در لیارا',
+      link: './how-tos/create-app',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+لیارا به‌طور کامل از NodeJS و تمامی فریم‌ورک‌ها و ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به ابزارها و فریم‌ورک‌های NodeJS برای شما قرار گرفته است:
+<br />
+
+<div className="grid grid-cols-5 gap-4">
+            {[
+    { alt: 'adonisjs', platform: 'AdonisJS', link: "/dadaz" },
+    { alt: 'blitz', platform: 'BlitzJS', link: "/" },
+    { alt: 'fastify', platform: 'Fastify', link: "/" },
+    { alt: 'fastify', platform: 'Hapi', link: "/" },
+    { alt: 'nest', platform: 'NestJS', link: "/" },
+    { alt: 'nuxt', platform: 'NuxtJS', link: "/" },
+    { alt: 'remix', platform: 'Remix', link: "/" },
+    { alt: 'strapi', platform: 'Strapi', link: "/" },
+    { alt: 'svelte', platform: 'Svelte', link: "/" },
+    { alt: 'svelte', platform: 'Svelte Kit', link: "/" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br />
+
+<Alert variant="success">
+<Link href='./related-links.md'>
+همچنین بخوانید: لینک‌های مرتبط با پلتفرم NodeJS
+</Link>
+</Alert>
+<br />
+
+در ادامه، ده تا از پربازدیدترین مستندات مربوط به NodeJS برای شما قرار گرفته است:
 
 <ul className="pr-4">
-        <li
-        style={{
-            listStyle: "persian",
-            textDecoration: "underline",
-            textDecorationColor: "#9ca3af"
-        }}
-        >
-        <Link
-            className="flex w-[max-content] items-center gap-2 text-[18px]  mt-4"
-            key={'داداظ اکبری'}
-            href={'dadazlocacs'}
-        >
-            {'item.title'}
-
-            <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
-        </Link>
-        </li>
-    </ul>
-
-
-- [استقرار سریع یک برنامه NodeJS در لیارا](./quick-start.md)
-
-- [استقرار قدم به قدم برنامه‌های NodeJS در لیارا](./how-tos/create-app.md)
-
-لیارا به‌طور کامل از NodeJS و تمامی فریم‌ورک‌ها و ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛ در ادامه، مستندات مربوط به ابزارها و فریم‌ورک‌های NodeJS برای شما قرار گرفته است:
-
-- [NuxtJS](./related-apps/NuxtJS)
-- [Svelte](./related-apps/Svelte)
-- [SvelteKit](./related-apps/SvelteKit)
-- [NestJS](./related-apps/NestJS)
-- [Fastify](./related-apps/Fastify)
-- [Remix](./related-apps/Remix)
-- [BlitzJS](./related-apps/BlitzJS)
-- [Strapi](./related-apps/Strapi)
-- [Addonis](./related-apps/Addonis)
-
-
-> [!TIP]
-> همچنین بخوانید: [لینک‌های مفید برای توسعه‌دهندگان برنامه‌های NodeJS](./related-links.md)
-
+  {[
+    {
+      text: 'انتخاب نسخه NodeJS',
+      href: './',
+    },
+    {
+      text: 'استقرار برنامه با Prisma',
+      href: './how-tos/create-app',
+    },
+    {
+      text: 'استقرار برنامه‌های Remix',
+      href: '/',
+    },
+    {
+      text: 'خطای CORS',
+      href: '/',
+    },
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        listStyle: "persian",
+        textDecoration: "underline",
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+      <a
+        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
+        href={item.href}
+      >
+        {item.text}
+        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+      </a>
+    </li>
+  ))}
+</ul>
 
 </Layout>

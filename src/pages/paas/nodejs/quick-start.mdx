@@ -1,0 +1,133 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import { GoCheckCircle } from "react-icons/go";
+
+<Layout>
+
+# استقرار سریع برنامه‌های NodeJS
+
+        <Tabs 
+                tabs={["Liara CLI", "Liara Console"]} 
+                content={[
+                <video
+                src="https://files.liara.ir/liara/quick-start/nodejs/nodejs-cli.mp4"
+                controls="controls"
+                className="block w-full"
+                width="100%"
+                ></video>,
+                "برای استقرار با استفاده از ابزار [Liara CLI](../../../../references/liara-cli/about.md) کافیست تا مراحل زیر را طی کنید:",
+
+                <>
+                <h2>توضیحات </h2>
+                <p>شماره ۲ </p>
+                </>,
+                "توضیحات ایتم شماره ۳"]} 
+        />
+       
+
+
+
+
+1) ترمینال را باز کنید و با اجرای دستور زیر، ابزار Liara CLI را بر روی سیستم خود نصب کنید:
+
+```
+npm install -g @liara/cli
+```
+
+> [!NOTE]
+> دقت کنید که [npm و NodeJS](https://nodejs.org) باید بر روی سیستم‌عامل‌تان نصب باشد.
+
+> [!IMPORTANT]
+> در ویندوز، ترمینال باید بر روی CMD تنظیم باشد.
+
+2) با اجرای دستور زیر، وارد حساب کاربری خود در لیارا، شوید:
+
+```
+liara login
+```
+
+3) با دستور زیر، [شبکه خصوصی](../../details/private-networks.md) برنامه خود را ایجاد کنید:
+
+```
+liara network create
+```
+در ادامه اجرای این دستور، باید یک نام برای شبکه جدید خود مشخص کنید. 
+
+
+
+4) با اجرای دستور زیر، برنامه NodeJS خود را ایجاد کنید.
+
+```
+liara create
+```
+در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی node تنظیم شود)، شبکه خصوصی و [پلن‌های نرم‌افزاری و سخت‌افزاری برنامه](../../details/plans/about.md)، مشخص شوند:
+
+asciinema --> باید رکورد شود
+
+5) برای آپلود نشدن فایل‌های اضافی، از `gitignore.` یا `liaraignore.` استفاده کنید و درون یکی از این دو فایل، اسامی دایرکتوری و فایل‌های اضافی را بیاورید. به عنوان مثال:
+
+```gitignore
+node_modules/
+```
+
+6) در فایل `package.json` موجود در مسیر اصلی پروژه؛ حتماً اسکریپت `start` را تعریف کنید؛ به عنوان مثال (در مثال زیر نام فایل اصلی، `server.js` است):
+
+```json
+{
+    "scripts": {
+    "start": "node server.js"
+  }
+}
+
+```
+
+7) با اجرای دستور زیر در مسیر اصلی پروژه، برنامه خود را  در لیارا مستقر کنید (بعد از `app--` شناسه برنامه و بعد از `port--` پورت برنامه خود را وارد کنید):
+
+```
+liara deploy --app=myapp --platform=node --port=3000
+```
+
+Liara Console
+
+برای استقرار با استفاده از [Liara Console](../../../../references/liara-console/about.md) کافیست تا مراحل زیر را طی کنید:
+
+
+1) وارد حساب کاربری خود در لیارا شوید.
+
+2) برنامه NodeJS خود را با شناسه، [شبکه خصوصی](../../details/private-networks.md) و [پلن‌های نرم‌افزاری و سخت‌افزاری](../../details/plans/about.md) مدنظرتان ایجاد کنید.
+
+3) پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند را از پوشه پروژه پاک کنید (به عنوان مثال پوشه node_modules را پاک کنید).
+
+4) در فایل `package.json` موجود در مسیر اصلی پروژه؛ حتماً اسکریپت `start` را تعریف کنید؛ به عنوان مثال (در مثال زیر نام فایل اصلی، `server.js` است):
+
+```json
+{
+    "scripts": {
+    "start": "node server.js"
+  }
+}
+
+```
+
+5) پوشه پروژه را در یک فایل `zip` قرار دهید. فایل را کشیده و در باکس آپلود Liara Console رها کنید.
+
+6) مرحله به مرحله استقرار را با Console جلو بروید و شخصی‌سازی‌های لازم را انجام دهید و در نهایت بر روی گزینه استقرار کلیک کنید تا عملیات استقرار، آغاز شود. 
+
+> [!NOTE]
+> لیارا با اجرای دستور `npm install` تمامی ماژول‌های موجود در فایل `package.json` را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
+
+> [!NOTE]
+> اگر که در فایل `package.json` اسکریپت `build` را تعریف کرده باشید، لیارا آن را اجرا می‌کند.
+
+> [!TIP]
+> همچنین بخوانید: [استقرار قدم به قدم برنامه‌های NodeJS در لیارا](./how-tos/create-app.md)
+
+
+</Layout>
