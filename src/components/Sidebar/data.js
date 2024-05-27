@@ -16,13 +16,20 @@ import {
   GoCodespaces,
   GoWorkflow,
   GoPackageDependents,
-  GoSync
+  GoSync,
+  GoPerson,
+  GoTelescope,
+  GoFlame,
+  GoPackageDependencies,
+  GoProjectTemplate,
+  GoZap,
+  GoFileSymlinkFile,
+  GoSquareFill,
+  GoBug, 
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
-import { GrOverview, GrIntegration, GrUpdate } from "react-icons/gr";
 import { MdManageAccounts, MdDomain, MdOutlineMoveDown } from "react-icons/md";
-import { FaNodeJs } from "react-icons/fa";
 
 import PlatformIcon from "../Common/icons";
 
@@ -43,7 +50,7 @@ export default {
     },
     {
       title: "لیارا در یک نگاه",
-      icon: <GrOverview />,
+      icon: <GoTelescope />,
       link: "/overview"
     },
     {
@@ -105,7 +112,7 @@ export default {
     },
     {
       title: "مدیریت حساب",
-      icon: <MdManageAccounts />,
+      icon: <GoPerson />,
       link: ""
     }
   ],
@@ -241,7 +248,6 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <FaNodeJs />
             پلتفرم NodeJS
           </div>
         )
@@ -253,12 +259,12 @@ export default {
       },
       {
         title: "شروع به کار",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoFlame />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "استقرار سریع!",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoZap  />,
         link: "/paas/nodejs/getting-started"
       },
       {
@@ -269,62 +275,121 @@ export default {
       },
       {
         title: "ساخت برنامه",
-        icon: <MdOutlineMoveDown />,
+        icon: < GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "استقرار برنامه",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "استفاده از متغیرهای محیطی",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill   />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "اتصال به دیتابیس",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "استفاده از دیسک",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "راه‌اندازی برنامه Websocket",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "build برنامه با ES6",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "استفاده از TypeScript",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "پیکربندی TrustedProxies",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         title: "انتخاب نسخه NodeJS",
-        icon: <MdOutlineMoveDown />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "رفع خطاهای رایج",
-        icon: <MdOutlineMoveDown />,
+        icon: <GoSquareFill  />,
         link: "/paas/nodejs/getting-started"
       },
       {
         hr: true
-      }
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoDatabase  />
+            اتصال به دیتابیس 
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "ماژول Prisma",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "ماژول Sequelize",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            رفع خطاهای رایج
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای CORS",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "رفع خطای Get query missing در GraphQL",
+        icon: <GoSquareFill  />,
+        link: "/paas/nodejs/getting-started"
+      },
     ]
   }
 };

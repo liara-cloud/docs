@@ -15,6 +15,10 @@ const Sidebar = () => {
       return data.paas[sidebar_name];
     }
 
+    // if (router.route.startsWith("/dbaas/")) {
+    //   return data.dbaas[sidebar_name];
+    // }
+
     return data.home;
   };
 
