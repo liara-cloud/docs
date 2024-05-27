@@ -24,7 +24,7 @@ const Alert = ({ variant = "info", className, children }) => {
 
   return (
     <div
-      className={`p-3 w-[max-content]  rounded-lg flex items-center 00 gap-3 ${variants[
+      className={`p-3  rounded-lg flex items-center 00 gap-3 ${variants[
         variant
       ].classes} ${className}`}
     >
