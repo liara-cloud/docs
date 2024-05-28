@@ -9,6 +9,10 @@
 
 }
 
+.dark video , .dark img { 
+    border-radius: 8px;
+    border : 1px solid #fff2;
+  }
 
 .dark .logo-sidebar {
     filter: invert(1);

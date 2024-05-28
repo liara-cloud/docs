@@ -9,7 +9,8 @@ const TabComponent = ({ tabs, content }) => {
         {tabs.map((tab, index) =>
           <button
             key={index}
-            className={`w-28 py-2 px-4 text-center ${activeTab === index
+            style={{ whiteSpace : "nowrap" }}
+            className={`w-28 py-2  px-4 text-center ${activeTab === index
               ? "active border-b-2 border-[#181818] text-[#181818]"
               : "border-b-2 border-transparent text-gray-500 hover:text-gray-700"}`}
             onClick={() => setActiveTab(index)}

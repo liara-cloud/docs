@@ -4,7 +4,7 @@ import Alert from "./alert";
 
 const StepComponent = ({ steps }) => {
   return (
-    <div id="steps" className="relative flex flex-col p-4">
+    <div id="steps" className="relative flex flex-col pt-4">
       {steps.map((item, index) =>
         <div key={index} className="flex items-start mb-4">
           <div className="flex items-center justify-center">
@@ -14,7 +14,7 @@ const StepComponent = ({ steps }) => {
               {item.step}
             </Card>
           </div>
-          <div className="mr-4 pt-1 relative mb-2">
+          <div className="mr-4 pt-1 relative mb-2 w-full">
             <div className="stroke border-r z-[-1] absolute right-[-32px] top-[32px] border-[#0002] h-[100%] w-1" />
             <span>
               {item.content}

@@ -42,7 +42,7 @@ const Sidebar = () => {
         </div>
         <div id="sidebar-items">
           <ul className="mt-8">
-            {handleSidebarContent().map(item => {
+            {handleSidebarContent()?.map(item => {
               if (item.hr) {
                 return <hr className="my-4" />;
               }
