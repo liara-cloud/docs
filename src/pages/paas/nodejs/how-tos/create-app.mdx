@@ -8,6 +8,8 @@ import Card from "@/components/Common/card";
 import Important from "@/components/Common/important";
 import Highlight from "react-highlight";
 import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
 
 
 <Layout>
@@ -35,7 +37,7 @@ import Link from "next/link";
     <div className="h-2" />
     <p>
         در نظر داشته باشید برای اینکه بتوانید این ابزار را بر روی سیستم خود نصب و از آن استفاده کنید، باید npm و NodeJS بر روی سیستم‌عامل شما نصب باشد.
-        کافیست تا به <Link href="https://nodejs.org">وب‌سایت رسمی NodeJS</Link> مراجعه کنید و با دانلود و نصب آخرین نسخه NodeJS LTS، ابزار npm و NodeJS برای شما نصب می‌شود.
+        کافیست تا به <Link className="blue-link" href="https://nodejs.org">وب‌سایت رسمی NodeJS</Link> مراجعه کنید و با دانلود و نصب آخرین نسخه NodeJS LTS، ابزار npm و NodeJS برای شما نصب می‌شود.
     </p>
     <p>    
         در ادامه، بایستی با اجرای دستور زیر، وارد حساب کاربری خود در لیارا شوید:
@@ -104,6 +106,5 @@ import Link from "next/link";
 <Alert variant="success">همچنین بخوانید: <a href="../../details/about">آشنایی با ویژگی‌های یک برنامه</a></Alert>
 <Alert variant="success">همچنین بخوانید: <a href="../../domains/about">اضافه کردن دامنه به برنامه</a></Alert>
 
-
-[گام بعدی - استقرار برنامه](./deploy-app)
+<NextPage next="./deploy-app" />
 </Layout>
