@@ -38,11 +38,11 @@ body {
 
 }
 
-.layout a { 
+.layout a.blue-link { 
   color: rgb(123, 168, 250);
   text-decoration: rgba(123, 167, 250, 0.411);
-  
 }
+
 video , img { 
   border-radius: 8px;
   border : 1px solid #00000015;
