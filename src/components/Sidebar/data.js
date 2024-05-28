@@ -265,12 +265,12 @@ export default {
       {
         title: "استقرار سریع!",
         icon: <GoZap  />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
         icon: <GoMegaphone   />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-links"
       },
       {
         hr: true
@@ -285,11 +285,11 @@ export default {
       },
       {
         title: "ساخت برنامه",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/create-app"
       },
       {
         title: "استقرار برنامه",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/deploy-app"
       },
       {
         title: "استفاده از متغیرهای محیطی",
