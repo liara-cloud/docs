@@ -51,7 +51,7 @@ import NextPage from "@/components/Common/nextpage";
     <img src="https://files.liara.ir/liara/docs/liaracli-login.gif" alt="liara cli login to account" />
     <div className="h-4" />
     <p>
-        بعد از انجام کار فوق، بایستی با اجرای دستور زیر، <Link href="../../details/private-networks">شبکه خصوصی</Link> برنامه‌تان را ایجاد کنید؛ البته اگر که از قبل شبکه خصوصی را ایجاده کرده باشید؛ نیازی به اجرای این دستور، نخواهد بود:
+        بعد از انجام کار فوق، بایستی با اجرای دستور زیر، <Link className="blue-link" href="../../details/private-networks">شبکه خصوصی</Link> برنامه‌تان را ایجاد کنید؛ البته اگر که از قبل شبکه خصوصی را ایجاده کرده باشید؛ نیازی به اجرای این دستور، نخواهد بود:
     </p>
     <div dir='ltr'>
       <Highlight className="bash">
@@ -67,7 +67,7 @@ import NextPage from "@/components/Common/nextpage";
       </Highlight>
     </div>
     <p>
-        با اجرای دستور فوق، شما باید شناسه، شبکه خصوصی و <Link href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> برنامه خود را انتخاب کنید.
+        با اجرای دستور فوق، شما باید شناسه، شبکه خصوصی و <Link className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> برنامه خود را انتخاب کنید.
     </p>
     </>,
     <>
@@ -79,8 +79,8 @@ import NextPage from "@/components/Common/nextpage";
         ></video>
         <br />
         <p>
-            برای ساخت برنامه، کافیست تا پس از ورود به <Link href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>NodeJS</b> تنظیم کنید.
-            در ادامه باید برای برنامه‌تان یک شناسه و یک <a href="../../details/private-networks">شبکه خصوصی</a> انتخاب کنید و در نهایت <a href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</a> مدنظرتان را انتخاب کنید. 
+            برای ساخت برنامه، کافیست تا پس از ورود به <Link className="blue-link" href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link className="blue-link" href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="blue-link" href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>NodeJS</b> تنظیم کنید.
+            در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="blue-link" href="../../details/private-networks">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</a> مدنظرتان را انتخاب کنید. 
             در آخر، کافیست تا بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان ساخته شود:
         </p>
         <img src="https://files.liara.ir/liara/docs/create-app-using-console.gif" alt="create app using console" />
@@ -93,18 +93,18 @@ import NextPage from "@/components/Common/nextpage";
             </Highlight>
         </div>
         <p>
-            در واقع، این همان <a href="../../domains/default-subdomain.md">دامنه پیش‌فرضی</a> است که لیارا به صورت رایگان در اختیار شما قرار می‌دهد.
+            در واقع، این همان <a className="blue-link" href="../../domains/default-subdomain.md">دامنه پیش‌فرضی</a> است که لیارا به صورت رایگان در اختیار شما قرار می‌دهد.
         </p>
         <p>
-            در نهایت، می‌توانید وضعیت برنامه خود را در <a href="https://console.liara.ir">پنل کاربری</a> مشاهده بفرمایید که در حالت آماده به کار قرار دارد:
+            در نهایت، می‌توانید وضعیت برنامه خود را در <a className="blue-link" href="https://console.liara.ir">پنل کاربری</a> مشاهده بفرمایید که در حالت آماده به کار قرار دارد:
         </p>
         <img src="https://files.liara.ir/liara/docs/ready-to-use-app.png" alt="a ready to use nodejs app"/>
     </>
 ]} 
 />
 
-<Alert variant="success">همچنین بخوانید: <a href="../../details/about">آشنایی با ویژگی‌های یک برنامه</a></Alert>
-<Alert variant="success">همچنین بخوانید: <a href="../../domains/about">اضافه کردن دامنه به برنامه</a></Alert>
+<Alert variant="success">همچنین بخوانید: <a className="blue-link" href="../../details/about">آشنایی با ویژگی‌های یک برنامه</a></Alert>
+<Alert variant="success">همچنین بخوانید: <a className="blue-link" href="../../domains/about">اضافه کردن دامنه به برنامه</a></Alert>
 
 <NextPage next="./deploy-app" />
 </Layout>
