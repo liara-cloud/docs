@@ -133,8 +133,8 @@ export default () => (
         <span>Flask</span>
       </Link>
 
-      <Link href="/app-deploy/netcore/email">
-        <PlatformIcon platform="netcore" />
+      <Link href="/app-deploy/dotnet/email">
+        <PlatformIcon platform="dotnet" />
         <span>.NET</span>
       </Link>
     </div>

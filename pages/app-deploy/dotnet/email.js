@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -44,7 +44,7 @@ export default () => (
       برای استفاده از سرویس ایمیل در برنامه‌های ASP.Net Core باید پس از{" "}
       <Link href="/app-features/email#create-email">ایجاد سرویس ایمیل</Link>،
       اطلاعات <Link href="/app-features/email#settings">دسترسی SMTP</Link> را
-      طبق مستندات <Link href="/app-deploy/netcore/envs">تنظیم متغیرها</Link> در
+      طبق مستندات <Link href="/app-deploy/dotnet/envs">تنظیم متغیرها</Link> در
       تنظیمات برنامه اضافه کنید.
     </p>
 
@@ -199,7 +199,7 @@ public class TestController : Controller
       مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/netcore/entity-framework" className="next-page">
+    <Link href="/app-deploy/dotnet/entity-framework" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

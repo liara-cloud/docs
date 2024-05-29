@@ -33,9 +33,9 @@ const DATA_SECTIONS = {
       href: "/app-deploy/flask/getting-started",
     },
     {
-      platform: "netcore",
+      platform: "dotnet",
       title: "DotNet",
-      href: "/app-deploy/netcore/getting-started",
+      href: "/app-deploy/dotnet/getting-started",
     },
     {
       platform: "angularjs",

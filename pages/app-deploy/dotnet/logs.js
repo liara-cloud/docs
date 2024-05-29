@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -46,7 +46,7 @@ export default () => (
       فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
     </p>
 
-    <Link href="/app-deploy/netcore/liarajson" className="next-page">
+    <Link href="/app-deploy/dotnet/liarajson" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

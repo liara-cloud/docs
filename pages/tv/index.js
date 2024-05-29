@@ -15,7 +15,7 @@ const PLATFORM_TAGS = [
   { title: "PHP", alt: "php" },
   { title: "Django", alt: "django" },
   { title: "Flask", alt: "flask" },
-  { title: ".Net", alt: "netcore" },
+  { title: ".Net", alt: "dotnet" },
   { title: "React", alt: "react" },
   { title: "Angular", alt: "angularjs" },
   { title: "Vue", alt: "vue" },
@@ -489,7 +489,7 @@ const Videos = () => {
 
       <Section
         name={"پلتفرم Net."}
-        platform="netcore"
+        platform="dotnet"
         style={{ marginTop: 40 }}
         badge={"DotNetCore Platform"}
         setOpenDialog={setOpenDialog}

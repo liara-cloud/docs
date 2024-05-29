@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>استقرار فایل DLL</h1>
         <span className="page-description">(ASP.Net Core Apps)</span>

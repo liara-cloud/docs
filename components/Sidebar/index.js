@@ -671,78 +671,78 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ul>
             </li>
             <li>
-              <NavTitle href="/app-deploy/netcore">
-                <PlatformIcon platform="netcore" />
+              <NavTitle href="/app-deploy/dotnet">
+                <PlatformIcon platform="dotnet" />
                 Net.
               </NavTitle>
               <ul className="nav__list">
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/getting-started">
+                  <ActiveLink href="/app-deploy/dotnet/getting-started">
                     شروع به کار
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/browser">
+                  <ActiveLink href="/app-deploy/dotnet/browser">
                     استقرار با مرورگر
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/cli">
+                  <ActiveLink href="/app-deploy/dotnet/cli">
                     استقرار با Liara CLI
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/envs">
+                  <ActiveLink href="/app-deploy/dotnet/envs">
                     تنظیم متغیرها (env)
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/logs">
+                  <ActiveLink href="/app-deploy/dotnet/logs">
                     مشاهده لاگ‌ها
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/liarajson">
+                  <ActiveLink href="/app-deploy/dotnet/liarajson">
                     استفاده از فایل liara.json
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/update">
+                  <ActiveLink href="/app-deploy/dotnet/update">
                     به‌روزرسانی برنامه
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/dbs">
+                  <ActiveLink href="/app-deploy/dotnet/dbs">
                     اتصال به دیتابیس
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/disks">
+                  <ActiveLink href="/app-deploy/dotnet/disks">
                     استفاده از دیسک‌ها
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/object-storage">
+                  <ActiveLink href="/app-deploy/dotnet/object-storage">
                     اتصال به ذخیره‌سازی ابری
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/websocket">
+                  <ActiveLink href="/app-deploy/dotnet/websocket">
                     وب‌سوکت
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/email">
+                  <ActiveLink href="/app-deploy/dotnet/email">
                     ارسال ایمیل
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/entity-framework">
+                  <ActiveLink href="/app-deploy/dotnet/entity-framework">
                     Entity Framework
                   </ActiveLink>
                 </li>
                 <li>
-                  <ActiveLink href="/app-deploy/netcore/tips">
+                  <ActiveLink href="/app-deploy/dotnet/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
                 </li>
@@ -1460,7 +1460,7 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
             </li>
             <li>
               <ActiveLink href="/instructions/dotnet-published">
-                <PlatformIcon platform="netcore" />
+                <PlatformIcon platform="dotnet" />
                 استقرار فایل DLL
               </ActiveLink>
             </li>

@@ -132,8 +132,8 @@ export default () => (
         <PlatformIcon platform="flask" />
         <span>Flask</span>
       </Link>
-      <Link href="/app-deploy/netcore/dbs/#mssql">
-        <PlatformIcon platform="netcore" />
+      <Link href="/app-deploy/dotnet/dbs/#mssql">
+        <PlatformIcon platform="dotnet" />
         <span>.NET</span>
       </Link>
       <Link href="/app-deploy/golang/dbs/#sqlserver">

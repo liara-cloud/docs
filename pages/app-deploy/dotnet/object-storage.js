@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -85,7 +85,7 @@ export default () => (
       در مرحله‌ی بعد، به‌منظور امنیت و کنترل راحت‌تر مقادیر باید مشخصات فضای
       ذخیره‌سازی ابری اعم از <Link href="/buckets/keys">کلیدها</Link> و آدرس
       اتصال به این سرویس را در بخش{" "}
-      <Link href="/app-deploy/netcore/envs">متغیرهای برنامه</Link> تنظیم کنید.
+      <Link href="/app-deploy/dotnet/envs">متغیرهای برنامه</Link> تنظیم کنید.
     </p>
     <Highlight className="plaintext">
       {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
@@ -419,7 +419,7 @@ public class yourController : Controller
 
     <br />
 
-    <Link href="/app-deploy/netcore/websocket" className="next-page">
+    <Link href="/app-deploy/dotnet/websocket" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

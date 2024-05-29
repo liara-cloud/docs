@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -41,7 +41,7 @@ export default () => (
       که شما <span className="code">--message</span> را خالی گذاشته باشید.
     </p>
 
-    <Link href="/app-deploy/netcore/dbs" className="next-page">
+    <Link href="/app-deploy/dotnet/dbs" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

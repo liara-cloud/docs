@@ -49,8 +49,8 @@ export default () => (
         <PlatformIcon platform="next" />
         <span>NextJS</span>
       </Link>
-      <Link href="/app-deploy/netcore/object-storage">
-        <PlatformIcon platform="netcore" />
+      <Link href="/app-deploy/dotnet/object-storage">
+        <PlatformIcon platform="dotnet" />
         <span>.NET</span>
       </Link>
       <Link href="/app-deploy/golang/object-storage">

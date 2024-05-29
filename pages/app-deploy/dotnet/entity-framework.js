@@ -15,7 +15,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -104,7 +104,7 @@ dotnet add package Microsoft.EntityFrameworkCore.SQLite
       در ادامه، بایستی در فایل <span className="code">Program.cs</span> دیتابیس
       خود را تعریف کنید تا برنامه، بتواند از آن استفاده کند:
     </p>
-    <Highlight className="netcore">
+    <Highlight className="dotnet">
       {`using Microsoft.EntityFrameworkCore;
 using Production.Data;
 var builder = WebApplication.CreateBuilder(args);
@@ -126,7 +126,7 @@ var builder = WebApplication.CreateBuilder(args);
       کار، کافیست تا قطعه کد زیر را، به فایل{" "}
       <span className="code">Program.cs</span> خود، اضافه کنید:
     </p>
-    <Highlight className="netcore">
+    <Highlight className="dotnet">
       {`builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
@@ -148,11 +148,11 @@ using (var scope = app.Services.CreateScope())
       نیز، نصب کنید، مقدار URI دیتابیس مدنظر را در فایل{" "}
       <span className="code">appsettings.json</span> قرار دهید و در فایل{" "}
       <span className="code">Program.cs</span> از متد مربوط به دیتابیس استفاده
-      کنید که آموزش آن نیز در <a href="/app-deploy/netcore/dbs">لیارا</a> موجود
+      کنید که آموزش آن نیز در <a href="/app-deploy/dotnet/dbs">لیارا</a> موجود
       است.{" "}
     </p>
 
-    <Link href="/app-deploy/netcore/tips" className="next-page">
+    <Link href="/app-deploy/dotnet/tips" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

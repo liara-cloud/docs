@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -23,13 +23,13 @@ export default () => (
     <p>
       شما می‌توانید در سریع‌ترین زمان ممکن یک برنامه
       <Link href="https://dotnet.microsoft.com/en-us/"> NET. </Link> را با
-      استفاده از <Link href="/app-deploy/netcore/browser">مرورگر</Link>، بر روی
+      استفاده از <Link href="/app-deploy/dotnet/browser">مرورگر</Link>، بر روی
       لیارا مستقر کنید. البته درصورتی که استفاده از Terminal را ترجیح می‌دهید یا
       تصمیم داشته باشید با <Link href="/cicd/about">راه‌اندازی CI/CD</Link>،
       مسئولیت استقرار برنامه‌ی خود را به سرویس{" "}
       <Link href="/cicd/github">GitHub</Link> و یا{" "}
       <Link href="/cicd/gitlab">GitLab</Link> بسپارید، امکان استفاده از ابزار{" "}
-      <Link href="/app-deploy/netcore/cli">Liara CLI</Link> وجود دارد. در ادامه
+      <Link href="/app-deploy/dotnet/cli">Liara CLI</Link> وجود دارد. در ادامه
       در هر گام، با یک ویژگی هاست ابری NET. لیارا آشنا خواهید شد و می‌توانید از
       آن‌ها در برنامه‌ی‌تان استفاده کنید.
     </p>
@@ -62,7 +62,7 @@ export default () => (
 
     <Notice variant="info">
       اگر قصد دارید نسخه‌ی پیش‌فرض NET. را تغییر دهید می‌توانید مستندات{" "}
-      <Link href="/app-deploy/netcore/tips#dotnet-version">
+      <Link href="/app-deploy/dotnet/tips#dotnet-version">
         انتخاب نسخه‌ی NET.
       </Link>{" "}
       را در توضیحات و نکات تکمیلی این پلتفرم مطالعه بفرمایید.
@@ -74,7 +74,7 @@ export default () => (
       نسخه‌های جدیدتر ارتقا دهید.
     </Notice>
     <br />
-    <Link href="/app-deploy/netcore/browser" className="next-page">
+    <Link href="/app-deploy/dotnet/browser" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
