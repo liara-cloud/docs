@@ -47,7 +47,7 @@ const SmMenu = ({ showSidebar }) => {
           title: ".Net",
           href: "https://liara.ir/landing/هاست-دات-نت-dotnet/",
           alt: "هاست ابری دات‌نت‌",
-          icon: "netcore",
+          icon: "dotnet",
         },
         {
           title: "ReactJS",

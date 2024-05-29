@@ -11,7 +11,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -49,7 +49,7 @@ export default () => (
     <pre>
       <code>
         {`{
-  "netcore": {
+  "dotnet": {
     "version": "6.0"
   }
 }`}
@@ -102,8 +102,8 @@ https://aka.ms/dotnet-download`}
     </p>
     <Highlight className="json">
       {`{
-  "platform": "netcore",
-  "netcore": {
+  "platform": "dotnet",
+  "dotnet": {
     "finalDllName": "MyProjectName",
     "csprojectFile": "path/to/folder/my.csproj"
   }
@@ -134,9 +134,9 @@ https://aka.ms/dotnet-download`}
 
     <Highlight className="json">
       {`{
-  "platform": "netcore",
+  "platform": "dotnet",
   "app": "dotnets-starter",
-  "netcore": {
+  "dotnet": {
     "timezone": "America/Los_Angeles"
   }
 }`}

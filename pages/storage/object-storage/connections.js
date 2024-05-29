@@ -43,7 +43,7 @@ export default () => (
         <a href="#flask">Flask</a>
       </li>
       <li>
-        <a href="#netcore">Net Core</a>
+        <a href="#dotnet">Net Core</a>
       </li>
     </ul>
 
@@ -205,7 +205,7 @@ for bucket in s3.buckets.all():
       </Highlight>
       <br />
 
-      <li id="netcore">
+      <li id="dotnet">
         <b>
           .Net Core:{" "}
           <a

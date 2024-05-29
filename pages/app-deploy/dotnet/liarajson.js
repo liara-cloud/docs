@@ -14,7 +14,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -29,7 +29,7 @@ export default () => (
       می‌توانید از فایل‌ <span className="code">liara.json</span> استفاده کنید.
       اگرچه کاربرد‌های این فایل بیشتر از این‌هاست ولی در اینجا به همین نکته
       بسنده می‌کنیم و در بخش{" "}
-      <Link href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</Link> درباره
+      <Link href="/app-deploy/dotnet/tips">توضیحات و نکات تکمیلی</Link> درباره
       تمام کاربرد‌های آن در برنامه‌های NET. توضیح داده‌ایم.
     </p>
     <p>
@@ -38,7 +38,7 @@ export default () => (
     </p>
     <Highlight className="json">
       {`{
-    "platform": "netcore",
+    "platform": "dotnet",
     "app": "dotnet-getting-started",
     "port": 80
 }`}
@@ -51,7 +51,7 @@ export default () => (
       شناسه و پورت برنامه‌ی‌تان باید آن را تغییر دهید.
     </p>
 
-    <Link href="/app-deploy/netcore/update" className="next-page">
+    <Link href="/app-deploy/dotnet/update" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

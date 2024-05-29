@@ -12,7 +12,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -315,7 +315,7 @@ using (var scope = app.Services.CreateScope())
 
     <br />
 
-    <Link href="/app-deploy/netcore/disks" className="next-page">
+    <Link href="/app-deploy/dotnet/disks" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

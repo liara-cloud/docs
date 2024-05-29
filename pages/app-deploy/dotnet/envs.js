@@ -16,7 +16,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -58,12 +58,12 @@ else
     </p>
 
     <Notice variant="info">
-      در پلتفرم netcore به صورت پیشفرض همه برنامه‌ها با
+      در پلتفرم dotnet به صورت پیشفرض همه برنامه‌ها با
       <span className="code">ASPNETCORE_ENVIRONMENT=Production</span>
       مستقر می‌شوند.
     </Notice>
     <br />
-    <Link href="/app-deploy/netcore/logs" className="next-page">
+    <Link href="/app-deploy/dotnet/logs" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

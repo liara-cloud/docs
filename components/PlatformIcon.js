@@ -13,7 +13,7 @@ import flaskIcon from "@liara/platformicons/glass/png/flask.png";
 import staticIcon from "@liara/platformicons/glass/png/static.png";
 import dockerIcon from "@liara/platformicons/glass/png/docker.png";
 import djangoIcon from "@liara/platformicons/glass/png/django.png";
-import netcoreIcon from "@liara/platformicons/glass/png/dotnet.png";
+import dotnetIcon from "@liara/platformicons/glass/png/dotnet.png";
 import laravelIcon from "@liara/platformicons/glass/png/laravel.png";
 import angularIcon from "@liara/platformicons/glass/png/angular.png";
 
@@ -104,7 +104,7 @@ const types = [
   { logo: dockerIcon, alt: "docker" },
   { logo: djangoIcon, alt: "django" },
   { logo: laravelIcon, alt: "laravel" },
-  { logo: netcoreIcon, alt: "netcore" },
+  { logo: dotnetIcon, alt: "dotnet" },
   { logo: angularIcon, alt: "angularjs" },
   // One-click-apps
   { logo: n8nIcon, alt: "n8n" },

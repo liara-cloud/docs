@@ -9,11 +9,11 @@ import Notice from "../../../components/Notice";
 export default () => (
   <Layout>
     <Head>
-      <title>مستندات وب سوکت در برنامه‌های netcore - لیارا</title>
+      <title>مستندات وب سوکت در برنامه‌های dotnet - لیارا</title>
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم NET.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -74,7 +74,7 @@ libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files 
       <span className="code">ChatHub.cs</span> ایجاد کنیم و قطعه کد زیر را، درون
       آن، قرار دهیم:
     </p>
-    <Highlight className="netcore">
+    <Highlight className="dotnet">
       {`using Microsoft.AspNetCore.SignalR;
 
 namespace SignalRChat.Hubs
@@ -93,7 +93,7 @@ namespace SignalRChat.Hubs
       در ادامه، بایستی فایل <span className="code">Program.cs</span> درون پروژه
       را به شکل زیر، تغییر دهیم:
     </p>
-    <Highlight className="netcore">
+    <Highlight className="dotnet">
       {`using SignalRChat.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -165,7 +165,7 @@ app.Run();`}
       فایل به نام <span className="code">chat.js</span> ایجاد کنیم و قطعه کد زیر
       را، درون آن قرار دهیم:
     </p>
-    <Highlight className="netcore">
+    <Highlight className="dotnet">
       {`"use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
@@ -213,7 +213,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     </Notice>
     <br />
 
-    <Link href="/app-deploy/netcore/email" className="next-page">
+    <Link href="/app-deploy/dotnet/email" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

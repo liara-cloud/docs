@@ -25,7 +25,7 @@ export default () => (
         Seq
       </a>{" "}
       را می‌توان سروری برای تجزیه و تحلیل هوشمند لاگ برنامه‌های{" "}
-      <Link href="/app-deploy/netcore/getting-started">ASP.Net Core</Link>، Java
+      <Link href="/app-deploy/dotnet/getting-started">ASP.Net Core</Link>، Java
       و <Link href="/app-deploy/nodejs/getting-started">NodeJS</Link> دانست که
       برای استقرار آن در لیارا باید یک{" "}
       <Link href="/app-deploy/docker/getting-started">برنامه‌ی Docker</Link>{" "}

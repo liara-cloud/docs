@@ -12,7 +12,7 @@ export default function Domain({ platform }) {
     { lCase: "flask", uCase: "Flask", icon: "flask", next: "email" },
     { lCase: "laravel", uCase: "Laravel", icon: "laravel", next: "email" },
     { lCase: "php", uCase: "PHP", icon: "php", next: "email" },
-    { lCase: "netcore", uCase: ".Net", icon: "netcore", next: "email" },
+    { lCase: "dotnet", uCase: ".Net", icon: "dotnet", next: "email" },
     { lCase: "react", uCase: "React", icon: "react", next: "tips" },
     { lCase: "vue", uCase: "Vue", icon: "vue", next: "tips" },
     { lCase: "static", uCase: "Static", icon: "HTML5", next: "tips" },

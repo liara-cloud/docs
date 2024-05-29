@@ -16,7 +16,7 @@ export default () => (
     </Head>
 
     <div className="page-head">
-      <PlatformIcon platform="netcore" />
+      <PlatformIcon platform="dotnet" />
       <div className="page-title">
         <h1>پلتفرم Net.</h1>
         <span className="page-description">(DotNet Platform)</span>
@@ -94,7 +94,7 @@ export default () => (
     <ul>
       <li>
         <b>تنظیمات دیسک‌ها: </b>اگر که در برنامه خود،{" "}
-        <a href="/app-deploy/netcore/disks">دیسک</a> تعریف کردید؛ می‌توانید در
+        <a href="/app-deploy/dotnet/disks">دیسک</a> تعریف کردید؛ می‌توانید در
         این بخش، آن را به برنامه خود متصل کنید.
       </li>
       <li>
@@ -143,11 +143,11 @@ export default () => (
     <h3 id="common-problem">خطاهای رایج در فرایند استقرار</h3>
     <p>
       چنانچه در فرایند استقرار با خطای خاصی مواجه شده‌اید، حتما پیشنهاد می‌کنیم
-      که بخش <Link href="/app-deploy/netcore/tips">توضیحات و نکات تکمیلی</Link>{" "}
+      که بخش <Link href="/app-deploy/dotnet/tips">توضیحات و نکات تکمیلی</Link>{" "}
       را مطالعه کرده و تنظیمات مربوطه را انجام دهید.
     </p>
 
-    <Link href="/app-deploy/netcore/cli" className="next-page">
+    <Link href="/app-deploy/dotnet/cli" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

@@ -109,7 +109,7 @@ const products = [
         title: ".Net",
         href: "https://liara.ir/landing/هاست-دات-نت-dotnet/",
         alt: "هاست ابری دات‌نت‌",
-        icon: <PlatformIcon platform="netcore" />,
+        icon: <PlatformIcon platform="dotnet" />,
       },
       {
         title: "ReactJS",

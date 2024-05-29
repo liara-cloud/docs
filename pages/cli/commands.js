@@ -117,7 +117,7 @@ export default () => (
 
       <li>&nbsp;&nbsp;--platform</li>
       <p dir="rtl" className="commandDescription">
-        ۱۰. مشخص کردن پلتفرم [node, laravel, php, django, flask, netcore, react,
+        ۱۰. مشخص کردن پلتفرم [node, laravel, php, django, flask, dotnet, react,
         angular, vue, static, docker]
       </p>
     </ol>
