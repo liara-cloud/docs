@@ -32,6 +32,7 @@ import {
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
 import PlatformIcon from "../Common/icons";
+import Link from "next/link";
 
 const IconContainer = ({ alt }) => {
   return (
@@ -293,15 +294,11 @@ export default {
       },
       {
         title: "استفاده از متغیرهای محیطی",
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "اتصال به دیتابیس",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/set-envs"
       },
       {
         title: "استفاده از دیسک",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/use-disk"
       },
       {
         title: "راه‌اندازی برنامه Websocket",
@@ -330,37 +327,41 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <GoDatabase  />
-            اتصال به دیتابیس 
+            <Link href="/paas/nodejs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
       },
       {
         title: "دیتابیس MongoDB",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       },
       {
         title: "دیتابیس MySQL/MariaDB",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس PostgreSQL",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس MSSQL",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس SQLite",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        link: "/paas/nodejs/how-tos/connect-to-db/redis"
       },
       {
         title: "ماژول Prisma",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/connect-to-db/prisma"
       },
       {
         title: "ماژول Sequelize",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/connect-to-db/sequelize/about"
       },
       {
         hr: true
