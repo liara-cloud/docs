@@ -1,0 +1,35 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+
+<Layout>
+# تنظیم TrustedProxies برای فریم‌ورک ExpressJS
+<hr className="mb-2" />
+
+برای تنظیم این قابلیت در برنامه خود، می‌توانید از نمونه قطعه کد زیر، استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`const express = require('express');
+const app = express();
+
+app.set('trust proxy', 1);
+
+// usage example:
+app.get('/', (req, res) => {
+  const ip = req.ip;
+  res.send(\`Client IP: \${ip}\`);
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

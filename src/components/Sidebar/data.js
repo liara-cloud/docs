@@ -302,19 +302,19 @@ export default {
       },
       {
         title: "راه‌اندازی برنامه Websocket",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/use-websocket"
       },
       {
         title: "build برنامه با ES6",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/build-and-use-es6"
       },
       {
         title: "استفاده از TypeScript",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/use-type-script"
       },
       {
         title: "پیکربندی TrustedProxies",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/configure-trusted-proxy/about"
       },
       {
         title: "انتخاب نسخه NodeJS",
@@ -396,42 +396,42 @@ export default {
       {
         title: "Addonis",
         icon: <IconContainer alt="adonisjs" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/adonisjs"
       },
       {
         title: "BlitzJS",
         icon: <IconContainer alt="blitz" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/blitzjs"
       },
       {
         title: "Fastify",
         icon: <IconContainer alt="fastify" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/fastify"
       },
       {
         title: "Hapi",
         icon: <IconContainer alt="fastify" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/hapi"
       },
       {
         title: "NestJS",
         icon: <IconContainer alt="nest" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/nestjs"
       },
       {
         title: "NuxtJS",
         icon: <IconContainer alt="nuxt" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/nuxtjs"
       },
       {
         title: "Remix",
         icon: <IconContainer alt="remix" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/remix"
       },
       {
         title: "Strapi",
         icon: <IconContainer alt="strapi" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/strapi/starter"
       },
       {
         title: "Svelte",

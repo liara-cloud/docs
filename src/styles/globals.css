@@ -43,6 +43,12 @@ body {
   text-decoration: rgba(123, 167, 250, 0.411);
 }
 
+
+ul , li {
+  list-style: inside;
+  line-height: 25px;
+}
+
 video , img { 
   border-radius: 8px;
   border : 1px solid #00000015;
