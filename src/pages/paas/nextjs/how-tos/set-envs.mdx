@@ -1,0 +1,30 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# استفاده از متغیرهای محیطی 
+<hr className="mb-2" />
+برای استفاده از متغیرهای محیطی در برنامه خود، در ابتدا باید طبق <Link href="../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</Link>، متغیرهای محیطی را به برنامه خود، اضافه کنید.
+در ادامه، شما می‌توانید با استفاده از دستور <Important>.process.env</Important> به متغیرهای محیطی خود در برنامه NodeJS، دسترسی داشته باشید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`console.log(\`app listening on port 3005 on \${process.env.LIARA_URL}\`)`}
+</Highlight>
+</ div>
+<div className="h-2" />
+در مثال فوق، <Important>LIARA_URL</Important> یک متغیر محیطی است که از قبل، به برنامه فرضی در لیارا، اضافه شده است.
+
+<NextPage next="./use-disk" />
+
+</Layout>

@@ -151,62 +151,62 @@ export default {
       {
         title: "NextJS",
         icon: <IconContainer alt="next" />,
-        link: "/paas/overview"
+        link: "/paas/nextjs/getting-started"
       },
       {
         title: "Laravel",
         icon: <IconContainer alt="laravel" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "PHP",
         icon: <IconContainer alt="php" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "Django",
         icon: <IconContainer alt="django" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "Flask",
         icon: <IconContainer alt="flask" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "React",
         icon: <IconContainer alt="react" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "Angular",
         icon: <IconContainer alt="angularjs" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "Vue",
         icon: <IconContainer alt="vue" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "Static",
         icon: <IconContainer alt="HTML5" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "Golang",
         icon: <IconContainer alt="go" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
-        link: "/paas/overview"
+        link: "/paas//getting-started"
       },
       {
         hr: true
@@ -446,6 +446,148 @@ export default {
         title: "Svelte Kit",
         icon: <IconContainer alt="svelte" />,
         link: "/paas/nodejs/related-apps/svelte-kit"
+      },
+    ],
+    nextjs: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم NextJS
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/nextjs/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/nextjs/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/nextjs/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/nextjs/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/nextjs/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/nextjs/how-tos/use-disk"
+      },
+      {
+        title: "راه‌اندازی برنامه Websocket",
+        link: "/paas/nextjs/how-tos/use-websocket"
+      },
+      {
+        title: "build برنامه با ES6",
+        link: "/paas/nextjs/how-tos/build-and-use-es6"
+      },
+      {
+        title: "استفاده از TypeScript",
+        link: "/paas/nextjs/how-tos/use-type-script"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/nextjs/how-tos/use-hooks"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/nextjs/how-tos/configure-trusted-proxy/about"
+      },
+      {
+        title: "انتخاب نسخه NodeJS",
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/nextjs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MongoDB",
+        link: "/paas/nextjs/how-tos/connect-to-db/mongodb"
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        link: "/paas/nextjs/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        link: "/paas/nextjs/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        link: "/paas/nextjs/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        link: "/paas/nextjs/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        link: "/paas/nextjs/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "ماژول Prisma",
+        link: "/paas/nextjs/how-tos/connect-to-db/prisma"
+      },
+      {
+        title: "ماژول Sequelize",
+        link: "/paas/nextjs/how-tos/connect-to-db/sequelize/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/nextjs/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/nextjs/fix-common-errors/cors-error/about"
+      },
+      {
+        title: "رفع خطای Get query missing در GraphQL",
+        link: "/paas/nextjs/fix-common-errors/graphql-error"
       },
     ]
   }
