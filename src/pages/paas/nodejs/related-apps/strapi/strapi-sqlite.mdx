@@ -12,6 +12,20 @@ import NextPage from "@/components/Common/nextpage";
 
 <Layout>
 # استقرار برنامه‌های Strapi با SQLite در لیارا
+<hr className="mb-2" />
+
+<video
+    src="https://files.liara.ir/liara/strapi/strapi-sqlite.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/strapi-getting-started/tree/master" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
 
 پس از ایجاد برنامه NodeJS، باید متغیرهای محیطی موجود در فایل <Important>env.</Important> برنامه Strapi خود را طبق <a href="../../../details/envs" className="blue-link">مستندات اضافه کردن متغیرهای محیطی</a> به برنامه NodeJS اضافه کنید. به عنوان مثال، متغیرهای زیر با مقادیر فرضی زیر، حتماً باید به برنامه اضافه شوند:
 
@@ -54,18 +68,6 @@ JWT_SECRET=qvyu4YsbaS03suqri3sZVQ==`}
     tabs={["Liara CLI", "Liara Console"]} 
     content={[
     <>
-<video
-    src="https://files.liara.ir/liara/strapi/strapi-sqlite.mp4"
-    controls="controls"
-    className="block w-full"
-    width="100%"
-/>
-<div className="h-2" />
-<Alert variant="success">
-<p>
-پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/strapi-getting-started/tree/master" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
-</p>
-</Alert>
     <p>
     در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود:
     </p>
@@ -78,8 +80,7 @@ JWT_SECRET=qvyu4YsbaS03suqri3sZVQ==`}
     <div className="h-2" />
     </>,
     <>
-    <p>
-    در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود.  </p>
+    <p>در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود.  </p>
     </>
 ]} 
 />

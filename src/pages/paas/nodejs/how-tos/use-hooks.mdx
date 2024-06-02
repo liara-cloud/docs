@@ -1,0 +1,48 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# استفاده از Hooks در برنامه‌های NodeJS
+<hr className="mb-2" />
+
+Hookها در برنامه‌نویسی به دستوراتی گفته می‌شود که به شما اجازه می‌دهند تا عملکرد یک برنامه را در یک نقطه خاص از فرایند اجرا یا استقرار آن، تغییر یا بهبود دهید؛ بدون اینکه نیاز به تغییر کد اصلی داشته باشید.
+
+در لیارا، شما می‌توانید سه فایل زیر را در مسیر اصلی پروژه خود ایجاد کنید؛ و با توجه به زمان مشخص اجرای هر فایل‌، 
+دستورات موردنیاز خود را در آن‌ها تعریف کنید:
+<div className="h-2" />
+<ul>
+    <li><Important>liara_pre_build.sh</Important>: لیارا، دستورات درون این فایل را قبل از اجرای دستور <Important>npm run build</Important>، اجرا می‌کند.</li>
+    <div className="h-1" />
+    <li><Important>liara_post_build.sh</Important>: لیارا، دستورات درون این فایل را بعد از اجرای دستور <Important>npm run build</Important>، اجرا می‌کند.</li>
+    <div className="h-1" />
+    <li><Important>liara_pre_start.sh</Important>: لیارا، دستورات درون این فایل را قبل از اجرای دستور <Important>npm run start</Important>، اجرا می‌کند.</li>
+</ul>
+<div className="h-2" />
+به عنوان مثال، اگر که از <a href="./connect-to-db/sequelize/about" className="blue-link">Sequelize</a> استفاده می‌کنید؛ می‌توانید در فایل <Important>liara_pre_start.sh</Important> دستورات مربوط به migrations را بنویسید تا نیازی نباشد که پس از استقرار برنامه، آن را به صورت دستی در خط فرمان برنامه خود، اجرا کنید. به عنوان مثال:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="sh">
+        {`echo "Running pre-start script for Node.js..."
+
+# run migrations 
+npx sequelize-cli db:migrate
+
+# other needed commands
+# ..
+
+echo "Pre-start script for Node.js finished."`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<NextPage next="./configure-trusted-proxy/about"/>
+</Layout>

@@ -313,6 +313,10 @@ export default {
         link: "/paas/nodejs/how-tos/use-type-script"
       },
       {
+        title: "استفاده از Hookها",
+        link: "/paas/nodejs/how-tos/use-hooks"
+      },
+      {
         title: "پیکربندی TrustedProxies",
         link: "/paas/nodejs/how-tos/configure-trusted-proxy/about"
       },
@@ -370,17 +374,17 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoBug  />
-            رفع خطاهای رایج
+            <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
       },
       {
         title: "رفع خطای CORS",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/fix-common-errors/cors-error/about"
       },
       {
         title: "رفع خطای Get query missing در GraphQL",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/fix-common-errors/graphql-error"
       },
       {
         hr: true
@@ -436,12 +440,12 @@ export default {
       {
         title: "Svelte",
         icon: <IconContainer alt="svelte" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/svelte"
       },
       {
         title: "Svelte Kit",
         icon: <IconContainer alt="svelte" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/related-apps/svelte-kit"
       },
     ]
   }
