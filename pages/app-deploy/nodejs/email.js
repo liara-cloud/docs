@@ -116,7 +116,7 @@ transporter.sendMail({
       این پکیج مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/nodejs/tips" className="next-page">
+    <Link href="/app-deploy/nodejs/hooks" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

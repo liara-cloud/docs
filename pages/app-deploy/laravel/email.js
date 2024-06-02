@@ -253,7 +253,7 @@ class SendEmailController extends Controller
       مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/laravel/object-storage" className="next-page">
+    <Link href="/app-deploy/laravel/hooks" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

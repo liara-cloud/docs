@@ -309,6 +309,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/nodejs/hooks">
+                    استفاده از hookها
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/nodejs/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
@@ -369,6 +374,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/nextjs/email">
                     ارسال ایمیل
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/nextjs/hooks">
+                    استفاده از hookها
                   </ActiveLink>
                 </li>
                 <li>
@@ -437,6 +447,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/laravel/email">
                     ارسال ایمیل
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/laravel/hooks">
+                    استفاده از hookها
                   </ActiveLink>
                 </li>
                 <li>
@@ -518,6 +533,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/php/hooks">
+                    استفاده از hookها
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/php/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
@@ -596,6 +616,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                   </ActiveLink>
                 </li>
                 <li>
+                  <ActiveLink href="/app-deploy/django/hooks">
+                    استفاده از hookها
+                  </ActiveLink>
+                </li>
+                <li>
                   <ActiveLink href="/app-deploy/django/tips">
                     توضیحات و نکات تکمیلی
                   </ActiveLink>
@@ -661,6 +686,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/flask/email">
                     ارسال ایمیل
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/flask/hooks">
+                    استفاده از hookها
                   </ActiveLink>
                 </li>
                 <li>
@@ -734,6 +764,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
                 <li>
                   <ActiveLink href="/app-deploy/dotnet/email">
                     ارسال ایمیل
+                  </ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink href="/app-deploy/dotnet/hooks">
+                    استفاده از hookها
                   </ActiveLink>
                 </li>
                 <li>

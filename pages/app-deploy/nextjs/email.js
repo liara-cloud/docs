@@ -186,7 +186,7 @@ export default function Home() {
       این پکیج مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/nextjs/tips" className="next-page">
+    <Link href="/app-deploy/nextjs/hooks" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

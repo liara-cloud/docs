@@ -122,7 +122,7 @@ def index():
       این کتابخانه مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/flask/tips" className="next-page">
+    <Link href="/app-deploy/flask/hooks" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

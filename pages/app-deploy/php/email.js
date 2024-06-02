@@ -148,7 +148,7 @@ try {
       این کتابخانه مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/php/tips" className="next-page">
+    <Link href="/app-deploy/php/hooks" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>

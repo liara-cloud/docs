@@ -199,7 +199,7 @@ public class TestController : Controller
       مراجعه کنید.
     </p>
 
-    <Link href="/app-deploy/dotnet/entity-framework" className="next-page">
+    <Link href="/app-deploy/dotnet/hooks" className="next-page">
       متوجه شدم، برو گام بعدی!
     </Link>
   </Layout>
