@@ -14,7 +14,9 @@ import NextPage from "@/components/Common/nextpage";
 
 <Layout>
 
-# استقرار برنامه NodeJS در لیارا
+# استقرار برنامه NextJS در لیارا
+<hr className="mb-2" />
+توجه داشته باشید؛ تنها برنامه‌هایی که با دستور <Important>create-next-app</Important> ساخته شده باشند، در پلتفرم Next لیارا قابل اجرا خواهند بود.
 
         <Tabs 
     tabs={["Liara CLI", "Liara Console"]} 
@@ -22,14 +24,14 @@ import NextPage from "@/components/Common/nextpage";
     <>
 
         <p>
-            پس از <a className='' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری node_modules به همراه محتوای آن نیست؛ چرا که لیارا در حین استقرار برنامه، آن را برای شما می‌سازد؛ پس بایستی نام این دایرکتوری در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های NodeJS است که می‌توانید از آن، استفاده کنید:
+            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری node_modules به همراه محتوای آن نیست؛ چرا که لیارا در حین استقرار برنامه، آن را برای شما می‌سازد؛ پس بایستی نام این دایرکتوری در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های NextJS است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/nodejs/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/nextjs/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
-                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های NodeJS
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های NextJS
                 </h4>
                 </div>
                 <GoArrowLeft className="ml-1" />
@@ -54,7 +56,7 @@ import NextPage from "@/components/Common/nextpage";
             content: (
             <>
                 <h4>اجرای اسکریپت build</h4>
-                <p> اگر که در این فایل، اسکریپت <Important>build</Important> را تعریف کرده باشید، لیارا با اجرای دستور <Important>npm run build</Important> آن را، اجرا می‌کند.</p>
+                <p> اگر که در این فایل، اسکریپت <Important>build</Important> وجود داشته باشد، لیارا با اجرای دستور <Important>npm run build</Important> آن را، اجرا می‌کند.</p>
             </>
             )
             },
@@ -63,29 +65,32 @@ import NextPage from "@/components/Common/nextpage";
             content: (
             <>
                 <h4>اجرای اسکریپت start</h4>
-                <p> لیارا برای اجرای برنامه، از اسکریپت <Important>start</Important> استفاده می‌کند؛ پس باید حتماً این اسکریپت را در فایل <Important>package.json</Important> تعریف کنید. </p>
+                <p> لیارا برای اجرای برنامه، از اسکریپت <Important>start</Important> استفاده می‌کند؛ پس باید حتماً این اسکریپت در فایل <Important>package.json</Important> تعریف شده باشد. </p>
             </>
             )
             }
         ]}/>
         <div className="h-4" />
         <p>
-            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> است که در آن اسکریپت <Important>start</Important> تعریف شده است:
+            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های NextJS است:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "name": "node-getting-started",
-  "version": "1.0.0",
-  "description": "simple web server with expressjs",
-  "main": "server.js",
+  "name": "nextjs-getting-started",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "node server.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.0.4"
   },
   "devDependencies": {
     "eslint": "^8",
@@ -103,14 +108,14 @@ import NextPage from "@/components/Common/nextpage";
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "port": 3005,
-    "platform": "node",
+    "platform": "next"
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
         <p>
-            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید و در فیلد <Important>port</Important> باید پورتی را وارد کنید که برنامه‌تان در آن، به درخواست کاربران گوش می‌دهد. فیلد <Important>platform</Important> هم پلتفرم برنامه شما را که NodeJS است، مشخص می‌کند.
+            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که NextJS است، مشخص کنید.
         </p>
         <p>
             لیارا در جهت استقرار سریع‌تر،  برای نصب پکیج‌های <Important>npm</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
@@ -119,37 +124,8 @@ import NextPage from "@/components/Common/nextpage";
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "node": {
+    "next": {
     "mirror": false
-  }
-}`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <p>
-            برای تعیین نسخه NodeJS برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "node": {
-    "version": "22"
-  }
-}`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <Alert variant='success'>همچنین بخوانید:  <a className="blue-link" href="./choose-version">نسخه‌های قابل ارائه NodeJS در لیارا</a></Alert>
-        <p>
-            به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "node": {
-    "timezone": "America/Los_Angeles"
   }
 }`}
             </Highlight>
@@ -163,12 +139,9 @@ import NextPage from "@/components/Common/nextpage";
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "port": 3005,
-    "platform": "node",
-    "node": {
-    "mirror": false,
-    "timezone": "America/Los_Angeles",
-    "version": "22"
+    "platform": "next",
+    "next": {
+    "mirror": false
     }
 }`}
             </Highlight>
@@ -211,7 +184,7 @@ import NextPage from "@/components/Common/nextpage";
             content: (
             <>
                 <h4>اجرای اسکریپت build</h4>
-                <p> اگر که در این فایل، اسکریپت <Important>build</Important> را تعریف کرده باشید، لیارا با اجرای دستور <Important>npm run build</Important> آن را، اجرا می‌کند.</p>
+                <p> اگر که در این فایل، اسکریپت <Important>build</Important> وجود داشته باشد، لیارا با اجرای دستور <Important>npm run build</Important> آن را، اجرا می‌کند.</p>
             </>
             )
             },
@@ -220,31 +193,65 @@ import NextPage from "@/components/Common/nextpage";
             content: (
             <>
                 <h4>اجرای اسکریپت start</h4>
-                <p> لیارا برای اجرای برنامه، از اسکریپت <Important>start</Important> استفاده می‌کند؛ پس باید حتماً این اسکریپت را در فایل <Important>package.json</Important> تعریف کنید. </p>
+                <p> لیارا برای اجرای برنامه، از اسکریپت <Important>start</Important> استفاده می‌کند؛ پس باید حتماً این اسکریپت در فایل <Important>package.json</Important> تعریف شده باشد. </p>
             </>
             )
             }
         ]}/>
         <div className="h-4" />
         <p>
+            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های NextJS است:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "name": "nextjs-getting-started",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4"
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
             در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
         </p>
         <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
         <div className="h-4" />
         <p>
-            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه نظیر انتخاب نسخه، تعیین منطقه زمانی، اتصال دیسک و ... را در برنامه خود، لحاظ کنید:
+            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
         </p>
         <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/build-nodejs-app-on-liara.gif" alt="build nodejs app on liara" />
+        <img src="https://files.liara.ir/liara/docs/deploy-nextjs-app-on-liara.gif" alt="build app on liara" />
         <div className="h-4" />
         <p>
             در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
-            پس از استقرار می‌توانید <a href="../../details/events" className="blue-link">رویدادها</a> و <a href="../../details/observations/about" className="blue-link">گزارشات</a> مربوط به برنامه را بررسی کنید.
         </p>
 
     </>
 ]} 
 />
+
+<Alert variant='success'>
+<p>
+    پس از استقرار برنامه می‌توانید <a href="../../details/events" className="blue-link">رویدادها</a> و <a href="../../details/observations/about" className="blue-link">گزارشات</a> مربوط به برنامه را بررسی کنید.
+</p>
+</Alert>
 
 
 <NextPage next="./set-envs" />

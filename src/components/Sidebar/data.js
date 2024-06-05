@@ -508,12 +508,12 @@ export default {
         link: "/paas/nextjs/how-tos/use-websocket"
       },
       {
-        title: "build برنامه با ES6",
-        link: "/paas/nextjs/how-tos/build-and-use-es6"
-      },
-      {
         title: "استفاده از TypeScript",
         link: "/paas/nextjs/how-tos/use-type-script"
+      },
+      {
+        title: "build برنامه با ES6",
+        link: "/paas/nextjs/how-tos/build-and-use-es6"
       },
       {
         title: "استفاده از Hookها",

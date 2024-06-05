@@ -15,193 +15,177 @@ import NextPage from "@/components/Common/nextpage";
 <hr className="mb-2" />
 
 وب‌سوکت (WebSocket) یک فناوری ارتباطی در وب است که به سرور و مرورگر اجازه می‌دهد از طریق یک اتصال دوطرفه دائمی، داده‌ها را به صورت تعاملی ارسال و دریافت کنند. در واقع مرورگر می‌تواند داده‌ها را بفرستد و دریافت کند بدون اینکه نیازی به بارگیری دوباره صفحه وب (refresh) باشد. این ویژگی به برنامه‌های تعاملی مانند چت‌های زنده و بازی‌های آنلاین کمک می‌کند.
-در ادامه، به نحوه ایجاد برنامه WebSocket در پلتفرم NodeJS با استفاده از پکیج `ws` و همچنین نحوه استقرار آن در لیارا، پرداخته شده است.
+در ادامه، به نحوه ایجاد برنامه WebSocket در فریم‌ورک NextJS با استفاده از پکیج <Important>Socket.IO</Important> و همچنین نحوه استقرار آن در لیارا، پرداخته شده است.
 
-<Section id="build-websocket-app-in-nodejs" title="ساخت برنامه WebSocket در NodeJS" />
-پروژه‌ در پیش‌رو، یک چت‌روم تحت وب در پلتفرم NodeJS است که کاربران می‌توانند در آن به صورت Realtime (با تکیه بر WebSocket) به گفتگو بپردازند.
+<Section id="build-websocket-app-in-nextjs" title="ساخت برنامه WebSocket در NextJS" />
+پروژه‌ در پیش‌رو، یک چت‌روم تحت وب در فریم‌ورک NextJS است که کاربران می‌توانند در آن به صورت Realtime (با تکیه بر WebSocket) به گفتگو بپردازند.
 در ابتدا، بایستی پکیج‌های مورد نیاز برنامه را با اجرای دستور زیر با استفاده از <Important>npm</Important>، نصب کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`npm install ws serve-handler`}
+        {`npm install express socket.io socket.io-client`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-در ادامه، بایستی یک فایل به نام <Important>index.js</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+در ادامه، بایستی در مسیر اصلی پروژه، یک فایل به نام <Important>server.js</Important> ایجاد کنید و محتوای زیر را درون آن قرار دهید. این فایل برای
+مدیریت برنامه NextJS و سرور Socket.IO به کار می‌رود:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`const { createServer } = require('http');
-const staticHandler = require('serve-handler');
-const WebSocket = require('ws');
-const WebSocketServer = WebSocket.Server;
+        {`const express = require('express');
+const next = require('next');
+const http = require('http');
+const socketIo = require('socket.io');
 
-const server = createServer((req, res) => {
-    return staticHandler(req, res, { public: 'public' });
-});
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
-const wss = new WebSocketServer({ server });
+const port = process.env.PORT || 3000;
 
-wss.on('connection', (client, req) => {
-    const urlParams = new URLSearchParams(req.url.slice(1)); 
-    const username = urlParams.get('username') || 'Anonymous';
+app.prepare().then(() => {
+  const server = express();
+  const httpServer = http.createServer(server);
+  const io = socketIo(httpServer, {
+    cors: {
+      origin: '*',
+    },
+  });
 
-    client.username = username;
-    client.send(\`Welcome, \${username}!\`);
-
-    client.on('message', (msg) => {
-        const messageToSend = \`[\${username}]: \${msg}\`;
-        wss.clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(messageToSend);
-            }
-        });
+  io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('message', (message) => {
+      io.emit('message', message);
     });
 
-    client.on('close', () => {
-        console.log(\`Client \${username} disconnected\`);
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
     });
+  });
+
+  server.all('*', (req, res) => {
+    return handle(req, res);
+  });
+
+  httpServer.listen(port, (err) => {
+    if (err) throw err;
+    console.log(\`ready on port \${port}\`);
+  });
 });
-
-server.listen(process.argv[2] || 3000, () => {
-    console.log(\`Server listening...\`);
-});`}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-سپس، یک دایرکتوری به نام <Important>public</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>index.html</Important> بسازید و قطعه کد زیر را، درون آن، قرار دهید:
+سپس، در مسیر اصلی پروژه، یک دایرکتوری به نام <Important>components</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>Chat.js</Important> بسازید و قطعه کد زیر را، درون آن، قرار دهید:
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="html">
-{`<!DOCTYPE html>
-<html lang="en">
+    <Highlight className="js">
+{`import { useEffect, useState } from 'react';
+import io from 'socket.io-client';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimlist chat App</title>
-</head>
+const socket = io();
 
-<body>
-    <!-- Form for entering username -->
-    <div id="usernameForm">
-        <label for="username">Enter your username:</label>
-        <input type="text" id="username" placeholder="Username">
-        <button onclick="submitUsername()">Submit</button>
+export default function Chat() {
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    socket.on('message', (message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
+    });
+
+    return () => {
+      socket.off('message');
+    };
+  }, []);
+
+  const sendMessage = () => {
+    if (message) {
+      socket.emit('message', message);
+      setMessage('');
+    }
+  };
+
+  return (
+    <div>
+      <div>
+        {messages.map((msg, index) => (
+          <div key={index}>{msg}</div>
+        ))}
+      </div>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button onClick={sendMessage}>Send</button>
     </div>
+  );
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+پس از انجام کار فوق، کافیست تا در مسیر <Important>pages/index.js</Important> قطعه کد زیر 
+را قرار دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+    {`import Head from 'next/head';
+import Chat from '../components/Chat';
 
-    <!-- Chat container -->
-    <div id="chatContainer" style="display: none;">
-        <div class="container">
-            <p class="msg">Messages:</p>
-            <div id="messages" class="messages"></div>
-            <form id="msgForm" class="msgForm">
-                <input type="text" placeholder="Send message" id="inputBox" />
-                <input type="submit" value="Send">
-            </form>
-        </div>
+export default function Home() {
+  return (
+    <div>
+      <Head>
+        <title>Next.js Chat App</title>
+        <meta name="description" content="A simple chat app with Next.js and Socket.IO" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <h1>Welcome to the Chat App</h1>
+        <Chat />
+      </main>
     </div>
-
-    <script type="text/javascript">
-        let ws;
-
-        function submitUsername() {
-            const usernameInput = document.getElementById('username');
-            const username = usernameInput.value.trim();
-            if (username) {
-                // Connect to WebSocket server
-                ws = new WebSocket(\`ws://\${window.document.location.host}?username=\${encodeURIComponent(username)}\`);
-                ws.binaryType = "blob";
-
-                // Handle socket events
-                ws.addEventListener("open", event => {
-                    console.log("Websocket connection opened");
-                    // Show chat container after connection
-                    document.getElementById('usernameForm').style.display = 'none';
-                    document.getElementById('chatContainer').style.display = 'block';
-                });
-                ws.addEventListener("close", event => {
-                    console.log("Websocket connection closed");
-                });
-
-                // Handle incoming messages
-                ws.onmessage = function (message) {
-                    const msgDiv = document.createElement('div');
-                    if (message.data instanceof Blob) {
-                        // Handling Blob data
-                        reader = new FileReader();
-                        reader.onload = () => {
-                            msgDiv.innerHTML = reader.result;
-                            msgDiv.classList.add('msgCtn'); // Adding class for user's messages
-                            document.getElementById('messages').appendChild(msgDiv);
-                        };
-                        reader.readAsText(message.data);
-                    } else {
-                        // Handling text data
-                        msgDiv.innerHTML = message.data;
-                        if (message.sender === 'user') { // Assuming 'user' is the sender's identifier
-                            msgDiv.classList.add('msgCtn'); // Adding class for user's messages
-                        } else {
-                            msgDiv.classList.add('otherMsgCtn'); // Adding class for other users' messages
-                        }
-                        document.getElementById('messages').appendChild(msgDiv);
-                    }
-                };
-
-                // Handle form submission
-                const form = document.getElementById('msgForm');
-                form.addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    const message = document.getElementById('inputBox').value;
-                    ws.send(message);
-                    document.getElementById('inputBox').value = ''
-                });
-            } else {
-                alert('Please enter a valid username.');
-            }
-        }
-    </script>
-</body>
-</html>`}
+  );
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
-تمامی کارها، انجام شده است و شما می‌توانید با اجرای دستور <Important>node index.js</Important> برنامه را اجرا کرده و از آن استفاده کنید.
+تمامی کارها انجام شده است و شما می‌توانید با اجرای دستور <Important>node server.js</Important> برنامه خود را اجرا کرده و از آن استفاده کنید.
 
+<Section id="deploy-websocket-nextjs" title="استقرار برنامه NextJS WebSocket در لیارا" />
 
-
-<Section id="deploy-websocket-nodejs" title="استقرار برنامه NodeJS WebSocket در لیارا" />
-
-برای استقرار برنامه Websocket در لیارا، نیاز به انجام تغییر خاصی در برنامه نیست. فقط، بایستی به جای <Important>ws</Important> برای برقراری اتصال، حتماً از <Important>wss</Important> استفاده کنید تا اتصال موفق و ایمن باشد:
+از آنجایی که برنامه WebSocket فوق (یا به صورت کلی، اکثر برنامه‌های مبتنی بر Websocket) به یک سرور برای مدیریت Socket نیاز دارند؛ بنابراین
+برای استقرار این برنامه در لیارا، بهتر است که از <Link href="../../nodejs/getting-started" className="blue-link">پلتفرم NodeJS</Link> برای استقرار برنامه NextJS مبتنی بر وب‌سوکت استفاده شود.
+برای این کار کافیست تا طبق مستندات <Link href="../../nodejs/how-tos/create-app" className="blue-link">ساخت برنامه NodeJS</Link> یک برنامه NodeJS ایجاد کنید و اسکریپت <Important>start</Important> درون فایل <Important>package.json</Important> خود را به شکل زیر، تغییر دهید: 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="html">
-        {`<script type="text/javascript">
-    // other codes ...
-    // Connect to WebSocket server
-    ws = new WebSocket(\`wss://\${window.document.location.host}?username=\${encodeURIComponent(username)}\`);
-    // other codes ...
-</script>`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-همچنین، بایستی در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، اسکریپت <Important>start</Important> را به شکل زیر، تعریف کنید (با توجه به پروژه، نام فایل اصلی را باید وارد کنید):
-
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="html">
+    <Highlight className="json">
         {`{
-  "scripts": {
-    "start": "node index.js"
-  }
-}`}
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node server.js",
+    "lint": "next lint"
+  },
+        }`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، کافیست تا با اجرای دستور زیر، برنامه خود را در لیارا، مستقر کنید: 
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+        {`liara deploy --port=3000 --platform=node`}
     </Highlight>
 </div>
 
@@ -209,9 +193,9 @@ server.listen(process.argv[2] || 3000, () => {
 
 <Alert variant="info">
 <p>
-سورس کامل یک برنامه NodeJS WebSocket آماده استقرار در <a href="https://github.com/liara-cloud/nodejs-getting-started/tree/websocket" className="blue-link">اینجا</a> موجود است که می‌توانید از آن استفاده کنید.
+سورس کامل یک برنامه NextJS WebSocket آماده استقرار در <a href="https://github.com/liara-cloud/nextjs-getting-started/tree/websocket" className="blue-link">اینجا</a> موجود است که می‌توانید از آن استفاده کنید.
 </p>
 </Alert>
 
-<NextPage next="./build-and-use-es6" />
+<NextPage next="./use-type-script" />
 </Layout>

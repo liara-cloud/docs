@@ -11,19 +11,22 @@ import Link from "next/link";
 
 <Layout>
 
-# استقرار سریع برنامه‌های NodeJS
+# استقرار سریع برنامه‌های NextJS
+<hr className="mb-2" />
+توجه داشته باشید؛ تنها برنامه‌هایی که با دستور <Important>create-next-app</Important> ساخته شده باشند، در پلتفرم Next لیارا قابل اجرا خواهند بود.
 
 <Tabs 
   tabs={["Liara CLI", "Liara Console"]} 
   content={[
   <>
   <video
-  src="https://files.liara.ir/liara/quick-start/nodejs/nodejs-cli.mp4"
+  src="https://files.liara.ir/liara/quick-start/nextjs/nextjs-cli.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
   ></video>
-  <br />
+  <div className="h-2" />
+
   برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-cli/about">Liara CLI</Link> کافیست تا مراحل زیر را طی کنید:
   <Step  steps={[
 {
@@ -38,7 +41,11 @@ import Link from "next/link";
       </Highlight>
     </div>
     <div className="h-2" />
-    <Alert variant="info">دقت کنید که<Link className="blue-link" href="https://nodejs.org">npm و NodeJS</Link>باید بر روی سیستم‌عامل‌تان نصب باشد.</Alert>
+    <Alert variant="info">
+    <p>
+    دقت کنید که <Link className="blue-link" href="https://nodejs.org">npm و NodeJS</Link> باید بر روی سیستم‌عامل‌تان نصب باشد.
+    </p>
+    </Alert>
     <div className="h-2" />
     <Alert variant="warning">در ویندوز، ترمینال باید بر روی CMD تنظیم باشد.</Alert>
   </>
@@ -79,7 +86,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>با اجرای دستور زیر، برنامه NodeJS خود را ایجاد کنید:</p>
+    <p>با اجرای دستور زیر، برنامه NextJS خود را ایجاد کنید:</p>
     <div dir='ltr'>
     <Highlight className="bash">
       {`liara create`}
@@ -87,7 +94,7 @@ import Link from "next/link";
     </div>
     <div className="h-2" />
     <Alert variant="info">اگر که از قبل برنامه خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی node تنظیم شود)، شبکه خصوصی و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری برنامه</Link>، مشخص شوند.</p>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی next تنظیم شود)، شبکه خصوصی و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری برنامه</Link>، مشخص شوند.</p>
   </>
   )
   },
@@ -109,15 +116,18 @@ import Link from "next/link";
   step: "۶",
   content: (
   <>
-    <h3>تعریف اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه؛ حتماً اسکریپت <Important>start</Important> را تعریف کنید؛ به عنوان مثال، اگر که نام فایل اصلی برنامه‌تان <Important>server.js</Important> است، باید اسکریپت start را به شکل زیر، تعریف کنید:</p>
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛ به عنوان مثال:</p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="json">
       {`{
   "scripts": {
-    "start": "node server.js"
-  }
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+    },
 }`}
     </Highlight>
     </div>
@@ -129,11 +139,11 @@ import Link from "next/link";
   content: (
   <>
     <h3>استقرار برنامه</h3>
-    <p>با اجرای دستور زیر در مسیر اصلی پروژه، برنامه خود را  در لیارا مستقر کنید (بعد از <Important>app--</Important> شناسه برنامه و بعد از <Important>port--</Important> پورت برنامه خود را وارد کنید):</p>
+    <p>با اجرای دستور زیر در مسیر اصلی پروژه، برنامه خود را  در لیارا مستقر کنید (بعد از <Important>app--</Important> شناسه برنامه خود را وارد کنید):</p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-      {`liara deploy --app=myapp --platform=node --port=3000`}
+      {`liara deploy --app=myapp --platform=node`}
     </Highlight>
     </div>
   </>
@@ -144,12 +154,12 @@ import Link from "next/link";
   </>,
    <>
   <video
-  src="https://files.liara.ir/liara/nodejs/nodejs-desktop.mp4"
+  src="https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
   ></video>
-  <br />
+  <div className="h-2" />
   برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
   <Step  steps={[
 {
@@ -166,7 +176,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>برنامه NodeJS خود را با شناسه، <Link className="blue-link" href="../details/private-networks.md">شبکه خصوصی</Link>. و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
+    <p>برنامه NextJS خود را با شناسه، <Link className="blue-link" href="../details/private-networks.md">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
   </>
   )
   },
@@ -183,15 +193,18 @@ import Link from "next/link";
   step: "۴",
   content: (
   <>
-    <h3>تعریف اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه؛ حتماً اسکریپت <Important>start</Important> را تعریف کنید؛ به عنوان مثال، اگر که نام فایل اصلی برنامه‌تان <Important>server.js</Important> است، باید اسکریپت start را به شکل زیر، تعریف کنید:</p>
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛ به عنوان مثال:</p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="json">
       {`{
   "scripts": {
-    "start": "node server.js"
-  }
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+    },
 }`}
     </Highlight>
     </div>
@@ -223,11 +236,23 @@ import Link from "next/link";
 />
 
 <br/>   
-<Alert variant="info">لیارا با اجرای دستور <Important>npm install</Important> تمامی ماژول‌های موجود در فایل <Important>package.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.</Alert>
+<Alert variant="info">
+<p>
+لیارا با اجرای دستور <Important>npm install</Important> تمامی ماژول‌های موجود در فایل <Important>package.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
+</p>
+</Alert>
 <div className="h-1" />
 
-<Alert variant="info">اگر که در فایل <Important>package.json</Important> اسکریپت <Important>build</Important> را تعریف کرده باشید، لیارا آن را اجرا می‌کند.</Alert>
+<Alert variant="info">
+<p>
+لیارا به صورت خودکار، در فرایند استقرار برنامه‌های NextJS اسکریپت <Important>build</Important> را برای شما اجرا می‌کند.
+</p>
+</Alert>
 <div className="h-1" />
 
-<Alert variant="success">همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های NodeJS در لیارا</Link></Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های NextJS در لیارا</Link>
+</p>
+</Alert>
 </Layout>
