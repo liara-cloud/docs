@@ -11,21 +11,14 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# انتخاب نسخه NodeJS در لیارا
+# نسخه NodeJS در پلتفرم NextJS
 <hr className="mb-2" />
 
-در حال حاضر در لیارا، نسخه‌های زیر از  NodeJS ارائه می‌شوند: 
+در حال حاضر در لیارا، نسخه زیر از NodeJS در پلتفرم NextJS ارائه می‌شود:
 
 <ul className="pr-4">
   {[
-    {text: '8',},
-    {text: '10',},
-    {text: '12',},
-    {text: '14',},
-    {text: '16',},
-    {text: '18',},
     {text: '20 (پیش‌فرض)',},
-    {text: '22',},
   ].map((item, index) => (
     <li
       key={index}
@@ -38,32 +31,12 @@ import NextPage from "@/components/Common/nextpage";
   ))}
 </ul>
 
-<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
-<Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
-    content={[
-    <>
-    <p>
-        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NodeJS به 18 می‌باشد:
-    </p>
-    <div className="h-2" />
-    <div dir='ltr'>
-        <Highlight className="json">
-            {`{
-    "node": {
-    "version": "18"
-  }
-}`}
-        </Highlight>
-    </div>
-    <div className="h-2" />
-    </>,
-    <>
-    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
-    <img src="https://files.liara.ir/liara/docs/choose-nodejs-version.png" alt="how to choose nodejs version in liara console" />
-    </>
-]} 
-/>
+<div className="h-4" />
+<Alert variant='warning'>
+<p>
+در حال حاضر، امکان تغییر نسخه NodeJS در برنامه‌های NextJS وجود ندارد و هر برنامه NextJS پس از ساخته شدن، بر روی NodeJS v20 LTS خواهد بود.
+</p>
+</Alert>
 
 <NextPage next="./connect-to-db/about"/>
 </Layout>

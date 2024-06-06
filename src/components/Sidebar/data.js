@@ -322,7 +322,7 @@ export default {
       },
       {
         title: "انتخاب نسخه NodeJS",
-        link: "/paas/nodejs/getting-started"
+        link: "/paas/nodejs/how-tos/choose-version"
       },
       {
         hr: true
@@ -512,20 +512,24 @@ export default {
         link: "/paas/nextjs/how-tos/use-type-script"
       },
       {
-        title: "build برنامه با ES6",
-        link: "/paas/nextjs/how-tos/build-and-use-es6"
+        title: "استفاده از Static HTML Export",
+        link: "/paas/nextjs/how-tos/use-static-html-export"
       },
       {
-        title: "استفاده از Hookها",
-        link: "/paas/nextjs/how-tos/use-hooks"
+        title: "افزایش فضای مسیر cache",
+        link: "/paas/nextjs/how-tos/increase-next-cache"
       },
       {
-        title: "پیکربندی TrustedProxies",
-        link: "/paas/nextjs/how-tos/configure-trusted-proxy/about"
+        title: "استفاده از ISR",
+        link: "/paas/nextjs/how-tos/use-isr"
       },
       {
-        title: "انتخاب نسخه NodeJS",
-        link: "/paas/nextjs/getting-started"
+        title: "دسترسی به فایل‌های Static",
+        link: "/paas/nextjs/how-tos/reach-static-files"
+      },
+      {
+        title: "مشاهده نسخه NodeJS",
+        link: "/paas/nextjs/how-tos/choose-version"
       },
       {
         hr: true
@@ -582,12 +586,8 @@ export default {
         )
       },
       {
-        title: "رفع خطای CORS",
-        link: "/paas/nextjs/fix-common-errors/cors-error/about"
-      },
-      {
-        title: "رفع خطای Get query missing در GraphQL",
-        link: "/paas/nextjs/fix-common-errors/graphql-error"
+        title: "رفع خطای ECONNRESET",
+        link: "/paas/nextjs/fix-common-errors/econnreset"
       },
     ]
   }
