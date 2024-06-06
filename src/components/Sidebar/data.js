@@ -528,6 +528,10 @@ export default {
         link: "/paas/nextjs/how-tos/reach-static-files"
       },
       {
+        title: "استفاده از Hookها",
+        link: "/paas/nextjs/how-tos/use-hooks"
+      },
+      {
         title: "مشاهده نسخه NodeJS",
         link: "/paas/nextjs/how-tos/choose-version"
       },
