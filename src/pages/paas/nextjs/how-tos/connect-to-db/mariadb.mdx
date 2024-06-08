@@ -11,7 +11,7 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس MySQL در برنامه‌های NextJS
+# اتصال به دیتابیس MariaDB در برنامه‌های NextJS
 <hr className="mb-2" />
         
 
@@ -20,12 +20,12 @@ import NextPage from "@/components/Common/nextpage";
     content={[
         <>
             <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MySQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mysql2</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MariaDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mariadb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
             </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`npm install mysql2`}
+                {`npm install mariadb`}
             </Highlight>
             </div>
             <div className="h-2" />
@@ -35,38 +35,50 @@ import NextPage from "@/components/Common/nextpage";
                         <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`DB_URI=mysql://root:kXdnuKx9pfFFll0mBpsH4DGK@bromo.liara.cloud:32973/happy_bouman`}
+                {`DB_HOST=bromo.liara.cloud
+DB_PORT=32703
+DB_USER=root
+DB_PASS=5T7kBqMMGLQYDGAkVdAtvd3L
+DB_NAME=upbeat_rosalind`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mysql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mariadb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div dir='ltr'>
             <Highlight className="js">
-                {`import mysql from 'mysql2/promise';
+                {`import mariadb from 'mariadb';
 
-const mysqlConnectionURI = process.env.DB_URI;
+const pool = mariadb.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  connectionLimit: 5
+});
 
-export async function connectToMySQL() {
-  const connection = await mysql.createConnection(mysqlConnectionURI);
+export async function connectToMariaDB() {
+  const connection = await pool.getConnection();
   return connection;
-}`}
+}
+`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
-              سپس، بایستی در مسیر <Important>pages/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/pages/api</Important>)، یک فایل به نام <Important>mysql.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
+              سپس، بایستی در مسیر <Important>pages/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/pages/api</Important>)، یک فایل به نام <Important>mariadb.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { connectToMySQL } from '@/lib/mysql';
+                {`import { connectToMariaDB } from '@/lib/mariadb';
 
 export default async function handler(req, res) {
-  const connection = await connectToMySQL();
-  await connection.end();
+  const connection = await connectToMariaDB();
+  connection.release();
 
-  res.status(200).json({ message: 'Connected to MySQL successfully' });
+  res.status(200).json({ message: 'Connected to MariaDB successfully' });
 }`}
             </Highlight>
             </div>
@@ -86,7 +98,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('/api/mysql');
+        const res = await fetch('/api/mariadb');
         const result = await res.json();
         setData(result);
       } catch (err) {
@@ -122,12 +134,12 @@ export default function Home() {
         </>,
         <>
             <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MySQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mysql2</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MariaDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mariadb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
             </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`npm install mysql2`}
+                {`npm install mariadb`}
             </Highlight>
             </div>
             <div className="h-2" />
@@ -137,21 +149,32 @@ export default function Home() {
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`DB_URI=mysql://root:kXdnuKx9pfFFll0mBpsH4DGK@bromo.liara.cloud:32973/happy_bouman`}
+                {`DB_HOST=bromo.liara.cloud
+DB_PORT=32703
+DB_USER=root
+DB_PASS=5T7kBqMMGLQYDGAkVdAtvd3L
+DB_NAME=upbeat_rosalind`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mysql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mariadb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div dir='ltr'>
             <Highlight className="js">
-                {`import mysql from 'mysql2/promise';
+                {`import mariadb from 'mariadb';
 
-const mysqlConnectionURI = process.env.DB_URI;
+const pool = mariadb.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  connectionLimit: 5
+});
 
-export async function connectToMySQL() {
-  const connection = await mysql.createConnection(mysqlConnectionURI);
+export async function connectToMariaDB() {
+  const connection = await pool.getConnection();
   return connection;
 }
 `}
@@ -159,20 +182,19 @@ export async function connectToMySQL() {
             </div>
             <div className="h-2" />
             <p>
-              سپس، بایستی در مسیر <Important>app/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/app/api</Important>)، یک دایرکتوری به نام <Important>mysql</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>route.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
+              سپس، بایستی در مسیر <Important>app/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/app/api</Important>)، یک دایرکتوری به نام <Important>mariadb</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>route.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { connectToMySQL } from '@/lib/mysql';
+                {`import { connectToMariaDB } from '@/lib/mariadb';
 
 export async function GET(request) {
-  const connection = await connectToMySQL();
-  await connection.end();
+  const connection = await connectToMariaDB();
+  connection.release();
 
-  return new Response(JSON.stringify({ message: 'Connected to MySQL successfully' }));
-}
-`}
+  return new Response(JSON.stringify({ message: 'Connected to MariaDB successfully' }));
+}`}
             </Highlight>
             </div>
             <div className="h-2" />
@@ -193,7 +215,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('/api/mysql');
+        const res = await fetch('/api/mariadb');
         const result = await res.json();
         setData(result);
       } catch (err) {
@@ -216,7 +238,8 @@ export default function Home() {
       )}
     </div>
   );
-}`}
+}
+`}
             </Highlight>
             </div>
             <div className="h-2" />
@@ -232,26 +255,14 @@ export default function Home() {
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-در پکیج <Important>mysql2</Important> قابلیت connection pooling   تعبیه شده است و شما می‌توانید با استفاده از قطعه کد زیر در فایل <Important>lib/mysql.js</Important> (یا <Important>src/lib/mysql.js</Important>)، این قابلیت را، در حین اتصال به دیتابیس، ایجاد و پارامترهای آن‌را بر اساس نیاز خود، مقداردهی کنید:
+در پکیج <Important>mariadb</Important> این قابلیت به صورت خودکار تعبیه شده است و شما می‌توانید در فایل <Important>lib/mariadb.js</Important> (یا <Important>src/lib/mariadb.js</Important>) حین اتصال به دیتابیس پارامتر زیر را بر اساس نیاز خود، مقدار دهی کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import mysql from 'mysql2/promise';
-
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 5,  // amount of connections in same time
-  queueLimit: 0
-});
-
-export async function connectToMySQL() {
-  return await pool.getConnection();
-}`}
+        {`const pool = mariadb.createPool({
+  // other codes ...
+  connectionLimit: 5  // amount of connections in a same time
+});`}
     </Highlight>
 </div>
 <div className="h-2" />

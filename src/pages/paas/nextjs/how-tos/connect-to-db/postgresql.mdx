@@ -11,139 +11,252 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های NodeJS
+# اتصال به دیتابیس PostgreSQL در برنامه‌های NextJS
 <hr className="mb-2" />
-<video
-    src="https://files.liara.ir/liara/nodejs/nodejs-postgres.mp4"
-    controls="controls"
-    className="block w-full"
-    width="100%"
-></video>
-<br />
+        
+
+<Tabs 
+    tabs={["Pages Router", "App Router"]} 
+    content={[
+        <>
+            <p>
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به PostgreSQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>pg</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`npm install pg`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
+            </p>
+                        <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`DB_URI=postgresql://root:1CTYgVwfjtomCa2Z26OsDi1z@bromo.liara.cloud:33938/postgres`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>postgresql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { Client } from 'pg';
+
+const pgConnectionURI = process.env.DB_URI;
+
+export async function connectToPostgreSQL() {
+  const client = new Client({
+    connectionString: pgConnectionURI,
+  });
+  await client.connect();
+  return client;
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              سپس، بایستی در مسیر <Important>pages/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/pages/api</Important>)، یک فایل به نام <Important>postgresql.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { connectToPostgreSQL } from '@/lib/postgresql';
+
+export default async function handler(req, res) {
+  const client = await connectToPostgreSQL();
+  await client.end();
+
+  res.status(200).json({ message: 'Connected to PostgreSQL successfully' });
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>pages/index.js</Important> (یا <Important>src/pages/index.js</Important>) از دیتابیس خود، استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { useEffect, useState } from 'react';
+
+export default function Home() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('/api/postgresql');
+        const result = await res.json();
+        setData(result);
+      } catch (err) {
+        setError(err);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>Database Connection Test</h1>
+      {error ? (
+        <p>Error: {error.message}</p>
+      ) : data ? (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
+            </p>
 
 
-برای اتصال به دیتابیس Postgres، می‌توانید از پکیج <Important>pg</Important> استفاده کنید، برای نصب این پکیج، کافیست تا در مسیر اصلی پروژه خود، دستور زیر را اجرا کنید:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`npm install pg`}
-    </Highlight>
-</div>
-<div className="h-2" />
+        </>,
+        <>
+            <p>
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به PostgreSQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>pg</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`npm install pg`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`DB_URI=postgresql://root:1CTYgVwfjtomCa2Z26OsDi1z@bromo.liara.cloud:33938/postgres`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>postgresql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { Client } from 'pg';
 
-پس از آن، کافیست تا طبق <a href="../../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a> اطلاعات مربوط به دیتابیس خود را وارد کنید. به عنوان مثال:
+const pgConnectionURI = process.env.DB_URI;
 
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`PG_URI=postgresql://root:jpR53iIAhADgqsJ3ufVE1v94@pgo:5432/postgres`}
-    </Highlight>
-</div>
-<div className="h-2" />
+export async function connectToPostgreSQL() {
+  const client = new Client({
+    connectionString: pgConnectionURI,
+  });
+  await client.connect();
+  return client;
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              سپس، بایستی در مسیر <Important>app/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/app/api</Important>)، یک دایرکتوری به نام <Important>postgresql</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>route.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { connectToPostgreSQL } from '@/lib/postgresql';
 
-اکنون، می‌توانید متغیر محیطی را در برنامه خود خوانده و به دیتابیس متصل شوید؛ در ادامه، یک قطعه کد مثال برای
-اتصال به دیتابیس با استفاده از فریم‌ورک <Important>express</Important> برای شما، قرار گرفته است:
+export async function GET(request) {
+  const client = await connectToPostgreSQL();
+  await client.end();
 
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {`const express = require('express');
-const { Pool } = require('pg');
+  return new Response(JSON.stringify({ message: 'Connected to PostgreSQL successfully' }));
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>app/page.js</Important> (یا <Important>src/app/page.js</Important>) از دیتابیس خود، استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`'use client'; 
 
-const app = express();
+import { useEffect, useState } from 'react';
 
-const dbURI = process.env.PG_URI;
+export default function Home() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
-const pool = new Pool({
-  connectionString: dbURI,
-});
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('/api/postgresql');
+        const result = await res.json();
+        setData(result);
+      } catch (err) {
+        setError(err);
+      }
+    }
 
-pool.connect((err) => {
-  if (err) {
-    console.error('Error connecting to PostgreSQL database:', err);
-    app.locals.dbConnected = false;
-    return;
-  }
-  console.log('Connected to PostgreSQL database successfully');
-  app.locals.dbConnected = true;
-});
+    fetchData();
+  }, []);
 
-app.get('/', (req, res) => {
-  res.send(app.locals.dbConnected ? 'Connection to database successful.' : 'Error connecting to database.');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(\`server is running on port \${PORT}\`);
-});
-
-process.on('SIGINT', () => {
-  pool.end();
-  console.log('Database connection closed');
-  process.exit();
-});`}
-    </Highlight>
-</div>
+  return (
+    <div>
+      <h1>Database Connection Test</h1>
+      {error ? (
+        <p>Error: {error.message}</p>
+      ) : data ? (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+}`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
+            </p>
+        </>
+]} 
+/>
 
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-برای فعال‌سازی این قابلیت در دیتابیس PostgreSQL بایستی پکیج <Important>pg-pool</Important> را با استفاده از دستور زیر در پروژه خود نصب کنید:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`npm install pg-pool`}
-    </Highlight>
-</div>
-<div className="h-2" />
-سپس، می‌توانید مانند قطعه کد زیر، از Connection Pooling استفاده کنید:
+در پکیج <Important>pg</Important> قابلیت connection pooling   تعبیه شده است و شما می‌توانید با استفاده از قطعه کد زیر در فایل <Important>lib/postgresql.js</Important> (یا <Important>src/lib/postgresql.js</Important>)، این قابلیت را، در حین اتصال به دیتابیس، ایجاد و پارامتر آن‌را بر اساس نیاز خود، مقداردهی کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`const express = require('express');
-const { Pool } = require('pg');
-
-const app = express();
+        {`import { Pool } from 'pg';
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT,
-  max: 20, // maximum number of connections in the pool
-  idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
-  connectionTimeoutMillis: 2000, // how long to wait for a connection to be established
+  connectionString: process.env.DB_URI,
+  max: 5  
 });
 
-pool.connect((err) => {
-  if (err) {
-    console.error('Error connecting to PostgreSQL database:', err);
-    app.locals.dbConnected = false;
-    return;
-  }
-  console.log('Connected to PostgreSQL database successfully');
-  app.locals.dbConnected = true;
-});
-
-app.get('/', (req, res) => {
-  res.send(app.locals.dbConnected ? 'Connection to database successful.' : 'Error connecting to database.');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(\`server is running on port \${PORT}\`);
-});
-
-process.on('SIGINT', () => {
-  pool.end();
-  console.log('Database connection closed');
-  process.exit();
-});`}
+export async function connectToPostgreSQL() {
+  return await pool.connect();
+}`}
     </Highlight>
 </div>
+<div className="h-2" />
 
 
 </Layout>

@@ -551,7 +551,11 @@ export default {
         link: "/paas/nextjs/how-tos/connect-to-db/mongodb"
       },
       {
-        title: "دیتابیس MySQL/MariaDB",
+        title: "دیتابیس MariaDB",
+        link: "/paas/nextjs/how-tos/connect-to-db/mariadb"
+      },
+      {
+        title: "دیتابیس MySQL",
         link: "/paas/nextjs/how-tos/connect-to-db/mysql"
       },
       {
