@@ -4,6 +4,34 @@ import Highlight from "react-highlight";
 import Layout from "../../../components/Layout";
 import Notice from "../../../components/Notice";
 import PlatformIcon from "../../../components/PlatformIcon";
+import Table from "../../../components/Table";
+
+const table_headers = [
+  "نام هوک",
+  "زمان اجرا",
+  "امکان دسترسی به envها",
+  "مناسب برای",
+];
+const table_body = [
+  [
+    "liara_pre_build.sh",
+    "npm run build قبل از اجرای دستور",
+    "ندارد",
+    "نصب پکیج‌های سیستمی لازم با apt-get",
+  ],
+  [
+    "liara_post_build.sh",
+    "npm run build بعد از اجرای دستور",
+    "ندارد",
+    "اجرای دستورات مرتبط با cache و بهینه‌سازی",
+  ],
+  [
+    "liara_pre_start.sh",
+    "قبل از اجرای برنامه ",
+    "دارد",
+    "مناسب اجرای migrationها",
+  ],
+];
 
 export default () => (
   <Layout>
@@ -33,21 +61,8 @@ export default () => (
       برای استفاده از Hookها در برنامه خود می‌توانید سه فایل زیر را در برنامه
       خود ایجاد کنید:
     </p>
-    <ul>
-      <li>
-        <b>liara_pre_build.sh:</b> لیارا، دستورات درون این فایل را قبل از اجرای
-        دستور npm run build، اجرا می‌کند.
-      </li>
 
-      <li>
-        <b>liara_post_build.sh:</b> لیارا، دستورات درون این فایل را بعد از اجرای
-        دستور npm run build، اجرا می‌کند.
-      </li>
-      <li>
-        <b>liara_pre_start.sh:</b> لیارا، دستورات درون این فایل را قبل از اجرای
-        برنامه، اجرا می‌کند.
-      </li>
-    </ul>
+    <Table headers={table_headers} data={table_body} />
 
     <p>
       به عنوان مثال، می‌توانید در فایل{" "}
