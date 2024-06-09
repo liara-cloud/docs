@@ -761,6 +761,31 @@ div.footer-animate-lines {
   z-index: 999 !important;
 }
 
+.table-container table {
+  padding-top: 30;
+  border-spacing: 0px;
+  border-collapse: collapse;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+.table-container table th {
+  padding: 10px;
+  white-space: nowrap;
+  font-weight: 300;
+  border-top: 1px solid #444444 !important;
+}
+
+.table-container table td,
+.table-container table th {
+  border: 1px solid #ffffff22;
+  height: auto;
+}
+
+.table-container table tr:nth-child(odd) {
+  background: #ffffff10;
+}
+
 @media (max-width: 820px) {
   .footer-container {
     grid-template-columns: 1fr;
