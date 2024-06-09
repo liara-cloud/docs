@@ -274,7 +274,7 @@ const mssqlConfig = {
   port: parseInt(process.env.DB_PORT, 10),
   database: process.env.DB_NAME,
   options: {
-    trustServerCertificate: false, 
+    trustServerCertificate: true, 
   },
   pool: {
     max: 5,  // amount of connections in same time
@@ -286,8 +286,7 @@ const mssqlConfig = {
 export async function connectToMSSQL() {
   const pool = await sql.connect(mssqlConfig);
   return pool;
-}
-`}
+}`}
     </Highlight>
 </div>
 <div className="h-2" />
