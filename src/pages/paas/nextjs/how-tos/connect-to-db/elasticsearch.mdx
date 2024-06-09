@@ -11,7 +11,7 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس MongoDB در برنامه‌های NextJS
+# اتصال به دیتابیس ElasticSearch در برنامه‌های NextJS
 <hr className="mb-2" />
         
 
@@ -20,12 +20,12 @@ import NextPage from "@/components/Common/nextpage";
     content={[
         <>
             <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MongoDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mongodb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به ElasticSearch در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>elasticsearch</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
             </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`npm install mongodb`}
+                {`npm install @elastic/elasticsearch`}
             </Highlight>
             </div>
             <div className="h-2" />
@@ -35,30 +35,22 @@ import NextPage from "@/components/Common/nextpage";
                         <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`DB_URI=mongodb://root:uyYDoeYGcPr4xK8PSWnjsT9S@bromo.liara.cloud:32005/my-app?authSource=admin`}
+                {`DB_URI=http://elastic:vrA24CewJsSRdlMgyN2fok1q@bromo.liara.cloud:33172/`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mongodb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>elasticsearch.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { MongoClient } from 'mongodb';
+                {`import { Client } from '@elastic/elasticsearch';
 
-const client = new MongoClient(process.env.DB_URI);
+const client = new Client({
+    node: process.env.DB_URI
+});
 
-let db;
-
-async function connectToDatabase() {
-    if (!db) {
-        await client.connect();
-        db = client.db();
-    }
-    return db;
-}
-
-export { connectToDatabase };
+export default client;
 `}
             </Highlight>
             </div>
@@ -69,30 +61,30 @@ export { connectToDatabase };
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { connectToDatabase } from '@/lib/mongodb';
+                {`import elasticClient from '@/lib/elasticsearch';
 
-export default function HomePage({ mongoStatus }) {
+export default function HomePage({ elasticStatus }) {
     return (
         <div>
             <h1>Connection Status</h1>
-            <p>{mongoStatus}</p>
+            <p>{elasticStatus}</p>
         </div>
     );
 }
 
 export async function getServerSideProps() {
-    let mongoStatus;
+    let elasticStatus;
 
     try {
-        const db = await connectToDatabase();
-        mongoStatus = db ? 'Connected to MongoDB' : 'Failed to connect to MongoDB';
+        const info = await elasticClient.info();
+        elasticStatus = info ? 'Connected to ElasticSearch' : 'Failed to connect to ElasticSearch';
     } catch (error) {
-        mongoStatus = 'Failed to connect to MongoDB';
+        elasticStatus = 'Failed to connect to ElasticSearch';
     }
 
     return {
         props: {
-            mongoStatus,
+            elasticStatus,
         },
     };
 }
@@ -108,12 +100,12 @@ export async function getServerSideProps() {
         </>,
         <>
             <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MongoDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mongodb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به ElasticSearch در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>elasticsearch</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
             </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`npm install mongodb`}
+                {`npm install @elastic/elasticsearch`}
             </Highlight>
             </div>
             <div className="h-2" />
@@ -123,30 +115,22 @@ export async function getServerSideProps() {
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`DB_URI=mongodb://root:uyYDoeYGcPr4xK8PSWnjsT9S@bromo.liara.cloud:32005/my-app?authSource=admin`}
+                {`DB_URI=http://elastic:vrA24CewJsSRdlMgyN2fok1q@bromo.liara.cloud:33172/`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mongodb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>elasticsearch.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { MongoClient } from 'mongodb';
+                {`import { Client } from '@elastic/elasticsearch';
 
-const client = new MongoClient(process.env.DB_URI);
+const client = new Client({
+    node: process.env.DB_URI
+});
 
-let db;
-
-async function connectToDatabase() {
-    if (!db) {
-        await client.connect();
-        db = client.db();
-    }
-    return db;
-}
-
-export { connectToDatabase };
+export default client;
 `}
             </Highlight>
             </div>
@@ -157,22 +141,22 @@ export { connectToDatabase };
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { connectToDatabase } from '@/lib/mongodb';
+                {`import elasticClient from '@/lib/elasticsearch';
 
 export default async function HomePage() {
-    let mongoStatus;
+    let elasticStatus;
 
     try {
-        const db = await connectToDatabase();
-        mongoStatus = db ? 'Connected to MongoDB' : 'Failed to connect to MongoDB';
+        const info = await elasticClient.info();
+        elasticStatus = info ? 'Connected to ElasticSearch' : 'Failed to connect to ElasticSearch';
     } catch (error) {
-        mongoStatus = 'Failed to connect to MongoDB';
+        elasticStatus = 'Failed to connect to ElasticSearch';
     }
 
     return (
         <div>
             <h1>Connection Status</h1>
-            <p>{mongoStatus}</p>
+            <p>{elasticStatus}</p>
         </div>
     );
 }
@@ -192,27 +176,21 @@ export default async function HomePage() {
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-در پکیج <Important>mariadb</Important> این قابلیت به صورت خودکار تعبیه شده است و شما می‌توانید در فایل <Important>lib/mariadb.js</Important> (یا <Important>src/lib/mariadb.js</Important>) حین اتصال به دیتابیس پارامتر زیر را بر اساس نیاز خود، مقدار دهی کنید:
+در پکیج <Important>elasticsearch</Important> این قابلیت به صورت خودکار تعبیه شده است و شما می‌توانید در فایل <Important>lib/elasticsearch.js</Important> (یا <Important>src/lib/elasticsearch.js</Important>) حین اتصال به دیتابیس پارامتر‌های زیر را بر اساس نیاز خود، مقدار دهی کنید:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="js">
-        {`import { MongoClient } from 'mongodb';
+        {`import { Client } from '@elastic/elasticsearch';
 
-const client = new MongoClient(process.env.DB_URI, {
-    poolSize: 10, // amount of connections in same time
+const client = new Client({
+    node: process.env.DB_URI,
+    maxRetries: 5,
+    requestTimeout: 60000,
+    sniffOnStart: true
 });
 
-let db;
-
-async function connectToDatabase() {
-    if (!db) {
-        await client.connect();
-        db = client.db();
-    }
-    return db;
-}
-
-export { connectToDatabase };`}
+export default client;
+`}
     </Highlight>
 </div>
 

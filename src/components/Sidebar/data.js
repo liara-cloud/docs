@@ -575,6 +575,10 @@ export default {
         link: "/paas/nextjs/how-tos/connect-to-db/redis"
       },
       {
+        title: "دیتابیس ElasticSearch",
+        link: "/paas/nextjs/how-tos/connect-to-db/elasticsearch"
+      },
+      {
         title: "ماژول Prisma",
         link: "/paas/nextjs/how-tos/connect-to-db/prisma"
       },

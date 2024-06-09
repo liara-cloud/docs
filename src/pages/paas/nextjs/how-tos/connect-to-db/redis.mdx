@@ -11,123 +11,175 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس Redis در برنامه‌های NodeJS
+# اتصال به دیتابیس Redis در برنامه‌های NextJS
 <hr className="mb-2" />
+        
 
-برای اتصال به دیتابیس Redis می‌توانید از پکیج <Important>ioredis</Important> استفاده کنید، برای نصب این پکیج، کافیست تا در مسیر اصلی پروژه خود، دستور زیر را اجرا کنید:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`npm install ioredis`}
-    </Highlight>
-</div>
-<div className="h-2" />
+<Tabs 
+    tabs={["Pages Router", "App Router"]} 
+    content={[
+        <>
+            <p>
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به Redis در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>ioredis</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`npm install ioredis`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
+            </p>
+                        <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`DB_URI=redis://:oVj2F980tPjHBHmAOyDdxT2B@bromo.liara.cloud:30236/0`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>redis.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { Client } from 'pg';
 
-پس از آن، کافیست تا طبق <a href="../../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a> اطلاعات مربوط به دیتابیس خود را وارد کنید. به عنوان مثال:
+const pgConnectionURI = process.env.DB_URI;
 
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`REDIS_URI=redis://:5afOLXDmJXOIbzLi95BKfCD2@monte-rosa.liara.cloud:32609/0`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-اکنون، می‌توانید متغیر محیطی را در برنامه خود خوانده و به دیتابیس متصل شوید؛ در ادامه، یک قطعه کد مثال برای
-اتصال به دیتابیس با استفاده از فریم‌ورک <Important>express</Important> و موتور <Important>ejs</Important> برای شما، قرار گرفته است:
-
-قطعه کد مربوطه برای فایل <Important>index.js</Important>:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {`const express = require('express');
-const Redis = require('ioredis');
-const path = require('path');
-
-const redisUri = process.env.REDIS_URI;
-const redis = new Redis(redisUri);
-
-redis.on('connect', () => {
-  console.log('Connected to Redis');
-});
-
-redis.on('error', (err) => {
-  console.error('Redis connection error:', err);
-});
-
-const app = express();
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({ extended: true }));
-
-app.get('/', (req, res) => {
-  res.render('index', { connected: redis.status === 'ready' });
-});
-
-app.post('/store', async (req, res) => {
-  const { key, value } = req.body;
-
-  try {
-    await redis.set(key, value);
-    res.redirect('/');
-  } catch (err) {
-    console.error('Error storing data in Redis:', err);
-    res.status(500).send('Error storing data in Redis');
-  }
-});
-
-app.post('/retrieve', async (req, res) => {
-  const { key } = req.body;
-
-  try {
-    const value = await redis.get(key);
-    res.render('index', { connected: redis.status === 'ready', retrievedData: value });
-  } catch (err) {
-    console.error('Error retrieving data from Redis:', err);
-    res.status(500).send('Error retrieving data from Redis');
-  }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(\`server is running on port \${PORT}\`);
-});
+export async function connectToPostgreSQL() {
+  const client = new Client({
+    connectionString: pgConnectionURI,
+  });
+  await client.connect();
+  return client;
+}
 `}
-    </Highlight>
-</div>
-<div className="h-2" />
-قطعه کد مربوطه برای فایل <Important>views/index.ejs</Important>:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="ejs">
-        {`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redis Connection</title>
-</head>
-<body>
-  <h1>Redis Connection Status: <%= connected ? 'Connected' : 'Disconnected' %></h1>
-  <form action="/store" method="post">
-    <label for="key">Key:</label>
-    <input type="text" id="key" name="key" required>
-    <label for="value">Value:</label>
-    <input type="text" id="value" name="value" required>
-    <button type="submit">Store Data</button>
-  </form>
-  <form action="/retrieve" method="post">
-    <label for="retrieveKey">Key:</label>
-    <input type="text" id="retrieveKey" name="key" required>
-    <button type="submit">Retrieve Data</button>
-  </form>
-  <% if (typeof retrievedData !== 'undefined') { %>
-    <h2>Retrieved Data: <%= retrievedData %></h2>
-  <% } %>
-</body>
-</html>
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>pages/index.js</Important> (یا <Important>src/pages/index.js</Important>) از دیتابیس خود، استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import redis from '@/lib/redis';
+
+export default function HomePage({ redisStatus }) {
+    return (
+        <div>
+            <h1>Connection Status</h1>
+            <p>{redisStatus}</p>
+        </div>
+    );
+}
+
+export async function getServerSideProps() {
+    let redisStatus;
+
+    try {
+        await redis.set('test', 'value');
+        const value = await redis.get('test');
+        redisStatus = value === 'value' ? 'Connected to Redis' : 'Failed to connect to Redis';
+    } catch (error) {
+        redisStatus = 'Failed to connect to Redis';
+    }
+
+    return {
+        props: {
+            redisStatus,
+        },
+    };
+}
 `}
-    </Highlight>
-</div>
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
+            </p>
+
+
+        </>,
+        <>
+            <p>
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به Redis در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>ioredis</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`npm install ioredis`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`DB_URI=redis://:oVj2F980tPjHBHmAOyDdxT2B@bromo.liara.cloud:30236/0`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>redis.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import Redis from 'ioredis';
+
+const redis = new Redis(process.env.DB_URI);
+
+export default redis;
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>app/page.js</Important> (یا <Important>src/app/page.js</Important>) از دیتابیس خود، استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import redis from '@/lib/redis';
+
+export default async function HomePage() {
+    let redisStatus;
+
+    try {
+        await redis.set('test', 'value');
+        const value = await redis.get('test');
+        redisStatus = value === 'value' ? 'Connected to Redis' : 'Failed to connect to Redis';
+    } catch (error) {
+        redisStatus = 'Failed to connect to Redis';
+    }
+
+    return (
+        <div>
+            <h1>Connection Status</h1>
+            <p>{redisStatus}</p>
+        </div>
+    );
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
+            </p>
+        </>
+]} 
+/>
+
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+در Redis نیازی به تنظیمات اضافی برای Connection Pooling نخواهید داشت، زیرا پکیج <Important>ioredis</Important> به طور خودکار اتصالات را مدیریت می‌کند.
 
 </Layout>
