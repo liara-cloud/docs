@@ -13,22 +13,19 @@ import PlatformIcon from "@/components/Common/icons";
 import {GoArrowLeft,} from "react-icons/go";
 
 <Layout>
-# اتصال به دیتابیس 
+# اتصال به دیتابیس با استفاده از Sequelize در برنامه‌های NodeJS 
 <hr className="mb-2" />
 
-دیتابیس‌ها، در اکوسیستم یک پلتفرم، نقش حیاتی دارند. دیتابیس‌ها نه تنها محلی برای ذخیره و بازیابی داده‌ها هستند، بلکه به عنوان ستون فقرات یک برنامه، عمل می‌کنند و بر کارایی، مقیاس‌پذیری و قابلیت اعتماد سیستم، تأثیر مستقیم می‌گذارند.
-در حال حاضر، شما می‌توانید در برنامه‌های NextJS خود در لیارا، به دیتابیس‌های زیر، متصل شوید:
+<Link href="https://sequelize.org/" className="blue-link">Sequelize</Link> یک ORM مدرن در NodeJS و TypeScript است که از دیتابیس‌های Postgres , MySQL , MariaDB , SQLite , SQL Server و ... پشتیبانی می‌کند. این ORM از قابلیت‌های بسیار زیادی از جمله solid tranaction , relation , lazy loading و replication نیز پشتیبانی می‌کند و ابزار خیلی مناسبی است تا بتوانید هرچه راحت‌تر از قبل، برنامه خود را توسعه دهید. در ادامه، مستندات مربوط به اتصال به دیتابیس‌های مختلف، آمده است:
+
 <div className='h-2' />
-<div className="grid grid-cols-4 gap-4">
+<div className="grid grid-cols-5 gap-4">
             {[
-    { alt: 'mongodb', platform: 'MongoDB', link: "./mongodb" },
     { alt: 'mysql', platform: 'MySQL', link: "./mysql" },
     { alt: 'mariadb', platform: 'MariaDB', link: "./mariadb" },
     { alt: 'postgres', platform: 'PostgreSQL', link: "./postgresql" },
     { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
-    { alt: 'redis', platform: 'Redis', link: "./redis" },
     { alt: 'nodejs', platform: 'SQLite', link: "./sqlite" },
-    { alt: 'elastic', platform: 'ElasticSearch', link: "./elasticsearch" },
   ].map(item =>
     <Link href={item.link}>
     <Card className="flex cursor-pointer w-full items-center justify-between">
@@ -45,7 +42,5 @@ import {GoArrowLeft,} from "react-icons/go";
     </Link>
             )}
           </div>
-<div className='h-2' />
 
-<NextPage next="../../fix-common-errors/about" />
 </Layout>

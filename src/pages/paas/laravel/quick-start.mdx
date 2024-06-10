@@ -11,16 +11,15 @@ import Link from "next/link";
 
 <Layout>
 
-# استقرار سریع برنامه‌های NextJS
+# استقرار سریع برنامه‌های Laravel
 <hr className="mb-2" />
-توجه داشته باشید؛ تنها برنامه‌هایی که با دستور <Important>create-next-app</Important> ساخته شده باشند، در پلتفرم Next لیارا قابل اجرا خواهند بود.
 
 <Tabs 
   tabs={["Liara CLI", "Liara Console"]} 
   content={[
   <>
   <video
-  src="https://files.liara.ir/liara/quick-start/nextjs/nextjs-cli.mp4"
+  src="https://files.liara.ir/liara/quick-start/laravel/laravel-cli.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -106,7 +105,9 @@ import Link from "next/link";
     <p>برای آپلود نشدن فایل‌های اضافی، از <Important>gitignore.</Important> یا <Important>liaraignore.</Important> استفاده کنید و درون یکی از این دو فایل، اسامی دایرکتوری‌ها و فایل‌های اضافی را بیاورید. به عنوان مثال:</p>
     <div dir='ltr'>
     <Highlight className="gitignore">
-      {`node_modules/`}
+      {`/node_modules
+/vendor
+/public/storage`}
     </Highlight>
     </div>
   </>
@@ -116,21 +117,10 @@ import Link from "next/link";
   step: "۶",
   content: (
   <>
-    <h3>تنظیم اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛ به عنوان مثال:</p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-    },
-}`}
-    </Highlight>
-    </div>
+    <h3>تنظیم فایل‌های composer</h3>
+    <p>حتماً باید در مسیر اصلی پروژه، فایل <Important>composer.json</Important> وجود داشته باشد؛ همچنین بهتر است
+    برای جلوگیری از خطاهای احتمالی استقرار، فایل <Important>composer.lock</Important> موجود در مسیر اصلی پروژه خود را، پاک کنید.
+    </p>
   </>
   )
   },
@@ -143,7 +133,7 @@ import Link from "next/link";
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-      {`liara deploy --app=myapp --platform=next`}
+      {`liara deploy --app=myapp --platform=laravel`}
     </Highlight>
     </div>
   </>
@@ -154,7 +144,7 @@ import Link from "next/link";
   </>,
    <>
   <video
-  src="https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4"
+  src="https://files.liara.ir/liara/laravel/laravel-desktop.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -176,7 +166,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>برنامه NextJS خود را با شناسه، <Link className="blue-link" href="../details/private-networks.md">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
+    <p>برنامه Laravel خود را با شناسه، <Link className="blue-link" href="../details/private-networks.md">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
   </>
   )
   },
@@ -185,7 +175,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>حذف فایل‌های اضافی</h3>
-    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه node_modules) را پاک کنید.</p>  
+    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه‌های node_modules و vendor) را پاک کنید.</p>  
   </>
   )
   },
@@ -193,21 +183,10 @@ import Link from "next/link";
   step: "۴",
   content: (
   <>
-    <h3>تنظیم اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛ به عنوان مثال:</p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-    },
-}`}
-    </Highlight>
-    </div>
+    <h3>تنظیم فایل‌های composer</h3>
+    <p>حتماً باید در مسیر اصلی پروژه، فایل <Important>composer.json</Important> وجود داشته باشد؛ همچنین بهتر است
+    برای جلوگیری از خطاهای احتمالی استقرار، فایل <Important>composer.lock</Important> موجود در مسیر اصلی پروژه خود را، پاک کنید.
+    </p>
   </>
   )
   },
@@ -238,21 +217,16 @@ import Link from "next/link";
 <br/>   
 <Alert variant="info">
 <p>
-لیارا با اجرای دستور <Important>npm install</Important> تمامی ماژول‌های موجود در فایل <Important>package.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
+لیارا با اجرای دستور <Important>composer install</Important> تمامی ماژول‌های موجود در فایل <Important>composer.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
 </p>
 </Alert>
 <div className="h-1" />
 
-<Alert variant="info">
-<p>
-لیارا به صورت خودکار، در فرایند استقرار برنامه‌های NextJS اسکریپت <Important>build</Important> را برای شما اجرا می‌کند.
-</p>
-</Alert>
 <div className="h-1" />
 
 <Alert variant="success">
 <p>
-همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های NextJS در لیارا</Link>
+همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های Laravel در لیارا</Link>
 </p>
 </Alert>
 </Layout>

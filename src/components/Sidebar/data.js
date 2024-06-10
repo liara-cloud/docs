@@ -156,7 +156,7 @@ export default {
       {
         title: "Laravel",
         icon: <IconContainer alt="laravel" />,
-        link: "/paas//getting-started"
+        link: "/paas/laravel/getting-started"
       },
       {
         title: "PHP",
@@ -578,14 +578,7 @@ export default {
         title: "دیتابیس ElasticSearch",
         link: "/paas/nextjs/how-tos/connect-to-db/elasticsearch"
       },
-      {
-        title: "ماژول Prisma",
-        link: "/paas/nextjs/how-tos/connect-to-db/prisma"
-      },
-      {
-        title: "ماژول Sequelize",
-        link: "/paas/nextjs/how-tos/connect-to-db/sequelize/about"
-      },
+      
       {
         hr: true
       },
@@ -601,6 +594,153 @@ export default {
         title: "رفع خطای ECONNRESET",
         link: "/paas/nextjs/fix-common-errors/econnreset"
       },
-    ]
+    ],
+    laravel: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Laravel
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/laravel/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/laravel/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/laravel/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/laravel/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/laravel/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/laravel/how-tos/use-disk"
+      },
+      {
+        title: "راه‌اندازی برنامه Websocket",
+        link: "/paas/laravel/how-tos/use-websocket"
+      },
+      {
+        title: "استفاده از TypeScript",
+        link: "/paas/laravel/how-tos/use-type-script"
+      },
+      {
+        title: "استفاده از Static HTML Export",
+        link: "/paas/laravel/how-tos/use-static-html-export"
+      },
+      {
+        title: "افزایش فضای مسیر cache",
+        link: "/paas/laravel/how-tos/increase-next-cache"
+      },
+      {
+        title: "استفاده از ISR",
+        link: "/paas/laravel/how-tos/use-isr"
+      },
+      {
+        title: "دسترسی به فایل‌های Static",
+        link: "/paas/laravel/how-tos/reach-static-files"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/laravel/how-tos/use-hooks"
+      },
+      {
+        title: "مشاهده نسخه NodeJS",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/laravel/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MongoDB",
+        link: "/paas/laravel/how-tos/connect-to-db/mongodb"
+      },
+      {
+        title: "دیتابیس MariaDB",
+        link: "/paas/laravel/how-tos/connect-to-db/mariadb"
+      },
+      {
+        title: "دیتابیس MySQL",
+        link: "/paas/laravel/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        link: "/paas/laravel/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        link: "/paas/laravel/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        link: "/paas/laravel/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        link: "/paas/laravel/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        link: "/paas/laravel/how-tos/connect-to-db/elasticsearch"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/laravel/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای ECONNRESET",
+        link: "/paas/laravel/fix-common-errors/econnreset"
+      },
+    ],
   }
 };

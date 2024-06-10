@@ -21,21 +21,23 @@ import {
 } from "react-icons/go";
 
 <Layout>
-# شروع به کار با پلتفرم NodeJS
+# شروع به کار با پلتفرم Laravel
 <hr className="mb-2" />
 
-پلتفرم NodeJS یک محیط اجرایی سمت سرور برای JavaScript است که بر اساس موتور V8 گوگل کروم ساخته شده است و امکان اجرای کد JS خارج از مرورگر را فراهم می‌کند. 
-شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+<a href="https://laravel.com/" className="blue-link">Laravel</a> یک فریم‌ورک وب تحت <a href="../php/getting-started" className="blue-link">زبان PHP</a> است که بخاطر ارائه امکانات متنوع و syntax ساده اما در عین حال کاربردی،
+محبوبیت زیادی پیدا کرده است. از جمله ویژگی‌های این فریم‌ورک قدرتمند، بهینه‌سازی فوق‌العاده، قابلیت تست، صف‌ها، معماری MVC و ... است. 
+ شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
 <br />
 
 <div className="grid grid-cols-2 gap-4">
             {[
     {
-      text: 'استقرار سریع یک برنامه NodeJS در لیارا',
+      text: 'استقرار سریع یک برنامه Laravel در لیارا',
       link: './quick-start',
     },
     {
-      text: 'استقرار قدم به قدم برنامه‌های NodeJS در لیارا',
+      text: 'استقرار قدم به قدم برنامه‌های Laravel در لیارا',
       link: './how-tos/create-app',
     },
   ].map(item =>
@@ -53,22 +55,17 @@ import {
           </div>
 
 <br />
-لیارا به‌طور کامل از NodeJS و تمامی فریم‌ورک‌ها و ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
-در ادامه، مستندات مربوط به ابزارها و فریم‌ورک‌های NodeJS برای شما قرار گرفته است:
+
+لیارا به‌طور کامل از Laravel و تمامی ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به ابزارهای Laravel برای شما قرار گرفته است:
 <br />
 
-<div className="grid grid-cols-5 gap-4">
+<div className="grid grid-cols-4 gap-4">
             {[
-    { alt: 'adonisjs', platform: 'AdonisJS', link: "./related-apps/adonisjs" },
-    { alt: 'blitz', platform: 'BlitzJS', link: "./related-apps/blitzjs" },
-    { alt: 'fastify', platform: 'Fastify', link: "./related-apps/fastify" },
-    { alt: 'nodejs', platform: 'Hapi', link: "./related-apps/hapi" },
-    { alt: 'nest', platform: 'NestJS', link: "./related-apps/nestjs" },
-    { alt: 'nuxt', platform: 'NuxtJS', link: "./related-apps/nuxtjs" },
-    { alt: 'remix', platform: 'Remix', link: "./related-apps/remix" },
-    { alt: 'strapi', platform: 'Strapi', link: "./related-apps/strapi/starter" },
-    { alt: 'svelte', platform: 'Svelte', link: "./related-apps/svelte" },
-    { alt: 'svelte', platform: 'Svelte Kit', link: "./related-apps/svelte-kit" },
+    { alt: 'laravel', platform: 'Lumen', link: "/lumen" },
+    { alt: 'laravel', platform: 'Laravel Nova', link: "/nova" },
+    { alt: 'laravel', platform: 'Laravel Vapor', link: "/vapor" },
+    { alt: 'laravel', platform: 'Laravel Horizon', link: "/horizon" },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
@@ -85,19 +82,17 @@ import {
               </Link>
             )}
           </div>
-
-
 <br />
 
 <Alert variant="success">
 همچنین بخوانید:
 <Link href='./related-links.md' className="blue-link">
- لینک‌های مرتبط با پلتفرم NodeJS
+ لینک‌های مرتبط با پلتفرم Laravel
 </Link>
 </Alert>
 <br />
 
-در ادامه، ده تا از پربازدیدترین مستندات مربوط به NodeJS برای شما قرار گرفته است:
+در ادامه، ده تا از پربازدیدترین مستندات مربوط به Laravel برای شما قرار گرفته است:
 
 <ul className="pr-4">
   {[

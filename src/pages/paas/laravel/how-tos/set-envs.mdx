@@ -1,0 +1,43 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# استفاده از متغیرهای محیطی 
+<hr className="mb-2" />
+برای استفاده از متغیرهای محیطی در برنامه خود، در ابتدا باید طبق <a href="../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای محیطی را به برنامه خود، اضافه کنید. در نظر داشته باشید که نام تمامی متغیرهای محیطی برنامه‌تان باید با عبارت <Important>_NEXT_PUBLIC</Important> شروع شود تا در نهایت به درستی در برنامه بارگذاری شوند.
+<div className="h-2" />
+در ادامه، شما می‌توانید با استفاده از دستور <Important>.process.env</Important> به متغیرهای محیطی خود در برنامه NextJS، دسترسی داشته باشید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`console.log(\`app listening on \${process.env.NEXT_PUBLIC_LIARA_URL}\`) `}
+</Highlight>
+</ div>
+<div className="h-2" />
+در مثال فوق، <Important>NEXT_PUBLIC_LIARA_URL</Important> یک متغیر محیطی است که از قبل، به برنامه فرضی در لیارا، اضافه شده است.
+
+<Section id="set-private-envs" title="بارگذاری متغیرهای محیطی در سرور" />
+در NextJS، متغیرهای محیطی که با <Important>_NEXT_PUBLIC</Important> شروع می‌شوند به صورت خودکار به کد سمت کلاینت منتقل می‌شوند و در مرورگر کاربر قابل دسترسی هستند. برای متغیرهایی که باید محرمانه بمانند و فقط در سرور استفاده شوند، نباید از پیشوند <Important>_NEXT_PUBLIC</Important> استفاده کنید.
+<div className="h-2" />
+شما می‌توانید برای بارگذاری متغیرهای محیطی محرمانه خود یک فایل به نام <Important>env.production.</Important> در مسیر اصلی پروژه خود ایجاد کنید و متغیرهای محیطی خود را در آنجا تعریف کرده و در پروژه خود استفاده کنید. پس از انجام این کارها، می‌توانید پروژه خود را در لیارا مستقر کنید. 
+
+<div className="h-2" />
+
+<Alert variant='warning'>
+<p>
+اگر که متغیرهای محیطی را پس از استقرار، به برنامه اضافه کرده‌اید. برای بارگذاری موفق آن‌ها، بایستی برنامه خود را ری‌استارت کنید.
+</p>
+</Alert>
+
+<NextPage next="./use-disk" />
+</Layout>
