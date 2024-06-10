@@ -48,6 +48,9 @@ export default () => (
         <a href="#cors">رفع خطای CORS</a>
       </li>
       <li>
+        <a href="#mirror">غیرفعال کردن mirror</a>
+      </li>
+      <li>
         <a href="#default-php-modules">لیست اکستنشن‌های نصب شده</a>
       </li>
     </ul>
@@ -257,6 +260,23 @@ stdout_logfile=/tmp/php-worker.log`}
       </a>{" "}
       را مطالعه کنید.
     </p>
+
+    <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <p>
+      لیارا در حین استقرار برنامه‌های PHP، به منظور دانلود سریع‌تر پکیج‌ها، از
+      mirror اختصاصی خود استفاده می‌کند. اما ممکن است که برخی از پکیج‌های جدید
+      در mirror قرار نداشته باشند و عملیات استقرار با خطا مواجه شود. از این رو،
+      می‌توانید با قرار دادن قطعه کد زیر در فایل{" "}
+      <a href="/app-deploy/php/liarajson">liara.json</a>، این قابلیت را، غیر
+      فعال کنید:
+    </p>
+    <Highlight className="json">
+      {`{
+  "php": {
+    "mirror": false
+  }
+}`}
+    </Highlight>
 
     <h3 id="default-php-modules">لیست اکستنشن‌های نصب شده</h3>
     <p>در پلتفرم PHP اکستنشن‌های PHP زیر نصب شده‌اند:</p>

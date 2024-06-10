@@ -83,9 +83,9 @@ export default () => (
       <li>
         <a href="#timezone">تنظیم منطقه‌ی زمانی (TimeZone)</a>
       </li>
-      {/* <li>
+      <li>
         <a href="#mirror">غیرفعال کردن Mirror</a>
-      </li> */}
+      </li>
       <li>
         <a href="#extensions">لیست اکستنشن‌های نصب شده</a>
       </li>
@@ -706,12 +706,14 @@ $ffmpeg = FFMpeg::create([
   }
 }`}
     </Highlight>
-    {/* <h3 id="mirror">غیرفعال کردن Mirror</h3>
+    <h3 id="mirror">غیرفعال کردن Mirror</h3>
     <p>
-      Mirror اختصاصی لیارا به‌منظور دانلود سریع‌تر پکیج‌ها در پلتفرم Laravel
-      به‌صورت پیش‌فرض فعال است اما شما می‌توانید با قرار دادن قطعه‌کد زیر در فایل{" "}
-      <Link href="/app-deploy/laravel/liarajson">liara.json</Link>، این قابلیت
-      را غیر فعال کنید:
+      لیارا در حین استقرار برنامه‌های PHP، به منظور دانلود سریع‌تر پکیج‌ها، از
+      mirror اختصاصی خود استفاده می‌کند. اما ممکن است که برخی از پکیج‌های جدید
+      در mirror قرار نداشته باشند و عملیات استقرار با خطا مواجه شود. از این رو،
+      می‌توانید با قرار دادن قطعه کد زیر در فایل{" "}
+      <a href="/app-deploy/laravel/liarajson">liara.json</a>، این قابلیت را، غیر
+      فعال کنید:
     </p>
     <Highlight className="json">
       {`{
@@ -719,7 +721,7 @@ $ffmpeg = FFMpeg::create([
     "mirror": false
   }
 }`}
-    </Highlight> */}
+    </Highlight>
     <h3 id="extensions">لیست اکستنشن‌های نصب شده</h3>
     <p>در پلتفرم لاراول، اکستنشن‌های PHP زیر نصب شده‌اند:</p>
     <pre>
