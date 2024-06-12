@@ -655,31 +655,55 @@ export default {
         link: "/paas/laravel/how-tos/use-websocket"
       },
       {
-        title: "استفاده از TypeScript",
-        link: "/paas/laravel/how-tos/use-type-script"
+        title: "تنظیم اختصاصی فایل php.ini",
+        link: "/paas/laravel/how-tos/customize-php-ini"
       },
       {
-        title: "استفاده از Static HTML Export",
-        link: "/paas/laravel/how-tos/use-static-html-export"
+        title: "کار با Queueها",
+        link: "/paas/laravel/how-tos/use-queues"
       },
       {
-        title: "افزایش فضای مسیر cache",
-        link: "/paas/laravel/how-tos/increase-next-cache"
+        title: "فعال‌سازی SSR با Inertia",
+        link: "/paas/laravel/how-tos/enable-ssr-using-inertia"
       },
       {
-        title: "استفاده از ISR",
-        link: "/paas/laravel/how-tos/use-isr"
-      },
-      {
-        title: "دسترسی به فایل‌های Static",
-        link: "/paas/laravel/how-tos/reach-static-files"
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/laravel/how-tos/set-http-security-headers"
       },
       {
         title: "استفاده از Hookها",
         link: "/paas/laravel/how-tos/use-hooks"
       },
       {
-        title: "مشاهده نسخه NodeJS",
+        title: "تغییر نسخه PHP",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "بهینه‌سازی برنامه برای استقرار",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "مدیریت logهای Laravel",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "فعال‌سازی Gzip و Caching",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "استفاده از Ziggy",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "نصب اکستنشن",
         link: "/paas/laravel/how-tos/choose-version"
       },
       {
@@ -738,8 +762,16 @@ export default {
         )
       },
       {
-        title: "رفع خطای ECONNRESET",
-        link: "/paas/laravel/fix-common-errors/econnreset"
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB",
+        link: "/paas/laravel/fix-common-errors/upload-size-limit"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/laravel/fix-common-errors/cors"
+      },
+      {
+        title: "رفع خطای 419",
+        link: "/paas/laravel/fix-common-errors/cors"
       },
     ],
   }
