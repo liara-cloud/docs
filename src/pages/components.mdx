@@ -6,6 +6,7 @@ import Tabs from "@/components/Common/tab";
 import Step from "@/components/Common/step";
 import Card from "@/components/Common/card";
 import NextPage from "@/components/Common/nextpage";
+import Table from "@/components/Common/table";
 import Important from "@/components/Common/important";
 import Highlight from "react-highlight";
 import { GoCheckCircle } from "react-icons/go";
@@ -137,4 +138,9 @@ import { GoCheckCircle } from "react-icons/go";
                <br className="mb-2" />     
         <NextPage next="/" />
 
+        ## جدول
+        <Table  headers={ ["ردیف", "درصد مدت دسترسی (Uptime) ماهانه‌ی ایمیل", "نرخ خدمات اعتباری استاندارد", "نرخ خدمات اعتباری سازمانی"]} data={ [
+  ["۱", "۹۹.۹۰٪ >A ≥۹۹.۰۰٪", "-", "۲۰ درصد"],
+  ["۲", "۹۹.۰۰٪ > A", "۲۰ درصد", "۳۰ درصد"]
+]} />
 </Layout>
