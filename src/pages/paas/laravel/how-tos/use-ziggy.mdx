@@ -15,81 +15,16 @@ import NextPage from "@/components/Common/nextpage";
 <hr className="mb-2" />
 
 Ziggy یک پکیج لاراول است که به شما امکان می‌دهد تا به راحتی به مسیر (route)های تعریف‌شده در لاراول از طریق جاوااسکریپت دسترسی داشته باشید. این ابزار برای توسعه‌دهندگانی که از فریم‌ورک‌های جاوااسکریپت سمت کاربر مانند <a href="../../vue/getting-started" className="blue-link">Vue</a> یا <a href="../../vue/getting-started" className="blue-link">React</a> استفاده می‌کنند، بسیار مفید است.
+<div className='h-2' />
 
-
-برای فعال‌سازی Gzip در لاراول، باید در فایل <Important>public/.htaccess</Important> قطعه کد زیر:
+برای استفاده از Ziggy در لیارا تنها کافیست فایل مورد نظرتان را از مسیر <Important>vendor/tightenco/ziggy/dist</Important> در پوشه‌ی <Important>resources/js</Important> کپی کنید. برای مثال، درصورتی که فایل <Important>vue.m</Important> را کپی کرده باشید؛ می‌توانید به‌شکل زیر آن را در برنامه‌ی خود import کنید:
 <div className='h-2' />
 <div dir='ltr'>
     <Highlight className="config">
-        {` # Enable Gzip
-<IfModule mod_deflate.c>
- AddOutputFilterByType DEFLATE text/plain
- AddOutputFilterByType DEFLATE text/html
- AddOutputFilterByType DEFLATE text/xml
- AddOutputFilterByType DEFLATE text/css
- AddOutputFilterByType DEFLATE text/javascript
- AddOutputFilterByType DEFLATE application/xml
- AddOutputFilterByType DEFLATE application/xhtml+xml
- AddOutputFilterByType DEFLATE application/rss+xml
- AddOutputFilterByType DEFLATE application/atom_xml
- AddOutputFilterByType DEFLATE application/javascript
- AddOutputFilterByType DEFLATE application/x-javascript
- AddOutputFilterByType DEFLATE application/x-shockwave-flash
-</IfModule>
+        {`import { ZiggyVue } from './vue.m';
 `}        
     </Highlight>
 </div>
-<div className="h-2" />
-و برای فعال‌سازی قابلیت Caching، قطعه کد زیر را وارد کنید:
-<div className="h-2" />
-<div dir='ltr'>
-        <Highlight className="config">
-            {`# Enable Caching
-<IfModule mod_expires.c>
- ExpiresActive On
- ExpiresByType text/css "access plus 1 month"
- ExpiresByType text/javascript "access plus 1 month"
- ExpiresByType text/html "access plus 1 month"
- ExpiresByType application/javascript "access plus 1 month"
- ExpiresByType image/gif "access plus 1 month"
- ExpiresByType image/jpeg "access plus 1 month"
- ExpiresByType image/png "access plus 1 month"
- ExpiresByType image/x-icon "access plus 1 month"
-</IfModule>
-<ifmodule mod_headers.c>
- <filesmatch "\.(ico|jpe?g|png|gif|swf)$">
-  Header set Cache-Control "max-age=2592000, public"
- </filesmatch>
- <filesmatch "\.(css)$">
-  Header set Cache-Control "max-age=604800, public"
- </filesmatch>
- <filesmatch "\.(js)$">
-  Header set Cache-Control "max-age=216000, private"
- </filesmatch>
-</ifmodule>`}
-        </Highlight>
-</div>
-<div className="h-2" />
-سپس باید قطعه کد زیر را به فایل <Important>webpack.mix.js</Important> اضافه کنید:
-<div className="h-2" />
-<div dir='ltr'>
-        <Highlight className="js">
-            {`if (mix.inProduction()) {
-    mix.version();
-}`}
-        </Highlight>
-</div>
-<div className="h-2" />
 
-درنهایت کافیست تا فایل‌های Asset را مانند مثال زیر در برنامه‌ی خود فراخوانی کنید:
-<div className="h-2" />
-<div dir='ltr'>
-        <Highlight className="html">
-            {`<script src="{{ mix('js/app.js') }}"></script>
-`}
-        </Highlight>
-</div>
-<div className="h-2" />
-
-<NextPage next="./use-ziggy"/>
+<NextPage next="./see-extension"/>
 </Layout>

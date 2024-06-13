@@ -699,8 +699,8 @@ export default {
         link: "/paas/laravel/how-tos/use-ziggy"
       },
       {
-        title: "نصب اکستنشن",
-        link: "/paas/laravel/how-tos/choose-version"
+        title: "مشاهده اکستنشن‌های نصب شده",
+        link: "/paas/laravel/how-tos/see-extension"
       },
       {
         hr: true
