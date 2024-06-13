@@ -688,15 +688,15 @@ export default {
       },
       {
         title: "فعال‌سازی Gzip و Caching",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/enable-gzip-and-caching"
       },
       {
         title: "استفاده از ماژول FFMPEG",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/use-ffmpeg-module"
       },
       {
         title: "استفاده از Ziggy",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/use-ziggy"
       },
       {
         title: "نصب اکستنشن",

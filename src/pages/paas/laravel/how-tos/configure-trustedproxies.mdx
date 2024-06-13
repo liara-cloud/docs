@@ -23,70 +23,113 @@ import NextPage from "@/components/Common/nextpage";
 <img src="https://files.liara.ir/liara/docs/how-trusted-proxy-works.png" alt="how trusted proxy works" />
 <div className='h-2' />
 
-برای این که در برنامه‌ی‌تان بتوانید به آی‌پی واقعی کاربر دسترسی داشته باشید و یا این که از قابلیت Signed URLهای Laravel استفاده کنید، لازم است که تغییراتی را در فایل <Important>app/Http/Middleware/TrustProxies.php</Important> اعمال کنید.
+برای این که در برنامه‌ی‌تان بتوانید به آی‌پی واقعی کاربر دسترسی داشته باشید، کافیست تا در دایرکتوری <Important>config</Important> یک فایل به نام <Important>trustedproxy.php</Important> ایجاد کنید و یا اگر که این فایل از قبل وجود دارد، فقط کافیست تا قطعه کد زیر را در آن، قرار دهید:
 
 
 <div dir='ltr'>
-        <Highlight className="bash">
-            {`LOG_CHANNEL=daily`}
+        <Highlight className="php">
+            {`<?php
+
+return [
+
+    /*
+     * Set trusted proxy IP addresses.
+     *
+     * Both IPv4 and IPv6 addresses are supported, along with CIDR notation.
+     * The "*" character is syntactic sugar within TrustedProxy to trust any
+     * proxy that connects directly to your server, a requirement when you cannot
+     * know the address of your proxy (e.g. if using Elastic Load Balancing).
+     */
+    'proxies' => env('TRUSTED_PROXIES', '*'), // Accepts the '*' wildcard for all proxies.
+
+    /*
+     * To trust one or more specific proxies that connect directly to your server,
+     * use an array instead of "*":
+     *
+     * 'proxies' => [
+     *     '192.168.1.1',
+     *     '192.168.1.2',
+     * ]
+     */
+
+    /*
+     * Or, to trust all proxies that connect directly to your server, use a "*"
+     *
+     * Note: '*' does not mean 'all proxies'. It means 'all proxies that connect
+     * directly to your server' (e.g. all load balancers, all CDN servers).
+     */
+
+    /*
+     * Default Header Names
+     *
+     * Change these if the proxy does not use the default header names.
+     */
+    'headers' => [
+        \Illuminate\Http\Request::HEADER_FORWARDED    => 'FORWARDED',
+        \Illuminate\Http\Request::HEADER_X_FORWARDED_FOR => 'X_FORWARDED_FOR',
+        \Illuminate\Http\Request::HEADER_X_FORWARDED_HOST => 'X_FORWARDED_HOST',
+        \Illuminate\Http\Request::HEADER_X_FORWARDED_PORT => 'X_FORWARDED_PORT',
+        \Illuminate\Http\Request::HEADER_X_FORWARDED_PROTO => 'X_FORWARDED_PROTO',
+        \Illuminate\Http\Request::HEADER_X_FORWARDED_AWS_ELB  => 'X_FORWARDED_AWS_ELB',
+    ],
+
+];
+`}
         </Highlight>
     </div>
     <div className="h-2" />
 
-<div className="h-2" />
+تمامی کارها انجام شده است و شما می‌توانید برای بررسی این فایل، با اجرای دستور زیر، یک کنترلر برای نمایش آی‌پی ایجاد کنید:
 
-<Section id="manage-logs-using-multiple-drivers" title="مدیریت لاگ‌ها با چند درایور" />
-
-شما می‌توانید با استفاده از درایور <Important>stack</Important>، از چند درایور به صورت همزمان، برای مدیریت لاگ‌ها، استفاده کنید. به عنوان مثال، فرض کنید که قصد دارید هم لاگ‌ها را در ترمینال ببینید و هم آن‌ها را روزانه، در فایل‌های مجزا، ذخیره کنید؛ برای این‌کار کافیست تا در ابتدا، طبق 
-<a href="../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیر <Important>LOG_CHANNEL</Important> را به شکل زیر، تغییر دهید:
-<div className="h-2" />
-<div dir='ltr'>
-        <Highlight className="bash">
-            {`LOG_CHANNEL=stack`}
-        </Highlight>
-    </div>
-    <div className="h-2" />
-
-در ادامه، کافیست تا در فایل <Important>config/logging.php</Important>، فیلد <Important>channels</Important> آرایه <Important>stack</Important> را، به شکل زیر، تغییر دهید:
 <div className="h-2" />
 <div dir='ltr'>
         <Highlight className="php">
-            {`return [
-
-    'channels' => [
-
-        'stack' => [
-            'driver' => 'stack',
-            'channels' => ['errorlog', 'daily'],
-            'ignore_exceptions' => false,
-        ],
-
-        'daily' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'days' => env('LOG_DAILY_DAYS', 14),
-            'replace_placeholders' => true,
-        ],
-
-        'errorlog' => [
-            'driver' => 'errorlog',
-            'level' => env('LOG_LEVEL', 'debug'),
-            'replace_placeholders' => true,
-        ],
-    ],
-
-];`}
+            {`php artisan make:controller IPController`}
         </Highlight>
     </div>
     <div className="h-2" />
-در نهایت، با استقرار مجدد برنامه، تغییرات مدنظرتان، ذخیره خواهد شد.
+سپس، کافیست تا قطعه کد زیر را در <Important>app/Http/Controllers/IPController.php</Important> قرار دهید:
 
-<Alert variant="success">
-<p>
-می‌توانید برای اطلاعات بیشتر، به <a href="https://laravel.com/docs/master/logging#building-log-stacks" className="blue-link">مستندات رسمی لاراول</a> مراجعه کنید.
-</p>
-</Alert>
+<div className="h-2" />
+<div dir='ltr'>
+        <Highlight className="php">
+            {`<?php
 
-<NextPage next="./configure-trustedproxies"/>
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class IPController extends Controller
+{
+    /**
+     * Display the real IP address of the user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        $ipAddress = $request->ip();
+        return response()->json(['ip' => $ipAddress]);
+    }
+}
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+در نهایت، بایستی که قطعه کد زیر را به فایل <Important>routes/web.php</Important> اضافه کنید:
+<div className="h-2" />
+<div dir='ltr'>
+        <Highlight className="php">
+            {`use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IPController;
+
+Route::get('/ip', [IPController::class, 'show']);
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+حال، می‌توانید برنامه خود را در لیارا مستقر کرده، و پس از استقرار موفق برنامه، وارد صفحه <Important>ip/</Important> آن، شوید تا آی‌پی واقعی‌تان به شما نمایش داده شود.
+
+<NextPage next="./use-ziggy"/>
 </Layout>
