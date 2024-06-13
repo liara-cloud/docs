@@ -718,7 +718,7 @@ $ffmpeg = FFMpeg::create([
     <Highlight className="json">
       {`{
   "laravel": {
-    "mirror": false
+    "composerMirror": false
   }
 }`}
     </Highlight>

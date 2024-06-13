@@ -273,7 +273,7 @@ stdout_logfile=/tmp/php-worker.log`}
     <Highlight className="json">
       {`{
   "php": {
-    "mirror": false
+    "composerMirror": false
   }
 }`}
     </Highlight>
