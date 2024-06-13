@@ -679,16 +679,12 @@ export default {
         link: "/paas/laravel/how-tos/choose-version"
       },
       {
-        title: "بهینه‌سازی برنامه برای استقرار",
-        link: "/paas/laravel/how-tos/choose-version"
-      },
-      {
         title: "مدیریت logهای Laravel",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/manage-laravel-logs"
       },
       {
         title: "پیکربندی TrustedProxies",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/configure-trustedproxies"
       },
       {
         title: "فعال‌سازی Gzip و Caching",
