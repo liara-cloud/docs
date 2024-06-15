@@ -44,7 +44,7 @@ export default () => (
     <pre>
       <code>{`$ php artisan key:generate --show`}</code>
     </pre>
-    <p>
+    <p style={{ overflowWrap: "anywhere" }}>
       این دستور خروجی مشابه{" "}
       <span className="code">
         base64:3uoN2edh6vBwFm6xKWqxBoC0VlEsCm7a5HEOzblXLzs=
