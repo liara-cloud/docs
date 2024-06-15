@@ -79,7 +79,7 @@ jobs:
           LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}\
 
         run: |
-          npm i -g @liara/cli@5
+          npm i -g @liara/cli@6
           liara deploy --app="APP_NAME" --api-token="$LIARA_TOKEN" --no-app-logs
 `}
     </Highlight>
