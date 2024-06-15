@@ -11,210 +11,112 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس MongoDB در برنامه‌های NextJS
+# اتصال به دیتابیس MongoDB در برنامه‌های Laravel
 <hr className="mb-2" />
-        
 
-<Tabs 
-    tabs={["Pages Router", "App Router"]} 
-    content={[
-        <>
-            <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MongoDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mongodb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`npm install mongodb`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
-            </p>
-                        <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`DB_URI=mongodb://root:uyYDoeYGcPr4xK8PSWnjsT9S@bromo.liara.cloud:32005/my-app?authSource=admin`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mongodb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { MongoClient } from 'mongodb';
+برای اتصال به دیتابیس MongoDB نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="../../../details/envs/about" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_CONNECTION=pgsql
+DB_HOST=bromo.liara.cloud
+DB_PORT=34515
+DB_DATABASE=postgres
+DB_USERNAME=root
+DB_PASSWORD=l6194OA4ZgOSc4EjPlep9qTl`}
+    </Highlight>
+    </div>
+<div className="h-2" />
 
-const client = new MongoClient(process.env.DB_URI);
+پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:controller DatabaseController`}
+    </Highlight>
+    </div>
+<div className="h-2" />
 
-let db;
+در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/DatabaseController.php</Important> قرار دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`<?php
 
-async function connectToDatabase() {
-    if (!db) {
-        await client.connect();
-        db = client.db();
+namespace App\\Http\\Controllers;
+
+use Illuminate\\Support\\Facades\\DB;
+use Illuminate\\Support\\Facades\\Config;
+use Illuminate\\Http\\Request;
+
+class DatabaseController extends Controller
+{
+    public function checkConnection()
+    {
+        $databases = [
+            'pgsql' => 'pgsql',
+        ];
+
+        $results = [];
+
+        foreach ($databases as $connection) {
+            try {
+                DB::connection($connection)->getPdo();
+                $results[$connection] = 'Connection successful';
+            } catch (\\Exception $e) {
+                $results[$connection] = 'Connection failed: ' . $e->getMessage();
+            }
+        }
+
+        return response()->json($results);
     }
-    return db;
-}
-
-export { connectToDatabase };
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>pages/index.js</Important> (یا <Important>src/pages/index.js</Important>) از دیتابیس خود، استفاده کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { connectToDatabase } from '@/lib/mongodb';
-
-export default function HomePage({ mongoStatus }) {
-    return (
-        <div>
-            <h1>Connection Status</h1>
-            <p>{mongoStatus}</p>
-        </div>
-    );
-}
-
-export async function getServerSideProps() {
-    let mongoStatus;
-
-    try {
-        const db = await connectToDatabase();
-        mongoStatus = db ? 'Connected to MongoDB' : 'Failed to connect to MongoDB';
-    } catch (error) {
-        mongoStatus = 'Failed to connect to MongoDB';
-    }
-
-    return {
-        props: {
-            mongoStatus,
-        },
-    };
 }
 `}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
-            </p>
+    </Highlight>
+    </div>
+<div className="h-2" />
 
+در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+      {`use App\\Http\\Controllers\\DatabaseController;
 
-        </>,
-        <>
-            <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MongoDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mongodb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`npm install mongodb`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`DB_URI=mongodb://root:uyYDoeYGcPr4xK8PSWnjsT9S@bromo.liara.cloud:32005/my-app?authSource=admin`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mongodb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { MongoClient } from 'mongodb';
-
-const client = new MongoClient(process.env.DB_URI);
-
-let db;
-
-async function connectToDatabase() {
-    if (!db) {
-        await client.connect();
-        db = client.db();
-    }
-    return db;
-}
-
-export { connectToDatabase };
+Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
 `}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>app/page.js</Important> (یا <Important>src/app/page.js</Important>) از دیتابیس خود، استفاده کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { connectToDatabase } from '@/lib/mongodb';
-
-export default async function HomePage() {
-    let mongoStatus;
-
-    try {
-        const db = await connectToDatabase();
-        mongoStatus = db ? 'Connected to MongoDB' : 'Failed to connect to MongoDB';
-    } catch (error) {
-        mongoStatus = 'Failed to connect to MongoDB';
-    }
-
-    return (
-        <div>
-            <h1>Connection Status</h1>
-            <p>{mongoStatus}</p>
-        </div>
-    );
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
-            </p>
-        </>
-]} 
-/>
+  </Highlight>
+  </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>check-database-connection/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-در پکیج <Important>mariadb</Important> این قابلیت به صورت خودکار تعبیه شده است و شما می‌توانید در فایل <Important>lib/mariadb.js</Important> (یا <Important>src/lib/mariadb.js</Important>) حین اتصال به دیتابیس پارامتر زیر را بر اساس نیاز خود، مقدار دهی کنید:
+برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>pgsql</Important> را به شکل زیر، تغییر دهید:
 <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="js">
-        {`import { MongoClient } from 'mongodb';
-
-const client = new MongoClient(process.env.DB_URI, {
-    poolSize: 10, // amount of connections in same time
-});
-
-let db;
-
-async function connectToDatabase() {
-    if (!db) {
-        await client.connect();
-        db = client.db();
-    }
-    return db;
-}
-
-export { connectToDatabase };`}
-    </Highlight>
-</div>
-
+  <div dir='ltr'>
+  <Highlight className="php">
+{`'pgsql' => [
+    'driver' => 'pgsql',
+    'url' => env('DB_URL'),
+    'host' => env('DB_HOST', '127.0.0.1'),
+    'port' => env('DB_PORT', '5432'),
+    'database' => env('DB_DATABASE', 'laravel'),
+    'username' => env('DB_USERNAME', 'root'),
+    'password' => env('DB_PASSWORD', ''),
+    'charset' => env('DB_CHARSET', 'utf8'),
+    'prefix' => '',
+    'prefix_indexes' => true,
+    'search_path' => 'public',
+    'sslmode' => 'prefer',
+    'options' => [
+        PDO::ATTR_PERSISTENT => env('DB_PGSQL_POOLING', true),
+    ],
+],`}
+  </Highlight>
+  </div>
+<div className="h-2" />
 
 </Layout>

@@ -27,6 +27,33 @@ DB_PASSWORD=SEQdI8BcVutmIWrjBxVBmSNv`}
     </Highlight>
     </div>
 <div className="h-2" />
+در ادامه، بایستی در فایل <Important>config/database.php</Important> تنظیمات درایور <Important>sqlsvr</Important> را به شکل زیر، وارد کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+        ],
+
+    ],`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+
+
 پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
 <div className="h-2" />
     <div dir='ltr'>
@@ -53,10 +80,7 @@ class DatabaseController extends Controller
     public function checkConnection()
     {
         $databases = [
-            'mysql' => 'mysql',
             'sqlsrv' => 'sqlsrv',
-            'pgsql' => 'pgsql',
-            'sqlite' => 'sqlite',
         ];
 
         $results = [];
@@ -96,30 +120,26 @@ Route::get('/check-database-connection', [DatabaseController::class, 'checkConne
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>mariadb</Important> را به شکل زیر، تغییر دهید:
+برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>sqlsrv</Important> را به شکل زیر، تغییر دهید:
 <div className="h-2" />
   <div dir='ltr'>
-  <Highlight className="bash">
-  {`'mariadb' => [
-    'driver' => 'mariadb',
+  <Highlight className="php">
+{`'sqlsrv' => [
+    'driver' => 'sqlsrv',
     'url' => env('DB_URL'),
-    'host' => env('DB_HOST', '127.0.0.1'),
-    'port' => env('DB_PORT', '3306'),
+    'host' => env('DB_HOST', 'localhost'),
+    'port' => env('DB_PORT', '1433'),
     'database' => env('DB_DATABASE', 'laravel'),
     'username' => env('DB_USERNAME', 'root'),
     'password' => env('DB_PASSWORD', ''),
-    'unix_socket' => env('DB_SOCKET', ''),
-    'charset' => env('DB_CHARSET', 'utf8mb4'),
-    'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+    'charset' => env('DB_CHARSET', 'utf8'),
     'prefix' => '',
     'prefix_indexes' => true,
-    'strict' => true,
-    'engine' => null,
-    'options' => extension_loaded('pdo_mysql') ? array_filter([
-        PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-        PDO::ATTR_PERSISTENT => env('DB_POOLING', true),
-    ]) : [],
-  ],`}
+    // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+    'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+    'pooling' => env('DB_SQLSERVER_POOLING', true), // enables connection pooling
+],
+`}
   </Highlight>
   </div>
 <div className="h-2" />

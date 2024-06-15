@@ -714,28 +714,28 @@ export default {
         )
       },
       {
-        title: "دیتابیس MongoDB",
-        link: "/paas/laravel/how-tos/connect-to-db/mongodb"
+        title: "دیتابیس MySQL",
+        link: "/paas/laravel/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس MariaDB",
         link: "/paas/laravel/how-tos/connect-to-db/mariadb"
       },
       {
-        title: "دیتابیس MySQL",
-        link: "/paas/laravel/how-tos/connect-to-db/mysql"
+        title: "دیتابیس MSSQL",
+        link: "/paas/laravel/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس PostgreSQL",
         link: "/paas/laravel/how-tos/connect-to-db/postgresql"
       },
       {
-        title: "دیتابیس MSSQL",
-        link: "/paas/laravel/how-tos/connect-to-db/mssql"
-      },
-      {
         title: "دیتابیس SQLite",
         link: "/paas/laravel/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        link: "/paas/laravel/how-tos/connect-to-db/mongodb"
       },
       {
         title: "دیتابیس Redis",
