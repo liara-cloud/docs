@@ -17,13 +17,13 @@ const table_body = [
     "liara_pre_build.sh",
     "publish قبل از ",
     "ندارد",
-    "نصب پکیج‌های سیستمی لازم با apt-get",
+    "اجرای دستورات مرتبط با cache و بهینه‌سازی",
   ],
   [
     "liara_post_build.sh",
     "publish بعد از ",
     "ندارد",
-    "اجرای دستورات مرتبط با cache و بهینه‌سازی",
+    "نصب پکیج‌های سیستمی لازم با apt-get",
   ],
   [
     "liara_pre_start.sh",
