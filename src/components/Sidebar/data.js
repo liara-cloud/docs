@@ -734,18 +734,9 @@ export default {
         link: "/paas/laravel/how-tos/connect-to-db/sqlite"
       },
       {
-        title: "دیتابیس MongoDB",
-        link: "/paas/laravel/how-tos/connect-to-db/mongodb"
-      },
-      {
         title: "دیتابیس Redis",
         link: "/paas/laravel/how-tos/connect-to-db/redis"
       },
-      {
-        title: "دیتابیس ElasticSearch",
-        link: "/paas/laravel/how-tos/connect-to-db/elasticsearch"
-      },
-      
       {
         hr: true
       },
@@ -759,7 +750,7 @@ export default {
       },
       {
         title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB",
-        link: "/paas/laravel/fix-common-errors/upload-size-limit"
+        link: "/paas/laravel/fix-common-errors/upload-limit-size"
       },
       {
         title: "رفع خطای CORS",
@@ -767,7 +758,7 @@ export default {
       },
       {
         title: "رفع خطای 419",
-        link: "/paas/laravel/fix-common-errors/cors"
+        link: "/paas/laravel/fix-common-errors/419-page-expired"
       },
     ],
   }

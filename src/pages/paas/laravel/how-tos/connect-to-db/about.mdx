@@ -19,16 +19,14 @@ import {GoArrowLeft,} from "react-icons/go";
 دیتابیس‌ها، در اکوسیستم یک پلتفرم، نقش حیاتی دارند. دیتابیس‌ها نه تنها محلی برای ذخیره و بازیابی داده‌ها هستند، بلکه به عنوان ستون فقرات یک برنامه، عمل می‌کنند و بر کارایی، مقیاس‌پذیری و قابلیت اعتماد سیستم، تأثیر مستقیم می‌گذارند.
 در حال حاضر، شما می‌توانید در برنامه‌های Laravel خود در لیارا، به دیتابیس‌های زیر، متصل شوید:
 <div className='h-2' />
-<div className="grid grid-cols-4 gap-4">
+<div className="grid grid-cols-3 gap-4">
             {[
     { alt: 'mysql', platform: 'MySQL', link: "./mysql" },
     { alt: 'mariadb', platform: 'MariaDB', link: "./mariadb" },
     { alt: 'postgres', platform: 'PostgreSQL', link: "./postgresql" },
     { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
     { alt: 'nodejs', platform: 'SQLite', link: "./sqlite" },
-    { alt: 'mongodb', platform: 'MongoDB', link: "./mongodb" },
     { alt: 'redis', platform: 'Redis', link: "./redis" },
-    { alt: 'elastic', platform: 'ElasticSearch', link: "./elasticsearch" },
   ].map(item =>
     <Link href={item.link}>
     <Card className="flex cursor-pointer w-full items-center justify-between">
