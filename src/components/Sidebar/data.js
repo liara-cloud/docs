@@ -650,10 +650,10 @@ export default {
         title: "استفاده از دیسک",
         link: "/paas/laravel/how-tos/use-disk"
       },
-      {
-        title: "راه‌اندازی برنامه Websocket",
-        link: "/paas/laravel/how-tos/use-websocket"
-      },
+      // {
+      //   title: "راه‌اندازی برنامه Websocket",
+      //   link: "/paas/laravel/how-tos/use-websocket"
+      // },
       {
         title: "تنظیم اختصاصی فایل php.ini",
         link: "/paas/laravel/how-tos/customize-php-ini"
@@ -759,6 +759,14 @@ export default {
       {
         title: "رفع خطای 419",
         link: "/paas/laravel/fix-common-errors/419-page-expired"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "Lumen",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/related-apps/lumen"
       },
     ],
   }

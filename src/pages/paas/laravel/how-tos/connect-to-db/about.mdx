@@ -45,5 +45,26 @@ import {GoArrowLeft,} from "react-icons/go";
           </div>
 <div className='h-2' />
 
+
+<Section id="migrate-db" title="اجرای Migrationها در دیتابیس‌" />
+برای اجرای Migrationها در دیتابیس مد نظر خود، می‌توانید پس از استقرار برنامه، وارد <a href="" className="blue-link">خط فرمان</a> برنامه خود شوید و دستور زیر را اجرا کنید تا عملیات migration برای شما، انجام شود:
+
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan migrate`}        
+    </Highlight>
+</div>
+<div className='h-2' />
+یا اینکه می‌توانید طبق <a href="../use-hooks" className="blue-link">مستندات هوک‌ها</a>، قبل از استقرار و در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_start.sh</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="sh">
+        {`php artisan migrate --force`}        
+    </Highlight>
+</div>
+<div className='h-2' />
+در انتها و پس از قرار دادن فایل فوق در مسیر اصلی پروژه، می‌توانید برنامه خود را در لیارا مستقر کنید تا عملیات Migrate به صورت خودکار برای‌تان اعمال شود.
+
 <NextPage next="../../fix-common-errors/about" />
 </Layout>

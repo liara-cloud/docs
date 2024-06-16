@@ -14,6 +14,25 @@ import {GoArrowLeft,} from "react-icons/go";
 <Layout>
 # رفع خطای 419Page Expired در برنامه‌های Laravel
 <hr className="mb-2" />
-خطای <Important>419 Sorry, your session has expired. Please refresh and try again.</Important> معمولاً زمانی پیش می‌آید که اعتبار سنجی CSRF در برنامه شما، موفق نباشد و یا به خطا بخورد. معمولاً یکی از دلایل اصلی این خطا، در session ها است. اگر session به درستی ایجاد نشود و یا منقضی شود؛ این خطا، نمایش داده می‌شود.
+ممکن است در برنامه خود با خطای زیر مواجه شوید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`419 Sorry, your session has expired. Please refresh and try again.`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+این خطا،  زمانی پیش می‌آید که اعتبار سنجی CSRF در برنامه شما، موفق نباشد و یا به خطا بخورد. معمولاً یکی از دلایل اصلی این خطا، در sessionها است. اگر session به درستی ایجاد نشود و یا منقضی شود؛ این خطا، نمایش داده می‌شود.
+
+برای رفع این مشکل، یکی از راه حل‌ها این است که طبق <a href="../../details/envs/about" className="blue-link">مستندات تنظیم متغیرهای محیطی</a> ،متغیر <Important>SESSION_DRIVER</Important> را با مقدار زیر، به برنامه خود اضافه کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`SESSION_DRIVER=cookie`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
 </Layout>
