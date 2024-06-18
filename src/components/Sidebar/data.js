@@ -27,7 +27,27 @@ import {
   GoPackage ,
   GoBug,
   GoPaperclip,
-  GoMegaphone
+  GoMegaphone,
+  GoCpu,
+  GoShieldLock,
+  GoNumber,
+  GoFileBinary,
+  GoEye,
+  GoGraph,
+  GoKey,
+  GoLog,
+  GoEyeClosed,
+  GoPulse,
+  GoGitPullRequest,
+  GoPlug,
+
+
+
+
+
+
+
+  
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
@@ -214,6 +234,150 @@ export default {
       {
         title: "جزئیات پلتفرم",
         icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/"
+      }
+    ],
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            جزئیات پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "ویژگی‌های یک پلتفرم در لیارا",
+        icon: <GoInfo />,
+        link: "/paas/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "پلن‌های برنامه",
+        icon: <GoCpu />,
+        link: "/paas/details/"
+      },
+      {
+        title: "شبکه خصوصی",
+        icon: <GoShieldLock  />,
+        link: "/paas/details/"
+      },
+      {
+        title: "آی‌پی ثابت",
+        icon: <GoNumber  />,
+        link: "/paas/"
+      },
+      {
+        title: "فایل‌سیستم",
+        icon: <GoFileBinary />,
+        link: "/paas/"
+      },
+      {
+        title: "رویدادها",
+        icon: <GoEye />,
+        link: "/paas/"
+      },
+      {
+        title: "گزارشات",
+        icon: <GoGraph />,
+        link: "/paas/"
+      },
+      {
+        title: "متغیرهای محیطی",
+        icon: <GoKey  />,
+        link: "/paas/"
+      },
+      {
+        title: "رجیستری خصوصی و تاریخچه",
+        icon: <GoLog />,
+        link: "/paas/"
+      },
+      {
+        title: "خط فرمان کنسول",
+        icon: <GoBrowser />,
+        link: "/paas/"
+      },
+      {
+        title: "نادیده گرفتن فایل‌ها",
+        icon: <GoEyeClosed />,
+        link: "/paas/"
+      },
+      {
+        title: "استقرار بدون اختلال",
+        icon: <GoGitPullRequest  />,
+        link: "/paas/"
+      },
+      {
+        title: "بررسی سلامت",
+        icon: <GoPulse />,
+        link: "/paas/"
+      },
+      {
+        title: "تنظیم DNS Server",
+        icon: <GoPlug  />,
+        link: "/paas/"
+      },
+      {
+        title: "تنظیم موقعیت build",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "تغییر پلن در برنامه",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "حذف یک برنامه",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "پروکسی معکوس (reverse)",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas//getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
         link: "/"
       },
       {
@@ -245,6 +409,7 @@ export default {
         link: "/"
       }
     ],
+
     nodejs: [
       {
         badge: (
