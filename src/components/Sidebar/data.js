@@ -738,6 +738,10 @@ export default {
         link: "/paas/laravel/how-tos/connect-to-db/redis"
       },
       {
+        title: "دیتابیس ElasticSearch",
+        link: "/paas/laravel/how-tos/connect-to-db/elastic-search"
+      },
+      {
         hr: true
       },
       {
@@ -767,6 +771,11 @@ export default {
         title: "Lumen",
         icon: <IconContainer alt="laravel" />,
         link: "/paas/laravel/related-apps/lumen"
+      },
+      {
+        title: "Laravel Octane",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/related-apps/laravel-octane"
       },
     ],
   }

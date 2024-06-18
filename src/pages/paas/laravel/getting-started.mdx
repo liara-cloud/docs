@@ -62,10 +62,8 @@ import {
 
 <div className="grid grid-cols-2 gap-4">
             {[
-    { alt: 'laravel', platform: 'Lumen', link: "/paas/nodejs/related-apps/lumen" },
-    { alt: 'laravel', platform: 'Laravel Horizon', link: "/horizon" },
-    { alt: 'laravel', platform: 'Laravel Echo', link: "/horizon" },
-    { alt: 'laravel', platform: 'Laravel Octane', link: "/horizon" },
+    { alt: 'laravel', platform: 'Lumen', link: "/paas/laravel/related-apps/lumen" },
+    { alt: 'laravel', platform: 'Laravel Octane', link: "/paas/laravel/related-apps/laravel-octane" },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
@@ -86,7 +84,7 @@ import {
 
 <Alert variant="success">
 همچنین بخوانید:
-<Link href='./related-links.md' className="blue-link">
+<Link href='./related-links' className="blue-link">
  لینک‌های مرتبط با پلتفرم Laravel
 </Link>
 </Alert>
