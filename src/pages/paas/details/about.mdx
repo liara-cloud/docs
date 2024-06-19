@@ -11,177 +11,192 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 
 import {
-  GoTrophy,
-
-
-  GoContainer,
+  GoHome,
   GoDatabase,
+  GoContainer,
   GoRocket,
-  GoServer,
   GoMail,
+  GoServer,
+  GoTerminal,
   GoGlobe,
-  GoArrowLeft,
+  GoCode,
+  GoBrowser,
+  GoArrowRight,
+  GoInfo,
+  GoNote,
+  GoCodespaces,
+  GoWorkflow,
+  GoPackageDependents,
+  GoSync,
+  GoPerson,
+  GoTelescope,
+  GoFlame,
+  GoPackageDependencies,
+  GoProjectTemplate,
+  GoZap,
+  GoFileSymlinkFile,
+  GoPackage ,
+  GoBug,
+  GoPaperclip,
+  GoMegaphone,
+  GoCpu,
+  GoShieldLock,
+  GoNumber,
+  GoFileBinary,
+  GoEye,
+  GoGraph,
+  GoKey,
+  GoLog,
+  GoEyeClosed,
+  GoPulse,
+  GoGitPullRequest,
+  GoPlug,
+  GoLocation,
+  GoGitCompare,
+  GoXCircle,
+  GoPaperAirplane,
 } from "react-icons/go";
 
 <Layout>
-# سرویس پلتفرم لیارا
+# ویژگی‌های یک پلتفرم در لیارا
 <hr className="mb-2" />
+لیارا همواره سعی داشته است که با 
+ارائه یک رابط کاربری آسان و همه‌منظوره، نیازهای کاربران خود را تا حد زیادی در خود <a href="https://console.liara.ir" className="blue-link">صفحه کنسول</a>، شناسایی و بر طرف کند. اما گاهاً ممکن است که در برخی از موارد، دچار ابهام شوید و به دنبال پاسخی
+برای سوالات خود، باشید.
+از این رو، در ادامه، تمامی جزئیات مربوط به پلتفرم برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
 
-<Section id='what-is-paas' title='PaaS چیست؟' />
+<div className="h-6" />
 
-یک <b>PaaS</b> (یا Platform as a Service) به شما کمک می‌کند تا برنامه‌ها و وب‌سایت‌های خود را بسازید و اجرا کنید بدون اینکه نگران مدیریت سرورها و زیرساخت‌های فنی باشید. 
-
-<Section id="liara-provided-apps" title="لیارا چه پلتفرم‌هایی را ارائه می‌دهد؟" />
-لیارا از جمله اولین سرویس‌های میزبانی ابری ایرانی است که در زمینه ارائه خدمات مربوط به پلتفرم‌های مختلف، پیش‌تاز است. در حال حاضر، لیارا، پلتفرم‌های زیر را به صورت مستقیم ارائه می‌دهد:
-
-
-<div className="h-4" />
-<div className="grid grid-cols-4 gap-4">
-            {[
-    { alt: 'nodejs', platform: 'NodeJS', link: "./nodejs/getting-started" },
-    { alt: 'next', platform: 'NextJS', link: "./nextjs/getting-started" },
-    { alt: 'laravel', platform: 'Laravel', link: "./laravel/getting-started" },
-    { alt: 'php', platform: 'PHP', link: "./related-apps/nuxtjs" },
-    { alt: 'django', platform: 'Django', link: "./related-apps/fastify" },
-    { alt: 'flask', platform: 'Flask', link: "./related-apps/hapi" },
-    { alt: 'netcore', platform: 'NET.', link: "./related-apps/remix" },
-    { alt: 'HTML5', platform: 'Static', link: "./related-apps/strapi/starter" },
-    { alt: 'react', platform: 'React', link: "./related-apps/svelte" },
-    { alt: 'angularjs', platform: 'Angular', link: "./related-apps/svelte-kit" },
-    { alt: 'vue', platform: 'Vue', link: "./related-apps/svelte-kit" },
-    { alt: 'docker', platform: 'Docker', link: "./related-apps/svelte-kit" },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                      <PlatformIcon platform={item.alt} />
-                    </div>
-                    <h4>
-                      {item.platform}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
-
-<br />
-اگر که در حال حاضر، لیارا از پلتفرم مورد نظر شما به صورت مستقیم پشتیبانی نمی‌کند؛ جای نگرانی نیست! شما می‌توانید با استفاده از <a href="" className="blue-link">سرویس Docker لیارا</a> برنامه‌های خود را به سرعت و با بیشترین بازدهی، مستقر کنید؛ در ادامه مستندات برخی از پلتفرم‌های مورد استفاده، آمده است:
-<br />
-
-<div className="grid grid-cols-4 gap-4">
-            {[
-    { alt: 'go', platform: 'Golang', link: "" },
-    { alt: 'docker', platform: 'Spring Boot', link: "" },
-    { alt: 'docker', platform: 'Ruby On Rails', link: "" },
-    { alt: 'docker', platform: 'Rust', link: "" },
-    { alt: 'python', platform: 'Pure Python Apps', link: "" },
-    { alt: 'fastapi', platform: 'Fast API', link: "" },
-    { alt: 'docker', platform: 'Play Framework', link: "" },
-    { alt: 'python', platform: 'Pyramid', link: "" },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                      <PlatformIcon platform={item.alt} />
-                    </div>
-                    <h4>
-                      {item.platform}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
-
-
-<br />
-
-<Section id='also-read' title='همچنین بخوانید:' />
-<div className="grid grid-cols-3 gap-4">
-            {[
-    {
-      text: 'آشنایی با جزئیات پلتفرم',
-      link: './details/about',
+    <div className="grid grid-cols-3 gap-4">
+    {[
+  {
+      title: "پلن‌های برنامه",
+      icon: <GoCpu />,
+      desc: " آشنایی با پلن‌های نرم‌افزاری و پلن‌های سخت‌افزاری یک پلتفرم",
+      link: "./plans/about",
     },
     {
-      text: 'راه‌اندازی CI/CD بر روی پلتفرم',
-      link: './cicd/about',
+      title: "شبکه خصوصی",
+      icon: <GoShieldLock  />,
+      desc: "امکان ارتباط امن و سریع بین برنامه‌ها و دیتابیس‌های مرتبط بدون محدودیت",
+      link: "./private-network",
     },
     {
-      text: 'آشنایی با دیسک‌ها در پلتفرم',
-      link: './disks',
+      title: "آی‌پی ثابت",
+      icon: <GoNumber  />,
+      desc: "امکان استفاده از آی‌پی ثابت اشتراکی در برنامه‌ها در لیارا برای ارسال درخواست به بانک‌ها و یا سرویس‌های مشابه",
+      link: "./static-ip",
     },
     {
-      text: 'اتصال دامنه خریداری شده به پلتفرم',
-      link: './domains',
+      title: "فایل‌سیستم",
+      icon: <GoFileBinary />,
+      desc: "فایل‌سیستم فقط خواندنی برای افزایش امنیت برنامه‌ها و قابل تغییر به writable برای اعمال تغییرات موقتی",
+      link: "./file-system",
     },
     {
-      text: 'به‌روزرسانی پلتفرم',
-      link: '',
+      title: "رویدادها",
+      icon: <GoEye />,
+      desc: "مشاهده وضعیت نهایی استقرار برنامه‌ها برای بررسی تغییرات بر اساس زمان آخرین تغییرات",
+      link: "./events",
     },
     {
-      text: 'انتقال سرویس پلتفرم',
-      link: '',
+      title: "گزارشات",
+      icon: <GoGraph />,
+      desc: "امکان بررسی و عیب‌یابی برنامه‌ها از طریق گزارشات نرم‌افزاری و سخت‌افزاری",
+      link: "/paas/",
     },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <h4>
-                      {item.text}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
+    {
+      title: "متغیرهای محیطی",
+      icon: <GoKey  />,
+      desc: "امکان اضافه کردن متغیرهای شامل اطلاعات مهم و امنیتی به برنامه مانند اطلاعات مربوط به دیتابیس",
+      link: "/paas/",
+    },
+    {
+      title: "رجیستری خصوصی و تاریخچه",
+      icon: <GoLog />,
+      desc: "آشنایی با نحوه ذخیره‌سازی کدهای برنامه، مدیریت برنامه و مشاهده استقرارهای قبلی، لاگ‌ها و ورژن‌ها",
+      link: "/paas/",
+    },
+    {
+      title: "خط فرمان کنسول",
+      icon: <GoBrowser />,
+      desc: "امکان اتصال به سرور و اجرای دستورات موردنیاز زمانی که برنامه در حالت اجرا قرار دارد",
+      link: "/paas/",
+    },
+    {
+      title: "نادیده گرفتن فایل‌ها",
+      icon: <GoEyeClosed />,
+      desc: "امکان نادیده گرفتن فایل‌های اضافی پروژه و عدم آپلود آن‌ها در حین عملیات استقرار",
+      link: "/paas/",
+    },
+    {
+      title: "استقرار بدون اختلال",
+      icon: <GoGitPullRequest  />,
+      desc: "امکان در دسترس بودن برنامه برای همیشه بدون ذره‌ای قطعی یا اختلال در برنامه",
+      link: "/paas/",
+    },
+    {
+      title: "بررسی سلامت",
+      icon: <GoPulse />,
+      desc: "امکان بهره‌برداری از قابلیت استقرار بدون اختلال، با استفاده از قابلیت بررسی سلامت",
+      link: "/paas/",
+    },
+    {
+      title: "تنظیم DNS Server",
+      icon: <GoPlug  />,
+      desc: "امکان تنظیم DNS بر روی کل سرور برنامه برای شکستن تحریم‌ها ",
+      link: "/paas/",
+    },
+    {
+      title: "تنظیم موقعیت build",
+      icon: <GoLocation />,
+      desc: "امکان تغییر موقعیت build برنامه‌ها برای نصب سریع‌تر وابستگی‌های برنامه یا وابستگی‌های شامل تحریم",
+      link: "/paas/",
+    },
+    {
+      title: "تغییر پلن در برنامه",
+      icon: <GoGitCompare />,
+      desc: "امکان تغییر پلن‌های یک برنامه در هر زمانی، با توجه به نیازهای یک برنامه",
+      link: "/paas/",
+    },
+    {
+      title: "حذف یک برنامه",
+      icon: <GoXCircle  />,
+      desc: "امکان حذف یک برنامه در لیارا، پس از اتمام روزهای طلایی استفاده از آن",
+      link: "/paas/",
+    },
+    {
+      title: "پروکسی معکوس (reverse proxy)",
+      icon: <GoPaperAirplane  />,
+      desc:
+       "ارسال درخواست‌ها از سمت کاربران به سرور توسط پروکسی معکوس برای افزایش امنیت و امور دیگر",
+      link: "/paas/",
+    },
+].map(item =>
+        <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
+        <div>
+            <div className="flex items-center justify-between gap-3">
+            <h4>
+                {item.title}
+            </h4>
+            <div className="bg-[#222] text-white p-1 rounded-md">
+                {item.icon}
+            </div>
+            </div>
+            <p align='justify' className="text-[gray] leading-6 text-[14px] mt-3">
+            {item.desc}
+            </p>
+        </div>
+        <Link href={item.link}>
+        <Button variant="link" href={item.link}>بیشتر بدانید</Button>
+        </Link>
+        </Card>
+    )}
+    </div>
 
-<br />
 
-در ادامه، ده تا از پربازدیدترین مستندات مربوط به پلتفرم برای شما قرار گرفته است:
 
-<ul className="pr-4">
-  {[
-    {
-      text: 'انتخاب نسخه NodeJS',
-      href: './',
-    },
-    {
-      text: 'استقرار برنامه با Prisma',
-      href: './how-tos/create-app',
-    },
-    {
-      text: 'استقرار برنامه‌های Remix',
-      href: '/',
-    },
-    {
-      text: 'خطای CORS',
-      href: '/',
-    },
-  ].map((item, index) => (
-    <li
-      key={index}
-      style={{
-        listStyle: "persian",
-        textDecoration: "underline",
-        textDecorationColor: "#9ca3af"
-      }}
-    >
-      <a
-        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
-        href={item.href}
-      >
-        {item.text}
-        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
-      </a>
-    </li>
-  ))}
-</ul>
+
+
 
 </Layout>

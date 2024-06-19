@@ -40,14 +40,10 @@ import {
   GoPulse,
   GoGitPullRequest,
   GoPlug,
-
-
-
-
-
-
-
-  
+  GoLocation,
+  GoGitCompare,
+  GoXCircle,
+  GoPaperAirplane,
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
@@ -290,27 +286,27 @@ export default {
       {
         title: "پلن‌های برنامه",
         icon: <GoCpu />,
-        link: "/paas/details/"
+        link: "/paas/details/plans/about"
       },
       {
         title: "شبکه خصوصی",
         icon: <GoShieldLock  />,
-        link: "/paas/details/"
+        link: "/paas/details/private-network"
       },
       {
         title: "آی‌پی ثابت",
         icon: <GoNumber  />,
-        link: "/paas/"
+        link: "/paas/details/static-ip"
       },
       {
         title: "فایل‌سیستم",
         icon: <GoFileBinary />,
-        link: "/paas/"
+        link: "/paas/details/file-system"
       },
       {
         title: "رویدادها",
         icon: <GoEye />,
-        link: "/paas/"
+        link: "/paas/details/events"
       },
       {
         title: "گزارشات",
@@ -354,60 +350,24 @@ export default {
       },
       {
         title: "تنظیم موقعیت build",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas//getting-started"
+        icon: <GoLocation />,
+        link: "/paas/"
       },
       {
         title: "تغییر پلن در برنامه",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas//getting-started"
+        icon: <GoGitCompare />,
+        link: "/paas/"
       },
       {
         title: "حذف یک برنامه",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas//getting-started"
+        icon: <GoXCircle  />,
+        link: "/paas/"
       },
       {
         title: "پروکسی معکوس (reverse)",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas//getting-started"
+        icon: <GoPaperAirplane  />,
+        link: "/paas/"
       },
-      {
-        hr: true
-      },
-      {
-        title: "جزئیات پلتفرم",
-        icon: <GoNote />,
-        link: "/"
-      },
-      {
-        title: "مدیریت دیسک‌",
-        icon: <GoCodespaces />,
-        link: "/"
-      },
-      {
-        title: "مدیریت دامنه‌",
-        icon: <GoGlobe />,
-        link: "/"
-      },
-      {
-        title: "قابلیت CI/CD",
-        icon: <GoWorkflow />,
-        link: "/"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "به‌روزرسانی پلتفرم",
-        icon: <GoSync />,
-        link: "/"
-      },
-      {
-        title: "انتقال پلتفرم",
-        icon: <GoPackageDependents />,
-        link: "/"
-      }
     ],
 
     nodejs: [
