@@ -321,52 +321,52 @@ export default {
       {
         title: "رجیستری خصوصی و تاریخچه",
         icon: <GoLog />,
-        link: "/paas/"
+        link: "/paas/details/private-registery"
       },
       {
         title: "خط فرمان کنسول",
         icon: <GoBrowser />,
-        link: "/paas/"
+        link: "/paas/details/console-shell"
       },
       {
         title: "نادیده گرفتن فایل‌ها",
         icon: <GoEyeClosed />,
-        link: "/paas/"
+        link: "/paas/details/ignoring-files"
       },
       {
         title: "استقرار بدون اختلال",
         icon: <GoGitPullRequest  />,
-        link: "/paas/"
+        link: "/paas/details/zero-downtime-deployment"
       },
       {
         title: "بررسی سلامت",
         icon: <GoPulse />,
-        link: "/paas/"
+        link: "/paas/details/health-check"
       },
       {
         title: "تنظیم DNS Server",
         icon: <GoPlug  />,
-        link: "/paas/"
+        link: "/paas/details/dns-server-settings"
       },
       {
         title: "تنظیم موقعیت build",
         icon: <GoLocation />,
-        link: "/paas/"
+        link: "/paas/details/build-location"
       },
       {
         title: "تغییر پلن در برنامه",
         icon: <GoGitCompare />,
-        link: "/paas/"
+        link: "/paas/details/change-plan"
       },
       {
         title: "حذف یک برنامه",
         icon: <GoXCircle  />,
-        link: "/paas/"
+        link: "/paas/details/delete-app"
       },
       {
         title: "پروکسی معکوس (reverse)",
         icon: <GoPaperAirplane  />,
-        link: "/paas/"
+        link: "/paas/details/reverse-proxy"
       },
     ],
 

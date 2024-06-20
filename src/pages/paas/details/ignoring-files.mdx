@@ -1,0 +1,40 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# نادیده‌گرفتن فایل‌ها
+
+<hr className="mb-2" />
+لیارا در هر بار عملیات استقرار، فقط فایل‌هایی که تغییر کرده باشند و یا به برنامه اضافه شده باشند را آپلود می‌کند و فایل‌های قدیمی و بدون تغییر، مجدداً از روی سرور خوانده می‌شوند. این کار باعث می‌شود که سرعت استقرارها افزایش یابد و نیاز نباشد که شما گاهاً به خاطر تغییر یک فایل، منتظر آپلودشدن کل فایل‌ها باشید.
+<div className="h-4" />
+
+قابلیت  نادیده‌گرفتن فایل‌ها و پوشه‌ها این امکان را به شما می‌دهد که فقط فایل‌ها و پوشه‌هایی که روی سرور نیاز دارید، آپلود کنید. این قابلیت کاملاً مشابه عملکرد Git در مواجهه با فایل <Important>gitignore.</Important> است.
+به صورت خودکار، اگر پوشه‌ (پوشه‌های)  شما دارای یکی از فایل‌های زیر باشد، لیارا آن را بررسی کرده و فایل‌ها و پوشه‌هایی که در آن لیست کرده باشید را نادیده می‌گیرد:
+<div className="h-4" />
+
+<ul>
+    <li>liaraignore.</li>
+    <li>gitignore.</li>
+    <li>dockerignore.</li>
+</ul>
+<div className="h-4" />
+
+<Alert variant="warning">
+<p>
+توجه داشته باشید که اولویت اول با <Important>liaraignore.</Important> است، اگر چنین فایلی را تعریف کرده باشید، دیگر فایل‌های ignore مانند <Important>dockerignore.</Important> و <Important>gitignore.</Important> خوانده نمی‌شوند.
+</p>
+</Alert>
+
+</Layout>
