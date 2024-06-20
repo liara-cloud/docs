@@ -311,12 +311,12 @@ export default {
       {
         title: "گزارشات",
         icon: <GoGraph />,
-        link: "/paas/"
+        link: "/paas/details/observations/about"
       },
       {
         title: "متغیرهای محیطی",
         icon: <GoKey  />,
-        link: "/paas/"
+        link: "/paas/details/envs"
       },
       {
         title: "رجیستری خصوصی و تاریخچه",

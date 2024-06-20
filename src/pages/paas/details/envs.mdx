@@ -1,0 +1,98 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# متغیرهای محیطی 
+
+<hr className="mb-2" />
+متغیرهای محیطی یا Environment Variables مقادیری هستند که اطلاعاتی را در مورد محیط اجرای یک برنامه یا سیستم فراهم می‌کنند. این متغیرها به برنامه‌ها کمک می‌کنند تا با محیط اجرایی خود تعامل داشته و اطلاعات لازم را از آن دریافت کنند.
+<div className="h-4" />
+متغیرهای محیطی (Environment Variables) به شما کمک می‌کنند تا برنامه‌ی خود را متناسب با محیط‌های مختلفی اعم از Development و Production پیکربندی کنید.
+یکی از متداول‌ترین کاربردهای این متغیرها، اتصال برنامه به دیتابیس است. برای مثال در زمان توسعه معمولا به دیتابیس لوکال متصل هستید اما پس از استقرار برنامه انتظار می‌رود که برنامه‌ی شما به دیتابیس اصلی‌تان متصل شود.
+
+<Section id="see-envs" title="مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده" />
+<Tabs 
+    tabs={["Liara CLI", "Liara Console"]} 
+    content={[
+    <>
+    <p>
+        برای مشاهده متغیرهای محیطی با استفاده از ابزار Liara CLI کافیست تا دستور زیر را اجرا کنید:
+    </p>
+
+    <div dir="ltr">
+        <Highlight  className="bash">
+            {`liara env:ls --app my-web-app`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>        
+        پس از <Important>app--</Important> بایستی شناسه برنامه خود را وارد کنید.
+    </p>
+    </>,
+    <>
+        <p>
+            برای مشاهده متغیرهای محیطی با استفاده از Console کافیست بر روی برنامه خود کلیک کرده و سپس وارد قسمت <b>تنظیمات</b> برنامه خود شوید. اکنون می‌توانید در بخش <b>متغیرها</b> لیستی از متغیرهای محیطی خود را ببینید:
+        </p>
+        <div className='h-2' />
+        <img src="https://files.liara.ir/liara/docs/see-envs-list-using-console.gif" alt="add envs using liara console" />
+        <div className='h-2' />
+    </>
+]} 
+/>
+
+<Section id="see-envs" title="نحوه اضافه‌کردن یا ویرایش متغیرهای محیطی" />
+<Tabs 
+    tabs={["Liara CLI", "Liara Console"]} 
+    content={[
+    <>
+    <p>
+        برای مشاهده متغیرهای محیطی با استفاده از ابزار Liara CLI کافیست تا دستور زیر را اجرا کنید:
+    </p>
+
+    <div dir="ltr">
+        <Highlight  className="bash">
+            {`liara env:ls --app my-web-app`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>        
+        پس از <Important>app--</Important> بایستی شناسه برنامه خود را وارد کنید.
+    </p>
+    </>,
+    <>
+        <p>
+            برای مشاهده متغیرهای محیطی با استفاده از Console کافیست بر روی برنامه خود کلیک کرده و سپس وارد قسمت <b>تنظیمات</b> برنامه خود شوید. اکنون می‌توانید در بخش <b>متغیرها</b> لیستی از متغیرهای محیطی خود را ببینید:
+        </p>
+        <div className='h-2' />
+        <img src="https://files.liara.ir/liara/docs/see-envs-list-using-console.gif" alt="add envs using liara console" />
+        <div className='h-2' />
+    </>
+]} 
+/>
+
+
+لیارا این امکان را برای‌تان فراهم کرده که در برنامه خود از آی‌پی ثابت اشتراکی نیز برخوردار باشید. برای اینکه تمام درخواست‌های خروجی برنامه با یک IP ثابت صورت بگیرد. شما باید وارد قسمت تنظیمات برنامه خود شده و گزینه <b>فعال‌کردن آی‌پی ثابت</b> را روشن کنید:
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/enabled-static-ip.png" alt="enable-static-ip"/>
+<div className="h-4" />
+پس از انجام این کار، یک IP ثابت به برنامه شما تعلق می‌گیرد که در بخش اطلاعات کلی نیز، می‌توانید آن را مشاهده بفرمایید؛ به عنوان مثال:
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/see-static-ip-info.png" alt="see-static-ip-info"/>
+
+<Section id='what-is-static-sharing-ip' title="آی‌پی اشتراکی چیست؟" />
+آی‌پی که در اختیار شما قرار گرفته، ممکن است به چندین برنامه‌ی دیگر هم در لیارا اختصاص داده شده باشد. یعنی آی‌پی ثابتی که لیارا به شما می‌دهد اشتراکی است و مانند VPS ها اختصاصی نیست. این مورد مشکل خاصی برای‌تان ایجاد نمی‌کند و می‌توانید با خیال راحت، IP خود را به بانک یا سرویس مورد نظرتان بدهید.
+
+
+</Layout>
