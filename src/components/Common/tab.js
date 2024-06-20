@@ -20,9 +20,9 @@ const TabComponent = ({ tabs, content }) => {
         )}
       </div>
       <div dir="rtl" className="mt-5 p-4">
-        <p>
+        <div>
           {content[activeTab]}
-        </p>
+        </div>
       </div>
     </div>
   );
