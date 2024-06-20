@@ -27,7 +27,23 @@ import {
   GoPackage ,
   GoBug,
   GoPaperclip,
-  GoMegaphone
+  GoMegaphone,
+  GoCpu,
+  GoShieldLock,
+  GoNumber,
+  GoFileBinary,
+  GoEye,
+  GoGraph,
+  GoKey,
+  GoLog,
+  GoEyeClosed,
+  GoPulse,
+  GoGitPullRequest,
+  GoPlug,
+  GoLocation,
+  GoGitCompare,
+  GoXCircle,
+  GoPaperAirplane,
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
@@ -214,7 +230,7 @@ export default {
       {
         title: "جزئیات پلتفرم",
         icon: <GoNote />,
-        link: "/"
+        link: "/paas/details/about"
       },
       {
         title: "مدیریت دیسک‌",
@@ -245,6 +261,115 @@ export default {
         link: "/"
       }
     ],
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            جزئیات پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "ویژگی‌های یک پلتفرم در لیارا",
+        icon: <GoInfo />,
+        link: "/paas/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "پلن‌های برنامه",
+        icon: <GoCpu />,
+        link: "/paas/details/plans/about"
+      },
+      {
+        title: "شبکه خصوصی",
+        icon: <GoShieldLock  />,
+        link: "/paas/details/private-network"
+      },
+      {
+        title: "آی‌پی ثابت",
+        icon: <GoNumber  />,
+        link: "/paas/details/static-ip"
+      },
+      {
+        title: "فایل‌سیستم",
+        icon: <GoFileBinary />,
+        link: "/paas/details/file-system"
+      },
+      {
+        title: "رویدادها",
+        icon: <GoEye />,
+        link: "/paas/details/events"
+      },
+      {
+        title: "گزارشات",
+        icon: <GoGraph />,
+        link: "/paas/"
+      },
+      {
+        title: "متغیرهای محیطی",
+        icon: <GoKey  />,
+        link: "/paas/"
+      },
+      {
+        title: "رجیستری خصوصی و تاریخچه",
+        icon: <GoLog />,
+        link: "/paas/"
+      },
+      {
+        title: "خط فرمان کنسول",
+        icon: <GoBrowser />,
+        link: "/paas/"
+      },
+      {
+        title: "نادیده گرفتن فایل‌ها",
+        icon: <GoEyeClosed />,
+        link: "/paas/"
+      },
+      {
+        title: "استقرار بدون اختلال",
+        icon: <GoGitPullRequest  />,
+        link: "/paas/"
+      },
+      {
+        title: "بررسی سلامت",
+        icon: <GoPulse />,
+        link: "/paas/"
+      },
+      {
+        title: "تنظیم DNS Server",
+        icon: <GoPlug  />,
+        link: "/paas/"
+      },
+      {
+        title: "تنظیم موقعیت build",
+        icon: <GoLocation />,
+        link: "/paas/"
+      },
+      {
+        title: "تغییر پلن در برنامه",
+        icon: <GoGitCompare />,
+        link: "/paas/"
+      },
+      {
+        title: "حذف یک برنامه",
+        icon: <GoXCircle  />,
+        link: "/paas/"
+      },
+      {
+        title: "پروکسی معکوس (reverse)",
+        icon: <GoPaperAirplane  />,
+        link: "/paas/"
+      },
+    ],
+
     nodejs: [
       {
         badge: (
@@ -650,10 +775,10 @@ export default {
         title: "استفاده از دیسک",
         link: "/paas/laravel/how-tos/use-disk"
       },
-      {
-        title: "راه‌اندازی برنامه Websocket",
-        link: "/paas/laravel/how-tos/use-websocket"
-      },
+      // {
+      //   title: "راه‌اندازی برنامه Websocket",
+      //   link: "/paas/laravel/how-tos/use-websocket"
+      // },
       {
         title: "تنظیم اختصاصی فایل php.ini",
         link: "/paas/laravel/how-tos/customize-php-ini"
@@ -679,32 +804,28 @@ export default {
         link: "/paas/laravel/how-tos/choose-version"
       },
       {
-        title: "بهینه‌سازی برنامه برای استقرار",
-        link: "/paas/laravel/how-tos/choose-version"
-      },
-      {
         title: "مدیریت logهای Laravel",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/manage-laravel-logs"
       },
       {
         title: "پیکربندی TrustedProxies",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/configure-trustedproxies"
       },
       {
         title: "فعال‌سازی Gzip و Caching",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/enable-gzip-and-caching"
       },
       {
         title: "استفاده از ماژول FFMPEG",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/use-ffmpeg-module"
       },
       {
         title: "استفاده از Ziggy",
-        link: "/paas/laravel/how-tos/choose-version"
+        link: "/paas/laravel/how-tos/use-ziggy"
       },
       {
-        title: "نصب اکستنشن",
-        link: "/paas/laravel/how-tos/choose-version"
+        title: "مشاهده اکستنشن‌های نصب شده",
+        link: "/paas/laravel/how-tos/see-extension"
       },
       {
         hr: true
@@ -718,24 +839,20 @@ export default {
         )
       },
       {
-        title: "دیتابیس MongoDB",
-        link: "/paas/laravel/how-tos/connect-to-db/mongodb"
+        title: "دیتابیس MySQL",
+        link: "/paas/laravel/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس MariaDB",
         link: "/paas/laravel/how-tos/connect-to-db/mariadb"
       },
       {
-        title: "دیتابیس MySQL",
-        link: "/paas/laravel/how-tos/connect-to-db/mysql"
+        title: "دیتابیس MSSQL",
+        link: "/paas/laravel/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس PostgreSQL",
         link: "/paas/laravel/how-tos/connect-to-db/postgresql"
-      },
-      {
-        title: "دیتابیس MSSQL",
-        link: "/paas/laravel/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس SQLite",
@@ -747,9 +864,8 @@ export default {
       },
       {
         title: "دیتابیس ElasticSearch",
-        link: "/paas/laravel/how-tos/connect-to-db/elasticsearch"
+        link: "/paas/laravel/how-tos/connect-to-db/elastic-search"
       },
-      
       {
         hr: true
       },
@@ -763,7 +879,7 @@ export default {
       },
       {
         title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB",
-        link: "/paas/laravel/fix-common-errors/upload-size-limit"
+        link: "/paas/laravel/fix-common-errors/upload-limit-size"
       },
       {
         title: "رفع خطای CORS",
@@ -771,7 +887,20 @@ export default {
       },
       {
         title: "رفع خطای 419",
-        link: "/paas/laravel/fix-common-errors/cors"
+        link: "/paas/laravel/fix-common-errors/419-page-expired"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "Lumen",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/related-apps/lumen"
+      },
+      {
+        title: "Laravel Octane",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/related-apps/laravel-octane"
       },
     ],
   }

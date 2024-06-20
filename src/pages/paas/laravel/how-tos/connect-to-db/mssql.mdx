@@ -11,285 +11,137 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس MSSQL در برنامه‌های NextJS
+# اتصال به دیتابیس MSSQL در برنامه‌های Laravel
 <hr className="mb-2" />
-        
 
-<Tabs 
-    tabs={["Pages Router", "App Router"]} 
-    content={[
-        <>
-            <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به Microsoft SQL Server در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mssql</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`npm install mssql`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`DB_USER=sa
-DB_PASS=6fdZJSt5LCXcVIZa0mgMLOS6
+برای اتصال به دیتابیس MSSQL نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="../../../details/envs/about" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_CONNECTION=sqlsrv
 DB_HOST=bromo.liara.cloud
-DB_PORT=33951
-DB_NAME=testDB`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mssql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import sql from 'mssql';
-
-const mssqlConfig = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  server: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
-  database: process.env.DB_NAME,
-  options: {
-    trustServerCertificate: true, 
-  },
-};
-
-export async function connectToMSSQL() {
-  const pool = await sql.connect(mssqlConfig);
-  return pool;
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              سپس، بایستی در مسیر <Important>pages/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/pages/api</Important>)، یک فایل به نام <Important>mssql.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { connectToMSSQL } from '@/lib/mssql';
-
-export default async function handler(req, res) {
-  const pool = await connectToMSSQL();
-  pool.close();
-
-  res.status(200).json({ message: 'Connected to MSSQL successfully' });
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>pages/index.js</Important> (یا <Important>src/pages/index.js</Important>) از دیتابیس خود، استفاده کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { useEffect, useState } from 'react';
-
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/mssql');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        <p>Error: {error.message}</p>
-      ) : data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...</p>
-      )}
+DB_PORT=34928
+DB_DATABASE=db
+DB_USERNAME=sa
+DB_PASSWORD=SEQdI8BcVutmIWrjBxVBmSNv`}
+    </Highlight>
     </div>
-  );
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
-            </p>
+<div className="h-2" />
+در ادامه، بایستی در فایل <Important>config/database.php</Important> تنظیمات درایور <Important>sqlsvr</Important> را به شکل زیر، وارد کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+        ],
 
-
-        </>,
-        <>
-            <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به Microsoft SQL Server در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mssql</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`npm install mssql`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`DB_USER=sa
-DB_PASS=6fdZJSt5LCXcVIZa0mgMLOS6
-DB_HOST=bromo.liara.cloud
-DB_PORT=33951
-DB_NAME=testDB`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mssql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import sql from 'mssql';
-
-const mssqlConfig = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  server: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
-  database: process.env.DB_NAME,
-  options: {
-    trustServerCertificate: true, 
-  },
-};
-
-export async function connectToMSSQL() {
-  const pool = await sql.connect(mssqlConfig);
-  return pool;
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              سپس، بایستی در مسیر <Important>app/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/app/api</Important>)، یک دایرکتوری به نام <Important>mssql</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>route.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`// src/app/api/mssql/route.js
-import { connectToMSSQL } from '@/lib/mssql';
-
-export async function GET(request) {
-  const pool = await connectToMSSQL();
-  pool.close();
-
-  return new Response(JSON.stringify({ message: 'Connected to MSSQL successfully' }));
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>app/page.js</Important> (یا <Important>src/app/page.js</Important>) از دیتابیس خود، استفاده کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`'use client'; 
-
-import { useEffect, useState } from 'react';
-
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/mssql');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        <p>Error: {error.message}</p>
-      ) : data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...</p>
-      )}
+    ],`}
+    </Highlight>
     </div>
-  );
-}`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
-            </p>
-        </>
-]} 
-/>
+<div className="h-2" />
+
+
+
+
+پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:controller DatabaseController`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/DatabaseController.php</Important> قرار دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`<?php
+
+namespace App\\Http\\Controllers;
+
+use Illuminate\\Support\\Facades\\DB;
+use Illuminate\\Support\\Facades\\Config;
+use Illuminate\\Http\\Request;
+
+class DatabaseController extends Controller
+{
+    public function checkConnection()
+    {
+        $databases = [
+            'sqlsrv' => 'sqlsrv',
+        ];
+
+        $results = [];
+
+        foreach ($databases as $connection) {
+            try {
+                DB::connection($connection)->getPdo();
+                $results[$connection] = 'Connection successful';
+            } catch (\\Exception $e) {
+                $results[$connection] = 'Connection failed: ' . $e->getMessage();
+            }
+        }
+
+        return response()->json($results);
+    }
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+      {`use App\\Http\\Controllers\\DatabaseController;
+
+Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>check-database-connection/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-در پکیج <Important>mssql</Important> قابلیت connection pooling   تعبیه شده است و شما می‌توانید با استفاده از قطعه کد زیر در فایل <Important>lib/mssql.js</Important> (یا <Important>src/lib/postgresql.js</Important>)، این قابلیت را، در حین اتصال به دیتابیس، ایجاد و پارامتر آن‌را بر اساس نیاز خود، مقداردهی کنید:
+برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>sqlsrv</Important> را به شکل زیر، تغییر دهید:
 <div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {`import sql from 'mssql';
-
-const mssqlConfig = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  server: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
-  database: process.env.DB_NAME,
-  options: {
-    trustServerCertificate: true, 
-  },
-  pool: {
-    max: 5,  // amount of connections in same time
-    min: 0,
-    idleTimeoutMillis: 30000
-  }
-};
-
-export async function connectToMSSQL() {
-  const pool = await sql.connect(mssqlConfig);
-  return pool;
-}`}
-    </Highlight>
-</div>
+  <div dir='ltr'>
+  <Highlight className="php">
+{`'sqlsrv' => [
+    'driver' => 'sqlsrv',
+    'url' => env('DB_URL'),
+    'host' => env('DB_HOST', 'localhost'),
+    'port' => env('DB_PORT', '1433'),
+    'database' => env('DB_DATABASE', 'laravel'),
+    'username' => env('DB_USERNAME', 'root'),
+    'password' => env('DB_PASSWORD', ''),
+    'charset' => env('DB_CHARSET', 'utf8'),
+    'prefix' => '',
+    'prefix_indexes' => true,
+    // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+    'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+    'pooling' => env('DB_SQLSERVER_POOLING', true), // enables connection pooling
+],
+`}
+  </Highlight>
+  </div>
 <div className="h-2" />
-
 
 </Layout>

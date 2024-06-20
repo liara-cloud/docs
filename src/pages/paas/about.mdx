@@ -1,14 +1,184 @@
 import Layout from "@/components/Layout";
-import Asciinema from "@/components/Common/asciinema";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
 
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
 
 <Layout>
-   ## متن
-        <hr className="mb-2" />
-        <h1>h1</h1>
-        <h2>h2</h2>
-        <h3>h3</h3>
-        <p>این متن تگ p است</p>
-        <p className="text-[gray]">این متن gray است</p>
-       <Asciinema id="test" />
+# سرویس پلتفرم لیارا
+<hr className="mb-2" />
+
+<Section id='what-is-paas' title='PaaS چیست؟' />
+
+یک <b>PaaS</b> (یا Platform as a Service) به شما کمک می‌کند تا برنامه‌ها و وب‌سایت‌های خود را بسازید و اجرا کنید بدون اینکه نگران مدیریت سرورها و زیرساخت‌های فنی باشید. 
+
+<Section id="liara-provided-apps" title="لیارا چه پلتفرم‌هایی را ارائه می‌دهد؟" />
+لیارا از جمله اولین سرویس‌های میزبانی ابری ایرانی است که در زمینه ارائه خدمات مربوط به پلتفرم‌های مختلف، پیش‌تاز است. در حال حاضر، لیارا، پلتفرم‌های زیر را به صورت مستقیم ارائه می‌دهد:
+
+
+<div className="h-4" />
+<div className="grid grid-cols-4 gap-4">
+            {[
+    { alt: 'nodejs', platform: 'NodeJS', link: "./nodejs/getting-started" },
+    { alt: 'next', platform: 'NextJS', link: "./nextjs/getting-started" },
+    { alt: 'laravel', platform: 'Laravel', link: "./laravel/getting-started" },
+    { alt: 'php', platform: 'PHP', link: "./related-apps/nuxtjs" },
+    { alt: 'django', platform: 'Django', link: "./related-apps/fastify" },
+    { alt: 'flask', platform: 'Flask', link: "./related-apps/hapi" },
+    { alt: 'netcore', platform: 'NET.', link: "./related-apps/remix" },
+    { alt: 'HTML5', platform: 'Static', link: "./related-apps/strapi/starter" },
+    { alt: 'react', platform: 'React', link: "./related-apps/svelte" },
+    { alt: 'angularjs', platform: 'Angular', link: "./related-apps/svelte-kit" },
+    { alt: 'vue', platform: 'Vue', link: "./related-apps/svelte-kit" },
+    { alt: 'docker', platform: 'Docker', link: "./related-apps/svelte-kit" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+اگر که در حال حاضر، لیارا از پلتفرم مورد نظر شما به صورت مستقیم پشتیبانی نمی‌کند؛ جای نگرانی نیست! شما می‌توانید با استفاده از <a href="" className="blue-link">سرویس Docker لیارا</a> برنامه‌های خود را به سرعت و با بیشترین بازدهی، مستقر کنید؛ در ادامه مستندات برخی از پلتفرم‌های مورد استفاده، آمده است:
+<br />
+
+<div className="grid grid-cols-4 gap-4">
+            {[
+    { alt: 'go', platform: 'Golang', link: "" },
+    { alt: 'docker', platform: 'Spring Boot', link: "" },
+    { alt: 'docker', platform: 'Ruby On Rails', link: "" },
+    { alt: 'docker', platform: 'Rust', link: "" },
+    { alt: 'python', platform: 'Pure Python Apps', link: "" },
+    { alt: 'fastapi', platform: 'Fast API', link: "" },
+    { alt: 'docker', platform: 'Play Framework', link: "" },
+    { alt: 'python', platform: 'Pyramid', link: "" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br />
+
+<Section id='also-read' title='همچنین بخوانید:' />
+<div className="grid grid-cols-3 gap-4">
+            {[
+    {
+      text: 'آشنایی با جزئیات پلتفرم',
+      link: './details/about',
+    },
+    {
+      text: 'راه‌اندازی CI/CD بر روی پلتفرم',
+      link: './cicd/about',
+    },
+    {
+      text: 'آشنایی با دیسک‌ها در پلتفرم',
+      link: './disks',
+    },
+    {
+      text: 'اتصال دامنه خریداری شده به پلتفرم',
+      link: './domains',
+    },
+    {
+      text: 'به‌روزرسانی پلتفرم',
+      link: '',
+    },
+    {
+      text: 'انتقال سرویس پلتفرم',
+      link: '',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+در ادامه، ده تا از پربازدیدترین مستندات مربوط به پلتفرم برای شما قرار گرفته است:
+
+<ul className="pr-4">
+  {[
+    {
+      text: 'انتخاب نسخه NodeJS',
+      href: './',
+    },
+    {
+      text: 'استقرار برنامه با Prisma',
+      href: './how-tos/create-app',
+    },
+    {
+      text: 'استقرار برنامه‌های Remix',
+      href: '/',
+    },
+    {
+      text: 'خطای CORS',
+      href: '/',
+    },
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        listStyle: "persian",
+        textDecoration: "underline",
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+      <a
+        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
+        href={item.href}
+      >
+        {item.text}
+        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+      </a>
+    </li>
+  ))}
+</ul>
+
 </Layout>

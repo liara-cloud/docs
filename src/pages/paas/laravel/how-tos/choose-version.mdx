@@ -11,14 +11,21 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# نسخه NodeJS در پلتفرم NextJS
+# انتخاب نسخه PHP در لاراول
 <hr className="mb-2" />
 
-در حال حاضر در لیارا، نسخه زیر از NodeJS در پلتفرم NextJS ارائه می‌شود:
+در حال حاضر در پلتفرم Laravel لیارا، نسخه‌های زیر از  PHP ارائه می‌شوند: 
 
+<div className="h-2" />
 <ul className="pr-4">
   {[
-    {text: '20 (پیش‌فرض)',},
+    {text: '7.2 (بدون‌آپدیت)',},
+    {text: '7.3 (بدون‌آپدیت)',},
+    {text: '7.4 (پیش‌فرض)',},
+    {text: '8.0',},
+    {text: '8.1',},
+    {text: '8.2',},
+    {text: '8.3',},
   ].map((item, index) => (
     <li
       key={index}
@@ -31,12 +38,44 @@ import NextPage from "@/components/Common/nextpage";
   ))}
 </ul>
 
-<div className="h-4" />
-<Alert variant='warning'>
+<div className="h-2" />
+<Alert variant="warning">
 <p>
-در حال حاضر، امکان تغییر نسخه NodeJS در برنامه‌های NextJS وجود ندارد و هر برنامه NextJS پس از ساخته شدن، بر روی NodeJS v20 LTS خواهد بود.
+ قابلیت‌های جدید برای نسخه‌های بدون آپدیت، ارائه نمی‌شوند و برای رفع این مشکل، باید ورژن PHP برنامه خود را، ارتقاء دهید.
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+توجه داشته باشید که ionCube در PHP نسخه 8.3 پشتیبانی نمی‌شود.
 </p>
 </Alert>
 
-<NextPage next="./connect-to-db/about"/>
+<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
+<Tabs 
+    tabs={["Liara CLI", "Liara Console"]} 
+    content={[
+    <>
+    <p>
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه PHP به 8.2 می‌باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+    "laravel": {
+      "phpVersion": "8.2"
+  }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+    <>
+    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
+    <img src="https://files.liara.ir/liara/docs/choose-laravel-php-version-using-console.png" alt="how to choose version in liara console" />
+    </>
+]} 
+/>
+
+<NextPage next="./manage-laravel-logs"/>
 </Layout>

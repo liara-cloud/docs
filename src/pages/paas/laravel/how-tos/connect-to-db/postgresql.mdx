@@ -11,252 +11,112 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های NextJS
+# اتصال به دیتابیس PostgreSQL در برنامه‌های Laravel
 <hr className="mb-2" />
-        
 
-<Tabs 
-    tabs={["Pages Router", "App Router"]} 
-    content={[
-        <>
-            <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به PostgreSQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>pg</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`npm install pg`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
-            </p>
-                        <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`DB_URI=postgresql://root:1CTYgVwfjtomCa2Z26OsDi1z@bromo.liara.cloud:33938/postgres`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>postgresql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { Client } from 'pg';
-
-const pgConnectionURI = process.env.DB_URI;
-
-export async function connectToPostgreSQL() {
-  const client = new Client({
-    connectionString: pgConnectionURI,
-  });
-  await client.connect();
-  return client;
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              سپس، بایستی در مسیر <Important>pages/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/pages/api</Important>)، یک فایل به نام <Important>postgresql.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { connectToPostgreSQL } from '@/lib/postgresql';
-
-export default async function handler(req, res) {
-  const client = await connectToPostgreSQL();
-  await client.end();
-
-  res.status(200).json({ message: 'Connected to PostgreSQL successfully' });
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>pages/index.js</Important> (یا <Important>src/pages/index.js</Important>) از دیتابیس خود، استفاده کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { useEffect, useState } from 'react';
-
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/postgresql');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        <p>Error: {error.message}</p>
-      ) : data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...</p>
-      )}
+برای اتصال به دیتابیس PostgreSQL نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="../../../details/envs/about" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_CONNECTION=pgsql
+DB_HOST=bromo.liara.cloud
+DB_PORT=34515
+DB_DATABASE=postgres
+DB_USERNAME=root
+DB_PASSWORD=l6194OA4ZgOSc4EjPlep9qTl`}
+    </Highlight>
     </div>
-  );
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
-            </p>
+<div className="h-2" />
 
-
-        </>,
-        <>
-            <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به PostgreSQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>pg</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`npm install pg`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="bash">
-                {`DB_URI=postgresql://root:1CTYgVwfjtomCa2Z26OsDi1z@bromo.liara.cloud:33938/postgres`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>postgresql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { Client } from 'pg';
-
-const pgConnectionURI = process.env.DB_URI;
-
-export async function connectToPostgreSQL() {
-  const client = new Client({
-    connectionString: pgConnectionURI,
-  });
-  await client.connect();
-  return client;
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              سپس، بایستی در مسیر <Important>app/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/app/api</Important>)، یک دایرکتوری به نام <Important>postgresql</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>route.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { connectToPostgreSQL } from '@/lib/postgresql';
-
-export async function GET(request) {
-  const client = await connectToPostgreSQL();
-  await client.end();
-
-  return new Response(JSON.stringify({ message: 'Connected to PostgreSQL successfully' }));
-}
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>app/page.js</Important> (یا <Important>src/app/page.js</Important>) از دیتابیس خود، استفاده کنید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`'use client'; 
-
-import { useEffect, useState } from 'react';
-
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/postgresql');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        <p>Error: {error.message}</p>
-      ) : data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...</p>
-      )}
+پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:controller DatabaseController`}
+    </Highlight>
     </div>
-  );
-}`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
-            </p>
-        </>
-]} 
-/>
+<div className="h-2" />
+
+در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/DatabaseController.php</Important> قرار دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`<?php
+
+namespace App\\Http\\Controllers;
+
+use Illuminate\\Support\\Facades\\DB;
+use Illuminate\\Support\\Facades\\Config;
+use Illuminate\\Http\\Request;
+
+class DatabaseController extends Controller
+{
+    public function checkConnection()
+    {
+        $databases = [
+            'pgsql' => 'pgsql',
+        ];
+
+        $results = [];
+
+        foreach ($databases as $connection) {
+            try {
+                DB::connection($connection)->getPdo();
+                $results[$connection] = 'Connection successful';
+            } catch (\\Exception $e) {
+                $results[$connection] = 'Connection failed: ' . $e->getMessage();
+            }
+        }
+
+        return response()->json($results);
+    }
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+      {`use App\\Http\\Controllers\\DatabaseController;
+
+Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>check-database-connection/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-در پکیج <Important>pg</Important> قابلیت connection pooling   تعبیه شده است و شما می‌توانید با استفاده از قطعه کد زیر در فایل <Important>lib/postgresql.js</Important> (یا <Important>src/lib/postgresql.js</Important>)، این قابلیت را، در حین اتصال به دیتابیس، ایجاد و پارامتر آن‌را بر اساس نیاز خود، مقداردهی کنید:
+برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>pgsql</Important> را به شکل زیر، تغییر دهید:
 <div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {`import { Pool } from 'pg';
-
-const pool = new Pool({
-  connectionString: process.env.DB_URI,
-  max: 5  
-});
-
-export async function connectToPostgreSQL() {
-  return await pool.connect();
-}`}
-    </Highlight>
-</div>
+  <div dir='ltr'>
+  <Highlight className="php">
+{`'pgsql' => [
+    'driver' => 'pgsql',
+    'url' => env('DB_URL'),
+    'host' => env('DB_HOST', '127.0.0.1'),
+    'port' => env('DB_PORT', '5432'),
+    'database' => env('DB_DATABASE', 'laravel'),
+    'username' => env('DB_USERNAME', 'root'),
+    'password' => env('DB_PASSWORD', ''),
+    'charset' => env('DB_CHARSET', 'utf8'),
+    'prefix' => '',
+    'prefix_indexes' => true,
+    'search_path' => 'public',
+    'sslmode' => 'prefer',
+    'options' => [
+        PDO::ATTR_PERSISTENT => env('DB_PGSQL_POOLING', true),
+    ],
+],`}
+  </Highlight>
+  </div>
 <div className="h-2" />
-
 
 </Layout>

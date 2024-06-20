@@ -249,6 +249,10 @@ import NextPage from "@/components/Common/nextpage";
             </Highlight>
         </div>
         <div className='h-4' />
+        <Alert variant="error">
+        <p>توجه داشته باشید که <a href="https://laravel.com/docs/5.8/deployment#optimization" className="">طبق مستندات لاراول</a>، استفاده از دستور <Important>php artisan route:cache</Important> تنها زمانی امکان‌پذیر است که شما از Closureها برای تعریف routeها استفاده نکرده باشید و فقط از Controller استفاده کرده باشید.</p>
+        </Alert>
+        <div className='h-4' />
         <p>
             در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
         </p>
