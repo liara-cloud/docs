@@ -1868,6 +1868,11 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/buckets/aws-sdk">اتصال با AWS SDK</ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/buckets/direct-download">
+                دانلود مستقیم فایل از باکت
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/buckets/keys">مدیریت کلیدها</ActiveLink>
             </li>
             <li>

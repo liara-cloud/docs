@@ -54,6 +54,10 @@ export default () => (
         <PlatformIcon platform="jekyll" />
         <span>Jekyll</span>
       </Link>
+      <Link href="/instructions/astro">
+        <PlatformIcon platform="astro" />
+        <span>Astro</span>
+      </Link>
     </div>
 
     <br />
