@@ -1392,6 +1392,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/astro">
+                <PlatformIcon platform="astro" />
+                Astro
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/gridsome">
                 <PlatformIcon platform="gridsome" />
                 Gridsome

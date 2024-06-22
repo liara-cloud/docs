@@ -73,6 +73,7 @@ import nuxtIcon from "@liara/platformicons/glass/png/nuxtjs.png";
 import soketiIcon from "@liara/platformicons/glass/png/soketi.png";
 import pythonIcon from "@liara/platformicons/glass/png/python.png";
 import gatsbyIcon from "@liara/platformicons/glass/png/gatsby.png";
+import astroIcon from "../public/static/platforms/astro.svg";
 
 // Databases
 
@@ -152,6 +153,7 @@ const types = [
   { logo: prismaIcon, alt: "prisma" },
   { logo: jekyllIcon, alt: "jekyll" },
   { logo: gatsbyIcon, alt: "gatsby" },
+  { logo: astroIcon, alt: "astro" },
   { logo: svelteIcon, alt: "svelte" },
   { logo: blitzjsIcon, alt: "blitz" },
   { logo: strapiIcon, alt: "strapi" },
