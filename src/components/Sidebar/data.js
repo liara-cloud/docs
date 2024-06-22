@@ -44,6 +44,10 @@ import {
   GoGitCompare,
   GoXCircle,
   GoPaperAirplane,
+  GoTools,
+  GoIterations,
+  GoSignOut,
+  
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
@@ -235,7 +239,7 @@ export default {
       {
         title: "مدیریت دیسک‌",
         icon: <GoCodespaces />,
-        link: "/"
+        link: "/paas/disks/about"
       },
       {
         title: "مدیریت دامنه‌",
@@ -367,6 +371,109 @@ export default {
         title: "پروکسی معکوس (reverse)",
         icon: <GoPaperAirplane  />,
         link: "/paas/details/reverse-proxy"
+      },
+    ],
+
+    disks: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "دیسک چیست؟",
+        icon: <GoInfo />,
+        link: "/paas/disks/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+            مدیریت دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "ساخت دیسک",
+        link: "/paas/disks/create"
+      },
+      {
+        title: "تعریف مسیر برای دیسک",
+        link: "/paas/disks/private-network"
+      },
+      {
+        title: "افزایش حجم دیسک",
+        link: "/paas/disks/static-ip"
+      },
+      {
+        title: "کاهش حجم دیسک",
+        link: "/paas/disks/file-system"
+      },
+      {
+        title: "حذف یک دیسک",
+        link: "/paas/disks/events"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoIterations />
+            پشتیبان‌گیری از دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "تهیه فایل پشتیبان از دیسک‌ها",
+        link: "/paas/disks/observations/about"
+      },
+      {
+        title: "بازیابی فایل پشتیبان در دیسک‌ها",
+        link: "/paas/disks/envs"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            انتقال فایل از دیسک
+          </div>
+        )
+      },
+      {
+        title: "انتقال فایل دیسک به دیسک",
+        link: "/paas/disks/private-registery"
+      },
+      {
+        title: "انتقال فایل دیسک به object storage",
+        link: "/paas/disks/console-shell"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoKey />
+            دسترسی‌ها
+          </div>
+        )
+      },
+      {
+        title: "دسترسی FTP به دیسک‌ها",
+        link: "/paas/disks/ignoring-files"
       },
     ],
 

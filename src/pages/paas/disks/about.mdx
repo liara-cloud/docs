@@ -1,0 +1,86 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+
+    
+} from "react-icons/go";
+
+<Layout>
+# دیسک‌ها
+
+<hr className="mb-2" />
+<a href="../details/file-system" className="blue-link">فایل سیستم</a> برنامه‌های لیارا، به‌صورت پیش‌فرض، ReadOnly است. به عبارتی، بعد از عملیات استقرار، امکان ذخیره‌سازی فایل‌های جدید در کنار فایل‌های پروژه، وجود ندارد. البته شما می‌توانید فایل‌سیستم لیارا را در قسمت تنظیمات برنامه از حالت ReadOnly به Writable تغییر بدهید؛ اما تمامی تغییراتی که در این حالت، اعمال می‌شوند؛ موقتی هستند و پس از متوقف شدن برنامه به هردلیلی و اجرای مجدد آن، از بین می‌روند.
+<div className="h-4" />
+
+لیارا امکانی را تحت عنوان **‌دیسک‌ها** ارائه می‌دهد که می‌توانید به کمک آن، فایل‌های  خود را درون پوشه‌هایی که از قبل مشخص کردید؛ پس از استقرار، ذخیره کنید و یا تغییر دهید و این تغییرات، از بین نمی‌روند و دائمی هستند.
+به عنوان مثال، فرض کنید که در برنامه خود، یک دایرکتوری به نام <Important>uploads</Important> دارید و قصد دارید که فایل‌های ارسالی کاربران، در این دایرکتوری ذخیره شود. برای این‌کار کافیست تا یک دیسک جدید ایجاد کنید و در برنامه خود، آن را به این دایرکتوری، متصل کنید. 
+در ادامه، بخوانید:
+
+<div className="h-4" />
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "ساخت دیسک",
+        link: "./create"
+      },
+      {
+        title: "تعریف مسیر برای دیسک",
+        link: "./route"
+      },
+      {
+        title: "افزایش حجم دیسک",
+        link: "./"
+      },
+      {
+        title: "کاهش حجم دیسک",
+        link: "/paas/details/file-system"
+      },
+      {
+        title: "حذف یک دیسک",
+        link: "/paas/details/events"
+      },
+      {
+        title: "تهیه فایل پشتیبان از دیسک‌ها",
+        link: "/paas/details/observations/about"
+      },
+      {
+        title: "بازیابی فایل پشتیبان در دیسک‌ها",
+        link: "/paas/details/envs"
+      },
+      {
+        title: "انتقال فایل دیسک به دیسک",
+        link: "/paas/details/private-registery"
+      },
+      {
+        title: "انتقال فایل دیسک به object storage",
+        link: "/paas/details/console-shell"
+      },
+      {
+        title: "دسترسی FTP به دیسک‌ها",
+        link: "/paas/details/ignoring-files"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+</Layout>
