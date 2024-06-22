@@ -1,0 +1,35 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# افزایش حجم دیسک
+
+<hr className="mb-2" />
+برای افزایش حجم یک دیسک، در ابتدا باید برنامه خود را از قسمت <b>اطلاعات کلی</b> خاموش کنید:
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/turn-off-app.png" alt="turn off the app"/>
+<div className="h-4" />
+در ادامه باید وارد قسمت **دیسک‌ها** شوید؛ بر روی دیسک مدنظرتان کلیک کرده و سپس وارد بخش **تغییر اندازه** آن شوید:
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/increase-disk-size.png" alt="change disk size"/>
+<div className="h-4" />
+در نهایت، کافیست تا اندازه جدید را وارد کنید و بر روی گزینه تغییر اندازه کلیک کنید. سپس می‌توانید برنامه را مجدداً از قسمت **اطلاعات کلی** روشن کنید.
+<div className="h-2" />
+<Alert variant="info">
+<p>
+بهتر است قبل از افزایش فضای دیسک، از محتوای درون دیسک خود، یک <a href="create-backup" className="blue-link">فایل پشتیبان</a>، تهیه کنید.
+</p>
+</Alert>
+</Layout>

@@ -409,19 +409,19 @@ export default {
       },
       {
         title: "تعریف مسیر برای دیسک",
-        link: "/paas/disks/private-network"
+        link: "/paas/disks/route"
       },
       {
         title: "افزایش حجم دیسک",
-        link: "/paas/disks/static-ip"
+        link: "/paas/disks/increase-value"
       },
       {
         title: "کاهش حجم دیسک",
-        link: "/paas/disks/file-system"
+        link: "/paas/disks/decrease-value"
       },
       {
         title: "حذف یک دیسک",
-        link: "/paas/disks/events"
+        link: "/paas/disks/delete"
       },
       {
         hr: true
@@ -435,12 +435,12 @@ export default {
         )
       },
       {
-        title: "تهیه فایل پشتیبان از دیسک‌ها",
-        link: "/paas/disks/observations/about"
+        title: "تهیه فایل پشتیبان از دیسک‌",
+        link: "/paas/disks/create-backup"
       },
       {
-        title: "بازیابی فایل پشتیبان در دیسک‌ها",
-        link: "/paas/disks/envs"
+        title: "بازیابی فایل پشتیبان در دیسک‌",
+        link: "/paas/disks/restore-backup"
       },
       {
         hr: true

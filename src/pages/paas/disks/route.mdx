@@ -1,0 +1,105 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# تعریف مسیر برای دیسک
+
+<hr className="mb-2" />
+       
+<Tabs 
+    tabs={["Liara CLI", "Liara Console"]} 
+    content={[
+    <>
+    <p>
+    برای اتصال دیسک به دایرکتوری مدنظرتان، کافیست تا در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید.  درون این فایل، باید یک آرایه به نام <Important>disks</Important> ایجاد کنید:
+    </p>
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="json">
+        {`{
+    "disks": []
+}`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+    <p>
+    درون این آرایه، می‌توانید دیسک‌های مدنظرتان را به دایرکتوری‌های مختلف موجود در پروژه، متصل کنید. کافیست برای هر اتصال، یک object جدید باز کنید و در فیلد <Important>name</Important> باید شناسه دیسک  و در فیلد <Important>mountTo</Important> باید مسیری را وارد کنید که قصد دارید دیسک به آن متصل شود؛ به عنوان مثال:
+    </p>
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="json">
+        {`{
+    "disks": [
+        {
+            "name": "media",
+            "mountTo": "uploads/media"
+        }
+    ]
+}`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+    <p>
+    مسیر دایرکتوری مدنظرتان را می‌توانید هم به صورت نسبی و هم به صورت absolute وارد کنید. به عنوان مثال، در قطعه کد زیر دو دیسک به دو مسیر متفاوت، اولی نسبی و دومی به صورت کامل، متصل است:
+    </p>
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="json">
+        {`    "disks": [
+        {
+            "name": "mydisk1",
+            "mountTo": "/app/uploads/media"
+        },
+        {
+            "name": "mydisk2",
+            "mountTo": "myfiles/dirs"
+        }
+    ]
+}`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+    <p>
+    در نهایت، شما می‌توانید با اجرای دستور <Important>liara deploy</Important> برنامه خود را در لیارا مستقر کنید؛ با این کار، دیسک مدنظرتان به حالت <b>در حال استفاده</b> در خواهد آمد:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/a-using-disk.png" alt="a using disk"/>
+    <div className="h-4" />
+    </>,
+    <>
+    <p>
+        برای اتصال دیسک به برنامه مدنظرتان، کافیست تا در مرحله دوم استقرار، نام دیسک را انتخاب کنید و مسیر مورد نظرتان را وارد کنید:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/step-2-mount-disk.png" alt="mount disk"/>
+    <div className="h-4" />
+    <p>
+    مسیر دایرکتوری مدنظرتان را می‌توانید هم به صورت نسبی و هم به صورت absolute وارد کنید. به عنوان مثال، در عکس زیر دو دیسک به دو مسیر متفاوت، اولی نسبی و دومی به صورت کامل، متصل است:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/two-disks-console.png" alt="two disks mount"/>
+    <div className="h-4" />
+    <p>
+    در نهایت، پس از استقرار کامل، دیسک مدنظرتان به حالت <b>در حال استفاده</b> در خواهد آمد:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/a-using-disk.png" alt="a using disk"/>
+    <div className="h-4" />
+    </>
+    
+    ]} 
+/>
+
+</Layout>
