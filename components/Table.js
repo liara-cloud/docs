@@ -7,6 +7,7 @@ const Table = ({ headers = [], data = [] }) => {
       style={{
         background: "#ffffff08",
         margin: "20px 0px",
+        overflowX: "auto",
       }}
     >
       <table style={{ width: "100%", textAlign: "center" }}>
