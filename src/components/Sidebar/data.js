@@ -244,12 +244,12 @@ export default {
       {
         title: "مدیریت دامنه‌",
         icon: <GoGlobe />,
-        link: "/"
+        link: "/paas/domains/about"
       },
       {
         title: "قابلیت CI/CD",
         icon: <GoWorkflow />,
-        link: "/"
+        link: "/paas/cicd/about"
       },
       {
         hr: true
@@ -454,11 +454,11 @@ export default {
       },
       {
         title: "انتقال فایل دیسک به دیسک",
-        link: "/paas/disks/private-registery"
+        link: "/paas/disks/move-files-to-other-disk"
       },
       {
         title: "انتقال فایل دیسک به object storage",
-        link: "/paas/disks/console-shell"
+        link: "/paas/disks/move-files-to-bucket"
       },
       {
         hr: true
@@ -473,7 +473,105 @@ export default {
       },
       {
         title: "دسترسی FTP به دیسک‌ها",
-        link: "/paas/disks/ignoring-files"
+        link: "/paas/disks/ftp-access"
+      },
+    ],
+
+    domains: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دامنه‌ها
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "دامنه چیست؟",
+        icon: <GoInfo />,
+        link: "/paas/domains/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+          مدیریت دامنه‌ها در برنامه
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن دامنه به برنامه",
+        link: "/paas/domains/add-domain"
+      },
+      {
+        title: "ساخت زیر دامنه www",
+        link: "/paas/domains/add-www-subdomain"
+      },
+      {
+        title: "اضافه کردن زیر دامنه دلخواه",
+        link: "/paas/domains/add-subdomains"
+      },
+      {
+        title: "تهیه گواهی SSL برای دامنه",
+        link: "/paas/domains/enable-ssl"
+      },
+      {
+        title: "غیرفعال کردن زیر دامنه پیش‌فرض",
+        link: "/paas/domains/default-subdomain"
+      },
+      {
+        title: "حذف دامنه یا زیردامنه از برنامه",
+        link: "/paas/domains/delete-domain"
+      },
+      {
+        title: "TLDهای قابل پشتیبانی",
+        link: "/paas/domains/supported-tlds"
+      },
+    ],
+
+    cicd: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            قابلیت CI/CD
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "آشنایی با CI/CD",
+        icon: <GoInfo />,
+        link: "/paas/domains/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+          استفاده از CI/CD
+          </div>
+        )
+      },
+      {
+        title: "راه‌اندازی CI/CD در برنامه با Github",
+        link: "/paas/cicd/github"
+      },
+      {
+        title: "راه‌اندازی CI/CD در برنامه با Gitlab",
+        link: "/paas/cicd/gitlab"
       },
     ],
 

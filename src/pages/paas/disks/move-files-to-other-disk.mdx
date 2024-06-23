@@ -1,0 +1,46 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# انتقال فایل از یک دیسک به دیسک دیگر
+<hr className="mb-2" />
+
+برای انتقال فایل‌های درون یک دیسک به یک دیسک دیگر در لیارا، در ابتدا کافیست تا برنامه <a href="https://rclone.org/" className="blue-link">Rclone</a> را از صفحه <a href="https://rclone.org/downloads/" className="blue-link">Downloads</a> متناسب با سیستم عامل خود، دانلود کنید. سپس، باید برای هر دو دیسک <a href="./ftp-access" className="blue-link">دسترسی FTP</a> ایجاد کنید.
+<div className="h-4" />
+در قدم بعد باید با اجرای دستور <Important>rclone config</Important> یک <Important>remote</Important> جدید را برای دیسک اول خود، پیکربندی کنید:
+<Asciinema id="rclone-disk-ftp-remote" />
+
+بعد از انجام کار فوق، اکنون باید مجدداً با اجرای دستور <Important>rclone config</Important> یک <Important>remote</Important> جدید دیگر برای دیسک دوم، مشابه دیسک اول، پیکربندی کنید.
+درنهایت شما می‌توانید با اجرای دستور زیر یک نسخه از فایل‌های موجود در دیسک موردنظرتان را در دیسک جدید نیز، قرار دهید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="bash">
+    {`rclone copy -PM <disk-remote-1>:/ <disk-remote-2>:/`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+البته اگر که قصد انتقال فایل‌ها را از دیسک اول به دیسک دوم، دارید، می‌توانید دستور زیر را اجرا کنید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="bash">
+    {`rclone move -PM <disk-remote-1>:/ <disk-remote-2>:/`}
+</Highlight>
+</div>
+
+</Layout>

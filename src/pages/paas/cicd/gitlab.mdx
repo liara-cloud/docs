@@ -1,0 +1,130 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# راه‌اندازی CI/CD در برنامه با Gitlab
+
+<hr className="mb-2" />
+
+<Alert variant="error">
+<p>
+از این پس برای کاربران جدید GitLab امکان راه‌اندازی فرایند CI/CD نیست زیرا برای استفاده از Shared runnerهای رایگان این سرویس باید حساب کاربری خود را تایید کنید. به‌همین علت توصیه می‌شود پروژه‌ی خود را به سرویس GitHub انتقال داده و فرایند CI/CD را با استفاده از <a href="./github" className="blue-link">GitHub Actions</a> راه‌اندازی کنید. 
+</p>
+</Alert>
+
+<video
+  src="https://files.liara.ir/liara/CICD/cicd-github.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" />
+<div className="h-4" />
+
+برای راه‌اندازی CI/CD در GitLab می‌توانید از قابلیت GitLab CI استفاده کنید.
+در ابتدا باید یک فایل به نام <Important>gitlab-ci.yml.</Important> در مسیر اصلی پروژه‌ی خود ایجاد کرده و قطعه‌کد زیر را در این فایل قرار دهید:
+
+
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="yml">
+        {`image: node:18-alpine
+
+stages:
+  - update-production
+
+deploy:
+  stage: update-production
+  only:
+    - master
+  script:
+    - npm i -g @liara/cli@5
+    - export http_proxy=http://proxy.liara.ir:6666
+    - liara deploy --app APP_NAME --api-token $TOKEN --no-app-logs`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+
+در مثال فوق باید مقدار <Important>APP_NAME</Important> را با شناسه‌ی برنامه‌تان در لیارا جایگزین کنید.
+در صورت نیاز به تنظیم پورتی مانند <Important>3000</Important> که برنامه‌ی شما روی آن اجرا می‌شود لازم است پارامتر <Important>port=3000--</Important> را هم برای دستور <Important>liara deploy</Important> تنظیم کنید.
+
+<div className='h-1' />
+<Alert variant="warning">
+<p>
+در فیلد <Important>branches</Important> باید نام branch مدنظرتان را وارد کنید تا CI/CD روی آن، اعمال شود.
+</p>
+</Alert>
+
+<></>
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/add-new-secret-in-github-action.png" alt="add-new-secret-in-github-action"/>
+<div className="h-4" />
+
+در آخر با push کردن فایل <Important>github/workflows/liara.yaml.</Important> در ریپازیتوری GitHub متوجه خواهید شد که یک pipeline به‌صورت خودکار در تب Action ریپازیتوری شما اجرا شده است و شما نیز می‌توانید مراحل استقرار پروژه‌ی خود را در صفحه‌ی تاریخچه دنبال کنید.
+
+<div className='h-1' />
+<Alert variant="success">
+<p>
+ریپازیتوری <a href="https://github.com/liara-cloud/github-cd-example" className="blue-link">liara-cloud/github-cd-example</a> شامل یک نمونه برنامه‌ی کامل است که می‌تواند از طریق CI/CD در لیارا مستقر شود.
+</p>
+</Alert>
+
+
+<Section id="multiple-branches" title="راه‌اندازی CI/CD به ازای هر branch" />
+در برخی موارد، لازم است چند محیط جداگانه برای برنامه‌تان ایجاد کنید. به عنوان مثال ممکن است برنامه‌تان در سه محیط test, staging و production قرارداشته باشد و بخواهید برای هر محیط یک CI/CD جدا راه‌اندازی کنید. در این صورت، ابتدا باید سه برنامه و سه branch جدا ایجاد کنید. در این حالت، هر branch به یک برنامه اشاره دارد. سپس می‌بایست فایل <Important>github/workflows/liara.yaml.</Important> را به شکل زیر بنویسید:
+
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="yml">
+        {`name: CD-Liara
+
+on:
+  push:
+    branches:
+      - main
+      - test
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Liara CLI
+        run: npm i -g @liara/cli@5
+
+      - name: Deploy
+        env:
+          LIARA_TOKEN: \${{ secrets.LIARA_API_TOKEN }}
+        run: |
+          if [ \${{ github.ref }} == 'refs/heads/master' ]; then
+            liara deploy --app="my-production-app" --api-token="$LIARA_TOKEN" --no-app-logs
+          elif [ \${{ github.ref }} == 'refs/heads/test' ]; then
+            liara deploy --app="my-test-app" --api-token="$LIARA_TOKEN" --no-app-logs
+          elif [ \${{ github.ref }} == 'refs/heads/staging' ]; then
+            liara deploy --app="my-staging-app" --api-token="$LIARA_TOKEN" --no-app-logs
+          fi`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+
+توجه داشته باشید که در این مثال، branch های master, test و staging به ترتیب برای محیط‌های production, test و staging انتخاب‌شده اند. شما می‌توانید با توجه به برنامه خود، نام branch ها را تغییر دهید.
+در سه دستور <Important>liara deploy</Important> نام برنامه‌ها برای محیط‌های production, test و staging به ترتیب my-production-app, my-test-app و my-staging-app انتخاب‌‌شده است. شما باید با توجه برنامه‌‌های خود، نام برنامه‌ها را تغییر دهید.
+
+</Layout>
