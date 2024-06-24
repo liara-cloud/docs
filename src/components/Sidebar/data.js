@@ -257,7 +257,261 @@ export default {
       {
         title: "به‌روزرسانی پلتفرم",
         icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+    update: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
         link: "/"
+      },
+      {
+        title: "درباره سرویس پلتفرم",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "React",
+        icon: <IconContainer alt="react" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Angular",
+        icon: <IconContainer alt="angularjs" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Vue",
+        icon: <IconContainer alt="vue" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Static",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Docker",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas//getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/paas/cicd/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/"
+      }
+    ],
+    move: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس پلتفرم",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "React",
+        icon: <IconContainer alt="react" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Angular",
+        icon: <IconContainer alt="angularjs" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Vue",
+        icon: <IconContainer alt="vue" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Static",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/paas//getting-started"
+      },
+      {
+        title: "Docker",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas//getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/paas/cicd/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
       },
       {
         title: "انتقال پلتفرم",
@@ -552,7 +806,7 @@ export default {
       {
         title: "آشنایی با CI/CD",
         icon: <GoInfo />,
-        link: "/paas/domains/about"
+        link: "/paas/cicd/about"
       },
       {
         hr: true
