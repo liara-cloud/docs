@@ -66,7 +66,7 @@ export default () => (
     </p>
 
     <Highlight className="sh">
-      {`echo "Running pre-start script for Laravel..."
+      {`echo "Running pre-start script for PHP..."
 
 # run migrations
 php artisan migrate --force
@@ -74,7 +74,7 @@ php artisan migrate --force
 # other needed commands
 # ...
 
-echo "Pre-start script for Laravel finished."`}
+echo "Pre-start script for PHP finished."`}
     </Highlight>
 
     <Notice variant="warning">
