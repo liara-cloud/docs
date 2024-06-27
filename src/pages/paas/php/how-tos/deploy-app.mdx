@@ -10,11 +10,12 @@ import Highlight from "react-highlight";
 import Link from "next/link";
 import { GoArrowLeft, } from "react-icons/go";
 import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
 
 
 <Layout>
 
-# استقرار برنامه Laravel در لیارا
+# استقرار برنامه PHP در لیارا
 <hr className="mb-2" />
 
         <Tabs 
@@ -23,14 +24,15 @@ import NextPage from "@/components/Common/nextpage";
     <>
 
         <p>
-            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های node_modules و vendor به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Laravel است که می‌توانید از آن، استفاده کنید:
+            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های bin و vendor به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی
+            برای برنامه‌های PHP است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/laravel/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/php/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
-                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Laravel
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های PHP
                 </h4>
                 </div>
                 <GoArrowLeft className="ml-1" />
@@ -38,7 +40,7 @@ import NextPage from "@/components/Common/nextpage";
         </Link>
         <div className="h-2" />
         <p>
-            همچنین، پروژه شما باید شامل فایل <Important>composer.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را، انجام می‌دهد:
+            همچنین، پروژه شما اگر شامل فایل <Important>composer.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را، انجام می‌دهد:
         </p>
         <Step  steps={[
             {
@@ -61,81 +63,6 @@ import NextPage from "@/components/Common/nextpage";
             },
         ]}/>
         <div className="h-4" />
-        <p>
-            قطعه کد زیر، یک نمونه از فایل <Important>composer.json</Important> استاندارد برای برنامه‌های Laravel است:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
-    "require": {
-        "php": "^8.2",
-        "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^11.0.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
-}
-`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
         <Alert variant='error'>
         <p>
         همچنین بهتر است برای استقرار موفق، فایل <Important>composer.lock</Important> درون پروژه خود را 
@@ -151,14 +78,14 @@ import NextPage from "@/components/Common/nextpage";
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "platform": "laravel"
+    "platform": "php"
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
         <p>
             در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
-            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که laravel است، مشخص کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که php است، مشخص کنید.
         </p>
         <p>
             از آنجایی که لیارا برای نصب پکیج‌های <Important>composer</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
@@ -167,28 +94,28 @@ import NextPage from "@/components/Common/nextpage";
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "laravel": {
-    "mirror": false
+    "php": {
+    "composerMirror": false
   }
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
         <p>
-            برای تعیین نسخه PHP  برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>phpVersion</Important> را قرار دهید:
+            برای تعیین نسخه PHP  برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "laravel": {
-      "phpVersion": "8.3"
+    "php": {
+      "version": "8.3"
   }
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
-        <Alert variant='success'>همچنین بخوانید:  <a className="blue-link" href="./choose-version">نسخه‌های قابل ارائه php و Laravel در لیارا</a></Alert>
+        <Alert variant='success'>همچنین بخوانید:  <a className="blue-link" href="./choose-version">نسخه‌های قابل ارائه php در لیارا</a></Alert>
         <p>
             به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
         </p>
@@ -196,62 +123,12 @@ import NextPage from "@/components/Common/nextpage";
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "laravel": {
+    "php": {
       "timezone": "America/Los_Angeles"
   }
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
-        <p>
-            لیارا در حین استقرار برنامه‌تان، دستور <Important>npm run production</Important> را اجرا می‌کند و با اجرای این دستور، فایل‌های SASS به CSS و کدهای جاوا اسکریپت ES6 به بالا به ES5 تبدیل و یکپارچه، می‌شوند.
-        </p>
-        <p>
-            اگر که از Laravel فقط برای ساخت API استفاده کرده‌اید و یا به طور کلی، نیازی به این ندارید که لیارا پکیج‌های npm را نصب و فایل‌های CSS و JS را build کند؛ می‌توانید در فایل <Important>liara.json</Important> پارامتر <Important>buildAssets</Important> را به شکل زیر، تنظیم کنید:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "laravel": {
-       "buildAssets": false
-  }
-}`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <p>
-            همچنین، برای نصب پکیج‌هایی که در بخش <Important>require-dev</Important> فایل <Important>composer.json</Important> قرار دارد (مانند <Important>Faker</Important> و <Important>Ignition</Important>)، باید در فایل <Important>liara.json</Important>، پارامتر <Important>installDevDependencies</Important> را به شکل زیر، تنظیم کنید:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-  "laravel": {
-    "installDevDependencies": true
-  }
-}`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <p>
-        برای تجربه عملکرد بهتر، Laravel توصیه می‌کند تا فایل‌های config و route را با اجرای دستورات <Important>php artisan config:cache</Important> و <Important>php artisan route:cache</Important>، کش کنید. شما می‌توانید برای اجرای خودکار این دستورات توسط لیارا در هر بار استقرار، پارامترهای مربوطه را به شکل زیر در فایل <Important>liara.json</Important> وارد کنید:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-  "laravel": {
-    "configCache": true,
-    "routeCache": true
-  }
-}`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <Alert variant="error">
-        <p>توجه داشته باشید که <a href="https://laravel.com/docs/5.8/deployment#optimization" className="">طبق مستندات لاراول</a>، استفاده از دستور <Important>php artisan route:cache</Important> تنها زمانی امکان‌پذیر است که شما از Closureها برای تعریف routeها استفاده نکرده باشید و فقط از Controller استفاده کرده باشید.</p>
-        </Alert>
         <div className='h-4' />
         <p>
             در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
@@ -260,18 +137,14 @@ import NextPage from "@/components/Common/nextpage";
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "app": "my-web-app",
-    "platform": "laravel",
-    "laravel":{
-        "phpVersion": "8.3",
-        "mirror": false,
-        "timezone": "America/Los_Angeles",
-        "installDevDependencies": true,
-        "configCache": true,
-        "routeCache": true
-    }
-}
-`}
+    "app": "my-web-app", 
+    "platform": "php",
+    "php": {
+        "version": "8.3",
+        "composerMirror": false,
+        "timezone": "America/Los_Angeles"
+    }   
+}`}
             </Highlight>
         </div>
         <div className='h-4' />
@@ -289,14 +162,15 @@ import NextPage from "@/components/Common/nextpage";
         <p>
             در حین فرایند استقرار، می‌توانید در ترمینال خود، لاگ‌های مربوط به آن را مشاهده بفرمایید.
         </p>
+        <Asciinema id="deploy-php-app-using-cli" />
     </>,
     <>
         <p>
-            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های node_modules و vendor را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
+            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های bin و vendor را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
         </p>
 
         <p>
-            همچنین، پروژه شما باید شامل فایل <Important>composer.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را، انجام می‌دهد:
+            همچنین، پروژه شما اگر شامل فایل <Important>composer.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را، انجام می‌دهد:
         </p>
         <Step  steps={[
             {
@@ -319,81 +193,7 @@ import NextPage from "@/components/Common/nextpage";
             },
         ]}/>
         <div className="h-4" />
-        <p>
-            قطعه کد زیر، یک نمونه از فایل <Important>composer.json</Important> استاندارد برای برنامه‌های Laravel است:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
-    "require": {
-        "php": "^8.2",
-        "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^11.0.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
-}
-`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
+    
         <Alert variant='error'>
         <p>
         همچنین بهتر است برای استقرار موفق، فایل <Important>composer.lock</Important> درون پروژه خود را 
@@ -411,7 +211,7 @@ import NextPage from "@/components/Common/nextpage";
             پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
         </p>
         <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/deploy-laravel-app-using-console.gif" alt="build app on liara" />
+        <img src="https://files.liara.ir/liara/docs/deploy-php-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" />
         <p>
             در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
@@ -420,11 +220,6 @@ import NextPage from "@/components/Common/nextpage";
     </>
 ]} 
 />
-
-<Alert variant='success'>
-برای دسترسی به فایل‌های پوشه‌های <Important>storage</Important>، طبق مستندات لاراول باید این پوشه به پوشه‌ی <Important>public</Important> لینک شود. لیارا به‌صورت خودکار، در زمان استقرار، دستور <Important>php artisan storage:link</Important> را اجرا می‌کند و نیازی نیست که اقدام خاصی انجام دهید.
-
-</Alert>
 
 <Alert variant='success'>
 <p>

@@ -11,21 +11,21 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# کار با Queueها در Laravel 
+# کار با Queueها در PHP 
 <hr className="mb-2" />
 
-Queue یا صف، یکی از قابلیت‌های فریم‌ورک لاراول است که به شما 
+Queue یا صف، یکی از قابلیت‌های PHP است که به شما 
 اجازه می‌دهد تا وظایف سنگین یا زمان‌بر را به جای اجرای همزمان با درخواست‌های کاربر،
 در پس‌زمینه، انجام دهید. این قابلیت می‌تواند در بهبود عملکرد و کاهش زمان پاسخ‌دهی، نقش شایانی داشته باشد.
 شما می‌توانید با استفاده از ابزارهای مدیریت فرایند، از قابلیت صف‌ها استفاده کنید. یکی از این ابزارها، <a href="https://laravel.com/docs/11.x/queues#supervisor-configuration" className="blue-link">Supervisor</a> است که لیارا از آن پشتیبانی می‌کند.
 
-برای ‌به‌کار‌گیری صف‌ها با استفاده از Supervisor، کافیست تا در مسیر اصلی پروژه، یک فایل به نام <Important>supervisor.conf</Important> ایجاد کنید. اکنون شما می‌توانید تنظیمات صف‌های مختلف را در این فایل قرار بدهید. قطعه کد زیر، یک نمونه config ساده برای یک صف به نام sms است که وظیفه آن، ارسال پیامک به کاربران است:
+برای ‌به‌کار‌گیری صف‌ها با استفاده از Supervisor، کافیست تا در مسیر اصلی پروژه، یک فایل به نام <Important>supervisor.conf</Important> ایجاد کنید. اکنون شما می‌توانید تنظیمات صف‌های مختلف را در این فایل قرار بدهید. قطعه کد زیر، یک نمونه config ساده برای تعریف یک صف است که:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="config">
-        {`[program:laravel-worker]
+        {`[program:php-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/html/artisan queue:work
+command=cd $ROOT && php queues.php
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -33,7 +33,7 @@ killasgroup=true
 numprocs=1
 user=www-data
 redirect_stderr=true
-stdout_logfile=/tmp/laravel-worker.log`}
+stdout_logfile=/tmp/php-worker.log`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -58,5 +58,5 @@ stdout_logfile=/tmp/laravel-worker.log`}
 </p>
 </Alert>
 
-<NextPage next="./enable-ssr-using-inertia"/>
+<NextPage next="./set-http-security-headers"/>
 </Layout>

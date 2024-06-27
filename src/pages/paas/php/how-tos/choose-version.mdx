@@ -11,18 +11,18 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# انتخاب نسخه PHP در لاراول
+# انتخاب نسخه PHP 
 <hr className="mb-2" />
 
-در حال حاضر در پلتفرم Laravel لیارا، نسخه‌های زیر از  PHP ارائه می‌شوند: 
+در حال حاضر در پلتفرم لیارا، نسخه‌های زیر از  PHP ارائه می‌شوند: 
 
 <div className="h-2" />
 <ul className="pr-4">
   {[
     {text: '7.2 (بدون‌آپدیت)',},
     {text: '7.3 (بدون‌آپدیت)',},
-    {text: '7.4 (پیش‌فرض)',},
-    {text: '8.0',},
+    {text: '7.4',},
+    {text: '8.0 (پیش‌فرض)',},
     {text: '8.1',},
     {text: '8.2',},
     {text: '8.3',},
@@ -62,8 +62,8 @@ import NextPage from "@/components/Common/nextpage";
     <div dir='ltr'>
         <Highlight className="json">
             {`{
-    "laravel": {
-      "phpVersion": "8.2"
+    "php": {
+      "version": "8.2"
   }
 }`}
         </Highlight>
@@ -72,10 +72,10 @@ import NextPage from "@/components/Common/nextpage";
     </>,
     <>
     <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
-    <img src="https://files.liara.ir/liara/docs/choose-laravel-php-version-using-console.png" alt="how to choose version in liara console" />
+    <img src="https://files.liara.ir/liara/docs/choose-php-version-of-php-app-via-cosnole.png" alt="how to choose version in liara console" />
     </>
 ]} 
 />
 
-<NextPage next="./manage-laravel-logs"/>
+<NextPage next="./see-extension"/>
 </Layout>

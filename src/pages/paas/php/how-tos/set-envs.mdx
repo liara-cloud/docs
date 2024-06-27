@@ -14,38 +14,20 @@ import NextPage from "@/components/Common/nextpage";
 # استفاده از متغیرهای محیطی 
 <hr className="mb-2" />
 برای استفاده از متغیرهای محیطی در برنامه خود، در ابتدا باید طبق <Link href="../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</Link>، متغیرهای محیطی را به برنامه خود، اضافه کنید.
-در ادامه، شما می‌توانید با استفاده از متد <Important>()env</Important> به متغیرهای محیطی خود در برنامه Laravel، دسترسی داشته باشید؛ به عنوان مثال:
+در ادامه، شما می‌توانید با استفاده از متد <Important>()getenv</Important> به متغیرهای محیطی خود در برنامه PHP، دسترسی داشته باشید؛ به عنوان مثال:
 
-<div className="h-2" />
-<div dir="ltr">
-<Highlight  className="js">
-{`$appName = env('LIARA_URL', 'my-web-app');`}
-</Highlight>
-</ div>
-<div className="h-2" />
-در مثال فوق، <Important>LIARA_URL</Important> یک متغیر محیطی است که از قبل، به برنامه فرضی در لیارا، اضافه شده است و <Important>my-web-app</Important> مقدار پیش‌فرضی است که در صورت تعریف نشدن متغیر محیطی <Important>LIARA_URL</Important>، مورد استفاده قرار می‌گیرد.
-
-<Section id="use-envs-in-config-files" title="استفاده از متغیرهای محیطی در فایل‌های کانفیگ" />
-برای اضافه کردن متغیرهای محیطی در فایل‌های کانفیگ لاراول نیز، می‌توانید از متد <Important>()env</Important> استفاده کنید:
 <div className="h-2" />
 <div dir="ltr">
 <Highlight  className="php">
-{`'name' => env('LIARA_URL', 'my-web-app');`}
+{`<?php
+
+$liara_url = getenv('LIARA_URL');
+echo "Liara URL: " . $liara_url . "\\n";
+`}
 </Highlight>
 </ div>
 <div className="h-2" />
-
-پس از اضافه کردن متغیرهای محیطی به برنامه، لیارا دستورات زیر را برای‌تان به صورت خودکار، اجرا می‌کند و نیازی نیست که شما، کار خاصی را انجام دهید:
-<div className="h-2" />
-<div dir="ltr">
-<Highlight  className="php">
-{`php artisan config:clear
-php artisan config:cache`}
-</Highlight>
-</ div>
-<div className="h-2" />
-
-
+در مثال فوق، <Important>LIARA_URL</Important> یک متغیر محیطی است که از قبل، به برنامه فرضی در لیارا، اضافه شده است.
 
 <NextPage next="./use-disk" />
 

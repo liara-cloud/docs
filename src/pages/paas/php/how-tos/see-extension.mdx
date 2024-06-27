@@ -11,16 +11,17 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# مشاهده Extension‌های نصب شده در برنامه‌های لاراول
+# مشاهده Extension‌های نصب شده در برنامه‌های PHP
 <hr className="mb-2" />
 
-در لیارا، اکستنشن‌های زیر در پلتفرم Laravel نصب شده‌اند:
+در لیارا، اکستنشن‌های زیر در پلتفرم PHP نصب شده‌اند:
 <div className='h-2' />
 <div dir='ltr'>
     <Highlight className="config">
         {`[PHP Modules]
 amqp
 apcu
+ast
 bcmath
 bz2
 calendar
@@ -28,7 +29,11 @@ Core
 ctype
 curl
 date
+dba
 dom
+ds
+enchant
+ev
 exif
 fileinfo
 filter
@@ -37,6 +42,7 @@ gd
 gettext
 gmp
 gnupg
+grpc
 hash
 iconv
 igbinary
@@ -44,8 +50,11 @@ imagick
 imap
 intl
 json
+ldap
 libxml
+mailparse
 mbstring
+mcrypt
 memcached
 mongodb
 msgpack
@@ -53,33 +62,42 @@ mysqli
 mysqlnd
 openssl
 pcntl
+pcov
 pcre
 PDO
-pdo_dblib
 pdo_mysql
 pdo_pgsql
 pdo_sqlite
 pgsql
 Phar
 posix
+pspell
+rdkafka
 readline
 redis
 Reflection
 session
 shmop
 SimpleXML
+snmp
 soap
 sockets
 sodium
+SourceGuardian
 SPL
 sqlite3
 standard
+swoole
 sysvmsg
 sysvsem
 sysvshm
+tidy
 tokenizer
+uploadprogress
+uuid
 xml
 xmlreader
+xmlrpc
 xmlwriter
 xsl
 yaml
@@ -88,6 +106,7 @@ zip
 zlib
 
 [Zend Modules]
+SourceGuardian
 Zend OPcache`}        
     </Highlight>
 </div>

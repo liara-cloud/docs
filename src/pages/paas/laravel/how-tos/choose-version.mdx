@@ -11,7 +11,7 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# انتخاب نسخه PHP در لاراول
+# انتخاب نسخه PHP و لاراول
 <hr className="mb-2" />
 
 در حال حاضر در پلتفرم Laravel لیارا، نسخه‌های زیر از  PHP ارائه می‌شوند: 
@@ -49,6 +49,32 @@ import NextPage from "@/components/Common/nextpage";
 توجه داشته باشید که ionCube در PHP نسخه 8.3 پشتیبانی نمی‌شود.
 </p>
 </Alert>
+<div className="h-2" />
+همچنین، لیارا از نسخه‌های لاراول زیر پشتیبانی می‌کند:
+
+<div className="h-2" />
+<div dir="ltr">
+<ul className="pr-4">
+  {[
+    {text: 'Laravel 5.5.^',},
+    {text: 'Laravel 6.^'},
+    {text: 'Laravel 7.^',},
+    {text: 'Laravel 8.^',},
+    {text: 'Laravel 9.^',},
+    {text: 'Laravel 10.^',},
+    {text: 'Laravel 11',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+      {item.text}
+    </li>
+  ))}
+</ul>
+</div>
 
 <Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
 <Tabs 

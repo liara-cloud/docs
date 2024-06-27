@@ -1259,7 +1259,7 @@ export default {
         link: "/paas/laravel/how-tos/use-hooks"
       },
       {
-        title: "تغییر نسخه PHP",
+        title: "تغییر نسخه PHP و Laravel",
         link: "/paas/laravel/how-tos/choose-version"
       },
       {
@@ -1431,12 +1431,12 @@ export default {
         link: "/paas/php/how-tos/customize-php-ini"
       },
       {
-        title: "کار با Queueها",
-        link: "/paas/php/how-tos/use-queues"
+        title: "تنظیم اختصاصی فایل htaccess.",
+        link: "/paas/php/how-tos/customize-htaccess"
       },
       {
-        title: "فعال‌سازی SSR با Inertia",
-        link: "/paas/php/how-tos/enable-ssr-using-inertia"
+        title: "کار با Queueها",
+        link: "/paas/php/how-tos/use-queues"
       },
       {
         title: "تنظیم هدرهای امنیتی HTTP",
@@ -1449,26 +1449,6 @@ export default {
       {
         title: "تغییر نسخه PHP",
         link: "/paas/php/how-tos/choose-version"
-      },
-      {
-        title: "مدیریت logهای Laravel",
-        link: "/paas/php/how-tos/manage-php-logs"
-      },
-      {
-        title: "پیکربندی TrustedProxies",
-        link: "/paas/php/how-tos/configure-trustedproxies"
-      },
-      {
-        title: "فعال‌سازی Gzip و Caching",
-        link: "/paas/php/how-tos/enable-gzip-and-caching"
-      },
-      {
-        title: "استفاده از ماژول FFMPEG",
-        link: "/paas/php/how-tos/use-ffmpeg-module"
-      },
-      {
-        title: "استفاده از Ziggy",
-        link: "/paas/php/how-tos/use-ziggy"
       },
       {
         title: "مشاهده اکستنشن‌های نصب شده",
@@ -1486,12 +1466,8 @@ export default {
         )
       },
       {
-        title: "دیتابیس MySQL",
+        title: "دیتابیس MySQL/MariaDB",
         link: "/paas/php/how-tos/connect-to-db/mysql"
-      },
-      {
-        title: "دیتابیس MariaDB",
-        link: "/paas/php/how-tos/connect-to-db/mariadb"
       },
       {
         title: "دیتابیس MSSQL",
@@ -1531,10 +1507,6 @@ export default {
       {
         title: "رفع خطای CORS",
         link: "/paas/php/fix-common-errors/cors"
-      },
-      {
-        title: "رفع خطای 419",
-        link: "/paas/php/fix-common-errors/419-page-expired"
       },
       {
         hr: true

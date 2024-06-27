@@ -21,35 +21,15 @@ import NextPage from "@/components/Common/nextpage";
 Content Security Policy (CSP) و Strict-Transport-Security (HSTS)
  می‌کنند.
 
-شما می‌توانید هدرهای امنیتی را مانند قطعه کد مثال زیر، در فایل <Important>public/.htaccess</Important> تنظیم کرده و نحوه‌ی برقراری ارتباط با سایت را، برای مرورگرها، تعیین کنید:
+شما می‌توانید هدرهای امنیتی را مانند قطعه کد مثال زیر، در فایل <Important>.htaccess</Important> تنظیم کرده و نحوه‌ی برقراری ارتباط با سایت را، برای مرورگرها، تعیین کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
+        {`<IfModule mod_headers.c>
     Header always set X-Frame-Options "DENY"
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
-
-    RewriteEngine On
-
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
 </IfModule>`}
     </Highlight>
 </div>
@@ -63,7 +43,7 @@ Content Security Policy (CSP) و Strict-Transport-Security (HSTS)
 </Alert>
 <Alert variant='success'>
 <p>
-همچنین بخوانید: <a href="" className="blue-link">تهیه گواهی SSL</a>
+همچنین بخوانید: <a href="../../domains/enable-ssl" className="blue-link">تهیه گواهی SSL</a>
 </p>
 </Alert>
 
