@@ -14,134 +14,102 @@ import NextPage from "@/components/Common/nextpage";
 # اتصال به دیتابیس MSSQL در برنامه‌های PHP
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MSSQL نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="../../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+از آنجایی که برای اتصال به دیتابیس MSSQL در برنامه‌های PHP نیاز به اکستنشن sqlsrv دارید و این اکستنشن به صورت پیش‌فرض در برنامه‌های PHP لیارا نصب نیست؛
+شما بایستی در ابتدا، این اکستنشن را نصب و فعال کرده و پس از آن، به دیتابیس متصل شوید.
+
+<Alert variant="error">
+<p>
+در نظر داشته باشید که مستندات پیش‌رو برای برنامه‌های PHP با نسخه 8 و بالاتر است. 
+</p>
+</Alert>
+
+در ابتدا، بایستی طبق مستندات <a href="../../../details/envs" className="blue-link">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ به عنوان مثال:
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`DB_CONNECTION=sqlsrv
-DB_HOST=bromo.liara.cloud
-DB_PORT=34928
-DB_DATABASE=db
+        {`DB_HOST=bromo.liara.cloud
+DB_PORT=33465
+DB_DATABASE=myDB
 DB_USERNAME=sa
-DB_PASSWORD=SEQdI8BcVutmIWrjBxVBmSNv`}
+DB_PASSWORD=xCBl7ma5MLtzEUa4Aw7OUM27`}
     </Highlight>
     </div>
 <div className="h-2" />
-در ادامه، بایستی در فایل <Important>config/database.php</Important> تنظیمات درایور <Important>sqlsvr</Important> را به شکل زیر، وارد کنید:
+
+در ادامه، بایستی طبق مستندات <a href="../use-hooks" className="blue-link">هوک‌ها</a> در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_build.sh</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="php">
-        {`'sqlsrv' => [
-            'driver' => 'sqlsrv',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => env('DB_CHARSET', 'utf8'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-            'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
-        ],
-
-    ],`}
+    <Highlight className="sh">
+        {`add-apt-repository ppa:ondrej/php -y;
+curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc;
+curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | tee /etc/apt/sources.list.d/mssql-release.list;
+apt-get update;
+ACCEPT_EULA=Y apt-get install -y msodbcsql18;
+apt-get install -y unixodbc-dev;
+apt-get install php8.2-dev  -y --allow-unauthenticated;
+sudo pecl install sqlsrv;
+sudo pecl install pdo_sqlsrv;
+printf "; priority=20\\nextension=sqlsrv.so\\n" > /etc/php/8.2/mods-available/sqlsrv.ini;
+printf "; priority=30\\nextension=pdo_sqlsrv.so\\n" > /etc/php/8.2/mods-available/pdo_sqlsrv.ini
+phpenmod -v 8.2 sqlsrv pdo_sqlsrv;`}
     </Highlight>
     </div>
 <div className="h-2" />
 
+<Alert variant="info">
+<p>
+اگر که از نسخه PHP غیر از 8.2 استفاده می‌کنید؛ می‌توانید در قطعه کد بالا به جای تمامی عبارات <Important>8.2</Important>، مقدار <Important>8.1</Important> یا <Important>8.3</Important> را وارد کنید.
+</p>
+</Alert>
 
+قطعه کد فوق، تمامی کارهای لازم برای نصب اکستنشن <Important>sqlsrv</Important> را صورت می‌دهد و نیازی نیست که پس از دیپلوی برنامه، کار خاصی را انجام دهید.
+در ادامه، می‌توانید با متد <Important>sqlsrv_connect</Important> به دیتابیس MSSQL خود، متصل شوید؛ به عنوان مثال:
 
-
-پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-        {`php artisan make:controller DatabaseController`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/DatabaseController.php</Important> قرار دهید:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
         {`<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-namespace App\\Http\\Controllers;
-
-use Illuminate\\Support\\Facades\\DB;
-use Illuminate\\Support\\Facades\\Config;
-use Illuminate\\Http\\Request;
-
-class DatabaseController extends Controller
+function OpenConnection()
 {
-    public function checkConnection()
-    {
-        $databases = [
-            'sqlsrv' => 'sqlsrv',
-        ];
+    $serverName = getenv('DB_HOST') . ',' . getenv('DB_PORT'); 
+    $connectionOptions = array(
+        "Database" => getenv('DB_DATABASE'), 
+        "Uid" => getenv('DB_USERNAME'),      
+        "PWD" => getenv('DB_PASSWORD'),      
+        "Encrypt" => "yes",                  
+        "TrustServerCertificate" => "yes"    
+    );
 
-        $results = [];
+    $conn = sqlsrv_connect($serverName, $connectionOptions);
 
-        foreach ($databases as $connection) {
-            try {
-                DB::connection($connection)->getPdo();
-                $results[$connection] = 'Connection successful';
-            } catch (\\Exception $e) {
-                $results[$connection] = 'Connection failed: ' . $e->getMessage();
-            }
-        }
-
-        return response()->json($results);
+    if ($conn === false) {
+        die(print_r(sqlsrv_errors(), true));
     }
+
+    return $conn;
 }
+
+$conn = OpenConnection();
+if ($conn) {
+    echo "Connected successfully!";
+} else {
+    echo "Failed to connect!";
+}
+?>
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
-<div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="bash">
-      {`use App\\Http\\Controllers\\DatabaseController;
-
-Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
-`}
-  </Highlight>
-  </div>
-<div className="h-2" />
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>check-database-connection/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
-
-<Section id="connection-pooling" title="استفاده از Connection Pooling" />
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
-
-برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>sqlsrv</Important> را به شکل زیر، تغییر دهید:
-<div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="php">
-{`'sqlsrv' => [
-    'driver' => 'sqlsrv',
-    'url' => env('DB_URL'),
-    'host' => env('DB_HOST', 'localhost'),
-    'port' => env('DB_PORT', '1433'),
-    'database' => env('DB_DATABASE', 'laravel'),
-    'username' => env('DB_USERNAME', 'root'),
-    'password' => env('DB_PASSWORD', ''),
-    'charset' => env('DB_CHARSET', 'utf8'),
-    'prefix' => '',
-    'prefix_indexes' => true,
-    // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-    'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
-    'pooling' => env('DB_SQLSERVER_POOLING', true), // enables connection pooling
-],
-`}
-  </Highlight>
-  </div>
-<div className="h-2" />
+<Alert variant="success">
+<p>
+یک برنامه PHP شامل MSSQL آماده استقرار در <a href="https://github.com/liara-cloud/php-getting-started/tree/mssql-connection" className="blue-link">اینجا</a> قرار دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
 
 </Layout>
