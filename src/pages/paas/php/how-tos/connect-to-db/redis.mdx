@@ -11,39 +11,50 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس Redis در برنامه‌های Laravel
+# اتصال به دیتابیس Redis در برنامه‌های PHP
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس Redis نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="../../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+برای اتصال به دیتابیس Redis نیاز به انجام کار خاصی نیست؛ چرا که اکستنشن <Important>redis</Important> از قبل نصب شده است و فقط کافیست تا شما طبق <a href="../../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`REDIS_CLIENT=phpredis
-REDIS_HOST=bromo.liara.cloud
-REDIS_PASSWORD=WIxYwk60bqJoTif795flsFN8
-REDIS_PORT=34130`}
+        {`REDIS_URI=redis://:Eg55XLPAdhavc0Z3Lw5f4LQZ@bromo.liara.cloud:30223/0`}
     </Highlight>
     </div>
 <div className="h-2" />
-تمامی کارها انجام شده و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال، قطعه کد زیر را در فایل <Important>routes/web.php</Important> قرار دهید:
+برای مدیریت بهتر دیتابیس redis، توصیه می‌شود از پکیج <Important>predis</Important> استفاده کنید؛ برای این کار، کافیست تا در مسیر اصلی پروژه، دستور زیر را اجرا کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`composer require predis/predis`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+در نهایت، می‌توانید مانند قطعه کد زیر، به دیتابیس خود متصل شده و از آن، استفاده کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="php">
-        {`use Illuminate\Support\Facades\Redis;
-Route::get('/test-redis', function () {
-    try {
-        Redis::connection()->ping();
-        return "connection successfull";
-    } catch (Exception $e) {
-        return "connection failed: " . $e->getMessage();
-    }
-});
+        {`<?php
+require 'vendor/autoload.php';
+
+try {
+    
+    $redisUri = getenv("REDIS_URI");
+    
+    $client = new Predis\\Client($redisUri);
+    $client->set('test_key', 'Hello, Redis!');
+    $value = $client->get('test_key');
+    
+    echo "connection successful: " . $value . "\\n";
+} catch (Exception $e) {
+    echo "connection failed. error: " . $e->getMessage() . "\\n";
+}
+?>
 `}
     </Highlight>
     </div>
 <div className="h-2" />
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>test-redis/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 

@@ -1486,6 +1486,10 @@ export default {
         link: "/paas/php/how-tos/connect-to-db/redis"
       },
       {
+        title: "دیتابیس MongoDB",
+        link: "/paas/php/how-tos/connect-to-db/mongodb"
+      },
+      {
         title: "دیتابیس ElasticSearch",
         link: "/paas/php/how-tos/connect-to-db/elastic-search"
       },
@@ -1512,14 +1516,9 @@ export default {
         hr: true
       },
       {
-        title: "Lumen",
-        icon: <IconContainer alt="php" />,
-        link: "/paas/php/related-apps/lumen"
-      },
-      {
-        title: "Laravel Octane",
-        icon: <IconContainer alt="php" />,
-        link: "/paas/php/related-apps/laravel-octane"
+        title: "Yii",
+        icon: <IconContainer alt="yii" />,
+        link: "/paas/php/related-apps/yii"
       },
     ],
   }
