@@ -1,0 +1,43 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB
+<hr className="mb-2" />
+وب‌سرور Apache ابتدا فایل‌های آپلودی را در دایرکتوری <Important>tmp/</Important> ذخیره می‌کند و سپس لاراول آن فایل را به Storage خودش، منتقل می‌کند. 
+علی‌رغم <a className="blue-link" href="../../details/file-system">فایل سیستم پیش‌فرض برنامه‌های لاراول در لیارا</a>، که ReadOnly است؛ دایرکتوری <Important>tmp/</Important> قابل نوشتن است، اما محدودی 100 مگابایتی دارد.
+در نتیجه شما نمی‌توانید فایل‌هایی با حجم بیش از 100MB را در پروژه خود، آپلود کنید و با خطا، مواجه خواهید شد. برای رفع این مشکل و افزایش حجم داده‌های آپلودی، کافیست تا طبق مراحل زیر، عمل کنید:
+
+<Step  steps={[
+    {
+    step: "۱",
+    content: (
+    <>
+            <h3>ایجاد دیسک</h3>
+            <p>طبق مستندات <a href="../../disks/manage/create" className="blue-link">ساخت دیسک</a>، یک دیسک با نام و اندازه دلخواه ایجاد کنید.</p>
+    </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+    <>
+            <h3>تعریف مسیر برای دیسک</h3>
+            <p>طبق مستندات <a href="../../disks/manage/route" className="blue-link">تعریف مسیر دیسک</a>، دیسک ایجاد شده را به مسیر <Important>tmp/</Important> متصل کنید.</p>
+    </>
+    )
+    },]}/>
+<div className="h-4" />
+با انجام کارهای فوق، فضای پوشه <Important>tmp/</Important> افزایش خواهد یافت. 
+
+
+</Layout>

@@ -12,14 +12,14 @@ import NextPage from "@/components/Common/nextpage";
 import Asciinema from "@/components/Common/asciinema";
 
 <Layout>
-# ساخت برنامه PHP در لیارا
+# ساخت برنامه Django در لیارا
 
 <Tabs 
     tabs={["Liara CLI", "Liara Console"]} 
     content={[
     <>
     <video
-        src="https://files.liara.ir/liara/php/php-cli.mp4"
+        src="https://files.liara.ir/liara/django/django-cli.mp4"
         controls="controls"
         className="block w-full"
         width="100%"
@@ -51,7 +51,7 @@ import Asciinema from "@/components/Common/asciinema";
     <img src="https://files.liara.ir/liara/docs/liaracli-login.gif" alt="liara cli login to account" />
     <div className="h-4" />
     <p>
-        بعد از انجام کار فوق، بایستی با اجرای دستور زیر، <Link className="blue-link" href="../../details/private-network">شبکه خصوصی</Link> برنامه‌تان را ایجاد کنید؛ البته اگر که از قبل شبکه خصوصی را ایجاده کرده باشید؛ نیازی به اجرای این دستور، نخواهد بود:
+        بعد از انجام کار فوق، بایستی با اجرای دستور زیر، <Link className="blue-link" href="../../details/private-networks">شبکه خصوصی</Link> برنامه‌تان را ایجاد کنید؛ البته اگر که از قبل شبکه خصوصی را ایجاده کرده باشید؛ نیازی به اجرای این دستور، نخواهد بود:
     </p>
     <div dir='ltr'>
       <Highlight className="bash">
@@ -68,25 +68,26 @@ import Asciinema from "@/components/Common/asciinema";
         {`liara app:create`}
       </Highlight>
     </div>
-    <Asciinema id="create-php-app-using-cli" />
     <p>
-        با اجرای دستور فوق، شما باید شناسه، نوع پلتفرم (که باید بر روی php باشد)، شبکه خصوصی و <Link className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> برنامه خود را انتخاب کنید.
+        با اجرای دستور فوق، شما باید شناسه، نوع پلتفرم (که باید بر روی django باشد)، شبکه خصوصی و <Link className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> برنامه خود را انتخاب کنید.
     </p>
+    <Asciinema id="create-django-app-using-cli" />
+
     </>,
     <>
         <video
-        src="https://files.liara.ir/liara/php/php-desktop.mp4"
+        src="https://files.liara.ir/liara/django/django-desktop.mp4"
         controls="controls"
         className="block w-full"
         width="100%"
         ></video>
         <div className="h-2" />
         <p>
-            برای ساخت برنامه، کافیست تا پس از ورود به <Link className="blue-link" href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link className="blue-link" href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="blue-link" href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>PHP</b> تنظیم کنید.
-            در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="blue-link" href="../../details/private-network">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</a> مدنظرتان را انتخاب کنید. 
+            برای ساخت برنامه، کافیست تا پس از ورود به <Link className="blue-link" href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link className="blue-link" href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="blue-link" href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>Laravel</b> تنظیم کنید.
+            در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="blue-link" href="../../details/private-networks">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</a> مدنظرتان را انتخاب کنید. 
             در آخر، کافیست تا بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان ساخته شود:
         </p>
-        <img src="https://files.liara.ir/liara/docs/create-php-app-using-console.gif" alt="create app using console" />
+        <img src="https://files.liara.ir/liara/docs/create-django-app-using-console.gif" alt="create app using console" />
         <div className="h-4" />
     </>
 ]} 
@@ -100,10 +101,10 @@ import Asciinema from "@/components/Common/asciinema";
     </Highlight>
 </div>
 <p>
-    در واقع، این همان <a className="blue-link" href="../../domains/default-subdomain">زیر دامنه پیش‌فرضی</a> است که لیارا به صورت رایگان در اختیار شما قرار می‌دهد.
+    در واقع، این همان <a className="blue-link" href="../../domains/default-subdomain.md">دامنه پیش‌فرضی</a> است که لیارا به صورت رایگان در اختیار شما قرار می‌دهد.
     در نهایت، می‌توانید وضعیت برنامه خود را در <a className="blue-link" href="https://console.liara.ir">پنل کاربری</a> مشاهده بفرمایید که در حالت آماده به کار قرار دارد:
 </p>
-<img src="https://files.liara.ir/liara/docs/created-php-app.png" alt="a ready to use app"/>
+<img src="https://files.liara.ir/liara/docs/created-django-app.png" alt="a ready to use nodejs app"/>
 <div className="h-2" />
 <Alert variant="success">همچنین بخوانید: <a className="blue-link" href="../../details/about">آشنایی با ویژگی‌های یک برنامه</a></Alert>
 <Alert variant="success">همچنین بخوانید: <a className="blue-link" href="../../domains/about">اضافه کردن دامنه به برنامه</a></Alert>

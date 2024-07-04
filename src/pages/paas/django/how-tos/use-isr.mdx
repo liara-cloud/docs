@@ -1,0 +1,77 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# استفاده از قابلیت ISR
+<hr className="mb-2" />
+
+ISR (Incremental Static Regeneration) یکی از قابلیت‌های  NextJS است که به شما اجازه می‌دهد تا صفحاتی را که به‌صورت استاتیک تولید شده‌اند، بدون نیاز به بازسازی کامل سایت، به‌روز کنید.
+
+از آنجایی که فضای نوشتن در حالتِ پیش‌فرضِ Writable، متغیر است و در حالت فایل‌سیستم ReadOnly   فضایی برای نوشتن وجود ندارد؛ ممکن است که به افزایش فضا برای ذخیره‌سازی صفحات ساخته شده مبتنی بر ISR، نیاز داشته باشید. برای این کار کافیست تا طبق مراحل زیر، عمل کنید:
+
+<Tabs 
+    tabs={["Pages Router", "App Router"]} 
+    content={[
+    <>
+        <Step  steps={[
+        {
+        step: "۱",
+        content: (
+        <>
+                <h3>ایجاد دیسک</h3>
+                <p>طبق مستندات <a href="../../disks/manage/create" className="blue-link">ساخت دیسک</a>، یک دیسک با نام و اندازه دلخواه ایجاد کنید.</p>
+        </>
+        )
+        },
+        {
+        step: "۲",
+        content: (
+        <>
+                <h3>تعریف مسیر برای دیسک</h3>
+                <p>طبق مستندات <a href="../../disks/manage/route" className="blue-link">تعریف مسیر دیسک</a>، دیسک ایجاد شده را به مسیر <Important>next/server/pages.</Important> متصل کنید.</p>
+        </>
+        )
+        },]}/>
+    </>,
+    <>
+    <Step  steps={[
+        {
+        step: "۱",
+        content: (
+        <>
+                <h3>ایجاد دیسک</h3>
+                <p>طبق مستندات <a href="../../disks/manage/create" className="blue-link">ساخت دیسک</a>، یک دیسک با نام و اندازه دلخواه ایجاد کنید.</p>
+        </>
+        )
+        },
+        {
+        step: "۲",
+        content: (
+        <>
+                <h3>تعریف مسیر برای دیسک</h3>
+                <p>طبق مستندات <a href="../../disks/manage/route" className="blue-link">تعریف مسیر دیسک</a>، دیسک ایجاد شده را به مسیر <Important>next/server/app.</Important> متصل کنید.</p>
+        </>
+        )
+        },]}/>
+    </>
+]} 
+/>
+
+<div className="h-4" />
+با انجام کارهای فوق، فضای پوشه مدنظر، افزایش خواهد یافت.
+<div className="h-4" />
+
+<Alert variant="warning">
+در صورتی که به دایرکتوری اشاره شده، دیسک متصل نکرده باشید و فایل‌سیستم بر روی Writable باشد، با هر بار استقرار جدید یا ری‌استارت شدن برنامه، تمامی فایل‌های cache شده، حذف می‌شوند.
+</Alert>
+<NextPage next="./reach-static-files"/>
+</Layout>

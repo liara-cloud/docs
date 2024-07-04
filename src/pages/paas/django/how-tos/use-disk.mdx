@@ -1,0 +1,40 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# استفاده از دیسک در برنامه‌های Django
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/django/django-disks.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" />
+<div className="h-4" />
+
+برای استفاده از <a href="../../disks/about" className="blue-link">دیسک‌ها</a> در برنامه‌های Django در ابتدا باید طبق مستندات <a href="../../disks/create" className="blue-link">ساخت دیسک</a>، دیسک‌های مدنظر خود را بسازید؛ در ادامه، می‌توانید طبق مستندات <a href="../../disks/route" className="blue-link">تعریف مسیر برای دیسک</a>، دیسک‌های خود را به دایرکتوری‌های مدنظرتان، متصل کنید.
+
+در نظر داشته باشید که باید مسیر دایرکتوری مدنظر خود را در برنامه‌های Django به صورت <b>نسبی</b> مشخص کنید؛ به عنوان مثال، برای اتصال یک دیسک به دایرکتوری <Important>uploads</Important> کافیست تا مسیر زیر را به دیسک، متصل کنید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="bash">
+{`uploads/`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+<Alert variant='success'>همچنین بخوانید: <a href="../../details/file-system" className="blue-link">فایل سیستم لیارا</a></Alert>
+<Alert variant='success'>همچنین بخوانید: <a href="../../disks/about" className="blue-link">نحوه مدیریت دیسک‌ها</a></Alert>
+
+<NextPage next="./customize-nginx" />
+</Layout>

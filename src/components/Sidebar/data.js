@@ -186,7 +186,7 @@ export default {
       {
         title: "Django",
         icon: <IconContainer alt="django" />,
-        link: "/paas//getting-started"
+        link: "/paas/django/getting-started"
       },
       {
         title: "Flask",
@@ -1531,6 +1531,198 @@ export default {
         title: "Yii",
         icon: <IconContainer alt="yii" />,
         link: "/paas/php/related-apps/yii"
+      },
+    ],
+    django: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Django
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/django/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/django/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/django/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/django/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/django/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/django/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/django/how-tos/use-disk"
+      },
+      // {
+      //   title: "راه‌اندازی برنامه Websocket",
+      //   link: "/paas/django/how-tos/use-websocket"
+      // },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/django/how-tos/customize-php-ini"
+      },
+      {
+        title: "کار با Queueها",
+        link: "/paas/django/how-tos/use-queues"
+      },
+      {
+        title: "فعال‌سازی SSR با Inertia",
+        link: "/paas/django/how-tos/enable-ssr-using-inertia"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/django/how-tos/set-http-security-headers"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/django/how-tos/use-hooks"
+      },
+      {
+        title: "تغییر نسخه PHP و Laravel",
+        link: "/paas/django/how-tos/choose-version"
+      },
+      {
+        title: "مدیریت logهای Laravel",
+        link: "/paas/django/how-tos/manage-django-logs"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/django/how-tos/configure-trustedproxies"
+      },
+      {
+        title: "فعال‌سازی Gzip و Caching",
+        link: "/paas/django/how-tos/enable-gzip-and-caching"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/django/how-tos/use-ffmpeg-module"
+      },
+      {
+        title: "استفاده از Ziggy",
+        link: "/paas/django/how-tos/use-ziggy"
+      },
+      {
+        title: "نصب یا به‌روزرسانی اکستنشن ",
+        link: "/paas/django/how-tos/install-new-extension"
+      },
+      {
+        title: "مشاهده اکستنشن‌های نصب شده",
+        link: "/paas/django/how-tos/see-extension"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/django/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL",
+        link: "/paas/django/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MariaDB",
+        link: "/paas/django/how-tos/connect-to-db/mariadb"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        link: "/paas/django/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        link: "/paas/django/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        link: "/paas/django/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        link: "/paas/django/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        link: "/paas/django/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/django/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB",
+        link: "/paas/django/fix-common-errors/upload-limit-size"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/django/fix-common-errors/cors"
+      },
+      {
+        title: "رفع خطای 419",
+        link: "/paas/django/fix-common-errors/419-page-expired"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "Lumen",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/related-apps/lumen"
+      },
+      {
+        title: "Laravel Octane",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/related-apps/django-octane"
+      },
+      {
+        title: "Voyager",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/related-apps/voyager"
       },
     ],
   }
