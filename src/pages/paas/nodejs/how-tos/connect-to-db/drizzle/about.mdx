@@ -1,0 +1,46 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import PlatformIcon from "@/components/Common/icons";
+import {GoArrowLeft,} from "react-icons/go";
+
+<Layout>
+# اتصال به دیتابیس با استفاده از Drizzle در برنامه‌های TypeScript 
+<hr className="mb-2" />
+
+<Link href="https://orm.drizzle.team/docs/overview" className="blue-link">Drizzle</Link> یک headless
+ORM برای TypeScript است که امروزه بخاطر سرعت بسیار بالا، سادگی و بهینگی
+بیشتر نسبت به <a href="../prisma">Prisma ORM</a>، مورد توجه قرار گرفته
+است. شما می‌توانید در برنامه‌های TypeScript خود در لیارا، از این ORM سبک و
+استثنایی استفاده کنید. در ادامه مستندات مربوط به Drizzle برایتان قرار
+گرفته است:
+
+
+<div className='h-2' />
+<div className="grid grid-cols-1 gap-4">
+            {[
+    {  platform: 'ساخت برنامه Todo با استفاده از Drizzle و دیتابیس‌‌های PostgreSQL , MySQL و SQLite در فریم‌ورک NextJS', link: "./todo-project" },
+    {  platform: 'استقرار برنامه‌های وابسته به Drizzle ORM در لیارا', link: "./deploy-apps" },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.platform}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div>
+
+</Layout>

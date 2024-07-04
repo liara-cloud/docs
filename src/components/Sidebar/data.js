@@ -944,12 +944,16 @@ export default {
         link: "/paas/nodejs/how-tos/connect-to-db/redis"
       },
       {
-        title: "ماژول Prisma",
+        title: "Prisma ORM",
         link: "/paas/nodejs/how-tos/connect-to-db/prisma"
       },
       {
-        title: "ماژول Sequelize",
+        title: "Sequelize ORM",
         link: "/paas/nodejs/how-tos/connect-to-db/sequelize/about"
+      },
+      {
+        title: "Drizzle ORM",
+        link: "/paas/nodejs/how-tos/connect-to-db/drizzle/about"
       },
       {
         hr: true
@@ -1283,6 +1287,10 @@ export default {
         link: "/paas/laravel/how-tos/use-ziggy"
       },
       {
+        title: "نصب یا به‌روزرسانی اکستنشن ",
+        link: "/paas/laravel/how-tos/install-new-extension"
+      },
+      {
         title: "مشاهده اکستنشن‌های نصب شده",
         link: "/paas/laravel/how-tos/see-extension"
       },
@@ -1449,6 +1457,10 @@ export default {
       {
         title: "تغییر نسخه PHP",
         link: "/paas/php/how-tos/choose-version"
+      },
+      {
+        title: "نصب یا به‌روزرسانی اکستنشن ",
+        link: "/paas/php/how-tos/install-new-extension"
       },
       {
         title: "مشاهده اکستنشن‌های نصب شده",
