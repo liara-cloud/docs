@@ -40,6 +40,12 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools`}
     <h4>فهرست عناوین:</h4>
     <ul className="mt-0">
       <li>
+        <a href="#set-db-envs">تنظیم متغیرهای محیطی دیتابیس</a>
+      </li>
+      <li>
+        <a href="#auto-migrate">اعمال Migration در حین استقرار</a>
+      </li>
+      <li>
         <a href="#mssql">اتصال به MSSQL</a>
       </li>
       <li>
@@ -55,6 +61,48 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools`}
         <a href="#tips">توضیحات و نکات تکمیلی</a>
       </li>
     </ul>
+
+    <h4 id="set-db-envs">تنظیم متغیرهای محیطی دیتابیس</h4>
+    <p>
+      برای اتصال به دیتابیس در محیط Production بهتر است که از متغیرهای محیطی
+      استفاده کنید تا اطلاعات مهم اتصال به دیتابیس، از هیچ طریقی، در دسترس
+      کاربران قرار نگیرد.
+    </p>
+    <p>
+      برای این‌کار، باید در ابتدا طبق{" "}
+      <a href="/app-features/environment-variables">
+        مستندات تنظیم متغیرهای محیطی
+      </a>
+      ، متغیر محیطی مربوط به دیتابیس خود را به برنامه اضافه کنید؛ به عنوان مثال:
+    </p>
+    <Highlight className="shell">
+      {`ConnectionStrings__DefaultConnection=Data Source=etna.liara.cloud,30280;Initial Catalog=myDB;User Id=sa;Password=EJNdMyuBGd8KrCdixJA4DHzS; Encrypt=False`}
+    </Highlight>
+
+    <p>
+      در ادامه، می‌توانید با استفاده از دستور زیر، به دیتابیس خود متصل شده و از
+      آن، استفاده کنید:
+    </p>
+    <Highlight className="cs">
+      {`var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
+                       throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");`}
+    </Highlight>
+
+    <h4 id="auto-migrate">اعمال Migration در حین استقرار</h4>
+    <p>
+      برای اعمال Migrationها بر روی دیتابیس در حین عملیات استقرار برنامه،
+      می‌توانید مشابه قطعه کد زیر را به فایل{" "}
+      <span className="code">Program.cs</span> اضافه کنید. با این کار دیگر نیازی
+      به اجرای دستور <span className="code">dotnet ef database update</span>{" "}
+      نخواهد بود:
+    </p>
+    <Highlight className="cs">
+      {`using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}`}
+    </Highlight>
 
     <h4 id="mssql">MSSQL</h4>
     <p>
