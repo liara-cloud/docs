@@ -75,6 +75,7 @@ import pythonIcon from "@liara/platformicons/glass/png/python.png";
 import gatsbyIcon from "@liara/platformicons/glass/png/gatsby.png";
 import astroIcon from "../public/static/platforms/astro.svg";
 import drizzleIcon from "../public/static/platforms/drizzle.png";
+import qwikIcon from "../public/static/platforms/qwik.png";
 
 // Databases
 
@@ -156,6 +157,7 @@ const types = [
   { logo: gatsbyIcon, alt: "gatsby" },
   { logo: astroIcon, alt: "astro" },
   { logo: drizzleIcon, alt: "drizzle" },
+  { logo: qwikIcon, alt: "qwik" },
   { logo: svelteIcon, alt: "svelte" },
   { logo: blitzjsIcon, alt: "blitz" },
   { logo: strapiIcon, alt: "strapi" },

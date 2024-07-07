@@ -1380,6 +1380,12 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               </ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/instructions/qwik">
+                <PlatformIcon platform="qwik" />
+                Qwik
+              </ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/instructions/strapi">
                 <PlatformIcon platform="strapi" />
                 Strapi
