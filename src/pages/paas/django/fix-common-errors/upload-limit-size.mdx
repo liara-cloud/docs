@@ -11,33 +11,40 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB
+# رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB
 <hr className="mb-2" />
-وب‌سرور Apache ابتدا فایل‌های آپلودی را در دایرکتوری <Important>tmp/</Important> ذخیره می‌کند و سپس لاراول آن فایل را به Storage خودش، منتقل می‌کند. 
-علی‌رغم <a className="blue-link" href="../../details/file-system">فایل سیستم پیش‌فرض برنامه‌های لاراول در لیارا</a>، که ReadOnly است؛ دایرکتوری <Important>tmp/</Important> قابل نوشتن است، اما محدودی 100 مگابایتی دارد.
-در نتیجه شما نمی‌توانید فایل‌هایی با حجم بیش از 100MB را در پروژه خود، آپلود کنید و با خطا، مواجه خواهید شد. برای رفع این مشکل و افزایش حجم داده‌های آپلودی، کافیست تا طبق مراحل زیر، عمل کنید:
+از آنجایی که در لیارا، برای اجرای برنامه‌های Django، از <a href="../how-tos/customize-nginx" className="blue-link">وب‌سرور Nginx</a> استفاده می‌شود.
+در این وب‌سرور، به‌صورت پیش‌فرض حداکثر حجم مجاز آپلود فایل <Important>1MB</Important> در نظر گرفته شده‌است. شما می‌توانید یک فایل با نام <Important>liara_nginx.conf</Important> در مسیر اصلی پروژه ایجاد کنید و محتویات زیر را داخل آن قرار دهید: 
 
-<Step  steps={[
-    {
-    step: "۱",
-    content: (
-    <>
-            <h3>ایجاد دیسک</h3>
-            <p>طبق مستندات <a href="../../disks/manage/create" className="blue-link">ساخت دیسک</a>، یک دیسک با نام و اندازه دلخواه ایجاد کنید.</p>
-    </>
-    )
-    },
-    {
-    step: "۲",
-    content: (
-    <>
-            <h3>تعریف مسیر برای دیسک</h3>
-            <p>طبق مستندات <a href="../../disks/manage/route" className="blue-link">تعریف مسیر دیسک</a>، دیسک ایجاد شده را به مسیر <Important>tmp/</Important> متصل کنید.</p>
-    </>
-    )
-    },]}/>
-<div className="h-4" />
-با انجام کارهای فوق، فضای پوشه <Important>tmp/</Important> افزایش خواهد یافت. 
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+      {`client_max_body_size 250M;
+
+location /media {
+  alias /usr/src/app/media;
+}
+
+location /static {
+  alias /usr/src/app/staticfiles;
+}
+
+location / {
+  try_files /dev/null @django_app;
+}
+
+location ~\\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+با قرار دادن فایل بالا در ریشه‌ی برنامه‌ی‌تان حداکثر حجم مجاز آپلود فایل به 250MB افزایش می‌یابد. شما می‌توانید مقدار دلخواه خودتان را تنظیم کنید. در انتها، کافیست تا برنامه را مجدداً در لیارا مستقر کنید تا تغییرات، اعمال شوند.
 
 
 </Layout>

@@ -909,6 +909,10 @@ export default {
         link: "/paas/nodejs/how-tos/choose-version"
       },
       {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/nodejs/how-tos/use-ffmpeg-module"
+      },
+      {
         hr: true
       },
       {
@@ -1588,21 +1592,17 @@ export default {
         title: "استفاده از دیسک",
         link: "/paas/django/how-tos/use-disk"
       },
-      // {
-      //   title: "راه‌اندازی برنامه Websocket",
-      //   link: "/paas/django/how-tos/use-websocket"
-      // },
       {
         title: "تنظیم Nginx",
-        link: "/paas/django/how-tos/customize-php-ini"
+        link: "/paas/django/how-tos/customize-nginx"
       },
       {
-        title: "کار با Queueها",
-        link: "/paas/django/how-tos/use-queues"
+        title: "فعال‌سازی قابلیت gzip",
+        link: "/paas/django/how-tos/enable-gzip"
       },
       {
-        title: "فعال‌سازی SSR با Inertia",
-        link: "/paas/django/how-tos/enable-ssr-using-inertia"
+        title: "استفاده از Supervisord",
+        link: "/paas/django/how-tos/use-supervisord"
       },
       {
         title: "تنظیم هدرهای امنیتی HTTP",
@@ -1613,37 +1613,30 @@ export default {
         link: "/paas/django/how-tos/use-hooks"
       },
       {
-        title: "تغییر نسخه PHP و Laravel",
+        title: "تغییر نسخه Python",
         link: "/paas/django/how-tos/choose-version"
       },
       {
-        title: "مدیریت logهای Laravel",
-        link: "/paas/django/how-tos/manage-django-logs"
+        title: "تنظیم تعداد workerهای  Gunicorn",
+        link: "/paas/django/how-tos/set-gunicorn-workers"
       },
       {
-        title: "پیکربندی TrustedProxies",
-        link: "/paas/django/how-tos/configure-trustedproxies"
+        title: "تنظیم max_request در Gunicorn",
+        link: "/paas/django/how-tos/set-gunicorn-maxrequest"
       },
       {
-        title: "فعال‌سازی Gzip و Caching",
-        link: "/paas/django/how-tos/enable-gzip-and-caching"
+        title: "راه‌اندازی برنامه WebSocket",
+        link: "/paas/django/how-tos/use-websocket"
+      },
+      {
+        title: "راه‌اندازی برنامه ASGI",
+        link: "/paas/django/how-tos/use-asgi"
       },
       {
         title: "استفاده از ماژول FFMPEG",
         link: "/paas/django/how-tos/use-ffmpeg-module"
       },
-      {
-        title: "استفاده از Ziggy",
-        link: "/paas/django/how-tos/use-ziggy"
-      },
-      {
-        title: "نصب یا به‌روزرسانی اکستنشن ",
-        link: "/paas/django/how-tos/install-new-extension"
-      },
-      {
-        title: "مشاهده اکستنشن‌های نصب شده",
-        link: "/paas/django/how-tos/see-extension"
-      },
+      
       {
         hr: true
       },
@@ -1695,7 +1688,7 @@ export default {
         )
       },
       {
-        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB",
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
         link: "/paas/django/fix-common-errors/upload-limit-size"
       },
       {
@@ -1703,26 +1696,20 @@ export default {
         link: "/paas/django/fix-common-errors/cors"
       },
       {
-        title: "رفع خطای 419",
-        link: "/paas/django/fix-common-errors/419-page-expired"
+        title: "رفع خطای CORS فایل‌های Media",
+        link: "/paas/django/fix-common-errors/cors-media"
+      },
+      {
+        title: "رفع خطای WORKER TIMEOUT",
+        link: "/paas/django/fix-common-errors/worker-timeout"
       },
       {
         hr: true
       },
       {
-        title: "Lumen",
-        icon: <IconContainer alt="django" />,
-        link: "/paas/django/related-apps/lumen"
-      },
-      {
-        title: "Laravel Octane",
-        icon: <IconContainer alt="django" />,
-        link: "/paas/django/related-apps/django-octane"
-      },
-      {
-        title: "Voyager",
-        icon: <IconContainer alt="django" />,
-        link: "/paas/django/related-apps/voyager"
+        title: "Celery",
+        icon: <IconContainer alt="celery" />,
+        link: "/paas/django/related-apps/celery"
       },
     ],
   }

@@ -12,92 +12,90 @@ import NextPage from "@/components/Common/nextpage";
 import {GoArrowLeft,} from "react-icons/go";
 
 <Layout>
-# رفع خطای CORS در برنامه‌های Laravel
+# رفع خطای CORS در برنامه‌های Django
 <hr className="mb-2" />
 خطای CORS (Cross-Origin Resource Sharing) یک محدودیت امنیتی در مرورگرها است که جلوی درخواست‌های HTTP از منابع مختلف را می‌گیرد. 
-این خطا ممکن است زمانی رخ دهد که سعی کنید از یک دامنه یا پورت متفاوت به سروری دیگر درخواست ارسال کنید، و معمولاً با پیام خطایی شبیه به <b>Access-Control-Allow-Origin</b> در مرورگر مواجه خواهید شد. در ادامه، به رفع این خطا در فریم‌ورک‌های مختلف، پرداخته شده است:
+این خطا ممکن است زمانی رخ دهد که سعی کنید از یک دامنه یا پورت متفاوت به سروری دیگر درخواست ارسال کنید، و معمولاً با پیام خطایی شبیه به <b>Access-Control-Allow-Origin</b> در مرورگر مواجه خواهید شد. در ادامه، به رفع این خطا، پرداخته شده است:
+<div className="h-2" />
 
-برای حل این مشکل می‌توانید از راه حل‌‌های قرار داده شده، استفاده کنید.
+برای رفع این خطا، کافیست تا با اجرای دستور زیر، پکیج <Important>django-cors-headers</Important> را در پروژه خود، نصب کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`pip install django-cors-headers`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
-<Section id="use-laravel-cors-package" title="استفاده از پکیج laravel-cors" />
-در ابتدا، کافیست تا با اجرای دستور زیر، این پکیج را در پروژه خود، در لوکال، نصب کنید:
+در ادامه، بایستی تا به <Important>INSTALLED_APPS</Important> در فایل <Important>settings.py</Important>، مقدار <Important>corsheaders</Important> را اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+      {`INSTALLED_APPS = [
+    # other apps
+    'corsheaders',
+    # other apps
+]
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، باید مقدار <Important>CorsMiddleware</Important> را به <Important>MIDDLEWARE</Important> در فایل <Important>settings.py</Important>، اضافه کنید:
+
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-      {`composer require fruitcake/laravel-cors`}
+      {`MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    # other middlewares ...
+]
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-البته اگر که به خطای conflict برخورد کردید؛ کافیست تا پکیج‌های قدیمی مربوطه با ورژن barryvdh یا fruitcake را با اجرای دستور مثال زیر، حذف کرده و مجدداً آن را نصب کنید:
+تمامی کارها انجام شده و می‌توانید برای اجازه دادن به همه دامنه‌ها، در فایل <Important>settings.py</Important> دستور زیر را وارد کنید:
+
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="bash">
-      {`composer remove barryvdh/laravel-cors fruitcake/laravel-cors
-composer require fruitcake/laravel-cors`}
+    <Highlight className="python">
+      {`CORS_ALLOW_ALL_ORIGINS = True`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-در ادامه، بایستی، یک middleware به نام <Important>HandleCors</Important> در ابتدای property به نام <Important>middleware$</Important> در فایل <Important>app/Http/Kernel.php</Important> با محتوای زیر، اضافه کنید:
+یا برای اجازه دادن به دامنه‌های خاص، از قطعه کد زیر استفاده کنید:
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="php">
-      {`protected $middleware = [
-  \\Fruitcake\\Cors\\HandleCors::class,
-    // ...
-];`}
+    <Highlight className="python">
+      {`CORS_ALLOWED_ORIGINS = [
+    'http://example.com',
+    'http://anotherdomain.com',
+]
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-تمامی کارها انجام شده است و کافیست دستور زیر را اجرا کنید تا مقادیر پیش‌فرض مربوط به CORS در مسیر <Important>config/cors.php</Important> برای‌تان قرار بگیرد و پس از آن، می‌توانید این مقادیر را بنا به نیاز خود، تغییر دهید:
+متدهای مجاز را نیز می‌توانید با اضافه کردن قطعه کد زیر به فایل <Important>settings.py</Important>، در پروژه خود، مشخص کنید:
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="bash">
-      {`php artisan vendor:publish --tag="cors"`}
-    </Highlight>
-</div>
-<div className="h-2" />
-<Alert variant='success'>
-<p>
-همچنین بخوانید: <a href="https://github.com/fruitcake/laravel-cors?tab=readme-ov-file#cors-middleware-for-laravel" className="blue-link">مستندات مربوط به پکیج laravel-cors</a>
-</p>
-</Alert>
-
-<Section id="use-htaccess" title="تنظیم فایل htaccess." />
-کافیست تا وارد فایل <Important>public/.htaccess</Important> شوید و تنظیمات مربوط به CORS را به پروژه خود اضافه کنید:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="config">
-      {`Header set Access-Control-Allow-Origin "*"
-
-<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
-
-    RewriteEngine On
-
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-</IfModule>`}
+    <Highlight className="python">
+      {`CORS_ALLOW_METHODS = [
+  "DELETE",
+  "GET",
+  "OPTIONS",
+  "PATCH",
+  "POST",
+  "PUT",
+]`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-
+در نهایت کافیست تا برای ثبت تغییرات، برنامه خود را مجدداً در لیارا، مستقر کنید.
 
 </Layout>

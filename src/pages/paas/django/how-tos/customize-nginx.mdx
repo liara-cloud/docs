@@ -51,46 +51,12 @@ location ~ /\\.well-known {
 
 سپس، کافیست تا برنامه خود را، مجدداً در لیارا مستقر کنید تا تنظیمات مدنظرتان، اعمال بشود.
 
-<Section id="enable-gzip" title="فعال‌سازی قابلیت gzip" />
-قابلیت gzip در NGINX برای فشرده‌سازی محتوا قبل از ارسال آن به مرورگر کاربران استفاده می‌شود. این کار باعث کاهش حجم داده‌های منتقل‌شده و در نتیجه کاهش زمان بارگذاری صفحات وب می‌شود، که می‌تواند به بهبود عملکرد کمک کند.
-برای فعال‌کردن قابلیت gzip می‌توانید قطعه کد زیر را در فایل <Important>liara_nginx.conf</Important> وارد کنید:
-
-<div className="h-2" />
-<div dir="ltr">
-<Highlight className='conf'>
-{`gzip             on;
-gzip_disable     "msie6";
-gzip_vary        on;
-gzip_proxied     any;
-gzip_comp_level  6;
-gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
-
-client_max_body_size 100M;
-
-location /media {
-  alias /usr/src/app/media;
-}
-
-location /static {
-  alias /usr/src/app/staticfiles;
-}
-
-location / {
-  try_files /dev/null @django_app;
-}
-
-location ~\\.sqlite3$ {
-  deny all;
-  error_page 403 =404 /;
-}
-
-location ~ /\\.well-known {
-  allow all;
-}`}
-</Highlight>
-</div>
-<div className="h-2" />
+<Alert variant="warning">
+<p>
+ امکان تغییر تنظیمات <Important>nginx</Important> از ابتدا وجود ندارد. شما می‌توانید تنها برخی از این تنظیمات را شخصی‌سازی کنید. در نهایت، فایل تنظیمات شما داخل بلاک server در تنظیمات اصلی، include خواهد شد.
+</p>
+</Alert>
 
 
-<NextPage next="./use-queues" />
+<NextPage next="./enable-gzip" />
 </Layout>

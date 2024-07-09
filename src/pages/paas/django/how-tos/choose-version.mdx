@@ -11,21 +11,20 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# انتخاب نسخه PHP و لاراول
+# انتخاب نسخه Python 
 <hr className="mb-2" />
 
-در حال حاضر در پلتفرم Laravel لیارا، نسخه‌های زیر از  PHP ارائه می‌شوند: 
+در حال حاضر در پلتفرم Django لیارا، نسخه‌های زیر از  Python ارائه می‌شوند: 
 
 <div className="h-2" />
 <ul className="pr-4">
   {[
-    {text: '7.2 (بدون‌آپدیت)',},
-    {text: '7.3 (بدون‌آپدیت)',},
-    {text: '7.4 (پیش‌فرض)',},
-    {text: '8.0',},
-    {text: '8.1',},
-    {text: '8.2',},
-    {text: '8.3',},
+    {text: '3.7 (بدون به‌روزرسانی)',},
+    {text: '3.8',},
+    {text: '8.9',},
+    {text: '3.10 (پیش‌فرض)',},
+    {text: '3.11',},
+    {text: '3.12',},
   ].map((item, index) => (
     <li
       key={index}
@@ -41,40 +40,9 @@ import NextPage from "@/components/Common/nextpage";
 <div className="h-2" />
 <Alert variant="warning">
 <p>
- قابلیت‌های جدید برای نسخه‌های بدون آپدیت، ارائه نمی‌شوند و برای رفع این مشکل، باید ورژن PHP برنامه خود را، ارتقاء دهید.
+ قابلیت‌های جدید برای نسخه‌های بدون به‌روزرسانی، ارائه نمی‌شوند و برای رفع این مشکل، باید ورژن Python برنامه خود را، ارتقاء دهید.
 </p>
 </Alert>
-<Alert variant="info">
-<p>
-توجه داشته باشید که ionCube در PHP نسخه 8.3 پشتیبانی نمی‌شود.
-</p>
-</Alert>
-<div className="h-2" />
-همچنین، لیارا از نسخه‌های لاراول زیر پشتیبانی می‌کند:
-
-<div className="h-2" />
-<div dir="ltr">
-<ul className="pr-4">
-  {[
-    {text: 'Laravel 5.5.^',},
-    {text: 'Laravel 6.^'},
-    {text: 'Laravel 7.^',},
-    {text: 'Laravel 8.^',},
-    {text: 'Laravel 9.^',},
-    {text: 'Laravel 10.^',},
-    {text: 'Laravel 11',},
-  ].map((item, index) => (
-    <li
-      key={index}
-      style={{
-        textDecorationColor: "#9ca3af"
-      }}
-    >
-      {item.text}
-    </li>
-  ))}
-</ul>
-</div>
 
 <Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
 <Tabs 
@@ -82,18 +50,18 @@ import NextPage from "@/components/Common/nextpage";
     content={[
     <>
     <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
-    <img src="https://files.liara.ir/liara/docs/choose-laravel-php-version-using-console.png" alt="how to choose version in liara console" />
+    <img src="https://files.liara.ir/liara/docs/change-python-version-in-django-using-console.png" alt="how to choose version in liara console" />
     </>,
     <>
     <p>
-        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه PHP به 8.2 می‌باشد:
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه Python به 3.12 می‌باشد:
     </p>
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="json">
             {`{
-    "laravel": {
-      "phpVersion": "8.2"
+  "django": {
+    "pythonVersion": "3.12"
   }
 }`}
         </Highlight>
@@ -104,5 +72,5 @@ import NextPage from "@/components/Common/nextpage";
 ]} 
 />
 
-<NextPage next="./manage-laravel-logs"/>
+<NextPage next="./set-gunicorn-workers"/>
 </Layout>
