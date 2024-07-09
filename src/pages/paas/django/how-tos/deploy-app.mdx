@@ -18,8 +18,44 @@ import NextPage from "@/components/Common/nextpage";
 <hr className="mb-2" />
 
         <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+        <>
+        <p>
+            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های venv. و dist را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
+        </p>
+
+        <p>
+            همچنین، پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
+            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Django است:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="txt">
+                {`asgiref==3.8.1
+Django==5.0.6
+sqlparse==0.5.0
+tzdata==2024.1
+`}
+            </Highlight>
+        </div>
+        <div className='h-4' />        
+        <p>
+            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
+        </p>
+        <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
+        <div className="h-4" />
+        <p>
+            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
+        </p>
+        <div className="h-4" />
+        <img src="https://files.liara.ir/liara/docs/deploy-django-app-using-console.gif" alt="build app on liara" />
+        <div className="h-4" />
+        <p>
+            در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
+        </p>
+
+    </>,
     <>
 
         <p>
@@ -211,42 +247,7 @@ tzdata==2024.1
             در حین فرایند استقرار، می‌توانید در ترمینال خود، لاگ‌های مربوط به آن را مشاهده بفرمایید.
         </p>
     </>,
-    <>
-        <p>
-            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های venv. و dist را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
-        </p>
 
-        <p>
-            همچنین، پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
-            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Django است:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="txt">
-                {`asgiref==3.8.1
-Django==5.0.6
-sqlparse==0.5.0
-tzdata==2024.1
-`}
-            </Highlight>
-        </div>
-        <div className='h-4' />        
-        <p>
-            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
-        </p>
-        <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
-        <div className="h-4" />
-        <p>
-            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
-        </p>
-        <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/deploy-django-app-using-console.gif" alt="build app on liara" />
-        <div className="h-4" />
-        <p>
-            در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
-        </p>
-
-    </>
 ]} 
 />
 

@@ -19,28 +19,8 @@ import Asciinema from "@/components/Common/asciinema";
 <hr className="mb-2" />
 
         <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
-    <>
-    <p>
-        برای ساخت دیسک جدید با استفاده از ابزار Liara CLI، کافیست تا پس از اجرای دستور <Important>liara login</Important>، دستور <Important>liara disk:create</Important> را اجرا کنید:
-    </p>
-    <Asciinema id="create-new-disk" />
-    <p>البته می‌توانید عملیات ایجاد دیسک را فقط با اجرای یک خط دستور زیر، سرعت ببخشید:</p>
-    <div className="h-2" />
-    <div dir="ltr">
-    <Highlight  className="bash">
-        {`liara disk:create -a my-web-app -n data -s 2.5`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
-    <p></p>
-    <Asciinema id="make-new-disk-by-one-line" />
-    <p>
-    بعد از <Important>a-</Important> شناسه برنامه، بعد از <Important>n-</Important> نام دیسک، و پس از <Important>s-</Important> باید حجم دیسک خود را با توجه به فضای قابل رزور، برحسب گیگابایت، وارد کنید.
-    </p>
-    
-    </>,
     <>
     <p>
     برای ساخت دیسک کافیست تا وارد قسمت <b>دیسک‌ها</b> در برنامه خود شوید:
@@ -61,7 +41,28 @@ import Asciinema from "@/components/Common/asciinema";
     <div className="h-4" />
     <img src="https://files.liara.ir/liara/docs/created-disk.png" alt="created disk"/>
     <div className="h-4" />
-    </>
+    </>,
+    <>
+    <p>
+        برای ساخت دیسک جدید با استفاده از ابزار Liara CLI، کافیست تا پس از اجرای دستور <Important>liara login</Important>، دستور <Important>liara disk:create</Important> را اجرا کنید:
+    </p>
+    <Asciinema id="create-new-disk" />
+    <p>البته می‌توانید عملیات ایجاد دیسک را فقط با اجرای یک خط دستور زیر، سرعت ببخشید:</p>
+    <div className="h-2" />
+    <div dir="ltr">
+    <Highlight  className="bash">
+        {`liara disk:create -a my-web-app -n data -s 2.5`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p></p>
+    <Asciinema id="make-new-disk-by-one-line" />
+    <p>
+    بعد از <Important>a-</Important> شناسه برنامه، بعد از <Important>n-</Important> نام دیسک، و پس از <Important>s-</Important> باید حجم دیسک خود را با توجه به فضای قابل رزور، برحسب گیگابایت، وارد کنید.
+    </p>
+    
+    </>,
+
 ]} 
 />
 

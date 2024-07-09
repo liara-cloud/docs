@@ -16,8 +16,89 @@ import Link from "next/link";
 توجه داشته باشید؛ تنها برنامه‌هایی که با دستور <Important>create-next-app</Important> ساخته شده باشند، در پلتفرم Next لیارا قابل اجرا خواهند بود.
 
 <Tabs 
-  tabs={["Liara CLI", "Liara Console"]} 
+  tabs={["Liara Console", "Liara CLI"]} 
   content={[
+  <>
+  <video
+  src="https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  ></video>
+  <div className="h-2" />
+  برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="blue-link" href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>برنامه NextJS خود را با شناسه، <Link className="blue-link" href="../details/private-networks.md">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>حذف فایل‌های اضافی</h3>
+    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه node_modules) را پاک کنید.</p>  
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛ به عنوان مثال:</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+    },
+}`}
+    </Highlight>
+    </div>
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>زیپ و آپلود پروژه</h3>
+    <p>پوشه پروژه را در یک فایل <Important>zip</Important> قرار دهید. فایل را کشیده و در باکس آپلود Liara Console رها کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+  <>
+    <h3>استقرار پروژه</h3>
+    <p>مرحله به مرحله استقرار را با Console جلو بروید و شخصی‌سازی‌های لازم را انجام دهید و در نهایت بر روی گزینه استقرار کلیک کنید تا عملیات استقرار، آغاز شود. </p>
+  </>
+  )
+  }
+
+]}/>
+  </>,
+
   <>
   <video
   src="https://files.liara.ir/liara/quick-start/nextjs/nextjs-cli.mp4"
@@ -152,86 +233,7 @@ import Link from "next/link";
 
 ]}/>
   </>,
-   <>
-  <video
-  src="https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-  ></video>
-  <div className="h-2" />
-  برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
-  <Step  steps={[
-{
-  step: "۱",
-  content: (
-  <>
-    <h3>ورود به حساب کاربری</h3>   
-    <p>وارد <Link className="blue-link" href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۲",
-  content: (
-  <>
-    <h3>ایجاد برنامه</h3>
-    <p>برنامه NextJS خود را با شناسه، <Link className="blue-link" href="../details/private-networks.md">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۳",
-  content: (
-  <>
-    <h3>حذف فایل‌های اضافی</h3>
-    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه node_modules) را پاک کنید.</p>  
-  </>
-  )
-  },
-  {
-  step: "۴",
-  content: (
-  <>
-    <h3>تنظیم اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛ به عنوان مثال:</p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-    },
-}`}
-    </Highlight>
-    </div>
-  </>
-  )
-  },
-  {
-  step: "۵",
-  content: (
-  <>
-    <h3>زیپ و آپلود پروژه</h3>
-    <p>پوشه پروژه را در یک فایل <Important>zip</Important> قرار دهید. فایل را کشیده و در باکس آپلود Liara Console رها کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۶",
-  content: (
-  <>
-    <h3>استقرار پروژه</h3>
-    <p>مرحله به مرحله استقرار را با Console جلو بروید و شخصی‌سازی‌های لازم را انجام دهید و در نهایت بر روی گزینه استقرار کلیک کنید تا عملیات استقرار، آغاز شود. </p>
-  </>
-  )
-  }
 
-]}/>
-  </>,
 ]} 
 />
 

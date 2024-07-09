@@ -16,8 +16,78 @@ import Asciinema from "@/components/Common/asciinema";
 <hr className="mb-2" />
 
 <Tabs 
-  tabs={["Liara CLI", "Liara Console"]} 
+  tabs={["Liara Console", "Liara CLI"]} 
   content={[
+   <>
+  <video
+  src="https://files.liara.ir/liara/php/php-desktop.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  ></video>
+  <div className="h-2" />
+  برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="blue-link" href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>برنامه PHP خود را با شناسه، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>حذف فایل‌های اضافی</h3>
+    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه‌های bin و vendor) را پاک کنید.</p>  
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>تنظیم فایل‌های composer</h3>
+    <p>اگر که در پروژه PHP خود از composer برای نصب پکیج خاصی استفاده کرده باشید؛ حتماً باید در مسیر اصلی پروژه، فایل <Important>composer.json</Important> وجود داشته باشد؛ همچنین بهتر است
+    برای جلوگیری از خطاهای احتمالی استقرار، فایل <Important>composer.lock</Important> موجود در مسیر اصلی پروژه خود را، پاک کنید.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>زیپ و آپلود پروژه</h3>
+    <p>پوشه پروژه را در یک فایل <Important>zip</Important> قرار دهید. فایل را کشیده و در باکس آپلود Liara Console رها کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+  <>
+    <h3>استقرار پروژه</h3>
+    <p>مرحله به مرحله استقرار را با Console جلو بروید و شخصی‌سازی‌های لازم را انجام دهید و در نهایت بر روی گزینه استقرار کلیک کنید تا عملیات استقرار، آغاز شود. </p>
+  </>
+  )
+  }
+
+]}/>
+  </>,
+
   <>
   <video
   src="https://files.liara.ir/liara/quick-start/php/php-cli.mp4"
@@ -145,75 +215,7 @@ import Asciinema from "@/components/Common/asciinema";
 
 ]}/>
   </>,
-   <>
-  <video
-  src="https://files.liara.ir/liara/php/php-desktop.mp4"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-  ></video>
-  <div className="h-2" />
-  برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
-  <Step  steps={[
-{
-  step: "۱",
-  content: (
-  <>
-    <h3>ورود به حساب کاربری</h3>   
-    <p>وارد <Link className="blue-link" href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۲",
-  content: (
-  <>
-    <h3>ایجاد برنامه</h3>
-    <p>برنامه PHP خود را با شناسه، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۳",
-  content: (
-  <>
-    <h3>حذف فایل‌های اضافی</h3>
-    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه‌های bin و vendor) را پاک کنید.</p>  
-  </>
-  )
-  },
-  {
-  step: "۴",
-  content: (
-  <>
-    <h3>تنظیم فایل‌های composer</h3>
-    <p>اگر که در پروژه PHP خود از composer برای نصب پکیج خاصی استفاده کرده باشید؛ حتماً باید در مسیر اصلی پروژه، فایل <Important>composer.json</Important> وجود داشته باشد؛ همچنین بهتر است
-    برای جلوگیری از خطاهای احتمالی استقرار، فایل <Important>composer.lock</Important> موجود در مسیر اصلی پروژه خود را، پاک کنید.
-    </p>
-  </>
-  )
-  },
-  {
-  step: "۵",
-  content: (
-  <>
-    <h3>زیپ و آپلود پروژه</h3>
-    <p>پوشه پروژه را در یک فایل <Important>zip</Important> قرار دهید. فایل را کشیده و در باکس آپلود Liara Console رها کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۶",
-  content: (
-  <>
-    <h3>استقرار پروژه</h3>
-    <p>مرحله به مرحله استقرار را با Console جلو بروید و شخصی‌سازی‌های لازم را انجام دهید و در نهایت بر روی گزینه استقرار کلیک کنید تا عملیات استقرار، آغاز شود. </p>
-  </>
-  )
-  }
 
-]}/>
-  </>,
 ]} 
 />
 

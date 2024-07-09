@@ -21,8 +21,13 @@ SSR یا Server-Side Rendering به فرآیند رندرینگ صفحات وب 
 لیارا، از Inertia در لاراول، پشتیبانی می‌کند و اگر که شما قصد دارید قابلیت SSR را با استفاده از این کتابخانه، در برنامه Laravel خود، فعال کنید؛ کافیست تا عملیات زیر را انجام بدهید:
 
 <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+    <>
+        در حین فرایند استقرار با Liara Console، کافیست تا گزینه <b>فعال‌سازی SSR با استفاده از Inertia</b> را فعال کنید. تا این قابلیت به برنامه شما اضافه شود:
+        <img src="https://files.liara.ir/liara/docs/enable-ssr-in-laravel-using-console.png" alt="enable-ssr-in-laravel-using-console"/>
+    </>,
+    
     <>
     <video
         src="https://files.liara.ir/liara/laravel/laravel-inertia-ssr.mp4"
@@ -51,11 +56,8 @@ SSR یا Server-Side Rendering به فرآیند رندرینگ صفحات وب 
     </p>
     </>,
 
-    <>
-        در حین فرایند استقرار با Liara Console، کافیست تا گزینه <b>فعال‌سازی SSR با استفاده از Inertia</b> را فعال کنید. تا این قابلیت به برنامه شما اضافه شود:
-        <img src="https://files.liara.ir/liara/docs/enable-ssr-in-laravel-using-console.png" alt="enable-ssr-in-laravel-using-console"/>
-    </>
-    ]}
+
+   ]}
 />
 
 <NextPage next="./set-http-security-headers"/>

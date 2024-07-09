@@ -15,8 +15,24 @@ import Asciinema from "@/components/Common/asciinema";
 # ساخت برنامه Django در لیارا
 
 <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+    <>
+        <video
+        src="https://files.liara.ir/liara/django/django-desktop.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+        ></video>
+        <div className="h-2" />
+        <p>
+            برای ساخت برنامه، کافیست تا پس از ورود به <Link className="blue-link" href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link className="blue-link" href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="blue-link" href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>Laravel</b> تنظیم کنید.
+            در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="blue-link" href="../../details/private-networks">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</a> مدنظرتان را انتخاب کنید. 
+            در آخر، کافیست تا بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان ساخته شود:
+        </p>
+        <img src="https://files.liara.ir/liara/docs/create-django-app-using-console.gif" alt="create app using console" />
+        <div className="h-4" />
+    </>,
     <>
     <video
         src="https://files.liara.ir/liara/django/django-cli.mp4"
@@ -74,22 +90,7 @@ import Asciinema from "@/components/Common/asciinema";
     <Asciinema id="create-django-app-using-cli" />
 
     </>,
-    <>
-        <video
-        src="https://files.liara.ir/liara/django/django-desktop.mp4"
-        controls="controls"
-        className="block w-full"
-        width="100%"
-        ></video>
-        <div className="h-2" />
-        <p>
-            برای ساخت برنامه، کافیست تا پس از ورود به <Link className="blue-link" href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link className="blue-link" href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="blue-link" href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>Laravel</b> تنظیم کنید.
-            در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="blue-link" href="../../details/private-networks">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="blue-link" href="../../details/plans/about">پلن‌های نرم‌افزاری و سخت‌افزاری</a> مدنظرتان را انتخاب کنید. 
-            در آخر، کافیست تا بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان ساخته شود:
-        </p>
-        <img src="https://files.liara.ir/liara/docs/create-django-app-using-console.gif" alt="create app using console" />
-        <div className="h-4" />
-    </>
+
 ]} 
 />
 

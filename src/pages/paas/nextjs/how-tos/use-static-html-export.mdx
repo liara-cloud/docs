@@ -49,8 +49,14 @@ module.exports = nextConfig
 برای استقرار خروجی نهایی برنامه در لیارا، کافیست تا طبق مستندات <a href="../../static/how-tos/create-app" className="blue-link">ساخت برنامه‌های Static</a> یک برنامه static در لیارا ایجاد کنید. 
 
 <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+    <>
+    <p>
+      در نهایت، کافیست تا دایرکتوری نهایی را درون یک فایل <Important>zip</Important> قرار داده و در باکس آپلود تعبیه شده در کنسول، درج کنید و سپس عملیات استقرار را جلو ببرید.
+    </p>
+    </>,
+
     <>
     <p>
     در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود:
@@ -64,11 +70,7 @@ module.exports = nextConfig
     <div className="h-2" />
     بعد از <Important>path--</Important> بایستی اسم دایرکتوری نهایی را وارد کنید که به صورت پیش‌فرض <Important>out</Important> است.
     </>,
-    <>
-    <p>
-      در نهایت، کافیست تا دایرکتوری نهایی را درون یک فایل <Important>zip</Important> قرار داده و در باکس آپلود تعبیه شده در کنسول، درج کنید و سپس عملیات استقرار را جلو ببرید.
-    </p>
-    </>
+
 ]} 
 />
 

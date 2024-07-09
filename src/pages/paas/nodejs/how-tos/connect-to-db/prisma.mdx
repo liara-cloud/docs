@@ -70,8 +70,15 @@ import NextPage from "@/components/Common/nextpage";
 
 
 <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+    <>
+        <p>
+            در ابتدا کافیست تا پروژه را در Console مستقر کنید و در مرحله اتصال دیسک به برنامه، مسیر دیسک را <Important>prisma/migrations</Important> قرار دهید. و ادامه فرایند استقرار را جلو ببرید.
+        </p>
+    
+    </>,
+
     <>
         <p>یک فایل <Important>liara.json</Important> در مسیر اصلی پروژه خود ایجاد کنید و با استفاده از قطعه کد زیر، آن دیسک را به برنامه متصل کنید:</p>
         <div className="h-2" />
@@ -91,12 +98,7 @@ import NextPage from "@/components/Common/nextpage";
         <Alert variant='warning'>در نظر داشته باشید که باید در فیلد <Important>name</Important> نام دیسکی که ایجاد کرده‌اید را، وارد کنید.</Alert>
         <p>درنهایت می‌توانید با اجرای دستور <Important>liara deploy</Important>، پروژه‌ی خود را در لیارا مستقر کنید.</p>
     </>,
-    <>
-        <p>
-            در ابتدا کافیست تا پروژه را در Console مستقر کنید و در مرحله اتصال دیسک به برنامه، مسیر دیسک را <Important>prisma/migrations</Important> قرار دهید. و ادامه فرایند استقرار را جلو ببرید.
-        </p>
-    
-    </>
+
 ]} 
 />
 

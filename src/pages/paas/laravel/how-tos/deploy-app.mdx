@@ -18,8 +18,137 @@ import NextPage from "@/components/Common/nextpage";
 <hr className="mb-2" />
 
         <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+    <>
+        <p>
+            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های node_modules و vendor را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
+        </p>
+
+        <p>
+            همچنین، پروژه شما باید شامل فایل <Important>composer.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را، انجام می‌دهد:
+        </p>
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>
+                <h4>اضافه کردن mirror</h4>
+                <p>لیارا، در ابتدا، در فایل <Important>composer.json</Important>، برای افزایش سرعت دانلود و نصب پکیج‌های تعریف شده، mirror اختصاصی خود را، اضافه می‌کند تا پکیج‌ها از آن بارگذاری و نصب شوند.</p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+                <h4>نصب وابستگی‌های برنامه</h4>
+                <p>بعد از اضافه کردن mirror، لیارا با استفاده از دستور <Important>composer install</Important> تمامی پکیج‌ها و وابستگی‌های برنامه را نصب می‌کند. پس حتماً در نظر داشته باشید که اسامی آن‌ها در این فایل، تعریف شده باشد.</p>
+            </>
+            )
+            },
+        ]}/>
+        <div className="h-4" />
+        <p>
+            قطعه کد زیر، یک نمونه از فایل <Important>composer.json</Important> استاندارد برای برنامه‌های Laravel است:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.9",
+        "laravel/tinker": "^2.9"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.26",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^11.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
+`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <Alert variant='error'>
+        <p>
+        همچنین بهتر است برای استقرار موفق، فایل <Important>composer.lock</Important> درون پروژه خود را 
+        (در صورت وجود) پاک کنید تا در حین فرایند استقرار، لیارا آن را، ایجاد کند.
+        </p>
+        </Alert>
+        <div className='h-4' />
+        
+        <p>
+            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
+        </p>
+        <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
+        <div className="h-4" />
+        <p>
+            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
+        </p>
+        <div className="h-4" />
+        <img src="https://files.liara.ir/liara/docs/deploy-laravel-app-using-console.gif" alt="build app on liara" />
+        <div className="h-4" />
+        <p>
+            در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
+        </p>
+
+    </>,
+
     <>
 
         <p>
@@ -290,134 +419,7 @@ import NextPage from "@/components/Common/nextpage";
             در حین فرایند استقرار، می‌توانید در ترمینال خود، لاگ‌های مربوط به آن را مشاهده بفرمایید.
         </p>
     </>,
-    <>
-        <p>
-            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های node_modules و vendor را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
-        </p>
 
-        <p>
-            همچنین، پروژه شما باید شامل فایل <Important>composer.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را، انجام می‌دهد:
-        </p>
-        <Step  steps={[
-            {
-            step: "۱",
-            content: (
-            <>
-                <h4>اضافه کردن mirror</h4>
-                <p>لیارا، در ابتدا، در فایل <Important>composer.json</Important>، برای افزایش سرعت دانلود و نصب پکیج‌های تعریف شده، mirror اختصاصی خود را، اضافه می‌کند تا پکیج‌ها از آن بارگذاری و نصب شوند.</p>
-            </>
-            )
-            },
-            {
-            step: "۲",
-            content: (
-            <>
-                <h4>نصب وابستگی‌های برنامه</h4>
-                <p>بعد از اضافه کردن mirror، لیارا با استفاده از دستور <Important>composer install</Important> تمامی پکیج‌ها و وابستگی‌های برنامه را نصب می‌کند. پس حتماً در نظر داشته باشید که اسامی آن‌ها در این فایل، تعریف شده باشد.</p>
-            </>
-            )
-            },
-        ]}/>
-        <div className="h-4" />
-        <p>
-            قطعه کد زیر، یک نمونه از فایل <Important>composer.json</Important> استاندارد برای برنامه‌های Laravel است:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
-    "require": {
-        "php": "^8.2",
-        "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^11.0.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
-}
-`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <Alert variant='error'>
-        <p>
-        همچنین بهتر است برای استقرار موفق، فایل <Important>composer.lock</Important> درون پروژه خود را 
-        (در صورت وجود) پاک کنید تا در حین فرایند استقرار، لیارا آن را، ایجاد کند.
-        </p>
-        </Alert>
-        <div className='h-4' />
-        
-        <p>
-            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
-        </p>
-        <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
-        <div className="h-4" />
-        <p>
-            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
-        </p>
-        <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/deploy-laravel-app-using-console.gif" alt="build app on liara" />
-        <div className="h-4" />
-        <p>
-            در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
-        </p>
-
-    </>
 ]} 
 />
 

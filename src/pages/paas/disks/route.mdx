@@ -19,8 +19,29 @@ import {
 <hr className="mb-2" />
        
 <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+    <>
+    <p>
+        برای اتصال دیسک به برنامه مدنظرتان، کافیست تا در مرحله دوم استقرار، نام دیسک را انتخاب کنید و مسیر مورد نظرتان را وارد کنید:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/step-2-mount-disk.png" alt="mount disk"/>
+    <div className="h-4" />
+    <p>
+    مسیر دایرکتوری مدنظرتان را می‌توانید هم به صورت نسبی و هم به صورت absolute وارد کنید. به عنوان مثال، در عکس زیر دو دیسک به دو مسیر متفاوت، اولی نسبی و دومی به صورت کامل، متصل است:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/two-disks-console.png" alt="two disks mount"/>
+    <div className="h-4" />
+    <p>
+    در نهایت، پس از استقرار کامل، دیسک مدنظرتان به حالت <b>در حال استفاده</b> در خواهد آمد:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/a-using-disk.png" alt="a using disk"/>
+    <div className="h-4" />
+    </>,
+    
     <>
     <p>
     برای اتصال دیسک به دایرکتوری مدنظرتان، کافیست تا در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید.  درون این فایل، باید یک آرایه به نام <Important>disks</Important> ایجاد کنید:
@@ -78,27 +99,7 @@ import {
     <img src="https://files.liara.ir/liara/docs/a-using-disk.png" alt="a using disk"/>
     <div className="h-4" />
     </>,
-    <>
-    <p>
-        برای اتصال دیسک به برنامه مدنظرتان، کافیست تا در مرحله دوم استقرار، نام دیسک را انتخاب کنید و مسیر مورد نظرتان را وارد کنید:
-    </p>
-    <div className="h-4" />
-    <img src="https://files.liara.ir/liara/docs/step-2-mount-disk.png" alt="mount disk"/>
-    <div className="h-4" />
-    <p>
-    مسیر دایرکتوری مدنظرتان را می‌توانید هم به صورت نسبی و هم به صورت absolute وارد کنید. به عنوان مثال، در عکس زیر دو دیسک به دو مسیر متفاوت، اولی نسبی و دومی به صورت کامل، متصل است:
-    </p>
-    <div className="h-4" />
-    <img src="https://files.liara.ir/liara/docs/two-disks-console.png" alt="two disks mount"/>
-    <div className="h-4" />
-    <p>
-    در نهایت، پس از استقرار کامل، دیسک مدنظرتان به حالت <b>در حال استفاده</b> در خواهد آمد:
-    </p>
-    <div className="h-4" />
-    <img src="https://files.liara.ir/liara/docs/a-using-disk.png" alt="a using disk"/>
-    <div className="h-4" />
-    </>
-    
+
     ]} 
 />
 

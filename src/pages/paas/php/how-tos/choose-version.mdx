@@ -52,8 +52,13 @@ import NextPage from "@/components/Common/nextpage";
 
 <Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
 <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+    <>
+    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
+    <img src="https://files.liara.ir/liara/docs/choose-php-version-of-php-app-via-cosnole.png" alt="how to choose version in liara console" />
+    </>,
+
     <>
     <p>
         برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه PHP به 8.2 می‌باشد:
@@ -70,10 +75,7 @@ import NextPage from "@/components/Common/nextpage";
     </div>
     <div className="h-2" />
     </>,
-    <>
-    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
-    <img src="https://files.liara.ir/liara/docs/choose-php-version-of-php-app-via-cosnole.png" alt="how to choose version in liara console" />
-    </>
+
 ]} 
 />
 

@@ -22,8 +22,25 @@ import {
 
 <Section id="access-to-shell" title="دسترسی به خط فرمان در برنامه" />
 <Tabs 
-    tabs={["Liara CLI", "Liara Console"]} 
+    tabs={["Liara Console", "Liara CLI"]} 
     content={[
+        <>
+    <p>
+        برای اتصال به خط فرمان برنامه خود، کافیست تا وارد بخش <b>خط فرمان</b> شوید و سپس بر روی گزینه اتصال با مرورگر کلیک کنید تا خط فرمان برای‌تان بالا بیاید.
+    </p>
+    <div className="h-2" />
+    <img src="https://files.liara.ir/liara/docs/connect-to-shell-via-console.gif" alt="connect to shell via console"/>
+    <div className="h-2" />
+    <Alert variant="info">
+    <p>
+        اگر که از <a href="../docker/getting-started" className="blue-link">پلتفرم داکر لیارا</a> استفاده می‌کنید و <Important>bash</Important> در <Important>image</Important> شما نصب نیست؛ می‌توانید از <Important>shell</Important> پیش‌فرض <Important>image</Important> استفاده کنید.
+    </p>
+    </Alert>
+    <div className="h-2" />
+    <p>
+        این ترمینال،<Important>bin/bash/</Important>را اجرا می‌کند. بنابراین می‌توانید هر دستوری که در <Important>bash</Important> قابل اجرا است را وارد نمایید.
+    </p>
+    </>,
     <>
     <p>
     برای اجرای دستور‌های مورد نیاز در فرایند <a href="../cicd/about" className="blue-link">CI/CD</a> و یا دسترسی مستقیم به خط فرمان برنامه در سیستم‌عامل خود، می‌توانید از دستور زیر استفاده کنید:
@@ -45,23 +62,7 @@ import {
     <div className='h-2' />
 
     </>,
-    <>
-    <p>
-        برای اتصال به خط فرمان برنامه خود، کافیست تا وارد بخش <b>خط فرمان</b> شوید و سپس بر روی گزینه اتصال با مرورگر کلیک کنید تا خط فرمان برای‌تان بالا بیاید.
-    </p>
-    <div className="h-2" />
-    <img src="https://files.liara.ir/liara/docs/connect-to-shell-via-console.gif" alt="connect to shell via console"/>
-    <div className="h-2" />
-    <Alert variant="info">
-    <p>
-        اگر که از <a href="../docker/getting-started" className="blue-link">پلتفرم داکر لیارا</a> استفاده می‌کنید و <Important>bash</Important> در <Important>image</Important> شما نصب نیست؛ می‌توانید از <Important>shell</Important> پیش‌فرض <Important>image</Important> استفاده کنید.
-    </p>
-    </Alert>
-    <div className="h-2" />
-    <p>
-        این ترمینال،<Important>bin/bash/</Important>را اجرا می‌کند. بنابراین می‌توانید هر دستوری که در <Important>bash</Important> قابل اجرا است را وارد نمایید.
-    </p>
-    </>
+
 ]} 
 />
 
