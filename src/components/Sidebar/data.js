@@ -1364,6 +1364,14 @@ export default {
         hr: true
       },
       {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
         title: "Lumen",
         icon: <IconContainer alt="laravel" />,
         link: "/paas/laravel/related-apps/lumen"
@@ -1532,6 +1540,14 @@ export default {
         hr: true
       },
       {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
         title: "Yii",
         icon: <IconContainer alt="yii" />,
         link: "/paas/php/related-apps/yii"
@@ -1649,12 +1665,8 @@ export default {
         )
       },
       {
-        title: "دیتابیس MySQL",
+        title: "دیتابیس MySQL/MariaDB",
         link: "/paas/django/how-tos/connect-to-db/mysql"
-      },
-      {
-        title: "دیتابیس MariaDB",
-        link: "/paas/django/how-tos/connect-to-db/mariadb"
       },
       {
         title: "دیتابیس MSSQL",
@@ -1675,6 +1687,10 @@ export default {
       {
         title: "دیتابیس ElasticSearch",
         link: "/paas/django/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        link: "/paas/django/how-tos/connect-to-db/mongodb"
       },
       {
         hr: true
@@ -1705,6 +1721,14 @@ export default {
       },
       {
         hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
       },
       {
         title: "Celery",

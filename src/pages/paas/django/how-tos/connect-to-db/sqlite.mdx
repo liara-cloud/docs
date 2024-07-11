@@ -11,10 +11,10 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس SQLite در برنامه‌های Laravel
+# اتصال به دیتابیس SQLite در برنامه‌های Django
 <hr className="mb-2" />
 
-<p> برای اتصال موفق به دیتابیس SQLite در برنامه‌های Laravel کافیست تا گام‌های زیر را طی کنید: </p>
+<p> برای اتصال موفق به دیتابیس SQLite در برنامه‌های Django کافیست تا گام‌های زیر را طی کنید: </p>
 <div className="h-2" />
 
 <Step  steps={[
@@ -22,16 +22,27 @@ import NextPage from "@/components/Common/nextpage";
     step: "۱",
     content: (
     <>
-            <h3>تنظیم متغیرهای محیطی</h3>
+            <h3>تنظیم فایل <Important>settings.py</Important></h3>
+            <div className="h-1" />
             <p>
-              در ابتدا، بایستی طبق <a href="../../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای محیطی مربوط به دیتابیس خود را، به برنامه اضافه کنید؛ به عنوان مثال:
+                در ابتدا، بایستی در فایل <Important>settings.py</Important> در بخش <Important>DATABASES</Important> قطعه کد مربوط به دیتابیس SQLite را وارد کنید:
             </p>
+            <div className="h-1" />
             <div dir='ltr'>
-                <Highlight className="bash">
-                    {`DB_CONNECTION=sqlite
-DB_DATABASE=/var/www/html/database/database.sqlite`}
+                <Highlight className="python">
+                    {`DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'database' / 'db.sqlite3',
+    }
+}`}
                 </Highlight>
             </div>
+            <div className="h-1" />
+
+            <p>
+                در قطعه کد فوق، دایرکتوری <Important>database</Important> به عنوان دایرکتوری دیتابیس، مشخص شده است.
+            </p>
     </>
     )
     },
@@ -49,12 +60,13 @@ DB_DATABASE=/var/www/html/database/database.sqlite`}
             <div className="h-2" />
             <div dir='ltr'>
                 <Highlight className="bash">
-                    {`php artisan migrate --force`}
+                    {`mkdir database;
+python manage.py migrate;`}
                 </Highlight>
             </div>
             <div className="h-2" />
             <Alert variant='success'>
-            <p>همچنین بخوانید: <a href="../use-hooks" className="blue-link">استفاده از Hookها در لاراول</a></p>
+            <p>همچنین بخوانید: <a href="../use-hooks" className="blue-link">استفاده از Hookها در Django</a></p>
             </Alert>
 
     </>
@@ -82,7 +94,7 @@ DB_DATABASE=/var/www/html/database/database.sqlite`}
     "disks":[
         {
             "name": "database",
-            "mountTo": "/var/www/html/database/"
+            "mountTo": "database"
         }
     ]
 }
@@ -98,68 +110,6 @@ DB_DATABASE=/var/www/html/database/database.sqlite`}
     <>
         <h3>استقرار برنامه در لیارا</h3>
         <p>برنامه خود را با استفاده از دستور <Important>liara deploy</Important> در لیارا مستقر کنید.</p>
-    </>
-    )
-    },
-    {
-    step: "۶ ",
-    content: (
-    <>
-        <h3>تست اتصال به دیتابیس</h3>
-        <p>
-          باا نجام کارهای فوق، می‌توانید به دیتابیس SQLite خود متصل شوید. برای تست اتصال، می‌توانید با اجرای دستور زیر، یک کنترلر ایجاد کنید:
-        </p>
-        <div dir='ltr'>
-        <div className="h-2" />
-        <Highlight className="json">
-        {`php artisan make:controller DatabaseTestController`}
-        </Highlight>
-        </div>
-        <div className="h-2" />
-        <p>
-          سپس، می‌توانید فایل <Important>app/Http/Controllers/DatabaseTestController</Important> را به نحو زیر، تغییر دهید:
-        </p>
-        <div dir='ltr'>
-        <div className="h-2" />
-        <Highlight className="json">
-        {`<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Support\Facades\DB;
-use Exception;
-
-class DatabaseTestController extends Controller
-{
-    public function testConnection()
-    {
-        try {
-            DB::connection()->getPdo();
-            return "connection successfull";
-        } catch (Exception $e) {
-            return "connection failed" . $e->getMessage();
-        }
-    }
-}
-`}
-        </Highlight>
-        </div>
-        <div className="h-2" />
-        <p>
-        در ادامه، کافیست تا قطعه کد زیر را به فایل <Important>routes/web.php</Important> اضافه کنید:
-        </p>
-        <div dir='ltr'>
-        <div className="h-2" />
-        <Highlight className="php">
-        {`use App\Http\Controllers\DatabaseTestController;
-Route::get('/test-connection', [DatabaseTestController::class, 'testConnection']);
-`}
-        </Highlight>
-        </div>
-        <div className="h-2" />
-        در نهایت، می‌توانید برنامه را مجدداً در لیارا، مستقر کرده و پس از استقرار، صفحه <Important>test-connection/</Important> را بررسی کنید.
-
-
     </>
     )
     },
