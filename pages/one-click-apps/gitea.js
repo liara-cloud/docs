@@ -75,7 +75,7 @@ export default () => (
     </p>
     <Highlight className="json">
       {`{
-    "image": "gitea/gitea:<your-version>",
+    "image": "gitea/gitea:<your-version>-rootless",
     "port": 3000,
     "app": "<your-app-name>",
     "disks": [
