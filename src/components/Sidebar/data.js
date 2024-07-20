@@ -196,7 +196,7 @@ export default {
       {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
-        link: "/paas//getting-started"
+        link: "/paas/dotnet/getting-started"
       },
       {
         title: "React",
@@ -1652,6 +1652,10 @@ export default {
         title: "استفاده از ماژول FFMPEG",
         link: "/paas/django/how-tos/use-ffmpeg-module"
       },
+      {
+        title: "مدیریت logهای Django",
+        link: "/paas/django/how-tos/use-ffmpeg-module"
+      },
       
       {
         hr: true
@@ -1824,6 +1828,10 @@ export default {
         title: "استفاده از ماژول FFMPEG",
         link: "/paas/flask/how-tos/use-ffmpeg-module"
       },
+      {
+        title: "مدیریت logهای Flask",
+        link: "/paas/flask/how-tos/use-ffmpeg-module"
+      },
       
       {
         hr: true
@@ -1890,6 +1898,150 @@ export default {
       {
         title: "رفع خطای ModuleNotFoundError",
         link: "/paas/flask/fix-common-errors/module-not-found"
+      },
+    ],
+
+    dotnet: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Flask
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/dotnet/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/dotnet/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/dotnet/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/dotnet/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/dotnet/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/dotnet/how-tos/use-disk"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/dotnet/how-tos/use-hooks"
+      },
+      {
+        title: "تغییر نسخه NET.",
+        link: "/paas/dotnet/how-tos/choose-version"
+      },
+      {
+        title: "راه‌اندازی برنامه WebSocket",
+        link: "/paas/dotnet/how-tos/use-websocket"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/dotnet/how-tos/use-ffmpeg-module"
+      },
+      {
+        title: "مدیریت logهای NET.",
+        link: "/paas/dotnet/how-tos/use-ffmpeg-module"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/dotnet/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        link: "/paas/dotnet/how-tos/connect-to-db/mysql"
+      },
+      // {
+      //   title: "دیتابیس MSSQL",
+      //   link: "/paas/dotnet/how-tos/connect-to-db/mssql"
+      // },
+      {
+        title: "دیتابیس PostgreSQL",
+        link: "/paas/dotnet/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        link: "/paas/dotnet/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        link: "/paas/dotnet/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        link: "/paas/dotnet/how-tos/connect-to-db/mongodb"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/dotnet/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
+        link: "/paas/dotnet/fix-common-errors/upload-limit-size"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/dotnet/fix-common-errors/cors"
+      },
+      {
+        title: "رفع خطای WORKER TIMEOUT",
+        link: "/paas/dotnet/fix-common-errors/worker-timeout"
+      },
+      {
+        title: "رفع خطای ModuleNotFoundError",
+        link: "/paas/dotnet/fix-common-errors/module-not-found"
       },
     ],
   }
