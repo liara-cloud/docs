@@ -191,7 +191,7 @@ export default {
       {
         title: "Flask",
         icon: <IconContainer alt="flask" />,
-        link: "/paas//getting-started"
+        link: "/paas/flask/getting-started"
       },
       {
         title: "NET.",
@@ -1734,6 +1734,162 @@ export default {
         title: "Celery",
         icon: <IconContainer alt="celery" />,
         link: "/paas/django/related-apps/celery"
+      },
+    ],
+
+    flask: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Flask
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/flask/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/flask/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/flask/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/flask/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/flask/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/flask/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/flask/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/flask/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی قابلیت gzip",
+        link: "/paas/flask/how-tos/enable-gzip"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/flask/how-tos/set-trusted-proxies"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/flask/how-tos/use-hooks"
+      },
+      {
+        title: "تغییر نسخه Python",
+        link: "/paas/flask/how-tos/choose-version"
+      },
+      // {
+      //   title: "راه‌اندازی برنامه WebSocket",
+      //   link: "/paas/flask/how-tos/use-websocket"
+      // },
+      // {
+      //   title: "راه‌اندازی برنامه ASGI",
+      //   link: "/paas/flask/how-tos/use-asgi"
+      // },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/flask/how-tos/use-ffmpeg-module"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/flask/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        link: "/paas/flask/how-tos/connect-to-db/mysql"
+      },
+      // {
+      //   title: "دیتابیس MSSQL",
+      //   link: "/paas/flask/how-tos/connect-to-db/mssql"
+      // },
+      {
+        title: "دیتابیس PostgreSQL",
+        link: "/paas/flask/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        link: "/paas/flask/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        link: "/paas/flask/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        link: "/paas/flask/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        link: "/paas/flask/how-tos/connect-to-db/mongodb"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/flask/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
+        link: "/paas/flask/fix-common-errors/upload-limit-size"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/flask/fix-common-errors/cors"
+      },
+      {
+        title: "رفع خطای WORKER TIMEOUT",
+        link: "/paas/flask/fix-common-errors/worker-timeout"
+      },
+      {
+        title: "رفع خطای ModuleNotFoundError",
+        link: "/paas/flask/fix-common-errors/module-not-found"
       },
     ],
   }

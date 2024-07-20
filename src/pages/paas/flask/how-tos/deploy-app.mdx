@@ -14,7 +14,7 @@ import NextPage from "@/components/Common/nextpage";
 
 <Layout>
 
-# استقرار برنامه Django در لیارا
+# استقرار برنامه Flask در لیارا
 <hr className="mb-2" />
 
         <Tabs 
@@ -27,15 +27,19 @@ import NextPage from "@/components/Common/nextpage";
 
         <p>
             همچنین، پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
-            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Django است:
+            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Flask است:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="txt">
-                {`asgiref==3.8.1
-Django==5.0.6
-sqlparse==0.5.0
-tzdata==2024.1
+                {`blinker==1.8.2
+click==8.1.7
+colorama==0.4.6
+Flask==3.0.3
+itsdangerous==2.2.0
+Jinja2==3.1.4
+MarkupSafe==2.1.5
+Werkzeug==3.0.3
 `}
             </Highlight>
         </div>
@@ -49,7 +53,7 @@ tzdata==2024.1
             پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
         </p>
         <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/deploy-django-app-using-console.gif" alt="build app on liara" />
+        <img src="https://files.liara.ir/liara/docs/deploy-flask-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" />
         <p>
             در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
@@ -59,14 +63,14 @@ tzdata==2024.1
     <>
 
         <p>
-            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های venv. و dist به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Django است که می‌توانید از آن، استفاده کنید:
+            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های venv. و dist به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Flask است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/django/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/flask/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
-                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Django
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Flask
                 </h4>
                 </div>
                 <GoArrowLeft className="ml-1" />
@@ -75,15 +79,19 @@ tzdata==2024.1
         <div className="h-2" />
         <p>
             همچنین، پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
-            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Django است:
+            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Flask است:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="txt">
-                {`asgiref==3.8.1
-Django==5.0.6
-sqlparse==0.5.0
-tzdata==2024.1
+                {`blinker==1.8.2
+click==8.1.7
+colorama==0.4.6
+Flask==3.0.3
+itsdangerous==2.2.0
+Jinja2==3.1.4
+MarkupSafe==2.1.5
+Werkzeug==3.0.3
 `}
             </Highlight>
         </div>
@@ -96,14 +104,14 @@ tzdata==2024.1
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "platform": "django"
+    "platform": "flask"
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
         <p>
             در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
-            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که django است، مشخص کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که flask است، مشخص کنید.
         </p>
         <p>
             از آنجایی که لیارا برای نصب پکیج‌های فایل <Important>requirements.txt</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
@@ -112,7 +120,7 @@ tzdata==2024.1
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "django": {
+  "flask": {
     "mirror": false
   }
 }`}
@@ -126,7 +134,7 @@ tzdata==2024.1
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "django": {
+  "flask": {
     "pythonVersion": "3.12"
   }
 }`}
@@ -141,7 +149,7 @@ tzdata==2024.1
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "django": {
+    "flask": {
       "timezone": "America/Los_Angeles"
   }
 }`}
@@ -149,67 +157,19 @@ tzdata==2024.1
         </div>
         <div className='h-4' />
         <p>
-            لیارا در هر استقرار، به صورت خودکار دستور <Important>python manage.py collectstatic</Important> را برای جمع‌آوری تمامی فایل‌های Static (مانند JS , CSS , تصاویر و ...) و قراردادن آن‌ها در <Important>STATIC_ROOT</Important>، اجرا می‌کند. برای جلوگیری از اجرای خودکار این دستور، بایستی فیلد <Important>collectStatic</Important> را در فایل liara.json، به شکل زیر، مقداردهی کنید: 
+            درصورتی که از نام دیگری به‌جز <Important>app</Important> یا <Important>app.py</Important> به‌عنوان نام ماژول اصلی برنامه‌تان استفاده کرده باشید نیاز هست
+            در فایل <Important>liara.json</Important> در فیلدی به نام <Important>appModule</Important>، نام آن را مشخص کنید، به عنوان مثال، اگر نام ماژول server باشد، باید قطعه کد زیر را، در فایل مذکور، وارد کنید:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "django": {
-    "collectStatic": false
+  "flask": {
+    "appModule": "server:app"
   }
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
-        <p>
-        همچنین، اگر برنامه شما چند زبانه است و نیازمند اجرای دستور <Important>python manage.py compilemessages</Important> در هر بار استقرار هستید؛ بایستی در فایل liara.json، مقدار فیلد <Important>compileMessages</Important> را به شکل زیر، وارد کنید:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-  "django": {
-    "compileMessages": true
-  }
-}`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <p>
-            لیارا، به صورت خودکار فایل <Important>settings.py</Important> برنامه‌تان را پیدا کرده و در انتهای آن، تنظیمات مشخصی را برای اجرای برنامه، اضافه می‌کند؛ در صورتی که قصد ندارید این فایل دست‌خوش تغییرات شود، کافیست تا مقدار فیلد <Important>modifySettings</Important> را در فایل liara.json به شکل زیر، وارد کنید:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-  "django": {
-    "modifySettings": false
-  }
-}`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
-        <p>
-            برای استفاده از GDAL در پلتفرم Django نیز، می‌توانید فیلد <Important>geospatial</Important> را به شکل زیر، به فایل liara.json برنامه خود، اضافه کنید:
-        </p>
-        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "django": {
-        "geospatial": true
-    }
-}`}
-            </Highlight>
-        </div>
-
-        <div className='h-4' />
-        <Alert variant="warning">
-            <p>
-                توجه داشته باشید که نسخه پکیج GDAL با نسخه Python باید سازگار باشند.
-            </p>
-        </Alert>        
         <div className='h-4' />
         <p>
             در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
@@ -218,17 +178,15 @@ tzdata==2024.1
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "app": "my-web-app", 
-  "platform": "django",
-  "django": {
-    "mirror": false,
-    "pythonVersion": "3.12",
-    "timezone": "America/Los_Angeles",
-    "compileMessages": true,
-    "modifySettings": false,
-    "geospatial": true
-  }
-}`}
+    "app": "my-web-app", 
+    "platform": "flask",
+    "flask": {
+      "mirror": false,
+      "pythonVersion": "3.12",
+      "timezone": "America/Los_Angeles",
+      "appModule": "server:app"
+    }
+  }`}
             </Highlight>
         </div>
         <div className='h-4' />
