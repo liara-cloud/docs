@@ -14,10 +14,10 @@ import NextPage from "@/components/Common/nextpage";
 
 <Layout>
 
-# استقرار برنامه React در لیارا
+# استقرار برنامه Vue در لیارا
 <hr className="mb-2" />
 
-توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Vite</Important> و یا <Important>create-react-app</Important> ساخته شده باشند، در پلتفرم React لیارا قابل اجرا خواهند بود.
+توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Vite</Important> و یا <Important>vue-cli</Important> ساخته شده باشند، در پلتفرم Vue لیارا قابل اجرا خواهند بود.
 
         <Tabs 
     tabs={["Liara Console", "Liara CLI"]} 
@@ -60,37 +60,29 @@ import NextPage from "@/components/Common/nextpage";
         ]}/>
         <div className="h-4" />
         <p>
-            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از <Important>Vite</Important> ساخته شده‌اند:
+            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های Vue است که با استفاده از <Important>Vite</Important> ساخته شده‌اند:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "name": "my-vite-app",
+  "name": "my-vue-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "vue": "^3.4.31"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
+    "@vitejs/plugin-vue": "^5.0.5",
     "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vue-tsc": "^2.0.24"
   }
 }`}
             </Highlight>
@@ -103,7 +95,7 @@ import NextPage from "@/components/Common/nextpage";
       {`export default {
     // ... rest of configuration
     build: {
-        outDir: "build"
+        outDir: "dist"
     }
 }`}
     </Highlight>
@@ -111,49 +103,22 @@ import NextPage from "@/components/Common/nextpage";
 
     <div className="h-2" />
         <p>
-            قطعه کد زیر نیز، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از دستور <Important>create-react-app</Important> ساخته شده‌اند:
+            قطعه کد زیر نیز، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های Vue است که با استفاده از دستور <Important>vue-cli</Important> ساخته شده‌اند:
         </p>        <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "name": "my-cra-app",
+  "name": "vue-getting-started",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
   }
-}
-`}
+}`}
             </Highlight>
         </div>
         <div className='h-4' />
@@ -166,7 +131,7 @@ import NextPage from "@/components/Common/nextpage";
             پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
         </p>
         <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/deploy-react-app-using-console.gif" alt="build app on liara" />
+        <img src="https://files.liara.ir/liara/docs/deploy-vue-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" />
         <p>
             در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
@@ -177,14 +142,14 @@ import NextPage from "@/components/Common/nextpage";
     <>
 
         <p>
-            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری node_modules به همراه محتوای آن نیست؛ چرا که لیارا در حین استقرار برنامه، آن را برای شما می‌سازد؛ پس بایستی نام این دایرکتوری در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های React است که می‌توانید از آن، استفاده کنید:
+            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری node_modules به همراه محتوای آن نیست؛ چرا که لیارا در حین استقرار برنامه، آن را برای شما می‌سازد؛ پس بایستی نام این دایرکتوری در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Vue است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/react/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/vue/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
-                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های React
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Vue
                 </h4>
                 </div>
                 <GoArrowLeft className="ml-1" />
@@ -225,37 +190,29 @@ import NextPage from "@/components/Common/nextpage";
         ]}/>
         <div className="h-4" />
         <p>
-            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از <Important>Vite</Important> ساخته شده‌اند:
+            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های Vue است که با استفاده از <Important>Vite</Important> ساخته شده‌اند:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "name": "my-vite-app",
+  "name": "my-vue-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build": "vue-tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "vue": "^3.4.31"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
+    "@vitejs/plugin-vue": "^5.0.5",
     "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vue-tsc": "^2.0.24"
   }
 }`}
             </Highlight>
@@ -268,7 +225,7 @@ import NextPage from "@/components/Common/nextpage";
       {`export default {
     // ... rest of configuration
     build: {
-        outDir: "build"
+        outDir: "dist"
     }
 }`}
     </Highlight>
@@ -276,49 +233,22 @@ import NextPage from "@/components/Common/nextpage";
 
     <div className="h-2" />
         <p>
-            قطعه کد زیر نیز، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از دستور <Important>create-react-app</Important> ساخته شده‌اند:
+            قطعه کد زیر نیز، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های Vue است که با استفاده از دستور <Important>vue-cli</Important> ساخته شده‌اند:
         </p>        <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "name": "my-cra-app",
+  "name": "vue-getting-started",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
   }
-}
-`}
+}`}
             </Highlight>
         </div>
         <div className='h-4' />
@@ -330,14 +260,14 @@ import NextPage from "@/components/Common/nextpage";
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "platform": "react"
+    "platform": "vue"
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
         <p>
             در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
-            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که React است، مشخص کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که Vue است، مشخص کنید.
         </p>
         <p>
             لیارا در جهت استقرار سریع‌تر،  برای نصب پکیج‌های <Important>npm</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
@@ -346,7 +276,7 @@ import NextPage from "@/components/Common/nextpage";
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "react": {
+    "vue": {
     "mirror": false
   }
 }`}
@@ -355,17 +285,15 @@ import NextPage from "@/components/Common/nextpage";
         <div className='h-4' />
         <p>
         Source Map یک فایل است که به ابزارهای دیباگ این امکان را می‌دهد تا کد منبع اصلی (مثل فایل‌های جاوااسکریپت، TypeScript یا SCSS) را به کد تبدیل شده (مثل فایل‌های minified) مرتبط کنند.
-        Source Map در پلتفرم React لیارا به‌صورت پیش‌فرض غیرفعال است اما درصورت نیاز به فعال کردن این قابلیت می‌توانید قطعه‌کد زیر را در فایل <Important>liara.json</Important> قرار دهید:
+        Source Map در پلتفرم Vue لیارا به‌صورت پیش‌فرض فعال است؛ برای  غیرفعال کردن این قابلیت می‌توانید قطعه‌کد زیر را در فایل <Important>vue.config.js</Important> قرار دهید:
         </p>
 
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
-                {`{
-    "react": {
-    "sourceMap": true
-  }
-}`}
+                {`module.exports = {
+  productionSourceMap: false
+};`}
             </Highlight>
         </div>
         <div className='h-4' />
@@ -381,10 +309,9 @@ import NextPage from "@/components/Common/nextpage";
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "platform": "react",
-    "react": {
-    "mirror": false,
-    "sourceMap": true
+    "platform": "vue",
+    "vue": {
+    "mirror": false
     }
 }`}
             </Highlight>

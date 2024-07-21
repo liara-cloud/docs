@@ -14,7 +14,7 @@ import NextPage from "@/components/Common/nextpage";
 # استفاده از متغیرهای محیطی 
 <hr className="mb-2" />
 برای استفاده از متغیرهای محیطی در برنامه خود، در ابتدا باید طبق <Link href="../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</Link>، متغیرهای محیطی را به برنامه خود، اضافه کنید.
-در ادامه، شما می‌توانید با استفاده از دستور <Important>.process.env</Important> به متغیرهای محیطی خود در برنامه React دسترسی داشته باشید؛ به عنوان مثال:
+در ادامه، شما می‌توانید با استفاده از دستور <Important>.process.env</Important> به متغیرهای محیطی خود در برنامه Vue دسترسی داشته باشید؛ به عنوان مثال:
 
 <div className="h-2" />
 <div dir="ltr">
@@ -25,20 +25,10 @@ console.log('LIARA URL:', url);`}
 </ div>
 <div className="h-2" />
 
-البته اگر که یک برنامه Vite دارید؛ می‌توانید از دستور <Important>.import.meta.env</Important> استفاده کنید:
-<div className="h-2" />
-<div dir="ltr">
-<Highlight  className="js">
-{`const url = import.meta.env.LIARA_URL;
-console.log('LIARA URL:', url);`}
-</Highlight>
-</ div>
-<div className="h-2" />
-
 در مثال فوق، <Important>LIARA_URL</Important> یک متغیر محیطی است که از قبل، به برنامه فرضی در لیارا، اضافه شده است.
 
 
 
-<NextPage next="./customize-nginx" />
+<NextPage next="./choose-version" />
 
 </Layout>
