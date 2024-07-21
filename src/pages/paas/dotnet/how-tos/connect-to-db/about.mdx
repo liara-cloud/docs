@@ -17,17 +17,16 @@ import {GoArrowLeft,} from "react-icons/go";
 <hr className="mb-2" />
 
 دیتابیس‌ها، در اکوسیستم یک پلتفرم، نقش حیاتی دارند. دیتابیس‌ها نه تنها محلی برای ذخیره و بازیابی داده‌ها هستند، بلکه به عنوان ستون فقرات یک برنامه، عمل می‌کنند و بر کارایی، مقیاس‌پذیری و قابلیت اعتماد سیستم، تأثیر مستقیم می‌گذارند.
-در حال حاضر، شما می‌توانید در برنامه‌های Django خود در لیارا، به دیتابیس‌های زیر، متصل شوید:
+حال از آنجایی که مستندات رسمی پلتفرم NET. نیز، استفاده از <a href="https://learn.microsoft.com/en-us/ef/" className="blue-link">Entity Framework ORM</a> را، به شدت توصیه می‌کند؛ در ادامه، مستندات مربوط به اتصال به دیتابیس با استفاده از این ORM برای شما، قرار گرفته است:
+
 <div className='h-2' />
-<div className="grid grid-cols-3 gap-4">
+<div className="grid grid-cols-2 gap-4">
             {[
+    { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
     { alt: 'mysql', platform: 'MySQL/MariaDB', link: "./mysql" },
     { alt: 'postgres', platform: 'PostgreSQL', link: "./postgresql" },
     // { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
-    { alt: 'django', platform: 'SQLite', link: "./sqlite" },
-    { alt: 'redis', platform: 'Redis', link: "./redis" },
-    { alt: 'elastic', platform: 'ElasticSearch', link: "./elastic-search" },
-    { alt: 'mongodb', platform: 'MongoDB', link: "./mongodb" },
+    { alt: 'netcore', platform: 'SQLite', link: "./sqlite" },
   ].map(item =>
     <Link href={item.link}>
     <Card className="flex cursor-pointer w-full items-center justify-between">
@@ -67,24 +66,25 @@ import {GoArrowLeft,} from "react-icons/go";
           </div> */}
 
 <Section id="migrate-db" title="اجرای Migrationها در دیتابیس‌" />
-برای اجرای Migrationها در دیتابیس مد نظر خود، می‌توانید پس از استقرار برنامه، وارد <a href="../../../details/console-shell" className="blue-link">خط فرمان</a> برنامه خود شوید و دستور زیر را اجرا کنید تا عملیات migration برای شما، انجام شود:
+برای اجرای Migrationها در دیتابیس مد نظر خود، 
+می‌توانید مشابه قطعه کد زیر را به فایل <Important>Program.cs</Important> اضافه کنید. با این کار دیگر نیازی به اجرای دستور <Important>dotnet ef database update</Important> نخواهد بود:
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="dotnet">
+        {`using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}`}        
+    </Highlight>
+</div>
 
-<div className='h-2' />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`python manage.py migrate`}        
-    </Highlight>
-</div>
-<div className='h-2' />
-یا اینکه می‌توانید طبق <a href="../use-hooks" className="blue-link">مستندات هوک‌ها</a>، قبل از استقرار و در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_start.sh</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
-<div className='h-2' />
-<div dir='ltr'>
-    <Highlight className="sh">
-        {`python manage.py migrate;`}        
-    </Highlight>
-</div>
-<div className='h-2' />
-در انتها و پس از قرار دادن فایل فوق در مسیر اصلی پروژه، می‌توانید برنامه خود را در لیارا مستقر کنید تا عملیات Migrate به صورت خودکار برای‌تان اعمال شود.
+<Section id="connection-pooling-feature" title="قابلیت Connection Pooling" />
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+از آنجایی که در پلتفرم NET. از EF ORM استفاده می‌شود. بنابراین، قابلیت Connection Pooling به صورت خودکار برقرار است و نیازی نیست که 
+شما برای استفاده از آن، کار خاصی را انجام دهید.
+
 
 <NextPage next="../../fix-common-errors/about" />
 </Layout>

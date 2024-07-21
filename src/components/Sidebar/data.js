@@ -1974,7 +1974,11 @@ export default {
       },
       {
         title: "مدیریت logهای NET.",
-        link: "/paas/dotnet/how-tos/use-ffmpeg-module"
+        link: "/paas/dotnet/how-tos/manage-logs"
+      },
+      {
+        title: "استقرار پوشه Solution",
+        link: "/paas/dotnet/how-tos/deploy-solution-directory"
       },
       
       {
@@ -1984,18 +1988,18 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <GoDatabase  />
-            <Link href="/paas/dotnet/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+            <Link href="/paas/dotnet/how-tos/connect-to-db/about">اتصال به دیتابیس با Entity Framework</Link>
           </div>
         )
+      },
+      {
+        title: "دیتابیس MSSQL",
+        link: "/paas/dotnet/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس MySQL/MariaDB",
         link: "/paas/dotnet/how-tos/connect-to-db/mysql"
       },
-      // {
-      //   title: "دیتابیس MSSQL",
-      //   link: "/paas/dotnet/how-tos/connect-to-db/mssql"
-      // },
       {
         title: "دیتابیس PostgreSQL",
         link: "/paas/dotnet/how-tos/connect-to-db/postgresql"
@@ -2004,18 +2008,18 @@ export default {
         title: "دیتابیس SQLite",
         link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
       },
-      {
-        title: "دیتابیس Redis",
-        link: "/paas/dotnet/how-tos/connect-to-db/redis"
-      },
-      {
-        title: "دیتابیس ElasticSearch",
-        link: "/paas/dotnet/how-tos/connect-to-db/elastic-search"
-      },
-      {
-        title: "دیتابیس MongoDB",
-        link: "/paas/dotnet/how-tos/connect-to-db/mongodb"
-      },
+      // {
+      //   title: "دیتابیس Redis",
+      //   link: "/paas/dotnet/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس ElasticSearch",
+      //   link: "/paas/dotnet/how-tos/connect-to-db/elastic-search"
+      // },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   link: "/paas/dotnet/how-tos/connect-to-db/mongodb"
+      // },
       {
         hr: true
       },
@@ -2028,20 +2032,12 @@ export default {
         )
       },
       {
-        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
-        link: "/paas/dotnet/fix-common-errors/upload-limit-size"
+        title: " رفع خطای 502 Bad Gateway",
+        link: "/paas/dotnet/fix-common-errors/502-bad-gateway"
       },
       {
         title: "رفع خطای CORS",
         link: "/paas/dotnet/fix-common-errors/cors"
-      },
-      {
-        title: "رفع خطای WORKER TIMEOUT",
-        link: "/paas/dotnet/fix-common-errors/worker-timeout"
-      },
-      {
-        title: "رفع خطای ModuleNotFoundError",
-        link: "/paas/dotnet/fix-common-errors/module-not-found"
       },
     ],
   }

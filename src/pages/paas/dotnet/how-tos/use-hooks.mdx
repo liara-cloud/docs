@@ -13,7 +13,7 @@ import Table from "@/components/Common/table";
 
 
 <Layout>
-# استفاده از Hooks در برنامه‌های Flask
+# استفاده از Hooks در برنامه‌های NET.
 <hr className="mb-2" />
 
 Hookها در برنامه‌نویسی به دستوراتی گفته می‌شود که به شما اجازه می‌دهند تا عملکرد یک برنامه را در یک نقطه خاص از فرایند اجرا یا استقرار آن، تغییر یا بهبود دهید؛ بدون اینکه نیاز به تغییر کد اصلی داشته باشید.
@@ -29,15 +29,16 @@ Hookها در برنامه‌نویسی به دستوراتی گفته می‌ش
 ]} data={[
   [
     "liara_pre_build.sh",
-    "قبل از بیلد فایل‌های قسمت فرانت برنامه",
+    "قبل از publish",
     "ندارد",
-    "نصب پکیج‌های سیستمی لازم با apt-get",
+    "اجرای دستورات مرتبط با cache و بهینه‌سازی",
   ],
   [
     "liara_post_build.sh",
-    "بعد از بیلد فایل‌های قسمت فرانت برنامه	",
+    "بعد از publish",
     "ندارد",
-    "اجرای دستورات مرتبط با cache و بهینه‌سازی",
+    "نصب پکیج‌های سیستمی لازم با apt-get",
+
   ],
   [
     "liara_pre_start.sh",
@@ -50,25 +51,18 @@ Hookها در برنامه‌نویسی به دستوراتی گفته می‌ش
 به عنوان مثال، می‌توانید در فایل <Important>liara_pre_start.sh</Important> دستورات مربوط به migrations را بنویسید تا نیازی نباشد که پس از استقرار برنامه، آن را به صورت دستی در خط فرمان برنامه خود، اجرا کنید:<div className="h-2" />
 <div dir='ltr'>
     <Highlight className="sh">
-        {`echo "Running pre-start script..."
+        {`echo "Running pre-start script for .NET..."
 
 # run migrations
-flask db upgrade
+dotnet ef database update
 
 # other needed commands
 # ...
 
-echo "Pre-start script finished."`}
+echo "Pre-start script for .NET finished."`}
     </Highlight>
 </div>
 <div className="h-2" />
-
-<Alert variant="warning">
-<p>
-توجه داشته باشید که در <a href="./choose-version" className="blue-link">نسخه‌های بدون به‌روزرسانی Python</a>، این قابلیت پشتیبانی نمی‌شود.
-
-</p>
-</Alert>
 
 <NextPage next="./choose-version"/>
 </Layout>

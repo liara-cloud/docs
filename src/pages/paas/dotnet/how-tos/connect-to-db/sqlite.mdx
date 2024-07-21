@@ -11,10 +11,17 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس SQLite در برنامه‌های Flask
+# اتصال به دیتابیس SQLite در برنامه‌های NET.
 <hr className="mb-2" />
 
-<p> برای اتصال موفق به دیتابیس SQLite در برنامه‌های Flask کافیست تا گام‌های زیر را طی کنید: </p>
+<video
+  src="https://files.liara.ir/liara/dotnet/dotnet-ef.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" />
+
+<br />
+<p> برای اتصال موفق به دیتابیس SQLite در برنامه‌های NET. کافیست تا گام‌های زیر را طی کنید: </p>
 <div className="h-2" />
 
 <Step  steps={[
@@ -36,43 +43,59 @@ import NextPage from "@/components/Common/nextpage";
     content: (
     <>
             <h3>
-            قرار دادن قطعه کد‌های مربوط به دیتابیس
+                نصب پکیج دیتابیس و قرار دادن قطعه‌کدهای مربوطه
             </h3>
             <p>
-                در فایل <Important>app.py</Important> و یا به صورت کلی، ماژول اصلی برنامه خود، قطعه کد زیر را، اضافه کنید:
+                اکنون، بایستی با اجرای دستور زیر، پکیج مربوط به دیتابیس SQLite را بر روی پروژه خود، نصب کنید
             </p>
             <div className="h-2" />
             <div dir='ltr'>
-                <Highlight className="python">
-                    {`import sqlite3
-from flask import Flask, g
+                <Highlight className="dotnet">
+                    {`dotnet add package Microsoft.EntityFrameworkCore.SQLite`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+                در ادامه، باید در فایل <Important>appsettings.json</Important> اطلاعات مربوط به دیتابیس مثل دایرکتوری و نام آن را وارد کنید؛ به عنوان مثال:
+            </p>
+                        <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="dotnet">
+                    {`{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "Production": "Data Source=db/MvcMovieContext-69c678d9-0976-406c-9d44-239ed1395d90.db"
+    }
+}`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            سپس، باید قطعه کد زیر را در فایل <Important>Program.cs</Important> وارد کنید:
+            </p>
+                        <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="dotnet">
+                    {`using Microsoft.EntityFrameworkCore;
+using your-context.Data;
+var builder = WebApplication.CreateBuilder(args);
+    builder.Services.AddDbContext<your-context>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("Production")));
 
-DATABASE = 'db/database.db'
-db_name  = DATABASE.rsplit('/')[-1]
+builder.Services.AddControllersWithViews();
+var app = builder.Build();
 
-app = Flask(__name__)
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
-
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
-
-@app.route('/')
-def index():
-    cur = get_db().cursor()
-    if cur:
-        return f'connected to {db_name} successfully!'
-    return 'not connected!'
-
-if __name__ == '__main__':
-    app.run(debug=True)`}
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<your-context>();
+    dbContext.Database.Migrate();  
+}`}
                 </Highlight>
             </div>
             <div className="h-2" />

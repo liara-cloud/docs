@@ -11,20 +11,22 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# انتخاب نسخه Python 
+# انتخاب نسخه NET. 
 <hr className="mb-2" />
 
-در حال حاضر در پلتفرم Flask لیارا، نسخه‌های زیر از  Python ارائه می‌شوند: 
+در حال حاضر در پلتفرم NET. لیارا، نسخه‌های زیر ارائه می‌شوند: 
 
 <div className="h-2" />
 <ul className="pr-4">
   {[
-    {text: '3.7 (بدون به‌روزرسانی)',},
-    {text: '3.8',},
-    {text: '8.9',},
-    {text: '3.10 (پیش‌فرض)',},
-    {text: '3.11',},
-    {text: '3.12',},
+    {text: '2.1 (EOL)',},
+    {text: '2.2 (EOL)',},
+    {text: '3.0 (EOL)',},
+    {text: '3.1 (LTS - پیش‌فرض)',},
+    {text: '5.0',},
+    {text: '6.0 (LTS)',},
+    {text: '7.0',},
+    {text: '8.0',},
   ].map((item, index) => (
     <li
       key={index}
@@ -40,7 +42,7 @@ import NextPage from "@/components/Common/nextpage";
 <div className="h-2" />
 <Alert variant="warning">
 <p>
- قابلیت‌های جدید برای نسخه‌های بدون به‌روزرسانی، ارائه نمی‌شوند و برای رفع این مشکل، باید ورژن Python برنامه خود را، ارتقاء دهید.
+EOL یا END OF LIFE به‌معنای پایان عمر یک نسخه است بنابراین باوجود پشتیبانی از نسخه‌های EOL در لیارا توصیه می‌شود پروژه‌هایتان را به نسخه‌های جدیدتر ارتقا دهید.
 </p>
 </Alert>
 
@@ -50,18 +52,18 @@ import NextPage from "@/components/Common/nextpage";
     content={[
     <>
     <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
-    <img src="https://files.liara.ir/liara/docs/change-python-version-in-flask-using-console.png" alt="how to choose version in liara console" />
+    <img src="https://files.liara.ir/liara/docs/choose-dotnet-version-using-console.png" alt="how to choose version in liara console" />
     </>,
     <>
     <p>
-        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه Python به 3.12 می‌باشد:
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NET. به 8.0 می‌باشد:
     </p>
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="json">
             {`{
-  "flask": {
-    "pythonVersion": "3.12"
+  "dotnet": {
+    "version": "8.0"
   }
 }`}
         </Highlight>
@@ -72,5 +74,5 @@ import NextPage from "@/components/Common/nextpage";
 ]} 
 />
 
-<NextPage next="./use-ffmpeg-module"/>
+<NextPage next="./use-websocket"/>
 </Layout>
