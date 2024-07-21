@@ -11,22 +11,14 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# انتخاب نسخه NET. 
+# نسخه NodeJS در پلتفرم React
 <hr className="mb-2" />
 
-در حال حاضر در پلتفرم NET. لیارا، نسخه‌های زیر ارائه می‌شوند: 
+در حال حاضر در لیارا، نسخه زیر از NodeJS در پلتفرم React ارائه می‌شود:
 
-<div className="h-2" />
 <ul className="pr-4">
   {[
-    {text: '2.1 (EOL)',},
-    {text: '2.2 (EOL)',},
-    {text: '3.0 (EOL)',},
-    {text: '3.1 (LTS - پیش‌فرض)',},
-    {text: '5.0',},
-    {text: '6.0 (LTS)',},
-    {text: '7.0',},
-    {text: '8.0',},
+    {text: '20 (پیش‌فرض)',},
   ].map((item, index) => (
     <li
       key={index}
@@ -39,40 +31,12 @@ import NextPage from "@/components/Common/nextpage";
   ))}
 </ul>
 
-<div className="h-2" />
-<Alert variant="warning">
+<div className="h-4" />
+<Alert variant='warning'>
 <p>
-EOL یا END OF LIFE به‌معنای پایان عمر یک نسخه است بنابراین باوجود پشتیبانی از نسخه‌های EOL در لیارا توصیه می‌شود پروژه‌هایتان را به نسخه‌های جدیدتر ارتقا دهید.
+در حال حاضر، امکان تغییر نسخه NodeJS در برنامه‌های React وجود ندارد و هر برنامه React پس از ساخته شدن، بر روی NodeJS v20 LTS خواهد بود.
 </p>
 </Alert>
 
-<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
-<Tabs 
-    tabs={["Liara Console", "Liara CLI"]} 
-    content={[
-    <>
-    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
-    <img src="https://files.liara.ir/liara/docs/choose-dotnet-version-using-console.png" alt="how to choose version in liara console" />
-    </>,
-    <>
-    <p>
-        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NET. به 8.0 می‌باشد:
-    </p>
-    <div className="h-2" />
-    <div dir='ltr'>
-        <Highlight className="json">
-            {`{
-  "dotnet": {
-    "version": "8.0"
-  }
-}`}
-        </Highlight>
-    </div>
-    <div className="h-2" />
-    </>,
-
-]} 
-/>
-
-<NextPage next="./use-websocket"/>
+<NextPage next="./customize-nginx"/>
 </Layout>

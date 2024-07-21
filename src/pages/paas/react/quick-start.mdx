@@ -11,15 +11,17 @@ import Link from "next/link";
 
 <Layout>
 
-# استقرار سریع برنامه‌های NET.
+# استقرار سریع برنامه‌های React
 <hr className="mb-2" />
+
+توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Vite</Important> و یا <Important>create-react-app</Important> ساخته شده باشند، در پلتفرم React لیارا قابل اجرا خواهند بود.
 
 <Tabs 
   tabs={["Liara Console", "Liara CLI"]} 
   content={[
   <>
   <video
-  src="https://files.liara.ir/liara/dotnet/dotnet-desktop.mp4"
+  src="https://files.liara.ir/liara/react/react-desktop.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -41,7 +43,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>برنامه NET. خود را با شناسه، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+    <p>برنامه React خود را با شناسه، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
   </>
   )
   },
@@ -50,7 +52,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>حذف فایل‌های اضافی</h3>
-    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه‌های nupkg و debug) را پاک کنید.</p>  
+    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه node_modules) را پاک کنید.</p>  
   </>
   )
   },
@@ -58,10 +60,69 @@ import Link from "next/link";
   step: "۴",
   content: (
   <>
-    <h3>بررسی وجود فایل csproj.</h3>
-    <p>حتماً باید در مسیر اصلی پروژه، یک فایل با پسوند <Important>csproj.</Important> وجود داشته باشد؛
-      در نظر داشته باشید که در حین ایجاد یک پروژه جدید NET. این فایل به صورت خودکار برای شما ایجاد می‌شود و نیازی نیست که شما، کار خاصی را انجام دهید.
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "react-getting-started",
+  "version": "0.1.0",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "vite": "^2.4.4", 
+    "@vitejs.plugin-react-refresh": "^1.3.1" 
+  },
+  "scripts": {
+    "start": "vite preview",
+    "build": "vite build"
+  }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "build"
+    }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      و یا اگر که برنامه خود را با <Important>create-react-app</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
     </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "react-getting-started",
+  "version": "0.1.0",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}`}
+    </Highlight>
+    </div>
+
+    
   </>
   )
   },
@@ -89,7 +150,7 @@ import Link from "next/link";
 
   <>
   <video
-  src="https://files.liara.ir/liara/quick-start/dotnet/dotnet-cli.mp4"
+  src="https://files.liara.ir/liara/quick-start/react/react-cli.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -155,7 +216,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>با اجرای دستور زیر، برنامه NET. خود را ایجاد کنید:</p>
+    <p>با اجرای دستور زیر، برنامه React خود را ایجاد کنید:</p>
     <div dir='ltr'>
     <Highlight className="bash">
       {`liara create`}
@@ -163,7 +224,7 @@ import Link from "next/link";
     </div>
     <div className="h-2" />
     <Alert variant="info">اگر که از قبل برنامه خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی dotnet تنظیم شود)، شبکه خصوصی و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی react تنظیم شود)، شبکه خصوصی و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
   </>
   )
   },
@@ -175,11 +236,7 @@ import Link from "next/link";
     <p>برای آپلود نشدن فایل‌های اضافی، از <Important>gitignore.</Important> یا <Important>liaraignore.</Important> استفاده کنید و درون یکی از این دو فایل، اسامی دایرکتوری‌ها و فایل‌های اضافی را بیاورید. به عنوان مثال:</p>
     <div dir='ltr'>
     <Highlight className="gitignore">
-      {`[Dd]ebug/
-.vscode/
-nupkg/
-.fleet/
-`}
+      {`node_modules/`}
     </Highlight>
     </div>
   </>
@@ -189,10 +246,67 @@ nupkg/
   step: "۶",
   content: (
   <>
-    <h3>بررسی وجود فایل csproj.</h3>
-    <p>حتماً باید در مسیر اصلی پروژه، یک فایل با پسوند <Important>csproj.</Important> وجود داشته باشد؛
-      در نظر داشته باشید که در حین ایجاد یک پروژه جدید NET. این فایل به صورت خودکار برای شما ایجاد می‌شود و نیازی نیست که شما، کار خاصی را انجام دهید.
+        <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "react-getting-started",
+  "version": "0.1.0",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "vite": "^2.4.4", 
+    "@vitejs.plugin-react-refresh": "^1.3.1" 
+  },
+  "scripts": {
+    "start": "vite preview",
+    "build": "vite build"
+  }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "build"
+    }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      و یا اگر که برنامه خود را با <Important>create-react-app</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
     </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "react-getting-started",
+  "version": "0.1.0",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}`}
+    </Highlight>
+    </div>
   </>
   )
   },
@@ -205,7 +319,7 @@ nupkg/
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-      {`liara deploy --app=myapp --platform=dotnet`}
+      {`liara deploy --app=myapp --platform=react`}
     </Highlight>
     </div>
   </>
@@ -221,16 +335,21 @@ nupkg/
 <br/>   
 <Alert variant="info">
 <p>
-لیارا با اجرای دستور <Important>dotnet restore</Important> تمامی ماژول‌های موردنیاز برنامه را نصب می‌کند. پس برای نصب آن‌ها، نیازی به انجام کار خاصی نیست.
+لیارا با اجرای دستور <Important>npm install</Important> تمامی ماژول‌های موجود در فایل <Important>package.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
 </p>
 </Alert>
 <div className="h-1" />
 
+<Alert variant="info">
+<p>
+لیارا به صورت خودکار، در فرایند استقرار برنامه‌های React اسکریپت <Important>build</Important> را برای شما اجرا می‌کند.
+</p>
+</Alert>
 <div className="h-1" />
 
 <Alert variant="success">
 <p>
-همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های NET. در لیارا</Link>
+همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های React در لیارا</Link>
 </p>
 </Alert>
 </Layout>

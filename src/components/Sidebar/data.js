@@ -2096,35 +2096,27 @@ export default {
         title: "استفاده از متغیرهای محیطی",
         link: "/paas/react/how-tos/set-envs"
       },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/react/how-tos/use-disk"
+      // },
+
       {
-        title: "استفاده از دیسک",
-        link: "/paas/react/how-tos/use-disk"
-      },
-      {
-        title: "استفاده از Hookها",
-        link: "/paas/react/how-tos/use-hooks"
-      },
-      {
-        title: "تغییر نسخه NET.",
+        title: "مشاهده نسخه NodeJS",
         link: "/paas/react/how-tos/choose-version"
       },
       {
-        title: "راه‌اندازی برنامه WebSocket",
-        link: "/paas/react/how-tos/use-websocket"
+        title: "تنظیم Nginx",
+        link: "/paas/react/how-tos/set-envs"
       },
       {
-        title: "استفاده از ماژول FFMPEG",
-        link: "/paas/react/how-tos/use-ffmpeg-module"
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/react/how-tos/enable-gzip"
       },
       {
-        title: "مدیریت logهای NET.",
-        link: "/paas/react/how-tos/manage-logs"
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/react/how-tos/set-http-security-headers"
       },
-      {
-        title: "استقرار پوشه Solution",
-        link: "/paas/react/how-tos/deploy-solution-directory"
-      },
-      
       {
         hr: true
       },
