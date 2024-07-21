@@ -2117,64 +2117,82 @@ export default {
         title: "تنظیم هدرهای امنیتی HTTP",
         link: "/paas/react/how-tos/set-http-security-headers"
       },
+      
+    ],
+    
+    vue: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Vue
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/vue/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/vue/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/vue/related-links"
+      },
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
-            <Link href="/paas/react/how-tos/connect-to-db/about">اتصال به دیتابیس با Entity Framework</Link>
+          < GoPackage   />
+            نحوه
           </div>
         )
       },
       {
-        title: "دیتابیس MSSQL",
-        link: "/paas/react/how-tos/connect-to-db/mssql"
+        title: "ساخت برنامه",
+        link: "/paas/vue/how-tos/create-app"
       },
       {
-        title: "دیتابیس MySQL/MariaDB",
-        link: "/paas/react/how-tos/connect-to-db/mysql"
+        title: "استقرار برنامه",
+        link: "/paas/vue/how-tos/deploy-app"
       },
       {
-        title: "دیتابیس PostgreSQL",
-        link: "/paas/react/how-tos/connect-to-db/postgresql"
-      },
-      {
-        title: "دیتابیس SQLite",
-        link: "/paas/react/how-tos/connect-to-db/sqlite"
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/vue/how-tos/set-envs"
       },
       // {
-      //   title: "دیتابیس Redis",
-      //   link: "/paas/react/how-tos/connect-to-db/redis"
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/vue/how-tos/use-disk"
       // },
-      // {
-      //   title: "دیتابیس ElasticSearch",
-      //   link: "/paas/react/how-tos/connect-to-db/elastic-search"
-      // },
-      // {
-      //   title: "دیتابیس MongoDB",
-      //   link: "/paas/react/how-tos/connect-to-db/mongodb"
-      // },
+
       {
-        hr: true
+        title: "مشاهده نسخه NodeJS",
+        link: "/paas/vue/how-tos/choose-version"
       },
       {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoBug  />
-            <Link href="/paas/react/fix-common-errors/about">رفع خطاهای رایج</Link>
-          </div>
-        )
+        title: "تنظیم Nginx",
+        link: "/paas/vue/how-tos/set-envs"
       },
       {
-        title: " رفع خطای 502 Bad Gateway",
-        link: "/paas/react/fix-common-errors/502-bad-gateway"
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/vue/how-tos/enable-gzip"
       },
       {
-        title: "رفع خطای CORS",
-        link: "/paas/react/fix-common-errors/cors"
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/vue/how-tos/set-http-security-headers"
       },
+      
     ],
   }
 };

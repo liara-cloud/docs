@@ -1,0 +1,46 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# مدیریت logهای برنامه‌های NET.
+<hr className="mb-2" />
+لاگ‌های یک فریم‌ورک وظیفه دارند اتفاقات رخ داده در نرم‌افزار مثل errorها یا exceptionها و حتی اطلاعاتی که خود توسعه‌دهنده به دلخواه خود در بخش‌های مختلف نرم‌افزار درنظرگرفته را، ثبت کنند.
+
+مدیریت logها در NET. می‌تواند روش‌های مختلفی داشته باشد و وابسته به پیاده‌سازی برنامه‌ی‌تان و تصمیمات شما است. ممکن است لاگ‌های مهم‌تر را در فایل ذخیره کنید و بخشی را در کنسول نمایش دهید.
+برای نمونه اگر سطح لاگ‌ها را روی Information قرار داده‌ باشید، هر وقت کاربری به سایت درخواستی ارسال کند، لاگ می‌شود:
+
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="dotnet">
+{`{ 
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Information",
+            "Microsoft.Hosting.Lifetime": "Information"
+        }
+}`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/paas/details/observations/about" className="blue-link">گزارشات نرم‌افزاری و سخت‌افزاری یک برنامه در لیارا</a>
+</p>
+</Alert>
+
+
+<NextPage next="./deploy-solution-directory" />
+
+</Layout>

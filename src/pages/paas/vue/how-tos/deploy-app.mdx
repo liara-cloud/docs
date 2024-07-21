@@ -1,0 +1,420 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import { GoArrowLeft, } from "react-icons/go";
+import NextPage from "@/components/Common/nextpage";
+
+
+<Layout>
+
+# استقرار برنامه React در لیارا
+<hr className="mb-2" />
+
+توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Vite</Important> و یا <Important>create-react-app</Important> ساخته شده باشند، در پلتفرم React لیارا قابل اجرا خواهند بود.
+
+        <Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+        <p>
+            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه node_modules را در پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
+        </p>
+        <p>
+            همچنین، پروژه شما باید شامل فایل <Important>package.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را انجام می‌دهد:
+        </p>
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>
+                <h4>نصب وابستگی‌های برنامه</h4>
+                <p>لیارا، تمامی ماژول‌ها و وابستگی‌های برنامه که در فیلدهای <Important>dependencies</Important> و <Important>devDependencies</Important> قرار گرفته‌اند را با استفاده از دستور <Important>npm install</Important> نصب می‌کند.</p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+                <h4>اجرای اسکریپت build</h4>
+                <p> اگر که در این فایل، اسکریپت <Important>build</Important> وجود داشته باشد، لیارا با اجرای دستور <Important>npm run build</Important> آن را، اجرا می‌کند.</p>
+            </>
+            )
+            },
+            {
+            step: "۳",
+            content: (
+            <>
+                <h4>اجرای اسکریپت start</h4>
+                <p> لیارا برای اجرای برنامه، از اسکریپت <Important>start</Important> استفاده می‌کند؛ پس باید حتماً این اسکریپت در فایل <Important>package.json</Important> تعریف شده باشد. </p>
+            </>
+            )
+            }
+        ]}/>
+        <div className="h-4" />
+        <p>
+            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از <Important>Vite</Important> ساخته شده‌اند:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "name": "my-vite-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4"
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "build"
+    }
+}`}
+    </Highlight>
+    </div>
+
+    <div className="h-2" />
+        <p>
+            قطعه کد زیر نیز، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از دستور <Important>create-react-app</Important> ساخته شده‌اند:
+        </p>        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "name": "my-cra-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
+`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
+        </p>
+        <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
+        <div className="h-4" />
+        <p>
+            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
+        </p>
+        <div className="h-4" />
+        <img src="https://files.liara.ir/liara/docs/deploy-react-app-using-console.gif" alt="build app on liara" />
+        <div className="h-4" />
+        <p>
+            در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
+        </p>
+
+    </>,
+
+    <>
+
+        <p>
+            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری node_modules به همراه محتوای آن نیست؛ چرا که لیارا در حین استقرار برنامه، آن را برای شما می‌سازد؛ پس بایستی نام این دایرکتوری در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های React است که می‌توانید از آن، استفاده کنید:
+        </p>
+        <div className="h-2" />
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/react/.gitignore" target="_blank">
+            <Card className="flex cursor-pointer w-full items-center justify-between">
+                <div className="flex items-center gap-3">
+                <h4>
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های React
+                </h4>
+                </div>
+                <GoArrowLeft className="ml-1" />
+            </Card>
+        </Link>
+        <div className="h-2" />
+        <p>
+            همچنین، پروژه شما باید شامل فایل <Important>package.json</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و عملیات زیر را انجام می‌دهد:
+        </p>
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>
+                <h4>نصب وابستگی‌های برنامه</h4>
+                <p>لیارا، تمامی ماژول‌ها و وابستگی‌های برنامه که در فیلدهای <Important>dependencies</Important> و <Important>devDependencies</Important> قرار گرفته‌اند را با استفاده از دستور <Important>npm install</Important> نصب می‌کند.</p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+                <h4>اجرای اسکریپت build</h4>
+                <p> اگر که در این فایل، اسکریپت <Important>build</Important> وجود داشته باشد، لیارا با اجرای دستور <Important>npm run build</Important> آن را، اجرا می‌کند.</p>
+            </>
+            )
+            },
+            {
+            step: "۳",
+            content: (
+            <>
+                <h4>اجرای اسکریپت start</h4>
+                <p> لیارا برای اجرای برنامه، از اسکریپت <Important>start</Important> استفاده می‌کند؛ پس باید حتماً این اسکریپت در فایل <Important>package.json</Important> تعریف شده باشد. </p>
+            </>
+            )
+            }
+        ]}/>
+        <div className="h-4" />
+        <p>
+            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از <Important>Vite</Important> ساخته شده‌اند:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "name": "my-vite-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4"
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "build"
+    }
+}`}
+    </Highlight>
+    </div>
+
+    <div className="h-2" />
+        <p>
+            قطعه کد زیر نیز، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های React است که با استفاده از دستور <Important>create-react-app</Important> ساخته شده‌اند:
+        </p>        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "name": "my-cra-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
+`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "app": "my-web-app", 
+    "platform": "react"
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که React است، مشخص کنید.
+        </p>
+        <p>
+            لیارا در جهت استقرار سریع‌تر،  برای نصب پکیج‌های <Important>npm</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "react": {
+    "mirror": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+        Source Map یک فایل است که به ابزارهای دیباگ این امکان را می‌دهد تا کد منبع اصلی (مثل فایل‌های جاوااسکریپت، TypeScript یا SCSS) را به کد تبدیل شده (مثل فایل‌های minified) مرتبط کنند.
+        Source Map در پلتفرم React لیارا به‌صورت پیش‌فرض غیرفعال است اما درصورت نیاز به فعال کردن این قابلیت می‌توانید قطعه‌کد زیر را در فایل <Important>liara.json</Important> قرار دهید:
+        </p>
+
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "react": {
+    "sourceMap": true
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+
+
+
+
+        <p>
+            در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "app": "my-web-app", 
+    "platform": "react",
+    "react": {
+    "mirror": false,
+    "sourceMap": true
+    }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        <p>
+            اکنون کافیست تا در مسیر اصلی پروژه و جایی که فایل <Important>liara.json</Important> قرار دارد؛ دستور زیر را اجرا کنید و منتظر بمانید تا عملیات استقرار تمام شود:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`liara deploy`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در حین فرایند استقرار، می‌توانید در ترمینال خود، لاگ‌های مربوط به آن را مشاهده بفرمایید.
+        </p>
+    </>,
+
+]} 
+/>
+
+<Alert variant='success'>
+<p>
+    پس از استقرار برنامه می‌توانید <a href="../../details/events" className="blue-link">رویدادها</a> و <a href="../../details/observations/about" className="blue-link">گزارشات</a> مربوط به برنامه را بررسی کنید.
+</p>
+</Alert>
+
+
+<NextPage next="./set-envs" />
+</Layout>
