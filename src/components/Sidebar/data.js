@@ -201,7 +201,7 @@ export default {
       {
         title: "React",
         icon: <IconContainer alt="react" />,
-        link: "/paas//getting-started"
+        link: "/paas/react/getting-started"
       },
       {
         title: "Angular",
@@ -1905,7 +1905,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            پلتفرم Flask
+            پلتفرم NET.
           </div>
         )
       },
@@ -1980,6 +1980,10 @@ export default {
         title: "استقرار پوشه Solution",
         link: "/paas/dotnet/how-tos/deploy-solution-directory"
       },
+      {
+        title: "استقرار فایل‌های DLL",
+        link: "/paas/dotnet/how-tos/deploy-dll-files"
+      },
       
       {
         hr: true
@@ -2038,6 +2042,146 @@ export default {
       {
         title: "رفع خطای CORS",
         link: "/paas/dotnet/fix-common-errors/cors"
+      },
+    ],
+
+    react: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم React
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/react/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/react/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/react/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/react/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/react/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/react/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/react/how-tos/use-disk"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/react/how-tos/use-hooks"
+      },
+      {
+        title: "تغییر نسخه NET.",
+        link: "/paas/react/how-tos/choose-version"
+      },
+      {
+        title: "راه‌اندازی برنامه WebSocket",
+        link: "/paas/react/how-tos/use-websocket"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/react/how-tos/use-ffmpeg-module"
+      },
+      {
+        title: "مدیریت logهای NET.",
+        link: "/paas/react/how-tos/manage-logs"
+      },
+      {
+        title: "استقرار پوشه Solution",
+        link: "/paas/react/how-tos/deploy-solution-directory"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/react/how-tos/connect-to-db/about">اتصال به دیتابیس با Entity Framework</Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MSSQL",
+        link: "/paas/react/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        link: "/paas/react/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        link: "/paas/react/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        link: "/paas/react/how-tos/connect-to-db/sqlite"
+      },
+      // {
+      //   title: "دیتابیس Redis",
+      //   link: "/paas/react/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس ElasticSearch",
+      //   link: "/paas/react/how-tos/connect-to-db/elastic-search"
+      // },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   link: "/paas/react/how-tos/connect-to-db/mongodb"
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/react/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: " رفع خطای 502 Bad Gateway",
+        link: "/paas/react/fix-common-errors/502-bad-gateway"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/react/fix-common-errors/cors"
       },
     ],
   }
