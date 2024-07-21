@@ -206,7 +206,7 @@ export default {
       {
         title: "Angular",
         icon: <IconContainer alt="angularjs" />,
-        link: "/paas//getting-started"
+        link: "/paas/angular/getting-started"
       },
       {
         title: "Vue",
@@ -328,17 +328,17 @@ export default {
       {
         title: "React",
         icon: <IconContainer alt="react" />,
-        link: "/paas//getting-started"
+        link: "/paas/react/getting-started"
       },
       {
         title: "Angular",
         icon: <IconContainer alt="angularjs" />,
-        link: "/paas//getting-started"
+        link: "/paas/angular/getting-started"
       },
       {
         title: "Vue",
         icon: <IconContainer alt="vue" />,
-        link: "/paas//getting-started"
+        link: "/paas/vue/getting-started"
       },
       {
         title: "Static",
@@ -460,7 +460,7 @@ export default {
       {
         title: "Angular",
         icon: <IconContainer alt="angularjs" />,
-        link: "/paas//getting-started"
+        link: "/paas/angular/getting-started"
       },
       {
         title: "Vue",
@@ -2191,6 +2191,81 @@ export default {
       {
         title: "تنظیم هدرهای امنیتی HTTP",
         link: "/paas/vue/how-tos/set-http-security-headers"
+      },
+      
+    ],
+
+    angular: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Angular
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/angular/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/angular/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/angular/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/angular/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/angular/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/angular/how-tos/set-envs"
+      },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/angular/how-tos/use-disk"
+      // },
+
+      {
+        title: "مشاهده نسخه NodeJS",
+        link: "/paas/angular/how-tos/choose-version"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/angular/how-tos/set-envs"
+      },
+      {
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/angular/how-tos/enable-gzip"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/angular/how-tos/set-http-security-headers"
       },
       
     ],

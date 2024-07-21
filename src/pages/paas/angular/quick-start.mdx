@@ -11,17 +11,17 @@ import Link from "next/link";
 
 <Layout>
 
-# استقرار سریع برنامه‌های React
+# استقرار سریع برنامه‌های Angular
 <hr className="mb-2" />
 
-توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Vite</Important> و یا <Important>create-react-app</Important> ساخته شده باشند، در پلتفرم React لیارا قابل اجرا خواهند بود.
+توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Angular CLI</Important> ساخته شده باشند، در پلتفرم Angular لیارا قابل اجرا خواهند بود.
 
 <Tabs 
   tabs={["Liara Console", "Liara CLI"]} 
   content={[
   <>
   <video
-  src="https://files.liara.ir/liara/react/react-desktop.mp4"
+  src="https://files.liara.ir/liara/angular/angular-desktop.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -43,7 +43,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>برنامه React خود را با شناسه، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+    <p>برنامه Angular خود را با شناسه، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
   </>
   )
   },
@@ -61,68 +61,41 @@ import Link from "next/link";
   content: (
   <>
     <h3>تنظیم اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> می‌تواند به شکل زیر باشد:</p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="json">
       {`{
-  "name": "react-getting-started",
+  "name": "angular-getting-started",
   "version": "0.1.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "@angular/animations": "~13.1.0",
+    "@angular/common": "~13.1.0",
+    "@angular/compiler": "~13.1.0",
+    "@angular/core": "~13.1.0",
+    "@angular/forms": "~13.1.0",
+    "@angular/platform-browser": "~13.1.0",
+    "@angular/platform-browser-dynamic": "~13.1.0",
+    "@angular/router": "~13.1.0"
   },
   "devDependencies": {
-    "vite": "^2.4.4", 
-    "@vitejs.plugin-react-refresh": "^1.3.1" 
-  },
-  "scripts": {
-    "start": "vite preview",
-    "build": "vite build"
+    "@angular-devkit/build-angular": "~13.1.2",
+    "@angular/cli": "~13.1.2",
+    "@angular/compiler-cli": "~13.1.0",
+    "@types/node": "^12.11.1",
+    "typescript": "~4.5.2"
   }
 }`}
     </Highlight>
     </div>
     <div className="h-2" />
-    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="js">
-      {`export default {
-    // ... rest of configuration
-    build: {
-        outDir: "build"
-    }
-}`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
-    <p>
-      و یا اگر که برنامه خود را با <Important>create-react-app</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
-    </p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "name": "react-getting-started",
-  "version": "0.1.0",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  }
-}`}
-    </Highlight>
-    </div>
-
-    
+  
   </>
   )
   },
@@ -150,7 +123,7 @@ import Link from "next/link";
 
   <>
   <video
-  src="https://files.liara.ir/liara/quick-start/react/react-cli.mp4"
+  src="https://files.liara.ir/liara/quick-start/angular/angular-cli.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -216,7 +189,7 @@ import Link from "next/link";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>با اجرای دستور زیر، برنامه React خود را ایجاد کنید:</p>
+    <p>با اجرای دستور زیر، برنامه Angular خود را ایجاد کنید:</p>
     <div dir='ltr'>
     <Highlight className="bash">
       {`liara create`}
@@ -224,7 +197,7 @@ import Link from "next/link";
     </div>
     <div className="h-2" />
     <Alert variant="info">اگر که از قبل برنامه خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی react تنظیم شود)، شبکه خصوصی و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی angular تنظیم شود)، شبکه خصوصی و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
   </>
   )
   },
@@ -246,67 +219,42 @@ import Link from "next/link";
   step: "۶",
   content: (
   <>
-        <h3>تنظیم اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> می‌تواند به شکل زیر باشد:</p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="json">
       {`{
-  "name": "react-getting-started",
+  "name": "angular-getting-started",
   "version": "0.1.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "@angular/animations": "~13.1.0",
+    "@angular/common": "~13.1.0",
+    "@angular/compiler": "~13.1.0",
+    "@angular/core": "~13.1.0",
+    "@angular/forms": "~13.1.0",
+    "@angular/platform-browser": "~13.1.0",
+    "@angular/platform-browser-dynamic": "~13.1.0",
+    "@angular/router": "~13.1.0"
   },
   "devDependencies": {
-    "vite": "^2.4.4", 
-    "@vitejs.plugin-react-refresh": "^1.3.1" 
-  },
-  "scripts": {
-    "start": "vite preview",
-    "build": "vite build"
+    "@angular-devkit/build-angular": "~13.1.2",
+    "@angular/cli": "~13.1.2",
+    "@angular/compiler-cli": "~13.1.0",
+    "@types/node": "^12.11.1",
+    "typescript": "~4.5.2"
   }
 }`}
     </Highlight>
     </div>
     <div className="h-2" />
-    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="js">
-      {`export default {
-    // ... rest of configuration
-    build: {
-        outDir: "build"
-    }
-}`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
-    <p>
-      و یا اگر که برنامه خود را با <Important>create-react-app</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
-    </p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "name": "react-getting-started",
-  "version": "0.1.0",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  }
-}`}
-    </Highlight>
-    </div>
+  
   </>
   )
   },
@@ -319,7 +267,7 @@ import Link from "next/link";
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-      {`liara deploy --app=myapp --platform=react`}
+      {`liara deploy --app=myapp --platform=angular`}
     </Highlight>
     </div>
   </>
@@ -342,14 +290,14 @@ import Link from "next/link";
 
 <Alert variant="info">
 <p>
-لیارا به صورت خودکار، در فرایند استقرار برنامه‌های React اسکریپت <Important>build</Important> را برای شما اجرا می‌کند.
+لیارا به صورت خودکار، در فرایند استقرار برنامه‌های Angular اسکریپت <Important>build</Important> را برای شما اجرا می‌کند.
 </p>
 </Alert>
 <div className="h-1" />
 
 <Alert variant="success">
 <p>
-همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های React در لیارا</Link>
+همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های Angular در لیارا</Link>
 </p>
 </Alert>
 </Layout>
