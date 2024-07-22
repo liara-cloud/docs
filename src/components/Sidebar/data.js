@@ -216,7 +216,7 @@ export default {
       {
         title: "Static",
         icon: <IconContainer alt="HTML5" />,
-        link: "/paas//getting-started"
+        link: "/paas/static/getting-started"
       },
       {
         title: "Golang",
@@ -343,7 +343,7 @@ export default {
       {
         title: "Static",
         icon: <IconContainer alt="HTML5" />,
-        link: "/paas//getting-started"
+        link: "/paas/static/getting-started"
       },
       {
         title: "Golang",
@@ -470,7 +470,7 @@ export default {
       {
         title: "Static",
         icon: <IconContainer alt="HTML5" />,
-        link: "/paas//getting-started"
+        link: "/paas/static/getting-started"
       },
       {
         title: "Golang",
@@ -2268,6 +2268,116 @@ export default {
         link: "/paas/angular/how-tos/set-http-security-headers"
       },
       
+    ],
+
+    static: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Static
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/static/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/static/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/static/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/static/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/static/how-tos/deploy-app"
+      },
+      // {
+      //   title: "استفاده از متغیرهای محیطی",
+      //   link: "/paas/static/how-tos/set-envs"
+      // },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/static/how-tos/use-disk"
+      // },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/static/how-tos/set-envs"
+      },
+      {
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/static/how-tos/enable-gzip"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/static/how-tos/set-http-security-headers"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "GatsbyJS",
+        icon: <IconContainer alt="gatsby" />,
+        link: "/paas/static/related-apps/gatsby"
+      },
+      {
+        title: "Gridsome",
+        icon: <IconContainer alt="gridsome" />,
+        link: "/paas/static/related-apps/gridsome"
+      },
+      {
+        title: "Eleventy",
+        icon: <IconContainer alt="eleventy" />,
+        link: "/paas/static/related-apps/eleventy"
+      },
+      {
+        title: "Hugo",
+        icon: <IconContainer alt="hugo" />,
+        link: "/paas/static/related-apps/hugo"
+      },
+      {
+        title: "jekyll",
+        icon: <IconContainer alt="jekyll" />,
+        link: "/paas/static/related-apps/jekyll"
+      },
+      {
+        title: "Astro",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/related-apps/astro"
+      },
     ],
   }
 };
