@@ -104,7 +104,7 @@ import NextPage from "@/components/Common/nextpage";
             پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
         </p>
         <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/deploy-react-app-using-console.gif" alt="build app on liara" />
+        <img src="https://files.liara.ir/liara/docs/deploy-angular-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" />
         <p>
             در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
@@ -118,7 +118,7 @@ import NextPage from "@/components/Common/nextpage";
             پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری node_modules به همراه محتوای آن نیست؛ چرا که لیارا در حین استقرار برنامه، آن را برای شما می‌سازد؛ پس بایستی نام این دایرکتوری در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Angular است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/react/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/angular/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
@@ -163,103 +163,41 @@ import NextPage from "@/components/Common/nextpage";
         ]}/>
         <div className="h-4" />
         <p>
-            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های Angular است که با استفاده از <Important>Vite</Important> ساخته شده‌اند:
+            قطعه کد زیر، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های Angular است:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "name": "my-vite-app",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "angular-getting-started",
+  "version": "0.1.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@angular/animations": "~13.1.0",
+    "@angular/common": "~13.1.0",
+    "@angular/compiler": "~13.1.0",
+    "@angular/core": "~13.1.0",
+    "@angular/forms": "~13.1.0",
+    "@angular/platform-browser": "~13.1.0",
+    "@angular/platform-browser-dynamic": "~13.1.0",
+    "@angular/router": "~13.1.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
-    "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "@angular-devkit/build-angular": "~13.1.2",
+    "@angular/cli": "~13.1.2",
+    "@angular/compiler-cli": "~13.1.0",
+    "@types/node": "^12.11.1",
+    "typescript": "~4.5.2"
   }
 }`}
             </Highlight>
         </div>
         <div className="h-2" />
-    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="js">
-      {`export default {
-    // ... rest of configuration
-    build: {
-        outDir: "build"
-    }
-}`}
-    </Highlight>
-    </div>
-
-    <div className="h-2" />
-        <p>
-            قطعه کد زیر نیز، یک نمونه از فایل <Important>package.json</Important> استاندارد برای برنامه‌های Angular است که با استفاده از دستور <Important>create-react-app</Important> ساخته شده‌اند:
-        </p>        <div className="h-4" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-  "name": "my-cra-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
-`}
-            </Highlight>
-        </div>
-        <div className='h-4' />
         <p>
             در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
         </p>
@@ -268,7 +206,7 @@ import NextPage from "@/components/Common/nextpage";
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "platform": "react"
+    "platform": "angular"
 }`}
             </Highlight>
         </div>
@@ -284,7 +222,7 @@ import NextPage from "@/components/Common/nextpage";
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "react": {
+    "angular": {
     "mirror": false
   }
 }`}
@@ -300,7 +238,7 @@ import NextPage from "@/components/Common/nextpage";
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "react": {
+    "angular": {
     "sourceMap": true
   }
 }`}
@@ -319,8 +257,8 @@ import NextPage from "@/components/Common/nextpage";
             <Highlight className="json">
                 {`{
     "app": "my-web-app", 
-    "platform": "react",
-    "react": {
+    "platform": "angular",
+    "angular": {
     "mirror": false,
     "sourceMap": true
     }
@@ -354,5 +292,5 @@ import NextPage from "@/components/Common/nextpage";
 </Alert>
 
 
-<NextPage next="./set-envs" />
+<NextPage next="./choose-version" />
 </Layout>

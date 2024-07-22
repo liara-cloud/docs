@@ -2242,10 +2242,10 @@ export default {
         title: "استقرار برنامه",
         link: "/paas/angular/how-tos/deploy-app"
       },
-      {
-        title: "استفاده از متغیرهای محیطی",
-        link: "/paas/angular/how-tos/set-envs"
-      },
+      // {
+      //   title: "استفاده از متغیرهای محیطی",
+      //   link: "/paas/angular/how-tos/set-envs"
+      // },
       // {
       //   title: "استفاده از دیسک",
       //   link: "/paas/angular/how-tos/use-disk"
