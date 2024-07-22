@@ -218,15 +218,15 @@ export default {
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/getting-started"
       },
-      {
-        title: "Golang",
-        icon: <IconContainer alt="go" />,
-        link: "/paas//getting-started"
-      },
+      // {
+      //   title: "Golang",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/paas//getting-started"
+      // },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
-        link: "/paas//getting-started"
+        link: "/paas/docker/getting-started"
       },
       {
         hr: true
@@ -345,15 +345,15 @@ export default {
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/getting-started"
       },
-      {
-        title: "Golang",
-        icon: <IconContainer alt="go" />,
-        link: "/paas//getting-started"
-      },
+      // {
+      //   title: "Golang",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/paas//getting-started"
+      // },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
-        link: "/paas//getting-started"
+        link: "/paas/docker/getting-started"
       },
       {
         hr: true
@@ -472,15 +472,15 @@ export default {
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/getting-started"
       },
-      {
-        title: "Golang",
-        icon: <IconContainer alt="go" />,
-        link: "/paas//getting-started"
-      },
+      // {
+      //   title: "Golang",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/paas//getting-started"
+      // },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
-        link: "/paas//getting-started"
+        link: "/paas/docker/getting-started"
       },
       {
         hr: true
@@ -2377,6 +2377,134 @@ export default {
         title: "Astro",
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/related-apps/astro"
+      },
+    ],
+
+    docker: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            پلتفرم Docker
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/docker/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/docker/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/docker/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/docker/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/docker/how-tos/deploy-app"
+      },
+      {
+        title: "استقرار Image از DockerHub",
+        link: "/paas/docker/how-tos/deploy-image-from-dockerhub"
+      },
+      {
+        title: "استقرار Docker Compose",
+        link: "/paas/docker/how-tos/deploy-docker-compose"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/docker/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از Volume (دیسک)",
+        link: "/paas/docker/how-tos/use-disk"
+      },
+      {
+        title: "پیکربندی Supercronic",
+        link: "/paas/docker/how-tos/configure-supercronic"
+      },
+      // {
+      //   title: "فعال‌سازی gzip و Browser Caching",
+      //   link: "/paas/docker/how-tos/enable-gzip"
+      // },
+      // {
+      //   title: "تنظیم هدرهای امنیتی HTTP",
+      //   link: "/paas/docker/how-tos/set-http-security-headers"
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Flutter",
+        icon: <IconContainer alt="flutter" />,
+        link: "/paas/docker/related-apps/flutter"
+      },
+      {
+        title: "Reverse Proxy با Nginx",
+        icon: <IconContainer alt="nginx" />,
+        link: "/paas/docker/related-apps/nginx"
+      },
+      {
+        title: "FastAPI",
+        icon: <IconContainer alt="fastapi" />,
+        link: "/paas/docker/related-apps/fastapi"
+      },
+      {
+        title: "Pure Python Scripts",
+        icon: <IconContainer alt="python" />,
+        link: "/paas/docker/related-apps/python"
+      },
+      {
+        title: "Streamlit",
+        icon: <IconContainer alt="streamlit" />,
+        link: "/paas/docker/related-apps/streamlit"
+      },
+      {
+        title: "ArangoDB",
+        icon: <IconContainer alt="arangodb" />,
+        link: "/paas/docker/related-apps/arangodb"
+      },
+      {
+        title: "Seq",
+        icon: <IconContainer alt="seq" />,
+        link: "/paas/docker/related-apps/seq"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/docker/related-apps/go"
       },
     ],
   }

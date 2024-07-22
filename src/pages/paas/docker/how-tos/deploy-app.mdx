@@ -1,0 +1,405 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import { GoArrowLeft, } from "react-icons/go";
+import NextPage from "@/components/Common/nextpage";
+
+
+<Layout>
+
+# استقرار برنامه Docker در لیارا
+<hr className="mb-2" />
+
+        <Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+        <>
+        <p>
+            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید.
+             به عنوان مثال، اگر که برنامه‌تان مبتنی بر Python باشد، باید پوشه‌ venv. و اگر برنامه‌تان مبتنی بر NodeJS است، باید دایرکتوری node_modules را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> یا <Important>dockerignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
+        </p>
+        <div className="h-4" />
+        <p>
+            همچنین، پروژه شما باید شامل یک فایل به نام <Important>Dockerfile</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند
+            و در ادامه، برنامه‌تان در سرورهای لیارا build می‌شود و image نهایی در <a href="../../details/private-registery" className="blue-link">رجیستری خصوصی</a> شما، در لیارا، ذخیره خواهد شد.
+            به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="docker">
+                {`# Use the official Golang image as the base image
+FROM golang:latest
+        
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the local code to the container
+COPY . .
+
+# Download Go modules
+RUN go mod download
+
+# Build the Go application
+RUN go build -o main .
+
+# Expose port 8080 to the outside world
+# EXPOSE 8080
+
+# Command to run the executable
+CMD ["./main"]`}
+            </Highlight>
+        </div>
+        <div className="h-2" />
+        <p>
+            در ادامه به ساختار Dockerfile فوق، پرداخته شده است:
+        </p>
+
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>    
+                <p>
+                     با استفاده از دستور <Important>FROM golang:latest</Important>، image رسمی golang به عنوان base image تنظیم می‌شود و تگ <Important>latest</Important> باعث می‌شود تا برنامه از آخرین نسخه golang استفاده کند.
+                </p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+            <p>
+                دستور <Important>WORKDIR /app</Important> مسیر کاری داخل container را به دایرکتوری <Important>app</Important> تنظیم می‌کند. در واقع app همان دایرکتوری است که که کد برنامه ما در آنجا کپی می‌شود و دستورات بعدی در آن اجرا می‌شوند.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۳",
+            content: (
+            <>
+            <p>
+                دستور <Important>. . COPY</Important> محتوای دایرکتوری که <Important>Dockerfile</Important> در آن قرار دارد را به دایرکتوری <Important>app</Important> درون container کپی می‌کند. این دستور این فرض را دارد که کد برنامه شما در همان دایرکتوری Dockerfile قرار دارد.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۴",
+            content: (
+            <>
+            <p>
+                دستور <Important>RUN go mod download</Important> ماژول‌های go که در فایل <Important>go.mod</Important> تعریف شده‌اند را دانلود می‌کند.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۵",
+            content: (
+            <>
+            <p>
+                دستور <Important>. RUN go build -o main </Important> برنامه golang شما را اجرا می‌کند. پرچم <Important>o-</Important> نام فایل خروجی را به <Important>main</Important> تنظیم می‌کند و نقطه‌ای که در انتهای دستور قرار دارد؛ نشان‌دهنده این است که کد منبع در دایرکتوری فعلی قرار دارد.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۶",
+            content: (
+            <>
+            <p>
+                دستور <Important>CMD ["./main"]</Important> دستوری را که هنگام شروع کانتینر اجرا می‌شود، مشخص می‌کند.
+            </p>
+            </>
+            )
+            },
+        ]}/>
+        <div className="h-5" />
+
+    <Alert variant="info">
+    <p>
+      شما می‌توانید با استفاده از دستور <Important>EXPOSE</Important> پورتی که برنامه توسط آن به درخواست کاربران گوش می‌دهد را مشخص کنید. البته چون که در حین استقرار، لیارا از شما port برنامه را می‌پرسد بنابراین برای استقرار برنامه‌های داکرایز شده در لیارا، نیازی به نوشتن این دستور در <Important>Dockerfile</Important> نیست.
+    </p>
+    </Alert>
+        <div className='h-4' />        
+        <p>
+            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
+        </p>
+        <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
+        <div className="h-4" />
+        <p>
+            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید:
+        </p>
+        <div className="h-4" />
+        <img src="https://files.liara.ir/liara/docs/deploy-docker-app-using-console.gif" alt="build app on liara" />
+        <div className="h-4" />
+        <p>
+            در انتها، به صورت مستقیم به <a href="../../details/private-registery" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
+        </p>
+
+    </>,
+    <>
+
+        <p>
+            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> یا <Important>dockerignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ 
+            
+            به عنوان مثال در برنامه‌های مبتنی بر Python، نیازی به آپلود دایرکتوری‌ venv. به همراه محتوای آن‌ نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسم این دایرکتوری‌ در یکی از سه فایل فوق، نوشته شود.
+        </p>
+        <div className="h-2" />
+        <p>
+            همچنین، پروژه شما باید شامل یک فایل به نام <Important>Dockerfile</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند
+            و در ادامه، برنامه‌تان در سرورهای لیارا build می‌شود و image نهایی در <a href="../../details/private-registery" className="blue-link">رجیستری خصوصی</a> شما، در لیارا، ذخیره خواهد شد.
+            به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="docker">
+                {`# Use the official Golang image as the base image
+FROM golang:latest
+        
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the local code to the container
+COPY . .
+
+# Download Go modules
+RUN go mod download
+
+# Build the Go application
+RUN go build -o main .
+
+# Expose port 8080 to the outside world
+# EXPOSE 8080
+
+# Command to run the executable
+CMD ["./main"]`}
+            </Highlight>
+        </div>
+        <div className="h-2" />
+        <p>
+            در ادامه به ساختار Dockerfile فوق، پرداخته شده است:
+        </p>
+
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>    
+                <p>
+                     با استفاده از دستور <Important>FROM golang:latest</Important>، image رسمی golang به عنوان base image تنظیم می‌شود و تگ <Important>latest</Important> باعث می‌شود تا برنامه از آخرین نسخه golang استفاده کند.
+                </p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+            <p>
+                دستور <Important>WORKDIR /app</Important> مسیر کاری داخل container را به دایرکتوری <Important>app</Important> تنظیم می‌کند. در واقع app همان دایرکتوری است که که کد برنامه ما در آنجا کپی می‌شود و دستورات بعدی در آن اجرا می‌شوند.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۳",
+            content: (
+            <>
+            <p>
+                دستور <Important>. . COPY</Important> محتوای دایرکتوری که <Important>Dockerfile</Important> در آن قرار دارد را به دایرکتوری <Important>app</Important> درون container کپی می‌کند. این دستور این فرض را دارد که کد برنامه شما در همان دایرکتوری Dockerfile قرار دارد.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۴",
+            content: (
+            <>
+            <p>
+                دستور <Important>RUN go mod download</Important> ماژول‌های go که در فایل <Important>go.mod</Important> تعریف شده‌اند را دانلود می‌کند.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۵",
+            content: (
+            <>
+            <p>
+                دستور <Important>. RUN go build -o main </Important> برنامه golang شما را اجرا می‌کند. پرچم <Important>o-</Important> نام فایل خروجی را به <Important>main</Important> تنظیم می‌کند و نقطه‌ای که در انتهای دستور قرار دارد؛ نشان‌دهنده این است که کد منبع در دایرکتوری فعلی قرار دارد.
+            </p>
+            </>
+            )
+            },
+            {
+            step: "۶",
+            content: (
+            <>
+            <p>
+                دستور <Important>CMD ["./main"]</Important> دستوری را که هنگام شروع کانتینر اجرا می‌شود، مشخص می‌کند.
+            </p>
+            </>
+            )
+            },
+        ]}/>
+        <div className="h-5" />
+
+    <Alert variant="info">
+    <p>
+      شما می‌توانید با استفاده از دستور <Important>EXPOSE</Important> پورتی که برنامه توسط آن به درخواست کاربران گوش می‌دهد را مشخص کنید. البته چون که در حین استقرار، لیارا از شما port برنامه را می‌پرسد بنابراین برای استقرار برنامه‌های داکرایز شده در لیارا، نیازی به نوشتن این دستور در <Important>Dockerfile</Important> نیست.
+    </p>
+    </Alert>
+        <div className='h-4' />
+        <p>
+            در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "app": "my--app", 
+    "port": 8080,
+    "platform": "docker"
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my--app</Important> و در فیلد <Important>port</Important>، پورتی که برنامه در آن، به درخواست کاربران، گوش می‌دهد، را وارد کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که docker است، مشخص کنید.
+        </p>
+        <div className='h-4' />
+        <p>
+            ممکن است بخواهید چندین پروژه، که در یک <Important>monorepo</Important> قرار دارند را با <Important>Dockerfile</Important> های مختلفی دیپلوی کنید؛ یا اینکه از نام و مسیر دلخواه برای <Important>Dockerfile</Important>تان استفاده کنید. برای این کار می‌توانید قطعه کد زیر را به فایل <Important>liara.json</Important>، اضافه کنید و در فیلد <Important>dockerfile</Important>، مسیر Dokcerfile خود را مشخص کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "build": {
+    "dockerfile": "path/to/Dockerfile"
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            همچنین می‌توانید در فیلدی به نام <Important>cache</Important> تعیین کنید که در حین فرایند build برنامه، از cache استفاده شود یا خیر؛ این مقدار، به صورت پیش‌فرض، بر روی <Important>true</Important> قرار دارد:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "build": {
+    "cache": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در داکر، دستور <Important>ARG</Important> برای تعریف متغیرهای زمان ساخت (build-time variables) استفاده می‌شود. این متغیرها می‌توانند در طول فرآیند ساخت image استفاده شوند تا پارامترهای مهمی مانند نسخه نرم‌افزار و ... را تعیین کنند. این متغیرها در مرحله ساخت image در دسترس هستند و به صورت کلید-مقدار تعریف می‌شوند.
+            شما می‌توانید ARGهای‌تان را در آرایه‌ای به نام <Important>args</Important>، تعریف کنید، به عنوان مثال:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "build": {
+        "args": ["APP_VERSION=2.0.0"]
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            دستور <Important>ENTRYPOINT</Important> برای تعیین فرمان اصلی است که باید هنگام اجرای کانتینر، run شود. این فرمان تعیین می‌کند که کانتینر چه چیزی را باید به عنوان فرآیند اصلی خود اجرا کند.
+            برای تغییر <Important>ENTRYPOINT</Important> در image خود، کافیست تا قطعه کدی مشابه قطعه کد زیر را به آرایه‌ای به نام <Important>args</Important>، در فایل <Important>liara.json</Important>، اضافه کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "args": [
+    "sh",
+    "-c",
+    "sleep 10 && /entrypoint.sh run"
+  ]
+}`}
+            </Highlight>
+        </div>        
+        <div className='h-4' />
+        <p>
+            در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "app": "my--app", 
+    "port": 8080,
+    "platform": "docker",
+
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "cache": false,
+        "args": ["APP_VERSION=2.0.0"]
+    },
+
+    "docker": {
+        "timezone": "America/Los_Angeles"
+    },
+
+    "args": [
+    "sh",
+    "-c",
+    "sleep 10 && /entrypoint.sh run"
+  ]
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        <p>
+            اکنون کافیست تا در مسیر اصلی پروژه و جایی که فایل <Important>liara.json</Important> قرار دارد؛ دستور زیر را اجرا کنید و منتظر بمانید تا عملیات استقرار تمام شود:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`liara deploy`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در حین فرایند استقرار، می‌توانید در ترمینال خود، لاگ‌های مربوط به آن را مشاهده بفرمایید.
+        </p>
+    </>,
+
+]} 
+/>
+
+<Alert variant="warning">
+<p>
+در هر برنامه داکر در لیارا، شما می‌توانید فقط پورت یک وب‌سرور با پروتکل HTTP را Expose کنید. به عنوان مثال، پورت یک دیتابیس، خارج از شبکه خصوصی، در دسترس نیست و تنها در بین برنامه‌های موجود در شبکه خصوصی، قابل دسترسی است.
+</p>
+</Alert>
+
+<Alert variant='success'>
+<p>
+    پس از استقرار برنامه می‌توانید <a href="../../details/events" className="blue-link">رویدادها</a> و <a href="../../details/observations/about" className="blue-link">گزارشات</a> مربوط به برنامه را بررسی کنید.
+</p>
+</Alert>
+
+
+<NextPage next="./deploy-image-from-dockerhub" />
+</Layout>
