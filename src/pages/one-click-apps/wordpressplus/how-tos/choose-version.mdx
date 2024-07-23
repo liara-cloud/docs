@@ -1,0 +1,47 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# انتخاب نسخه PHP 
+<hr className="mb-2" />
+
+در حال حاضر در برنامه‌های وردپرسی لیارا، نسخه‌های زیر از  PHP ارائه می‌شوند: 
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: '7.4',},
+    {text: '8.1',},
+    {text: '8.2',},
+    {text: '8.3',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        نسخه {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+
+
+<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
+برای تغییر نسخه PHP برنامه وردپرسی خود، کافیست وارد قسمت <b>تنظیمات</b> برنامه خود در لیارا شوید و در بخش <b>تغییر نسخه</b>، نسخه مورد نظر خود را، تغییر دهید:
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/change-php-version-of-wordpress-apps.gif" alt="create one-click-app" />
+
+
+</Layout>

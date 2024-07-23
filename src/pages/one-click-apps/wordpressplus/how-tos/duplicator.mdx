@@ -1,0 +1,114 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+
+<Layout>
+
+# راه‌اندازی وردپرس با استفاده از بسته نصب آسان (Duplicator)
+<hr className="mb-2" />
+
+<video
+src="https://files.liara.ir/liara/wordpress/wordpress-duplicator.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+/>
+
+<br />
+<a href="https://wordpress.org/plugins/duplicator/" className="blue-link">Duplicator</a>  یک افزونه وردپرس است که به کاربران امکان می‌دهد از وب‌سایت‌های خود نسخه پشتیبان تهیه کرده و آن‌ها را به‌سادگی به سرور یا دامنه دیگری منتقل کنند. این افزونه به‌ویژه برای انتقال سایت‌ها، تهیه نسخه‌های پشتیبان منظم، و ایجاد بسته‌های نصب سریع مفید است. Duplicator با ارائه یک فرایند ساده و خودکار، کاربران را از مشکلات پیچیده انتقال و پشتیبان‌گیری بی‌نیاز می‌کند.
+برای نصب برنامه وردپرسی خود با Duplicator، کافیست تا گام‌های زیر را جلو بروید:
+<div className="h-2" />
+
+
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>استخراج فایل Duplicator</h3>   
+<p>
+اگر که فایل Duplicatorتان فشرده است، در ابتدا باید آن را در Local، از حالت فشرده خارج کنید؛ عموماً Duplicator شامل یک فایل به نام <Important>installer.php</Important>، خواهد بود.
+</p>
+</>
+)
+},
+{
+step: "۲",
+content: (
+<>
+<h3>اتصال دامنه به برنامه</h3>
+<p>
+در صورتی که قصد دارید برنامه‌تان متصل به دامنه خریداری‌شده خودتان باشد، باید قبل از هرچیزی، طبق مستندات <a href="/paas/domains/about" className="blue-link">دامنه‌ها</a>، دامنه مدنظرتان را به برنامه متصل و دامنه پیش‌فرض لیارا را، خاموش کنید.
+</p>
+</>
+)
+},
+
+{
+step: "۳",
+content: (
+<>
+<h3>انتقال فایل‌های Duplicator  به لیارا</h3>
+<p>
+    در برنامه وردپرسی خود در لیارا، یک <a href="/paas/disks/ftp-access" className="blue-link">یک دسترسی FTP جدید</a> برای دیسک <Important>data</Important> ایجاد کنید. با این دسترسی به دیسک متصل شوید و تمامی فایل‌های درون دیسک را پاک کنید.
+    در ادامه، فایل‌های استخراج شده را با دسترسی FTP، درون دیسک، آپلود کنید.
+</p>
+
+
+</>
+)
+},
+
+{
+step: "۳",
+content: (
+<>
+<h3>نصب برنامه وردپرسی</h3>
+<p>
+    وارد زیرصفحه <Important>installer.php/</Important> در برنامه خود شوید و مراحل نصب وردپرس را جلو ببرید. 
+    برای مشاهده‌ی اطلاعات دیتابیس ایجاد شده می‌توانید وارد دیتابیس برنامه وردپرسی خود شوید و اطلاعات دیتابیس را از منوی <b>نحوه‌ی اتصال</b> کپی کنید.
+
+</p>
+
+
+</>
+)
+},
+
+]}/>
+
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-1 gap-4">
+            {[
+    
+      {
+        title: "رفع خطاهای رایج",
+        link: "/one-click-apps/wordpressplus/fix-common-errors/about"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+</Layout>

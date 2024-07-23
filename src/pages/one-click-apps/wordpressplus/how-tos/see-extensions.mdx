@@ -1,0 +1,74 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# مشاهده Extension‌های نصب شده در برنامه‌های WordPress
+<hr className="mb-2" />
+
+در لیارا، اکستنشن‌های زیر در پلتفرم وردپرس نصب شده‌اند:
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="config">
+        {`[PHP Modules]
+bcmath
+Core
+ctype
+curl
+date
+dom
+exif
+fileinfo
+filter
+ftp
+gd
+hash
+iconv
+imagick
+ionCube Loader
+json
+libxml
+mbstring
+mysqli
+mysqlnd
+openssl
+pcre
+PDO
+pdo_sqlite
+Phar
+posix
+readline
+redis
+Reflection
+session
+SimpleXML
+soap
+sodium
+SourceGuardian
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+Zend OPcache
+zip
+zlib
+
+[Zend Modules]
+SourceGuardian
+Zend OPcache
+the ionCube PHP Loader + ionCube24`}        
+    </Highlight>
+</div>
+
+</Layout>

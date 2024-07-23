@@ -1,0 +1,120 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+
+<Layout>
+
+# راه‌اندازی سریع برنامه‌های WordPress Plus
+<hr className="mb-2" />
+
+  <video
+  src="https://files.liara.ir/liara/wordpress/wordpress-plus.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  />
+  
+  <br />
+  <div className="h-2" />
+
+<a href="https://wordpress.org/download/" className="blue-link">WordPress</a> یک سیستم مدیریت محتوا (CMS) است که به کاربران امکان می‌دهد به‌راحتی وب‌سایت‌ها و وبلاگ‌های شخصی خود را، ایجاد و مدیریت کنند. این پلتفرم متن‌باز و رایگان است و با استفاده از پلاگین‌ها و تم‌های متنوع، قابلیت‌های زیادی برای سفارشی‌سازی دارد. وردپرس با زبان برنامه‌نویسی PHP نوشته شده و معمولاً از پایگاه‌داده MySQL استفاده می‌کند.
+برای راه‌اندازی برنامه با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>ورود به حساب کاربری</h3>   
+<p>وارد <Link className="blue-link" href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+</>
+)
+},
+{
+step: "۲",
+content: (
+<>
+<h3>راه‌اندازی برنامه</h3>
+<p>
+    در ادامه، بر روی منوی <b>وردپرس پلاس</b> و سپس بر روی گزینه <b>راه‌اندازی وردپرس</b>، کلیک کنید. در ادامه، شناسه، <a href="/paas/details/private-network" className="blue-link">شبکه خصوصی</a> و <a href="/paas/details/plans/hardware-plans" className="blue-link">منابع سخت‌افزاری</a> وردپرس و دیتابیس خود را انتخاب کنید.  
+    در نهایت، کافیست نسخه PHP برنامه وردپرس خود را انتخاب کرده و بر روی گزینه <b>راه‌اندازی و نصب وردپرس</b> کلیک کنید.
+</p>
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/setup-wordpressplus-app-using-console.gif" alt="create one-click-app" />
+<div className="h-2" />
+
+
+
+
+</>
+)
+},
+
+]}/>
+
+
+<br/>   
+با انجام مراحل فوق، برنامه WordPress Plus شما ایجاد می‌شود و شما می‌توانید از آن استفاده کنید.
+<div className="h-1" />
+
+<Alert variant="info">
+
+<p>
+در راه‌اندازی اولیه وب‌سایت وردپرس، قسمت مربوط به اتصال به دیتابیس به صورت خودکار توسط لیارا، انجام می‌شود و این مرحله به شما نمایش داده نمی‌شود.
+</p>
+</Alert>
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "انتقال WordPress از cPanel به لیارا",
+        link: "/one-click-apps/wordpressplus/how-tos/migrate-from-cpanel"
+      },
+      {
+        title: "فعال‌سازی افزونه WP Rocket",
+        link: "/one-click-apps/wordpressplus/how-tos/enable-wprocket-extension"
+      },
+      {
+        title: "راه‌اندازی WordPress با Duplicator",
+        link: "/one-click-apps/wordpressplus/how-tos/duplicator"
+      },
+      {
+        title: "مشاهده نسخه‌های PHP قابل ارائه",
+        link: "/one-click-apps/wordpressplus/how-tos/choose-version"
+      },
+      {
+        title: "شخصی‌سازی تنظیمات php.ini",
+        link: "/one-click-apps/wordpressplus/how-tos/customize-php-ini"
+      },
+  
+      {
+        title: "مشاهده اکستنشن‌های نصب‌شده",
+        link: "/one-click-apps/wordpressplus/how-tos/see-extensions"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

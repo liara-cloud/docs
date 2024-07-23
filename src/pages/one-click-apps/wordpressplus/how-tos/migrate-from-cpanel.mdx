@@ -1,0 +1,93 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+
+
+<Layout>
+
+# انتقال WordPress از cPanel به لیارا
+<hr className="mb-2" />
+
+  <video
+  src="https://files.liara.ir/liara/wordpress/wordpress-cpanel.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  />
+  
+  <br />
+  <div className="h-2" />
+
+برای انتقال برنامه WordPress خود از cPanel به لیارا کافیست تا مراحل زیر را طی کنید:
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>دانلود فایل‌ها از cPanel</h3>   
+<p>
+برای انتقال فایل‌های برنامه وردپرس خود از cPanel به لیارا باید وارد حساب کاربری cPanel شده و از بخش مدیریت فایل (File Manager)، تمام فایل‌های مربوط به برنامه در مسیر <Important>public_html</Important> هاستینگ را به‌صورت zip شده دانلود کنید.
+</p>
+</>
+)
+},
+{
+step: "۲",
+content: (
+<>
+<h3>انتقال فایل‌های دانلود شده  به لیارا</h3>
+<p>
+    در برنامه وردپرسی خود در لیارا، یک <a href="/paas/disks/ftp-access" className="blue-link">یک دسترسی FTP جدید</a> برای دیسک <Important>data</Important> ایجاد کنید. با این دسترسی به دیسک متصل شوید و تمامی فایل‌های درون دیسک را پاک کنید.
+    در ادامه، فایل zip دانلود شده از هاست cPanel را در Local از حالت فشرده خارج کرده و فایل‌های استخراج شده را با دسترسی FTP، درون دیسک، آپلود کنید.
+</p>
+</>
+)
+},
+
+{
+step: "۳",
+content: (
+<>
+<h3>
+انتقال دیتابیس 
+</h3>
+
+<p>
+
+برای انتقال دیتابیس از cPanel باید در ابتدا از اطلاعات دیتابیس خود با استفاده از phpMyAdmin یک Export بگیرید. سپس باید وارد دیتابیس خود در لیارا شده و در بخش <b>نحوه‌ی اتصال</b>، phpMyAdmin را برای دسترسی آسان به دیتابیس راه‌اندازی کنید.
+درنهایت برای Import کردن داده‌های دیتابیس قبلی برنامه‌ی خود به دیتابیس فعلی بایستی با استفاده از phpMyAdmin به دیتابیس فعلی متصل شده و فایل <Important>sql.</Important> را در دیتابیس وردپرس Import کنید.
+<div className="h-3" />
+</p>
+
+<Alert variant="info">
+<p>
+برای بازیابی فایل‌های پشتیبان با حجم بالا، توصیه می‌شود که از ابزار <Important>MySQL CLI</Important> استفاده کنید.
+</p>
+</Alert>
+
+
+</>
+)
+},
+
+]}/>
+
+
+<br/>   
+با انجام مراحل فوق، برنامه WordPress Plus شما به صورت کامل، منتقل می‌شود و شما می‌توانید از آن استفاده کنید.
+<div className="h-1" />
+
+<Alert variant="info">
+<p>
+درصورتی که دامنه‌ی قبلی خود را به برنامه وردپرس متصل نکرده باشید باید در جدول <Important>wp_options</Important> فیلد‌های <Important>siteUrl</Important> و <Important>homeUrl</Important> آدرس فعلی برنامه را وارد کرده و درنهایت برنامه را ری‌استارت کنید.
+</p>
+</Alert>
+
+</Layout>

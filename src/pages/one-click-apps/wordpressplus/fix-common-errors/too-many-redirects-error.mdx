@@ -1,0 +1,31 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+<Layout>
+# رفع خطای err_too_many_redirects
+<hr className="mb-2" />
+خطای ERR_TOO_MANY_REDIRECTS در وردپرس زمانی رخ می‌دهد که سایت در یک حلقه بی‌پایان از تغییر مسیرها (ریدایرکت‌ها) گرفتار شده است. این مشکل معمولاً به‌دلیل تنظیمات نادرست URL، مشکلات پلاگین‌ها، یا خطاهای پیکربندی فایل <Important>htaccess.</Important> ایجاد می‌شود. 
+<div className="h-2" />
+برای رفع این خطا، در برنامه وردپرسی خود، برای دیسک <Important>data</Important>، یک <a href="/paas/disks/ftp-access" className="blue-link">دسترسی FTP</a> ایجاد کنید. با این دسترسی وارد فایلی به نام <Important>wp-config.php</Important> شده و قطعه کد زیر را، به آن، اضافه کنید:
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="php">
+      {`$_SERVER['HTTPS'] = 'on';
+/* That's all, stop editing! Happy publishing. <-- قبل از این کامنت */`}
+    </Highlight>
+</div>
+<div className="h-2" />
+در ادامه، دسترسی را ببندید و برنامه خود را ری‌استارت کنید تا مشکل، برطرف شود.
+
+
+</Layout>

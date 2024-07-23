@@ -137,6 +137,7 @@ export default {
       link: ""
     }
   ],
+
   paas: {
     about: [
       {
@@ -313,17 +314,17 @@ export default {
       {
         title: "Django",
         icon: <IconContainer alt="django" />,
-        link: "/paas//getting-started"
+        link: "/paas/django/getting-started"
       },
       {
         title: "Flask",
         icon: <IconContainer alt="flask" />,
-        link: "/paas//getting-started"
+        link: "/paas/flask/getting-started"
       },
       {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
-        link: "/paas//getting-started"
+        link: "/paas/dotnet/getting-started"
       },
       {
         title: "React",
@@ -338,7 +339,7 @@ export default {
       {
         title: "Vue",
         icon: <IconContainer alt="vue" />,
-        link: "/paas/vue/getting-started"
+        link: "/paas//getting-started"
       },
       {
         title: "Static",
@@ -389,7 +390,7 @@ export default {
       {
         title: "انتقال پلتفرم",
         icon: <GoPackageDependents />,
-        link: "/"
+        link: "/paas/move"
       }
     ],
     move: [
@@ -440,22 +441,22 @@ export default {
       {
         title: "Django",
         icon: <IconContainer alt="django" />,
-        link: "/paas//getting-started"
+        link: "/paas/django/getting-started"
       },
       {
         title: "Flask",
         icon: <IconContainer alt="flask" />,
-        link: "/paas//getting-started"
+        link: "/paas/flask/getting-started"
       },
       {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
-        link: "/paas//getting-started"
+        link: "/paas/dotnet/getting-started"
       },
       {
         title: "React",
         icon: <IconContainer alt="react" />,
-        link: "/paas//getting-started"
+        link: "/paas/react/getting-started"
       },
       {
         title: "Angular",
@@ -516,7 +517,7 @@ export default {
       {
         title: "انتقال پلتفرم",
         icon: <GoPackageDependents />,
-        link: "/"
+        link: "/paas/move"
       }
     ],
     details: [
@@ -627,7 +628,6 @@ export default {
         link: "/paas/details/reverse-proxy"
       },
     ],
-
     disks: [
       {
         badge: (
@@ -730,7 +730,6 @@ export default {
         link: "/paas/disks/ftp-access"
       },
     ],
-
     domains: [
       {
         badge: (
@@ -789,7 +788,6 @@ export default {
         link: "/paas/domains/supported-tlds"
       },
     ],
-
     cicd: [
       {
         badge: (
@@ -1740,7 +1738,6 @@ export default {
         link: "/paas/django/related-apps/celery"
       },
     ],
-
     flask: [
       {
         badge: (
@@ -1900,7 +1897,6 @@ export default {
         link: "/paas/flask/fix-common-errors/module-not-found"
       },
     ],
-
     dotnet: [
       {
         badge: (
@@ -2044,7 +2040,6 @@ export default {
         link: "/paas/dotnet/fix-common-errors/cors"
       },
     ],
-
     react: [
       {
         badge: (
@@ -2119,7 +2114,6 @@ export default {
       },
       
     ],
-    
     vue: [
       {
         badge: (
@@ -2194,7 +2188,6 @@ export default {
       },
       
     ],
-
     angular: [
       {
         badge: (
@@ -2269,7 +2262,6 @@ export default {
       },
       
     ],
-
     static: [
       {
         badge: (
@@ -2379,7 +2371,6 @@ export default {
         link: "/paas/static/related-apps/astro"
       },
     ],
-
     docker: [
       {
         badge: (
@@ -2507,5 +2498,258 @@ export default {
         link: "/paas/docker/related-apps/go"
       },
     ],
-  }
+
+  },
+
+  one_click_apps: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoRocket />
+            برنامه‌های آماده
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره برنامه‌های آماده",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "WordPress Plus",
+        icon: <IconContainer alt="wordpress" />,
+        link: "/one-click-apps/wordpressplus/quick-start"
+      },
+      {
+        title: "Headless Chrome",
+        icon: <IconContainer alt="chrome" />,
+        link: "/one-click-apps/headless-chrome/quick-start"
+      },
+      {
+        title: "Soketi",
+        icon: <IconContainer alt="soketi" />,
+        link: "/one-click-apps/soketi/quick-start"
+      },
+      {
+        title: "ImgProxy",
+        icon: <IconContainer alt="imgproxy" />,
+        link: "/one-click-apps/imgproxy/quick-start"
+      },
+      {
+        title: "RocketChat",
+        icon: <IconContainer alt="rocketchat" />,
+        link: "/one-click-apps/rocketchat/quick-start"
+      },
+      {
+        title: "Metabase",
+        icon: <IconContainer alt="metabase" />,
+        link: "/one-click-apps/metabase/quick-start"
+      },
+      {
+        title: "NextCloud",
+        icon: <IconContainer alt="nextcloud" />,
+        link: "/one-click-apps/nextcloud/quick-start"
+      },
+      {
+        title: "Gitea",
+        icon: <IconContainer alt="gitea" />,
+        link: "/one-click-apps/gitea/quick-start"
+      },
+      {
+        title: "Mattermost",
+        icon: <IconContainer alt="mattermost" />,
+        link: "/one-click-apps/mattermost/quick-start"
+      },
+      {
+        title: "Kibana",
+        icon: <IconContainer alt="kibana" />,
+        link: "/one-click-apps/kibana/quick-start"
+      },
+      {
+        title: "Grafana",
+        icon: <IconContainer alt="grafana" />,
+        link: "/one-click-apps/grafana/quick-start"
+      },
+      {
+        title: "Prestashop",
+        icon: <IconContainer alt="prestashop" />,
+        link: "/one-click-apps/prestashop/quick-start"
+      },
+      {
+        title: "Visual Studio Code Server",
+        icon: <IconContainer alt="vscode" />,
+        link: "/one-click-apps/vscode/quick-start"
+      },
+      {
+        title: "Odoo",
+        icon: <IconContainer alt="odoo" />,
+        link: "/one-click-apps/odoo/quick-start"
+      },
+      {
+        title: "Ghost",
+        icon: <IconContainer alt="ghost" />,
+        link: "/one-click-apps/ghost/quick-start"
+      },
+      {
+        title: "N8N",
+        icon: <IconContainer alt="n8n" />,
+        link: "/one-click-apps/n8n/quick-start"
+      },
+      {
+        title: "PocketBase",
+        icon: <IconContainer alt="pocketbase" />,
+        link: "/one-click-apps/pocketbase/quick-start"
+      },
+      {
+        title: "Matomo",
+        icon: <IconContainer alt="matomo" />,
+        link: "/one-click-apps/matomo/quick-start"
+      },
+      {
+        title: "Unleash",
+        icon: <IconContainer alt="unleash" />,
+        link: "/one-click-apps/unleash/quick-start"
+      },
+      {
+        title: "Uptime Kuma",
+        icon: <IconContainer alt="uptimekuma" />,
+        link: "/one-click-apps/uptime-kuma/quick-start"
+      },
+      {
+        title: "Ackee",
+        icon: <IconContainer alt="docker" />,
+        link: "/one-click-apps/ackee/quick-start"
+      },
+      {
+        title: "Appsmith",
+        icon: <IconContainer alt="appsmith" />,
+        link: "/one-click-apps/appsmith/quick-start"
+      },
+      {
+        title: "Varnish Cache",
+        icon: <IconContainer alt="varnish" />,
+        link: "/one-click-apps/varnish/quick-start"
+      },
+      {
+        title: "Rabbit MQ",
+        icon: <IconContainer alt="rabbitmq" />,
+        link: "/one-click-apps/rabbitmq/quick-start"
+      },
+      {
+        title: "Apache Answer",
+        icon: <IconContainer alt="apacheanswer" />,
+        link: "/one-click-apps/apache-answer/quick-start"
+      },
+      {
+        title: "NOCODB",
+        icon: <IconContainer alt="nocodb" />,
+        link: "/one-click-apps/nocodb/quick-start"
+      },
+      {
+        title: "Chroma",
+        icon: <IconContainer alt="chroma" />,
+        link: "/one-click-apps/chroma/quick-start"
+      },
+      {
+        title: "MeiliSearch",
+        icon: <IconContainer alt="meilisearch" />,
+        link: "/one-click-apps/meilisearch/quick-start"
+      },
+    ],
+
+    wordpressplus: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه WordPress Plus
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/wordpressplus/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "انتقال WordPress از cPanel به لیارا",
+        link: "/one-click-apps/wordpressplus/how-tos/migrate-from-cpanel"
+      },
+      {
+        title: "فعال‌سازی افزونه WP Rocket",
+        link: "/one-click-apps/wordpressplus/how-tos/enable-wprocket-extension"
+      },
+      {
+        title: "راه‌اندازی WordPress با Duplicator",
+        link: "/one-click-apps/wordpressplus/how-tos/duplicator"
+      },
+      {
+        title: "مشاهده نسخه‌های PHP قابل ارائه",
+        link: "/one-click-apps/wordpressplus/how-tos/choose-version"
+      },
+      {
+        title: "شخصی‌سازی تنظیمات php.ini",
+        link: "/one-click-apps/wordpressplus/how-tos/customize-php-ini"
+      },
+  
+      {
+        title: "مشاهده اکستنشن‌های نصب‌شده",
+        link: "/one-click-apps/wordpressplus/how-tos/see-extensions"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/one-click-apps/wordpressplus/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای err_too_many_redirects",
+        link: "/one-click-apps/wordpressplus/fix-common-errors/too-many-redirects-error"
+      },
+      {
+        title: "رفع خطای لود نشدن فایل‌های CSS",
+        link: "/one-click-apps/wordpressplus/fix-common-errors/css-not-loading-error"
+      },
+      {
+        title: "رفع خطاهای مربوط به دسترسی فایل",
+        link: "/one-click-apps/wordpressplus/fix-common-errors/file-access-errors"
+      },
+  
+    ],
+   
+
+  },
+  
 };

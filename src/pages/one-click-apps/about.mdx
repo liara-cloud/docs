@@ -1,0 +1,239 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# سرویس برنامه‌های آماده لیارا
+<hr className="mb-2" />
+
+<Section id='what-is-one-click-app' title='One-Click-App چیست؟' />
+
+<b>One-Click-App</b> (یا برنامه‌ آماده یک کلیکی)
+به برنامه‌هایی گفته می‌شود که شما می‌توانید آنها را تنها با یک کلیک و بدون نگرانی در مورد زیرساخت‌های فنی، ایجاد و مدیریت کنید.
+تمامی تنظیمات برنامه‌های یک کلیکی، از قبل توسط لیارا انجام شده است و نیازی نیست که شما کار خاصی را انجام دهید.
+
+<Section id="liara-provided-one-click-apps" title="لیارا چه پلتفرم‌هایی را ارائه می‌دهد؟" />
+لیارا از جمله اولین سرویس‌های میزبانی ابری ایرانی است که در زمینه ارائه خدمات مربوط به پلتفرم‌های مختلف، پیش‌تاز است. در حال حاضر، لیارا، پلتفرم‌های زیر را به صورت مستقیم ارائه می‌دهد و شما می‌توانید فقط با زدن یک کلیک، برنامه‌های زیر را در لیارا ایجاد کرده و از آن، در راستای نیاز خود، استفاده کنید:
+
+<div className="h-4" />
+<div className="grid grid-cols-4 gap-4">
+            {[
+    {
+        title: "WordPress Plus",
+        alt:"wordpress",
+        link: "/one-click-apps/wordpressplus/quick-start"
+      },
+      {
+        title: "Headless Chrome",
+        alt:"chrome",
+        link: "/one-click-apps/headless-chrome/quick-start"
+      },
+      {
+        title: "Soketi",
+        alt:"soketi",
+        link: "/one-click-apps/soketi/quick-start"
+      },
+      {
+        title: "ImgProxy",
+        alt:"imgproxy",
+        link: "/one-click-apps/imgproxy/quick-start"
+      },
+      {
+        title: "RocketChat",
+        alt:"rocketchat",
+        link: "/one-click-apps/rocketchat/quick-start"
+      },
+      {
+        title: "Metabase",
+        alt:"metabase",
+        link: "/one-click-apps/metabase/quick-start"
+      },
+      {
+        title: "NextCloud",
+        alt:"nextcloud",
+        link: "/one-click-apps/nextcloud/quick-start"
+      },
+      {
+        title: "Gitea",
+        alt:"gitea",
+        link: "/one-click-apps/gitea/quick-start"
+      },
+      {
+        title: "Mattermost",
+        alt:"mattermost",
+        link: "/one-click-apps/mattermost/quick-start"
+      },
+      {
+        title: "Kibana",
+        alt:"kibana",
+        link: "/one-click-apps/kibana/quick-start"
+      },
+      {
+        title: "Grafana",
+        alt:"grafana",
+        link: "/one-click-apps/grafana/quick-start"
+      },
+      {
+        title: "Prestashop",
+        alt:"prestashop",
+        link: "/one-click-apps/prestashop/quick-start"
+      },
+      {
+        title: "Code Server",
+        alt:"vscode",
+        link: "/one-click-apps/vscode/quick-start"
+      },
+      {
+        title: "Odoo",
+        alt:"odoo",
+        link: "/one-click-apps/odoo/quick-start"
+      },
+      {
+        title: "Ghost",
+        alt:"ghost",
+        link: "/one-click-apps/ghost/quick-start"
+      },
+      {
+        title: "N8N",
+        alt:"n8n",
+        link: "/one-click-apps/n8n/quick-start"
+      },
+      {
+        title: "PocketBase",
+        alt:"pocketbase",
+        link: "/one-click-apps/pocketbase/quick-start"
+      },
+      {
+        title: "Matomo",
+        alt:"matomo",
+        link: "/one-click-apps/matomo/quick-start"
+      },
+      {
+        title: "Unleash",
+        alt:"unleash",
+        link: "/one-click-apps/unleash/quick-start"
+      },
+      {
+        title: "Uptime Kuma",
+        alt:"uptimekuma",
+        link: "/one-click-apps/uptime-kuma/quick-start"
+      },
+      {
+        title: "Ackee",
+        alt:"docker",
+        link: "/one-click-apps/ackee/quick-start"
+      },
+      {
+        title: "Appsmith",
+        alt:"appsmith",
+        link: "/one-click-apps/appsmith/quick-start"
+      },
+      {
+        title: "Varnish Cache",
+        alt:"varnish",
+        link: "/one-click-apps/varnish/quick-start"
+      },
+      {
+        title: "Rabbit MQ",
+        alt:"rabbitmq",
+        link: "/one-click-apps/rabbitmq/quick-start"
+      },
+      {
+        title: "Apache Answer",
+        alt:"apacheanswer",
+        link: "/one-click-apps/apache-answer/quick-start"
+      },
+      {
+        title: "NOCODB",
+        alt:"nocodb",
+        link: "/one-click-apps/nocodb/quick-start"
+      },
+      {
+        title: "Chroma",
+        alt:"chroma",
+        link: "/one-click-apps/chroma/quick-start"
+      },
+      {
+        title: "MeiliSearch",
+        alt:"meilisearch",
+        link: "/one-click-apps/meilisearch/quick-start"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br />
+
+در ادامه، ده تا از پربازدیدترین مستندات مربوط به برنامه‌های آماده برای شما قرار گرفته است:
+
+<ul className="pr-4">
+  {[
+    {
+      text: 'انتخاب نسخه NodeJS',
+      href: './',
+    },
+    {
+      text: 'استقرار برنامه با Prisma',
+      href: './how-tos/create-app',
+    },
+    {
+      text: 'استقرار برنامه‌های Remix',
+      href: '/',
+    },
+    {
+      text: 'خطای CORS',
+      href: '/',
+    },
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        listStyle: "persian",
+        textDecoration: "underline",
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+      <a
+        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
+        href={item.href}
+      >
+        {item.text}
+        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+      </a>
+    </li>
+  ))}
+</ul>
+
+</Layout>

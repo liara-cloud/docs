@@ -18,42 +18,42 @@ const GETTING_STARTED_ITEMS = [
   {
     alt: "nodejs",
     platform: "NodeJS",
-    link: "/"
+    link: "/paas/nodejs/getting-started"
   },
   {
     alt: "django",
     platform: "Django",
-    link: "/"
+    link: "/paas/django/getting-started"
   },
   {
     alt: "laravel",
     platform: "Laravel",
-    link: "/"
+    link: "/paas/laravel/getting-started"
   },
   {
     alt: "next",
     platform: "NextJS",
-    link: "/"
+    link: "/paas/nextjs/getting-started"
   },
   {
     alt: "netcore",
     platform: ".NET",
-    link: "/"
+    link: "/paas/dotnet/getting-started"
   },
   {
     alt: "docker",
     platform: "Docker",
-    link: "/"
+    link: "/paas/docker/getting-started"
   },
   {
     alt: "vue",
     platform: "Vue",
-    link: "/"
+    link: "/paas/vue/getting-started"
   },
   {
     alt: "react",
     platform: "React",
-    link: "/"
+    link: "/paas/react/getting-started"
   }
 ];
 
@@ -62,14 +62,14 @@ const PRODUCTS = [
     title: "پلتفرم یا PaaS",
     icon: <GoContainer />,
     desc: "اطلاعات در مورد پلتفرم‌ها و نحوه راه‌اندازی آن‌ها در لیارا",
-    link: "/"
+    link: "/paas/about"
   },
   {
     title: "برنامه های آماده و یک کلیکی",
     icon: <GoRocket />,
     desc:
       "اطلاعات در مورد شخصی‌سازی و نحوه کار با برنامه‌هایی که فقط با یک کلیک، در لیارا به شما تحویل داده می‌شوند.",
-    link: "/"
+    link: "/one-click-apps/about"
   },
   {
     title: "دیتابیس یا DBaaS",
@@ -166,6 +166,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-4 gap-4">
             {GETTING_STARTED_ITEMS.map(item =>
+              <Link href={item.link}>
               <Card className="flex w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-[40px] p-1  bg-[#333] rounded-lg">
@@ -177,6 +178,7 @@ export default function Home() {
                 </div>
                 <GoArrowLeft className="ml-1" />
               </Card>
+              </Link>
             )}
           </div>
         </Section>
@@ -197,7 +199,9 @@ export default function Home() {
                     {item.desc}
                   </p>
                 </div>
+                <Link href={item.link}>
                 <Button variant="link">بیشتر بدانید</Button>
+                </Link>
               </Card>
             )}
           </div>
