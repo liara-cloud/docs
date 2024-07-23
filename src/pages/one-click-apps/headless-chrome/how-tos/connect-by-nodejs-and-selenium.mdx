@@ -1,0 +1,96 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# اتصال به Headless Chrome با Selenium در NodeJS
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/headlesschrome/nodejs-hc.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<br />
+
+<a href="https://www.selenium.dev/" className="blue-link">Selenium</a> یک فریم‌ورک متن‌باز
+ برای خودکارسازی مرورگرهای وب است که برای تست وب اپلیکیشن‌ها استفاده می‌شود. این ابزار از چندین زبان برنامه‌نویسی مانند جاوا، پایتون، سی‌شارپ و روبی پشتیبانی می‌کند و قابلیت اجرای تست‌ها روی مرورگرهای مختلف مانند Chrome , Firefox  و Safari را فراهم می‌آورد. Selenium شامل ابزارهایی مانند Selenium WebDriver برای کنترل مرورگرها و Selenium Grid برای اجرای تست‌ها به‌صورت موازی در محیط‌های توزیع‌شده است.
+<div className="h-4" />
+
+برای اتصال از طریق Selenium به برنامه‌ی Headless Chrome بایستی در ابتدا، کتابخانه آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`npm install selenium-webdriver`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون می‌توانید با استفاده از قطعه کد زیر، به Headless Chrome متصل شده و با استفاده از کتابخانه Selenium، کارهای مد نظر خود را انجام دهید. برای نمونه، قطعه کد زیر یک اسکرین‌شات از سایت داده شده می‌گیرد و آن را در پوشه uploads ذخیره می‌کند:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="js">
+      {`const webdriver = require('selenium-webdriver');
+const fs = require('fs');
+
+const chromeCapabilities = webdriver.Capabilities.chrome();
+chromeCapabilities.set('browserless:token', '<your-env-token>');
+chromeCapabilities.set('goog:chromeOptions', {
+  args: [
+    '--disable-background-timer-throttling',
+    '--disable-backgrounding-occluded-windows',
+    '--disable-breakpad',
+    '--disable-component-extensions-with-background-pages',
+    '--disable-dev-shm-usage',
+    '--disable-extensions',
+    '--disable-features=TranslateUI,BlinkGenPropertyTrees',
+    '--disable-ipc-flooding-protection',
+    '--disable-renderer-backgrounding',
+    '--enable-features=NetworkService,NetworkServiceInProcess',
+    '--force-color-profile=srgb',
+    '--hide-scrollbars',
+    '--metrics-recording-only',
+    '--mute-audio',
+    '--headless',
+    '--no-sandbox',
+  ],
+});
+
+const driver = new webdriver.Builder()
+  .forBrowser('chrome')
+  .withCapabilities(chromeCapabilities)
+  // Specify browserless for the server
+  .usingServer('<liara-chrome-app-url>/webdriver')
+  .build();
+
+(async () => {
+  try {
+    await driver.get('https://www.google.com/');
+
+    // Take screenshot of results page. Save to disk.
+    const base64png = await driver.takeScreenshot();
+    fs.writeFileSync('uploads/screenshot.png', new Buffer(base64png, 'base64'));
+  } finally {
+    driver.quit();
+  }
+})();`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، بایستی به جای عبارت <Important>\<liara-chrome-app-url\></Important> دامنه Headless Chrome خود را بگذارید، همچنین باید به جای عبارت <Important>\<your-env-token\></Important> نیز، مقدار متغیر محیطی <Important>TOKEN</Important> را بگذارید که این مقدار در بخش <b>تنظیمات، متغیرهای محیطی</b> برنامه Headless Chromeتان، در دسترس است.
+
+</Layout>

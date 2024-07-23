@@ -1,0 +1,49 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# اتصال به Headless Chrome با Playwright در NodeJS
+<hr className="mb-2" />
+
+<a href="https://playwright.dev/" className="blue-link">Playwright</a> یک ابزار متن‌باز برای خودکارسازی مرورگرها است که توسط مایکروسافت توسعه داده شده و از زبان‌های برنامه‌نویسی مختلفی مانند جاوا اسکریپت، پایتون و سی‌شارپ پشتیبانی می‌کند. این ابزار امکان تست و تعامل با مرورگرهای مختلف مانند Chrome , Firefox و Safari را به‌صورت همزمان و بدون نقص فراهم می‌کند.
+
+<div className="h-2" />
+Playwright با ویژگی‌هایی مانند شبیه‌سازی شرایط شبکه، تست‌های موازی و پشتیبانی از چندین تب و مرورگر، گزینه‌ای قدرتمند برای تست و اتوماسیون وب‌سایت‌ها است. همچنین با ارائه API‌های جامع و قابلیت کار در محیط‌های بدون رابط کاربری (headless) توسعه‌دهندگان را در انجام وظایف پیچیده یاری می‌دهد.
+
+
+
+
+
+
+
+برای اتصال از طریق Playwright به برنامه‌ی Headless Chrome باید قطعه کد زیر را:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="js">
+      {`const browser = await pw.chromium.launch();`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+به قطعه کد زیر، تغییر دهید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="js">
+      {`const browser = await pw.chromium.connect('wss://<liara-chrome-app-url>/playwright?token=<your-env-token>');`}
+    </Highlight>
+</div>
+<div className="h-2" />
+در قطعه کد فوق، بایستی به جای عبارت <Important>\<liara-chrome-app-url\></Important> دامنه Headless Chrome خود را بگذارید، همچنین باید به جای عبارت <Important>\<your-env-token\></Important> نیز، مقدار متغیر محیطی <Important>TOKEN</Important> را بگذارید که این مقدار در بخش <b>تنظیمات، متغیرهای محیطی</b> برنامه Headless Chromeتان، در دسترس است.
+</Layout>

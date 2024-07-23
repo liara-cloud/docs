@@ -1,0 +1,51 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# اتصال به Headless Chrome با Puppeteer در NodeJS
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/headlesschrome/nodejs-hc.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<br />
+
+<a href="https://pptr.dev/" className="blue-link">Puppeteer</a> یک کتابخانه NodeJS است که یک API سطح بالا برای کنترل Headless Chrome یا Chrome تمام‌صفحه ارائه می‌دهد. این ابزار به توسعه‌دهندگان امکان می‌دهد تا وظایف مرورگری مانند رندر صفحات وب، استخراج داده‌ها، انجام تست‌های خودکار و تعامل با اجزای وب را به‌صورت برنامه‌نویسی انجام دهند. Puppeteer برای تست رابط کاربری، تولید تصاویر و PDF از صفحات وب و انجام اتوماسیون وب‌سایت‌ها بسیار مفید است. این کتابخانه با ارائه API قدرتمند و انعطاف‌پذیر، تسهیل‌کننده توسعه و تست اپلیکیشن‌های وب است.
+
+برای اتصال از طریق Puppeteer به برنامه‌ی Headless Chrome باید قطعه کد زیر را:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="js">
+      {`const browser = await puppeteer.launch();`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+به قطعه کد زیر، تغییر دهید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="js">
+      {`const browser = await puppeteer.connect({
+    browserWSEndpoint: \`wss://<liara-chrome-app-url>?token=<your-env-token>\`,
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+در قطعه کد فوق، بایستی به جای عبارت <Important>\<liara-chrome-app-url\></Important> دامنه Headless Chrome خود را بگذارید، همچنین باید به جای عبارت <Important>\<your-env-token\></Important> نیز، مقدار متغیر محیطی <Important>TOKEN</Important> را بگذارید که این مقدار در بخش <b>تنظیمات، متغیرهای محیطی</b> برنامه Headless Chromeتان، در دسترس است.
+</Layout>
