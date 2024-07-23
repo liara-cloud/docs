@@ -123,7 +123,7 @@ export default () => (
       کنید:
     </p>
     <Highlight className="env">
-      {`ENDPOINT_URL=https://storage.iran.liara.space
+      {`ENDPOINT_URL=https://<API Endpoint>
 ACCESS_KEY=<Access Key>
 SECRET_KEY=<Secret Key>
 BUCKET_NAME=<Bucket Name>
@@ -156,10 +156,10 @@ DEFAULT_REGION=us-east-1`}
     <Highlight className="code">
       {`<?php
 
-namespace App\Http\Controllers;
+namespace App\\Http\\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\\Http\\Request;
+use Illuminate\\Support\\Facades\\Storage;
 
 class S3Controller extends Controller
 {
@@ -177,9 +177,13 @@ class S3Controller extends Controller
         $file = $request->file('upload_file');
         $fileName = $file->getClientOriginalName();
 
-        Storage::disk('liara')->put($fileName, file_get_contents($file));
+        $uploaded = Storage::disk('liara')->put($fileName, file_get_contents($file));
 
-        return redirect()->route('user.interface')->with('success', 'File uploaded successfully');
+        if($uploaded)
+          return redirect()->route('user.interface')->with('success', 'File uploaded successfully');
+        else
+          return redirect()->route('user.interface')->with('error', 'Something went wrong');
+
     }
 
     public function showObjects()
@@ -286,6 +290,10 @@ class S3Controller extends Controller
 
     @if(session('success'))
         <div style="color: green">{{ session('success') }}</div>
+    @endif
+
+    @if(session('error'))
+        <div style="color: red">{{ session('error') }}</div>
     @endif
 
     <form action="{{ route('upload.file') }}" method="post" enctype="multipart/form-data">
