@@ -1,0 +1,60 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# استقرار اسکریپت‌های پایتونی در لیارا
+<hr className="mb-2" />
+
+اسکریپت‌های پایتون برنامه‌های کوچکی هستند که به زبان برنامه‌نویسی پایتون نوشته می‌شوند و برای انجام وظایف خاصی استفاده می‌شوند. انواع اسکریپت‌های پایتون شامل اسکریپت‌های ساده برای اتوماسیون وظایف روزمره (مانند ربات‌های وابسته به Selenium)، اسکریپت‌های علمی برای تحلیل داده‌ها و مدل‌سازی (با استفاده از کتابخانه‌هایی چون NumPy و Pandas) و اسکریپت‌های مرتبط با یادگیری ماشین (با کتابخانه‌هایی چون TensorFlow و Scikit-Learn) می‌باشند. اسکریپت‌های پایتون به دلیل سادگی و قابلیت‌های گسترده، در بسیاری از زمینه‌های مختلف کاربرد دارند.
+
+<div className="h-2" />
+
+شما می‌توانید برنامه‌های اسکریپتی پایتونی خود را با <a href="../how-tos/create-app" className="blue-link">ایجاد برنامه‌های Docker</a> در لیارا، مستقر کنید.
+برای این‌کار، کافیست تا 
+در Local، در مسیر اصلی پروژه یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و قطعه کدی مشابه قطعه کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="dockerfile">
+        {`FROM python:3.11
+
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /usr/src/app
+
+RUN apt-get update && apt-get install build-essential -y
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade pip && \\
+    pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python", "main.py"]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+شما می‌توانید بنا به نیاز پروژه خود، <Important>Dockerfile</Important> فوق را تغییر دهید.
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+برای استقرار برنامه‌های <a href="/paas/django/getting-started" className="blue-link">Django</a> و <a href="/paas/flask/getting-started" className="blue-link">Flask</a>، می‌توانید از پلتفرم‌های مخصوص آن‌ها، استفاده کنید.
+</p>
+</Alert>
+
+</Layout>

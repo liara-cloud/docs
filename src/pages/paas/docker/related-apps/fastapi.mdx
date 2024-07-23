@@ -91,7 +91,7 @@ CMD ["uvicorn", "your-app.main:app", "--host", "0.0.0.0", "--port", "80"]`}
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="dockerfile">
+    <Highlight className="bash">
         {`liara deploy --port 80 --platform docker`}
     </Highlight>
 </div>
@@ -99,6 +99,94 @@ CMD ["uvicorn", "your-app.main:app", "--host", "0.0.0.0", "--port", "80"]`}
 
 در نظر داشته باشید که اگر در برنامه از ماژول خاصی استفاده می‌کنید یا نیازمند یک پکیج سیستمی هستید که به صورت پیش‌فرض، نصب نیست؛ بایستی دستورات مربوط به نصب آن را در <Important>Dockerfile</Important> مشخص کنید.
 
+<Section id="connect-to-mssql" title="اتصال برنامه FastAPI به دیتابیس MSSQL" />
+برای اتصال برنامه خود به دیتابیس MSSQL در لیارا، بایستی در ابتدا، طبق <a href="../../details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای محیطی مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
 
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_USER=sa
+DB_NAME=my_db
+DB_HOST=bromo.liara.cloud
+DB_PORT=31858
+DB_PASS=yw8FVaUqlvliRFxmcp7VnDUG`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، می‌توانید مانند قطعه کد زیر، به دیتابیس خود متصل شوید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+DB_USER=os.getenv("DB_USER")
+DB_NAME=os.getenv("DB_NAME")
+DB_HOST=os.getenv("DB_HOST")
+DB_PORT=os.getenv("DB_PORT")
+DB_PASS=os.getenv("DB_PASS")
+
+SQLALCHEMY_DATABASE_URL = (
+    f"mssql+pyodbc://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}?driver=ODBC+Driver+17+for+SQL+Server"
+)
+
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL,
+    # connect_args={"check_same_thread": False},  # only needed for SQLite
+)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، می‌توانید <Important>Dockerfile</Important> خود را مانند قطعه کد زیر بنویسید تا تمامی پکیج‌های مربوط به دیتابیس MSSQL، برای‌تان، نصب بشود و در برنامه، با مشکل خاصی مواجه نشوید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="dockerfile">
+        {`# Dockerfile
+
+# Using Python base image version 3.11
+FROM python:3.11
+
+# Update system packages and install necessary dependencies
+RUN apt-get update && apt-get install -y gcc unixodbc-dev
+
+# Install ODBC driver for SQL Server
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - &&     curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list &&     apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17
+
+# Upgrade pip
+RUN pip install --upgrade pip
+
+# Create working directory /app
+WORKDIR /app
+
+# Copy all project files to the working directory
+COPY . /app
+
+# Install project dependencies from requirements.txt
+RUN pip install -r requirements.txt
+
+# Set the command to run the project using uvicorn
+CMD ["uvicorn", "sql_app.main:app", "--host", "0.0.0.0", "--port", "80"]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="success">
+<p>
+یک پروژه FastAPI نمونه آماده استقرار در <a href="https://github.com/liara-cloud/fastapi-getting-started" className="blue-link">اینجا</a> قرار دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
 
 </Layout>

@@ -2482,7 +2482,7 @@ export default {
         link: "/paas/docker/related-apps/fastapi"
       },
       {
-        title: "Pure Python Scripts",
+        title: "Python Scripts",
         icon: <IconContainer alt="python" />,
         link: "/paas/docker/related-apps/python"
       },
