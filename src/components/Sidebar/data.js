@@ -2764,7 +2764,7 @@ export default {
       {
         title: "راه‌اندازی سریع!",
         icon: <GoZap  />,
-        link: "/one-click-apps/wordpressplus/quick-start"
+        link: "/one-click-apps/headless-chrome/quick-start"
       },
       {
         hr: true
@@ -2791,11 +2791,11 @@ export default {
       },
       {
         title: "اتصال با Pyppeteer + Python",
-        link: "/one-click-apps/headless-chrome/how-tos/enable-wprocket-extension"
+        link: "/one-click-apps/headless-chrome/how-tos/connect-by-python-and-pyppeteer"
       },
       {
         title: "اتصال با Selenium + Python",
-        link: "/one-click-apps/headless-chrome/how-tos/enable-wprocket-extension"
+        link: "/one-click-apps/headless-chrome/how-tos/connect-by-python-and-selenium"
       },
       // {
       //   title: "اتصال امن به Headless Chrome",
@@ -2805,30 +2805,7 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/headless-chrome/how-tos/choose-version"
       },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoBug  />
-            <Link href="/one-click-apps/headless-chrome/fix-common-errors/about">رفع خطاهای رایج</Link>
-          </div>
-        )
-      },
-      {
-        title: "رفع خطای err_too_many_redirects",
-        link: "/one-click-apps/headless-chrome/fix-common-errors/too-many-redirects-error"
-      },
-      {
-        title: "رفع خطای لود نشدن فایل‌های CSS",
-        link: "/one-click-apps/headless-chrome/fix-common-errors/css-not-loading-error"
-      },
-      {
-        title: "رفع خطاهای مربوط به دسترسی فایل",
-        link: "/one-click-apps/headless-chrome/fix-common-errors/file-access-errors"
-      },
-  
+
     ],
    
 
