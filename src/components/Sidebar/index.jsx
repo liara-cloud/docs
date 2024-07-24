@@ -19,9 +19,9 @@ const Sidebar = () => {
       return data.one_click_apps[sidebar_name];
     }
 
-    // if (router.route.startsWith("/dbaas/")) {
-    //   return data.dbaas[sidebar_name];
-    // }
+    if (router.route.startsWith("/dbaas/")) {
+      return data.dbaas[sidebar_name];
+    }
 
     return data.home;
   };

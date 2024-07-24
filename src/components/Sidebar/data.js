@@ -47,6 +47,7 @@ import {
   GoTools,
   GoIterations,
   GoSignOut,
+  GoReply 
   
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
@@ -2497,6 +2498,446 @@ export default {
         icon: <IconContainer alt="go" />,
         link: "/paas/docker/related-apps/go"
       },
+    ],
+
+  },
+
+  dbaas: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoDatabase />
+            دیتابیس
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس دیتابیس",
+        icon: <GoInfo />,
+        link: "/dbaas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "دیتابیس‌های قابل ارائه"
+      },
+      {
+        title: "MariaDB",
+        icon: <IconContainer alt="mariadb" />,
+        link: "/dbaas/mariadb/quick-setup"
+      },
+      {
+        title: "MySQL",
+        icon: <IconContainer alt="mysql" />,
+        link: "/dbaas/mysql/quick-setup"
+      },
+      {
+        title: "PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/dbaas/postgres/quick-setup"
+      },
+      {
+        title: "MSSQL (SQL Server)",
+        icon: <IconContainer alt="mssql" />,
+        link: "/dbaas/mssql/quick-setup"
+      },
+      {
+        title: "MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/dbaas/mongodb/quick-setup"
+      },
+      {
+        title: "Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/dbaas/redis/quick-setup"
+      },
+      {
+        title: "ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/dbaas/elastic-search/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات دیتابیس",
+        icon: <GoNote />,
+        link: "/dbaas/details/about"
+      },
+      {
+        title: "انتقال دیتابیس",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+
+    move: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس پلتفرم",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/paas/php/getting-started"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/getting-started"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/paas/flask/getting-started"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "React",
+        icon: <IconContainer alt="react" />,
+        link: "/paas/react/getting-started"
+      },
+      {
+        title: "Angular",
+        icon: <IconContainer alt="angularjs" />,
+        link: "/paas/angular/getting-started"
+      },
+      {
+        title: "Vue",
+        icon: <IconContainer alt="vue" />,
+        link: "/paas/vue/getting-started"
+      },
+      {
+        title: "Static",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/getting-started"
+      },
+      // {
+      //   title: "Golang",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/paas//getting-started"
+      // },
+      {
+        title: "Docker",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas/docker/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/paas/cicd/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            جزئیات پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "ویژگی‌های یک پلتفرم در لیارا",
+        icon: <GoInfo />,
+        link: "/paas/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "پلن‌های برنامه",
+        icon: <GoCpu />,
+        link: "/paas/details/plans/about"
+      },
+      {
+        title: "شبکه خصوصی",
+        icon: <GoShieldLock  />,
+        link: "/paas/details/private-network"
+      },
+      {
+        title: "آی‌پی ثابت",
+        icon: <GoNumber  />,
+        link: "/paas/details/static-ip"
+      },
+      {
+        title: "فایل‌سیستم",
+        icon: <GoFileBinary />,
+        link: "/paas/details/file-system"
+      },
+      {
+        title: "رویدادها",
+        icon: <GoEye />,
+        link: "/paas/details/events"
+      },
+      {
+        title: "گزارشات",
+        icon: <GoGraph />,
+        link: "/paas/details/observations/about"
+      },
+      {
+        title: "متغیرهای محیطی",
+        icon: <GoKey  />,
+        link: "/paas/details/envs"
+      },
+      {
+        title: "رجیستری خصوصی و تاریخچه",
+        icon: <GoLog />,
+        link: "/paas/details/private-registery"
+      },
+      {
+        title: "خط فرمان کنسول",
+        icon: <GoBrowser />,
+        link: "/paas/details/console-shell"
+      },
+      {
+        title: "نادیده گرفتن فایل‌ها",
+        icon: <GoEyeClosed />,
+        link: "/paas/details/ignoring-files"
+      },
+      {
+        title: "استقرار بدون اختلال",
+        icon: <GoGitPullRequest  />,
+        link: "/paas/details/zero-downtime-deployment"
+      },
+      {
+        title: "بررسی سلامت",
+        icon: <GoPulse />,
+        link: "/paas/details/health-check"
+      },
+      {
+        title: "تنظیم DNS Server",
+        icon: <GoPlug  />,
+        link: "/paas/details/dns-server-settings"
+      },
+      {
+        title: "تنظیم موقعیت build",
+        icon: <GoLocation />,
+        link: "/paas/details/build-location"
+      },
+      {
+        title: "تغییر پلن در برنامه",
+        icon: <GoGitCompare />,
+        link: "/paas/details/change-plan"
+      },
+      {
+        title: "حذف یک برنامه",
+        icon: <GoXCircle  />,
+        link: "/paas/details/delete-app"
+      },
+      {
+        title: "پروکسی معکوس (reverse)",
+        icon: <GoPaperAirplane  />,
+        link: "/paas/details/reverse-proxy"
+      },
+    ],
+  
+    mariadb: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس MariaDB 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/mariadb/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            اتصال از طریق پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/mariadb/how-tos/connect-by-go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          اتصال از طریق GUI
+          </div>
+        )
+      },
+      {
+        title: "PHPMyAdmin",
+        link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      },
+      {
+        title: "DBeaver",
+        link: "/paas/nodejs/how-tos/connect-to-db/mysql"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "MySQL CLI",
+        link: "/paas/nodejs/fix-common-errors/cors-error/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/paas/nodejs/related-apps/adonisjs"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/paas/nodejs/related-apps/adonisjs"
+      },
+      
     ],
 
   },

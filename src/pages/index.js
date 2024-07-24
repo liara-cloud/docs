@@ -75,7 +75,7 @@ const PRODUCTS = [
     title: "دیتابیس یا DBaaS",
     icon: <GoDatabase />,
     desc: "اطلاعات مربوط به دیتابیس‌ها و استفاده اصولی از آن‌ها",
-    link: "/"
+    link: "/dbaas/about"
   },
   {
     title: "ذخیره‌سازی ابری یا Object Storage",
