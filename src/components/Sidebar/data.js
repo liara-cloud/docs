@@ -2548,7 +2548,7 @@ export default {
         link: "/one-click-apps/imgproxy/quick-start"
       },
       {
-        title: "RocketChat",
+        title: "Rocket.Chat",
         icon: <IconContainer alt="rocketchat" />,
         link: "/one-click-apps/rocketchat/quick-start"
       },
@@ -2747,7 +2747,6 @@ export default {
       },
   
     ],
-
     'headless-chrome': [
       {
         badge: (
@@ -2797,16 +2796,176 @@ export default {
         title: "اتصال با Selenium + Python",
         link: "/one-click-apps/headless-chrome/how-tos/connect-by-python-and-selenium"
       },
-      // {
-      //   title: "اتصال امن به Headless Chrome",
-      //   link: "/one-click-apps/headless-chrome/how-tos/duplicator"
-      // },
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/headless-chrome/how-tos/choose-version"
       },
 
     ],
+    soketi: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Soketi 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/soketi/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "اتصال از طریق Laravel",
+        link: "/one-click-apps/soketi/how-tos/connect-by-laravel"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/soketi/how-tos/choose-version"
+      },
+
+    ],
+    imgproxy: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه ImgProxy 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/imgproxy/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "استفاده در برنامه Django",
+        link: "/one-click-apps/imgproxy/how-tos/use-in-django"
+      },
+      {
+        title: "استفاده در برنامه Laravel",
+        link: "/one-click-apps/imgproxy/how-tos/use-in-laravel"
+      },
+      {
+        title: "استفاده در برنامه NodeJS",
+        link: "/one-click-apps/imgproxy/how-tos/use-in-nodejs"
+      },
+      {
+        title: "اضافه کردن URL Signature",
+        link: "/one-click-apps/imgproxy/how-tos/add-url-signature"
+      },
+      {
+        title: "محدود کردن دسترسی",
+        link: "/one-click-apps/imgproxy/how-tos/limit-access"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/imgproxy/how-tos/choose-version"
+      },
+    ],
+    rocketchat: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Rocket.Chat 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/rocketchat/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/rocketchat/how-tos/choose-version"
+      },
+    ],
+
+    metabase: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Metabase 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/metabase/quick-start"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     < GoPackage   />
+      //       نحوه
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "تغییر نسخه‌ی برنامه مستقر شده",
+      //   link: "/one-click-apps/metabase/how-tos/choose-version"
+      // },
+    ],
+
+
    
 
   },

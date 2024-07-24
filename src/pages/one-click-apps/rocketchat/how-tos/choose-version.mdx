@@ -22,9 +22,15 @@ import {GoArrowLeft} from "react-icons/go";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "quay.io/soketi/soketi:<your-version>",
-    "port": 6001,
-    "app": "<your-app-name>"
+    "image": "rocket.chat:<your-version>",
+    "port": 3000,
+    "app": "<your-app-name>",
+    "disks": [
+      {
+          "name": "uploads",
+          "mountTo": "/app/uploads"
+      }
+  ]
 }`}
     </Highlight>
 </div>

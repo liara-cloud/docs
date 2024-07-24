@@ -1,0 +1,33 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# اضافه کردن URL Signature
+<hr className="mb-2" />
+
+
+بسیار توصیه می‌شود که در حالت Production با اجرای دستور زیر، یک <Important>hex-encoded key</Important> و یک <Important>hex-encoded salt</Important> ایجاد کرده و هر دوی این مقدارها را کپی کنید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`echo $(xxd -g 2 -l 64 -p /dev/random | tr -d '\\n')`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، طبق مستندات <a href="/paas/details/env" className="blue-link">تنظیم متغیرهای محیطی</a>، متغیرهای <Important>IMGPROXY_KEY</Important> و <Important>IMGPROXY_SALT</Important> را با مقادیر ایجاد شده، به برنامه Imgproxy خود، اضافه کنید.
+
+
+
+</Layout>

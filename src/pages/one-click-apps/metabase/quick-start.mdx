@@ -12,34 +12,41 @@ import {GoArrowLeft} from "react-icons/go";
 
 <Layout>
 
-# راه‌اندازی سریع برنامه‌های Soketi
+# راه‌اندازی سریع برنامه‌های Metabase
 <hr className="mb-2" />
 
-<a href="https://docs.soketi.app/" className="blue-link">Soketi</a> یک سرور WebSockets متن‌باز و با کارایی بالا است که با استفاده از زبان JavaScript و بر پایه NodeJS توسعه یافته است. این سرور سازگاری کامل با پروتکل‌های Pusher را دارد، که امکان جایگزینی با سرویس Pusher را فراهم می‌کند و در عین حال هزینه‌ها را کاهش می‌دهد. Soketi از مقیاس‌پذیری خوبی برخوردار بوده و می‌تواند تعداد زیادی اتصال همزمان را مدیریت کند. همچنین، مستندات خوبی دارد که توسعه و پیاده‌سازی آن را آسان می‌کند.
+<a href="https://www.metabase.com/" className="blue-link">Metabase</a> یک ابزار متن‌باز (open-source) برای تحلیل داده و هوش تجاری (BI) است که به کاربران امکان می‌دهد داده‌های خود را بدون نیاز به دانش فنی عمیق تحلیل و تصویری‌سازی کنند. با استفاده از Metabase، کاربران می‌توانند به سادگی سوالات را به زبان طبیعی پرسیده و پاسخ‌های بصری و نمودارهای متنوع دریافت کنند. این ابزار با بسیاری از پایگاه‌های داده محبوب سازگار است و به راحتی می‌توان گزارش‌ها و داشبوردهای تعاملی ایجاد کرد. Metabase به تیم‌ها کمک می‌کند تا تصمیم‌گیری‌های مبتنی بر داده را تسریع و بهبود ببخشند.
+
+
+
+
+
+
 
 <div className="h-4" />
 
-برای راه‌اندازی برنامه‌ی آماده Soketi در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="blue-link">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
-سپس برنامه‌ی <b>Soketi</b> 
+برای راه‌اندازی برنامه‌ی آماده Metabase در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="blue-link">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
+سپس برنامه‌ی <b>Metabase</b> 
 را انتخاب کنید و پس از انتخاب شناسه یکتا برای برنامه، <a href="/paas/details/private-network" className="blue-link">شبکه خصوصی</a>، <a href="/paas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان، ساخته شود:
 <div className="h-4" />
-<img src="https://files.liara.ir/docs/pusher/create-new-pusher-one-click-app.gif" alt="create one-click-app" />
+<video
+  src="https://files.liara.ir/liara/metabase/create-metabase.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
 <div className="h-4" />
 
 پس از ساخته شدن برنامه، می‌توانید از آن، استفاده کنید.
-
+{/* 
 <Section id="see-also" title="همچنین بخوانید:" />
 
 <div className='h-2' />
-<div className="grid grid-cols-2 gap-4">
+<div className="grid grid-cols-1 gap-4">
             {[
       {
-        title: "اتصال از طریق Laravel",
-        link: "/one-click-apps/soketi/how-tos/connect-by-laravel"
-      },
-      {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
-        link: "/one-click-apps/soketi/how-tos/choose-version"
+        link: "/one-click-apps/rocketchat/how-tos/choose-version"
       },
   ].map(item =>
     <Link href={item.link}>
@@ -53,7 +60,7 @@ import {GoArrowLeft} from "react-icons/go";
     </Card>
     </Link>
             )}
-</div>
+</div> */}
 
 
 </Layout>

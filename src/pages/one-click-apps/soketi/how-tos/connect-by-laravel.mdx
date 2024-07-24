@@ -1,0 +1,91 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# اتصال به Soketi با Laravel
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/soketi/laravel-soketi.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<br />
+
+به‌طور کلی برای استفاده از سرور Soketi در برنامه‌‌های Laravel باید قطعه کد زیر را در فایل <Important>config/app.php</Important> از comment خارج کنید.
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`App\\Providers\\BroadcastServiceProvider`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس در 
+بخش <b>تنظیمات، متغیرها</b> برنامه Soketi تهیه شده، متغیر <Important>BROADCAST_DRIVER</Important> را برابر با <Important>pusher</Important> قرار دهید.
+<div className="h-2" />
+
+حال به‌منظور اتصال به Soketi در برنامه‌های Laravel باید درایور زیر را به فایل <Important>config/broadcasting.php</Important> اضافه کرده و آدرس برنامه‌ی Soketi را با <Important>soketi-app.iran.liara.run</Important> جایگزین کنید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`'pusher' => [
+'driver' => 'pusher',
+'key' => env('PUSHER_APP_KEY'),
+'secret' => env('PUSHER_APP_SECRET'),
+'app_id' => env('PUSHER_APP_ID'),
+'options' => [
+    'host' => 'soketi-app.iran.liara.run',
+    'port' => 443,
+    'scheme' => 'https'
+    ],
+],`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قدم بعد باید مقادیر <Important>PUSHER_APP_KEY</Important>، <Important>PUSHER_APP_SECRET</Important> و <Important>PUSHER_APP_ID</Important> را براساس موارد تنظیم شده در بخش <b>تنظیمات، متغیرها</b> برنامه Soketi تهیه شده، در تنظیمات متغیرهای برنامه‌ی Laravel مقداردهی کنید. در نهایت می‌توانید به شکل زیر در فرانت‌اند برنامه‌ی خود به سرور Soketi متصل شوید:
+
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`import Echo from 'laravel-echo';
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+  broadcaster: 'pusher',
+  key: 'app-key',
+  forceTLS: true,
+  wsHost: 'soketi-app.iran.liara.run',
+  wsPort: 443,
+  cluster: 'eu',
+  enableStats: false,
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+برای مقداردهی <Important>key</Important> و <Important>wsHost</Important> در فرانت‌اند برنامه از Laravel Mix استفاده نکنید و مقادیر <Important>app-key</Important> و <Important>soketi-app.iran.liara.run</Important> را به‌طور مستقیم در قطعه کد فوق قرار دهید.
+</p>
+</Alert>
+
+
+</Layout>
