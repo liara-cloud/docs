@@ -1,0 +1,68 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# اتصال به MeiliSearch
+<hr className="mb-2" />
+
+پس از ساخته شدن برنامه Meilisearch یک token به نام <Important>MEILI_MASTER_KEY</Important> برای برنامه، ایجاد می‌شود و 
+شما می‌توانید 
+<a href="/paas/details/envs" className="blue-link">طبق مستندات متغیرهای محیطی</a>، به این متغیر دسترسی داشته باشید و حتی مقدار آن را تغییر دهید. پس از تغییر مقدار، ممکن است برنامه یک‌بار ری‌استارت شود.
+<div className="h-2" />
+با استفاده از این توکن، می‌توانید برنامه خود را به Meilisearch متصل کنید، در ادامه، قطعه کدی برای اتصال به Meilisearch در زبان برنامه‌نویسی پایتون، آورده شده است:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="py">
+      {`from meilisearch.client import Client
+
+client = Client('<your-app-url>', '<your-token>')
+
+index = client.index('books')
+
+documents = [
+    {'id': 1, 'title': 'Harry Potter', 'author': 'J.K. Rowling'},
+    {'id': 2, 'title': 'Lord of the Rings', 'author': 'J.R.R. Tolkien'},
+    # Add more documents as needed
+]
+
+index.add_documents(documents)
+
+
+result = index.search('Harry Potter')
+for hit in result['hits']:
+    print(hit)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، بایستی به جای عبارت <Important>\<your-app-url\></Important> 
+آدرس کامل برنامه MeiliSearch خود را وارد کنید.
+همچنین باید به جای عبارت
+<Important>\<your-token\></Important> نیز، 
+مقدار متغیر محیطی
+<Important>MEILI_MASTER_KEY</Important>
+را وارد کنید.
+<div className="h-2" />
+
+در نهایت کافیست با استفاده از ابزار <a href="/references/liara-cli/about" className="blue-link"><Important>Liara CLI</Important></a> و در جایی که فایل <Important>liara.json</Important> قرار دارد، دستور زیر را اجرا کنید تا برنامه‌تان در لیارا، مستقر شود:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="json">
+      {`liara deploy`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

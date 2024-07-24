@@ -1,0 +1,76 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# تغییر نسخه‌ی برنامه مستقر شده
+<hr className="mb-2" />
+
+اگر که قصد دارید نسخه برنامه خود را بنا به هر دلیلی تغییر دهید؛ کافیست تا پس از <a href="../quick-start" className="blue-link">ساخت برنامه در لیارا</a>، در Local یک دایرکتوری با نام دلخواه ایجاد کنید.
+وارد دایرکتوری شده و درون این دایرکتوری، یک فایل به نام <Important>liara.json</Important>، ایجاد کنید. سپس کافیست تا قطعه کد زیر را درون آن، قرار دهید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="json">
+      {`{
+    "image": "mattermost/mattermost-team-edition:<your-version>",
+    "port": 8065,
+    "app": "<your-app-name>",
+    "disks": [
+      {
+        "name": "logs",
+        "mountTo": "/mattermost/logs"
+      },
+      {
+        "name": "plugins",
+        "mountTo": "/mattermost/plugins"
+      },
+      {
+        "name": "client-plugins",
+        "mountTo": "/mattermost/client/plugins"
+      },
+      {
+        "name": "config",
+        "mountTo": "/mattermost/config"
+      },
+      {
+        "name": "temp",
+        "mountTo": "/tmp"
+      },
+      {
+        "name": "data",
+        "mountTo": "/mattermost/data"
+      }
+  ]
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، بایستی به جای عبارت <Important>\<your-version\></Important> 
+ورژن موردنظر برنامه‌تان را وارد کنید.
+همچنین باید به جای عبارت
+<Important>\<your-app-name\></Important> نیز، 
+شناسه برنامه خود را قرار دهید. 
+<div className="h-2" />
+
+در نهایت کافیست با استفاده از ابزار <a href="/references/liara-cli/about" className="blue-link"><Important>Liara CLI</Important></a> و در جایی که فایل <Important>liara.json</Important> قرار دارد، دستور زیر را اجرا کنید تا برنامه‌تان در لیارا، مستقر شود:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="json">
+      {`liara deploy`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

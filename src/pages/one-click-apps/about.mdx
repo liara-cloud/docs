@@ -196,6 +196,39 @@ import {
 
 <br />
 
+
+<Section id='also-read' title='همچنین بخوانید:' />
+<div className="grid grid-cols-3 gap-4">
+            {[
+    {
+      text: 'آشنایی با جزئیات پلتفرم',
+      link: '/paas/details/about',
+    },
+    {
+      text: 'آشنایی با دیسک‌ها در پلتفرم',
+      link: '/paas/disks/about',
+    },
+    {
+      text: 'اتصال دامنه خریداری شده به پلتفرم',
+      link: '/paas/domains/about',
+    },
+
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
 در ادامه، ده تا از پربازدیدترین مستندات مربوط به برنامه‌های آماده برای شما قرار گرفته است:
 
 <ul className="pr-4">

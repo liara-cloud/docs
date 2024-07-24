@@ -1,0 +1,79 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# راه‌اندازی سریع برنامه‌های Varnish Cache
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/wordpress/wordpress-varnish.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<br />
+<a href="https://github.com/varnishcache/varnish-cache" className="blue-link">Varnish Cache</a> یک شتاب‌دهنده برنامه‌های وب است که به عنوان caching HTTP reverse proxy نیز، شناخته می‌شود. فقط کافیست تا Varnish Cache را در مقابل سروری که از طریق پروتکل HTTP با سایر سرورها و یا مشتری‌ها ارتباط برقرار می‌کند؛ نصب کنید و آن را برای cache کردن محتوای سرور، پیکر بندی کنید تا بتواند تاثیر فوق‌العاده خود را در برنامه شما بگذارد. Varnish Cache واقعاً سریع است! بسته به معماری شما، می‌تواند سرعت بالا آمدن وب‌سایت را 300 تا 1000 برابر افزایش دهد.
+
+
+<div className="h-4" />
+
+برای راه‌اندازی برنامه‌ی آماده Varnish Cache در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="blue-link">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
+سپس برنامه‌ی <b>Varnish Cache</b> 
+را انتخاب کنید و پس از انتخاب شناسه یکتا برای برنامه، <a href="/paas/details/private-network" className="blue-link">شبکه خصوصی</a>، <a href="/paas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، آدرس و پورت سرور هدف را وارد کنید؛ در فیلد آدرس بایستی شناسه برنامه هدف و در فیلد پورت، پورتی که برنامه هدف در آن به درخواست کاربران، گوش می‌دهد را، وارد کنید. این مقدار را می‌توانید از صفحه <a href="/paas/details/private-registery" className="blue-link">تاریخچه برنامه</a> ببینید (برای برنامه‌های وردپرسی، پورت برابر با 80 است).  درنهایت، بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان، ساخته شود:
+<div className="h-4" />
+<img src="https://files.liara.ir/docs/varnish/varnish.gif" alt="create one-click-app" />
+
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+هم Varnish Cache و هم برنامه هدف باید در یک <a href="/paas/details/private-network" className="blue-link">شبکه خصوصی مشترک</a> قرار داشته باشند تا بتوانند به یکدیگر متصل شوند.
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+بهتر است که طبق <a href="/paas/domains/about" className="blue-link">مستندات دامنه‌ها</a>، دامنه خریداری شده خود را، به جای برنامه اصلی‌تان، به Varnish Cache متصل کنید و پس از آن، با همین دامنه، وارد برنامه خود شوید.
+</p>
+</Alert>
+
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "پیکربندی متغیرها",
+        link: "./how-tos/configure-vars"
+      },        
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "./how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

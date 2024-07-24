@@ -1,0 +1,86 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# راه‌اندازی سریع برنامه‌های RabbitMQ
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/rabbitmq/rabbitmq.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-2" />
+
+<Alert variant="success">
+<p>
+یک پروژه آماده استقرار در <a href="https://github.com/liara-cloud/rabbitmq-getting-started.git" className="blue-link">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+<br />
+
+<a href="https://www.rabbitmq.com/" className="blue-link">RabbitMQ</a> پرکاربردترین واسط پیام (Message Broker) متن‌باز است که بیش از ده‌ها هزار کاربر از آن استفاده می‌کنند. RabbitMQ منابع سخت‌افزاری خیلی کمی را اشغال می‌کند و عملیات استقرار بسیار ساده‌ای دارد. از مزایای این Message Broker می‌توان به پشتیبانی آن از پروتکل‌های AMQP و MQTT و خیلی پروتکل‌های معروف دیگر اشاره کرد. این رابط پیام، امکاناتی نظیر اطمینان از رسیدن پیام‌ها به مقصد، توزیع مجدد پیام‌ها در صورت لزوم، و مدیریت صف‌های پیام را فراهم می‌کند.
+
+
+<div className="h-4" />
+
+برای راه‌اندازی برنامه‌ی آماده RabbitMQ در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="blue-link">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
+سپس برنامه‌ی <b>RabbitMQ</b> 
+را انتخاب کنید و پس از انتخاب شناسه یکتا برای برنامه، <a href="/paas/details/private-network" className="blue-link">شبکه خصوصی</a>، <a href="/paas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان، ساخته شود:
+<div className="h-4" />
+<img src="https://files.liara.ir/docs/rabbitmq/rabbitmq.gif" alt="create one-click-app" />
+
+
+<div className="h-4" />
+
+پس از ساخته شدن برنامه، می‌توانید از آن، استفاده کنید.
+<div className="h-2" />
+<Alert variant="warning">
+<p>
+در صورتی دو برنامه producer و consumer می‌توانند با یکدیگر از طریق RabbitMQ ارتباط داشته باشند که هر سه برنامه RabbitMQ و Producer و Consumer در یک شبکه خصوصی قرار داشته باشند و برنامه‌های producer و consumer از پورت 5672 در شبکه خصوصی به RabbitMQ متصل شوند.
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+می‌توانید در پورت <Important>15672</Important> وارد داشبرد برنامه RabbitMQ خود، شوید.
+</p>
+</Alert>
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "./how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+
+</Layout>

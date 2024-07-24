@@ -1,0 +1,61 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# راه‌اندازی سریع برنامه‌های Grafana
+<hr className="mb-2" />
+
+<a href="https://grafana.com/" className="blue-link">Grafana</a> یک پلتفرم متن‌باز برای تجزیه و تحلیل و نظارت بر داده‌هاست که به کاربران امکان می‌دهد داشبوردهای تعاملی و گراف‌های زیبایی بسازند. این ابزار به ویژه برای مشاهده و تجزیه و تحلیل داده‌های سری زمانی، مانند اطلاعات موجود در دیتابیس‌ها و سیستم‌های مانیتورینگ، مفید است
+<div className="h-4" />
+
+برای راه‌اندازی برنامه‌ی آماده Grafana در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="blue-link">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
+سپس برنامه‌ی <b>Grafana</b> 
+را انتخاب کنید و پس از انتخاب شناسه یکتا برای برنامه، <a href="/paas/details/private-network" className="blue-link">شبکه خصوصی</a>، <a href="/paas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان، ساخته شود:
+<div className="h-4" />
+<img src="https://files.liara.ir/docs/grafana/create-grafana-one-click-app.gif" alt="create one-click-app" />
+{/* <video
+  src="https://files.liara.ir/liara/mattermost/create-mattermost.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+<div className="h-4" />
+
+پس از ساخته شدن برنامه، می‌توانید از آن، استفاده کنید.
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "./how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

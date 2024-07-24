@@ -1,0 +1,35 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# پیکربندی متغیرهای Varnish Cache
+<hr className="mb-2" />
+
+پس از ساخت Varnish Cache، یکسری متغیرهای محیطی به صورت خودکار به برنامه اضافه می‌شوند که شما می‌توانید بنا به نیاز خود و طبق <a href="/paas/details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، مقادیر آن‌ها را تغییر دهید.
+
+<Section id="VARNISH_BACKEND_HOST" title="متغیر VARNISH_BACKEND_HOST"/>
+این متغیر 
+شناسه برنامه هدف است که آن را در حین ساخت varnish cache مشخص کردید.
+
+<Section id="VARNISH_BACKEND_PORT" title="متغیر VARNISH_BACKEND_HOST"/>
+این متغیر 
+پورت برنامه هدف است که آن را در حین ساخت varnish caceh مشخص کردید.
+
+<Section id="VARNISH_TTL" title="متغیر VARNISH_TTL"/>
+این متغیر 
+مقدار time-to-live است که به صورت پیش‌فرض برابر با 3600 است.
+
+<Section id="VARNISH_SIZE" title="متغیر VARNISH_SIZE"/>
+این متغیر 
+مقدار حافظه cache است که به صورت پیش‌فرض برابر با 2 گیگابایت است.
+</Layout>

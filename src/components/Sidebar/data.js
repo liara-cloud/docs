@@ -212,7 +212,7 @@ export default {
       {
         title: "Vue",
         icon: <IconContainer alt="vue" />,
-        link: "/paas//getting-started"
+        link: "/paas/vue/getting-started"
       },
       {
         title: "Static",
@@ -339,7 +339,7 @@ export default {
       {
         title: "Vue",
         icon: <IconContainer alt="vue" />,
-        link: "/paas//getting-started"
+        link: "/paas/vue/getting-started"
       },
       {
         title: "Static",
@@ -466,7 +466,7 @@ export default {
       {
         title: "Vue",
         icon: <IconContainer alt="vue" />,
-        link: "/paas//getting-started"
+        link: "/paas/vue/getting-started"
       },
       {
         title: "Static",
@@ -2929,7 +2929,6 @@ export default {
         link: "/one-click-apps/rocketchat/how-tos/choose-version"
       },
     ],
-
     metabase: [
       {
         badge: (
@@ -2963,6 +2962,775 @@ export default {
       //   title: "تغییر نسخه‌ی برنامه مستقر شده",
       //   link: "/one-click-apps/metabase/how-tos/choose-version"
       // },
+    ],
+    nextcloud: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه NextCloud
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/nextcloud/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/nextcloud/how-tos/choose-version"
+      },
+    ],
+    gitea: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Gitea
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/gitea/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/gitea/how-tos/choose-version"
+      },
+    ],
+    mattermost: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Mattermost
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/mattermost/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/mattermost/how-tos/choose-version"
+      },
+    ],
+    kibana: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Kibana
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/kibana/quick-start"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     < GoPackage   />
+      //       نحوه
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "تغییر نسخه‌ی برنامه مستقر شده",
+      //   link: "/one-click-apps/kibana/how-tos/choose-version"
+      // },
+    ],
+    grafana: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Grafana
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/grafana/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/grafana/how-tos/choose-version"
+      },
+    ],
+    prestashop: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Prestashop
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/prestashop/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/prestashop/how-tos/choose-version"
+      },
+    ],
+    vscode: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه VSCode
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/vscode/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/vscode/how-tos/choose-version"
+      },
+    ],
+    odoo: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Odoo
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/odoo/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/odoo/how-tos/choose-version"
+      },
+    ],
+    ghost: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Ghost
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/ghost/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/ghost/how-tos/choose-version"
+      },
+    ],
+    n8n: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه N8N
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/n8n/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/n8n/how-tos/choose-version"
+      },
+    ],
+    pocketbase: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه PocketBase
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/pocketbase/quick-start"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     < GoPackage   />
+      //       نحوه
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "تغییر نسخه‌ی برنامه مستقر شده",
+      //   link: "/one-click-apps/pocketbase/how-tos/choose-version"
+      // },
+    ],
+    matomo: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Matomo
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/matomo/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/matomo/how-tos/choose-version"
+      },
+    ],
+    unleash: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Unleash
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/unleash/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/unleash/how-tos/choose-version"
+      },
+    ],
+    'uptime-kuma': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Uptime Kuma
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/uptime-kuma/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تنظیم TrustedProxies",
+        link: "/one-click-apps/uptime-kuma/how-tos/set-trusted-proxies"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/uptime-kuma/how-tos/choose-version"
+      },
+    ],
+    ackee: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Ackee
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/ackee/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/ackee/how-tos/choose-version"
+      },
+    ],
+    appsmith: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Appsmith
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/appsmith/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "پیکربندی متغیرها",
+        link: "/one-click-apps/appsmith/how-tos/configure-vars"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/appsmith/how-tos/choose-version"
+      },
+    ],
+    varnish: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Varnish Cache
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/varnish/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "پیکربندی متغیرها",
+        link: "/one-click-apps/varnish/how-tos/configure-vars"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/varnish/how-tos/choose-version"
+      },
+    ],
+    rabbitmq: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه RabbitMQ
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/rabbitmq/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/rabbitmq/how-tos/choose-version"
+      },
+    ],
+    'apache-answer': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Apache Answer
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/apache-answer/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "اتصال به دیتابیس",
+        link: "/one-click-apps/apache-answer/how-tos/connect-to-db"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/apache-answer/how-tos/choose-version"
+      },
+    ],
+    nocodb: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه NOCODB
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/nocodb/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/nocodb/how-tos/choose-version"
+      },
+    ],
+    chroma: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Chroma
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/chroma/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/chroma/how-tos/choose-version"
+      },
+    ],
+
+    meilisearch: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه MeiliSearch
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/meilisearch/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "اتصال به MeiliSearch",
+        link: "/one-click-apps/meilisearch/how-tos/connect"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/meilisearch/how-tos/choose-version"
+      },
     ],
 
 
