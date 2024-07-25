@@ -12,14 +12,20 @@ import {GoArrowLeft} from "react-icons/go";
 
 <Layout>
 
-# راه‌اندازی سریع دیتابیس MariaDB
+# راه‌اندازی سریع دیتابیس MySQL
 <hr className="mb-2" />
 
-<a href="https://mariadb.org/" className="blue-link">MariaDB</a> یک سیستم مدیریت پایگاه داده متن‌باز است که از MySQL الگو گرفته و توسط جامعه توسعه‌دهندگان و کاربران پشتیبانی می‌شود. این سیستم به منظور ارائه عملکرد و قابلیت‌های پیشرفته‌تر نسبت به MySQL توسعه داده شده است و سازگاری بالایی با آن دارد. MariaDB ویژگی‌های امنیتی و افزونه‌های متعددی ارائه می‌دهد که شامل بهبود در سرعت، پایداری و مقیاس‌پذیری است. همچنین، به دلیل آزاد بودن و پشتیبانی فعال، انتخاب مناسبی برای پروژه‌های متن‌باز و تجاری به شمار می‌آید.
+<a href="https://www.mysql.com/" className="blue-link">MySQL</a> یک سیستم مدیریت پایگاه داده‌ی رابطه‌ای (RDBMS) است که توسط شرکت Oracle توسعه و پشتیبانی می‌شود. این نرم‌افزار از زبان SQL برای مدیریت و تعامل با داده‌ها استفاده می‌کند و به‌طور گسترده در برنامه‌های وب و سرورهای بزرگ به‌کار می‌رود. MySQL به دلیل عملکرد بالا، مقیاس‌پذیری و قابلیت‌های امنیتی قوی، انتخاب محبوبی در میان توسعه‌دهندگان است. این سیستم می‌تواند بر روی سیستم‌عامل‌های مختلفی از جمله ویندوز، لینوکس و مک اجرا شود.
+
+
+
+
+
+
 
 <br />
 <video
-src="https://files.liara.ir/liara/mariadb/create-mariadb.mp4"
+src="https://files.liara.ir/liara/mysql/create-mysql.mp4"
 controls="controls"
 className="block w-full"
 width="100%"
@@ -43,7 +49,7 @@ width="100%"
   <>
     <h3>ایجاد دیتابیس</h3>
     <p>
-      وارد منوی <b>دیتابیس</b> شوید، بر روی گزینه <b>راه‌اندازی دیتابیس</b> کلیک کنید؛ در ادامه دیتابیس <b>MariaDB</b> را انتخاب کنید و پس از انتخاب <a href="./choose-version" className="blue-link">نسخه دیتابیس</a>، شناسه، <a href="/paas/details/private-network#set-private-network-for-app-and-db" className="blue-link">شبکه خصوصی</a> و <a href="/dbaas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، کافیست تا بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b>، کلیک کنید. 
+      وارد منوی <b>دیتابیس</b> شوید، بر روی گزینه <b>راه‌اندازی دیتابیس</b> کلیک کنید؛ در ادامه دیتابیس <b>MySQL</b> را انتخاب کنید و پس از انتخاب <a href="./choose-version" className="blue-link">نسخه دیتابیس</a>، شناسه، <a href="/paas/details/private-network#set-private-network-for-app-and-db" className="blue-link">شبکه خصوصی</a> و <a href="/dbaas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، کافیست تا بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b>، کلیک کنید. 
     </p>
     <div className="h-3" />
     <Alert variant="info">
@@ -82,7 +88,7 @@ width="100%"
 <img src="https://files.liara.ir/liara/docs/console-db-info.png" alt="see db info"/>
 
 <div className="h-2" />
-همچنین، درصورتی که ثبت لاگ‌ها در دیتابیس‌های MariaDB حجم زیادی را اشغال کرده است؛ می‌توانید با اجرای کوئری زیر به‌صورت بازه‌ای لاگ‌ها را پاک کنید:
+همچنین، درصورتی که ثبت لاگ‌ها در دیتابیس‌های MySQL حجم زیادی را اشغال کرده است؛ می‌توانید با اجرای کوئری زیر به‌صورت بازه‌ای لاگ‌ها را پاک کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
