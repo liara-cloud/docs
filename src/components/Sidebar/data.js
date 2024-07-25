@@ -3085,7 +3085,6 @@ export default {
       },
       
     ],
-
     postgresql: [
       {
         badge: (
@@ -3214,6 +3213,142 @@ export default {
       {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/postgresql/how-tos/restore-backup"
+      },
+      
+    ],
+
+    mssql: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس MSSQL (SQL Server) 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/mssql/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/mssql/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/mssql/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/django"
+      },
+      // {
+      //   title: "Flask",
+      //   icon: <IconContainer alt="flask" />,
+      //   link: "/dbaas/mssql/how-tos/connect-via-platform/flask"
+      // },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/mssql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "SQL Server Management Studio",
+        link: "/dbaas/mssql/how-tos/connect-via-gui/mssql-server-studio"
+      },
+      {
+        title: "DBeaver",
+        link: "/dbaas/mssql/how-tos/connect-via-gui/dbeaver"
+      },
+      {
+        title: "Azure Data Studio",
+        link: "/dbaas/mssql/how-tos/connect-via-gui/azure-data-studio"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/mssql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "SQLCMD",
+        link: "/dbaas/mssql/how-tos/connect-via-cli/sqlcmd"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/mssql/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/mssql/how-tos/restore-backup"
       },
       
     ],

@@ -1,0 +1,44 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# نسخه‌های قابل ارائه در دیتابیس MSSQL
+<hr className="mb-2" />
+
+در حال حاضر در پلتفرم لیارا، نسخه‌های زیر از  دیتابیس MSSQL ارائه می‌شوند: 
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: '2022',},
+    {text: '2019',},
+    {text: '2017',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        نسخه {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+<Alert variant="warning">
+<p>
+در نظر داشته باشید که پس از راه‌اندازی دیتابیس، امکان تغییر نسخه در آن، وجود نخواهد داشت.
+</p>
+</Alert>
+
+</Layout>

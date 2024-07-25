@@ -1,0 +1,42 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# اتصال به دیتابیس MSSQL با SQLCMD
+<hr className="mb-2" />
+
+<a href="https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility?view=sql-server-ver16" className="blue-link">SQLCMD</a> یک ابزار خط فرمان است که برای اتصال و تعامل با پایگاه‌داده‌های SQL Server مایکروسافت استفاده می‌شود. این ابزار به کاربران این امکان را می‌دهد تا کوئری‌ها و اسکریپت‌های SQL را از طریق خط فرمان اجرا کنند، نتایج را مشاهده کنند و عملیات مختلفی را بر روی پایگاه‌داده‌ها انجام دهند. sqlcmd برای مدیریت پایگاه‌داده‌ها، اجرای اسکریپت‌ها و خودکارسازی وظایف مختلف بسیار مفید است.
+
+
+
+
+
+
+
+<div className="h-2" />
+
+برای اتصال به SQLCMD، پس از <a href="https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-ver16&tabs=redhat-install" className="blue-link">نصب آن طبق مستندات رسمی</a> کافیست از اطلاعات شبکه عمومی دیتابیس، که در صفحه <b>نحوه اتصال</b> موجود است؛ استفاده کنید.
+برای فعال‌سازی شبکه عمومی نیز، می‌توانید از قسمت <b>تنظیمات دیتابیس</b>، این کار را انجام دهید. 
+برای اتصال، می‌توانید مشابه دستور زیر نیز، عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`sqlcmd -S DB_URL,DB_PORT -Usa -P DB_PASSWORD`}
+    </Highlight>
+    </div>
+
+<Asciinema id="mssql-connect" />
+پس از اتصال به دیتابیس، می‌توانید عملیات مورد نیاز خود را، انجام دهید.
+
+</Layout>
