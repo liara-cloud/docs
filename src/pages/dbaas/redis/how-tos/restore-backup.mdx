@@ -1,0 +1,32 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# بازیابی فایل پشتیبان در دیتابیس
+<hr className="mb-2" />
+
+
+    <p>
+        برای بازیابی فایل پشتیبان با استفاده از
+        <a href="https://github.com/sripathikrishnan/redis-rdb-tools" className="blue-link">rdbtools</a> و <a href="https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/" className="blue-link"><Important>redis-cli</Important></a>، می‌توانید مشابه دستور زیر، عمل کنید:
+    </p>    
+    <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`rdb -c protocol /path/to/backup-file.dump | redis-cli -p REDIS_PORT -h REDIS_HOST -a REDIS_PASSWORD --pipe`}
+    </Highlight>
+</div>
+        <Asciinema id="restore-redis" />
+
+
+</Layout>

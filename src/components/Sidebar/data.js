@@ -3351,7 +3351,6 @@ export default {
       },
       
     ],
-
     mongodb: [
       {
         badge: (
@@ -3477,6 +3476,261 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/mongodb/how-tos/restore-backup"
       },
+      
+    ],
+    redis: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس Redis
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/redis/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/redis/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/redis/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/flask"
+      },
+      // {
+      //   title: "NET.",
+      //   icon: <IconContainer alt="netcore" />,
+      //   link: "/dbaas/redis/how-tos/connect-via-platform/dotnet"
+      // },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/redis/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PHPRedisAdmin",
+        link: "/dbaas/redis/how-tos/connect-via-gui/phpredisadmin"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/redis/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "redis-cli",
+        link: "/dbaas/redis/how-tos/connect-via-cli/redis-cli"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/redis/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/redis/how-tos/restore-backup"
+      },
+      
+    ],
+
+    'elastic-search': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس ElasticSearch
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/elastic-search/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/elastic-search/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/elastic-search/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/flask"
+      },
+      // {
+      //   title: "NET.",
+      //   icon: <IconContainer alt="netcore" />,
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-platform/dotnet"
+      // },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/go"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoBrowser   />
+      //     <Link href="/dbaas/elastic-search/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "PHPRedisAdmin",
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-gui/phpelastic-searchadmin"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoTerminal   />
+      //       <Link href="/dbaas/elastic-search/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "elastic-search-cli",
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-cli/elastic-search-cli"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoReply    />
+      //     مدیریت فایل‌های پشتیبان
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "ایجاد فایل پشتیبان",
+      //   link: "/dbaas/elastic-search/how-tos/create-backup"
+      // },
+      // {
+      //   title: "بازیابی فایل پشتیبان",
+      //   link: "/dbaas/elastic-search/how-tos/restore-backup"
+      // },
       
     ],
 

@@ -11,21 +11,16 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# نسخه‌های قابل ارائه در دیتابیس PostgreSQL
+# نسخه‌های قابل ارائه در دیتابیس Redis
 <hr className="mb-2" />
 
-در حال حاضر در پلتفرم لیارا، نسخه‌های زیر از  دیتابیس PostgreSQL ارائه می‌شوند: 
+در حال حاضر در پلتفرم لیارا، نسخه‌های زیر از  دیتابیس Redis ارائه می‌شوند: 
 
 <div className="h-2" />
 <ul className="pr-4">
   {[
-    {text: '16.3',},
-    {text: '16.1',},
-    {text: '15.4',},
-    {text: '14.9',},
-    {text: '13.12',},
-    {text: '12.16',},
-    {text: '11.21',},
+    {text: '7.2',},
+    {text: '6.2',},
   ].map((item, index) => (
     <li
       key={index}
