@@ -1,0 +1,63 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# بازیابی فایل پشتیبان در دیتابیس
+<hr className="mb-2" />
+
+
+<Tabs 
+    tabs={["pg_restore", "PGAdmin"]} 
+    content={[
+    <>
+    <p>
+        برای بازیابی فایل پشتیبان با استفاده از
+        <a href="https://www.postgresql.org/docs/current/app-pgrestore.html" className="blue-link">pg_restore</a>، می‌توانید مشابه دستور زیر، عمل کنید:
+    </p>    
+    <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pg_restore -h DB_HOST \\
+             -p DB_PORT \\
+             -U DB_USERNAME \\
+             -F c --create -d postgres /path/to/backup-file.dump`}
+    </Highlight>
+</div>
+        <Asciinema id="postgresql-restore" />
+    </>, 
+
+    <>
+    <p>
+        برای بازیابی فایل پشتیبان با استفاده از
+        ابزار <a href="./connect-via-gui/pgadmin" className="blue-link">PGAdmin</a>، می‌توانید مشابه دستورالعمل زیر، عمل کنید:
+    </p> 
+    <div className="h-4" />
+    <img
+    src="https://files.liara.ir/docs/postgresql/restore-backup-into-postgresql-database-with-pgadmin.gif"
+    alt="database restore backup"
+    />
+    <div className="h-2" />
+    <Alert variant="warning">
+    <p>
+        ابزار PGAdmin برای بازیابی فایل‌های پشتیبان سنگین مناسب نیست. می‌توانید به‌عنوان جایگزین از ابزار pg_restore استفاده کنید.
+    </p>
+    </Alert>
+    </>          
+    ]} 
+/>
+
+<div className="h-2" />
+
+<div className="h-2" />
+
+</Layout>

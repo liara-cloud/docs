@@ -2542,7 +2542,7 @@ export default {
       {
         title: "PostgreSQL",
         icon: <IconContainer alt="postgres" />,
-        link: "/dbaas/postgres/quick-setup"
+        link: "/dbaas/postgresql/quick-setup"
       },
       {
         title: "MSSQL (SQL Server)",
@@ -2815,7 +2815,6 @@ export default {
         link: "/paas/details/reverse-proxy"
       },
     ],
-  
     mariadb: [
       {
         badge: (
@@ -2951,7 +2950,6 @@ export default {
       },
       
     ],
-
     mysql: [
       {
         badge: (
@@ -3084,6 +3082,138 @@ export default {
       {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/mysql/how-tos/restore-backup"
+      },
+      
+    ],
+
+    postgresql: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس PostgreSQL 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/postgresql/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/postgresql/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/postgresql/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/postgresql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PGAdmin",
+        link: "/dbaas/postgresql/how-tos/connect-via-gui/pgadmin"
+      },
+      {
+        title: "DBeaver",
+        link: "/dbaas/postgresql/how-tos/connect-via-gui/dbeaver"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/postgresql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PSQL",
+        link: "/dbaas/postgresql/how-tos/connect-via-cli/psql"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/postgresql/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/postgresql/how-tos/restore-backup"
       },
       
     ],
