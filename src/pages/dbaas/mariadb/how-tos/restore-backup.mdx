@@ -1,0 +1,54 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# بازیابی فایل پشتیبان در دیتابیس
+<hr className="mb-2" />
+
+
+<Tabs 
+    tabs={["MySQL-CLI", "PHPMyAdmin"]} 
+    content={[
+    <>
+    <p>
+        برای بازیابی فایل پشتیبان با استفاده از
+        ابزار <a href="./connect-via-cli/mysql" className="blue-link">MySQL CLI</a>، می‌توانید مشابه دستور زیر، عمل کنید:
+    </p>    
+    <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`mariadb -h DB_HOST -P DB_PORT -u DB_USER -pDB_PASSWORD < backup.sql`}
+    </Highlight>
+</div>
+        <Asciinema id="mariadb-restore" />
+    </>, 
+
+    <>
+    <p>
+        برای بازیابی فایل پشتیبان با استفاده از
+        ابزار <a href="./connect-via-gui/phpmyadmin" className="blue-link">PHPMyAdmin</a>، می‌توانید مشابه دستورالعمل زیر، عمل کنید:
+    </p> 
+    <div className="h-4" />
+    <img
+    src="https://files.liara.ir/docs/mariadb/restore-backup-into-mariadb-database-with-phpmyadmin.gif"
+    alt="database restore backup"
+    />
+    </>          
+    ]} 
+/>
+
+<div className="h-2" />
+
+<div className="h-2" />
+
+</Layout>

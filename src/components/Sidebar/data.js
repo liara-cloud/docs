@@ -23,6 +23,7 @@ import {
   GoPackageDependencies,
   GoProjectTemplate,
   GoZap,
+  GoVersions,
   GoFileSymlinkFile,
   GoPackage ,
   GoBug,
@@ -2834,55 +2835,62 @@ export default {
         link: "/dbaas/mariadb/quick-setup"
       },
       {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/mariadb/choose-version"
+      },
+      {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
+          <Link href="/dbaas/mariadb/how-tos/connect-via-platform/about">
             اتصال از طریق پلتفرم
+          </Link>
           </div>
         )
       },
       {
         title: "NodeJS",
         icon: <IconContainer alt="nodejs" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-nodejs"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/nodejs"
       },
       {
         title: "NextJS",
         icon: <IconContainer alt="next" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-nextjs"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/nextjs"
       },
       {
         title: "Laravel",
         icon: <IconContainer alt="laravel" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-laravel"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/laravel"
       },
       {
         title: "PHP",
         icon: <IconContainer alt="php" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-php"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/php"
       },
       {
         title: "Django",
         icon: <IconContainer alt="django" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-django"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/django"
       },
       {
         title: "Flask",
         icon: <IconContainer alt="flask" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-flask"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/flask"
       },
       {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-dotnet"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/dotnet"
       },
       {
         title: "Golang",
         icon: <IconContainer alt="go" />,
-        link: "/dbaas/mariadb/how-tos/connect-by-go"
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/go"
       },
       {
         hr: true
@@ -2891,17 +2899,17 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <GoBrowser   />
-          اتصال از طریق GUI
+          <Link href="/dbaas/mariadb/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
       {
         title: "PHPMyAdmin",
-        link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+        link: "/dbaas/mariadb/how-tos/connect-via-gui/phpmyadmin"
       },
       {
         title: "DBeaver",
-        link: "/paas/nodejs/how-tos/connect-to-db/mysql"
+        link: "/dbaas/mariadb/how-tos/connect-via-gui/dbeaver"
       },
       {
         hr: true
@@ -2910,13 +2918,17 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoTerminal   />
-            <Link href="">اتصال از طریق CLI</Link>
+            <Link href="/dbaas/mariadb/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
           </div>
         )
       },
       {
         title: "MySQL CLI",
-        link: "/paas/nodejs/fix-common-errors/cors-error/about"
+        link: "/dbaas/mariadb/how-tos/connect-via-cli/mysql"
+      },
+      {
+        title: "MariaDB CLI",
+        link: "/dbaas/mariadb/how-tos/connect-via-cli/mariadb"
       },
       {
         hr: true
@@ -2931,11 +2943,11 @@ export default {
       },
       {
         title: "ایجاد فایل پشتیبان",
-        link: "/paas/nodejs/related-apps/adonisjs"
+        link: "/dbaas/mariadb/how-tos/create-backup"
       },
       {
         title: "بازیابی فایل پشتیبان",
-        link: "/paas/nodejs/related-apps/adonisjs"
+        link: "/dbaas/mariadb/how-tos/restore-backup"
       },
       
     ],

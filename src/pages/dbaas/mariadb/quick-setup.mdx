@@ -8,26 +8,22 @@ import Card from "@/components/Common/card";
 import Important from "@/components/Common/important";
 import Highlight from "react-highlight";
 import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
 
 <Layout>
 
 # راه‌اندازی سریع دیتابیس MariaDB
 <hr className="mb-2" />
 
-توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Vite</Important> و یا <Important>create-react-app</Important> ساخته شده باشند، در پلتفرم React لیارا قابل اجرا خواهند بود.
+<video
+src="https://files.liara.ir/liara/mariadb/create-mariadb.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
 
-<Tabs 
-  tabs={["Liara Console", "Liara CLI"]} 
-  content={[
-  <>
-  <video
-  src="https://files.liara.ir/liara/react/react-desktop.mp4"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-  ></video>
-  <div className="h-2" />
-  برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  برای راه‌اندازی دیتابیس با استفاده از <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
   <Step  steps={[
 {
   step: "۱",
@@ -42,314 +38,98 @@ import Link from "next/link";
   step: "۲",
   content: (
   <>
-    <h3>ایجاد برنامه</h3>
-    <p>برنامه React خود را با شناسه، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۳",
-  content: (
-  <>
-    <h3>حذف فایل‌های اضافی</h3>
-    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه node_modules) را پاک کنید.</p>  
-  </>
-  )
-  },
-  {
-  step: "۴",
-  content: (
-  <>
-    <h3>تنظیم اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "name": "react-getting-started",
-  "version": "0.1.0",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "devDependencies": {
-    "vite": "^2.4.4", 
-    "@vitejs.plugin-react-refresh": "^1.3.1" 
-  },
-  "scripts": {
-    "start": "vite preview",
-    "build": "vite build"
-  }
-}`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
-    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="js">
-      {`export default {
-    // ... rest of configuration
-    build: {
-        outDir: "build"
-    }
-}`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
+    <h3>ایجاد دیتابیس</h3>
     <p>
-      و یا اگر که برنامه خود را با <Important>create-react-app</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+      وارد منوی <b>دیتابیس</b> شوید، بر روی گزینه <b>راه‌اندازی دیتابیس</b> کلیک کنید؛ در ادامه دیتابیس <b>MariaDB</b> را انتخاب کنید و پس از انتخاب <a href="./choose-version" className="blue-link">نسخه دیتابیس</a>، شناسه، <a href="/paas/details/private-network#set-private-network-for-app-and-db" className="blue-link">شبکه خصوصی</a> و <a href="/dbaas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، کافیست تا بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b>، کلیک کنید. 
     </p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "name": "react-getting-started",
-  "version": "0.1.0",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  }
-}`}
-    </Highlight>
-    </div>
-
-    
-  </>
-  )
-  },
-  {
-  step: "۵",
-  content: (
-  <>
-    <h3>زیپ و آپلود پروژه</h3>
-    <p>پوشه پروژه را در یک فایل <Important>zip</Important> قرار دهید. فایل را کشیده و در باکس آپلود Liara Console رها کنید.</p>
-  </>
-  )
-  },
-  {
-  step: "۶",
-  content: (
-  <>
-    <h3>استقرار پروژه</h3>
-    <p>مرحله به مرحله استقرار را با Console جلو بروید و شخصی‌سازی‌های لازم را انجام دهید و در نهایت بر روی گزینه استقرار کلیک کنید تا عملیات استقرار، آغاز شود. </p>
-  </>
-  )
-  }
-
-]}/>
-  </>,
-
-  <>
-  <video
-  src="https://files.liara.ir/liara/quick-start/react/react-cli.mp4"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-  ></video>
-  <div className="h-2" />
-
-  برای استقرار با استفاده از ابزار <Link className="blue-link" href="../../../references/liara-cli/about">Liara CLI</Link> کافیست تا مراحل زیر را طی کنید:
-  <Step  steps={[
-{
-  step: "۱",
-  content: (
-  <>
-    <h3>نصب Liara CLI</h3>
-    <p>ترمینال را باز کنید و با اجرای دستور زیر، ابزار Liara CLI را بر روی سیستم خود نصب کنید:</p>
-    <div dir='ltr'>
-      <Highlight className="bash">
-        {`npm install -g @liara/cli`}
-      </Highlight>
-    </div>
-    <div className="h-2" />
+    <div className="h-3" />
     <Alert variant="info">
     <p>
-    دقت کنید که <Link className="blue-link" href="https://nodejs.org">npm و NodeJS</Link> باید بر روی سیستم‌عامل‌تان نصب باشد.
+      شناسه‌ای که برای دیتابیس انتخاب می‌کنید، باید نسبت به شناسه‌های سرویس‌های موجود در حساب کاربری‌تان، یکتا باشد و می‌توانید از این شناسه، برای اتصال به دیتابیس در شبکه خصوصی، استفاده کنید.
     </p>
     </Alert>
-    <div className="h-2" />
-    <Alert variant="warning">در ویندوز، ترمینال باید بر روی CMD تنظیم باشد.</Alert>
-  </>
-  )
-  },
-  {
-  step: "۲",
-  content: (
-  <>
-    <h3>لاگین به حساب کاربری</h3>
-    <p>با اجرای دستور زیر، وارد حساب کاربری خود در لیارا، شوید:</p>
-    <div dir='ltr'>
-      <Highlight className="bash">
-        {`liara login`}
-      </Highlight>
-    </div>
-  </>
-  )
-  },
-  {
-  step: "۳",
-  content: (
-  <>
-    <h3>ایجاد شبکه خصوصی</h3>
-    <p>با دستور زیر، <Link className="blue-link" href="../details/private-network">شبکه خصوصی</Link> برنامه خود را ایجاد کنید:</p>
-    <div dir='ltr'>
-      <Highlight className="bash">
-        {`liara network create`}
-      </Highlight>
-    </div>
-    <div className="h-2" />
-    <Alert variant="info">اگر که از قبل شبکه خصوصی ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
-  </>
-  )
-  },
-  {
-  step: "۴",
-  content: (
-  <>
-    <h3>ایجاد برنامه</h3>
-    <p>با اجرای دستور زیر، برنامه React خود را ایجاد کنید:</p>
-    <div dir='ltr'>
-    <Highlight className="bash">
-      {`liara create`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
-    <Alert variant="info">اگر که از قبل برنامه خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی react تنظیم شود)، شبکه خصوصی و <Link className="blue-link" href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
-  </>
-  )
-  },
-  {
-  step: "۵",
-  content: (
-  <>
-    <h3>نادیده گرفتن فایل‌های اضافی</h3>
-    <p>برای آپلود نشدن فایل‌های اضافی، از <Important>gitignore.</Important> یا <Important>liaraignore.</Important> استفاده کنید و درون یکی از این دو فایل، اسامی دایرکتوری‌ها و فایل‌های اضافی را بیاورید. به عنوان مثال:</p>
-    <div dir='ltr'>
-    <Highlight className="gitignore">
-      {`node_modules/`}
-    </Highlight>
-    </div>
-  </>
-  )
-  },
-  {
-  step: "۶",
-  content: (
-  <>
-        <h3>تنظیم اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "name": "react-getting-started",
-  "version": "0.1.0",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "devDependencies": {
-    "vite": "^2.4.4", 
-    "@vitejs.plugin-react-refresh": "^1.3.1" 
-  },
-  "scripts": {
-    "start": "vite preview",
-    "build": "vite build"
-  }
-}`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
-    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="js">
-      {`export default {
-    // ... rest of configuration
-    build: {
-        outDir: "build"
-    }
-}`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
+    <Alert variant="info">
     <p>
-      و یا اگر که برنامه خود را با <Important>create-react-app</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+      در صورتی که قصد دارید از Local و یا جاهای دیگر به غیر از لیارا، به دیتابیس خود متصل شوید؛ کافیست تا گزینه <b>دسترسی از طریق شبکه عمومی</b> را در حین راه‌اندازی دیتابیس، فعال کنید.
     </p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="json">
-      {`{
-  "name": "react-getting-started",
-  "version": "0.1.0",
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  }
-}`}
-    </Highlight>
-    </div>
+    </Alert>
+    <div className="h-1" />
   </>
   )
   },
-  {
-  step: "۷",
-  content: (
-  <>
-    <h3>استقرار برنامه</h3>
-    <p>با اجرای دستور زیر در مسیر اصلی پروژه، برنامه خود را  در لیارا مستقر کنید (بعد از <Important>app--</Important> شناسه برنامه خود را وارد کنید):</p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-      {`liara deploy --app=myapp --platform=react`}
-    </Highlight>
-    </div>
-  </>
-  )
-  }
-
 ]}/>
-  </>,
+<div className="h-4" />
+با انجام مراحل فوق، دیتابیس شما ساخته می‌شود و می‌توانید از آن، استفاده کنید.
 
-]} 
-/>
-
-<br/>   
-<Alert variant="info">
-<p>
-لیارا با اجرای دستور <Important>npm install</Important> تمامی ماژول‌های موجود در فایل <Important>package.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
-</p>
-</Alert>
 <div className="h-1" />
-
-<Alert variant="info">
-<p>
-لیارا به صورت خودکار، در فرایند استقرار برنامه‌های React اسکریپت <Important>build</Important> را برای شما اجرا می‌کند.
-</p>
-</Alert>
-<div className="h-1" />
-
 <Alert variant="success">
-<p>
-همچنین بخوانید: <Link className="blue-link" href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های React در لیارا</Link>
-</p>
+    <p>
+      پس از راه‌اندازی سرور، به صورت خودکار، یک دیتابیس خالی برای شما ایجاد می‌شود که می‌توانید از آن، استفاده کنید.
+    </p>
 </Alert>
+<Alert variant="success">
+    <p>
+      همچنین بخوانید: <a href="/dbaas/details/about" className="blue-link">آشنایی با جزئیات یک دیتابیس</a>
+    </p>
+</Alert>
+<div className="h-1" />
+برای اتصال به دیتابیس، می‌توانید وارد منوی <b>نحوه اتصال</b> دیتابیس خود شوید؛ اگر که قصد دارید برنامه‌های خارج از لیارا را به دیتابیس متصل کنید؛ باید از اطلاعات شبکه عمومی استفاده کنید. در غیر این‌صورت، برای اتصال برنامه‌های درون لیارا، بهتر است که برای امنیت بیشتر، برنامه و دیتابیس درون یک شبکه خصوصی قرار بگیرند و با استفاده از اطلاعات شبکه خصوصی، به یکدیگر، متصل شوند.
+
+<div className="h-2" />
+<img src="https://files.liara.ir/liara/docs/console-db-info.png" alt="see db info"/>
+
+<div className="h-2" />
+همچنین، درصورتی که ثبت لاگ‌ها در دیتابیس‌های MariaDB حجم زیادی را اشغال کرده است؛ می‌توانید با اجرای کوئری زیر به‌صورت بازه‌ای لاگ‌ها را پاک کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`RESET MASTER;`}
+    </Highlight>
+</div>
+
+
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "نسخه‌های ارائه شده دیتابیس",
+        link: "./how-tos/choose-version"
+      },
+      {
+        title: "اتصال از طریق پلتفرم‌های مختلف به دیتابیس",
+        link: "./how-tos/connect-via-platform/about"
+      },
+      {
+        title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به دیتابیس",
+        link: "./how-tos/connect-via-gui/about"
+      },
+      {
+        title: "اتصال از طریق CommandLine Interface (CLI)",
+        link: "./how-tos/connect-via-cli/about"
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "./how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "./how-tos/restore-backup"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
 </Layout>
