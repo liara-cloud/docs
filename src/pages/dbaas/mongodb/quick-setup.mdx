@@ -12,14 +12,14 @@ import {GoArrowLeft} from "react-icons/go";
 
 <Layout>
 
-# راه‌اندازی سریع دیتابیس PostgreSQL
+# راه‌اندازی سریع دیتابیس MongoDB
 <hr className="mb-2" />
 
-<a href="https://www.postgresql.org/" className="blue-link">PostgreSQL</a> یک سیستم مدیریت پایگاه داده رابطه‌ای و شی‌گرا (RDBMS) است که به‌طور رایگان و متن‌باز (Open Source) ارائه می‌شود. این سیستم با قابلیت‌های پیشرفته‌ای مانند پشتیبانی از تراکنش‌ها، انواع داده‌های پیچیده، و قابلیت‌های انعطاف‌پذیر در مدیریت داده‌ها، شناخته می‌شود. PostgreSQL برای استفاده در برنامه‌های بزرگ و پیچیده طراحی شده و به دلیل پایداری و قابلیت مقیاس‌پذیری بالا، در بسیاری از صنایع و پروژه‌های بزرگ مورد استفاده قرار می‌گیرد.
+<a href="https://www.mongodb.com/" className="blue-link">MongoDB</a> یک پایگاه داده NoSQL مبتنی بر document است که داده‌ها را به صورت مستندات JSON ذخیره می‌کند. برخلاف پایگاه‌های داده رابطه‌ای، MongoDB از جداول و سطرها استفاده نمی‌کند و به جای آن از ساختارهای منعطف‌تر و مقیاس‌پذیرتری استفاده می‌کند که به راحتی قابلیت تغییر و توسعه دارند. این ویژگی‌ها باعث می‌شود که MongoDB برای مدیریت داده‌های غیرساختاریافته و کاربردهای بزرگ و پیچیده مناسب باشد.
 
 <br />
 <video
-src="https://files.liara.ir/liara/postgresql/create-postgresql.mp4"
+src="https://files.liara.ir/liara/mongodb/create-mongodb.mp4"
 controls="controls"
 className="block w-full"
 width="100%"
@@ -43,7 +43,7 @@ width="100%"
   <>
     <h3>ایجاد دیتابیس</h3>
     <p>
-      وارد منوی <b>دیتابیس</b> شوید، بر روی گزینه <b>راه‌اندازی دیتابیس</b> کلیک کنید؛ در ادامه دیتابیس <b>PostgreSQL</b> را انتخاب کنید و پس از انتخاب <a href="./choose-version" className="blue-link">نسخه دیتابیس</a>، شناسه، <a href="/paas/details/private-network#set-private-network-for-app-and-db" className="blue-link">شبکه خصوصی</a> و <a href="/dbaas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، کافیست تا بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b>، کلیک کنید. 
+      وارد منوی <b>دیتابیس</b> شوید، بر روی گزینه <b>راه‌اندازی دیتابیس</b> کلیک کنید؛ در ادامه دیتابیس <b>MongoDB</b> را انتخاب کنید و پس از انتخاب <a href="./choose-version" className="blue-link">نسخه دیتابیس</a>، شناسه، <a href="/paas/details/private-network#set-private-network-for-app-and-db" className="blue-link">شبکه خصوصی</a> و <a href="/dbaas/details/plans/about" className="blue-link">منابع سخت‌افزاری و بسته امکانات</a>، کافیست تا بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b>، کلیک کنید. 
     </p>
     <div className="h-3" />
     <Alert variant="info">
@@ -58,7 +58,7 @@ width="100%"
     </Alert>
     <Alert variant="success">
     <p>
-      در صورتی که به قابلیت <Important>Geographic Objects</Important> در دیتابیس خود نیاز دارید، کافیست تا در حین ساخت، گزینه <b>افزونه PostGIS</b> را، فعال کنید.
+      در صورتی که به قابلیت‌هایی مثل <Important>Oplog</Important> و <Important>Transaction</Important>ها در دیتابیس خود نیاز دارید، کافیست تا در حین ساخت، گزینه <b>ReplicaSet (تک سرور)</b> را، فعال کنید.
     </p>
     </Alert>
     <div className="h-1" />
@@ -72,7 +72,7 @@ width="100%"
 <div className="h-1" />
 <Alert variant="success">
     <p>
-      پس از راه‌اندازی سرور، می‌توانید از دیتابیسی به نام <Important>postgres</Important>، استفاده کنید؛ اما بهتر است که یک دیتابیس جدید برای خود، ایجاد کنید.
+      پس از راه‌اندازی سرور، می‌توانید از دیتابیسی به نام <Important>admin</Important>، استفاده کنید؛ اما بهتر است که یک دیتابیس جدید برای خود، ایجاد کنید.
     </p>
 </Alert>
 <Alert variant="success">
@@ -84,7 +84,7 @@ width="100%"
 برای اتصال به دیتابیس، می‌توانید وارد منوی <b>نحوه اتصال</b> دیتابیس خود شوید؛ اگر که قصد دارید برنامه‌های خارج از لیارا را به دیتابیس متصل کنید؛ باید از اطلاعات شبکه عمومی استفاده کنید. در غیر این‌صورت، برای اتصال برنامه‌های درون لیارا، بهتر است که برای امنیت بیشتر، برنامه و دیتابیس درون یک شبکه خصوصی قرار بگیرند و با استفاده از اطلاعات شبکه خصوصی، به یکدیگر، متصل شوند.
 
 <div className="h-2" />
-<img src="https://files.liara.ir/liara/docs/console-db-postgresql-info.png" alt="see db info"/>
+<img src="https://files.liara.ir/liara/docs/console-db-mongodb-info.png" alt="see db info"/>
 
 <Section id="see-also" title="همچنین بخوانید:" />
 

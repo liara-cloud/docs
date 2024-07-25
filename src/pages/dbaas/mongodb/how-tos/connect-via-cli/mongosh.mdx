@@ -1,0 +1,47 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# اتصال به دیتابیس MongoDB با mongosh
+<hr className="mb-2" />
+
+<a href="https://www.mongodb.com/docs/mongodb-shell/" className="blue-link">mongosh</a>، که مخفف MongoDB Shell است، یک رابط خط فرمان جدید برای کار با MongoDB است. این ابزار برای تعامل با پایگاه‌داده MongoDB استفاده می‌شود و قابلیت اجرای دستورات JavaScript را نیز دارد. mongosh جایگزین ابزار قدیمی mongo shell شده است و امکانات بیشتری برای توسعه‌دهندگان فراهم می‌کند، از جمله تجربه کاربری بهتر، ویژگی‌های تکمیل خودکار و پشتیبانی از انواع داده‌های پیشرفته. همچنین، این ابزار به‌راحتی با انواع مختلف سیستم‌عامل‌ها سازگار است.
+
+<div className="h-2" />
+
+برای اتصال به mongosh، پس از <a href="https://www.mongodb.com/docs/mongodb-shell/install/" className="blue-link">نصب آن طبق مستندات رسمی</a> کافیست از اطلاعات شبکه عمومی دیتابیس، که در صفحه <b>نحوه اتصال</b> موجود است؛ استفاده کنید.
+برای فعال‌سازی شبکه عمومی نیز، می‌توانید از قسمت <b>تنظیمات دیتابیس</b>، این کار را انجام دهید. 
+برای اتصال، می‌توانید مشابه دستور زیر نیز، عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`mongosh -u DB_USERNAME \\
+           --port DB_PORT \\
+           --host DB_HOST \\
+           -p DB_PASSWORD \\
+           --authenticationDatabase admin`}
+    </Highlight>
+    </div>
+<div className="h-7" />
+<video
+  src="https://files.liara.ir/liara/mongodb/mongodb-compass.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<Asciinema id="connect-mongo" />
+
+پس از اتصال به دیتابیس، می‌توانید عملیات مورد نیاز خود را، انجام دهید.
+
+</Layout>

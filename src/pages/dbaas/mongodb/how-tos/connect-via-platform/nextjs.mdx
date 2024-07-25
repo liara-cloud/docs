@@ -11,7 +11,7 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های NextJS
+# اتصال به دیتابیس MongoDB در برنامه‌های NextJS
 <hr className="mb-2" />
         
 
@@ -20,59 +20,47 @@ import NextPage from "@/components/Common/nextpage";
     content={[
         <>
             <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به PostgreSQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>pg</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MongoDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mongodb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
             </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`npm install pg`}
+                {`npm install mongodb`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
 پس از آن، کافیست تا 
 اطلاعات مربوط به دیتابیس خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:            </p>
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+            </p>
                         <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`DB_URI=postgresql://root:1CTYgVwfjtomCa2Z26OsDi1z@bromo.liara.cloud:33938/postgres`}
+                {`DB_URI=mongodb://root:uyYDoeYGcPr4xK8PSWnjsT9S@bromo.liara.cloud:32005/my-app?authSource=admin`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>postgresql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mongodb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { Client } from 'pg';
+                {`import { MongoClient } from 'mongodb';
 
-const pgConnectionURI = process.env.DB_URI;
+const client = new MongoClient(process.env.DB_URI);
 
-export async function connectToPostgreSQL() {
-  const client = new Client({
-    connectionString: pgConnectionURI,
-  });
-  await client.connect();
-  return client;
+let db;
+
+async function connectToDatabase() {
+    if (!db) {
+        await client.connect();
+        db = client.db();
+    }
+    return db;
 }
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              سپس، بایستی در مسیر <Important>pages/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/pages/api</Important>)، یک فایل به نام <Important>postgresql.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { connectToPostgreSQL } from '@/lib/postgresql';
 
-export default async function handler(req, res) {
-  const client = await connectToPostgreSQL();
-  await client.end();
-
-  res.status(200).json({ message: 'Connected to PostgreSQL successfully' });
-}
+export { connectToDatabase };
 `}
             </Highlight>
             </div>
@@ -83,38 +71,32 @@ export default async function handler(req, res) {
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { useEffect, useState } from 'react';
+                {`import { connectToDatabase } from '@/lib/mongodb';
 
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+export default function HomePage({ mongoStatus }) {
+    return (
+        <div>
+            <h1>Connection Status</h1>
+            <p>{mongoStatus}</p>
+        </div>
+    );
+}
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/postgresql');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
+export async function getServerSideProps() {
+    let mongoStatus;
+
+    try {
+        const db = await connectToDatabase();
+        mongoStatus = db ? 'Connected to MongoDB' : 'Failed to connect to MongoDB';
+    } catch (error) {
+        mongoStatus = 'Failed to connect to MongoDB';
     }
 
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        <p>Error: {error.message}</p>
-      ) : data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+    return {
+        props: {
+            mongoStatus,
+        },
+    };
 }
 `}
             </Highlight>
@@ -128,60 +110,47 @@ export default function Home() {
         </>,
         <>
             <p>
-            روش‌ها و کتابخانه‌های مختلفی برای اتصال به PostgreSQL در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>pg</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به MongoDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mongodb</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
             </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`npm install pg`}
+                {`npm install mongodb`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
 پس از آن، کافیست تا 
 اطلاعات مربوط به دیتابیس خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:            </p>
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+            </p>
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="bash">
-                {`DB_URI=postgresql://root:1CTYgVwfjtomCa2Z26OsDi1z@bromo.liara.cloud:33938/postgres`}
+                {`DB_URI=mongodb://root:uyYDoeYGcPr4xK8PSWnjsT9S@bromo.liara.cloud:32005/my-app?authSource=admin`}
             </Highlight>
             </div>
             <div className="h-2" />
             <p>
-            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>postgresql.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>mongodb.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
             </p>
             <div dir='ltr'>
             <Highlight className="js">
-                {`import { Client } from 'pg';
+                {`import { MongoClient } from 'mongodb';
 
-const pgConnectionURI = process.env.DB_URI;
+const client = new MongoClient(process.env.DB_URI);
 
-export async function connectToPostgreSQL() {
-  const client = new Client({
-    connectionString: pgConnectionURI,
-  });
-  await client.connect();
-  return client;
+let db;
+
+async function connectToDatabase() {
+    if (!db) {
+        await client.connect();
+        db = client.db();
+    }
+    return db;
 }
-`}
-            </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-              سپس، بایستی در مسیر <Important>app/api</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/app/api</Important>)، یک دایرکتوری به نام <Important>postgresql</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>route.js</Important> بسازید و قطعه کد زیر را در آن، قرار دهید:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-            <Highlight className="js">
-                {`import { connectToPostgreSQL } from '@/lib/postgresql';
 
-export async function GET(request) {
-  const client = await connectToPostgreSQL();
-  await client.end();
-
-  return new Response(JSON.stringify({ message: 'Connected to PostgreSQL successfully' }));
-}
+export { connectToDatabase };
 `}
             </Highlight>
             </div>
@@ -192,41 +161,26 @@ export async function GET(request) {
             <div className="h-2" />
             <div dir='ltr'>
             <Highlight className="js">
-                {`'use client'; 
+                {`import { connectToDatabase } from '@/lib/mongodb';
 
-import { useEffect, useState } from 'react';
+export default async function HomePage() {
+    let mongoStatus;
 
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/postgresql');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
+    try {
+        const db = await connectToDatabase();
+        mongoStatus = db ? 'Connected to MongoDB' : 'Failed to connect to MongoDB';
+    } catch (error) {
+        mongoStatus = 'Failed to connect to MongoDB';
     }
 
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        <p>Error: {error.message}</p>
-      ) : data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
-}`}
+    return (
+        <div>
+            <h1>Connection Status</h1>
+            <p>{mongoStatus}</p>
+        </div>
+    );
+}
+`}
             </Highlight>
             </div>
             <div className="h-2" />
@@ -242,23 +196,29 @@ export default function Home() {
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-در پکیج <Important>pg</Important> قابلیت connection pooling   تعبیه شده است و شما می‌توانید با استفاده از قطعه کد زیر در فایل <Important>lib/postgresql.js</Important> (یا <Important>src/lib/postgresql.js</Important>)، این قابلیت را، در حین اتصال به دیتابیس، ایجاد و پارامتر آن‌را بر اساس نیاز خود، مقداردهی کنید:
+در پکیج <Important>mariadb</Important> این قابلیت به صورت خودکار تعبیه شده است و شما می‌توانید در فایل <Important>lib/mariadb.js</Important> (یا <Important>src/lib/mariadb.js</Important>) حین اتصال به دیتابیس پارامتر زیر را بر اساس نیاز خود، مقدار دهی کنید:
 <div className="h-2" />
-<div dir='ltr'>
+    <div dir='ltr'>
     <Highlight className="js">
-        {`import { Pool } from 'pg';
+        {`import { MongoClient } from 'mongodb';
 
-const pool = new Pool({
-  connectionString: process.env.DB_URI,
-  max: 5  
+const client = new MongoClient(process.env.DB_URI, {
+    poolSize: 10, // amount of connections in same time
 });
 
-export async function connectToPostgreSQL() {
-  return await pool.connect();
-}`}
+let db;
+
+async function connectToDatabase() {
+    if (!db) {
+        await client.connect();
+        db = client.db();
+    }
+    return db;
+}
+
+export { connectToDatabase };`}
     </Highlight>
 </div>
-<div className="h-2" />
 
 
 </Layout>

@@ -11,63 +11,85 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های PHP
+# اتصال به دیتابیس MongoDB در برنامه‌های PHP
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس PostgreSQL در برنامه‌های PHP، در ابتدا باید اکستنشن‌های <Important>pgsql</Important> و <Important>PDO</Important> را در PHP خود، نصب کرده باشید. پس از آن، کافیست تا 
+
+برای اتصال به دیتابیس MongoDB در برنامه‌های PHP، پس از نصب اکستنشن <Important>mongodb</Important>، کافیست تا 
 اطلاعات مربوط به دیتابیس خود را 
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`PG_URI=postgresql://root:2aCRtMfc2oMou67U2GftmLmd@annapurna.liara.cloud:32655/postgres`}
+        {`MONGODB_URI=mongodb://root:JtFcUbOxnQunBSnEzu1PNf5Z@annapurna.liara.cloud:30725/my-app?authSource=admin`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-پس از انجام کار فوق، می‌توانید مانند قطعه کد زیر، به دیتابیس متصل شده و از آن، استفاده کنید:
+سپس، می‌توانید با استفاده از قطعه کد زیر، به دیتابیس متصل شده و از آن استفاده کنید:
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="php">
         {`<?php
-$uri = getenv("PG_URI");
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Exception;
+use MongoDB\\Client;
+
+$uri = getenv('MONGODB_URI');
+
+$client = new \\MongoDB\\Client($uri);
 
 try {
-    $uriParts = parse_url($uri);
-
-    $host = $uriParts['host'];
-    $port = $uriParts['port'];
-    $user = $uriParts['user'];
-    $pass = $uriParts['pass'];
-    $dbname = ltrim($uriParts['path'], '/');
-
-    // Create a new PDO instance with persistent connection enabled
-    $pdo = new PDO(
-        "pgsql:host=$host;port=$port;dbname=$dbname",
-        $user,
-        $pass,
-        array(
-            PDO::ATTR_PERSISTENT => true
-        )
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    echo "Connected to PostgreSQL database successfully with persistent connection!";
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
-?>`}
+    $client->selectDatabase('admin')->command(['ping' => 1]);
+    echo "Pinged your deployment. You successfully connected to MongoDB!\\n";
+} catch (Exception $e) {
+    printf($e->getMessage());
+}`}
     </Highlight>
     </div>
 <div className="h-2" />
-<Alert variant="info">
-<p>
-در اکستنشن <Important>PDO</Important> و با کمک دستور <Important>ATTR_PERSISTENT</Important> ، قابلیت connection pooling تعبیه شده است و نیازی نیست که شما برای فعال‌سازی این قابلیت، کار خاصی را انجام دهید.
-</p>
-</Alert>
 
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+برای استفاده از قابلیت connection pooling در دیتابیس MongoDB، می‌توانید از قطعه کد زیر استفاده کنید و پارامترهای آن را با توجه به نیاز خود، تغییر دهید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="php">
+{`<?php
+require_once __DIR__ . '/vendor/autoload.php';
+use Exception;
+use MongoDBClient;
+
+$uri = getenv('MONGODB_URI');
+
+$options = [
+    'connectTimeoutMS' => 5000, 
+    'socketTimeoutMS' => 60000, 
+    'maxIdleTimeMS' => 300000, 
+    'maxPoolSize' => 50, 
+    'minPoolSize' => 5,
+];
+
+try {
+    $client = new MongoDBClient($uri, [], $options);
+    $client->selectDatabase('admin')->command(['ping' => 1]);
+    echo "Pinged your deployment. You successfully connected to MongoDB!
+";
+} catch (Exception $e) {
+    printf($e->getMessage());
+}
+?>`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+
+
 
 </Layout>
