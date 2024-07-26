@@ -11,17 +11,15 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های Golang
+# اتصال به دیتابیس ElasticSearch در برنامه‌های Golang
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس PostgreSQL در برنامه‌های Golang، در ابتدا باید ماژول‌های مربوط به آن‌را با اجرای دستورات زیر، نصب کنید:
+برای اتصال به دیتابیس ElasticSearch در برنامه‌های Golang، در ابتدا باید ماژول‌های مربوط به آن‌را با اجرای دستورات زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`go get -u gorm.io/gorm
-go get -u gorm.io/driver/postgres
-go get github.com/joho/godotenv
+        {`go get github.com/joho/godotenv
 `}
     </Highlight>
     </div>
@@ -30,15 +28,13 @@ go get github.com/joho/godotenv
 پس از آن، کافیست تا 
 اطلاعات مربوط به دیتابیس خود را 
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="txt">
-        {`DB_USER=root
-DB_PASSWORD=password
-DB_NAME=database_name
-DB_HOST=host
-DB_PORT=port
-DB_SSLMODE=disable`}
+        {`DB_URL=http://host:port/_cluster/health?pretty
+DB_USERNAME=username
+DB_PASSWORD=password`}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -50,44 +46,61 @@ DB_SSLMODE=disable`}
         {`package main
 
 import (
-    "fmt"
-    "log"
-    "os"
+	"encoding/base64"
+	"fmt"
+	"io"
+	"net/http"
+	"os"
 
-    "github.com/joho/godotenv"
-    "gorm.io/driver/postgres"
-    "gorm.io/gorm"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-    err := godotenv.Load()
-    if err != nil {
-        log.Fatalf("Error loading .env file")
-    }
+	// Load environment variables from .env file
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("Error loading .env file:", err)
+		return
+	}
 
-    user := os.Getenv("DB_USER")
-    password := os.Getenv("DB_PASSWORD")
-    dbName := os.Getenv("DB_NAME")
-    host := os.Getenv("DB_HOST")
-    port := os.Getenv("DB_PORT")
-    sslmode := os.Getenv("DB_SSLMODE")
+	// Elasticsearch connection information from environment variables
+	url := os.Getenv("DB_URL")
+	username := os.Getenv("DB_USERNAME")
+	password := os.Getenv("DB_PASSWORD")
 
-    dsn := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=%s",
-        user, password, dbName, host, port, sslmode)
+	// Creating an HTTP request
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		fmt.Println("Error creating HTTP request:", err)
+		return
+	}
 
-    db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-    if err != nil {
-        log.Fatal(err.Error())
-    }
+	// Adding authentication information to the request
+	req.Header.Add("Authorization", "Basic "+basicAuth(username, password))
 
-    sqlDB, err := db.DB()
-    if err != nil {
-        log.Fatal(err.Error())
-    }
-    sqlDB.SetMaxIdleConns(10)
-    sqlDB.SetMaxOpenConns(100)
+	// Sending the request to Elasticsearch
+	client := http.DefaultClient
+	res, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error sending HTTP request:", err)
+		return
+	}
+	defer res.Body.Close()
 
-    log.Println("Connected to the database")
+	// Reading and printing the response
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		fmt.Println("Error reading response body:", err)
+		return
+	}
+
+	fmt.Println(string(body))
+}
+
+// Function to create a Base64-encoded authentication string
+func basicAuth(username, password string) string {
+	auth := username + ":" + password
+	return base64.StdEncoding.EncodeToString([]byte(auth))
 }
 `}
     </Highlight>
@@ -99,7 +112,7 @@ func main() {
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-برای استفاده از قابلیت connection pooling در دیتابیس PostgreSQL، فقط کافیست تا با اجرای دستور زیر، ماژول موردنیاز را نصب کنید:
+برای استفاده از قابلیت connection pooling در دیتابیس ElasticSearch، فقط کافیست تا با اجرای دستور زیر، ماژول موردنیاز را نصب کنید:
 
 <div className="h-2" />
   <div dir='ltr'>

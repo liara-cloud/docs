@@ -11,63 +11,64 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های PHP
+# اتصال به دیتابیس ElasticSearch در برنامه‌های PHP
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس PostgreSQL در برنامه‌های PHP، در ابتدا باید اکستنشن‌های <Important>pgsql</Important> و <Important>PDO</Important> را در PHP خود، نصب کرده باشید. پس از آن، کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+برای اتصال به دیتابیس ElasticSearch، در ابتدا، باید با اجرای دستور زیر، پکیج موردنیاز آن را در پروژه خود نصب کنید:
+
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`PG_URI=postgresql://root:2aCRtMfc2oMou67U2GftmLmd@annapurna.liara.cloud:32655/postgres`}
+        {`composer require elasticsearch/elasticsearch`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-پس از انجام کار فوق، می‌توانید مانند قطعه کد زیر، به دیتابیس متصل شده و از آن، استفاده کنید:
+پس از آن، کافیست تا 
+اطلاعات مربوط به دیتابیس خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:  
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`ELASTIC_SEARCH=http://elastic:bmTDS5Rb2R1R9x2BJxio1Hje@bromo.liara.cloud:34546`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید با استفاده از قطعه کد زیر، به دیتابیس خود متصل شده و از آن، استفاده کنید:
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="php">
         {`<?php
-$uri = getenv("PG_URI");
+
+require 'vendor/autoload.php';
+use Elastic\\Elasticsearch\\ClientBuilder;
+
+$hosts = [
+    getenv("ELASTIC_SEARCH")
+];
+
+$client = ClientBuilder::create()
+                        ->setHosts($hosts)
+                        ->build();
 
 try {
-    $uriParts = parse_url($uri);
+    $response = $client->ping();
 
-    $host = $uriParts['host'];
-    $port = $uriParts['port'];
-    $user = $uriParts['user'];
-    $pass = $uriParts['pass'];
-    $dbname = ltrim($uriParts['path'], '/');
-
-    // Create a new PDO instance with persistent connection enabled
-    $pdo = new PDO(
-        "pgsql:host=$host;port=$port;dbname=$dbname",
-        $user,
-        $pass,
-        array(
-            PDO::ATTR_PERSISTENT => true
-        )
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    echo "Connected to PostgreSQL database successfully with persistent connection!";
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+    if ($response) {
+        echo "connection successfull.";
+    } else {
+        echo "connection failed.";
+    }
+} catch (Exception $e) {
+    echo "error in connection: ", $e->getMessage();
 }
-?>`}
+`}
     </Highlight>
     </div>
 <div className="h-2" />
-<Alert variant="info">
-<p>
-در اکستنشن <Important>PDO</Important> و با کمک دستور <Important>ATTR_PERSISTENT</Important> ، قابلیت connection pooling تعبیه شده است و نیازی نیست که شما برای فعال‌سازی این قابلیت، کار خاصی را انجام دهید.
-</p>
-</Alert>
-
-<Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
 </Layout>

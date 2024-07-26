@@ -3642,11 +3642,11 @@ export default {
           </div>
         )
       },
-      {
-        title: "NodeJS",
-        icon: <IconContainer alt="nodejs" />,
-        link: "/dbaas/elastic-search/how-tos/connect-via-platform/nodejs"
-      },
+      // {
+      //   title: "NodeJS",
+      //   icon: <IconContainer alt="nodejs" />,
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-platform/nodejs"
+      // },
       {
         title: "NextJS",
         icon: <IconContainer alt="next" />,

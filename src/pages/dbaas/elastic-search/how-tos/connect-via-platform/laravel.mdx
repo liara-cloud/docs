@@ -11,66 +11,45 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
 <Layout>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های Laravel
+# اتصال به دیتابیس ElasticSearch در برنامه‌های Laravel
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس PostgreSQL نیاز به انجام کار خاصی نیست. 
-فقط، کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:<div className="h-2" />
+برای اتصال به دیتابیس ElasticSearch، در ابتدا، باید با اجرای دستور زیر، پکیج موردنیاز آن را در پروژه خود در Local، نصب کنید:
+
+
+<div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`DB_CONNECTION=pgsql
-DB_HOST=bromo.liara.cloud
-DB_PORT=34515
-DB_DATABASE=postgres
-DB_USERNAME=root
-DB_PASSWORD=l6194OA4ZgOSc4EjPlep9qTl`}
+        {`composer require elasticsearch/elasticsearch`}
     </Highlight>
     </div>
 <div className="h-2" />
+در ادامه، باید در دایرکتوری <Important>app</Important> یک دایرکتوری به نام <Important>Services</Important>  و درون این دایرکتوری،
+یک فایل به نام <Important>ElasticsearchService.php</Important> ایجاد کنید و محتوای زیر را، درون آن، قرار دهید:
 
-پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="bash">
-        {`php artisan make:controller DatabaseController`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/DatabaseController.php</Important> قرار دهید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
+    <Highlight className="php">
         {`<?php
 
-namespace App\\Http\\Controllers;
+namespace App\\Services;
 
-use Illuminate\\Support\\Facades\\DB;
-use Illuminate\\Support\\Facades\\Config;
-use Illuminate\\Http\\Request;
+use Elastic\\Elasticsearch\\ClientBuilder;
 
-class DatabaseController extends Controller
+class ElasticsearchService
 {
+    protected $client;
+
+    public function __construct()
+    {
+        $this->client = ClientBuilder::create()
+            ->setHosts(['http://elastic:TgRCGavrbOJB82ZjzyVXRKbu@bromo.liara.cloud:30197'])
+            ->build();
+    }
+
     public function checkConnection()
     {
-        $databases = [
-            'pgsql' => 'pgsql',
-        ];
-
-        $results = [];
-
-        foreach ($databases as $connection) {
-            try {
-                DB::connection($connection)->getPdo();
-                $results[$connection] = 'Connection successful';
-            } catch (\\Exception $e) {
-                $results[$connection] = 'Connection failed: ' . $e->getMessage();
-            }
-        }
-
-        return response()->json($results);
+        return $this->client->ping();
     }
 }
 `}
@@ -78,47 +57,71 @@ class DatabaseController extends Controller
     </div>
 <div className="h-2" />
 
+<Alert variant='info'>
+<p>
+در کد فوق، باید مقدار فیلد <Important>setHosts</Important> را برابر با آدرس URI دیتابیس ElasticSearch خود، قرار دهید.
+</p>
+</Alert>
+
+تمامی کارها انجام شده است و شما می‌توانید از دیتابیس ElasticSearch خود استفاده کنید؛ به عنوان مثال می‌توانید با اجرای دستور زیر، یک کنترلر برای تست اتصال به دیتابیس ایجاد کنید:
+
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:controller ElasticsearchController`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+اکنون، می‌توانید کنترلر ایجاد شده در مسیر <Important>app/Http/Controllers/ElasticsearchController.php</Important> را با قطعه کد زیر، آپدیت کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+namespace App\\Http\\Controllers;
+
+use App\\Services\\ElasticsearchService;
+use Illuminate\\Http\\Request;
+
+class ElasticsearchController extends Controller
+{
+    protected $elasticsearchService;
+
+    public function __construct(ElasticsearchService $elasticsearchService)
+    {
+        $this->elasticsearchService = $elasticsearchService;
+    }
+
+    public function checkConnection()
+    {
+        $isConnected = $this->elasticsearchService->checkConnection();
+
+        if ($isConnected) {
+            return response()->json(['message' => 'Connected to Elasticsearch'], 200);
+        } else {
+            return response()->json(['message' => 'Failed to connect to Elasticsearch'], 500);
+        }
+    }
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
 در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
 <div className="h-2" />
   <div dir='ltr'>
-  <Highlight className="bash">
-      {`use App\\Http\\Controllers\\DatabaseController;
+  <Highlight className="php">
+      {`use App\\Http\\Controllers\\ElasticsearchController;
 
-Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
+Route::get('/check-elasticsearch', [ElasticsearchController::class, 'checkConnection']);
 `}
   </Highlight>
   </div>
 <div className="h-2" />
-اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه <Important>check-database-connection/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه <Important>check-elasticsearch/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
-<Section id="connection-pooling" title="استفاده از Connection Pooling" />
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
-
-برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>pgsql</Important> را به شکل زیر، تغییر دهید:
-<div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="php">
-{`'pgsql' => [
-    'driver' => 'pgsql',
-    'url' => env('DB_URL'),
-    'host' => env('DB_HOST', '127.0.0.1'),
-    'port' => env('DB_PORT', '5432'),
-    'database' => env('DB_DATABASE', 'laravel'),
-    'username' => env('DB_USERNAME', 'root'),
-    'password' => env('DB_PASSWORD', ''),
-    'charset' => env('DB_CHARSET', 'utf8'),
-    'prefix' => '',
-    'prefix_indexes' => true,
-    'search_path' => 'public',
-    'sslmode' => 'prefer',
-    'options' => [
-        PDO::ATTR_PERSISTENT => env('DB_PGSQL_POOLING', true),
-    ],
-],`}
-  </Highlight>
-  </div>
-<div className="h-2" />
 
 </Layout>
