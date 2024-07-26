@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import {
   GoHome,
+  GoRead,
   GoDatabase,
   GoContainer,
   GoRocket,
@@ -48,7 +49,8 @@ import {
   GoTools,
   GoIterations,
   GoSignOut,
-  GoReply 
+  GoReply,
+  GoLink,
   
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
@@ -100,17 +102,17 @@ export default {
     {
       title: "ایمیل",
       icon: <GoMail />,
-      link: "/mails"
+      link: "/email-server/about"
     },
     {
       title: "ذخیره‌سازی ابری",
       icon: <GoServer />,
-      link: "/object-storage"
+      link: "/object-storage/about"
     },
     {
       title: "سامانه مدیریت دامنه",
       icon: <GoGlobe />,
-      link: "/object-storage"
+      link: "/dns-management-system/about"
     },
     {
       hr: true
@@ -2712,107 +2714,62 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoContainer />
-            جزئیات پلتفرم
+            جزئیات دیتابیس
           </div>
         )
       },
       {
-        title: "برگشت به پلتفرم",
+        title: "برگشت به دیتابیس",
         icon: <GoArrowRight />,
-        link: "/paas/about"
+        link: "/dbaas/about"
       },
       {
-        title: "ویژگی‌های یک پلتفرم در لیارا",
+        title: "ویژگی‌های دیتابیس در لیارا",
         icon: <GoInfo />,
-        link: "/paas/details/about"
+        link: "/dbaas/details/about"
       },
       {
         hr: true
       },
       {
-        title: "پلن‌های برنامه",
+        title: "پلن‌های دیتابیس",
         icon: <GoCpu />,
-        link: "/paas/details/plans/about"
+        link: "/dbaas/details/plans/about"
       },
       {
         title: "شبکه خصوصی",
         icon: <GoShieldLock  />,
-        link: "/paas/details/private-network"
-      },
-      {
-        title: "آی‌پی ثابت",
-        icon: <GoNumber  />,
-        link: "/paas/details/static-ip"
-      },
-      {
-        title: "فایل‌سیستم",
-        icon: <GoFileBinary />,
-        link: "/paas/details/file-system"
+        link: "/dbaas/details/private-network"
       },
       {
         title: "رویدادها",
         icon: <GoEye />,
-        link: "/paas/details/events"
+        link: "/dbaas/details/events"
       },
       {
         title: "گزارشات",
         icon: <GoGraph />,
-        link: "/paas/details/observations/about"
+        link: "/dbaas/details/observations"
       },
       {
-        title: "متغیرهای محیطی",
-        icon: <GoKey  />,
-        link: "/paas/details/envs"
-      },
-      {
-        title: "رجیستری خصوصی و تاریخچه",
-        icon: <GoLog />,
-        link: "/paas/details/private-registery"
-      },
-      {
-        title: "خط فرمان کنسول",
-        icon: <GoBrowser />,
-        link: "/paas/details/console-shell"
-      },
-      {
-        title: "نادیده گرفتن فایل‌ها",
-        icon: <GoEyeClosed />,
-        link: "/paas/details/ignoring-files"
-      },
-      {
-        title: "استقرار بدون اختلال",
-        icon: <GoGitPullRequest  />,
-        link: "/paas/details/zero-downtime-deployment"
-      },
-      {
-        title: "بررسی سلامت",
-        icon: <GoPulse />,
-        link: "/paas/details/health-check"
-      },
-      {
-        title: "تنظیم DNS Server",
-        icon: <GoPlug  />,
-        link: "/paas/details/dns-server-settings"
-      },
-      {
-        title: "تنظیم موقعیت build",
-        icon: <GoLocation />,
-        link: "/paas/details/build-location"
-      },
-      {
-        title: "تغییر پلن در برنامه",
+        title: "تغییر پلن در دیتابیس",
         icon: <GoGitCompare />,
-        link: "/paas/details/change-plan"
+        link: "/dbaas/details/change-plan"
       },
       {
-        title: "حذف یک برنامه",
+        title: "حذف یک دیتابیس",
         icon: <GoXCircle  />,
-        link: "/paas/details/delete-app"
+        link: "/dbaas/details/delete-app"
       },
       {
-        title: "پروکسی معکوس (reverse)",
-        icon: <GoPaperAirplane  />,
-        link: "/paas/details/reverse-proxy"
+        title: "لینک‌های اتصال",
+        icon: <GoLink   />,
+        link: "/dbaas/details/connection-links"
+      },
+      {
+        title: "شخصی‌سازی پارامترهای دیتابیس",
+        icon: <GoProjectTemplate    />,
+        link: "/dbaas/details/customizing-db-parameters"
       },
     ],
     mariadb: [
@@ -3681,6 +3638,11 @@ export default {
         title: "Golang",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/elastic-search/how-tos/connect-via-platform/go"
+      },
+      {
+        title: "Python Scripts",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/python"
       },
       // {
       //   hr: true
@@ -4972,5 +4934,1243 @@ export default {
    
 
   },
+
+  email_server: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoMail  />
+            ایمیل‌سرور
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس ایمیل‌سرور",
+        icon: <GoInfo />,
+        link: "/email-server/about"
+      },
+      {
+        title: "راه‌اندازی سریع ایمیل‌سرور!",
+        icon: <GoZap />,
+        link: "/email-server/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoRead />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "مدیریت اکانت‌های ایمیل",
+        link: "/email-server/details/about"
+      },
+      {
+        title: "مدیریت ایمیل سرور",
+        link: "/email-server/move"
+      },
+      {
+        title: "تغییر حالت ارسال",
+        link: "/email-server/move"
+      },
+      {
+        title: "مدیریت اسپم‌ها",
+        link: "/email-server/move"
+      },
+      {
+        title: "مدیریت محدودیت‌ها",
+        link: "/email-server/move"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage />
+          اتصال به ایمیل‌سرور از طریق پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/email-server/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/email-server/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/email-server/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/email-server/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/email-server/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/email-server/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/email-server/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/email-server/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات ایمیل‌سرور",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+
+      
+    ],
+
+    move: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس پلتفرم",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/paas/php/getting-started"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/getting-started"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/paas/flask/getting-started"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "React",
+        icon: <IconContainer alt="react" />,
+        link: "/paas/react/getting-started"
+      },
+      {
+        title: "Angular",
+        icon: <IconContainer alt="angularjs" />,
+        link: "/paas/angular/getting-started"
+      },
+      {
+        title: "Vue",
+        icon: <IconContainer alt="vue" />,
+        link: "/paas/vue/getting-started"
+      },
+      {
+        title: "Static",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/getting-started"
+      },
+      // {
+      //   title: "Golang",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/paas//getting-started"
+      // },
+      {
+        title: "Docker",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas/docker/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/paas/cicd/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            جزئیات دیتابیس
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "ویژگی‌های دیتابیس در لیارا",
+        icon: <GoInfo />,
+        link: "/dbaas/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "پلن‌های دیتابیس",
+        icon: <GoCpu />,
+        link: "/dbaas/details/plans/about"
+      },
+      {
+        title: "شبکه خصوصی",
+        icon: <GoShieldLock  />,
+        link: "/dbaas/details/private-network"
+      },
+      {
+        title: "رویدادها",
+        icon: <GoEye />,
+        link: "/dbaas/details/events"
+      },
+      {
+        title: "گزارشات",
+        icon: <GoGraph />,
+        link: "/dbaas/details/observations"
+      },
+      {
+        title: "تغییر پلن در دیتابیس",
+        icon: <GoGitCompare />,
+        link: "/dbaas/details/change-plan"
+      },
+      {
+        title: "حذف یک دیتابیس",
+        icon: <GoXCircle  />,
+        link: "/dbaas/details/delete-app"
+      },
+      {
+        title: "لینک‌های اتصال",
+        icon: <GoLink   />,
+        link: "/dbaas/details/connection-links"
+      },
+      {
+        title: "شخصی‌سازی پارامترهای دیتابیس",
+        icon: <GoProjectTemplate    />,
+        link: "/dbaas/details/customizing-db-parameters"
+      },
+    ],
+    mariadb: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس MariaDB 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/mariadb/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/mariadb/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/mariadb/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/mariadb/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PHPMyAdmin",
+        link: "/dbaas/mariadb/how-tos/connect-via-gui/phpmyadmin"
+      },
+      {
+        title: "DBeaver",
+        link: "/dbaas/mariadb/how-tos/connect-via-gui/dbeaver"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/mariadb/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "MySQL CLI",
+        link: "/dbaas/mariadb/how-tos/connect-via-cli/mysql"
+      },
+      {
+        title: "MariaDB CLI",
+        link: "/dbaas/mariadb/how-tos/connect-via-cli/mariadb"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/mariadb/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/mariadb/how-tos/restore-backup"
+      },
+      
+    ],
+    mysql: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس MySQL 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/mysql/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/mysql/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/mysql/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/mysql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PHPMyAdmin",
+        link: "/dbaas/mysql/how-tos/connect-via-gui/phpmyadmin"
+      },
+      {
+        title: "DBeaver",
+        link: "/dbaas/mysql/how-tos/connect-via-gui/dbeaver"
+      },
+      {
+        title: "MySQL Workbench",
+        link: "/dbaas/mysql/how-tos/connect-via-gui/workbench"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/mysql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "MySQL CLI",
+        link: "/dbaas/mysql/how-tos/connect-via-cli/mysql"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/mysql/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/mysql/how-tos/restore-backup"
+      },
+      
+    ],
+    postgresql: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس PostgreSQL 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/postgresql/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/postgresql/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/postgresql/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/postgresql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PGAdmin",
+        link: "/dbaas/postgresql/how-tos/connect-via-gui/pgadmin"
+      },
+      {
+        title: "DBeaver",
+        link: "/dbaas/postgresql/how-tos/connect-via-gui/dbeaver"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/postgresql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PSQL",
+        link: "/dbaas/postgresql/how-tos/connect-via-cli/psql"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/postgresql/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/postgresql/how-tos/restore-backup"
+      },
+      
+    ],
+    mssql: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس MSSQL (SQL Server) 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/mssql/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/mssql/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/mssql/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/django"
+      },
+      // {
+      //   title: "Flask",
+      //   icon: <IconContainer alt="flask" />,
+      //   link: "/dbaas/mssql/how-tos/connect-via-platform/flask"
+      // },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/mssql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "SQL Server Management Studio",
+        link: "/dbaas/mssql/how-tos/connect-via-gui/mssql-server-studio"
+      },
+      {
+        title: "DBeaver",
+        link: "/dbaas/mssql/how-tos/connect-via-gui/dbeaver"
+      },
+      {
+        title: "Azure Data Studio",
+        link: "/dbaas/mssql/how-tos/connect-via-gui/azure-data-studio"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/mssql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "SQLCMD",
+        link: "/dbaas/mssql/how-tos/connect-via-cli/sqlcmd"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/mssql/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/mssql/how-tos/restore-backup"
+      },
+      
+    ],
+    mongodb: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس MongoDB
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/mongodb/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/mongodb/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/mongodb/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/nextjs"
+      },
+      // {
+      //   title: "Laravel",
+      //   icon: <IconContainer alt="laravel" />,
+      //   link: "/dbaas/mongodb/how-tos/connect-via-platform/laravel"
+      // },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/flask"
+      },
+      // {
+      //   title: "NET.",
+      //   icon: <IconContainer alt="netcore" />,
+      //   link: "/dbaas/mongodb/how-tos/connect-via-platform/dotnet"
+      // },
+      // {
+      //   title: "Golang",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/dbaas/mongodb/how-tos/connect-via-platform/go"
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/mongodb/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "MongoDB Compass",
+        link: "/dbaas/mongodb/how-tos/connect-via-gui/mongodb-compass"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/mongodb/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "mongosh",
+        link: "/dbaas/mongodb/how-tos/connect-via-cli/mongosh"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/mongodb/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/mongodb/how-tos/restore-backup"
+      },
+      
+    ],
+    redis: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس Redis
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/redis/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/redis/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/redis/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/flask"
+      },
+      // {
+      //   title: "NET.",
+      //   icon: <IconContainer alt="netcore" />,
+      //   link: "/dbaas/redis/how-tos/connect-via-platform/dotnet"
+      // },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/redis/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "PHPRedisAdmin",
+        link: "/dbaas/redis/how-tos/connect-via-gui/phpredisadmin"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            <Link href="/dbaas/redis/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+          </div>
+        )
+      },
+      {
+        title: "redis-cli",
+        link: "/dbaas/redis/how-tos/connect-via-cli/redis-cli"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoReply    />
+          مدیریت فایل‌های پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "/dbaas/redis/how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "/dbaas/redis/how-tos/restore-backup"
+      },
+      
+    ],
+
+    'elastic-search': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیتابیس ElasticSearch
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/elastic-search/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/elastic-search/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/elastic-search/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      // {
+      //   title: "NodeJS",
+      //   icon: <IconContainer alt="nodejs" />,
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-platform/nodejs"
+      // },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/flask"
+      },
+      // {
+      //   title: "NET.",
+      //   icon: <IconContainer alt="netcore" />,
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-platform/dotnet"
+      // },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/go"
+      },
+      {
+        title: "Python Scripts",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/python"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoBrowser   />
+      //     <Link href="/dbaas/elastic-search/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "PHPRedisAdmin",
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-gui/phpelastic-searchadmin"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoTerminal   />
+      //       <Link href="/dbaas/elastic-search/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "elastic-search-cli",
+      //   link: "/dbaas/elastic-search/how-tos/connect-via-cli/elastic-search-cli"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoReply    />
+      //     مدیریت فایل‌های پشتیبان
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "ایجاد فایل پشتیبان",
+      //   link: "/dbaas/elastic-search/how-tos/create-backup"
+      // },
+      // {
+      //   title: "بازیابی فایل پشتیبان",
+      //   link: "/dbaas/elastic-search/how-tos/restore-backup"
+      // },
+      
+    ],
+
+  },
+
+  
   
 };

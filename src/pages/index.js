@@ -78,25 +78,25 @@ const PRODUCTS = [
     link: "/dbaas/about"
   },
   {
-    title: "ذخیره‌سازی ابری یا Object Storage",
-    icon: <GoServer />,
-    desc:
-      "جزئیات دقیق مربوط به سرویس ذخیره‌سازی ابری لیارا، نحوه استفاده از آن و مدیریت باکت‌ها",
-    link: "/"
-  },
-  {
     title: "ایمیل سرور",
     icon: <GoMail />,
     desc:
       "اطلاعات مربوط به سرویس ایمیل لیارا، نحوه راه‌اندازی، اتصال برنامه به ایمیل سرور و مدیریت ایمیل‌ها",
-    link: "/"
+    link: "/email-server/about"
+  },
+  {
+    title: "ذخیره‌سازی ابری یا Object Storage",
+    icon: <GoServer />,
+    desc:
+      "جزئیات دقیق مربوط به سرویس ذخیره‌سازی ابری لیارا، نحوه استفاده از آن و مدیریت باکت‌ها",
+    link: "/object-storage/about"
   },
   {
     title: "سرویس مدیریت دامنه یا DNS",
     icon: <GoGlobe />,
     desc:
       "اطلاعات مربوط به سرویس ایمیل لیارا، نحوه راه‌اندازی، اتصال برنامه به ایمیل سرور و مدیریت ایمیل‌ها",
-    link: "/"
+    link: "/dns-management-system/about"
   }
 ];
 

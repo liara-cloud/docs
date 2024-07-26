@@ -22,6 +22,9 @@ const Sidebar = () => {
     if (router.route.startsWith("/dbaas/")) {
       return data.dbaas[sidebar_name];
     }
+    if (router.route.startsWith("/email-server/")) {
+      return data.email_server[sidebar_name];
+    }
 
     return data.home;
   };
