@@ -1,0 +1,40 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# گزارشات سخت‌افزاری
+
+<hr className="mb-2" />
+از گزارشات سخت‌افزاری دیتابیس خود غافل نشوید! مصرف منابع زیاد در دیتابیس‌تان شاید نشانه یک هشدار در مورد امنیت دیتابیس‌تان باشد، شاید هم نشان از این داشته باشد که کاربران شما نسبت به روزهای دیگر، امروز کار با پروژه شما را بیش از پیش، ترجیح داده‌اند. 
+از این رو، مدیریت گزارشات مربوط به سخت‌افزار دیتابیس‌تان، از جمله موارد مهمی است که به ارتقای روزافزون پروژه شما، کمک خواهد کرد.
+
+<Section id="monitoring-hardware-logs" title="مشاهده گزارشات سخت‌افزاری" />
+برای مشاهده گزارشات سخت‌افزاری دیتابیس خود، کافیست تا وارد صفحه **گزارشات** شوید. در این صفحه، می‌توانید اطلاعاتی اعم از **میزان مصرف پردازنده**، **میزان مصرف حافظه**، **میزان ترافیک ورودی**، **میزان ترافیک خروجی** و **میزان مصرف فضا** را ببینید.
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/db-observations.png" alt="hardware logs"/>
+<div className="h-4" />
+همچنین، شما می‌توانید ارائه آنی گزارشات را، متوقف کنید و حتی گزارشات را تا 60 روز گذشته، مشاهده بفرمایید.
+<Section id="find-best-plan-by-monitoring" title="پیدا کردن پلن مناسب با استفاده از گزارشات سخت‌افزاری" />
+یکی از راه‌های ساده پیدا کردن بهترین منابع سخت‌افزاری متناسب با دیتابیس‌تان، آزمون و خطا با استفاده از گزارشات دیتابیس است. در ابتدا شما می‌توانید پلن پیش‌فرض لیارا را برای خود انتخاب کنید؛ در ادامه راه، اگر مصرف منابع بیش از حد انتظار باشد، کافیست تا منابع سخت‌افزاری را، ارتقا دهید. از طرفی، شاید نیاز دیتابیس شما حتی کمتر از پلن تهیه شده باشد؛ در این حالت، شما می‌توانید به پلن‌های قبلی، برگردید.
+
+
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+ در نظر داشته باشید که برای بازگشت به پلن قبلی، بایستی که به اندازه فضای دیسک ارائه شده در پلن جدید، مصرف دیسک داشته باشید.
+</p>
+</Alert>
+
+</Layout>

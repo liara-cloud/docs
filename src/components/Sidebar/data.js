@@ -2577,7 +2577,7 @@ export default {
       {
         title: "انتقال دیتابیس",
         icon: <GoPackageDependents />,
-        link: "/paas/move"
+        link: "/dbaas/move"
       }
     ],
 
@@ -2585,8 +2585,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoContainer />
-            پلتفرم
+            <GoDatabase />
+            دیتابیس
           </div>
         )
       },
@@ -2596,116 +2596,63 @@ export default {
         link: "/"
       },
       {
-        title: "درباره سرویس پلتفرم",
+        title: "درباره سرویس دیتابیس",
         icon: <GoInfo />,
-        link: "/paas/about"
+        link: "/dbaas/about"
       },
       {
         hr: true
       },
       {
-        badge: "پلتفرم‌های قابل ارائه"
+        badge: "دیتابیس‌های قابل ارائه"
       },
       {
-        title: "NodeJS",
-        icon: <IconContainer alt="nodejs" />,
-        link: "/paas/nodejs/getting-started"
+        title: "MariaDB",
+        icon: <IconContainer alt="mariadb" />,
+        link: "/dbaas/mariadb/quick-setup"
       },
       {
-        title: "NextJS",
-        icon: <IconContainer alt="next" />,
-        link: "/paas/nextjs/getting-started"
+        title: "MySQL",
+        icon: <IconContainer alt="mysql" />,
+        link: "/dbaas/mysql/quick-setup"
       },
       {
-        title: "Laravel",
-        icon: <IconContainer alt="laravel" />,
-        link: "/paas/laravel/getting-started"
+        title: "PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/dbaas/postgresql/quick-setup"
       },
       {
-        title: "PHP",
-        icon: <IconContainer alt="php" />,
-        link: "/paas/php/getting-started"
+        title: "MSSQL (SQL Server)",
+        icon: <IconContainer alt="mssql" />,
+        link: "/dbaas/mssql/quick-setup"
       },
       {
-        title: "Django",
-        icon: <IconContainer alt="django" />,
-        link: "/paas/django/getting-started"
+        title: "MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/dbaas/mongodb/quick-setup"
       },
       {
-        title: "Flask",
-        icon: <IconContainer alt="flask" />,
-        link: "/paas/flask/getting-started"
+        title: "Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/dbaas/redis/quick-setup"
       },
       {
-        title: "NET.",
-        icon: <IconContainer alt="netcore" />,
-        link: "/paas/dotnet/getting-started"
-      },
-      {
-        title: "React",
-        icon: <IconContainer alt="react" />,
-        link: "/paas/react/getting-started"
-      },
-      {
-        title: "Angular",
-        icon: <IconContainer alt="angularjs" />,
-        link: "/paas/angular/getting-started"
-      },
-      {
-        title: "Vue",
-        icon: <IconContainer alt="vue" />,
-        link: "/paas/vue/getting-started"
-      },
-      {
-        title: "Static",
-        icon: <IconContainer alt="HTML5" />,
-        link: "/paas/static/getting-started"
-      },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/paas//getting-started"
-      // },
-      {
-        title: "Docker",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas/docker/getting-started"
+        title: "ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/dbaas/elastic-search/quick-setup"
       },
       {
         hr: true
       },
       {
-        title: "جزئیات پلتفرم",
+        title: "جزئیات دیتابیس",
         icon: <GoNote />,
-        link: "/paas/details/about"
+        link: "/dbaas/details/about"
       },
       {
-        title: "مدیریت دیسک‌",
-        icon: <GoCodespaces />,
-        link: "/paas/disks/about"
-      },
-      {
-        title: "مدیریت دامنه‌",
-        icon: <GoGlobe />,
-        link: "/paas/domains/about"
-      },
-      {
-        title: "قابلیت CI/CD",
-        icon: <GoWorkflow />,
-        link: "/paas/cicd/about"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "به‌روزرسانی پلتفرم",
-        icon: <GoSync />,
-        link: "/paas/update"
-      },
-      {
-        title: "انتقال پلتفرم",
+        title: "انتقال دیتابیس",
         icon: <GoPackageDependents />,
-        link: "/paas/move"
+        link: "/dbaas/move"
       }
     ],
 
@@ -2713,7 +2660,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoContainer />
+            <GoDatabase />
             جزئیات دیتابیس
           </div>
         )
@@ -2759,7 +2706,7 @@ export default {
       {
         title: "حذف یک دیتابیس",
         icon: <GoXCircle  />,
-        link: "/dbaas/details/delete-app"
+        link: "/dbaas/details/delete-database"
       },
       {
         title: "لینک‌های اتصال",
@@ -3716,7 +3663,7 @@ export default {
       {
         title: "درباره برنامه‌های آماده",
         icon: <GoInfo />,
-        link: "/paas/about"
+        link: "/one-click-apps/about"
       },
       {
         hr: true

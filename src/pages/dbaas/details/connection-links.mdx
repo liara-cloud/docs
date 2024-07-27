@@ -1,0 +1,50 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# لینک‌های اتصال (دسترسی سریع)  در یک دیتابیس
+<hr className="mb-2" />
+
+در صفحه **نحوه اتصال** یک دیتابیس، شما می‌توانید در قسمت **دسترسی سریع** آن، از لینک‌های قرار گرفته برای اتصال سریع به یک دیتابیس استفاده کنید. در ادامه این لینک‌ها مورد بررسی قرار گرفته‌اند.
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/quick-connection.png" alt="db connection link"/>
+<div className="h-4" />
+
+<Alert variant="info">
+<p>
+هر لینک، دو بخش **شبکه خصوصی** و **شبکه عمومی** دارد که شما می‌توانید در برنامه‌های با شبکه خصوصی مشترک با دیتابیس، از لینک‌های شبکه خصوصی استفاده کنید و برای برنامه‌های دیگر (در لوکال و یا جاهای دیگر)، از لینک‌های شبکه عمومی، استفاده کنید.
+</p>
+</Alert>
+<Alert variant="warning">
+<p>
+در صورتی که گزینه دسترسی عمومی به دیتابیس، خاموش باشد، لینک‌های شبکه عمومی کاربردی ندارند و به شما، نمایش داده نخواهند شد.
+</p>
+</Alert>
+<Section id="direct-connection" title="اتصال مستقیم" />
+
+لینک‌های موجود با عنوان **اتصال مستقیم** دستوری است که متناسب با نوع دیتابیس و CLI مخصوص به خودش برای شما تهیه شده است. 
+پس در نظر داشته باشید که برای استفاده از این لینک، باید CLI مربوط به دیتابیس را در سیستم یا سرور خود، نصب داشته باشید. 
+
+<Section id="uri-connection" title="اتصال به دیتابیس با استفاده از URI" />
+URI یا Uniform Resource Identifier در یک دیتابیس، یک String است که به طور منحصر به فرد و در یک خط، اطلاعات اتصال به پایگاه داده را فراهم می‌کند.
+این لینک مخصوص مواقعی است که پلتفرم یا برنامه موجود در پروژه، شامل متدهایی است که می‌تواند از این رشته برای اتصال به دیتابیس، استفاده کند. 
+
+
+
+
+
+
+
+</Layout>

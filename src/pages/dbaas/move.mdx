@@ -1,0 +1,109 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# انتقال سرویس دیتابیس در لیارا
+
+<hr className="mb-2" />
+انتقال یک سرویس می‌تواند دلایل مختلفی داشته باشد و شاید به خاطر عواملی مثل بهبود عملکرد، افزایش امنیت، کاهش هزینه‌ها، و بهره‌وری، نیاز به انجام آن باشد. 
+اگر که قصد دارید دیتابیس خود را در لیارا انتقال دهید؛ کافیست تا مراحل زیر را قدم به قدم انجام دهید؛ در نظر داشته باشید که دیتابیس مبدأ با نام فرضی <Important>source-db</Important> و دیتابیس مقصد با نام فرضی <Important>target-db</Important> مشخص شده‌اند که شما باید آن‌‌ها را طبق شناسه دو دیتابیس مبدأ و مقصد خود، تغییر دهید.
+
+<Step  steps={[
+    {
+    step: "۱",
+    content: (
+    <>
+            <h3>ایجاد دیتابیس مقصد</h3>
+            <p>
+            دیتابیس <Important>target-db</Important> را با <a href="/dbaas/details/plans/about" className="blue-link">پلن</a> و <a href="/dbaas/details/private-network" className="blue-link">شبکه خصوصی</a> مدنظر خود، و همان نسخه دیتابیس <Important>source-db</Important> ایجاد کنید.
+            در زمان راه‌اندازی دیتابیس جدید، باید دسترسی از طریق شبکه‌ی عمومی را نیز، فعال کنید.
+            </p>
+    </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+    <>
+            <h3>تهیه فایل پشتیبان</h3>
+            <p>
+                وارد صفحه <b>پشتیبان‌گیری</b> در دیتابیس <Important>source-db</Important> خود شوید و از دیتابیس خود، یک فایل پشتیبان تهیه کنید. پس از تهیه و دانلود فایل پشتیبان دیتابیس <Important>source-db</Important> باید فایل پشتیبان دانلود شده را از حالت فشرده خارج کنید و فایل‌های <Important>sql</Important> را در یک دایرکتوری برای بازیابی در مرحله‌ی بعد نگه‌ دارید.
+            </p>
+    </>
+    )
+    },
+    {
+    step: "۳",
+    content: (
+    <>
+        <h3>انتقال داده‌ها</h3>
+        <Tabs 
+        tabs={["MySQL", "MariaDB", "PostgreSQL", "MongoDB"]} 
+        content={[
+        <>
+            با استفاده از پنل مدیریت PHPMyAdmin می‌توانید فایل sql دانلود شده را در دیتابیس <Important>target-db</Important>، بازیابی کنید.
+            <div className="h-2" />
+            <img
+                src="https://files.liara.ir/docs/mariadb/restore-backup-into-mariadb-database-with-phpmyadmin.gif"
+                alt="database restore backup"
+            />    
+            <div className="h-2" />    
+        </>,
+        <>
+            با استفاده از پنل مدیریت PHPMyAdmin می‌توانید فایل sql دانلود شده را در دیتابیس <Important>target-db</Important>، بازیابی کنید.
+            <div className="h-2" />
+            <img
+                src="https://files.liara.ir/docs/mariadb/restore-backup-into-mariadb-database-with-phpmyadmin.gif"
+                alt="database restore backup"
+            />    
+            <div className="h-2" />    
+        </>,
+        <>
+            با استفاده از پنل مدیریت PHPMyAdmin می‌توانید فایل sql دانلود شده را در دیتابیس <Important>target-db</Important>، بازیابی کنید.
+            <div className="h-2" />
+            <img
+                src="https://files.liara.ir/docs/postgresql/restore-backup-into-postgresql-database-with-pgadmin.gif"
+                alt="database restore backup"
+            />   
+            <div className="h-2" />    
+        </>,
+        <>
+            <p>
+                دستور زیر را در سیستم خود، برای بازیابی داده‌ها، اجرا کنید. در نظر داشته باشید که ابزار <a href="/dbaas/mongodb/how-tos/connect-via-cli/mongosh" className="blue-link">MongoDB-CLI</a>، باید بر روی سیستم‌تان، نصب باشد:
+            </p>
+            <div className="h-2" />
+            <div dir="ltr">
+            <Highlight className="bash">
+            {`mongorestore --uri='CONNECTION_URI' --archive=my-db.dump`}
+            </Highlight>
+            </div>
+            <Asciinema id="mongodb-restore" />
+
+            <p>
+                در دستور فوق، <Important>CONNECTION_URI</Important> را با آدرس URI در بخش دسترسی شبکه‌ی عمومی و <Important>my-db.dump</Important> را با مسیر فایل پشتیبان Extract شده جایگزین کنید.
+            </p>
+        </>,
+        
+        ]} 
+/>
+    </>
+    )
+    },
+]}/>
+<div className="h-4" />
+در نهایت؛ تمامی کارها برای انتقال دیتابیس‌تان انجام شده است و می‌توانید دیتابیس <Important>source-db</Important> خود را، پاک کنید و از <Important>target-db</Important> استفاده کنید.
+
+</Layout>
