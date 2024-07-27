@@ -4919,24 +4919,40 @@ export default {
         )
       },
       {
-        title: "مدیریت اکانت‌های ایمیل",
-        link: "/email-server/details/about"
+        title: "اضافه کردن نشانی",
+        link: "/email-server/how-tos/add-account"
       },
       {
-        title: "مدیریت ایمیل سرور",
-        link: "/email-server/move"
+        title: "ارسال سریع ایمیل از کنسول",
+        link: "/email-server/how-tos/send-email-via-console"
       },
       {
-        title: "تغییر حالت ارسال",
-        link: "/email-server/move"
+        title: "افزودن کاربر SMTP",
+        link: "/email-server/how-tos/add-smtp-user"
       },
       {
-        title: "مدیریت اسپم‌ها",
-        link: "/email-server/move"
+        title: "مدیریت ایمیل‌های ارسالی",
+        link: "/email-server/how-tos/manage-sent-emails"
+      },
+      {
+        title: "مدیریت ایمیل‌های دریافتی",
+        link: "/email-server/how-tos/manage-incoming-emails"
+      },
+      {
+        title: "تنظیم هرزنامه",
+        link: "/email-server/how-tos/set-spam"
+      },
+      {
+        title: "مسدودسازی ایمیل‌های ورودی",
+        link: "/email-server/how-tos/block-emails"
+      },
+      {
+        title: "کنترل اسپم ایمیل",
+        link: "/email-server/how-tos/control-spam"
       },
       {
         title: "مدیریت محدودیت‌ها",
-        link: "/email-server/move"
+        link: "/email-server/how-tos/manage-limitations"
       },
       {
         hr: true
@@ -4995,18 +5011,18 @@ export default {
       {
         title: "جزئیات ایمیل‌سرور",
         icon: <GoNote />,
-        link: "/paas/details/about"
+        link: "/email-server/details/about"
       },
 
       
     ],
 
-    move: [
+    'quick-setup': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoContainer />
-            پلتفرم
+            <GoMail  />
+            ایمیل‌سرور
           </div>
         )
       },
@@ -5016,117 +5032,272 @@ export default {
         link: "/"
       },
       {
-        title: "درباره سرویس پلتفرم",
+        title: "درباره سرویس ایمیل‌سرور",
         icon: <GoInfo />,
-        link: "/paas/about"
+        link: "/email-server/about"
+      },
+      {
+        title: "راه‌اندازی سریع ایمیل‌سرور!",
+        icon: <GoZap />,
+        link: "/email-server/quick-setup"
       },
       {
         hr: true
       },
       {
-        badge: "پلتفرم‌های قابل ارائه"
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoRead />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن نشانی",
+        link: "/email-server/how-tos/add-account"
+      },
+      {
+        title: "ارسال سریع ایمیل از کنسول",
+        link: "/email-server/how-tos/send-email-via-console"
+      },
+      {
+        title: "افزودن کاربر SMTP",
+        link: "/email-server/how-tos/add-smtp-user"
+      },
+      {
+        title: "مدیریت ایمیل‌های ارسالی",
+        link: "/email-server/how-tos/manage-sent-emails"
+      },
+      {
+        title: "مدیریت ایمیل‌های دریافتی",
+        link: "/email-server/how-tos/manage-incoming-emails"
+      },
+      {
+        title: "تنظیم هرزنامه",
+        link: "/email-server/how-tos/set-spam"
+      },
+      {
+        title: "مسدودسازی ایمیل‌های ورودی",
+        link: "/email-server/how-tos/block-emails"
+      },
+      {
+        title: "کنترل اسپم ایمیل",
+        link: "/email-server/how-tos/control-spam"
+      },
+      {
+        title: "مدیریت محدودیت‌ها",
+        link: "/email-server/how-tos/manage-limitations"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage />
+          اتصال به ایمیل‌سرور از طریق پلتفرم
+          </div>
+        )
       },
       {
         title: "NodeJS",
         icon: <IconContainer alt="nodejs" />,
-        link: "/paas/nodejs/getting-started"
+        link: "/email-server/connect-via-platform/nodejs"
       },
       {
         title: "NextJS",
         icon: <IconContainer alt="next" />,
-        link: "/paas/nextjs/getting-started"
+        link: "/email-server/connect-via-platform/nextjs"
       },
       {
         title: "Laravel",
         icon: <IconContainer alt="laravel" />,
-        link: "/paas/laravel/getting-started"
+        link: "/email-server/connect-via-platform/laravel"
       },
       {
         title: "PHP",
         icon: <IconContainer alt="php" />,
-        link: "/paas/php/getting-started"
+        link: "/email-server/connect-via-platform/php"
       },
       {
         title: "Django",
         icon: <IconContainer alt="django" />,
-        link: "/paas/django/getting-started"
+        link: "/email-server/connect-via-platform/django"
       },
       {
         title: "Flask",
         icon: <IconContainer alt="flask" />,
-        link: "/paas/flask/getting-started"
+        link: "/email-server/connect-via-platform/flask"
       },
       {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
-        link: "/paas/dotnet/getting-started"
+        link: "/email-server/connect-via-platform/dotnet"
       },
       {
-        title: "React",
-        icon: <IconContainer alt="react" />,
-        link: "/paas/react/getting-started"
-      },
-      {
-        title: "Angular",
-        icon: <IconContainer alt="angularjs" />,
-        link: "/paas/angular/getting-started"
-      },
-      {
-        title: "Vue",
-        icon: <IconContainer alt="vue" />,
-        link: "/paas/vue/getting-started"
-      },
-      {
-        title: "Static",
-        icon: <IconContainer alt="HTML5" />,
-        link: "/paas/static/getting-started"
-      },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/paas//getting-started"
-      // },
-      {
-        title: "Docker",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas/docker/getting-started"
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/email-server/connect-via-platform/go"
       },
       {
         hr: true
       },
       {
-        title: "جزئیات پلتفرم",
+        title: "جزئیات ایمیل‌سرور",
         icon: <GoNote />,
-        link: "/paas/details/about"
+        link: "/email-server/details/about"
+      },
+
+      
+    ],
+
+    'how-tos':  [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoMail  />
+            ایمیل‌سرور
+          </div>
+        )
       },
       {
-        title: "مدیریت دیسک‌",
-        icon: <GoCodespaces />,
-        link: "/paas/disks/about"
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
       },
       {
-        title: "مدیریت دامنه‌",
-        icon: <GoGlobe />,
-        link: "/paas/domains/about"
+        title: "درباره سرویس ایمیل‌سرور",
+        icon: <GoInfo />,
+        link: "/email-server/about"
       },
       {
-        title: "قابلیت CI/CD",
-        icon: <GoWorkflow />,
-        link: "/paas/cicd/about"
+        title: "راه‌اندازی سریع ایمیل‌سرور!",
+        icon: <GoZap />,
+        link: "/email-server/quick-setup"
       },
       {
         hr: true
       },
       {
-        title: "به‌روزرسانی پلتفرم",
-        icon: <GoSync />,
-        link: "/paas/update"
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoRead />
+            نحوه
+          </div>
+        )
       },
       {
-        title: "انتقال پلتفرم",
-        icon: <GoPackageDependents />,
-        link: "/paas/move"
-      }
+        title: "اضافه کردن نشانی",
+        link: "/email-server/how-tos/add-account"
+      },
+      {
+        title: "ارسال سریع ایمیل از کنسول",
+        link: "/email-server/how-tos/send-email-via-console"
+      },
+      {
+        title: "افزودن کاربر SMTP",
+        link: "/email-server/how-tos/add-smtp-user"
+      },
+      {
+        title: "مدیریت ایمیل‌های ارسالی",
+        link: "/email-server/how-tos/manage-sent-emails"
+      },
+      {
+        title: "مدیریت ایمیل‌های دریافتی",
+        link: "/email-server/how-tos/manage-incoming-emails"
+      },
+      {
+        title: "تنظیم هرزنامه ایمیل‌های دریافتی",
+        link: "/email-server/how-tos/set-spam"
+      },
+      {
+        title: "مسدودسازی ایمیل‌های ورودی",
+        link: "/email-server/how-tos/block-emails"
+      },
+      {
+        title: "کنترل هرزنامه ایمیل‌های ارسالی",
+        link: "/email-server/how-tos/control-spam"
+      },
+      {
+        title: "مدیریت محدودیت‌ها",
+        link: "/email-server/how-tos/manage-limitations"
+      },
+      {
+        title: "تنظیم فوروارد",
+        link: "/email-server/how-tos/set-forward"
+      },
+      {
+        title: "تغییر حالت ارسال ایمیل",
+        link: "/email-server/how-tos/change-sending-mode"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage />
+          <a href="/email-server/how-tos/connect-via-platform/about">
+          اتصال به ایمیل‌سرور از طریق پلتفرم
+          </a>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/email-server/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/email-server/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/email-server/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/email-server/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/email-server/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/email-server/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/email-server/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/email-server/how-tos/connect-via-platform/go"
+      },
+      {
+        title: "Ghost",
+        icon: <IconContainer alt="ghost" />,
+        link: "/email-server/how-tos/connect-via-platform/ghost"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات ایمیل‌سرور",
+        icon: <GoNote />,
+        link: "/email-server/details/about"
+      },
+
+      
     ],
 
     details: [

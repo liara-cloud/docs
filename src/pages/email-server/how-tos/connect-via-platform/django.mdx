@@ -1,0 +1,81 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های Django
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/django/django-email-server.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/django-getting-started/tree/email-server" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Django، کافیست
+تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST=smtp.c1.liara.email
+EMAIL_PORT=587
+EMAIL_HOST_USER=YOUR_USERNAME
+EMAIL_HOST_PASSWORD=YOUR_PASSWORD
+EMAIL_USE_TLS=True`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+با تنظیم <Important>EMAIL_USE_TLS=True</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
+
+حال، کافیست تا قطعه کدی مشابه قطعه کد زیر را به فایل <Important>settings.py</Important> خود، اضافه کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`from django.core.mail import send_mail
+send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@example.com'], fail_silently=False)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در صورتی که از پکیج django-allauth برای احراز هویت و ارسال ایمیل تایید حساب کاربری استفاده می‌کنید، نیاز است مقدار <Important>from</Important> را در فایل <Important>settings.py</Important> به‌صورت زیر مشخص کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`DEFAULT_FROM_EMAIL = 'from@example.com'`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant='info'>
+<p>
+باید به جای <Important>from@example.com</Important> یکی از نشانی‌های اضافه شده در سرویس ایمیل، قرار بگیرد.
+</p>
+</Alert>
+
+
+</Layout>

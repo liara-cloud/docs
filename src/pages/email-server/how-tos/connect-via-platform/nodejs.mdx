@@ -1,0 +1,103 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های NodeJS
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/nodejs/nodejs-emailserver.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/nodejs-getting-started/tree/email-server" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از سرویس ایمیل در برنامه‌های NodeJS، می‌توانید از 
+پکیج nodemailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install nodemailer`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.liara.ir
+MAIL_PORT=587
+MAIL_USER=my-app
+MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const nodemailer = require("nodemailer");
+const MAIL_HOST = process.env.MAIL_HOST;
+const MAIL_PORT = process.env.MAIL_PORT;
+const MAIL_USER = process.env.MAIL_USER;
+const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
+
+const transporter = nodemailer.createTransport({
+  host: MAIL_HOST,
+  port: MAIL_PORT,
+  tls: true,
+  auth: {
+    user: MAIL_USER,
+    pass: MAIL_PASSWORD,
+  }
+});
+
+transporter.sendMail({
+  from: 'MyName <from@example.com>',
+  to: 'to@example.com',
+  subject: 'Test Email Subject',
+  html: '<h1>Example HTML Message Body</h1>'
+})
+  .then(() => console.log('OK, Email has been sent.'))
+  .catch(console.error);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant='info'>
+<p>
+فیلد <Important>from</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+<Alert variant='info'>
+<p>
+با تنظیم <Important>tls: true</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
+
+</Layout>

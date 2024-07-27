@@ -1,0 +1,202 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های Laravel
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/laravel/laravel-email-server.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/laravel-getting-started/tree/email-server" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Laravel، 
+کافیست تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_DRIVER=smtp
+MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=587
+MAIL_ENCRYPTION=tls
+MAIL_USERNAME=my-app
+MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+با تنظیم <Important>MAIL_ENCRYPTION=tls</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
+
+برای اتصال برنامه به ایمیل‌سرور، باید با اجرای دستور زیر، یک کلاس Mailable ایجاد کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:mail NotifyMail`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+ سپس به دایرکتوری <Important>app/mail</Important> بروید و فایل <Important>notifyMail.php</Important> را باز کنید و کد زیر را به آن اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`<?php
+
+namespace AppMail;
+
+use IlluminateBusQueueable;
+use IlluminateContractsQueueShouldQueue;
+use IlluminateMailMailable;
+use IlluminateMailMailablesContent;
+use IlluminateMailMailablesEnvelope;
+use IlluminateQueueSerializesModels;
+
+class NotifyMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * Create a new message instance.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            subject: 'Notify Mail',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            view: 'emails.demoMail',
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, IlluminateMailMailablesAttachment>
+     */
+    public function attachments(): array
+    {
+        return [];
+    }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، یک قالب ایمیل با نام <Important>demoMail.blade.php</Important> در مسیر <Important>resources/views/emails</Important> ایجاد کنید و قطعه کد زیر را، در آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+        {`<!DOCTYPE html>
+<html>
+<head>
+  <title>Laravel email example with Liara</title>
+</head>
+<body>
+
+  <h1>This is a test mail to see how Liara works.</h1>
+  <p>Laravel 10 send email example.</p>
+
+</body>
+</html> `}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، در <Important>routes/web.php</Important> مسیرهای زیر را برای ارسال ایمیل اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`use App\\Http\\Controllers\\SendEmailController;
+
+Route::post('send-email', [SendEmailController::class, 'index']);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، با استفاده از دستور زیر یک کنترلر جدید ایجاد کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`php artisan make:controller SendEmailController`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت قطعه کد زیر را در <Important>app/Http/Controllers/SendEmailController.php</Important>، وارد کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`<?php
+
+namespace App\\Http\\Controllers;
+  
+use Illuminate\\Http\\Request;
+  
+use Mail;
+  
+use App\\Mail\\NotifyMail;
+  
+  
+class SendEmailController extends Controller
+{
+      
+  public function index()
+  {
+    Mail::to('destination@gmail.com')->send(new NotifyMail());
+  
+    return "Great! Your email has been sent successfully.";
+  } 
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+با انجام کارهای فوق، می‌توانید از ایمیل‌سرور در برنامه خود، استفاده کنید.
+
+
+</Layout>

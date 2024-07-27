@@ -1,0 +1,171 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های NextJS
+<hr className="mb-2" />
+
+برای استفاده از سرویس ایمیل در برنامه‌های NextJS، می‌توانید از 
+پکیج nodemailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install nodemailer`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.liara.ir
+MAIL_PORT=587
+MAIL_USER=my-app
+MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، کافیست که در مسیر 
+<Important>pages/api</Important> یک فایل به نام <Important>sendEmail.js</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`import nodemailer from 'nodemailer';
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed', message: 'Only POST requests are allowed' });
+  }
+
+  const { to, subject, text } = req.body;
+
+  if (!to || !subject || !text) {
+    return res.status(400).json({ error: 'Bad Request', message: 'Missing required parameters' });
+  }
+
+  // Create a nodemailer transporter using your SMTP credentials
+  const transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  try {
+    // Send email
+    const info = await transporter.sendMail({
+      from: process.env.EMAIL_FROM,
+      to,
+      subject,
+      text,
+    });
+
+    console.log('Email sent:', info.messageId);
+    return res.status(200).json({ success: true, messageId: info.messageId });
+  } catch (error) {
+    console.error('Error sending email:', error.message);
+    return res.status(500).json({ error: 'Internal Server Error', message: 'Failed to send email' });
+  }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+فیلد <Important>from</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+تمامی کارها انجام شده است و شما می‌توانید از ایمیل‌سرور در برنامه خود استفاده کنید؛ به عنوان مثال، می‌توانید
+قطعه کد زیر را در فایل <Important>pages/index.js</Important>، قرار دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { useState } from 'react';
+
+export default function Home() {
+  const [emailData, setEmailData] = useState({
+    to: '',
+    subject: '',
+    text: '',
+  });
+
+  const [successMessage, setSuccessMessage] = useState(null);
+
+  const handleInputChange = (e) => {
+    setEmailData({ ...emailData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData),
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Email sent successfully!');
+      } else {
+        console.error('Failed to send email:', await response.json());
+      }
+    } catch (error) {
+      console.error('Error sending email:', error.message);
+    }
+  };
+
+  return (
+    <div>
+      <h1 style={{textAlign: "center"}}>Send Email</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          To:
+          <input type="email" name="to" value={emailData.to} onChange={handleInputChange} required />
+        </label>
+        <br />
+        <label>
+          Subject:
+          <input type="text" name="subject" value={emailData.subject} onChange={handleInputChange} required />
+        </label>
+        <br />
+        <label>
+          Message:
+          <textarea name="text" value={emailData.text} onChange={handleInputChange} required />
+        </label>
+        <br />
+        <button type="submit">Send Email</button>
+      </form>
+
+      {successMessage && <p style={{ color: 'green', textAlign: 'center', marginTop: '10px' }}>{successMessage}</p>}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

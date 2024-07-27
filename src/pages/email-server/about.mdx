@@ -11,138 +11,136 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 
 import {
-  GoHome,
-  GoDatabase,
   GoContainer,
+  GoDatabase,
   GoRocket,
-  GoMail,
   GoServer,
-  GoTerminal,
+  GoMail,
   GoGlobe,
-  GoCode,
-  GoBrowser,
-  GoArrowRight,
-  GoInfo,
-  GoNote,
-  GoCodespaces,
-  GoWorkflow,
-  GoPackageDependents,
-  GoSync,
-  GoPerson,
-  GoTelescope,
-  GoFlame,
-  GoPackageDependencies,
-  GoProjectTemplate,
-  GoZap,
-  GoFileSymlinkFile,
-  GoPackage ,
-  GoBug,
-  GoPaperclip,
-  GoMegaphone,
-  GoCpu,
-  GoShieldLock,
-  GoNumber,
-  GoFileBinary,
-  GoEye,
-  GoGraph,
-  GoKey,
-  GoLog,
-  GoEyeClosed,
-  GoPulse,
-  GoGitPullRequest,
-  GoPlug,
-  GoLocation,
-  GoGitCompare,
-  GoXCircle,
-  GoPaperAirplane,
-  GoLink,
+  GoArrowLeft,
 } from "react-icons/go";
 
 <Layout>
-# ویژگی‌های یک دیتابیس در لیارا
+# سرویس ایمیل(سرور) لیارا
 <hr className="mb-2" />
-لیارا همواره سعی داشته است که با 
-ارائه یک رابط کاربری آسان و همه‌منظوره، نیازهای کاربران خود را تا حد زیادی در خود <a href="https://console.liara.ir" className="blue-link">صفحه کنسول</a>، شناسایی و بر طرف کند. اما گاهاً ممکن است که در برخی از موارد، دچار ابهام شوید و به دنبال پاسخی
-برای سوالات خود، باشید.
-از این رو، در ادامه، تمامی جزئیات مربوط به دیتابیس برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
 
-<div className="h-6" />
+<Section id='what-is-email-server' title='ایمیل‌سرور چیست؟' />
 
-    <div className="grid grid-cols-4 gap-4">
-    {[
-  {
-      title: "پلن‌های دیتابیس",
-      icon: <GoCpu />,
-      desc: " آشنایی با پلن‌های نرم‌افزاری و پلن‌های سخت‌افزاری یک دیتابیس",
-      link: "./plans/about",
-    },
-    {
-      title: "شبکه خصوصی",
-      icon: <GoShieldLock  />,
-      desc: "امکان ارتباط امن و سریع بین برنامه‌ها و دیتابیس‌های مرتبط بدون محدودیت",
-      link: "./private-network",
-    },
-    {
-      title: "رویدادها",
-      icon: <GoEye />,
-      desc: "مشاهده وضعیت نهایی دیتابیس برای بررسی تغییرات بر اساس زمان آخرین تغییرات",
-      link: "./events",
-    },
-    {
-      title: "گزارشات",
-      icon: <GoGraph />,
-      desc: "امکان بررسی و عیب‌یابی دیتابیس از طریق گزارشات سخت‌افزاری",
-      link: "./observations/about",
-    },
-    {
-      title: "تغییر پلن در دیتابیس",
-      icon: <GoGitCompare />,
-      desc: "امکان تغییر پلن‌های یک دیتابیس در هر زمانی، با توجه به نیازهای یک پروژه",
-      link: "./change-plan",
-    },
-    {
-      title: "حذف یک دیتابیس",
-      icon: <GoXCircle  />,
-      desc: "امکان حذف یک دیتابیس در لیارا، پس از اتمام روزهای طلایی استفاده از آن",
-      link: "./delete-app",
-    },
-    {
-        title: "لینک‌های اتصال",
-        icon: <GoLink   />,
-        desc: "اتصال به دیتابیس با استفاده از لینک‌های ارائه شده توسط لیارا در سریع‌ترین زمان ممکن",
-        link: "./connection-links"
-    },
-    {
-        title: "شخصی‌سازی پارامترهای دیتابیس",
-        icon: <GoProjectTemplate    />,
-        desc: "تغییر و تنظیم پارامترها و متغیرهای دیتابیس برای بهره‌وری بیشتر از آن",
-        link: "./customizing-db-parameters"
-    },
-].map(item =>
-        <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
-        <div>
-            <div className="flex items-center justify-between gap-3">
-            <h4>
-                {item.title}
-            </h4>
-            <div className="bg-[#222] text-white p-1 rounded-md">
-                {item.icon}
-            </div>
-            </div>
-            <p align='justify' className="text-[gray] leading-6 text-[14px] mt-3">
-            {item.desc}
-            </p>
-        </div>
-        <Link href={item.link}>
-        <Button variant="link" href={item.link}>بیشتر بدانید</Button>
-        </Link>
-        </Card>
-    )}
-    </div>
+**ایمیل سرور (Email Server)** سیستمی است که وظیفه ارسال، دریافت و مدیریت ایمیل‌ها را بر عهده دارد. این سرور شامل نرم‌افزارهای Mail Transfer Agent یا MTA برای انتقال ایمیل‌ها و Mail Delivery Agent یا MDA برای تحویل آن‌ها به صندوق پستی کاربران است.
+ایمیل سرورها معمولاً از پروتکل‌های استانداردی مثل SMTP (برای ارسال ایمیل) استفاده می‌کنند.
+
+<Section id='what-is-transactional-email' title='ایمیل تراکنشی چیست؟' />
+ایمیل تراکنشی یا Transactional Email به ایمیل‌هایی گفته می‌شود که در پاسخ به یک عمل ارسال می‌شوند. برای مثال می‌توان ایمیل‌های تایید ثبت نام، فراموشی رمز عبور و سایر موارد مشابه را از دسته‌ی ایمیل‌های تراکنشی دانست.
 
 
 
+<Section id="liara-email-server" title="ایمیل‌سرور لیارا" />
+ساخت و پیکربندی یک ایمیل‌سرور، کار چندان آسانی نیست! اما لیارا این راه سخت را برای شما، هموار کرده است. شما می‌توانید با کمترین دانش فنی در مورد ایمیل‌سرور و نحوه پیکربندی آن، ایمیل‌سرور مخصوص به دامنه خود را داشته باشید و به کاربران خود، ایمیل‌های تراکنشی، ارسال کنید. در ادامه، بخوانید:
 
+<div className="h-4" />
+<div className="grid grid-cols-2 gap-4">
+            {[
+    {
+        title: "مدیریت اکانت‌های ایمیل (نظیر ساخت ایمیل، حذف ایمیل و ...)",
+        link: "/email-server/details/about"
+      },
+      {
+        title: "مدیریت ایمیل سرور با رابط گرافیکی انحصاری لیارا",
+        link: "/email-server/move"
+      },
+      {
+        title: "تغییر حالت ارسال ایمیل",
+        link: "/email-server/move"
+      },
+      {
+        title: "مدیریت اسپم‌ها",
+        link: "/email-server/move"
+      },
+      {
+        title: "مدیریت محدودیت‌های ایمیل‌سرور",
+        link: "/email-server/move"
+      },
+      {
+        title: "اتصال به ایمیل‌سرور از طریق پلتفرم‌های مختلف",
+        link: "/email-server/move"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title} 
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
 
+<br />
+
+<Section id='also-read' title='همچنین بخوانید:' />
+<div className="grid grid-cols-1 gap-4">
+            {[
+    {
+      text: 'آشنایی با جزئیات ایمیل‌سرور',
+      link: './details/about',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+در ادامه، ده تا از پربازدیدترین مستندات مربوط به ایمیل‌سرور برای شما قرار گرفته است:
+
+<ul className="pr-4">
+  {[
+    {
+      text: 'انتخاب نسخه NodeJS',
+      href: './',
+    },
+    {
+      text: 'استقرار برنامه با Prisma',
+      href: './how-tos/create-app',
+    },
+    {
+      text: 'استقرار برنامه‌های Remix',
+      href: '/',
+    },
+    {
+      text: 'خطای CORS',
+      href: '/',
+    },
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        listStyle: "persian",
+        textDecoration: "underline",
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+      <a
+        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
+        href={item.href}
+      >
+        {item.text}
+        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+      </a>
+    </li>
+  ))}
+</ul>
 
 </Layout>

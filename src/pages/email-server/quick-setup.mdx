@@ -1,0 +1,139 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# راه‌اندازی سریع ایمیل‌سرور
+<hr className="mb-2" />
+
+در نظر داشته باشید که نمی‌توانید از ایمیل‌سرور لیارا برای ارسال ایمیل‌های تبلیغاتی مانند خبرنامه، جشنواره فروش و سایر موارد مشابه استفاده کنید و در صورت مشاهده، سرویس ایمیل شما مسدود خواهد شد.
+
+<br />
+<video
+src="https://files.liara.ir/liara/email-server/email-service-interface.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
+
+  برای راه‌اندازی سرور ایمیل با استفاده از <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="blue-link" href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد ایمیل‌سرور</h3>
+    <p>
+      وارد منوی <b>ایمیل</b> شوید، بر روی گزینه <b>ایجاد سرور ایمیل</b> کلیک کنید؛ در ادامه، 
+      دامنه خریداری شده خود را وارد کنید. در نظر داشته باشید که ساخت سرور ایمیل برای ریشه‌ی یک دامنه مثلاً <Important>example.com</Important> و یا زیر دامنه‌هایی مانند <Important>subdomain.example.com</Important> ممکن است.
+      در نهایت، <a href="./details/plans" className="blue-link">پلن</a> مدنظر خود را انتخاب کنید و بر روی گزینه <b>ایجاد سرور ایمیل</b>، کلیک کنید.
+    </p>
+    <div className="h-3" />
+    <img src="https://files.liara.ir/liara/docs/create-email-server.gif" alt="create-email-server on liara" />
+    <div className="h-3" />
+    <p>
+       درصورت انتخاب دامنه‌ی اشتباه و یا هر دلیل دیگر،‌ می‌توانید سرور ایمیل‌ را حذف کرده و مجدداً برای ایجاد سرور ایمیل اقدام کنید.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>اضافه کردن رکوردهای DNS</h3>
+    <p>
+      پس از ایجاد سرور ایمیل و ورود به آن،
+      به شما یک‌سری رکورد DNS نمایش داده می‌شود که بایستی آن رکوردهای نمایش داده شده را به رکوردهای ثبت شده در سیستم مدیریت DNS دامنه خود، اضافه کرده و بر روی دکمه‌ی <b>بررسی مجدد</b> کلیک کنید. 
+    </p>
+
+    <div className="h-3" />
+    <Alert variant="success">
+      <p>
+      در صورتی که از <a href="dns-management-system/about" className="blue-link">سرویس DNS لیارا</a> استفاده می‌کنید، می‌توانید با یک کلیک بر روی گزینه‌ی <b>افزودن خودکار رکوردها</b>، رکورد‌های مورد نیاز سرور را ثبت کنید.
+      </p>
+    </Alert> 
+    <Alert variant="success">
+    <p>
+      همچنین بخوانید: <a href="./details/dns-records" className="blue-link">آشنایی با رکوردهای DNS ایمیل سرور</a>
+    </p>
+    </Alert>
+    <div className="h-3" />
+    <p>
+    درنهایت درصورتی که تمام رکوردها را به‌درستی وارد کرده باشید به صفحه‌ی زیر منتقل خواهید شد:
+    </p>
+    <div className="h-3" />
+    <img src="https://files.liara.ir/liara/docs/email-server-gui.png" alt="email server gui" />
+
+
+  </>
+  )
+  },
+]}/>
+<div className="h-5" />
+با انجام مراحل فوق، تمامی کارهای مربوط به ایمیل‌سرور انجام شده است و شما می‌توانید از آن، استفاده کنید.
+
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "نسخه‌های ارائه شده دیتابیس",
+        link: "./choose-version"
+      },
+      {
+        title: "اتصال از طریق پلتفرم‌های مختلف به دیتابیس",
+        link: "./how-tos/connect-via-platform/about"
+      },
+      {
+        title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به دیتابیس",
+        link: "./how-tos/connect-via-gui/about"
+      },
+      {
+        title: "اتصال از طریق CommandLine Interface (CLI)",
+        link: "./how-tos/connect-via-cli/about"
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "./how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "./how-tos/restore-backup"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+</Layout>

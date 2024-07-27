@@ -1,0 +1,96 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# کنترل هرزنامه ایمیل‌های ارسالی
+<hr className="mb-2" />
+
+ایمیل هرزنامه به ایمیل‌هایی گفته می‌شود که به صورت انبوه برای تعداد زیادی از کاربران ارسال می‌شود. این ایمیل‌ها معمولاً بدون رضایت دریافت‌کنندگان ارسال می‌شوند و هدف آن‌ها ممکن است تبلیغ محصولات، خدمات، یا حتی تلاش برای فیشینگ و کلاه‌برداری باشد. اسپم می‌تواند منابع ایمیل و وقت کاربران را هدر دهد و به عنوان یکی از مشکلات عمده امنیتی و اطلاعاتی در حوزه اینترنت شناخته می‌شود.
+
+حال ممکن است که ایمیل ارسالی شما، مطابق با پارامترهای اسپم باشد و اگر امتیازش بالای 5 باشد؛ به کاربران شما ارسال نمی‌شود. چرا که ممکن است سرور ایمیل‌تان مسدود شود. برای رفع این مشکل، می‌توانید پارامترهای هرزنامه ایمیل خود را بررسی کنید و آن‌ها را از بین ببرید:
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/why-it-is-spam.png" alt="email server" />
+<div className="h-4" />
+
+در ادامه، یک‌سری ابزار معرفی شده‌اند که به کمک آن‌ها، می‌توانید ایمیل خود را اعتبارسنجی کنید:
+ <ul className="pr-4">
+  {[
+    {text: 'mailgenius', link: "https://www.mailgenius.com/"},
+    {text: 'barracudacentral', link: "https://www.barracudacentral.org/lookups"},
+    {text: 'mail-tester', link: "https://www.mail-tester.com/"},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+    <Link href={item.link} className="blue-link">
+        ابزار {item.text}
+    </Link>
+    </li>
+  ))}
+</ul>
+
+<div className="h-4" />
+
+همچنین می‌توانید  به‌کمک ابزارهای زیر بررسی کنید که دامنه‌ی شما در لیست سیاه قرار گرفته است یا خیر:
+
+ <ul className="pr-4">
+  {[
+    {text: 'mxtoolbox', link: "https://mxtoolbox.com/blacklists.aspx"},
+    {text: 'debouncer', link: "https://www.debouncer.com/blacklistlookup"},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+    <Link href={item.link} className="blue-link">
+        ابزار {item.text}
+    </Link>
+    </li>
+  ))}
+</ul>
+{/* 
+<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
+    <img src="https://files.liara.ir/liara/docs/choose-nodejs-version.png" alt="how to choose nodejs version in liara console" />
+    </>,
+
+    <>
+    <p>
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NodeJS به 18 می‌باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+    "node": {
+    "version": "18"
+  }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]}  */}
+
+
+</Layout>

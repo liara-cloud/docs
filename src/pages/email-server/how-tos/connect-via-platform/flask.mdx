@@ -1,0 +1,108 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های Flask
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/flask/flask-email-server.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/flask-getting-started/tree/email-server" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Flask، می‌توانید از 
+پکیج Flask-Mail استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install Flask-Mail`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_SERVER=smtp.c1.liara.email
+MAIL_PORT=587
+MAIL_USERNAME=YOUR_USERNAME
+MAIL_PASSWORD=YOUR_PASSWORD
+MAIL_USE_TLS=True`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant='info'>
+<p>
+با تنظیم <Important>MAIL_USE_TLS=True</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`from flask import Flask
+from flask_mail import Mail, Message
+import os
+
+app = Flask(__name__)
+
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS') == 'True'
+app.config['MAIL_USE_SSL'] = False
+mail = Mail(app)
+
+@app.route("/")
+def index():
+  msg = Message(
+    'Mailing with Flask-Mail',
+    sender =  ("sender_name", 'from@example.com'),
+    recipients = ['destination@host.name'])
+
+  msg.body = "this is from Flask app, lmk if it works"
+
+  mail.send(msg)
+
+  return "Message sent!"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant='info'>
+<p>
+مقدار پارامتر دوم <Important>sender</Important> باید به جای <Important>from@example.com</Important>، یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+
+</Layout>

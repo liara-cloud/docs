@@ -1,0 +1,43 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های Ghost
+<hr className="mb-2" />
+
+در صورتی که از برنامه آماده <a href="/one-click-apps/ghost/quick-start" className="blue-link">Ghost</a> استفاده می‌کنید؛ برای اتصال آن به ایمیل‌سرور 
+کافیست تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+طبق <a href="/paas/details/envs" className="blue-link">مستندات تنظیم متغیرهای محیطی</a>، به برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`mail__transport=SMTP
+mail__from=from@example.com
+mail__options__service=Liara
+mail__options__host=smtp.c1.liara.email
+mail__options__port=587
+mail__options__auth__user=my-app
+mail__options__auth__pass=my-pass`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>mail__from</Important> باید به جای <Important>from@example.com</Important>، یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+</Layout>

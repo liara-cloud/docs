@@ -1,0 +1,74 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# ارسال سریع ایمیل از کنسول
+<hr className="mb-2" />
+
+شما می‌توانید در صفحه **ارسال ایمیل** با تعیین عنوان، فرستنده، گیرنده و محتوا، ایمیل‌های فوری و آزمایشی ارسال کنید. همچنین امکان پیوست فایل فراهم است:
+
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/send-email-via-gui.png" alt="email server" />
+
+{/* <ul className="pr-4">
+  {[
+    {text: '8',},
+    {text: '10',},
+    {text: '12',},
+    {text: '14',},
+    {text: '16',},
+    {text: '18',},
+    {text: '20 (پیش‌فرض)',},
+    {text: '22',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        نسخه {item.text}
+    </li>
+  ))}
+</ul>
+
+<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
+    <img src="https://files.liara.ir/liara/docs/choose-nodejs-version.png" alt="how to choose nodejs version in liara console" />
+    </>,
+
+    <>
+    <p>
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NodeJS به 18 می‌باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+    "node": {
+    "version": "18"
+  }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>*/}
+
+</Layout>

@@ -1,0 +1,91 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# افزودن کاربر SMTP
+<hr className="mb-2" />
+
+<Section id="what-is-smtp" title="SMTP چیست؟" />
+SMTP یا Simple Mail Transfer Protocol یک پروتکل استاندارد اینترنتی برای انتقال ایمیل‌ها است. این پروتکل به سرورهای ایمیل اجازه می‌دهد تا پیام‌های ایمیل را بین خود ارسال کنند و همچنین ایمیل‌ها را از کلاینت‌ها (مانند نرم‌افزارهای ایمیل) دریافت کنند.
+این پروتکل به صورت متن ساده و بدون رمزنگاری عمل می‌کند، اما می‌تواند با استفاده از TLS یا SSL برای افزایش امنیت استفاده شود.
+
+<br />
+
+شما می‌توانید از طریق این پروتکل، به کاربران خود، ایمیل ارسال کنید. برای این‌کار 
+نیاز هست در صفحه **SMTP**
+بر روی گزینه **افزودن کاربر SMTP** کلیک کرده و پس از نوشتن توضیحات برای کاربر مذکور، بر روی گزینه **ساخت کاربر**، کلیک کنید تا کاربرتان ساخته شود.
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/create-smtp-user.gif" alt="email server" />
+<div className="h-4" />
+
+با انجام کار فوق، یک Username و Password برای شما ایجاد می‌شود که می‌توانید از این اطلاعات برای اتصال به ایمیل‌سرور استفاده کنید. 
+<div className="h-4" />
+
+<Alert variant="success">
+      <p>
+        توجه داشته باشید که Password تنها یک‌بار به شما نمایش داده می‌شود بنابراین آن را در جایی مطمئن ذخیره کنید.
+      </p>
+</Alert> 
+
+{/* <ul className="pr-4">
+  {[
+    {text: '8',},
+    {text: '10',},
+    {text: '12',},
+    {text: '14',},
+    {text: '16',},
+    {text: '18',},
+    {text: '20 (پیش‌فرض)',},
+    {text: '22',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        نسخه {item.text}
+    </li>
+  ))}
+</ul>
+
+<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
+    <img src="https://files.liara.ir/liara/docs/choose-nodejs-version.png" alt="how to choose nodejs version in liara console" />
+    </>,
+
+    <>
+    <p>
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NodeJS به 18 می‌باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+    "node": {
+    "version": "18"
+  }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>*/}
+
+</Layout>

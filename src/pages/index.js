@@ -37,7 +37,7 @@ const GETTING_STARTED_ITEMS = [
   },
   {
     alt: "netcore",
-    platform: ".NET",
+    platform: "NET.",
     link: "/paas/dotnet/getting-started"
   },
   {

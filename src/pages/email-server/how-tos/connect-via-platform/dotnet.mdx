@@ -1,0 +1,172 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های NET.
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/dotnet/dotnet-email-server.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/dotnet-getting-started/tree/email-server" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از سرویس ایمیل در برنامه‌های NET. 
+کافیست تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=587
+MAIL_USERNAME=my-app
+MAIL_PASSWORD=my-pass`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="csharp">
+        {`using System;
+using System.Net;
+using System.Net.Mail;
+using System.IO;
+using dotenv.net;
+
+class Program
+{
+    static void Main()
+    {
+        DotEnv.Load(); // loading env variables 
+
+        string mailHost = Environment.GetEnvironmentVariable("MAIL_HOST");
+        int mailPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT"));
+        string mailUser = Environment.GetEnvironmentVariable("MAIL_USERNAME");
+        string mailPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
+
+        // SMTP Conf
+        SmtpClient client = new SmtpClient(mailHost)
+        {
+            Port = mailPort,
+            Credentials = new NetworkCredential(mailUser, mailPassword),
+            EnableSsl = true
+        };
+
+        // Creating and Sending Email  
+        MailMessage message = new MailMessage("from@test.com", "to@test.com",
+         "hello", "hello from dotnet!");
+        try
+        {
+            client.Send(message);
+            Console.WriteLine("email sent successfully");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"error in sending email: {ex.Message}");
+        }
+    }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+با تنظیم <Important>EnableSsl = true</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
+<Alert variant='info'>
+<p>
+مقدار پارامتر اول <Important>message</Important> باید به جای <Important>from@test.com</Important>، یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+<div className="h-2" />
+
+برای استفاده از ایمیل‌سرور در کنترلر، می‌توانید مشابه قطعه کد زیر، عمل کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="csharp">
+        {`using MimeKit;
+using MailKit.Net.Smtp;
+using DotNetEnv; // for install this, run: dotnet install add package DotNetEnv
+
+namespace your_project_name.Controllers; 
+
+public class TestController : Controller
+{
+    [HttpPost]
+    public IActionResult SendEmail(string email)
+    {   
+        // Email Information  
+        Env.Load();
+        string senderName  = Env.GetString("SENDER_NAME");
+        string senderEmail = Env.GetString("SENDER_ADDRESS");
+        string subject     = Env.GetString("EMAIL_SUBJECT");
+        string body        = Env.GetString("EMAIL_BODY");
+
+        // Email Instance
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(senderName, senderEmail));
+        message.To.Add(new MailboxAddress("Recipient", email));
+        message.Subject = subject;
+
+        // Creating The Body 
+        message.Body = new TextPart("plain")
+        {
+            Text = body
+        };
+
+        try
+        {
+            // Sending Email 
+            using (var client = new SmtpClient())
+            {
+                client.Connect(Env.GetString("MAIL_HOST"), Env.GetInt("MAIL_PORT"), false);
+                client.Authenticate(Env.GetString("MAIL_USERNAME"), Env.GetString("MAIL_PASSWORD"));
+                client.Send(message);
+                client.Disconnect(true);
+            }
+
+            ViewBag.Message = "Email Sent Successfully.";
+        }
+        catch (Exception ex)
+        {
+            ViewBag.Message = $"Error In Sending Email: {ex.Message}";
+        }
+
+
+        return RedirectToAction("Index");
+    }
+
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+</Layout>

@@ -85,6 +85,7 @@ import mariadbIcon from "@liara/platformicons/glass/png/mariadb.png";
 import elasticIcon from "@liara/platformicons/glass/png/elastic.png";
 import rabbitmqIcon from "@liara/platformicons/glass/png/rabbitmq.png";
 import postgresIcon from "@liara/platformicons/glass/png/postgresql.png";
+import sqliteIcon from "@liara/platformicons/glass/png/sqlite.png";
 
 // CI/CD
 
@@ -173,6 +174,7 @@ const types = [
   { logo: postgresIcon, alt: "postgres" },
   { logo: rabbitmqIcon, alt: "rabbitmq" },
   { logo: arangodbIcon, alt: "arangodb" },
+  { logo: sqliteIcon, alt: "sqlite" },
   // CI/CD
   { logo: githubIcon, alt: "github" },
   { logo: gitlabIcon, alt: "gitlab" }

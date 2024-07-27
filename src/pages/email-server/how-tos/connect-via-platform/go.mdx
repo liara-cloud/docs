@@ -1,0 +1,100 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به ایمیل‌سرور در برنامه‌های Golang
+<hr className="mb-2" />
+
+
+برای استفاده از سرویس ایمیل در برنامه‌های Golang، می‌توانید از 
+پکیج gomail استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`go get github.com/go-gomail/gomail`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../add-smtp-user" className="blue-link">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="blue-link">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.example.com
+MAIL_PORT=587
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_FROM=from@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار <Important>MAIL_FROM</Important>، باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+{/* <Alert variant='info'>
+<p>
+با تنظیم <Important>MAIL_USE_TLS=True</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert> */}
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`package main
+
+import(
+    "fmt"
+    "strconv"
+    "os"
+    "github.com/go-gomail/gomail"
+    "github.com/joho/godotenv"
+)
+
+func main() {
+    err := godotenv.Load(".env")
+    if err != nil {
+        fmt.Println(err)
+    }
+
+    mailPort, err := strconv.Atoi(os.Getenv("MAIL_PORT"))
+    if err != nil {
+        fmt.Println("Error converting MAIL_PORT to int:", err)
+        return
+    }
+	m := gomail.NewMessage()
+	m.SetHeader("From", os.Getenv("MAIL_FROM")) 
+	m.SetHeader("To", "email@email.email")
+	m.SetHeader("Subject", "This is a TEST")
+	body := "this is really a test"
+	m.SetBody("text/plain", body)
+
+    d := gomail.NewDialer(os.Getenv("MAIL_HOST"), mailPort, os.Getenv("MAIL_USERNAME"), os.Getenv("MAIL_PASSWORD"))
+
+	if err := d.DialAndSend(m); err != nil {
+		fmt.Println("Error sending Test email:", err)
+	}
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>
