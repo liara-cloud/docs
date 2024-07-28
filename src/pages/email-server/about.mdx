@@ -40,29 +40,53 @@ import {
 <div className="h-4" />
 <div className="grid grid-cols-2 gap-4">
             {[
-    {
-        title: "مدیریت اکانت‌های ایمیل (نظیر ساخت ایمیل، حذف ایمیل و ...)",
-        link: "/email-server/details/about"
+      {
+        title: "اضافه کردن نشانی",
+        link: "/email-server/how-tos/add-account"
       },
       {
-        title: "مدیریت ایمیل سرور با رابط گرافیکی انحصاری لیارا",
-        link: "/email-server/move"
+        title: "ارسال سریع ایمیل از کنسول",
+        link: "/email-server/how-tos/send-email-via-console"
+      },
+      {
+        title: "افزودن کاربر SMTP",
+        link: "/email-server/how-tos/add-smtp-user"
+      },
+      {
+        title: "مدیریت ایمیل‌های ارسالی",
+        link: "/email-server/how-tos/manage-sent-emails"
+      },
+      {
+        title: "مدیریت ایمیل‌های دریافتی",
+        link: "/email-server/how-tos/manage-incoming-emails"
+      },
+      {
+        title: "تنظیم هرزنامه ایمیل‌های دریافتی",
+        link: "/email-server/how-tos/set-spam"
+      },
+      {
+        title: "مسدودسازی ایمیل‌های ورودی",
+        link: "/email-server/how-tos/block-emails"
+      },
+      {
+        title: "کنترل هرزنامه ایمیل‌های ارسالی",
+        link: "/email-server/how-tos/control-spam"
+      },
+      {
+        title: "مدیریت محدودیت‌ها",
+        link: "/email-server/how-tos/manage-limitations"
+      },
+      {
+        title: "تنظیم فوروارد",
+        link: "/email-server/how-tos/set-forward"
       },
       {
         title: "تغییر حالت ارسال ایمیل",
-        link: "/email-server/move"
+        link: "/email-server/how-tos/change-sending-mode"
       },
       {
-        title: "مدیریت اسپم‌ها",
-        link: "/email-server/move"
-      },
-      {
-        title: "مدیریت محدودیت‌های ایمیل‌سرور",
-        link: "/email-server/move"
-      },
-      {
-        title: "اتصال به ایمیل‌سرور از طریق پلتفرم‌های مختلف",
-        link: "/email-server/move"
+        title: "نحوه اتصال به ایمیل‌سرور از طریق پلتفرم‌های مختلف",
+        link: "/email-server/how-tos/connect-via-platform/about"
       },
   ].map(item =>
               <Link href={item.link}>

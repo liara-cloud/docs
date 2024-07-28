@@ -1,0 +1,43 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# رکوردهای DNS مربوط به ایمیل‌سرور
+
+<hr className="mb-2" />
+رکوردهای DNS مربوط به ایمیل‌سرور برای مدیریت و امنیت ایمیل‌ها استفاده می‌شوند. این رکوردها تعیین می‌کنند که کدام سرورها مجاز به ارسال و دریافت ایمیل برای یک دامنه خاص هستند و از جعل هویت و ارسال اسپم جلوگیری می‌کنند. به طور کلی، این رکوردها به بهبود قابلیت اطمینان، امنیت و هدایت صحیح ایمیل‌ها کمک می‌کنند.
+شما بایستی که در ابتدای کار با ایمیل‌سرور، این رکوردهای DNS را به سیستم مدیریت DNS دامنه خود، اضافه کنید. در ادامه به معرفی این رکوردها، پرداخته شده است.
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/email-server-dns-records.png" alt="hardware logs"/>
+<div className="h-4" />
+
+
+<Section id="dkim-record" title="رکورد TXT - DKIM" />
+این رکورد برای پیکربندی DKIM یا DomainKeys Identified Mail استفاده می‌شود که به ایمیل‌های ارسالی از دامنه‌تان، یک امضای دیجیتال اضافه می‌کند تا از جعل ایمیل جلوگیری کند.
+
+
+
+<Section id="spf-record" title="رکورد TXT - SPF" />
+رکورد SPF یا Sender Policy Framework، مشخص می‌کند که چه سرورهایی مجاز به ارسال ایمیل از طرف دامنه‌تان هستند. در ایمیل‌سرور لیارا، سرورهای A و MX دامنه به علاوه سرور spf.c1.liara.email مجاز به ارسال ایمیل هستند.
+
+
+
+<Section id="mx-record" title="رکورد MX" />
+رکورد MX یا Mail Exchange مشخص می‌کند که ایمیل‌های ورودی برای دامنه‌تان باید به سرور c1.liara.email هدایت شوند. اولویت 10 نشان‌دهنده اولویت دریافت ایمیل است.
+
+<Section id="cname-record" title="رکورد CNAME" />
+رکورد CNAME یا Canonical Name مشخص می‌کند که rp.your-domain به rp.c1.liara.email اشاره دارد. توجه کنید که این رکورد نباید از CDN استفاده کند و باید ابر CDN برای آن خاموش باشد.
+
+</Layout>
