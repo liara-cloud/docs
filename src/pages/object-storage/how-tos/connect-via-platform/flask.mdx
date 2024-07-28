@@ -1,0 +1,141 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های Flask
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/flask/flask-object-storage.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/flask-getting-started/tree/object-storage" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از Object Storage در برنامه‌های Flask، می‌توانید از 
+پکیج <Important>boto3</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install boto3`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../create-key" className="blue-link">مستندات ایجاد کلید</a>، یک کلید جدید برای باکت خود بسازید.
+اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
+برای شما قرار گرفته است.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به Object Storage خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
+LIARA_BUCKET_NAME=<Bucket Name>
+LIARA_ACCESS_KEY=<Access Key>
+LIARA_SECRET_KEY=<Secret Key>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
+در ادامه، مثالی از نحوه استفاده برای‌تان آورده شده است: 
+
+<Section id="connect-code" title="پیکربندی اولیه و اتصال به باکت در برنامه" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`from dotenv import load_dotenv
+import boto3
+from botocore.exceptions import NoCredentialsError
+from urllib.parse import quote
+
+load_dotenv()
+
+LIARA_ENDPOINT = os.getenv("LIARA_ENDPOINT")
+LIARA_ACCESS_KEY = os.getenv("LIARA_ACCESS_KEY")
+LIARA_SECRET_KEY = os.getenv("LIARA_SECRET_KEY")
+LIARA_BUCKET_NAME = os.getenv("LIARA_BUCKET_NAME")
+
+s3 = boto3.client(
+    "s3",
+    endpoint_url=LIARA_ENDPOINT,
+    aws_access_key_id=LIARA_ACCESS_KEY,
+    aws_secret_access_key=LIARA_SECRET_KEY,
+)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="upload-file" title="آپلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`s3.upload_fileobj(file, LIARA_BUCKET_NAME, file.filename)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="download-file" title="دانلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`s3.download_file(LIARA_BUCKET_NAME, filename_in_bucket, filename_in_system)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="list-files" title="دریافت لیست فایل‌های یک باکت" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`files = s3.list_objects(Bucket=LIARA_BUCKET_NAME)
+for file in files["Contents"]:
+    print(file["Key"])`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="temp-link-file" title="دریافت لینک موقت دانلود فایل‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`pre_signed_url = s3.generate_presigned_url(
+    "get_object",
+    Params={"Bucket": LIARA_BUCKET_NAME, "Key": filename},
+    ExpiresIn=12 * 60 * 60,  # 12 hours
+)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="permanent-link-file" title="دریافت لینک دائمی دانلود فایل‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`filename_encoded = quote(filename)
+permanent_url = f"https://{LIARA_BUCKET_NAME}.{LIARA_ENDPOINT.replace('https://', '')}/{filename_encoded}"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

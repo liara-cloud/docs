@@ -1,0 +1,116 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های Golang
+<hr className="mb-2" />
+
+برای استفاده از Object Storage در برنامه‌های Golang، بایستی پکیج‌های مورد نیاز را با اجرای دستورات زیر، نصب کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`go get github.com/aws/aws-sdk-go-v2/aws 
+go get github.com/aws/aws-sdk-go-v2/config
+go get github.com/aws/aws-sdk-go-v2/service/s3`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../create-key" className="blue-link">مستندات ایجاد کلید</a>، یک کلید جدید برای باکت خود بسازید.
+اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
+برای شما قرار گرفته است.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به Object Storage خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
+LIARA_BUCKET_NAME=<Bucket Name>
+LIARA_ACCESS_KEY=<Access Key>
+LIARA_SECRET_KEY=<Secret Key>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
+در ادامه، یک قطعه کد تابع نمونه برای‌تان قرار گرفته است که طریقه اتصال و آپلود فایل به باکت در برنامه golang را نشان می‌دهد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`func upload_using_s3(fileContent *bytes.Reader, fileName string) error {
+
+  err := godotenv.Load()
+  if err != nil {
+      log.Fatal("Error loading .env file")}
+
+  cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-west-2"))
+  if err != nil {
+    return err
+  }
+
+  // Define AWS credentials and bucket information
+  awsAccessKeyID     := os.Getenv("LIARA_ACCESS_KEY")     
+  awsSecretAccessKey := os.Getenv("LIARA_SECRET_KEY")  
+  endpoint           := os.Getenv("LIARA_ENDPOINT")
+  bucketName         := os.Getenv("LIARA_BUCKET_NAME")     
+
+  // Initialize S3 client with custom configuration
+  cfg.Credentials = aws.CredentialsProviderFunc(func(ctx context.Context) (aws.Credentials, error) {
+    return aws.Credentials{
+    AccessKeyID:     awsAccessKeyID,
+    SecretAccessKey: awsSecretAccessKey,
+    }, nil
+  })
+
+  cfg.BaseEndpoint = aws.String(endpoint)
+
+  client := s3.NewFromConfig(cfg)
+
+  // Specify the destination key in the bucket
+  destinationKey := "uploads/" + fileName
+
+  // Use the S3 client to upload the file
+  _, err = client.PutObject(context.TODO(), &s3.PutObjectInput{
+  Bucket: aws.String(bucketName),
+  Key:    aws.String(destinationKey),
+  Body:   fileContent,
+  })
+
+  return err
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+از تابع فوق می‌توان در بدنه اصلی برنامه (تابع main)، به شکل زیر استفاده کرد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`func main() {
+// Example: Upload a file to S3
+fileName := "example.txt"
+fileContent := []byte("Hello, S3!")
+
+err := upload_using_s3(bytes.NewReader(fileContent), fileName)
+if err != nil {
+  log.Fatalf("failed to upload file, %v", err)
+}
+
+fmt.Printf("File uploaded successfully!\\n")}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+</Layout>

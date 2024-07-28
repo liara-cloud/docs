@@ -1,0 +1,398 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های PHP
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/php/php-object-storage.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/php-getting-started/tree/object-storage" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از Object Storage در برنامه‌های PHP، می‌توانید از 
+پکیج <Important>aws/aws-sdk-php</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`composer require aws/aws-sdk-php`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../create-key" className="blue-link">مستندات ایجاد کلید</a>، یک کلید جدید برای باکت خود بسازید.
+اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
+برای شما قرار گرفته است.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به Object Storage خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
+LIARA_BUCKET_NAME=<Bucket Name>
+LIARA_ACCESS_KEY=<Access Key>
+LIARA_SECRET_KEY=<Secret Key>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
+در ادامه، مثال‌هایی از این مورد برای‌تان آورده شده است: 
+
+<Section id="upload-file" title="نمونه کد آپلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+namespace AppController;
+
+class DotEnvEnvironment
+{
+   public function load($path): void
+   {
+       $lines = file($path . '/.env');
+       foreach ($lines as $line) {
+           [$key, $value] = explode('=', $line, 2);
+           $key = trim($key);
+           $value = trim($value);
+
+           putenv(sprintf('%s=%s', $key, $value));
+           $_ENV[$key] = $value;
+           $_SERVER[$key] = $value;
+       }
+   }
+}
+
+require 'vendor/autoload.php';
+use AwsS3S3Client;
+use AwsExceptionAwsException;
+
+(new DotEnvEnvironment)->load(__DIR__);
+
+// Setting Env Variables 
+$accessKey  = getenv("LIARA_ACCESS_KEY");
+$secretKey  = getenv("LIARA_SECRET_KEY");
+$endpoint   = getenv("LIARA_ENDPOINT");
+$bucketName = getenv("LIARA_BUCKET_NAME");
+
+// making connection using s3
+$s3 = new S3Client([
+    'version' => 'latest',
+    'region'  => 'us-east-1',
+    'endpoint' => $endpoint,
+    'credentials' => [
+        'key'    => $accessKey,
+        'secret' => $secretKey,
+    ],
+]);
+
+try {
+    // name of the file:
+    $fileName = 'liara-poster.png';
+
+    // uploading file to the bucket:
+    $result = $s3->putObject([
+        'Bucket' => $bucketName,
+        'Key'    => $fileName,
+        'Body'   => file_get_contents($fileName),
+        'ACL'    => 'public-read',
+    ]);
+
+    echo "File uploaded successfully.
+";
+} catch (AwsException $e) {
+    echo $e->getMessage() . "
+";
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="download-file" title="نمونه کد دانلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+namespace AppController;
+
+class DotEnvEnvironment
+{
+   public function load($path): void
+   {
+       $lines = file($path . '/.env');
+       foreach ($lines as $line) {
+           [$key, $value] = explode('=', $line, 2);
+           $key = trim($key);
+           $value = trim($value);
+
+           putenv(sprintf('%s=%s', $key, $value));
+           $_ENV[$key] = $value;
+           $_SERVER[$key] = $value;
+       }
+   }
+}
+
+require 'vendor/autoload.php';
+use AwsS3S3Client;
+use AwsExceptionAwsException;
+
+(new DotEnvEnvironment)->load(__DIR__);
+
+// Setting Env Variables 
+$accessKey  = getenv("LIARA_ACCESS_KEY");
+$secretKey  = getenv("LIARA_SECRET_KEY");
+$endpoint   = getenv("LIARA_ENDPOINT");
+$bucketName = getenv("LIARA_BUCKET_NAME");
+
+// making connection using s3
+$s3 = new S3Client([
+    'version' => 'latest',
+    'region'  => 'us-east-1',
+    'endpoint' => $endpoint,
+    'credentials' => [
+        'key'    => $accessKey,
+        'secret' => $secretKey,
+    ],
+]);
+
+try {
+    // نام فایل مورد نظر برای دانلود
+    $fileName = 'example.txt';
+
+    // مسیر برای ذخیره فایل در دایرکتوری downloads
+    $downloadPath = __DIR__ . '/downloads/' . $fileName;
+
+    // دانلود فایل از سبد
+    $result = $s3->getObject([
+        'Bucket' => $bucketName,
+        'Key'    => $fileName,
+        'SaveAs' => $downloadPath,
+    ]);
+
+    echo "File '$fileName' downloaded successfully.
+";
+} catch (AwsException $e) {
+    echo $e->getMessage() . "
+";
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="temp-link-download-file" title="نمونه کد دریافت لینک موقت دانلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+namespace AppController;
+
+class DotEnvEnvironment
+{
+   public function load($path): void
+   {
+       $lines = file($path . '/.env');
+       foreach ($lines as $line) {
+           [$key, $value] = explode('=', $line, 2);
+           $key = trim($key);
+           $value = trim($value);
+
+           putenv(sprintf('%s=%s', $key, $value));
+           $_ENV[$key] = $value;
+           $_SERVER[$key] = $value;
+       }
+   }
+}
+
+require 'vendor/autoload.php';
+use AwsS3S3Client;
+use AwsExceptionAwsException;
+
+(new DotEnvEnvironment)->load(__DIR__);
+
+// Setting Env Variables 
+$accessKey  = getenv("LIARA_ACCESS_KEY");
+$secretKey  = getenv("LIARA_SECRET_KEY");
+$endpoint   = getenv("LIARA_ENDPOINT");
+$bucketName = getenv("LIARA_BUCKET_NAME");
+
+// making connection using s3
+$s3 = new S3Client([
+    'version' => 'latest',
+    'region'  => 'us-east-1',
+    'endpoint' => $endpoint,
+    'credentials' => [
+        'key'    => $accessKey,
+        'secret' => $secretKey,
+    ],
+]);
+
+try {
+    // لیست کردن فایل‌های درون سبد
+    $result = $s3->listObjectsV2([
+        'Bucket' => $bucketName
+    ]);
+
+    // چک کردن آیا فایلی وجود دارد یا خیر
+    if (!empty($result['Contents'])) {
+        foreach ($result['Contents'] as $object) {
+            $objectKey = $object['Key'];
+            $command = $s3->getCommand('GetObject', [
+                'Bucket' => $bucketName,
+                'Key' => $objectKey
+            ]);
+
+            $request = $s3->createPresignedRequest($command, '+1 hour');
+
+            // دریافت لینک موقت
+            $presignedUrl = (string)$request->getUri();
+            echo "Presigned URL for '$objectKey':
+$presignedUrl
+
+";
+        }
+    } else {
+        echo "The bucket is empty.
+";
+    }
+} catch (AwsException $e) {
+    echo $e->getMessage() . "
+";
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+<Section id="delete-file" title="نمونه کد حذف فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+namespace AppController;
+
+class DotEnvEnvironment
+{
+   public function load($path): void
+   {
+       $lines = file($path . '/.env');
+       foreach ($lines as $line) {
+           [$key, $value] = explode('=', $line, 2);
+           $key = trim($key);
+           $value = trim($value);
+
+           putenv(sprintf('%s=%s', $key, $value));
+           $_ENV[$key] = $value;
+           $_SERVER[$key] = $value;
+       }
+   }
+}
+
+require 'vendor/autoload.php';
+use AwsS3S3Client;
+use AwsExceptionAwsException;
+
+(new DotEnvEnvironment)->load(__DIR__);
+
+// Setting Env Variables 
+$accessKey  = getenv("LIARA_ACCESS_KEY");
+$secretKey  = getenv("LIARA_SECRET_KEY");
+$endpoint   = getenv("LIARA_ENDPOINT");
+$bucketName = getenv("LIARA_BUCKET_NAME");
+
+// making connection using s3
+$s3 = new S3Client([
+    'version' => 'latest',
+    'region'  => 'us-east-1',
+    'endpoint' => $endpoint,
+    'credentials' => [
+        'key'    => $accessKey,
+        'secret' => $secretKey,
+    ],
+]);
+
+try {
+    // name of the file:
+    $fileNameToDelete = 'example.txt';
+
+    // deleting the file:
+    $result = $s3->deleteObject([
+        'Bucket' => $bucketName,
+        'Key'    => $fileNameToDelete,
+    ]);
+
+    echo "File '$fileNameToDelete' deleted successfully.
+";
+} catch (AwsException $e) {
+    echo $e->getMessage() . "
+";
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="list-buckets" title="نمونه کد نمایش لیست باکت‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+// Require the Composer autoloader.
+require 'vendor/autoload.php';
+
+use Aws\\S3\\S3Client;
+
+// Instantiate an S3 client.
+$client = new S3Client([
+    'region' => 'us-east-1',
+    'version' => '2006-03-01',
+    'endpoint' => LIARA_ENDPOINT,
+    'credentials' => [
+        'key' => LIARA_ACCESS_KEY,
+        'secret' => LIARA_SECRET_KEY
+    ],
+]);
+
+$result = $client->listBuckets([/* ... */]);
+$promise = $client->listBucketsAsync([/* ... */]);
+
+print_r($result);
+print_r($promise);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+{/* 
+<Section id="upload-file" title="نمونه کد آپلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" /> */}
+
+</Layout>

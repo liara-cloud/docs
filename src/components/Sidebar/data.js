@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import {
+  GoFileDirectory,
   GoHome,
   GoRead,
   GoDatabase,
@@ -51,6 +52,8 @@ import {
   GoSignOut,
   GoReply,
   GoLink,
+  GoCopy,
+  GoDownload,
   
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
@@ -5334,8 +5337,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoContainer />
-            جزئیات دیتابیس
+            <GoMail />
+            جزئیات ایمیل‌سرور
           </div>
         )
       },
@@ -5379,6 +5382,634 @@ export default {
       },
     ],
     
+  },
+
+  object_storage: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoServer  />
+            فضای ذخیره‌سازی ابری
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره ذخیره‌سازی ابری",
+        icon: <GoInfo />,
+        link: "/object-storage/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/object-storage/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoFileDirectory  />
+            نحوه کار با باکت
+          </div>
+        )
+      },
+      {
+        title: "آپلود فایل",
+        link: "/object-storage/how-tos/upload-file"
+      },
+      {
+        title: "دانلود فایل",
+        link: "/object-storage/how-tos/download-file"
+      },
+      {
+        title: "مشاهده فایل",
+        link: "/object-storage/how-tos/see-file"
+      },
+      {
+        title: "اشتراک‌گذاری فایل",
+        link: "/object-storage/how-tos/share-file"
+      },
+      {
+        title: "حذف فایل",
+        link: "/object-storage/how-tos/delete-file"
+      },
+      {
+        title: "تغییر سطح دسترسی",
+        link: "/object-storage/how-tos/change-access-level"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoKey   />
+            نحوه مدیریت کلیدها
+          </div>
+        )
+      },
+      {
+        title: "ایجاد کلید",
+        link: "/object-storage/how-tos/create-key"
+      },
+      {
+        title: "ساخت کلید جدید",
+        link: "/object-storage/how-tos/generate-new-key"
+      },
+      {
+        title: "ویرایش کلید",
+        link: "/object-storage/how-tos/edit-key"
+      },
+      {
+        title: "حذف کلید",
+        link: "/object-storage/how-tos/delete-key"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoCopy   />
+            انتقالات  
+          </div>
+        )
+      },
+      {
+        title: "انتقال فایل از باکت به باکت دیگر",
+        link: "/object-storage/how-tos/move-bucket"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با rclone",
+        link: "/object-storage/how-tos/create-backup-using-rclone"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با S3 Browser",
+        link: "/object-storage/how-tos/create-backup-using-s3-browser"
+      },
+      {
+        title: "مهاجرت از سرویس فایل (قدیمی)",
+        link: "/object-storage/how-tos/migrate-from-file-service"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage />
+          <a href="/object-storage/how-tos/connect-via-platform/about">
+          اتصال با AWS SDK از طریق پلتفرم
+          </a>
+          </div>
+        )
+      },
+      {
+        title: "دانلود مستقیم فایل",
+        icon: < GoDownload />,
+        link: "/object-storage/how-tos/direct-download"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/object-storage/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/object-storage/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/object-storage/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/object-storage/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/object-storage/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/object-storage/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/object-storage/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/object-storage/how-tos/connect-via-platform/go"
+      },
+      {
+        title: "Imgproxy",
+        icon: <IconContainer alt="imgproxy" />,
+        link: "/object-storage/how-tos/connect-via-platform/imgproxy"
+      },
+      {
+        title: "Strapi",
+        icon: <IconContainer alt="strapi" />,
+        link: "/object-storage/how-tos/connect-via-platform/strapi"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات فضای ذخیره‌سازی ابری",
+        icon: <GoNote />,
+        link: "/object-storage/details/about"
+      },
+
+      
+    ],
+
+    'quick-setup': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoServer  />
+            فضای ذخیره‌سازی ابری
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره ذخیره‌سازی ابری",
+        icon: <GoInfo />,
+        link: "/object-storage/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/object-storage/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoFileDirectory  />
+            نحوه کار با باکت
+          </div>
+        )
+      },
+      {
+        title: "آپلود فایل",
+        link: "/object-storage/how-tos/upload-file"
+      },
+      {
+        title: "دانلود فایل",
+        link: "/object-storage/how-tos/download-file"
+      },
+      {
+        title: "مشاهده فایل",
+        link: "/object-storage/how-tos/see-file"
+      },
+      {
+        title: "اشتراک‌گذاری فایل",
+        link: "/object-storage/how-tos/share-file"
+      },
+      {
+        title: "حذف فایل",
+        link: "/object-storage/how-tos/delete-file"
+      },
+      {
+        title: "تغییر سطح دسترسی",
+        link: "/object-storage/how-tos/change-access-level"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoKey   />
+            نحوه مدیریت کلیدها
+          </div>
+        )
+      },
+      {
+        title: "ایجاد کلید",
+        link: "/object-storage/how-tos/create-key"
+      },
+      {
+        title: "ساخت کلید جدید",
+        link: "/object-storage/how-tos/generate-new-key"
+      },
+      {
+        title: "ویرایش کلید",
+        link: "/object-storage/how-tos/edit-key"
+      },
+      {
+        title: "حذف کلید",
+        link: "/object-storage/how-tos/delete-key"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoCopy   />
+            انتقالات  
+          </div>
+        )
+      },
+      {
+        title: "انتقال فایل از باکت به باکت دیگر",
+        link: "/object-storage/how-tos/move-bucket"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با rclone",
+        link: "/object-storage/how-tos/create-backup-using-rclone"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با S3 Browser",
+        link: "/object-storage/how-tos/create-backup-using-s3-browser"
+      },
+      {
+        title: "مهاجرت از سرویس فایل (قدیمی)",
+        link: "/object-storage/how-tos/migrate-from-file-service"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage />
+          <a href="/object-storage/how-tos/connect-via-platform/about">
+          اتصال با AWS SDK از طریق پلتفرم
+          </a>
+          </div>
+        )
+      },
+      {
+        title: "دانلود مستقیم فایل",
+        icon: < GoDownload />,
+        link: "/object-storage/how-tos/direct-download"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/object-storage/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/object-storage/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/object-storage/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/object-storage/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/object-storage/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/object-storage/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/object-storage/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/object-storage/how-tos/connect-via-platform/go"
+      },
+      {
+        title: "Imgproxy",
+        icon: <IconContainer alt="imgproxy" />,
+        link: "/object-storage/how-tos/connect-via-platform/imgproxy"
+      },
+      {
+        title: "Strapi",
+        icon: <IconContainer alt="strapi" />,
+        link: "/object-storage/how-tos/connect-via-platform/strapi"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات فضای ذخیره‌سازی ابری",
+        icon: <GoNote />,
+        link: "/object-storage/details/about"
+      },
+
+      
+    ],
+
+    'how-tos':  [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoServer  />
+            فضای ذخیره‌سازی ابری
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره ذخیره‌سازی ابری",
+        icon: <GoInfo />,
+        link: "/object-storage/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/object-storage/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoFileDirectory  />
+            نحوه کار با باکت
+          </div>
+        )
+      },
+      {
+        title: "آپلود فایل",
+        link: "/object-storage/how-tos/upload-file"
+      },
+      {
+        title: "دانلود فایل",
+        link: "/object-storage/how-tos/download-file"
+      },
+      {
+        title: "مشاهده فایل",
+        link: "/object-storage/how-tos/see-file"
+      },
+      {
+        title: "اشتراک‌گذاری فایل",
+        link: "/object-storage/how-tos/share-file"
+      },
+      {
+        title: "حذف فایل",
+        link: "/object-storage/how-tos/delete-file"
+      },
+      {
+        title: "تغییر سطح دسترسی",
+        link: "/object-storage/how-tos/change-access-level"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoKey   />
+            نحوه مدیریت کلیدها
+          </div>
+        )
+      },
+      {
+        title: "ایجاد کلید",
+        link: "/object-storage/how-tos/create-key"
+      },
+      {
+        title: "ساخت کلید جدید",
+        link: "/object-storage/how-tos/generate-new-key"
+      },
+      {
+        title: "ویرایش کلید",
+        link: "/object-storage/how-tos/edit-key"
+      },
+      {
+        title: "حذف کلید",
+        link: "/object-storage/how-tos/delete-key"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoCopy   />
+            انتقالات  
+          </div>
+        )
+      },
+      {
+        title: "انتقال فایل از باکت به باکت دیگر",
+        link: "/object-storage/how-tos/move-bucket"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با rclone",
+        link: "/object-storage/how-tos/create-backup-using-rclone"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با S3 Browser",
+        link: "/object-storage/how-tos/create-backup-using-s3-browser"
+      },
+      {
+        title: "مهاجرت از سرویس فایل (قدیمی)",
+        link: "/object-storage/how-tos/migrate-from-file-service"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage />
+          <a href="/object-storage/how-tos/connect-via-platform/about">
+          اتصال با AWS SDK از طریق پلتفرم
+          </a>
+          </div>
+        )
+      },
+      {
+        title: "دانلود مستقیم فایل",
+        icon: < GoDownload />,
+        link: "/object-storage/how-tos/direct-download"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/object-storage/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/object-storage/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/object-storage/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/object-storage/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/object-storage/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/object-storage/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/object-storage/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/object-storage/how-tos/connect-via-platform/go"
+      },
+      {
+        title: "Imgproxy",
+        icon: <IconContainer alt="imgproxy" />,
+        link: "/object-storage/how-tos/connect-via-platform/imgproxy"
+      },
+      {
+        title: "Strapi",
+        icon: <IconContainer alt="strapi" />,
+        link: "/object-storage/how-tos/connect-via-platform/strapi"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات فضای ذخیره‌سازی ابری",
+        icon: <GoNote />,
+        link: "/object-storage/details/about"
+      },
+
+      
+    ],
+
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            جزئیات Object Storage
+          </div>
+        )
+      },
+      {
+        title: "برگشت به ذخیره‌سازی ابری",
+        icon: <GoArrowRight />,
+        link: "/object-storage/about"
+      },
+      {
+        title: "ویژگی‌های ذخیره‌سازی ابری در لیارا",
+        icon: <GoInfo />,
+        link: "/object-storage/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "پلن‌های Object Storage",
+        icon: <GoCpu />,
+        link: "/object-storage/details/plans"
+      },
+      {
+        title: "گزارشات",
+        icon: <GoGraph />,
+        link: "/object-storage/details/observations"
+      },
+      {
+        title: "تغییر پلن در Object Storage",
+        icon: <GoGitCompare />,
+        link: "/object-storage/details/change-plan"
+      },
+      {
+        title: "حذف یک Object Storage",
+        icon: <GoXCircle  />,
+        link: "/object-storage/details/delete-object-storage"
+      },
+    ],
   },
 
   

@@ -1,0 +1,104 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های Strapi
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/strapi/strapi-s3.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/strapi-getting-started/tree/use-s3" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از Object Storage در برنامه‌های Strapi، می‌توانید از 
+پکیج <Important>upload-aws-s3</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install @strapi/provider-upload-aws-s3`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../create-key" className="blue-link">مستندات ایجاد کلید</a>، یک کلید جدید برای باکت خود بسازید.
+اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
+برای شما قرار گرفته است.
+سپس، بایستی 
+اطلاعات مربوط به Object Storage خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`LIARA_ACCESS_KEY_ID=73f8u0nhgrseognt
+LIARA_ACCESS_SECRET=bea78f17-904e-4e64-8d2e-f009834e41f1
+LIARA_REGION=us-east-1
+LIARA_ENDPOINT=https://storage.iran.liara.space
+LIARA_BUCKET=strapi-bucket`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، بایستی قطعه کد زیر را به فایل <Important>config/plugins.js</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`module.exports = ({ env }) => ({
+    upload: {
+      config: {
+        provider: 'aws-s3',
+        providerOptions: {
+          accessKeyId: env('LIARA_ACCESS_KEY_ID'),
+          secretAccessKey: env('LIARA_ACCESS_SECRET'),
+          region: env('LIARA_REGION'),
+          endpoint: env('LIARA_ENDPOINT'), // Add endpoint variable here
+          params: {
+            ACL: env('AWS_ACL', 'public-read'),
+            signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15 * 60),
+            Bucket: env('LIARA_BUCKET'),
+          },
+        },
+        actionOptions: {
+          upload: {},
+          uploadStream: {},
+          delete: {},
+        },
+      },
+    },
+  });`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+همچنین بایستی در فایل <Important>config/middlewares.js</Important> قطعه کد زیر را به آرایه‌های <Important>img-src</Important> و <Important>media-src</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`'NAME.storage.iran.liara.space',`}
+    </Highlight>
+</div>
+<div className="h-2" />
+در کد فوق، به جای <Important>NAME</Important> باید نام باکت خود را وارد کنید. 
+تمامی کارها انجام شده است و می‌توانید از برنامه خود، استفاده کنید. 
+</Layout>

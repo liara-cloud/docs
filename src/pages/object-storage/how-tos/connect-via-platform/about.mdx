@@ -1,0 +1,99 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import PlatformIcon from "@/components/Common/icons";
+import {GoArrowLeft,} from "react-icons/go";
+
+<Layout>
+# اتصال به فضای ذخیره‌سازی ابری با AWS SDK در پلتفرم‌های مختلف
+<hr className="mb-2" />
+
+<Section id="what-is-aws-sdk" title="AWS SDK چیست؟" />
+AWS SDK یا Amazon Web Service Software Development Kit مجموعه‌ای از ابزارها و کتابخانه‌هاست که توسط Amazon Web Services ارائه می‌شود تا توسعه‌دهندگان بتوانند به راحتی و به صورت برنامه‌نویسی شده به سرویس‌های AWS متصل شوند و از آنها استفاده کنند. این SDK برای زبان‌های مختلف برنامه‌نویسی مثل Java , Python , JavaScript و بسیاری دیگر موجود است و امکاناتی مثل مدیریت منابع، ارتباط با دیتابیس‌ها، و پردازش داده‌ها را فراهم می‌کند. با استفاده از AWS SDK، توسعه‌دهندگان می‌توانند اپلیکیشن‌های خود را با سرویس‌های ابری AWS یکپارچه کنند و قابلیت‌های ابری را به پروژه‌های خود اضافه کنند.
+
+<Section id="what-is-s3" title="Amazon S3 چیست؟" />
+Amazon S3 (Simple Storage Service) یک سرویس ذخیره‌سازی ابری از AWS است که برای ذخیره و بازیابی هر مقدار داده در هر زمان و از هر نقطه‌ای در وب طراحی شده است. S3 به کاربران امکان می‌دهد تا به صورت امن و با دسترسی بالا داده‌های خود را ذخیره، مدیریت و محافظت کنند. این سرویس برای مجموعه گسترده‌ای از موارد استفاده مانند پشتیبان‌گیری و بازیابی، توزیع محتوای وب، ذخیره‌سازی داده‌های بزرگ، و آرشیو طولانی مدت به کار می‌رود. Amazon S3 با ارائه‌ی مقیاس‌پذیری بالا، هزینه‌ی مقرون‌به‌صرفه، و امنیت پیشرفته، انتخابی محبوب برای کسب‌وکارها و توسعه‌دهندگان در سراسر جهان است.
+<div className='h-4' />
+
+از آنجایی که سرویس فضای ذخیره‌سازی ابری لیارا، سازگار با S3 است، بنابراین، شما می‌توانید در زبان‌ها و فریم‌ورک‌های برنامه‌نویسی مختلف، از سرویس ذخیره‌سازی ابری لیارا، استفاده کنید. در ادامه، مستندات مربوط به برخی از زبان‌ها و پلتفرم‌ها، برای شما قرار گرفته است:
+<br />
+<div className='h-2' />
+<div className="grid grid-cols-5 gap-4">
+            {[
+    {
+        title: "NodeJS",
+        icon: "nodejs",
+        link: "./nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: "next",
+        link: "./nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: "laravel",
+        link: "./laravel"
+      },
+      {
+        title: "PHP",
+        icon: "php",
+        link: "./php"
+      },
+      {
+        title: "Django",
+        icon: "django",
+        link: "./django"
+      },
+      {
+        title: "Flask",
+        icon: "flask",
+        link: "./flask"
+      },
+      {
+        title: "NET.",
+        icon: "netcore",
+        link: "./dotnet"
+      },
+      {
+        title: "Golang",
+        icon: "go",
+        link: "./go"
+      },
+      {
+        title: "ImgProxy",
+        icon: "imgproxy",
+        link: "./imgproxy"
+      },
+      {
+        title: "Strapi",
+        icon: "strapi",
+        link: "./strapi"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+            <PlatformIcon platform={item.icon} />
+        </div>
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div>
+<div className='h-2' />
+
+</Layout>

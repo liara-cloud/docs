@@ -1,0 +1,48 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های Imgproxy
+<hr className="mb-2" />
+
+در صورتی که از برنامه آماده <a href="/one-click-apps/imgproxy/quick-start" className="blue-link">Imgproxy</a> استفاده می‌کنید؛ 
+برای استفاده از Imgproxy بر روی عکس‌های ذخیره‌شده در فضای ذخیره‌سازی ابری لیارا نیاز به انجام هیچ‌کار خاصی نیست؛ فقط کافیست تا آدرس دائمی (یا موقت) عکس ذخیره شده را در انتهای URL پیکربندی شده Imgproxy قرار دهید؛ به عنوان مثال، فرض کنید که این URL برابر با مقدار زیر است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://imgproxy-app.liara.run/_/resize:fill:300:400:0/gravity:sm/plain/`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+حال، فرض کنید که URL عکس ذخیره‌شده در فضای ذخیره‌سازی ابری لیارا نیز، برابر با مقدار زیر است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://bucket.storage.iran.liara.space/liara-poster.png`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، برای اعمال Imgproxy بر روی عکس مد نظر خود، کافیست تا URL پیکربندی شده Imgproxy را قبل از URL عکس مدنظر خود قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://imgproxy-app.liara.run/_/resize:fill:300:400:0/gravity:sm/plain/https://bucket.storage.iran.liara.space/liara-poster.png`}
+    </Highlight>
+</div>
+<div className="h-2" />
+بدین نحو، تمامی تغییرات اعمال می‌شوند و شما می‌توانید با استفاده از URL فوق، به عکس نهایی خود دسترسی داشته باشید.
+</Layout>

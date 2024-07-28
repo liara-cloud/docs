@@ -1,0 +1,52 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# دانلود مستقیم فایل از باکت
+<hr className="mb-2" />
+
+در بسیاری از مواقع، زمانی که یک فایل در باکت آپلود می‌شود، نیاز است تا کاربران بتوانند آن فایل را به صورت مستقیم دانلود کنند. به طور پیش‌فرض، وقتی فایلی را از باکت سازگار با S3 دانلود می‌کنید، ممکن است مرورگر وب آن را به جای دانلود، مستقیماً نمایش دهد (مثلاً فایل‌های تصویری یا متنی). برای اطمینان از اینکه فایل به صورت خودکار دانلود می‌شود، باید هدر Content-Disposition را با مقدار attachment تنظیم کنید.
+
+
+
+<Section id="what-is-content-disposition-header" title="هدر Content-Disposition چیست؟" />
+هدر Content-Disposition به مرورگر وب می‌گوید که چگونه باید محتوا را پردازش کند. 
+این هدر می‌تواند به دو صورت اصلی inline (وقتی  محتوا باید مستقیماً در مرورگر نمایش داده شود) یا attachment (وقتی محتوا باید به صورت یک فایل ضمیمه دانلود شود)، باشد.
+
+<Section id="set-content-disposition-header-in-bucket" title="نحوه تنظیم هدر Content-Disposition در باکت" />
+برای تنظیم این هدر هنگام آپلود فایل در S3، باید از پارامترهای مناسب در درخواست putObject استفاده کنید. به عنوان مثال، در SDK های مختلف AWS، می‌توانید مشابه شکل زیر، عمل کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const AWS = require('aws-sdk');
+const s3 = new AWS.S3();
+
+const params = {
+  // ...
+  // other params
+  ContentDisposition: 'attachment'
+};
+
+s3.putObject(params, function(err, data) {
+  if (err) {
+    console.log("Error uploading data: ", err);
+  } else {
+    console.log("Successfully uploaded data to your-bucket-name/your-file-name");
+  }
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+با انجام این کار، برنامه مطمئن می‌شود که فایل را به جای نمایش آن، دانلود کند.
+
+</Layout>

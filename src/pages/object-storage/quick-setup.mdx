@@ -1,0 +1,101 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+<Layout>
+
+# راه‌اندازی سریع فضای ذخیره‌سازی ابری
+<hr className="mb-2" />
+
+<video
+src="https://files.liara.ir/liara/object-storage/interface.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
+
+  برای راه‌اندازی فضای ذخیره‌سازی ابری، با استفاده از <Link className="blue-link" href="../../../references/liara-console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="blue-link" href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد فضای ذخیره‌سازی ابری</h3>
+    <p>
+      وارد منوی <b>ذخیره‌سازی ابری</b> شوید، بر روی گزینه <b>ایجاد باکت</b> کلیک کنید؛ در ادامه، 
+      یک شناسه یکتا برای سرویس خود وارد کنید. 
+      و پس از انتخاب <a href="./how-tos/change-access-level" className="blue-link">سطح دسترسی</a> و <a href="./details/plans" className="blue-link">پلن باکت</a>، بر روی گزینه <b>ایجاد باکت</b>، کلیک کنید.
+    </p>
+    <div className="h-3" />
+    <img src="https://files.liara.ir/docs/buckets/create-bucket.gif" alt="create-email-server on liara" />
+    <div className="h-3" />
+  </>
+  )
+  },
+]}/>
+<div className="h-5" />
+با انجام مراحل فوق، تمامی کارهای مربوط به فضای ذخیره‌سازی ابری انجام شده است و شما می‌توانید از آن، استفاده کنید.
+
+{/* 
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "نسخه‌های ارائه شده دیتابیس",
+        link: "./choose-version"
+      },
+      {
+        title: "اتصال از طریق پلتفرم‌های مختلف به دیتابیس",
+        link: "./how-tos/connect-via-platform/about"
+      },
+      {
+        title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به دیتابیس",
+        link: "./how-tos/connect-via-gui/about"
+      },
+      {
+        title: "اتصال از طریق CommandLine Interface (CLI)",
+        link: "./how-tos/connect-via-cli/about"
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "./how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "./how-tos/restore-backup"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div> */}
+
+</Layout>

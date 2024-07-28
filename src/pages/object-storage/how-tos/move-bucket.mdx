@@ -1,0 +1,100 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# انتقال فایل‌ها از یک باکت به باکت دیگر
+<hr className="mb-2" />
+
+<a href="https://rclone.org/" className="blue-link">Rclone</a> یک خط فرمان متن‌باز برای مدیریت و همگام‌سازی فایل‌ها در میان فضای ذخیره‌سازی ابری مختلف است. این ابزار از تعداد زیادی از سرویس‌های ذخیره‌سازی ابری  بسیاری دیگر پشتیبانی می‌کند. با Rclone، می‌توانید فایل‌ها را بین سرویس‌های ابری مختلف جابجا کرده، پشتیبان‌گیری کنید و همگام‌سازی انجام دهید.
+در ادامه، مستندات مربوط به انتقال فایل از یک باکت به باکت دیگر (هم در یک اکانت مشترک و هم در دو اکانت متفاوت)، برای شما، قرار گرفته است:
+<Tabs 
+    tabs={["One Account","Two Accounts", ]} 
+    content={[
+    <>
+        <video
+        src="https://files.liara.ir/liara/rclone/rclone-transfer-files-between-buckets.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+        />
+        <br />
+
+        <p>
+        برای انتقال فایل‌های درون یک باکت به یک باکت دیگر در یک اکانت، در ابتدا کافیست تا برنامه Rclone را از صفحه <a href="https://rclone.org/downloads/" className="blue-link">Downloads</a> متناسب با سیستم عامل خود، دانلود کنید. در قدم بعد باید با اجرای دستور <Important>rclone config</Important> یک <Important>remote</Important> جدید را پیکربندی کنید:
+        </p>
+        <Asciinema id="rclone-backup-bucket" />
+        <Alert variant="info">
+        <p>
+            ایجاد یک کلید برای هر دو باکت کافی است و نیازی نیست تا برای هر باکت، یک کلید و یک ریموت مجزا در rclone تعریف شود. و شما می‌توانید با استفاده از یک ریموت و کلید، عملیات انتقال را انجام دهید.
+        </p>
+        </Alert>
+        <div className="h-2" />
+        <p>
+            درنهایت شما می‌توانید با اجرای دستور زیر یک نسخه از فایل‌های موجود در باکت موردنظرتان را در باکت جدید نیز، ذخیره کنید:
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+        {`rclone copy -PM [remote]:/[first-bucket-name] [remote]:/[second-bucket-name]`}
+        </Highlight>
+        </div>
+        <div className="h-2" />
+        <p>
+        البته اگر که قصد انتقال فایل‌ها را از باکت اول به باکت دوم دارید، می‌توانید دستور زیر را اجرا کنید:
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+        {`rclone move -PM [remote]:/[first-bucket-name] [remote]:/[second-bucket-name]`}
+        </Highlight>
+        </div>
+        <div className="h-2" />
+        برای مثال اگر یک باکت با نام <Important>app-bucket</Important> و یک باکت دیگر با نام <Important>newbie</Important> در لیارا داشته باشید، می‌توانید با اجرای دستور زیر، تمامی فایل‌های موجود در باکت <Important>app-bucket</Important> را به باکت <Important>newbie</Important> انتقال دهید:
+        
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+        {`rclone move -PM r1:/app-bucket r1:/newbie`}
+        </Highlight>
+        </div>
+        <Asciinema id="transfer-files-between-buckets" />
+    </>,
+
+    <>
+    <video
+        src="https://files.liara.ir/liara/rclone/rclone-transfer-files-between-buckets-across-accounts.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+    />
+    <br />
+
+    <p>
+        فرایند این کار هم همانند انتقال باکت به باکت در یک اکانت است؛ با این تفاوت که شما باید در کنار <Important>remote</Important> اول، یک ریموت ثانویه نیز ایجاد کنید و درون آن، اطلاعات باکت اکانت دوم خود را وارد کنید.
+    </p>
+    <p>
+        پس از ثبت هر دو ریموت، شما می‌توانید فایل‌های درون باکت اول را به باکت دوم که در اکانت دیگری است، انتقال دهید. برای مثال، فرض کنید که r1 ریموت اول و r2 نام ریموت دوم است. برای انتقال فایل‌های درون باکت app-bucket در اکانت اول به باکت newbie در اکانت دوم، می‌توانید دستور زیر را اجرا کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+    {`rclone move -PM r1:/app-bucket r2:/newbie`}
+    </Highlight>
+    </div>
+
+    </>
+]} 
+/>
+
+
+</Layout>

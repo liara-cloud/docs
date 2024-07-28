@@ -1,0 +1,31 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# ساخت کلید جدید برای باکت
+<hr className="mb-2" />
+
+درصورتی که به‌هر دلیلی Secret Key را از دست بدهید یا نیاز به یک Secret Key جدید داشته باشید؛
+می‌توانید آن را مجدداً generate کنید. برای این کار، 
+باید روی سه نقطه کنار کلید مدنظرتان، کلیک کرده و پس از کلیک روی گزینه‌ی **کلید جدید**، درنهایت روی گزینه‌ی **ساخت کلید جدید** کلیک کنید:
+
+<div className="h-4" />
+<img src="https://files.liara.ir/docs/buckets/revoke-keys.gif" alt="work with bucket" />
+<div className="h-4" />
+
+<Alert variant="info">
+<p>
+با ساخت کلید جدید، Access Key تغییری نمی‌کند و Secret Key قدیمی، بلا استفاده خواهد شد.
+</p>
+</Alert>
+
+</Layout>

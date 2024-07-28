@@ -1,0 +1,350 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های NET.
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/dotnet/dotnet-object-storage.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/dotnet-getting-started/tree/object-storage" className="blue-link">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از Object Storage در برنامه‌های NET. می‌توانید از 
+پکیج <Important>AWSSDK.S3</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`dotnet add package AWSSDK.S3`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="../create-key" className="blue-link">مستندات ایجاد کلید</a>، یک کلید جدید برای باکت خود بسازید.
+اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
+برای شما قرار گرفته است.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به Object Storage خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
+LIARA_BUCKET_NAME=<Bucket Name>
+LIARA_ACCESS_KEY=<Access Key>
+LIARA_SECRET_KEY=<Secret Key>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
+در ادامه، مثالی از این مورد برای‌تان آورده شده است که می‌توانید با استفاده از دستورات زیر، از برنامه استفاده کنید:
+
+<div className="h-2" />
+<ul>
+    <li>اجرای دستور <Important>dotnet run list</Important> برای نمایش آیتم‌های موجود در یک باکت</li>
+    <li>اجرای دستور <Important>dotnet run download object-name</Important> برای دانلود یک فایل مشخص از باکت و ذخیره آن</li>
+    <li>اجرای دستور <Important>dotnet run delete object-name</Important> برای حدف یک فایل مشخص از باکت</li>
+    <li>اجرای دستور <Important>dotnet run upload object-name</Important> برای آپلود یک فایل مشخص درون باکت</li>
+    <li>اجرای دستور <Important>dotnet run geturls</Important> برای دریافت لینک موقت یک ساعته تمام فایل‌های موجود در باکت</li>
+    <li>اجرای دستور <Important>dotnet run listbuckets</Important> برای نمایش باکت‌های موجود ساخته شده در لیارا</li>
+
+</ul>
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`using System;
+using System.IO;
+using System.Threading.Tasks;
+using Amazon.S3;
+using Amazon.S3.Model;
+using DotNetEnv;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        // Load environment variables
+        Env.Load();
+
+        // Set environment variables
+        string accessKey = Env.GetString("LIARA_ACCESS_KEY");
+        string secretKey = Env.GetString("LIARA_SECRET_KEY");
+        string bucketName = Env.GetString("LIARA_BUCKET_NAME");
+        string endpoint = Env.GetString("LIARA_ENDPOINT");
+
+        // Check for the existence of required variables
+        if (string.IsNullOrEmpty(accessKey) || string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(bucketName) || string.IsNullOrEmpty(endpoint))
+        {
+            Console.WriteLine("Error: Missing required environment variables.");
+            return;
+        }
+
+        // Create S3 client
+        var config = new AmazonS3Config
+        {
+            ServiceURL = endpoint,
+            ForcePathStyle = true,
+            SignatureVersion = "4"
+        };
+        var credentials = new Amazon.Runtime.BasicAWSCredentials(accessKey, secretKey);
+        using var client = new AmazonS3Client(credentials, config);
+
+        // Check for command
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Please provide a command. Available commands: list, download, upload, geturls, getpermanenturls, listbuckets, delete");
+            return;
+        }
+
+        string command = args[0];
+
+        switch (command)
+        {
+            case "list":
+                await ListObjectsAsync(client, bucketName);
+                break;
+            case "download":
+                if (args.Length < 2)
+                {
+                    Console.WriteLine("Please provide the object key to download.");
+                    return;
+                }
+                await DownloadObjectAsync(client, bucketName, args[1], Path.Combine(Directory.GetCurrentDirectory(), args[1]));
+                break;
+            case "upload":
+                if (args.Length < 2)
+                {
+                    Console.WriteLine("Please provide the object key for upload.");
+                    return;
+                }
+                await UploadObjectAsync(client, bucketName, Path.Combine(Directory.GetCurrentDirectory(), args[1]), args[1]);
+                break;
+            case "geturls":
+                await GetUrlsAsync(client, bucketName, 1);
+                break;
+            case "getpermanenturls":
+                await GetUrlsAsync(client, bucketName, 10);
+                break;
+            case "listbuckets":
+                await ListBucketsAsync(client);
+                break;
+            case "delete":
+                if (args.Length < 2)
+                {
+                    Console.WriteLine("Please provide the object key to delete.");
+                    return;
+                }
+                await DeleteObjectAsync(client, bucketName, args[1]);
+                break;
+            default:
+                Console.WriteLine("Invalid command. Available commands: list, download, upload, geturls, getpermanenturls, listbuckets, delete");
+                break;
+        }
+    }
+    static async Task ListObjectsAsync(IAmazonS3 client, string bucketName)
+    {
+        ListObjectsV2Request request = new ListObjectsV2Request
+        {
+            BucketName = bucketName
+        };
+        ListObjectsV2Response response = await client.ListObjectsV2Async(request);
+
+        foreach (S3Object entry in response.S3Objects)
+        {
+            Console.WriteLine($"File: {entry.Key} (Size: {entry.Size} bytes)");
+        }
+    }
+
+    static async Task DownloadObjectAsync(IAmazonS3 client, string bucketName, string objectKey, string filePath)
+    {
+        try
+        {
+            GetObjectRequest request = new GetObjectRequest
+            {
+                BucketName = bucketName,
+                Key = objectKey
+            };
+
+            using GetObjectResponse response = await client.GetObjectAsync(request);
+            using Stream responseStream = response.ResponseStream;
+            using FileStream fileStream = File.Create(filePath);
+            await responseStream.CopyToAsync(fileStream);
+            Console.WriteLine($"File '{objectKey}' downloaded successfully.");
+        }
+        catch (AmazonS3Exception e)
+        {
+            Console.WriteLine($"Error: {e.Message}");
+        }
+    }
+
+    static async Task UploadObjectAsync(IAmazonS3 client, string bucketName, string filePath, string objectKey)
+    {
+        try
+        {
+            using FileStream fileStream = new FileStream(filePath, FileMode.Open);
+
+            PutObjectRequest request = new PutObjectRequest
+            {
+                BucketName = bucketName,
+                Key = objectKey,
+                InputStream = fileStream
+            };
+
+            await client.PutObjectAsync(request);
+
+            Console.WriteLine($"File '{objectKey}' uploaded successfully.");
+        }
+        catch (AmazonS3Exception e)
+        {
+            Console.WriteLine($"Error: {e.Message}");
+        }
+    }
+
+    static async Task GetUrlsAsync(IAmazonS3 client, string bucketName, int expiresInHours)
+    {
+        ListObjectsV2Request request = new ListObjectsV2Request
+        {
+            BucketName = bucketName
+        };
+        ListObjectsV2Response response = await client.ListObjectsV2Async(request);
+
+        foreach (S3Object entry in response.S3Objects)
+        {
+            GetPreSignedUrlRequest urlRequest = new GetPreSignedUrlRequest
+            {
+                BucketName = bucketName,
+                Key = entry.Key,
+                Expires = DateTime.Now.AddHours(expiresInHours)
+            };
+            string url = client.GetPreSignedURL(urlRequest);
+            Console.WriteLine($"File: {entry.Key}, URL: {url}");
+        }
+    }
+
+    static async Task ListBucketsAsync(IAmazonS3 client)
+    {
+        ListBucketsResponse response = await client.ListBucketsAsync();
+
+        Console.WriteLine("Available Buckets:");
+        foreach (S3Bucket bucket in response.Buckets)
+        {
+            Console.WriteLine(bucket.BucketName);
+        }
+    }
+
+    static async Task DeleteObjectAsync(IAmazonS3 client, string bucketName, string objectKey)
+    {
+        try
+        {
+            DeleteObjectRequest deleteRequest = new DeleteObjectRequest
+            {
+                BucketName = bucketName,
+                Key = objectKey
+            };
+
+            await client.DeleteObjectAsync(deleteRequest);
+
+            Console.WriteLine($"File '{objectKey}' deleted successfully.");
+        }
+        catch (AmazonS3Exception e)
+        {
+            Console.WriteLine($"Error: {e.Message}");
+        }
+    }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="use-in-controller" title="نحوه استفاده در کنترلر" />
+اگر که یک برنامه NET. تحت وب دارید و قصد دارید که آن را به فضای ذخیره‌سازی ابری لیارا متصل کنید؛ کافیست که در کنترلر مربوطه، قطعه کدی مشابه قطعه کد زیر را، به برنامه اضافه کنید:
+
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`using Amazon.S3;
+using Amazon.S3.Model;
+using DotNetEnv; // for install, run dotnet add package DotNetEnv
+
+namespace yourprojectname.Controllers; // در اینجا نام پروژه خود را وارد کنید
+
+public class yourController : Controller 
+{
+    public async Task<ActionResult> Insert(IFormFile image)
+    {
+        // check if image exists or not
+        if (post.Image != null && post.Image.Length > 0)
+        {
+            // loading env variables
+            Env.Load();
+
+            // creating AmazonS3Config instance
+            var config = new AmazonS3Config
+            {
+                ServiceURL = Env.GetString("LIARA_ENDPOINT"),
+                ForcePathStyle = true,
+                SignatureVersion = "4"
+            };
+
+            var credentials  = new Amazon.Runtime.BasicAWSCredentials(Env.GetString("LIARA_ACCESS_KEY"), Env.GetString("LIARA_SECRET_KEY"));
+            using var client = new AmazonS3Client(credentials, config);
+            string objectKey = Guid.NewGuid().ToString() + post.Image.FileName;
+            try
+                {
+                    
+                    using var memoryStream = new MemoryStream();
+                    await post.Image.CopyToAsync(memoryStream).ConfigureAwait(false);
+
+                    PutObjectRequest request = new PutObjectRequest
+                    {
+                        BucketName = Env.GetString("LIARA_BUCKET_NAME"),
+                        Key = objectKey,
+                        InputStream = memoryStream,
+                    };
+                    
+                    // uploading image in bucket
+                    await client.PutObjectAsync(request);
+                    Console.WriteLine($"File '{objectKey}' uploaded successfully.");
+                }
+
+            catch (AmazonS3Exception e)
+                {
+                    Console.WriteLine($"Error: {e.Message}");
+                }
+            // getting image url    
+            string fileUrl = $"{Env.GetString("LIARA_ENDPOINT")}/{Env.GetString("LIARA_BUCKET_NAME")}/{objectKey}";    
+            post.ImagePath = fileUrl;
+        }
+        
+        return RedirectToAction(nameof(Index));
+    }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>
