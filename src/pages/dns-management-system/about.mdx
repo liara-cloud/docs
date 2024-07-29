@@ -1,0 +1,87 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# سرویس مدیریت DNS لیارا
+<hr className="mb-2" />
+
+<Section id='what-is-dns-management-system' title='سیستم مدیریت DNS چیست؟' />
+
+سیستم مدیریت DNS یا DNS Management System، ابزاری است که برای تنظیم، مدیریت و پیکربندی دامنه‌ها و آدرس‌های IP مرتبط با آن‌ها استفاده می‌شود. این سیستم به کاربران امکان می‌دهد تا رکوردهای DNS خود را ایجاد و ویرایش کنند. به کمک سیستم مدیریت DNS، می‌توان ترافیک وب سایت‌ها را به سرورهای مختلف هدایت کرد، زمان پاسخگویی را بهبود بخشید و امنیت را افزایش داد.
+
+
+<Section id="liara-dns-management-system" title="سرویس مدیریت DNS لیارا" />
+لیارا، ارائه‌‌دهنده یکی از ساده‌ترین سیستم‌های مدیریت DNS در ایران است و شما می‌توانید به صورت کاملاً رایگان؛ از این سرویس برای مدیریت دامنه‌های خریداری شده خود، استفاده کنید. در ادامه بخوانید: 
+
+<div className="h-4" />
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "اضافه کردن دامنه",
+        link: "/dns-management-system/how-tos/add-records"
+      },
+      {
+        title: "مدیریت دامنه‌ها",
+        link: "/dns-management-system/how-tos/manage-records"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title} 
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+
+<Section id='also-read' title='همچنین بخوانید:' />
+<div className="grid grid-cols-2 gap-4">
+            {[
+    {
+      text: 'آشنایی با جزئیات سرویس مدیریت دامنه',
+      link: './details/about',
+    },
+    {
+      text: 'انتقال سرویس مدیریت دامنه',
+      link: './move',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+</Layout>

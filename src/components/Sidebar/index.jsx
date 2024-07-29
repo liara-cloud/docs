@@ -31,6 +31,10 @@ const Sidebar = () => {
       return data.object_storage[sidebar_name];
     }
 
+    if (router.route.startsWith("/dns-management-system/")) {
+      return data.dns[sidebar_name];
+    }
+
     return data.home;
   };
 

@@ -1,0 +1,56 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+<Layout>
+# رکوردهای قابل پشتیبانی
+<hr className="mb-2" />
+
+سرویس مدیریت DNS لیارا از رکوردهای زیر پشتیبانی می‌کند و شما می‌توانید این رکوردها را به این سرویس، اضافه کرده و از آن‌ها، استفاده کنید:
+
+<div className="h-4" />
+<ul>
+    <li>رکورد <Important>A</Important> </li>
+    <li>رکورد <Important>AAAA</Important> </li>
+    <li>رکورد <Important>ALIAS</Important> </li>
+    <li>رکورد <Important>CNAME</Important> </li>
+    <li>رکورد <Important>MX</Important> </li>
+    <li>رکورد <Important>SRV</Important> </li>
+    <li>رکورد <Important>TXT</Important> </li>
+</ul>
+<div className="h-4" />
+
+در ادامه به تعریف هریک از این رکوردها، پرداخته شده است:
+
+<Section id="a-record" title="رکورد A" />
+این رکورد آدرس آی‌پی نسخه 4 (IPv4) یک دامنه را مشخص می‌کند. برای مثال، رکورد A می‌تواند دامنه <Important>example.com</Important> را به آدرس <Important>192.0.2.1</Important> ترجمه کند. این رکورد به مرورگرها و سرورها کمک می‌کند تا دامنه‌ها را به آدرس‌های آی‌پی مربوطه تبدیل کنند.
+
+<Section id="aaaa-record" title="رکورد AAAA" />
+این رکورد آدرس آی‌پی نسخه 6 (IPv6) یک دامنه را مشخص می‌کند. به عنوان مثال، رکورد <Important>AAAA</Important> می‌تواند دامنه <Important>example.com</Important> را به آدرس <Important>2001:0db8::1</Important> ترجمه کند. این رکورد برای شبکه‌های جدیدتر و بزرگتر که از IPv6 استفاده می‌کنند، ضروری است.
+
+<Section id="cname-record" title="رکورد CNAME" />    
+ این رکورد یک نام مستعار (alias) برای یک دامنه دیگر ایجاد می‌کند. به عنوان مثال، <Important>www.example.com</Important> می‌تواند به <Important>example.com</Important> اشاره کند. رکورد CNAME برای هدایت ترافیک از یک دامنه به دامنه دیگر استفاده می‌شود.
+
+<Section id="alias-record" title="رکورد ALIAS" />   
+این رکورد، مانند CNAME عمل می‌کند اما برای دامنه‌های ریشه (apex) استفاده می‌شود. این رکورد به شما اجازه می‌دهد تا دامنه اصلی را به دامنه دیگری اشاره دهید، بدون این‌که مشکلات رکوردهای A را ایجاد کند.
+
+<Section id="mx-record" title="رکورد MX" />    
+این رکورد میل سرورهای (mail servers) مرتبط با دامنه را مشخص می‌کند. به عنوان مثال، ایمیل‌های ارسالی به <Important>user@example.com</Important> به سرور ایمیل تعریف شده در رکورد MX هدایت می‌شوند. رکوردهای MX اولویت سرورها را نیز تعیین می‌کنند.
+
+<Section id="srv-record" title="رکورد SRV" />    
+این رکورد خدمات خاصی را در یک دامنه مشخص می‌کند، مانند سرویس‌های VoIP یا پیام‌رسانی فوری. به عنوان مثال، رکورد SRV می‌تواند تعیین کند که ترافیک sip برای دامنه <Important>example.com</Important> به کدام سرور فرستاده شود.
+
+<Section id="txt-record" title="رکورد TXT" />    
+این رکورد اطلاعات متنی دلخواهی را ذخیره می‌کند. برای مثال، می‌تواند شامل اطلاعات تایید هویت، مانند رکوردهای SPF یا DKIM باشد که برای تایید ایمیل‌ها استفاده می‌شوند. این رکوردها به بهبود امنیت و عملکرد دامنه کمک می‌کنند.
+
+
+</Layout>

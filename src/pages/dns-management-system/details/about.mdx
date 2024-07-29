@@ -1,0 +1,109 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoHome,
+  GoGoal,
+  GoDatabase,
+  GoContainer,
+  GoRocket,
+  GoMail,
+  GoServer,
+  GoTerminal,
+  GoGlobe,
+  GoCode,
+  GoBrowser,
+  GoArrowRight,
+  GoInfo,
+  GoNote,
+  GoCodespaces,
+  GoWorkflow,
+  GoPackageDependents,
+  GoSync,
+  GoPerson,
+  GoTelescope,
+  GoFlame,
+  GoPackageDependencies,
+  GoProjectTemplate,
+  GoZap,
+  GoFileSymlinkFile,
+  GoPackage ,
+  GoBug,
+  GoPaperclip,
+  GoMegaphone,
+  GoCpu,
+  GoShieldLock,
+  GoNumber,
+  GoFileBinary,
+  GoEye,
+  GoGraph,
+  GoKey,
+  GoLog,
+  GoEyeClosed,
+  GoPulse,
+  GoGitPullRequest,
+  GoPlug,
+  GoLocation,
+  GoGitCompare,
+  GoXCircle,
+  GoPaperAirplane,
+  GoLink,
+} from "react-icons/go";
+
+<Layout>
+# ویژگی‌های سرویس مدیریت DNS در لیارا
+<hr className="mb-2" />
+لیارا همواره سعی داشته است که با 
+ارائه یک رابط کاربری آسان و همه‌منظوره، نیازهای کاربران خود را تا حد زیادی در خود <a href="https://console.liara.ir" className="blue-link">صفحه کنسول</a>، شناسایی و بر طرف کند. اما گاهاً ممکن است که در برخی از موارد، دچار ابهام شوید و به دنبال پاسخی
+برای سوالات خود، باشید.
+از این رو، در ادامه، تمامی جزئیات مربوط به Object Storage برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
+
+<div className="h-6" />
+
+    <div className="grid grid-cols-2 gap-4">
+    {[
+
+    {
+      title: "رکوردهای قابل پشتیبانی",
+      icon: <GoGoal   />,
+      desc: "تعریف و لیست تمامی رکوردهایی که سرویس مدیریت DNS لیارا، از آن‌ها، پشتیبانی می‌کند.",
+      link: "./supported-records",
+    },
+    {
+      title: "حذف یک سیستم مدیریت DNS",
+      icon: <GoXCircle  />,
+      desc: "امکان حذف یک DNS Management System در لیارا، پس از اتمام روزهای طلایی استفاده از آن",
+      link: "./delete-dns-management-system",
+    },
+].map(item =>
+        <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
+        <div>
+            <div className="flex items-center justify-between gap-3">
+            <h4>
+                {item.title}
+            </h4>
+            <div className="bg-[#222] text-white p-1 rounded-md">
+                {item.icon}
+            </div>
+            </div>
+            <p align='justify' className="text-[gray] leading-6 text-[14px] mt-3">
+            {item.desc}
+            </p>
+        </div>
+        <Link href={item.link}>
+        <Button variant="link" href={item.link}>بیشتر بدانید</Button>
+        </Link>
+        </Card>
+    )}
+    </div>
+
+</Layout>

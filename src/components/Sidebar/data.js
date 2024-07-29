@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import {
   GoFileDirectory,
   GoHome,
+  GoGear,
   GoRead,
   GoDatabase,
   GoContainer,
@@ -13,6 +14,7 @@ import {
   GoCode,
   GoBrowser,
   GoArrowRight,
+  GoGoal,
   GoInfo,
   GoNote,
   GoCodespaces,
@@ -767,11 +769,11 @@ export default {
         )
       },
       {
-        title: "اضافه کردن دامنه به برنامه",
+        title: "اضافه کردن رکورد به برنامه",
         link: "/paas/domains/add-domain"
       },
       {
-        title: "ساخت زیر دامنه www",
+        title: "ساخت زرکوردها www",
         link: "/paas/domains/add-www-subdomain"
       },
       {
@@ -5575,8 +5577,211 @@ export default {
         icon: <GoNote />,
         link: "/object-storage/details/about"
       },
+      {
+        title: "اتصال دامنه به Object Storage",
+        icon: <GoGlobe />,
+        link: "/object-storage/add-domain"
+      },
 
       
+    ],
+
+    'add-domain': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoServer  />
+            فضای ذخیره‌سازی ابری
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره ذخیره‌سازی ابری",
+        icon: <GoInfo />,
+        link: "/object-storage/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/object-storage/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoFileDirectory  />
+            نحوه کار با باکت
+          </div>
+        )
+      },
+      {
+        title: "آپلود فایل",
+        link: "/object-storage/how-tos/upload-file"
+      },
+      {
+        title: "دانلود فایل",
+        link: "/object-storage/how-tos/download-file"
+      },
+      {
+        title: "مشاهده فایل",
+        link: "/object-storage/how-tos/see-file"
+      },
+      {
+        title: "اشتراک‌گذاری فایل",
+        link: "/object-storage/how-tos/share-file"
+      },
+      {
+        title: "حذف فایل",
+        link: "/object-storage/how-tos/delete-file"
+      },
+      {
+        title: "تغییر سطح دسترسی",
+        link: "/object-storage/how-tos/change-access-level"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoKey   />
+            نحوه مدیریت کلیدها
+          </div>
+        )
+      },
+      {
+        title: "ایجاد کلید",
+        link: "/object-storage/how-tos/create-key"
+      },
+      {
+        title: "ساخت کلید جدید",
+        link: "/object-storage/how-tos/generate-new-key"
+      },
+      {
+        title: "ویرایش کلید",
+        link: "/object-storage/how-tos/edit-key"
+      },
+      {
+        title: "حذف کلید",
+        link: "/object-storage/how-tos/delete-key"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoCopy   />
+            انتقالات  
+          </div>
+        )
+      },
+      {
+        title: "انتقال فایل از باکت به باکت دیگر",
+        link: "/object-storage/how-tos/move-bucket"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با rclone",
+        link: "/object-storage/how-tos/create-backup-using-rclone"
+      },
+      {
+        title: "تهیه فایل‌پشتیبان با S3 Browser",
+        link: "/object-storage/how-tos/create-backup-using-s3-browser"
+      },
+      {
+        title: "مهاجرت از سرویس فایل (قدیمی)",
+        link: "/object-storage/how-tos/migrate-from-file-service"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage />
+          <a href="/object-storage/how-tos/connect-via-platform/about">
+          اتصال با AWS SDK از طریق پلتفرم
+          </a>
+          </div>
+        )
+      },
+      {
+        title: "دانلود مستقیم فایل",
+        icon: < GoDownload />,
+        link: "/object-storage/how-tos/direct-download"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/object-storage/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/object-storage/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/object-storage/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/object-storage/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/object-storage/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/object-storage/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/object-storage/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/object-storage/how-tos/connect-via-platform/go"
+      },
+      {
+        title: "Imgproxy",
+        icon: <IconContainer alt="imgproxy" />,
+        link: "/object-storage/how-tos/connect-via-platform/imgproxy"
+      },
+      {
+        title: "Strapi",
+        icon: <IconContainer alt="strapi" />,
+        link: "/object-storage/how-tos/connect-via-platform/strapi"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات فضای ذخیره‌سازی ابری",
+        icon: <GoNote />,
+        link: "/object-storage/details/about"
+      },
+      {
+        title: "اتصال دامنه به Object Storage",
+        icon: <GoGlobe />,
+        link: "/object-storage/add-domain"
+      },
+
     ],
 
     'quick-setup': [
@@ -5768,6 +5973,11 @@ export default {
         title: "جزئیات فضای ذخیره‌سازی ابری",
         icon: <GoNote />,
         link: "/object-storage/details/about"
+      },
+      {
+        title: "اتصال دامنه به Object Storage",
+        icon: <GoGlobe />,
+        link: "/object-storage/add-domain"
       },
 
       
@@ -5963,6 +6173,11 @@ export default {
         icon: <GoNote />,
         link: "/object-storage/details/about"
       },
+      {
+        title: "اتصال دامنه به Object Storage",
+        icon: <GoGlobe />,
+        link: "/object-storage/add-domain"
+      },
 
       
     ],
@@ -6008,6 +6223,219 @@ export default {
         title: "حذف یک Object Storage",
         icon: <GoXCircle  />,
         link: "/object-storage/details/delete-object-storage"
+      },
+    ],
+  },
+
+  dns: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoGlobe  />
+          سیستم مدیریت DNS
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس مدیریت DNS",
+        icon: <GoInfo />,
+        link: "/dns-management-system/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/dns-management-system/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <  GoGear  />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن رکورد",
+        link: "/dns-management-system/how-tos/add-records"
+      },
+      {
+        title: "مدیریت رکوردها",
+        link: "/dns-management-system/how-tos/manage-records"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات سرویس مدیریت دامنه",
+        icon: <GoNote />,
+        link: "/dns-management-system/details/about"
+      },  
+      {
+        title: "انتقال سرویس مدیریت دامنه",
+        icon: <GoPackageDependents />,
+        link: "/dns-management-system/move"
+      },  
+    ],
+
+    'quick-setup': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoGlobe  />
+          سیستم مدیریت DNS
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس مدیریت DNS",
+        icon: <GoInfo />,
+        link: "/dns-management-system/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/dns-management-system/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <  GoGear  />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن رکورد",
+        link: "/dns-management-system/how-tos/add-records"
+      },
+      {
+        title: "مدیریت رکوردها",
+        link: "/dns-management-system/how-tos/manage-records"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات سرویس مدیریت دامنه",
+        icon: <GoNote />,
+        link: "/dns-management-system/details/about"
+      },  
+      {
+        title: "انتقال سرویس مدیریت دامنه",
+        icon: <GoPackageDependents />,
+        link: "/dns-management-system/move"
+      },  
+    ],
+
+    'how-tos':  [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoGlobe  />
+          سیستم مدیریت DNS
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس مدیریت DNS",
+        icon: <GoInfo />,
+        link: "/dns-management-system/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/dns-management-system/quick-setup"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <  GoGear  />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن رکورد",
+        link: "/dns-management-system/how-tos/add-records"
+      },
+      {
+        title: "مدیریت رکوردها",
+        link: "/dns-management-system/how-tos/manage-records"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات سرویس مدیریت دامنه",
+        icon: <GoNote />,
+        link: "/dns-management-system/details/about"
+      },  
+      {
+        title: "انتقال سرویس مدیریت دامنه",
+        icon: <GoPackageDependents />,
+        link: "/dns-management-system/move"
+      },  
+    ],
+
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            جزئیات سرویس مدیریت دامنه
+          </div>
+        )
+      },
+      {
+        title: "برگشت به سرویس مدیریت دامنه",
+        icon: <GoArrowRight />,
+        link: "/dns-management-system/about"
+      },
+      {
+        title: "ویژگی‌های سرویس مدیریت دامنه در لیارا",
+        icon: <GoInfo />,
+        link: "/dns-management-system/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "رکوردهای قابل پشتیبانی",
+        icon: <GoGoal  />,
+        link: "/dns-management-system/details/supported-records"
+      },
+      {
+        title: "حذف یک سیستم مدیریت DNS",
+        icon: <GoXCircle  />,
+        link: "/dns-management-system/details/delete-dns-management-system"
       },
     ],
   },
