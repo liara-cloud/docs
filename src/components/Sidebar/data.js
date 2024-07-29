@@ -6549,4 +6549,180 @@ export default {
     ],
   },
 
+  references:  {
+    'liara-cli': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal  />
+            ابزار Liara CLI
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "Liara CLI چیست؟",
+        icon: <GoInfo />,
+        link: "/references/liara-cli/about"
+      },
+      {
+        title: "خلاصه دستورات",
+        icon: <GoInfo />,
+        link: "/references/liara-cli/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            نحوه
+          </div>
+        )
+      },
+      {
+        title: "نصب و به‌روزرسانی",
+        link: "/references/liara-cli/install"
+      },
+      {
+        title: "ورود به حساب کاربری",
+        link: "/references/liara-cli/login"
+      },
+      {
+        title: "مدیریت دیسک‌ها",
+        link: "/references/liara-cli/manage-disks"
+      },
+      {
+        title: "مشاهده پلن‌های سرویس پلتفرم",
+        link: "/references/liara-cli/see-platform-plans"
+      },
+      {
+        title: "تکمیل خودکار دستورات",
+        link: "/references/liara-cli/autocomplete"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          مدیریت برنامه‌ها 
+          </div>
+        )
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/references/liara-cli/deploy-app"
+      },
+      {
+        title: "ایجاد یک برنامه",
+        link: "/references/liara-cli/create-app"
+      },
+      {
+        title: "حذف یک برنامه",
+        link: "/references/liara-cli/delete-app"
+      },
+      {
+        title: "لیست‌کردن برنامه‌ها",
+        link: "/references/liara-cli/list-apps"
+      },
+      {
+        title: "مشاهده لاگ‌های برنامه",
+        link: "/references/liara-cli/see-app-logs"
+      },
+      {
+        title: "ری‌استارت برنامه",
+        link: "/references/liara-cli/restart-app"
+      },
+      {
+        title: "اتصال به خط فرمان برنامه",
+        link: "/references/liara-cli/connect-to-app-shell"
+      },
+      {
+        title: "روشن‌کردن برنامه",
+        link: "/references/liara-cli/start-app"
+      },
+      {
+        title: "خاموش‌کردن برنامه",
+        link: "/references/liara-cli/stop-app"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          مدیریت متغیرهای محیطی 
+          </div>
+        )
+      },
+      {
+        title: " لیست متغیرهای ثبت شده برنامه",
+        link: "/references/liara-cli/list-envs"
+      },
+      {
+        title: "ثبت یا ویرایش متغیرهای محیطی",
+        link: "/references/liara-cli/add-or-edit-envs"
+      },
+      {
+        title: "حذف متغیرهای محیطی یک برنامه",
+        link: "/references/liara-cli/remove-env"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            مدیریت حساب‌های کاربری
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن حساب کاربری جدید",
+        link: "/references/liara-cli/add-account"
+      },
+      {
+        title: "لیست حساب‌های کاربری ",
+        link: "/references/liara-cli/list-accounts"
+      },
+      {
+        title: "حذف یکی از حساب‌های کاربری",
+        link: "/references/liara-cli/remove-account"
+      },
+      {
+        title: "انتخاب حساب‌ به عنوان حساب اصلی",
+        link: "/references/liara-cli/remove-account"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای command not found",
+        link: "/references/liara-cli/fix-command-not-found-error"
+      },
+      {
+        title: "رفع خطای command is not recognized",
+        link: "/references/liara-cli/fix-command-not-recognized-error"
+      },
+    
+    ],
+  },
+
+
+
 };

@@ -39,6 +39,10 @@ const Sidebar = () => {
       return data.overview[sidebar_name];
     }
 
+    if (router.route.startsWith("/references/")) {
+      return data.references[sidebar_name];
+    }
+
     return data.home;
   };
 

@@ -1,0 +1,57 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# رابط خط فرمان لیارا
+<hr className="mb-2" />
+
+رابط خط فرمان و یا همان Liara CLI، این امکان را به شما می‌دهد که فقط با چند دستور ساده، اپلیکیشن خود را در بستر ابری لیارا، مستقر کنید. اگر با محیط خط فرمان و ترمینال آشنایی ندارید، اصلاً جای نگرانی نیست! دستوراتی که برای کار با لیارا نیاز خواهید داشت، بسیار مختصر و کوتاه هستند و نیاز به دانش خاصی ندارند و شما می‌توانید به سادگی اجرای چند دستور، برنامه خود را در لیارا، مستقر کنید.
+
+<Section id="also-read" title="در ادامه، بخوانید:" />
+
+<div className="grid grid-cols-2 gap-4">
+            {[
+    {
+      text: 'آشنایی با جزئیات دیتابیس',
+      link: './details/about',
+    },
+    {
+      text: 'نحوه انتقال دیتابیس',
+      link: './move',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+</Layout>
