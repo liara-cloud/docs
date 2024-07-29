@@ -1,0 +1,60 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import Table from "@/components/Common/table";
+
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# دیتاسنترهای لیارا
+
+<hr className="mb-2" />
+
+<Section id="what-is-data-center" title="دیتاسنتر چیست؟" />
+
+دیتاسنتر (Data Center) یک مرکز فیزیکی است که به منظور میزبانی، مدیریت و نگهداری از سرورها و تجهیزات مرتبط با فناوری اطلاعات طراحی شده است. این مراکز به صورت ویژه‌ای ساخته و تجهیز می‌شوند تا محیطی امن، پایدار و قابل اعتماد برای نگهداری داده‌ها و ارائه خدمات مختلف فراهم کنند. دیتاسنترها زیرساخت‌های حیاتی برای بسیاری از شرکت‌ها و سازمان‌ها هستند و به عنوان قلب فناوری اطلاعات عمل می‌کنند.
+در ادامه موقعیت دیتاسنتر های لیارا برای شما قرار گرفته است.
+
+<Section id="iran-region" title="دیتاسنترهای موقعیت ایران" />
+
+<Table headers={[
+  "نام دیتاسنتر",
+  "موقعیت جغرافیایی",
+  "دسترس‌پذیری",
+  "امنیت فیزیکی و سایبری",
+  "مقیاس‌پذیری",
+  "وب‌سایت",
+]} data={[
+  [
+    "دیتاسنتر امین",
+    "استان قم",
+    "99.9%",
+    "نظارت 24/7 و دسترسی محدود",
+    "قابلیت افزایش منابع با توجه به نیاز کاربران",
+    <Link href="https://www.aminidc.com/" className="blue-link">aminidc</Link>,
+  ],
+  
+]} />
+
+
+<Section id="why-use-local-data-center" title="چرا از دیتاسنترهای محلی (local) استفاده کنیم؟" />
+در نظر داشته باشید که وجود دیتاسنتر در موقعیت محلی، مزایای قابل توجهی به همراه دارد. اول از همه، کاهش تأخیر (latency) به دلیل نزدیکی جغرافیایی به کاربران، منجر به بهبود سرعت بارگذاری وب‌سایت‌ها و خدمات آنلاین می‌شود. این کاهش تأخیر به تجربه کاربری بهتر و پاسخگویی سریع‌تر کمک می‌کند. همچنین، پشتیبانی از قوانین محلی و حفظ داده‌ها در داخل کشور به کاربران اطمینان می‌دهد که داده‌هایشان تحت قوانین و مقررات محلی قرار دارد.
+
+<Section id="why-use-global-data-center" title="چرا از دیتاسنترهای جهانی (global) استفاده کنیم؟" />
+یکی از مهم‌ترین دلایل انتخاب دیتاسنترهای غیر محلی، نیاز به مقیاس‌پذیری جهانی است. اگر کسب‌وکار شما به کاربران در نقاط مختلف جهان خدمات می‌دهد، انتخاب دیتاسنترهای با موقعیت‌های جغرافیایی متنوع می‌تواند به کاهش تأخیر و بهبود سرعت بارگذاری وب‌سایت‌ها و خدمات آنلاین برای کاربران بین‌المللی کمک کند.
+علاوه بر این، دسترسی به فناوری و زیرساخت‌های پیشرفته‌تر یکی دیگر از مزایای دیتاسنترهای غیر محلی است. 
+
+
+
+
+</Layout>

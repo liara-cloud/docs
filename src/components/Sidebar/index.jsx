@@ -35,6 +35,10 @@ const Sidebar = () => {
       return data.dns[sidebar_name];
     }
 
+    if (router.route.startsWith("/overview/")) {
+      return data.overview[sidebar_name];
+    }
+
     return data.home;
   };
 

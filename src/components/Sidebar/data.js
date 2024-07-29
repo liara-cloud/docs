@@ -5,8 +5,11 @@ import {
   GoGear,
   GoRead,
   GoDatabase,
+  GoProjectRoadmap,
   GoContainer,
   GoRocket,
+  GoLaw,
+  GoStopwatch,
   GoMail,
   GoServer,
   GoTerminal,
@@ -41,6 +44,8 @@ import {
   GoGraph,
   GoKey,
   GoLog,
+  GoStrikethrough,
+  GoOrganization,
   GoEyeClosed,
   GoPulse,
   GoGitPullRequest,
@@ -81,7 +86,7 @@ export default {
     {
       title: "لیارا در یک نگاه",
       icon: <GoTelescope />,
-      link: "/overview"
+      link: "/overview/about"
     },
     {
       hr: true
@@ -128,23 +133,35 @@ export default {
     {
       title: "Liara CLI",
       icon: <GoTerminal />,
-      link: "/"
+      link: "/references/liara-cli/about"
     },
     {
       title: "Liara API",
       icon: <GoCode />,
-      link: ""
-    },
-    {
-      title: "Liara Console",
-      icon: <GoBrowser />,
-      link: ""
+      link: "/references/liara-api/about"
     },
     {
       title: "مدیریت حساب",
       icon: <GoPerson />,
-      link: ""
-    }
+      link: "/references/manage-accounts/about"
+    },
+    {
+      hr: true
+    },
+    {
+      title: "SLAs",
+      icon: <GoLaw  />,
+      link: "https://liara.ir/sla/"
+    },
+    {
+      hr: true
+    },
+    {
+      title: "صفحه وضعیت (Status Page)",
+      icon: <GoStopwatch   />,
+      link: "https://liara.online/"
+    },
+
   ],
 
   paas: {
@@ -6440,6 +6457,96 @@ export default {
     ],
   },
 
-  
-  
+  overview: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTelescope  />
+          لیارا در یک نگاه
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "لیارا چیست؟",
+        icon: <GoInfo />,
+        link: "/overview/about"
+      },
+      {
+        title: "دیتاسنترهای لیارا",
+        icon: <GoOrganization  />,
+        link: "/overview/data-centers"
+      },
+      {
+        title: "قیمت‌ها و تعرفه‌ها در لیارا",
+        icon: <GoStrikethrough   />,
+        link: "https://liara.ir/pricing/"
+      },
+      {
+        title: "وبلاگ لیارا",
+        icon: <GoProjectRoadmap    />,
+        link: "https://liara.ir/blog"
+      },
+      {
+        title: "changelog لیارا (به زودی ...)",
+        icon: <GoLog     />,
+        link: ""
+      },
+      
+    ],
+
+    'data-centers': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTelescope  />
+          لیارا در یک نگاه
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "لیارا چیست؟",
+        icon: <GoInfo />,
+        link: "/overview/about"
+      },
+      {
+        title: "دیتاسنترهای لیارا",
+        icon: <GoOrganization  />,
+        link: "/overview/data-centers"
+      },
+      {
+        title: "قیمت‌ها و تعرفه‌ها در لیارا",
+        icon: <GoStrikethrough   />,
+        link: "https://liara.ir/pricing/"
+      },
+      {
+        title: "وبلاگ لیارا",
+        icon: <GoProjectRoadmap    />,
+        link: "https://liara.ir/blog"
+      },
+      {
+        title: "changelog لیارا (به زودی ...)",
+        icon: <GoLog     />,
+        link: ""
+      },
+      
+    ],
+  },
+
 };
