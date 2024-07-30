@@ -9,6 +9,9 @@ import {
   GoRocket,
   GoServer,
   GoMail,
+  GoTerminal,
+  GoCode,
+  GoPerson,
   GoGlobe,
   GoArrowLeft
 } from "react-icons/go";
@@ -100,47 +103,73 @@ const PRODUCTS = [
   }
 ];
 
+const REFERENCES = [
+  {
+    title: "Liara CLI",
+    icon: <GoTerminal />,
+    desc: "اطلاعات در مورد رابط خط فرمان لیارا و نحوه استفاده و راه‌اندازی آن‌",
+    link: "/references/liara-cli/about"
+  },
+  {
+    title: "Liara API",
+    icon: <GoCode />,
+    desc: "اطلاعات در رابط وب‌سرویس لیارا، نحوه استفاده و کاربردهای آن",
+    link: "/references/liara-api/about"
+  },
+  {
+    title: "پنل کاربری لیارا",
+    icon: <GoPerson />,
+    desc: "اطلاعات در مورد پنل کاربری لیارا، از ثبت تیکت تا تخمین‌هزینه‌های سرویس‌های مورد استفاده",
+    link: "/references/user-panel/about"
+  },
+];
+
 const MOST_VISITED_LINKS = [
   {
-    title: "رفع خطای CORS در NodeJS",
+    title: "رفع خطای CORS در برنامه‌های NodeJS",
     alt: "nodejs-cors",
-    href: "/"
+    href: "/paas/nodejs/fix-common-errors/cors-error/about"
   },
   {
-    title: "تنظیمات اختصاصی php.ini",
+    title: "تنظیمات اختصاصی php.ini در برنامه‌های لاراول",
     alt: "php-ini",
-    href: "/"
+    href: "/paas/laravel/how-tos/customize-php-ini"
   },
   {
     title: "اتصال دامنه به برنامه‌‌های مختلف در لیارا",
     alt: "domains",
-    href: "/"
+    href: "/paas/domains/about"
   },
   {
     title: "راه‌اندازی CI/CD به وسیله GitHub",
     alt: "ci-cd-gitHub",
-    href: "/"
+    href: "/paas/cicd/github"
   },
   {
-    title: "رفع خطای CORS در NodeJS",
-    alt: "nodejs-cors",
-    href: "/"
+    title: "کاهش فضای دیسک در برنامه‌ها",
+    alt: "disk value",
+    href: "/paas/disks/decrease-value"
   },
   {
-    title: "تنظیمات اختصاصی php.ini",
-    alt: "php-ini",
-    href: "/"
+    title: "راه‌اندازی وردپرس با استفاده از بسته نصب آسان (Duplicator)",
+    alt: "wordpress duplicator",
+    href: "/one-click-apps/wordpressplus/how-tos/duplicator"
   },
   {
-    title: "اتصال دامنه به برنامه‌‌های مختلف در لیارا",
-    alt: "domains",
-    href: "/"
+    title: "دانلود مستقیم فایل از فضای ذخیره‌سازی ابری لیارا",
+    alt: "object-storage direct-download",
+    href: "/object-storage/how-tos/direct-download"
   },
   {
-    title: "راه‌اندازی CI/CD به وسیله GitHub",
-    alt: "ci-cd-gitHub",
-    href: "/"
-  }
+    title: "اتصال به دیتابیس MySQL در برنامه‌های Golang",
+    alt: "golang mysql",
+    href: "/dbaas/mysql/how-tos/connect-via-platform/go"
+  },
+  {
+    title: "مدیریت رکوردها در سیستم مدیریت DNS لیارا",
+    alt: "dns management",
+    href: "/dns-management-system/how-tos/manage-records"
+  },
 ];
 
 export default function Home() {
@@ -183,6 +212,31 @@ export default function Home() {
         <Section id="home-products" title={"محصولات لیارا"}>
           <div className="grid grid-cols-3 gap-4">
             {PRODUCTS.map(item =>
+              <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                    <div className="bg-[#222] text-white p-1 rounded-md">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <p className="text-[gray] leading-6 text-[14px] mt-3">
+                    {item.desc}
+                  </p>
+                </div>
+                <Link href={item.link}>
+                <Button variant="link">بیشتر بدانید</Button>
+                </Link>
+              </Card>
+            )}
+          </div>
+        </Section>
+
+        <Section id="home-references" title={"ارجاعات"}>
+          <div className="grid grid-cols-3 gap-4">
+            {REFERENCES.map(item =>
               <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
                 <div>
                   <div className="flex items-center justify-between gap-3">
