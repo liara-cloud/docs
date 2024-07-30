@@ -6569,11 +6569,11 @@ export default {
         icon: <GoInfo />,
         link: "/references/liara-cli/about"
       },
-      {
-        title: "خلاصه دستورات",
-        icon: <GoInfo />,
-        link: "/references/liara-cli/about"
-      },
+      // {
+      //   title: "خلاصه دستورات",
+      //   icon: <GoInfo />,
+      //   link: "/references/liara-cli/about"
+      // },
       {
         hr: true
       },
@@ -6698,6 +6698,45 @@ export default {
       {
         title: "انتخاب حساب پیش‌فرض",
         link: "/references/liara-cli/choose-default-account"
+      },
+    ],
+
+    'liara-api': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoCode />
+            ابزار Liara API
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "Liara API چیست؟",
+        icon: <GoInfo />,
+        link: "/references/liara-api/about"
+      },
+      // {
+      //   title: "خلاصه دستورات",
+      //   icon: <GoInfo />,
+      //   link: "/references/liara-api/about"
+      // },
+      {
+        hr: true
+      },
+      {
+        title: "مستندات OpenAPI",
+        icon: <IconContainer alt="json" />,
+        link: "https://openapi.liara.ir/"
+      },
+      {
+        title: "دریافت اطلاعات جامع کاربری",
+        icon: <GoInfo />,
+        link: "/references/liara-api/get-info"
       },
     ],
   },

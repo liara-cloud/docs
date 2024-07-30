@@ -28,22 +28,98 @@ import {
 
 <Section id="also-read" title="در ادامه، بخوانید:" />
 
-<div className="grid grid-cols-2 gap-4">
+<div className="grid grid-cols-3 gap-4">
             {[
-    {
-      text: 'آشنایی با جزئیات دیتابیس',
-      link: './details/about',
-    },
-    {
-      text: 'نحوه انتقال دیتابیس',
-      link: './move',
-    },
+      {
+        title: "نصب و به‌روزرسانی",
+        link: "/references/liara-cli/install"
+      },
+      {
+        title: "ورود به حساب کاربری",
+        link: "/references/liara-cli/login"
+      },
+      {
+        title: "مدیریت دیسک‌ها",
+        link: "/references/liara-cli/manage-disks"
+      },
+      {
+        title: "مشاهده پلن‌های سرویس پلتفرم",
+        link: "/references/liara-cli/see-platform-plans"
+      },
+      {
+        title: "تکمیل خودکار دستورات",
+        link: "/references/liara-cli/autocomplete"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/references/liara-cli/deploy-app"
+      },
+      {
+        title: "ایجاد یک برنامه",
+        link: "/references/liara-cli/create-app"
+      },
+      {
+        title: "حذف یک برنامه",
+        link: "/references/liara-cli/delete-app"
+      },
+      {
+        title: "لیست‌کردن برنامه‌ها",
+        link: "/references/liara-cli/list-apps"
+      },
+      {
+        title: "مشاهده لاگ‌های برنامه",
+        link: "/references/liara-cli/see-app-logs"
+      },
+      {
+        title: "ری‌استارت برنامه",
+        link: "/references/liara-cli/restart-app"
+      },
+      {
+        title: "اتصال به خط فرمان برنامه",
+        link: "/references/liara-cli/connect-to-app-shell"
+      },
+      {
+        title: "روشن‌کردن برنامه",
+        link: "/references/liara-cli/start-app"
+      },
+      {
+        title: "خاموش‌کردن برنامه",
+        link: "/references/liara-cli/stop-app"
+      },
+      {
+        title: " لیست متغیرهای ثبت شده برنامه",
+        link: "/references/liara-cli/list-envs"
+      },
+      {
+        title: "ثبت یا ویرایش متغیرهای محیطی",
+        link: "/references/liara-cli/add-or-edit-envs"
+      },
+      {
+        title: "حذف متغیرهای محیطی یک برنامه",
+        link: "/references/liara-cli/remove-env"
+      },
+      {
+        title: "اضافه کردن حساب کاربری جدید",
+        link: "/references/liara-cli/add-account"
+      },
+      {
+        title: "لیست حساب‌های کاربری ",
+        link: "/references/liara-cli/list-accounts"
+      },
+      {
+        title: "حذف یکی از حساب‌های کاربری",
+        link: "/references/liara-cli/remove-account"
+      },
+      {
+        title: "انتخاب حساب پیش‌فرض",
+        link: "/references/liara-cli/choose-default-account"
+      },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
                   <div className="flex items-center gap-3">
                     <h4>
-                      {item.text}
+                      نحوه {item.title}
                     </h4>
                   </div>
                   <GoArrowLeft className="ml-1" />

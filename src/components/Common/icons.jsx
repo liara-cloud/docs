@@ -73,6 +73,7 @@ import nuxtIcon from "@liara/platformicons/glass/png/nuxtjs.png";
 import soketiIcon from "@liara/platformicons/glass/png/soketi.png";
 import pythonIcon from "@liara/platformicons/glass/png/python.png";
 import gatsbyIcon from "@liara/platformicons/glass/png/gatsby.png";
+import jsonIcon from "@liara/platformicons/glass/png/json.png";
 
 // Databases
 
@@ -107,6 +108,7 @@ const types = [
   { logo: laravelIcon, alt: "laravel" },
   { logo: netcoreIcon, alt: "netcore" },
   { logo: angularIcon, alt: "angularjs" },
+  { logo: jsonIcon, alt: "json" },
   // One-click-apps
   { logo: n8nIcon, alt: "n8n" },
   { logo: odooIcon, alt: "odoo" },

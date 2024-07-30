@@ -1,0 +1,37 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# دریافت اطلاعات جامع کاربری
+<hr className="mb-2" />
+
+در endpoint زیر شما می‌توانید به اطلاعات کاملی از حساب کاربری، پلن‌های قابل انتخاب به‌همراه قیمت، مشخصات هر پلن و نسخه‌های دیتابیس‌ها دسترسی داشته باشید. بنابراین از اطلاعاتی که از این endpoint دریافت می‌کنید می‌توانید در endpointهای دیگر استفاده کنید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`GET/v1/me`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>
