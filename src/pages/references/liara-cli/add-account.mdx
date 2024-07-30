@@ -16,6 +16,14 @@ import Table from "@/components/Common/table";
 # اضافه کردن حساب کاربری جدید با Liara CLI
 <hr className="mb-2" />
 
+<video
+      src="https://files.liara.ir/liara/liara-features/managing-multiple-accounts.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+></video>
+<br />
+
 برای 
 اضافه کردن حساب کاربری جدید با Liara CLI،
 می‌توانید از دستور زیر، استفاده کنید: 
@@ -80,9 +88,22 @@ import Table from "@/components/Common/table";
     "برای درج پسورد اکانت",
     <Important>**** liara account:add -p </Important>,
   ],
- 
-  
 ]} />
 <div className="h-3" />
+
+
+همچنین برای استقرار در یک اکانت مشخص، شما می‌توانید در مسیر اصلی پروژه یک فایل به نام <Important>liara.json</Important> ایجاد کنید و محتوای آن را به شکل زیر بنویسید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='json'>
+{`{
+    "account": "account_name"
+}`}
+</Highlight>
+</div>
+<div className="h-2" />
+در کد فوق کافیست که به جای <Important>account_name</Important> نام حساب مدنظرتان را وارد کنید؛ پس از اجرای دستور <Important>liara deploy</Important> در صورت درست بودن نام حساب کاربری ، حساب به صورت خودکار تشخیص داده خواهد شد.
+
 
 </Layout>

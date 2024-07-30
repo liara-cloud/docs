@@ -1,0 +1,89 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# پنل کاربری لیارا
+<hr className="mb-2" />
+
+شما می‌توانید با استفاده از رابط کاربری لیارا، به سادگی تمام، حساب خود را مدیریت کنید و پروژه‌های خود را روز به روز، بهتر از دیروز، توسعه و بهبود ببخشید!
+لیارا سعی داشته است تا با ارائه <a href="https://console.liara.ir" className="blue-link">پنل کاربری</a> آسان و در عین حال کاربرپسند خود، تمامی نیازهای شما را تشخیص و رفع، کند؛ اما شما‌می‌توانید برای اطلاعات بیشتر، از مستندات آن نیز، استفاده کنید. 
+<Section id="also-read" title="در ادامه، بخوانید:" />
+
+<div className="grid grid-cols-2 gap-4">
+            {[
+      {
+        title: "مدیریت حساب‌کاربری",
+        link: "/references/user-panel/manage-accounts"
+      },
+      {
+        title: "ارتقا سطح حساب‌کاربری",
+        link: "/references/user-panel/upgrade-user-level"
+      },
+      {
+        title: "افزایش اعتبار",
+        link: "/references/user-panel/increase-credit"
+      },
+      {
+        title: "مشاهده یا ویرایش مشخصات حساب",
+        link: "/references/user-panel/see-user-info"
+      },
+      {
+        title: "تغییر رمز عبور حساب",
+        link: "/references/user-panel/change-password"
+      },
+      {
+        title: "تنظیم اعلان",
+        link: "/references/user-panel/set-notifs"
+      },
+      {
+        title: "تخمین هزینه‌ها",
+        link: "/references/user-panel/cost-estimation"
+      },
+      {
+        title: "دریافت فاکتور",
+        link: "/references/user-panel/receive-invoice"
+      },
+      {
+        title: "مشاهده اعلانات حساب",
+        link: "/references/user-panel/see-notifs"
+      },
+      {
+        title: "مشاهده و ایجاد تیکت",
+        link: "/references/user-panel/create-and-see-tickets"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+</Layout>

@@ -141,9 +141,9 @@ export default {
       link: "/references/liara-api/about"
     },
     {
-      title: "مدیریت حساب",
+      title: "پنل کاربری لیارا",
       icon: <GoPerson />,
-      link: "/references/manage-accounts/about"
+      link: "/references/user-panel/about"
     },
     {
       hr: true
@@ -6737,6 +6737,75 @@ export default {
         title: "دریافت اطلاعات جامع کاربری",
         icon: <GoInfo />,
         link: "/references/liara-api/get-info"
+      },
+    ],
+
+    'user-panel': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPerson />
+            پنل کاربری لیارا
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "پنل کاربری لیارا",
+        icon: <GoInfo />,
+        link: "/references/user-panel/about"
+      },
+      // {
+      //   title: "خلاصه دستورات",
+      //   icon: <GoInfo />,
+      //   link: "/references/liara-api/about"
+      // },
+      {
+        hr: true
+      },
+      {
+        title: "مدیریت حساب‌کاربری",
+        link: "/references/user-panel/manage-accounts"
+      },
+      {
+        title: "ارتقا سطح حساب‌کاربری",
+        link: "/references/user-panel/upgrade-user-level"
+      },
+      {
+        title: "افزایش اعتبار",
+        link: "/references/user-panel/increase-credit"
+      },
+      {
+        title: "مشاهده یا ویرایش مشخصات حساب",
+        link: "/references/user-panel/see-user-info"
+      },
+      {
+        title: "تغییر رمز عبور حساب",
+        link: "/references/user-panel/change-password"
+      },
+      {
+        title: "تنظیم اعلان",
+        link: "/references/user-panel/set-notifs"
+      },
+      {
+        title: "تخمین هزینه‌ها",
+        link: "/references/user-panel/cost-estimation"
+      },
+      {
+        title: "دریافت فاکتور",
+        link: "/references/user-panel/receive-invoice"
+      },
+      {
+        title: "مشاهده اعلانات حساب",
+        link: "/references/user-panel/see-notifs"
+      },
+      {
+        title: "مشاهده و ایجاد تیکت",
+        link: "/references/user-panel/create-and-see-tickets"
       },
     ],
   },
