@@ -1,0 +1,124 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+<Layout>
+# مشاهده لیستی از برنامه‌های ایجاد شده با Liara CLI
+<hr className="mb-2" />
+
+برای 
+مشاهده لیستی از برنامه‌های ایجاد شده با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara app:list`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="list-apps" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara app:list</Important>یا <Important>liara app:ls</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{` liara app ls [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>] [--columns
+    <value> | -x] [--filter <value>] [--no-header | [--csv | --no-truncate]] [--output csv|json|yaml |  | ] [--sort
+    <value>]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>x- یا extended--</Important>,
+    "نمایش اطلاعات و ستون‌های اضافی برنامه‌ها",
+    <Important>liara app:ls --extended</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara app:ls -h</Important>,
+  ],
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara app:ls --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات نمایش برنامه‌ها به کمک <a href="/references/liara-api/about" className="blue-link">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara app:ls --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara app:ls --debug</Important>,
+  ],
+  [
+    <Important>columns--</Important>,
+    "برای نمایش فقط ستون‌های انتخاب شده",
+    <Important>liara app:ls --columns=Status,Name</Important>,
+  ],
+  [
+    <Important>csv-- یا output=csv--</Important>,
+    <div dir="rtl">
+    <p>برای نمایش خروجی در فرمت CSV</p>
+    </div>,
+    <Important>liara app:ls --csv</Important>,
+  ],
+  [
+    <Important>filter--</Important>,
+    <div dir="rtl">
+    <p>برای فیلتر یک ستون با اسم</p>
+    </div>,
+    <Important>"liara app:ls --filter="name=myapp</Important>,
+  ],
+  [
+    <Important>no-header--</Important>,
+    "برای عدم نمایش هدرهای جدول",
+    <Important>liara app:ls  --no-header</Important>,
+  ],
+  [
+    <Important>no-truncate--</Important>,
+    "برای جلوگیری از کوتاه شدن یا برش خروجی به اندازه‌ی صفحه نمایش ",
+    <Important>liara app:ls  --no-truncate</Important>,
+  ],
+  [
+    <Important>output--</Important>,
+        <div dir="rtl">
+    <p>برای تعیین فرمت خروجی (CSV , YAML , JSON)</p>
+    </div>,
+    <Important>liara app:ls  --output=json</Important>,
+  ],
+  [
+    <Important>sort--</Important>,
+        <div dir="rtl">
+    <p>برای مرتب‌سازی بر اساس یک ستون (مرتب‌سازی descending با -)</p>
+    </div>,
+    <Important>liara app:ls --sort=-Name</Important>,
+  ],
+  
+]} />
+<div className="h-3" />
+
+</Layout>

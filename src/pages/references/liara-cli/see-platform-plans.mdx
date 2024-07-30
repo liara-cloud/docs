@@ -1,0 +1,95 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+<Layout>
+# مشاهده پلن‌های سرویس پلتفرم با Liara CLI
+<hr className="mb-2" />
+
+برای 
+مشاهده پلن‌های سرویس پلتفرم، 
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara plan:list`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="list-plans" />
+با اجرای دستور <Important>liara plan:list</Important> یا به اختصار <Important>liara plan:ls</Important> می‌توانید لیستی از پلن‌های سرویس برنامه را مشاهده کنید.
+
+{/* 
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara login</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara login [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>] [-e <value>] [-p <value>] [-i] [--browser chrome|firefox|edge]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>e- یا email--</Important>,
+    "برای درج ایمیل حساب کاربری ایجاد شده در لیارا",
+    <Important>liara login -e email@example.com</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara login -h</Important>,
+  ],
+  [
+    <Important>p- یا password</Important>,
+    "برای درج رمز عبور حساب کاربری ایجاد شده در لیارا",
+    <Important>**** liara login -e email@example.com -p </Important>,
+  ],
+  [
+    <Important>i- یا interactive</Important>,
+    "برای لاگین با استفاده از User و Password و نه مرورگر",
+    <Important>liara login -i</Important>,
+  ],
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara login --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات login به کمک <a href="/references/liara-api/about" className="blue-link">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara login --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara disk:create --debug</Important>,
+  ],
+  [
+    <Important>browser--</Important>,
+    "برای انتخاب مرورگر برای لاگین",
+    <Important>liara login --browser=firefox</Important>,
+  ],
+
+]} />
+<div className="h-3" /> */}
+
+</Layout>

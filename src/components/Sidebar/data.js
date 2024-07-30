@@ -6696,30 +6696,9 @@ export default {
         link: "/references/liara-cli/remove-account"
       },
       {
-        title: "انتخاب حساب‌ به عنوان حساب اصلی",
-        link: "/references/liara-cli/remove-account"
+        title: "انتخاب حساب پیش‌فرض",
+        link: "/references/liara-cli/choose-default-account"
       },
-      
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoBug  />
-            <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
-          </div>
-        )
-      },
-      {
-        title: "رفع خطای command not found",
-        link: "/references/liara-cli/fix-command-not-found-error"
-      },
-      {
-        title: "رفع خطای command is not recognized",
-        link: "/references/liara-cli/fix-command-not-recognized-error"
-      },
-    
     ],
   },
 

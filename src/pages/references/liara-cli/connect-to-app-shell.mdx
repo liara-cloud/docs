@@ -1,0 +1,84 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+<Layout>
+# اتصال به خط فرمان برنامه با Liara CLI
+<hr className="mb-2" />
+
+برای 
+اتصال به خط فرمان برنامه با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara shell`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="connect-to-liara-shell" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara app:shell</Important>یا <Important>liara shell</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara shell [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>] [-a <value>] [-c <value>]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>a- یا app--</Important>,
+    "انتخاب برنامه موردنظر",
+    <Important>liara shell -a my-web-app</Important>,
+  ],
+  [
+    <Important>c- یا command--</Important>,
+    "انتخاب دستور برای اجرا",
+    <Important>liara shell --command=/bin/sh</Important>,
+  ],
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara shell --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات اتصال به خط فرمان برنامه به کمک <a href="/references/liara-api/about" className="blue-link">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara shell --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌ها به همراه دیباگ",
+    <Important>liara shell --debug</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara shell -h</Important>,
+  ],
+  
+]} />
+<div className="h-3" />
+
+</Layout>

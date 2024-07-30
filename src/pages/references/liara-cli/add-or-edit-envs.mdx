@@ -1,0 +1,89 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+<Layout>
+# ثبت یا ویرایش متغیرهای محیطی با Liara CLI
+<hr className="mb-2" />
+
+برای 
+ثبت یا ویرایش متغیرهای محیطی با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara env:set`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="add-env" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara env:set</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara env set [ENV...] [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>]
+    [-a <value>] [-f]`}
+</Highlight>
+</div>
+
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>a- یا app--</Important>,
+    "انتخاب برنامه هدف",
+    <Important>liara env:set -a my-web-app</Important>,
+  ],
+
+  [
+    <Important>f- یا force--</Important>,
+    "تنظیم و یا ویرایش متغیرهای محیطی یک برنامه بدون نیاز به تایید",
+    <Important>liara env:set -f</Important>,
+  ],
+  
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara env:set --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات تنظیم یا ویرایش متغیرها به کمک <a href="/references/liara-api/about" className="blue-link">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara env:set --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش دیباگ در کنار متغیرهای محیطی",
+    <Important>liara env:set --debug</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara env:set -h</Important>,
+  ],
+ 
+  
+]} />
+<div className="h-3" />
+
+</Layout>
