@@ -1,0 +1,29 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+<Layout>
+# تنظیم لاگ‌ها
+<hr className="mb-2" />
+
+شما می‌توانید با تنظیم قطعه‌کدهای مشابه قطعه کد زیر، لاگ‌های منحصر به فرد خود را در برنامه NodeJS ایجاد کنید که طبق <a href="/paas/details/observations/software" className="blue-link">مستندات گزارشات نرم‌افزاری</a>، در دسترس شما قرار می‌گیرد
+و می‌توانید در هر قسمتی از پردازش برنامه، آن‌ها را ببینید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`console.log(\`I use Liara!\`);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<NextPage next="./use-websocket" />
+</Layout>

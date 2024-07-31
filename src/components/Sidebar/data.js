@@ -909,6 +909,10 @@ export default {
         link: "/paas/nodejs/how-tos/use-disk"
       },
       {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/nodejs/how-tos/set-logs"
+      },
+      {
         title: "راه‌اندازی برنامه Websocket",
         link: "/paas/nodejs/how-tos/use-websocket"
       },
@@ -1118,6 +1122,10 @@ export default {
       {
         title: "استفاده از دیسک",
         link: "/paas/nextjs/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/nextjs/how-tos/set-logs"
       },
       {
         title: "راه‌اندازی برنامه Websocket",
@@ -1466,6 +1474,10 @@ export default {
         title: "استفاده از دیسک",
         link: "/paas/php/how-tos/use-disk"
       },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/php/how-tos/set-logs"
+      },
       // {
       //   title: "راه‌اندازی برنامه Websocket",
       //   link: "/paas/php/how-tos/use-websocket"
@@ -1677,8 +1689,8 @@ export default {
         link: "/paas/django/how-tos/use-ffmpeg-module"
       },
       {
-        title: "مدیریت logهای Django",
-        link: "/paas/django/how-tos/use-ffmpeg-module"
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/django/how-tos/set-logs"
       },
       
       {
@@ -1852,8 +1864,8 @@ export default {
         link: "/paas/flask/how-tos/use-ffmpeg-module"
       },
       {
-        title: "مدیریت logهای Flask",
-        link: "/paas/flask/how-tos/use-ffmpeg-module"
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/flask/how-tos/set-logs"
       },
       
       {
