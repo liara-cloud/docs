@@ -121,26 +121,52 @@ import {
 
 <br />
 
-در ادامه، ده تا از پربازدیدترین مستندات مربوط به دیتابیس برای شما قرار گرفته است:
+
+<Section id="most-visited-docs" title="پربازدیدترین مستندات دیتابیس" />
 
 <ul className="pr-4">
   {[
-    {
-      text: 'انتخاب نسخه NodeJS',
-      href: './',
-    },
-    {
-      text: 'استقرار برنامه با Prisma',
-      href: './how-tos/create-app',
-    },
-    {
-      text: 'استقرار برنامه‌های Remix',
-      href: '/',
-    },
-    {
-      text: 'خطای CORS',
-      href: '/',
-    },
+
+      {
+        title: "آشنایی با بخش دسترسی سریع (لینک‌های اتصال) دیتابیس‌ها",
+        link: "/dbaas/details/connection-links"
+      },
+      {
+        title: "آشنایی با قابلیت Connection Pooling",
+        link: "/dbaas/details/connection-pool"
+      },
+      {
+        title: "اتصال برنامه‌های Django به دیتابیس MariaDB",
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "کار با PHPMyAdmin در دیتابیس MySQL",
+        link: "/dbaas/mysql/how-tos/connect-via-gui/phpmyadmin"
+      },
+      {
+        title: "کار با PSQL در دیتابیس PostgreSQL",
+        link: "/dbaas/postgresql/how-tos/connect-via-cli/psql"
+      },
+      {
+        title: "اتصال برنامه‌های NET. به دیتابیس MSSQL",
+        link: "/dbaas/mssql/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "بازیابی فایل پشتیبان در دیتابیس MSSQL",
+        link: "/dbaas/mssql/how-tos/restore-backup"
+      },
+      {
+        title: "اتصال برنامه‌های NodeJS به دیتابیس MongoDB",
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "اتصال به دیتابیس ElasticSearch از طریق اسکریپت‌های پایتونی",
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/python"
+      },
+
+
+
+    
   ].map((item, index) => (
     <li
       key={index}
@@ -152,9 +178,9 @@ import {
     >
       <a
         className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
-        href={item.href}
+        href={item.link}
       >
-        {item.text}
+        {item.title}
         <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
       </a>
     </li>
