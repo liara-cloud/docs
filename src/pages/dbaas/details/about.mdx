@@ -20,6 +20,7 @@ import {
   GoTerminal,
   GoGlobe,
   GoCode,
+  GoDiff,
   GoBrowser,
   GoArrowRight,
   GoInfo,
@@ -68,7 +69,7 @@ import {
 
 <div className="h-6" />
 
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-3 gap-4">
     {[
   {
       title: "پلن‌های دیتابیس",
@@ -116,6 +117,12 @@ import {
         title: "شخصی‌سازی پارامترهای دیتابیس",
         icon: <GoProjectTemplate    />,
         desc: "تغییر و تنظیم پارامترها و متغیرهای دیتابیس برای بهره‌وری بیشتر از آن",
+        link: "./customizing-db-parameters"
+    },
+    {
+        title: "قابلیت Connection Pooling",
+        icon: <GoDiff />,
+        desc: "امکان مدیریت و عدم اتلاف اتصال‌ها به دیتابیس با استفاده از قابلیت Connection Pooling",
         link: "./customizing-db-parameters"
     },
 ].map(item =>

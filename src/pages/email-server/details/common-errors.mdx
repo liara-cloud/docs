@@ -1,0 +1,40 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# خطاهای رایج ایمیل‌سرور
+
+<hr className="mb-2" />
+در صورتی که در استفاده از ایمیل‌سرور با مشکلاتی مواجه شدید، لازم به ذکر است که این گونه مسائل به طور عمومی شناخته شده و راه‌حل‌های مؤثری برای آن‌ها وجود دارد. مشکلاتی نظیر ناتوانی در ارسال یا دریافت ایمیل، اختلال در برقراری ارتباط با سرور، یا خطاهای مربوط به اعتبارسنجی می‌توانند ناشی از تنظیمات نادرست، مشکلات شبکه‌ای یا مسائل مربوط به پیکربندی سرویس دهنده باشند. 
+در ادامه، به معرفی و رفع برخی از این خطاها، پرداخته شده است:
+
+<Section id="wrong-from-email" title="آدرس From نادرست"/>
+پارامتر <Important>From</Important> باید یکی از نشانی‌هایی باشد که در کنسول ایجاد کرده‌اید. اگر آدرس <Important>From</Important> وارد شده نادرست باشد، پیام تحویل داده نخواهد شد.
+
+<Section id="spam-filtering" title="فیلتر هرزنامه"/>
+اگر پیام شما حاوی کلمات کلیدی یا عبارات خاصی باشد که فیلتر هرزنامه را فعال کند، ممکن است ایمیل شما به دریافت کننده تحویل داده نشود.
+
+<Section id="blocked-email" title="مسدودی آدرس From"/>
+اگر دریافت کننده آدرس ایمیل شما را مسدود کرده باشد، پيام شما تحويل داده نخواهد شد.
+
+<Section id="file-size-limitation" title="محدودیت حجم پیوست"/>
+حداکثر حجم پيوست برای ايميل های ارسال شده ۱۰ مگابایت است. اگر پيوست شما بيش از حداکثر حجم باشد، پيام شما تحويل داده نخواهد شد.
+
+<Section id="authentication-error-530" title="خطای authentication error"/>
+این خطا 
+معمولاً با فرایند تأیید اعتبار SMTP مرتبط است. این خطا هنگامی رخ می دهد که کاربر سعی می کند یک ایمیل را ارسال کند اما اطلاعات مرتبط با `SMTP` را به درستی وارد نکرده‌ است. اگر هنگام تلاش برای ارسال ایمیل نام کاربری یا گذرواژه را اشتباه وارد کنید، این خطا را دریافت خواهید کرد. لطفا اطلاعات مرتبط با اعتبارسنجی `SMTP` خود را دوباره بررسی کرده و مجددا ایمیل‌ مورد نظرتان را ارسال کنید.
+
+
+</Layout>

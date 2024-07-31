@@ -31,6 +31,7 @@ import {
   GoPerson,
   GoTelescope,
   GoFlame,
+  GoLock,
   GoPackageDependencies,
   GoProjectTemplate,
   GoZap,
@@ -171,6 +172,13 @@ import {
       desc:
        "ارسال درخواست‌ها از سمت کاربران به سرور توسط پروکسی معکوس برای افزایش امنیت و امور دیگر",
       link: "./reverse-proxy",
+    },
+    {
+      title: "قابلیت Basic Auth",
+      icon: <GoLock />,
+      desc:
+       "امکان فعال‌سازی قابلیت Basic Authentication در وب‌سرورهای Apache و Nginx در برنامه‌های لیارا",
+      link: "./basic-auth",
     },
 ].map(item =>
         <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
