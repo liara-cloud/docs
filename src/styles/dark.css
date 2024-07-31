@@ -11,8 +11,17 @@
 
 .dark video,
 .dark img {
-    border-radius: 8px;
-    border: 1px solid #fff2;
+    /* border-radius: 8px;
+    border: 1px solid #fff2; */
+    border: none !important;
+}
+
+.dark .invert-icon {
+    filter: invert(0);
+}
+
+img {
+    border: none !important;
 }
 
 .dark .logo-sidebar {
@@ -64,6 +73,21 @@
     border-color: #fff2;
 
 }
+
+
+.dark .highlight-content::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 250px;
+    /* Adjust height as needed */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #181818);
+    /* Adjust colors as needed */
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
 
 .dark body header #search div.badge-cmd-k {
     background: #333 !important;
@@ -140,6 +164,17 @@
 
 .dark .table-container table tr:nth-child(odd) {
     background: #ffffff10;
+}
+
+.dark .highlight-container {
+    span.copy {
+        background: #fff1 !important;
+        z-index: 22;
+    }
+    span.copy:hover {
+        background: #fff2 !important;
+        z-index: 22;
+    }
 }
 
 

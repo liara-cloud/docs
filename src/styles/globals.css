@@ -97,6 +97,33 @@ pre code {
 
 }
 
+.highlight-container {
+  position: relative;
+}
+
+.highlight-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 350px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #f9f9f9);
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+}
+
+.highlight-content.expanded::after {
+  opacity: 0;
+  height: 10px;
+  display: none !important;
+}
 
 @layer utilities {
   .text-balance {

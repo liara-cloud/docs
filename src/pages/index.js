@@ -17,6 +17,79 @@ import {
 } from "react-icons/go";
 import Card from "@/components/Common/card";
 
+const GETTING_START_DATA = [
+  {
+    title: "laravel-getting-started",
+    badge: {
+      color: "#4F5D95",
+      text: "PHP"
+    }
+  },
+  {
+    title: "nodejs-getting-started",
+    badge: {
+      color: "#ffd75e",
+      text: "JavaScript"
+    }
+  },
+  {
+    title: "vue-getting-started",
+    badge: {
+      color: "#41b883",
+      text: "Vue"
+    }
+  },
+  {
+    title: "react-getting-started",
+    badge: {
+      color: "#ffd75e",
+      text: "JavaScript"
+    }
+  },
+  {
+    title: "flask-getting-started",
+    badge: {
+      color: "#3572A5",
+      text: "Python"
+    }
+  },
+  {
+    title: "dotnet-getting-started",
+    badge: {
+      color: "#178600",
+      text: "C#"
+    }
+  },
+  {
+    title: "django-getting-started",
+    badge: {
+      color: "#3572A5",
+      text: "Python"
+    }
+  },
+  {
+    title: "php-getting-started",
+    badge: {
+      color: "#4F5D95",
+      text: "PHP"
+    }
+  },
+  {
+    title: "angular-getting-started",
+    badge: {
+      color: "#e34c26",
+      text: "HTML"
+    }
+  },
+  {
+    title: "static-getting-started",
+    badge: {
+      color: "#e34c26",
+      text: "HTML"
+    }
+  }
+];
+
 const GETTING_STARTED_ITEMS = [
   {
     alt: "nodejs",
@@ -119,9 +192,10 @@ const REFERENCES = [
   {
     title: "پنل کاربری لیارا",
     icon: <GoPerson />,
-    desc: "اطلاعات در مورد پنل کاربری لیارا، از ثبت تیکت تا تخمین‌هزینه‌های سرویس‌های مورد استفاده",
+    desc:
+      "اطلاعات در مورد پنل کاربری لیارا، از ثبت تیکت تا تخمین‌هزینه‌های سرویس‌های مورد استفاده",
     link: "/references/user-panel/about"
-  },
+  }
 ];
 
 const MOST_VISITED_LINKS = [
@@ -155,21 +229,21 @@ const MOST_VISITED_LINKS = [
     alt: "wordpress duplicator",
     href: "/one-click-apps/wordpressplus/how-tos/duplicator"
   },
-  {
-    title: "دانلود مستقیم فایل از فضای ذخیره‌سازی ابری لیارا",
-    alt: "object-storage direct-download",
-    href: "/object-storage/how-tos/direct-download"
-  },
-  {
-    title: "اتصال به دیتابیس MySQL در برنامه‌های Golang",
-    alt: "golang mysql",
-    href: "/dbaas/mysql/how-tos/connect-via-platform/go"
-  },
+  // {
+  //   title: "دانلود مستقیم فایل از فضای ذخیره‌سازی ابری لیارا",
+  //   alt: "object-storage direct-download",
+  //   href: "/object-storage/how-tos/direct-download"
+  // },
+  // {
+  //   title: "اتصال به دیتابیس MySQL در برنامه‌های Golang",
+  //   alt: "golang mysql",
+  //   href: "/dbaas/mysql/how-tos/connect-via-platform/go"
+  // },
   {
     title: "مدیریت رکوردها در سیستم مدیریت DNS لیارا",
     alt: "dns management",
     href: "/dns-management-system/how-tos/manage-records"
-  },
+  }
 ];
 
 export default function Home() {
@@ -182,10 +256,9 @@ export default function Home() {
         >
           <h1 className="text-[35px]"> به مستندات لیارا خوش‌آمدید 👋🏼</h1>
           <p className="mt-2 w-[50%] eading-7">
-            با کامل‌ترین مستندات مربوط به سرویس‌های ابری در ایران، پرقدرت شروع 
+            با کامل‌ترین مستندات مربوط به سرویس‌های ابری در ایران، پرقدرت شروع
             به توسعه پروژه‌تان کنید!
           </p>
-        
         </div>
         <Section
           id="home-getting-started"
@@ -194,17 +267,17 @@ export default function Home() {
           <div className="grid grid-cols-4 gap-4">
             {GETTING_STARTED_ITEMS.map(item =>
               <Link href={item.link}>
-              <Card className="flex w-full items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                    <PlatformIcon platform={item.alt} />
+                <Card className="flex w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      شروع به کار با {item.platform}
+                    </h4>
                   </div>
-                  <h4>
-                    شروع به کار با {item.platform}
-                  </h4>
-                </div>
-                <GoArrowLeft className="ml-1" />
-              </Card>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
               </Link>
             )}
           </div>
@@ -227,7 +300,7 @@ export default function Home() {
                   </p>
                 </div>
                 <Link href={item.link}>
-                <Button variant="link">بیشتر بدانید</Button>
+                  <Button variant="link">بیشتر بدانید</Button>
                 </Link>
               </Card>
             )}
@@ -252,7 +325,7 @@ export default function Home() {
                   </p>
                 </div>
                 <Link href={item.link}>
-                <Button variant="link">بیشتر بدانید</Button>
+                  <Button variant="link">بیشتر بدانید</Button>
                 </Link>
               </Card>
             )}
@@ -265,7 +338,6 @@ export default function Home() {
               <li
                 style={{
                   listStyle: "persian",
-                  textDecoration: "underline",
                   textDecorationColor: "#9ca3af"
                 }}
               >
@@ -279,6 +351,40 @@ export default function Home() {
                   <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
                 </Link>
               </li>
+            )}
+          </ul>
+        </Section>
+
+        <Section id="github-repos" title={"با گیت‌هاب شروع کنید"}>
+          <ul className="grid grid-cols-4 gap-4">
+            {GETTING_START_DATA.map(item =>
+              <Card  dir="ltr" className="w-full cursor-pointer">
+                <div className="flex gap-2 w-full items-center">
+                  <img
+                    src="/static/images/github.svg"
+                    className=" w-[18px] invert invert-icon"
+                  />
+                  <p>
+                    {item.title}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-sm" style={{ background: item.badge.color }} />
+                  <span className="text-[12px] text-[gray] font-mono">
+                    {item.badge.text}
+                  </span>
+                </div>
+
+                {/* <Link
+                  className="flex w-[max-content] items-center gap-2 text-[18px]  mt-4"
+                  key={item.alt}
+                  href={item.href}
+                >
+                  {item.title}
+
+                  <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+                </Link> */}
+              </Card>
             )}
           </ul>
         </Section>
