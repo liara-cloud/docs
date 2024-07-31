@@ -4,7 +4,9 @@ import {
   GoHome,
   GoGear,
   GoRead,
+  GoLock,
   GoDatabase,
+  GoDiff,
   GoProjectRoadmap,
   GoContainer,
   GoRocket,
@@ -653,6 +655,11 @@ export default {
         icon: <GoPaperAirplane  />,
         link: "/paas/details/reverse-proxy"
       },
+      {
+        title: "قابلیت Basic Auth",
+        icon: <GoLock   />,
+        link: "/paas/details/basic-auth"
+      },
     ],
     disks: [
       {
@@ -810,6 +817,10 @@ export default {
         link: "/paas/domains/delete-domain"
       },
       {
+        title: "انتقال دامنه",
+        link: "/paas/domains/move"
+      },
+      {
         title: "TLDهای قابل پشتیبانی",
         link: "/paas/domains/supported-tlds"
       },
@@ -929,6 +940,10 @@ export default {
         link: "/paas/nodejs/how-tos/use-hooks"
       },
       {
+        title: "تنظیم Cron Job",
+        link: "/paas/nodejs/how-tos/set-cron-job"
+      },
+      {
         title: "پیکربندی TrustedProxies",
         link: "/paas/nodejs/how-tos/configure-trusted-proxy/about"
       },
@@ -953,38 +968,47 @@ export default {
       },
       {
         title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
         link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       },
       {
         title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
         link: "/paas/nodejs/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
         link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/nodejs/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
         link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
       },
       {
         title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
         link: "/paas/nodejs/how-tos/connect-to-db/redis"
       },
       {
         title: "Prisma ORM",
+        icon: <IconContainer alt="prisma" />,
         link: "/paas/nodejs/how-tos/connect-to-db/prisma"
       },
       {
         title: "Sequelize ORM",
+        icon: <IconContainer alt="sequelize" />,
         link: "/paas/nodejs/how-tos/connect-to-db/sequelize/about"
       },
       {
         title: "Drizzle ORM",
+        icon: <IconContainer alt="drizzle" />,
         link: "/paas/nodejs/how-tos/connect-to-db/drizzle/about"
       },
       {
@@ -999,11 +1023,11 @@ export default {
         )
       },
       {
-        title: "رفع خطای CORS",
+        title: "خطای CORS",
         link: "/paas/nodejs/fix-common-errors/cors-error/about"
       },
       {
-        title: "رفع خطای Get query missing در GraphQL",
+        title: "رفع خطای Get query missing",
         link: "/paas/nodejs/fix-common-errors/graphql-error"
       },
       {
@@ -1066,6 +1090,16 @@ export default {
         title: "Svelte Kit",
         icon: <IconContainer alt="svelte" />,
         link: "/paas/nodejs/related-apps/svelte-kit"
+      },
+      {
+        title: "Qwik",
+        icon: <IconContainer alt="qwik" />,
+        link: "/paas/nodejs/related-apps/qwik"
+      },
+      {
+        title: "JSON Server",
+        icon: <IconContainer alt="json" />,
+        link: "/paas/nodejs/related-apps/json-server"
       },
     ],
     nextjs: [
@@ -1299,6 +1333,10 @@ export default {
         link: "/paas/laravel/how-tos/use-hooks"
       },
       {
+        title: "تنظیم Cron Job",
+        link: "/paas/laravel/how-tos/set-cron-job"
+      },
+      {
         title: "تغییر نسخه PHP و Laravel",
         link: "/paas/laravel/how-tos/choose-version"
       },
@@ -1503,6 +1541,10 @@ export default {
         link: "/paas/php/how-tos/use-hooks"
       },
       {
+        title: "تنظیم Cron Job",
+        link: "/paas/php/how-tos/set-cron-job"
+      },
+      {
         title: "تغییر نسخه PHP",
         link: "/paas/php/how-tos/choose-version"
       },
@@ -1663,6 +1705,10 @@ export default {
       {
         title: "استفاده از Hookها",
         link: "/paas/django/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/django/how-tos/set-cron-job"
       },
       {
         title: "تغییر نسخه Python",
@@ -1846,6 +1892,10 @@ export default {
       {
         title: "استفاده از Hookها",
         link: "/paas/flask/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/flask/how-tos/set-cron-job"
       },
       {
         title: "تغییر نسخه Python",
@@ -2751,6 +2801,11 @@ export default {
         title: "شخصی‌سازی پارامترهای دیتابیس",
         icon: <GoProjectTemplate    />,
         link: "/dbaas/details/customizing-db-parameters"
+      },
+      {
+        title: "قابلیت Connection Pooling",
+        icon: <GoDiff/>,
+        link: "/dbaas/details/connection-pool"
       },
     ],
     mariadb: [
@@ -5411,6 +5466,11 @@ export default {
         icon: <GoXCircle  />,
         link: "/email-server/details/delete-email-server"
       },
+      {
+        title: "خطاهای رایج ایمیل‌سرور",
+        icon: <GoBug  />,
+        link: "/email-server/details/common-errors"
+      },
     ],
     
   },
@@ -6309,11 +6369,6 @@ export default {
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
       },  
-      {
-        title: "انتقال سرویس مدیریت دامنه",
-        icon: <GoPackageDependents />,
-        link: "/dns-management-system/move"
-      },  
     ],
 
     'quick-setup': [
@@ -6368,11 +6423,6 @@ export default {
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
       },  
-      {
-        title: "انتقال سرویس مدیریت دامنه",
-        icon: <GoPackageDependents />,
-        link: "/dns-management-system/move"
-      },  
     ],
 
     'how-tos':  [
@@ -6426,11 +6476,6 @@ export default {
         title: "جزئیات سرویس مدیریت دامنه",
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
-      },  
-      {
-        title: "انتقال سرویس مدیریت دامنه",
-        icon: <GoPackageDependents />,
-        link: "/dns-management-system/move"
       },  
     ],
 

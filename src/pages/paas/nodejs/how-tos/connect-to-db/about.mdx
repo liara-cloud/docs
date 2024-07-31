@@ -48,10 +48,11 @@ import {GoArrowLeft,} from "react-icons/go";
 همچنین، می‌توانید از ORM‌های مختلف نیز در برنامه NodeJS خود، استفاده کنید؛ در ادامه، مستندات مربوط به برخی از آن‌ها، قرار گرفته است:
 
 <div className='h-2' />
-<div className="grid grid-cols-2 gap-4">
+<div className="grid grid-cols-3 gap-4">
             {[
     { alt: 'prisma', platform: 'Prisma', link: "./prisma" },
-    { alt: 'nodejs', platform: 'Sequelize', link: "./sequelize/about" },
+    { alt: 'sequelize', platform: 'Sequelize', link: "./sequelize/about" },
+    { alt: 'drizzle', platform: 'Drizzle', link: "./drizzle/about" },
   ].map(item =>
     <Link href={item.link}>
     <Card className="flex cursor-pointer w-full items-center justify-between">

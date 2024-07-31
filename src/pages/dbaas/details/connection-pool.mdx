@@ -1,0 +1,51 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+<Layout>
+# قابلیت Connection Pooling
+<hr className="mb-2" />
+
+قابلیت Connection Pooling (تجمع ارتباطات) در دیتابیس‌ها یک مکانیزم بهینه‌سازی است که مدیریت ارتباطات با دیتابیس را بهبود می‌بخشد. این مکانیزم به برنامه‌ها اجازه می‌دهد تا به جای ایجاد و بستن مکرر ارتباطات با دیتابیس، از یک مجموعه ارتباطات آماده استفاده کنند. 
+هدف اصلی از این مکانیزم کاهش هزینه‌های ایجاد و بستن ارتباطات متعدد با دیتابیس و بهبود عملکرد کلی سیستم است.
+
+
+<Section id="how-connection-pooling-works" title="نحوه عملکرد Connection Pooling" />
+هنگام شروع برنامه، مجموعه‌ای از ارتباطات با دیتابیس ایجاد می‌شود. تعداد این ارتباطات معمولاً توسط تنظیمات تعیین می‌شود.
+این ارتباطات در یک pool نگهداری می‌شوند و آماده استفاده هستند.
+<div className="h-2" />
+
+زمانی که یک برنامه نیاز به ارتباط با دیتابیس دارد، یک ارتباط از pool گرفته می‌شود.
+پس از اتمام کار با ارتباط، به جای بستن آن، ارتباط به pool بازگردانده می‌شود تا مجدداً قابل استفاده باشد.
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/how-connection-pooling-works.png" alt="db connection pooling"/>
+<div className="h-4" />
+
+Connection Pooling به بهبود عملکرد و کارایی سیستم‌های دیتابیس کمک می‌کند. با استفاده از این مکانیزم، زمان لازم برای ایجاد و بستن ارتباطات به شدت کاهش می‌یابد، زیرا ارتباطات از پیش ایجاد شده و آماده در یک pool نگهداری می‌شوند. این امر نه تنها زمان پاسخگویی را بهبود می‌بخشد بلکه مصرف منابع سرور را بهینه می‌کند. همچنین، مدیریت همزمانی و تعداد ارتباطات باز به طور موثرتر انجام می‌شود، که از بروز مشکلاتی نظیر کمبود ارتباطات یا بار اضافی روی سرور جلوگیری می‌کند. به طور کلی، Connection Pooling منجر به کاهش هزینه‌های پردازشی و افزایش پایداری و قابلیت اطمینان سیستم می‌شود.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+لیارا در هر پلتفرم، برای هر دیتابیسی، در صورت وجود، مستندات مربوط به Connection Pooling را برای شما قرار داده است که می‌توانید از آن‌ها در برنامه‌های خود، استفاده کنید. 
+</p>
+</Alert>
+
+
+
+
+
+
+
+</Layout>

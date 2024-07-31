@@ -74,6 +74,9 @@ import soketiIcon from "@liara/platformicons/glass/png/soketi.png";
 import pythonIcon from "@liara/platformicons/glass/png/python.png";
 import gatsbyIcon from "@liara/platformicons/glass/png/gatsby.png";
 import jsonIcon from "@liara/platformicons/glass/png/json.png";
+import lumenIcon from "@liara/platformicons/glass/png/lumen.png";
+import qwikIcon from "@liara/platformicons/glass/png/qwik.png";
+import hapiIcon from "@liara/platformicons/glass/png/hapi.png";
 
 // Databases
 
@@ -87,6 +90,8 @@ import elasticIcon from "@liara/platformicons/glass/png/elastic.png";
 import rabbitmqIcon from "@liara/platformicons/glass/png/rabbitmq.png";
 import postgresIcon from "@liara/platformicons/glass/png/postgresql.png";
 import sqliteIcon from "@liara/platformicons/glass/png/sqlite.png";
+import drizzleIcon from "@liara/platformicons/glass/png/drizzle.png";
+import sequelizeIcon from "@liara/platformicons/glass/png/sequelize.png";
 
 // CI/CD
 
@@ -166,6 +171,9 @@ const types = [
   { logo: gridsomeIcon, alt: "gridsome" },
   { logo: gridsomeIcon, alt: "gridsome" },
   { logo: eleventyIcon, alt: "eleventy" },
+  { logo: lumenIcon, alt: "lumen" },
+  { logo: qwikIcon, alt: "qwik" },
+  { logo: hapiIcon, alt: "hapi" },
   // Databases
   { logo: mysqlIcon, alt: "mysql" },
   { logo: redisIcon, alt: "redis" },
@@ -177,6 +185,8 @@ const types = [
   { logo: rabbitmqIcon, alt: "rabbitmq" },
   { logo: arangodbIcon, alt: "arangodb" },
   { logo: sqliteIcon, alt: "sqlite" },
+  { logo: drizzleIcon, alt: "drizzle" },
+  { logo: sequelizeIcon, alt: "sequelize" },
   // CI/CD
   { logo: githubIcon, alt: "github" },
   { logo: gitlabIcon, alt: "gitlab" }
