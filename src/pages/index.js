@@ -19,11 +19,11 @@ import Card from "@/components/Common/card";
 
 const GETTING_START_DATA = [
   {
-    title: "مستندات لیارا",
+    title: "docs",
     link: "https://github.com/liara-cloud/docs",
     badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
+      color: "#0969da",
+      text: "MDX"
     }
   },
   {
