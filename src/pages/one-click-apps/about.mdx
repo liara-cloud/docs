@@ -229,26 +229,46 @@ import {
 
 <br />
 
-در ادامه، ده تا از پربازدیدترین مستندات مربوط به برنامه‌های آماده برای شما قرار گرفته است:
-
+<Section id="most-visited-docs" title="پربازدیدترین مستندات برنامه‌های آماده" />
 <ul className="pr-4">
   {[
-    {
-      text: 'انتخاب نسخه NodeJS',
-      href: './',
-    },
-    {
-      text: 'استقرار برنامه با Prisma',
-      href: './how-tos/create-app',
-    },
-    {
-      text: 'استقرار برنامه‌های Remix',
-      href: '/',
-    },
-    {
-      text: 'خطای CORS',
-      href: '/',
-    },
+      {
+        title: "راه‌اندازی WordPress با Duplicator",
+        link: "/one-click-apps/wordpressplus/how-tos/duplicator"
+      },
+      {
+        title: "رفع خطای err_too_many_redirects در وردپرس",
+        link: "/one-click-apps/wordpressplus/fix-common-errors/too-many-redirects-error"
+      },
+      {
+        title: "اتصال با Selenium در Python به Headless Chrome",
+        link: "/one-click-apps/headless-chrome/how-tos/connect-by-python-and-selenium"
+      },
+      {
+        title: "اتصال از طریق Laravel به Soketi",
+        link: "/one-click-apps/soketi/how-tos/connect-by-laravel"
+      },
+      {
+        title: "تنظیم TrustedProxies در برنامه Uptime Kuma",
+        link: "/one-click-apps/uptime-kuma/how-tos/set-trusted-proxies"
+      },
+      {
+        title: "پیکربندی متغیرها در برنامه Appsmith",
+        link: "/one-click-apps/appsmith/how-tos/configure-vars"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه RabbitMQ",
+        link: "/one-click-apps/rabbitmq/how-tos/choose-version"
+      },
+      {
+        title: "اتصال به MeiliSearch",
+        link: "/one-click-apps/meilisearch/how-tos/connect"
+      },
+      {
+        title: "استفاده از Imgproxy ‌در برنامه‌های NodeJS",
+        link: "/one-click-apps/imgproxy/how-tos/use-in-nodejs"
+      },
+
   ].map((item, index) => (
     <li
       key={index}
@@ -260,9 +280,9 @@ import {
     >
       <a
         className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
-        href={item.href}
+        href={item.link}
       >
-        {item.text}
+        {item.title}
         <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
       </a>
     </li>

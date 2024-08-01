@@ -797,7 +797,7 @@ export default {
         link: "/paas/domains/add-domain"
       },
       {
-        title: "ساخت زرکوردها www",
+        title: "ساخت زیر رکورد www",
         link: "/paas/domains/add-www-subdomain"
       },
       {

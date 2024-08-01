@@ -141,26 +141,51 @@ import {
 
 <br />
 
-در ادامه، ده تا از پربازدیدترین مستندات مربوط به پلتفرم برای شما قرار گرفته است:
 
+<Section id="most-visited-docs" title="پربازدیدترین مستندات پلتفرم" />
 <ul className="pr-4">
   {[
-    {
-      text: 'انتخاب نسخه NodeJS',
-      href: './',
-    },
-    {
-      text: 'استقرار برنامه با Prisma',
-      href: './how-tos/create-app',
-    },
-    {
-      text: 'استقرار برنامه‌های Remix',
-      href: '/',
-    },
-    {
-      text: 'خطای CORS',
-      href: '/',
-    },
+
+      {
+        title: "اتصال به دیتابیس SQLite در برنامه‌های NET.",
+        link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
+      },
+      {
+          title: "قابلیت CI/CD",
+          link: "/paas/cicd/about"
+      },
+      {
+          title: "آی‌پی ثابت",
+          link: "/paas/details/static-ip"
+      },
+      {
+        title: "متغیرهای محیطی",
+        link: "/paas/details/envs"
+      },
+      {
+        title: "بازیابی فایل پشتیبان در دیسک‌",
+        link: "/paas/disks/restore-backup"
+      },
+      {
+        title: "اضافه کردن زیر دامنه دلخواه به برنامه",
+        link: "/paas/domains/add-subdomains"
+      },
+      {
+        title: "استفاده از TypeScript در برنامه‌های NextJS",
+        link: "/paas/nextjs/how-tos/use-type-script"
+      },
+      {
+        title: "تنظیم Cron Job در برنامه‌های Django",
+        link: "/paas/django/how-tos/set-cron-job"
+      },
+      {
+        title: "تنظیم DNS Server",
+        link: "/paas/details/dns-server-settings"
+      },
+      
+
+
+    
   ].map((item, index) => (
     <li
       key={index}
@@ -172,9 +197,9 @@ import {
     >
       <a
         className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
-        href={item.href}
+        href={item.link}
       >
-        {item.text}
+        {item.title}
         <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
       </a>
     </li>

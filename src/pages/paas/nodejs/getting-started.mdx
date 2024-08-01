@@ -93,50 +93,10 @@ import {
 
 <Alert variant="success">
 همچنین بخوانید:
-<Link href='./related-links.md' className="blue-link">
+<Link href='./related-links' className="blue-link">
  لینک‌های مرتبط با پلتفرم NodeJS
 </Link>
 </Alert>
 <br />
-
-در ادامه، ده تا از پربازدیدترین مستندات مربوط به NodeJS برای شما قرار گرفته است:
-
-<ul className="pr-4">
-  {[
-    {
-      text: 'انتخاب نسخه NodeJS',
-      href: './',
-    },
-    {
-      text: 'استقرار برنامه با Prisma',
-      href: './how-tos/create-app',
-    },
-    {
-      text: 'استقرار برنامه‌های Remix',
-      href: '/',
-    },
-    {
-      text: 'خطای CORS',
-      href: '/',
-    },
-  ].map((item, index) => (
-    <li
-      key={index}
-      style={{
-        listStyle: "persian",
-        textDecoration: "underline",
-        textDecorationColor: "#9ca3af"
-      }}
-    >
-      <a
-        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
-        href={item.href}
-      >
-        {item.text}
-        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
-      </a>
-    </li>
-  ))}
-</ul>
 
 </Layout>
