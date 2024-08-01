@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import Section from "@/components/Common/section";
+import Head from "next/head";
 import {
   GoContainer,
   GoDatabase,
@@ -411,6 +412,9 @@ const MOST_VISITED_LINKS = [
 export default function Home() {
   return (
     <Layout>
+      <Head>
+        <title>مستندات سرویس‌های ابری - لیارا</title>
+      </Head>
       <div>
         <div
           id="welcome-continer"

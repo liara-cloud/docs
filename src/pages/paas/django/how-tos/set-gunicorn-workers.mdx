@@ -10,8 +10,13 @@ import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 
+import Head from "next/head";
+
 <Layout>
-# تنظیم تعداد workerهای  Gunicorn در برنامه‌های Django
+<Head>
+<title>مستندات تنظیم تعداد workerهای Gunicorn در Django - لیارا</title>
+</Head>
+# تنظیم تعداد workerهای Gunicorn در برنامه‌های Django
 <hr className="mb-2" />
 
 در <a href="https://gunicorn.org/" className="blue-link">Gunicorn</a>، یک worker فرآیندی است که مسئول پردازش درخواست‌ها و پاسخ‌ها در یک برنامه وب است. worker می‌تواند به صورت مستقل از بقیه فرآیندها عمل کند و بار کاری بین آنها، به سادگی، تقسیم می‌شود. این کار باعث افزایش کارایی و مقیاس‌پذیری برنامه می‌شود.
