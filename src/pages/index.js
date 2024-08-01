@@ -19,11 +19,11 @@ import Card from "@/components/Common/card";
 
 const GETTING_START_DATA = [
   {
-    title: "مستندات لیارا",
+    title: "docs",
     link: "https://github.com/liara-cloud/docs",
     badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
+      color: "#0969da",
+      text: "MDX"
     }
   },
   {
@@ -98,158 +98,158 @@ const GETTING_START_DATA = [
       text: "HTML"
     }
   },
-  {
-    title: "static-getting-started",
-    link: "https://github.com/liara-cloud/static-getting-started",
-    badge: {
-      color: "#e34c26",
-      text: "HTML"
-    }
-  },
+  // {
+  //   title: "static-getting-started",
+  //   link: "https://github.com/liara-cloud/static-getting-started",
+  //   badge: {
+  //     color: "#e34c26",
+  //     text: "HTML"
+  //   }
+  // },
   {
     title: "gitignore-templates",
     link: "https://github.com/liara-cloud/gitignore-templates",
     badge: {
-      color: "#021526",
+      color: "#0087ff",
       text: "gitignore"
     }
-  },
-  {
-    title: "fastapi-getting-started",
-    link: "https://github.com/liara-cloud/fastapi-getting-started",
-    badge: {
-      color: "#e34c26",
-      text: "HTML"
-    }
-  },
-  {
-    title: "qwik-getting-started",
-    link: "https://github.com/liara-cloud/qwik-getting-started",
-    badge: {
-      color: "#03346E",
-      text: "TypeScript"
-    }
-  },
-  {
-    title: "drizzle-getting-started",
-    link: "https://github.com/liara-cloud/drizzle-getting-started",
-    badge: {
-      color: "#03346E",
-      text: "TypeScript"
-    }
-  },
-  {
-    title: "yii-getting-started",
-    link: "https://github.com/liara-cloud/yii-getting-started",
-    badge: {
-      color: "#4F5D95",
-      text: "PHP"
-    }
-  },
-  {
-    title: "astro-getting-started",
-    link: "https://github.com/liara-cloud/astro-getting-started",
-    badge: {
-      color: "#EF5A6F",
-      text: "Astro"
-    }
-  },
-  {
-    title: "lumen-getting-started",
-    link: "https://github.com/liara-cloud/lumen-getting-started",
-    badge: {
-      color: "#4F5D95",
-      text: "PHP"
-    }
-  },
-  {
-    title: "hapi-getting-started",
-    link: "https://github.com/liara-cloud/hapi-getting-started",
-    badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
-    }
-  },
-  {
-    title: "remix-getting-started",
-    link: "https://github.com/liara-cloud/remix-getting-started",
-    badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
-    }
-  },
-  {
-    title: "nestjs-getting-started",
-    link: "https://github.com/liara-cloud/nestjs-getting-started",
-    badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
-    }
-  },
-  {
-    title: "fastify-getting-started",
-    link: "https://github.com/liara-cloud/fastify-getting-started",
-    badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
-    }
-  },
-  {
-    title: "addonis-getting-started",
-    link: "https://github.com/liara-cloud/addonis-getting-started",
-    badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
-    }
-  },
-  {
-    title: "strapi-getting-started",
-    link: "https://github.com/liara-cloud/strapi-getting-started",
-    badge: {
-      color: "#ffd75e",
-      text: "JavaScript"
-    }
-  },
-  {
-    title: "imgproxy-getting-started",
-    link: "https://github.com/liara-cloud/imgproxy-getting-started",
-    badge: {
-      color: "#201E43",
-      text: "shell"
-    }
-  },
-  {
-    title: "nuxtjs-getting-started",
-    link: "https://github.com/liara-cloud/nuxtjs-getting-started",
-    badge: {
-      color: "#41b883",
-      text: "Vue"
-    }
-  },
-  {
-    title: "golang-getting-started",
-    link: "https://github.com/liara-cloud/golang-getting-started",
-    badge: {
-      color: "#6EACDA",
-      text: "Go"
-    }
-  },
-  {
-    title: "python-getting-started",
-    link: "https://github.com/liara-cloud/python-getting-started",
-    badge: {
-      color: "#3572A5",
-      text: "Python"
-    }
-  },
-  {
-    title: "rabbitmq-getting-started",
-    link: "https://github.com/liara-cloud/rabbitmq-getting-started",
-    badge: {
-      color: "#201E43",
-      text: "shell"
-    }
-  },
+  }
+  // {
+  //   title: "fastapi-getting-started",
+  //   link: "https://github.com/liara-cloud/fastapi-getting-started",
+  //   badge: {
+  //     color: "#e34c26",
+  //     text: "HTML"
+  //   }
+  // },
+  // {
+  //   title: "qwik-getting-started",
+  //   link: "https://github.com/liara-cloud/qwik-getting-started",
+  //   badge: {
+  //     color: "#03346E",
+  //     text: "TypeScript"
+  //   }
+  // },
+  // {
+  //   title: "drizzle-getting-started",
+  //   link: "https://github.com/liara-cloud/drizzle-getting-started",
+  //   badge: {
+  //     color: "#03346E",
+  //     text: "TypeScript"
+  //   }
+  // },
+  // {
+  //   title: "yii-getting-started",
+  //   link: "https://github.com/liara-cloud/yii-getting-started",
+  //   badge: {
+  //     color: "#4F5D95",
+  //     text: "PHP"
+  //   }
+  // },
+  // {
+  //   title: "astro-getting-started",
+  //   link: "https://github.com/liara-cloud/astro-getting-started",
+  //   badge: {
+  //     color: "#EF5A6F",
+  //     text: "Astro"
+  //   }
+  // },
+  // {
+  //   title: "lumen-getting-started",
+  //   link: "https://github.com/liara-cloud/lumen-getting-started",
+  //   badge: {
+  //     color: "#4F5D95",
+  //     text: "PHP"
+  //   }
+  // },
+  // {
+  //   title: "hapi-getting-started",
+  //   link: "https://github.com/liara-cloud/hapi-getting-started",
+  //   badge: {
+  //     color: "#ffd75e",
+  //     text: "JavaScript"
+  //   }
+  // },
+  // {
+  //   title: "remix-getting-started",
+  //   link: "https://github.com/liara-cloud/remix-getting-started",
+  //   badge: {
+  //     color: "#ffd75e",
+  //     text: "JavaScript"
+  //   }
+  // },
+  // {
+  //   title: "nestjs-getting-started",
+  //   link: "https://github.com/liara-cloud/nestjs-getting-started",
+  //   badge: {
+  //     color: "#ffd75e",
+  //     text: "JavaScript"
+  //   }
+  // },
+  // {
+  //   title: "fastify-getting-started",
+  //   link: "https://github.com/liara-cloud/fastify-getting-started",
+  //   badge: {
+  //     color: "#ffd75e",
+  //     text: "JavaScript"
+  //   }
+  // },
+  // {
+  //   title: "addonis-getting-started",
+  //   link: "https://github.com/liara-cloud/addonis-getting-started",
+  //   badge: {
+  //     color: "#ffd75e",
+  //     text: "JavaScript"
+  //   }
+  // },
+  // {
+  //   title: "strapi-getting-started",
+  //   link: "https://github.com/liara-cloud/strapi-getting-started",
+  //   badge: {
+  //     color: "#ffd75e",
+  //     text: "JavaScript"
+  //   }
+  // },
+  // {
+  //   title: "imgproxy-getting-started",
+  //   link: "https://github.com/liara-cloud/imgproxy-getting-started",
+  //   badge: {
+  //     color: "#201E43",
+  //     text: "shell"
+  //   }
+  // },
+  // {
+  //   title: "nuxtjs-getting-started",
+  //   link: "https://github.com/liara-cloud/nuxtjs-getting-started",
+  //   badge: {
+  //     color: "#41b883",
+  //     text: "Vue"
+  //   }
+  // },
+  // {
+  //   title: "golang-getting-started",
+  //   link: "https://github.com/liara-cloud/golang-getting-started",
+  //   badge: {
+  //     color: "#6EACDA",
+  //     text: "Go"
+  //   }
+  // },
+  // {
+  //   title: "python-getting-started",
+  //   link: "https://github.com/liara-cloud/python-getting-started",
+  //   badge: {
+  //     color: "#3572A5",
+  //     text: "Python"
+  //   }
+  // },
+  // {
+  //   title: "rabbitmq-getting-started",
+  //   link: "https://github.com/liara-cloud/rabbitmq-getting-started",
+  //   badge: {
+  //     color: "#201E43",
+  //     text: "shell"
+  //   }
+  // }
 ];
 
 const GETTING_STARTED_ITEMS = [
@@ -520,37 +520,66 @@ export default function Home() {
         <Section id="github-repos" title={"با گیت‌هاب لیارا شروع کنید"}>
           <ul className="grid grid-cols-4 gap-4">
             {GETTING_START_DATA.map(item =>
-              
-              <Card  dir="ltr" className="w-full cursor-pointer">
-              <Link href={item.link}>
-                <div className="flex gap-2 w-full items-center">
+              <a target="_blank" href={item.link}>
+                <Card
+                  dir="ltr"
+                  style={{
+                    background: `linear-gradient(195deg, ${item.badge
+                      .color}22, transparent)`,
+                    border: "none",
+                    borderBottom: "2px solid",
+                    borderBottomColor: item.badge.color,
+                    borderTopRightRadius: 6,
+                    borderTopLeftRadius: 6
+                  }}
+                  className={`w-full cursor-pointer  rounded-none `}
+                >
+                  <div className="flex gap-2 w-full items-center">
+                    <img
+                      src="/static/images/github.svg"
+                      className=" w-[18px] invert invert-icon"
+                    />
+                    <p>
+                      {item.title}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-2 h-2 rounded-sm"
+                      style={{ background: item.badge.color }}
+                    />
+                    <span className="text-[12px] text-[gray] font-mono">
+                      {item.badge.text}
+                    </span>
+                  </div>
+                </Card>{" "}
+              </a>
+            )}
+            <a target="_blank" href="https://github.com/liara-cloud/">
+              <Card
+                dir="ltr"
+                style={{
+                  background: `linear-gradient(195deg, #0001, transparent)`,
+                  border: "none",
+                  borderBottom: "2px dashed",
+                  borderTopRightRadius: 6,
+                  borderTopLeftRadius: 6
+                }}
+                className={`w-full h-full cursor-pointer relative  rounded-none `}
+              >
+                <div className="flex  flex-col justify-center gap-2 w-full items-center">
                   <img
                     src="/static/images/github.svg"
-                    className=" w-[18px] invert invert-icon"
+                    className=" w-[25px] mt-[-7px] invert invert-icon"
                   />
-                  <p>
-                    {item.title}
+                  <p className="font-mono mt-[-12px]">@liara_cloud</p>
+                  <p className="absolute bottom-0 text-[gray] text-[11px]">
+                    برای دیدن بیشتر کلیک کنید
                   </p>
                 </div>
-                </Link>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-sm" style={{ background: item.badge.color }} />
-                  <span className="text-[12px] text-[gray] font-mono">
-                    {item.badge.text}
-                  </span>
-                </div>
-
-                {/* <Link
-                  className="flex w-[max-content] items-center gap-2 text-[18px]  mt-4"
-                  key={item.alt}
-                  href={item.href}
-                >
-                  {item.title}
-
-                  <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
-                </Link> */}
               </Card>
-            )}
+            </a>
           </ul>
         </Section>
       </div>
