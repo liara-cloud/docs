@@ -77,6 +77,7 @@ import jsonIcon from "@liara/platformicons/glass/png/json.png";
 import lumenIcon from "@liara/platformicons/glass/png/lumen.png";
 import qwikIcon from "@liara/platformicons/glass/png/qwik.png";
 import hapiIcon from "@liara/platformicons/glass/png/hapi.png";
+import astroIcon from "@liara/platformicons/glass/png/astro.png";
 
 // Databases
 
@@ -174,6 +175,7 @@ const types = [
   { logo: lumenIcon, alt: "lumen" },
   { logo: qwikIcon, alt: "qwik" },
   { logo: hapiIcon, alt: "hapi" },
+  { logo: astroIcon, alt: "astro" },
   // Databases
   { logo: mysqlIcon, alt: "mysql" },
   { logo: redisIcon, alt: "redis" },

@@ -2455,8 +2455,13 @@ export default {
       },
       {
         title: "Astro",
-        icon: <IconContainer alt="HTML5" />,
+        icon: <IconContainer alt="astro" />,
         link: "/paas/static/related-apps/astro"
+      },
+      {
+        title: "NuxtJS",
+        icon: <IconContainer alt="nuxt" />,
+        link: "/paas/static/related-apps/nuxtjs"
       },
     ],
     docker: [
