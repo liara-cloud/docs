@@ -16,6 +16,15 @@
     border: none !important;
 }
 
+.dark .suggestion button {
+    background: #fff;
+    color: #000;
+}
+
+.dark .results ul li {
+    color: #000;
+}
+
 .dark .invert-icon {
     filter: invert(0);
 }
@@ -87,7 +96,7 @@ img {
     /* Adjust colors as needed */
     pointer-events: none;
     transition: opacity 0.3s;
-  }
+}
 
 .dark body header #search div.badge-cmd-k {
     background: #333 !important;
@@ -171,6 +180,7 @@ img {
         background: #fff1 !important;
         z-index: 22;
     }
+
     span.copy:hover {
         background: #fff2 !important;
         z-index: 22;

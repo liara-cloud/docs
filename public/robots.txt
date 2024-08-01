@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://docs.liara.ir/sitemap.xml
+Host: https://docs.liara.ir

@@ -358,7 +358,18 @@ export default function Home() {
         <Section id="github-repos" title={"با گیت‌هاب شروع کنید"}>
           <ul className="grid grid-cols-4 gap-4">
             {GETTING_START_DATA.map(item =>
-              <Card  dir="ltr" className="w-full cursor-pointer">
+              <Card
+                dir="ltr"
+                style={{
+                  background: `linear-gradient(195deg, ${item.badge.color}22, transparent)`,
+                  border: "none",
+                  borderBottom: "2px solid",
+                  borderBottomColor: item.badge.color,
+                  borderTopRightRadius: 6,
+                  borderTopLeftRadius: 6
+                }}
+                className={`w-full cursor-pointer  rounded-none `}
+              >
                 <div className="flex gap-2 w-full items-center">
                   <img
                     src="/static/images/github.svg"
@@ -369,7 +380,10 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-sm" style={{ background: item.badge.color }} />
+                  <div
+                    className="w-2 h-2 rounded-sm"
+                    style={{ background: item.badge.color }}
+                  />
                   <span className="text-[12px] text-[gray] font-mono">
                     {item.badge.text}
                   </span>
