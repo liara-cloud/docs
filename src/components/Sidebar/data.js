@@ -1058,7 +1058,7 @@ export default {
       },
       {
         title: "Hapi",
-        icon: <IconContainer alt="fastify" />,
+        icon: <IconContainer alt="hapi" />,
         link: "/paas/nodejs/related-apps/hapi"
       },
       {
@@ -1443,7 +1443,7 @@ export default {
       },
       {
         title: "Lumen",
-        icon: <IconContainer alt="laravel" />,
+        icon: <IconContainer alt="lumen" />,
         link: "/paas/laravel/related-apps/lumen"
       },
       {

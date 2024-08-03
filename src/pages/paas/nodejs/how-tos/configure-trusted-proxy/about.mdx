@@ -11,7 +11,12 @@ import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
 import {GoArrowLeft,} from "react-icons/go";
 
+import Head from "next/head";
+
 <Layout>
+<Head>
+<title>مستندات پیکربندی و تنظیمات TrustedProxies در NodeJS - لیارا</title>
+</Head>
 # پیکربندی و تنظیمات TrustedProxies
 <hr className="mb-2" />
 با توجه به این نکته که تمامی درخواست‌ها توسط <a href="../../../details/reverse-proxy" className="blue-link">reverse proxy</a> لیارا به برنامه‌ی شما هدایت می‌شود؛ باید در زمان استفاده از فریم‌ورک‌های مختلف برای مشاهده‌ی IP واقعی کاربران و بسیاری از قابلیت‌های دیگر تعیین کنید که برنامه‌ی شما در پشت یک reverse proxy راه‌اندازی شده است.
