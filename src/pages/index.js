@@ -414,10 +414,10 @@ export default function Home() {
       <div>
         <div
           id="welcome-continer"
-          className="bg-[url('/static/images/bg-main.webp')] border border-[#c4c4c4] relative p-8 h-[250px] w-[1050px] flex flex-col justify-center rounded-lg"
+          className="bg-[url('/static/images/bg-main.webp')] border bg-bottom	md:bg-left border-[#c4c4c4] relative p-8 md:h-[250px] md:w-[1050px] flex flex-col justify-center rounded-lg"
         >
-          <h1 className="text-[35px]"> به مستندات لیارا خوش‌آمدید 👋🏼</h1>
-          <p className="mt-2 w-[50%] eading-7">
+          <h1 className="text-[20px] font-bold md:font-normal md:text-[35px]"> به مستندات لیارا خوش‌آمدید 👋🏼</h1>
+          <p className="mt-2 md:w-[50%] eading-7">
             با کامل‌ترین مستندات مربوط به سرویس‌های ابری در ایران، پرقدرت شروع
             به توسعه پروژه‌تان کنید!
           </p>
@@ -426,7 +426,7 @@ export default function Home() {
           id="home-getting-started"
           title={"همین حالا استقرار را شروع کنید"}
         >
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-4 gap-4">
             {GETTING_STARTED_ITEMS.map(item =>
               <Link href={item.link}>
                 <Card className="flex w-full items-center justify-between">
@@ -445,10 +445,10 @@ export default function Home() {
           </div>
         </Section>
         <Section id="home-products" title={"محصولات لیارا"}>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {PRODUCTS.map(item =>
               <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
-                <div>
+                <div className="w-full">
                   <div className="flex items-center justify-between gap-3">
                     <h4>
                       {item.title}
@@ -470,7 +470,7 @@ export default function Home() {
         </Section>
 
         <Section id="home-references" title={"ارجاعات"}>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {REFERENCES.map(item =>
               <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
                 <div>
@@ -504,7 +504,7 @@ export default function Home() {
                 }}
               >
                 <Link
-                  className="flex w-[max-content] items-center gap-2 text-[18px]  mt-4"
+                  className="flex md:w-[max-content] w-[100%] whitespace-normal items-center gap-2 md:text-[18px]  mt-4"
                   key={item.alt}
                   href={item.href}
                 >
@@ -518,7 +518,7 @@ export default function Home() {
         </Section>
 
         <Section id="github-repos" title={"با گیت‌هاب لیارا شروع کنید"}>
-          <ul className="grid grid-cols-4 gap-4">
+          <ul className="grid md:grid-cols-4 gap-4">
             {GETTING_START_DATA.map(item =>
               <a target="_blank" href={item.link}>
                 <Card
@@ -527,7 +527,7 @@ export default function Home() {
                     background: `linear-gradient(195deg, ${item.badge
                       .color}22, transparent)`,
                     border: "none",
-                    borderBottom: "2px solid",
+                    borderBottom: "1px solid",
                     borderBottomColor: item.badge.color,
                     borderTopRightRadius: 6,
                     borderTopLeftRadius: 6
@@ -562,7 +562,7 @@ export default function Home() {
                 style={{
                   background: `linear-gradient(195deg, #0001, transparent)`,
                   border: "none",
-                  borderBottom: "2px dashed",
+                  borderBottom: "1px dashed",
                   borderTopRightRadius: 6,
                   borderTopLeftRadius: 6
                 }}

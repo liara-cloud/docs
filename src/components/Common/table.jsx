@@ -3,7 +3,7 @@ import React from "react";
 const Table = ({ headers = [], data = [] }) => {
   return (
     <div
-      className="table-container"
+      className="table-container overflow-auto  md:overflow-hidden"
       style={{
         background: "#ffffff08",
         margin: "20px 0px",

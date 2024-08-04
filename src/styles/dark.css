@@ -178,12 +178,12 @@ img {
 .dark .highlight-container {
     span.copy {
         background: #fff1 !important;
-        z-index: 22;
+        /* z-index: 1; */
     }
 
     span.copy:hover {
         background: #fff2 !important;
-        z-index: 22;
+        /* z-index: 22; */
     }
 }
 

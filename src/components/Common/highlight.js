@@ -35,13 +35,13 @@ const Highlight = ({ children, className }) => {
     <div className="relative mb-2 highlight-container">
       <span
         onClick={handleCopyToClipboard}
-        className="absolute copy z-[9999] right-2 top-2 text-sm bg-[#fff] border border-[#0002] cursor-pointer hover:bg-[#efefef] px-2 rounded-[6px] text-[gray]"
+        className="absolute copy z-1 right-2 top-2 text-sm bg-[#fff] border border-[#0002] cursor-pointer hover:bg-[#efefef] px-2 rounded-[6px] text-[gray]"
       >
         {isCopy ? "!کپی شد" : "کپی"}
       </span>
       <div
         ref={containerRef}
-        className={`highlight-content ${!needsReadMore || isExpanded
+        className={`highlight-content relative z-[-1] ${!needsReadMore || isExpanded
           ? "expanded"
           : "max-h-[500px]"}`}
         style={{ overflow: "hidden" }}

@@ -237,11 +237,12 @@ pre code {
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: #000000b4;
+  background-color: #00000022;
 }
 
 .search-box .search-input {
   width: 100%;
+  color: #000 !important;
   padding: 15px;
   margin-top: 10px;
   border-radius: 0.5rem;
@@ -262,7 +263,6 @@ pre code {
   width: 100%;
   transform: translateX(50%);
 }
-
 
 .suggestion button {
   margin-left: 10px;

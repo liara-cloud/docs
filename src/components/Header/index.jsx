@@ -1,5 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { GoSearch } from "react-icons/go";
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from "react";
+import { GoSearch, GoRows } from "react-icons/go";
 import { GoSun, GoMoon } from "react-icons/go";
 import Button from "../Common/button";
 import PlatformIcon from "../Common/icons";
@@ -14,8 +20,7 @@ const client = new MeiliSearch({
   apiKey: "99d6377d6dc5499ecc31451349b8957ebb2e29e67a5d92eb445737e25c1e7bb2"
 });
 
-const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
+const Header = ({ setShowSidebar }) => {
   const [results, setResults] = useState([]);
   const [defaultActive, setDefaultActive] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -25,6 +30,16 @@ const Header = () => {
   const [notFound, setNotFound] = useState(false);
   const router = useRouter();
   const valueRef = useRef();
+
+  const isBrowser = typeof window !== "undefined";
+
+  const [darkMode, setDarkMode] = useState(() => {
+    if (isBrowser) {
+      const storedDarkMode = localStorage.getItem("dark");
+      return storedDarkMode ? JSON.parse(storedDarkMode) : false;
+    }
+    return false;
+  });
 
   useEffect(
     () => {
@@ -117,25 +132,43 @@ const Header = () => {
   };
 
   return (
-    <header className="h-[55px] bg-[#fbfbfb] fixed mr-[300px] top-0 p-2 w-[100%] border-b text-[#707070] border-[#00000015]">
-      <nav className="max-w-[1350px]  pl-[300px] h-full flex items-center justify-between mx-auto ">
-        <button
-        onClick={()=>setSearchOpen(true)}
-
-
-          id="search"
-          className="w-[350px] px-2 py-1 relative text-[#707070] hover:bg-[#00000008]  border border-[#0002] rounded-md"
+    <header className="h-[55px] bg-[#fbfbfb] fixed md:mr-[300px]  top-0 p-2 w-[100vw] md:w-[100%] border-b text-[#707070] border-[#00000015]">
+      <nav className="max-w-[1350px] md:pl-[300px] h-full flex items-center justify-between mx-auto ">
+        <Link
+          href="/"
+          className="flex md:hidden mt-4  mb-3 items-center gap-2 font-semibold"
         >
-          <div className="flex items-center gap-2">
+          <img className="logo-sidebar" src={"/static/logo.svg"} width="55" />
+          <span className="text-[11px] px-1 py-0 font-medium text-[#fff] bg-[#333] rounded">
+            مستندات
+          </span>
+        </Link>
+
+        <button
+          onClick={() => setSearchOpen(true)}
+          id="search"
+          className="w-[35px] ml-12 md:ml-0 md:w-[350px] px-2 py-1 relative text-[#707070] hover:bg-[#00000008]  border border-[#0002] rounded-md"
+        >
+          <div className="hidden md:flex items-center gap-2">
             <GoSearch />
-            جستجو کنید...
+            جستجو کنید
           </div>
-          <div className="badge-cmd-k absolute top-[5px]  left-[5px] text-[15px] h-[21px] w-[40px] text-[#707070] bg-[#ededed] px-1 rounded  border border-[#d7d7d7]">
+          <div className="flex md:hidden items-center gap-2">
+            <GoSearch />
+          </div>
+          <div className="badge-cmd-k hidden absolute md:block top-[5px]  left-[5px] text-[15px] h-[21px] w-[40px] text-[#707070] bg-[#ededed] px-1 rounded  border border-[#d7d7d7]">
             K
             <span className="text-[10px] mr-[5px]">⌘</span>
           </div>
         </button>
-        <div className="flex items-center gap-3 ">
+        <Button
+          onClick={() => setShowSidebar(true)}
+          className="w-[35px] flex justify-center absolute md:hidden left-4  border border-[#0002] rounded-md"
+        >
+          <GoRows />
+        </Button>
+
+        <div className="hidden md:flex items-center gap-3 ">
           <Button>ورود به پنل کاربری</Button>
           <button
             onClick={toggleDarkMode}
@@ -145,8 +178,8 @@ const Header = () => {
           </button>
         </div>
       </nav>
-      {searchOpen && (
-        <>
+      {searchOpen &&
+        <Fragment>
           <div className="search-box" onKeyDown={e => handleArrow(e)}>
             <input
               ref={valueRef}
@@ -177,25 +210,24 @@ const Header = () => {
             <div className="results">
               <ul>
                 {results != "" &&
-                  results.map((item, index) => (
+                  results.map((item, index) =>
                     <li key={index}>
                       <Link
                         href={item.element ? item.url + item.element : item.url}
                         onClick={() => setSearchOpen(false)}
-                        className={`url_results ${
-                          current != undefined &&
+                        className={`url_results ${current != undefined &&
                           item.id == current.id &&
-                          `current-result `
-                        }`}
+                          `current-result `}`}
                         onMouseEnter={() => handleHover(index)}
                       >
                         <div className="platform_container">
-                          {item.platform && (
-                                       <div className="w-[30px] p-1 ml-3  bg-[#333] rounded-md">
-                                       <PlatformIcon platform={item.platform} />
-                                     </div>
-                          )}
-                          <p className="">{item.title}</p>
+                          {item.platform &&
+                            <div className="w-[30px] p-1 ml-3  bg-[#333] rounded-md">
+                              <PlatformIcon platform={item.platform} />
+                            </div>}
+                          <p className="">
+                            {item.title}
+                          </p>
                         </div>
                         <img
                           src="/static/images/arrow.svg"
@@ -203,8 +235,8 @@ const Header = () => {
                         />
                       </Link>
                     </li>
-                  ))}
-                {notFound && (
+                  )}
+                {notFound &&
                   <li>
                     <a className="url_results">
                       <div className="platform_container">
@@ -214,14 +246,12 @@ const Header = () => {
                         </p>
                       </div>
                     </a>
-                  </li>
-                )}
+                  </li>}
               </ul>
             </div>
           </div>
-          <span className="search-box-effect" onClick={handleSearch}></span>
-        </>
-      )}
+          <span className="search-box-effect" onClick={handleSearch} />
+        </Fragment>}
     </header>
   );
 };

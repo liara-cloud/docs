@@ -4,7 +4,7 @@ import Alert from "./alert";
 
 const StepComponent = ({ steps }) => {
   return (
-    <div id="steps" className="relative flex flex-col pt-4">
+    <div id="steps" className="relative overflow-y-hidden overflow-x-auto  flex flex-col pt-4">
       {steps.map((item, index) =>
         <div key={index} className="flex items-start mb-4">
           <div className="flex items-center justify-center">

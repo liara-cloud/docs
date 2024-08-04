@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 
 const Layout = ({ children }) => {
+  const [showSidebar, setShowSidebar] = useState(false);
+  
   return (
     <main>
       <div>
         <div className="flex">
-          <Sidebar />
-          <div className="w-[1350px] layout pr-[300px] mt-[100px] mx-auto pb-10">
+          <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+          <div className="w-[100%] px-4 mt-[80px] md:px-0 overflow-x-hidden md:w-[1350px] layout md:pr-[300px] md:mt-[100px] md:mx-auto pb-10">
             {children}
           </div>
         </div>
-        <Header />
+        <Header setShowSidebar={setShowSidebar} />
       </div>
     </main>
   );
