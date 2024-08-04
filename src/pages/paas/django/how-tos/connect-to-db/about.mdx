@@ -12,7 +12,12 @@ import NextPage from "@/components/Common/nextpage";
 import PlatformIcon from "@/components/Common/icons";
 import {GoArrowLeft,} from "react-icons/go";
 
+import Head from "next/head";
+
 <Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ها در Django - لیارا</title>
+</Head>
 # اتصال به دیتابیس 
 <hr className="mb-2" />
 
@@ -24,7 +29,7 @@ import {GoArrowLeft,} from "react-icons/go";
     { alt: 'mysql', platform: 'MySQL/MariaDB', link: "./mysql" },
     { alt: 'postgres', platform: 'PostgreSQL', link: "./postgresql" },
     { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
-    { alt: 'django', platform: 'SQLite', link: "./sqlite" },
+    { alt: 'sqlite', platform: 'SQLite', link: "./sqlite" },
     { alt: 'redis', platform: 'Redis', link: "./redis" },
     { alt: 'elastic', platform: 'ElasticSearch', link: "./elastic-search" },
   ].map(item =>

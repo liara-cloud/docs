@@ -1058,7 +1058,7 @@ export default {
       },
       {
         title: "Hapi",
-        icon: <IconContainer alt="fastify" />,
+        icon: <IconContainer alt="hapi" />,
         link: "/paas/nodejs/related-apps/hapi"
       },
       {
@@ -1443,7 +1443,7 @@ export default {
       },
       {
         title: "Lumen",
-        icon: <IconContainer alt="laravel" />,
+        icon: <IconContainer alt="lumen" />,
         link: "/paas/laravel/related-apps/lumen"
       },
       {
@@ -2455,8 +2455,13 @@ export default {
       },
       {
         title: "Astro",
-        icon: <IconContainer alt="HTML5" />,
+        icon: <IconContainer alt="astro" />,
         link: "/paas/static/related-apps/astro"
+      },
+      {
+        title: "NuxtJS",
+        icon: <IconContainer alt="nuxt" />,
+        link: "/paas/static/related-apps/nuxtjs"
       },
     ],
     docker: [
