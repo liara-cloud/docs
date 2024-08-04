@@ -35,8 +35,8 @@ import Head from "next/head";
     {`{
   "port": 3000,
   "healthCheck": {
-    "command": "curl --fail http://localhost:3000 || exit 1",
-    "interval": 30,
+    "command": "CMD curl --fail http://localhost:3000 || exit 1",
+    "interval": 30, 
     "timeout": 15,
     "retries": 2,
     "startPeriod": 5
@@ -65,10 +65,10 @@ import Head from "next/head";
 دستور <Important>curl --fail http://localhost:port || exit 1</Important> به این صورت عمل می‌کند که یا وب‌سرور شما Status 200 برمیگرداند و در نتیجه curl با کد 0 خارج می‌شود (عملیات موفقیت‌آمیز) و یا این که وب‌سرور شما Status 200 برنمیگرداند و عملیات ناموفق است.
 <div className='h-4' />
 
-در قطعه کد فوق، بعد از اجرا درآمدن استقرار جدید در بخش <a href="./events" className="blue-link">رویدادها</a>، برنامه به اندازه مدت زمانی که در فیلد <Important>startPeriod</Important> مشخص شده است؛ منتظر می‌ماند (در مثال فوق، این مقدار برابر با 5 ثانیه است). چرا که گاهاً برنامه در چند ثانیه‌ی اول پاسخ‌گوی کاربر نیست و برای مثال نیازمند اتصال به دیتابیس است و این مورد ممکن است چندثانیه‌ای طول بکشد.
+در قطعه کد فوق، بعد از اجرا درآمدن استقرار جدید در بخش <a href="./events" className="blue-link">رویدادها</a>، برنامه به اندازه مدت زمانی که در فیلد <Important>startPeriod</Important> مشخص شده است؛ منتظر می‌ماند (در مثال فوق، این مقدار برابر با 5 میلی ثانیه است). چرا که گاهاً برنامه در چند ثانیه‌ی اول پاسخ‌گوی کاربر نیست و برای مثال نیازمند اتصال به دیتابیس است و این مورد ممکن است چندثانیه‌ای طول بکشد.
 <div className='h-4' />
 
-بعد از اتمام 5 ثانیه، لیارا به اندازه مدت زمانی که در فیلد <Important>interval</Important> مشخص شده است؛ منتظر می‌ماند و سپس دستور مشخص شده در فیلد <Important>command</Important> را، اجرا می‌کند. در واقع اولین تست سلامت پس از گذشت مدت زمان مشخص شده در فیلدهای <Important>startPeriod</Important> و <Important>interval</Important> اجرا می‌شود که در قطعه کد فوق، بعد از گذشت 35 ثانیه، این اتفاق خواهد افتاد.
+بعد از اتمام 5 میلی‌ثانیه، لیارا به اندازه مدت زمانی که در فیلد <Important>interval</Important> مشخص شده است؛ منتظر می‌ماند و سپس دستور مشخص شده در فیلد <Important>command</Important> را، اجرا می‌کند. در واقع اولین تست سلامت پس از گذشت مدت زمان مشخص شده در فیلدهای <Important>startPeriod</Important> و <Important>interval</Important> اجرا می‌شود که در قطعه کد فوق، بعد از گذشت 35 میلی‌ثانیه، این اتفاق خواهد افتاد.
 <div className='h-4' />
 
 در ادامه، وب‌سرور به اندازه مقداری که در فیلد <Important>timeout</Important> مشخص شده، فرصت پاسخ‌دهی دارد. اگر پاسخی ندهد؛ تست ناموفق خواهد بود.
