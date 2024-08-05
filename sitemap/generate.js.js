@@ -19,7 +19,7 @@ async function walk(dir) {
 
 async function generateSitemap() {
   try {
-    const dir = path.join(__dirname, "../pages");
+    const dir = path.join(__dirname, "../src/pages");
     const results = await walk(dir);
 
     const siteUrl = "https://docs.liara.ir";
@@ -28,7 +28,8 @@ async function generateSitemap() {
       "/_app",
       "/sitemap.xml/index",
       "/index",
-      "/sitemap.xml",
+      "/_document",
+      "/sitemap.xml"
     ];
 
     const content = results
@@ -43,9 +44,10 @@ async function generateSitemap() {
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${content
         .map(url => {
+          const ـurl = url.replace(/\.$/, "");
           return `
             <url>
-              <loc>${siteUrl + path.posix.join(url, "/")}</loc>
+              <loc>${siteUrl + path.posix.join(ـurl, "/")}</loc>
               <changefreq>daily</changefreq>
               <priority>0.7</priority>
             </url>
