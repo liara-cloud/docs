@@ -26,7 +26,7 @@ import Head from "next/head";
 
 <br />
 <div className='h-2' />
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-5 gap-4">
             {[
     {
         title: "NodeJS",
@@ -72,6 +72,11 @@ import Head from "next/head";
         title: "Ghost",
         icon: "ghost",
         link: "./ghost"
+      },
+      {
+        title: "WordPress",
+        icon: "wordpress",
+        link: "./wordpress"
       },
   ].map(item =>
     <Link href={item.link}>

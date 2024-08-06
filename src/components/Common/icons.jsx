@@ -40,13 +40,13 @@ import prestashopIcon from "@liara/platformicons/glass/png/prestashop.png";
 import mattermostIcon from "@liara/platformicons/glass/png/mattermost.png";
 import rocketchatIcon from "@liara/platformicons/glass/png/rocket.chat.png";
 import uptimekumaIcon from "@liara/platformicons/glass/png/kuma.png";
-// import ackeeIcon from "../public/static/platforms/ackee.png";
 import appsmithIcon from "@liara/platformicons/glass/png/appsmith.png";
 import varnishIcon from "@liara/platformicons/glass/png/varnish.png";
 import apacheanswerIcon from "@liara/platformicons/glass/png/apache.png";
 import nocodbIcon from "@liara/platformicons/glass/png/nocodb.png";
 import chromaIcon from "@liara/platformicons/glass/png/chroma.png";
 import meilisearchIcon from "@liara/platformicons/glass/png/mailisearch.png";
+import ackeeIcon from "@liara/platformicons/glass/png/ackee.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -137,13 +137,13 @@ const types = [
   { logo: matomoIcon, alt: "matomo" },
   { logo: unleashIcon, alt: "unleash" },
   { logo: uptimekumaIcon, alt: "uptimekuma" },
-//   { logo: ackeeIcon, alt: "ackee" },
   { logo: appsmithIcon, alt: "appsmith" },
   { logo: varnishIcon, alt: "varnish" },
   { logo: apacheanswerIcon, alt: "apacheanswer" },
   { logo: nocodbIcon, alt: "nocodb" },
   { logo: chromaIcon, alt: "chroma" },
   { logo: meilisearchIcon, alt: "meilisearch" },
+  { logo: ackeeIcon, alt: "ackee" },
 
   // Instructions
   { logo: goIcon, alt: "go" },

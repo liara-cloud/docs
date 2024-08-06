@@ -868,6 +868,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="nodejs" />
             پلتفرم NodeJS
           </div>
         )
@@ -1106,6 +1107,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="next" />
             پلتفرم NextJS
           </div>
         )
@@ -1206,34 +1208,42 @@ export default {
       },
       {
         title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
         link: "/paas/nextjs/how-tos/connect-to-db/mongodb"
       },
       {
         title: "دیتابیس MariaDB",
+        icon: <IconContainer alt="mariadb" />,
         link: "/paas/nextjs/how-tos/connect-to-db/mariadb"
       },
       {
         title: "دیتابیس MySQL",
+        icon: <IconContainer alt="mysql" />,
         link: "/paas/nextjs/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
         link: "/paas/nextjs/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/nextjs/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
         link: "/paas/nextjs/how-tos/connect-to-db/sqlite"
       },
       {
         title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
         link: "/paas/nextjs/how-tos/connect-to-db/redis"
       },
       {
         title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
         link: "/paas/nextjs/how-tos/connect-to-db/elasticsearch"
       },
       
@@ -1257,6 +1267,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="laravel" />
             پلتفرم Laravel
           </div>
         )
@@ -1381,30 +1392,37 @@ export default {
       },
       {
         title: "دیتابیس MySQL",
+        icon: <IconContainer alt="mysql" />,
         link: "/paas/laravel/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس MariaDB",
+        icon: <IconContainer alt="mariadb" />,
         link: "/paas/laravel/how-tos/connect-to-db/mariadb"
       },
       {
         title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/laravel/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
         link: "/paas/laravel/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
         link: "/paas/laravel/how-tos/connect-to-db/sqlite"
       },
       {
         title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
         link: "/paas/laravel/how-tos/connect-to-db/redis"
       },
       {
         title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
         link: "/paas/laravel/how-tos/connect-to-db/elastic-search"
       },
       {
@@ -1461,6 +1479,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="php" />
             پلتفرم PHP
           </div>
         )
@@ -1569,30 +1588,37 @@ export default {
       },
       {
         title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mariadb" />,
         link: "/paas/php/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/php/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
         link: "/paas/php/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
         link: "/paas/php/how-tos/connect-to-db/sqlite"
       },
       {
         title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
         link: "/paas/php/how-tos/connect-to-db/redis"
       },
       {
         title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
         link: "/paas/php/how-tos/connect-to-db/mongodb"
       },
       {
         title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
         link: "/paas/php/how-tos/connect-to-db/elastic-search"
       },
       {
@@ -1635,6 +1661,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="django" />
             پلتفرم Django
           </div>
         )
@@ -1752,30 +1779,37 @@ export default {
       },
       {
         title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
         link: "/paas/django/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/django/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
         link: "/paas/django/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
         link: "/paas/django/how-tos/connect-to-db/sqlite"
       },
       {
         title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
         link: "/paas/django/how-tos/connect-to-db/redis"
       },
       {
         title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
         link: "/paas/django/how-tos/connect-to-db/elastic-search"
       },
       {
         title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
         link: "/paas/django/how-tos/connect-to-db/mongodb"
       },
       {
@@ -1826,6 +1860,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="flask" />
             پلتفرم Flask
           </div>
         )
@@ -1931,30 +1966,37 @@ export default {
       },
       {
         title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
         link: "/paas/flask/how-tos/connect-to-db/mysql"
       },
       // {
       //   title: "دیتابیس MSSQL",
+      // icon: <IconContainer alt="mssql" />,
       //   link: "/paas/flask/how-tos/connect-to-db/mssql"
       // },
       {
         title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
         link: "/paas/flask/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
         link: "/paas/flask/how-tos/connect-to-db/sqlite"
       },
       {
         title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
         link: "/paas/flask/how-tos/connect-to-db/redis"
       },
       {
         title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
         link: "/paas/flask/how-tos/connect-to-db/elastic-search"
       },
       {
         title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
         link: "/paas/flask/how-tos/connect-to-db/mongodb"
       },
       {
@@ -1989,6 +2031,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="netcore" />
             پلتفرم NET.
           </div>
         )
@@ -2082,18 +2125,22 @@ export default {
       },
       {
         title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/dotnet/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
         link: "/paas/dotnet/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
         link: "/paas/dotnet/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
         link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
       },
       // {
@@ -2132,6 +2179,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="react" />
             پلتفرم React
           </div>
         )
@@ -2206,6 +2254,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="vue" />
             پلتفرم Vue
           </div>
         )
@@ -2280,6 +2329,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="angularjs" />
             پلتفرم Angular
           </div>
         )
@@ -2354,6 +2404,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="HTML5" />
             پلتفرم Static
           </div>
         )
@@ -2468,6 +2519,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="docker" />
             پلتفرم Docker
           </div>
         )
@@ -2817,6 +2869,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="mariadb" />
             دیتابیس MariaDB 
           </div>
         )
@@ -2952,6 +3005,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="mysql" />
             دیتابیس MySQL 
           </div>
         )
@@ -3087,6 +3141,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="postgres" />
             دیتابیس PostgreSQL 
           </div>
         )
@@ -3218,6 +3273,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="mssql" />
             دیتابیس MSSQL (SQL Server) 
           </div>
         )
@@ -3353,6 +3409,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="mongodb" />
             دیتابیس MongoDB
           </div>
         )
@@ -3480,6 +3537,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="redis" />
             دیتابیس Redis
           </div>
         )
@@ -3608,6 +3666,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
+          <IconContainer alt="elastic" />
             دیتابیس ElasticSearch
           </div>
         )
@@ -3867,7 +3926,7 @@ export default {
       },
       {
         title: "Ackee",
-        icon: <IconContainer alt="docker" />,
+        icon: <IconContainer alt="ackee" />,
         link: "/one-click-apps/ackee/quick-start"
       },
       {
@@ -5115,6 +5174,11 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/ghost"
       },
       {
+        title: "WordPress",
+        icon: <IconContainer alt="wordpress" />,
+        link: "/email-server/how-tos/connect-via-platform/wordpress"
+      },
+      {
         hr: true
       },
       {
@@ -5662,6 +5726,11 @@ export default {
         title: "Strapi",
         icon: <IconContainer alt="strapi" />,
         link: "/object-storage/how-tos/connect-via-platform/strapi"
+      },
+      {
+        title: "WordPress",
+        icon: <IconContainer alt="wordpress" />,
+        link: "/object-storage/how-tos/connect-via-platform/wordpress"
       },
       {
         hr: true
