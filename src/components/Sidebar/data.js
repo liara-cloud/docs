@@ -726,8 +726,12 @@ export default {
         link: "/paas/disks/create-backup"
       },
       {
-        title: "بازیابی فایل پشتیبان در دیسک‌",
-        link: "/paas/disks/restore-backup"
+        title: "بازیابی فایل پشتیبان با دسترسی FTP",
+        link: "/paas/disks/restore-backup-using-ftp"
+      },
+      {
+        title: "بازیابی فایل پشتیبان با دستور wget",
+        link: "/paas/disks/restore-backup-using-wget"
       },
       {
         hr: true
