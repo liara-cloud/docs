@@ -17,6 +17,6 @@ jobs:
           LIARA_TOKEN: ${{ secrets.ALI_NAJMABADI_SECRET }}
         run: |
           npm i -g @liara/cli@5
-          liara deploy --app="new-doc" --api-token="$LIARA_TOKEN" --no-app-logs
+          liara deploy --app="new-doc" --api-token="$LIARA_TOKEN" --platform=docker --no-app-logs
       - name: Sleep for 60 seconds
         run: sleep 60
