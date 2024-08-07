@@ -1958,6 +1958,9 @@ const Sidebar = ({ searchOpen, setSearchOpen }) => {
               <ActiveLink href="/email/inbound-email">دریافت ایمیل</ActiveLink>
             </li>
             <li>
+              <ActiveLink href="/email/tag-email">تگ ایمیل</ActiveLink>
+            </li>
+            <li>
               <ActiveLink href="/email/tips">توضیحات و نکات تکمیلی</ActiveLink>
             </li>
           </ul>
