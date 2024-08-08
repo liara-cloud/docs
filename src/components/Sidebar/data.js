@@ -608,7 +608,7 @@ export default {
       {
         title: "رجیستری خصوصی و تاریخچه",
         icon: <GoLog />,
-        link: "/paas/details/private-registery"
+        link: "/paas/details/private-registry"
       },
       {
         title: "خط فرمان کنسول",
