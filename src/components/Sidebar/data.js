@@ -5120,6 +5120,10 @@ export default {
         link: "/email-server/how-tos/change-sending-mode"
       },
       {
+        title: "استفاده از تگ (tag)",
+        link: "/email-server/how-tos/use-tags"
+      },
+      {
         hr: true
       },
       {
@@ -5274,6 +5278,10 @@ export default {
         link: "/email-server/how-tos/change-sending-mode"
       },
       {
+        title: "استفاده از تگ (tag)",
+        link: "/email-server/how-tos/use-tags"
+      },
+      {
         hr: true
       },
       {
@@ -5421,6 +5429,10 @@ export default {
       {
         title: "تغییر حالت ارسال ایمیل",
         link: "/email-server/how-tos/change-sending-mode"
+      },
+      {
+        title: "استفاده از تگ (tag)",
+        link: "/email-server/how-tos/use-tags"
       },
       {
         hr: true

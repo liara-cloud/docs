@@ -1,0 +1,135 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از تگ در ایمیل سرور - لیارا</title>
+</Head>
+# استفاده از قابلیت tag در ایمیل‌سرور
+<hr className="mb-2" />
+
+قابلیت tag 
+یا برچسب در یک ایمیل سرور به کاربران اجازه می‌دهد تا ایمیل‌های دریافتی و ارسالی خود را به صورت سازمان‌یافته‌تر مدیریت کنند. tagها معمولاً برچسب‌های دلخواهی هستند که می‌توانید به یک ایمیل اختصاص دهید تا آن را در دسته‌های خاصی قرار دهید. 
+این قابلیت مشابه سیستم برچسب‌گذاری (Labeling) در برنامه‌هایی مانند Gmail است.
+<div className="h-4" />
+
+قابلیت tag در ایمیل سرور به شما کمک می‌کند تا ایمیل‌ها را به صورت سازمان‌یافته‌تر دسته‌بندی کنید، جستجوی سریع‌تری داشته باشید و ایمیل‌های مرتبط با موضوعات یا پروژه‌های خاص را به راحتی مدیریت کنید. این قابلیت باعث افزایش بهره‌وری و سهولت در مدیریت ایمیل‌ها می‌شود.
+در ادامه مستندات مربوط به استفاده از تگ‌ها در ایمیل‌سرور لیارا، برای شما قرار گرفته است. 
+
+<Section id="console" title="استفاده از تگ‌ها در کنسول"/>
+برای استفاده از این قابلیت در بخش <a href="/email-server/how-tos/send-email-via-console" className="blue-link">ارسال ایمیل</a> کنسول لیارا، تنها کافیست تا در فیلدی
+به نام **تگ**، نام تگ دلخواه خود را، بنویسید: 
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/send_mail_with_tags.png" alt="send_mail_with_tags" />
+<div className="h-4" />
+
+<Section id="code" title="استفاده از تگ‌ها در کد"/>
+در صورتی که برای ارسال ایمیل از <a href="/email-server/how-tos/connect-via-platform/about" className="blue-link">پلتفرم خاصی</a> استفاده می‌کنید و قصد دارید که ایمیل‌های ارسالی 
+با تگ مشخص شوند؛ کافیست تا در تنظیمات مربوط به <Important>headers</Important>، مقدار <Important>x-liara-tag</Important> را مانند قطعه کدهای زیر، به برنامه خود، اضافه کنید:
+
+
+<Tabs 
+    tabs={["NodeJS", "Flask"]} 
+    content={[
+    <>
+        <div className="h-2" />
+        <div dir='ltr'>
+            <Highlight className="js">
+                {`const nodemailer = require("nodemailer");
+const MAIL_HOST = process.env.MAIL_HOST;
+const MAIL_PORT = process.env.MAIL_PORT;
+const MAIL_USER = process.env.MAIL_USER;
+const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
+
+const transporter = nodemailer.createTransport({
+  host: MAIL_HOST,
+  port: MAIL_PORT,
+  tls: true,
+  auth: {
+    user: MAIL_USER,
+    pass: MAIL_PASSWORD,
+  }
+});
+
+transporter
+  .sendMail({
+    from: "test@test.test",
+    to: "example@example.example",
+    subject: "Email Tags",
+    html: "<h1>Let's try email tags!</h1>",
+    headers: {
+      "x-liara-tag": "welcome_email",
+    },
+  })
+  .then(() => console.log("OK, Email has been sent."))
+  .catch(console.error);`}
+            </Highlight>
+        </div>
+        <div className="h-2" />
+    </>,
+    <>
+        <div className="h-2" />
+        <div dir='ltr'>
+            <Highlight className="py">
+                {`from flask import Flask
+from flask_mail import Mail, Message
+import os
+
+app = Flask(__name__)
+
+app.config['MAIL_SERVER']   = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT']     = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS']  = os.getenv('MAIL_USE_TLS') == 'True'
+app.config['MAIL_USE_SSL']  = False
+mail = Mail(app)
+
+@app.route("/")
+def index():
+    msg = Message(
+        'Mailing with Flask-Mail',
+        sender=("sender_name", 'test@test.test'),
+        recipients=['example@example.example'],
+        extra_headers = {
+        "x-liara-tag": "test_tag"
+    }
+    )
+
+    msg.body = "this is from Flask app, lmk if it works"
+    mail.send(msg)
+
+    return "Message sent!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+`}
+            </Highlight>
+        </div>
+        <div className="h-2" />
+    </>,
+    ]} 
+/>
+
+<Alert variant="info">
+<p>
+در یک سرور ایمیل، می‌توانید به تعداد ۱۰ تگ غیرتکراری، ایجاد نمایید و هر تگ می‌تواند بین ۲ الی ۵۰ کاراکتر باشد.
+</p>
+</Alert>
+
+
+
+
+</Layout>
