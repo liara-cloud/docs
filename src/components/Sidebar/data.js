@@ -4011,14 +4011,13 @@ export default {
         link: "/one-click-apps/wordpressplus/how-tos/duplicator"
       },
       {
-        title: "مشاهده نسخه‌های PHP قابل ارائه",
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/wordpressplus/how-tos/choose-version"
       },
-      {
-        title: "شخصی‌سازی تنظیمات php.ini",
-        link: "/one-click-apps/wordpressplus/how-tos/customize-php-ini"
-      },
-  
+      // {
+      //   title: "شخصی‌سازی تنظیمات php.ini",
+      //   link: "/one-click-apps/wordpressplus/how-tos/customize-php-ini"
+      // },
       {
         title: "مشاهده اکستنشن‌های نصب‌شده",
         link: "/one-click-apps/wordpressplus/how-tos/see-extensions"
