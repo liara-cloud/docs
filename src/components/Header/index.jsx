@@ -41,6 +41,22 @@ const Header = ({ setShowSidebar }) => {
     return false;
   });
 
+  useEffect(() => {
+    const handleKeydown = event => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+        event.preventDefault();
+        setSearchOpen(prev => !prev);
+      }
+      if (event.key === "Escape") {
+        setSearchOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeydown);
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, []);
+
   useEffect(
     () => {
       if (darkMode) {
@@ -229,7 +245,10 @@ const Header = ({ setShowSidebar }) => {
                             {item.title}
                             {item.type === "video" &&
                               <Fragment>
-                                {" "}- <span className="bg-[#2563eb22] px-2 text-[12px] py-1 rounded-lg">همراه ویدیو</span>
+                                {" "}-{" "}
+                                <span className="bg-[#2563eb22] px-2 text-[12px] py-1 rounded-lg">
+                                  همراه ویدیو
+                                </span>
                               </Fragment>}
                           </p>
                         </div>
