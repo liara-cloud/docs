@@ -1,0 +1,85 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات روشن کردن برنامه با Liara CLI - لیارا</title>
+</Head>
+# روشن کردن برنامه خاموش با Liara CLI
+<hr className="mb-2" />
+
+برای 
+روشن کردن برنامه خاموش با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara start`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="start-the-app" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara app:start</Important>یا <Important>liara start</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara start [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>] [-a <value>]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>a- یا app--</Important>,
+    "انتخاب برنامه موردنظر",
+    <Important>liara start -a my-web-app</Important>,
+  ],
+
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara start --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات روشن کردن برنامه خاموش به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara start --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌ها به همراه دیباگ",
+    <Important>liara start --debug</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara start -h</Important>,
+  ],
+  
+]} />
+<div className="h-3" />
+
+</Layout>

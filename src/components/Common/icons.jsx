@@ -132,7 +132,7 @@ const types = [
   { logo: metabaseIcon, alt: "metabase" },
   { logo: nextcloudIcon, alt: "nextcloud" },
   { logo: wordpressIcon, alt: "wordpress" },
-  { logo: wordpressIcon, alt: "wordpressplus" },
+  { logo: wordpressIcon, alt: "wordpress" },
   { logo: pocketbaseIcon, alt: "pocketbase" },
   { logo: prestashopIcon, alt: "prestashop" },
   { logo: mattermostIcon, alt: "mattermost" },

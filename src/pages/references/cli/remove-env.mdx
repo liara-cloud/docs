@@ -1,0 +1,93 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات حذف متغیرهای محیطی با Liara CLI - لیارا</title>
+</Head>
+# حذف متغیرهای محیطی با Liara CLI
+<hr className="mb-2" />
+
+برای 
+حذف متغیرهای محیطی با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara env:unset`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="remove-env" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara env:unset</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara env unset [ENV...] [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>] [-a <value>] [-f]`}
+</Highlight>
+</div>
+
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>a- یا app--</Important>,
+    "انتخاب برنامه هدف",
+    <Important>liara env:unset -a my-web-app</Important>,
+  ],
+
+  [
+    <Important>f- یا force--</Important>,
+    "حذف متغیرهای محیطی یک برنامه بدون نیاز به تایید",
+    <Important>liara env:set -f</Important>,
+  ],
+  
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara env:unset --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات حذف متغیرها به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara env:unset --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش دیباگ در کنار متغیرهای محیطی",
+    <Important>liara env:unset --debug</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara env:unset -h</Important>,
+  ],
+ 
+  
+]} />
+<div className="h-3" />
+
+</Layout>

@@ -1,0 +1,82 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات حذف حساب کاربری از Liara CLI - لیارا</title>
+</Head>
+# حذف یک حساب کاربری از Liara CLI
+<hr className="mb-2" />
+
+برای 
+حذف یک حساب کاربری از Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara account:remove`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="remove-account" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara account:remove</Important> یا <Important>liara account:rm</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara account remove [-h] [--debug] [--api-token <value>] [--region iran|germany] [-a <value>]`}
+</Highlight>
+</div>
+
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>a- یا account--</Important>,
+    "انتخاب حساب هدف",
+    <Important>liara account:remove -a oldfoo</Important>,
+  ],
+
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات حذف اکانت به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara account:remove --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش دیباگ در کنار حذف حساب کاربری",
+    <Important>liara account:remove --debug</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara account:remove -h</Important>,
+  ],
+ 
+  
+]} />
+<div className="h-3" />
+
+</Layout>

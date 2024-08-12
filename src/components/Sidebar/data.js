@@ -135,17 +135,17 @@ export default {
     {
       title: "Liara CLI",
       icon: <GoTerminal />,
-      link: "/references/liara-cli/about"
+      link: "/references/cli/about"
     },
     {
       title: "Liara API",
       icon: <GoCode />,
-      link: "/references/liara-api/about"
+      link: "/references/api/about"
     },
     {
       title: "پنل کاربری لیارا",
       icon: <GoPerson />,
-      link: "/references/user-panel/about"
+      link: "/references/console/about"
     },
     {
       hr: true
@@ -904,7 +904,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -1143,7 +1143,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -1307,7 +1307,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -1519,7 +1519,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -1701,7 +1701,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -1900,7 +1900,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -2071,7 +2071,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -2219,7 +2219,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -2294,7 +2294,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -2369,7 +2369,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -2444,7 +2444,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -2559,7 +2559,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -3833,9 +3833,9 @@ export default {
         badge: "پلتفرم‌های قابل ارائه"
       },
       {
-        title: "WordPress Plus",
+        title: "WordPress",
         icon: <IconContainer alt="wordpress" />,
-        link: "/one-click-apps/wordpressplus/quick-start"
+        link: "/one-click-apps/wordpress/quick-start"
       },
       {
         title: "Headless Chrome",
@@ -3973,11 +3973,11 @@ export default {
         link: "/one-click-apps/meilisearch/quick-start"
       },
     ],
-    wordpressplus: [
+    wordpress: [
       {
         badge: (
           <div className="flex items-center gap-2">
-            برنامه WordPress Plus
+            برنامه WordPress
           </div>
         )
       },
@@ -3989,7 +3989,7 @@ export default {
       {
         title: "راه‌اندازی سریع!",
         icon: <GoZap  />,
-        link: "/one-click-apps/wordpressplus/quick-start"
+        link: "/one-click-apps/wordpress/quick-start"
       },
       {
         hr: true
@@ -3998,33 +3998,33 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
       {
         title: "انتقال WordPress از cPanel به لیارا",
-        link: "/one-click-apps/wordpressplus/how-tos/migrate-from-cpanel"
+        link: "/one-click-apps/wordpress/how-tos/migrate-from-cpanel"
       },
       {
         title: "فعال‌سازی افزونه WP Rocket",
-        link: "/one-click-apps/wordpressplus/how-tos/enable-wprocket-extension"
+        link: "/one-click-apps/wordpress/how-tos/enable-wprocket-extension"
       },
       {
         title: "راه‌اندازی WordPress با Duplicator",
-        link: "/one-click-apps/wordpressplus/how-tos/duplicator"
+        link: "/one-click-apps/wordpress/how-tos/duplicator"
       },
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
-        link: "/one-click-apps/wordpressplus/how-tos/choose-version"
+        link: "/one-click-apps/wordpress/how-tos/choose-version"
       },
       // {
       //   title: "شخصی‌سازی تنظیمات php.ini",
-      //   link: "/one-click-apps/wordpressplus/how-tos/customize-php-ini"
+      //   link: "/one-click-apps/wordpress/how-tos/customize-php-ini"
       // },
       {
         title: "مشاهده اکستنشن‌های نصب‌شده",
-        link: "/one-click-apps/wordpressplus/how-tos/see-extensions"
+        link: "/one-click-apps/wordpress/how-tos/see-extensions"
       },
       {
         hr: true
@@ -4033,21 +4033,21 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoBug  />
-            <Link href="/one-click-apps/wordpressplus/fix-common-errors/about">رفع خطاهای رایج</Link>
+            <Link href="/one-click-apps/wordpress/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
       },
       {
         title: "رفع خطای err_too_many_redirects",
-        link: "/one-click-apps/wordpressplus/fix-common-errors/too-many-redirects-error"
+        link: "/one-click-apps/wordpress/fix-common-errors/too-many-redirects-error"
       },
       {
         title: "رفع خطای لود نشدن فایل‌های CSS",
-        link: "/one-click-apps/wordpressplus/fix-common-errors/css-not-loading-error"
+        link: "/one-click-apps/wordpress/fix-common-errors/css-not-loading-error"
       },
       {
         title: "رفع خطاهای مربوط به دسترسی فایل",
-        link: "/one-click-apps/wordpressplus/fix-common-errors/file-access-errors"
+        link: "/one-click-apps/wordpress/fix-common-errors/file-access-errors"
       },
   
     ],
@@ -4076,7 +4076,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4131,7 +4131,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4170,7 +4170,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4224,7 +4224,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4258,7 +4258,7 @@ export default {
       //   badge: (
       //     <div className="flex items-center gap-2">
       //     < GoPackage   />
-      //       نحوه
+      //       شیوه‌ی
       //     </div>
       //   )
       // },
@@ -4292,7 +4292,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4326,7 +4326,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4360,7 +4360,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4394,7 +4394,7 @@ export default {
       //   badge: (
       //     <div className="flex items-center gap-2">
       //     < GoPackage   />
-      //       نحوه
+      //       شیوه‌ی
       //     </div>
       //   )
       // },
@@ -4428,7 +4428,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4462,7 +4462,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4496,7 +4496,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4530,7 +4530,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4564,7 +4564,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4598,7 +4598,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4632,7 +4632,7 @@ export default {
       //   badge: (
       //     <div className="flex items-center gap-2">
       //     < GoPackage   />
-      //       نحوه
+      //       شیوه‌ی
       //     </div>
       //   )
       // },
@@ -4666,7 +4666,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4700,7 +4700,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4734,7 +4734,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4772,7 +4772,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4806,7 +4806,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4844,7 +4844,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4882,7 +4882,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4916,7 +4916,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4954,7 +4954,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -4988,7 +4988,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -5023,7 +5023,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -5074,7 +5074,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoRead />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -5134,7 +5134,7 @@ export default {
           <div className="flex items-center gap-2">
           < GoPackage />
           <a href="/email-server/how-tos/connect-via-platform/about">
-          اتصال به ایمیل‌سرور از طریق پلتفرم
+          اتصال با پلتفرم
           </a>
           </div>
         )
@@ -5232,7 +5232,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoRead />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -5292,7 +5292,7 @@ export default {
           <div className="flex items-center gap-2">
           < GoPackage />
           <a href="/email-server/how-tos/connect-via-platform/about">
-          اتصال به ایمیل‌سرور از طریق پلتفرم
+          اتصال با پلتفرم
           </a>
           </div>
         )
@@ -5385,7 +5385,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoRead />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -5445,7 +5445,7 @@ export default {
           <div className="flex items-center gap-2">
           < GoPackage />
           <a href="/email-server/how-tos/connect-via-platform/about">
-          اتصال به ایمیل‌سرور از طریق پلتفرم
+          اتصال با پلتفرم
           </a>
           </div>
         )
@@ -5595,7 +5595,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoFileDirectory  />
-            نحوه کار با باکت
+            شیوه‌ی کار با باکت
           </div>
         )
       },
@@ -5630,7 +5630,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoKey   />
-            نحوه مدیریت کلیدها
+            شیوه‌ی مدیریت کلیدها
           </div>
         )
       },
@@ -5760,7 +5760,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال دامنه به Object Storage",
+        title: "اتصال به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -5799,7 +5799,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoFileDirectory  />
-            نحوه کار با باکت
+            شیوه‌ی کار با باکت
           </div>
         )
       },
@@ -5834,7 +5834,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoKey   />
-            نحوه مدیریت کلیدها
+            شیوه‌ی مدیریت کلیدها
           </div>
         )
       },
@@ -5959,7 +5959,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال دامنه به Object Storage",
+        title: "اتصال به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -5997,7 +5997,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoFileDirectory  />
-            نحوه کار با باکت
+            شیوه‌ی کار با باکت
           </div>
         )
       },
@@ -6032,7 +6032,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoKey   />
-            نحوه مدیریت کلیدها
+            شیوه‌ی مدیریت کلیدها
           </div>
         )
       },
@@ -6157,7 +6157,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال دامنه به Object Storage",
+        title: "اتصال به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6196,7 +6196,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoFileDirectory  />
-            نحوه کار با باکت
+            شیوه‌ی کار با باکت
           </div>
         )
       },
@@ -6231,7 +6231,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoKey   />
-            نحوه مدیریت کلیدها
+            شیوه‌ی مدیریت کلیدها
           </div>
         )
       },
@@ -6356,7 +6356,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال دامنه به Object Storage",
+        title: "اتصال به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6415,7 +6415,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoGlobe  />
-          سیستم مدیریت DNS
+          سامانه مدیریت دامنه
           </div>
         )
       },
@@ -6425,7 +6425,7 @@ export default {
         link: "/"
       },
       {
-        title: "درباره سرویس مدیریت DNS",
+        title: "درباره سرویس DNS",
         icon: <GoInfo />,
         link: "/dns-management-system/about"
       },
@@ -6441,7 +6441,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <  GoGear  />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -6469,7 +6469,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoGlobe  />
-          سیستم مدیریت DNS
+          سامانه مدیریت دامنه
           </div>
         )
       },
@@ -6479,7 +6479,7 @@ export default {
         link: "/"
       },
       {
-        title: "درباره سرویس مدیریت DNS",
+        title: "درباره سرویس DNS",
         icon: <GoInfo />,
         link: "/dns-management-system/about"
       },
@@ -6495,7 +6495,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <  GoGear  />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -6523,7 +6523,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoGlobe  />
-          سیستم مدیریت DNS
+          سامانه مدیریت دامنه
           </div>
         )
       },
@@ -6533,7 +6533,7 @@ export default {
         link: "/"
       },
       {
-        title: "درباره سرویس مدیریت DNS",
+        title: "درباره سرویس  DNS",
         icon: <GoInfo />,
         link: "/dns-management-system/about"
       },
@@ -6549,7 +6549,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <  GoGear  />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
@@ -6600,7 +6600,7 @@ export default {
         link: "/dns-management-system/details/supported-records"
       },
       {
-        title: "حذف یک سیستم مدیریت DNS",
+        title: "حذف یک سامانه مدیریت دامنه",
         icon: <GoXCircle  />,
         link: "/dns-management-system/details/delete-dns-management-system"
       },
@@ -6700,7 +6700,7 @@ export default {
   },
 
   references:  {
-    'liara-cli': [
+    'cli': [
       {
         badge: (
           <div className="flex items-center gap-2">
@@ -6717,12 +6717,12 @@ export default {
       {
         title: "Liara CLI چیست؟",
         icon: <GoInfo />,
-        link: "/references/liara-cli/about"
+        link: "/references/cli/about"
       },
       // {
       //   title: "خلاصه دستورات",
       //   icon: <GoInfo />,
-      //   link: "/references/liara-cli/about"
+      //   link: "/references/cli/about"
       // },
       {
         hr: true
@@ -6731,29 +6731,29 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           < GoPackage   />
-            نحوه
+            شیوه‌ی
           </div>
         )
       },
       {
         title: "نصب و به‌روزرسانی",
-        link: "/references/liara-cli/install"
+        link: "/references/cli/install"
       },
       {
         title: "ورود به حساب کاربری",
-        link: "/references/liara-cli/login"
+        link: "/references/cli/login"
       },
       {
         title: "مدیریت دیسک‌ها",
-        link: "/references/liara-cli/manage-disks"
+        link: "/references/cli/manage-disks"
       },
       {
         title: "مشاهده پلن‌های سرویس پلتفرم",
-        link: "/references/liara-cli/see-platform-plans"
+        link: "/references/cli/see-platform-plans"
       },
       {
         title: "تکمیل خودکار دستورات",
-        link: "/references/liara-cli/autocomplete"
+        link: "/references/cli/autocomplete"
       },
       {
         hr: true
@@ -6767,39 +6767,39 @@ export default {
       },
       {
         title: "استقرار برنامه",
-        link: "/references/liara-cli/deploy-app"
+        link: "/references/cli/deploy-app"
       },
       {
         title: "ایجاد یک برنامه",
-        link: "/references/liara-cli/create-app"
+        link: "/references/cli/create-app"
       },
       {
         title: "حذف یک برنامه",
-        link: "/references/liara-cli/delete-app"
+        link: "/references/cli/delete-app"
       },
       {
         title: "لیست‌کردن برنامه‌ها",
-        link: "/references/liara-cli/list-apps"
+        link: "/references/cli/list-apps"
       },
       {
         title: "مشاهده لاگ‌های برنامه",
-        link: "/references/liara-cli/see-app-logs"
+        link: "/references/cli/see-app-logs"
       },
       {
         title: "ری‌استارت برنامه",
-        link: "/references/liara-cli/restart-app"
+        link: "/references/cli/restart-app"
       },
       {
         title: "اتصال به خط فرمان برنامه",
-        link: "/references/liara-cli/connect-to-app-shell"
+        link: "/references/cli/connect-to-app-shell"
       },
       {
         title: "روشن‌کردن برنامه",
-        link: "/references/liara-cli/start-app"
+        link: "/references/cli/start-app"
       },
       {
         title: "خاموش‌کردن برنامه",
-        link: "/references/liara-cli/stop-app"
+        link: "/references/cli/stop-app"
       },
       {
         hr: true
@@ -6813,15 +6813,15 @@ export default {
       },
       {
         title: " لیست متغیرهای ثبت شده برنامه",
-        link: "/references/liara-cli/list-envs"
+        link: "/references/cli/list-envs"
       },
       {
         title: "ثبت یا ویرایش متغیرهای محیطی",
-        link: "/references/liara-cli/add-or-edit-envs"
+        link: "/references/cli/add-or-edit-envs"
       },
       {
         title: "حذف متغیرهای محیطی یک برنامه",
-        link: "/references/liara-cli/remove-env"
+        link: "/references/cli/remove-env"
       },
       {
         hr: true
@@ -6835,23 +6835,23 @@ export default {
       },
       {
         title: "اضافه کردن حساب کاربری جدید",
-        link: "/references/liara-cli/add-account"
+        link: "/references/cli/add-account"
       },
       {
         title: "لیست حساب‌های کاربری ",
-        link: "/references/liara-cli/list-accounts"
+        link: "/references/cli/list-accounts"
       },
       {
         title: "حذف یکی از حساب‌های کاربری",
-        link: "/references/liara-cli/remove-account"
+        link: "/references/cli/remove-account"
       },
       {
         title: "انتخاب حساب پیش‌فرض",
-        link: "/references/liara-cli/choose-default-account"
+        link: "/references/cli/choose-default-account"
       },
     ],
 
-    'liara-api': [
+    'api': [
       {
         badge: (
           <div className="flex items-center gap-2">
@@ -6868,12 +6868,12 @@ export default {
       {
         title: "Liara API چیست؟",
         icon: <GoInfo />,
-        link: "/references/liara-api/about"
+        link: "/references/api/about"
       },
       // {
       //   title: "خلاصه دستورات",
       //   icon: <GoInfo />,
-      //   link: "/references/liara-api/about"
+      //   link: "/references/api/about"
       // },
       {
         hr: true
@@ -6886,11 +6886,11 @@ export default {
       {
         title: "دریافت اطلاعات جامع کاربری",
         icon: <GoInfo />,
-        link: "/references/liara-api/get-info"
+        link: "/references/api/get-info"
       },
     ],
 
-    'user-panel': [
+    'console': [
       {
         badge: (
           <div className="flex items-center gap-2">
@@ -6907,55 +6907,55 @@ export default {
       {
         title: "پنل کاربری لیارا",
         icon: <GoInfo />,
-        link: "/references/user-panel/about"
+        link: "/references/console/about"
       },
       // {
       //   title: "خلاصه دستورات",
       //   icon: <GoInfo />,
-      //   link: "/references/liara-api/about"
+      //   link: "/references/api/about"
       // },
       {
         hr: true
       },
       {
         title: "مدیریت حساب‌کاربری",
-        link: "/references/user-panel/manage-accounts"
+        link: "/references/console/manage-accounts"
       },
       {
         title: "ارتقا سطح حساب‌کاربری",
-        link: "/references/user-panel/upgrade-user-level"
+        link: "/references/console/upgrade-user-level"
       },
       {
         title: "افزایش اعتبار",
-        link: "/references/user-panel/increase-credit"
+        link: "/references/console/increase-credit"
       },
       {
         title: "مشاهده یا ویرایش مشخصات حساب",
-        link: "/references/user-panel/see-user-info"
+        link: "/references/console/see-user-info"
       },
       {
         title: "تغییر رمز عبور حساب",
-        link: "/references/user-panel/change-password"
+        link: "/references/console/change-password"
       },
       {
         title: "تنظیم اعلان",
-        link: "/references/user-panel/set-notifs"
+        link: "/references/console/set-notifs"
       },
       {
         title: "تخمین هزینه‌ها",
-        link: "/references/user-panel/cost-estimation"
+        link: "/references/console/cost-estimation"
       },
       {
         title: "دریافت فاکتور",
-        link: "/references/user-panel/receive-invoice"
+        link: "/references/console/receive-invoice"
       },
       {
         title: "مشاهده اعلانات حساب",
-        link: "/references/user-panel/see-notifs"
+        link: "/references/console/see-notifs"
       },
       {
         title: "مشاهده و ایجاد تیکت",
-        link: "/references/user-panel/create-and-see-tickets"
+        link: "/references/console/create-and-see-tickets"
       },
     ],
   },

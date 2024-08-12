@@ -1,0 +1,83 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ری‌استارت برنامه با Liara CLI - لیارا</title>
+</Head>
+# ری‌استارت برنامه با Liara CLI
+<hr className="mb-2" />
+
+برای 
+ری‌استارت برنامه در لیارا، می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara restart`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="restart-app" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara restart</Important> یا <Important>liara app:restart</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{` liara restart [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>] [-a <value>]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>a- یا app--</Important>,
+    "برای درج شناسه برنامه موردنظر",
+    <Important>liara restart -e email@example.com</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara restart -h</Important>,
+  ],
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara restart --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات restart به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara restart --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara disk:create --debug</Important>,
+  ],
+  
+]} />
+<div className="h-3" />
+
+</Layout>

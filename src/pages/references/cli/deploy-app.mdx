@@ -1,0 +1,163 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه با Liara CLI - لیارا</title>
+</Head>
+# استقرار برنامه با Liara CLI
+<hr className="mb-2" />
+
+برای 
+استقرار برنامه با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara deploy`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="deploy-app-using-cli" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara deploy</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara deploy [-h] [--debug] [--api-token <value>] [--region iran|germany] [--account <value>] [--path
+    <value>] [--platform <value>] [-a <value>] [-p <value>] [-i <value>] [--detach] [--no-app-logs] [--args <value>]
+    [--build-arg <value>...] [-m <value>] [-d <value>...] [--no-cache] [-f <value>] [-b iran|germany]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>a- یا app--</Important>,
+    "برای درج  شناسه برنامه‌ای که قصد دارید پروژه‌تان در آن مستقر شود",
+    <Important>liara deploy --app=my-web-app</Important>,
+  ],
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara deploy -h</Important>,
+  ],
+  [
+    <Important>d- یا disks--</Important>,
+    "برای تصال یک یا چند دیسک به مسیرهای مورد نظر",
+    <Important>liara deploy -d data=/var/www/html</Important>,
+  ],
+  [
+    <Important>i- یا image--</Important>,
+    <div dir="rtl">
+    <p>برای استقرار مستقیم Image از DockerHub</p>
+    </div>,
+    <Important>liara deploy -i nextcloud:1.23</Important>,
+  ],
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara deploy --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات استقرار به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara deploy --api-token</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara deploy --debug</Important>,
+  ],
+  [
+    <Important>m- یا message</Important>,
+    "برای در نظر گرفتن پیامی برای استقرار",
+    <Important>"liara deploy --message="fix the user login bug</Important>,
+  ],
+  [
+    <Important>p- یا port--</Important>,
+    <div dir="rtl">
+    <p>برای درج پورتی که برنامه‌ی شما بر روی آن Listen می‌کند</p>
+    </div>,
+    <Important>liara deploy --port=3000</Important>,
+  ],
+  [
+    <Important>path--</Important>,
+    "برای درج آدرس ریشه پروژه‌ای که قصد استقرار آن را دارید",
+    <Important>liara deploy --path=/path/to/project</Important>,
+  ],
+  [
+    <Important>detach--</Important>,
+    "برای عدم نمایش لاگ‌ها بعد از هر استقرار",
+    <Important>liara deploy --detach</Important>,
+  ],
+  [
+    <Important>platform--</Important>,
+    "برای مشخص کردن پلتفرم برنامه‌ای که قصد استقرار آن را دارید",
+    <Important>liara deploy --platfor=docker</Important>,
+  ],
+  [
+    <Important>b- یا build-location</Important>,
+    <div dir="rtl">
+    <p>برای انتخاب موقعیت build برنامه</p>
+    </div>,
+    <Important>liara deploy --build-location=germany</Important>,
+  ],
+  [
+    <Important>f- یا dockerfile</Important>,
+    <div dir="rtl">
+    <p>برای انتخاب نام Dockerfile در صورتی که با نام دیگری ذخیره شده است</p>
+    </div>,
+    <Important>"liara deploy --dockerfile="path/to/myDocker</Important>,
+  ],
+  [
+    <Important>args--</Important>,
+    <div dir="rtl">
+    <p>برای واردکردن entrypoint argهای یک Docker Image</p>
+    </div>,
+    <Important>"liara deploy --args="sh -c sleep 10 && /entrypoint.sh run</Important>,
+  ],
+  [
+    <Important>build-arg--</Important>,
+    <div dir="rtl">
+    <p>برای واردکردن build argهای یک Docker Image</p>
+    </div>,
+    <Important>"liara deploy --build-arg="APP_VERSION=2.0.0</Important>,
+  ],
+  [
+    <Important>no-app-logs--</Important>,
+    "عدم نمایش لاگ‌های برنامه پس از استقرار",
+    <Important>liara deploy --no-app-logs</Important>,
+  ],
+  [
+    <Important>no-cache--</Important>,
+    "عدم استفاده از کش ورژن قبلی در هنگام استقرار برنامه",
+    <Important>liara deploy --no-cache</Important>,
+  ],
+
+]} />
+<div className="h-3" />
+
+</Layout>

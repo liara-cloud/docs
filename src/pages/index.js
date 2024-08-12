@@ -344,20 +344,20 @@ const REFERENCES = [
     title: "Liara CLI",
     icon: <GoTerminal />,
     desc: "اطلاعات در مورد رابط خط فرمان لیارا و نحوه استفاده و راه‌اندازی آن‌",
-    link: "/references/liara-cli/about"
+    link: "/references/cli/about"
   },
   {
     title: "Liara API",
     icon: <GoCode />,
     desc: "اطلاعات در مورد رابط وب‌سرویس لیارا، نحوه استفاده و کاربردهای آن",
-    link: "/references/liara-api/about"
+    link: "/references/api/about"
   },
   {
     title: "پنل کاربری لیارا",
     icon: <GoPerson />,
     desc:
       "اطلاعات در مورد پنل کاربری لیارا، از ثبت تیکت تا تخمین‌هزینه‌های سرویس‌های مورد استفاده",
-    link: "/references/user-panel/about"
+    link: "/references/console/about"
   }
 ];
 
@@ -390,7 +390,7 @@ const MOST_VISITED_LINKS = [
   {
     title: "راه‌اندازی وردپرس با استفاده از بسته نصب آسان (Duplicator)",
     alt: "wordpress duplicator",
-    href: "/one-click-apps/wordpressplus/how-tos/duplicator"
+    href: "/one-click-apps/wordpress/how-tos/duplicator"
   },
   // {
   //   title: "دانلود مستقیم فایل از فضای ذخیره‌سازی ابری لیارا",
@@ -403,7 +403,7 @@ const MOST_VISITED_LINKS = [
   //   href: "/dbaas/mysql/how-tos/connect-via-platform/go"
   // },
   {
-    title: "مدیریت رکوردها در سیستم مدیریت DNS لیارا",
+    title: "مدیریت رکوردها در سامانه مدیریت دامنه لیارا",
     alt: "dns management",
     href: "/dns-management-system/how-tos/manage-records"
   }
