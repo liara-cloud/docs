@@ -109,11 +109,14 @@ const types = [
   { logo: nodeIcon, alt: "nodejs" },
   { logo: reactIcon, alt: "react" },
   { logo: staticIcon, alt: "HTML5" },
+  { logo: staticIcon, alt: "static" },
   { logo: dockerIcon, alt: "docker" },
   { logo: djangoIcon, alt: "django" },
   { logo: laravelIcon, alt: "laravel" },
   { logo: netcoreIcon, alt: "netcore" },
+  { logo: netcoreIcon, alt: "dotnet" },
   { logo: angularIcon, alt: "angularjs" },
+  { logo: angularIcon, alt: "angular" },
   { logo: jsonIcon, alt: "json" },
   // One-click-apps
   { logo: n8nIcon, alt: "n8n" },
@@ -121,7 +124,7 @@ const types = [
   { logo: ghostIcon, alt: "ghost" },
   { logo: giteaIcon, alt: "gitea" },
   { logo: vscodeIcon, alt: "vscode" },
-//   { logo: pusherIcon, alt: "pusher" },
+  //   { logo: pusherIcon, alt: "pusher" },
   { logo: kibanaIcon, alt: "kibana" },
   { logo: chromeIcon, alt: "chrome" },
   { logo: grafanaIcon, alt: "grafana" },
@@ -129,6 +132,7 @@ const types = [
   { logo: metabaseIcon, alt: "metabase" },
   { logo: nextcloudIcon, alt: "nextcloud" },
   { logo: wordpressIcon, alt: "wordpress" },
+  { logo: wordpressIcon, alt: "wordpressplus" },
   { logo: pocketbaseIcon, alt: "pocketbase" },
   { logo: prestashopIcon, alt: "prestashop" },
   { logo: mattermostIcon, alt: "mattermost" },
@@ -137,9 +141,12 @@ const types = [
   { logo: matomoIcon, alt: "matomo" },
   { logo: unleashIcon, alt: "unleash" },
   { logo: uptimekumaIcon, alt: "uptimekuma" },
+  { logo: uptimekumaIcon, alt: "uptime-kuma" },
+  //   { logo: ackeeIcon, alt: "ackee" },
   { logo: appsmithIcon, alt: "appsmith" },
   { logo: varnishIcon, alt: "varnish" },
   { logo: apacheanswerIcon, alt: "apacheanswer" },
+  { logo: apacheanswerIcon, alt: "apache-answer" },
   { logo: nocodbIcon, alt: "nocodb" },
   { logo: chromaIcon, alt: "chroma" },
   { logo: meilisearchIcon, alt: "meilisearch" },
@@ -152,10 +159,11 @@ const types = [
   { logo: yiiIcon, alt: "yii" },
   { logo: nestIcon, alt: "nest" },
   { logo: nextIcon, alt: "next" },
+  { logo: nextIcon, alt: "nextjs" },
   { logo: hugoIcon, alt: "hugo" },
   { logo: nuxtIcon, alt: "nuxt" },
   { logo: nginxIcon, alt: "nginx" },
-//   { logo: lumenIcon, alt: "lumen" },
+  //   { logo: lumenIcon, alt: "lumen" },
   { logo: remixIcon, alt: "remix" },
   { logo: pythonIcon, alt: "python" },
   { logo: prismaIcon, alt: "prisma" },
@@ -183,7 +191,9 @@ const types = [
   { logo: mariadbIcon, alt: "mariadb" },
   { logo: mongodbIcon, alt: "mongodb" },
   { logo: elasticIcon, alt: "elastic" },
+  { logo: elasticIcon, alt: "elastic-search" },
   { logo: postgresIcon, alt: "postgres" },
+  { logo: postgresIcon, alt: "postgresql" },
   { logo: rabbitmqIcon, alt: "rabbitmq" },
   { logo: arangodbIcon, alt: "arangodb" },
   { logo: sqliteIcon, alt: "sqlite" },
@@ -197,15 +207,17 @@ const types = [
 export default function PlatformIcon({ platform, style = {} }) {
   const type = types.find(type => type.alt === platform);
 
-  return (
-    <img
-      className="page-icon"
-      src={type.logo.src}
-      alt={type.alt}
-      style={{
-        ...style,
-        pointerEvents: "none"
-      }}
-    />
-  );
+  if(type?.logo?.src ) {
+    return (
+      <img
+        className="page-icon"
+        src={type.logo.src}
+        alt={type.alt}
+        style={{
+          ...style,
+          pointerEvents: "none"
+        }}
+      />
+    );
+  }
 }

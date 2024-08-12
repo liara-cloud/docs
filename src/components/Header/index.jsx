@@ -16,8 +16,8 @@ import UAParser from "ua-parser-js";
 import Link from "next/link";
 
 const client = new MeiliSearch({
-  host: "https://search.liara.ir",
-  apiKey: "99d6377d6dc5499ecc31451349b8957ebb2e29e67a5d92eb445737e25c1e7bb2"
+  host: "https://the-new-meilisearch-ezinhi8-wa.liara.run",
+  apiKey: "53c93d9ce3308e48a7ad701d4b402d3190324a09e1607f14baae9bd4f805bb11"
 });
 
 const Header = ({ setShowSidebar }) => {
@@ -227,6 +227,10 @@ const Header = ({ setShowSidebar }) => {
                             </div>}
                           <p className="">
                             {item.title}
+                            {item.type === "video" &&
+                              <Fragment>
+                                {" "}- <span className="bg-[#2563eb22] px-2 text-[12px] py-1 rounded-lg">همراه ویدیو</span>
+                              </Fragment>}
                           </p>
                         </div>
                         <img
