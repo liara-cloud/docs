@@ -1270,6 +1270,10 @@ export default {
         title: "رفع خطای ECONNRESET",
         link: "/paas/nextjs/fix-common-errors/econnreset"
       },
+      {
+        title: "رفع خطای could not modify config file",
+        link: "/paas/nextjs/fix-common-errors/modify-config-file"
+      },
     ],
     laravel: [
       {
@@ -1846,6 +1850,10 @@ export default {
       {
         title: "رفع خطای WORKER TIMEOUT",
         link: "/paas/django/fix-common-errors/worker-timeout"
+      },
+      {
+        title: "رفع خطای Multiple Settings Files",
+        link: "/paas/django/fix-common-errors/multiple-settings-files"
       },
       {
         hr: true

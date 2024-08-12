@@ -1,0 +1,69 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای Could not modify config file در NextJS - لیارا</title>
+</Head>
+# رفع خطای Could not modify config file
+<hr className="mb-2" />
+
+لیارا به‌صورت خودکار فایل <Important>next.config.js</Important> برنامه‌ی شما را پیدا کرده و در این فایل، تنظیماتی را اضافه می‌کند تا برنامه برای اجرا آماده شود. در صورتی که با خطای <Important>could not modify config file</Important> مواجه شدید، 
+باید ابتدا یک فایل با نام <Important>liara.json</Important> در ریشه برنامه‌تان بسازید و قطعه‌کد زیر را به این فایل اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+  "next": {
+    "modifyConfig": false
+  }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در مرحله‌ی بعد نیاز هست قطعه‌کد زیر را متناسب با نسخه‌ی NextJS پروژه‌تان، به فایل <Important>next.config.js</Important> اضافه کنید:
+
+
+<Tabs 
+  tabs={["NextJS >= 12.2", "NextJS < 12.2"]} 
+  content={[
+  <>
+    <div dir='ltr'>
+    <Highlight className="js">
+        {`module.exports = {
+  output: 'standalone',
+}`}
+    </Highlight>
+</div>
+  </>,
+
+  <>
+    <div dir='ltr'>
+    <Highlight className="js">
+        {`module.exports = {
+  experimental: {
+    outputStandalone: true,
+  },
+}`}
+    </Highlight>
+    </div>
+  </>,
+  ]}
+  />
+
+در نهایت کافیست تا با اجرای دستور <Important>liara deploy</Important>، برنامه‌تان را مجدداً در لیارا، مستقر کنید.
+
+</Layout>
