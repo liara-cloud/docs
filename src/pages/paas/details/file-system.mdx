@@ -38,8 +38,8 @@ import Head from "next/head";
 با وجود ReadOnly بودن فایل سیستم برنامه‌های لیارا، دایرکتوری <Important>tmp/</Important> از این قاعده مستثنی است. می‌توانید از این دایرکتوری که در همه پلن‌ها ارائه شده است و فضایی برابر 100 مگابایت دارد، برای ذخیره سازی لاگ‌ها، فایل‌های آپلودی موقتی و غیره استفاده کنید.
 در نظر داشته باشید که خود برنامه و ماژول‌های مختلف درون آن، فایل‌های موقتی خود را درون این دایرکتوری، ذخیره خواهند کرد.
 <div className="h-4"/>
-برای افزایش فضای این دایرکتوری، شما می‌توانید طبق مستندات <a href="/paas/disks/create" className="blue-link">ساخت دیسک</a>، یک دیسک با فضای دلخواه ایجاد کنید؛
-سپس، طبق مستندات <a href="/paas/disks/route" className="blue-link">تعریف مسیر برای یک دیسک</a>، دیسک خود را به مسیر <Important>tmp/</Important> متصل کنید. 
+برای افزایش فضای این دایرکتوری، شما می‌توانید طبق مستندات <a href="/paas/disks/create" className="text-[#2196f3] ">ساخت دیسک</a>، یک دیسک با فضای دلخواه ایجاد کنید؛
+سپس، طبق مستندات <a href="/paas/disks/route" className="text-[#2196f3] ">تعریف مسیر برای یک دیسک</a>، دیسک خود را به مسیر <Important>tmp/</Important> متصل کنید. 
 
 <Section id="use-disks" title="استفاده از دیسک‌ها" />
 اگر که دایرکتوری <Important>tmp/</Important> پاسخ‌گوی نیاز شما نبود، چاره کار استفاده از دیسک‌ها در برنامه‌تان می‌باشد. به طور مثال قصد ذخیره فایل‌های کاربران را دارید و نمی‌خواهید به هیچ وجه این فایل‌ها را حذف کنید. در این شرایط به قسمت دیسک‌ها در برنامه‌تان مراجعه کنید و اقدام به ایجاد دیسک کنید.
@@ -47,7 +47,7 @@ import Head from "next/head";
 
 <Alert variant='success'>
 <p>
-همچنین بخوانید: <a href="/paas/disks/about" className="blue-link">آشنایی با دیسک‌ها</a>
+همچنین بخوانید: <a href="/paas/disks/about" className="text-[#2196f3] ">آشنایی با دیسک‌ها</a>
 </p>
 </Alert>
 
@@ -74,6 +74,6 @@ import Head from "next/head";
 </Alert>
 
 <Section id="docker-and-nextjs-deaful-fs" title="فایل‌سیستم پلتفرم‌های Docker و NextJS" />
-بر خلاف پلتفرم‌های دیگر در لیارا، که به صورت پیش‌فرض، فایل‌سیستم ReadOnly دارند؛ فایل‌سیستم پلتفرم‌های <a href="../docker/getting-started" className="blue-link">Docker</a> و <a href="../nextjs/getting-started" className="blue-link">NextJS</a> به صورت پیش‌فرض writable است و شما می‌توانید تغییرات موقتی را بدون انجام کار اضافی دیگری، در پروژه خود، اعمال کنید.
+بر خلاف پلتفرم‌های دیگر در لیارا، که به صورت پیش‌فرض، فایل‌سیستم ReadOnly دارند؛ فایل‌سیستم پلتفرم‌های <a href="../docker/getting-started" className="text-[#2196f3] ">Docker</a> و <a href="../nextjs/getting-started" className="text-[#2196f3] ">NextJS</a> به صورت پیش‌فرض writable است و شما می‌توانید تغییرات موقتی را بدون انجام کار اضافی دیگری، در پروژه خود، اعمال کنید.
 
 </Layout>

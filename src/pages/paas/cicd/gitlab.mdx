@@ -25,7 +25,7 @@ import Head from "next/head";
 
 <Alert variant="error">
 <p>
-از این پس برای کاربران جدید GitLab امکان راه‌اندازی فرایند CI/CD نیست زیرا برای استفاده از Shared runnerهای رایگان این سرویس باید حساب کاربری خود را تایید کنید. به‌همین علت توصیه می‌شود پروژه‌ی خود را به سرویس GitHub انتقال داده و فرایند CI/CD را با استفاده از <a href="./github" className="blue-link">GitHub Actions</a> راه‌اندازی کنید. 
+از این پس برای کاربران جدید GitLab امکان راه‌اندازی فرایند CI/CD نیست زیرا برای استفاده از Shared runnerهای رایگان این سرویس باید حساب کاربری خود را تایید کنید. به‌همین علت توصیه می‌شود پروژه‌ی خود را به سرویس GitHub انتقال داده و فرایند CI/CD را با استفاده از <a href="./github" className="text-[#2196f3] ">GitHub Actions</a> راه‌اندازی کنید. 
 </p>
 </Alert>
 
@@ -78,7 +78,7 @@ deploy:
 <div className="h-4" />
 
 در قطعه‌کد فوق تمام مراحل لازم برای استقرار یک پروژه در لیارا تعریف شده است. در ابتدا ابزار Liara CLI نصب شده و پس از تنظیم پروکسی برای استقرار پروژه، دستور <Important>liara deploy</Important> اجرا می‌شود.
-پس از شخصی‌سازی مقدار <Important>APP_NAME</Important> در فایل <Important>gitlab-ci.yml.</Important> باید <a href="https://console.liara.ir/API" className="blue-link">کلید دسترسی به API</a> حساب‌تان را در بخش **Variables** تنظیمات CI/CD ریپازیتوری GitLab اضافه کنید.
+پس از شخصی‌سازی مقدار <Important>APP_NAME</Important> در فایل <Important>gitlab-ci.yml.</Important> باید <a href="https://console.liara.ir/API" className="text-[#2196f3] ">کلید دسترسی به API</a> حساب‌تان را در بخش **Variables** تنظیمات CI/CD ریپازیتوری GitLab اضافه کنید.
 <div className="h-4" />
 برای این کار وارد تنظیمات CI/CD ریپازیتوری شوید و کمی به پایین اسکرول کنید. در بخش **Variables** بر روی گزینه‌ی *Expand* کلیک کنید تا گزینه‌ی **Add Variable** نمایش داده شود.
 
@@ -86,7 +86,7 @@ deploy:
 <img src="https://files.liara.ir/liara/docs/gitlab-ci-cd-variables-settings.png" alt="gitlab ci cd variables settings" />
 <div className="h-4" />
 
-حال برای تعریف یک Variable جدید، روی گزینه‌ی **Add Variable** کلیک کنید. نام (Key) این Variable را **TOKEN** و مقدار آن را از صفحه‌ی <a href="https://console.liara.ir/API" className="blue-link">کلید دسترسی به API</a> کپی کرده و در بخش **Value** قرار دهید. پس از انتخاب گزینه‌های **Protect variable** و **Mask variable**، بر روی گزینه‌ی **Add variable** کلیک کنید.
+حال برای تعریف یک Variable جدید، روی گزینه‌ی **Add Variable** کلیک کنید. نام (Key) این Variable را **TOKEN** و مقدار آن را از صفحه‌ی <a href="https://console.liara.ir/API" className="text-[#2196f3] ">کلید دسترسی به API</a> کپی کرده و در بخش **Value** قرار دهید. پس از انتخاب گزینه‌های **Protect variable** و **Mask variable**، بر روی گزینه‌ی **Add variable** کلیک کنید.
 
 <div className="h-4" />
 <img src="https://files.liara.ir/liara/docs/add-token-variable-in-gitlab-cicd-settings.png" alt="add token variable in gitlab cicd settings" />

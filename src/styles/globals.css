@@ -40,7 +40,7 @@ body {
 
 }
 
-.layout a.blue-link {
+.layout a.text-[#2196f3]  {
   color: rgb(123, 168, 250);
   text-decoration: rgba(123, 167, 250, 0.411);
 }

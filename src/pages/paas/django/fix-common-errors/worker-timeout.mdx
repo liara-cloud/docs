@@ -21,7 +21,7 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 خطای <Important>WORKER TIMEOUT</Important> در Gunicorn نشان می‌دهد که یک یا چند worker پس از گذشتن از زمان مجاز تعیین‌شده برای پردازش درخواست‌ها، پاسخی ارسال نکرده‌اند و در نتیجه توسط Gunicorn متوقف و دوباره راه‌اندازی شده‌اند. این مشکل معمولاً زمانی رخ می‌دهد که پردازش یک درخواست بیش از حد طولانی شود.
-برای رفع این خطا و در صورتی که به WORKER TIMEOUT بیشتر از 30 ثانیه نیاز دارید، می‌توانید طبق مستندات <a href="../../details/envs" className="blue-link">تنظیم متغیرهای محیطی</a>، متغیر محیطی <Important>GUNICORN_TIMEOUT</Important> را با مقدار مورد نظرتان (به ثانیه)، به برنامه، اضافه کنید:
+برای رفع این خطا و در صورتی که به WORKER TIMEOUT بیشتر از 30 ثانیه نیاز دارید، می‌توانید طبق مستندات <a href="../../details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیر محیطی <Important>GUNICORN_TIMEOUT</Important> را با مقدار مورد نظرتان (به ثانیه)، به برنامه، اضافه کنید:
 <div className="h-2" />
 <img src="https://files.liara.ir/docs/django/add-gunicorn-timeout-variable-to-django-app.gif" alt="set gunicorn timeout env" />
 

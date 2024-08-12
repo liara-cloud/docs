@@ -27,13 +27,13 @@ import Head from "next/head";
     content={[
         <>
         <p>
-            در ابتدا، پس از <a className="blue-link" href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید.
+            در ابتدا، پس از <a className="text-[#2196f3] " href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید.
              به عنوان مثال، اگر که برنامه‌تان مبتنی بر Python باشد، باید پوشه‌ venv. و اگر برنامه‌تان مبتنی بر NodeJS است، باید دایرکتوری node_modules را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> یا <Important>dockerignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
         </p>
         <div className="h-4" />
         <p>
             همچنین، پروژه شما باید شامل یک فایل به نام <Important>Dockerfile</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند
-            و در ادامه، برنامه‌تان در سرورهای لیارا build می‌شود و image نهایی در <a href="../../details/private-registry" className="blue-link">رجیستری خصوصی</a> شما، در لیارا، ذخیره خواهد شد.
+            و در ادامه، برنامه‌تان در سرورهای لیارا build می‌شود و image نهایی در <a href="../../details/private-registry" className="text-[#2196f3] ">رجیستری خصوصی</a> شما، در لیارا، ذخیره خواهد شد.
             به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
         </p>
         <div className="h-4" />
@@ -148,21 +148,21 @@ CMD ["./main"]`}
         <img src="https://files.liara.ir/liara/docs/deploy-docker-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" />
         <p>
-            در انتها، به صورت مستقیم به <a href="../../details/private-registry" className="blue-link">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
+            در انتها، به صورت مستقیم به <a href="../../details/private-registry" className="text-[#2196f3] ">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
         </p>
 
     </>,
     <>
 
         <p>
-            پس از <a className='blue-link' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> یا <Important>dockerignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ 
+            پس از <a className='text-[#2196f3] ' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> یا <Important>dockerignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ 
             
             به عنوان مثال در برنامه‌های مبتنی بر Python، نیازی به آپلود دایرکتوری‌ venv. به همراه محتوای آن‌ نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسم این دایرکتوری‌ در یکی از سه فایل فوق، نوشته شود.
         </p>
         <div className="h-2" />
         <p>
             همچنین، پروژه شما باید شامل یک فایل به نام <Important>Dockerfile</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند
-            و در ادامه، برنامه‌تان در سرورهای لیارا build می‌شود و image نهایی در <a href="../../details/private-registry" className="blue-link">رجیستری خصوصی</a> شما، در لیارا، ذخیره خواهد شد.
+            و در ادامه، برنامه‌تان در سرورهای لیارا build می‌شود و image نهایی در <a href="../../details/private-registry" className="text-[#2196f3] ">رجیستری خصوصی</a> شما، در لیارا، ذخیره خواهد شد.
             به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
         </p>
         <div className="h-4" />
@@ -374,7 +374,7 @@ CMD ["./main"]`}
             </Highlight>
         </div>
         <div className='h-4' />
-        <Alert variant='success'>همچنین بخوانید: <a className="blue-link" href="../../details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="../../details/build-location">تعیین موقعیت build برنامه</a></Alert>
         <p>
             اکنون کافیست تا در مسیر اصلی پروژه و جایی که فایل <Important>liara.json</Important> قرار دارد؛ دستور زیر را اجرا کنید و منتظر بمانید تا عملیات استقرار تمام شود:
         </p>
@@ -401,7 +401,7 @@ CMD ["./main"]`}
 
 <Alert variant='success'>
 <p>
-    پس از استقرار برنامه می‌توانید <a href="../../details/events" className="blue-link">رویدادها</a> و <a href="../../details/observations/about" className="blue-link">گزارشات</a> مربوط به برنامه را بررسی کنید.
+    پس از استقرار برنامه می‌توانید <a href="../../details/events" className="text-[#2196f3] ">رویدادها</a> و <a href="../../details/observations/about" className="text-[#2196f3] ">گزارشات</a> مربوط به برنامه را بررسی کنید.
 </p>
 </Alert>
 
