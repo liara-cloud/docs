@@ -2,7 +2,6 @@ import React from "react";
 import { GoInfo, GoAlert, GoCheckCircle, GoCircleSlash } from "react-icons/go";
 
 const Alert = ({ variant = "info", className, children }) => {
-  console.log(variant);
   const variants = {
     info: {
       classes: "text-blue-600 bg-[#3b82f622]",

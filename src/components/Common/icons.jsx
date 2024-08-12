@@ -127,6 +127,7 @@ const types = [
   //   { logo: pusherIcon, alt: "pusher" },
   { logo: kibanaIcon, alt: "kibana" },
   { logo: chromeIcon, alt: "chrome" },
+  { logo: chromeIcon, alt: "headless-chrome" },
   { logo: grafanaIcon, alt: "grafana" },
   { logo: imgproxyIcon, alt: "imgproxy" },
   { logo: metabaseIcon, alt: "metabase" },

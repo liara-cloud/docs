@@ -247,7 +247,7 @@ const Header = ({ setShowSidebar }) => {
                               <Fragment>
                                 {" "}-{" "}
                                 <span className="bg-[#2563eb22] px-2 text-[12px] py-1 rounded-lg">
-                                  همراه ویدیو
+                                  ویدیو
                                 </span>
                               </Fragment>}
                           </p>

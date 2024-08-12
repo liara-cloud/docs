@@ -11,7 +11,6 @@ const Highlight = ({ children, className }) => {
   useEffect(
     () => {
       if (containerRef.current) {
-        console.log(containerRef.current.scrollHeight);
         setNeedsReadMore(containerRef.current.scrollHeight > 500);
       }
     },
