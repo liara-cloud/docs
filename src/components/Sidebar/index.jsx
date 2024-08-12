@@ -64,8 +64,8 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
       >
         <div
           className={`transition-all duration-300 ease-in-out transform ${!isVisible
-            ? "translate-x-[100px] opacity-0"
-            : "-translate-x-0 opacity-100"} `}
+            ? " opacity-50"
+            : " opacity-100"} `}
         >
           <Link href="/" className="flex mb-3 items-center gap-2 font-semibold">
             <img className="logo-sidebar" src={"/static/logo.svg"} width="55" />
@@ -89,9 +89,14 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
                     );
                   }
 
+                  const isActive = router.pathname === item.link;
+
                   return (
                     <Link href={item.link}>
-                      <li className="flex mt-3 items-center gap-3">
+                      <li
+                        className={`flex mt-3  pr-2 items-center gap-3 ${isActive &&
+                          "text-[#2196f3] border-r-2 border-[#2196f3]"}`}
+                      >
                         {item.icon}
                         {item.title}
                       </li>
