@@ -1,7 +1,7 @@
 import got from 'got';
 import cheerio from 'cheerio';
 
-const sitemapUrl = 'https://docs.liara.run/sitemap.xml';
+const sitemapUrl = 'https://docs.liara.ir/sitemap.xml';
 
 async function fetchSitemap(url) {
   try {
