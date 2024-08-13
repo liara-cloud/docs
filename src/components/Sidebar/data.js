@@ -6466,7 +6466,7 @@ export default {
         hr: true
       },
       {
-        title: "جزئیات سرویس مدیریت دامنه",
+        title: "جزئیات سرویس DNS",
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
       },  
@@ -6520,7 +6520,7 @@ export default {
         hr: true
       },
       {
-        title: "جزئیات سرویس مدیریت دامنه",
+        title: "جزئیات سرویس DNS",
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
       },  
@@ -6574,7 +6574,7 @@ export default {
         hr: true
       },
       {
-        title: "جزئیات سرویس مدیریت دامنه",
+        title: "جزئیات سرویس DNS",
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
       },  
@@ -6585,17 +6585,17 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoContainer />
-            جزئیات سرویس مدیریت دامنه
+            جزئیات سرویس DNS
           </div>
         )
       },
       {
-        title: "برگشت به سرویس مدیریت دامنه",
+        title: "برگشت به سرویس DNS",
         icon: <GoArrowRight />,
         link: "/dns-management-system/about"
       },
       {
-        title: "ویژگی‌های سرویس مدیریت دامنه در لیارا",
+        title: "ویژگی‌های سرویس DNS در لیارا",
         icon: <GoInfo />,
         link: "/dns-management-system/details/about"
       },
