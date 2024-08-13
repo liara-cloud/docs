@@ -163,26 +163,38 @@ const Header = ({ setShowSidebar }) => {
         <button
           onClick={() => setSearchOpen(true)}
           id="search"
-          className="w-[35px] ml-12 md:ml-0 md:w-[350px] px-2 py-1 relative text-[#707070] hover:bg-[#00000008]  border border-[#0002] rounded-md"
+          className="hidden md:block ml-12 md:ml-0 md:w-[350px] px-2 py-1 relative text-[#707070] hover:bg-[#00000008]  border border-[#0002] rounded-md"
         >
           <div className="hidden md:flex items-center gap-2">
             <GoSearch />
             جستجو کنید
-          </div>
-          <div className="flex md:hidden items-center gap-2">
-            <GoSearch />
           </div>
           <div className="badge-cmd-k hidden absolute md:block top-[5px]  left-[5px] text-[15px] h-[21px] w-[40px] text-[#707070] bg-[#ededed] px-1 rounded  border border-[#d7d7d7]">
             K
             <span className="text-[10px] mr-[5px]">⌘</span>
           </div>
         </button>
+
+        <div
+          onClick={() => setSearchOpen(true)}
+          className="flex md:hidden bg-blue-600 text-white p-2 text-[20px] fixed bottom-4 left-4 rounded-full items-center gap-2"
+        >
+          <GoSearch />
+        </div>
+
         <Button
           onClick={() => setShowSidebar(true)}
           className="w-[35px] flex justify-center absolute md:hidden left-4  border border-[#0002] rounded-md"
         >
           <GoRows />
         </Button>
+
+        <button
+          onClick={toggleDarkMode}
+          className="text-[18px]  absolute md:hidden left-14 hover:bg-[#0001] transition-all p-1 rounded-full"
+        >
+          {darkMode ? <GoMoon /> : <GoSun />}
+        </button>
 
         <div className="hidden md:flex items-center gap-3 ">
           <a href="https://console.liara.ir" target="_blank">

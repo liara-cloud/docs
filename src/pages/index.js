@@ -418,7 +418,7 @@ export default function Home() {
       <div>
         <div
           id="welcome-continer"
-          className="bg-[url('/static/images/bg-main.webp')] border bg-bottom	md:bg-left border-[#c4c4c4] relative p-8 md:h-[250px] md:w-[1050px] flex flex-col justify-center rounded-lg"
+          className="bg-[url('/static/images/bg-main.webp')] border bg-right	md:bg-left border-[#c4c4c4] relative p-8 md:h-[250px] md:w-[1050px] flex flex-col justify-center rounded-lg"
         >
           <h1 className="text-[20px] font-bold md:font-normal md:text-[35px]"> به مستندات لیارا خوش‌آمدید 👋🏼</h1>
           <p className="mt-2 md:w-[50%] eading-7">
