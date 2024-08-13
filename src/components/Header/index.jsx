@@ -185,7 +185,9 @@ const Header = ({ setShowSidebar }) => {
         </Button>
 
         <div className="hidden md:flex items-center gap-3 ">
-          <Button>ورود به پنل کاربری</Button>
+          <a href="https://console.liara.ir" target="_blank">
+            <Button>ورود به پنل کاربری</Button>
+          </a>
           <button
             onClick={toggleDarkMode}
             className="text-[18px]  hover:bg-[#0001] transition-all p-1 rounded-full"
