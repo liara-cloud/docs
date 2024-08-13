@@ -432,7 +432,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-4">
             {GETTING_STARTED_ITEMS.map(item =>
               <Link href={item.link}>
-                <Card className="flex w-full items-center justify-between">
+                <Card className="flex w-full cursor-pointer items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-[40px] p-1  bg-[#333] rounded-lg">
                       <PlatformIcon platform={item.alt} />
