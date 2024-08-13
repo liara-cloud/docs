@@ -28,4 +28,4 @@ jobs:
           MEILI_ROOT_URL: ${{ secrets.MEILI_ROOT_URL }}
         run: |
           npm i
-          npm run start:index-doc
+          npm run start
