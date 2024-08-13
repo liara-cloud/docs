@@ -110,7 +110,7 @@ Route::get('/check-database-connection', [DatabaseController::class, 'checkConne
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
 برای استفاده از قابلیت connection pooling در دیتابیس MySQL، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>mysql</Important> را به شکل زیر، تغییر دهید:
 <div className="h-2" />

@@ -5347,6 +5347,11 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/ghost"
       },
       {
+        title: "WordPress",
+        icon: <IconContainer alt="wordpress" />,
+        link: "/email-server/how-tos/connect-via-platform/wordpress"
+      },
+      {
         hr: true
       },
       {
@@ -5498,6 +5503,11 @@ export default {
         title: "Ghost",
         icon: <IconContainer alt="ghost" />,
         link: "/email-server/how-tos/connect-via-platform/ghost"
+      },
+      {
+        title: "WordPress",
+        icon: <IconContainer alt="wordpress" />,
+        link: "/email-server/how-tos/connect-via-platform/wordpress"
       },
       {
         hr: true
@@ -5764,7 +5774,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -5963,7 +5973,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6161,7 +6171,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6360,7 +6370,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6406,7 +6416,7 @@ export default {
         link: "/object-storage/details/change-plan"
       },
       {
-        title: "حذف یک Object Storage",
+        title: "حذف باکت",
         icon: <GoXCircle  />,
         link: "/object-storage/details/delete-object-storage"
       },
