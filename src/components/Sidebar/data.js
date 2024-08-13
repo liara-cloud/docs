@@ -2254,7 +2254,7 @@ export default {
       },
       {
         title: "تنظیم Nginx",
-        link: "/paas/react/how-tos/set-envs"
+        link: "/paas/react/how-tos/customize-nginx"
       },
       {
         title: "فعال‌سازی gzip و Browser Caching",
@@ -2314,10 +2314,6 @@ export default {
         title: "استقرار برنامه",
         link: "/paas/vue/how-tos/deploy-app"
       },
-      {
-        title: "استفاده از متغیرهای محیطی",
-        link: "/paas/vue/how-tos/set-envs"
-      },
       // {
       //   title: "استفاده از دیسک",
       //   link: "/paas/vue/how-tos/use-disk"
@@ -2329,7 +2325,7 @@ export default {
       },
       {
         title: "تنظیم Nginx",
-        link: "/paas/vue/how-tos/set-envs"
+        link: "/paas/vue/how-tos/customize-nginx"
       },
       {
         title: "فعال‌سازی gzip و Browser Caching",
@@ -2404,7 +2400,7 @@ export default {
       },
       {
         title: "تنظیم Nginx",
-        link: "/paas/angular/how-tos/set-envs"
+        link: "/paas/angular/how-tos/customize-nginx"
       },
       {
         title: "فعال‌سازی gzip و Browser Caching",
@@ -2474,7 +2470,7 @@ export default {
       // },
       {
         title: "تنظیم Nginx",
-        link: "/paas/static/how-tos/set-envs"
+        link: "/paas/static/how-tos/customize-nginx"
       },
       {
         title: "فعال‌سازی gzip و Browser Caching",
