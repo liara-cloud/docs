@@ -12,7 +12,6 @@ const DATA = [];
 
 async function crawlDns() {
   for (const dns of URLS.dns) {
-    console.log(dns);
     const $ = cheerio.load((await got.get(dns)).body);
 
     const title = $('h1').text();

@@ -16,7 +16,7 @@ import UAParser from "ua-parser-js";
 import Link from "next/link";
 
 const client = new MeiliSearch({
-  host: "https://the-new-meilisearch-ezinhi8-wa.liara.run",
+  host: "https://search.liara.ir",
   apiKey: "53c93d9ce3308e48a7ad701d4b402d3190324a09e1607f14baae9bd4f805bb11"
 });
 
