@@ -1819,11 +1819,11 @@ export default {
         icon: <IconContainer alt="elastic" />,
         link: "/paas/django/how-tos/connect-to-db/elastic-search"
       },
-      {
-        title: "دیتابیس MongoDB",
-        icon: <IconContainer alt="mongodb" />,
-        link: "/paas/django/how-tos/connect-to-db/mongodb"
-      },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   icon: <IconContainer alt="mongodb" />,
+      //   link: "/paas/django/how-tos/connect-to-db/mongodb"
+      // },
       {
         hr: true
       },
