@@ -66,40 +66,58 @@ MAIL_FROM=from@example.com`}
     <Highlight className="go">
         {`package main
 
-import(
+import (
     "fmt"
-    "strconv"
-    "os"
-    "github.com/go-gomail/gomail"
-    "github.com/joho/godotenv"
+    "gopkg.in/gomail.v2"
+	"crypto/tls"
+	"os"
+	"strconv"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+
+	// Load environment variables from .env file
     err := godotenv.Load(".env")
     if err != nil {
-        fmt.Println(err)
+        fmt.Println("Error loading .env file:", err)
+        return
     }
 
+    // Convert MAIL_PORT to int
     mailPort, err := strconv.Atoi(os.Getenv("MAIL_PORT"))
     if err != nil {
         fmt.Println("Error converting MAIL_PORT to int:", err)
         return
     }
+
+	// Create a new email message
 	m := gomail.NewMessage()
-	m.SetHeader("From", os.Getenv("MAIL_FROM")) 
-	m.SetHeader("To", "email@email.email")
+	m.SetHeader("From", os.Getenv("MAIL_FROM"))
+	m.SetHeader("To", "email@email.email") // Replace with actual recipient
 	m.SetHeader("Subject", "This is a TEST")
 	body := "this is really a test"
 	m.SetBody("text/plain", body)
 
+    // Create a new dialer
     d := gomail.NewDialer(os.Getenv("MAIL_HOST"), mailPort, os.Getenv("MAIL_USERNAME"), os.Getenv("MAIL_PASSWORD"))
+    d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
 
-	if err := d.DialAndSend(m); err != nil {
-		fmt.Println("Error sending Test email:", err)
-	}
-}`}
+    // Dial and send the email
+    if err := d.DialAndSend(m); err != nil {
+        fmt.Println("Error sending email:", err)
+    } else {
+        fmt.Println("Email sent successfully")
+    }
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
+<Alert variant='info'>
+<p>
+با تنظیم <Important>d.TLSConfig</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
 
 </Layout>

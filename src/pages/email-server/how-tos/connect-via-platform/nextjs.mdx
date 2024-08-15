@@ -69,7 +69,7 @@ export default async function handler(req, res) {
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: 587,
-    secure: false,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -95,6 +95,11 @@ export default async function handler(req, res) {
     </Highlight>
 </div>
 <div className="h-2" />
+<Alert variant='info'>
+<p>
+با تنظیم <Important>secure: true</Important>، می‌توانید به‌صورت امن (tls) اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
 <Alert variant='info'>
 <p>
 فیلد <Important>from</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
