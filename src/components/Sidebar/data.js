@@ -1200,7 +1200,7 @@ export default {
         link: "/paas/nextjs/how-tos/set-cron-job"
       },
       {
-        title: "مشاهده نسخه NodeJS",
+        title: "تغییر نسخه NodeJS",
         link: "/paas/nextjs/how-tos/choose-version"
       },
       {
