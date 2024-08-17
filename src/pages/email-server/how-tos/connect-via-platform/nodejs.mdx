@@ -75,7 +75,8 @@ const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
 const transporter = nodemailer.createTransport({
   host: MAIL_HOST,
   port: MAIL_PORT,
-  tls: true,
+  requireTLS: true,
+  secure: false,
   auth: {
     user: MAIL_USER,
     pass: MAIL_PASSWORD,
@@ -101,7 +102,7 @@ transporter.sendMail({
 </Alert>
 <Alert variant='info'>
 <p>
-با تنظیم <Important>tls: true</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+با تنظیم <Important>requireTLS: true</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
 </p>
 </Alert>
 
