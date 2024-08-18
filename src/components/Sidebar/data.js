@@ -1067,6 +1067,11 @@ export default {
         link: "/paas/nodejs/related-apps/hapi"
       },
       {
+        title: "Hono",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/related-apps/hono"
+      },
+      {
         title: "NestJS",
         icon: <IconContainer alt="nest" />,
         link: "/paas/nodejs/related-apps/nestjs"

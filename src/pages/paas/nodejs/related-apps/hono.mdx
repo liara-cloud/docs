@@ -14,47 +14,49 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات استقرار برنامه‌های Hapi - لیارا</title>
+<title>مستندات استقرار برنامه‌های Hono - لیارا</title>
 </Head>
-# استقرار برنامه‌های Hapi در لیارا
+# استقرار برنامه‌های Hono در لیارا
 <hr className="mb-2" />
-نرم‌افزار Hapi یک فریم‌ورک قوی و انعطاف‌پذیر برای ساخت اپلیکیشن‌های وب و API‌ها در NodeJS است. 
-شما می‌توانید برنامه‌های Hapi خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
 
-برای استقرار برنامه‌های Hapi باید اسکریپت <Important>start</Important> را در فایل <Important>package.json</Important> به شکل زیر، تعریف کنید:
+<a href="https://hono.dev/" className="text-[#2196f3] ">Hono</a>
+یک فریم‌ورک وب کوچک، ساده و بسیار سریع است که بر روی هر runtime جاوااسکریپتی، کار می‌کند. از دلایل 
+محبوبیت این فریم‌ورک، می‌توان به سرعت خارق‌العاده و بهینه بودن بی‌نظیر آن، اشاره کرد. 
+
+<div className='h-2' />
+
+
+شما می‌توانید برنامه‌های Hono خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
+برای استقرار برنامه‌های Hono باید اسکریپت <Important>start</Important> را در فایل <Important>package.json</Important> به شکل زیر، تعریف کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="json">
         {`{
     "scripts": {
-    "test": "echo \\"Error: no test specified\\" && exit 1",
-    "start": "node server.js"
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts"
   },
 }`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-در ادامه، در فایل اصلی برنامه خود، مثلاً فایل <Important>server.js</Important>، باید حتماً فیلد <Important>host</Important> را با مقدار <Important>'0.0.0.0'</Important> مشخص کنید؛ به عنوان مثال:
+همچنین؛ در نظر داشته باشید که برای اجرای برنامه، حتماً از ماژول <Important>node-server</Important>، استفاده کنید؛ به عنوان مثال:
+
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`const init = async () => {
-    const server = Hapi.server({
-        port: 3000,
-        host: '0.0.0.0',
-        routes: {
-            files: {
-                relativeTo: Path.join(__dirname, 'public')
-            }
-        }
-    });
-    // other codes ...
-};`}
+        {`// src/index.ts
+import { serve } from '@hono/node-server'
+import { Hono } from 'hono'
+
+const app = new Hono()
+app.get('/', (c) => c.text('Hello Node.js!'))
+
+serve(app)`}
     </Highlight>
 </div>
-<div className="h-2" />
 
 <Section id="deploy" title="استقرار برنامه" />
 <Tabs 
@@ -84,12 +86,7 @@ import Head from "next/head";
 
 <Alert variant="success">
 <p>
-یک پروژه Hapi آماده به استقرار در <a href="https://github.com/liara-cloud/hapi-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
-</p>
-</Alert>
-<Alert variant="success">
-<p>
-همچنین بخوانید: <a href="../../fix-common-errors/cors-error/hapi" className="text-[#2196f3] ">رفع خطای CORS در فریم‌ورک Hapi</a>
+یک پروژه Hono آماده به استقرار در <a href="https://github.com/liara-cloud/hono-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
 </p>
 </Alert>
 
