@@ -2522,6 +2522,11 @@ export default {
         link: "/paas/static/related-apps/astro"
       },
       {
+        title: "SolidJS",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/related-apps/solidjs"
+      },
+      {
         title: "NuxtJS",
         icon: <IconContainer alt="nuxt" />,
         link: "/paas/static/related-apps/nuxtjs"

@@ -23,12 +23,20 @@ import Head from "next/head";
 
     <div className="h-2" />
     <div dir='ltr'>
-        <Highlight className="json">
-            {`{
-    "node": {
-    "version": "18"
-  }
-}`}
+        <Highlight className="js">
+            {`const { ApolloServer } = require('apollo-server');
+const { typeDefs, resolvers } = require('./schema');
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  playground: true,
+});
+
+server.listen().then(({ url }) => {
+  console.log(\`🚀 Server ready at \${url}\`);
+});`}
         </Highlight>
     </div>
     <div className="h-2" />
