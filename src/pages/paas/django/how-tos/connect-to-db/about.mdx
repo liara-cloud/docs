@@ -49,7 +49,18 @@ import Head from "next/head";
             )}
           </div>
 <Section id="migrate-db" title="اجرای Migrationها در دیتابیس‌" />
-برای اجرای Migrationها در دیتابیس مد نظر خود، می‌توانید پس از استقرار برنامه، وارد <a href="/paas/details/console-shell" className="text-[#2196f3] ">خط فرمان</a> برنامه خود شوید و دستور زیر را اجرا کنید تا عملیات migration برای شما، انجام شود:
+برای اجرای Migrationها در دیتابیس مد نظر خود، در ابتدا در Local دستور زیر را اجرا کنید تا Migrationها برای‌تان ایجاد شوند:
+
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`python manage.py makemigrations`}        
+    </Highlight>
+</div>
+<div className='h-2' />
+
+سپس،
+ می‌توانید پس از استقرار برنامه، وارد <a href="/paas/details/console-shell" className="text-[#2196f3] ">خط فرمان</a> برنامه خود شوید و دستور زیر را اجرا کنید تا عملیات migration برای شما، انجام شود:
 
 <div className='h-2' />
 <div dir='ltr'>
