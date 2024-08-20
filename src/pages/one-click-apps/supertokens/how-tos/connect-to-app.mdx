@@ -1,0 +1,91 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به SuperTokens در NextJS - لیارا</title>
+</Head>
+
+# اتصال به SuperTokens در NextJS 
+<hr className="mb-2" />
+ 
+برای اتصال SuperTokens به برنامه خود، نیاز به انجام کار خاصی نیست و صرفاً کافیست تا آدرس SuperTokens را با کمک <a href="https://supertokens.com/docs/community/sdks" className="text-[#2196f3]">SDKهای مربوط</a> به فریم‌ورک انتخابی‌تان، در برنامه قرار دهید. 
+در ادامه، مستندات مربوط به اتصال به SuperTokens در برنامه‌های NextJS آمده است: 
+
+در ابتدا، می‌توانید با استفاده از دستور زیر، یک قالب NextJS آماده مبتنی بر SuperTokens را در Local، ایجاد کنید: 
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`npx create-supertokens-app@latest`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، کافیست تا وارد مسیر <Important>app/config/appinfo.ts/</Important> یا <Important>config/appinfo.ts/</Important> شوید و قطعه کد زیر را در آن، قرار دهید:
+
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="json">
+      {`const port = process.env.APP_PORT || 3000;
+
+const apiBasePath = "/api/auth/";
+
+export const websiteDomain = process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL || \`http://localhost:\${port}\`;
+
+export const appInfo = {
+    appName: "SuperTokens Demo App",
+    websiteDomain: "https://example.com",
+    apiDomain: "https://example.com",
+    apiBasePath: "/api/auth",
+    websiteBasePath: "/auth",
+};
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، کافیست تا برنامه‌تان را در لیارا مستقر کنید تا برنامه به SuperTokens متصل شود.
+
+سپس در فایل <Important>app/config/backend.ts/</Important> یا <Important>config/backend.ts/</Important>، در فیلدی به نام <Important>connectionURI</Important> در <Important>supertokens</Important>، آدرس برنامه SuperTokens خود را به صورت کامل، وارد کنید؛ به عنوان مثال:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="js">
+      {`// other codes ...
+
+export let backendConfig = (): TypeInput => {
+    return {
+        framework: "express",
+        supertokens: {
+            // this is the location of the SuperTokens core.
+            connectionURI: "https://supertokens-mckstswzz.liara.run",
+        },
+
+// other codes ...`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، کافیست تا برنامه‌تان را در لیارا مستقر کنید تا به SuperTokens متصل شود. 
+
+<div clasName="h-2" />
+<Alert variant="success">
+<p>
+یک پروژه آماده استقرار در <a href="https://github.com/liara-cloud/supertokens-nextjs.git" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+</Layout>

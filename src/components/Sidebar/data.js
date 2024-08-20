@@ -5128,6 +5128,10 @@ export default {
         )
       },
       {
+        title: "اتصال به SuperTokens با NextJS",
+        link: "/one-click-apps/supertokens/how-tos/connect-to-app"
+      },
+      {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/supertokens/how-tos/choose-version"
       },
