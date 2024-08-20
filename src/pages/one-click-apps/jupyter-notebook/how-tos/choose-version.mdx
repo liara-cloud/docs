@@ -14,7 +14,7 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات تغییر نسخه varnish cache - لیارا</title>
+<title>مستندات تغییر نسخه jupyter notebook - لیارا</title>
 </Head>
 
 # تغییر نسخه‌ی برنامه مستقر شده
@@ -27,19 +27,15 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "varnish:7.5.0:<your-version>",
-    "port": 80,
+    "image": "quay.io/jupyter/datascience-notebook:<your-version>",
     "app": "<your-app-name>",
+    "port": 8888, 
     "disks": [
-      {
-        "name": "config",
-        "mountTo": "/etc/varnish"
-      },
-      {
-        "name": "cache",
-        "mountTo": "/var/lib/varnish"
-      },
-  ]
+        {
+            "name": "data",
+            "mountTo": "/home/jovyan/work"
+        }
+    ]
 }`}
     </Highlight>
 </div>

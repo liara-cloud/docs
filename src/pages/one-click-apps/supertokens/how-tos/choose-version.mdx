@@ -14,7 +14,7 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات تغییر نسخه varnish cache - لیارا</title>
+<title>مستندات تغییر نسخه supertokens - لیارا</title>
 </Head>
 
 # تغییر نسخه‌ی برنامه مستقر شده
@@ -27,19 +27,9 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "varnish:7.5.0:<your-version>",
-    "port": 80,
+    "image": "registry.supertokens.io/supertokens/supertokens-mysql",
     "app": "<your-app-name>",
-    "disks": [
-      {
-        "name": "config",
-        "mountTo": "/etc/varnish"
-      },
-      {
-        "name": "cache",
-        "mountTo": "/var/lib/varnish"
-      },
-  ]
+    "port": "3567"
 }`}
     </Highlight>
 </div>

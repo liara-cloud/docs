@@ -1,0 +1,67 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه‌های SuperTokens - لیارا</title>
+</Head>
+
+# راه‌اندازی سریع برنامه‌های SuperTokens
+<hr className="mb-2" />
+
+<a href="https://supertokens.com/" className="text-[#2196f3] ">SuperTokens</a> یک نرم‌افزار متن‌باز و پیشرفته برای مدیریت مسائل مرتبط به احراز هویت کاربران در برنامه‌های وب است. این ابزار به توسعه‌دهندگان امکان می‌دهد تا فرآیندهای پیچیده‌ای مانند ورود به سیستم، ثبت‌نام، مدیریت رمز عبور، و احراز هویت چندعاملی را به سادگی پیاده‌سازی کنند. Supertokens با تمرکز بر امنیت و سادگی، از حملات متداول مانند سرقت sessionها و درخواست‌های جعلی محافظت می‌کند. این نرم‌افزار همچنین به‌طور ویژه در جهت کاهش بار روی سرور طراحی شده است و می‌تواند به آسانی در مقیاس‌های بزرگ به‌کار رود. با استفاده از Supertokens، توسعه‌دهندگان می‌توانند به سرعت و با اطمینان بالا، مکانیزم‌های احراز هویت را به برنامه‌های خود اضافه کنند.
+
+
+<div className="h-4" />
+
+برای راه‌اندازی برنامه آماده مدنظر خود در لیارا، باید وارد صفحه <a href="https://console.liara.ir/one-click-apps" className="text-[#2196f3] ">برنامه‌های آماده</a> شوید؛ سپس برنامه‌ی <b>SuperTokens</b> 
+را انتخاب کنید و در صورت تمایل یک شناسه برای آن قرار دهید (در غیر این‌صورت، لیارا به صورت پیش‌فرض یک شناسه برای برنامه‌تان انتخاب می‌کند)؛ سپس بر روی گزینه **نصب سریع** کلیک کنید تا برنامه‌تان ساخته شود.
+<div className="h-4" />
+{/* <img src="https://files.liara.ir/docs/grafana/create-grafana-one-click-app.gif" alt="create one-click-app" /> */}
+{/* <video
+  src="https://files.liara.ir/liara/mattermost/create-mattermost.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+<div className="h-4" />
+
+پس از ساخته شدن برنامه، می‌توانید در صفحه <a href="https://console.liara.ir/apps" className="text-[#2196f3] ">پلتفرم</a>، برنامه خود را بررسی کنید. برای نصب دلخواه هم، می‌توانید از گزینه **نصب پیشرفته** استفاده کنید. 
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "./how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

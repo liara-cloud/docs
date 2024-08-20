@@ -3991,6 +3991,16 @@ export default {
         icon: <IconContainer alt="meilisearch" />,
         link: "/one-click-apps/meilisearch/quick-start"
       },
+      {
+        title: "Jupyter notebook",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/jupyter/7388996.png" />,
+        link: "/one-click-apps/jupyter-notebook/quick-start"
+      },
+      {
+        title: "SuperTokens",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/supertoken/favicon.png" />,
+        link: "/one-click-apps/supertokens/quick-start"
+      },
     ],
     wordpress: [
       {
@@ -5016,7 +5026,6 @@ export default {
         link: "/one-click-apps/chroma/how-tos/choose-version"
       },
     ],
-
     meilisearch: [
       {
         badge: (
@@ -5054,7 +5063,75 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/meilisearch/how-tos/choose-version"
       },
-    ],
+    ], 
+    'jupyter-notebook': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Jupyter Notebook
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/jupyter-notebook/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/jupyter-notebook/how-tos/choose-version"
+      },
+    ], 
+    supertokens: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه SuperTokens
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/supertokens/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/supertokens/how-tos/choose-version"
+      },
+    ], 
 
 
    
