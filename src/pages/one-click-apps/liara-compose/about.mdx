@@ -1,0 +1,57 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات Liara Compose - لیارا</title>
+</Head>
+# Liara Compose
+<hr className="mb-2" />
+
+Liara Compose یک فایل با ماهیت YAML است که می‌تواند شامل مجموعه‌ای از سرویس‌های لیارا نظیر پلتفرم‌ها، برنامه‌های آماده، دیتابیس‌ها و ... باشد که توسط چندین متغیرمحیطی به یکدیگر متصل شده‌اند.
+<div className="h-2" />
+
+Liara Compose تا حد زیادی مانند <a href="/paas/docker/how-tos/deploy-docker-compose" className="text-[#2196f3]">Docker Compose</a> عمل می‌کند و شما می‌توانید از این قابلیت، به عنوان جایگزینی مناسب برای Docker Compose استفاده کنید؛ در ادامه، مستندات استفاده از Liara Compose برای‌تان قرار گرفته است:
+
+<div className='h-5' />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "استقرار سریع Liara Compose",
+        link: "./quick-start"
+      },
+      {
+        title: "متغیرهای محیطی Liara Compose",
+        link: "./envs"
+      },
+      {
+        title: "جدول فیلدهای Liara Compose",
+        link: "./fields-tables"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

@@ -1,0 +1,158 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Table from "@/components/Common/table";
+
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات جدول فیلدهای Liara Compose - لیارا</title>
+</Head>
+# جدول فیلدهای Liara Compose
+<hr className="mb-2" />
+
+فایل <Important>liara-comose.yaml</Important> شامل فیلدهای متفاوتی است که هر کدام می‌توانند مقادیر متفاوتی داشته باشند؛ در ادامه در جدول زیر، به توضیح هریک از این فیلدها، پرداخته شده است:
+
+
+<div className="h-2" />
+<Table headers={[
+  "نام فیلد / آرایه",
+  "توضیحات",
+  <p><Important>مقادیر قابل پذیرش</Important> / مثال</p>,
+]} data={[
+  [
+    <p>آرایه <Important>apps</Important></p>,
+    "آرایه‌ای شامل تمامی برنامه‌هایی که قصد دارید در لیارا مستقر کنید",
+    <p><Important>id</Important>, <Important>name</Important>, <Important>image</Important>, <Important>bundlePlanID</Important>, <Important>planID</Important>, <Important>disks</Important>, <Important>port</Important>, <Important>envs</Important></p>,
+  ],
+  [
+    <p>فیلد <Important>id</Important></p>,
+    "آیدی برنامه (می‌توانید نام دلخواه خود را قرار دهید)",
+    <p>"id: "myapp</p>,
+  ],
+  [
+    <p> فیلد <Important>name</Important></p>,
+    "نام برنامه (می‌توانید نام دلخواه خود را قرار دهید)",
+    <p>"name: "MyLiaraAPP</p>,
+  ],
+  [
+    <p> فیلد <Important>image</Important></p>,
+    <div dir="rtl"><p>نام dockerimage مورد نظر برای pull کردن</p></div>,
+    <p>"image: "appsmith/appsmith-ee:v1.22.1</p>,
+  ],
+  [
+    <p> فیلد <Important>bundlePlanID</Important></p>,
+    "انتخاب بسته امکانات برنامه",
+    <p><Important>"standard"</Important>, <Important>"pro"</Important>, <Important>"free"</Important></p>,
+  ],
+  [
+    <p> فیلد <Important>planID</Important></p>,
+    "انتخاب منابع سخت‌افزاری برنامه",
+    <p><Important>small-g2</Important>, <Important>medium-g2</Important>, <Important>standard-base-g2</Important>, <Important>standard-plus-g2</Important>, <Important>pro-g2</Important>, <Important>pro-plus-g2</Important></p>,
+  ],
+  [
+    <p> آرایه <Important>disks</Important></p>,
+    "آرایه‌ای شامل دیسک‌های یک برنامه",
+    <p><Important>name</Important>, <Important>mountTo</Important>, <Important>size</Important>, <Important>maxSize</Important></p>,
+  ],
+  [
+    <p> فیلد <Important>name</Important></p>,
+    "نام دیسک ایجاد شده",
+    <p>"name: "data</p>,
+  ],
+  [
+    <p> فیلد <Important>mountTo</Important></p>,
+    "مسیر مطلقی که قصد دارید دیسک به آن متصل شود",
+    <p>"mountTo: "/var/www/html</p>,
+  ],
+  [
+    <p> فیلد <Important>size</Important></p>,
+    "(به گیگابایت) اندازه فضای دیسک ارائه شده در یک پلن ",
+    <p>size: 10</p>,
+  ],
+  [
+    <p> فیلد <Important>maxSize</Important></p>,
+    "اندازه نهایی فضای یک دیسک مشخص (به گیگابایت)",
+    <p>"id: "myapp</p>,
+  ],
+  [
+    <p>فیلد <Important>port</Important></p>,
+    "پورتی که برنامه در آن به درخواست کاربران گوش می‌دهد",
+    <p>port: 3000</p>,
+  ],
+  [
+    <p> آرایه <Important>envs</Important></p>,
+    "آرایه‌ای شامل تمام متغیرهای محیطی یک برنامه",
+    <p>"WORDPRESS_DB_NAME: "$DB_main_NAME</p>,
+  ],
+  [
+    <p>آرایه <Important>databases</Important></p>,
+    "آرایه‌ای شامل تمامی دیتابیس‌های پروژه",
+    <p><Important>type</Important>, <Important>id</Important>, <Important>version</Important>, <Important>bundlePlanID</Important>, <Important>planID</Important></p>,
+  ],
+  [
+    <p> فیلد <Important>type</Important></p>,
+    "تعیین نوع دیتابیس از دیتابیس‌های قابل ارائه",
+    <p><Important>mariadb</Important>, <Important>mysql</Important>, <Important>elasticsearch</Important>, <Important>redis</Important>, <Important>postgresql</Important>, <Important>mongodb</Important>, <Important>mssql</Important></p>,
+  ],
+  [
+    <p> فیلد <Important>version</Important></p>,
+    "تعیین نسخه دیتابیس از نسخه‌های قابل ارائه",
+    <p>"version: "10.6.8</p>,
+  ],
+  
+  
+]} />
+<div className="h-3" />
+به عنوان یک مثال، فایل <Important>liara-compose.yaml</Important> زیر را می‌توانید در لیارا، مستقر کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="yaml">
+        {`apps:
+  - id: "wordpress"
+    name: "WordPress"
+    image: "liararepo/wordpress-one-click-app:6-php7.4"
+    bundlePlanID: "standard"
+    planID: "small-g2"
+    disks:
+      - name: "tmp"
+        mountTo: "/tmp"
+        size: 10
+        maxSize: 0.5
+      - name: "data"
+        mountTo: "/var/www/html"
+    port: 80
+    envs:
+      WORDPRESS_DB_HOST: "$DB_main_HOST:$DB_main_PORT"
+      WORDPRESS_DB_USER: "$DB_main_USER"
+      WORDPRESS_DB_PASSWORD: "$DB_main_PASSWORD"
+      WORDPRESS_DB_NAME: "$DB_main_NAME"
+      PHP_INI_CONFIG: |
+        file_uploads = On
+        memory_limit = 256M
+        upload_max_filesize = 64M
+        post_max_size = 128M
+        max_execution_time = 600
+
+databases:
+  - type: "mariadb"
+    id: "main"
+    version: "10.6.8"
+    bundlePlanID: "standard"
+    planID: "small-g2"`}
+    </Highlight>
+</div>
+
+
+</Layout>

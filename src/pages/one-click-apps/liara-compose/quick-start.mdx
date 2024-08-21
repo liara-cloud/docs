@@ -1,0 +1,116 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+
+<Head>
+<title>مستندات راه‌اندازی سریع با Liara Compose - لیارا</title>
+</Head>
+# راه‌اندازی سریع برنامه با Liara Compose
+<hr className="mb-2" />
+
+برای راه‌اندازی برنامه‌های خود با استفاده از Liara Compose کافیست تا گام‌های زیر را طی کنید:
+<Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ساخت برنامه آماده جدید</h3>
+    <p>
+        پس از ورود به پنل کاربری، وارد منوی <b>برنامه‌های آماده</b> شوید و سپس بر روی گزینه <b><a href="https://console.liara.ir/one-click-apps/custom" className="text-[#2196f3]">Liara Compose</a></b> کلیک کنید تا وارد صفحه جدید شوید؛
+        در صفحه جدید باز شده یک ویرایشگر به شما نمایش داده می‌شود که می‌توانید درون آن، فایل Liara Compose خود را بنویسید.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>شخصی سازی فایل Liara Compose</h3>
+    <p>
+        قالب کلی فایل  
+       <Important>liara-compose.yaml</Important> 
+       به شکل زیر است: 
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="yaml">
+            {`# liara-compose.yaml
+apps: # لیست برنامه‌ها
+  - id: "appid" # درج آیدی برای برنامه مدنظرتان
+    name: "MyAppName" # درج نام برای برنامه‌تان
+    image: "yourImage:yourTag" # نام ایمیج موجود در داکرهاب به همراه تگ آن
+    bundlePlanID: "standard" # انتخاب بسته امکانات برنامه
+    planID: "small-g2" # انتخاب منابع سخت‌افزاری برنامه
+    disks: # تعریف دیسک‌های برنامه
+      - name: "DiskName"
+        mountTo: "/path/to/dir"
+        size: 10 
+        maxSize: 0.2 # اندازه نهایی دیسک
+    port: 3000 # پورتی که در آن برنامه به درخواست کاربران گوش می‌کند.
+    envs: # تعریف متغیرهای محیطی برنامه
+      KEY_NAME: "VALUE"
+      APP_PASSWORD: "$RANDOM_STRING" # یک رشته شامل کاراکترهای رندوم 
+      APP_URL: "https://$APP_NAME.liara.run" # تعیین آدرس پروژه
+      APP_DB: "DB://$DB_main_USER:$DB_main_PASSWORD@$DB_main_HOST:$DB_main_PORT/ # اتصال برنامه به دیتابیس
+
+databases: # تعریف دیتابیس
+  - type: "DB" # تعیین نوع دیتابیس
+    id: "main" # تعیین آیدی دیتابیس
+    version: "7.0.5" # تعیین نسخه دیتابیس
+    bundlePlanID: "standard" # تعیین بسته امکانات دیتابیس
+    planID: "small-g2" # تعیین منابع سخت‌افزاری دیتابیس`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+    شما می‌توانید بنا به نیاز خود، فایل <Important>liara-compose.yaml</Important> را نوشته و سپس بر روی گزینه <b>ذخیره تغییرات</b> کلیک کنید.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>نصب و اسقرار برنامه در لیارا</h3>
+    <p>
+        در ادامه، شما بایستی <a href="/paas/details/private-network/" className="text-[#2196f3]">شبکه خصوصی</a> را انتخاب کرده و برای برنامه‌ها و دیتابیس‌های خود یک شناسه یکتا انتخاب کنید و همچنین بررسی کنید که پلن انتخابی معادل خواسته شما هست یا خیر. 
+        در نهایت بایستی بر روی گزینه <b>نصب برنامه</b> کلیک کنید تا برنامه‌تان در لیارا، مستقر و نصب شود:
+    </p>
+    <div className="h-3" />
+    <img src="https://files.liara.ir/liara/docs/deploy-liara-compose.gif" alt="create one-click-app" />
+  </>
+  )
+  },
+]}/>
+<div className="h-4" />
+<Alert variant="success">
+<p>
+    شما می‌توانید از <a href="https://github.com/liara-cloud/compose-templates" className="text-[#2196f3]">ریپازیتوری compose-templates</a> برای انتخاب قالب‌های آماده Compose بهره ببرید.
+</p>
+</Alert>
+
+</Layout>

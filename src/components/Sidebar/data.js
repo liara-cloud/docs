@@ -7,6 +7,7 @@ import {
   GoLock,
   GoDatabase,
   GoDiff,
+  GoPencil,
   GoProjectRoadmap,
   GoContainer,
   GoRocket,
@@ -3846,6 +3847,11 @@ export default {
         link: "/one-click-apps/about"
       },
       {
+        title: "ساخت app با Liara Compose",
+        icon: <GoPencil  />,
+        link: "/one-click-apps/liara-compose/about"
+      },
+      {
         hr: true
       },
       {
@@ -4001,6 +4007,41 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/supertoken/favicon.png" />,
         link: "/one-click-apps/supertokens/quick-start"
       },
+    ],
+    'liara-compose': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            Liara Compose 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "Liara Compose چیست؟",
+        icon: <GoInfo  />,
+        link: "/one-click-apps/liara-compose/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "استقرار سریع Liara Compose",
+        link: "/one-click-apps/liara-compose/quick-start"
+      },
+      {
+        title: "متغیرهای محیطی Liara Compose",
+        link: "/one-click-apps/liara-compose/envs"
+      },
+      {
+        title: "جدول فیلدهای Liara Compose",
+        link: "/one-click-apps/liara-compose/fields-tables"
+      },
+
     ],
     wordpress: [
       {

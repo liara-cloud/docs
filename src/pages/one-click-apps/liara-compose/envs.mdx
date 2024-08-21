@@ -1,0 +1,35 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات متغیرهای Liara Compose - لیارا</title>
+</Head>
+# متغیرهای Liara Compose
+<hr className="mb-2" />
+
+به صورت کلی، شما می‌توانید در فایل <Important>liara-compose.yaml</Important>، به متغیرهای زیر دسترسی داشته باشید:
+
+<div className="h-2" />
+<ul>
+    <li>متغیر <Important>APP_NAME$</Important>: این متغیر شناسه برنامه‌تان را بر می‌گرداند.</li>
+    <li>متغیر <Important>RANDOM_STRING$</Important>: این متغیر یک رشته شامل تعدادی کاراکتر تصادفی برای شما برمی‌گرداند و مناسب مقداردهی کلیدها است.</li>
+    <li>متغیرهای مربوط به دیتابیس: متغیرهایی مانند <Important>DB_main_HOST$</Important> , <Important>DB_main_USER$</Important> , <Important>DB_main_USER$</Important> و ... برای دسترسی به دیتابیس.</li>
+</ul>
+<div className="h-2" />
+در نظر داشته باشید که در صورت وجود دیتابیس در فایل <Important>liara-compose.yaml</Important>، شما می‌توانید به تمام متغیرهای مربوط به اتصال به آن، دسترسی داشته باشید. 
+
+
+
+</Layout>
