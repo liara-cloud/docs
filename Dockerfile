@@ -12,7 +12,7 @@ COPY . /app/
 RUN npm run build
 
 # 2) Run
-FROM registry2.iran.liara.ir/platforms/static-platform:base
+FROM nginx:1.27.0
 
 COPY liara_nginx.conf /etc/nginx/conf.d
 COPY --from=builder /app/out /usr/share/nginx/html
