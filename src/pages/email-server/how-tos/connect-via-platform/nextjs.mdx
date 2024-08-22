@@ -30,7 +30,7 @@ import Head from "next/head";
 </div>
 <div className="h-2" />
 
-پس از آن، کافیست تا طبق <a href="../add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="../add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+پس از آن، کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در نهایت نیز، بایستی 
 اطلاعات مربوط به ایمیل‌سرور خود را 
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
@@ -69,6 +69,7 @@ export default async function handler(req, res) {
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: 587,
+    requireTLS: true,
     secure: false,
     auth: {
       user: process.env.EMAIL_USER,
@@ -95,6 +96,11 @@ export default async function handler(req, res) {
     </Highlight>
 </div>
 <div className="h-2" />
+<Alert variant='info'>
+<p>
+طبق مستندات <a href="https://nodemailer.com/smtp/" className="text-[#2196f3]">nodemailer</a>، این ماژول به صورت پیش‌فرض ایمیل‌ها را به صورت امن و رمزنگاری شده، ارسال می‌کند و نیازی نیست که شما، کار خاصی را انجام دهید.
+</p>
+</Alert>
 <Alert variant='info'>
 <p>
 فیلد <Important>from</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.

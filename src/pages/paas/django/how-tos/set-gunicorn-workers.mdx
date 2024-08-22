@@ -21,7 +21,7 @@ import Head from "next/head";
 
 در <a href="https://gunicorn.org/" className="text-[#2196f3] ">Gunicorn</a>، یک worker فرآیندی است که مسئول پردازش درخواست‌ها و پاسخ‌ها در یک برنامه وب است. worker می‌تواند به صورت مستقل از بقیه فرآیندها عمل کند و بار کاری بین آنها، به سادگی، تقسیم می‌شود. این کار باعث افزایش کارایی و مقیاس‌پذیری برنامه می‌شود.
 
-برای تنظیم تعداد Workerهای Gunicorn کافیست تا طبق مستندات <a href="../../details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، یک متغیر محیطی به نام <Important>GUNICORN_WORKERS</Important>
+برای تنظیم تعداد Workerهای Gunicorn کافیست تا طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، یک متغیر محیطی به نام <Important>GUNICORN_WORKERS</Important>
 با مقدار دلخواه که همان تعداد Workerها است، به برنامه اضافه کنید.
 
 
@@ -32,5 +32,5 @@ import Head from "next/head";
 </p>
 </Alert>
 
-<NextPage next="./set-gunicorn-maxrequest"/>
+
 </Layout>

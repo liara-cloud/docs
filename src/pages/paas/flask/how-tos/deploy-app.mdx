@@ -26,7 +26,7 @@ import Head from "next/head";
     content={[
         <>
         <p>
-            در ابتدا، پس از <a className="text-[#2196f3] " href="./create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های venv. و dist را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
+            در ابتدا، پس از <a className="text-[#2196f3] " href="../create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های venv. و dist را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
         </p>
 
         <p>
@@ -60,14 +60,14 @@ Werkzeug==3.0.3
         <img src="https://files.liara.ir/liara/docs/deploy-flask-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" />
         <p>
-            در انتها، به صورت مستقیم به <a href="../../details/private-registry" className="text-[#2196f3] ">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
+            در انتها، به صورت مستقیم به <a href="/paas/details/private-registry" className="text-[#2196f3] ">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
         </p>
 
     </>,
     <>
 
         <p>
-            پس از <a className='text-[#2196f3] ' href="./create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های venv. و dist به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Flask است که می‌توانید از آن، استفاده کنید:
+            پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های venv. و dist به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Flask است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
         <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/flask/.gitignore" target="_blank">
@@ -145,7 +145,7 @@ Werkzeug==3.0.3
             </Highlight>
         </div>
         <div className='h-4' />
-        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="./choose-version">نسخه‌های قابل ارائه Python در لیارا</a></Alert>
+        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه Python در لیارا</a></Alert>
         <p>
             به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
         </p>
@@ -194,7 +194,7 @@ Werkzeug==3.0.3
             </Highlight>
         </div>
         <div className='h-4' />
-        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="../../details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
         <p>
             اکنون کافیست تا در مسیر اصلی پروژه و جایی که فایل <Important>liara.json</Important> قرار دارد؛ دستور زیر را اجرا کنید و منتظر بمانید تا عملیات استقرار تمام شود:
         </p>
@@ -216,10 +216,10 @@ Werkzeug==3.0.3
 
 <Alert variant='success'>
 <p>
-    پس از استقرار برنامه می‌توانید <a href="../../details/events" className="text-[#2196f3] ">رویدادها</a> و <a href="../../details/observations/about" className="text-[#2196f3] ">گزارشات</a> مربوط به برنامه را بررسی کنید.
+    پس از استقرار برنامه می‌توانید <a href="/paas/details/events" className="text-[#2196f3] ">رویدادها</a> و <a href="/paas/details/observations/about" className="text-[#2196f3] ">گزارشات</a> مربوط به برنامه را بررسی کنید.
 </p>
 </Alert>
 
 
-<NextPage next="./set-envs" />
+
 </Layout>

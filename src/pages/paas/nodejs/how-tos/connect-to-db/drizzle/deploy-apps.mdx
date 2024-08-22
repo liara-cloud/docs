@@ -23,8 +23,8 @@ import Head from "next/head";
 
 
 برای استقرار برنامه‌های وابسته به Drizzle ORM نیاز به انجام کاری نیست. فقط
-کافیست تا قبل از دیپلوی، متغیرهای محیطی مورد نیاز دیتابیس را طبق مستندات{" "}
-<a href="../../../../details/envs" className="text-[#2196f3] ">متغیرهای محیطی</a> به برنامه
+کافیست تا قبل از استقرار، متغیرهای محیطی مورد نیاز دیتابیس را طبق مستندات{" "}
+<a href="/paas/details/envs" className="text-[#2196f3] ">متغیرهای محیطی</a> به برنامه
 اضافه کنید و دستور زیر را اجرا کنید تا فایل‌های migration برای‌تان ایجاد
 شوند:
 
@@ -50,7 +50,7 @@ import Head from "next/head";
 <div className='h-2' />
 
 
-در ادامه، طبق <a href="../../use-hooks" className="text-[#2196f3] ">مستندات مربوط به Hookها</a>، باید در مسیر اصلی پروژه، یک فایل به
+در ادامه، طبق <a href="/paas/nodejs/how-tos/use-hooks" className="text-[#2196f3] ">مستندات مربوط به Hookها</a>، باید در مسیر اصلی پروژه، یک فایل به
 نام <Important>liara_pre_build.sh</Important> ایجاد کنید و قطعه کد
 زیر را در آن قرار دهید:
 
@@ -72,7 +72,7 @@ npm run migrate;`}
 
 <Alert variant="info">
       اگر که از دیتابیس SQLite استفاده می‌کنید،
-      باید طبق مستندات مربوط به <a href="../../../../disks/about" className="text-[#2196f3] ">دیسک‌ها</a>، یک دیسک ایجاد و
+      باید طبق مستندات مربوط به <a href="/paas/disks/create" className="text-[#2196f3] ">دیسک‌ها</a>، یک دیسک ایجاد و
       به مسیر دیتابیس، متصل کنید.
 </Alert>
 

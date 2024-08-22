@@ -21,9 +21,9 @@ import Head from "next/head";
 
 برای اتصال به دیتابیس MongoDB می‌توانید از اکستنشن نصب شده آن استفاده کنید.
 اما طبق <b>نسخه آخرین اکستنشن نصب شده</b>، فقط امکان استفاده از ورژن <Important>"1.15"</Important> پکیج <Important>"mongodb/mongodb"</Important>و یا نسخه‌های پایین‌تر را، خواهید داشت. در صورتی که قصد دارید از نسخه‌های جدیدتر این پکیج، استفاده کنید.
-بایستی از <a href="../use-hooks" className="text-[#2196f3] ">هوک‌ها</a> استفاده کنید.
+بایستی از <a href="/paas/php/how-tos/use-hooks" className="text-[#2196f3] ">هوک‌ها</a> استفاده کنید.
 
-در ابتدا، بایستی تا طبق مستندات <a href="../../../details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس MongoDB را به برنامه خود، اضافه کنید. به عنوان مثال:
+در ابتدا، بایستی تا طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس MongoDB را به برنامه خود، اضافه کنید. به عنوان مثال:
 
 <div className="h-2" />
     <div dir='ltr'>
@@ -124,7 +124,7 @@ try {
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
 برای استفاده از قابلیت connection pooling در دیتابیس MongoDB، می‌توانید از قطعه کد زیر استفاده کنید و پارامترهای آن را با توجه به نیاز خود، تغییر دهید:
 <div className="h-2" />

@@ -220,5 +220,17 @@ export default function PlatformIcon({ platform, style = {} }) {
         }}
       />
     );
+  } else if (platform.startsWith("https")){
+    return (
+      <img
+        className="page-icon"
+        src={platform}
+        alt={"fav-icon"}
+        style={{
+          ...style,
+          pointerEvents: "none"
+        }}
+      />
+    );
   }
 }

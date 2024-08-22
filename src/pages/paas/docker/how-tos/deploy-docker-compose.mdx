@@ -33,11 +33,19 @@ Docker Compose ابزاری است که برای تعریف و اجرای برن
 
 <div className="h-2" />
 
-لیارا، به صورت مستقیم از Docker Compose پشتیبانی نمی‌کند. اما شما می‌توانید به ازای هر برنامه متفاوت، یک برنامه داکر مستقل ایجاد کنید و آن‌ها را به واسطه <a href="../../details/envs" className="text-[#2196f3] ">متغیرهای محیطی</a> و <a href="../../details/private-network" className="text-[#2196f3] ">شبکه‌خصوصی</a>، به یکدیگر، متصل کنید.
+لیارا، به صورت مستقیم از Docker Compose پشتیبانی نمی‌کند. اما شما می‌توانید به ازای هر برنامه متفاوت، یک برنامه داکر مستقل ایجاد کنید و آن‌ها را به واسطه <a href="/paas/details/envs" className="text-[#2196f3] ">متغیرهای محیطی</a> و <a href="/paas/details/private-network/" className="text-[#2196f3] ">شبکه‌خصوصی</a>، به یکدیگر، متصل کنید.
+
+<div className="h-2" />
+<Alert variant='success'>
+<p>
+همچنین بخوانید: <a className="text-[#2196f3] " href="/one-click-apps/liara-compose/about/">استقرار برنامه با Liara Compose جایگزین Docker Compose</a>
+</p>
+</Alert>
+
 
 <div className="h-2" />
 
 به عنوان مثال، فرض کنید که یک Docker Compose متشکل از برنامه Golang و دیتابیس PostgreSQL دارید. برای استقرار این برنامه، کافیست تا در ابتدا یک برنامه داکر و یک دیتابیس Postgres ایجاد کنید. در ادامه، متغیرهای محیطی دیتابیس را به برنامه داکر خود اضافه کرده و در نهایت، برنامه Golang داکرایز شده خود را در لیارا، مستقر کنید. در نظر داشته باشید که هم برنامه داکر و هم دیتابیس PostgreSQL بایستی برای ارتباط در شبکه خصوصی، در یک شبکه مشترک قرار گرفته باشند.
 
-<NextPage next="./set-envs"/>
+
 </Layout>

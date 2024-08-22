@@ -33,7 +33,7 @@ import Head from "next/head";
         <div className="h-2" />
         <p>
             برای ساخت برنامه، کافیست تا پس از ورود به <Link className="text-[#2196f3] " href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link className="text-[#2196f3] " href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="text-[#2196f3] " href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>NextJS</b> تنظیم کنید.
-            در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="text-[#2196f3] " href="../../details/private-network">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="text-[#2196f3] " href="../../details/plans/about">منابع سخت‌افزاری و بسته امکانات</a> مدنظرتان را انتخاب کنید. 
+            در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="text-[#2196f3] " href="/paas/details/private-network/">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="text-[#2196f3] " href="/paas/details/plans/about">منابع سخت‌افزاری و بسته امکانات</a> مدنظرتان را انتخاب کنید. 
             در آخر، کافیست تا بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان ساخته شود:
         </p>
         <img src="https://files.liara.ir/liara/docs/how-to-create-a-nextjs-app.gif" alt="create app using console" />
@@ -49,7 +49,7 @@ import Head from "next/head";
     ></video>
     <div className="h-2" />
     <p>
-        برای ساخت برنامه در لیارا باید در ابتدا با اجرای دستور زیر، ابزار <Link href="../../../../references/cli/about" className="text-[#2196f3] ">Liara CLI</Link> را بر روی سیستم‌عامل خود، نصب کنید:
+        برای ساخت برنامه در لیارا باید در ابتدا با اجرای دستور زیر، ابزار <Link href="/references/cli/about" className="text-[#2196f3] ">Liara CLI</Link> را بر روی سیستم‌عامل خود، نصب کنید:
     </p>
     <div dir='ltr'>
       <Highlight className="bash">
@@ -74,7 +74,7 @@ import Head from "next/head";
     <img src="https://files.liara.ir/liara/docs/liaracli-login.gif" alt="liara cli login to account" />
     <div className="h-4" />
     <p>
-        بعد از انجام کار فوق، بایستی با اجرای دستور زیر، <Link className="text-[#2196f3] " href="../../details/private-network">شبکه خصوصی</Link> برنامه‌تان را ایجاد کنید؛ البته اگر که از قبل شبکه خصوصی را ایجاده کرده باشید؛ نیازی به اجرای این دستور، نخواهد بود:
+        بعد از انجام کار فوق، بایستی با اجرای دستور زیر، <Link className="text-[#2196f3] " href="/paas/details/private-network/">شبکه خصوصی</Link> برنامه‌تان را ایجاد کنید؛ البته اگر که از قبل شبکه خصوصی را ایجاده کرده باشید؛ نیازی به اجرای این دستور، نخواهد بود:
     </p>
     <div dir='ltr'>
       <Highlight className="bash">
@@ -90,7 +90,7 @@ import Head from "next/head";
       </Highlight>
     </div>
     <p>
-        با اجرای دستور فوق، شما باید شناسه، نوع پلتفرم (که باید بر روی next باشد)، شبکه خصوصی و <Link className="text-[#2196f3] " href="../../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> برنامه خود را انتخاب کنید.
+        با اجرای دستور فوق، شما باید شناسه، نوع پلتفرم (که باید بر روی next باشد)، شبکه خصوصی و <Link className="text-[#2196f3] " href="/paas/details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> برنامه خود را انتخاب کنید.
     </p>
     </>,
 
@@ -105,13 +105,13 @@ import Head from "next/head";
     </Highlight>
 </div>
 <p>
-    در واقع، این همان <a className="text-[#2196f3] " href="../../domains/default-subdomain">دامنه پیش‌فرضی</a> است که لیارا به صورت رایگان در اختیار شما قرار می‌دهد.
+    در واقع، این همان <a className="text-[#2196f3] " href="/paas/domains/default-subdomain">دامنه پیش‌فرضی</a> است که لیارا به صورت رایگان در اختیار شما قرار می‌دهد.
     در نهایت، می‌توانید وضعیت برنامه خود را در <a className="text-[#2196f3] " href="https://console.liara.ir">پنل کاربری</a> مشاهده بفرمایید که در حالت آماده به کار قرار دارد:
 </p>
 <img src="https://files.liara.ir/liara/docs/created-nextjs-app.png" alt="a ready to use nodejs app"/>
 <div className="h-2" />
-<Alert variant="success">همچنین بخوانید: <a className="text-[#2196f3] " href="../../details/about">آشنایی با ویژگی‌های یک برنامه</a></Alert>
-<Alert variant="success">همچنین بخوانید: <a className="text-[#2196f3] " href="../../domains/about">اضافه کردن دامنه به برنامه</a></Alert>
+<Alert variant="success">همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/about">آشنایی با ویژگی‌های یک برنامه</a></Alert>
+<Alert variant="success">همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/domains/about">اضافه کردن دامنه به برنامه</a></Alert>
 
-<NextPage next="./deploy-app" />
+
 </Layout>

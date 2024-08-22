@@ -28,7 +28,7 @@ import Head from "next/head";
 </p>
 </Alert>
 
-در ابتدا، بایستی طبق مستندات <a href="../../../details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ به عنوان مثال:
+در ابتدا، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ به عنوان مثال:
 
 <div className="h-2" />
     <div dir='ltr'>
@@ -42,7 +42,7 @@ DB_PASSWORD=xCBl7ma5MLtzEUa4Aw7OUM27`}
     </div>
 <div className="h-2" />
 
-در ادامه، بایستی طبق مستندات <a href="../use-hooks" className="text-[#2196f3] ">هوک‌ها</a> در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_build.sh</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+در ادامه، بایستی طبق مستندات <a href="/paas/php/how-tos/use-hooks" className="text-[#2196f3] ">هوک‌ها</a> در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_build.sh</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="sh">
@@ -68,7 +68,7 @@ phpenmod -v 8.2 sqlsrv pdo_sqlsrv;`}
 </p>
 </Alert>
 
-قطعه کد فوق، تمامی کارهای لازم برای نصب اکستنشن <Important>sqlsrv</Important> را صورت می‌دهد و نیازی نیست که پس از دیپلوی برنامه، کار خاصی را انجام دهید.
+قطعه کد فوق، تمامی کارهای لازم برای نصب اکستنشن <Important>sqlsrv</Important> را صورت می‌دهد و نیازی نیست که پس از استقرار برنامه، کار خاصی را انجام دهید.
 در ادامه، می‌توانید با متد <Important>sqlsrv_connect</Important> به دیتابیس MSSQL خود، متصل شوید؛ به عنوان مثال:
 
 <div className="h-2" />

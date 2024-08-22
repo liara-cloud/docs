@@ -90,7 +90,7 @@ app.listen(3000, () => {
     content: (
     <>
         <h3>ایجاد دیسک برای دیتابیس</h3>
-        <p><a href="../../../disks/about" className='text-[#2196f3] '>طبق مستندات ایجاد دیسک</a>،  در بخش <b>دیسک‌ها</b> برنامه خود در لیارا، یک دیسک جدید با نام <Important>database</Important> و اندازه مدنظرتان ایجاد کنید.</p>
+        <p><a href="/paas/disks/create" className='text-[#2196f3] '>طبق مستندات ایجاد دیسک</a>،  در بخش <b>دیسک‌ها</b> برنامه خود در لیارا، یک دیسک جدید با نام <Important>database</Important> و اندازه مدنظرتان ایجاد کنید.</p>
     </>
     )
     },
@@ -130,7 +130,7 @@ app.listen(3000, () => {
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
 در قطعه کد فوق، قابلیت Conneciton Pooling، تعبیه شده است؛ البته اگر که قصد دارید تا مقادیر آن را خودتان پیکربندی کنید، کافیست که قطعه کد زیر را به برنامه خود، اضافه کنید:
 
@@ -151,7 +151,7 @@ app.listen(3000, () => {
 
 <Section id="db-logging" title="لاگ‌گیری دیتابیس" />
 
- با استفاده از قطعه کد زیر، لاگ‌های کامل مربوط به دیتابیس، در بخش <a href="../../../../details/observations/software" className="text-[#2196f3] ">گزارشات نرم‌افزار برنامه</a>، به شما نمایش داده می‌شود:
+ با استفاده از قطعه کد زیر، لاگ‌های کامل مربوط به دیتابیس، در بخش <a href="/paas/details/observations/software" className="text-[#2196f3] ">گزارشات نرم‌افزار برنامه</a>، به شما نمایش داده می‌شود:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">

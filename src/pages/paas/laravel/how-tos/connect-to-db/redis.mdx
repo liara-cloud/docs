@@ -19,7 +19,7 @@ import Head from "next/head";
 # اتصال به دیتابیس Redis در برنامه‌های Laravel
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس Redis نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="../../../details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+برای اتصال به دیتابیس Redis نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
@@ -53,7 +53,7 @@ Route::get('/test-redis', function () {
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="../../../../dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
 در Redis نیازی به تنظیمات اضافی برای Connection Pooling نخواهید داشت، زیرا درایور <Important>redis</Important> در لاراول، به طور خودکار اتصالات را مدیریت می‌کند.
 

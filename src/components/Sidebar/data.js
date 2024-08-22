@@ -7,6 +7,7 @@ import {
   GoLock,
   GoDatabase,
   GoDiff,
+  GoPencil,
   GoProjectRoadmap,
   GoContainer,
   GoRocket,
@@ -1067,6 +1068,16 @@ export default {
         link: "/paas/nodejs/related-apps/hapi"
       },
       {
+        title: "Hono",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/related-apps/hono"
+      },
+      {
+        title: "Nitro",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/related-apps/nitro"
+      },
+      {
         title: "NestJS",
         icon: <IconContainer alt="nest" />,
         link: "/paas/nodejs/related-apps/nestjs"
@@ -1200,7 +1211,7 @@ export default {
         link: "/paas/nextjs/how-tos/set-cron-job"
       },
       {
-        title: "مشاهده نسخه NodeJS",
+        title: "تغییر نسخه NodeJS",
         link: "/paas/nextjs/how-tos/choose-version"
       },
       {
@@ -1819,11 +1830,11 @@ export default {
         icon: <IconContainer alt="elastic" />,
         link: "/paas/django/how-tos/connect-to-db/elastic-search"
       },
-      {
-        title: "دیتابیس MongoDB",
-        icon: <IconContainer alt="mongodb" />,
-        link: "/paas/django/how-tos/connect-to-db/mongodb"
-      },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   icon: <IconContainer alt="mongodb" />,
+      //   link: "/paas/django/how-tos/connect-to-db/mongodb"
+      // },
       {
         hr: true
       },
@@ -2520,6 +2531,11 @@ export default {
         title: "Astro",
         icon: <IconContainer alt="astro" />,
         link: "/paas/static/related-apps/astro"
+      },
+      {
+        title: "SolidJS",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/related-apps/solidjs"
       },
       {
         title: "NuxtJS",
@@ -3831,6 +3847,11 @@ export default {
         link: "/one-click-apps/about"
       },
       {
+        title: "ساخت app با Liara Compose",
+        icon: <GoPencil  />,
+        link: "/one-click-apps/liara-compose/about"
+      },
+      {
         hr: true
       },
       {
@@ -3976,6 +3997,51 @@ export default {
         icon: <IconContainer alt="meilisearch" />,
         link: "/one-click-apps/meilisearch/quick-start"
       },
+      {
+        title: "Jupyter notebook",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/jupyter/7388996.png" />,
+        link: "/one-click-apps/jupyter-notebook/quick-start"
+      },
+      {
+        title: "SuperTokens",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/supertoken/favicon.png" />,
+        link: "/one-click-apps/supertokens/quick-start"
+      },
+    ],
+    'liara-compose': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            Liara Compose 
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "Liara Compose چیست؟",
+        icon: <GoInfo  />,
+        link: "/one-click-apps/liara-compose/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "استقرار سریع Liara Compose",
+        link: "/one-click-apps/liara-compose/quick-start"
+      },
+      {
+        title: "متغیرهای محیطی Liara Compose",
+        link: "/one-click-apps/liara-compose/envs"
+      },
+      {
+        title: "جدول فیلدهای Liara Compose",
+        link: "/one-click-apps/liara-compose/fields-tables"
+      },
+
     ],
     wordpress: [
       {
@@ -5001,7 +5067,6 @@ export default {
         link: "/one-click-apps/chroma/how-tos/choose-version"
       },
     ],
-
     meilisearch: [
       {
         badge: (
@@ -5039,7 +5104,79 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/meilisearch/how-tos/choose-version"
       },
-    ],
+    ], 
+    'jupyter-notebook': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Jupyter Notebook
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/jupyter-notebook/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/jupyter-notebook/how-tos/choose-version"
+      },
+    ], 
+    supertokens: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه SuperTokens
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/supertokens/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "اتصال به SuperTokens با NextJS",
+        link: "/one-click-apps/supertokens/how-tos/connect-to-app"
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/supertokens/how-tos/choose-version"
+      },
+    ], 
 
 
    
@@ -5347,6 +5484,11 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/ghost"
       },
       {
+        title: "WordPress",
+        icon: <IconContainer alt="wordpress" />,
+        link: "/email-server/how-tos/connect-via-platform/wordpress"
+      },
+      {
         hr: true
       },
       {
@@ -5498,6 +5640,11 @@ export default {
         title: "Ghost",
         icon: <IconContainer alt="ghost" />,
         link: "/email-server/how-tos/connect-via-platform/ghost"
+      },
+      {
+        title: "WordPress",
+        icon: <IconContainer alt="wordpress" />,
+        link: "/email-server/how-tos/connect-via-platform/wordpress"
       },
       {
         hr: true
@@ -5764,7 +5911,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -5963,7 +6110,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6161,7 +6308,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6360,7 +6507,7 @@ export default {
         link: "/object-storage/details/about"
       },
       {
-        title: "اتصال به باکت",
+        title: "اتصال دامنه به باکت",
         icon: <GoGlobe />,
         link: "/object-storage/add-domain"
       },
@@ -6406,7 +6553,7 @@ export default {
         link: "/object-storage/details/change-plan"
       },
       {
-        title: "حذف یک Object Storage",
+        title: "حذف باکت",
         icon: <GoXCircle  />,
         link: "/object-storage/details/delete-object-storage"
       },

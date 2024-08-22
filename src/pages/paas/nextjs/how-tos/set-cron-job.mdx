@@ -26,20 +26,96 @@ Cron job یک وظیفه زمان‌بندی شده در سیستم‌عامل�
 کافیست تا در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و Cron Jobهای مد نظر خود را در
 آرایه‌ای به نام <Important>cron</Important>، تنظیم و پیکربندی کنید. 
 به عنوان مثال، 
-فرض کنید که یک اسکریپت به نام <Important>backup</Important> در فایل <Important>package.json</Important> تعریف کرده‌اید 
-و قصد دارید که در یک زمان مشخص، این اسکریپت اجرا شود و یک فایل پشتیبان از یک قسمت خاص برای شما تهیه شود؛ برای این کار کافیست تا قطعه کد زیر را به فایل 
-<Important>liara.json</Important> اضافه کنید:
+فرض کنید که یک API به نام test با محتوای زیر دارید: 
+
+<Tabs 
+    tabs={["Pages Router", "App Router"]} 
+    content={[
+    <>
+        <div dir="ltr">
+          <Highlight  className="js">
+          {`// pages/api/test.js
+
+export default function handler(req, res) {
+  console.log('this is a test');
+  res.status(200).json({ message: 'API executed successfully' });
+}
+`}
+          </Highlight>
+        </ div>
+    </>,
+    <>
+        <div dir="ltr">
+          <Highlight  className="js">
+          {`// app/api/test/route.js
+
+export async function GET(request) {
+  console.log('this is a test');
+  return new Response(JSON.stringify({ message: 'API executed successfully' }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+`}
+          </Highlight>
+        </ div>
+    </>,
+    ]}
+/>
+
+و یا اگر که از <a href="/paas/nextjs/how-tos/use-type-script/" className="text-[#2196f3]">TypeScript</a> استفاده می‌کنید؛ محتوای APIتان می‌تواند مانند زیر باشد: 
+
+<Tabs 
+    tabs={["Pages Router", "App Router"]} 
+    content={[
+    <>
+        <div dir="ltr">
+          <Highlight  className="ts">
+          {`// pages/api/test.ts
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log('this is a test');
+  res.status(200).json({ message: 'API executed successfully' });
+}
+`}
+          </Highlight>
+        </ div>
+    </>,
+    <>
+        <div dir="ltr">
+          <Highlight  className="ts">
+          {`// app/api/test/route.ts
+
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function GET(request: NextRequest) {
+  console.log('this is a test');
+  return NextResponse.json({ message: 'API executed successfully' }, { status: 200 });
+}
+`}
+          </Highlight>
+        </ div>
+    </>,
+    ]}
+/>
+
+حال، برای اینکه API شما، مثلاً در هر دقیقه، به صورت خودکار اجرا شود؛ شما می‌توانید از قابلیت Cron Job استفاده کنید و در آرایه <Important>cron</Important> در فایل <Important>liara.json</Important>، قطعه کدی مشابه قطعه کد زیر، بنویسید:
 <div className="h-2" />
 <div dir="ltr">
 <Highlight  className="json">
 {`{
   "cron": [
-    "0 1 * * * npm run backup"
+    "* * * * * curl http://localhost:3000/api/test"
   ]
 }`}
 </Highlight>
 </ div>
 <div className="h-2" />
+با انجام کار فوق و استقرار برنامه‌تان با <a href="/references/cli/about" className="text-[#2196f3]">Liara CLI</a> و دستور <Important>liara deploy</Important>، Cron Job در برنامه شما، تنظیم خواهد شد
+و در زمان مشخص شده، برای‌تان اجرا می‌شود. 
 
 <Section id="cron-format" title="فرمت زمان‌بندی Cron Job" />
 در نظر داشته باشید که فرمت زمان‌بندی Cron به صورت زیر است:
@@ -68,8 +144,5 @@ Cron job یک وظیفه زمان‌بندی شده در سیستم‌عامل�
 پس از تنظیم cron jobها و استقرار مجدد برنامه، می‌توانید لیست آن‌ها را در قسمت **تنظیمات برنامه** خود، مشاهده بفرمایید:
 <div className="h-2" />
 <img src="https://files.liara.ir/liara/docs/see-cron-jobs.png" alt="see cron jobs on liara" />
-
-
-<NextPage next="./choose-version" />
 
 </Layout>
