@@ -420,7 +420,9 @@ export default function Home() {
           id="welcome-continer"
           className="bg-[url('/static/images/bg-main.webp')] border bg-right	md:bg-left border-[#c4c4c4] relative p-8 md:h-[250px] md:w-[1050px] flex flex-col justify-center rounded-lg"
         >
-          <h1 className="text-[20px] font-bold md:font-normal md:text-[35px]"> به مستندات لیارا خوش‌آمدید 👋🏼</h1>
+          <h1 className="text-[20px] font-bold md:font-normal md:text-[35px]">
+            {" "}به مستندات لیارا خوش‌آمدید 👋🏼
+          </h1>
           <p className="mt-2 md:w-[50%] eading-7">
             اینجا خانه‌ی توسعه‌دهندگان است، خانه‌ی خودتان. راحت باشید.
           </p>
@@ -450,24 +452,24 @@ export default function Home() {
         <Section id="home-products" title={"محصولات لیارا"}>
           <div className="grid md:grid-cols-3 gap-4">
             {PRODUCTS.map(item =>
-              <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
-                <div className="w-full">
-                  <div className="flex items-center justify-between gap-3">
-                    <h4>
-                      {item.title}
-                    </h4>
-                    <div className="bg-[#222] text-white p-1 rounded-md">
-                      {item.icon}
+              <Link href={item.link}>
+                <Card className="min-h-[180px] flex flex-col cursor-pointer justify-between items-start w-full">
+                  <div className="w-full">
+                    <div className="flex items-center justify-between gap-3">
+                      <h4>
+                        {item.title}
+                      </h4>
+                      <div className="bg-[#222] text-white p-1 rounded-md">
+                        {item.icon}
+                      </div>
                     </div>
+                    <p className="text-[gray] leading-6 text-[14px] mt-3">
+                      {item.desc}
+                    </p>
                   </div>
-                  <p className="text-[gray] leading-6 text-[14px] mt-3">
-                    {item.desc}
-                  </p>
-                </div>
-                <Link href={item.link}>
                   <Button variant="link">بیشتر بدانید</Button>
-                </Link>
-              </Card>
+                </Card>
+              </Link>
             )}
           </div>
         </Section>

@@ -40,9 +40,134 @@ body {
 
 }
 
-.layout a.text-[#2196f3]  {
+.layout a.text-[#2196f3] {
   color: rgb(123, 168, 250);
   text-decoration: rgba(123, 167, 250, 0.411);
+}
+
+
+
+.platform-videos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+
+
+.platform-videos-container div span img {
+  background: #333 !important;
+}
+
+.platform-videos-container div span {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #fff2;
+  max-height: 45px;
+}
+
+
+#tags {
+  border-color: #0002;
+  color: #181818;
+}
+.dark #tags {
+  border-color: #fff2;
+  color: #fff;
+}
+
+.platform-videos-container div p {
+  font-size: 16px;
+}
+
+.platform-videos-container div span img {
+  max-width: 65px;
+}
+
+.platform-videos-container button {
+
+  margin-right: 10px;
+  margin-left: 12px;
+
+  position: absolute;
+  left: 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.platform-videos-container button img {
+  border: none !important;
+  border-radius: 0 !important;
+  width: 7px;
+  margin-left: 8px;
+}
+
+.platform-videos-container div {
+  display: flex;
+  position: relative;
+  align-items: center;
+  /* padding: 10px; */
+  width: 47%;
+  max-height: 70px;
+  border-radius: 8px;
+
+}
+
+
+
+.platform-videos-container div:hover {
+  background-color: #54637b1d;
+}
+
+.dialog-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 22;
+}
+
+.dialog-container div {
+  display: flex;
+  align-items: center;
+}
+
+.dialog-container button {
+  margin-bottom: 10px;
+}
+
+.dialog-container button img {
+  border: none !important;
+  border-radius: 0 !important;
+  width: 9px;
+  margin-left: 8px;
+}
+
+.dialog-container a {
+  border: none;
+}
+
+.bg-disable-dialog {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  cursor: pointer;
+  left: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 0px #181818;
+}
+
+
+.dialog-container video {
+  width: 700px;
 }
 
 
@@ -324,10 +449,25 @@ pre code {
     top: 5%;
   }
 
+
+  .platform-videos-container {
+    display: block;
+  }
+
+  .platform-videos-container div {
+    width: 100%;
+    padding: 5px 0px;
+    margin-top: 15px;
+  }
+
+
   .results ul li div p {
     font-size: 13px;
   }
 }
+
+
+
 
 @layer utilities {
   .text-balance {
