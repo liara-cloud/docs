@@ -7,6 +7,7 @@ import {
   GoLock,
   GoDatabase,
   GoDiff,
+  GoVideo,
   GoPencil,
   GoProjectRoadmap,
   GoContainer,
@@ -155,6 +156,14 @@ export default {
       title: "SLAs",
       icon: <GoLaw  />,
       link: "https://liara.ir/sla/"
+    },
+    {
+      hr: true
+    },
+    {
+      title: "تلویزیون لیارا",
+      icon: <GoVideo   />,
+      link: "/tv"
     },
     {
       hr: true
