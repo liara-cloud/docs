@@ -102,7 +102,23 @@ export async function GET(request: NextRequest) {
     ]}
 />
 
-حال، برای اینکه API شما، مثلاً در هر دقیقه، به صورت خودکار اجرا شود؛ شما می‌توانید از قابلیت Cron Job استفاده کنید و در آرایه <Important>cron</Important> در فایل <Important>liara.json</Important>، قطعه کدی مشابه قطعه کد زیر، بنویسید:
+حال، برای اینکه API شما، مثلاً در هر دقیقه، به صورت خودکار اجرا شود؛ شما می‌توانید از قابلیت Cron Job استفاده کنید 
+و با استفاده یکی از روش‌های زیر، آن را در پروژه خود فعال کنید:
+
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+      برای تنظیم یک Cron Job در NextJS کافیست تا
+
+      پس از آپلود پروژه خود در کنسول در بخش <b>تنظیمات پلتفرم</b>، Cron Jobهای خود را تعریف کنید:
+      <div className="h-4" />
+      <img src="https://files.liara.ir/liara/docs/nextjs-cronjob.png" alt="set cron jobs on liara" />
+      
+    </>,
+    <>
+
+برای تنظیم یک Cron Job در NextJS کافیست تا در لوکال در آرایه <Important>cron</Important> در فایل <Important>liara.json</Important>، قطعه کدی مشابه قطعه کد زیر، بنویسید:
 <div className="h-2" />
 <div dir="ltr">
 <Highlight  className="json">
@@ -116,6 +132,10 @@ export async function GET(request: NextRequest) {
 <div className="h-2" />
 با انجام کار فوق و استقرار برنامه‌تان با <a href="/references/cli/about" className="text-[#2196f3]">Liara CLI</a> و دستور <Important>liara deploy</Important>، Cron Job در برنامه شما، تنظیم خواهد شد
 و در زمان مشخص شده، برای‌تان اجرا می‌شود. 
+    </>
+    ]}
+/>
+
 
 <Section id="cron-format" title="فرمت زمان‌بندی Cron Job" />
 در نظر داشته باشید که فرمت زمان‌بندی Cron به صورت زیر است:

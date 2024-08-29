@@ -19,22 +19,10 @@ import Head from "next/head";
 # رفع خطای Could not modify config file
 <hr className="mb-2" />
 
-لیارا به‌صورت خودکار فایل <Important>next.config.js</Important> برنامه‌ی شما را پیدا کرده و در این فایل، تنظیماتی را اضافه می‌کند تا برنامه برای اجرا آماده شود. در صورتی که با خطای <Important>could not modify config file</Important> مواجه شدید، 
-باید ابتدا یک فایل با نام <Important>liara.json</Important> در ریشه برنامه‌تان بسازید و قطعه‌کد زیر را به این فایل اضافه کنید:
-
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="json">
-        {`{
-  "next": {
-    "modifyConfig": false
-  }
-}`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-در مرحله‌ی بعد نیاز هست قطعه‌کد زیر را متناسب با نسخه‌ی NextJS پروژه‌تان، به فایل <Important>next.config.js</Important> اضافه کنید:
+لیارا به‌صورت خودکار فایل <Important>next.config.js</Important> برنامه‌ی شما را پیدا کرده و در این فایل، تنظیماتی را اضافه می‌کند تا برنامه برای اجرا آماده شود.
+البته در صورتی که خودتان آن را تغییر داده باشید؛ لیارا تغییری را بر روی آن، اعمال نخواهد کرد.
+حال، در صورتی که با خطای <Important>could not modify config file</Important> مواجه شدید، 
+ نیاز است قطعه‌کد زیر را متناسب با نسخه‌ی NextJS پروژه‌تان، به فایل <Important>next.config.js</Important> اضافه کنید:
 
 
 <Tabs 
