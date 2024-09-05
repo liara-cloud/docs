@@ -36,8 +36,66 @@ import Head from "next/head";
 <div className="h-2" />
 شما می‌توانید برای بارگذاری متغیرهای محیطی محرمانه خود یک فایل به نام <Important>env.production.</Important> در مسیر اصلی پروژه خود ایجاد کنید و متغیرهای محیطی خود را در آنجا تعریف کرده و در پروژه خود استفاده کنید. پس از انجام این کارها، می‌توانید پروژه خود را در لیارا مستقر کنید. 
 
+<Section id="use-envs-while-building" title="استفاده از متغیرهای محیطی در زمان build پروژه" />
+برای اینکه به متغیرهای محیطی در زمان build پروژه، دسترسی داشته باشید؛ 
+تفاوتی نمی‌کند که متغیرهای خود را با <Important>_NEXT_PUBLIC</Important> شروع کرده باشید یا از فایل <Important>env.production.</Important> استفاده کرده باشید؛ در هر صورت، 
+کافیست تا آن را در فایل <Important>next.config.js</Important>، تنظیم کنید. 
+<div className="h-2" />
+به عنوان مثال، فرض کنید که یک متغیر به نام <Important>BUILD_TIME_VAR</Important> را در فایل <Important>env.production.</Important> مانند قطعه کد زیر، تنظیم کرده‌اید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`BUILD_TIME_VAR=ThisIsBuildTime`}
+</Highlight>
+</ div>
 <div className="h-2" />
 
+برای استفاده از این متغیر در زمان build پروژه، بایستی مانند قطعه کد زیر، آن را به بخش <Important>env</Important> در فایل <Important>next.config.js</Important>، اضافه کنید:
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  env: {
+    BUILD_TIME_VAR: process.env.BUILD_TIME_VAR,
+  },
+  };
+
+export default nextConfig;
+`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+با انجام کار فوق، می‌توانید در زمان build پروژه، به متغیرمحیطی مدنظرتان دسترسی داشته باشید؛ به عنوان مثال، برای دسترسی به متغیر مثال فوق، کافیست تا قطعه کد زیر را در فایل <Important>next.config.js</Important>، قرار دهید:
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  env: {
+    BUILD_TIME_VAR: process.env.BUILD_TIME_VAR,
+  },
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    console.log('Building with environment variable:', process.env.BUILD_TIME_VAR);
+    return config;
+  },
+  };
+
+export default nextConfig;
+`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+<Alert variant='info'>
+<p>
+به صورت کلی، متغیرهایی که با پیشوند <Important>_NEXT_PUBLIC</Important> شروع می‌شوند؛ اصطلاحاً <Important>client-side</Important> و متغیرهایی که در فایل <Important>env.production.</Important> تعریف می‌شوند، <Important>server side</Important>، نامیده می‌شوند.
+</p>
+</Alert>
 <Alert variant='warning'>
 <p>
 اگر که متغیرهای محیطی را پس از استقرار، به برنامه اضافه کرده‌اید. برای بارگذاری موفق آن‌ها، بایستی برنامه خود را ری‌استارت کنید.
