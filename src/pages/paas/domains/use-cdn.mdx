@@ -1,0 +1,43 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از CDN - لیارا</title>
+</Head>
+# استفاده از CDN
+
+<hr className="mb-2" />
+**CDN** یا شبکه توزیع محتوا (Content Delivery Network)، سیستمی از سرورهاست که در مناطق مختلف جهان مستقر شده‌اند و وظیفه اصلی آن‌ها افزایش سرعت تحویل محتواهای اینترنتی به کاربران است. وقتی شما یک وب‌سایت یا برنامه‌ای را باز می‌کنید، محتوای آن می‌تواند از نزدیک‌ترین سرور CDN به شما بارگذاری شود، به جای این که از سرور اصلی که ممکن است کیلومترها دورتر باشد دریافت شود.
+
+<div className="h-4" />
+اگر که از سرویس‌های DNS دیگری به جز <a href="/dns-management-system/about/" className="text-[#2196f3]">سامانه DNS لیارا</a> استفاده می‌کنید و 
+سرویس مدنظرتان از CDN نیز پشتیبانی می‌کند؛ شما می‌توانید از این قابلیت در 
+برنامه‌های خود در لیارا، بهره‌مند شوید.
+به صورت کلی، استفاده از CDN در برنامه‌های لیارا، سه حالت دارد:
+
+<div className="h-4" />
+<ul>
+    <li><b>SSL غیرفعال و CDN غیرفعال (HTTP):</b> در این حالت، ارتباط از هاستینگ لیارا به CDN و ارتباط CDN به Client بدون رمزنگاری و مستقیم است. این حالت، فاقد امنیت است و استفاده از آن، توصیه نمی‌شود.</li>
+    <div className="h-1" />
+    <li><b>SSL فعال و CDN غیرفعال (HTTP):</b> در این حالت، اتصال لیارا با CDN رمزنگاری شده است ولی ارتباط CDN با CLient فاقد رمز‌نگاری است و ممکن است در نهایت، خطای ۵۰۲ به کاربر، نمایش داده شود.</li>
+    <li><b>SSL فعال و CDN فعال (HTTPS):</b> در این حالت، هم ارتباط لیارا با CDN و هم ارتباط CDN با Client کاملاً رمزنگاری شده (Full Encrypted) و ایمن است؛ دو بار hand-shaking صورت می‌گیرد و ممکن است تا حدودی سرعت برنامه پایین بیاید. استفاده از این حالت برای برقراری اتصال امن، توصیه می‌شود.</li>
+</ul>
+
+{/* <img src="https://files.liara.ir/liara/docs/enable-ssl-domain.gif" alt="enable ssl"/> */}
+
+</Layout>

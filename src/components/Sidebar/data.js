@@ -811,7 +811,7 @@ export default {
         link: "/paas/domains/add-domain"
       },
       {
-        title: "ساخت زیر رکورد www",
+        title: "ساخت زیر دامنه www",
         link: "/paas/domains/add-www-subdomain"
       },
       {
@@ -837,6 +837,10 @@ export default {
       {
         title: "TLDهای قابل پشتیبانی",
         link: "/paas/domains/supported-tlds"
+      },
+      {
+        title: "استفاده از CDN",
+        link: "/paas/domains/use-cdn"
       },
     ],
     cicd: [
