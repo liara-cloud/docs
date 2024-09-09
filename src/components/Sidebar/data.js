@@ -3891,6 +3891,11 @@ export default {
         link: "/one-click-apps/imgproxy/quick-start"
       },
       {
+        title: "Onedev",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.png" />,
+        link: "/one-click-apps/onedev/quick-start"
+      },
+      {
         title: "Rocket.Chat",
         icon: <IconContainer alt="rocketchat" />,
         link: "/one-click-apps/rocketchat/quick-start"
@@ -4280,6 +4285,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/imgproxy/how-tos/choose-version"
+      },
+    ],
+    onedev: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.png" />
+            برنامه Onedev
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/onedev/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/onedev/how-tos/choose-version"
       },
     ],
     rocketchat: [
