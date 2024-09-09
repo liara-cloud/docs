@@ -1,0 +1,66 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه‌های PgHero - لیارا</title>
+</Head>
+
+# راه‌اندازی سریع برنامه‌های PgHero
+<hr className="mb-2" />
+
+<a href="https://github.com/ankane/pghero" className="text-[#2196f3] ">PgHero</a> یک ابزار متن‌باز برای پایگاه‌داده‌های PostgreSQL است که به مدیران و توسعه‌دهندگان کمک می‌کند تا عملکرد پایگاه‌داده را بهینه‌سازی و مانیتور کنند. این ابزار به صورت دقیق شاخص‌هایی مانند کندی کوئری‌ها، مصرف منابع، استفاده از ایندکس‌ها، و قفل‌ها را نشان می‌دهد. PgHero به کاربران این امکان را می‌دهد تا مشکلات عملکردی پایگاه‌داده را به سرعت شناسایی کنند و کوئری‌های بهینه‌سازی نشده را پیدا کرده و بهبود دهند. با استفاده از این ابزار، تیم‌ها می‌توانند عملکرد PostgreSQL را بدون نیاز به استفاده از ابزارهای پیچیده، رصد کرده و بهبود بخشند.
+
+
+<div className="h-4" />
+
+برای راه‌اندازی برنامه‌ی آماده PgHero در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="text-[#2196f3] ">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
+سپس برنامه‌ی <b>PgHero</b> 
+را انتخاب کنید و در صورت تمایل یک شناسه برای آن قرار دهید (در غیر این‌صورت، لیارا به صورت پیش‌فرض یک شناسه برای برنامه‌تان انتخاب می‌کند)؛ سپس بر روی گزینه **نصب سریع** یا **نصب پیشرفته** کلیک کنید تا برنامه‌تان ساخته شود:
+  <div className="h-2" />
+  <video
+  src="https://files.liara.ir/liara/docs/pghero.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  />
+  <br />
+
+پس از ساخته شدن برنامه، می‌توانید در صفحه <a href="https://console.liara.ir/apps" className="text-[#2196f3] ">پلتفرم</a>، برنامه خود را بررسی کنید. برای نصب دلخواه و انتخاب نسخه مدنظرتان یا انتخاب dockerimage ، باید از گزینه **نصب پیشرفته** یا <a href="/one-click-apps/liara-compose/about/" className="text-[#2196f3]">Liara Compose</a> استفاده کنید. 
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/rocketchat/how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

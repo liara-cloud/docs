@@ -3911,6 +3911,11 @@ export default {
         link: "/one-click-apps/flowise/quick-start"
       },
       {
+        title: "PgHero",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/pghero-icon1.ico" />,
+        link: "/one-click-apps/pghero/quick-start"
+      },
+      {
         title: "NextCloud",
         icon: <IconContainer alt="nextcloud" />,
         link: "/one-click-apps/nextcloud/quick-start"
@@ -3924,6 +3929,11 @@ export default {
         title: "Mattermost",
         icon: <IconContainer alt="mattermost" />,
         link: "/one-click-apps/mattermost/quick-start"
+      },
+      {
+        title: "Strapi",
+        icon: <IconContainer alt="strapi" />,
+        link: "/one-click-apps/strapi/quick-start"
       },
       {
         title: "Kibana",
@@ -4400,6 +4410,62 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/flowise/how-tos/choose-version"
       },
+    ],
+    pghero: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/pghero-icon1.ico" />
+            برنامه PgHero
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/pghero/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/pghero/how-tos/choose-version"
+      },
+    ],
+    strapi: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="strapi" />
+            برنامه Strapi
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/strapi/quick-start"
+      },
+      
     ],
     metabase: [
       {

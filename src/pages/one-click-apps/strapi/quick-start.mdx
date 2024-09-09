@@ -1,0 +1,66 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه‌های Strapi - لیارا</title>
+</Head>
+
+# راه‌اندازی سریع برنامه‌های Strapi
+<hr className="mb-2" />
+
+<a href="https://strapi.io/" className="text-[#2196f3] ">Strapi</a> 
+یک سیستم مدیریت محتوا (CMS) متن‌باز و بدون نیاز به کدنویسی (headless CMS) است که به توسعه‌دهندگان اجازه می‌دهد به راحتی API‌های قابل سفارشی‌سازی برای مدیریت محتوای دیجیتال ایجاد کنند. با استفاده از Strapi، محتوا می‌تواند از طریق API‌ها (RESTful یا GraphQL) به چندین پلتفرم و دستگاه‌ها، مانند وب‌سایت‌ها، اپلیکیشن‌های موبایل، و دستگاه‌های اینترنت اشیا (IoT)، تحویل داده شود.
+
+<div className="h-4" />
+
+برای راه‌اندازی برنامه‌ی آماده Strapi در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="text-[#2196f3] ">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
+سپس برنامه‌ی <b>Strapi</b> 
+را انتخاب کنید و در صورت تمایل یک شناسه برای آن قرار دهید (در غیر این‌صورت، لیارا به صورت پیش‌فرض یک شناسه برای برنامه‌تان انتخاب می‌کند)؛ سپس بر روی گزینه **نصب سریع** یا **نصب پیشرفته** کلیک کنید تا برنامه‌تان ساخته شود:
+  <div className="h-2" />
+  <video
+  src="https://files.liara.ir/liara/docs/strapi.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  />
+  <br />
+
+پس از ساخته شدن برنامه، می‌توانید در صفحه <a href="https://console.liara.ir/apps" className="text-[#2196f3] ">پلتفرم</a>، برنامه خود را بررسی کنید. برای نصب دلخواه و انتخاب نسخه مدنظرتان یا انتخاب dockerimage ، باید از گزینه **نصب پیشرفته** یا <a href="/one-click-apps/liara-compose/about/" className="text-[#2196f3]">Liara Compose</a> استفاده کنید. 
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/rocketchat/how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>
