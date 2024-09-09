@@ -3906,6 +3906,11 @@ export default {
         link: "/one-click-apps/metabase/quick-start"
       },
       {
+        title: "Flowise AI",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/singlestore.a5b72cb0.svg" />,
+        link: "/one-click-apps/flowise/quick-start"
+      },
+      {
         title: "NextCloud",
         icon: <IconContainer alt="nextcloud" />,
         link: "/one-click-apps/nextcloud/quick-start"
@@ -3929,6 +3934,11 @@ export default {
         title: "Grafana",
         icon: <IconContainer alt="grafana" />,
         link: "/one-click-apps/grafana/quick-start"
+      },
+      {
+        title: "Umami",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/_u-7zTZM_400x400.jpg" />,
+        link: "/one-click-apps/umami/quick-start"
       },
       {
         title: "Prestashop",
@@ -4356,6 +4366,41 @@ export default {
         link: "/one-click-apps/rocketchat/how-tos/choose-version"
       },
     ],
+    flowise: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/singlestore.a5b72cb0.svg" />
+            برنامه FlowiseAI
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/flowise/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/flowise/how-tos/choose-version"
+      },
+    ],
     metabase: [
       {
         badge: (
@@ -4558,6 +4603,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/grafana/how-tos/choose-version"
+      },
+    ],
+    umami: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/_u-7zTZM_400x400.jpg" />
+            برنامه Umami
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/umami/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/umami/how-tos/choose-version"
       },
     ],
     prestashop: [
