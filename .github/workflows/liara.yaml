@@ -17,7 +17,7 @@ jobs:
           LIARA_TOKEN: ${{ secrets.IRAN_API_TOKEN }}
         run: |
           npm i -g @liara/cli@7
-          liara deploy --app="the-docs" --api-token="$LIARA_TOKEN" --platform=docker --port=80 --no-app-logs
+          liara deploy --app="g2-the-docs" --api-token="$LIARA_TOKEN" --platform=docker --port=80 --no-app-logs
       - name: Sleep for 60 seconds
         run: sleep 60
         shell: bash
