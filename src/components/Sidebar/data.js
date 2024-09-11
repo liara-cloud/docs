@@ -4045,6 +4045,16 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/supertoken/favicon.png" />,
         link: "/one-click-apps/supertokens/quick-start"
       },
+      {
+        title: "Directus",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.png" />,
+        link: "/one-click-apps/directus/quick-start"
+      },
+      {
+        title: "Affine",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.png" />,
+        link: "/one-click-apps/affine/quick-start"
+      },
     ],
     'liara-compose': [
       {
@@ -5374,6 +5384,76 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/supertokens/how-tos/choose-version"
+      },
+    ], 
+    directus: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.png" />
+            برنامه Directus
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/directus/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/directus/how-tos/choose-version"
+      },
+    ], 
+    affine: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.png" />
+            برنامه Affine
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/affine/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/affine/how-tos/choose-version"
       },
     ], 
 
