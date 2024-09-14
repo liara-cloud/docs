@@ -1,0 +1,66 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه‌های Focalboard - لیارا</title>
+</Head>
+
+# راه‌اندازی سریع برنامه‌های Focalboard
+<hr className="mb-2" />
+
+<a href="https://www.focalboard.com/" className="text-[#2196f3] ">Focalboard</a> یک ابزار مدیریت پروژه و کارها به صورت متن‌باز است که برای سازماندهی، پیگیری، و مدیریت وظایف به کار می‌رود. این ابزار به صورت آنلاین و آفلاین قابل استفاده است و به عنوان جایگزینی رایگان و متن‌باز برای Trello و سایر ابزارهای مشابه شناخته می‌شود. Focalboard با ارائه بوردهای تصویری و ستون‌های مختلف، امکان دسته‌بندی و اولویت‌بندی وظایف را فراهم می‌کند. این ابزار از قابلیت‌هایی همچون فیلتر کردن وظایف، برچسب‌گذاری، و جستجوی پیشرفته برخوردار است. علاوه بر نسخه سرور، نسخه دسکتاپی نیز برای استفاده محلی موجود است.
+
+
+<div className="h-4" />
+
+برای راه‌اندازی برنامه آماده مدنظر خود در لیارا، باید وارد صفحه <a href="https://console.liara.ir/one-click-apps" className="text-[#2196f3] ">برنامه‌های آماده</a> شوید؛ سپس برنامه‌ی <b>Focalboard</b> 
+را انتخاب کنید و در صورت تمایل یک شناسه برای آن قرار دهید (در غیر این‌صورت، لیارا به صورت پیش‌فرض یک شناسه برای برنامه‌تان انتخاب می‌کند)؛ سپس بر روی گزینه **نصب سریع** یا **نصب پیشرفته** کلیک کنید تا برنامه‌تان ساخته شود.
+
+{/* <div className="h-4" />
+<video
+  src="https://files.liara.ir/liara/docs/Focalboard.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-4" /> */}
+
+پس از ساخته شدن برنامه، می‌توانید در صفحه <a href="https://console.liara.ir/apps" className="text-[#2196f3] ">پلتفرم</a>، برنامه خود را بررسی کنید. برای نصب دلخواه و انتخاب نسخه مدنظرتان یا انتخاب dockerimage ، باید از گزینه **نصب پیشرفته** یا <a href="/one-click-apps/liara-compose/about/" className="text-[#2196f3]">Liara Compose</a> استفاده کنید. 
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "./how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

@@ -4055,6 +4055,11 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.png" />,
         link: "/one-click-apps/affine/quick-start"
       },
+      {
+        title: "Focalboard",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.png" />,
+        link: "/one-click-apps/focalboard/quick-start"
+      },
     ],
     'liara-compose': [
       {
@@ -5454,6 +5459,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/affine/how-tos/choose-version"
+      },
+    ], 
+    focalboard: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.png" />
+            برنامه Focalboard
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/focalboard/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/focalboard/how-tos/choose-version"
       },
     ], 
 
