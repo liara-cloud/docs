@@ -4090,8 +4090,26 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.png" />,
         link: "/one-click-apps/formbricks/quick-start"
       },
-
-
+      {
+        title: "Actual",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.png" />,
+        link: "/one-click-apps/actual/quick-start"
+      },
+      {
+        title: "Grist",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.png" />,
+        link: "/one-click-apps/grist/quick-start"
+      },
+      {
+        title: "Keila",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/keila-logo.ico" />,
+        link: "/one-click-apps/keila/quick-start"
+      },
+      {
+        title: "Passbolt",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.png" />,
+        link: "/one-click-apps/passbolt/quick-start"
+      },
 
     ],
     'liara-compose': [
@@ -5737,6 +5755,146 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/formbricks/how-tos/choose-version"
+      },
+    ], 
+    actual: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.png" />
+            برنامه Actual
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/actual/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/actual/how-tos/choose-version"
+      },
+    ], 
+    grist: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.png" />
+            برنامه Grist
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/grist/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/grist/how-tos/choose-version"
+      },
+    ], 
+    keila: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/keila-logo.ico" />
+            برنامه Keila
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/keila/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/keila/how-tos/choose-version"
+      },
+    ], 
+    passbolt: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.png" />
+            برنامه Passbolt
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/passbolt/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/passbolt/how-tos/choose-version"
       },
     ], 
   },
