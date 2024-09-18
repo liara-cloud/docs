@@ -4075,6 +4075,21 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.png" />,
         link: "/one-click-apps/typesense/quick-start"
       },
+      {
+        title: "OpenProject",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.png" />,
+        link: "/one-click-apps/openproject/quick-start"
+      },
+      {
+        title: "Ntfy",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.png" />,
+        link: "/one-click-apps/ntfy/quick-start"
+      },
+      {
+        title: "Formbricks",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.png" />,
+        link: "/one-click-apps/formbricks/quick-start"
+      },
 
 
 
@@ -5617,6 +5632,111 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/typesense/how-tos/choose-version"
+      },
+    ], 
+    openproject: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.png" />
+            برنامه OpenProject
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/openproject/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/openproject/how-tos/choose-version"
+      },
+    ], 
+    ntfy: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.png" />
+            برنامه Ntfy
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/ntfy/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/ntfy/how-tos/choose-version"
+      },
+    ], 
+    formbricks: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.png" />
+            برنامه Formbricks
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/formbricks/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/formbricks/how-tos/choose-version"
       },
     ], 
   },

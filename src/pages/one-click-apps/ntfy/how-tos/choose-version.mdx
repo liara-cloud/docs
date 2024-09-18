@@ -14,7 +14,7 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات تغییر نسخه Paperless - لیارا</title>
+<title>مستندات تغییر نسخه Ntfy.sh - لیارا</title>
 </Head>
 # تغییر نسخه‌ی برنامه مستقر شده
 <hr className="mb-2" />
@@ -26,27 +26,22 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "paperless-ngx:<your-version>",
-    "port": 8000,
+    "image": "ntfy:<your-version>",
+    "port": 80,
     "app": "<your-app-name>",
     "disks": [
       {
+        "name": "cache",
+        "mountTo": "/var/cache/ntfy"
+      },
+      {
         "name": "data",
-        "mountTo": "/usr/src/paperless/data"
-      },
-      {
-        "name": "media",
-        "mountTo": "/usr/src/paperless/media"
-      },
-      {
-        "name": "export",
-        "mountTo": "/usr/src/paperless/export"
-      },
-      {
-        "name": "consume",
-        "mountTo": "/usr/src/paperless/consume"
+        "mountTo": "/etc/ntfy"
       }
-  ]
+    ],
+    "args": [
+      "serve"
+    ]
 }`}
     </Highlight>
 </div>

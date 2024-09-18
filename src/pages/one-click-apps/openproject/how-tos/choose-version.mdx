@@ -14,7 +14,7 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات تغییر نسخه Paperless - لیارا</title>
+<title>مستندات تغییر نسخه OpenProject - لیارا</title>
 </Head>
 # تغییر نسخه‌ی برنامه مستقر شده
 <hr className="mb-2" />
@@ -26,25 +26,17 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "paperless-ngx:<your-version>",
-    "port": 8000,
+    "image": "openproject:<your-version>",
+    "port": 8080,
     "app": "<your-app-name>",
     "disks": [
       {
-        "name": "data",
-        "mountTo": "/usr/src/paperless/data"
+        "name": "pg-data",
+        "mountTo": "/var/openproject/pgdata"
       },
       {
-        "name": "media",
-        "mountTo": "/usr/src/paperless/media"
-      },
-      {
-        "name": "export",
-        "mountTo": "/usr/src/paperless/export"
-      },
-      {
-        "name": "consume",
-        "mountTo": "/usr/src/paperless/consume"
+        "name": "assets",
+        "mountTo": "/var/openproject/assets"
       }
   ]
 }`}
