@@ -4065,6 +4065,19 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/maybe-logo.svg" />,
         link: "/one-click-apps/maybe/quick-start"
       },
+      {
+        title: "Paperless",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.png" />,
+        link: "/one-click-apps/paperless/quick-start"
+      },
+      {
+        title: "Typesense",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.png" />,
+        link: "/one-click-apps/typesense/quick-start"
+      },
+
+
+
     ],
     'liara-compose': [
       {
@@ -5536,10 +5549,76 @@ export default {
         link: "/one-click-apps/maybe/how-tos/choose-version"
       },
     ], 
-
-
-   
-
+    paperless: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.png" />
+            برنامه Paperless
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/paperless/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/paperless/how-tos/choose-version"
+      },
+    ], 
+    typesense: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.png" />
+            برنامه Typesense
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/typesense/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/typesense/how-tos/choose-version"
+      },
+    ], 
   },
 
   email_server: {
