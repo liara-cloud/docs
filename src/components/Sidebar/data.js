@@ -5893,6 +5893,10 @@ export default {
         )
       },
       {
+        title: "ساخت superuser",
+        link: "/one-click-apps/passbolt/how-tos/create-superuser"
+      },
+      {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/passbolt/how-tos/choose-version"
       },
