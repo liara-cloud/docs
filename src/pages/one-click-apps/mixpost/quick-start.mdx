@@ -1,0 +1,73 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه‌های Mixpost - لیارا</title>
+</Head>
+
+# راه‌اندازی سریع برنامه‌های Mixpost
+<hr className="mb-2" />
+
+<a href="https://mixpost.app/" className="text-[#2196f3] ">Mixpost</a>
+یک پلتفرم مدیریت محتوای اجتماعی است که به کاربران این امکان را می‌دهد تا به طور همزمان محتوا را در چندین شبکه اجتماعی منتشر کنند. این سرویس به خصوص برای بازاریابان و کسب‌وکارها طراحی شده و ویژگی‌هایی مانند زمان‌بندی پست‌ها، تجزیه و تحلیل عملکرد محتوا، و امکان ویرایش چندگانه را ارائه می‌دهد. Mixpost به کاربران کمک می‌کند تا با صرفه‌جویی در زمان و بهینه‌سازی استراتژی‌های بازاریابی، تأثیر بیشتری در فضای آنلاین داشته باشند.
+
+
+<div className="h-4" />
+
+برای راه‌اندازی برنامه آماده مدنظر خود در لیارا، باید وارد صفحه <a href="https://console.liara.ir/one-click-apps" className="text-[#2196f3] ">برنامه‌های آماده</a> شوید؛ سپس برنامه‌ی <b>Mixpost</b> 
+را انتخاب کنید و در صورت تمایل یک شناسه برای آن قرار دهید (در غیر این‌صورت، لیارا به صورت پیش‌فرض یک شناسه برای برنامه‌تان انتخاب می‌کند)؛ سپس بر روی گزینه **نصب سریع** یا **نصب پیشرفته** کلیک کنید تا برنامه‌تان ساخته شود.
+
+{/* <div className="h-4" />
+<video
+  src="https://files.liara.ir/liara/docs/Mixpost.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-4" /> */}
+
+<Alert className="info">
+  <p>
+    در اولین ورود، مقدار ایمیل برابر با <Important>admin@example.com</Important> و رمزعبور برابر با <Important>changeme</Important> است. 
+  </p>
+</Alert>
+<div className='h-2' />
+پس از ساخته شدن برنامه، می‌توانید در صفحه <a href="https://console.liara.ir/apps" className="text-[#2196f3] ">پلتفرم</a>، برنامه خود را بررسی کنید. برای نصب دلخواه و انتخاب نسخه مدنظرتان یا انتخاب dockerimage ، باید از گزینه **نصب پیشرفته** یا <a href="/one-click-apps/liara-compose/about/" className="text-[#2196f3]">Liara Compose</a> استفاده کنید. 
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "./how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

@@ -4115,6 +4115,11 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.png" />,
         link: "/one-click-apps/docuseal/quick-start"
       },
+      {
+        title: "Mixpost",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/communityIcon_grq1bunhrg8c1.ico" />,
+        link: "/one-click-apps/mixpost/quick-start"
+      },
 
     ],
     'liara-compose': [
@@ -5939,6 +5944,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/docuseal/how-tos/choose-version"
+      },
+    ], 
+    mixpost: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/communityIcon_grq1bunhrg8c1.ico" />
+            برنامه Mixpost
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/mixpost/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/mixpost/how-tos/choose-version"
       },
     ], 
   },

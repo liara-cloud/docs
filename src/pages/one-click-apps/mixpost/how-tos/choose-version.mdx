@@ -14,7 +14,7 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات تغییر نسخه DocuSeal - لیارا</title>
+<title>مستندات تغییر نسخه Mixpost - لیارا</title>
 </Head>
 
 # تغییر نسخه‌ی برنامه مستقر شده
@@ -27,13 +27,17 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "docuseal/docuseal:<your-version>",
-    "port": 3000,
+    "image": "inovector/mixpost:<your-version>",
+    "port": 80,
     "app": "<your-app-name>",
     "disks": [
       {
-        "name": "data",
-        "mountTo": "/data"
+        "name": "storage",
+        "mountTo": "/var/www/html/storage/app"
+      },
+      {
+        "name": "logs",
+        "mountTo": "/var/www/html/storage/logs"
       }
   ]
 }`}
