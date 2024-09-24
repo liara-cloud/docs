@@ -4110,6 +4110,11 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.png" />,
         link: "/one-click-apps/passbolt/quick-start"
       },
+      {
+        title: "DocuSeal",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.png" />,
+        link: "/one-click-apps/docuseal/quick-start"
+      },
 
     ],
     'liara-compose': [
@@ -5899,6 +5904,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/passbolt/how-tos/choose-version"
+      },
+    ], 
+    docuseal: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.png" />
+            برنامه DocuSeal
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/docuseal/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/docuseal/how-tos/choose-version"
       },
     ], 
   },
