@@ -52,10 +52,12 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`MAIL_HOST=smtp.liara.ir
+        {`MAIL_HOST=smtp.c1.liara.email
 MAIL_PORT=587
-MAIL_USER=my-app
-MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
+MAIL_USER=sweet_brattain_hrt81t
+MAIL_PASSWORD=4eba6d6d-96f4-6d04-b055-705031ba525d
+MAIL_FROM=info@example.com
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -66,29 +68,45 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`const nodemailer = require("nodemailer");
-const MAIL_HOST = process.env.MAIL_HOST;
-const MAIL_PORT = process.env.MAIL_PORT;
-const MAIL_USER = process.env.MAIL_USER;
-const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
+        {`// Import required packages
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv'); // in local, run \`npm install dotenv\` if needed
 
+// Load environment variables from .env file
+dotenv.config();
+
+// Create reusable transporter object using the SMTP transport
 const transporter = nodemailer.createTransport({
-  host: MAIL_HOST,
-  port: MAIL_PORT,
-  auth: {
-    user: MAIL_USER,
-    pass: MAIL_PASSWORD,
-  }
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    secure: false, // true for 465, false for other ports (587 in this case for STARTTLS)
+    auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASSWORD
+    },
+
 });
 
-transporter.sendMail({
-  from: 'MyName <from@example.com>',
-  to: 'to@example.com',
-  subject: 'Test Email Subject',
-  html: '<h1>Example HTML Message Body</h1>'
-})
-  .then(() => console.log('OK, Email has been sent.'))
-  .catch(console.error);`}
+// Email options
+const mailOptions = {
+    from: \`"my app" <\${process.env.MAIL_FROM}>\`, // Sender address
+    to: 'test@example.com', // List of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from Node.js', // Plain text body
+    html: '<b>This is a test email sent from Node.js</b>', // HTML body
+    headers: {
+      "x-liara-tag": "test_email", // Tags 
+    },
+};
+
+// Send email
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log('Error occurred: ' + error.message);
+    }
+    console.log('Email sent: ' + info.response);
+});
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -101,6 +119,11 @@ transporter.sendMail({
 <Alert variant='info'>
 <p>
 طبق مستندات <a href="https://nodemailer.com/smtp/" className="text-[#2196f3]">nodemailer</a>، این ماژول به صورت پیش‌فرض ایمیل‌ها را به صورت امن و رمزنگاری شده، ارسال می‌کند و نیازی نیست که شما، کار خاصی را انجام دهید.
+</p>
+</Alert>
+<Alert variant='info'>
+<p>
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 و مقدار فیلد <Important>secure</Important> را برابر با <Important>true</Important> تنظیم کنید. با این کار، از TLS استفاده خواهید کرد.
 </p>
 </Alert>
 
