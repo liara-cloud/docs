@@ -19,6 +19,20 @@ import Head from "next/head";
 # اتصال به ایمیل‌سرور در برنامه‌های NextJS
 <hr className="mb-2" />
 
+<video
+  src="https://files.liara.ir/liara/docs/nextjs-email.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/nextjs-getting-started/tree/sendEmail" className="text-[#2196f3] ">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
 برای استفاده از سرویس ایمیل در برنامه‌های NextJS، می‌توانید از 
 پکیج nodemailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
@@ -33,7 +47,7 @@ import Head from "next/head";
 پس از آن، کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در نهایت نیز، بایستی 
 اطلاعات مربوط به ایمیل‌سرور خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+به متغیرهای محیطی برنامه خود (در فایل <Important>env.local.</Important> در حالت Development، و در فایل <Important>env.production.</Important> در حالت Production)، اضافه کنید؛ به عنوان مثال:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -41,58 +55,58 @@ import Head from "next/head";
         {`MAIL_HOST=smtp.liara.ir
 MAIL_PORT=587
 MAIL_USER=my-app
-MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
+MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
+MAIL_FROM=test@example.com`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 اکنون، کافیست که در مسیر 
-<Important>pages/api</Important> یک فایل به نام <Important>sendEmail.js</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+<Important>pages/api</Important> یک فایل به نام <Important>send-email.js</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
         {`import nodemailer from 'nodemailer';
 
+// This function will handle the email sending process
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed', message: 'Only POST requests are allowed' });
+    return res.status(405).json({ message: 'Only POST requests are allowed' });
   }
 
-  const { to, subject, text } = req.body;
-
-  if (!to || !subject || !text) {
-    return res.status(400).json({ error: 'Bad Request', message: 'Missing required parameters' });
-  }
-
-  // Create a nodemailer transporter using your SMTP credentials
+  // Create reusable transporter object using the SMTP transport
   const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: 587,
-    requireTLS: true,
-    secure: false,
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    secure: false, // true for 465, false for 587 (we're using STARTTLS here)
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASSWORD,
     },
   });
 
-  try {
-    // Send email
-    const info = await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
-      to,
-      subject,
-      text,
-    });
+  // Email options
+  const mailOptions = {
+    from: \`"My App" <\${process.env.MAIL_FROM}>\`, // sender address
+    to: 'test@example.com', // list of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from a Next.js API route!', // plain text body
+    html: '<b>This is a test email sent from a Next.js API route!</b>', // html body
+    headers: {
+        "x-liara-tag": "test_email", // Tags 
+      },
+  };
 
-    console.log('Email sent:', info.messageId);
-    return res.status(200).json({ success: true, messageId: info.messageId });
+  // Try to send the email
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Email sent!', info });
   } catch (error) {
-    console.error('Error sending email:', error.message);
-    return res.status(500).json({ error: 'Internal Server Error', message: 'Failed to send email' });
+    res.status(500).json({ message: 'Error sending email', error: error.message });
   }
-}`}
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -106,7 +120,11 @@ export default async function handler(req, res) {
 فیلد <Important>from</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
 </p>
 </Alert>
-
+<Alert variant='info'>
+<p>
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 و مقدار فیلد <Important>secure</Important> را برابر با <Important>true</Important> تنظیم کنید. با این کار، از TLS استفاده خواهید کرد.
+</p>
+</Alert>
 تمامی کارها انجام شده است و شما می‌توانید از ایمیل‌سرور در برنامه خود استفاده کنید؛ به عنوان مثال، می‌توانید
 قطعه کد زیر را در فایل <Important>pages/index.js</Important>، قرار دهید:
 <div className="h-2" />
@@ -115,66 +133,39 @@ export default async function handler(req, res) {
         {`import { useState } from 'react';
 
 export default function Home() {
-  const [emailData, setEmailData] = useState({
-    to: '',
-    subject: '',
-    text: '',
-  });
+  const [emailSent, setEmailSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const [successMessage, setSuccessMessage] = useState(null);
-
-  const handleInputChange = (e) => {
-    setEmailData({ ...emailData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const sendTestEmail = async () => {
+    setLoading(true);
     try {
-      const response = await fetch('/api/sendEmail', {
+      const res = await fetch('/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailData),
       });
 
-      if (response.ok) {
-        setSuccessMessage('Email sent successfully!');
+      if (res.status === 200) {
+        setEmailSent(true);
       } else {
-        console.error('Failed to send email:', await response.json());
+        console.error('Failed to send email');
       }
-    } catch (error) {
-      console.error('Error sending email:', error.message);
+    } catch (err) {
+      console.error('Error:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>Send Email</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          To:
-          <input type="email" name="to" value={emailData.to} onChange={handleInputChange} required />
-        </label>
-        <br />
-        <label>
-          Subject:
-          <input type="text" name="subject" value={emailData.subject} onChange={handleInputChange} required />
-        </label>
-        <br />
-        <label>
-          Message:
-          <textarea name="text" value={emailData.text} onChange={handleInputChange} required />
-        </label>
-        <br />
-        <button type="submit">Send Email</button>
-      </form>
-
-      {successMessage && <p style={{ color: 'green', textAlign: 'center', marginTop: '10px' }}>{successMessage}</p>}
+      <h1>Send Test Email</h1>
+      <button onClick={sendTestEmail} disabled={loading}>
+        {loading ? 'Sending...' : 'Send Email'}
+      </button>
+      {emailSent && <p>Email successfully sent!</p>}
     </div>
   );
-}`}
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
