@@ -52,18 +52,27 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`MAIL_HOST=smtp.c1.liara.email
+        {`MAIL_HOST=smtp.liara.ir
 MAIL_PORT=587
-MAIL_SECURITY=tls
-MAIL_USER=my-app
-MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
+MAIL_USER=friendly_liskov_ihidh7
+MAIL_PASSWORD=58455bf7-f7c9-4562-9a9e-53b051f2ba79
+MAIL_FROM_ADDRESS=info@example.com
+MAIL_FROM_NAME=my-app
+`}
     </Highlight>
 </div>
 <div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
 
 <Alert variant='info'>
 <p>
-با تنظیم <Important>MAIL_SECURITY=tls</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
+به جای STARTTLS، از TLS استفاده کنید. 
 </p>
 </Alert>
 
@@ -74,57 +83,49 @@ MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885`}
 <div dir='ltr'>
     <Highlight className="php">
         {`<?php
+require 'vendor/autoload.php'; // Load Composer dependencies
 
-use PHPMailerPHPMailerPHPMailer;
-use PHPMailerPHPMailerSMTP;
-use PHPMailerPHPMailerException;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
 
-require_once "vendor/autoload.php";
-$dotenv = DotenvDotenv::createImmutable(__DIR__);
+// Load environment variables from .env file
+$dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$mailHost = $_ENV['MAIL_HOST'];
-$mailPort = $_ENV['MAIL_PORT'];
-$mailUser = $_ENV['MAIL_USER'];
-$mailPassword = $_ENV['MAIL_PASSWORD'];
-$mailSecurity = $_ENV['MAIL_SECURITY'];
-
+// Create an instance of PHPMailer
 $mail = new PHPMailer(true);
 
-$mail->isSMTP();
-$mail->SMTPAuth   = true;
-$mail->SMTPSecure = $mailSecurity;
-$mail->Port       = $mailPort;
-$mail->Host       = $mailHost;
-$mail->Username   = $mailUser;
-$mail->Password   = $mailPassword;
-$mail->CharSet    = "UTF-8";
-
-$mail->From     = "your email";
-$mail->FromName = "your email name";
-
-$mail->addAddress("destination email", "destination name");
-$mail->isHTML(false);
-
-$mail->Subject = "Mailing with PHPMailer";
-$mail->Body = "Congratulation";
-$mail->AltBody = "Congratulation";
-
 try {
+    // Server settings
+    $mail->isSMTP();
+    $mail->Host       = $_ENV['MAIL_HOST'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $_ENV['MAIL_USER'];
+    $mail->Password   = $_ENV['MAIL_PASSWORD'];
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use STARTTLS encryption
+    $mail->Port       = $_ENV['MAIL_PORT'];
+
+    // Recipients
+    $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], $_ENV['MAIL_FROM_NAME']);
+    $mail->addAddress('recipient@example.com'); // Add a recipient email
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Test Email';
+    $mail->Body    = 'This is a test email sent using PHPMailer and SMTP.';
+    $mail->AltBody = 'This is the plain text version of the email content.';
+    $mail->addCustomHeader('x-liara-tag', 'test-tag'); // use Liara Tags
+
+
+    // Send the email
     $mail->send();
-    echo "Message has been sent successfully";
+    echo 'Email has been sent successfully!';
 } catch (Exception $e) {
-    error_log("Mailer Error: $mail->ErrorInfo", 0);
-}`}
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
-
-<Alert variant='info'>
-<p>
-مقدار فیلد <Important>From</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
-</p>
-</Alert>
-
-
 </Layout>
