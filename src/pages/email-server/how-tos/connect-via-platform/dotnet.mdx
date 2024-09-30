@@ -44,12 +44,17 @@ import Head from "next/head";
     <Highlight className="bash">
         {`MAIL_HOST=smtp.c1.liara.email
 MAIL_PORT=587
-MAIL_USERNAME=my-app
-MAIL_PASSWORD=my-pass`}
+MAIL_USER=hopeful_zhukovsky_9daqpv
+MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
+MAIL_FROM_ADDRESS=info@example.com`}
     </Highlight>
 </div>
 <div className="h-2" />
-
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
 
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
@@ -57,46 +62,58 @@ MAIL_PASSWORD=my-pass`}
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="csharp">
-        {`using System;
-using System.Net;
+    <Highlight className="dotnet">
+        {`using System.Net;
 using System.Net.Mail;
-using System.IO;
 using dotenv.net;
 
-class Program
+DotEnv.Load(); // Load the environment variables from .env file
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/send-test-email", async context =>
 {
-    static void Main()
+    // Read SMTP settings from environment variables
+    var smtpHost = Environment.GetEnvironmentVariable("MAIL_HOST");
+    int smtpPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT") ?? "587");
+    var smtpUser = Environment.GetEnvironmentVariable("MAIL_USER");
+    var smtpPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
+    var fromAddress = Environment.GetEnvironmentVariable("MAIL_FROM_ADDRESS") ?? "info@example.com";
+    var toAddress = "recipient@example.com"; // Replace with recipient's email address
+
+    // Create a new SmtpClient
+    using (var smtpClient = new SmtpClient(smtpHost, smtpPort))
     {
-        DotEnv.Load(); // loading env variables 
+        smtpClient.EnableSsl = true; // Use TLS encryption
+        smtpClient.Credentials = new NetworkCredential(smtpUser, smtpPassword);
 
-        string mailHost = Environment.GetEnvironmentVariable("MAIL_HOST");
-        int mailPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT"));
-        string mailUser = Environment.GetEnvironmentVariable("MAIL_USERNAME");
-        string mailPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
-
-        // SMTP Conf
-        SmtpClient client = new SmtpClient(mailHost)
+        // Create the email message
+        var mailMessage = new MailMessage(fromAddress, toAddress)
         {
-            Port = mailPort,
-            Credentials = new NetworkCredential(mailUser, mailPassword),
-            EnableSsl = true
+            Subject = "Test Email",
+            Body = "<h2>This is a test email sent from a .NET Core application using SMTP<h2>",
+            IsBodyHtml = true
         };
 
-        // Creating and Sending Email  
-        MailMessage message = new MailMessage("from@test.com", "to@test.com",
-         "hello", "hello from dotnet!");
+        // Add custom headers
+        mailMessage.Headers.Add("x-liara-tag", "test-tag");
+
+        // Send the email
         try
         {
-            client.Send(message);
-            Console.WriteLine("email sent successfully");
+            await smtpClient.SendMailAsync(mailMessage);
+            await context.Response.WriteAsync("Test email sent successfully!");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"error in sending email: {ex.Message}");
+            await context.Response.WriteAsync($"Failed to send email: {ex.Message}");
         }
     }
-}`}
+});
+
+app.Run();
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -107,10 +124,10 @@ class Program
 </Alert>
 <Alert variant='info'>
 <p>
-مقدار پارامتر اول <Important>message</Important> باید به جای <Important>from@test.com</Important>، یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
+به جای STARTTLS، از TLS استفاده شود. 
 </p>
 </Alert>
-<div className="h-2" />
 
 برای استفاده از ایمیل‌سرور در کنترلر، می‌توانید مشابه قطعه کد زیر، عمل کنید:
 

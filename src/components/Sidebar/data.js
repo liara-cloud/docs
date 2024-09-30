@@ -6052,10 +6052,6 @@ export default {
         link: "/email-server/how-tos/control-spam"
       },
       {
-        title: "مدیریت محدودیت‌ها",
-        link: "/email-server/how-tos/manage-limitations"
-      },
-      {
         title: "تنظیم فوروارد",
         link: "/email-server/how-tos/set-forward"
       },
@@ -6210,10 +6206,6 @@ export default {
         link: "/email-server/how-tos/control-spam"
       },
       {
-        title: "مدیریت محدودیت‌ها",
-        link: "/email-server/how-tos/manage-limitations"
-      },
-      {
         title: "تنظیم فوروارد",
         link: "/email-server/how-tos/set-forward"
       },
@@ -6366,10 +6358,6 @@ export default {
       {
         title: "کنترل هرزنامه ایمیل‌های ارسالی",
         link: "/email-server/how-tos/control-spam"
-      },
-      {
-        title: "مدیریت محدودیت‌ها",
-        link: "/email-server/how-tos/manage-limitations"
       },
       {
         title: "تنظیم فوروارد",

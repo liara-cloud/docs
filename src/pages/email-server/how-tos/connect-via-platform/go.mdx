@@ -19,6 +19,19 @@ import Head from "next/head";
 # اتصال به ایمیل‌سرور در برنامه‌های Golang
 <hr className="mb-2" />
 
+<video
+  src="https://files.liara.ir/liara/docs/golang-mail-server.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/golang-getting-started/tree/email-server" className="text-[#2196f3] ">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
 
 برای استفاده از سرویس ایمیل در برنامه‌های Golang، می‌توانید از 
 پکیج gomail استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
@@ -26,7 +39,7 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`go get github.com/go-gomail/gomail`}
+        {`go get gopkg.in/gomail.v2`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -39,11 +52,11 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`MAIL_HOST=smtp.example.com
+        {`MAIL_HOST=smtp.c1.liara.email
 MAIL_PORT=587
-MAIL_USERNAME=your_username
-MAIL_PASSWORD=your_password
-MAIL_FROM=from@example.com`}
+MAIL_USER=cranky_galileo_nhh78l
+MAIL_PASSWORD=7ae28d03-2e09-4211-8e79-c3a54ae5798e
+MAIL_FROM=info@example.com`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -68,47 +81,50 @@ MAIL_FROM=from@example.com`}
 
 import (
     "fmt"
-    "gopkg.in/gomail.v2"
-	"crypto/tls"
-	"os"
-	"strconv"
-	"github.com/joho/godotenv"
+    "log"
+    "os"
+    "strconv"
+
+    gomail "gopkg.in/gomail.v2"
 )
 
 func main() {
+    
+    // Get environment variables for SMTP settings
+    mailHost := os.Getenv("MAIL_HOST")
+    mailPortStr := os.Getenv("MAIL_PORT")
+    mailUser := os.Getenv("MAIL_USER")
+    mailPassword := os.Getenv("MAIL_PASSWORD")
+    mailFrom := os.Getenv("MAIL_FROM")
 
-	// Load environment variables from .env file
-    err := godotenv.Load(".env")
+    // Convert mail port from string to integer
+    mailPort, err := strconv.Atoi(mailPortStr)
     if err != nil {
-        fmt.Println("Error loading .env file:", err)
-        return
+        log.Fatalf("Invalid MAIL_PORT: %v", err)
     }
 
-    // Convert MAIL_PORT to int
-    mailPort, err := strconv.Atoi(os.Getenv("MAIL_PORT"))
-    if err != nil {
-        fmt.Println("Error converting MAIL_PORT to int:", err)
-        return
-    }
+    // Create a new email message
+    m := gomail.NewMessage()
+    m.SetHeader("From", mailFrom)
+    m.SetHeader("To", "recipient@example.com") // Set recipient email here
+    m.SetHeader("Subject", "Test Email from Go with HTML")
+    m.SetHeader("x-liara-tag", "test-tag") // Custom header for tagging
 
-	// Create a new email message
-	m := gomail.NewMessage()
-	m.SetHeader("From", os.Getenv("MAIL_FROM"))
-	m.SetHeader("To", "email@email.email") // Replace with actual recipient
-	m.SetHeader("Subject", "This is a TEST")
-	body := "this is really a test"
-	m.SetBody("text/plain", body)
+    // Set HTML body for the email
+    m.SetBody("text/html", \`
+        <h1>This is a test email</h1>
+        <p>Sent from Go using <b>gomail</b> and SMTP with TLS.</p>
+    \`)
 
-    // Create a new dialer
-    d := gomail.NewDialer(os.Getenv("MAIL_HOST"), mailPort, os.Getenv("MAIL_USERNAME"), os.Getenv("MAIL_PASSWORD"))
-    d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+    // Create SMTP dialer with TLS
+    d := gomail.NewDialer(mailHost, mailPort, mailUser, mailPassword)
 
-    // Dial and send the email
+    // Send the email
     if err := d.DialAndSend(m); err != nil {
-        fmt.Println("Error sending email:", err)
-    } else {
-        fmt.Println("Email sent successfully")
+        log.Fatalf("Failed to send email: %v", err)
     }
+
+    fmt.Println("Test email sent successfully!")
 }
 `}
     </Highlight>
@@ -116,7 +132,7 @@ func main() {
 <div className="h-2" />
 <Alert variant='info'>
 <p>
-با تنظیم <Important>d.TLSConfig</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 تنظیم کنید. با انجام این کار، از TLS به جای STARTTLS، استفاده خواهید کرد.
 </p>
 </Alert>
 

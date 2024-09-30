@@ -41,85 +41,123 @@ import Head from "next/head";
 
 
 <Tabs 
-    tabs={["NodeJS", "Flask"]} 
+    tabs={["NodeJS", "NextJS", "Laravel", "PHP", "Django", "Flask", ".NET", "Golang"]} 
     content={[
     <>
-        <div className="h-2" />
         <div dir='ltr'>
             <Highlight className="js">
-                {`const nodemailer = require("nodemailer");
-const MAIL_HOST = process.env.MAIL_HOST;
-const MAIL_PORT = process.env.MAIL_PORT;
-const MAIL_USER = process.env.MAIL_USER;
-const MAIL_PASSWORD = process.env.MAIL_PASSWORD;
-
-const transporter = nodemailer.createTransport({
-  host: MAIL_HOST,
-  port: MAIL_PORT,
-  tls: true,
-  auth: {
-    user: MAIL_USER,
-    pass: MAIL_PASSWORD,
-  }
-});
-
-transporter
-  .sendMail({
-    from: "test@test.test",
-    to: "example@example.example",
-    subject: "Email Tags",
-    html: "<h1>Let's try email tags!</h1>",
+                {`const mailOptions = {
+    from: \`"my app" <\${process.env.MAIL_FROM}>\`, // Sender address
+    to: 'test@example.com', // List of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from Node.js', // Plain text body
+    html: '<b>This is a test email sent from Node.js</b>', // HTML body
     headers: {
-      "x-liara-tag": "welcome_email",
+      "x-liara-tag": "test_email", // Tags 
     },
-  })
-  .then(() => console.log("OK, Email has been sent."))
-  .catch(console.error);`}
+};`}
             </Highlight>
         </div>
-        <div className="h-2" />
     </>,
     <>
-        <div className="h-2" />
         <div dir='ltr'>
-            <Highlight className="py">
-                {`from flask import Flask
-from flask_mail import Mail, Message
-import os
-
-app = Flask(__name__)
-
-app.config['MAIL_SERVER']   = os.getenv('MAIL_SERVER')
-app.config['MAIL_PORT']     = int(os.getenv('MAIL_PORT'))
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-app.config['MAIL_USE_TLS']  = os.getenv('MAIL_USE_TLS') == 'True'
-app.config['MAIL_USE_SSL']  = False
-mail = Mail(app)
-
-@app.route("/")
-def index():
-    msg = Message(
-        'Mailing with Flask-Mail',
-        sender=("sender_name", 'test@test.test'),
-        recipients=['example@example.example'],
-        extra_headers = {
-        "x-liara-tag": "test_tag"
-    }
-    )
-
-    msg.body = "this is from Flask app, lmk if it works"
-    mail.send(msg)
-
-    return "Message sent!"
-
-if __name__ == "__main__":
-    app.run(debug=True)
+            <Highlight className="js">
+                {`// Email options
+  const mailOptions = {
+    from: \`"My App" <\${process.env.MAIL_FROM}>\`, // sender address
+    to: 'test@example.com', // list of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from a Next.js API route!', // plain text body
+    html: '<b>This is a test email sent from a Next.js API route!</b>', // html body
+    headers: {
+        "x-liara-tag": "test_email", // Tags 
+      },
+  };`}
+            </Highlight>
+        </div>
+    </>,
+    <>
+        <div dir='ltr'>
+            <Highlight className="laravel">
+                {`public function headers(): Headers
+    {
+        return new Headers(
+            text: [
+                'x-liara-tag' => 'test_email',
+            ],
+        );
+    }`}
+            </Highlight>
+        </div>
+    </>,
+    <>
+        <div dir='ltr'>
+            <Highlight className="php">
+                {`// Content
+$mail->isHTML(true);                                  // Set email format to HTML
+$mail->Subject = 'Test Email';
+$mail->Body    = 'This is a test email sent using PHPMailer and SMTP.';
+$mail->AltBody = 'This is the plain text version of the email content.';
+$mail->addCustomHeader('x-liara-tag', 'test-tag'); // use Liara Tags
 `}
             </Highlight>
         </div>
-        <div className="h-2" />
     </>,
+    <>
+        <div dir='ltr'>
+            <Highlight className="py">
+                {`email = EmailMessage(
+        subject,
+        message,
+        settings.EMAIL_FROM_ADDRESS,
+        recipient_list,
+        headers={"x-liara-tag": "test-tag"} # using liara tag feature,
+    )`}
+            </Highlight>
+        </div>
+    </>,
+    <>
+        <div dir='ltr'>
+            <Highlight className="flask">
+                {`# Create a message
+msg = Message(subject='Test Email from Flask',
+      recipients=['recipient@example.com'],  # Replace with the recipient's email address
+      body='This is a test email sent from Flask using SMTP on Liara.',
+      extra_headers = {"x-liara-tag": "test_tag"}) # Use liara tag feature
+`}
+            </Highlight>
+        </div>
+    </>,
+    <>
+        <div dir='ltr'>
+            <Highlight className="dotnet">
+                {`// Create the email message
+        var mailMessage = new MailMessage(fromAddress, toAddress)
+        {
+            Subject = "Test Email",
+            Body = "<h2>This is a test email sent from a .NET Core application using SMTP<h2>",
+            IsBodyHtml = true
+        };
+
+        // Add custom headers
+        mailMessage.Headers.Add("x-liara-tag", "test-tag");`}
+            </Highlight>
+        </div>
+    </>,
+    <>
+        <div dir='ltr'>
+            <Highlight className="go">
+                {`// Create a new email message
+    m := gomail.NewMessage()
+    m.SetHeader("From", mailFrom)
+    m.SetHeader("To", "recipient@example.com") // Set recipient email here
+    m.SetHeader("Subject", "Test Email from Go with HTML")
+    m.SetHeader("x-liara-tag", "test-tag") // Custom header for tagging
+`}
+            </Highlight>
+        </div>
+    </>,
+    
     ]} 
 />
 
