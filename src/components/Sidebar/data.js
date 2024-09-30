@@ -6484,6 +6484,11 @@ export default {
         link: "/email-server/details/observations"
       },
       {
+        title: "پورت‌های ایمیل‌سرور",
+        icon: <GoGraph />,
+        link: "/email-server/details/ports"
+      },
+      {
         title: "تغییر پلن در ایمیل‌سرور",
         icon: <GoGitCompare />,
         link: "/email-server/details/change-plan"
