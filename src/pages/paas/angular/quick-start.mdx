@@ -22,7 +22,7 @@ import Head from "next/head";
 توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Angular CLI</Important> ساخته شده باشند، در پلتفرم Angular لیارا قابل اجرا خواهند بود.
 
 <Tabs 
-  tabs={["Liara Console", "Liara CLI"]} 
+  tabs={["Liara Console", "Liara CLI", "Liara Github"]} 
   content={[
   <>
   <video
@@ -282,6 +282,184 @@ import Head from "next/head";
 ]}/>
   </>,
 
+  <>
+    برای استقرار با Liara Github، کافیست تا مراحل زیر را طی کنید:
+    <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>برنامه Angular خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+   <>
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> می‌تواند به شکل زیر باشد:</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "angular-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
+  "dependencies": {
+    "@angular/animations": "~13.1.0",
+    "@angular/common": "~13.1.0",
+    "@angular/compiler": "~13.1.0",
+    "@angular/core": "~13.1.0",
+    "@angular/forms": "~13.1.0",
+    "@angular/platform-browser": "~13.1.0",
+    "@angular/platform-browser-dynamic": "~13.1.0",
+    "@angular/router": "~13.1.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~13.1.2",
+    "@angular/cli": "~13.1.2",
+    "@angular/compiler-cli": "~13.1.0",
+    "@types/node": "^12.11.1",
+    "typescript": "~4.5.2"
+  }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+  
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>ساخت فایل <Important>liara.json</Important></h3>
+    <p>
+      در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و پیکربندی‌های مدنظرتان را در این فایل بنویسید؛ به عنوان مثال:
+    </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "angular": {
+    "mirror": false,
+    "sourceMap": true
+    }
+}`}
+            </Highlight>
+        </div>
+        <Alert variant='error'>
+          <p>
+            در فایل فوق، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
+          </p>  
+        </Alert>
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+
+  <>
+    <h3>ساخت ریپازیتوری در گیت‌هاب</h3>
+    <p>
+      یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید.
+    </p>
+  <div className="h-2" />
+  <Alert variant="success">
+<p>
+در صورتی که از قبل، این کار را انجام داده‌اید یا قصد دارید از ریپازیتوری‌های فعلی خود استفاده کنید؛ از این مرحله بگذرید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+  <>
+    <h3>آپلود پروژه در گیت‌هاب</h3>
+    <p>
+      پروژه نهایی خود را در ریپازیتوری‌تان در گیت‌هاب آپلود کنید؛
+      حتماً در نظر داشته باشید که درون پروژه‌تان، فایل <Important>gitignore.</Important> قرار داشته باشد و درون آن، فایل‌های اضافی 
+      برنامه، که قصد ندارید آپلود شوند؛ لیست شده باشند.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۷",
+  content: (
+  <>
+    <h3>اتصال لیارا به گیت‌هاب</h3>
+    <p>
+      برای اتصال حساب لیارا خود به گیت‌هاب، در لیارا بر روی پروفایل خود کلیک کرده و وارد زیر قسمت <a href="https://console.liara.ir/settings/profile" className="text-[#2196f3]">حساب کاربری</a> شوید. در ادامه 
+      وارد منوی <a href="https://console.liara.ir/settings/github" className="text-[#2196f3]">گیت‌هاب</a> شوید و بر روی دکمه <b>اتصال به گیت‌هاب</b>، کلیک کنید. پس از 
+      انجام این کار و وارد کردن اطلاعات مربوط به گیت‌هاب، حساب لیارا شما به گیت‌هاب متصل خواهد شد.
+    </p>
+
+  <div className="h-2" />
+  <Alert variant="error">
+<p>
+  در صورت مواجه با خطای "اتصال به Github"، بایستی از حساب لیارا خود، خارج شده و مجدداً به وسیله Github، به اکانت لیارا خود، وارد شوید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۸",
+  content: (
+  <>
+    <h3>ویرایش دسترسی‌ها</h3>
+    <p>
+      بعد از اتصال به اکانت گیت‌هاب، بر روی گزینه <b>ویرایش دسترسی‌ها</b> کلیک کرده و ریپازیتوری (ریپازیتوری‌های) مدنظرتان را به حساب لیارا متصل کنید.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۹",
+  content: (
+  <>
+    <h3>استقرار برنامه</h3>
+    <p>
+        در نهایت، بر روی برنامه خود کلیک کرده وارد صفحه <b>استقرار جدید</b> شوید؛ سپس در منوی <b>گیت‌هاب</b>، ریپازیتوری مدنظرتان را انتخاب کرده و پس از انتخاب نوع استقرار و branch مدنظرتان، بر روی گزینه <b>اتصال به برنامه</b> کلیک کنید تا برنامه‌تان به ریپازیتوری مدنظرتان متصل شود.
+        در نهایت، کافیست تا یک‌بار بر روی گزینه <b>استقرار دستی</b> کلیک کنید تا آخرین commit شما در لیارا مستقر شود.
+    </p>
+  <div className="h-2" />
+    <Alert variant="info">
+<p>
+  برای قطع ارتباط برنامه و ریپازیتوری نیز، می‌توانید بر روی دکمه <b>قطع اتصال</b> کلیک کنید تا تغییرات جدید، مستقر نشوند.
+</p>
+</Alert>
+<div className="h-1" />
+
+  </>
+  )
+  }
+
+]}/>
+
+  </>,
+
 ]} 
 />
 
@@ -291,7 +469,6 @@ import Head from "next/head";
 لیارا با اجرای دستور <Important>npm install</Important> تمامی ماژول‌های موجود در فایل <Important>package.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
 </p>
 </Alert>
-<div className="h-1" />
 
 <Alert variant="info">
 <p>
@@ -300,9 +477,5 @@ import Head from "next/head";
 </Alert>
 <div className="h-1" />
 
-<Alert variant="success">
-<p>
-همچنین بخوانید: <Link className="text-[#2196f3] " href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های Angular در لیارا</Link>
-</p>
-</Alert>
+
 </Layout>
