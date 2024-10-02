@@ -1082,12 +1082,12 @@ export default {
       },
       {
         title: "Hono",
-        icon: <IconContainer alt="nodejs" />,
+        icon: <IconContainer alt="https://files.liara.ir/liara/docs/hono-logo-icon.png" />,
         link: "/paas/nodejs/related-apps/hono"
       },
       {
         title: "Nitro",
-        icon: <IconContainer alt="nodejs" />,
+        icon: <IconContainer alt="https://files.liara.ir/liara/docs/nitro-icon.svg" />,
         link: "/paas/nodejs/related-apps/nitro"
       },
       {
