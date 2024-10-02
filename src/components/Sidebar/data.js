@@ -1396,6 +1396,10 @@ export default {
         link: "/paas/laravel/how-tos/configure-trustedproxies"
       },
       {
+        title: "پیکربندی TrustedProxies در livewire",
+        link: "/paas/laravel/how-tos/configure-livewire-trusted-proxy"
+      },
+      {
         title: "فعال‌سازی Gzip و Caching",
         link: "/paas/laravel/how-tos/enable-gzip-and-caching"
       },
