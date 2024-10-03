@@ -661,7 +661,13 @@ import Head from "next/head";
         </div>
         <div className='h-4' />
         <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
-<p>
+        <Alert variant='error'>
+          <p>
+            در فایل <Important>liara.json</Important>، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
+          </p>  
+        </Alert>
+
+        <p>
            در ادامه، بایستی یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید، برای این کار، پس از ورود به <a href="https://github.com/" className="text-[#2196f3]">گیت‌هاب</a>، وارد بخش <b>Repositories</b> شوید و بر روی دکمه <b>New</b> کلیک کنید؛ پس از نوشتن نام و توضیحات ریپازیتوری، سطح دسترسی ریپازیتوری را (public یا private)، انتخاب کنید و در نهایت بر روی دکمه <b>create repository</b> کلیک کنید تا ریپازیتوری برای‌تان ساخته شود:
         </p>
         <div className="h-2" />
@@ -785,10 +791,6 @@ import Head from "next/head";
         </p>
         </Alert>
         <div className="h-1" />
-        
-
-
-
     </>
 
 ]} 
