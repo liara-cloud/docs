@@ -3071,6 +3071,11 @@ export default {
         link: "/dbaas/mysql/choose-version"
       },
       {
+        title: "ایجاد و مدیریت کاربر جدید",
+        icon: <GoKey   />,
+        link: "/dbaas/mysql/create-user"
+      },
+      {
         hr: true
       },
       {
