@@ -3212,6 +3212,11 @@ export default {
         link: "/dbaas/postgresql/choose-version"
       },
       {
+        title: "ایجاد و مدیریت کاربر جدید",
+        icon: <GoKey   />,
+        link: "/dbaas/postgresql/create-user"
+      },
+      {
         hr: true
       },
       {

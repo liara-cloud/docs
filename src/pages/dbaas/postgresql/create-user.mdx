@@ -1,0 +1,166 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ایجاد و مدیریت کاربر جدید در دیتابیس PostgreSQL - لیارا</title>
+</Head>
+# ایجاد و مدیریت کاربر جدید در دیتابیس PostgreSQL
+<hr className="mb-2" />
+
+وقتی که شما یک دیتابیس PostgreSQL جدید در لیارا، ایجاد می‌کنید؛ به صورت خودکار یک کاربر به نام root همراه با آن ایجاد می‌شود که همان دسترسی پیش‌فرض است.
+دسترسی پیش‌فرض یا کاربر <Important>root</Important> در PostgreSQL، یک اکانت مدیریتی با بیشترین سطح دسترسی است. این کاربر معادل administrator در سیستم‌های عامل مختلف است و می‌تواند تمام عملیات‌های مدیریتی و اجرایی در پایگاه داده را انجام دهد.
+<div className="h-2" />
+
+شما می‌توانید با استفاده از ابزارهای مختلفی نظیر PSQL، کاربران جدید با دسترسی‌های جدید 
+در دیتابیس خود ایجاد کنید؛ در ادامه به نحوه ساخت کاربران جدید با دسترسی‌های مختلف در دیتابیس، پرداخته شده است.
+<div className="h-2" />
+
+برای ساخت کاربر جدید در دیتابیس، در ابتدا باید <a href="/dbaas/postgresql/how-tos/connect-via-cli/psql" className="text-[#2196f3]">ابزار PSQL</a> را بر روی سیستم (یا سرور خود)، نصب کنید؛ در ادامه، بایستی با استفاده از اطلاعات موجود در بخش **نحوه اتصال** دیتابیس‌تان در لیارا و با استفاده از دستور زیر، در ترمینال، به دیتابیس انتخابی، با کاربر root، متصل شوید: 
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`psql -h DB_HOST -p DB_PORT -U DB_USERNAME -W DB_NAME`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+بعد از اجرای دستور فوق، رمزعبور از شما خواسته می‌شود که باید ابتدا آن را وارد کرده و سپس به دیتابیس مدنظرتان، متصل می‌شوید. 
+
+پس از اتصال موفق، می‌توانید با استفاده از دستور <Important>CREATE USER</Important>، کاربران مد نظر خود را، ایجاد کنید.
+
+<Section id="create-readonly-user" title="ساخت کاربر با دسترسی Read-Only " />
+برای ایجاد کاربر جدید که تنها اجازه خواندن اطلاعات (READ) از دیتابیس را دارد و می‌تواند از آن بکاپ بگیرد، 
+باید در ابتدا دستوری مانند قطعه کد زیر را اجرا کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`CREATE USER readonly_user WITH PASSWORD 'password';`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستور فوق، یک کاربر با نام <Important>readonly_user</Important> و رمزعبور <Important>password</Important> ایجاد می‌کند.
+برای تعیین دسترسی کاربر، اکنون می‌توانید مشابه دستورات زیر، عمل کنید: 
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`GRANT CONNECT ON DATABASE <database_name> TO readonly_user;
+GRANT USAGE ON SCHEMA public TO readonly_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
+`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+ با انجام کار فوق، کاربر ایجاد شده می‌تواند 
+فقط داده‌ها را، در تمامی جداول موجود در دیتابیس مورد نظر، <Important>SELECT</Important> کند (بخواند). 
+
+
+<Section id="create-limited-user" title="ساخت کاربر با دسترسی محدود به برخی جداول" />
+در صورتی که بخواهید کاربری ایجاد کنید که فقط به چند جدول مشخص دسترسی داشته باشد، می‌توانید مانند دستورات زیر عمل کنید؛ در ابتدا بایستی کاربر را ایجاد کنید:
+
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`CREATE USER limited_user WITH PASSWORD 'password';`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+پس از ایجاد کاربر، باید دسترسی‌های آن را مانند دستورات زیر، تعیین کنید: 
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`GRANT CONNECT ON DATABASE <database_name> TO limited_user;
+GRANT USAGE ON SCHEMA public TO limited_user;
+GRANT SELECT, INSERT, UPDATE ON TABLE public.<table_name_1>, public.<table_name_2> TO limited_user;
+`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستورات فوق، یک کاربر به نام <Important>limited_user</Important> و رمزعبور <Important>password</Important> ایجاد می‌کند که می‌تواند 
+در جداول \<table_name_1\> و \<table_name_2\> در یک دیتابیس مشخص، عملیات <Important>SELECT</Important> , <Important>INSERT</Important> و <Important>UPDATE</Important> را، انجام دهد.
+
+
+<Section id="see-user-rules" title="مشاهده همه کاربران به همراه دسترسی‌های آن‌ها" />
+برای مشاهده دسترسی‌های همه کاربران در PostgreSQL می‌توانید 
+از قطعه کد زیر استفاده کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`\\du`}
+    </Highlight>
+    </div>
+
+<Section id="delete-user-rules" title="حذف دسترسی‌ یک کاربر" />
+برای حذف دسترسی‌های یک کاربر در PostgreSQL، می‌توانید از دستور <Important>REVOKE</Important> استفاده کنید؛
+به عنوان مثال فرض کنید کاربر <Important>readonly_user</Important> دسترسی SELECT به جداولی در اسکیمای public دارد و شما می‌خواهید این دسترسی را از او سلب کنید.
+برای این کار، می‌توانید مانند قطعه کد زیر، عمل کنید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`REVOKE SELECT ON ALL TABLES IN SCHEMA public FROM readonly_user;`}
+    </Highlight>
+</div>
+<div className="h-4" />
+
+البته اگر بخواهید دسترسی‌های خاص به جداول مشخصی را از این کاربر، حذف کنید؛ می‌توانید مشابه دستور زیر، عمل کنید: 
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`REVOKE SELECT, INSERT ON TABLE public.<table_name> FROM readonly_user;`}
+    </Highlight>
+</div>
+<div className="h-4" />
+
+برای حذف دسترسی کاربر به یک دیتابیس نیز، می‌توانید از دستور زیر استفاده کنید:
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`REVOKE CONNECT ON DATABASE <database_name> FROM readonly_user;`}
+    </Highlight>
+</div>
+<div className="h-4" />
+
+برای حذف دسترسی کاربر به یک اسکیمای خاص هم می‌توانید مشابه دستور زیر، رفتار کنید:
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`REVOKE USAGE ON SCHEMA public FROM readonly_user;`}
+    </Highlight>
+</div>
+
+
+<Section id="delete-user" title="حذف یک کاربر" />
+اگر بخواهید کاربری را به طور کامل حذف کنید، باید ابتدا اطمینان حاصل کنید که دسترسی‌های او حذف شده است. سپس می‌توانید کاربر را با استفاده از دستور <Important>DROP ROLE</Important> حذف کنید.
+برای حذف کاربر می‌توانید مشابه دستور زیر، عمل کنید: 
+
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`DROP ROLE readonly_user;`}
+    </Highlight>
+</div>
+
+</Layout>
