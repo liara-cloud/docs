@@ -341,7 +341,7 @@ import Head from "next/head";
   </>,
 
     <>
-    برای استقرار با Liara Github، کافیست تا مراحل زیر را طی کنید:
+    برای استقرار با Github، کافیست تا مراحل زیر را طی کنید:
     <Step  steps={[
 {
   step: "۱",
@@ -394,7 +394,42 @@ import Head from "next/head";
 }`}
     </Highlight>
     </div>
+<div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
     <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "build"
+    }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      و یا اگر که برنامه خود را با <Important>create-react-app</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "react-getting-started",
+  "version": "0.1.0",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}`}
+    </Highlight>
+    </div>
   
   </>
   )
