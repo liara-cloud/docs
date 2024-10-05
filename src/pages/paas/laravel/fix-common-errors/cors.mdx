@@ -24,7 +24,72 @@ import Head from "next/head";
 
 برای حل این مشکل می‌توانید از راه حل‌‌های قرار داده شده، استفاده کنید.
 
-<Section id="use-laravel-cors-package" title="استفاده از پکیج laravel-cors" />
+<Tabs 
+  tabs={["Laravel 11x", "Laravel < 11"]} 
+  content={[
+   <>
+   <Section id="set-cors-file" title="تنظیم فایل config/cors.php"  className="mt-0"/>
+
+   <p>
+   لاراول از نسخه 11 به بعد به صورت built-in از CORS پشتیبانی می‌کند. 
+   شما می‌توانید تنظیمات CORS را در مسیر <Important>config/cors.php</Important>، شخصی‌سازی کنید. 
+   برای شخصی‌سازی این فایل، در ابتدا بایستی با دستور زیر، آن را publish کنید: 
+   </p>
+
+    <div className="h-4" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+        {`php artisan config:publish cors`}
+        </Highlight>
+    </div>
+    <div className="h-4" />
+    <p>
+    سپس فایل پیکربندی را ویرایش کنید تا درخواست‌های همه دامنه‌ها، متدها و هدرها را مجاز کنید:
+    </p>
+     <div className="h-4" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+        {`return [
+    'paths' => ['api/*'],
+    'allowed_methods' => ['*'],
+    'allowed_origins' => ['*'],
+    'allowed_headers' => ['*'],
+];
+`}
+        </Highlight>
+    </div>
+    <div className="h-4" />   
+    <p>
+    این تنظیمات به شما اجازه می‌دهند که درخواست‌ها از هر دامنه‌ای پذیرفته شوند و مشکلات CORS رفع شود.
+    </p>
+    <Section id="create-middleware" title="ایجاد Middleware" />
+    یک روش دیگر برای کنترل بهتر درخواست‌های CORS این است که یک Middleware برای آن ایجاد کنید. این کار به شما این امکان را می‌دهد تا هدرهای خاص را تعریف کنید.
+    برای ایجاد Middleware، در ابتدا دستور زیر را اجرا کنید: 
+    <div className="h-4" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+        {`php artisan make:middleware Cors`}
+        </Highlight>
+    </div>
+    <div className="h-4" />  
+    سپس، در فایل <Important>app/Http/Middleware/Cors.php</Important>، هدرهای مورد نیاز برای CORS را به این صورت اضافه کنید:
+    <div className="h-4" />
+    <div dir='ltr'>
+        <Highlight className="laravel">
+        {`return $next($request)
+    ->header('Access-Control-Allow-Origin', '*')
+    ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    ->header('Access-Control-Allow-Headers', 'Content-Type, X-Auth-Token, Authorization');
+`}
+        </Highlight>
+    </div>
+    <div className="h-4" /> 
+    این روش به شما کنترل بیشتری بر روی درخواست‌های CORS می‌دهد​.
+   </>,
+
+   <>
+
+<Section id="use-laravel-cors-package" title="استفاده از پکیج laravel-cors"  className="mt-0"/>
 در ابتدا، کافیست تا با اجرای دستور زیر، این پکیج را در پروژه خود، در لوکال، نصب کنید:
 
 <div className="h-2" />
@@ -102,6 +167,10 @@ composer require fruitcake/laravel-cors`}
     </Highlight>
 </div>
 <div className="h-2" />
+
+   </>
+]} 
+/>
 
 
 

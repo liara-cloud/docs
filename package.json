@@ -14,6 +14,7 @@
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",
+    "clsx": "^2.1.1",
     "lodash.debounce": "^4.0.8",
     "meilisearch": "^0.41.0",
     "next": "14.2.3",
