@@ -1,0 +1,142 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ایجاد و مدیریت کاربر جدید در دیتابیس Redis - لیارا</title>
+</Head>
+# ایجاد و مدیریت کاربر جدید در دیتابیس Redis
+<hr className="mb-2" />
+
+Redis از سیستم کاربران و دسترسی‌های پیچیده پشتیبانی نمی‌کند. اما با استفاده از قابلیت ACL (Access Control List) از نسخه 6.0 به بعد، می‌توانید کاربران جدید ایجاد کنید و دسترسی‌های مختلف را تنظیم کنید.
+
+
+<div className="h-2" />
+
+برای ساخت کاربر جدید در دیتابیس، در ابتدا باید <a href="/dbaas/redis/how-tos/connect-via-cli/redis-cli" className="text-[#2196f3]">ابزار redis-cli</a> را بر روی سیستم (یا سرور خود)، نصب کنید؛ در ادامه، بایستی با استفاده از اطلاعات موجود در بخش **نحوه اتصال** دیتابیس‌تان در لیارا و با استفاده از دستور زیر، در ترمینال،
+به redis متصل شوید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`redis-cli -h <host_name> -p <port> -a "<password>"`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+پس از اتصال موفق، می‌توانید با استفاده از دستورات تعریف شده در ادامه، کاربران مد نظر خود را، ایجاد کنید.
+
+<Section id="create-readonly-user" title="ساخت کاربر با دسترسی Read-Only " />
+برای ایجاد کاربر جدید که تنها اجازه خواندن اطلاعات (READ) از دیتابیس را دارد، 
+می‌توانید از دستور زیر استفاده کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="Redis">
+        {`ACL SETUSER readonly_user on >password123 ~* +@read -@write`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستور فوق، یک کاربر با نام <Important>readonly_user</Important> و رمزعبور <Important>password123</Important> با اجازه دسترسی به تمامی کلیدها (با استفاده از <Important>*~</Important>) 
+و فقط اجازه خواندن آن‌ها (<Important>read+@</Important>)
+و منع تغییر آن‌ها (<Important>write-@</Important>)، ایجاد می‌کند. حال برای اتصال به redis با این کاربر ایجاد شده، می‌توانید از دستور زیر در ترمینال، استفاده کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="Redis">
+        {`redis-cli -h fitz-roy.liara.cloud -p 30612 -a "password123" --user readonly_user`}
+    </Highlight>
+    </div>
+
+<Section id="create-limited-user" title="ساخت کاربر با دسترسی محدود به برخی کلیدها" />
+در صورتی که بخواهید کاربری ایجاد کنید که فقط به کلیدهای مشخص دسترسی داشته باشد، می‌توانید مانند دستور زیر عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="redis">
+        {`ACL SETUSER limited_user on >password456 ~user_* +@read +@write`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستور فوق، یک کاربر با نام <Important>limited_user</Important> و رمزعبور <Important>password456</Important> با اجازه دسترسی به کلیدهایی که با <Important>_user</Important> شروع می‌شوند (با استفاده از <Important>*_user~</Important>) 
+و اجازه خواندن آن‌ها (<Important>read+@</Important>)
+و تغییر آن‌ها (<Important>write+@</Important>)، ایجاد می‌کند. حال برای اتصال به redis با این کاربر ایجاد شده، می‌توانید از دستور زیر در ترمینال، استفاده کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="Redis">
+        {`redis-cli -h fitz-roy.liara.cloud -p 30612 -a "password456" --user limited_user`}
+    </Highlight>
+    </div>
+
+<Section id="create-backup-user" title="ساخت کاربر برای تهیه فایل پشتیبان" />
+برای ایجاد کاربر جدید که تنها اجازه تهیه فایل پشتیبان از دیتابیس را دارد، 
+می‌توانید مانند دستور زیر عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="Redis">
+        {`ACL SETUSER backup_user on >password789 ~* +@admin`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستور فوق، یک کاربر با نام <Important>backup_user</Important> و رمزعبور <Important>password789</Important> با اجازه دسترسی به همه کلیدها (با استفاده از <Important>*~</Important>) 
+و اجازه 
+دسترسی به دستورات مدیریتی مثل SAVE و BGSAVE (<Important>admin+@</Important>) ایجاد می‌کند.
+
+<Section id="delete-user" title="حذف یک کاربر" />
+
+برای حذف یک کاربر، می‌توانید از دستور <Important>ACL DELUSER</Important> استفاده کنید. به عنوان مثال، اگر بخواهید کاربری به نام <Important>readonly_user</Important> را حذف کنید، می‌توانید از دستور زیر استفاده کنید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="Redis">
+        {`ACL DELUSER readonly_user`}
+    </Highlight>
+</div>
+
+<Section id="manage-users" title="مدیریت کاربران" />
+
+برای مشاهده لیست کاربران می‌توانید با دسترسی ادمین، از دستور زیر، استفاده کنید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="Redis">
+        {`ACL LIST`}
+    </Highlight>
+</div>
+<div className="h-4" />
+
+برای بررسی دسترسی‌های یک کاربر خاص نیز، می‌توانید مانند قطعه کد زیر عمل کنید: 
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`ACL GETUSER readonly_user`}
+    </Highlight>
+</div>
+<div className="h-4" />
+دستور فوق، دسترسی‌های کاربری به نام <Important>readonly_user</Important> را، نمایش می‌دهد.
+
+<div className="h-4" />
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="https://redis.io/docs/latest/commands/acl-setuser/" className="text-[#2196f3]">مستندات رسمی ایجاد کاربر در Redis</a>
+</p>
+</Alert>
+
+</Layout>

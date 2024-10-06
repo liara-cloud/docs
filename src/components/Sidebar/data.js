@@ -2935,6 +2935,11 @@ export default {
         link: "/dbaas/mariadb/choose-version"
       },
       {
+        title: "ایجاد و مدیریت کاربر جدید",
+        icon: <GoKey  />,
+        link: "/dbaas/mariadb/create-user"
+      },
+      {
         hr: true
       },
       {
@@ -3621,6 +3626,11 @@ export default {
         title: "نسخه‌های قابل ارائه",
         icon: <GoVersions   />,
         link: "/dbaas/redis/choose-version"
+      },
+      {
+        title: "ایجاد و مدیریت کاربر جدید",
+        icon: <GoKey   />,
+        link: "/dbaas/redis/create-user"
       },
       {
         hr: true
