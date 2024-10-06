@@ -99,7 +99,7 @@ GRANT SELECT, INSERT, UPDATE ON TABLE public.<table_name_1>, public.<table_name_
 در جداول \<table_name_1\> و \<table_name_2\> در یک دیتابیس مشخص، عملیات <Important>SELECT</Important> , <Important>INSERT</Important> و <Important>UPDATE</Important> را، انجام دهد.
 
 
-<Section id="see-user-rules" title="مشاهده همه کاربران به همراه دسترسی‌های آن‌ها" />
+<Section id="see-user-roles" title="مشاهده همه کاربران به همراه دسترسی‌های آن‌ها" />
 برای مشاهده دسترسی‌های همه کاربران در PostgreSQL می‌توانید 
 از قطعه کد زیر استفاده کنید:
 
@@ -110,7 +110,7 @@ GRANT SELECT, INSERT, UPDATE ON TABLE public.<table_name_1>, public.<table_name_
     </Highlight>
     </div>
 
-<Section id="delete-user-rules" title="حذف دسترسی‌ یک کاربر" />
+<Section id="delete-user-roles" title="حذف دسترسی‌ یک کاربر" />
 برای حذف دسترسی‌های یک کاربر در PostgreSQL، می‌توانید از دستور <Important>REVOKE</Important> استفاده کنید؛
 به عنوان مثال فرض کنید کاربر <Important>readonly_user</Important> دسترسی SELECT به جداولی در اسکیمای public دارد و شما می‌خواهید این دسترسی را از او سلب کنید.
 برای این کار، می‌توانید مانند قطعه کد زیر، عمل کنید:

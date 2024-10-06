@@ -3349,6 +3349,11 @@ export default {
         link: "/dbaas/mssql/choose-version"
       },
       {
+        title: "ایجاد و مدیریت کاربر جدید",
+        icon: <GoKey   />,
+        link: "/dbaas/mssql/create-user"
+      },
+      {
         hr: true
       },
       {
