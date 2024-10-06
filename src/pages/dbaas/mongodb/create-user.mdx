@@ -1,0 +1,147 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ایجاد و مدیریت کاربر جدید در دیتابیس MongoDB - لیارا</title>
+</Head>
+# ایجاد و مدیریت کاربر جدید در دیتابیس MongoDB
+<hr className="mb-2" />
+
+وقتی که شما یک دیتابیس MongoDB جدید در لیارا، ایجاد می‌کنید؛ به صورت خودکار یک کاربر به نام root همراه با آن ایجاد می‌شود که همان دسترسی پیش‌فرض است.
+دسترسی پیش‌فرض یا کاربر <Important>root</Important> در MongoDB، یک اکانت مدیریتی با بیشترین سطح دسترسی است. این کاربر معادل administrator در سیستم‌های عامل مختلف است و می‌تواند تمام عملیات‌های مدیریتی و اجرایی در پایگاه داده را انجام دهد.
+<div className="h-2" />
+
+شما می‌توانید با استفاده از ابزارهای مختلفی نظیر mongosh کاربران جدید با دسترسی‌های جدید 
+در دیتابیس خود ایجاد کنید؛ در ادامه به نحوه ساخت کاربران جدید با دسترسی‌های مختلف در دیتابیس، پرداخته شده است.
+<div className="h-2" />
+
+برای ساخت کاربر جدید در دیتابیس، در ابتدا باید <a href="/dbaas/mongodb/how-tos/connect-via-cli/mongosh/" className="text-[#2196f3]">ابزار mongosh</a> را بر روی سیستم (یا سرور خود)، نصب کنید؛ در ادامه، بایستی با استفاده از اطلاعات موجود در بخش **نحوه اتصال** دیتابیس‌تان در لیارا و با استفاده از دستور زیر، در ترمینال، به دیتابیس، با کاربر root، متصل شوید: 
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`mongo -u <user_name> --port <port> --host <host_name> -p <password> --authenticationDatabase admin`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+پس از اتصال موفق، می‌توانید با استفاده از دستورات تعریف شده در ادامه، کاربران مد نظر خود را، ایجاد کنید.
+
+<Section id="create-readonly-user" title="ساخت کاربر با دسترسی Read-Only " />
+برای ایجاد کاربر جدید که تنها اجازه خواندن اطلاعات (READ) از دیتابیس را دارد، 
+می‌توانید از قطعه کد زیر استفاده کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="mongodb">
+        {`use admin;
+db.createUser({
+  user: "readonlyUser",
+  pwd: "readonlyPassword",
+  roles: [
+    { role: "read", db: "<database_name>" }
+  ]
+});
+`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستورات فوق، یک کاربر با نام <Important>readonlyUser</Important> و رمزعبور <Important>readonlyPassword</Important> برای دیتابیس \<database_name\> (یا دیتابیس انتخابی) با دسترسی readonly، ایجاد می‌کند.
+
+
+<Section id="create-limited-user" title="ساخت کاربر با دسترسی محدود به برخی جداول" />
+در صورتی که بخواهید کاربری ایجاد کنید که فقط به چند جدول مشخص دسترسی داشته باشد، می‌توانید مانند دستورات زیر عمل کنید:
+
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="sql">
+        {`use admin;
+db.createUser({
+  user: "limitedUser",
+  pwd: "limitedPassword",
+  roles: [
+    {
+      role: "readWrite",
+      db: "<database_name>",
+      collection: "<collection_name>"
+    }
+  ]
+});
+`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستورات فوق، یک کاربر به نام <Important>limitedUser</Important> و رمزعبور <Important>limitedPassword</Important> ایجاد می‌کند که می‌تواند 
+به \<collection_name\> در \<database_name\> دسترسی داشته باشد.
+
+<Section id="create-backup-user" title="ساخت کاربر برای تهیه فایل پشتیبان" />
+برای ایجاد کاربر جدید که تنها اجازه تهیه فایل پشتیبان از دیتابیس را دارد، 
+می‌توانید مانند قطعه کد زیر عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="mongodb">
+        {`use admin;
+db.createUser({
+  user: "backupUser",
+  pwd: "backupPassword",
+  roles: [
+    { role: "backup", db: "admin" }
+  ]
+});
+`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+دستورات فوق، یک کاربر با نام <Important>backupUser</Important> و رمزعبور <Important>backupPassword</Important> با دسترسی تهیه فایل پشتیبان، ایجاد می‌کند.
+
+
+
+<Section id="delete-user" title="حذف یک کاربر" />
+
+برای حذف یک کاربر با تمام دسترسی‌ها در دیتابیس، می‌توانید مشابه قطعه کد زیر، عمل کنید:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="mongodb">
+        {`use <database_name>;
+db.dropUser("<user_name>");
+`}
+    </Highlight>
+</div>
+<div className="h-4" />
+
+دستور فوق، کاربر \<user_name\> تعریف شده برای دیتابیس \<database_name\> را، حذف می‌کند.
+پس از اجرای دستور فوق، می‌توانید با اجرای دستور زیر، لیست کاربران موجود را بررسی کنید: 
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="mongodb">
+        {`db.getUsers();`}
+    </Highlight>
+</div>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="https://www.mongodb.com/docs/manual/reference/method/db.createUser/" className="text-[#2196f3]">مستندات رسمی ایجاد کاربر در MongoDB</a>
+</p>
+</Alert>
+
+</Layout>
