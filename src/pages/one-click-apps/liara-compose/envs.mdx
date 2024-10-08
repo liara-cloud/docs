@@ -25,10 +25,11 @@ import Head from "next/head";
 <ul>
     <li>متغیر <Important>APP_NAME$</Important>: این متغیر شناسه برنامه‌تان را بر می‌گرداند.</li>
     <li>متغیر <Important>RANDOM_STRING$</Important>: این متغیر یک رشته شامل تعدادی کاراکتر تصادفی برای شما برمی‌گرداند و مناسب مقداردهی کلیدها است.</li>
-    <li>متغیرهای مربوط به دیتابیس: متغیرهایی مانند <Important>DB_main_HOST$</Important> , <Important>DB_main_USER$</Important> , <Important>DB_main_USER$</Important> و ... برای دسترسی به دیتابیس.</li>
+    <li>متغیرهای مربوط به دیتابیس: متغیرهایی مانند <Important>DB_main_HOST$</Important> , <Important>DB_main_USER$</Important> , <Important>DB_main_PORT$</Important>, <Important>DB_main_HOST$</Important> و <Important>DB_main_NAME$</Important> برای دسترسی به دیتابیس، که در صورت 
+    وجود، می‌توانید از آن‌ها استفاده کنید.</li>
+    <li>متغیر <Important>APP_id_NAME$</Important>:  شناسه برنامه اولیه در برنامه دوم به کمک فیلد id؛ به عنوان مثال، اگر که برنامه اول در فایل liara compose آیدی برابر با back دارد؛ می‌توانید در برنامه دوم با متغیری به نام <Important>APP_back_NAME$</Important>، به آن، دسترسی داشته باشید.</li>
+    
 </ul>
-<div className="h-2" />
-در نظر داشته باشید که در صورت وجود دیتابیس در فایل <Important>liara-compose.yaml</Important>، شما می‌توانید به تمام متغیرهای مربوط به اتصال به آن، دسترسی داشته باشید. 
 
 
 

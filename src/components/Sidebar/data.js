@@ -1980,6 +1980,10 @@ export default {
         title: "تغییر نسخه Python",
         link: "/paas/flask/how-tos/choose-version"
       },
+      {
+        title: "تنظیم تعداد workerهای  Gunicorn",
+        link: "/paas/flask/how-tos/set-gunicorn-workers"
+      },
       // {
       //   title: "راه‌اندازی برنامه WebSocket",
       //   link: "/paas/flask/how-tos/use-websocket"
