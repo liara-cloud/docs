@@ -20,31 +20,107 @@ import Head from "next/head";
 # راه‌اندازی سریع برنامه‌های OpenProject
 <hr className="mb-2" />
 
+{/* <div className="h-2" />
+<video
+src="https://files.liara.ir/liara/docs/OpenProject.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+/>
+<br /> */}
+
 <a href="https://www.openproject.org/" className="text-[#2196f3] ">OpenProject</a>  یک نرم‌افزار مدیریت پروژه است که برای برنامه‌ریزی، پیگیری، و مدیریت پروژه‌ها به‌ویژه در محیط‌های تیمی و سازمانی طراحی شده است. این برنامه ابزارهای متعددی برای مدیریت وظایف، زمان‌بندی، منابع و گزارش‌دهی ارائه می‌دهد. کاربران می‌توانند پروژه‌ها را به‌صورت دقیق برنامه‌ریزی کنند، اهداف و نقاط عطف (milestones) را تنظیم کنند و پیشرفت کار را به‌طور مستمر پیگیری کنند. 
 OpenProject قابلیت‌هایی مانند مدیریت ریسک، بودجه‌بندی، و گزارش‌گیری زمان‌بندی شده را نیز دارد. این نرم‌افزار امکان همکاری تیمی را از طریق سیستم‌های مدیریت اسناد، بحث و تبادل‌نظر و ویکی داخلی فراهم می‌کند.
 <div className="h-4" />
 
-برای راه‌اندازی برنامه‌ی آماده OpenProject در لیارا، باید در صفحه <a href="https://console.liara.ir/apps/create" className="text-[#2196f3] ">ایجاد برنامه‌ کنسول لیارا</a> وارد بخش <b>برنامه‌های آماده</b> شوید.
-سپس برنامه‌ی <b>OpenProject</b> 
-را انتخاب کنید و در صورت تمایل یک شناسه برای آن قرار دهید (در غیر این‌صورت، لیارا به صورت پیش‌فرض یک شناسه برای برنامه‌تان انتخاب می‌کند)؛ سپس بر روی گزینه **نصب سریع** یا **نصب پیشرفته** کلیک کنید تا برنامه‌تان ساخته شود.
-  {/* <div className="h-2" />
-  <video
-  src="https://files.liara.ir/liara/docs/OpenProject.mp4"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-  />
-  <br /> */}
+برای راه‌اندازی برنامه با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
 
-<div className='h-2' />
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>ورود به حساب کاربری</h3>   
+<p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+</>
+)
+},
+{
+step: "۲",
+content: (
+<>
+<h3>راه‌اندازی برنامه</h3>
+<p>
+    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>openproject</b>، کلیک کنید. 
+    در ادامه، می‌توانید از گزینه <b>نصب سریع</b> یا گزینه <b>نصب پیشرفته</b> برای استقرار و نصب برنامه‌تان استفاده کنید:
+</p>
+<Tabs 
+    tabs={["نصب سریع", "نصب پیشرفته"]} 
+    content={[
+    <>
+      <p>
+      در صورتی که از قابلیت <b>نصب سریع</b> استفاده کنید؛ لیارا از شما می‌خواهد که یک 
+      ‌نام برای برنامه خود، انتخاب کنید؛ که شما می‌توانید در صورت تمایل و پس از وارد کردن نام موردنظرتان برای برنامه، بر روی گزینه <b>نصب و راه‌اندازی</b> کلیک کنید تا برنامه‌‌تان ساخته و نصب شود. 
+      </p>
+
+      <div className="h-4" />
+      <img src="https://files.liara.ir/liara/docs/one-click-app-quick-setup.gif" alt="create one click app using quick setup feature" />
+      <div className="h-4" />
+
+      <p>
+        با انجام کار فوق، لیارا برای برنامه(برنامه‌ها)ی شما،   
+        شناسه منحصربه‌فرد و یک <a href="/paas/details/private-network" className="text-[#2196f3]">شبکه خصوصی</a> جدید با <a href="/paas/details/plans/hardware-plans" className="text-[#2196f3]">پلن سخت‌افزاری</a> و <a href="/paas/details/plans/software-plans" className="text-[#2196f3]">بسته امکانات </a> پیش‌فرض، ایجاد می‌کند و پس از موفقیت آمیز بودن نصب برنامه، شما می‌توانید وضعیت برنامه‌تان 
+        را در بخش <a href="/paas/details/events" className="text-[#2196f3]">رویدادها</a> و <a href="/paas/details/observations/software" className="text-[#2196f3]">لاگ‌ها</a> بررسی کنید.
+      </p>   
+    </>,
+    <>
+      <p>
+        در صورتی که بر روی گزینه <b>نصب پیشرفته</b> کلیک کنید به یک صفحه جدید هدایت می‌شوید که 
+        در این صفحه می‌توانید برای برنامه (برنامه‌ها) و دیتابیس (دیتابیس‌ها)ی مدنظرتان شناسه  
+        و <a href="/paas/details/plans/hardware-plans" className="text-[#2196f3]">پلن سخت‌‌افزاری</a> انتخاب کنید. 
+        در نظر داشته باشید که <a href="/paas/details/plans/software-plans" className="text-[#2196f3]">بسته امکانات</a> برنامه‌تان، متناسب 
+        با نیازهای برنامه‌تان است که به صورت پیش‌فرض انتخاب می‌شود.
+      </p>
+      <div className="h-4" />
+      <p>
+        در این صفحه، شما می‌توانید <a href="/paas/details/private-network" className="text-[#2196f3]">شبکه خصوصی</a> مدنظرتان را انتخاب کنید 
+        تا برنامه‌تان در شبکه خصوصی انتخاب‌شده، نصب شود. در صورتی که شبکه خصوصی برای برنامه انتخاب نشود، 
+        لیارا به صورت خودکار، یک شبکه خصوصی برای برنامه‌تان ایجاد می‌کند.
+      </p>
+      <div className="h-4" />
+      <p>
+        همچنین، شما می‌توانید با کلیک بر روی گزینه <b>ویرایش Liara Compose</b>، <Important>Liara Compose</Important> برنامه را بنا به نیاز خود، شخصی‌سازی کنید. 
+        در این فایل، شما می‌توانید تگ داکرایمیج، آیدی، پلن سخت‌افزاری، بسته امکانات، متغیرهای محیطی و ... برنامه‌تان 
+        را تغییر داده یا سازمان‌دهی کنید.
+      </p>
+      <div className="h-4" />
+      <Alert variant="success">
+        <p>
+          همچنین بخوانید: <a href="/one-click-apps/liara-compose/about/" className="text-[#2196f3]">فایل <Important>Liara Compose</Important> چیست؟</a>
+        </p>
+      </Alert>
+      <Alert variant="info">
+        <p>
+          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/openproject/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
+        </p>
+      </Alert>
+    </>
+    ]} 
+  />
+
+</>
+)
+},
+
+]}/>
+
+<div className='h-4' />
 <Alert className="info">
   <p>
     در اولین ورود به حساب کاربری برنامه‌تان، مقدار پیش‌فرض <Important>Username</Important> و <Important>Password</Important>، برابر با <Important>admin</Important> می‌باشد. 
   </p>
 </Alert>
 <div className='h-2' />
-
-پس از ساخته شدن برنامه، می‌توانید در صفحه <a href="https://console.liara.ir/apps" className="text-[#2196f3] ">پلتفرم</a>، برنامه خود را بررسی کنید. برای نصب دلخواه و انتخاب نسخه مدنظرتان یا انتخاب dockerimage ، باید از گزینه **نصب پیشرفته** یا <a href="/one-click-apps/liara-compose/about/" className="text-[#2196f3]">Liara Compose</a> استفاده کنید. 
 
 <Section id="see-also" title="همچنین بخوانید:" />
 
