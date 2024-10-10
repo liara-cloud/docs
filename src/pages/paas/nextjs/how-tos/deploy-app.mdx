@@ -340,6 +340,19 @@ import Head from "next/head";
 }`}
             </Highlight>
         </div>
+        <div className="h-2" />
+        <p>
+            همچنین، بایستی در این فایل، در فیلدی به نام <Important>port</Important>، پورتی 
+            که برنامه در آن، به درخواست کاربران گوش می‌دهد را، وارد کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "port": 3000
+}`}
+            </Highlight>
+        </div>
         <Alert variant='error'>
           <p>
             در فایل <Important>liara.json</Important>، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
