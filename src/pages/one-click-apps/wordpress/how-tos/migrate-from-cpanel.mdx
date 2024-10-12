@@ -73,11 +73,70 @@ content: (
 
 <Alert variant="info">
 <p>
-برای بازیابی فایل‌های پشتیبان با حجم بالا، توصیه می‌شود که از ابزار <Important>MySQL CLI</Important> استفاده کنید.
+برای بازیابی فایل‌های پشتیبان با حجم بالا، توصیه می‌شود که از ابزار <a href="/dbaas/mysql/how-tos/connect-via-cli/mysql" className="text-[#2196f3]"><Important>MySQL CLI</Important></a> استفاده کنید.
 </p>
 </Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/dbaas/mysql/how-tos/restore-backup" className="text-[#2196f3]">بازیابی فایل پشتیبان در دیتابیس MySQL/MariaDB</a>
+</p>
+</Alert>
+</>
+)
+},
+{
+step: "۴",
+content: (
+<>
+<h3>
+اتصال دامنه و تهیه گواهی SSL
+</h3>
 
+<p>
 
+طبق مستندات <a href="/paas/domains/add-domain" className="text-[#2196f3]">اضافه کردن دامنه به برنامه</a>، دامنه مدنظرتان را به برنامه وردپرس خود متصل کرده 
+و طبق مستندات <a href="/paas/domains/enable-ssl" className="text-[#2196f3]">تهیه گواهی SSL</a>، یک گواهی SSL برای دامنه‌تان تهیه کنید. 
+</p>
+<div className="h-3" />
+
+</>
+)
+},
+{
+step: "۵",
+content: (
+<>
+<h3>
+به‌روزرسانی فایل <Important>wp-config.php</Important>
+</h3>
+
+<p>
+  با دسترسی ftp ایجاد شده، مجدداً به دیسک <Important>data</Important> متصل شوید؛ فایل <Important>wp-config.php</Important> با یک code editor (مانند Notepad)، باز کرده و 
+  بخش مربوط به اطلاعات اتصال به دیتابیس را با توجه به اطلاعات دیتابیس فعلی‌تان که در بخش <b>نحوه اتصال دیتابیس</b> قرار دارد، تغییر دهید. 
+</p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="php">
+            {`// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'mydatabase' );
+
+/** Database username */
+define( 'DB_USER', 'root' );
+
+/** Database password */
+define( 'DB_PASSWORD', 'somepassword' );
+
+/** Database hostname */
+define( 'DB_HOST', 'some-host-name:3306' );`}
+        </Highlight>
+    </div>
+    <Alert variant="warning">
+      <p>
+        برای اتصال به دیتابیس، حتماً از اطلاعات شبکه خصوصی، استفاده کنید.
+      </p>
+    </Alert>   
 </>
 )
 },
@@ -87,12 +146,14 @@ content: (
 
 <br/>   
 با انجام مراحل فوق، برنامه WordPress شما به صورت کامل، منتقل می‌شود و شما می‌توانید از آن استفاده کنید.
-<div className="h-1" />
+<div className="h-3" />
 
 <Alert variant="info">
 <p>
 درصورتی که دامنه‌ی قبلی خود را به برنامه وردپرس متصل نکرده باشید باید در جدول <Important>wp_options</Important> فیلد‌های <Important>siteUrl</Important> و <Important>homeUrl</Important> آدرس فعلی برنامه را وارد کرده و درنهایت برنامه را ری‌استارت کنید.
 </p>
 </Alert>
+<div className="h-3" />
 
+ممکن است در اجرای برنامه وردپرس خود، با یک‌سری مشکل مواجه شوید که برای رفع آن، می‌توانید به صفحه <a href="/one-click-apps/wordpress/fix-common-errors/about" className="text-[#2196f3]">رفع خطاهای رایج</a>، مراجعه کنید.
 </Layout>
