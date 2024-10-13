@@ -807,7 +807,7 @@ export default {
         )
       },
       {
-        title: "اضافه کردن رکورد به برنامه",
+        title: "اضافه کردن دامنه به برنامه",
         link: "/paas/domains/add-domain"
       },
       {

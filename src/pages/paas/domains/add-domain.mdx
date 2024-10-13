@@ -50,8 +50,11 @@ import Head from "next/head";
 </Alert>
 
 
-<Section id="connect-domain-using-cloudflare" title="اتصال دامنه به برنامه با Cloudflare" />
-<video
+<Tabs 
+  tabs={["Cloudflare", "ابر آروان", "WordPress"]} 
+  content={[
+  <>
+    <video
   src="https://files.liara.ir/liara/domain/domain.mp4"
   controls="controls"
   className="block w-full"
@@ -62,21 +65,25 @@ import Head from "next/head";
 در سرویس Cloudflare، تنظیمات SSL را همیشه روی Flexible تنظیم کنید.
 </p>
 </Alert>
-
-<Section id="connect-domain-using-arvancloud" title="اتصال دامنه به برنامه با ابرآروان" />
-<video
+  </>,
+  <>
+    <video
   src="https://files.liara.ir/liara/domain/arvancloud-dns.mp4"
   controls="controls"
   className="block w-full"
   width="100%" />
 <div className="h-2" />
-
-<Section id="connect-domain-in-wordpress-apps" title="اتصال دامنه به برنامه‌های وردپرسی" />
+  </>,
+  <>
 <video
   src="https://files.liara.ir/liara/domain/domain-wp.mp4"
   controls="controls"
   className="block w-full"
   width="100%" />
 <div className="h-2" />
+  </>
+  ]}
+/>
+
 
 </Layout>
