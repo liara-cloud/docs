@@ -6657,10 +6657,6 @@ export default {
         link: "/object-storage/how-tos/create-backup-using-s3-browser"
       },
       {
-        title: "مهاجرت از سرویس فایل (قدیمی)",
-        link: "/object-storage/how-tos/migrate-from-file-service"
-      },
-      {
         hr: true
       },
       {
@@ -6861,10 +6857,6 @@ export default {
         link: "/object-storage/how-tos/create-backup-using-s3-browser"
       },
       {
-        title: "مهاجرت از سرویس فایل (قدیمی)",
-        link: "/object-storage/how-tos/migrate-from-file-service"
-      },
-      {
         hr: true
       },
       {
@@ -7057,10 +7049,6 @@ export default {
       {
         title: "تهیه فایل‌پشتیبان با S3 Browser",
         link: "/object-storage/how-tos/create-backup-using-s3-browser"
-      },
-      {
-        title: "مهاجرت از سرویس فایل (قدیمی)",
-        link: "/object-storage/how-tos/migrate-from-file-service"
       },
       {
         hr: true
@@ -7256,10 +7244,6 @@ export default {
       {
         title: "تهیه فایل‌پشتیبان با S3 Browser",
         link: "/object-storage/how-tos/create-backup-using-s3-browser"
-      },
-      {
-        title: "مهاجرت از سرویس فایل (قدیمی)",
-        link: "/object-storage/how-tos/migrate-from-file-service"
       },
       {
         hr: true
