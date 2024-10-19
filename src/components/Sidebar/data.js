@@ -4158,6 +4158,16 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/communityIcon_grq1bunhrg8c1.ico" />,
         link: "/one-click-apps/mixpost/quick-start"
       },
+      {
+        title: "Vvveb",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.png" />,
+        link: "/one-click-apps/vvveb/quick-start"
+      },
+      {
+        title: "Rallly",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.png" />,
+        link: "/one-click-apps/rallly/quick-start"
+      },
 
     ],
     'liara-compose': [
@@ -6017,6 +6027,78 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/mixpost/how-tos/choose-version"
+      },
+    ], 
+
+    vvveb: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.png" />
+            برنامه Vvveb
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/vvveb/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/vvveb/how-tos/choose-version"
+      },
+    ], 
+
+    rallly: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.png" />
+            برنامه Rallly
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/rallly/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/rallly/how-tos/choose-version"
       },
     ], 
   },
