@@ -20,7 +20,7 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 <Tabs 
-  tabs={["Liara Console", "Liara CLI"]} 
+  tabs={["Liara Console", "Liara CLI", "Github"]} 
   content={[
   <>
   <video
@@ -225,7 +225,7 @@ CMD ["./main"]`}
   step: "۶",
   content: (
   <>
-        <h3>ایجاد Dockerfile</h3>
+    <h3>ایجاد Dockerfile</h3>
     <p>
       در مسیر اصلی پروژه، یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و بنا به نیازهای پروژه خود، دستورات مرتبط را درون این فایل، قرار دهید تا پروژه‌تان Dockerize شود. 
       به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
@@ -282,9 +282,231 @@ CMD ["./main"]`}
 
 ]}/>
   </>,
+  <>
+    <video
+    src="https://files.liara.ir/liara/docs/docker-github.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+    ></video>
+    <br />
+  برای استقرار با Github، کافیست تا مراحل زیر را طی کنید:
+    <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>برنامه Docker خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد Dockerfile</h3>
+    <p>
+      در مسیر اصلی پروژه، یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و بنا به نیازهای پروژه خود، دستورات مرتبط را درون این فایل، قرار دهید تا پروژه‌تان Dockerize شود. 
+      به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="docker">
+      {`# Use the official Golang image as the base image
+FROM golang:latest
+        
+# Set the working directory inside the container
+WORKDIR /app
 
+# Copy the local code to the container
+COPY . .
+
+# Download Go modules
+RUN go mod download
+
+# Build the Go application
+RUN go build -o main .
+
+# Expose port 8080 to the outside world
+# EXPOSE 8080
+
+# Command to run the executable
+CMD ["./main"]`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <Alert variant="info">
+    <p>
+      شما می‌توانید با استفاده از دستور <Important>EXPOSE</Important> پورتی که برنامه توسط آن به درخواست کاربران گوش می‌دهد را مشخص کنید. البته چون که در حین استقرار، لیارا از شما port برنامه را می‌پرسد بنابراین برای استقرار برنامه‌های داکرایز شده در لیارا، نیازی به نوشتن این دستور در <Important>Dockerfile</Important> نیست.
+    </p>
+    </Alert>
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>ساخت فایل <Important>liara.json</Important></h3>
+    <p>
+      در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و پیکربندی‌های مدنظرتان را در این فایل بنویسید؛ به عنوان مثال:
+    </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{ 
+    {
+    "port": 8080,
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "cache": false,
+        "args": ["APP_VERSION=2.0.0"]
+    },
+
+    "docker": {
+        "timezone": "America/Los_Angeles"
+    },
+
+    "args": [
+    "sh",
+    "-c",
+    "sleep 10 && /entrypoint.sh run"
+    ]
+  }
+}`}
+            </Highlight>
+        </div>
+        <Alert variant='error'>
+          <p>
+            در فایل فوق، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
+          </p>  
+        </Alert>
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+
+  <>
+    <h3>ساخت ریپازیتوری در گیت‌هاب</h3>
+    <p>
+      یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید.
+    </p>
+  <div className="h-2" />
+  <Alert variant="success">
+<p>
+در صورتی که از قبل، این کار را انجام داده‌اید یا قصد دارید از ریپازیتوری‌های فعلی خود استفاده کنید؛ از این مرحله بگذرید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+  <>
+    <h3>آپلود پروژه در گیت‌هاب</h3>
+    <p>
+      پروژه نهایی خود را در ریپازیتوری‌تان در گیت‌هاب آپلود کنید؛
+      حتماً در نظر داشته باشید که درون پروژه‌تان، فایل <Important>gitignore.</Important> قرار داشته باشد و درون آن، فایل‌های اضافی 
+      برنامه، که قصد ندارید آپلود شوند؛ لیست شده باشند.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۷",
+  content: (
+  <>
+    <h3>اتصال لیارا به گیت‌هاب</h3>
+    <p>
+      برای اتصال حساب لیارا خود به گیت‌هاب، در لیارا بر روی پروفایل خود کلیک کرده و وارد زیر قسمت <a href="https://console.liara.ir/settings/profile" className="text-[#2196f3]">حساب کاربری</a> شوید. در ادامه 
+      وارد منوی <a href="https://console.liara.ir/settings/github" className="text-[#2196f3]">گیت‌هاب</a> شوید و بر روی دکمه <b>اتصال به گیت‌هاب</b>، کلیک کنید. 
+    </p>
+    <div className="h-1" />
+    <img src="https://files.liara.ir/liara/docs/connect-to-github-on-liara.png" alt="connect to github on liara account" />
+    <div className="h-1" />
+    <p> 
+      پس از 
+      انجام این کار و وارد کردن اطلاعات مربوط به گیت‌هاب، حساب لیارا شما به گیت‌هاب متصل خواهد شد.
+    </p>
+    <div className="h-1" />
+    <img src="https://files.liara.ir/liara/docs/added-github-account-on-liara.png" alt="added github account on liara" />
+    <div className="h-1" />
+
+  <div className="h-2" />
+  <Alert variant="error">
+<p>
+  در صورت مواجه با خطای "اتصال به Github"، بایستی از حساب لیارا خود، خارج شده و مجدداً به وسیله Github، به اکانت لیارا خود، وارد شوید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۸",
+  content: (
+  <>
+    <h3>ویرایش دسترسی‌ها</h3>
+    <p>
+      بعد از اتصال به اکانت گیت‌هاب، بر روی گزینه <b>ویرایش دسترسی‌ها</b> کلیک کرده و ریپازیتوری (ریپازیتوری‌های) مدنظرتان را به حساب لیارا متصل کنید.
+    </p>
+    <div className="h-2" />
+    <video
+    src="https://files.liara.ir/liara/docs/edit-access-to-github-account.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+    ></video>
+    <div className="h-2" />
+  </>
+  )
+  },
+  {
+  step: "۹",
+  content: (
+  <>
+    <h3>استقرار برنامه</h3>
+    <p>
+        در نهایت، بر روی برنامه خود کلیک کرده وارد صفحه <b>استقرار جدید</b> شوید؛ سپس در منوی <b>گیت‌هاب</b>، ریپازیتوری مدنظرتان را انتخاب کرده و پس از انتخاب نوع استقرار و branch مدنظرتان، بر روی گزینه <b>اتصال به برنامه</b> کلیک کنید تا برنامه‌تان به ریپازیتوری مدنظرتان متصل شود.
+        در نهایت، کافیست تا یک‌بار بر روی گزینه <b>استقرار دستی</b> کلیک کنید تا آخرین commit شما در لیارا مستقر شود.
+    </p>
+  <div className="h-2" />
+            <video
+            src="https://files.liara.ir/liara/docs/deploy-project-using-github.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+            ></video>
+  <div className="h-2" />
+    <Alert variant="info">
+<p>
+  برای قطع ارتباط برنامه و ریپازیتوری نیز، می‌توانید بر روی دکمه <b>قطع اتصال</b> کلیک کنید تا تغییرات جدید، مستقر نشوند.
+</p>
+</Alert>
+<div className="h-1" />
+
+  </>
+  )
+  }
+
+]}/>
+
+  </>,
 ]} 
 />
+
 
 <br/>   
 <Alert variant="info">
