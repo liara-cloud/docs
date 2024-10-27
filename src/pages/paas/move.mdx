@@ -71,11 +71,16 @@ import Head from "next/head";
     content: (
     <>
             <h3>اتصال به دیسک‌ها</h3>
-            <p>با استفاده از Liara CLI یا Liara Console دیسک‌ها را به برنامه <Important>target-app</Important> متصل کنید.</p>
+            <p>با استفاده از Liara CLI دیسک‌ها را به برنامه <Important>target-app</Important> متصل کنید.</p>
             <div className="h-2" />
             <Alert variant="success">
             <p>
                 همچنین بخوانید: <a href="/paas/disks/route/" className="text-[#2196f3] ">نحوه تعریف مسیر و اتصال به دیسک‌ها</a>
+            </p>
+            </Alert>
+            <Alert variant="info">
+            <p>
+                در صورتی که قصد دارید با استفاده از Liara Console استقرار را انجام دهید؛ می‌توانید در مرحله استقرار برنامه (گام ۶)، دیسک‌ها را به برنامه، متصل کنید.
             </p>
             </Alert>
     </>
@@ -86,7 +91,7 @@ import Head from "next/head";
     content: (
     <>
             <h3>استقرار مجدد پروژه</h3>
-            <p>سورس‌کد دانلود شده را در برنامه <Important>target-app</Important> با یکی از دو روش Liara CLI یا Liara Console در لیارا مستقر کنید.</p>
+            <p>سورس‌کد دانلود شده را در برنامه <Important>target-app</Important> با یکی از سه روش Liara CLI یا Liara Console یا Github در لیارا مستقر کنید.</p>
     </>
    )
     },
