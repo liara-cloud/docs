@@ -1,0 +1,68 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات بازیابی فایل پشتیبان در MariaDB - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات بازیابی فایل پشتیبان در دیتابیس MariaDB"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# بازیابی فایل پشتیبان در دیتابیس
+<hr className="mb-2" />
+
+
+<Tabs 
+    tabs={["MariaDB-CLI", "PHPMyAdmin"]} 
+    content={[
+    <>
+    <p>
+        برای بازیابی فایل پشتیبان با استفاده از
+        ابزار <a href="/dbaas/mariadb/how-tos/connect-via-cli/mariadb" className="text-[#2196f3] ">MariaDB CLI</a>، می‌توانید مشابه دستور زیر، عمل کنید:
+    </p>    
+    <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`mariadb -h DB_HOST -P DB_PORT -u DB_USER -pDB_PASSWORD < backup.sql`}
+    </Highlight>
+</div>
+        <Asciinema id="mariadb-restore" />
+    </>, 
+
+    <>
+    <p>
+        برای بازیابی فایل پشتیبان با استفاده از
+        ابزار <a href="./connect-via-gui/phpmyadmin" className="text-[#2196f3] ">PHPMyAdmin</a>، می‌توانید مشابه دستورالعمل زیر، عمل کنید:
+    </p> 
+    <div className="h-4" />
+    <img
+    src="https://files.liara.ir/docs/mariadb/restore-backup-into-mariadb-database-with-phpmyadmin.gif"
+    alt="database restore backup"
+    />
+    <div className="h-2" />
+    <Alert variant="warning">
+    <p>
+        ابزار phpMyAdmin برای بازیابی فایل‌های پشتیبان سنگین مناسب نیست. می‌توانید به‌عنوان جایگزین از ابزار MySQL CLI استفاده کنید.
+    </p>
+    </Alert>
+    </>          
+    ]} 
+/>
+
+<div className="h-2" />
+
+<div className="h-2" />
+
+</Layout>

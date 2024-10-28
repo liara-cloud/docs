@@ -1,0 +1,140 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ایجاد و مدیریت کاربر جدید در دیتابیس MariaDB - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات ایجاد و مدیریت کاربر جدید در دیتابیس MariaDB"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# ایجاد و مدیریت کاربر جدید در دیتابیس MariaDB
+<hr className="mb-2" />
+
+وقتی که شما یک دیتابیس MariaDB جدید در لیارا، ایجاد می‌کنید؛ به صورت خودکار یک کاربر به نام root همراه با آن ایجاد می‌شود که همان دسترسی پیش‌فرض است.
+دسترسی پیش‌فرض یا کاربر <Important>root</Important> در MariaDB، یک اکانت مدیریتی با بیشترین سطح دسترسی است. این کاربر معادل administrator در سیستم‌های عامل مختلف است و می‌تواند تمام عملیات‌های مدیریتی و اجرایی در پایگاه داده را انجام دهد.
+<div className="h-2" />
+
+شما می‌توانید با استفاده از ابزارهای مختلفی نظیر mysql-cli، کاربران جدید با دسترسی‌های جدید 
+در دیتابیس خود ایجاد کنید؛ در ادامه به نحوه ساخت کاربران جدید با دسترسی‌های مختلف در دیتابیس، پرداخته شده است.
+<div className="h-2" />
+
+برای ساخت کاربر جدید در دیتابیس، در ابتدا باید <a href="/dbaas/mariadb/how-tos/connect-via-cli/mysql/" className="text-[#2196f3]">ابزار mysql-cli</a> را بر روی سیستم (یا سرور خود)، نصب کنید؛ در ادامه، بایستی با استفاده از اطلاعات موجود در بخش **نحوه اتصال** دیتابیس‌تان در لیارا و با استفاده از دستور زیر، در ترمینال، به دیتابیس با کاربر root، متصل شوید: 
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`mysql --host <hostname> -u <username> -p<password> --port <port> -D <database_name>`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+پس از اتصال موفق، می‌توانید با استفاده از دستور <Important>CREATE USER</Important>، کاربران مد نظر خود را، ایجاد کنید.
+
+<Section id="create-readonly-user" title="ساخت کاربر با دسترسی Read-Only" />
+برای ایجاد کاربر جدید که تنها اجازه خواندن اطلاعات (READ) از دیتابیس را دارد، می‌توانید از دستورات زیر استفاده کنید:
+
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`CREATE USER 'readonly_user'@'%' IDENTIFIED BY 'password';
+GRANT SELECT ON <database_name>.* TO 'readonly_user'@'%';
+FLUSH PRIVILEGES;
+`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+دستور فوق، یک کاربر با نام <Important>readonly_user</Important> و رمزعبور <Important>password</Important> ایجاد می‌کند که این کاربر می‌تواند 
+فقط داده‌ها را، در تمامی جداول موجود در دیتابیس مورد نظر، <Important>SELECT</Important> کند (بخواند).
+
+پس از ساخت کاربر، می‌توانید از مشخصات آن، استفاده کرده و به دیتابیس متصل بشوید.
+بدیهی است که کاربر ایجاد شده فوق، نمی‌تواند 
+دسترسی غیر از SELECT کردن داده‌ها را داشته باشد؛ مگر اینکه 
+دسترسی‌اش توسط کاربر root، تغییر پیدا کند.
+<Section id="create-limited-user" title="ساخت کاربر با دسترسی محدود به برخی جداول" />
+در صورتی که بخواهید کاربری ایجاد کنید که فقط به چند جدول مشخص دسترسی داشته باشد، می‌توانید مانند دستورات زیر عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`CREATE USER 'limited_user'@'%' IDENTIFIED BY 'password';
+GRANT SELECT, INSERT, UPDATE ON <database_name>.<table_name_1> TO 'limited_user'@'%';
+GRANT SELECT ON <database_name>.<table_name_2> TO 'limited_user'@'%';
+FLUSH PRIVILEGES;
+`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+دستور فوق، یک کاربر به نام <Important>limited_user</Important> و رمزعبور <Important>password</Important> ایجاد می‌کند که می‌تواند 
+در جداول \<table_name_1\> و \<table_name_2\> در یک دیتابیس مشخص، عملیات <Important>SELECT</Important> , <Important>INSERT</Important> و <Important>UPDATE</Important> را، انجام دهد.
+
+بدیهی است که کاربر ایجاد شده فوق، نمی‌تواند دسترسی غیر از دسترسی‌های تعریف شده را داشته باشد؛ مگر اینکه دسترسی‌اش توسط کاربر root، تغییر پیدا کند.
+
+<Section id="create-backup-user" title="ساخت کاربر فقط برای تهیه فایل پشتیبان" />
+
+در صورتی که بخواهید کاربری ایجاد کنید که فقط 
+بتواند وارد دیتابیس شود و فایل پشتیبان از آن تهیه کند، می‌توانید مانند قطعه کد زیر، عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`CREATE USER 'backup_user'@'%' IDENTIFIED BY 'password';
+GRANT SELECT, LOCK TABLES, SHOW DATABASES ON *.* TO 'backup_user'@'%';
+FLUSH PRIVILEGES;
+`}
+    </Highlight>
+    </div>
+
+<Section id="see-user-roles" title="مشاهده دسترسی‌های یک کاربر" />
+برای مشاهده دسترسی‌های یک کاربر می‌توانید از دستور <Important>SHOW GRANTS</Important> استفاده کنید. به عنوان مثال،
+می‌توانید برای مشاهده دسترسی‌های کاربری به نام <Important>readonly_user</Important>، مانند قطعه کد زیر، عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`SHOW GRANTS FOR 'readonly_user'@'%';`}
+    </Highlight>
+    </div>
+
+<Section id="delete-user-roles" title="حذف دسترسی‌ یک کاربر" />
+برای حذف یک دسترسی کاربر، می‌توانید از دستور <Important>REVOKE</Important> استفاده کنید؛ 
+به عنوان مثال، فرض کنید که قصد دارید دسترسی <Important>UPDATE</Important> در جدول table1 از دیتابیس mydb را از کاربری به نام <Important>limited_user</Important>، سلب کنید.
+برای این‌کار، می‌توانید از نمونه قطعه کد زیر، استفاده کنید:
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`REVOKE UPDATE ON database_name.table1 FROM 'limited_user'@'%';
+FLUSH PRIVILEGES;
+`}
+    </Highlight>
+</div>
+
+<Section id="delete-user" title="حذف یک کاربر" />
+برای حذف کاربر می‌توانید از دستور <Important>DROP USER</Important> استفاده کنید. به عنوان مثال، 
+برای حذف کاربری به نام <Important>readonly_user</Important> می‌توانید مانند قطعه کد زیر، عمل کنید:
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`DROP USER 'readonly_user'@'%';`}
+    </Highlight>
+</div>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="https://dev.mysql.com/doc/refman/8.4/en/create-user.html" className="text-[#2196f3]">مستندات ایجاد کاربر در MariaDB</a>
+</p>
+</Alert>
+
+</Layout>

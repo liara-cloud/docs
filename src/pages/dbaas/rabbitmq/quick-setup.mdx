@@ -1,0 +1,132 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع RabbitMQ - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نصب و راه‌اندازی پیام‌رسان RabbitMQ در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# راه‌اندازی سریع پیام‌رسان RabbitMQ
+<hr className="mb-2" />
+
+<a href="https://mariadb.org/" className="text-[#2196f3] ">RabbitMQ</a> یک پیام‌رسان (Message Broker) است که برای مدیریت، ارسال و دریافت پیام‌ها در سیستم‌های توزیع‌شده به کار می‌رود. این ابزار بر مبنای پروتکل AMQP (Advanced Message Queuing Protocol) ساخته شده و به عنوان واسطی میان تولیدکنندگان پیام (Producers) و مصرف‌کنندگان پیام (Consumers) عمل می‌کند. با استفاده از RabbitMQ، پیام‌ها ابتدا وارد صف‌ها می‌شوند و سپس به‌صورت زمان‌بندی‌شده یا لحظه‌ای به مصرف‌کنندگان ارسال می‌گردند. این ویژگی به توسعه‌دهندگان اجازه می‌دهد تا اجزای مختلف یک سیستم را از هم جدا کرده و ارتباطات ناهمگام برقرار کنند، که به مقیاس‌پذیری و کارایی بیشتر کمک می‌کند. 
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+در نظر داشته باشید که RabbitMQ به صورت کلی، یک دیتابیس محسوب نمی‌شود؛ اما 
+به‌خاطر استفاده از ذخیره‌سازی پیام‌ها در صف‌ها و ساختار ذخیره‌سازی مشابه با دیتابیس‌ها، می‌تواند در این دسته‌بندی، قرار بگیرد
+</p>
+</Alert>
+
+{/* <br />
+<video
+src="https://files.liara.ir/liara/mariadb/create-mariadb.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br /> */}
+
+  برای راه‌اندازی پیام‌رسان RabbitMQ با استفاده از <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد دیتابیس</h3>
+    <p>
+      وارد منوی <b>دیتابیس</b> شوید، بر روی گزینه <b>راه‌اندازی دیتابیس</b> کلیک کنید؛ در ادامه <b>RabbitMQ</b> را انتخاب کنید و پس از انتخاب <a href="/dbaas/rabbitmq/choose-version" className="text-[#2196f3] ">نسخه برنامه</a>، شناسه، <a href="/paas/details/private-network#set-private-network-for-app-and-db" className="text-[#2196f3] ">شبکه خصوصی</a> و <a href="/dbaas/details/plans/about" className="text-[#2196f3] ">منابع سخت‌افزاری و بسته امکانات</a>، کافیست تا بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b>، کلیک کنید. 
+    </p>
+    <div className="h-3" />
+    <Alert variant="info">
+    <p>
+      شناسه‌ای که برای برنامه انتخاب می‌کنید، باید نسبت به شناسه‌های سرویس‌های موجود در حساب کاربری‌تان، یکتا باشد و می‌توانید از این شناسه، برای اتصال به برنامه در شبکه خصوصی، استفاده کنید.
+    </p>
+    </Alert>
+    <Alert variant="info">
+    <p>
+      در صورتی که قصد دارید از Local و یا جاهای دیگر به غیر از لیارا، به برنامه خود متصل شوید؛ کافیست تا گزینه <b>دسترسی از طریق شبکه عمومی</b> را در حین راه‌اندازی RabbitMQ، فعال کنید.
+    </p>
+    </Alert>
+    <div className="h-1" />
+  </>
+  )
+  },
+]}/>
+<div className="h-4" />
+با انجام مراحل فوق، برنامه RabbitMQ برای شما ساخته می‌شود و می‌توانید از آن، استفاده کنید.
+
+<div className="h-1" />
+
+<Alert variant="success">
+    <p>
+      همچنین بخوانید: <a href="/dbaas/details/about" className="text-[#2196f3] ">آشنایی با جزئیات یک دیتابیس</a>
+    </p>
+</Alert>
+<div className="h-1" />
+برای اتصال به RabbitMQ، می‌توانید وارد منوی <b>نحوه اتصال</b> برنامه خود شوید؛ اگر که قصد دارید برنامه‌های خارج از لیارا را به RabbitMQ متصل کنید؛ باید از اطلاعات شبکه عمومی استفاده کنید. در غیر این‌صورت، برای اتصال برنامه‌های درون لیارا، بهتر است که برای امنیت بیشتر، برنامه و RabbitMQ درون یک شبکه خصوصی قرار بگیرند و با استفاده از اطلاعات شبکه خصوصی، به یکدیگر، متصل شوند.
+
+<div className="h-2" />
+<img src="https://files.liara.ir/liara/docs/connect-to-rabbitmq-page.png" alt="see db info"/>
+
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "نسخه‌های ارائه شده دیتابیس",
+        link: "./choose-version"
+      },
+      // {
+      //   title: "اتصال از طریق پلتفرم‌های مختلف به دیتابیس",
+      //   link: "./how-tos/connect-via-platform/about"
+      // },
+      // {
+      //   title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به دیتابیس",
+      //   link: "./how-tos/connect-via-gui/about"
+      // },
+      // {
+      //   title: "اتصال از طریق CommandLine Interface (CLI)",
+      //   link: "./how-tos/connect-via-cli/about"
+      // },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+</Layout>

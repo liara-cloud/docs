@@ -2757,6 +2757,11 @@ export default {
         link: "/dbaas/elastic-search/quick-setup"
       },
       {
+        title: "RabbitMQ",
+        icon: <IconContainer alt="rabbitmq" />,
+        link: "/dbaas/rabbitmq/quick-setup"
+      },
+      {
         hr: true
       },
       {
@@ -3740,7 +3745,6 @@ export default {
       },
       
     ],
-
     'elastic-search': [
       {
         badge: (
@@ -3874,6 +3878,141 @@ export default {
       // },
       
     ],
+
+    rabbitmq: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="rabbitmq" />
+            پیام‌رسان RabbitMQ
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/dbaas/rabbitmq/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/dbaas/rabbitmq/choose-version"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     < GoPackage   />
+      //     <Link href="/dbaas/rabbitmq/how-tos/connect-via-platform/about">
+      //       اتصال از طریق پلتفرم
+      //     </Link>
+      //     </div>
+      //   )
+      // },
+      // // {
+      // //   title: "NodeJS",
+      // //   icon: <IconContainer alt="nodejs" />,
+      // //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/nodejs"
+      // // },
+      // {
+      //   title: "NextJS",
+      //   icon: <IconContainer alt="next" />,
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/nextjs"
+      // },
+      // {
+      //   title: "Laravel",
+      //   icon: <IconContainer alt="laravel" />,
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/laravel"
+      // },
+      // {
+      //   title: "PHP",
+      //   icon: <IconContainer alt="php" />,
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/php"
+      // },
+      // {
+      //   title: "Django",
+      //   icon: <IconContainer alt="django" />,
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/django"
+      // },
+      // {
+      //   title: "Flask",
+      //   icon: <IconContainer alt="flask" />,
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/flask"
+      // },
+      // // {
+      // //   title: "NET.",
+      // //   icon: <IconContainer alt="netcore" />,
+      // //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/dotnet"
+      // // },
+      // {
+      //   title: "Golang",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/go"
+      // },
+      // {
+      //   title: "Python Scripts",
+      //   icon: <IconContainer alt="python" />,
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/python"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoBrowser   />
+      //     <Link href="/dbaas/rabbitmq/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "PHPRedisAdmin",
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-gui/phprabbitmqadmin"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoTerminal   />
+      //       <Link href="/dbaas/rabbitmq/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "rabbitmq-cli",
+      //   link: "/dbaas/rabbitmq/how-tos/connect-via-cli/rabbitmq-cli"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoReply    />
+      //     مدیریت فایل‌های پشتیبان
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "ایجاد فایل پشتیبان",
+      //   link: "/dbaas/rabbitmq/how-tos/create-backup"
+      // },
+      // {
+      //   title: "بازیابی فایل پشتیبان",
+      //   link: "/dbaas/rabbitmq/how-tos/restore-backup"
+      // },
+      
+    ],
+
 
   },
 
@@ -4047,11 +4186,6 @@ export default {
         title: "Varnish Cache",
         icon: <IconContainer alt="varnish" />,
         link: "/one-click-apps/varnish/quick-start"
-      },
-      {
-        title: "Rabbit MQ",
-        icon: <IconContainer alt="rabbitmq" />,
-        link: "/one-click-apps/rabbitmq/quick-start"
       },
       {
         title: "Apache Answer",
@@ -5248,40 +5382,6 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/varnish/how-tos/choose-version"
-      },
-    ],
-    rabbitmq: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            برنامه RabbitMQ
-          </div>
-        )
-      },
-      {
-        title: "برگشت به برنامه‌های آماده",
-        icon: <GoArrowRight />,
-        link: "/one-click-apps/about"
-      },
-      {
-        title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
-        link: "/one-click-apps/rabbitmq/quick-start"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          < GoPackage   />
-            شیوه‌ی
-          </div>
-        )
-      },
-      {
-        title: "تغییر نسخه‌ی برنامه مستقر شده",
-        link: "/one-click-apps/rabbitmq/how-tos/choose-version"
       },
     ],
     'apache-answer': [

@@ -1,0 +1,73 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به MariaDB در پلتفرم NET. - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB در فریم‌ورک DOTNET"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس MariaDB در برنامه‌های NET.
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس MariaDB در ابتدا باید پکیج <Important>Pomelo.EntityFrameworkCore.MySql</Important> را بر روی پروژه خود نصب کنید؛ می‌توانید این پکیج را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.2`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، باید در فایل <Important>appsettings.json</Important> اطلاعات مربوط به دیتابیس را وارد کنید. به عنوان مثال:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "Production": "server=etna.liara.cloud; port=34665; user=root; password=H90ZsLcOGp65WSmOnbHYCKsg; database=objective_rubin"
+    }
+}`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+اکنون، می‌توانید در فایل <Important>Program.cs</Important>، به روش زیر، به دیتابیس MariaDB خود متصل شوید:
+
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="dotnet">
+        {`using Microsoft.EntityFrameworkCore;
+using your-project-name.Data;
+var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("Production");
+var serverVersion = ServerVersion.AutoDetect(connectionString);
+builder.Services.AddDbContext<your-db-Context>(options =>
+  options.UseMySql(connectionString, serverVersion));`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+</Layout>

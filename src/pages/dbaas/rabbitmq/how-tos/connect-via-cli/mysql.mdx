@@ -1,0 +1,55 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به MariaDB با MySQL-CLI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات اتصال به دیتابیس MariaDB با استفاده از ابزار MySQL-CLI"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس MariaDB با MySQL-CLI
+<hr className="mb-2" />
+
+<a href="https://dev.mysql.com/doc/en/mysql.html" className="text-[#2196f3] ">MySQL CLI</a> یک ابزار متنی است که برای مدیریت پایگاه داده‌های MySQL استفاده می‌شود. با استفاده از MySQL CLI، کاربران می‌توانند دستورات SQL را به صورت مستقیم وارد کرده و اجرا کنند، جداول و پایگاه داده‌ها را ایجاد، تغییر و حذف کنند، داده‌ها را جستجو و مدیریت کنند و بسیاری از وظایف مدیریتی دیگر را انجام دهند. این ابزار بسیار قدرتمند است و امکان انجام عملیات پیچیده بر روی پایگاه داده‌ها را با استفاده از دستورات ساده فراهم می‌کند. MySQL CLI برای کاربرانی که ترجیح می‌دهند با خط فرمان کار کنند و به رابط‌های گرافیکی نیازی ندارند، بسیار مفید است.
+
+
+
+
+
+
+
+<div className="h-2" />
+
+برای اتصال به MySQL-CLI، پس از <a href="https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-install.html" className="text-[#2196f3] ">نصب آن طبق مستندات رسمی</a> کافیست از اطلاعات شبکه عمومی دیتابیس، که در صفحه <b>نحوه اتصال</b> موجود است؛ استفاده کنید.
+برای فعال‌سازی شبکه عمومی نیز، می‌توانید از قسمت <b>تنظیمات دیتابیس</b>، این کار را انجام دهید. 
+برای اتصال، می‌توانید مشابه دستور زیر نیز، عمل کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`mysql --host <hostname> -u <username> -p<password> --port <port> -D <database_name>`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+<video
+  src="https://files.liara.ir/liara/mariadb/mariadb-mysqlcmd.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-2" />
+پس از اتصال به دیتابیس، می‌توانید عملیات مورد نیاز خود را، انجام دهید.
+
+</Layout>

@@ -1,0 +1,100 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به MariaDB در پلتفرم PHP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB در فریم‌ورک PHP"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس MariaDB در برنامه‌های PHP
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس MariaDB، در ابتدا باید اکستنشن <Important>mysqli</Important> را در PHP نصب کنید. پس از آن، کافیست تا 
+اطلاعات مربوط به دیتابیس خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_HOST=annapurna.liara.cloud
+DB_PORT=34663
+DB_DATABASE=dreamy_zhukovsky
+DB_USERNAME=root
+DB_PASSWORD=Umtdo7rWEoEMyWth4nS1sf4t`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+اکنون، می‌توانید با استفاده از قطعه کد زیر به دیتابیس MariaDB خود متصل شوید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+$servername = getenv('DB_HOST');
+$port = getenv('DB_PORT'); 
+$username = getenv('DB_USERNAME'); 
+$password = getenv('DB_PASSWORD'); 
+$database = getenv('DB_DATABASE'); 
+
+$conn = new mysqli($servername, $username, $password, $database, $port);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected";}
+
+$conn->close();
+?> `}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+برای استفاده از قابلیت connection pooling در دیتابیس MariaDB، می‌توانید مانند قطعه کد زیر، از اکستنشن <Important>PDO</Important> استفاده کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="php">
+{`<?php
+
+$servername = getenv('DB_HOST');
+$port = getenv('DB_PORT'); 
+$database = getenv('DB_DATABASE'); 
+
+$dsn = "mysql:host=$servername; port=$port; dbname=$database";
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD'); 
+
+try {
+    
+    $pdo = new PDO($dsn, $username, $password, [
+        PDO::ATTR_PERSISTENT => true
+    ]);
+
+    echo "connection successfull.";
+} catch (PDOException $e) {
+    echo 'connection failed: ' . $e->getMessage();
+}
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+
+</Layout>
