@@ -14,35 +14,35 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به MariaDB در پلتفرم Flask - لیارا</title>
+<title>مستندات اتصال به RabbitMQ در پلتفرم Flask - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB در فریم‌ورک Flask"  />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به پیام‌رسان RabbitMQ در فریم‌ورک Flask"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس MariaDB در برنامه‌های Flask
+# اتصال به RabbitMQ در برنامه‌های Flask
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MariaDB در برنامه‌های Flask، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به  RabbitMQ در برنامه‌های Flask، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip install mysql-connector-python`}
+        {`pip install pika python-dotenv`}
     </Highlight>
     </div>
 <div className="h-2" />
 
 پس از آن، کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
+اطلاعات مربوط به RabbitMQ خود را 
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`DB_HOST=annapurna.liara.cloud
-DB_PORT=32933
-DB_NAME=gallant_ramanujan
-DB_USER=root
-DB_PASS=UIhfscObpnZhhHG4bo6BOyvF`}
+        {`RABBITMQ_HOST=fitz-roy.liara.cloud
+RABBITMQ_PORT=32923
+RABBITMQ_USER=root
+RABBITMQ_PASS=63LVuatIrWWajE7gxSj20gHL
+`}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -56,45 +56,47 @@ DB_PASS=UIhfscObpnZhhHG4bo6BOyvF`}
     </div>
 <div className="h-2" />
 
-تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید 
-برای اتصال به دیتابیس، از قطعه کد زیر، استفاده کنید:
+تمامی کارها انجام شده است و شما می‌توانید از RabbitMQ خود استفاده کنید. به عنوان مثال، می‌توانید 
+می‌توانید برای اتصال به RabbitMQ، مانند قطعه کد زیر، عمل کنید:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="python">
-        {`from mysql.connector import pooling
-from flask import Flask
+        {`from flask import Flask
 import os
+import pika
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-def get_connection():
-    try:
-        connection_pool = pooling.MySQLConnectionPool(pool_size=1,
-                                                      pool_reset_session=True,
-                                                      host=os.getenv("DB_HOST"),
-                                                      port=os.getenv("DB_PORT"),
-                                                      database=os.getenv("DB_NAME"),
-                                                      user=os.getenv("DB_USER"),
-                                                      password=os.getenv("DB_PASS"))
-        return connection_pool.get_connection()
-    except Exception as e:
-        print(str(e))
-        return None
+RABBITMQ_HOST = os.getenv('RABBITMQ_HOST')
+RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT'))
+RABBITMQ_USER = os.getenv('RABBITMQ_USER')
+RABBITMQ_PASS = os.getenv('RABBITMQ_PASS')
 
-@app.route('/')
-def index():
-    conn = get_connection()
-    if conn:
-        with conn.cursor() as cursor:
-            cursor.execute("SELECT 1")
-            result = cursor.fetchall()
-            conn.close()
-            return 'connected' if result else 'not connected'
-    else:
-        return 'not connected'
+def check_rabbitmq_connection():
+    try:
+        credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASS)
+        parameters = pika.ConnectionParameters(host=RABBITMQ_HOST, port=RABBITMQ_PORT, credentials=credentials)
+
+        connection = pika.BlockingConnection(parameters)
+        print("connection successful")
+
+        connection.close()
+        return "connection successful"
+    except Exception as e:
+        print("connection failed, error: ", e)
+        return f"connection failed, error: {e}"
+
+@app.route('/test-rabbitmq')
+def test_rabbitmq_connection():
+    result = check_rabbitmq_connection()
+    return result
 
 if __name__ == '__main__':
-    app.run(debug=True)`}
+    app.run(debug=True)
+`}
     </Highlight>
     </div>
 

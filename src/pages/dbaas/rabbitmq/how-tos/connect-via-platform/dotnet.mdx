@@ -14,29 +14,29 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به MariaDB در پلتفرم NET. - لیارا</title>
+<title>مستندات اتصال به RabbitMQ در پلتفرم NET. - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB در فریم‌ورک DOTNET"  />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به پیام‌رسان RabbitMQ در فریم‌ورک DOTNET"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس MariaDB در برنامه‌های NET.
+# اتصال به RabbitMQ در برنامه‌های NET.
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MariaDB در ابتدا باید پکیج <Important>Pomelo.EntityFrameworkCore.MySql</Important> را بر روی پروژه خود نصب کنید؛ می‌توانید این پکیج را با اجرای دستور زیر، نصب کنید:
+برای اتصال به RabbitMQ در ابتدا باید پکیج <Important>RabbitMQ.Client</Important> را بر روی پروژه خود نصب کنید؛ می‌توانید این پکیج را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.2`}
+        {`dotnet add package RabbitMQ.Client`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در ادامه، باید در فایل <Important>appsettings.json</Important> اطلاعات مربوط به دیتابیس را وارد کنید. به عنوان مثال:
+در ادامه، باید در فایل <Important>appsettings.json</Important> یا <Important>appsettings.Development.json</Important> اطلاعات مربوط به RabbitMQ را وارد کنید. به عنوان مثال:
 
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="python">
+    <Highlight className="json">
         {`{
   "Logging": {
     "LogLevel": {
@@ -44,28 +44,72 @@ import Head from "next/head";
       "Microsoft.AspNetCore": "Warning"
     }
   },
-  "AllowedHosts": "*",
-  "ConnectionStrings": {
-    "Production": "server=etna.liara.cloud; port=34665; user=root; password=H90ZsLcOGp65WSmOnbHYCKsg; database=objective_rubin"
-    }
-}`}
+
+  "RabbitMQ": {
+    "Host": "fitz-roy.liara.cloud",
+    "Port": 32923,
+    "User": "root",
+    "Pass": "63LVuatIrWWajE7gxSj20gHL"
+  }
+}
+`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-اکنون، می‌توانید در فایل <Important>Program.cs</Important>، به روش زیر، به دیتابیس MariaDB خود متصل شوید:
+اکنون، می‌توانید در فایل <Important>Program.cs</Important>، به روش زیر، به RabbitMQ خود متصل شوید:
 
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="dotnet">
-        {`using Microsoft.EntityFrameworkCore;
-using your-project-name.Data;
+        {`using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("Production");
-var serverVersion = ServerVersion.AutoDetect(connectionString);
-builder.Services.AddDbContext<your-db-Context>(options =>
-  options.UseMySql(connectionString, serverVersion));`}
+var app = builder.Build();
+
+var rabbitConfig = builder.Configuration.GetSection("RabbitMQ");
+
+string host = rabbitConfig["Host"];
+int port = int.Parse(rabbitConfig["Port"]);
+string user = rabbitConfig["User"];
+string pass = rabbitConfig["Pass"];
+
+bool CheckRabbitMQConnection()
+{
+    try
+    {
+        var factory = new ConnectionFactory()
+        {
+            HostName = host,
+            Port = port,
+            UserName = user,
+            Password = pass
+        };
+
+        using var connection = factory.CreateConnection();
+        using var channel = connection.CreateModel();
+
+        Console.WriteLine("connection successful");
+        return true;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"connection failed, error: {ex.Message}");
+        return false;
+    }
+}
+
+app.MapGet("/test-rabbitmq", () =>
+{
+    bool isConnected = CheckRabbitMQConnection();
+    return isConnected ? Results.Ok("connection successful") : Results.Problem("connection failed");
+});
+
+app.Run();
+`}
     </Highlight>
     </div>
 <div className="h-2" />

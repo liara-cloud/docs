@@ -16,34 +16,29 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به MariaDB با رابط‌های گرافیکی مختلف - لیارا</title>
+<title>مستندات اتصال به RabbitMQ با رابط‌های گرافیکی مختلف - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB با رابط‌های گرافیکی مختلف"  />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به پیام‌رسان RabbitMQ با رابط‌های گرافیکی مختلف"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس با استفاده از رابط‌های گرافیکی مختلف
+# اتصال به RabbitMQ با استفاده از رابط‌های گرافیکی مختلف
 <hr className="mb-2" />
 
-شما می‌توانید با استفاده از اطلاعات دیتابیس خود، 
+شما می‌توانید با استفاده از اطلاعات RabbitMQ خود، 
 در هر رابط گرافیکی ارائه دهنده خدمات مربوطه، 
-به دیتابیس خود در سریع‌ترین زمان ممکن، متصل شوید. 
-در ادامه، مستندات مربوط به اتصال به دیتابیس در برخی از 
+به RabbitMQ خود در سریع‌ترین زمان ممکن، متصل شوید. 
+در ادامه، مستندات مربوط به اتصال به RabbitMQ در برخی از 
 رابط‌های گرافیکی پرکاربرد، برای شما، قرار گرفته است:
 
 <br />
 <div className='h-2' />
-<div className="grid md:grid-cols-2 gap-4">
+<div className="grid md:grid-cols-1 gap-4">
             {[
     
       {
-        title: "PHPMyAdmin",
-        icon: "mariadb",
-        link: "./phpmyadmin"
-      },
-      {
-        title: "DBeaver",
-        icon: "mariadb",
-        link: "./dbeaver"
+        title: "RabbitMQ Management Plugin",
+        icon: "rabbitmq",
+        link: "./rabbitmq-management"
       },
   ].map(item =>
     <Link href={item.link}>

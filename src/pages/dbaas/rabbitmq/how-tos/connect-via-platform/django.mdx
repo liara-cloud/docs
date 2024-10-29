@@ -14,227 +14,124 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به MariaDB در پلتفرم Django - لیارا</title>
+<title>مستندات اتصال به RabbitMQ در پلتفرم Django - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB در فریم‌ورک Django"  />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به پیام‌رسان RabbitMQ در فریم‌ورک Django"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس MariaDB در برنامه‌های Django
+# اتصال به RabbitMQ در برنامه‌های Django
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MariaDB در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به RabbitMQ در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip install mysqlclient`}
+        {`pip install pika python-dotenv`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در ادامه، بایستی در فایل <Important>settings.py</Important> تنظیمات مربوط به دیتابیس را وارد کنید: 
+در ادامه، بایستی در فایل <Important>settings.py</Important> تنظیمات مربوط به بارگذاری متغیرهای محیطی را وارد کنید: 
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="python">
         {`# other codes ...
-import os
-DATABASES = {
-    'default': {
-        'ENGINE':   'django.db.backends.mysql', 
-        'NAME':     os.getenv("MYSQL_DB_NAME"), 
-        'USER':     os.getenv("MYSQL_DB_USER"),
-        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
-        'HOST':     os.getenv("MYSQL_DB_HOST"),
-        'PORT':     os.getenv("MYSQL_DB_PORT"),
-    },
-}
+from dotenv import load_dotenv
+load_dotenv()
 # other codes ...`}
     </Highlight>
     </div>
 <div className="h-2" />
 
 پس از آن، کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
+اطلاعات مربوط به RabbitMQ خود را 
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`MYSQL_DB_HOST=bromo.liara.cloud
-MYSQL_DB_PORT=33035
-MYSQL_DB_USER=root
-MYSQL_DB_PASS=gIg1uXioTrGDZOESQf0YXE87
-MYSQL_DB_NAME=compassionate_heisenberg
+        {`RABBITMQ_HOST=fitz-roy.liara.cloud
+RABBITMQ_PORT=32923
+RABBITMQ_USER=root
+RABBITMQ_PASS=63LVuatIrWWajE7gxSj20gHL
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
+در ادامه، می‌توانید در ریشه پروژه یا در یکی Applicationهای تعریف شده‌تان، یک فایل به نام <Important>rabbitmq_utils.py</Important> ایجاد کرده و قطعه کد زیر را در آن، قرار دهید:
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="bash">
-        {`pip freeze > requirements.txt`}
-    </Highlight>
-    </div>
-<div className="h-2" />
+    <Highlight className="py">
+        {`import os
+import pika
+from dotenv import load_dotenv
 
-تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید با اجرای دستور زیر، یک application جدید ایجاد کنید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-        {`python manage.py startapp mysql_app`}
-    </Highlight>
-    </div>
-<div className="h-2" />
+load_dotenv()
 
-سپس، این application جدید را به بخش <Important>INSTALLED_APPS</Important> در <Important>settings.py</Important>، اضافه کنید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`# Application definition
+RABBITMQ_HOST = os.getenv('RABBITMQ_HOST')
+RABBITMQ_PORT = int(os.getenv('RABBITMQ_PORT'))
+RABBITMQ_USER = os.getenv('RABBITMQ_USER')
+RABBITMQ_PASS = os.getenv('RABBITMQ_PASS')
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'mysql_app', # add this
-]`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-
-
-در ادامه، در فایل <Important>mysql_app/views.py</Important> قطعه کد زیر را وارد کنید تا اتصال به دیتابیس، بررسی شود:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`from django.shortcuts import HttpResponse
-from django.db import connections
-
-def check_mysql_connection(request):
+def check_rabbitmq_connection():
     try:
-        with connections['default'].cursor() as cursor:
-            cursor.execute("SELECT 1")
-            result = cursor.fetchone()
-        if result:
-            return HttpResponse("MySQL connection successful")
-        else:
-            return HttpResponse("MySQL connection failed")
+        credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASS)
+        parameters  = pika.ConnectionParameters(host=RABBITMQ_HOST, port=RABBITMQ_PORT, credentials=credentials)
+
+        connection = pika.BlockingConnection(parameters)
+        print("connection successful")
+
+        
+        connection.close()
     except Exception as e:
-        return HttpResponse(f"MySQL connection failed: {e}")
+        print("connection failed, error:", e)
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-سپس، بایستی در دایرکتوری <Important>mysql_app</Important>، یک فایل به نام <Important>urls.py</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
-
+سپس، کافیست تا یک فایل به نام <Important>views.py</Important> در ریشه پروژه ایجاد کنید و قطعه کد زیر را در آن، قرار دهید: 
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="python">
-        {`from django.urls import path
-from .views import check_mysql_connection
+    <Highlight className="bash">
+        {`from django.http import HttpResponse
+from .rabbitmq_utils import check_rabbitmq_connection
 
-urlpatterns = [
-    path('', check_mysql_connection, name='check_mysql_connection'),
-]
+def test_rabbitmq_connection(request):
+    check_rabbitmq_connection()
+    return HttpResponse("RabbitMQ Connection Checked")
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در نهایت، می‌توانید در فایل <Important>urls.py</Important> موجود در دایرکتوری اصلی پروژه، قطعه کد زیر را اضافه کنید:
+
+پس از آن، می‌توانید قطعه کد زیر را به فایل <Important>urls.py</Important> اضافه کنید: 
 <div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="python">
-      {`from django.urls import include, path
+    <div dir='ltr'>
+    <Highlight className="py">
+        {`from . import views
 
 urlpatterns = [
-    path('mysql/', include('mysql_app.urls')),
-    
+    path('test-rabbitmq/', views.test_rabbitmq_connection),
 ]`}
-  </Highlight>
-  </div>
-<div className="h-2" />
-اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه <Important>mysql/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
-
-<Section id="connection-pooling" title="استفاده از Connection Pooling" />
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
-
-برای استفاده از قابلیت connection pooling در دیتابیس MySQL، فقط کافیست تا با اجرای دستور زیر، ماژول موردنیاز را نصب کنید:
-
-<div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="bash">
-{`pip install django-db-connection-pool[mysql]`}
-  </Highlight>
-  </div>
-<div className="h-2" />
-
-سپس، در فایل <Important>settings.py</Important> در بخش <Important>DATABASES</Important>، فیلد مربوط به <Important>ENGINE</Important> را مانند شکل زیر تغییر دهید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`# other codes ...
-import os
-DATABASES = {
-    'default': {
-        'ENGINE':   'dj_db_conn_pool.backends.mysql', 
-        'NAME':     os.getenv("MYSQL_DB_NAME"), 
-        'USER':     os.getenv("MYSQL_DB_USER"),
-        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
-        'HOST':     os.getenv("MYSQL_DB_HOST"),
-        'PORT':     os.getenv("MYSQL_DB_PORT"),
-    },
-}
-# other codes ...`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-همچنین، می‌توانید تنظیمات مربوط به Connection Pooling را در فیلدی به نام <Important>POOL_OPTIONS</Important>مانند قطعه کد زیر، بر روی دیتابیس خود، اعمال کنید:
+در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به RabbitMQ، در این فایل، قرار بگیرد:
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="python">
-        {`# other codes ...
-import os
-DATABASES = {
-    'default': {
-        'ENGINE':   'dj_db_conn_pool.backends.mysql', 
-        'NAME':     os.getenv("MYSQL_DB_NAME"), 
-        'USER':     os.getenv("MYSQL_DB_USER"),
-        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
-        'HOST':     os.getenv("MYSQL_DB_HOST"),
-        'PORT':     os.getenv("MYSQL_DB_PORT"),
-        'POOL_OPTIONS': {
-            'POOL_SIZE': 10,
-            'MAX_OVERFLOW': 10,
-            'RECYCLE': 24 * 60 * 60
-        }
-    },
-}
-# other codes ...`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important>، به‌روز شود و نام ماژول مورد نیاز، در آن، قرار بگیرد:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
+    <Highlight className="bash">
         {`pip freeze > requirements.txt`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-اکنون می‌توانید مجدداً برنامه‌تان را اجرا کرده و در صفحه <Important>mysql/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه <Important>test-rabbitmq/</Important> وضعیت اتصال به خود را بررسی کنید.
+
 
 </Layout>

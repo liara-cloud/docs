@@ -33,14 +33,13 @@ import Head from "next/head";
 </p>
 </Alert>
 
-{/* <br />
 <video
-src="https://files.liara.ir/liara/mariadb/create-mariadb.mp4"
+src="https://files.liara.ir/liara/rabbitmq/rabbitmq.mp4"
 controls="controls"
 className="block w-full"
 width="100%"
 ></video>
-<br /> */}
+<br />
 
   برای راه‌اندازی پیام‌رسان RabbitMQ با استفاده از <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
   <Step  steps={[
@@ -100,21 +99,18 @@ width="100%"
 <div className="grid md:grid-cols-2 gap-4">
             {[
       {
-        title: "نسخه‌های ارائه شده دیتابیس",
+        title: "نسخه‌های ارائه شده RabbitMQ",
         link: "./choose-version"
       },
-      // {
-      //   title: "اتصال از طریق پلتفرم‌های مختلف به دیتابیس",
-      //   link: "./how-tos/connect-via-platform/about"
-      // },
-      // {
-      //   title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به دیتابیس",
-      //   link: "./how-tos/connect-via-gui/about"
-      // },
-      // {
-      //   title: "اتصال از طریق CommandLine Interface (CLI)",
-      //   link: "./how-tos/connect-via-cli/about"
-      // },
+      {
+        title: "اتصال از طریق پلتفرم‌های مختلف به RabbitMQ",
+        link: "./how-tos/connect-via-platform/about"
+      },
+      {
+        title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به RabbitMQ",
+        link: "./how-tos/connect-via-gui/about"
+      },
+
   ].map(item =>
     <Link href={item.link}>
     <Card className="flex cursor-pointer w-full items-center justify-between">

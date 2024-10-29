@@ -1,0 +1,113 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به RabbitMQ در پلتفرم Flask و NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به پیام‌رسان RabbitMQ در فریم‌ورک Flask و NodeJS"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به RabbitMQ در برنامه‌های Flask و NodeJS
+<hr className="mb-2" />
+
+
+<video
+src="https://files.liara.ir/liara/rabbitmq/enhanced_rabbitmq-connection.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
+
+در معماری‌های پیام‌محور، producer و consumer نقش‌های کلیدی برای مدیریت ارتباطات بین سرویس‌ها ایفا می‌کنند. 
+Producer برنامه یا سرویسی است که پیامی را تولید و به صف پیام (queue) ارسال می‌کند. تولیدکننده اطلاعاتی را که لازم است به برنامه‌های دیگر منتقل شود، به صف وارد می‌کند تا مصرف‌کننده‌ها بتوانند آن را پردازش کنند.
+<div className="h-2" />
+
+Consumer برنامه یا سرویسی است که پیام‌ها را از صف دریافت و آن‌ها را پردازش می‌کند. مصرف‌کننده‌ها معمولاً به طور پیوسته در حال شنیدن (listening) صف هستند تا هر زمان که پیام جدیدی دریافت شد، آن را پردازش کنند.
+<div className="h-2" />
+
+
+قطعه کد زیر می‌تواند یک Producer در Flask به حساب بیاید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="py">
+        {`from flask import Flask, jsonify
+import pika
+
+app = Flask(__name__)
+
+rabbitmq_url = "some uri"
+parameters = pika.URLParameters(rabbitmq_url)
+
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    connection = pika.BlockingConnection(parameters)
+    channel = connection.channel()
+
+    channel.queue_declare(queue='test_queue')
+
+    message = "Hello from Flask producer!"
+    channel.basic_publish(exchange='', routing_key='test_queue', body=message)
+    connection.close()
+
+    return jsonify({"message": "Message sent to RabbitMQ!"})
+
+if __name__ == "__main__":
+    app.run(port=5000)
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+consumer هم می‌تواند مانند قطعه کد زیر در NodeJS باشد:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="nodejs">
+        {`const amqp = require('amqplib');
+
+const rabbitmqUrl = "some uri";
+
+async function consume() {
+  try {
+    const connection = await amqp.connect(rabbitmqUrl);
+    const channel = await connection.createChannel();
+
+    await channel.assertQueue('test_queue', { durable: false });
+
+    console.log("Waiting for messages in 'test_queue'...");
+
+    channel.consume('test_queue', (msg) => {
+      if (msg !== null) {
+        console.log("Received:", msg.content.toString());
+        channel.ack(msg);
+      }
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+consume();
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نظر داشته باشید که در هر دو قطعه کد فوق، مقدار متغیر <Important>rabbitmqUrl</Important> باید یکسان 
+و یک Connection URI از پیام‌رسان RabbitMQ باشد.
+
+
+</Layout>

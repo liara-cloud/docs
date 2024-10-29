@@ -14,102 +14,96 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به MariaDB در پلتفرم Laravel - لیارا</title>
+<title>مستندات اتصال به RabbitMQ در پلتفرم Laravel - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB در فریم‌ورک Laravel"  />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به پیام‌رسان RabbitMQ در فریم‌ورک Laravel"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس MariaDB در برنامه‌های Laravel
+# اتصال به RabbitMQ در برنامه‌های Laravel
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MariaDB نیاز به انجام کار خاصی نیست. فقط کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+برای اتصال به RabbitMQ، در ابتدا بایستی ماژول مربوط به آن را، با اجرای دستور زیر، در پروژه خود، نصب کنید:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`DB_CONNECTION=mariadb
-DB_HOST=bromo.liara.cloud
-DB_PORT=32909
-DB_DATABASE=hardcore_napier
-DB_USERNAME=root
-DB_PASSWORD=gtccgkT8fHXuHJ52Sm0hBmf5`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-        {`php artisan make:controller DatabaseController`}
+        {`composer require php-amqplib/php-amqplib`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/DatabaseController.php</Important> قرار دهید:
+سپس، کافیست تا 
+اطلاعات مربوط به RabbitMQ خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
+        {`RABBITMQ_HOST=fitz-roy.liara.cloud
+RABBITMQ_PORT=32923
+RABBITMQ_USER=root
+RABBITMQ_PASS=63LVuatIrWWajE7gxSj20gHL
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+پس از این کار، می‌توانید به RabbitMQ متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به RabbitMQ، با اجرای دستور زیر، یک کنترلر به نام <Important>RabbitMQController</Important> بسازید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:controller RabbitMQController`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/RabbitMQController</Important> قرار دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="laravel">
         {`<?php
 
 namespace App\\Http\\Controllers;
 
-use Illuminate\\Support\\Facades\\DB;
-use Illuminate\\Support\\Facades\\Config;
-use Illuminate\\Http\\Request;
+use Illuminate\\Http\\JsonResponse;
+use PhpAmqpLib\\Connection\\AMQPStreamConnection;
 
-class DatabaseController extends Controller
+class RabbitMQController extends Controller
 {
-    public function checkConnection()
+    public function checkConnection(): JsonResponse
     {
-        $databases = [
-            'mariadb' => 'default',
-        ];
+        try {
 
-        $results = [];
+            $host = env('RABBITMQ_HOST');
+            $port = env('RABBITMQ_PORT');
+            $user = env('RABBITMQ_USER');
+            $pass = env('RABBITMQ_PASS');
 
-        foreach ($databases as $connection => $env) {
-            try {
-                Config::set('database.connections.' . $connection, [
-                    'driver' => env($env . '_CONNECTION', 'mariadb'),
-                    'host' => env($env . '_HOST', '127.0.0.1'),
-                    'port' => env($env . '_PORT', '3306'),
-                    'database' => env($env . '_DATABASE', 'forge'),
-                    'username' => env($env . '_USERNAME', 'forge'),
-                    'password' => env($env . '_PASSWORD', ''),
-                    'charset' => 'utf8mb4',
-                    'collation' => 'utf8mb4_unicode_ci',
-                    'prefix' => '',
-                    'strict' => true,
-                    'engine' => null,
-                ]);
 
-                DB::connection($connection)->getPdo();
-                $results[$connection] = 'Connection successful';
-            } catch (\\Exception $e) {
-                $results[$connection] = 'Connection failed: ' . $e->getMessage();
-            }
+            $connection = new AMQPStreamConnection($host, $port, $user, $pass);
+            $connection->close();
+
+            return response()->json(['message' => 'connection successful']);
+        } catch (\\Exception $e) {
+            return response()->json(['message' => 'connection failed', 'error' => $e->getMessage()], 500);
         }
-
-        return response()->json($results);
     }
 }
+
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
+در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را نیز، اضافه کنید:
 <div className="h-2" />
   <div dir='ltr'>
   <Highlight className="bash">
-      {`use App\\Http\\Controllers\\DatabaseController;
+      {`use App\\Http\\Controllers\\RabbitMQController;
 
-Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
+Route::get('/check-rabbitmq', [RabbitMQController::class, 'checkConnection']);
 `}
   </Highlight>
   </div>
 <div className="h-2" />
-اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه <Important>check-database-connection/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه <Important>check-rabbitmq/</Important> وضعیت اتصال به RabbitMQ را بررسی کنید.
 
 </Layout>

@@ -3903,94 +3903,89 @@ export default {
         icon: <GoVersions   />,
         link: "/dbaas/rabbitmq/choose-version"
       },
-      // {
-      //   hr: true
-      // },
-      // {
-      //   badge: (
-      //     <div className="flex items-center gap-2">
-      //     < GoPackage   />
-      //     <Link href="/dbaas/rabbitmq/how-tos/connect-via-platform/about">
-      //       اتصال از طریق پلتفرم
-      //     </Link>
-      //     </div>
-      //   )
-      // },
-      // // {
-      // //   title: "NodeJS",
-      // //   icon: <IconContainer alt="nodejs" />,
-      // //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/nodejs"
-      // // },
-      // {
-      //   title: "NextJS",
-      //   icon: <IconContainer alt="next" />,
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/nextjs"
-      // },
-      // {
-      //   title: "Laravel",
-      //   icon: <IconContainer alt="laravel" />,
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/laravel"
-      // },
-      // {
-      //   title: "PHP",
-      //   icon: <IconContainer alt="php" />,
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/php"
-      // },
-      // {
-      //   title: "Django",
-      //   icon: <IconContainer alt="django" />,
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/django"
-      // },
-      // {
-      //   title: "Flask",
-      //   icon: <IconContainer alt="flask" />,
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/flask"
-      // },
-      // // {
-      // //   title: "NET.",
-      // //   icon: <IconContainer alt="netcore" />,
-      // //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/dotnet"
-      // // },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/go"
-      // },
-      // {
-      //   title: "Python Scripts",
-      //   icon: <IconContainer alt="python" />,
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-platform/python"
-      // },
-      // {
-      //   hr: true
-      // },
-      // {
-      //   badge: (
-      //     <div className="flex items-center gap-2">
-      //     <GoBrowser   />
-      //     <Link href="/dbaas/rabbitmq/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
-      //     </div>
-      //   )
-      // },
-      // {
-      //   title: "PHPRedisAdmin",
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-gui/phprabbitmqadmin"
-      // },
-      // {
-      //   hr: true
-      // },
-      // {
-      //   badge: (
-      //     <div className="flex items-center gap-2">
-      //       <GoTerminal   />
-      //       <Link href="/dbaas/rabbitmq/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
-      //     </div>
-      //   )
-      // },
-      // {
-      //   title: "rabbitmq-cli",
-      //   link: "/dbaas/rabbitmq/how-tos/connect-via-cli/rabbitmq-cli"
-      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+          <Link href="/dbaas/rabbitmq/how-tos/connect-via-platform/about">
+            اتصال از طریق پلتفرم
+          </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/nodejs"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/dotnet"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoBrowser   />
+          <Link href="/dbaas/rabbitmq/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+          </div>
+        )
+      },
+      {
+        title: "RabbitMQ Management",
+        link: "/dbaas/rabbitmq/how-tos/connect-via-gui/rabbitmq-management"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoTerminal   />
+            اتصال Consumer/Producer
+          </div>
+        )
+      },
+      {
+        title: "Flask & NodeJS ",
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/flask-nodejs"
+      },
       // {
       //   hr: true
       // },
