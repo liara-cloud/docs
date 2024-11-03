@@ -230,7 +230,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/nodejs/nodejs-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/nodejs/nodejs-desktop.mp4"
           },
           {
@@ -277,7 +277,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/nuxtjs/nuxtjs-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/nuxtjs/nuxtjs-desktop.mp4"
           }
         ]}
@@ -295,7 +295,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/nextjs/nextjs-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/nextjs/nextjs-desktop.mp4"
           }
         ]}
@@ -327,7 +327,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/laravel/laravel-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/laravel/laravel-desktop.mp4"
           },
           {
@@ -371,7 +371,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/php/php-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/php/php-desktop.mp4"
           },
           {
@@ -405,7 +405,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/django/django-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/django/django-desktop.mp4"
           },
           {
@@ -444,7 +444,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/flask/flask-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/flask/flask-desktop.mp4"
           },
           {
@@ -488,7 +488,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/python/python-desktop.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/python/python-cli.mp4"
           }
         ]}
@@ -506,7 +506,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/dotnet/dotnet-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/dotnet/dotnet-desktop.mp4"
           },
           {
@@ -541,7 +541,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/react/react-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/react/react-desktop.mp4"
           }
         ]}
@@ -559,7 +559,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/angular/angular-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/angular/angular-desktop.mp4"
           }
         ]}
@@ -577,7 +577,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/vue/vue-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/vue/vue-desktop.mp4"
           }
         ]}
@@ -595,7 +595,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/static/static-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/static/static-desktop.mp4"
           }
         ]}
@@ -613,7 +613,7 @@ const Videos = () => {
             link: "https://files.liara.ir/liara/docker/docker-cli.mp4"
           },
           {
-            videoTitle: "استقرار با مرورگر",
+            videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/docker/docker-desktop.mp4"
           },
           {
