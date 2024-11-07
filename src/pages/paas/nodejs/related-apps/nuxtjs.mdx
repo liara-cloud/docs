@@ -15,6 +15,9 @@ import Head from "next/head";
 <Layout>
 <Head>
 <title>مستندات استقرار برنامه‌های NuxtJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های NuxtJS در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
 # استقرار برنامه‌های NuxtJS در لیارا
 <hr className="mb-2" />
@@ -45,6 +48,13 @@ import Head from "next/head";
     </Highlight>
 </div>
 <div className="h-2" />
+
+<Alert variant="info">
+<p>
+    در نظر داشته باشید که حتماً بعد از ساخت برنامه NodeJS و قبل از استقرار برنامه‌تان، فایل‌سیستم برنامه را طبق <a href="/paas/details/file-system/#how-to-make-fs-writable" className="text-[#2196f3]">مستندات مربوطه</a>، از Read-Only به Writable تغییر دهید.
+</p>
+</Alert>
+
 
 <Section id="deploy" title="استقرار برنامه" />
 <Tabs 
