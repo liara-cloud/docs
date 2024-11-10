@@ -1,0 +1,57 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات فعال‌سازی قابلیت ورود ۲ مرحله‌ای - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه فعال‌سازی قابلیت ورود ۲ مرحله‌ای به کنسول لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# فعال‌سازی قابلیت ورود ۲ مرحله‌ای 
+<hr className="mb-2" />
+
+قابلیت ورود دو مرحله‌ای (2FA) یک روش امنیتی است که در آن، علاوه بر رمز عبور، یک لایه‌ی محافظتی اضافی نیز، به برنامه اضافه می‌شود. 
+این فرآیند باعث می‌شود حتی اگر شخصی رمز عبور شما را بداند، بدون دسترسی به عامل دوم نتواند وارد حساب کاربری شما شود.
+
+
+
+
+
+
+
+<div className="h-4" />
+برای فعال‌سازی این قابلیت در کنسول لیارا، کافیست تا در بخش <a href="https://console.liara.ir/settings/security" className="text-[#2196f3]">پروفایل</a>، وارد تب **امنیت** شوید و در بخش **ورود ۲ مرحله‌ای**، بر روی گزینه **فعال‌سازی** کلیک کنید. سپس بایستی با استفاده از نرم‌افزارهای احراز هویت (مانند <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en" className="text-[#2196f3]">google authenticator</a>)، قابلیت 2FA را بر روی حساب خود، فعال کنید: 
+
+<div className="h-4" />
+<video
+src="https://files.liara.ir/liara/docs/enable-two-factor-feature.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+/>
+<div className="h-4" />
+
+در صورت عدم نیاز به این قابلیت نیز، کافیست تا بر روی گزینه **غیر فعال‌سازی** کلیک کنید. 
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+حتماً کدهای بازیابی داده شده را در جایی مطمئن ذخیره کنید. البته در صورت از دست دادن این کدها، می‌توانید پس از ورود به کنسول، بر روی گزینه <b>ایجاد مجدد کدهای بازیابی</b> کلیک کنید؛ اما در صورت دسترسی نداشتن به سیستم احراز هویت و کدهای بازیابی، امکان ورود به حساب کاربری را نخواهید داشت.
+</p>
+</Alert>
+
+</Layout>

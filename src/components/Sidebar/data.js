@@ -8100,6 +8100,10 @@ export default {
         title: "مشاهده و ایجاد تیکت",
         link: "/references/console/create-and-see-tickets"
       },
+      {
+        title: "فعال‌سازی قابلیت ورود ۲ مرحله‌ای",
+        link: "/references/console/enable-two-factor-authentication"
+      },
     ],
   },
 
