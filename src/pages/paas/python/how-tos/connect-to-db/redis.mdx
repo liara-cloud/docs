@@ -1,0 +1,140 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ Redis در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس Redis در پلتفرم Django در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس Redis در برنامه‌های Django
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس Redis در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install redis`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیر مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`REDIS_URI=redis://:z4cLHblJzYJcIZk73OGeqyIz@bromo.liara.cloud:30664/0`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip freeze > requirements.txt`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و شما می‌توانید از Redis استفاده کنید. به عنوان مثال، می‌توانید با اجرای دستور زیر، یک application جدید ایجاد کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`python manage.py startapp redis_app`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+سپس، این application جدید را به بخش <Important>INSTALLED_APPS</Important> در <Important>settings.py</Important>، اضافه کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'redis_app', # add this
+]`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، در فایل <Important>redis_app/views.py</Important> قطعه کد زیر را وارد کنید تا اتصال به دیتابیس، بررسی شود:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`from django.shortcuts import HttpResponse
+import redis
+
+def check_redis_connection(request):
+    try:
+        # Connect to Redis
+        redis_url = os.getenv('REDIS_URI')
+        r = redis.StrictRedis.from_url(redis_url)
+
+        # Insert data
+        r.set('test_key', 'test_value')
+
+        # Read data
+        value = r.get('test_key')
+
+        return HttpResponse(f"Redis operation successful, value: {value.decode('utf-8')}")
+    except Exception as e:
+        return HttpResponse(f"Redis operation failed: {e}")
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+سپس، بایستی در دایرکتوری <Important>redis_app</Important>، یک فایل به نام <Important>urls.py</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`from django.urls import path
+from .views import check_redis_connection
+
+urlpatterns = [
+    path('', check_redis_connection, name='check_redis_connection'),
+]
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید در فایل <Important>urls.py</Important> موجود در دایرکتوری اصلی پروژه، قطعه کد زیر را اضافه کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="python">
+      {`from django.urls import include, path
+
+urlpatterns = [
+   
+    path('redis/', include('redis_app.urls')),
+]`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>redis/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+
+</Layout>

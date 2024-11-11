@@ -41,7 +41,7 @@ import Head from "next/head";
 
 
 <div className="h-4" />
-<div className="grid md:grid-cols-4 gap-4">
+<div className="grid md:grid-cols-5 gap-4">
             {[
     { alt: 'nodejs', platform: 'NodeJS', link: "./nodejs/getting-started" },
     { alt: 'next', platform: 'NextJS', link: "./nextjs/getting-started" },
@@ -55,6 +55,7 @@ import Head from "next/head";
     { alt: 'angularjs', platform: 'Angular', link: "./angular/getting-started" },
     { alt: 'vue', platform: 'Vue', link: "./vue/getting-started" },
     { alt: 'docker', platform: 'Docker', link: "./docker/getting-started" },
+    { alt: 'python', platform: 'Python', link: "./python/getting-started" },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
@@ -82,7 +83,6 @@ import Head from "next/head";
     { alt: 'nginx', platform: 'Nginx', link: "/paas/docker/related-apps/nginx" },
     { alt: 'streamlit', platform: 'Streamlit', link: "/paas/docker/related-apps/streamlit" },
     { alt: 'fastapi', platform: 'FastAPI', link: "/paas/docker/related-apps/fastapi" },
-    { alt: 'python', platform: 'Python Scripts', link: "/paas/docker/related-apps/python" },
     { alt: 'arangodb', platform: 'ArangoDB', link: "/paas/docker/related-apps/arangodb" },
     { alt: 'seq', platform: 'Seq', link: "/paas/docker/related-apps/seq" },
     { alt: 'flutter', platform: 'Flutter', link: "/paas/docker/related-apps/flutter" },

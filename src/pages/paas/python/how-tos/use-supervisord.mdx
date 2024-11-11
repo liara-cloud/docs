@@ -1,0 +1,53 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از Supervisord در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نحوه استفاده از Supervisord در پلتفرم Django در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استفاده از Supervisord در برنامه‌های Django
+<hr className="mb-2" />
+
+<a href="http://supervisord.org/" className="text-[#2196f3] ">supervisord</a> یک ابزار مدیریتی است که برای اجرا و کنترل فرآیندهای پس‌زمینه (background processes) طراحی شده است. این ابزار می‌تواند برای مدیریت سرویس‌های مختلف در یک محیط واقعی، مورد استفاده قرار گیرد.
+
+شما می‌توانید در مسیر اصلی پروژه، یک فایل به نام <Important>supervisor.conf</Important> ایجاد کنید و درون این فایل، Workerهای خود را برای اجرای background jobها، تعریف کنید. به عنوان مثال، برای ایجاد یک Worker در یک برنامه <a href="/paas/django/related-apps/celery" className="text-[#2196f3] ">celery</a>، می‌توانید از قطعه کد زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='conf'>
+{`[program:celery-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=celery -A proj worker -l INFO
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+numprocs=1
+startsecs=10
+stopwaitsecs=600
+redirect_stderr=true
+stdout_logfile=/tmp/worker.log`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+پس از انجام کار فوق، کافیست برای اعمال تغییرات، برنامه‌تان را مجدداً در لیارا، مستقر کنید. پس از استقرار،
+Supervisor اجرا شده و دستور شما را در Background اجرا خواهد کرد.
+
+
+</Layout>

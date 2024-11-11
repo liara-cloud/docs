@@ -1,0 +1,492 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی وب‌سوکت (Websocket) در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نحوه راه‌اندازی وب‌سوکت (Websocker) در پلتفرم Django در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# راه‌اندازی برنامه Websocket
+<hr className="mb-2" />
+
+وب‌سوکت (WebSocket) یک فناوری ارتباطی در وب است که به سرور و مرورگر اجازه می‌دهد از طریق یک اتصال دوطرفه دائمی، داده‌ها را به صورت تعاملی ارسال و دریافت کنند. در واقع مرورگر می‌تواند داده‌ها را بفرستد و دریافت کند بدون اینکه نیازی به بارگیری دوباره صفحه وب (refresh) باشد. این ویژگی به برنامه‌های تعاملی مانند چت‌های زنده و بازی‌های آنلاین کمک می‌کند.
+در ادامه، به نحوه ایجاد برنامه WebSocket در فریم‌ورک Django با استفاده از ماژول <Important>channels</Important> و همچنین نحوه استقرار آن در لیارا، پرداخته شده است.
+
+<Section id="build-websocket-app-in-django" title="ساخت برنامه WebSocket در Django" />
+پروژه‌ در پیش‌رو، یک چت‌روم تحت وب در فریم‌ورک Django است که کاربران می‌توانند در آن به صورت Realtime (با تکیه بر WebSocket) به گفتگو بپردازند.
+در ابتدا، بایستی در محیط مجازی، با اجرای دستور زیر، یک پروژه جدید Django را، ایجاد کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`django-admin startproject ChatApp`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+‌پس از اجرای دستور فوق، کافیست تا دستور زیر را اجرا کنید تا ماژول‌های <Important>channels</Important> و <Important>daphne</Important> برای‌تان نصب شود:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install channels daphne`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+حال، بایستی با استفاده از دستور زیر، یک application جدید به نام chat در پروژه ایجاد کنید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+{`python manage.py startapp chat`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از اجرای دستورات فوق، کافیست تا برنامه <Important>chat</Important> و ماژول‌های <Important>channels</Important> و <Important>daphne</Important> را به <Important>INSTALLED_APPS</Important> در فایل <Important>settings.py</Important> به شکل زیر، اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`INSTALLED_APPS = [
+    'daphne', 
+    'chat', 
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'channels',
+]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از انجام کار فوق، باید قطعه کد زیر را در فایل <Important>settings.py</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`ASGI_APPLICATION = 'ChatApp.asgi.application'`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، فایل‌ها و دایرکتوری‌های زیر را در مسیرهای مشخص شده، ایجاد کنید:
+
+<div className="h-2" />
+<ul className="pr-5">
+  <li>فایل <Important>chat/urls.py</Important></li>
+  <div className="h-1" />
+  <li>دایرکتوری <Important>chat/templates</Important></li>
+  <div className="h-1" />
+  <li>دایرکتوری <Important>chat/templates/chat</Important></li>
+  <div className="h-1" />
+  <li>فایل‌های <Important>chat/templates/chat/chatPage.html</Important> و <Important>chat/templates/chat/LoginPage.html</Important></li>
+  <div className="h-1" />
+  <li>فایل <Important>chat/routing.py</Important></li>
+  <div className="h-1" />
+  <li>فایل <Important>chat/consumers.py</Important></li>
+  <div className="h-1" />
+</ul>
+<div className="h-2" />
+
+اکنون، در فایل <Important>ChatApp/urls.py</Important> قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`from django.contrib import admin
+from django.urls import path, include
+ 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("", include("chat.urls")),
+]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+و قطعه کد زیر را نیز در <Important>chat/urls.py</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`from django.urls import path, include
+from chat import views as chat_views
+from django.contrib.auth.views import LoginView, LogoutView
+
+
+urlpatterns = [
+	path("", chat_views.chatPage, name="chat-page"),
+
+	# login-section
+	path("auth/login/", LoginView.as_view
+		(template_name="chat/LoginPage.html"), name="login-user"),
+	path("auth/logout/", LogoutView.as_view(), name="logout-user"),
+]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، در <Important>chat/views.py</Important> قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`from django.shortcuts import render, redirect
+
+
+def chatPage(request, *args, **kwargs):
+	if not request.user.is_authenticated:
+		return redirect("login-user")
+	context = {}
+	return render(request, "chat/chatPage.html", context)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، می‌توانید در <Important>chat/templates/chat/chatPage.html</Important> از قطعه کد ساده زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+    {`<!DOCTYPE html>
+<html>
+<body>
+	<center><h1>Welcome to chat site! {{request.user}}</h1></center>
+	<br>
+	{% if request.user.is_authenticated %}
+	<center> Logout the chat Page <a href = "{% url 'logout-user' %}">Logout</a></center>
+	{% endif %}
+	<div
+	class="chat__item__container"
+	id="id_chat_item_container"
+	style="font-size: 20px"
+	>
+	<br />
+	<input type="text" id="id_message_send_input" />
+	<button type="submit" id="id_message_send_button">Send Message</button>
+	<br />
+	<br />
+	</div>
+	<script>
+	const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+	chatSocket.onopen = function (e) {
+		console.log("The connection was setup successfully !");
+	};
+	chatSocket.onclose = function (e) {
+		console.log("Something unexpected happened !");
+	};
+	document.querySelector("#id_message_send_input").focus();
+	document.querySelector("#id_message_send_input").onkeyup = function (e) {
+		if (e.keyCode == 13) {
+		document.querySelector("#id_message_send_button").click();
+		}
+	};
+	document.querySelector("#id_message_send_button").onclick = function (e) {
+		var messageInput = document.querySelector(
+		"#id_message_send_input"
+		).value;
+		chatSocket.send(JSON.stringify({ message: messageInput, username : "{{request.user.username}}"}));
+	};
+	chatSocket.onmessage = function (e) {
+		const data = JSON.parse(e.data);
+		var div = document.createElement("div");
+		div.innerHTML = data.username + " : " + data.message;
+		document.querySelector("#id_message_send_input").value = "";
+		document.querySelector("#id_chat_item_container").appendChild(div);
+	};
+	</script>
+</body>
+</html>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+و همچنین، قطعه کد زیر را در <Important>chat/templates/chat/LoginPage.html</Important> به کار ببرید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+    {`<!DOCTYPE html>
+<html>
+<body>
+	<form method ="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<br>
+		<button type = "submit">Login</button>
+	</form>
+</body>
+</html>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از انجام کارهای فوق، کافیست تا دستورات زیر را اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+    {`python manage.py makemigrations
+python manage.py migrate`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، باید قطعه کد زیر را در <Important>chat/routing.py</Important> قرار دهید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`from django.urls import path , include
+from chat.consumers import ChatConsumer
+
+# Here, "" is routing to the URL ChatConsumer which 
+# will handle the chat functionality.
+websocket_urlpatterns = [
+	path("" , ChatConsumer.as_asgi()) , 
+]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+و همچنین در <Important>chat/consumers.py</Important> قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`import json
+from channels.generic.websocket import AsyncWebsocketConsumer
+
+class ChatConsumer(AsyncWebsocketConsumer):
+	async def connect(self):
+		self.roomGroupName = "group_chat_gfg"
+		await self.channel_layer.group_add(
+			self.roomGroupName ,
+			self.channel_name
+		)
+		await self.accept()
+	async def disconnect(self , close_code):
+		await self.channel_layer.group_discard(
+			self.roomGroupName , 
+			self.channel_layer 
+		)
+	async def receive(self, text_data):
+		text_data_json = json.loads(text_data)
+		message = text_data_json["message"]
+		username = text_data_json["username"]
+		await self.channel_layer.group_send(
+			self.roomGroupName,{
+				"type" : "sendMessage" ,
+				"message" : message , 
+				"username" : username ,
+			})
+	async def sendMessage(self , event) : 
+		message = event["message"]
+		username = event["username"]
+		await self.send(text_data = json.dumps({"message":message ,"username":username}))`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از انجام کارهای فوق، اکنون کافیست تا در <Important>ChatApp/asgi.py</Important> قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`import os
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ChatApp.settings')
+
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter , URLRouter
+from chat import routing
+
+application = ProtocolTypeRouter(
+	{
+		"http" : get_asgi_application() , 
+		"websocket" : AuthMiddlewareStack(
+			URLRouter(
+				routing.websocket_urlpatterns
+			) 
+		)
+	}
+)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، باید قطعه کد زیر را به فایل <Important>settings.py</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`CHANNEL_LAYERS = {
+	"default": {
+		"BACKEND": "channels.layers.InMemoryChannelLayer"
+	}
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="warning">
+<p>
+در نظر داشته باشید که قطعه کد فوق، مناسب محیط توسعه است و برای استفاده در محیط Production، بهتر است از Redis Channels استفاده کنید. در ادامه، نحوه استفاده از Redis Channels در برنامه‌های جنگو، آموزش داده شده است.
+</p>
+</Alert>
+<div className="h-2" />
+
+در نهایت، قطعه کد زیر را به انتهای فایل <Important>settings.py</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {`LOGIN_REDIRECT_URL= "chat-page"
+LOGOUT_REDIRECT_URL= "login-user"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمام کارها انجام شده است و اکنون می‌توانید با استفاده از دستور زیر؛ کاربران مدنظر خود را ایجاد کنید تا در چت‌روم، با یکدیگر تعامل داشته باشند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+    {`python manage.py createsuperuser`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در انتها، با استفاده از دستور زیر، می‌توانید برنامه را اجرا و استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+    {`python manage.py runserver`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+    {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="deploy-websocket-django" title="استقرار برنامه Django WebSocket در لیارا" />
+
+برای استقرار برنامه‌های وب‌سوکت جنگو در لیارا، نیازی به انجام تغییر خاصی نیست. صرفاً باید به جای استفاده از آدرس <Important>ws</Important>، عبارت <Important>wss</Important> را به کار ببرید تا اتصال، ایمن و سازگار باشد. همچنین، در فایل <Important>settings.py</Important> باید قطعه کد زیر را حذف کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`WSGI_APPLICATION = 'ChatApp.wsgi.application'`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+و به جای آن، از قطعه کد زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`ASGI_APPLICATION = 'ChatApp.asgi.application'`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+مقدار متغیرهای فوق وابسته به نام پروژه، متغیر هستند و این مقدار در این‌جا، یک مثال برای پروژه‌ای به نام ChatApp می‌باشد.
+</p>
+</Alert>
+<div className="h-2" />
+
+از آنجایی که استفاده از <Important>InMemoryChannelLayer</Important> در حالت Production، احتمال نشت داده‌ها را بسیار افزایش می‌دهد؛ پس بهتر است به جای آن، از Redis Channels استفاده کنید. برای این کار نیز، کافیست تا در ابتدا ماژول <Important>channels-redis</Important> در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install channels-redis`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از نصب ماژول فوق، کافیست تا قطعه کد زیر را از فایل <Important>settings.py</Important> حذف کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`CHANNEL_LAYERS = {
+	"default": {
+		"BACKEND": "channels.layers.InMemoryChannelLayer"
+	}
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+و قطعه کد زیر را جایگزین آن کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+CHANNEL_LAYERS = {
+    "default": {
+    "BACKEND": "channels_redis.pubsub.RedisPubSubChannelLayer",
+    "CONFIG": {
+        "hosts":[{
+            "address": os.getenv('REDIS_URI'),  
+        }]}
+    }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="warning">
+<p>
+باید طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، یک متغیر محیطی به نام <Important>REDIS_URI</Important> با مقدار URI دیتابیس Redis خود به برنامه Djangoتان، اضافه کنید.
+</p>
+</Alert>
+
+در انتها، می‌توانید برنامه خود را بدون هیچ مشکل خاصی، در لیارا مستقر کنید.
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+سورس کامل یک برنامه Django WebSocket آماده استقرار در <a href="https://github.com/liara-cloud/django-getting-started/tree/asgi" className="text-[#2196f3] ">اینجا</a> موجود است که می‌توانید از آن استفاده کنید.
+</p>
+</Alert>
+
+
+</Layout>

@@ -223,6 +223,11 @@ export default {
         link: "/paas/php/getting-started"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/paas/python/getting-started"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/paas/django/getting-started"
@@ -350,6 +355,11 @@ export default {
         link: "/paas/php/getting-started"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/paas/python/getting-started"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/paas/django/getting-started"
@@ -475,6 +485,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/paas/php/getting-started"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/paas/python/getting-started"
       },
       {
         title: "Django",
@@ -1697,6 +1712,181 @@ export default {
         link: "/paas/php/related-apps/yii"
       },
     ],
+    python: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="python" />
+            پلتفرم Python
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/python/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/python/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/python/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/python/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/python/how-tos/deploy-app"
+      },
+      // {
+      //   title: "استفاده از متغیرهای محیطی",
+      //   link: "/paas/python/how-tos/set-envs"
+      // },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/python/how-tos/use-disk"
+      // },
+      // {
+      //   title: "تنظیم Nginx",
+      //   link: "/paas/python/how-tos/customize-nginx"
+      // },
+      // {
+      //   title: "فعال‌سازی قابلیت gzip",
+      //   link: "/paas/python/how-tos/enable-gzip"
+      // },
+      // {
+      //   title: "پیکربندی TrustedProxies",
+      //   link: "/paas/python/how-tos/set-trusted-proxies"
+      // },
+      // {
+      //   title: "استفاده از Hookها",
+      //   link: "/paas/python/how-tos/use-hooks"
+      // },
+      // {
+      //   title: "تنظیم Cron Job",
+      //   link: "/paas/python/how-tos/set-cron-job"
+      // },
+      {
+        title: "تغییر نسخه Python",
+        link: "/paas/python/how-tos/choose-version"
+      },
+      // {
+      //   title: "تنظیم تعداد workerهای  Gunicorn",
+      //   link: "/paas/python/how-tos/set-gunicorn-workers"
+      // },
+      // {
+      //   title: "راه‌اندازی برنامه WebSocket",
+      //   link: "/paas/python/how-tos/use-websocket"
+      // },
+      // {
+      //   title: "راه‌اندازی برنامه ASGI",
+      //   link: "/paas/python/how-tos/use-asgi"
+      // },
+      // {
+      //   title: "استفاده از ماژول FFMPEG",
+      //   link: "/paas/python/how-tos/use-ffmpeg-module"
+      // },
+      // {
+      //   title: "تنظیم لاگ‌ها",
+      //   link: "/paas/python/how-tos/set-logs"
+      // },
+      
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoDatabase  />
+      //       <Link href="/paas/python/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "دیتابیس MySQL/MariaDB",
+      //   icon: <IconContainer alt="mysql" />,
+      //   link: "/paas/python/how-tos/connect-to-db/mysql"
+      // },
+      // {
+      //   title: "دیتابیس MSSQL",
+      // icon: <IconContainer alt="mssql" />,
+      //   link: "/paas/python/how-tos/connect-to-db/mssql"
+      // },
+      // {
+      //   title: "دیتابیس PostgreSQL",
+      //   icon: <IconContainer alt="postgres" />,
+      //   link: "/paas/python/how-tos/connect-to-db/postgresql"
+      // },
+      // {
+      //   title: "دیتابیس SQLite",
+      //   icon: <IconContainer alt="sqlite" />,
+      //   link: "/paas/python/how-tos/connect-to-db/sqlite"
+      // },
+      // {
+      //   title: "دیتابیس Redis",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/python/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس ElasticSearch",
+      //   icon: <IconContainer alt="elastic" />,
+      //   link: "/paas/python/how-tos/connect-to-db/elastic-search"
+      // },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   icon: <IconContainer alt="mongodb" />,
+      //   link: "/paas/python/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBug  />
+      //       <Link href="/paas/python/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
+      //   link: "/paas/python/fix-common-errors/upload-limit-size"
+      // },
+      // {
+      //   title: "رفع خطای CORS",
+      //   link: "/paas/python/fix-common-errors/cors"
+      // },
+      // {
+      //   title: "رفع خطای WORKER TIMEOUT",
+      //   link: "/paas/python/fix-common-errors/worker-timeout"
+      // },
+      // {
+      //   title: "رفع خطای ModuleNotFoundError",
+      //   link: "/paas/python/fix-common-errors/module-not-found"
+      // },
+    ],
     django: [
       {
         badge: (
@@ -2667,11 +2857,6 @@ export default {
         link: "/paas/docker/related-apps/fastapi"
       },
       {
-        title: "Python Scripts",
-        icon: <IconContainer alt="python" />,
-        link: "/paas/docker/related-apps/python"
-      },
-      {
         title: "Streamlit",
         icon: <IconContainer alt="streamlit" />,
         link: "/paas/docker/related-apps/streamlit"
@@ -2982,6 +3167,11 @@ export default {
         link: "/dbaas/mariadb/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/mariadb/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/dbaas/mariadb/how-tos/connect-via-platform/django"
@@ -3121,6 +3311,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/dbaas/mysql/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/mysql/how-tos/connect-via-platform/python"
       },
       {
         title: "Django",
@@ -3264,6 +3459,11 @@ export default {
         link: "/dbaas/postgresql/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/postgresql/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/dbaas/postgresql/how-tos/connect-via-platform/django"
@@ -3399,6 +3599,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/dbaas/mssql/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/mssql/how-tos/connect-via-platform/python"
       },
       {
         title: "Django",
@@ -3542,6 +3747,11 @@ export default {
         link: "/dbaas/mongodb/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/dbaas/mongodb/how-tos/connect-via-platform/django"
@@ -3675,6 +3885,11 @@ export default {
         link: "/dbaas/redis/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/redis/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/dbaas/redis/how-tos/connect-via-platform/django"
@@ -3801,6 +4016,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/dbaas/elastic-search/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/elastic-search/how-tos/connect-via-platform/python"
       },
       {
         title: "Django",
@@ -3935,6 +4155,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/dbaas/rabbitmq/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/rabbitmq/how-tos/connect-via-platform/python"
       },
       {
         title: "Django",
@@ -4367,10 +4592,10 @@ export default {
         title: "انتقال WordPress از cPanel به لیارا",
         link: "/one-click-apps/wordpress/how-tos/migrate-from-cpanel"
       },
-      {
-        title: "فعال‌سازی افزونه WP Rocket",
-        link: "/one-click-apps/wordpress/how-tos/enable-wprocket-extension"
-      },
+      // {
+      //   title: "فعال‌سازی افزونه WP Rocket",
+      //   link: "/one-click-apps/wordpress/how-tos/enable-wprocket-extension"
+      // },
       {
         title: "راه‌اندازی WordPress با Duplicator",
         link: "/one-click-apps/wordpress/how-tos/duplicator"
@@ -6312,6 +6537,11 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/email-server/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/email-server/how-tos/connect-via-platform/django"
@@ -6466,6 +6696,11 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/email-server/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/email-server/how-tos/connect-via-platform/django"
@@ -6618,6 +6853,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/email-server/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/email-server/how-tos/connect-via-platform/python"
       },
       {
         title: "Django",
@@ -6872,6 +7112,11 @@ export default {
         link: "/object-storage/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/object-storage/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/object-storage/how-tos/connect-via-platform/django"
@@ -7072,6 +7317,11 @@ export default {
         link: "/object-storage/how-tos/connect-via-platform/php"
       },
       {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/object-storage/how-tos/connect-via-platform/python"
+      },
+      {
         title: "Django",
         icon: <IconContainer alt="django" />,
         link: "/object-storage/how-tos/connect-via-platform/django"
@@ -7264,6 +7514,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/object-storage/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/object-storage/how-tos/connect-via-platform/python"
       },
       {
         title: "Django",
@@ -7459,6 +7714,11 @@ export default {
         title: "PHP",
         icon: <IconContainer alt="php" />,
         link: "/object-storage/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/object-storage/how-tos/connect-via-platform/python"
       },
       {
         title: "Django",

@@ -1,0 +1,87 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import PlatformIcon from "@/components/Common/icons";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ها در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس‌ها در پلتفرم Django در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس 
+<hr className="mb-2" />
+
+دیتابیس‌ها، در اکوسیستم یک پلتفرم، نقش حیاتی دارند. دیتابیس‌ها نه تنها محلی برای ذخیره و بازیابی داده‌ها هستند، بلکه به عنوان ستون فقرات یک برنامه، عمل می‌کنند و بر کارایی، مقیاس‌پذیری و قابلیت اعتماد سیستم، تأثیر مستقیم می‌گذارند.
+در حال حاضر، شما می‌توانید در برنامه‌های Django خود در لیارا، به دیتابیس‌های زیر، متصل شوید:
+<div className='h-2' />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    { alt: 'mysql', platform: 'MySQL/MariaDB', link: "./mysql" },
+    { alt: 'postgres', platform: 'PostgreSQL', link: "./postgresql" },
+    { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
+    { alt: 'sqlite', platform: 'SQLite', link: "./sqlite" },
+    { alt: 'redis', platform: 'Redis', link: "./redis" },
+    { alt: 'elastic', platform: 'ElasticSearch', link: "./elastic-search" },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+            <PlatformIcon platform={item.alt} />
+        </div>
+        <h4>
+            {item.platform}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div>
+<Section id="migrate-db" title="اجرای Migrationها در دیتابیس‌" />
+برای اجرای Migrationها در دیتابیس مد نظر خود، در ابتدا در Local دستور زیر را اجرا کنید تا Migrationها برای‌تان ایجاد شوند:
+
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`python manage.py makemigrations`}        
+    </Highlight>
+</div>
+<div className='h-2' />
+
+سپس،
+ می‌توانید پس از استقرار برنامه، وارد <a href="/paas/details/console-shell" className="text-[#2196f3] ">خط فرمان</a> برنامه خود شوید و دستور زیر را اجرا کنید تا عملیات migration برای شما، انجام شود:
+
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`python manage.py migrate`}        
+    </Highlight>
+</div>
+<div className='h-2' />
+یا اینکه می‌توانید طبق <a href="../../use-hooks" className="text-[#2196f3] ">مستندات Hookها</a>، قبل از استقرار و در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_start.sh</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="sh">
+        {`python manage.py migrate;`}        
+    </Highlight>
+</div>
+<div className='h-2' />
+در انتها و پس از قرار دادن فایل فوق در مسیر اصلی پروژه، می‌توانید برنامه خود را در لیارا مستقر کنید تا عملیات Migrate به صورت خودکار برای‌تان اعمال شود.
+
+
+</Layout>
