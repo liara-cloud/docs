@@ -14,16 +14,16 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دیتابیس‌ ElasticSearch در Django - لیارا</title>
+<title>مستندات اتصال به دیتابیس‌ ElasticSearch در Python - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس ElasticSearch در پلتفرم Django در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس ElasticSearch در پلتفرم Python در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس ElasticSearch در برنامه‌های Django
+# اتصال به دیتابیس ElasticSearch در برنامه‌های Python
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس ElasticSearch در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس ElasticSearch در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
@@ -33,31 +33,8 @@ import Head from "next/head";
     </div>
 <div className="h-2" />
 
-سپس، در فایل <Important>settings.py</Important>، تنظیمات مربوط به دیتابیس را اضافه کنید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {` # other codes ...
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': os.getenv("ELASTICSEARCH_URI"),
-    },
-}
-# other codes ...`}
-    </Highlight>
-    </div>
-<div className="h-2" />
+سپس، با فرض فعال بودن محیط مجازی در پروژه پایتونی‌تان (virtualenv)، دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود: 
 
-در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-        {`ELASTICSEARCH_URI=http://elastic:G4bqHLMHvZKMscUy8OhLomK1@bromo.liara.cloud:328`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
@@ -66,120 +43,70 @@ ELASTICSEARCH_DSL = {
     </div>
 <div className="h-2" />
 
-تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید با اجرای دستور زیر، یک application جدید ایجاد کنید:
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3]">نحوه تنظیم متغیرهای محیطی</a>، متغیر محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`python manage.py startapp elasticsearch_app`}
+        {`ELASTICSEARCH_URI=http://elastic:0sYXnw9OuXUzYVFnXTFdwOUh@monte-rosa.liara.cloud:33159/`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-سپس، این application جدید را به بخش <Important>INSTALLED_APPS</Important> در <Important>settings.py</Important>، اضافه کنید:
+در نهایت، می‌توانید مشابه قطعه کد زیر، به دیتابیس‌تان متصل شده و از آن، استفاده کنید: 
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="python">
-        {`# Application definition
+        {`import os
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from elasticsearch import Elasticsearch
+from elasticsearch.exceptions import ConnectionError
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'elasticsearch_app', # add this
-]`}
-    </Highlight>
-    </div>
-<div className="h-2" />
+# Fetch Elasticsearch URI from environment variables
+ELASTICSEARCH_URI = os.getenv("ELASTICSEARCH_URI")
 
-در ادامه، در دایرکتوری <Important>elasticsearch_app</Important>، یک فایل جدید به نام <Important>elastic_model.py</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`from elasticsearch import Elasticsearch
-from django.conf import settings
+# Initialize Elasticsearch client
+def connect_elasticsearch():
+    try:
+        # Create an Elasticsearch client using the URI
+        es = Elasticsearch([ELASTICSEARCH_URI])
+        # Check connection by pinging Elasticsearch
+        if es.ping():
+            return True
+        return False
+    except ConnectionError:
+        return False
 
-class ElasticModel:
-    def __init__(self):
-        self.client = Elasticsearch(settings.ELASTICSEARCH_DSL['default']['hosts'])
-        self.index = 'test_index'
+# HTTP request handler class
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        # Check if Elasticsearch is reachable
+        if connect_elasticsearch():
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b"Elasticsearch connection successful!")
+        else:
+            self.send_response(500)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b"Failed to connect to Elasticsearch")
 
-    def create_index(self):
-        if not self.client.indices.exists(index=self.index):
-            self.client.indices.create(index=self.index)
+# Run the server
+def run(server_class=HTTPServer, handler_class=RequestHandler, port=8080):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f'Starting server on port {port}...')
+    httpd.serve_forever()
 
-    def insert_data(self, data):
-        self.client.index(index=self.index, document=data)
-
-    def read_data(self):
-        response = self.client.search(index=self.index, body={"query": {"match_all": {}}})
-        return response['hits']['hits']
+if __name__ == '__main__':
+    run()
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-
-
-در ادامه، در فایل <Important>elasticsearch_app/views.py</Important> قطعه کد زیر را وارد کنید تا اتصال به دیتابیس، بررسی شود:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`from django.http import JsonResponse
-from .elastic_model import ElasticModel
-
-def elasticsearch_insert_read(request):
-    es_model = ElasticModel()
-    es_model.create_index()
-    
-    # Insert data
-    data = {
-        'name': 'Sample Data',
-        'description': 'This is a sample data entry for Elasticsearch.'
-    }
-    es_model.insert_data(data)
-    
-    # Read data
-    results = es_model.read_data()
-    
-    return JsonResponse(results, safe=False)
-`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-سپس، بایستی در دایرکتوری <Important>elasticsearch_app</Important>، یک فایل به نام <Important>urls.py</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
-
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`from django.urls import path
-from .views import elasticsearch_insert_read
-
-urlpatterns = [
-    path('', elasticsearch_insert_read, name='elasticsearch_insert_read'),
-]
-`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در نهایت، می‌توانید در فایل <Important>urls.py</Important> موجود در دایرکتوری اصلی پروژه، قطعه کد زیر را اضافه کنید:
-<div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="python">
-      {`from django.urls import include, path
-
-urlpatterns = [
-   
-    path('elasticsearch/', include('elasticsearch_app.urls')),
-]
-`}
-  </Highlight>
-  </div>
-<div className="h-2" />
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>elasticsearch/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 </Layout>

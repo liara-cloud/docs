@@ -33,13 +33,13 @@ import Head from "next/head";
   tabs={["Liara Console", "Liara CLI", "Github"]} 
   content={[
   <>
-  {/* <video
-  src="https://files.liara.ir/liara/Python/Python-desktop.mp4"
+  <video
+  src="https://files.liara.ir/liara/python/python-desktop.mp4"
   controls="control/s"
   className="block w-full"
   width="100%"
   ></video>
-  <div className="h-2" /> */}
+  <div className="h-2" />
   برای استقرار با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
   <Step  steps={[
 {
@@ -109,13 +109,13 @@ import Head from "next/head";
   </>,
 
   <>
-  {/* <video
-  src="https://files.liara.ir/liara/quick-start/Python/Python-cli.mp4"
+  <video
+  src="https://files.liara.ir/liara/python/python-cli.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
   ></video>
-  <div className="h-2" /> */}
+  <div className="h-2" />
 
   برای استقرار با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/cli/about">Liara CLI</Link> کافیست تا مراحل زیر را طی کنید:
   <Step  steps={[
@@ -242,13 +242,13 @@ import Head from "next/head";
 ]}/>
   </>,
   <>
-    {/* <video
-    src="https://files.liara.ir/liara/docs/Python-github.mp4"
+    <video
+    src="https://files.liara.ir/liara/docs/python-github.mp4"
     controls="controls"
     className="block w-full"
     width="100%"
     ></video>
-    <br /> */}
+    <br />
     برای استقرار با Github، کافیست تا مراحل زیر را طی کنید:
     <Step  steps={[
 {
@@ -434,7 +434,26 @@ import Head from "next/head";
 ]} 
 />
 
-<br/>   
+<br/> 
+        <div className='h-4' />
+        <p>
+            در صورتی که قصد دارید دستورات مدنظرتان، پس از استقرار برنامه، اجرا شوند؛ می‌توانید در فایل <Important>liara.json</Important> در آرایه‌ای به نام <Important>args</Important> آن‌ها را مشابه قطعه کد زیر، مشخص کنید: 
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "args": [ "python3 app.py" ]
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در صورت مشخص نکردن <Important>args</Important>، لیارا به صورت خودکار، دستور <Important>python3 main.py</Important> را، اجرا خواهد کرد.
+        </p>
+        <div className="h-4" />
+
 <Alert variant="info">
 <p>
 لیارا با اجرای دستور <Important>pip install</Important> تمامی ماژول‌های موجود در فایل <Important>requirements.txt</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
@@ -449,4 +468,5 @@ import Head from "next/head";
 همچنین بخوانید: <Link className="text-[#2196f3] " href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های Python در لیارا</Link>
 </p>
 </Alert>
+
 </Layout>

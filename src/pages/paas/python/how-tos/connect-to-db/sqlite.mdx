@@ -14,130 +14,120 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دیتابیس‌ SQLite در Django - لیارا</title>
+<title>مستندات اتصال به دیتابیس‌ SQLite در Python - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس SQLite در پلتفرم Django در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس SQLite در پلتفرم Python در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس SQLite در برنامه‌های Django
+# اتصال به دیتابیس SQLite در برنامه‌های Python
 <hr className="mb-2" />
-<video
-    src="https://files.liara.ir/liara/django/django-sqlite.mp4"
-    controls="controls"
-    className="block w-full"
-    width="100%"
-/>
-<br />
-<p> برای اتصال موفق به دیتابیس SQLite در برنامه‌های Django کافیست تا گام‌های زیر را طی کنید: </p>
+
+برای اتصال به دیتابیس SQLite در برنامه‌های Python،
+تنها کافیست تا 
+طبق مستندات <a href="/paas/disks/create" className="text-[#2196f3] ">ساخت دیسک</a>، یک دیسک برای ذخیره دیتابیس خود بسازید؛ در ادامه، می‌توانید طبق مستندات <a href="/paas/disks/route" className="text-[#2196f3] ">تعریف مسیر برای دیسک</a>، دیسک‌ خود را به دایرکتوری دیتابیس، مشابه قطعه کد زیر در فایل <Important>liara.josn</Important> یا در استقرار با کنسول، متصل کنید: 
+
+
 <div className="h-2" />
-
-<Step  steps={[
-    {
-    step: "۱",
-    content: (
-    <>
-            <h3>تنظیم فایل <Important>settings.py</Important></h3>
-            <div className="h-1" />
-            <p>
-                در ابتدا، بایستی در فایل <Important>settings.py</Important> در بخش <Important>DATABASES</Important> قطعه کد مربوط به دیتابیس SQLite را وارد کنید:
-            </p>
-            <div className="h-1" />
-            <div dir='ltr'>
-                <Highlight className="python">
-                    {`DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'database' / 'db.sqlite3',
-    }
-}`}
-                </Highlight>
-            </div>
-            <div className="h-1" />
-
-            <p>
-                در قطعه کد فوق، دایرکتوری <Important>database</Important> به عنوان دایرکتوری دیتابیس، مشخص شده است.
-            </p>
-    </>
-    )
-    },
-    {
-    step: "۲",
-    content: (
-    <>
-            <h3>
-            ایجاد و پیکربندی فایل <Important>liara_pre_start.sh</Important>
-            </h3>
-            <div className="h-1" />
-            <p>
-              در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_start.sh</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید تا عملیات migrate به صورت خودکار در دیتابیس‌تان اعمال شود:
-            </p>
-            <div className="h-2" />
-            <div dir='ltr'>
-                <Highlight className="bash">
-                    {`mkdir database;
-python manage.py migrate;`}
-                </Highlight>
-            </div>
-            <div className="h-2" />
-            <Alert variant='success'>
-            <p>همچنین بخوانید: <a href="../../use-hooks" className="text-[#2196f3] ">استفاده از Hookها در Django</a></p>
-            </Alert>
-
-    </>
-    )
-    },
-    {
-    step: "۳",
-    content: (
-    <>
-        <h3>ایجاد دیسک برای دیتابیس</h3>
-        <p><a href="/paas/disks/create" className='text-[#2196f3] '>طبق مستندات ایجاد دیسک</a>،  در بخش <b>دیسک‌ها</b> برنامه خود در لیارا، یک دیسک جدید با نام <Important>database</Important> و اندازه مدنظرتان ایجاد کنید.</p>
-    </>
-    )
-    },
-    {
-    step: "۴",
-    content: (
-    <>
-        <h3>ایجاد و پیکربندی فایل liara.json</h3>
-        <p>در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:</p>
-        <div dir='ltr'>
-        <div className="h-2" />
-        <Highlight className="json">
+    <div dir='ltr'>
+    <Highlight className="json">
         {`{
-    "disks":[
+    "disks": [
         {
             "name": "database",
             "mountTo": "database"
         }
     ]
-}
-`}
-        </Highlight>
-        </div>
-    </>
-    )
-    },
-    {
-    step: "۵ ",
-    content: (
-    <>
-        <h3>استقرار برنامه در لیارا</h3>
-        <p>برنامه خود را با استفاده از دستور <Important>liara deploy</Important> در لیارا مستقر کنید.</p>
-    </>
-    )
-    },
-]}/>
-<div className="h-4" />
+}`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید مشابه قطعه کد زیر، به دیتابیس‌تان متصل شده و از آن، استفاده کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+import sqlite3
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+
+# Define the directory and database file name
+db_directory = 'database'
+db_filename = 'my_database.db'
+db_path = os.path.join(db_directory, db_filename)
+
+# Create or check the SQLite database connection
+def check_db_connection():
+    # Check if the database exists
+    if not os.path.exists(db_path):
+        return False
     
+    try:
+        # Try connecting to the database to ensure it's accessible
+        connection = sqlite3.connect(db_path)
+        connection.close()
+        return True
+    except sqlite3.Error:
+        return False
 
-<div className="h-4" />
-البته در نظر داشته باشید که استفاده از دیتابیس SQLite بیشتر برای وب‌سایت‌های کوچک با پردازش‌های کم مناسب است و 
-در مقیاس بالا، بهتر است که از دیتابیس‌های دیگری استفاده کنید.
+# Custom handler to respond to HTTP requests
+class MyHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        # When accessing the root ("/") page, check if database exists and connection
+        if self.path == '/':
+            # Check if the database exists
+            if not os.path.exists(db_path):
+                # Create the database if it doesn't exist
+                self.create_db()
+                response = "Database created successfully!"
+            else:
+                response = "Database already exists."
+            
+            # Check connection to the database
+            if check_db_connection():
+                connection_status = "Database connection successful!"
+            else:
+                connection_status = "Failed to connect to the database."
+            
+            # Respond with both messages
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html')
+            self.end_headers()
+            self.wfile.write(f"<html><body><h1>{response}</h1><p>{connection_status}</p></body></html>".encode())
 
-<Section id="connection-pooling" title="استفاده از Connection Pooling" />
-در نظر داشته باشید که SQLite از قابلیت Connection Pooling پشتیبانی نمی‌کند؛ چرا که SQLite یک دیتابیس فایل‌محور است و نیازی به connection pooling ندارد. هر اتصال به فایل دیتابیس مستقل از دیگر اتصالات است و SQLite به طور خودکار این اتصالات را، مدیریت می‌کند.
+    def create_db(self):
+        # Create the directory if it doesn't exist
+        if not os.path.exists(db_directory):
+            os.makedirs(db_directory)
+            print(f"Directory '{db_directory}' created.")
+        
+        # Connect to SQLite and create the database file if it doesn't exist
+        connection = sqlite3.connect(db_path)
+        cursor = connection.cursor()
+        
+        # Create a simple table to test the database
+        cursor.execute('''CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)''')
+        
+        # Commit changes and close the connection
+        connection.commit()
+        cursor.close()
+        connection.close()
+        
+        print(f"Database created at '{db_path}'")
 
+# Define the server address and port
+server_address = ('', 8080)
+
+# Create and run the server
+httpd = HTTPServer(server_address, MyHandler)
+print("Server running on port 8080")
+httpd.serve_forever()
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 </Layout>

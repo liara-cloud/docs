@@ -14,18 +14,18 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات تنظیم Nginx در Django - لیارا</title>
+<title>مستندات تنظیم Nginx در Python - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات نحوه تنظیم Nginx در پلتفرم Django در لیارا"  />
+<meta property="og:description" content="مستندات نحوه تنظیم Nginx در پلتفرم Python در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# تنظیم Nginx در برنامه‌های Django
+# تنظیم Nginx در برنامه‌های Python
 <hr className="mb-2" />
 
 <a href="https://nginx.org/en/" className="text-[#2196f3] ">NGINX</a> یک سرور وب قدرتمند و چندمنظوره است که برای ارائه وب، پروکسی معکوس، کش HTTP، و حتی به عنوان یک لود بالانسر استفاده می‌شود. این سرور به دلیل عملکرد بالا، مقیاس‌پذیری و کارایی در مدیریت ترافیک وب، بسیار محبوب است.
 
-در برنامه‌های Django لیارا، از وب‌سرور Nginx استفاده می‌شود و پیکربندی پیش‌فرض این وب‌سرور به‌شکل زیر است:
+در برنامه‌های Python لیارا، از وب‌سرور Nginx استفاده می‌شود و پیکربندی پیش‌فرض این وب‌سرور به‌شکل زیر است:
 
 <div className="h-2" />
 <div dir="ltr">
@@ -41,7 +41,7 @@ location /static {
 }
 
 location / {
-  try_files /dev/null @django_app;
+  try_files /dev/null @python_app;
 }
 
 location ~\\.sqlite3$ {

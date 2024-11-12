@@ -51,10 +51,18 @@ tzdata==2024.1
         </div>
         <div className='h-4' />        
         <p>
-            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ فایل zip را بکشید و در باکس آپلود تعبیه شده، رها کنید تا وارد مرحله بعدی استقرار شوید:
+            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ وارد تب <b>Drag & Drog</b> شوید و فایل zip را آپلود کنید تا وارد مرحله بعدی استقرار شوید:
         </p>
-        <img src="https://files.liara.ir/liara/docs/deploy-app-using-console.gif" alt="deploy app using console" />
         <div className="h-4" />
+        <video
+        src="https://files.liara.ir/liara/docs/deploy-app-using-console.mp4"
+        controls="control/s"
+        className="block w-full"
+        width="100%"
+        ></video>
+        <div className="h-4" />
+
+
         <p>
             پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید.
         </p>
@@ -120,7 +128,23 @@ tzdata==2024.1
             البته اگر که برنامه‌تان نیازی به پورت ندارد، می‌توانید این فیلد را از فایل <Important>liara.json</Important>، پاک کنید
         </p>
         <div className="h-4" />
-       
+        <p>
+            در صورتی که قصد دارید دستورات مدنظرتان، پس از استقرار برنامه، اجرا شوند؛ می‌توانید در فایل <Important>liara.json</Important> در آرایه‌ای به نام <Important>args</Important> آن‌ها را مشابه قطعه کد زیر، مشخص کنید: 
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "args": [ "python3 app.py" ]
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در صورت مشخص نکردن <Important>args</Important>، لیارا به صورت خودکار، دستور <Important>python3 main.py</Important> را، اجرا خواهد کرد.
+        </p>
+        <div className="h-4" />
         <p>
             از آنجایی که لیارا برای نصب پکیج‌های فایل <Important>requirements.txt</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
         </p>
@@ -259,7 +283,24 @@ tzdata==2024.1
             </Highlight>
         </div>
         <div className='h-4' />
-
+        <p>
+            در صورتی که قصد دارید دستورات مدنظرتان، پس از استقرار برنامه، اجرا شوند؛ می‌توانید در فایل <Important>liara.json</Important> در آرایه‌ای به نام <Important>args</Important> آن‌ها را مشابه قطعه کد زیر، مشخص کنید: 
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "args": [ "python3 app.py" ]
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در صورت مشخص نکردن <Important>args</Important>، لیارا به صورت خودکار، دستور <Important>python3 main.py</Important> را، اجرا خواهد کرد.
+        </p>
+        <div className="h-4" />
+        
         <p>
             برای تعیین نسخه Python برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
         </p>

@@ -14,24 +14,16 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دیتابیس‌ PostgreSQL در Django - لیارا</title>
+<title>مستندات اتصال به دیتابیس‌ PostgreSQL در Python - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس PostgreSQL در پلتفرم Django در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس PostgreSQL در پلتفرم Python در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های Django
+# اتصال به دیتابیس PostgreSQL در برنامه‌های Python
 <hr className="mb-2" />
 
-<video
-    src="https://files.liara.ir/liara/django/django-postgresql.mp4"
-    controls="controls"
-    className="block w-full"
-    width="100%"
-/>
-<br />
-
-برای اتصال به دیتابیس PostgreSQL در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس PostgreSQL در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
@@ -41,43 +33,8 @@ import Head from "next/head";
     </div>
 <div className="h-2" />
 
-در ادامه، بایستی در فایل <Important>settings.py</Important> تنظیمات مربوط به دیتابیس را وارد کنید: 
+سپس، با فرض فعال بودن محیط مجازی در پروژه پایتونی‌تان (virtualenv)، دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود: 
 
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`# other codes ...
-import os
-DATABASES = {
-    
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':     os.getenv("POSTGRESQL_DB_NAME"), 
-        'USER':     os.getenv("POSTGRESQL_DB_USER"),
-        'PASSWORD': os.getenv("POSTGRESQL_DB_PASS"),
-        'HOST':     os.getenv("POSTGRESQL_DB_HOST"),
-        'PORT':     os.getenv("POSTGRESQL_DB_PORT"),
-    },
-}
-# other codes ...`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-        {`POSTGRESQL_DB_HOST=bromo.liara.cloud
-POSTGRESQL_DB_PORT=30334
-POSTGRESQL_DB_USER=root
-POSTGRESQL_DB_PASS=YY773ElmNtBrv4xrJOdeBY47
-POSTGRESQL_DB_NAME=postgres`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
@@ -86,156 +43,150 @@ POSTGRESQL_DB_NAME=postgres`}
     </div>
 <div className="h-2" />
 
-تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید با اجرای دستور زیر، یک application جدید ایجاد کنید:
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3]">نحوه تنظیم متغیرهای محیطی</a>، متغیر محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
+
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`python manage.py startapp postgresql_app`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-سپس، این application جدید را به بخش <Important>INSTALLED_APPS</Important> در <Important>settings.py</Important>، اضافه کنید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`# Application definition
-
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'postgresql_app', # add this
-]`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در ادامه، در فایل <Important>postgresql_app/views.py</Important> قطعه کد زیر را وارد کنید تا اتصال به دیتابیس، بررسی شود:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`from django.shortcuts import render
-from django.db import connections
-from django.http import HttpResponse
-
-def check_postgresql_connection(request):
-    try:
-        connection = connections['default']
-        connection.ensure_connection()
-        return HttpResponse("PostgreSQL connection successful")
-    except Exception as e:
-        return HttpResponse(f"PostgreSQL connection failed: {e}")
+        {`DB_USER=root
+DB_PASSWORD=GNfqFdndABytxVPFPBjzAppu
+DB_HOST=monte-rosa.liara.cloud
+DB_PORT=30273
+DB_NAME=postgres
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-سپس، بایستی در دایرکتوری <Important>postgresql_app</Important>، یک فایل به نام <Important>urls.py</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+در نهایت، می‌توانید مشابه قطعه کد زیر، به دیتابیس‌تان متصل شده و از آن، استفاده کنید: 
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="python">
-        {`from django.urls import path
-from .views import check_postgresql_connection
+        {`import os
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import psycopg2
 
-urlpatterns = [
-    path('', check_postgresql_connection, name='check_postgresql_connection'),
-]
+# Database connection parameters
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_HOST = os.getenv('DB_HOST')
+DB_PORT = os.getenv('DB_PORT')
+DB_NAME = os.getenv('DB_NAME')
+
+DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        try:
+            # Connect to the database
+            connection = psycopg2.connect(DATABASE_URI)
+            cursor = connection.cursor()
+            cursor.execute("SELECT version();")
+            db_version = cursor.fetchone()
+            response = f"Connection successful (without pooling), PostgreSQL version: {db_version}"
+        except Exception as error:
+            response = f"Error connecting without pooling: {error}"
+        finally:
+            if connection:
+                cursor.close()
+                connection.close()
+
+        # Send response to client
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(f"<html><body><h1>{response}</h1></body></html>".encode("utf-8"))
+
+def run(server_class=HTTPServer, handler_class=RequestHandler):
+    server_address = ('', 8080)  # Serve on port 8080
+    httpd = server_class(server_address, handler_class)
+    print("Server running on port 8080")
+    httpd.serve_forever()
+
+if __name__ == "__main__":
+    run()
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در نهایت، می‌توانید در فایل <Important>urls.py</Important> موجود در دایرکتوری اصلی پروژه، قطعه کد زیر را اضافه کنید:
-<div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="python">
-      {`from django.urls import include, path
-
-urlpatterns = [
-    path('postgresql/', include('postgresql_app.urls')),
-]
-`}
-  </Highlight>
-  </div>
-<div className="h-2" />
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>postgresql/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 
 مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
 <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
 
-برای استفاده از قابلیت connection pooling در دیتابیس PostgreSQL، فقط کافیست تا با اجرای دستور زیر، ماژول موردنیاز را نصب کنید:
+برای استفاده از قابلیت connection pooling در دیتابیس PostgreSQL، 
+می‌توانید مشابه قطعه کد زیر، عمل کنید:
 
 <div className="h-2" />
   <div dir='ltr'>
-  <Highlight className="bash">
-{`pip install django-db-connection-pool[postgresql]`}
+  <Highlight className="python">
+{`import os
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import psycopg2
+from psycopg2 import pool
+
+# Database connection parameters
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+DB_HOST = os.getenv('DB_HOST')
+DB_PORT = os.getenv('DB_PORT')
+DB_NAME = os.getenv('DB_NAME')
+
+DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+# Initialize the connection pool
+connection_pool = None
+
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        global connection_pool
+        if not connection_pool:
+            try:
+                # Create the connection pool
+                connection_pool = pool.SimpleConnectionPool(
+                    minconn=1, maxconn=5, dsn=DATABASE_URI
+                )
+                response = "Connection pool created successfully."
+            except Exception as error:
+                response = f"Error creating connection pool: {error}"
+                self.respond(response)
+                return
+
+        try:
+            # Obtain a connection from the pool
+            pooled_conn = connection_pool.getconn()
+            cursor = pooled_conn.cursor()
+            cursor.execute("SELECT version();")
+            db_version = cursor.fetchone()
+            response = f"Pooling successful, PostgreSQL version: {db_version}"
+            connection_pool.putconn(pooled_conn)  # Return connection to the pool
+        except Exception as error:
+            response = f"Error connecting with pooling: {error}"
+
+        # Send response to client
+        self.respond(response)
+
+    def respond(self, message):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(f"<html><body><h1>{message}</h1></body></html>".encode("utf-8"))
+
+def run(server_class=HTTPServer, handler_class=RequestHandler):
+    server_address = ('', 8080)  # Serve on port 8080
+    httpd = server_class(server_address, handler_class)
+    print("Server running on port 8080")
+    httpd.serve_forever()
+
+if __name__ == "__main__":
+    run()
+`}
   </Highlight>
   </div>
 <div className="h-2" />
-
-سپس، در فایل <Important>settings.py</Important> در بخش <Important>DATABASES</Important>، فیلد مربوط به <Important>ENGINE</Important> را مانند شکل زیر تغییر دهید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`# other codes ...
-import os
-DATABASES = {
-    'default': {
-        'ENGINE': 'dj_db_conn_pool.backends.postgresql',
-        'NAME':     os.getenv("POSTGRESQL_DB_NAME"), 
-        'USER':     os.getenv("POSTGRESQL_DB_USER"),
-        'PASSWORD': os.getenv("POSTGRESQL_DB_PASS"),
-        'HOST':     os.getenv("POSTGRESQL_DB_HOST"),
-        'PORT':     os.getenv("POSTGRESQL_DB_PORT"),
-    },
-}
-# other codes ...`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-همچنین، می‌توانید تنظیمات مربوط به Connection Pooling را در فیلدی به نام <Important>POOL_OPTIONS</Important>مانند قطعه کد زیر، بر روی دیتابیس خود، اعمال کنید:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`# other codes ...
-import os
-DATABASES = {
-    'default': {
-        'ENGINE': 'dj_db_conn_pool.backends.postgresql',
-        'NAME':     os.getenv("POSTGRESQL_DB_NAME"), 
-        'USER':     os.getenv("POSTGRESQL_DB_USER"),
-        'PASSWORD': os.getenv("POSTGRESQL_DB_PASS"),
-        'HOST':     os.getenv("POSTGRESQL_DB_HOST"),
-        'PORT':     os.getenv("POSTGRESQL_DB_PORT"),
-        'POOL_OPTIONS': {
-            'POOL_SIZE': 10,
-            'MAX_OVERFLOW': 10,
-            'RECYCLE': 24 * 60 * 60
-        }
-    },
-}
-# other codes ...`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important>، به‌روز شود و نام ماژول مورد نیاز، در آن، قرار بگیرد:
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`pip freeze > requirements.txt`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-اکنون می‌توانید مجدداً برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>postgresql/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 </Layout>

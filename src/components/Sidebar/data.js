@@ -1760,105 +1760,100 @@ export default {
         title: "استقرار برنامه",
         link: "/paas/python/how-tos/deploy-app"
       },
-      // {
-      //   title: "استفاده از متغیرهای محیطی",
-      //   link: "/paas/python/how-tos/set-envs"
-      // },
-      // {
-      //   title: "استفاده از دیسک",
-      //   link: "/paas/python/how-tos/use-disk"
-      // },
-      // {
-      //   title: "تنظیم Nginx",
-      //   link: "/paas/python/how-tos/customize-nginx"
-      // },
-      // {
-      //   title: "فعال‌سازی قابلیت gzip",
-      //   link: "/paas/python/how-tos/enable-gzip"
-      // },
-      // {
-      //   title: "پیکربندی TrustedProxies",
-      //   link: "/paas/python/how-tos/set-trusted-proxies"
-      // },
-      // {
-      //   title: "استفاده از Hookها",
-      //   link: "/paas/python/how-tos/use-hooks"
-      // },
-      // {
-      //   title: "تنظیم Cron Job",
-      //   link: "/paas/python/how-tos/set-cron-job"
-      // },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/python/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/python/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/python/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی قابلیت gzip",
+        link: "/paas/python/how-tos/enable-gzip"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/python/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/python/how-tos/set-cron-job"
+      },
       {
         title: "تغییر نسخه Python",
         link: "/paas/python/how-tos/choose-version"
       },
       // {
-      //   title: "تنظیم تعداد workerهای  Gunicorn",
-      //   link: "/paas/python/how-tos/set-gunicorn-workers"
-      // },
-      // {
       //   title: "راه‌اندازی برنامه WebSocket",
       //   link: "/paas/python/how-tos/use-websocket"
       // },
-      // {
-      //   title: "راه‌اندازی برنامه ASGI",
-      //   link: "/paas/python/how-tos/use-asgi"
-      // },
-      // {
-      //   title: "استفاده از ماژول FFMPEG",
-      //   link: "/paas/python/how-tos/use-ffmpeg-module"
-      // },
-      // {
-      //   title: "تنظیم لاگ‌ها",
-      //   link: "/paas/python/how-tos/set-logs"
-      // },
-      
-      // {
-      //   hr: true
-      // },
-      // {
-      //   badge: (
-      //     <div className="flex items-center gap-2">
-      //     <GoDatabase  />
-      //       <Link href="/paas/python/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
-      //     </div>
-      //   )
-      // },
-      // {
-      //   title: "دیتابیس MySQL/MariaDB",
-      //   icon: <IconContainer alt="mysql" />,
-      //   link: "/paas/python/how-tos/connect-to-db/mysql"
-      // },
-      // {
-      //   title: "دیتابیس MSSQL",
-      // icon: <IconContainer alt="mssql" />,
-      //   link: "/paas/python/how-tos/connect-to-db/mssql"
-      // },
-      // {
-      //   title: "دیتابیس PostgreSQL",
-      //   icon: <IconContainer alt="postgres" />,
-      //   link: "/paas/python/how-tos/connect-to-db/postgresql"
-      // },
-      // {
-      //   title: "دیتابیس SQLite",
-      //   icon: <IconContainer alt="sqlite" />,
-      //   link: "/paas/python/how-tos/connect-to-db/sqlite"
-      // },
-      // {
-      //   title: "دیتابیس Redis",
-      //   icon: <IconContainer alt="redis" />,
-      //   link: "/paas/python/how-tos/connect-to-db/redis"
-      // },
-      // {
-      //   title: "دیتابیس ElasticSearch",
-      //   icon: <IconContainer alt="elastic" />,
-      //   link: "/paas/python/how-tos/connect-to-db/elastic-search"
-      // },
-      // {
-      //   title: "دیتابیس MongoDB",
-      //   icon: <IconContainer alt="mongodb" />,
-      //   link: "/paas/python/how-tos/connect-to-db/mongodb"
-      // },
+      {
+        title: "تنظیم تعداد workerهای  Gunicorn",
+        link: "/paas/python/how-tos/set-gunicorn-workers"
+      },
+      {
+        title: "تنظیم max_request در Gunicorn",
+        link: "/paas/python/how-tos/set-gunicorn-maxrequest"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/python/how-tos/set-http-security-headers"
+      },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/python/how-tos/set-logs"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/python/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/python/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+      icon: <IconContainer alt="mssql" />,
+        link: "/paas/python/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/python/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/python/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/python/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/python/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/python/how-tos/connect-to-db/mongodb"
+      },
       // {
       //   hr: true
       // },
@@ -1869,22 +1864,6 @@ export default {
       //       <Link href="/paas/python/fix-common-errors/about">رفع خطاهای رایج</Link>
       //     </div>
       //   )
-      // },
-      // {
-      //   title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
-      //   link: "/paas/python/fix-common-errors/upload-limit-size"
-      // },
-      // {
-      //   title: "رفع خطای CORS",
-      //   link: "/paas/python/fix-common-errors/cors"
-      // },
-      // {
-      //   title: "رفع خطای WORKER TIMEOUT",
-      //   link: "/paas/python/fix-common-errors/worker-timeout"
-      // },
-      // {
-      //   title: "رفع خطای ModuleNotFoundError",
-      //   link: "/paas/python/fix-common-errors/module-not-found"
       // },
     ],
     django: [
