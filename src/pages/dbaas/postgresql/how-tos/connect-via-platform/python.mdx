@@ -33,17 +33,7 @@ import Head from "next/head";
     </div>
 <div className="h-2" />
 
-سپس، با فرض فعال بودن محیط مجازی در پروژه پایتونی‌تان (virtualenv)، دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود: 
-
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-        {`pip freeze > requirements.txt`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3]">نحوه تنظیم متغیرهای محیطی</a>، متغیرهای محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
+در ادامه، بایستی متغیرهای محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
 
 <div className="h-2" />
     <div dir='ltr'>
@@ -111,7 +101,6 @@ if __name__ == "__main__":
     </div>
 <div className="h-2" />
 
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
 
 <Section id="connection-pooling" title="استفاده از Connection Pooling" />
 

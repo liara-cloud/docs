@@ -1,0 +1,194 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ MySQL در Python - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس MySQL در پلتفرم Python در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس MySQL در برنامه‌های Python
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس MySQL در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install mysql-connector-python`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی متغیر محیطی مربوط به دیتابیس را، به برنامه خود اضافه کنید؛ به عنوان مثال: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_USER=root
+DB_PASSWORD=Wc9yvejxaWm6RrysATmcUeew
+DB_HOST=monte-rosa.liara.cloud
+DB_PORT=31983
+DB_NAME=awesome_swanson
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید مشابه قطعه کد زیر، به دیتابیس‌تان متصل شده و از آن، استفاده کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`import http.server
+import socketserver
+import mysql.connector
+import os
+
+db_config = {
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'host': os.getenv('DB_HOST'),
+    'port': int(os.getenv('DB_PORT')),
+    'database': os.getenv('DB_NAME')
+}
+
+def check_db_connection():
+    try:
+        connection = mysql.connector.connect(**db_config)
+        if connection.is_connected():
+            connection.close()
+            return "connection successful"
+    except mysql.connector.Error as e:
+        return f"error:  {e}"
+    return "connection failed"
+
+class RequestHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html; charset=utf-8")
+        self.end_headers()
+
+        connection_status = check_db_connection()
+
+        html_content = f"""
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>connection status</title>
+            <style>
+                body {{ font-family: Arial, sans-serif; background-color: #2B333F; color: #FFF; text-align: center; }}
+                .status {{ margin-top: 20%; font-size: 24px; }}
+            </style>
+        </head>
+        <body>
+            <div class="status">{connection_status}</div>
+        </body>
+        </html>
+        """
+        self.wfile.write(html_content.encode("utf-8"))
+
+PORT = 8000
+with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
+    print(f"Serving on port {PORT}")
+    httpd.serve_forever()
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+برای استفاده از قابلیت connection pooling در دیتابیس MySQL، 
+می‌توانید مشابه قطعه کد زیر، عمل کنید:
+
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="python">
+{`import http.server
+import socketserver
+from mysql.connector import pooling, Error
+import os
+
+
+db_config = {
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'host': os.getenv('DB_HOST'),
+    'port': int(os.getenv('DB_PORT')),
+    'database': os.getenv('DB_NAME')
+}
+
+try:
+    connection_pool = pooling.MySQLConnectionPool(
+        pool_name="mypool",
+        pool_size=5,  # connection amount
+        **db_config
+    )
+    print("Connection pool created successfully.")
+except Error as e:
+    print(f"Error while creating connection pool: {e}")
+
+def check_db_connection():
+    try:
+        connection = connection_pool.get_connection()
+        if connection.is_connected():
+            connection.close()  
+            return "connection successfull"
+    except Error as e:
+        return f"error: {e}"
+    return "connection failed"
+
+class RequestHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html; charset=utf-8")
+        self.end_headers()
+
+        connection_status = check_db_connection()
+
+        html_content = f"""
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>connection status</title>
+            <style>
+                body {{ font-family: Arial, sans-serif; background-color: #2B333F; color: #FFF; text-align: center; }}
+                .status {{ margin-top: 20%; font-size: 24px; }}
+            </style>
+        </head>
+        <body>
+            <div class="status">{connection_status}</div>
+        </body>
+        </html>
+        """
+        self.wfile.write(html_content.encode("utf-8"))
+
+PORT = 8000
+with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
+    print(f"Serving on port {PORT}")
+    httpd.serve_forever()
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+
+</Layout>

@@ -1,0 +1,118 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به ایمیل سرور در Python - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات اتصال به ایمیل سرور در فریم‌ورک Python"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به ایمیل‌سرور در برنامه‌های Python
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/python/python-email.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/python-getting-started/tree/emailServer" className="text-[#2196f3] ">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Python،
+کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=587
+MAIL_USER=hopeful_zhukovsky_9daqpv
+MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
+MAIL_FROM_ADDRESS=info@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# Read email configuration from environment variables
+MAIL_HOST = os.getenv('MAIL_HOST')
+MAIL_PORT = int(os.getenv('MAIL_PORT', 587))
+MAIL_USER = os.getenv('MAIL_USER')
+MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
+MAIL_FROM_ADDRESS = os.getenv('MAIL_FROM_ADDRESS')
+
+def send_email(to_address, subject, body):
+    # Create the email message
+    msg = MIMEMultipart()
+    msg['From'] = MAIL_FROM_ADDRESS
+    msg['To'] = to_address
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        # Connect to the SMTP server
+        server = smtplib.SMTP(MAIL_HOST, MAIL_PORT)
+        server.starttls()  # Secure the connection with TLS
+        server.login(MAIL_USER, MAIL_PASSWORD)  # Login to the SMTP server
+        server.send_message(msg)  # Send the email
+        print("Email sent successfully")
+    except Exception as e:
+        print("Failed to send email:", e)
+    finally:
+        server.quit()  # Close the connection to the server
+
+# Send an email to the specified recipient
+to_address = 'alinajmabadizadeh2002@gmail.com'
+subject = 'Test Email'
+body = 'This is a test email sent from Python using environment variables.'
+
+send_email(to_address, subject, body)
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
+به جای STARTTLS، از TLS استفاده شود. 
+</p>
+</Alert>
+
+
+</Layout>

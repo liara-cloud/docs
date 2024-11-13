@@ -1,0 +1,83 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ RabbitMQ در Python - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس RabbitMQ در پلتفرم Python در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس RabbitMQ در برنامه‌های Python
+<hr className="mb-2" />
+
+برای اتصال به RabbitMQ در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install pika`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی متغیر محیطی مربوط به RabbitMQ را، به برنامه اضافه کنید؛ به عنوان مثال: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`RABBITMQ_URI=amqp://root:MDNAi5e5KxMW8fMdUwLwpx5x@monte-rosa.liara.cloud:30602`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید مشابه قطعه کد زیر، به RabbitMQ متصل شده و از آن، استفاده کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+import pika
+
+# Retrieve RabbitMQ URI from environment variables
+rabbitmq_uri = os.getenv("RABBITMQ_URI")
+
+# Create a connection to RabbitMQ
+params = pika.URLParameters(rabbitmq_uri)
+connection = pika.BlockingConnection(params)
+
+# Create a channel
+channel = connection.channel()
+
+# Declare a queue (if it doesn’t exist, it will be created)
+queue_name = "test_queue"
+channel.queue_declare(queue=queue_name)
+
+# Function to publish a message to the queue
+def publish_message(message):
+    channel.basic_publish(exchange="", routing_key=queue_name, body=message)
+    print(f"Message sent: {message}")
+
+# Example usage
+publish_message("Hello, This is RabbitMQ on Liara!")
+
+# Close the connection
+connection.close()
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+</Layout>
