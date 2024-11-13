@@ -14,19 +14,19 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات استفاده از FFMPEG در Django - لیارا</title>
+<title>مستندات استفاده از FFMPEG در Python - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات نحوه استفاده از FFMPEG در پلتفرم Django در لیارا"  />
+<meta property="og:description" content="مستندات نحوه استفاده از FFMPEG در پلتفرم Python در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# استفاده از ماژول FFMPEG در Django
+# استفاده از ماژول FFMPEG در Python
 <hr className="mb-2" />
 
 <a href="https://ffmpeg.org/" className="text-[#2196f3] ">FFMPEG</a> یک نرم‌افزار متن‌باز برای پردازش چندرسانه‌ای است که قابلیت ضبط، تبدیل، پخش ویدیوی زنده و پخش استریمی (streaming) را دارد. این ابزار بسیار قدرتمند است و برای انواع مختلفی از فرمت‌های صوتی و تصویری، قابلیت‌ها و توابع متنوعی ارائه می‌دهد. 
 
-ماژول FFMPEG به‌صورت پیش‌فرض در برنامه‌های Django نصب است و همچنین متغیرهای محیطی <Important>FFMPEG_PATH</Important> و <Important>FFPROBE_PATH</Important> در این پلتفرم تنظیم شده‌اند.
-برای استفاده از FFmpeg در برنامه‌های Django، می‌توانید از کتابخانه‌های پایتون برای تعامل با FFmpeg استفاده کنید. یکی از محبوب‌ترین کتابخانه‌ها برای این کار، <Important>ffmpeg-python</Important> است که می‌توانید با اجرای دستور زیر، آن را نصب کنید:
+ماژول FFMPEG به‌صورت پیش‌فرض در برنامه‌های Python نصب است و همچنین متغیرهای محیطی <Important>FFMPEG_PATH</Important> و <Important>FFPROBE_PATH</Important> در این پلتفرم تنظیم شده‌اند.
+برای استفاده از FFmpeg در برنامه‌های Python، می‌توانید از کتابخانه‌های پایتون برای تعامل با FFmpeg استفاده کنید. یکی از محبوب‌ترین کتابخانه‌ها برای این کار، <Important>ffmpeg-python</Important> است که می‌توانید با اجرای دستور زیر، آن را نصب کنید:
 
 <div className='h-2' />
 <div dir='ltr'>
@@ -61,28 +61,5 @@ def convert_video(input_file_path, output_file_path, codec='libx264'):
     </Highlight>
 </div>
 <div className="h-2" />
-
-یا حتی می‌توانید در viewهای Django، از این پکیج استفاده کنید؛ به عنوان مثال:
-
-<div className='h-2' />
-<div dir='ltr'>
-    <Highlight className="python">
-        {`from django.http import HttpResponse
-from .ffmpeg_utils import convert_video
-
-def process_video(request):
-    input_file = '/path/to/input/video.mp4'
-    output_file = '/path/to/output/video.mp4'
-    
-    try:
-        convert_video(input_file, output_file)
-        return HttpResponse("Video processed successfully.")
-    except Exception as e:
-        return HttpResponse(f"Error processing video: {e}", status=500)
-`}        
-    </Highlight>
-</div>
-<div className="h-2" />
-
 
 </Layout>

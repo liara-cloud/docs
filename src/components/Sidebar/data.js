@@ -1769,13 +1769,21 @@ export default {
         link: "/paas/python/how-tos/use-disk"
       },
       {
-        title: "تنظیم Nginx",
-        link: "/paas/python/how-tos/customize-nginx"
+        title: "استفاده از Supervisord",
+        link: "/paas/python/how-tos/use-supervisord"
       },
       {
-        title: "فعال‌سازی قابلیت gzip",
-        link: "/paas/python/how-tos/enable-gzip"
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/python/how-tos/use-ffmpeg-module"
       },
+      // {
+      //   title: "تنظیم Nginx",
+      //   link: "/paas/python/how-tos/customize-nginx"
+      // },
+      // {
+      //   title: "فعال‌سازی قابلیت gzip",
+      //   link: "/paas/python/how-tos/enable-gzip"
+      // },
       {
         title: "استفاده از Hookها",
         link: "/paas/python/how-tos/use-hooks"
@@ -1792,18 +1800,18 @@ export default {
       //   title: "راه‌اندازی برنامه WebSocket",
       //   link: "/paas/python/how-tos/use-websocket"
       // },
-      {
-        title: "تنظیم تعداد workerهای  Gunicorn",
-        link: "/paas/python/how-tos/set-gunicorn-workers"
-      },
-      {
-        title: "تنظیم max_request در Gunicorn",
-        link: "/paas/python/how-tos/set-gunicorn-maxrequest"
-      },
-      {
-        title: "تنظیم هدرهای امنیتی HTTP",
-        link: "/paas/python/how-tos/set-http-security-headers"
-      },
+      // {
+      //   title: "تنظیم تعداد workerهای  Gunicorn",
+      //   link: "/paas/python/how-tos/set-gunicorn-workers"
+      // },
+      // {
+      //   title: "تنظیم max_request در Gunicorn",
+      //   link: "/paas/python/how-tos/set-gunicorn-maxrequest"
+      // },
+      // {
+      //   title: "تنظیم هدرهای امنیتی HTTP",
+      //   link: "/paas/python/how-tos/set-http-security-headers"
+      // },
       {
         title: "تنظیم لاگ‌ها",
         link: "/paas/python/how-tos/set-logs"
