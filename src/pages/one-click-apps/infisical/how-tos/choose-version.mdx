@@ -14,9 +14,9 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات تغییر نسخه Listmonk - لیارا</title>
+<title>مستندات تغییر نسخه Infisical - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه تغییر نسخه برنامه Listmonk در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به نحوه تغییر نسخه برنامه infisical در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
 # تغییر نسخه‌ی برنامه مستقر شده
@@ -50,18 +50,18 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "listmonk/listmonk:<your-version>",
-    "port": 9000,
+    "image": "infisical/infisical:<your-version>",
+    "port": 8080,
     "app": "<your-app-name>",
     "args": [
-        "sh",
+        "bash",
         "-c",
-        "./listmonk --install --idempotent --yes --config '' && ./listmonk --upgrade --yes --config '' && ./listmonk --config ''"
+        "npm run migration:latest"
     ],
     "disks": [
       {
         "name": "uploads",
-        "mountTo": "/listmonk/uploads"
+        "mountTo": "/infisical/uploads"
       }
   ]
 }`}
@@ -93,12 +93,12 @@ import Head from "next/head";
 
 <Alert variant="success">
 <p>
-  برای مشاهده تمامی تگ‌های موجود، می‌توانید به <a href="https://hub.docker.com/r/listmonk/listmonk/tags" className="text-[#2196f3]">داکرهاب رسمی برنامه</a>، مراجعه کنید.
+  برای مشاهده تمامی تگ‌های موجود، می‌توانید به <a href="https://hub.docker.com/r/infisical/infisical/tags" className="text-[#2196f3]">داکرهاب رسمی برنامه</a>، مراجعه کنید.
 </p>
 </Alert>
 <Alert variant="success">
 <p>
-  برای اطلاعات بیشتر مربوط به پیکربندی برنامه و اطلاع از متغیرهای محیطی آن، می‌توانید به <a href="https://listmonk.app/docs/configuration/" className="text-[#2196f3]">مستندات رسمی برنامه</a>، مراجعه کنید.
+  برای اطلاعات بیشتر مربوط به پیکربندی برنامه و اطلاع از متغیرهای محیطی آن، می‌توانید به <a href="https://infisical.com/docs/self-hosting/deployment-options/docker-compose" className="text-[#2196f3]">مستندات رسمی برنامه</a>، مراجعه کنید.
 </p>
 </Alert>
 

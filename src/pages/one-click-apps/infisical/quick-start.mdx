@@ -14,25 +14,25 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات راه‌اندازی سریع برنامه‌های Listmonk - لیارا</title>
+<title>مستندات راه‌اندازی سریع برنامه‌های infisical - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی سریع برنامه Listmonk در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی سریع برنامه infisical در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
 
-# راه‌اندازی سریع برنامه‌های Listmonk
+# راه‌اندازی سریع برنامه‌های Infisical
 <hr className="mb-2" />
 
 {/* <div className="h-2" />
 <video
-src="https://files.liara.ir/liara/docs/Listmonk.mp4"
+src="https://files.liara.ir/liara/docs/infisical.mp4"
 controls="controls"
 className="block w-full"
 width="100%"
 />
 <br /> */}
 
-<a href="https://listmonk.app/" className="text-[#2196f3] ">Listmonk</a> یک نرم‌افزار متن‌باز برای مدیریت خبرنامه‌ها و کمپین‌های ایمیلی است. این ابزار بر پایه زبان Go و رابط کاربری React توسعه یافته و امکان ارسال ایمیل‌های انبوه به صورت سریع و کارآمد را فراهم می‌کند. Listmonk قابلیت‌هایی مانند مدیریت لیست‌های مشترکین، گزارش‌گیری دقیق، شخصی‌سازی ایمیل‌ها، و پشتیبانی از SMTP و API‌های ارسال ایمیل را ارائه می‌دهد. با نصب آسان و قابل اجرا در سرورهای شخصی، گزینه‌ای مناسب برای سازمان‌ها و کسب‌وکارهایی است که به دنبال راهکاری مقرون‌به‌صرفه و مستقل هستند.
+<a href="https://infisical.com/" className="text-[#2196f3] ">infisical</a> یک پلتفرم متن‌باز برای مدیریت امن اطلاعات حساس (Secrets) مانند کلیدهای API، رمزهای عبور، و گواهی‌نامه‌ها است. این ابزار به تیم‌های توسعه امکان می‌دهد تا این اطلاعات را به‌صورت متمرکز و ایمن ذخیره کنند و در محیط‌های مختلف پروژه به‌طور خودکار از آن‌ها استفاده کنند. با رمزگذاری انتها به انتها (E2EE) و کنترل دسترسی دقیق، امنیت داده‌های حساس شما تضمین می‌شود.
 
 برای راه‌اندازی برنامه با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
 
@@ -52,7 +52,7 @@ content: (
 <>
 <h3>راه‌اندازی برنامه</h3>
 <p>
-    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>listmonk</b>، کلیک کنید. 
+    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>infisical</b>، کلیک کنید. 
     در ادامه، می‌توانید از گزینه <b>نصب سریع</b> یا گزینه <b>نصب پیشرفته</b> برای استقرار و نصب برنامه‌تان استفاده کنید:
 </p>
 <Tabs 
@@ -102,7 +102,7 @@ content: (
       </Alert>
       <Alert variant="info">
         <p>
-          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/listmonk/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
+          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/infisical/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
         </p>
       </Alert>
     </>
@@ -116,10 +116,11 @@ content: (
 ]}/>
 
 <div className='h-4' />
+
 <Alert className="info">
   <p>
-    در اولین ورود به حساب کاربری برنامه‌تان، مقدار پیش‌فرض <Important>Username</Important> برابر با <Important>admin</Important> است و مقدار <Important>Password</Important> را نیز می‌توانید 
-    در بخش <a href="/paas/details/envs/#see-envs" className="text-[#2196f3]">متغیرهای محیطی برنامه</a> با نام <Important>LISTMONK_ADMIN_PASSWORD</Important>، ببینید.
+    پس از استقرار کامل برنامه و اطمینان از اجرای درست برنامه infisical، می‌توانید برنامه با نام infisical-db-migration را خاموش یا حذف نمایید. 
+    چرا که این برنامه، وظیفه اجرای migrtaionهای مربوط به دیتابیس را دارد و کافیست تا تنها یک‌بار اجرا شود. 
   </p>
 </Alert>
 <div className='h-2' />
@@ -131,7 +132,7 @@ content: (
             {[
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
-        link: "/one-click-apps/listmonk/how-tos/choose-version"
+        link: "/one-click-apps/infisical/how-tos/choose-version"
       },
   ].map(item =>
     <Link href={item.link}>

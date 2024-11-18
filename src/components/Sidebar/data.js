@@ -4411,6 +4411,11 @@ export default {
         link: "/one-click-apps/meilisearch/quick-start"
       },
       {
+        title: "Listmonk",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/listmonk/listmonk-icon.png" />,
+        link: "/one-click-apps/listmonk/quick-start"
+      },
+      {
         title: "Jupyter notebook",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/jupyter/7388996.png" />,
         link: "/one-click-apps/jupyter-notebook/quick-start"
@@ -4481,6 +4486,11 @@ export default {
         link: "/one-click-apps/keila/quick-start"
       },
       {
+        title: "Zitadel",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/zitadel-icon.png" />,
+        link: "/one-click-apps/zitadel/quick-start"
+      },
+      {
         title: "Passbolt",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.png" />,
         link: "/one-click-apps/passbolt/quick-start"
@@ -4501,12 +4511,131 @@ export default {
         link: "/one-click-apps/vvveb/quick-start"
       },
       {
+        title: "Teable",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/teable-icon.jpg" />,
+        link: "/one-click-apps/teable/quick-start"
+      },
+      {
+        title: "Infisical",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.png" />,
+        link: "/one-click-apps/infisical/quick-start"
+      },
+      {
         title: "Rallly",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-good-logo.webp" />,
         link: "/one-click-apps/rallly/quick-start"
       },
 
     ],
+
+    zitadel: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/zitadel-icon.png" />
+            برنامه Zitadel
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/zitadel/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/zitadel/how-tos/choose-version"
+      },
+    ],
+
+    teable: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/teable-icon.jpg" />
+            برنامه Teable
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/teable/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/teable/how-tos/choose-version"
+      },
+    ],
+
+    infisical: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.png" />
+            برنامه Infisical
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/infisical/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/infisical/how-tos/choose-version"
+      },
+    ],
+
     'liara-compose': [
       {
         badge: (
@@ -4542,6 +4671,7 @@ export default {
       },
 
     ],
+
     wordpress: [
       {
         badge: (
