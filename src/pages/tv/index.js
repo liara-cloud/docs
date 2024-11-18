@@ -490,7 +490,31 @@ const Videos = () => {
           {
             videoTitle: "استقرار با Liara Console",
             link: "https://files.liara.ir/liara/python/python-cli.mp4"
-          }
+          },
+          {
+            videoTitle: "استفاده از دیسک",
+            link: "https://files.liara.ir/liara/python/python-disks.mp4"
+          },
+          {
+            videoTitle: "استفاده از دیسک",
+            link: "https://files.liara.ir/liara/python/python-disks.mp4"
+          },
+          {
+            videoTitle: "اتصال به دیتابیس PostgreSQL",
+            link: "https://files.liara.ir/liara/python/python-postgres.mp4"
+          },
+          {
+            videoTitle: "اتصال به دیتابیس SQLite",
+            link: "https://files.liara.ir/liara/python/python-sqlite.mp4"
+          },
+          {
+            videoTitle: "اتصال به فضای ذخیره‌سازی ابری",
+            link: "https://files.liara.ir/liara/python/python-object-storage.mp4"
+          },
+          {
+            videoTitle: "اتصال به سرویس ایمیل",
+            link: "https://files.liara.ir/liara/python/python-email.mp4"
+          },
         ]}
       />
 

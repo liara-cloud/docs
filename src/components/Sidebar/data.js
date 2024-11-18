@@ -4029,11 +4029,7 @@ export default {
         icon: <IconContainer alt="go" />,
         link: "/dbaas/elastic-search/how-tos/connect-via-platform/go"
       },
-      {
-        title: "Python Scripts",
-        icon: <IconContainer alt="python" />,
-        link: "/dbaas/elastic-search/how-tos/connect-via-platform/python"
-      },
+
       // {
       //   hr: true
       // },
