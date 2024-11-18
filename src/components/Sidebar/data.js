@@ -5731,6 +5731,41 @@ export default {
         link: "/one-click-apps/meilisearch/how-tos/choose-version"
       },
     ], 
+    listmonk: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه Listmonk
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/listmonk/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/listmonk/how-tos/choose-version"
+      },
+    ], 
+
     'jupyter-notebook': [
       {
         badge: (
