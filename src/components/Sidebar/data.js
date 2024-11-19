@@ -4401,6 +4401,11 @@ export default {
         link: "/one-click-apps/nocodb/quick-start"
       },
       {
+        title: "Discourse",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/92_Discourse-512.webp" />,
+        link: "/one-click-apps/discourse/quick-start"
+      },
+      {
         title: "Chroma",
         icon: <IconContainer alt="chroma" />,
         link: "/one-click-apps/chroma/quick-start"
@@ -4506,6 +4511,11 @@ export default {
         link: "/one-click-apps/mixpost/quick-start"
       },
       {
+        title: "Nocobase",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.png" />,
+        link: "/one-click-apps/nocobase/quick-start"
+      },
+      {
         title: "Vvveb",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.png" />,
         link: "/one-click-apps/vvveb/quick-start"
@@ -4600,6 +4610,42 @@ export default {
       },
     ],
 
+    nocobase: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.png" />
+            برنامه Nocobase
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/nocobase/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/nocobase/how-tos/choose-version"
+      },
+    ],
+
     infisical: [
       {
         badge: (
@@ -4633,6 +4679,42 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/infisical/how-tos/choose-version"
+      },
+    ],
+
+    discourse: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/92_Discourse-512.webp" />
+            برنامه Discourse
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/discourse/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/discourse/how-tos/choose-version"
       },
     ],
 

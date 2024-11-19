@@ -1,0 +1,128 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تغییر نسخه Listmonk - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تغییر نسخه برنامه Listmonk در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تغییر نسخه‌ی برنامه مستقر شده
+<hr className="mb-2" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+      <p>
+        اگر که قصد دارید نسخه برنامه خود را بنا به هر دلیلی تغییر دهید؛ کافیست تا پس از <a href="../../quick-start" className="text-[#2196f3] ">ساخت برنامه در لیارا</a>، در کنسول، در برنامه‌تان، وارد صفحه <b>استقرار جدید</b> شوید، تب <b>Docker Hub</b> را انتخاب کنید و سپس بر روی گزینه <b>شروع استقرار image از Docker Hub</b> کلیک کنید؛ بعد از انجام این کار، به صفحه جدیدی هدایت می‌شوید که کافیست تنها در قسمت <b>نام image</b>، نسخه مورد نظرتان (tag) را پس از <Important>:</Important> وارد کرده و سپس مراحل استقرار را بدون اعمال تغییر دیگری، جلو ببرید:
+      </p> 
+      <div className="h-4" />
+      <video
+        src="https://files.liara.ir/liara/docs/update-one-click-app-version-by-liara-console.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+      />
+      <div className="h-4" />
+      <p>
+        با انجام کار فوق، نسخه برنامه مدنظرتان، تغییر خواهد کرد.
+      </p>        
+    </>,
+    <>
+      <p>
+        اگر که قصد دارید نسخه برنامه خود را بنا به هر دلیلی تغییر دهید؛ کافیست تا پس از <a href="../../quick-start" className="text-[#2196f3] ">ساخت برنامه در لیارا</a>، در Local یک دایرکتوری با نام دلخواه ایجاد کنید.
+        وارد دایرکتوری شده و درون این دایرکتوری، یک فایل به نام <Important>liara.json</Important>، ایجاد کنید. سپس کافیست تا قطعه کد زیر را درون آن، قرار دهید:
+      </p>  
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="json">
+      {`{
+    "image": "bitnami/discourse:<your-version>",
+    "port": 3000,
+    "app": "<your-app-name>",
+    "disks": [
+      {
+        "name": "data",
+        "mountTo": "/bitnami/discourse"
+      }
+  ]
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+همچنین، یک دایرکتوری دیگر ایجاد کنید و مجدداً فایل <Important>liara.json</Important> جدیدی ایجاد کنید و قطعه کد زیر را برای نسخه Sidekiq، قرار دهید:
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="json">
+      {`{
+    "image": "bitnami/discourse:<your-version>",
+    "port": 3000,
+    "app": "<your-app-name>",
+    "args": [
+        "/opt/bitnami/scripts/discourse-sidekiq/run.sh"
+    ],
+    "disks": [
+      {
+        "name": "data",
+        "mountTo": "/bitnami/discourse"
+      }
+  ]
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<p>
+در دو قطعه کد فوق، بایستی به جای عبارت <Important>{"<your-version>"}</Important> 
+ورژن موردنظر برنامه‌تان را وارد کنید.
+همچنین باید به جای عبارت
+<Important>{"<your-app-name>"}</Important> نیز، 
+شناسه برنامه خود را قرار دهید. 
+در قطعه کد اول، شناسه برنامه اصلی Discourse و در قطعه کد دوم باید شناسه برنامه Sidekiq را قرار دهید. 
+</p>
+<div className="h-2" />
+
+در نهایت کافیست با استفاده از ابزار <a href="/references/cli/about" className="text-[#2196f3] "><Important>Liara CLI</Important></a> و در جایی که فایل <Important>liara.json</Important> قرار دارد، دستور زیر را اجرا کنید تا برنامه‌‌های‍تان در لیارا، مستقر شود:
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="json">
+      {`liara deploy`}
+    </Highlight>
+</div>
+<div className="h-2" />
+</>
+    ]}
+/>
+
+<Alert variant="info">
+<p>
+  در نظر داشته باشید که برای تغییر نسخه برنامه Discourse خود، باید هم نسخه برنامه اصلی و هم نسخه برنامه Sidekiq را تغییر بدهید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+  برای مشاهده تمامی تگ‌های موجود، می‌توانید به <a href="https://hub.docker.com/r/bitnami/discourse/tags" className="text-[#2196f3]">داکرهاب رسمی برنامه</a>، مراجعه کنید.
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+  برای اطلاعات بیشتر مربوط به پیکربندی برنامه و اطلاع از متغیرهای محیطی آن، می‌توانید به <a href="https://bitnami.com/stack/discourse/containers" className="text-[#2196f3]">مستندات رسمی برنامه</a>، مراجعه کنید.
+</p>
+</Alert>
+
+</Layout>
