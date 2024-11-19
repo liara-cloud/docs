@@ -4286,6 +4286,16 @@ export default {
         link: "/one-click-apps/metabase/quick-start"
       },
       {
+        title: "Moodle",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/moodle-icon.webp" />,
+        link: "/one-click-apps/moodle/quick-start"
+      },
+      {
+        title: "Kutt",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.png" />,
+        link: "/one-click-apps/kutt/quick-start"
+      },
+      {
         title: "Flowise AI",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/singlestore.a5b72cb0.svg" />,
         link: "/one-click-apps/flowise/quick-start"
@@ -4715,6 +4725,113 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/discourse/how-tos/choose-version"
+      },
+    ],
+
+    wikijs: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/wiki-js/wikijs-full-2021-768t-svg-yOi8.png" />
+            برنامه Wiki.js
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/wikijs/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/wikijs/how-tos/choose-version"
+      },
+    ],
+
+    moodle: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/moodle-icon.webp" />
+            برنامه Moodle
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/moodle/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/moodle/how-tos/choose-version"
+      },
+    ],
+    kutt: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.png" />
+            برنامه Kutt
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/kutt/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/kutt/how-tos/choose-version"
       },
     ],
 

@@ -47,6 +47,9 @@ const Videos = () => {
     <Layout>
       <Head>
         <title>مستندات - آموزش استفاده از لیارا</title>
+        <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+        <meta property="og:description" content="ویدیوهای آموزشی لیارا برای استقرار آسان‌تر"  />
+        <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
       </Head>
 
       <section>
