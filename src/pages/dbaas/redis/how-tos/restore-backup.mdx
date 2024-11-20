@@ -23,18 +23,207 @@ import Head from "next/head";
 # بازیابی فایل پشتیبان در دیتابیس
 <hr className="mb-2" />
 
+<Alert variant="info">
+<p>
+    در حال حاضر، به صورت رسمی، از نسخه redis 7 به بعد، ابزاری برای بازیابی 
+    فایل پشتیبان، وجود ندارد. اما ابزارهای زیادی توسط جامعه فعال redis توسعه داده شده است 
+    که می‌توان از آن‌ها استفاده کرد. 
+</p>
+</Alert>
 
-    <p>
-        برای بازیابی فایل پشتیبان با استفاده از
-        <a href="https://github.com/sripathikrishnan/redis-rdb-tools" className="text-[#2196f3] ">rdbtools</a> و <a href="https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/" className="text-[#2196f3] "><Important>redis-cli</Important></a>، می‌توانید مشابه دستور زیر، عمل کنید:
-    </p>    
-    <div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`rdb -c protocol /path/to/backup-file.dump | redis-cli -p REDIS_PORT -h REDIS_HOST -a REDIS_PASSWORD --pipe`}
-    </Highlight>
-</div>
+
+<Tabs 
+  tabs={["redis < 7", "redis >= 7"]} 
+  content={[
+    <>
+        <p>
+            برای بازیابی فایل پشتیبان با استفاده از
+            <a href="https://github.com/sripathikrishnan/redis-rdb-tools" className="text-[#2196f3] ">rdbtools</a> و <a href="https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/" className="text-[#2196f3] "><Important>redis-cli</Important></a>، می‌توانید مشابه دستور زیر، عمل کنید:
+        </p>    
+        <div className="h-2" />
+        <div dir='ltr'>
+            <Highlight className="bash">
+                {`rdb -c protocol /path/to/backup-file.dump | redis-cli -p REDIS_PORT -h REDIS_HOST -a REDIS_PASSWORD --pipe`}
+            </Highlight>
+        </div>
         <Asciinema id="restore-redis" />
+    </>,
+    <>
+        برای بازیابی فایل پشتیبان در redis 7 به بعد، پیشنهاد برنامه‌نویسان redis، 
+        استفاده از ابزار غیر رسمی <a href="https://github.com/leonchen83/redis-rdb-cli" className="text-[#2196f3]">redis-rdb-cli</a> است. 
+        شما می‌توانید برای استفاده از این ابزار و سهولت در استفاده از آن، از اسکریپت‌های 
+        از پیش نوشته شده لیارا، استفاده کنید. 
+        برای این کار تنها کافیست تا مراحل زیر را قدم به قدم، جلو بروید: 
 
+        <Tabs 
+        tabs={["Linux", "Windows"]} 
+        content={[
+            <>
+                <Step  steps={[
+                    {
+                    step: "۱",
+                    content: (
+                    <>
+                        <h3>دانلود ریپازیتوری</h3>   
+                        <p>با اجرای دستور زیر، ریپازیتوری شامل دستورات را در لوکال، دانلود کنید:</p>
+                            <div className="h-2" />
+                            <div dir='ltr'>
+                            <Highlight className="bash">
+                            {`git clone https://github.com/liara-cloud/redis-rdb-cli.git`}
+                            </Highlight>
+                            </div>
+                            <div className="h-2" />
+                            اگر که امکان دانلود ریپازیتوری را ندارید؛ کافیست تا در مسیر دلخواه، 
+                            یک دایرکتوری با نام دلخواه برای خود ایجاد کنید، درون آن یک فایل به اسم <Important>setup.sh</Important>
+                            ایجاد کنید و قطعه کد موجود در <a href="https://github.com/liara-cloud/redis-rdb-cli/blob/master/setup.sh" className="text-[#2196f3]">این آدرس</a> را درون آن، قرار دهید.
+
+                    </>
+                    )},
+                    {
+                    step: "۲",
+                    content: (
+                    <>
+                        <h3>دانلود فایل پشتیبان</h3>
+                        <p>طبق <a href="/dbaas/redis/how-tos/create-backup/" className="text-[#2196f3]">مستندات تهیه فایل پشتیبان</a> از دیتابیس خود فایل پشتیبان تهیه کنید. اگر که فایل پشتیبان را 
+                        از قبل دانلود کرده‌اید نیازی به انجام این مرحله نیست.</p>
+                    </>
+                    )
+                    },
+                    {
+                    step: "۳",
+                    content: (
+                    <>
+                        <h3>استخراج و بررسی فایل پشتیبان</h3>
+                        <p>اگر که فایل پشتیبان‌تان درون یک فایل zip قرار دارد باید آن را استخراج کنید. در ادامه، بایستی فایل پشتیبان را در دایرکتوری‌ای قرار دهید 
+                            که فایل <Important>setup.sh</Important> در آن، قرار دارد. حتماً دقت داشته باشید که پسوند فایل پشتیبان، 
+                            <Important>dump.</Important> یا <Important>rdb.</Important> باشد. 
+                        </p>
+                    </>
+                    )
+                    },
+                    {
+                    step: "۴",
+                    content: (
+                    <>
+                        <h3>اعطای دسترسی به فایل <Important>setup.sh</Important></h3>
+                        <p>برای جلوگیری از خطا خوردن فرایند بازیابی فایل پشتیبان، دستور زیر را در مسیر اصلی جایی که فایل <Important>setup.sh</Important> قرار دارد اجرا کنید تا دسترسی‌های لازم به برنامه، داده شود:</p>
+                            <div className="h-2" />
+                            <div dir='ltr'>
+                            <Highlight className="bash">
+                            {`chmod +x setup.sh`}
+                            </Highlight>
+                            </div>
+                            <div className="h-2" />                        
+                    </>
+                    )
+                    },
+                    {
+                    step: "۵",
+                    content: (
+                    <>
+                        <h3>بازیابی دیتابیس با فایل پشتیبان</h3>
+                        <p>در نهایت، دستور زیر را اجرا کنید تا اسکریپت، برای شما اجرا شود. در ادامه، برنامه از شما می‌خواهد که 
+                            URI مربوط به دیتابیس Redis را وارد کنید که می‌توانید طبق <a href="/dbaas/details/connection-links" className="text-[#2196f3]">مستندات راه‌های اتصال</a>، از URI <b>شبکه عمومی</b>، استفاده کنید:
+                        </p>
+                            <div className="h-2" />
+                            <div dir='ltr'>
+                            <Highlight className="bash">
+                            {`sh setup.sh`}
+                            </Highlight>
+                            </div>
+                            <div className="h-2" />   
+                            <Asciinema id="restore-redis-using-rdb-cli-tool" />                     
+                    </>
+                    )
+                    },
+                ]} />
+            </>,
+            <>
+                <Step  steps={[
+                    {
+                    step: "۱",
+                    content: (
+                    <>
+                        <h3>دانلود ریپازیتوری</h3>   
+                        <p>با اجرای دستور زیر، ریپازیتوری شامل دستورات را در لوکال، دانلود کنید:</p>
+                            <div className="h-2" />
+                            <div dir='ltr'>
+                            <Highlight className="bash">
+                            {`git clone https://github.com/liara-cloud/redis-rdb-cli.git`}
+                            </Highlight>
+                            </div>
+                            <div className="h-2" />
+                            اگر که امکان دانلود ریپازیتوری را ندارید؛ کافیست تا در مسیر دلخواه، 
+                            یک دایرکتوری با نام دلخواه برای خود ایجاد کنید، درون آن یک فایل به اسم <Important>setup.ps1</Important>
+                            ایجاد کنید و قطعه کد موجود در <a href="https://github.com/liara-cloud/redis-rdb-cli/blob/master/setup.ps1" className="text-[#2196f3]">این آدرس</a> را درون آن، قرار دهید.
+
+                    </>
+                    )},
+                    {
+                    step: "۲",
+                    content: (
+                    <>
+                        <h3>دانلود فایل پشتیبان</h3>
+                        <p>طبق <a href="/dbaas/redis/how-tos/create-backup/" className="text-[#2196f3]">مستندات تهیه فایل پشتیبان</a> از دیتابیس خود فایل پشتیبان تهیه کنید. اگر که فایل پشتیبان را 
+                        از قبل دانلود کرده‌اید نیازی به انجام این مرحله نیست.</p>
+                    </>
+                    )
+                    },
+                    {
+                    step: "۳",
+                    content: (
+                    <>
+                        <h3>استخراج و بررسی فایل پشتیبان</h3>
+                        <p>اگر که فایل پشتیبان‌تان درون یک فایل zip قرار دارد باید آن را استخراج کنید. در ادامه، بایستی فایل پشتیبان را در دایرکتوری‌ای قرار دهید 
+                            که فایل <Important>setup.ps1</Important> در آن، قرار دارد. حتماً دقت داشته باشید که پسوند فایل پشتیبان، 
+                            <Important>dump.</Important> یا <Important>rdb.</Important> باشد. 
+                        </p>
+                    </>
+                    )
+                    },
+                    {
+                    step: "۴",
+                    content: (
+                    <>
+                        <h3>اعطای دسترسی به فایل <Important>setup.ps1</Important></h3>
+                        <p>برای جلوگیری از خطا خوردن فرایند بازیابی فایل پشتیبان، دستور زیر را در مسیر اصلی جایی که فایل <Important>setup.ps1</Important> قرار دارد، در PowerShell، اجرا کنید تا دسترسی‌های لازم به برنامه، داده شود:</p>
+                            <div className="h-2" />
+                            <div dir='ltr'>
+                            <Highlight className="bash">
+                            {`Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`}
+                            </Highlight>
+                            </div>
+                            <div className="h-2" />                        
+                    </>
+                    )
+                    },
+                    {
+                    step: "۵",
+                    content: (
+                    <>
+                        <h3>بازیابی دیتابیس با فایل پشتیبان</h3>
+                        <p>در نهایت، دستور زیر را اجرا کنید تا اسکریپت، برای شما اجرا شود. در ادامه، برنامه از شما می‌خواهد که 
+                            URI مربوط به دیتابیس Redis را وارد کنید که می‌توانید طبق <a href="/dbaas/details/connection-links" className="text-[#2196f3]">مستندات راه‌های اتصال</a>، از URI <b>شبکه عمومی</b>، استفاده کنید:
+                        </p>
+                            <div className="h-2" />
+                            <div dir='ltr'>
+                            <Highlight className="bash">
+                            {`.\\setup.ps1`}
+                            </Highlight>
+                            </div>
+                            <div className="h-2" />   
+                    </>
+                    )
+                    },
+                ]} />
+            </>,
+            <>
+
+            </>
+        ]}
+        />
+    </>
+  ]}
+/>
 
 </Layout>
