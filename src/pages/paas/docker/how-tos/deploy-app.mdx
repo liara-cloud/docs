@@ -273,7 +273,7 @@ CMD ["./main"]`}
       شما می‌توانید با استفاده از دستور <Important>EXPOSE</Important> پورتی که برنامه توسط آن به درخواست کاربران گوش می‌دهد را مشخص کنید. البته چون که در حین استقرار، لیارا از شما port برنامه را می‌پرسد بنابراین برای استقرار برنامه‌های داکرایز شده در لیارا، نیازی به نوشتن این دستور در <Important>Dockerfile</Important> نیست.
     </p>
     </Alert>
-        <div className='h-4' />
+        <Section id="liara-json" title="فایل liara.json" />
         <p>
             در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
         </p>
@@ -292,7 +292,7 @@ CMD ["./main"]`}
             در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my--app</Important> و در فیلد <Important>port</Important>، پورتی که برنامه در آن، به درخواست کاربران، گوش می‌دهد، را وارد کنید.
             در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که docker است، مشخص کنید.
         </p>
-        <div className='h-4' />
+        <Section id="liara-json-find-dockerfile" title="تعیین Dockerfile" />
         <p>
             ممکن است بخواهید چندین پروژه، که در یک <Important>monorepo</Important> قرار دارند را با <Important>Dockerfile</Important> های مختلفی استقرار کنید؛ یا اینکه از نام و مسیر دلخواه برای <Important>Dockerfile</Important>تان استفاده کنید. برای این کار می‌توانید قطعه کد زیر را به فایل <Important>liara.json</Important>، اضافه کنید و در فیلد <Important>dockerfile</Important>، مسیر Dokcerfile خود را مشخص کنید:
         </p>
@@ -306,7 +306,7 @@ CMD ["./main"]`}
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json-cache" title="استفاده از Cache" />
         <p>
             همچنین می‌توانید در فیلدی به نام <Important>cache</Important> تعیین کنید که در حین فرایند build برنامه، از cache استفاده شود یا خیر؛ این مقدار، به صورت پیش‌فرض، بر روی <Important>true</Important> قرار دارد:
         </p>
@@ -320,7 +320,7 @@ CMD ["./main"]`}
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json-args" title="تعریف ARGs" />
         <p>
             در داکر، دستور <Important>ARG</Important> برای تعریف متغیرهای زمان ساخت (build-time variables) استفاده می‌شود. این متغیرها می‌توانند در طول فرآیند ساخت image استفاده شوند تا پارامترهای مهمی مانند نسخه نرم‌افزار و ... را تعیین کنند. این متغیرها در مرحله ساخت image در دسترس هستند و به صورت کلید-مقدار تعریف می‌شوند.
             شما می‌توانید ARGهای‌تان را در آرایه‌ای به نام <Important>args</Important>، تعریف کنید، به عنوان مثال:
@@ -335,7 +335,7 @@ CMD ["./main"]`}
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json-main-args" title="تعیین فرمان اصلی" />
         <p>
             دستور <Important>ENTRYPOINT</Important> برای تعیین فرمان اصلی است که باید هنگام اجرای کانتینر، run شود. این فرمان تعیین می‌کند که کانتینر چه چیزی را باید به عنوان فرآیند اصلی خود اجرا کند.
             برای تغییر <Important>ENTRYPOINT</Important> در image خود، کافیست تا قطعه کدی مشابه قطعه کد زیر را به آرایه‌ای به نام <Important>args</Important>، در فایل <Important>liara.json</Important>، اضافه کنید:

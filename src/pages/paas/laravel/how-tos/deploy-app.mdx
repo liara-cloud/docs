@@ -285,7 +285,7 @@ import Head from "next/head";
         (در صورت وجود) پاک کنید تا در حین فرایند استقرار، لیارا آن را، ایجاد کند.
         </p>
         </Alert>
-        <div className='h-4' />
+        <Section id="liara-json" title="فایل liara.json" />
         <p>
             در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
         </p>
@@ -303,6 +303,8 @@ import Head from "next/head";
             در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
             در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که laravel است، مشخص کنید.
         </p>
+        <Section id="liara-json-mirror" title="mirror لیارا" />
+
         <p>
             از آنجایی که لیارا برای نصب پکیج‌های <Important>composer</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
         </p>
@@ -316,7 +318,8 @@ import Head from "next/head";
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+       <Section id="liara-json-version" title="تعیین نسخه PHP" />
+
         <p>
             برای تعیین نسخه PHP  برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>phpVersion</Important> را قرار دهید:
         </p>
@@ -332,6 +335,7 @@ import Head from "next/head";
         </div>
         <div className='h-4' />
         <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه php و Laravel در لیارا</a></Alert>
+        <Section id="liara-json-timezone" title="تعیین منطقه زمانی" />
         <p>
             به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
         </p>
@@ -345,7 +349,7 @@ import Head from "next/head";
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json-buildassets" title="پارامتر buildAssets" />
         <p>
             لیارا در حین استقرار برنامه‌تان، دستور <Important>npm run production</Important> را اجرا می‌کند و با اجرای این دستور، فایل‌های SASS به CSS و کدهای جاوا اسکریپت ES6 به بالا به ES5 تبدیل و یکپارچه، می‌شوند.
         </p>
@@ -362,7 +366,7 @@ import Head from "next/head";
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json-require-dev" title="نصب devDependencies" />
         <p>
             همچنین، برای نصب پکیج‌هایی که در بخش <Important>require-dev</Important> فایل <Important>composer.json</Important> قرار دارد (مانند <Important>Faker</Important> و <Important>Ignition</Important>)، باید در فایل <Important>liara.json</Important>، پارامتر <Important>installDevDependencies</Important> را به شکل زیر، تنظیم کنید:
         </p>
@@ -376,7 +380,7 @@ import Head from "next/head";
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json-cache" title="اعمال کش" />
         <p>
         برای تجربه عملکرد بهتر، Laravel توصیه می‌کند تا فایل‌های config و route را با اجرای دستورات <Important>php artisan config:cache</Important> و <Important>php artisan route:cache</Important>، کش کنید. شما می‌توانید برای اجرای خودکار این دستورات توسط لیارا در هر بار استقرار، پارامترهای مربوطه را به شکل زیر در فایل <Important>liara.json</Important> وارد کنید:
         </p>

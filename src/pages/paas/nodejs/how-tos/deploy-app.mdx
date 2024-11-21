@@ -162,7 +162,7 @@ import Head from "next/head";
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json" title="فایل liara.json" />
         <p>
             در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
         </p>
@@ -180,6 +180,8 @@ import Head from "next/head";
         <p>
             در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید و در فیلد <Important>port</Important> باید پورتی را وارد کنید که برنامه‌تان در آن، به درخواست کاربران گوش می‌دهد. فیلد <Important>platform</Important> هم پلتفرم برنامه شما را که NodeJS است، مشخص می‌کند.
         </p>
+
+        <Section id="liara-json-mirror" title="mirror لیارا" />
         <p>
             لیارا در جهت استقرار سریع‌تر،  برای نصب پکیج‌های <Important>npm</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
         </p>
@@ -192,8 +194,8 @@ import Head from "next/head";
   }
 }`}
             </Highlight>
-        </div>
-        <div className='h-4' />
+        </div>        
+        <Section id="liara-json-version" title="تعیین نسخه NodeJS" />
         <p>
             برای تعیین نسخه NodeJS برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
         </p>
@@ -209,6 +211,7 @@ import Head from "next/head";
         </div>
         <div className='h-4' />
         <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه NodeJS در لیارا</a></Alert>
+        <Section id="liara-json-timezone" title="تعیین منطقه زمانی" />
         <p>
             به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
         </p>
@@ -374,6 +377,7 @@ import Head from "next/head";
         </div>
         <div className='h-4' />
         <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه NodeJS در لیارا</a></Alert>
+        <Section id="liara-json-timezone" title="تعیین منطقه زمانی" />
         <p>
             به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
         </p>

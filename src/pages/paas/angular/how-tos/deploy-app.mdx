@@ -213,6 +213,7 @@ import Head from "next/head";
             </Highlight>
         </div>
         <div className="h-2" />
+        <Section id="liara-json" title="فایل liara.json" />
         <p>
             در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
         </p>
@@ -230,6 +231,7 @@ import Head from "next/head";
             در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
             در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که Angular است، مشخص کنید.
         </p>
+        <Section id="liara-json-mirror" title="mirror لیارا" />
         <p>
             لیارا در جهت استقرار سریع‌تر،  برای نصب پکیج‌های <Important>npm</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
         </p>
@@ -243,7 +245,7 @@ import Head from "next/head";
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />
+        <Section id="liara-json-sourcemap" title="قابلیت Source Map" />
         <p>
         Source Map یک فایل است که به ابزارهای دیباگ این امکان را می‌دهد تا کد منبع اصلی (مثل فایل‌های جاوااسکریپت، TypeScript یا SCSS) را به کد تبدیل شده (مثل فایل‌های minified) مرتبط کنند.
         Source Map در پلتفرم Angular لیارا به‌صورت پیش‌فرض غیرفعال است اما درصورت نیاز به فعال کردن این قابلیت می‌توانید قطعه‌کد زیر را در فایل <Important>liara.json</Important> قرار دهید:
