@@ -1,0 +1,612 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با فایل liara.json - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به معرفی فایل لیارا جیسون یا liara.json در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# فایل liara.json در لیارا
+
+<hr className="mb-2" />
+فایل <Important>liara.json</Important> یک فایل پیکربندی قابل تنظیم در پروژه است 
+که به طور انحصاری و اختصاصی، توسط PaaS لیارا، ارائه می‌شود. 
+شما می‌توانید در برنامه‌هایی که قصد دارید به وسیله ابزار <a href="" className="text-[#2196f3]">Liara CLI</a> یا Github، در لیارا مستقر کنید؛ از این فایل و قابلیت‌های مخصوص آن، بهره ببرید. 
+در ادامه، به معرفی بیشتر این فایل، فیلدها و بخش‌های درون آن، پرداخته شده است: 
+
+<Section id="how-to-use" title="نحوه استفاده" />
+برای استفاده از فایل <Important>liara.json</Important> نیاز به انجام کار خاصی نیست. 
+تنها کافیست تا وارد مسیر اصلی پروژه‌تان شوید و یک فایل خالی با همین نام، یعنی <Important>liara.json</Important> 
+ایجاد کنید؛ به عنوان مثال، در Linux، می‌توانید دستور زیر را برای ایجاد این فایل، اجرا کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="bash">
+{`touch liara.json`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+پس از ایجاد این فایل و شخصی‌سازی‌های لازم (که در ادامه به آن‌ها، پرداخته شده است)؛ لیارا در حین فرایند استقرار، 
+این فایل را به صورت خودکار، پیدا می‌کند و پارامترهای مختلفی نظیر شناسه برنامه، پورت برنامه و ... را مطابق با این فایل، تنظیم می‌کند.
+
+<Section id="app-field" title="فیلد app" />
+در این فیلد، شما می‌توانید شناسه برنامه‌تان را انتخاب کنید؛ با انجام این کار، پس از اجرای دستور <a href="/references/cli/deploy-app/" className="text-[#2196f3]"><Important>liara deploy</Important></a>، 
+شناسه برنامه دیگر از شما پرسیده نمی‌شود و برنامه مدنظرتان برای استقرار در لیارا، آماده می‌شود.
+به عنوان مثال، اگر که شناسه برنامه‌تان <Important>my-app</Important> است، به شکل زیر، می‌توانید آن را در فایل <Important>liara.json</Important>، مشخص کنید: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "app": "my-app"
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+در صورتی که شناسه برنامه را اشتباه وارد کرده باشید و یا به صورت کلی برنامه‌ای با شناسه انتخابی شما 
+در حساب شما، وجود نداشته باشد، عملیات استقرار متوقف شده و به شما ارور داده می‌شود.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+    این فیلد در استقرار با روش Github، کاربردی ندارد چرا که قبل از شروع عملیات استقرار، شناسه برنامه مشخص شده است. 
+    پس در روش استقرار با Github، <b>نباید</b> این فیلد را به کار ببرید.
+</p>
+</Alert>
+
+<Section id="platform-field" title="فیلد platform" />
+شما می‌توانید در فیلد platform، نوع پلتفرمی که قصد دارید در لیارا استفاده کنید؛ مشخص کنید. 
+به عنوان مثال، اگر که برنامه‌تان مبتنی بر NodeJS است، به شکل زیر، می‌توانید در فایل <Important>liara.json</Important> تعریف کنید که 
+که پلتفرم مقصد شما، NodeJS خواهد بود:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "platform": "node"
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+البته، ابزار <Important>Liara CLI</Important>، با توجه به منطق خود، 
+قادر به تشخیص نوع پلتفرم انتخابی شما خواهد بود؛ اما در صورتی که شما قصد استقرار برنامه خاصی مانند Fastify , GatsbyJS یا برنامه‌های دیگر 
+را دارید که ممکن است لیارا در تشخیص آن‌ها، دچار خطا شود؛ می‌توانید از این فیلد استفاده کنید. 
+در ادامه، تمامی مقادیری که این فیلد می‌پذیرد؛ آورده شده است: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="bash">
+{`node
+next
+laravel
+php
+python
+django
+flask
+dotnet
+react
+angular
+vue
+static
+docker`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+
+در صورتی که نوع پلتفرم برنامه را اشتباه و خارج از لیست فوق، وارد کرده باشید، عملیات استقرار متوقف شده و به شما ارور داده می‌شود.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+    این فیلد در استقرار با روش Github، کاربردی ندارد چرا که قبل از شروع عملیات استقرار، پلتفرم برنامه مشخص شده است. 
+    پس در روش استقرار با Github، <b>نباید</b> این فیلد را به کار ببرید.
+</p>
+</Alert>
+
+<Section id="mirror-field" title="استفاده از mirror لیارا" />
+لیارا در جهت افزایش سرعت استقرار برنامه‌تان و نصب پکیج‌ها، کتابخانه‌ها و ابزارهای 
+استفاده شده در پروژه، به جای ثبت درخواست به مخزن اصلی پکیج، از مخزن خود استفاده می‌کند و در صورتی که 
+پکیج موردنظر شما در مخزن نباشد؛ به مخزن اصلی مراجعه می‌کند (و در موارد نادر، ممکن است با خطا مواجه شود).
+در واقع با انجام این کار، فرایند نصب الزامات پروژه، خیلی سریع‌تر انجام می‌شود. 
+اما در صورتی که الزامات پروژه‌تان جدید هستند و 
+یا به صورت کلی، در mirror لیارا وجود ندارند؛ می‌توانید mirror لیارا را غیر فعال کنید. 
+
+به عنوان مثال، لیارا در برنامه‌های NodeJS، برای نصب 
+پکیج‌های npm از mirror خود استفاده می‌کند و شما می‌توانید با قرار دادن قطعه کد زیر 
+در فایل <Important>liara.json</Important>، این قابلیت را، غیرفعال کنید: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "node": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+در ادامه، نحوه غیرفعال کردن این قابلیت در پلتفرم‌های مختلف، قرار گرفته است:
+
+<Tabs 
+  tabs={["NodeJS", "NextJS", "Laravel", "PHP", "Python", "Django", "Flask", "React", "Angular", "Vue"]} 
+  content={[
+  <>
+  <p>
+    در پلتفرم NodeJS برای نصب پکیج‌های npm:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "node": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم NextJS برای نصب پکیج‌های npm:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "next": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Laravel برای نصب پکیج‌های composer:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "laravel": {
+    "composerMirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم PHP برای نصب پکیج‌های composer:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "php": {
+    "composerMirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم python برای نصب پکیج‌های pip:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "python": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم django برای نصب پکیج‌های pip:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "django": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Flask برای نصب پکیج‌های pip:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "flask": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم React برای نصب پکیج‌های npm:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "react": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Angular برای نصب پکیج‌های npm:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "angular": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Vue برای نصب پکیج‌های npm:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "vue": {
+    "mirror": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  ]}
+/>
+
+<Section id="choose-version-field" title="تعیین نسخه زبان یا فریم‌ورک" />
+شما می‌توانید در فایل <Important>liara.json</Important>، نسخه زبان برنامه‌نویسی یا فریم‌ورکی که 
+از آن استفاده می‌کنید را مشخص کنید؛ در ادامه، نحوه انجام این کار در پلتفرم‌های مختلف، آمده است: 
+
+<Tabs 
+  tabs={["NodeJS", "NextJS", "Laravel", "PHP", "Python", "Django", "Flask", ".NET"]} 
+  content={[
+  <>
+  <p>
+    در پلتفرم NodeJS برای تعیین نسخه nodejs:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "node": {
+    "version": "22"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم NextJS برای تعیین نسخه nodejs:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "next": {
+    "nodeVersion": "22"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Laravel برای تعیین نسخه php:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "laravel": {
+      "phpVersion": "8.2"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم php برای تعیین نسخه php:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "php": {
+      "version": "8.2"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Python برای تعیین نسخه python:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "python": {
+    "version": "3.12"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Django برای تعیین نسخه python:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "django": {
+    "pythonVersion": "3.12"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Flask برای تعیین نسخه python:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "flask": {
+    "pythonVersion": "3.12"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم NET. برای تعیین نسخه dotnet:
+  </p>
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "dotnet": {
+    "version": "8.0"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+ 
+  ]}
+/>
+در نظر داشته باشید که نمی‌توانید مقادیری به جز نسخه‌های قابل ارائه در لیارا، به عنوان نسخه انتخابی، در فیلد فوق، قرار دهید. 
+نسخه‌های قابل ارائه مربوط به هر پلتفرم را می‌توانید در صفحه مخصوص به خودشان مشاهده بفرمایید.
+
+<Section id="timezone-field" title="فیلد منطقه زمانی" />
+به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید.
+در ادامه، یک مثال در پلتفرم‌هایی که شامل این قابلیت هستند، برای شما آورده شده است:
+
+<Tabs 
+  tabs={["NodeJS", "Laravel", "PHP", "Python", "Django", "Flask", ".NET"]} 
+  content={[
+  <>
+  <p>
+    در پلتفرم NodeJS برای تغییر منطقه زمانی به America/Los_Angeles:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "node": {
+    "timezone": "America/Los_Angeles"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Laravel برای تغییر منطقه زمانی به Asia/Istanbul:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "laravel": {
+      "timezone": "Asia/Istanbul"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم PHP برای تغییر منطقه زمانی به Australia/Hobart:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "php": {
+      "timezone": "Australia/Hobart"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Python برای تغییر منطقه زمانی به Canada/Eastern:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "python": {
+      "timezone": "Canada/Eastern"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Django برای تغییر منطقه زمانی به Cuba:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "django": {
+      "timezone": "Cuba"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم Flask برای تغییر منطقه زمانی به Europe/Berlin:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "flask": {
+      "timezone": "Europe/Berlin"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+  <p>
+    در پلتفرم NET. برای تغییر منطقه زمانی به Greenwich:
+  </p>
+  <div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "dotnet": {
+      "timezone": "Greenwich"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+
+  ]}
+/>
+
+برای مشاهده لیست کامل مناطق زمانی قابل استفاده در فایل <Important>liara.json</Important>، می‌توانید در Linux، دستور زیر را اجرا کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="bash">
+{`timedatectl list-timezones`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+<Section id="build-location-field" title="تعیین موقعیت build" />
+
+ممکن است بخواهید پکیج‌هایی که در موقعیت ایران در دسترس نیستند را دانلود کنید یا نیاز داشته باشید که فرایند push کردن ایمیج‌ها به رجیستری خصوصی، با سرعت بیشتری انجام شود. برای این موارد می‌توانید موقعیت build ایمیج برنامه‌تان را با
+قرار دادن قطعه کد زیر در فایل <Important>liara.json</Important>، تغییر دهید. 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "build": {
+     "location": "germany"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+به صورت پیش‌فرض، موقعیت build برنامه بر روی Iran، قرار دارد. 
+
+</Layout>
