@@ -5,7 +5,7 @@ const TabComponent = ({ tabs, content }) => {
 
   return (
     <div id="tab" dir="ltr" className="w-full mt-10 rtl">
-      <div className="flex border-b flex-row-reverse">
+      <div className="flex overflow-auto  border-b flex-row-reverse">
         {tabs.map((tab, index) =>
           <button
             key={index}
