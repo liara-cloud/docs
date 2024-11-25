@@ -609,4 +609,257 @@ docker`}
 
 به صورت پیش‌فرض، موقعیت build برنامه بر روی Iran، قرار دارد. 
 
+<Section id="cron-job-field" title="تنظیم کرون‌جاب" />
+
+Cron job یک ابزار در سیستم‌عامل‌های لینوکس است که به شما این امکان را می‌دهد که برنامه‌ها یا اسکریپت‌ها را به صورت خودکار و در زمان‌های مشخص اجرا کنید. به عبارت ساده‌تر، با استفاده از cron job می‌توانید کارهایی مانند پشتیبان‌گیری، ارسال ایمیل یا اجرای اسکریپت‌ها را به صورت زمان‌بندی‌شده انجام دهید.
+شما می‌توانید مانند شکل زیر، برای پلتفرم‌های زیر، کرون‌جاب‌های مدنظرتان را در فایل <Important>liara.json</Important> تعریف کنید: 
+
+<Tabs 
+  tabs={["NextJS", "Laravel", "PHP", "Python", "Django", "Flask"]} 
+  content={[
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "cron": [
+    "* * * * * curl http://localhost:3000/api/test"
+  ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "cron": [
+    "0 1 * * * cd $ROOT && php artisan your:command >> /dev/null 2>&1"
+  ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "cron": [
+    "0 1 * * * cd $ROOT && php update_price.php >> /dev/null 2>&1"
+  ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "cron": [
+    "python3 migrate.py >> /dev/null 2>&1"
+  ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "cron": [
+    "0 0 * * 0 cd $ROOT && python3 manage.py remove-old-emails >> /dev/null 2>&1"
+  ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "cron": [
+    "0 0 * * 0 cd $ROOT && python3 job1.py",
+    "0 0 * * 2 cd $ROOT && python3 job2.py"
+  ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  ]}
+/>
+
+برای اطلاعات بیشتر، می‌توانید به صفحه مربوطه در هر پلتفرم، مراجعه کنید. 
+
+<Section id="health-check" title="بررسی سلامت" />
+بررسی سلامت به این شکل کار می‌کند که شما یک دستور مشخصی را تعریف می‌کنید و لیارا در بازه‌های مشخص، این دستور را در استقرار جدید شما اجرا می‌کند. اگر نتیجه موفقیت‌آمیز باشد، استقرار شما موفق در نظر گرفته می‌شود؛ در غیر این‌صورت، استقرار جدید شما، ناموفق تلقی خواهد شد.
+
+برای ایجاد این تست، کافیست تا در فایل <Important>liara.json</Important>  محتوای زیر را، قرار دهید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "healthCheck": {
+    "command": "CMD curl --fail http://localhost:3000 || exit 1",
+    "interval": 30, 
+    "timeout": 15,
+    "retries": 2,
+    "startPeriod": 5
+   }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+برای اطلاعات بیشتر در مورد این دستور، می‌توانید به <a href="/paas/details/health-check" className="text-[#2196f3]">مستندات مربوطه</a> مراجعه کنید. 
+
+<Section id="disk" title="اتصال به دیسک" />
+
+<a href="/paas/disks/about/" className="text-[#2196f3]">دیسک‌ها</a> قابلیتی در لیارا هستند که عملکردی شبیه به Volumeها در داکر دارند 
+و برای ذخیره‌سازی دائم اطلاعات یا تغییرات جدید، به کار می‌روند؛
+شما می‌توانید در هر پلتفرمی، مانند شکل زیر، 
+برنامه خود را در مسیر مدنظرتان، به دیسک متصل کنید: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "disks": [
+        {
+            "name": "media",
+            "mountTo": "/uploads/media"
+        }
+    ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+برای اطلاع بیشتر در مورد دیسک‌ها، می‌توانید به مستندات مربوط به اتصال به دیسک در هر پلتفرم، مراجعه کنید.
+
+<Section id="platform-fields" title="فیلدهای مخصوص هر پلتفرم" />
+
+هر پلتفرم در لیارا، در فایل <Important>liara.json</Important>، در کنار تمامی فیلدها و ویژگی‌های مشترک،
+قابلیت‌ها و فیلدهای مخصوص به خودش را نیز، دارد که به شما امکان می‌دهد شخصی‌سازی‌های خیلی بیشتری 
+را بر روی پروژه‌های خود اعمال کنید. 
+در ادامه، یک مثال از تمامی فیلدهای مخصوص هر پلتفرم (فارغ از نتیجه)، برای‌تان آورده شده است: 
+
+<Tabs 
+  tabs={["Laravel", "Django", "Flask", ".NET", "React", "Angular", "Docker"]} 
+  content={[
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "laravel":{
+        "npmMirror": true,
+        "installDevDependencies": true,
+        "configCache": true,
+        "routeCache": true,
+        "buildAssets": true,
+        "ssr": true
+    }
+}
+`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "django": {
+    "collectStatic": false,
+    "compileMessages": true,
+    "modifySettings": false,
+    "geospatial": true
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "flask": {
+      "appModule": "server:app"
+    }
+  }`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "dotnet": {
+      "finalDllName": "MyProjectName",
+      "csprojectFile": "path/to/folder/my.csproj"
+    }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "react": {
+    "sourceMap": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "angular": {
+    "sourceMap": false
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  <>
+<div dir="ltr">
+<Highlight className="json">
+{`{
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "cache": false,
+        "args": ["APP_VERSION=2.0.0"]
+    },
+
+    "docker": {
+        "timezone": "America/Los_Angeles"
+    },
+
+    "args": [
+    "sh",
+    "-c",
+    "sleep 10 && /entrypoint.sh run"
+  ]
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+  </>,
+  ]}
+/>
+
+برای اطلاعات بیشتر در مورد هر پلتفرم، به صفحه استقرار برنامه آن، مراجعه کنید. 
+
 </Layout>
