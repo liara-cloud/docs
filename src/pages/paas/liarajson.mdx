@@ -140,7 +140,7 @@ docker`}
 <Highlight className="json">
 {`{
     "node": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -161,7 +161,7 @@ docker`}
 <Highlight className="json">
 {`{
     "node": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -177,7 +177,7 @@ docker`}
 <Highlight className="json">
 {`{
     "next": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -193,7 +193,7 @@ docker`}
 <Highlight className="json">
 {`{
     "laravel": {
-    "composerMirror": false
+      "composerMirror": false
   }
 }`}
 </Highlight>
@@ -209,7 +209,7 @@ docker`}
 <Highlight className="json">
 {`{
     "php": {
-    "composerMirror": false
+      "composerMirror": false
   }
 }`}
 </Highlight>
@@ -225,7 +225,7 @@ docker`}
 <Highlight className="json">
 {`{
     "python": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -241,7 +241,7 @@ docker`}
 <Highlight className="json">
 {`{
     "django": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -257,7 +257,7 @@ docker`}
 <Highlight className="json">
 {`{
     "flask": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -273,7 +273,7 @@ docker`}
 <Highlight className="json">
 {`{
     "react": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -289,7 +289,7 @@ docker`}
 <Highlight className="json">
 {`{
     "angular": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -305,7 +305,7 @@ docker`}
 <Highlight className="json">
 {`{
     "vue": {
-    "mirror": false
+      "mirror": false
   }
 }`}
 </Highlight>
@@ -331,7 +331,7 @@ docker`}
 <Highlight className="json">
 {`{
     "node": {
-    "version": "22"
+      "version": "22"
   }
 }`}
 </Highlight>
@@ -347,7 +347,7 @@ docker`}
 <Highlight className="json">
 {`{
     "next": {
-    "nodeVersion": "22"
+      "nodeVersion": "22"
   }
 }`}
 </Highlight>
@@ -473,7 +473,7 @@ docker`}
 <Highlight className="json">
 {`{
     "node": {
-    "timezone": "America/Los_Angeles"
+      "timezone": "America/Los_Angeles"
   }
 }`}
 </Highlight>
@@ -729,10 +729,10 @@ Cron job یک ابزار در سیستم‌عامل‌های لینوکس است
 <Highlight className="json">
 {`{
     "disks": [
-        {
-            "name": "media",
-            "mountTo": "/uploads/media"
-        }
+      {
+        "name": "media",
+        "mountTo": "/uploads/media"
+      }
     ]
 }`}
 </Highlight>
@@ -756,12 +756,12 @@ Cron job یک ابزار در سیستم‌عامل‌های لینوکس است
 <Highlight className="json">
 {`{
     "laravel":{
-        "npmMirror": true,
-        "installDevDependencies": true,
-        "configCache": true,
-        "routeCache": true,
-        "buildAssets": true,
-        "ssr": true
+      "npmMirror": true,
+      "installDevDependencies": true,
+      "configCache": true,
+      "routeCache": true,
+      "buildAssets": true,
+      "ssr": true
     }
 }
 `}
@@ -814,7 +814,7 @@ Cron job یک ابزار در سیستم‌عامل‌های لینوکس است
 <Highlight className="json">
 {`{
     "react": {
-    "sourceMap": false
+      "sourceMap": false
   }
 }`}
 </Highlight>
@@ -826,7 +826,7 @@ Cron job یک ابزار در سیستم‌عامل‌های لینوکس است
 <Highlight className="json">
 {`{
     "angular": {
-    "sourceMap": false
+      "sourceMap": false
   }
 }`}
 </Highlight>
@@ -838,19 +838,19 @@ Cron job یک ابزار در سیستم‌عامل‌های لینوکس است
 <Highlight className="json">
 {`{
     "build": {
-        "dockerfile": "./Dockerfile",
-        "cache": false,
-        "args": ["APP_VERSION=2.0.0"]
+      "dockerfile": "./Dockerfile",
+      "cache": false,
+      "args": ["APP_VERSION=2.0.0"]
     },
 
     "docker": {
-        "timezone": "America/Los_Angeles"
+      "timezone": "America/Los_Angeles"
     },
 
     "args": [
-    "sh",
-    "-c",
-    "sleep 10 && /entrypoint.sh run"
+      "sh",
+      "-c",
+      "sleep 10 && /entrypoint.sh run"
   ]
 }`}
 </Highlight>
