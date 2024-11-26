@@ -43,7 +43,7 @@ import Head from "next/head";
 
 
 <div className="h-4" />
-<Alert variant="error">
+{/* <Alert variant="error">
 <p>
   در صورتی می‌توانید به متغیرهای محیطی 
   که در لیارا تنظیم کرده‌اید، دسترسی داشته باشید که آن‌ها را با با عبارت 
@@ -51,15 +51,23 @@ import Head from "next/head";
   در غیر این‌صورت، این امکان برای شما وجود ندارد 
   و باید متغیر خود را در فایل <Important>env.production.</Important> تعریف کنید.
 </p>
-</Alert>
+</Alert> */}
 
 
 <Section id="use-envs-while-building" title="استفاده از متغیرهای محیطی در زمان build پروژه" />
-برای اینکه به متغیرهای محیطی در زمان build پروژه، دسترسی داشته باشید؛ 
-تفاوتی نمی‌کند که متغیرهای خود را با <Important>_NEXT_PUBLIC</Important> شروع کرده باشید یا از فایل <Important>env.production.</Important> استفاده کرده باشید؛ در هر صورت، 
-کافیست تا آن را در فایل <Important>next.config.js</Important>، تنظیم کنید. 
-<div className="h-2" />
-به عنوان مثال، فرض کنید که یک متغیر به نام <Important>BUILD_TIME_VAR</Important> را در فایل <Important>env.production.</Important> مانند قطعه کد زیر، تنظیم کرده‌اید:
+برای اینکه به متغیرهای محیطی در زمان build پروژه، دسترسی داشته باشید؛ می‌توانید به دو نحو این‌کار را انجام دهید. 
+اگر که متغیر محیطی خود را با مقدار <Important>_NEXT_PUBLIC</Important> شروع کنید، می‌توانید 
+در کدهای سمت فرانت‌اند نیز از آن‌ها استفاده کنید. اما اگر متغیرهای خود را بدون پیشوند اشاره شده، 
+به متغیرهای محیطی لیارا در بخش تنظیمات، اضافه کنید، نمی‌توانید از آن در قسمت فرانت برنامه خود، بهره ببرید. 
+
+<Alert variant="error">
+<p>
+  متغیرهای حساس خود را <b>نباید</b> با <Important>_NEXT_PUBLIC</Important> آغاز کنید؛ چرا که امکان دسترسی به آن در 
+  بخش فرانت‌اند وجود دارد.
+</p>
+</Alert>
+
+به عنوان مثال، فرض کنید که یک متغیر به نام <Important>BUILD_TIME_VAR</Important> را در بخش متغیرهای محیطی برنامه خود، مانند زیر، تنظیم کرده‌اید:
 
 <div className="h-2" />
 <div dir="ltr">
