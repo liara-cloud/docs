@@ -36,6 +36,91 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Tabs 
+    tabs={["SMTPS", "SMTP"]} 
+    content={[
+        <>
+            
+برای استفاده از سرویس ایمیل در برنامه‌های NodeJS، می‌توانید از 
+پکیج nodemailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install nodemailer`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=465
+MAIL_USER=sweet_brattain_hrt81t
+MAIL_PASSWORD=4eba6d6d-96f4-6d04-b055-705031ba525d
+MAIL_FROM=info@example.com
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// Import required packages
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv'); // in local, run \`npm install dotenv\` if needed
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Create reusable transporter object using the SMTP transport
+const transporter = nodemailer.createTransport({
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    secure: true, 
+    auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASSWORD
+    },
+
+});
+
+// Email options
+const mailOptions = {
+    from: \`"my app" <\${process.env.MAIL_FROM}>\`, // Sender address
+    to: 'test@example.com', // List of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from Node.js', // Plain text body
+    html: '<b>This is a test email sent from Node.js</b>', // HTML body
+    headers: {
+      "x-liara-tag": "test_email", // Tags 
+    },
+};
+
+// Send email
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log('Error occurred: ' + error.message);
+    }
+    console.log('Email sent: ' + info.response);
+});
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+        </>,
+        <>
+            
 برای استفاده از سرویس ایمیل در برنامه‌های NodeJS، می‌توانید از 
 پکیج nodemailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
@@ -82,7 +167,7 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
     port: process.env.MAIL_PORT,
-    secure: false, // true for 465, false for other ports (587 in this case for STARTTLS)
+    secure: false, 
     auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASSWORD
@@ -113,20 +198,27 @@ transporter.sendMail(mailOptions, (error, info) => {
     </Highlight>
 </div>
 <div className="h-2" />
+        </>
+    ]}
+/>
+
+
 
 <Alert variant='info'>
 <p>
 فیلد <Important>from</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
 </p>
 </Alert>
-<Alert variant='info'>
+
+{/* <Alert variant='info'>
 <p>
 طبق مستندات <a href="https://nodemailer.com/smtp/" className="text-[#2196f3]">nodemailer</a>، این ماژول به صورت پیش‌فرض ایمیل‌ها را به صورت امن و رمزنگاری شده، ارسال می‌کند و نیازی نیست که شما، کار خاصی را انجام دهید.
 </p>
-</Alert>
-<Alert variant='info'>
+</Alert> */}
+
+<Alert variant="success">
 <p>
-برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 و مقدار فیلد <Important>secure</Important> را برابر با <Important>true</Important> تنظیم کنید. با این کار، از TLS استفاده خواهید کرد.
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
 </p>
 </Alert>
 

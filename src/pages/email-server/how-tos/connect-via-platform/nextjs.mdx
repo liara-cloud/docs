@@ -22,6 +22,7 @@ import Head from "next/head";
 # اتصال به ایمیل‌سرور در برنامه‌های NextJS
 <hr className="mb-2" />
 
+            
 <video
   src="https://files.liara.ir/liara/docs/nextjs-email.mp4"
   controls="controls"
@@ -35,6 +36,91 @@ import Head from "next/head";
 پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/nextjs-getting-started/tree/sendEmail" className="text-[#2196f3] ">اینجا</a> قابل مشاهده و دسترسی هستند.
 </p>
 </Alert>
+
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های NextJS، می‌توانید از 
+پکیج nodemailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install nodemailer`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود (در فایل <Important>env.local.</Important> در حالت Development، و در فایل <Important>env.production.</Important> در حالت Production)، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=465
+MAIL_USER=my-app
+MAIL_PASSWORD=87b9307a-dae9-410e-89a2-e77de60e4885
+MAIL_FROM=test@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، کافیست که در مسیر 
+<Important>pages/api</Important> یک فایل به نام <Important>send-email.js</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`import nodemailer from 'nodemailer';
+
+// This function will handle the email sending process
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Only POST requests are allowed' });
+  }
+
+  // Create reusable transporter object using the SMTP transport
+  const transporter = nodemailer.createTransport({
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    secure: true, 
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASSWORD,
+    },
+  });
+
+  // Email options
+  const mailOptions = {
+    from: \`"My App" <\${process.env.MAIL_FROM}>\`, // sender address
+    to: 'test@example.com', // list of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from a Next.js API route!', // plain text body
+    html: '<b>This is a test email sent from a Next.js API route!</b>', // html body
+    headers: {
+        "x-liara-tag": "test_email", // Tags 
+      },
+  };
+
+  // Try to send the email
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Email sent!', info });
+  } catch (error) {
+    res.status(500).json({ message: 'Error sending email', error: error.message });
+  }
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+      </>,
+      <>
 
 برای استفاده از سرویس ایمیل در برنامه‌های NextJS، می‌توانید از 
 پکیج nodemailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
@@ -82,7 +168,7 @@ export default async function handler(req, res) {
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
     port: process.env.MAIL_PORT,
-    secure: false, // true for 465, false for 587 (we're using STARTTLS here)
+    secure: false, 
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASSWORD,
@@ -113,21 +199,21 @@ export default async function handler(req, res) {
     </Highlight>
 </div>
 <div className="h-2" />
-<Alert variant='info'>
+      </>
+  ]}
+/>
+
+{/* <Alert variant='info'>
 <p>
 طبق مستندات <a href="https://nodemailer.com/smtp/" className="text-[#2196f3]">nodemailer</a>، این ماژول به صورت پیش‌فرض ایمیل‌ها را به صورت امن و رمزنگاری شده، ارسال می‌کند و نیازی نیست که شما، کار خاصی را انجام دهید.
 </p>
-</Alert>
+</Alert> */}
 <Alert variant='info'>
 <p>
 فیلد <Important>from</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
 </p>
 </Alert>
-<Alert variant='info'>
-<p>
-برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 و مقدار فیلد <Important>secure</Important> را برابر با <Important>true</Important> تنظیم کنید. با این کار، از TLS استفاده خواهید کرد.
-</p>
-</Alert>
+
 تمامی کارها انجام شده است و شما می‌توانید از ایمیل‌سرور در برنامه خود استفاده کنید؛ به عنوان مثال، می‌توانید
 قطعه کد زیر را در فایل <Important>pages/index.js</Important>، قرار دهید:
 <div className="h-2" />
@@ -172,5 +258,11 @@ export default function Home() {
     </Highlight>
 </div>
 <div className="h-2" />
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
+</p>
+</Alert>
 
 </Layout>

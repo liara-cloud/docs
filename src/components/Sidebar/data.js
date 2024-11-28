@@ -3007,6 +3007,16 @@ export default {
         link: "/paas/docker/related-apps/arangodb"
       },
       {
+        title: "Deno",
+        icon: <IconContainer alt="https://files.liara.ir/liara/deno/deno-logo.png" />,
+        link: "/paas/docker/related-apps/deno"
+      },
+      {
+        title: "Bun",
+        icon: <IconContainer alt="https://seeklogo.com/images/B/bun-logo-A876328A1F-seeklogo.com.png" />,
+        link: "/paas/docker/related-apps/bun"
+      },
+      {
         title: "Seq",
         icon: <IconContainer alt="seq" />,
         link: "/paas/docker/related-apps/seq"
@@ -8821,11 +8831,11 @@ export default {
         hr: true
       },
       {
-        title: "مدیریت حساب‌کاربری",
+        title: "مدیریت حساب کاربری",
         link: "/references/console/manage-accounts"
       },
       {
-        title: "ارتقا سطح حساب‌کاربری",
+        title: "ارتقا سطح حساب کاربری",
         link: "/references/console/upgrade-user-level"
       },
       {

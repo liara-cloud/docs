@@ -36,6 +36,82 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Django، کافیست
+تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در ادامه نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=465
+MAIL_USER=hopeful_zhukovsky_9daqpv
+MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
+MAIL_FROM_ADDRESS=info@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+حال، بایستی قطعه کدی مشابه قطعه کد زیر را به فایل <Important>settings.py</Important> خود، اضافه کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('MAIL_HOST')
+EMAIL_PORT = os.getenv('MAIL_PORT')
+EMAIL_HOST_USER = os.getenv('MAIL_USER')
+EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASSWORD')
+EMAIL_USE_TLS = True  # Use TLS encryption
+EMAIL_FROM_ADDRESS = os.getenv('MAIL_FROM_ADDRESS')`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و شما می‌توانید از ایمیل‌سرور خود استفاده کنید؛ به عنوان مثال، می‌توانید یک app جدید ایجاد 
+کنید و <Important>views.py</Important> آن را همانند قطعه کد زیر، بنویسید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`from django.core.mail import EmailMessage
+from django.http import HttpResponse
+from django.conf import settings
+
+def send_test_email(request):
+    subject = 'Test Email from Django'
+    message = 'This is a test email sent from Django using SMTP on Liara server.'
+    recipient_list = ['recipient@example.com']
+    
+    email = EmailMessage(
+        subject,
+        message,
+        settings.EMAIL_FROM_ADDRESS,
+        recipient_list,
+        headers={"x-liara-tag": "test-tag"} # using liara tag feature,
+    )
+
+    
+    email.send(fail_silently=False)
+    return HttpResponse('Test email sent successfully!') `}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+      </>,
+      <>
+
 برای استفاده از سرویس ایمیل در برنامه‌های Django، کافیست
 تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در ادامه نیز، بایستی 
@@ -68,17 +144,17 @@ EMAIL_HOST = os.getenv('MAIL_HOST')
 EMAIL_PORT = os.getenv('MAIL_PORT')
 EMAIL_HOST_USER = os.getenv('MAIL_USER')
 EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASSWORD')
-EMAIL_USE_TLS = True  # Use TLS encryption
+EMAIL_USE_TLS = True  # Use STARTTLS encryption
 EMAIL_FROM_ADDRESS = os.getenv('MAIL_FROM_ADDRESS')`}
     </Highlight>
 </div>
 <div className="h-2" />
-<Alert variant='info'>
+{/* <Alert variant='info'>
 <p>
 برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
 به جای STARTTLS، از TLS استفاده شود. 
 </p>
-</Alert>
+</Alert> */}
 
 
 
@@ -111,5 +187,15 @@ def send_test_email(request):
     </Highlight>
 </div>
 <div className="h-2" />
+
+      </>
+  ]}
+/>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
+</p>
+</Alert>
 
 </Layout>

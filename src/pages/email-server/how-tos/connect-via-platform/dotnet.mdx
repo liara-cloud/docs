@@ -36,6 +36,11 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
 برای استفاده از سرویس ایمیل در برنامه‌های NET. 
 کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در نهایت نیز، بایستی 
@@ -46,7 +51,7 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="bash">
         {`MAIL_HOST=smtp.c1.liara.email
-MAIL_PORT=587
+MAIL_PORT=465
 MAIL_USER=hopeful_zhukovsky_9daqpv
 MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
 MAIL_FROM_ADDRESS=info@example.com`}
@@ -125,10 +130,159 @@ app.Run();
 با تنظیم <Important>EnableSsl = true</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
 </p>
 </Alert>
+
+برای استفاده از ایمیل‌سرور در کنترلر، می‌توانید مشابه قطعه کد زیر، عمل کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="csharp">
+        {`using MimeKit;
+using MailKit.Net.Smtp;
+using DotNetEnv; // for install this, run: dotnet install add package DotNetEnv
+
+namespace your_project_name.Controllers; 
+
+public class TestController : Controller
+{
+    [HttpPost]
+    public IActionResult SendEmail(string email)
+    {   
+        // Email Information  
+        Env.Load();
+        string senderName  = Env.GetString("SENDER_NAME");
+        string senderEmail = Env.GetString("SENDER_ADDRESS");
+        string subject     = Env.GetString("EMAIL_SUBJECT");
+        string body        = Env.GetString("EMAIL_BODY");
+
+        // Email Instance
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(senderName, senderEmail));
+        message.To.Add(new MailboxAddress("Recipient", email));
+        message.Subject = subject;
+
+        // Creating The Body 
+        message.Body = new TextPart("plain")
+        {
+            Text = body
+        };
+
+        try
+        {
+            // Sending Email 
+            using (var client = new SmtpClient())
+            {
+                client.Connect(Env.GetString("MAIL_HOST"), Env.GetInt("MAIL_PORT"), false);
+                client.Authenticate(Env.GetString("MAIL_USERNAME"), Env.GetString("MAIL_PASSWORD"));
+                client.Send(message);
+                client.Disconnect(true);
+            }
+
+            ViewBag.Message = "Email Sent Successfully.";
+        }
+        catch (Exception ex)
+        {
+            ViewBag.Message = $"Error In Sending Email: {ex.Message}";
+        }
+
+
+        return RedirectToAction("Index");
+    }
+
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+      </>,
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های NET. 
+کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=587
+MAIL_USER=hopeful_zhukovsky_9daqpv
+MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
+MAIL_FROM_ADDRESS=info@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
 <Alert variant='info'>
 <p>
-برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
-به جای STARTTLS، از TLS استفاده شود. 
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="dotnet">
+        {`using System.Net;
+using System.Net.Mail;
+using dotenv.net;
+
+DotEnv.Load(); // Load the environment variables from .env file
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/send-test-email", async context =>
+{
+    // Read SMTP settings from environment variables
+    var smtpHost = Environment.GetEnvironmentVariable("MAIL_HOST");
+    int smtpPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT") ?? "587");
+    var smtpUser = Environment.GetEnvironmentVariable("MAIL_USER");
+    var smtpPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
+    var fromAddress = Environment.GetEnvironmentVariable("MAIL_FROM_ADDRESS") ?? "info@example.com";
+    var toAddress = "recipient@example.com"; // Replace with recipient's email address
+
+    // Create a new SmtpClient
+    using (var smtpClient = new SmtpClient(smtpHost, smtpPort))
+    {
+        smtpClient.EnableSsl = true; // Use STARTTLS encryption
+        smtpClient.Credentials = new NetworkCredential(smtpUser, smtpPassword);
+
+        // Create the email message
+        var mailMessage = new MailMessage(fromAddress, toAddress)
+        {
+            Subject = "Test Email",
+            Body = "<h2>This is a test email sent from a .NET Core application using SMTP<h2>",
+            IsBodyHtml = true
+        };
+
+        // Add custom headers
+        mailMessage.Headers.Add("x-liara-tag", "test-tag");
+
+        // Send the email
+        try
+        {
+            await smtpClient.SendMailAsync(mailMessage);
+            await context.Response.WriteAsync("Test email sent successfully!");
+        }
+        catch (Exception ex)
+        {
+            await context.Response.WriteAsync($"Failed to send email: {ex.Message}");
+        }
+    }
+});
+
+app.Run();
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+با تنظیم <Important>EnableSsl = true</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
 </p>
 </Alert>
 
@@ -194,4 +348,14 @@ public class TestController : Controller
     </Highlight>
 </div>
 <div className="h-2" />
+      </>
+  ]}
+/>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
+</p>
+</Alert>
+
 </Layout>

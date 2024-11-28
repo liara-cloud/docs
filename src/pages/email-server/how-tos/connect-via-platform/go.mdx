@@ -36,6 +36,112 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Golang، می‌توانید از 
+پکیج gomail استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`go get gopkg.in/gomail.v2`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=465
+MAIL_USER=cranky_galileo_nhh78l
+MAIL_PASSWORD=7ae28d03-2e09-4211-8e79-c3a54ae5798e
+MAIL_FROM=info@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار <Important>MAIL_FROM</Important>، باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+{/* <Alert variant='info'>
+<p>
+با تنظیم <Important>MAIL_USE_TLS=True</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert> */}
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+    "strconv"
+
+    gomail "gopkg.in/gomail.v2"
+)
+
+func main() {
+    
+    // Get environment variables for SMTP settings
+    mailHost := os.Getenv("MAIL_HOST")
+    mailPortStr := os.Getenv("MAIL_PORT")
+    mailUser := os.Getenv("MAIL_USER")
+    mailPassword := os.Getenv("MAIL_PASSWORD")
+    mailFrom := os.Getenv("MAIL_FROM")
+
+    // Convert mail port from string to integer
+    mailPort, err := strconv.Atoi(mailPortStr)
+    if err != nil {
+        log.Fatalf("Invalid MAIL_PORT: %v", err)
+    }
+
+    // Create a new email message
+    m := gomail.NewMessage()
+    m.SetHeader("From", mailFrom)
+    m.SetHeader("To", "recipient@example.com") // Set recipient email here
+    m.SetHeader("Subject", "Test Email from Go with HTML")
+    m.SetHeader("x-liara-tag", "test-tag") // Custom header for tagging
+
+    // Set HTML body for the email
+    m.SetBody("text/html", \`
+        <h1>This is a test email</h1>
+        <p>Sent from Go using <b>gomail</b> and SMTP with TLS.</p>
+    \`)
+
+    // Create SMTP dialer with TLS
+    d := gomail.NewDialer(mailHost, mailPort, mailUser, mailPassword)
+
+    // Send the email
+    if err := d.DialAndSend(m); err != nil {
+        log.Fatalf("Failed to send email: %v", err)
+    }
+
+    fmt.Println("Test email sent successfully!")
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+      </>,
+      <>
+
 برای استفاده از سرویس ایمیل در برنامه‌های Golang، می‌توانید از 
 پکیج gomail استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
@@ -133,9 +239,14 @@ func main() {
     </Highlight>
 </div>
 <div className="h-2" />
-<Alert variant='info'>
+
+      </>
+  ]}
+/>
+
+<Alert variant="success">
 <p>
-برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 تنظیم کنید. با انجام این کار، از TLS به جای STARTTLS، استفاده خواهید کرد.
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
 </p>
 </Alert>
 

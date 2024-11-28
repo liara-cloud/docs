@@ -24,11 +24,94 @@ import Head from "next/head";
 
 برای استفاده از سرویس ایمیل در برنامه‌های WordPress، می‌توانید از 
 پلاگین‌هایی مانند <a href="https://wordpress.org/plugins/wp-mail-smtp/" className="text-[#2196f3] "><Important>WP Mail</Important></a> استفاده کنید.
-برای نصب، فعال‌سازی و راه‌اندازی این پلاگین، می‌توانید مانند آموزش زیر، عمل کنید:
+در ادامه، آموزش قدم به قدم نصب و استفاده از این پلاگین، برای‌تان قرار گرفته است: 
 
 <div className="h-2" />
-<img src="https://files.liara.ir/liara/docs/config-email-server-in-wordpress-using-wp-mail-smtp.gif" alt="wp smtp mail plugin conf" />
+
+  <video
+  src="https://files.liara.ir/liara/wordpress/smtp/wp-mail-wordpress-email-server.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  />
+
 <div className="h-2" />
 
+<Step  steps={[
+
+    {
+        step: "۱",
+        content: (
+        <>
+            <h3>نصب افزونه</h3>   
+            <p>در ابتدا، وارد پیش‌خوان برنامه وردپرس خود شوید. سپس در بخش افزونه‌ها یا plugins وارد زیر قسمت اضافه کردن افزونه جدید (add new plugin) شوید؛ افزونه <Important>wp mail smtp</Important> را جستجو کرده و سپس آن را نصب کنید. 
+            عموماً نام کامل این افزونه <Important>WP Mail SMTP by WPForms</Important> می‌باشد.
+            </p>
+            <div className="h-2" />
+            <img src="https://files.liara.ir/liara/wordpress/smtp/wpmail-smtp-add-plugin.png" alt="wp smtp mail plugin conf" />
+            <div className="h-2" />
+        </>
+        )
+    },
+    {
+        step: "۲",
+        content: (
+        <>
+            <h3>فعال‌سازی افزونه</h3>   
+            <p>پس از نصب افزونه، آن را فعال یا Activate کنید. با انجام این کار، به صفحه زیر هدایت می‌شود. </p>
+            <div className="h-2" />
+            <img src="https://files.liara.ir/liara/wordpress/smtp/wpmail-setup.png" alt="wp smtp mail setup" />
+            <div className="h-2" />
+            <p>
+                در ادامه، بر روی گزینه <Important>Let's Get Started</Important> کلیک کنید. در بخش <Important>Choose Your SMTP Mailer</Important>، گزینه <Important>Other SMTP</Important> را انتخاب و بر روی گزینه <Important>Save and Continue</Important> کلیک کنید.
+            </p>
+            
+            <Tabs 
+            tabs={["SMTPS", "SMTP"]} 
+            content={[
+            <>
+            <p>
+                اگر که قصد دارید از پروتکل امن TLS استفاده کنید؛ کافیست تا در ادامه 
+                وارد ایمیل‌سرور خود در لیارا شوید، در بخش <b>SMTP</b>، مقدار هاست را کپی کرده و در وردپرس، در فیلد <Important>SMTP Host</Important> قرار دهید. 
+                مقدار <Important>Encryption</Important> را بر روی TLS تنظیم کرده و در فیلد <Important>SMTP Port</Important>، مقدار 465 را بنویسید. 
+            </p>
+            </>,
+            <>
+            <p>
+                اگر که قصد دارید از پروتکل امن STARTTLS استفاده کنید؛ کافیست تا در ادامه 
+                وارد ایمیل‌سرور خود در لیارا شوید، در بخش <b>SMTP</b>، مقدار هاست را کپی کرده و در وردپرس، در فیلد <Important>SMTP Host</Important> قرار دهید. 
+                مقدار <Important>Encryption</Important> را بر روی TLS تنظیم کرده و در فیلد <Important>SMTP Port</Important>، مقدار 587 را بنویسید. 
+            </p>
+            </>,
+            ]}
+            />
+            <p>
+               در ادامه، در لیارا، در بخش <b>SMTP</b> ایمیل‌سرور، یک کاربر SMTP جدید ایجاد کنید 
+               و در بخش Authentication افزونه wp mail، مقادیر را 
+               قرار دهید. 
+               در فیلد <Important>From Name</Important>، باید نام فرستنده ایمیل و در بخش <Important>From Email</Important>، باید یکی از نشانی‌های تعریف شده در سرورایمیل را، قرار دهید.
+                و در نهایت، کافیست که بر روی گزینه <Important>Save and Continue</Important> کلیک کنید.    
+            </p> 
+
+        </>
+        )
+    },
+    {
+        step: "۳",
+        content: (
+        <>
+            <h3>نهایی‌سازی</h3>   
+            <p>تمامی کارها انجام شده و شما می‌توانید از ایمیل سرور در برنامه وردپرسی خود، استفاده کنید. </p>
+        </>
+        )
+    },
+]}
+/>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
+</p>
+</Alert>
 
 </Layout>

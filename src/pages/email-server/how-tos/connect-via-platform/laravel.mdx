@@ -36,6 +36,11 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
 برای استفاده از سرویس ایمیل در برنامه‌های Laravel، 
 کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در نهایت نیز، بایستی 
@@ -47,7 +52,7 @@ import Head from "next/head";
     <Highlight className="bash">
         {`MAIL_MAILER=smtp
 MAIL_HOST=smtp.c1.liara.email
-MAIL_PORT=587
+MAIL_PORT=465
 MAIL_USERNAME=magical_benz_7s4t7p
 MAIL_PASSWORD=9aaf526a-3352-4d96-99b1-63af70c696e2
 MAIL_ENCRYPTION=tls
@@ -56,18 +61,19 @@ MAIL_FROM_NAME="\${APP_NAME}"`}
     </Highlight>
 </div>
 <div className="h-2" />
+{/* <Alert variant='info'>
+<p>
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
+به جای STARTTLS، از TLS استفاده شود.
+</p>
+</Alert> */}
+
+
 <Alert variant='info'>
 <p>
 با تنظیم <Important>MAIL_ENCRYPTION=tls</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
 </p>
 </Alert>
-<Alert variant='info'>
-<p>
-برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
-به جای STARTTLS، از TLS استفاده شود.
-</p>
-</Alert>
-
 در نظر داشته باشید که باید فایل <Important>config/mail.php</Important>، شامل قطعه کد زیر، باشد:
 
 <div className="h-2" />
@@ -194,5 +200,178 @@ Route::get('/send-test-email', function () {
 
 با انجام کارهای فوق، می‌توانید از ایمیل‌سرور در برنامه خود در صفحه <Important>send-test-email/</Important>، برای ارسال ایمیل، استفاده کنید.
 
+
+      </>,
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Laravel، 
+کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_MAILER=smtp
+MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=587
+MAIL_USERNAME=magical_benz_7s4t7p
+MAIL_PASSWORD=9aaf526a-3352-4d96-99b1-63af70c696e2
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=info@example.com
+MAIL_FROM_NAME="\${APP_NAME}"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+{/* <Alert variant='info'>
+<p>
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
+به جای STARTTLS، از TLS استفاده شود.
+</p>
+</Alert> */}
+
+
+<Alert variant='info'>
+<p>
+با تنظیم <Important>MAIL_ENCRYPTION=tls</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
+</p>
+</Alert>
+در نظر داشته باشید که باید فایل <Important>config/mail.php</Important>، شامل قطعه کد زیر، باشد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+return [
+
+    'default' => env('MAIL_MAILER', 'log'),
+
+    'mailers' => [
+
+        'smtp' => [
+            'transport' => 'smtp',
+            'url' => env('MAIL_URL'),
+            'host' => env('MAIL_HOST', '127.0.0.1'),
+            'port' => env('MAIL_PORT', 2525),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+    ],
+
+    'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+
+];
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، بایستی با اجرای دستوری مشابه دستور زیر، یک Mailable ایجاد کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`php artisan make:mail TestEmail`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از ایجاد Mailable در آدرس <Important>app/mail/TestEmail.php</Important>، می‌توانید قطعه کد زیر را، در آن، قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`<?php
+
+namespace App\\Mail;
+
+use Illuminate\\Bus\\Queueable;
+use Illuminate\\Mail\\Mailable;
+use Illuminate\\Queue\\SerializesModels;
+use Illuminate\\Mail\\Mailables\\Headers;
+
+class TestEmail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public function build()
+    {
+        return $this->subject('Test Email')
+                    ->view('emails.test');
+
+    }
+
+    public function headers(): Headers
+    {
+        return new Headers(
+            text: [
+                'x-liara-tag' => 'test_email',
+            ],
+        );
+    }
+
+
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، می‌توانید یک قالب ایمیل با نام <Important>test.blade.php</Important> در مسیر <Important>resources/views/emails</Important> ایجاد کنید و قطعه کد زیر را، در آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+        {`<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Email</title>
+</head>
+<body>
+    <h1>This is a test email from Laravel</h1>
+    <p>Sent via SMTP on Liara's server.</p>
+</body>
+</html>
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، در <Important>routes/web.php</Important> مسیر زیر را برای ارسال ایمیل اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`use App\\Mail\\TestEmail;
+use Illuminate\\Support\\Facades\\Mail;
+Route::get('/send-test-email', function () {
+    Mail::to('test@example.com')->send(new TestEmail());
+    return 'Test email sent successfully!';
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+با انجام کارهای فوق، می‌توانید از ایمیل‌سرور در برنامه خود در صفحه <Important>send-test-email/</Important>، برای ارسال ایمیل، استفاده کنید.
+
+
+      </>
+  ]}
+/>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
+</p>
+</Alert>
 
 </Layout>

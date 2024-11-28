@@ -36,6 +36,109 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های PHP، می‌توانید از 
+پکیج phpmailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`composer require phpmailer/phpmailer`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=465
+MAIL_USER=friendly_liskov_ihidh7
+MAIL_PASSWORD=58455bf7-f7c9-4562-9a9e-53b051f2ba79
+MAIL_FROM_ADDRESS=info@example.com
+MAIL_FROM_NAME=my-app
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+
+{/* <Alert variant='info'>
+<p>
+برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
+به جای STARTTLS، از TLS استفاده کنید. 
+</p>
+</Alert> */}
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+require 'vendor/autoload.php'; // Load Composer dependencies
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
+
+// Load environment variables from .env file
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Create an instance of PHPMailer
+$mail = new PHPMailer(true);
+
+try {
+    // Server settings
+    $mail->isSMTP();
+    $mail->Host       = $_ENV['MAIL_HOST'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $_ENV['MAIL_USER'];
+    $mail->Password   = $_ENV['MAIL_PASSWORD'];
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use TLS encryption
+    $mail->Port       = $_ENV['MAIL_PORT'];
+
+    // Recipients
+    $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], $_ENV['MAIL_FROM_NAME']);
+    $mail->addAddress('recipient@example.com'); // Add a recipient email
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Test Email';
+    $mail->Body    = 'This is a test email sent using PHPMailer and SMTP.';
+    $mail->AltBody = 'This is the plain text version of the email content.';
+    $mail->addCustomHeader('x-liara-tag', 'test-tag'); // use Liara Tags
+
+
+    // Send the email
+    $mail->send();
+    echo 'Email has been sent successfully!';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+      </>,
+      <>
+
 برای استفاده از سرویس ایمیل در برنامه‌های PHP، می‌توانید از 
 پکیج phpmailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
@@ -68,14 +171,6 @@ MAIL_FROM_NAME=my-app
 <Alert variant='info'>
 <p>
 مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
-</p>
-</Alert>
-
-
-<Alert variant='info'>
-<p>
-برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
-به جای STARTTLS، از TLS استفاده کنید. 
 </p>
 </Alert>
 
@@ -131,4 +226,14 @@ try {
     </Highlight>
 </div>
 <div className="h-2" />
+      </>
+  ]}
+/>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
+</p>
+</Alert>
+
 </Layout>

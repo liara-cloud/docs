@@ -36,6 +36,87 @@ import Head from "next/head";
 </p>
 </Alert>
 
+
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Python،
+کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=465
+MAIL_USER=hopeful_zhukovsky_9daqpv
+MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
+MAIL_FROM_ADDRESS=info@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+# Read email configuration from environment variables
+MAIL_HOST = os.getenv('MAIL_HOST')
+MAIL_PORT = int(os.getenv('MAIL_PORT', 465))
+MAIL_USER = os.getenv('MAIL_USER')
+MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
+MAIL_FROM_ADDRESS = os.getenv('MAIL_FROM_ADDRESS')
+
+def send_email(to_address, subject, body):
+    # Create the email message
+    msg = MIMEMultipart()
+    msg['From'] = MAIL_FROM_ADDRESS
+    msg['To'] = to_address
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        # Connect to the SMTP server
+        server = smtplib.SMTP(MAIL_HOST, MAIL_PORT)
+        server.starttls()  # Secure the connection with TLS
+        server.login(MAIL_USER, MAIL_PASSWORD)  # Login to the SMTP server
+        server.send_message(msg)  # Send the email
+        print("Email sent successfully")
+    except Exception as e:
+        print("Failed to send email:", e)
+    finally:
+        server.quit()  # Close the connection to the server
+
+# Send an email to the specified recipient
+to_address = 'alinajmabadizadeh2002@gmail.com'
+subject = 'Test Email'
+body = 'This is a test email sent from Python using environment variables.'
+
+send_email(to_address, subject, body)
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+      </>,
+      <>
+
 برای استفاده از سرویس ایمیل در برنامه‌های Python،
 کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در نهایت نیز، بایستی 
@@ -88,7 +169,7 @@ def send_email(to_address, subject, body):
     try:
         # Connect to the SMTP server
         server = smtplib.SMTP(MAIL_HOST, MAIL_PORT)
-        server.starttls()  # Secure the connection with TLS
+        server.starttls()  # Secure the connection with STARTTLS
         server.login(MAIL_USER, MAIL_PASSWORD)  # Login to the SMTP server
         server.send_message(msg)  # Send the email
         print("Email sent successfully")
@@ -107,12 +188,15 @@ send_email(to_address, subject, body)
     </Highlight>
 </div>
 <div className="h-2" />
-<Alert variant='info'>
+
+      </>
+  ]}
+/>
+
+<Alert variant="success">
 <p>
-برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
-به جای STARTTLS، از TLS استفاده شود. 
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
 </p>
 </Alert>
-
 
 </Layout>

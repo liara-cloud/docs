@@ -36,6 +36,11 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Tabs 
+  tabs={["SMTPS", "SMTP"]} 
+    content={[
+      <>
+
 برای استفاده از سرویس ایمیل در برنامه‌های Flask، می‌توانید از 
 پکیج Flask-Mail استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
@@ -56,7 +61,7 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="bash">
         {`MAIL_HOST=smtp.c1.liara.email
-MAIL_PORT=587
+MAIL_PORT=465
 MAIL_USER=hopeful_zhukovsky_9daqpv
 MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
 MAIL_FROM_ADDRESS=info@example.com`}
@@ -119,12 +124,109 @@ if __name__ == '__main__':
     </Highlight>
 </div>
 <div className="h-2" />
+
+      </>,
+      <>
+
+برای استفاده از سرویس ایمیل در برنامه‌های Flask، می‌توانید از 
+پکیج Flask-Mail استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install Flask-Mail`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="/email-server/how-tos/add-smtp-user" className="text-[#2196f3] ">مستندات SMTP</a>، یک دسترسی SMTP و طبق <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">مستندات افزودن نشانی</a>، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به ایمیل‌سرور خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`MAIL_HOST=smtp.c1.liara.email
+MAIL_PORT=587
+MAIL_USER=hopeful_zhukovsky_9daqpv
+MAIL_PASSWORD=fbef30d7-f852-428e-9573-bc73381c7d4d
+MAIL_FROM_ADDRESS=info@example.com`}
+    </Highlight>
+</div>
+<div className="h-2" />
 <Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
+اقدام به ارسال ایمیل‌های تراکنشی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`from flask import Flask, request
+from flask_mail import Mail, Message
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+app = Flask(__name__)
+
+# Flask-Mail configuration
+app.config['MAIL_SERVER'] = os.getenv('MAIL_HOST')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USER')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = True  # Use STARTTLS for encryption
+app.config['MAIL_USE_SSL'] = False  # Don't use SSL, because we are using STARTTLS
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_FROM_ADDRESS')
+
+# Initialize Flask-Mail
+mail = Mail(app)
+
+@app.route('/send-test-email', methods=['GET'])
+def send_test_email():
+    try:
+        # Create a message
+        msg = Message(subject='Test Email from Flask',
+                      recipients=['recipient@example.com'],  # Replace with the recipient's email address
+                      body='This is a test email sent from Flask using SMTP on Liara.',
+                      extra_headers = {"x-liara-tag": "test_tag"}) # Use liara tag feature
+
+        # Send the email
+        mail.send(msg)
+        return 'Test email sent successfully!', 200
+
+    except Exception as e:
+        return f'Failed to send email. Error: {str(e)}', 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
+`}
+    </Highlight>
+</div>
+
+{/* <Alert variant='info'>
 <p>
 برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
 به جای STARTTLS، از TLS استفاده شود. 
 </p>
-</Alert>
+</Alert> */}
 
+
+      </>
+  ]}
+/>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/email-server/details/ports/" className="text-[#2196f3]">پورت‌های ایمیل‌سرور لیارا</a>
+</p>
+</Alert>
 
 </Layout>
