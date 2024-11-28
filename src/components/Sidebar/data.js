@@ -3013,7 +3013,7 @@ export default {
       },
       {
         title: "Bun",
-        icon: <IconContainer alt="https://seeklogo.com/images/B/bun-logo-A876328A1F-seeklogo.com.png" />,
+        icon: <IconContainer alt="bun" />,
         link: "/paas/docker/related-apps/bun"
       },
       {

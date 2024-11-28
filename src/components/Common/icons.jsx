@@ -47,6 +47,7 @@ import nocodbIcon from "@liara/platformicons/glass/png/nocodb.png";
 import chromaIcon from "@liara/platformicons/glass/png/chroma.png";
 import meilisearchIcon from "@liara/platformicons/glass/png/mailisearch.png";
 import ackeeIcon from "@liara/platformicons/glass/png/ackee.png";
+import bunIcon from "@liara/platformicons/glass/png/bun.png";
 
 import seqIcon from "@liara/platformicons/glass/png/seq.png";
 import yiiIcon from "@liara/platformicons/glass/png/yii.png";
@@ -152,6 +153,7 @@ const types = [
   { logo: chromaIcon, alt: "chroma" },
   { logo: meilisearchIcon, alt: "meilisearch" },
   { logo: ackeeIcon, alt: "ackee" },
+  { logo: bunIcon, alt: "bun" },
 
   // Instructions
   { logo: goIcon, alt: "go" },
