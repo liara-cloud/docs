@@ -1,0 +1,126 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ساخت و ایجاد دیتابیس با Liara CLI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه ساخت و ایجاد دیتابیس در رابط کاربری خط فرمان لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# ایجاد دیتابیس با Liara CLI
+<hr className="mb-2" />
+
+برای 
+ایجاد دیتابیس با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara db create`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="create-db-using-cli" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara db create</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara db create [-h] [--debug] [--api-token <value>] [--account <value>] [-n
+    <value>] [--plan <value>] [--public-network] [--feature-plan <value>] [-t <value>] [-v <value>]
+    [-y] [--network <value>]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara db create -h</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara db create --debug</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات ساخت دیتابیس به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara db create --api-token</Important>,
+  ],
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara db create --account john_doe</Important>,
+  ],
+  [
+    <Important>n- یا name--</Important>,
+    "برای درج نام دیتابیسی که قصد ایجاد آن را دارید",
+    <Important>liara db create -n my-db</Important>,
+  ],
+  [
+    <Important>plan--</Important>,
+    <div dir="rtl">
+    <p>برای انتخاب پلن دیتابیس</p>
+    </div>,
+    <Important>liara db create --plan=medium-g2</Important>,
+  ],
+  [
+    <Important>public-network--</Important>,
+    "برای فعال‌سازی شبکه عمومی دیتابیس",
+    <Important>liara db create --public-network</Important>,
+  ],
+  [
+    <Important>feature-plan--</Important>,
+    "برای انتخاب بسته امکانات دیتابیس",
+    <Important>liara db create --feature-plan=free</Important>,
+  ],
+  [
+    <Important>t- یا type--</Important>,
+    "برای انتخاب نوع دیتابیس",
+    <Important>liara db create -t mysql</Important>,
+  ],
+  [
+    <Important>v- یا version--</Important>,
+    "برای انتخاب ورژن دیتابیس انتخابی",
+    <Important>liara db create -v 10.6.8</Important>,
+  ],
+  [
+    <Important>y- یا yes--</Important>,
+    "تایید برای ادامه عملیات و ساخت دیتابیس",
+    <Important>liara db create -y</Important>,
+  ],
+  [
+    <Important>network--</Important>,
+    <p>انتخاب <a href="/paas/details/private-network" className="text-[#2196f3] ">شبکه خصوصی</a> دیتابیس</p>,
+    <Important> liara db create --network=liara-net</Important>,
+  ],
+
+]} />
+<div className="h-3" />
+
+</Layout>

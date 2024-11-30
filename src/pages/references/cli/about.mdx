@@ -32,10 +32,12 @@ import Head from "next/head";
 # رابط خط فرمان لیارا
 <hr className="mb-2" />
 
-رابط خط فرمان و یا همان Liara CLI، این امکان را به شما می‌دهد که فقط با چند دستور ساده، اپلیکیشن خود را در بستر ابری لیارا، مستقر کنید. اگر با محیط خط فرمان و ترمینال آشنایی ندارید، اصلاً جای نگرانی نیست! دستوراتی که برای کار با لیارا نیاز خواهید داشت، بسیار مختصر و کوتاه هستند و نیاز به دانش خاصی ندارند و شما می‌توانید به سادگی اجرای چند دستور، برنامه خود را در لیارا، مستقر کنید.
+رابط خط فرمان یا همان Liara CLI، یک ابزار جامع و کارآمد است که به شما اجازه می‌دهد اپلیکیشن‌های خود را تنها با چند دستور ساده، در بستر ابری لیارا مستقر کنید. حتی اگر با محیط خط فرمان آشنایی ندارید، نگران نباشید؛ طراحی این ابزار به گونه‌ای است که هر کسی، بدون نیاز به دانش فنی پیشرفته، می‌تواند از آن استفاده کند و فرآیند استقرار را با سهولت و سرعت انجام دهد.
+<div className="h-2" />
+اما Liara CLI تنها به استقرار اپلیکیشن‌ها محدود نمی‌شود. این ابزار، یک مجموعه قدرتمند از امکانات را برای مدیریت بخش‌های مختلف پروژه‌های شما فراهم می‌کند. از مدیریت حساب کاربری و فضای ذخیره‌سازی ابری (باکت‌ها) گرفته تا دیتابیس‌ها و دیسک‌ها، همه چیز به راحتی در دسترس شما خواهد بود. علاوه بر این، می‌توانید متغیرهای محیطی اپلیکیشن‌های خود را مدیریت کنید، سرویس‌های ایمیل را تنظیم کنید و به تنظیمات شبکه خود نظارت کامل داشته باشید.
 
-<Section id="also-read" title="در ادامه، بخوانید:" />
 
+<Section id="initial-commands" title="دستورات آغازین" />
 <div className="grid md:grid-cols-3 gap-4">
             {[
       {
@@ -47,21 +49,65 @@ import Head from "next/head";
         link: "/references/cli/login"
       },
       {
-        title: "مدیریت دیسک‌ها",
-        link: "/references/cli/manage-disks"
-      },
-      {
-        title: "مشاهده پلن‌های سرویس پلتفرم",
-        link: "/references/cli/see-platform-plans"
-      },
-      {
         title: "تکمیل خودکار دستورات",
         link: "/references/cli/autocomplete"
       },
       {
-        title: "استقرار برنامه",
-        link: "/references/cli/deploy-app"
+        title: "مشاهده پلن‌های پلتفرم و دیتابیس",
+        link: "/references/cli/see-platform-plans"
       },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<Section id="account-commands" title="دستورات مربوط به حساب کاربری" />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "اضافه کردن حساب کاربری جدید",
+        link: "/references/cli/add-account"
+      },
+      {
+        title: "لیست حساب‌های کاربری ",
+        link: "/references/cli/list-accounts"
+      },
+      {
+        title: "حذف یکی از حساب‌های کاربری",
+        link: "/references/cli/remove-account"
+      },
+      {
+        title: "انتخاب حساب پیش‌فرض",
+        link: "/references/cli/choose-default-account"
+      },
+
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<Section id="paas-commands" title="دستورات مربوط به پلتفرم" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+
       {
         title: "ایجاد یک برنامه",
         link: "/references/cli/create-app"
@@ -87,6 +133,14 @@ import Head from "next/head";
         link: "/references/cli/connect-to-app-shell"
       },
       {
+        title: "مدیریت دیسک‌ها",
+        link: "/references/cli/manage-disks"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/references/cli/deploy-app"
+      },
+      {
         title: "روشن‌کردن برنامه",
         link: "/references/cli/start-app"
       },
@@ -95,7 +149,7 @@ import Head from "next/head";
         link: "/references/cli/stop-app"
       },
       {
-        title: " لیست متغیرهای ثبت شده برنامه",
+        title: "لیست متغیرهای ثبت شده برنامه",
         link: "/references/cli/list-envs"
       },
       {
@@ -105,22 +159,6 @@ import Head from "next/head";
       {
         title: "حذف متغیرهای محیطی یک برنامه",
         link: "/references/cli/remove-env"
-      },
-      {
-        title: "اضافه کردن حساب کاربری جدید",
-        link: "/references/cli/add-account"
-      },
-      {
-        title: "لیست حساب‌های کاربری ",
-        link: "/references/cli/list-accounts"
-      },
-      {
-        title: "حذف یکی از حساب‌های کاربری",
-        link: "/references/cli/remove-account"
-      },
-      {
-        title: "انتخاب حساب پیش‌فرض",
-        link: "/references/cli/choose-default-account"
       },
   ].map(item =>
               <Link href={item.link}>
@@ -136,6 +174,136 @@ import Head from "next/head";
             )}
           </div>
 
-<br />
+<Section id="dbaas-commands" title="دستورات مربوط به دیتابیس" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "ایجاد یک دیتابیس",
+        link: "/references/cli/create-db"
+      },
+      {
+        title: "حذف یک دیتابیس",
+        link: "/references/cli/delete-db"
+      },
+      {
+        title: "لیست‌کردن دیتابیس‌ها",
+        link: "/references/cli/list-dbs"
+      },
+      {
+        title: "تغییر اندازه دیتابیس",
+        link: "/references/cli/resize-db"
+      },
+      {
+        title: "روشن‌کردن دیتابیس",
+        link: "/references/cli/start-db"
+      },
+      {
+        title: "خاموش‌کردن دیتابیس",
+        link: "/references/cli/stop-db"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<Section id="bucket-commands" title="دستورات مربوط به فضای ذخیره‌سازی" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "ایجاد یک باکت",
+        link: "/references/cli/create-bucket"
+      },
+      {
+        title: "حذف یک باکت",
+        link: "/references/cli/delete-bucket"
+      },
+      {
+        title: "لیست‌کردن باکت‌ها",
+        link: "/references/cli/list-buckets"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<Section id="email-commands" title="دستورات مربوط به ایمیل‌سرور" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "ایجاد یک ایمیل‌سرور",
+        link: "/references/cli/create-email-server"
+      },
+      {
+        title: "حذف یک ایمیل‌سرور",
+        link: "/references/cli/delete-email-server"
+      },
+      {
+        title: "لیست‌کردن ایمیل‌سرور‌ها",
+        link: "/references/cli/list-email-servers"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+{/* <Section id="dns-commands" title="دستورات مربوط به سامانه مدیریت دامنه" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "ایجاد یک ایمیل‌سرور",
+        link: "/references/cli/create-email-server"
+      },
+      {
+        title: "حذف یک ایمیل‌سرور",
+        link: "/references/cli/delete-email-server"
+      },
+      {
+        title: "لیست‌کردن ایمیل‌سرور‌ها",
+        link: "/references/cli/list-email-servers"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      نحوه {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br /> */}
 
 </Layout>

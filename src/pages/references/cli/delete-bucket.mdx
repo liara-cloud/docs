@@ -16,35 +16,36 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات حذف برنامه با Liara CLI - لیارا</title>
+<title>مستندات حذف باکت با Liara CLI - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه حذف برنامه در رابط کاربری خط فرمان لیارا"  />
+<meta property="og:description" content="مستندات مربوط به نحوه حذف باکت در رابط کاربری خط فرمان لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# حذف برنامه با Liara CLI
+# حذف باکت با Liara CLI
 <hr className="mb-2" />
 
 برای 
-حذف برنامه با Liara CLI،
+حذف باکت با Liara CLI،
 می‌توانید از دستور زیر، استفاده کنید: 
 
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`liara delete`}
+{`liara bucket delete`}
 </Highlight>
 </div>
 <div className="h-2" />
-<Asciinema id="delete-app" />
+
+{/* <Asciinema id="remove-database-using-cli" /> */}
 
 
 <Section id="command-parameters" title="پارامترهای دستور" />
-دستور <Important>liara delete</Important>، <Important>liara app:delete</Important>، <Important>liara app remove</Important> یا <Important>liara app rm</Important> پارامترهای زیر را، می‌پذیرد:
+دستور <Important>liara db remove</Important>، <Important>liara bucket delete</Important> پارامترهای زیر را، می‌پذیرد:
 
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{` liara delete [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>]`}
+{` liara db remove [-h] [--debug] [--api-token <value>] [--account <value>] [-b <value>] [-f]`}
 </Highlight>
 </div>
 
@@ -54,34 +55,37 @@ import Head from "next/head";
   "مثال",
 ]} data={[
   [
-    <Important>a- یا app--</Important>,
-    "برای درج  شناسه برنامه‌ای که قصد حذف آن را دارید",
-    <Important>liara delete --app=my-web-app</Important>,
-  ],
-  [
     <Important>h- یا help--</Important>,
     "نمایش راهنما",
-    <Important>liara delete -h</Important>,
+    <Important>liara bucket delete -h</Important>,
   ],
-
   [
-    <Important>account--</Important>,
-    "برای تغییر موقتی حساب کاربری ",
-    <Important>liara delete --account alinajmabadi_iran</Important>,
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara bucket delete --debug</Important>,
   ],
   [
     <Important>api-token--</Important>,
     <div dir="rtl">
     <p> برای اجرای آنی عملیات delete به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
     </div>,
-    <Important>****=liara delete --api-token</Important>,
+    <Important>****=liara bucket delete --api-token</Important>,
   ],
   [
-    <Important>debug--</Important>,
-    "برای نمایش لاگ‌های دیباگ",
-    <Important>liara delete --debug</Important>,
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara bucket delete --account jane_doe</Important>,
   ],
-  
+  [
+    <Important>b- یا bucket--</Important>,
+    "برای درج  نام باکتی که قصد حذف آن را دارید",
+    <Important>liara bucket delete -b my-bucket</Important>,
+  ],
+  [
+    <Important>f- یا force--</Important>,
+    "برای حذف باکت با اعمال اجبار",
+    <Important>liara bucket delete -f</Important>,
+  ],
 ]} />
 <div className="h-3" />
 

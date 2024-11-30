@@ -16,40 +16,39 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات مشاهده لیست متغیرهای محیطی برنامه با Liara CLI - لیارا</title>
+<title>مستندات مشاهده لیستی از دیتابیس‌های ایجاد شده با Liara CLI - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه مشاهده لیستی از متغیرهای محیطی یک برنامه در رابط کاربری خط فرمان لیارا"  />
+<meta property="og:description" content="مستندات مربوط به نحوه مشاهده لیستی از دیتابیس‌های ایجاد شده در رابط کاربری خط فرمان لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# لیست متغیرهای محیطی برنامه با Liara CLI
+# مشاهده لیستی از دیتابیس‌های ایجاد شده با Liara CLI
 <hr className="mb-2" />
 
 برای 
-لیست متغیرهای محیطی برنامه با Liara CLI،
+مشاهده لیستی از دیتابیس‌های ایجاد شده با Liara CLI،
 می‌توانید از دستور زیر، استفاده کنید: 
 
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`liara env:list`}
+{`liara db list # or liara db ls`}
 </Highlight>
 </div>
 <div className="h-2" />
-<Asciinema id="list-envs" />
+<Asciinema id="list-dbs-using-cli" />
 
 
 <Section id="command-parameters" title="پارامترهای دستور" />
-دستور <Important>liara env:list</Important>یا <Important>liara env:ls</Important>، پارامترهای زیر را، می‌پذیرد:
+دستور <Important>liara db list</Important>یا <Important>liara db ls</Important>، پارامترهای زیر را، می‌پذیرد:
 
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`liara env list [-h] [--debug] [--api-token <value>]  [--account <value>] [-a
-    <value>] [--columns <value> | -x] [--filter <value>] [--no-header | [--csv | --no-truncate]] [--output csv|json|yaml
-    |  | ] [--sort <value>]`}
+{` liara db ls [-h] [--debug] [--api-token <value>]  [--account <value>] [--columns
+    <value> | -x] [--filter <value>] [--no-header | [--csv | --no-truncate]] [--output csv|json|yaml] [--sort
+    <value>]`}
 </Highlight>
 </div>
-
 
 <Table headers={[
   "پارامتر",
@@ -58,79 +57,73 @@ import Head from "next/head";
 ]} data={[
   [
     <Important>x- یا extended--</Important>,
-    "نمایش اطلاعات اضافی متغیرها",
-    <Important>liara env:ls --extended</Important>,
+    "نمایش اطلاعات و ستون‌های اضافی دیتابیس‌ها",
+    <Important>liara db ls --extended</Important>,
   ],
-  
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara db ls -h</Important>,
+  ],
   [
     <Important>account--</Important>,
     "برای تغییر موقتی حساب کاربری ",
-    <Important>liara env:ls --account alinajmabadi_iran</Important>,
+    <Important>liara db ls --account alinajmabadi_iran</Important>,
   ],
   [
     <Important>api-token--</Important>,
     <div dir="rtl">
-    <p> برای اجرای آنی عملیات نمایش متغیرها به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    <p> برای اجرای آنی عملیات نمایش دیتابیس‌ها به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
     </div>,
-    <Important>****=liara env:ls --api-token</Important>,
+    <Important>****=liara db ls --api-token</Important>,
   ],
   [
     <Important>debug--</Important>,
-    "برای نمایش دیباگ در کنار متغیرهای محیطی",
-    <Important>liara env:ls --debug</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara db ls --debug</Important>,
   ],
   [
     <Important>columns--</Important>,
     "برای نمایش فقط ستون‌های انتخاب شده",
-    <Important>liara env:ls --columns=Key</Important>,
+    <Important>liara db ls --columns=Status,Name</Important>,
   ],
   [
     <Important>csv-- یا output=csv--</Important>,
     <div dir="rtl">
     <p>برای نمایش خروجی در فرمت CSV</p>
     </div>,
-    <Important>liara env:ls --csv</Important>,
+    <Important>liara db ls --csv</Important>,
   ],
   [
     <Important>filter--</Important>,
     <div dir="rtl">
     <p>برای فیلتر یک ستون با اسم</p>
     </div>,
-    <Important>"liara env:ls --filter="Key=auth</Important>,
+    <Important>"liara db ls --filter="name=myapp</Important>,
   ],
   [
     <Important>no-header--</Important>,
     "برای عدم نمایش هدرهای جدول",
-    <Important>liara env:ls  --no-header</Important>,
+    <Important>liara db ls  --no-header</Important>,
   ],
   [
     <Important>no-truncate--</Important>,
     "برای جلوگیری از کوتاه شدن یا برش خروجی به اندازه‌ی صفحه نمایش ",
-    <Important>liara env:ls  --no-truncate</Important>,
+    <Important>liara db ls  --no-truncate</Important>,
   ],
   [
     <Important>output--</Important>,
         <div dir="rtl">
     <p>برای تعیین فرمت خروجی (CSV , YAML , JSON)</p>
     </div>,
-    <Important>liara env:ls  --output=json</Important>,
+    <Important>liara db ls  --output=json</Important>,
   ],
   [
     <Important>sort--</Important>,
         <div dir="rtl">
     <p>برای مرتب‌سازی بر اساس یک ستون (مرتب‌سازی descending با -)</p>
     </div>,
-    <Important>liara env:ls --sort=-Value</Important>,
-  ],
-  [
-    <Important>h- یا help--</Important>,
-    "نمایش راهنما",
-    <Important>liara env:ls -h</Important>,
-  ],
-  [
-    <Important>a- یا app--</Important>,
-    "انتخاب برنامه هدف",
-    <Important>liara env:ls -a my-web-app</Important>,
+    <Important>liara db ls --sort=-Name</Important>,
   ],
   
 ]} />

@@ -16,35 +16,36 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات حذف برنامه با Liara CLI - لیارا</title>
+<title>مستندات حذف دیتابیس با Liara CLI - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه حذف برنامه در رابط کاربری خط فرمان لیارا"  />
+<meta property="og:description" content="مستندات مربوط به نحوه حذف دیتابیس در رابط کاربری خط فرمان لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# حذف برنامه با Liara CLI
+# حذف دیتابیس با Liara CLI
 <hr className="mb-2" />
 
 برای 
-حذف برنامه با Liara CLI،
+حذف دیتابیس با Liara CLI،
 می‌توانید از دستور زیر، استفاده کنید: 
 
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`liara delete`}
+{`liara db remove # or liara db rm`}
 </Highlight>
 </div>
 <div className="h-2" />
-<Asciinema id="delete-app" />
+
+<Asciinema id="remove-database-using-cli" />
 
 
 <Section id="command-parameters" title="پارامترهای دستور" />
-دستور <Important>liara delete</Important>، <Important>liara app:delete</Important>، <Important>liara app remove</Important> یا <Important>liara app rm</Important> پارامترهای زیر را، می‌پذیرد:
+دستور <Important>liara db remove</Important>، <Important>liara db rm</Important> پارامترهای زیر را، می‌پذیرد:
 
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{` liara delete [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>]`}
+{` liara db remove [-h] [--debug] [--api-token <value>] [--account <value>] [-n <value>] [-y]`}
 </Highlight>
 </div>
 
@@ -54,34 +55,37 @@ import Head from "next/head";
   "مثال",
 ]} data={[
   [
-    <Important>a- یا app--</Important>,
-    "برای درج  شناسه برنامه‌ای که قصد حذف آن را دارید",
-    <Important>liara delete --app=my-web-app</Important>,
-  ],
-  [
     <Important>h- یا help--</Important>,
     "نمایش راهنما",
-    <Important>liara delete -h</Important>,
+    <Important>liara db rm -h</Important>,
   ],
-
   [
-    <Important>account--</Important>,
-    "برای تغییر موقتی حساب کاربری ",
-    <Important>liara delete --account alinajmabadi_iran</Important>,
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara db rm --debug</Important>,
   ],
   [
     <Important>api-token--</Important>,
     <div dir="rtl">
     <p> برای اجرای آنی عملیات delete به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
     </div>,
-    <Important>****=liara delete --api-token</Important>,
+    <Important>****=liara db rm --api-token</Important>,
   ],
   [
-    <Important>debug--</Important>,
-    "برای نمایش لاگ‌های دیباگ",
-    <Important>liara delete --debug</Important>,
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری ",
+    <Important>liara db rm --account jane_doe</Important>,
   ],
-  
+  [
+    <Important>n- یا name--</Important>,
+    "برای درج  نام دیتابیسی که قصد حذف آن را دارید",
+    <Important>liara db rm -n my-db</Important>,
+  ],
+  [
+    <Important>y- یا yes--</Important>,
+    "برای تایید حذف دیتابیس",
+    <Important>liara db rm -y</Important>,
+  ],
 ]} />
 <div className="h-3" />
 
