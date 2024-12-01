@@ -38,7 +38,7 @@ import Head from "next/head";
 
 
 <Section id="initial-commands" title="دستورات آغازین" />
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-2 gap-4">
             {[
       {
         title: "نصب و به‌روزرسانی",
@@ -274,20 +274,28 @@ import Head from "next/head";
           </div>
 
 
-{/* <Section id="dns-commands" title="دستورات مربوط به سامانه مدیریت دامنه" />
+<Section id="dns-commands" title="دستورات مربوط به سامانه مدیریت دامنه" />
 <div className="grid md:grid-cols-3 gap-4">
             {[
       {
-        title: "ایجاد یک ایمیل‌سرور",
-        link: "/references/cli/create-email-server"
+        title: "اضافه‌کردن دامنه جدید",
+        link: "/references/cli/create-domain"
       },
       {
-        title: "حذف یک ایمیل‌سرور",
-        link: "/references/cli/delete-email-server"
+        title: "حذف یک دامنه",
+        link: "/references/cli/delete-domain"
       },
       {
-        title: "لیست‌کردن ایمیل‌سرور‌ها",
-        link: "/references/cli/list-email-servers"
+        title: "بررسی وضعیت یک دامنه",
+        link: "/references/cli/check-domain-status"
+      },
+      {
+        title: "مشاهده جزئیات یک دامنه",
+        link: "/references/cli/get-domain-details"
+      },
+      {
+        title: "لیست کردن تمام دامنه‌ها",
+        link: "/references/cli/list-domains"
       },
   ].map(item =>
               <Link href={item.link}>
@@ -304,6 +312,6 @@ import Head from "next/head";
           </div>
 
 
-<br /> */}
+<br />
 
 </Layout>

@@ -8657,16 +8657,12 @@ export default {
         link: "/references/cli/login"
       },
       {
-        title: "مدیریت دیسک‌ها",
-        link: "/references/cli/manage-disks"
-      },
-      {
-        title: "مشاهده پلن‌های سرویس پلتفرم",
-        link: "/references/cli/see-platform-plans"
-      },
-      {
         title: "تکمیل خودکار دستورات",
         link: "/references/cli/autocomplete"
+      },
+      {
+        title: "مشاهده پلن‌ پلتفرم و دیتابیس",
+        link: "/references/cli/see-platform-plans"
       },
       {
         hr: true
@@ -8674,13 +8670,37 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          مدیریت برنامه‌ها 
+          مدیریت حساب کاربری 
           </div>
         )
       },
       {
-        title: "استقرار برنامه",
-        link: "/references/cli/deploy-app"
+        title: "اضافه کردن حساب کاربری جدید",
+        link: "/references/cli/add-account"
+      },
+      {
+        title: "لیست حساب‌های کاربری ",
+        link: "/references/cli/list-accounts"
+      },
+      {
+        title: "حذف یکی از حساب‌های کاربری",
+        link: "/references/cli/remove-account"
+      },
+      {
+        title: "انتخاب حساب پیش‌فرض",
+        link: "/references/cli/choose-default-account"
+      },
+
+      {
+        hr: true
+      },
+
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          مدیریت برنامه‌ها 
+          </div>
+        )
       },
       {
         title: "ایجاد یک برنامه",
@@ -8707,22 +8727,20 @@ export default {
         link: "/references/cli/connect-to-app-shell"
       },
       {
+        title: "مدیریت دیسک‌ها",
+        link: "/references/cli/manage-disks"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/references/cli/deploy-app"
+      },
+      {
         title: "روشن‌کردن برنامه",
         link: "/references/cli/start-app"
       },
       {
         title: "خاموش‌کردن برنامه",
         link: "/references/cli/stop-app"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          مدیریت متغیرهای محیطی 
-          </div>
-        )
       },
       {
         title: " لیست متغیرهای ثبت شده برنامه",
@@ -8733,7 +8751,7 @@ export default {
         link: "/references/cli/add-or-edit-envs"
       },
       {
-        title: "حذف متغیرهای محیطی یک برنامه",
+        title: "حذف متغیرهای محیطی برنامه",
         link: "/references/cli/remove-env"
       },
       {
@@ -8742,25 +8760,112 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            مدیریت حساب‌های کاربری
+            مدیریت دیتابیس‌ها
           </div>
         )
       },
       {
-        title: "اضافه کردن حساب کاربری جدید",
-        link: "/references/cli/add-account"
+        title: "ایجاد یک دیتابیس",
+        link: "/references/cli/create-db"
       },
       {
-        title: "لیست حساب‌های کاربری ",
-        link: "/references/cli/list-accounts"
+        title: "حذف یک دیتابیس",
+        link: "/references/cli/delete-db"
       },
       {
-        title: "حذف یکی از حساب‌های کاربری",
-        link: "/references/cli/remove-account"
+        title: "لیست‌کردن دیتابیس‌ها",
+        link: "/references/cli/list-dbs"
       },
       {
-        title: "انتخاب حساب پیش‌فرض",
-        link: "/references/cli/choose-default-account"
+        title: "تغییر اندازه دیتابیس",
+        link: "/references/cli/resize-db"
+      },
+      {
+        title: "روشن‌کردن دیتابیس",
+        link: "/references/cli/start-db"
+      },
+      {
+        title: "خاموش‌کردن دیتابیس",
+        link: "/references/cli/stop-db"
+      },
+
+      {
+        hr: true
+      },
+
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            مدیریت فضای ذخیره‌سازی ابری
+          </div>
+        )
+      },
+      {
+        title: "ایجاد یک باکت",
+        link: "/references/cli/create-bucket"
+      },
+      {
+        title: "حذف یک باکت",
+        link: "/references/cli/delete-bucket"
+      },
+      {
+        title: "لیست‌کردن باکت‌ها",
+        link: "/references/cli/list-buckets"
+      },
+
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            مدیریت ایمیل‌سرور
+          </div>
+        )
+      },
+
+      {
+        title: "ایجاد یک ایمیل‌سرور",
+        link: "/references/cli/create-email-server"
+      },
+      {
+        title: "حذف یک ایمیل‌سرور",
+        link: "/references/cli/delete-email-server"
+      },
+      {
+        title: "لیست‌کردن ایمیل‌سرور‌ها",
+        link: "/references/cli/list-email-servers"
+      },
+
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            مدیریت DNS
+          </div>
+        )
+      },
+      {
+        title: "اضافه‌کردن دامنه جدید",
+        link: "/references/cli/create-domain"
+      },
+      {
+        title: "حذف یک دامنه",
+        link: "/references/cli/delete-domain"
+      },
+      {
+        title: "بررسی وضعیت یک دامنه",
+        link: "/references/cli/check-domain-status"
+      },
+      {
+        title: "مشاهده جزئیات یک دامنه",
+        link: "/references/cli/get-domain-details"
+      },
+      {
+        title: "لیست کردن تمام دامنه‌ها",
+        link: "/references/cli/list-domains"
       },
     ],
 
