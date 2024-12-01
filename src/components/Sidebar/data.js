@@ -5,6 +5,7 @@ import {
   GoGear,
   GoRead,
   GoLock,
+  GoStarFill ,
   GoFile,
   GoDatabase,
   GoDiff,
@@ -8511,6 +8512,11 @@ export default {
         title: "رکوردهای قابل پشتیبانی",
         icon: <GoGoal  />,
         link: "/dns-management-system/details/supported-records"
+      },
+      {
+        title: "رکوردهای Wildcard DNS",
+        icon: <GoStarFill   />,
+        link: "/dns-management-system/details/wildcard-dns-records"
       },
       {
         title: "حذف یک سامانه مدیریت دامنه",

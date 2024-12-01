@@ -13,6 +13,7 @@ import PlatformIcon from "@/components/Common/icons";
 import {
   GoHome,
   GoGoal,
+  GoStarFill,
   GoDatabase,
   GoContainer,
   GoRocket,
@@ -77,7 +78,7 @@ import Head from "next/head";
 
 <div className="h-6" />
 
-    <div className="grid md:grid-cols-2 gap-4">
+    <div className="grid md:grid-cols-3 gap-4">
     {[
 
     {
@@ -85,6 +86,12 @@ import Head from "next/head";
       icon: <GoGoal   />,
       desc: "تعریف و لیست تمامی رکوردهایی که سرویس DNS لیارا، از آن‌ها، پشتیبانی می‌کند.",
       link: "./supported-records",
+    },
+    {
+        title: "رکوردهای Wildcard DNS",
+        icon: <GoStarFill   />,
+        desc: "امکان استفاده از قابلیت رکوردهای Wildcard در سامانه مدیریت دامنه لیارا",
+        link: "/dns-management-system/details/wildcard-dns-records"
     },
     {
       title: "حذف یک سامانه مدیریت دامنه",

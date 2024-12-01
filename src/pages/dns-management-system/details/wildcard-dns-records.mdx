@@ -1,0 +1,118 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Table from "@/components/Common/table";
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با Wildcard DNS Records - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات آشنایی با رکوردهای Wildcard DNS در کنسول لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# رکوردهای Wildcard DNS
+
+<hr className="mb-2" />
+
+رکوردهای معمولی در DNS، یک نام دامنه را 
+به یک یا چند تا آدرس IP یا دامنه‌های خاص دیگر،
+نگاشت می‌کنند. این در حالی است که 
+رکوردهای Wildcard در DNS، رکوردهایی هستند که برای تطبیق درخواست‌ها از سوی دامنه‌ها یا زیردامنه‌های مشخص نشده، استفاده می‌شوند.
+به عبارت دیگر، رکوردهای Wildcard به شما این امکان را می‌دهد که به جای تنظیم رکوردهای 
+DNS برای هر زیر دامنه به‌طور جداگانه، یک رکورد واحد را برای تمام زیر دامنه‌های یک دامنه ایجاد کنید.
+
+<Section id="how-wildcard-dns-record-works" title="رکوردهای Wildcard چگونه کار می‌کنند؟" />
+رکورد Wildcard DNS از نماد <Important>*</Important> برای نشان دادن هر زیر دامنه‌ای که به دامنه شما ارسال می‌شود، استفاده می‌کند. به عنوان مثال، اگر رکورد Wildcard برای دامنه <Important>example.com</Important> به صورت زیر تنظیم شود:
+
+<div dir='ltr'>
+<Table headers={[
+  "Type",
+  "Name",
+  "IPv4 address",
+]} data={[
+  [
+    <p><Important>A</Important></p>,
+    <p><Important>*</Important></p>,
+    <p><Important>192.0.2.1</Important></p>,
+  ],
+]}
+/>
+</div>
+
+به این معنی است که هر درخواست DNS برای هر زیر دامنه‌ای از example.com (مثلاً abc.example.com , xyz.example.com , anything.example.com) به آدرس IP فوق، هدایت خواهد شد.
+
+لیارا، از قابلیت Wildcard DNS پشتیبانی می‌کند و شما می‌توانید در پروژه‌های مختلف خود از این قابلیت استفاده کنید. 
+همچنین، شما می‌توانید افزون بر مثال فوق، Wildcard را برای زیر دامنه‌های عمیق‌تری نیز، تعریف کنید؛ به عنوان مثال، با تعریف رکورد زیر: 
+
+<div dir='ltr'>
+<Table headers={[
+  "Type",
+  "Name",
+  "IPv4 address",
+]} data={[
+  [
+    <p><Important>A</Important></p>,
+    <p><Important>*.www</Important></p>,
+    <p><Important>example.com</Important></p>,
+  ],
+]}
+/>
+</div>
+
+هر درخواستی که به تمام زیر دامنه‌های <Important>www.example.com</Important> (مانند abc.www.example.com , xyz.www.example.com , anything.www.example.com) ارسال شود؛ به دامنه example.com، هدایت می‌شود. 
+
+<Section id="wildcard-limitations" title="محدودیت‌های رکورد Wildcard DNS" />
+
+<b>Wildcardها فقط می‌توانند در اولین بخش از نام دامنه (label) استفاده شوند.</b> با وجود این محدودیت، رکوردی مثل <Important>subdomain.*.example.com</Important>، یک Wildcard معتبر نیست و علامت * به عنوان یک literal تلقی شده 
+و عملگر Wildcard محسوب نمی‌شود.   
+
+<div className="h-3" />
+
+<b>شما نمی‌توانید از wildcardها در چندین سطح استفاده کنید.</b> با وجود این محدودیت، رکوردی مانند <Important>example.com.\*.\*</Important>، یک Wildcard معتبر نیست؛ چرا که 
+اگر ستاره اولی به عنوان عملگر Wildcard محسوب شود، ستاره دومی یک literal شناخته می‌شود.
+
+<div className="h-3" />
+
+
+<b>رکوردهای DNS خاص، اولویت بیشتری نسبت به رکوردهای Wildcard دارند.</b> وقتی که DNS درخواست‌ها را پردازش می‌کند، اگر رکورد Wildcard برای دامنه تنظیم شده باشد اما یک رکورد دقیق نیز برای یک زیر دامنه خاص هم وجود داشته باشد، رکورد خاص، اولویت پیدا کرده و به آن، پاسخ داده می‌شود.
+به عنوان مثال، فرض کنید که فقط دو رکورد زیر، روی دامنه‌تان ثبت شده است: 
+
+<div dir='ltr'>
+<Table headers={[
+  "Type",
+  "Name",
+  "IPv4 address",
+]} data={[
+  [
+    <p><Important>A</Important></p>,
+    <p><Important>*.example.com</Important></p>,
+    <p><Important>192.0.2.3</Important></p>,
+  ],
+  [
+    <p><Important>TXT</Important></p>,
+    <p><Important>subdomain1.example.com</Important></p>,
+    <p><Important>&lt;some_text&gt;</Important></p>,
+  ],
+]}
+/>
+</div>
+
+با شرایط فوق، هر درخواستی که به تمام زیردامنه‌های example.com فرستاده شود، به جز subdomain1.example.com، به 192.0.2.3 هدایت خواهد شد. 
+این حالت در مورد زیر دامنه‌های عمیق‌تر (مثل a.sub2.example.com) نیز صادق است و 
+تمامی درخواست‌ها، به جز زیردامنه‌های عمیق‌تر subdomain1.example.com (مثل deeper.subdomain1.example.com) به آدرس 192.0.2.3، هدایت خواهند شد.
+
+</Layout>
