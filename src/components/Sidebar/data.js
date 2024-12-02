@@ -4680,6 +4680,16 @@ export default {
         link: "/one-click-apps/docuseal/quick-start"
       },
       {
+        title: "Docmost",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.png" />,
+        link: "/one-click-apps/docmost/quick-start"
+      },
+      {
+        title: "LinkStack",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.png" />,
+        link: "/one-click-apps/linkstack/quick-start"
+      },
+      {
         title: "Mixpost",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/communityIcon_grq1bunhrg8c1.ico" />,
         link: "/one-click-apps/mixpost/quick-start"
@@ -6823,6 +6833,76 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/docuseal/how-tos/choose-version"
+      },
+    ], 
+    docmost: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.png" />
+            برنامه Docmost
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/docmost/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/docmost/how-tos/choose-version"
+      },
+    ], 
+    linkstack: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.png" />
+            برنامه linkstack
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/linkstack/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/linkstack/how-tos/choose-version"
       },
     ], 
     mixpost: [
