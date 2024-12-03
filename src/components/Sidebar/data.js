@@ -4435,6 +4435,16 @@ export default {
         link: "/one-click-apps/imgproxy/quick-start"
       },
       {
+        title: "Vikunja",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.png" />,
+        link: "/one-click-apps/vikunja/quick-start"
+      },
+      {
+        title: "Drupal",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.jpg" />,
+        link: "/one-click-apps/drupal/quick-start"
+      },
+      {
         title: "Onedev",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.png" />,
         link: "/one-click-apps/onedev/quick-start"
@@ -4483,6 +4493,11 @@ export default {
         title: "Mattermost",
         icon: <IconContainer alt="mattermost" />,
         link: "/one-click-apps/mattermost/quick-start"
+      },
+      {
+        title: "Etherpad",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/etherpad/favicon.ico" />,
+        link: "/one-click-apps/etherpad/quick-start"
       },
       {
         title: "Strapi",
@@ -5306,6 +5321,41 @@ export default {
         link: "/one-click-apps/onedev/how-tos/choose-version"
       },
     ],
+    drupal: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.jpg" />
+            برنامه Drupal
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/drupal/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/drupal/how-tos/choose-version"
+      },
+    ],
     rocketchat: [
       {
         badge: (
@@ -5668,6 +5718,76 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/umami/how-tos/choose-version"
+      },
+    ],
+    etherpad: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/etherpad/favicon.ico" />
+            برنامه Etherpad
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/etherpad/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/etherpad/how-tos/choose-version"
+      },
+    ],
+    vikunja: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.png" />
+            برنامه Vikunja
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/vikunja/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/vikunja/how-tos/choose-version"
       },
     ],
     prestashop: [
