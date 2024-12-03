@@ -245,6 +245,11 @@ export default {
         link: "/paas/dotnet/getting-started"
       },
       {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/golang/getting-started"
+      },
+      {
         title: "React",
         icon: <IconContainer alt="react" />,
         link: "/paas/react/getting-started"
@@ -380,6 +385,11 @@ export default {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
         link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/golang/getting-started"
       },
       {
         title: "React",
@@ -519,6 +529,11 @@ export default {
         link: "/paas/dotnet/getting-started"
       },
       {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/golang/getting-started"
+      },
+      {
         title: "React",
         icon: <IconContainer alt="react" />,
         link: "/paas/react/getting-started"
@@ -654,6 +669,11 @@ export default {
         title: "NET.",
         icon: <IconContainer alt="netcore" />,
         link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "Golang",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/golang/getting-started"
       },
       {
         title: "React",
@@ -2553,6 +2573,168 @@ export default {
         title: "رفع خطای CORS",
         link: "/paas/dotnet/fix-common-errors/cors"
       },
+    ],
+    golang: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="go" />
+            پلتفرم Golang
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/golang/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/golang/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/golang/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/golang/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/golang/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/golang/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/golang/how-tos/use-disk"
+      },
+      {
+        title: "استفاده از Supervisord",
+        link: "/paas/golang/how-tos/use-supervisord"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/golang/how-tos/use-ffmpeg-module"
+      },
+      // {
+      //   title: "تنظیم Nginx",
+      //   link: "/paas/golang/how-tos/customize-nginx"
+      // },
+      // {
+      //   title: "فعال‌سازی قابلیت gzip",
+      //   link: "/paas/golang/how-tos/enable-gzip"
+      // },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/golang/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/golang/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه golang",
+        link: "/paas/golang/how-tos/choose-version"
+      },
+      // {
+      //   title: "راه‌اندازی برنامه WebSocket",
+      //   link: "/paas/golang/how-tos/use-websocket"
+      // },
+      // {
+      //   title: "تنظیم تعداد workerهای  Gunicorn",
+      //   link: "/paas/golang/how-tos/set-gunicorn-workers"
+      // },
+      // {
+      //   title: "تنظیم max_request در Gunicorn",
+      //   link: "/paas/golang/how-tos/set-gunicorn-maxrequest"
+      // },
+      // {
+      //   title: "تنظیم هدرهای امنیتی HTTP",
+      //   link: "/paas/golang/how-tos/set-http-security-headers"
+      // },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/golang/how-tos/set-logs"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/golang/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/golang/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+      icon: <IconContainer alt="mssql" />,
+        link: "/paas/golang/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/golang/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/golang/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/golang/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/golang/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/golang/how-tos/connect-to-db/mongodb"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBug  />
+      //       <Link href="/paas/golang/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //     </div>
+      //   )
+      // },
     ],
     react: [
       {
