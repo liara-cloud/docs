@@ -47,7 +47,8 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`composer require phpmailer/phpmailer`}
+        {`composer require phpmailer/phpmailer
+# composer require vlucas/phpdotenv phpmailer/phpmailer # for dotenv`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -62,8 +63,8 @@ import Head from "next/head";
     <Highlight className="bash">
         {`MAIL_HOST=smtp.c1.liara.email
 MAIL_PORT=465
-MAIL_USER=friendly_liskov_ihidh7
-MAIL_PASSWORD=58455bf7-f7c9-4562-9a9e-53b051f2ba79
+MAIL_USER=happy_motse_sng2rc
+MAIL_PASSWORD=6e5617f9-19ab-4c93-b0ca-34ec7312c387
 MAIL_FROM_ADDRESS=info@example.com
 MAIL_FROM_NAME=my-app
 `}
@@ -91,46 +92,45 @@ MAIL_FROM_NAME=my-app
 <div dir='ltr'>
     <Highlight className="php">
         {`<?php
-require 'vendor/autoload.php'; // Load Composer dependencies
+
+require 'vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Dotenv\Dotenv;
 
-// Load environment variables from .env file
+// Load environment variables from .env
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// Create an instance of PHPMailer
+// PHPMailer Configuration
 $mail = new PHPMailer(true);
 
 try {
     // Server settings
     $mail->isSMTP();
-    $mail->Host       = $_ENV['MAIL_HOST'];
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $_ENV['MAIL_USER'];
-    $mail->Password   = $_ENV['MAIL_PASSWORD'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use TLS encryption
-    $mail->Port       = $_ENV['MAIL_PORT'];
+    $mail->Host = $_ENV['MAIL_HOST'];
+    $mail->SMTPAuth = true;
+    $mail->Username = $_ENV['MAIL_USER'];
+    $mail->Password = $_ENV['MAIL_PASSWORD'];
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Force SMTPS (TLS encryption)
+    $mail->Port = $_ENV['MAIL_PORT'];
 
-    // Recipients
+    // Sender and recipient
     $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], $_ENV['MAIL_FROM_NAME']);
-    $mail->addAddress('recipient@example.com'); // Add a recipient email
+    $mail->addAddress('test@example.com', 'Recipient Name');
 
     // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->isHTML(true);
     $mail->Subject = 'Test Email';
-    $mail->Body    = 'This is a test email sent using PHPMailer and SMTP.';
-    $mail->AltBody = 'This is the plain text version of the email content.';
-    $mail->addCustomHeader('x-liara-tag', 'test-tag'); // use Liara Tags
-
+    $mail->Body = '<h1>Hello from PHPMailer!</h1><p>This is a test email using SMTP.</p>';
+    $mail->AltBody = 'Hello from PHPMailer! This is a test email using SMTP.';
 
     // Send the email
     $mail->send();
-    echo 'Email has been sent successfully!';
+    echo 'Email sent successfully!';
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 `}
     </Highlight>
@@ -145,7 +145,8 @@ try {
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`composer require phpmailer/phpmailer`}
+        {`composer require phpmailer/phpmailer
+# composer require vlucas/phpdotenv phpmailer/phpmailer # for dotenv`}
     </Highlight>
 </div>
 <div className="h-2" />

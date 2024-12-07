@@ -64,17 +64,32 @@ MAIL_FROM_ADDRESS=info@example.com`}
 </p>
 </Alert>
 
-حال، بایستی قطعه کدی مشابه قطعه کد زیر را به فایل <Important>settings.py</Important> خود، اضافه کنید:
+حال، بایستی ماژول مورد نیاز برنامه را با اجرای دستور زیر نصب کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install decouple`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+در ادامه، کافیست قطعه کدی مشابه قطعه کد زیر را به فایل <Important>settings.py</Important> خود، اضافه کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv('MAIL_HOST')
-EMAIL_PORT = os.getenv('MAIL_PORT')
-EMAIL_HOST_USER = os.getenv('MAIL_USER')
-EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASSWORD')
-EMAIL_USE_TLS = True  # Use TLS encryption
-EMAIL_FROM_ADDRESS = os.getenv('MAIL_FROM_ADDRESS')`}
+        {`from decouple import config
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('MAIL_HOST')
+EMAIL_PORT = config('MAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('MAIL_USER')
+EMAIL_HOST_PASSWORD = config('MAIL_PASSWORD')
+EMAIL_USE_TLS = False # Disable TLS 
+EMAIL_USE_SSL = True  # Force SSL
+DEFAULT_FROM_EMAIL = f"{config('MAIL_FROM_NAME')} <{config('MAIL_FROM_ADDRESS')}>"
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -86,25 +101,27 @@ EMAIL_FROM_ADDRESS = os.getenv('MAIL_FROM_ADDRESS')`}
 <div dir='ltr'>
     <Highlight className="py">
         {`from django.core.mail import EmailMessage
-from django.http import HttpResponse
-from django.conf import settings
+from django.http import JsonResponse
 
-def send_test_email(request):
-    subject = 'Test Email from Django'
-    message = 'This is a test email sent from Django using SMTP on Liara server.'
-    recipient_list = ['recipient@example.com']
-    
-    email = EmailMessage(
-        subject,
-        message,
-        settings.EMAIL_FROM_ADDRESS,
-        recipient_list,
-        headers={"x-liara-tag": "test-tag"} # using liara tag feature,
-    )
+def send_email(request):
+    subject = "Test Email"
+    message = "This is a test email sent using TLS."
+    recipient_list = ["recipient@example.com"]
+    headers = {"x-liara-tag": "test-tag"}  # Custom headers
 
-    
-    email.send(fail_silently=False)
-    return HttpResponse('Test email sent successfully!') `}
+    try:
+        email = EmailMessage(
+            subject=subject,
+            body=message,
+            from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
+            to=recipient_list,
+            headers=headers,
+        )
+        email.send()
+        return JsonResponse({"status": "success", "message": "Email sent successfully!"})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
+`}
     </Highlight>
 </div>
 <div className="h-2" />
