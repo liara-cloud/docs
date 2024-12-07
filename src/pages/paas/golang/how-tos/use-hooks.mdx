@@ -16,13 +16,13 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات استفاده از Hooks در Python - لیارا</title>
+<title>مستندات استفاده از Hooks در Golang - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات نحوه استفاده از Hookها در پلتفرم Python در لیارا"  />
+<meta property="og:description" content="مستندات نحوه استفاده از Hookها در پلتفرم Golang در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# استفاده از Hooks در برنامه‌های Python
+# استفاده از Hooks در برنامه‌های Golang
 <hr className="mb-2" />
 
 Hookها در برنامه‌نویسی به دستوراتی گفته می‌شود که به شما اجازه می‌دهند تا عملکرد یک برنامه را در یک نقطه خاص از فرایند اجرا یا استقرار آن، تغییر یا بهبود دهید؛ بدون اینکه نیاز به تغییر کد اصلی داشته باشید.
@@ -62,7 +62,7 @@ Hookها در برنامه‌نویسی به دستوراتی گفته می‌ش
         {`echo "Running pre-start script..."
 
 # run migrations
-python manage.py migrate
+go run migrate.go
 
 # other needed commands
 # ...
@@ -74,7 +74,7 @@ echo "Pre-start script finished."`}
 
 <Alert variant="warning">
 <p>
-توجه داشته باشید که در <a href="../choose-version" className="text-[#2196f3] ">نسخه‌های بدون به‌روزرسانی Python</a>، این قابلیت پشتیبانی نمی‌شود.
+توجه داشته باشید که در <a href="../choose-version" className="text-[#2196f3] ">نسخه‌های بدون به‌روزرسانی Golang</a>، این قابلیت پشتیبانی نمی‌شود.
 
 </p>
 </Alert>

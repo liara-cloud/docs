@@ -269,11 +269,6 @@ export default {
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/getting-started"
       },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/paas//getting-started"
-      // },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
@@ -411,11 +406,6 @@ export default {
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/getting-started"
       },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/paas//getting-started"
-      // },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
@@ -553,11 +543,6 @@ export default {
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/getting-started"
       },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/paas//getting-started"
-      // },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
@@ -695,11 +680,6 @@ export default {
         icon: <IconContainer alt="HTML5" />,
         link: "/paas/static/getting-started"
       },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/paas//getting-started"
-      // },
       {
         title: "Docker",
         icon: <IconContainer alt="docker" />,
@@ -2630,14 +2610,14 @@ export default {
         title: "استفاده از دیسک",
         link: "/paas/golang/how-tos/use-disk"
       },
-      {
-        title: "استفاده از Supervisord",
-        link: "/paas/golang/how-tos/use-supervisord"
-      },
-      {
-        title: "استفاده از ماژول FFMPEG",
-        link: "/paas/golang/how-tos/use-ffmpeg-module"
-      },
+      // {
+      //   title: "استفاده از Supervisord",
+      //   link: "/paas/golang/how-tos/use-supervisord"
+      // },
+      // {
+      //   title: "استفاده از ماژول FFMPEG",
+      //   link: "/paas/golang/how-tos/use-ffmpeg-module"
+      // },
       // {
       //   title: "تنظیم Nginx",
       //   link: "/paas/golang/how-tos/customize-nginx"
@@ -2658,10 +2638,10 @@ export default {
         title: "تغییر نسخه golang",
         link: "/paas/golang/how-tos/choose-version"
       },
-      // {
-      //   title: "راه‌اندازی برنامه WebSocket",
-      //   link: "/paas/golang/how-tos/use-websocket"
-      // },
+      {
+        title: "راه‌اندازی برنامه WebSocket",
+        link: "/paas/golang/how-tos/use-websocket"
+      },
       // {
       //   title: "تنظیم تعداد workerهای  Gunicorn",
       //   link: "/paas/golang/how-tos/set-gunicorn-workers"

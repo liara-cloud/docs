@@ -14,26 +14,26 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات انتخاب نسخه Python در Python - لیارا</title>
+<title>مستندات انتخاب نسخه Golang در Golang - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات انتخاب نسخه در پلتفرم Python در لیارا"  />
+<meta property="og:description" content="مستندات انتخاب نسخه در پلتفرم Golang در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# انتخاب نسخه Python 
+# انتخاب نسخه Golang 
 <hr className="mb-2" />
 
-در حال حاضر در پلتفرم Python لیارا، نسخه‌های زیر ارائه می‌شوند: 
+در حال حاضر در پلتفرم Golang لیارا، نسخه‌های زیر ارائه می‌شوند: 
 
 <div className="h-2" />
 <ul className="pr-4">
   {[
-    {text: '3.7 (بدون به‌روزرسانی)',},
-    {text: '3.8',},
-    {text: '3.9',},
-    {text: '3.10',},
-    {text: '3.11 (پیش‌فرض)',},
-    {text: '3.12',},
+    // {text: '3.7 (بدون به‌روزرسانی)',},
+    {text: '1.20',},
+    {text: '1.21',},
+    {text: '1.22',},
+    {text: '1.23 (پیش‌فرض)',},
+    {text: '1.24',},
   ].map((item, index) => (
     <li
       key={index}
@@ -49,7 +49,7 @@ import Head from "next/head";
 <div className="h-2" />
 <Alert variant="warning">
 <p>
- قابلیت‌های جدید برای نسخه‌های بدون به‌روزرسانی، ارائه نمی‌شوند و برای رفع این مشکل، باید ورژن Python برنامه خود را، ارتقاء دهید.
+ قابلیت‌های جدید برای نسخه‌های بدون به‌روزرسانی، ارائه نمی‌شوند و برای رفع این مشکل، باید ورژن Golang برنامه خود را، ارتقاء دهید.
 </p>
 </Alert>
 
@@ -59,18 +59,18 @@ import Head from "next/head";
     content={[
     <>
     <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
-    <img src="https://files.liara.ir/liara/docs/change-python-version-in-python-using-console.png" alt="how to choose version in liara console" />
+    {/* <img src="https://files.liara.ir/liara/docs/change-Golang-version-in-Golang-using-console.png" alt="how to choose version in liara console" /> */}
     </>,
     <>
     <p>
-        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه Python به 3.12 می‌باشد:
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه Golang به 3.12 می‌باشد:
     </p>
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="json">
             {`{
-  "python": {
-    "version": "3.12"
+  "golang": {
+    "version": "1.22"
   }
 }`}
         </Highlight>
@@ -79,14 +79,14 @@ import Head from "next/head";
     </>,
     <>
     <p>
-        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه Python به 3.12 می‌باشد:
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه Golang به 3.12 می‌باشد:
     </p>
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="json">
             {`{
-  "python": {
-    "version": "3.12"
+  "golang": {
+    "version": "1.22"
   }
 }`}
         </Highlight>
