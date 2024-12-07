@@ -14,24 +14,35 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات راه‌اندازی سریع برنامه‌های Rallly - لیارا</title>
+<title>مستندات راه‌اندازی سریع برنامه‌های Etherpad - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی سریع برنامه Rallly در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به راه‌اندازی سریع برنامه etherpad در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
 
-# راه‌اندازی سریع برنامه‌های Rallly
+# راه‌اندازی سریع برنامه‌های Etherpad
 <hr className="mb-2" />
 
-  {/* <video
-  src="https://files.liara.ir/liara/docs/Rallly.mp4"
+{/* <div className="h-4" />
+<video
+  src="https://files.liara.ir/liara/docs/etherpad.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
-  />
-  <br /> */}
+/>
+<div className="h-4" /> */}
 
-<a href="https://rallly.co/" className="text-[#2196f3] ">Rallly</a> یک ابزار آنلاین برای برنامه‌ریزی جلسات و رویدادها به صورت گروهی است. این پلتفرم به کاربران اجازه می‌دهد تاریخ‌های پیشنهادی برای یک رویداد یا جلسه را به اشتراک بگذارند و دیگران می‌توانند برای هماهنگی و تصمیم‌گیری بهتر به آن‌ها رای دهند. Rallly یک روش ساده برای جمع‌آوری نظرات و پیدا کردن بهترین زمان برای برگزاری یک جلسه با اعضای یک تیم، دوستان یا همکاران است، بدون نیاز به ارسال ایمیل‌های متعدد.
+<a href="https://Etherpad.com/" className="text-[#2196f3] ">Etherpad</a> یک ویرایشگر متن آنلاین و متن‌باز است که به کاربران اجازه می‌دهد به صورت هم‌زمان و بلادرنگ بر روی یک سند کار کنند. این ابزار برای کارهای تیمی، جلسات، و یادداشت‌برداری مشترک ایده‌آل است و تغییرات هر کاربر را با رنگ متفاوت نمایش می‌دهد. Etherpad از افزونه‌ها پشتیبانی می‌کند که می‌توانند قابلیت‌های آن را افزایش دهند، مانند قالب‌بندی متن یا همگام‌سازی با سایر ابزارها. این ابزار سریع، ساده و برای کارهای مشارکتی بسیار کاربردی است.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -55,7 +66,7 @@ content: (
 <>
 <h3>راه‌اندازی برنامه</h3>
 <p>
-    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>rallly</b>، کلیک کنید. 
+    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>etherpad</b>، کلیک کنید. 
     در ادامه، می‌توانید از گزینه <b>نصب سریع</b> یا گزینه <b>نصب پیشرفته</b> برای استقرار و نصب برنامه‌تان استفاده کنید:
 </p>
 <Tabs 
@@ -105,7 +116,7 @@ content: (
       </Alert>
       <Alert variant="info">
         <p>
-          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/Rallly/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
+          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/etherpad/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
         </p>
       </Alert>
     </>
@@ -115,57 +126,8 @@ content: (
 </>
 )
 },
-{
-step: "۳",
-content: (
-<>
-<h3>تنظیم ایمیل‌سرور</h3>   
-<p>وارد بخش <Link className="text-[#2196f3]" href="/paas/details/envs/">متغیرهای محیطی برنامه</Link> شوید و متغیرهای زیر را طبق اطلاعات ایمیل‌سرور خود، مقدار دهی کنید:</p>
-
-<div className="h-4" />
-<div dir='ltr'>
-    <Highlight className="json">
-      {`SUPPORT_EMAIL
-SMTP_HOST
-SMTP_PORT
-SMTP_SECURE
-SMTP_USER
-SMTP_PWD`}
-    </Highlight>
-</div>
-<div className="h-2" />
-<Alert variant="info">
-<p>
-مقدار متغیر <Important>SUPPORT_EMAIL</Important> باید یکی از نشانی‌های ایمیل‌سرور باشد. 
-</p> 
-</Alert>
-</>
-)
-},
-
-{
-step: "۵",
-content: (
-<>
-<h3>ایجاد حساب کاربری جدید در برنامه</h3>   
-<p>
-  پس از ثبت متغیرهای محیطی مربوط به ایمیل‌سرور، کافیست تا یک حساب کاربری جدید در برنامه Rallly ایجاد کنید. 
-  با ایجاد حساب کاربری، ایمیل تاییدیه از سمت ایمیل‌سرور مشخص شده، برای شما ارسال خواهد شد و شما می‌توانید 
-  پس از تایید حساب کاربری، از برنامه Rallly، استفاده کنید.
-</p>
-</>
-)
-},
 
 ]}/>
-
-{/* <div className='h-4' />
-<Alert className="info">
-  <p>
-    اطلاعات ورود به حساب کاربری نظیر <Important>Username</Important> و <Important>Password</Important> در ورود اولیه به ترتیب برابر با <Important>admin</Important> و <Important>Rallly</Important> است.
-  </p>
-</Alert> */}
-
 
 <Section id="see-also" title="همچنین بخوانید:" />
 
@@ -174,7 +136,7 @@ content: (
             {[
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
-        link: "/one-click-apps/Rallly/how-tos/choose-version"
+        link: "./how-tos/choose-version"
       },
   ].map(item =>
     <Link href={item.link}>
