@@ -99,6 +99,7 @@ def send_email(to_address, subject, body):
             msg['From'] = f"{MAIL_FROM_NAME} <{MAIL_FROM_ADDRESS}>"
             msg['To'] = to_address
             msg['Subject'] = subject
+            msg.add_header('x-liara-tag', 'test-tag')  # Add custom header
             msg.attach(MIMEText(body, 'plain'))
 
             # Send the email

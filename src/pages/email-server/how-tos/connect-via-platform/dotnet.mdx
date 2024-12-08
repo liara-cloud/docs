@@ -63,7 +63,17 @@ MAIL_FROM_ADDRESS=info@example.com`}
 مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
 </p>
 </Alert>
+<div className="h-2" />
 
+در ادامه، بایستی با اجرای دستور زیر، ماژول موردنیاز ارسال ایمیل را در پروژه خود، دانلود و نصب کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`dotnet add package MailKit`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا، 
 اقدام به ارسال ایمیل‌های تراکنشی کنید: 
@@ -71,52 +81,53 @@ MAIL_FROM_ADDRESS=info@example.com`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="dotnet">
-        {`using System.Net;
-using System.Net.Mail;
-using dotenv.net;
-
-DotEnv.Load(); // Load the environment variables from .env file
+        {`using MailKit.Net.Smtp;
+using MimeKit;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Load environment variables
+var smtpHost = Environment.GetEnvironmentVariable("MAIL_HOST") ?? "smtp.c1.liara.email";
+var smtpPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT") ?? "465");
+var smtpUser = Environment.GetEnvironmentVariable("MAIL_USER") ?? "";
+var smtpPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD") ?? "";
+var mailFromAddress = Environment.GetEnvironmentVariable("MAIL_FROM_ADDRESS") ?? "";
+
 var app = builder.Build();
 
-app.MapGet("/send-test-email", async context =>
+app.MapGet("/", async context =>
 {
-    // Read SMTP settings from environment variables
-    var smtpHost = Environment.GetEnvironmentVariable("MAIL_HOST");
-    int smtpPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT") ?? "587");
-    var smtpUser = Environment.GetEnvironmentVariable("MAIL_USER");
-    var smtpPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD");
-    var fromAddress = Environment.GetEnvironmentVariable("MAIL_FROM_ADDRESS") ?? "info@example.com";
-    var toAddress = "recipient@example.com"; // Replace with recipient's email address
+    var recipientEmail = "recipient@example.com"; // Replace with recipient email
 
-    // Create a new SmtpClient
-    using (var smtpClient = new SmtpClient(smtpHost, smtpPort))
+    // Create the email
+    var email = new MimeMessage();
+    email.From.Add(MailboxAddress.Parse(mailFromAddress));
+    email.To.Add(MailboxAddress.Parse(recipientEmail));
+    email.Subject = "Test Email";
+    email.Body = new TextPart("plain")
     {
-        smtpClient.EnableSsl = true; // Use TLS encryption
-        smtpClient.Credentials = new NetworkCredential(smtpUser, smtpPassword);
+        Text = "This is a test email sent using explicit TLS without STARTTLS."
+    };
 
-        // Create the email message
-        var mailMessage = new MailMessage(fromAddress, toAddress)
-        {
-            Subject = "Test Email",
-            Body = "<h2>This is a test email sent from a .NET Core application using SMTP<h2>",
-            IsBodyHtml = true
-        };
+    // Add custom header
+    email.Headers.Add("x-liara-tag", "test-tag");
 
-        // Add custom headers
-        mailMessage.Headers.Add("x-liara-tag", "test-tag");
-
+    try
+    {
         // Send the email
-        try
-        {
-            await smtpClient.SendMailAsync(mailMessage);
-            await context.Response.WriteAsync("Test email sent successfully!");
-        }
-        catch (Exception ex)
-        {
-            await context.Response.WriteAsync($"Failed to send email: {ex.Message}");
-        }
+        using var client = new SmtpClient();
+        await client.ConnectAsync(smtpHost, smtpPort, MailKit.Security.SecureSocketOptions.SslOnConnect);
+        await client.AuthenticateAsync(smtpUser, smtpPassword);
+        await client.SendAsync(email);
+        await client.DisconnectAsync(true);
+
+        // Respond to the client
+        await context.Response.WriteAsync("Email sent successfully with custom header!");
+    }
+    catch (Exception ex)
+    {
+        // Handle errors and respond to the client
+        await context.Response.WriteAsync($"Failed to send email: {ex.Message}");
     }
 });
 
@@ -125,69 +136,67 @@ app.Run();
     </Highlight>
 </div>
 <div className="h-2" />
-<Alert variant='info'>
-<p>
-با تنظیم <Important>EnableSsl = true</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
-</p>
-</Alert>
+
 
 برای استفاده از ایمیل‌سرور در کنترلر، می‌توانید مشابه قطعه کد زیر، عمل کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="csharp">
-        {`using MimeKit;
-using MailKit.Net.Smtp;
-using DotNetEnv; // for install this, run: dotnet install add package DotNetEnv
+        {`using MailKit.Net.Smtp;
+using MimeKit;
+using Microsoft.AspNetCore.Mvc;
 
-namespace your_project_name.Controllers; 
-
-public class TestController : Controller
+namespace EmailSenderApp.Controllers
 {
-    [HttpPost]
-    public IActionResult SendEmail(string email)
-    {   
-        // Email Information  
-        Env.Load();
-        string senderName  = Env.GetString("SENDER_NAME");
-        string senderEmail = Env.GetString("SENDER_ADDRESS");
-        string subject     = Env.GetString("EMAIL_SUBJECT");
-        string body        = Env.GetString("EMAIL_BODY");
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmailController : ControllerBase
+    {
+        // Load environment variables (or use default values)
+        private readonly string smtpHost = Environment.GetEnvironmentVariable("MAIL_HOST") ?? "smtp.c1.liara.email";
+        private readonly int smtpPort = int.Parse(Environment.GetEnvironmentVariable("MAIL_PORT") ?? "465");
+        private readonly string smtpUser = Environment.GetEnvironmentVariable("MAIL_USER") ?? "";
+        private readonly string smtpPassword = Environment.GetEnvironmentVariable("MAIL_PASSWORD") ?? "";
+        private readonly string mailFromAddress = Environment.GetEnvironmentVariable("MAIL_FROM_ADDRESS") ?? "";
 
-        // Email Instance
-        var message = new MimeMessage();
-        message.From.Add(new MailboxAddress(senderName, senderEmail));
-        message.To.Add(new MailboxAddress("Recipient", email));
-        message.Subject = subject;
-
-        // Creating The Body 
-        message.Body = new TextPart("plain")
+        [HttpGet("send-test-email")]
+        public async Task<IActionResult> SendTestEmail()
         {
-            Text = body
-        };
+            var recipientEmail = "recipient@example.com"; // Replace with recipient email
 
-        try
-        {
-            // Sending Email 
-            using (var client = new SmtpClient())
+            // Create the email
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(mailFromAddress));
+            email.To.Add(MailboxAddress.Parse(recipientEmail));
+            email.Subject = "Test Email";
+            email.Body = new TextPart("plain")
             {
-                client.Connect(Env.GetString("MAIL_HOST"), Env.GetInt("MAIL_PORT"), false);
-                client.Authenticate(Env.GetString("MAIL_USERNAME"), Env.GetString("MAIL_PASSWORD"));
-                client.Send(message);
-                client.Disconnect(true);
+                Text = "This is a test email sent using explicit TLS without STARTTLS."
+            };
+
+            // Add custom header
+            email.Headers.Add("x-liara-tag", "test-tag");
+
+            try
+            {
+                // Send the email
+                using var client = new SmtpClient();
+                await client.ConnectAsync(smtpHost, smtpPort, MailKit.Security.SecureSocketOptions.SslOnConnect);
+                await client.AuthenticateAsync(smtpUser, smtpPassword);
+                await client.SendAsync(email);
+                await client.DisconnectAsync(true);
+
+                // Return success response
+                return Ok("Email sent successfully with custom header!");
             }
-
-            ViewBag.Message = "Email Sent Successfully.";
+            catch (Exception ex)
+            {
+                // Handle errors and return error response
+                return StatusCode(500, $"Failed to send email: {ex.Message}");
+            }
         }
-        catch (Exception ex)
-        {
-            ViewBag.Message = $"Error In Sending Email: {ex.Message}";
-        }
-
-
-        return RedirectToAction("Index");
     }
-
 }
 `}
     </Highlight>

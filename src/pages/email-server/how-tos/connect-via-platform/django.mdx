@@ -86,8 +86,8 @@ EMAIL_HOST = config('MAIL_HOST')
 EMAIL_PORT = config('MAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('MAIL_USER')
 EMAIL_HOST_PASSWORD = config('MAIL_PASSWORD')
-EMAIL_USE_TLS = False # Disable TLS 
-EMAIL_USE_SSL = True  # Force SSL
+EMAIL_USE_TLS = False # Disable STARTTLS 
+EMAIL_USE_SSL = True  # Force TLS
 DEFAULT_FROM_EMAIL = f"{config('MAIL_FROM_NAME')} <{config('MAIL_FROM_ADDRESS')}>"
 `}
     </Highlight>

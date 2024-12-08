@@ -125,7 +125,8 @@ try {
     $mail->Subject = 'Test Email';
     $mail->Body = '<h1>Hello from PHPMailer!</h1><p>This is a test email using SMTP.</p>';
     $mail->AltBody = 'Hello from PHPMailer! This is a test email using SMTP.';
-
+    $mail->addCustomHeader('x-liara-tag', 'test-tag'); // use Liara Tags
+    
     // Send the email
     $mail->send();
     echo 'Email sent successfully!';
