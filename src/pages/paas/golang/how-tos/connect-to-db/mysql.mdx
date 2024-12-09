@@ -14,31 +14,31 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دیتابیس‌ MySQL و MariaDB در Python - لیارا</title>
+<title>مستندات اتصال به دیتابیس‌ MySQL و MariaDB در Go - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس MySQL یا MariaDB در پلتفرم Python در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس MySQL یا MariaDB در پلتفرم Go در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس MySQL/MariaDB در برنامه‌های Python
+# اتصال به دیتابیس MySQL/MariaDB در برنامه‌های Go
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MariaDB یا MySQL در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس MariaDB یا MySQL در برنامه‌های Go، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip install mysql-connector-python`}
+        {`go get -u github.com/go-sql-driver/mysql`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-سپس، با فرض فعال بودن محیط مجازی در پروژه پایتونی‌تان (virtualenv)، دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود: 
+سپس، باید دستور زیر را اجرا کنید تا فایل <Important>go.mod</Important> اصلاح شود: 
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip freeze > requirements.txt`}
+        {`go mod tidy`}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -48,12 +48,7 @@ import Head from "next/head";
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`DB_USER=root
-DB_PASSWORD=Wc9yvejxaWm6RrysATmcUeew
-DB_HOST=monte-rosa.liara.cloud
-DB_PORT=31983
-DB_NAME=awesome_swanson
-`}
+        {`DB_URI=mysql://root:MaNx6oIOF5rCwwK6e9B8HItk@fitz-roy.liara.cloud:34545/loving_driscoll`}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -62,145 +57,95 @@ DB_NAME=awesome_swanson
 
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="python">
-        {`import http.server
-import socketserver
-import mysql.connector
-import os
+    <Highlight className="go">
+        {`package main
 
-db_config = {
-    'user': os.getenv('DB_USER'),
-    'password': os.getenv('DB_PASSWORD'),
-    'host': os.getenv('DB_HOST'),
-    'port': int(os.getenv('DB_PORT')),
-    'database': os.getenv('DB_NAME')
+import (
+	"database/sql"
+	"fmt"
+	"log"
+	"net/http"
+	"net/url"
+	"os"
+
+	_ "github.com/go-sql-driver/mysql"
+)
+
+var db *sql.DB
+
+func main() {
+	
+	// Get the DB_URI from environment variables
+	dbURI := os.Getenv("DB_URI")
+	if dbURI == "" {
+		log.Fatal("DB_URI environment variable is not set")
+	}
+
+	// Parse the URI into a format suitable for the MySQL driver
+	dataSourceName, err := parseDBURI(dbURI)
+	if err != nil {
+		log.Fatalf("Failed to parse database URI: %v", err)
+	}
+
+	// Open the database connection with pooling
+	db, err = sql.Open("mysql", dataSourceName)
+	if err != nil {
+		log.Fatalf("Failed to open database connection: %v", err)
+	}
+
+	// Set connection pool parameters
+	db.SetMaxOpenConns(10)     // Maximum number of open connections
+	db.SetMaxIdleConns(5)      // Maximum number of idle connections
+	db.SetConnMaxIdleTime(0)   // No timeout for idle connections
+
+	// Verify connection
+	if err := db.Ping(); err != nil {
+		log.Fatalf("Failed to ping database: %v", err)
+	}
+	log.Println("Connected to database successfully!")
+
+	// Set up HTTP server
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if err := db.Ping(); err != nil {
+			fmt.Fprintf(w, "Database connection failed: %v", err)
+		} else {
+			fmt.Fprintln(w, "Database connection successful!")
+		}
+	})
+
+	log.Println("Server is running on http://localhost:8080")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatalf("HTTP server failed: %v", err)
+	}
 }
 
-def check_db_connection():
-    try:
-        connection = mysql.connector.connect(**db_config)
-        if connection.is_connected():
-            connection.close()
-            return "connection successful"
-    except mysql.connector.Error as e:
-        return f"error:  {e}"
-    return "connection failed"
+// parseDBURI parses the database URI and returns a DSN for the MySQL driver.
+func parseDBURI(uri string) (string, error) {
+	parsed, err := url.Parse(uri)
+	if err != nil {
+		return "", fmt.Errorf("failed to parse URI: %w", err)
+	}
 
-class RequestHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html; charset=utf-8")
-        self.end_headers()
+	if parsed.Scheme != "mysql" {
+		return "", fmt.Errorf("unsupported scheme: %s", parsed.Scheme)
+	}
 
-        connection_status = check_db_connection()
+	user := parsed.User.Username()
+	password, _ := parsed.User.Password()
+	host := parsed.Hostname()
+	port := parsed.Port()
+	dbname := parsed.Path[1:] // Remove leading "/"
 
-        html_content = f"""
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>connection status</title>
-            <style>
-                body {{ font-family: Arial, sans-serif; background-color: #2B333F; color: #FFF; text-align: center; }}
-                .status {{ margin-top: 20%; font-size: 24px; }}
-            </style>
-        </head>
-        <body>
-            <div class="status">{connection_status}</div>
-        </body>
-        </html>
-        """
-        self.wfile.write(html_content.encode("utf-8"))
-
-PORT = 8000
-with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
-    print(f"Serving on port {PORT}")
-    httpd.serve_forever()
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, dbname), nil
+}
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
-
-<Section id="connection-pooling" title="استفاده از Connection Pooling" />
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
-
-برای استفاده از قابلیت connection pooling در دیتابیس MySQL/MariaDB، 
-می‌توانید مشابه قطعه کد زیر، عمل کنید:
-
+در قطعه کد فوق، برای اتصال به دیتابیس، از قابلیت Connection Pooling استفاده شده است. 
 <div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="python">
-{`import http.server
-import socketserver
-from mysql.connector import pooling, Error
-import os
-
-
-db_config = {
-    'user': os.getenv('DB_USER'),
-    'password': os.getenv('DB_PASSWORD'),
-    'host': os.getenv('DB_HOST'),
-    'port': int(os.getenv('DB_PORT')),
-    'database': os.getenv('DB_NAME')
-}
-
-try:
-    connection_pool = pooling.MySQLConnectionPool(
-        pool_name="mypool",
-        pool_size=5,  # connection amount
-        **db_config
-    )
-    print("Connection pool created successfully.")
-except Error as e:
-    print(f"Error while creating connection pool: {e}")
-
-def check_db_connection():
-    try:
-        connection = connection_pool.get_connection()
-        if connection.is_connected():
-            connection.close()  
-            return "connection successfull"
-    except Error as e:
-        return f"error: {e}"
-    return "connection failed"
-
-class RequestHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html; charset=utf-8")
-        self.end_headers()
-
-        connection_status = check_db_connection()
-
-        html_content = f"""
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>connection status</title>
-            <style>
-                body {{ font-family: Arial, sans-serif; background-color: #2B333F; color: #FFF; text-align: center; }}
-                .status {{ margin-top: 20%; font-size: 24px; }}
-            </style>
-        </head>
-        <body>
-            <div class="status">{connection_status}</div>
-        </body>
-        </html>
-        """
-        self.wfile.write(html_content.encode("utf-8"))
-
-PORT = 8000
-with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
-    print(f"Serving on port {PORT}")
-    httpd.serve_forever()
-`}
-  </Highlight>
-  </div>
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی با قابلیت Connection Pooling</a></Alert>
 <div className="h-2" />
 
 </Layout>

@@ -245,7 +245,7 @@ export default {
         link: "/paas/dotnet/getting-started"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/paas/golang/getting-started"
       },
@@ -382,7 +382,7 @@ export default {
         link: "/paas/dotnet/getting-started"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/paas/golang/getting-started"
       },
@@ -519,7 +519,7 @@ export default {
         link: "/paas/dotnet/getting-started"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/paas/golang/getting-started"
       },
@@ -656,7 +656,7 @@ export default {
         link: "/paas/dotnet/getting-started"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/paas/golang/getting-started"
       },
@@ -2559,7 +2559,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <IconContainer alt="go" />
-            پلتفرم Golang
+            پلتفرم Go
           </div>
         )
       },
@@ -2631,11 +2631,15 @@ export default {
         link: "/paas/golang/how-tos/use-hooks"
       },
       {
+        title: "استفاده از قابلیت cgo",
+        link: "/paas/golang/how-tos/use-cgo"
+      },
+      {
         title: "تنظیم Cron Job",
         link: "/paas/golang/how-tos/set-cron-job"
       },
       {
-        title: "تغییر نسخه golang",
+        title: "تغییر نسخه go",
         link: "/paas/golang/how-tos/choose-version"
       },
       {
@@ -2694,16 +2698,16 @@ export default {
         icon: <IconContainer alt="redis" />,
         link: "/paas/golang/how-tos/connect-to-db/redis"
       },
-      {
-        title: "دیتابیس ElasticSearch",
-        icon: <IconContainer alt="elastic" />,
-        link: "/paas/golang/how-tos/connect-to-db/elastic-search"
-      },
-      {
-        title: "دیتابیس MongoDB",
-        icon: <IconContainer alt="mongodb" />,
-        link: "/paas/golang/how-tos/connect-to-db/mongodb"
-      },
+      // {
+      //   title: "دیتابیس ElasticSearch",
+      //   icon: <IconContainer alt="elastic" />,
+      //   link: "/paas/golang/how-tos/connect-to-db/elastic-search"
+      // },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   icon: <IconContainer alt="mongodb" />,
+      //   link: "/paas/golang/how-tos/connect-to-db/mongodb"
+      // },
       // {
       //   hr: true
       // },
@@ -2715,6 +2719,37 @@ export default {
       //     </div>
       //   )
       // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Gin",
+        icon: <IconContainer alt="https://files.liara.ir/liara/golang/go-gin.ico" />,
+        link: "/paas/golang/related-apps/gin"
+      },
+      {
+        title: "Beego",
+        icon: <IconContainer alt="https://files.liara.ir/liara/golang/beego.ico" />,
+        link: "/paas/golang/related-apps/beego"
+      },
+      {
+        title: "Echo",
+        icon: <IconContainer alt="https://files.liara.ir/liara/golang/echo-icon.png" />,
+        link: "/paas/golang/related-apps/echo"
+      },
+      {
+        title: "Fiber",
+        icon: <IconContainer alt="https://files.liara.ir/liara/golang/fiber-icon.ico" />,
+        link: "/paas/golang/related-apps/fiber"
+      },
     ],
     react: [
       {
@@ -3184,11 +3219,6 @@ export default {
         icon: <IconContainer alt="seq" />,
         link: "/paas/docker/related-apps/seq"
       },
-      {
-        title: "Golang",
-        icon: <IconContainer alt="go" />,
-        link: "/paas/docker/related-apps/go"
-      },
     ],
 
   },
@@ -3500,7 +3530,7 @@ export default {
         link: "/dbaas/mariadb/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/mariadb/how-tos/connect-via-platform/go"
       },
@@ -3646,7 +3676,7 @@ export default {
         link: "/dbaas/mysql/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/mysql/how-tos/connect-via-platform/go"
       },
@@ -3792,7 +3822,7 @@ export default {
         link: "/dbaas/postgresql/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/postgresql/how-tos/connect-via-platform/go"
       },
@@ -3934,7 +3964,7 @@ export default {
         link: "/dbaas/mssql/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/mssql/how-tos/connect-via-platform/go"
       },
@@ -4079,11 +4109,11 @@ export default {
       //   icon: <IconContainer alt="netcore" />,
       //   link: "/dbaas/mongodb/how-tos/connect-via-platform/dotnet"
       // },
-      // {
-      //   title: "Golang",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/dbaas/mongodb/how-tos/connect-via-platform/go"
-      // },
+      {
+        title: "Go",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/mongodb/how-tos/connect-via-platform/go"
+      },
       {
         hr: true
       },
@@ -4218,7 +4248,7 @@ export default {
       //   link: "/dbaas/redis/how-tos/connect-via-platform/dotnet"
       // },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/redis/how-tos/connect-via-platform/go"
       },
@@ -4351,7 +4381,7 @@ export default {
       //   link: "/dbaas/elastic-search/how-tos/connect-via-platform/dotnet"
       // },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/elastic-search/how-tos/connect-via-platform/go"
       },
@@ -4486,7 +4516,7 @@ export default {
         link: "/dbaas/rabbitmq/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/dbaas/rabbitmq/how-tos/connect-via-platform/go"
       },
@@ -7430,7 +7460,7 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/email-server/how-tos/connect-via-platform/go"
       },
@@ -7589,7 +7619,7 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/email-server/how-tos/connect-via-platform/go"
       },
@@ -7748,7 +7778,7 @@ export default {
         link: "/email-server/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/email-server/how-tos/connect-via-platform/go"
       },
@@ -8005,7 +8035,7 @@ export default {
         link: "/object-storage/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/object-storage/how-tos/connect-via-platform/go"
       },
@@ -8210,7 +8240,7 @@ export default {
         link: "/object-storage/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/object-storage/how-tos/connect-via-platform/go"
       },
@@ -8409,7 +8439,7 @@ export default {
         link: "/object-storage/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/object-storage/how-tos/connect-via-platform/go"
       },
@@ -8609,7 +8639,7 @@ export default {
         link: "/object-storage/how-tos/connect-via-platform/dotnet"
       },
       {
-        title: "Golang",
+        title: "Go",
         icon: <IconContainer alt="go" />,
         link: "/object-storage/how-tos/connect-via-platform/go"
       },

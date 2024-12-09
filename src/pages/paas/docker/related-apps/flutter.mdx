@@ -74,7 +74,7 @@ RUN flutter pub get && \\
     flutter build web
 
 # Stage 2 - Create the run-time image
-FROM liararepo/static-platform:base
+FROM registry2.iran.liara.ir/platforms/static-platform:base
 COPY --from=0 /app/build/web /usr/share/nginx/html`}
     </Highlight>
 </div>

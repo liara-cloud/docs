@@ -24,16 +24,16 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات شروع به کار با Golang - لیارا</title>
+<title>مستندات شروع به کار با Go - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات شروع به کار با پلتفرم Golang در لیارا"  />
+<meta property="og:description" content="مستندات شروع به کار با پلتفرم Go در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# شروع به کار با پلتفرم Golang
+# شروع به کار با پلتفرم Go
 <hr className="mb-2" />
 
-<a href="https://go.dev/" className="text-[#2196f3] ">Go یا Golang</a> یک زبان برنامه‌نویسی متن‌باز است که توسط گوگل در سال 2009 معرفی شد. این زبان با هدف ارائه‌ی عملکرد بالا، سادگی و مدیریت مؤثر منابع طراحی شده است. Golang برای برنامه‌نویسی سمت سرور، سیستم‌های توزیع‌شده و اپلیکیشن‌های مبتنی بر شبکه بسیار مناسب است. ویژگی‌هایی نظیر همزمانی پیشرفته با استفاده از Goroutines و کانال‌ها، مدیریت حافظه خودکار و سرعت بالا، آن را برای پروژه‌های با مقیاس بزرگ جذاب کرده است. پشتیبانی قوی از ابزارها و استانداردهای ساده نیز از مزایای اصلی آن هستند. Golang در پروژه‌هایی مانند Docker , Kubernetes و سرویس‌های ابری گوگل استفاده می‌شود. به دلیل رشد فرصت‌های شغلی، یادگیری این زبان برای توسعه‌دهندگان ارزشمند است.
+<a href="https://go.dev/" className="text-[#2196f3] ">Go یا Golang</a> یک زبان برنامه‌نویسی متن‌باز است که توسط گوگل در سال 2009 معرفی شد. این زبان با هدف ارائه‌ی عملکرد بالا، سادگی و مدیریت مؤثر منابع طراحی شده است. Go برای برنامه‌نویسی سمت سرور، سیستم‌های توزیع‌شده و اپلیکیشن‌های مبتنی بر شبکه بسیار مناسب است. ویژگی‌هایی نظیر همزمانی پیشرفته با استفاده از Goroutines و کانال‌ها، مدیریت حافظه خودکار و سرعت بالا، آن را برای پروژه‌های با مقیاس بزرگ جذاب کرده است. پشتیبانی قوی از ابزارها و استانداردهای ساده نیز از مزایای اصلی آن هستند. Go در پروژه‌هایی مانند Docker , Kubernetes و سرویس‌های ابری گوگل استفاده می‌شود. به دلیل رشد فرصت‌های شغلی، یادگیری این زبان برای توسعه‌دهندگان ارزشمند است.
 
 
 
@@ -48,11 +48,11 @@ import Head from "next/head";
 <div className="grid md:grid-cols-2 gap-4">
             {[
     {
-      text: 'استقرار سریع یک برنامه Golang در لیارا',
+      text: 'استقرار سریع یک برنامه Go در لیارا',
       link: './quick-start',
     },
     {
-      text: 'استقرار قدم به قدم برنامه‌های Golang در لیارا',
+      text: 'استقرار قدم به قدم برنامه‌های Go در لیارا',
       link: './how-tos/create-app',
     },
   ].map(item =>
@@ -71,15 +71,16 @@ import Head from "next/head";
 
 <br />
 
-لیارا به‌طور کامل از Golang و تمامی ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
-در ادامه، مستندات مربوط به ابزارهای Golang برای شما قرار گرفته است:
+لیارا به‌طور کامل از Go و تمامی ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به ابزارهای Go برای شما قرار گرفته است:
 <br />
 
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-4 gap-4">
             {[
     { alt: 'https://files.liara.ir/liara/golang/go-gin.ico', platform: 'Gin', link: "paas/related-apps/gin/" },
     { alt: 'https://files.liara.ir/liara/golang/beego.ico', platform: 'BeeGo', link: "paas/related-apps/beego/" },
     { alt: 'https://files.liara.ir/liara/golang/echo-icon.png', platform: 'Echo', link: "paas/related-apps/echo/" },
+    { alt: 'https://files.liara.ir/liara/golang/fiber-icon.ico', platform: 'Fiber', link: "paas/related-apps/fiber/" },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
@@ -101,7 +102,7 @@ import Head from "next/head";
 <Alert variant="success">
 همچنین بخوانید:
 <Link href='./related-links' className="text-[#2196f3] ">
- لینک‌های مرتبط با پلتفرم Golang
+ لینک‌های مرتبط با پلتفرم Go
 </Link>
 </Alert>
 

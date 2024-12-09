@@ -14,16 +14,22 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات استفاده از Celery در Django - لیارا</title>
+<title>مستندات استقرار برنامه‌های Gin - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات نحوه استفاده از Celery در پلتفرم Django در لیارا"  />
+<meta property="og:description" content="مستندات نحوه استقرار برنامه‌های Gin در Golang در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# استقرار برنامه‌های Django وابسته به Celery در لیارا
+# استقرار برنامه‌های Gin در لیارا
 <hr className="mb-2" />
-<a className="text-[#2196f3] " href="https://docs.celeryq.dev/en/stable/">Celery</a> یک کتابخانه مدیریت صف و پردازش‌های ناهمزمان در پایتون است که به شما امکان می‌دهد تا وظایف (tasks) سنگین و زمان‌بر را به صورت پس‌زمینه و مستقل از اجرای اصلی برنامه، انجام دهید. این ابزار برای اجرای وظایف به صورت توزیع‌شده و با قابلیت زمان‌بندی طراحی شده است و معمولاً با Django برای مدیریت وظایف پس‌زمینه مثل ارسال ایمیل، پردازش داده‌ها و سایر عملیات طولانی ترکیب می‌شود.
-طبق <a href="https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html" className="text-[#2196f3] ">مستندات شروع به کار با Celery در برنامه‌های Django</a>، فرض می‌شود که شما برنامه‌ای با ساختار زیر دارید:
+<a className="text-[#2196f3] " href="https://gin-gonic.com/">Gin</a> یک فریم‌ورک وب برای زبان برنامه‌نویسی Go است که به طور خاص برای ساخت اپلیکیشن‌های سریع و مقیاس‌پذیر طراحی شده است. این فریم‌ورک با ارائه امکاناتی مانند روتینگ سریع، مدیریت درخواست‌ها، و middleware، به توسعه‌دهندگان این امکان را می‌دهد که سرویس‌های وب قدرتمند و کارآمد بسازند. Gin به دلیل سرعت بالا و استفاده کم از منابع، برای پروژه‌هایی که نیاز به عملکرد بالا دارند، مناسب است. همچنین، این فریم‌ورک از ساختار ساده‌ای برخوردار است که توسعه‌دهندگان را قادر می‌سازد تا سریع‌تر کد بنویسند و مشکلات را برطرف کنند.
+
+
+
+
+
+
+
 <div className="h-2" />
 <div dir='ltr'>
 <Highlight className="bash">

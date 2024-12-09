@@ -13,14 +13,14 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات استقرار برنامه‌های Golang - لیارا</title>
+<title>مستندات استقرار برنامه‌های Go - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات نحوه استقرار سریع پلتفرم Golang در لیارا"  />
+<meta property="og:description" content="مستندات نحوه استقرار سریع پلتفرم Go در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-
-# استقرار سریع برنامه‌های Golang
+ 
+# استقرار سریع برنامه‌های Go
 <hr className="mb-2" />
 
 <Tabs 
@@ -28,7 +28,7 @@ import Head from "next/head";
   content={[
   <>
   <video
-  src="https://files.liara.ir/liara/golang/golang-desktop.mp4"
+  src="https://files.liara.ir/liara/go/go-desktop.mp4"
   controls="control/s"
   className="block w-full"
   width="100%"
@@ -50,7 +50,7 @@ import Head from "next/head";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>برنامه Golang خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+    <p>برنامه go خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
   </>
   )
   },
@@ -68,7 +68,7 @@ import Head from "next/head";
   content: (
   <>
     <h3>بررسی فایل‌ go.mod و go.sum</h3>
-    <p>در صورتی که از کتابخانه یا پکیج خاصی استفاده می‌کنید که به صورت built-in (پیش‌فرض) در Golang وجود ندارد، حتماً باید در مسیر اصلی پروژه، فایل <Important>go.mod</Important> 
+    <p>در صورتی که از کتابخانه یا پکیج خاصی استفاده می‌کنید که به صورت built-in (پیش‌فرض) در go وجود ندارد، حتماً باید در مسیر اصلی پروژه، فایل <Important>go.mod</Important> 
     وجود داشته باشد؛
     برای ذخیره hash و نسخه وابستگی‌ها هم توصیه می‌شود از فایل <Important>go.sum</Important> نیز، استفاده کنید که با نصب اولین پکیج در پروژه‌تان، به صورت خودکار ایجاد یا آپدیت می‌شود.
     
@@ -118,7 +118,7 @@ import Head from "next/head";
 
   <>
   <video
-  src="https://files.liara.ir/liara/golang/golang-cli.mp4"
+  src="https://files.liara.ir/liara/go/go-cli.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -184,7 +184,7 @@ import Head from "next/head";
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>با اجرای دستور زیر، برنامه Golang خود را ایجاد کنید:</p>
+    <p>با اجرای دستور زیر، برنامه go خود را ایجاد کنید:</p>
     <div dir='ltr'>
     <Highlight className="bash">
       {`liara create`}
@@ -192,7 +192,7 @@ import Head from "next/head";
     </div>
     <div className="h-2" />
     <Alert variant="info">اگر که از قبل برنامه خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی golang تنظیم شود)، شبکه خصوصی و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی go تنظیم شود)، شبکه خصوصی و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
   </>
   )
   },
@@ -220,7 +220,7 @@ vendor/`}
   content: (
   <>
         <h3>بررسی فایل‌ go.mod و go.sum</h3>
-    <p>در صورتی که از کتابخانه یا پکیج خاصی استفاده می‌کنید که به صورت built-in (پیش‌فرض) در Golang وجود ندارد، حتماً باید در مسیر اصلی پروژه، فایل <Important>go.mod</Important> 
+    <p>در صورتی که از کتابخانه یا پکیج خاصی استفاده می‌کنید که به صورت built-in (پیش‌فرض) در go وجود ندارد، حتماً باید در مسیر اصلی پروژه، فایل <Important>go.mod</Important> 
     وجود داشته باشد؛
     برای ذخیره hash و نسخه وابستگی‌ها هم توصیه می‌شود از فایل <Important>go.sum</Important> نیز، استفاده کنید که با نصب اولین پکیج در پروژه‌تان، به صورت خودکار ایجاد یا آپدیت می‌شود.
     
@@ -256,7 +256,7 @@ vendor/`}
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-      {`liara deploy --app=myapp --port=8080 --platform=golang`}
+      {`liara deploy --app=myapp --port=8080 --platform=go`}
     </Highlight>
     </div>
   </>
@@ -267,7 +267,7 @@ vendor/`}
   </>,
   <>
     <video
-    src="https://files.liara.ir/liara/docs/Golang-github.mp4"
+    src="https://files.liara.ir/liara/docs/go-github.mp4"
     controls="controls"
     className="block w-full"
     width="100%"
@@ -289,7 +289,7 @@ vendor/`}
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>برنامه Golang خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+    <p>برنامه go خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
   </>
   )
   },
@@ -298,7 +298,7 @@ vendor/`}
   content: (
    <>
         <h3>بررسی فایل‌ go.mod و go.sum</h3>
-    <p>در صورتی که از کتابخانه یا پکیج خاصی استفاده می‌کنید که به صورت built-in (پیش‌فرض) در Golang وجود ندارد، حتماً باید در مسیر اصلی پروژه، فایل <Important>go.mod</Important> 
+    <p>در صورتی که از کتابخانه یا پکیج خاصی استفاده می‌کنید که به صورت built-in (پیش‌فرض) در go وجود ندارد، حتماً باید در مسیر اصلی پروژه، فایل <Important>go.mod</Important> 
     وجود داشته باشد؛
     برای ذخیره hash و نسخه وابستگی‌ها هم توصیه می‌شود از فایل <Important>go.sum</Important> نیز، استفاده کنید که با نصب اولین پکیج در پروژه‌تان، به صورت خودکار ایجاد و آپدیت می‌شود.. 
     
@@ -336,8 +336,8 @@ vendor/`}
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "golang": {
-    "mirror": true,
+  "go": {
+    "procfile" : "main.go", 
     "port": 8080,
     "version": "1.23",
     "timezone": "America/Los_Angeles"
@@ -476,7 +476,7 @@ vendor/`}
   
 <Alert variant="success">
 <p>
-همچنین بخوانید: <Link className="text-[#2196f3] " href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های Golang در لیارا</Link>
+همچنین بخوانید: <Link className="text-[#2196f3] " href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های go در لیارا</Link>
 </p>
 </Alert>
 

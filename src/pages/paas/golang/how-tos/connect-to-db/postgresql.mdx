@@ -14,54 +14,41 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دیتابیس‌ PostgreSQL در Python - لیارا</title>
+<title>مستندات اتصال به دیتابیس‌ PostgreSQL در Go - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس PostgreSQL در پلتفرم Python در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس PostgreSQL در پلتفرم Go در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس PostgreSQL در برنامه‌های Python
+# اتصال به دیتابیس PostgreSQL در برنامه‌های Go
 <hr className="mb-2" />
 
-<div className="h-2" />
-    <video
-    src="https://files.liara.ir/liara/python/python-postgres.mp4"
-    controls="controls"
-    className="block w-full"
-    width="100%"
-    ></video>
-<div className="h-2" />
-برای اتصال به دیتابیس PostgreSQL در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس PostgreSQL در برنامه‌های Go، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip install psycopg2`}
+        {`go get github.com/lib/pq`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-سپس، با فرض فعال بودن محیط مجازی در پروژه پایتونی‌تان (virtualenv)، دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود: 
+سپس، باید دستور زیر را اجرا کنید تا فایل <Important>go.mod</Important> اصلاح شود: 
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip freeze > requirements.txt`}
+        {`go mod tidy`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3]">نحوه تنظیم متغیرهای محیطی</a>، متغیرهای محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3]">نحوه تنظیم متغیرهای محیطی</a>، متغیر محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`DB_USER=root
-DB_PASSWORD=GNfqFdndABytxVPFPBjzAppu
-DB_HOST=monte-rosa.liara.cloud
-DB_PORT=30273
-DB_NAME=postgres
-`}
+        {`DB_URI=postgresql://root:dXzvNAzIL8OOxjFOC4oF12Lz@fitz-roy.liara.cloud:31566/postgres?sslmode=disable`}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -70,131 +57,69 @@ DB_NAME=postgres
 
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="python">
-        {`import os
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import psycopg2
+    <Highlight className="go">
+        {`package main
 
-# Database connection parameters
-DB_USER = os.getenv('DB_USER')
-DB_PASSWORD = os.getenv('DB_PASSWORD')
-DB_HOST = os.getenv('DB_HOST')
-DB_PORT = os.getenv('DB_PORT')
-DB_NAME = os.getenv('DB_NAME')
+import (
+	"database/sql"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
 
-DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+	_ "github.com/lib/pq"
+)
 
-class RequestHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        try:
-            # Connect to the database
-            connection = psycopg2.connect(DATABASE_URI)
-            cursor = connection.cursor()
-            cursor.execute("SELECT version();")
-            db_version = cursor.fetchone()
-            response = f"Connection successful (without pooling), PostgreSQL version: {db_version}"
-        except Exception as error:
-            response = f"Error connecting without pooling: {error}"
-        finally:
-            if connection:
-                cursor.close()
-                connection.close()
+var db *sql.DB
 
-        # Send response to client
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(f"<html><body><h1>{response}</h1></body></html>".encode("utf-8"))
+func main() {
 
-def run(server_class=HTTPServer, handler_class=RequestHandler):
-    server_address = ('', 8080)  # Serve on port 8080
-    httpd = server_class(server_address, handler_class)
-    print("Server running on port 8080")
-    httpd.serve_forever()
+	// Get the DB_URI from environment variables
+	dbURI := os.Getenv("DB_URI")
+	if dbURI == "" {
+		log.Fatal("DB_URI environment variable is not set")
+	}
 
-if __name__ == "__main__":
-    run()
+	// Open the database connection with the PostgreSQL URI
+	var err error
+	db, err = sql.Open("postgres", dbURI)
+	if err != nil {
+		log.Fatalf("Failed to open database connection: %v", err)
+	}
+
+	// Set connection pool parameters
+	db.SetMaxOpenConns(10)     // Maximum number of open connections
+	db.SetMaxIdleConns(5)      // Maximum number of idle connections
+	db.SetConnMaxIdleTime(0)   // No timeout for idle connections
+
+	// Verify connection
+	if err := db.Ping(); err != nil {
+		log.Fatalf("Failed to ping database: %v", err)
+	}
+	log.Println("Connected to database successfully!")
+
+	// Set up HTTP server
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if err := db.Ping(); err != nil {
+			fmt.Fprintf(w, "Database connection failed: %v", err)
+		} else {
+			fmt.Fprintln(w, "Database connection successful!")
+		}
+	})
+
+	log.Println("Server is running on http://localhost:8080")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatalf("HTTP server failed: %v", err)
+	}
+}
 `}
     </Highlight>
     </div>
 <div className="h-2" />
 
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
-
-<Section id="connection-pooling" title="استفاده از Connection Pooling" />
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
-
-برای استفاده از قابلیت connection pooling در دیتابیس PostgreSQL، 
-می‌توانید مشابه قطعه کد زیر، عمل کنید:
-
+در قطعه کد فوق، برای اتصال به دیتابیس، از قابلیت Connection Pooling استفاده شده است. 
 <div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="python">
-{`import os
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import psycopg2
-from psycopg2 import pool
-
-# Database connection parameters
-DB_USER = os.getenv('DB_USER')
-DB_PASSWORD = os.getenv('DB_PASSWORD')
-DB_HOST = os.getenv('DB_HOST')
-DB_PORT = os.getenv('DB_PORT')
-DB_NAME = os.getenv('DB_NAME')
-
-DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-
-# Initialize the connection pool
-connection_pool = None
-
-class RequestHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        global connection_pool
-        if not connection_pool:
-            try:
-                # Create the connection pool
-                connection_pool = pool.SimpleConnectionPool(
-                    minconn=1, maxconn=5, dsn=DATABASE_URI
-                )
-                response = "Connection pool created successfully."
-            except Exception as error:
-                response = f"Error creating connection pool: {error}"
-                self.respond(response)
-                return
-
-        try:
-            # Obtain a connection from the pool
-            pooled_conn = connection_pool.getconn()
-            cursor = pooled_conn.cursor()
-            cursor.execute("SELECT version();")
-            db_version = cursor.fetchone()
-            response = f"Pooling successful, PostgreSQL version: {db_version}"
-            connection_pool.putconn(pooled_conn)  # Return connection to the pool
-        except Exception as error:
-            response = f"Error connecting with pooling: {error}"
-
-        # Send response to client
-        self.respond(response)
-
-    def respond(self, message):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(f"<html><body><h1>{message}</h1></body></html>".encode("utf-8"))
-
-def run(server_class=HTTPServer, handler_class=RequestHandler):
-    server_address = ('', 8080)  # Serve on port 8080
-    httpd = server_class(server_address, handler_class)
-    print("Server running on port 8080")
-    httpd.serve_forever()
-
-if __name__ == "__main__":
-    run()
-`}
-  </Highlight>
-  </div>
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی با قابلیت Connection Pooling</a></Alert>
 <div className="h-2" />
 
 </Layout>

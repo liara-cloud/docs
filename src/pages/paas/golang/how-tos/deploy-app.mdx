@@ -16,14 +16,14 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات استقرار برنامه‌های Golang - لیارا</title>
+<title>مستندات استقرار برنامه‌های Go - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات نحوه استقرار برنامه‌های Golang در لیارا"  />
+<meta property="og:description" content="مستندات نحوه استقرار برنامه‌های Go در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
 
-# استقرار برنامه Golang در لیارا
+# استقرار برنامه Go در لیارا
 <hr className="mb-2" />
 
         <Tabs 
@@ -36,9 +36,9 @@ import Head from "next/head";
         <div className="h-4" />
         <p>
             همچنین،
-            اگر از کتابخانه یا پکیج خاصی در پروژه خود، استفاده می‌کنید که به صورت built-in یا پیش‌فرض در نسخه Golang مدنظرتان وجود ندارد، 
+            اگر از کتابخانه یا پکیج خاصی در پروژه خود، استفاده می‌کنید که به صورت built-in یا پیش‌فرض در نسخه Go مدنظرتان وجود ندارد، 
             پروژه شما باید شامل فایل <Important>go.mod</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>go mod download</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
-            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.mod</Important> برای برنامه‌های Golang باشد:
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.mod</Important> برای برنامه‌های Go باشد:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
@@ -80,7 +80,7 @@ require (
         <p>
             فایل <Important>go.sum</Important> لیستی از نسخه‌های دقیق ماژول‌های مورد نیاز پروژه را همراه با هش آن‌ها ذخیره می‌کند. 
             این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، توصیه می‌شود که این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
-            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های Golang باشد:
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های Go باشد:
         </p> 
         <div className="h-2" />  
         <div dir='ltr'>
@@ -120,26 +120,25 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
     <>
 
         <p>
-            پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود پوشه vendor و فایل‌هایی که پسوند آن‌ها exe. می‌باشد، نیست. چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Golang است که می‌توانید از آن، استفاده کنید:
+            پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود پوشه vendor و فایل‌هایی که پسوند آن‌ها exe. می‌باشد، نیست. چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Go است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
         <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/golang/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
-                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Golang
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های go
                 </h4>
                 </div>
                 <GoArrowLeft className="ml-1" />
             </Card>
         </Link>
         <div className="h-2" />
-        <div className="h-4" />
         <p>
             همچنین،
-            اگر از کتابخانه یا پکیج خاصی در پروژه خود، استفاده می‌کنید که به صورت built-in یا پیش‌فرض در نسخه Golang مدنظرتان وجود ندارد، 
+            اگر از کتابخانه یا پکیج خاصی در پروژه خود، استفاده می‌کنید که به صورت built-in یا پیش‌فرض در نسخه go مدنظرتان وجود ندارد، 
             پروژه شما باید شامل فایل <Important>go.mod</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>go mod download</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
-            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.mod</Important> برای برنامه‌های Golang باشد:
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.mod</Important> برای برنامه‌های go باشد:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
@@ -181,7 +180,7 @@ require (
         <p>
             فایل <Important>go.sum</Important> لیستی از نسخه‌های دقیق ماژول‌های مورد نیاز پروژه را همراه با هش آن‌ها ذخیره می‌کند. 
             این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، توصیه می‌شود که این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
-            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های Golang باشد:
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های go باشد:
         </p> 
         <div className="h-2" />  
         <div dir='ltr'>
@@ -201,20 +200,20 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "app": "my-golang-app", 
-    "platform": "golang",
+    "app": "my-go-app", 
+    "platform": "go",
     "port": 8000
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
         <p>
-            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-golang-app</Important> وارد کنید.
-            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که golang است، مشخص کنید. 
+            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-go-app</Important> وارد کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که go است، مشخص کنید. 
             اگر که برنامه‌تان وب‌سرور است و در پورت خاصی به درخواست کاربران گوش می‌دهد، باید در فیلد <Important>port</Important>، پورت برنامه را مشخص کنید. 
             البته اگر که برنامه‌تان نیازی به پورت ندارد، می‌توانید این فیلد را از فایل <Important>liara.json</Important>، پاک کنید
         </p>
-
+{/* 
         <Section id="liara-json-mirror" title="mirror لیارا" />
         <p>
             از آنجایی که لیارا برای نصب پکیج‌های فایل <Important>go.mod</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
@@ -223,27 +222,48 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "golang": {
+  "go": {
     "mirror": false
   }
 }`}
             </Highlight>
+        </div> */}
+
+
+        <Section id="liara-json-procfile" title="تعیین فایل اصلی" />
+        <p>
+            لیارا به صورت خودکار در مسیر اصلی پروژه، فایل با نام <Important>main.go</Important> را پیدا می‌کند 
+            و پس از build پروژه، با اجرای دستور <Important>go run</Important>، فایل اصلی را اجرا می‌کند. در صورتی 
+            که نام فایل اصلی برنامه‌تان چیز دیگری است؛ باید نام آن را در فیلدی به نام <Important>procfile</Important> در فایل <Important>liara.json</Important> <b>به همراه پسوند <Important>go.</Important></b>، مانند شکل زیر، وارد کنید:         
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+  "go" : {
+    "procfile" : "app.go"
+   }
+}`}
+        </Highlight>
         </div>
+
+
+
         <Section id="liara-json-version" title="تعیین نسخه" />
         <p>
-            برای تعیین نسخه Golang برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
+            برای تعیین نسخه go برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "golang": {
+  "go": {
     "version": "1.22"
   }
 }`}
             </Highlight>
         </div>
-        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه Golang در لیارا</a></Alert>
+        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه go در لیارا</a></Alert>
         <Section id="liara-json-timezone" title="تعیین منطقه زمانی" />
         <p>
             به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
@@ -252,7 +272,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "golang": {
+    "go": {
       "timezone": "America/Los_Angeles"
   }
 }`}
@@ -266,12 +286,12 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "app": "my-golang-app", 
-  "platform": "golang",
-  "port": 3000,
-  "golang": {
-    "mirror": true,
-    "version": "3.12",
+  "app": "my-go-app", 
+  "platform": "go",
+  "port": 8080,
+  "go": {
+    "procfile" : "app.go",
+    "version": "1.23",
     "timezone": "America/Los_Angeles"
   }
 }`}
@@ -279,6 +299,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         </div>
         <div className='h-4' />
         <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/golang/how-tos/use-cgo">استفاده از قابلیت Cgo در برنامه</a></Alert>
         <p>
             اکنون کافیست تا در مسیر اصلی پروژه و جایی که فایل <Important>liara.json</Important> قرار دارد؛ دستور زیر را اجرا کنید و منتظر بمانید تا عملیات استقرار تمام شود:
         </p>
@@ -294,15 +315,15 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         </p>
     </>,
     <>  
-       <p>
-            پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های venv. و dist به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Golang است که می‌توانید از آن، استفاده کنید:
+        <p>
+            پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود پوشه vendor و فایل‌هایی که پسوند آن‌ها exe. می‌باشد، نیست. چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Go است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/Golang/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/golang/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
-                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Golang
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های go
                 </h4>
                 </div>
                 <GoArrowLeft className="ml-1" />
@@ -311,37 +332,82 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         <div className="h-2" />
         <p>
             همچنین،
-            اگر از کتابخانه یا پکیج خاصی در پروژه خود، استفاده می‌کنید که به صورت built-in یا پیش‌فرض در نسخه پایتون مدنظرتان وجود ندارد، 
-            پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
-            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Golang است:
+            اگر از کتابخانه یا پکیج خاصی در پروژه خود، استفاده می‌کنید که به صورت built-in یا پیش‌فرض در نسخه go مدنظرتان وجود ندارد، 
+            پروژه شما باید شامل فایل <Important>go.mod</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>go mod download</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.mod</Important> برای برنامه‌های go باشد:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="txt">
-                {`asgiref==3.8.1
-sqlparse==0.5.0
-tzdata==2024.1
+                {`module example.com/myapp
+
+go 1.20
+
+require (
+    github.com/gin-gonic/gin v1.9.0
+    github.com/jinzhu/gorm v1.9.16
+)
 `}
             </Highlight>
         </div>
+        <div className='h-4' />  
+        <p>
+            اگر که فایل <Important>go.mod</Important> در پروژه‌تان وجود ندارد، می‌توانید با اجرای دستور زیر، این فایل را ایجاد کنید:
+        </p> 
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+        {`go mod init <project_name>`}
+        </Highlight>
+        </div>
+        <div className="h-2" />  
+        <p>
+            در قطعه کد فوق، به جای عبارت <Important>&lt;project_name&gt;</Important>، بایستی نام پروژه خود را وارد کنید. 
+            همچنین، برای اصلاح فایل <Important>go.mod</Important> و جلوگیری از نصب پکیج‌های اضافی یا نصب نسخه‌های قدیمی، 
+            توصیه می‌شود که حتماً قبل از استقرار، دستور زیر را در مسیر اصلی پروژه، اجرا کنید: 
+        </p>
+        <div className="h-2" />  
+                <div dir='ltr'>
+        <Highlight className="bash">
+        {`go mod tidy`}
+        </Highlight>
+        </div>
+        <div className="h-2" />   
+        <p>
+            فایل <Important>go.sum</Important> لیستی از نسخه‌های دقیق ماژول‌های مورد نیاز پروژه را همراه با هش آن‌ها ذخیره می‌کند. 
+            این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، توصیه می‌شود که این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های go باشد:
+        </p> 
+        <div className="h-2" />  
+        <div dir='ltr'>
+        <Highlight className="bash">
+        {`github.com/gin-gonic/gin v1.9.0 h1:D9T8CZpdy7JHe7OfLM/JIQJlOGTNSG3SuRs+0IM2C7s=
+github.com/gin-gonic/gin v1.9.0/go.mod h1:1eP7mI15tlNlAlSuYfXOhSThAPchDwrw2UeiT4ssShg=
+github.com/jinzhu/gorm v1.9.16 h1:PyN03m0AMVE19QIppt4JHa2tiEaQnpFUK5CuBOw35sM=
+github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgmPeJ4=
+`}
+        </Highlight>
+        </div>
         <div className='h-4' />
         <p>
-            لیارا در جهت استقرار سریع‌تر،  برای نصب پکیج‌های موجود در فایل <Important>requirements.txt</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و mirror لیارا را با قراردادن قطعه کد زیر در این فایل، غیرفعال کنید:
+            لیارا به صورت خودکار در مسیر اصلی پروژه، فایل با نام <Important>main.go</Important> را پیدا می‌کند 
+            و پس از build پروژه، با اجرای دستور <Important>go run</Important>، فایل اصلی را اجرا می‌کند. در صورتی 
+            که نام فایل اصلی برنامه‌تان چیز دیگری است؛ می‌توانید در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و نام فایل اصلی خود را در فیلدی به نام <Important>procfile</Important> در فایل <Important>liara.json</Important> <b>به همراه پسوند <Important>go.</Important></b>، مانند شکل زیر، وارد کنید:         
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "Golang": {
-    "mirror": false
-  }
+  "go" : {
+    "procfile" : "app.go"
+   }
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
 
         <p>
-        اگر که برنامه‌تان وب‌سرور است و در پورت خاصی (به جز ۳۰۰۰) به درخواست کاربران گوش می‌دهد، باید در فیلد <Important>port</Important>، پورت برنامه را مشخص کنید. 
+        اگر که برنامه‌تان وب‌سرور است و در پورت خاصی (به جز ۸۰۸۰) به درخواست کاربران گوش می‌دهد، باید در فیلد <Important>port</Important>، پورت برنامه را مشخص کنید. 
         البته اگر که برنامه‌تان نیازی به پورت ندارد،
         نیازی به نوشتن این فیلد نخواهید داشت:
         </p>
@@ -349,27 +415,27 @@ tzdata==2024.1
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "port": 4000
+    "port": 8000
 }`}
             </Highlight>
         </div>
         <div className="h-4" />
         
         <p>
-            برای تعیین نسخه Golang برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
+            برای تعیین نسخه go برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>version</Important> را قرار دهید:
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "Golang": {
-    "version": "3.12"
+  "go": {
+    "version": "1.23"
   }
 }`}
             </Highlight>
         </div>
         <div className='h-4' />
-        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه Golang در لیارا</a></Alert>
+        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه Go در لیارا</a></Alert>
         <Section id="liara-json-timezone" title="تعیین منطقه زمانی" />
         <p>
             به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
@@ -378,7 +444,7 @@ tzdata==2024.1
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-    "Golang": {
+    "go": {
       "timezone": "America/Los_Angeles"
   }
 }`}
@@ -392,10 +458,10 @@ tzdata==2024.1
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
-  "port": 3000,
-  "Golang": {
-    "mirror": true,
-    "version": "3.12",
+  "port": 8080,
+  "go": {
+    "procfile" : "main.go",
+    "version": "1.23",
     "timezone": "America/Los_Angeles"
   }
 }`}
@@ -408,6 +474,8 @@ tzdata==2024.1
           </p>  
         </Alert>
         <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/golang/how-tos/use-cgo">استفاده از قابلیت Cgo در برنامه</a></Alert>
+
         <p>
            در ادامه، بایستی یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید، برای این کار، پس از ورود به <a href="https://github.com/" className="text-[#2196f3]">گیت‌هاب</a>، وارد بخش <b>Repositories</b> شوید و بر روی دکمه <b>New</b> کلیک کنید؛ پس از نوشتن نام و توضیحات ریپازیتوری، سطح دسترسی ریپازیتوری را (public یا private)، انتخاب کنید و در نهایت بر روی دکمه <b>create repository</b> کلیک کنید تا ریپازیتوری برای‌تان ساخته شود:
         </p>

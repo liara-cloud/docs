@@ -14,98 +14,158 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دیتابیس‌ Redis در Python - لیارا</title>
-
+<title>مستندات اتصال به Redis در go - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس Redis در پلتفرم Python در لیارا"  />
+<meta property="og:description" content="مستندات اتصال به دیتابیس Redis در فریم‌ورک go"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
-# اتصال به دیتابیس Redis در برنامه‌های Python
+# اتصال به دیتابیس Redis در برنامه‌های go
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس Redis در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس Redis در برنامه‌های go، در ابتدا باید ماژول‌های مربوط به آن‌را با اجرای دستورات زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip install redis`}
+        {`go get -u github.com/go-redis/redis/v8`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-سپس، با فرض فعال بودن محیط مجازی در پروژه پایتونی‌تان (virtualenv)، دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود: 
-
+پس از آن، کافیست تا 
+اطلاعات مربوط به دیتابیس خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 <div className="h-2" />
     <div dir='ltr'>
-    <Highlight className="bash">
+    <Highlight className="txt">
+        {`REDIS_ADDR=host:port
+REDIS_PASSWORD=password
+REDIS_DB=0`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید با استفاده از قطعه کد زیر، به دیتابیس خود، متصل شوید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="go">
+        {`package main
+
+import (
+    "context"
+    "fmt"
+    "log"
+    "os"
+    "strconv"
+
+    "github.com/go-redis/redis/v8"
+)
+
+func main() {
+
+    // Retrieve environment variables
+    redisAddr := os.Getenv("REDIS_ADDR")
+    redisPassword := os.Getenv("REDIS_PASSWORD")
+    redisDBStr := os.Getenv("REDIS_DB")
+
+    // Convert redisDBStr to an integer
+    redisDB, err := strconv.Atoi(redisDBStr)
+    if err != nil {
+        log.Fatalf("Invalid REDIS_DB value: %v", err)
+    }
+
+    // Connect to Redis
+    client := redis.NewClient(&redis.Options{
+        Addr:     redisAddr,     // host and port
+        Password: redisPassword, // password
+        DB:       redisDB,       // DB Number
+    })
+
+    // Check Connection
+    pong, err := client.Ping(context.Background()).Result()
+    if err != nil {
+        fmt.Println("Error connecting to Redis:", err)
+        return
+    }
+
+    fmt.Println("Connected to Redis:", pong)
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+{/* <Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+برای استفاده از قابلیت connection pooling در دیتابیس Redis، فقط کافیست تا با اجرای دستور زیر، ماژول موردنیاز را نصب کنید:
+
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+{`pip install django-db-connection-pool[mysql]`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+
+سپس، در فایل <Important>settings.py</Important> در بخش <Important>DATABASES</Important>، فیلد مربوط به <Important>ENGINE</Important> را مانند شکل زیر تغییر دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`# other codes ...
+import os
+DATABASES = {
+    'default': {
+        'ENGINE':   'dj_db_conn_pool.backends.mysql', 
+        'NAME':     os.getenv("MYSQL_DB_NAME"), 
+        'USER':     os.getenv("MYSQL_DB_USER"),
+        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
+        'HOST':     os.getenv("MYSQL_DB_HOST"),
+        'PORT':     os.getenv("MYSQL_DB_PORT"),
+    },
+}
+# other codes ...`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+همچنین، می‌توانید تنظیمات مربوط به Connection Pooling را در فیلدی به نام <Important>POOL_OPTIONS</Important>مانند قطعه کد زیر، بر روی دیتابیس خود، اعمال کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`# other codes ...
+import os
+DATABASES = {
+    'default': {
+        'ENGINE':   'dj_db_conn_pool.backends.mysql', 
+        'NAME':     os.getenv("MYSQL_DB_NAME"), 
+        'USER':     os.getenv("MYSQL_DB_USER"),
+        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
+        'HOST':     os.getenv("MYSQL_DB_HOST"),
+        'PORT':     os.getenv("MYSQL_DB_PORT"),
+        'POOL_OPTIONS': {
+            'POOL_SIZE': 10,
+            'MAX_OVERFLOW': 10,
+            'RECYCLE': 24 * 60 * 60
+        }
+    },
+}
+# other codes ...`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important>، به‌روز شود و نام ماژول مورد نیاز، در آن، قرار بگیرد:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
         {`pip freeze > requirements.txt`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3]">نحوه تنظیم متغیرهای محیطی</a>، متغیر محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
-
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-        {`REDIS_URI=redis://:vwPoLIjd5BqZbqX2giABr2xq@monte-rosa.liara.cloud:34356/0
-`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-در نهایت، می‌توانید مشابه قطعه کد زیر، به دیتابیس‌تان متصل شده و از آن، استفاده کنید: 
-
-<div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="python">
-        {`import os
-import redis
-from http.server import BaseHTTPRequestHandler, HTTPServer
-
-# Fetch Redis URI from environment variables
-REDIS_URI = os.getenv("REDIS_URI")
-
-# Initialize Redis client
-def connect_redis():
-    try:
-        # Connect to Redis server using URI
-        redis_client = redis.from_url(REDIS_URI)
-        # Check connection by pinging Redis
-        redis_client.ping()
-        return True
-    except redis.ConnectionError:
-        return False
-
-# HTTP request handler class
-class RequestHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        # Check if Redis is reachable
-        if connect_redis():
-            self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
-            self.end_headers()
-            self.wfile.write(b"Redis connection successful!")
-        else:
-            self.send_response(500)
-            self.send_header('Content-type', 'text/plain')
-            self.end_headers()
-            self.wfile.write(b"Failed to connect to Redis")
-
-# Run the server
-def run(server_class=HTTPServer, handler_class=RequestHandler, port=8080):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print(f'Starting server on port {port}...')
-    httpd.serve_forever()
-
-if __name__ == '__main__':
-    run()
-`}
-    </Highlight>
-    </div>
-<div className="h-2" />
-
-اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+اکنون می‌توانید مجدداً برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>mysql/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید. */}
 
 </Layout>
