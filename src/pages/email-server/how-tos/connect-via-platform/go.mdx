@@ -88,51 +88,50 @@ MAIL_FROM=info@example.com`}
         {`package main
 
 import (
-    "fmt"
-    "log"
-    "os"
-    "strconv"
-
-    gomail "gopkg.in/gomail.v2"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
+	gomail "gopkg.in/mail.v2"
 )
 
 func main() {
-    
-    // Get environment variables for SMTP settings
-    mailHost := os.Getenv("MAIL_HOST")
-    mailPortStr := os.Getenv("MAIL_PORT")
-    mailUser := os.Getenv("MAIL_USER")
-    mailPassword := os.Getenv("MAIL_PASSWORD")
-    mailFrom := os.Getenv("MAIL_FROM")
+	// Fetch environment variables
+	host := os.Getenv("MAIL_HOST")
 
-    // Convert mail port from string to integer
-    mailPort, err := strconv.Atoi(mailPortStr)
-    if err != nil {
-        log.Fatalf("Invalid MAIL_PORT: %v", err)
-    }
+	port, err := strconv.Atoi(os.Getenv("MAIL_PORT"))
+	if err != nil {
+        panic(err)
+	}
 
-    // Create a new email message
-    m := gomail.NewMessage()
-    m.SetHeader("From", mailFrom)
-    m.SetHeader("To", "recipient@example.com") // Set recipient email here
-    m.SetHeader("Subject", "Test Email from Go with HTML")
-    m.SetHeader("x-liara-tag", "test-tag") // Custom header for tagging
+	user := os.Getenv("MAIL_USER")
+	password := os.Getenv("MAIL_PASSWORD")
+	from := os.Getenv("MAIL_FROM")
 
-    // Set HTML body for the email
-    m.SetBody("text/html", \`
-        <h1>This is a test email</h1>
-        <p>Sent from Go using <b>gomail</b> and SMTP with TLS.</p>
-    \`)
+	// Define the email recipient, subject, and body
+	to := "recipient@example.com"
+	subject := "Test Email"
+	body := "This is a test email."
 
-    // Create SMTP dialer with TLS
-    d := gomail.NewDialer(mailHost, mailPort, mailUser, mailPassword)
+	// Set up the email message
+	msg := gomail.NewMessage()
+	msg.SetHeader("From", from)
+	msg.SetHeader("To", to)
+	msg.SetHeader("Subject", subject)
+	msg.SetHeader("x-liara-tag", "test-tag")
+	msg.SetBody("text/plain", body)
 
-    // Send the email
-    if err := d.DialAndSend(m); err != nil {
-        log.Fatalf("Failed to send email: %v", err)
-    }
+	// Set up the SMTP client 
+	dialer := gomail.NewDialer(host, port, user, password)
+	dialer.SSL = true // force SSL
 
-    fmt.Println("Test email sent successfully!")
+	// Send the email
+	err = dialer.DialAndSend(msg)
+	if err != nil {
+		log.Fatalf("Failed to send email: %s", err)
+	} else {
+		fmt.Println("Email sent successfully!")
+	}
 }
 `}
     </Highlight>

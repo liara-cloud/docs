@@ -218,7 +218,7 @@ MAIL_HOST=smtp.c1.liara.email
 MAIL_PORT=587
 MAIL_USERNAME=magical_benz_7s4t7p
 MAIL_PASSWORD=9aaf526a-3352-4d96-99b1-63af70c696e2
-MAIL_ENCRYPTION=tls
+MAIL_ENCRYPTION=
 MAIL_FROM_ADDRESS=info@example.com
 MAIL_FROM_NAME="\${APP_NAME}"`}
     </Highlight>
@@ -232,11 +232,11 @@ MAIL_FROM_NAME="\${APP_NAME}"`}
 </Alert> */}
 
 
-<Alert variant='info'>
+{/* <Alert variant='info'>
 <p>
 با تنظیم <Important>MAIL_ENCRYPTION=tls</Important>، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.
 </p>
-</Alert>
+</Alert> */}
 در نظر داشته باشید که باید فایل <Important>config/mail.php</Important>، شامل قطعه کد زیر، باشد:
 
 <div className="h-2" />
@@ -273,6 +273,11 @@ return [
 `}
     </Highlight>
 </div>
+<Alert variant="info">
+    <p>
+        در نظر داشته باشید که Laravel برای ارسال ایمیل از رمز‌نگاری TLS استفاده می‌کند؛ در صورتی که قادر به ارسال از طریق TLS نباشد، آن را به STARTTLS، تغییر می‌دهد.
+    </p>
+</Alert>
 <div className="h-2" />
 
 در ادامه، بایستی با اجرای دستوری مشابه دستور زیر، یک Mailable ایجاد کنید: 
@@ -362,7 +367,6 @@ Route::get('/send-test-email', function () {
 <div className="h-2" />
 
 با انجام کارهای فوق، می‌توانید از ایمیل‌سرور در برنامه خود در صفحه <Important>send-test-email/</Important>، برای ارسال ایمیل، استفاده کنید.
-
 
       </>
   ]}
