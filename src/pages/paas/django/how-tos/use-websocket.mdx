@@ -337,6 +337,22 @@ application = ProtocolTypeRouter(
 </div>
 <div className="h-2" />
 
+
+همچنین، به دلیل استفاده از ASGI، ماژول‌ها به شکل async بارگذاری می‌شوند. بنابراین قبل از اجرا شدن برنامه، باید از بارگذاری درست ماژول‌ها، اطمینان حاصل کنید.
+برای این‌کار، بایستی قطعه کد زیر را در ابتدای فایل <Important>asgi.py</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+import django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '<path_to_settings>')
+django.setup()`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، بایستی مقدار <Important>&lt;path_to_settings&gt;</Important> را با مسیر فایل <Important>settings.py</Important> خود، جایگزین کنید. 
 در ادامه، باید قطعه کد زیر را به فایل <Important>settings.py</Important> اضافه کنید:
 
 <div className="h-2" />
@@ -386,17 +402,6 @@ LOGOUT_REDIRECT_URL= "login-user"`}
 <div dir='ltr'>
     <Highlight className="bash">
     {`python manage.py runserver`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-
-
-
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="python">
-    {``}
     </Highlight>
 </div>
 <div className="h-2" />
