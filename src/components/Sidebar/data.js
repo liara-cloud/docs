@@ -2694,20 +2694,21 @@ export default {
         link: "/paas/golang/how-tos/connect-to-db/sqlite"
       },
       {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/golang/how-tos/connect-to-db/mongodb"
+      },
+      {
         title: "دیتابیس Redis",
         icon: <IconContainer alt="redis" />,
         link: "/paas/golang/how-tos/connect-to-db/redis"
       },
-      // {
-      //   title: "دیتابیس ElasticSearch",
-      //   icon: <IconContainer alt="elastic" />,
-      //   link: "/paas/golang/how-tos/connect-to-db/elastic-search"
-      // },
-      // {
-      //   title: "دیتابیس MongoDB",
-      //   icon: <IconContainer alt="mongodb" />,
-      //   link: "/paas/golang/how-tos/connect-to-db/mongodb"
-      // },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/golang/how-tos/connect-to-db/elastic-search"
+      },
+  
       // {
       //   hr: true
       // },

@@ -23,128 +23,39 @@ import Head from "next/head";
 # استقرار برنامه‌های Gin در لیارا
 <hr className="mb-2" />
 <a className="text-[#2196f3] " href="https://gin-gonic.com/">Gin</a> یک فریم‌ورک وب برای زبان برنامه‌نویسی Go است که به طور خاص برای ساخت اپلیکیشن‌های سریع و مقیاس‌پذیر طراحی شده است. این فریم‌ورک با ارائه امکاناتی مانند روتینگ سریع، مدیریت درخواست‌ها، و middleware، به توسعه‌دهندگان این امکان را می‌دهد که سرویس‌های وب قدرتمند و کارآمد بسازند. Gin به دلیل سرعت بالا و استفاده کم از منابع، برای پروژه‌هایی که نیاز به عملکرد بالا دارند، مناسب است. همچنین، این فریم‌ورک از ساختار ساده‌ای برخوردار است که توسعه‌دهندگان را قادر می‌سازد تا سریع‌تر کد بنویسند و مشکلات را برطرف کنند.
+<div className='h-2' />
 
-
-
-
-
-
-
-<div className="h-2" />
-<div dir='ltr'>
-<Highlight className="bash">
-    {`- proj/
-  - manage.py
-  - proj/
-    - __init__.py
-    - settings.py
-    - urls.py`}
-</Highlight>
-</div>
-<div className="h-2" />
-
-توصیه می‌شود در ابتدا یک ماژول جدید به نام <Important>celery.py</Important> در مسیر proj/proj ایجاد کنید و قطعه کدی مشابه قطعه کد زیر را، در آن قرار دهید:
-
-<div className="h-2" />
-<div dir='ltr'>
-<Highlight className="python">
-    {`# proj/proj/celery.py
-import os
-from celery import Celery
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
-
-app = Celery('proj')
-
-app.config_from_object('django.conf:settings', namespace='CELERY')
-
-app.autodiscover_tasks()
-
-@app.task(bind=True)
-def debug_task(self):
-    print(f'Request: {self.request!r}')`}
-</Highlight>
-</div>
-<div className="h-2" />
-
-حال برای اطمینان از import شدن ماژول <Important>celery.py</Important> در زمان اجرای <Important>shared_task</Important> توسط فریم‌ورک Django، ماژول <Important>init\_\_.py\_\_</Important> را در مسیر proj/proj ایجاد کرده و قطعه کد زیر را در این فایل قرار دهید:
-
-<div className="h-2" />
-<div dir='ltr'>
-<Highlight className="python">
-    {`from .celery import app as celery_app
-
-__all__ = ('celery_app',)`}
-</Highlight>
-</div>
-<div className="h-2" />
-در قدم بعد باید پیکربندی‌های مورد نیاز برای راه‌اندازی Celery را در انتهای فایل <Important>settings.py</Important> پروژه وارد کنید:
-
-<div className="h-2" />
-<div dir='ltr'>
-<Highlight className="python">
-    {`# Celery Configuration Options
-
-BROKER_URL = 'redis://:a*********3t@tommy.iran.liara.ir:34470/0'
-CELERY_RESULT_BACKEND = 'redis://:a*********3t@tommy.iran.liara.ir:34470/0'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Tehran'`}
-</Highlight>
-</div>
-<div className="h-2" />
-
-با قرار داشتن قطعه کد <Important>()app.autodiscover_tasks</Important> در فایل <Important>proj/proj/celery.py</Important> این امکان برای شما فراهم است که task های مورد نظر خود را در فایل <Important>tasks.py</Important> هر App به‌صورت جداگانه تعریف کنید؛ به عنوان مثال:
+ شما می‌توانید برنامه‌های Gin خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های Go</a> در لیارا، مستقر کنید.
+توجه داشته باشید که برای استقرار برنامه‌های Gin نیازی به انجام کار خاصی نیست و پلتفرم Go لیارا به‌طور کامل از این فریم‌ورک پشتیبانی می‌کند.
+در نظر داشته باشید که قبل از استقرار برنامه، حتماً ماژول مربوط به gin در پروژه نصب شده باشد؛ می‌توانید این کار را با اجرای دستور زیر در مسیر اصلی پروژه، انجام دهید: 
 
 <div className="h-2" />
 <div dir='ltr'>
 <Highlight className="bash">
-    {`- app1/
-    - tasks.py
-    - models.py
-- app2/
-    - tasks.py
-    - models.py`}
+    {`go get -u github.com/gin-gonic/gin`}
 </Highlight>
 </div>
 <div className="h-2" />
 
-برای مثال، می‌توانید با استفاده از دکوراتور <Important>shared_task@</Important> به‌شکل زیر، taskهای خود را تعریف کنید:
-
+همچنین، توصیه می‌شود با اجرای دستور زیر، فایل <Important>go.mod</Important> را (در صورت نیاز) اصلاح کنید:
 <div className="h-2" />
 <div dir='ltr'>
 <Highlight className="python">
-    {`# app1/tasks.py
-
-from celery import shared_task
-
-@shared_task
-def add(x, y):
-    return x + y`}
+    {`go mod tidy`}
 </Highlight>
 </div>
 <div className="h-2" />
 
-درنهایت قبل از استقرار این پروژه در لیارا نیاز است که فایل <Important>supervisor.conf</Important> را در مسیر اصلی پروژه ایجاد کرده و پیکربندی زیر را در این فایل قرار دهید:
+تمامی کارها انجام شده است و کافیست تا با اجرای دستور زیر در مسیر اصلی پروژه، برنامه‌تان را در لیارا، مستقر کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
-<Highlight className="conf">
-    {`[program:celery-worker]
-process_name=%(program_name)s_%(process_num)02d
-command=celery -A proj worker -l INFO
-autostart=true
-autorestart=true
-stopasgroup=true
-killasgroup=true
-numprocs=1
-startsecs=10
-stopwaitsecs=600
-redirect_stderr=true
-stdout_logfile=/tmp/worker.log`}
+<Highlight className="bash">
+    {`liara deploy --port=8080 --platform=go`}
 </Highlight>
 </div>
 <div className="h-2" />
 
+بعد از <Important>port--</Important> باید پورتی را وارد کنید که برنامه‌تان در آن، به درخواست کاربران گوش می‌دهد. معمولاً این مقدار بر روی ۸۰۸۰ تنظیم می‌شود.
 
 </Layout>
