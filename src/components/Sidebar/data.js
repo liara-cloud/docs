@@ -247,7 +247,7 @@ export default {
       {
         title: "Go",
         icon: <IconContainer alt="go" />,
-        link: "/paas/golang/getting-started"
+        link: "/paas/go/getting-started"
       },
       {
         title: "React",
@@ -384,7 +384,7 @@ export default {
       {
         title: "Go",
         icon: <IconContainer alt="go" />,
-        link: "/paas/golang/getting-started"
+        link: "/paas/go/getting-started"
       },
       {
         title: "React",
@@ -521,7 +521,7 @@ export default {
       {
         title: "Go",
         icon: <IconContainer alt="go" />,
-        link: "/paas/golang/getting-started"
+        link: "/paas/go/getting-started"
       },
       {
         title: "React",
@@ -658,7 +658,7 @@ export default {
       {
         title: "Go",
         icon: <IconContainer alt="go" />,
-        link: "/paas/golang/getting-started"
+        link: "/paas/go/getting-started"
       },
       {
         title: "React",
@@ -2554,7 +2554,7 @@ export default {
         link: "/paas/dotnet/fix-common-errors/cors"
       },
     ],
-    golang: [
+    go: [
       {
         badge: (
           <div className="flex items-center gap-2">
@@ -2571,17 +2571,17 @@ export default {
       {
         title: "شروع به کار",
         icon: <GoFlame />,
-        link: "/paas/golang/getting-started"
+        link: "/paas/go/getting-started"
       },
       {
         title: "استقرار سریع!",
         icon: <GoZap  />,
-        link: "/paas/golang/quick-start"
+        link: "/paas/go/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
         icon: <GoMegaphone   />,
-        link: "/paas/golang/related-links"
+        link: "/paas/go/related-links"
       },
       {
         hr: true
@@ -2596,71 +2596,71 @@ export default {
       },
       {
         title: "ساخت برنامه",
-        link: "/paas/golang/how-tos/create-app"
+        link: "/paas/go/how-tos/create-app"
       },
       {
         title: "استقرار برنامه",
-        link: "/paas/golang/how-tos/deploy-app"
+        link: "/paas/go/how-tos/deploy-app"
       },
       {
         title: "استفاده از متغیرهای محیطی",
-        link: "/paas/golang/how-tos/set-envs"
+        link: "/paas/go/how-tos/set-envs"
       },
       {
         title: "استفاده از دیسک",
-        link: "/paas/golang/how-tos/use-disk"
+        link: "/paas/go/how-tos/use-disk"
       },
       // {
       //   title: "استفاده از Supervisord",
-      //   link: "/paas/golang/how-tos/use-supervisord"
+      //   link: "/paas/go/how-tos/use-supervisord"
       // },
       // {
       //   title: "استفاده از ماژول FFMPEG",
-      //   link: "/paas/golang/how-tos/use-ffmpeg-module"
+      //   link: "/paas/go/how-tos/use-ffmpeg-module"
       // },
       // {
       //   title: "تنظیم Nginx",
-      //   link: "/paas/golang/how-tos/customize-nginx"
+      //   link: "/paas/go/how-tos/customize-nginx"
       // },
       // {
       //   title: "فعال‌سازی قابلیت gzip",
-      //   link: "/paas/golang/how-tos/enable-gzip"
+      //   link: "/paas/go/how-tos/enable-gzip"
       // },
       {
         title: "استفاده از Hookها",
-        link: "/paas/golang/how-tos/use-hooks"
+        link: "/paas/go/how-tos/use-hooks"
       },
       {
         title: "استفاده از قابلیت cgo",
-        link: "/paas/golang/how-tos/use-cgo"
+        link: "/paas/go/how-tos/use-cgo"
       },
       {
         title: "تنظیم Cron Job",
-        link: "/paas/golang/how-tos/set-cron-job"
+        link: "/paas/go/how-tos/set-cron-job"
       },
       {
         title: "تغییر نسخه go",
-        link: "/paas/golang/how-tos/choose-version"
+        link: "/paas/go/how-tos/choose-version"
       },
       {
         title: "راه‌اندازی برنامه WebSocket",
-        link: "/paas/golang/how-tos/use-websocket"
+        link: "/paas/go/how-tos/use-websocket"
       },
       // {
       //   title: "تنظیم تعداد workerهای  Gunicorn",
-      //   link: "/paas/golang/how-tos/set-gunicorn-workers"
+      //   link: "/paas/go/how-tos/set-gunicorn-workers"
       // },
       // {
       //   title: "تنظیم max_request در Gunicorn",
-      //   link: "/paas/golang/how-tos/set-gunicorn-maxrequest"
+      //   link: "/paas/go/how-tos/set-gunicorn-maxrequest"
       // },
       // {
       //   title: "تنظیم هدرهای امنیتی HTTP",
-      //   link: "/paas/golang/how-tos/set-http-security-headers"
+      //   link: "/paas/go/how-tos/set-http-security-headers"
       // },
       {
         title: "تنظیم لاگ‌ها",
-        link: "/paas/golang/how-tos/set-logs"
+        link: "/paas/go/how-tos/set-logs"
       },
       {
         hr: true
@@ -2669,44 +2669,44 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <GoDatabase  />
-            <Link href="/paas/golang/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+            <Link href="/paas/go/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
       },
       {
         title: "دیتابیس MySQL/MariaDB",
         icon: <IconContainer alt="mysql" />,
-        link: "/paas/golang/how-tos/connect-to-db/mysql"
+        link: "/paas/go/how-tos/connect-to-db/mysql"
       },
       {
         title: "دیتابیس MSSQL",
       icon: <IconContainer alt="mssql" />,
-        link: "/paas/golang/how-tos/connect-to-db/mssql"
+        link: "/paas/go/how-tos/connect-to-db/mssql"
       },
       {
         title: "دیتابیس PostgreSQL",
         icon: <IconContainer alt="postgres" />,
-        link: "/paas/golang/how-tos/connect-to-db/postgresql"
+        link: "/paas/go/how-tos/connect-to-db/postgresql"
       },
       {
         title: "دیتابیس SQLite",
         icon: <IconContainer alt="sqlite" />,
-        link: "/paas/golang/how-tos/connect-to-db/sqlite"
+        link: "/paas/go/how-tos/connect-to-db/sqlite"
       },
       {
         title: "دیتابیس MongoDB",
         icon: <IconContainer alt="mongodb" />,
-        link: "/paas/golang/how-tos/connect-to-db/mongodb"
+        link: "/paas/go/how-tos/connect-to-db/mongodb"
       },
       {
         title: "دیتابیس Redis",
         icon: <IconContainer alt="redis" />,
-        link: "/paas/golang/how-tos/connect-to-db/redis"
+        link: "/paas/go/how-tos/connect-to-db/redis"
       },
       {
         title: "دیتابیس ElasticSearch",
         icon: <IconContainer alt="elastic" />,
-        link: "/paas/golang/how-tos/connect-to-db/elastic-search"
+        link: "/paas/go/how-tos/connect-to-db/elastic-search"
       },
   
       // {
@@ -2716,7 +2716,7 @@ export default {
       //   badge: (
       //     <div className="flex items-center gap-2">
       //       <GoBug  />
-      //       <Link href="/paas/golang/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //       <Link href="/paas/go/fix-common-errors/about">رفع خطاهای رایج</Link>
       //     </div>
       //   )
       // },
@@ -2733,23 +2733,23 @@ export default {
       },
       {
         title: "Gin",
-        icon: <IconContainer alt="https://files.liara.ir/liara/golang/go-gin.ico" />,
-        link: "/paas/golang/related-apps/gin"
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/go-gin.ico" />,
+        link: "/paas/go/related-apps/gin"
       },
       {
         title: "Beego",
-        icon: <IconContainer alt="https://files.liara.ir/liara/golang/beego.ico" />,
-        link: "/paas/golang/related-apps/beego"
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/beego.ico" />,
+        link: "/paas/go/related-apps/beego"
       },
       {
         title: "Echo",
-        icon: <IconContainer alt="https://files.liara.ir/liara/golang/echo-icon.png" />,
-        link: "/paas/golang/related-apps/echo"
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/echo-icon.png" />,
+        link: "/paas/go/related-apps/echo"
       },
       {
         title: "Fiber",
-        icon: <IconContainer alt="https://files.liara.ir/liara/golang/fiber-icon.ico" />,
-        link: "/paas/golang/related-apps/fiber"
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/fiber-icon.ico" />,
+        link: "/paas/go/related-apps/fiber"
       },
     ],
     react: [

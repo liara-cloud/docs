@@ -228,8 +228,8 @@ const GETTING_START_DATA = [
   //   }
   // },
   // {
-  //   title: "golang-getting-started",
-  //   link: "https://github.com/liara-cloud/golang-getting-started",
+  //   title: "go-getting-started",
+  //   link: "https://github.com/liara-cloud/go-getting-started",
   //   badge: {
   //     color: "#6EACDA",
   //     text: "Go"
@@ -398,8 +398,8 @@ const MOST_VISITED_LINKS = [
   //   href: "/object-storage/how-tos/direct-download"
   // },
   // {
-  //   title: "اتصال به دیتابیس MySQL در برنامه‌های Golang",
-  //   alt: "golang mysql",
+  //   title: "اتصال به دیتابیس MySQL در برنامه‌های go",
+  //   alt: "go mysql",
   //   href: "/dbaas/mysql/how-tos/connect-via-platform/go"
   // },
   {

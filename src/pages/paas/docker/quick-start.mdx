@@ -68,13 +68,13 @@ import Head from "next/head";
   <>
     <h3>ایجاد Dockerfile</h3>
     <p>
-      در مسیر اصلی پروژه، یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و بنا به نیازهای پروژه خود، دستورات مرتبط را درون این فایل، قرار دهید تا پروژه‌تان Dockerize شود. به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
+      در مسیر اصلی پروژه، یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و بنا به نیازهای پروژه خود، دستورات مرتبط را درون این فایل، قرار دهید تا پروژه‌تان Dockerize شود. به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک go است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
     </p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="docker">
-      {`# Use the official Golang image as the base image
-FROM golang:latest
+      {`# Use the official go image as the base image
+FROM go:latest
         
 # Set the working directory inside the container
 WORKDIR /app
@@ -231,13 +231,13 @@ CMD ["./main"]`}
     <h3>ایجاد Dockerfile</h3>
     <p>
       در مسیر اصلی پروژه، یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و بنا به نیازهای پروژه خود، دستورات مرتبط را درون این فایل، قرار دهید تا پروژه‌تان Dockerize شود. 
-      به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
+      به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک go است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
     </p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="docker">
-      {`# Use the official Golang image as the base image
-FROM golang:latest
+      {`# Use the official go image as the base image
+FROM go:latest
         
 # Set the working directory inside the container
 WORKDIR /app
@@ -320,13 +320,13 @@ CMD ["./main"]`}
     <h3>ایجاد Dockerfile</h3>
     <p>
       در مسیر اصلی پروژه، یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و بنا به نیازهای پروژه خود، دستورات مرتبط را درون این فایل، قرار دهید تا پروژه‌تان Dockerize شود. 
-      به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک Golang است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
+      به عنوان مثال، اگر که برنامه‌تان مبتنی بر فریم‌ورک go است، می‌توانید قطعه کد زیر را در <Important>Dockerfile</Important>، قرار دهید:    
     </p>
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="docker">
-      {`# Use the official Golang image as the base image
-FROM golang:latest
+      {`# Use the official go image as the base image
+FROM go:latest
         
 # Set the working directory inside the container
 WORKDIR /app

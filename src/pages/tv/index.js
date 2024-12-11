@@ -92,7 +92,7 @@ const Videos = () => {
               src="/static/course/php.png"
             />
           </Link>
-          <Link style={{ border: "none" }} href="/tv/courses/golang">
+          <Link style={{ border: "none" }} href="/tv/courses/go">
             <img
               style={{ borderColor: "#ffffff22" }}
               src="/static/course/go.png"

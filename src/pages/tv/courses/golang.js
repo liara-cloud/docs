@@ -16,7 +16,7 @@ const flask = () => {
       <Head>
         <title>مستندات - آموزش استفاده از لیارا</title>
         <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم Golang"  />
+        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم go"  />
         <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
       </Head>
 
@@ -31,70 +31,70 @@ const flask = () => {
         src="/static/course/go.png"
       />
       <Section
-        name={"صفر تا صد استقرار برنامه‌های Golang در لیارا"}
+        name={"صفر تا صد استقرار برنامه‌های go در لیارا"}
         style={{ marginTop: 40 }}
-        badge={"Golang Platform"}
+        badge={"go Platform"}
         setOpenDialog={setOpenDialog}
         links={[
           {
             videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
             link:
-              "https://files.liara.ir/liara/golang/course/e00-intro-to-project.mp4"
+              "https://files.liara.ir/liara/go/course/e00-intro-to-project.mp4"
           },
           {
             videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از Local",
             link:
-              "https://files.liara.ir/liara/golang/course/e01-connect-to-db.mp4"
+              "https://files.liara.ir/liara/go/course/e01-connect-to-db.mp4"
           },
           {
             videoTitle: "جلسه 2: اتصال برنامه به سرویس‌های Email و DNS لیارا",
             link:
-              "https://files.liara.ir/liara/golang/course/e02-email-and-dns.mp4"
+              "https://files.liara.ir/liara/go/course/e02-email-and-dns.mp4"
           },
           {
             videoTitle: "جلسه 3: اتصال برنامه به باکت در لیارا",
             link:
-              "https://files.liara.ir/liara/golang/course/e03-upload-using-bucket.mp4"
+              "https://files.liara.ir/liara/go/course/e03-upload-using-bucket.mp4"
           },
           {
             videoTitle: "جلسه 4: استقرار کامل برنامه در لیارا",
             link:
-              "https://files.liara.ir/liara/golang/course/e04-deploy-in-liara.mp4"
+              "https://files.liara.ir/liara/go/course/e04-deploy-in-liara.mp4"
           },
           {
             videoTitle: "جلسه 5: استفاده از دیسک‌ها در برنامه",
-            link: "https://files.liara.ir/liara/golang/course/e05-use-disks.mp4"
+            link: "https://files.liara.ir/liara/go/course/e05-use-disks.mp4"
           },
           {
             videoTitle: "جلسه 6: مدیریت دیسک‌ها با دسترسی FTP",
             link:
-              "https://files.liara.ir/liara/golang/course/e06-manage-disks-using-ftp.mp4"
+              "https://files.liara.ir/liara/go/course/e06-manage-disks-using-ftp.mp4"
           },
           {
             videoTitle: "جلسه 7: بازیابی دیتابیس در لیارا",
             link:
-              "https://files.liara.ir/liara/golang/course/e07-restore-db.mp4"
+              "https://files.liara.ir/liara/go/course/e07-restore-db.mp4"
           },
           {
             videoTitle: "جلسه 8: فعال‌سازی باکت و ایمیل‌سرور",
             link:
-              "https://files.liara.ir/liara/golang/course/e08-enable-bucket-and-email.mp4"
+              "https://files.liara.ir/liara/go/course/e08-enable-bucket-and-email.mp4"
           },
           {
             videoTitle: "جلسه 9: اتصال دامنه به برنامه در لیارا",
             link:
-              "https://files.liara.ir/liara/golang/course/e09-connect-domain-to-app.mp4"
+              "https://files.liara.ir/liara/go/course/e09-connect-domain-to-app.mp4"
           },
           {
             videoTitle: "جلسه 10: راه‌اندازی CI/CD در برنامه",
-            link: "https://files.liara.ir/liara/golang/course/e10-cicd.mp4"
+            link: "https://files.liara.ir/liara/go/course/e10-cicd.mp4"
           }
         ]}
       />
       <br />
       <Alert variant="info">
         پروژه و کدهای مورد استفاده در دوره فوق در{" "}
-        <Link href="https://github.com/liara-cloud/golang-getting-started">
+        <Link href="https://github.com/liara-cloud/go-getting-started">
           گیت‌هاب لیارا
         </Link>{" "}
         قابل مشاهده و دسترسی می‌باشد.{" "}

@@ -110,7 +110,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
             پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید.
         </p>
         {/* <div className="h-4" />
-        <img src="https://files.liara.ir/liara/docs/deploy-Golang-app-using-console.gif" alt="build app on liara" />
+        <img src="https://files.liara.ir/liara/docs/deploy-go-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" /> */}
         <p>
             در انتها، به صورت مستقیم به <a href="/paas/details/private-registry" className="text-[#2196f3] ">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
@@ -123,7 +123,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
             پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود پوشه vendor و فایل‌هایی که پسوند آن‌ها exe. می‌باشد، نیست. چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Go است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/golang/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/go/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
@@ -299,7 +299,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         </div>
         <div className='h-4' />
         <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
-        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/golang/how-tos/use-cgo">استفاده از قابلیت Cgo در برنامه</a></Alert>
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/go/how-tos/use-cgo">استفاده از قابلیت Cgo در برنامه</a></Alert>
         <p>
             اکنون کافیست تا در مسیر اصلی پروژه و جایی که فایل <Important>liara.json</Important> قرار دارد؛ دستور زیر را اجرا کنید و منتظر بمانید تا عملیات استقرار تمام شود:
         </p>
@@ -319,7 +319,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
             پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود پوشه vendor و فایل‌هایی که پسوند آن‌ها exe. می‌باشد، نیست. چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Go است که می‌توانید از آن، استفاده کنید:
         </p>
         <div className="h-2" />
-        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/golang/.gitignore" target="_blank">
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/go/.gitignore" target="_blank">
             <Card className="flex cursor-pointer w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                 <h4>
@@ -474,7 +474,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
           </p>  
         </Alert>
         <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
-        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/golang/how-tos/use-cgo">استفاده از قابلیت Cgo در برنامه</a></Alert>
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/go/how-tos/use-cgo">استفاده از قابلیت Cgo در برنامه</a></Alert>
 
         <p>
            در ادامه، بایستی یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید، برای این کار، پس از ورود به <a href="https://github.com/" className="text-[#2196f3]">گیت‌هاب</a>، وارد بخش <b>Repositories</b> شوید و بر روی دکمه <b>New</b> کلیک کنید؛ پس از نوشتن نام و توضیحات ریپازیتوری، سطح دسترسی ریپازیتوری را (public یا private)، انتخاب کنید و در نهایت بر روی دکمه <b>create repository</b> کلیک کنید تا ریپازیتوری برای‌تان ساخته شود:
