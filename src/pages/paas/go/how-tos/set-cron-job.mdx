@@ -34,7 +34,7 @@ Cron job یک وظیفه زمان‌بندی شده در سیستم‌عامل�
 
       پس از آپلود پروژه خود در کنسول در بخش <b>تنظیمات پلتفرم</b>، Cron Jobهای خود را تعریف کنید:
       <div className="h-4" />
-      <img src="https://files.liara.ir/liara/go/go-cronjob.png" alt="set cron jobs on liara" />
+      <img src="https://files.liara.ir/liara/go/set-cron-job-in-go-using-console.png" alt="set cron jobs on liara" />
       
     </>,
 
@@ -49,7 +49,7 @@ Cron job یک وظیفه زمان‌بندی شده در سیستم‌عامل�
 <Highlight  className="json">
 {`{
   "cron": [
-    "go run migrate.go >> /dev/null 2>&1"
+    "* * * * * go run migrate.go >> /dev/null 2>&1"
   ]
 }`}
 </Highlight>

@@ -10,7 +10,7 @@
     "sitemap": "node sitemap/generate.js"
   },
   "dependencies": {
-    "@liara/platformicons": "^3.12.0",
+    "@liara/platformicons": "^3.13.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",

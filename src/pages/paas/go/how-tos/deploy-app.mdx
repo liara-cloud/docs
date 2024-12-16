@@ -79,7 +79,7 @@ require (
         <div className="h-2" />   
         <p>
             فایل <Important>go.sum</Important> لیستی از نسخه‌های دقیق ماژول‌های مورد نیاز پروژه را همراه با هش آن‌ها ذخیره می‌کند. 
-            این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، توصیه می‌شود که این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
+            این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، اگر که در برنامه‌تان، ماژولی را نصب کرده‌اید، باید این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
             قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های Go باشد:
         </p> 
         <div className="h-2" />  
@@ -92,7 +92,22 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
 `}
         </Highlight>
         </div>
-        <div className="h-2" />    
+        <div className="h-2" />   
+        <p>
+            برای ایجاد این فایل نیز کافیست تا قبل از استقرار پروژه‌تان، دستور زیر را در مسیر اصلی پروژه اجرا کنید:
+        </p>
+
+        <div className="h-2" />  
+        <div dir='ltr'>
+        <Highlight className="bash">
+        {`go get <project_name>`}
+        </Highlight>
+        </div>
+        <div className="h-2" /> 
+        <p>
+            در قطعه کد فوق، به جای <Important>&lt;project_name&gt;</Important> باید نام پروژه خود را که در فایل <Important>go.mod</Important> ثبت شده است، وارد کنید.
+        </p>
+
         <p>
             در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ وارد تب <b>Drag & Drog</b> شوید و فایل zip را آپلود کنید تا وارد مرحله بعدی استقرار شوید:
         </p>
@@ -179,8 +194,8 @@ require (
         <div className="h-2" />   
         <p>
             فایل <Important>go.sum</Important> لیستی از نسخه‌های دقیق ماژول‌های مورد نیاز پروژه را همراه با هش آن‌ها ذخیره می‌کند. 
-            این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، توصیه می‌شود که این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
-            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های go باشد:
+            این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، اگر که در برنامه‌تان، ماژولی را نصب کرده‌اید، باید این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های Go باشد:
         </p> 
         <div className="h-2" />  
         <div dir='ltr'>
@@ -192,27 +207,22 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
 `}
         </Highlight>
         </div>
-        <Section id="liara-json" title="فایل liara.json" />
+        <div className="h-2" />   
         <p>
-            در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+            برای ایجاد این فایل نیز کافیست تا قبل از استقرار پروژه‌تان، دستور زیر را در مسیر اصلی پروژه اجرا کنید:
         </p>
-        <div className="h-4" />
+
+        <div className="h-2" />  
         <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "app": "my-go-app", 
-    "platform": "go",
-    "port": 8000
-}`}
-            </Highlight>
+        <Highlight className="bash">
+        {`go get <project_name>`}
+        </Highlight>
         </div>
-        <div className='h-4' />
+        <div className="h-2" /> 
         <p>
-            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-go-app</Important> وارد کنید.
-            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که go است، مشخص کنید. 
-            اگر که برنامه‌تان وب‌سرور است و در پورت خاصی به درخواست کاربران گوش می‌دهد، باید در فیلد <Important>port</Important>، پورت برنامه را مشخص کنید. 
-            البته اگر که برنامه‌تان نیازی به پورت ندارد، می‌توانید این فیلد را از فایل <Important>liara.json</Important>، پاک کنید
+            در قطعه کد فوق، به جای <Important>&lt;project_name&gt;</Important> باید نام پروژه خود را که در فایل <Important>go.mod</Important> ثبت شده است، وارد کنید.
         </p>
+
 {/* 
         <Section id="liara-json-mirror" title="mirror لیارا" />
         <p>
@@ -373,10 +383,10 @@ require (
         </Highlight>
         </div>
         <div className="h-2" />   
-        <p>
+                <p>
             فایل <Important>go.sum</Important> لیستی از نسخه‌های دقیق ماژول‌های مورد نیاز پروژه را همراه با هش آن‌ها ذخیره می‌کند. 
-            این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، توصیه می‌شود که این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
-            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های go باشد:
+            این فایل تضمین می‌کند که همه سیستم‌ها از نسخه‌های یکسان و امن ماژول‌ها استفاده کنند. بنابراین، اگر که در برنامه‌تان، ماژولی را نصب کرده‌اید، باید این فایل نیز، در مسیر اصلی پروژ‌تان، وجود داشته باشد. 
+            قطعه کد زیر، می‌تواند یک نمونه از فایل <Important>go.sum</Important> برای برنامه‌های Go باشد:
         </p> 
         <div className="h-2" />  
         <div dir='ltr'>
@@ -388,7 +398,21 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
 `}
         </Highlight>
         </div>
-        <div className='h-4' />
+        <div className="h-2" />   
+        <p>
+            برای ایجاد این فایل نیز کافیست تا قبل از استقرار پروژه‌تان، دستور زیر را در مسیر اصلی پروژه اجرا کنید:
+        </p>
+
+        <div className="h-2" />  
+        <div dir='ltr'>
+        <Highlight className="bash">
+        {`go get <project_name>`}
+        </Highlight>
+        </div>
+        <div className="h-2" /> 
+        <p>
+            در قطعه کد فوق، به جای <Important>&lt;project_name&gt;</Important> باید نام پروژه خود را که در فایل <Important>go.mod</Important> ثبت شده است، وارد کنید.
+        </p>
         <p>
             لیارا به صورت خودکار در مسیر اصلی پروژه، فایل با نام <Important>main.go</Important> را پیدا می‌کند 
             و پس از build پروژه، با اجرای دستور <Important>go run</Important>، فایل اصلی را اجرا می‌کند. در صورتی 
