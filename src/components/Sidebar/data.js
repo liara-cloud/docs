@@ -2027,6 +2027,22 @@ export default {
       //     </div>
       //   )
       // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "FastAPI",
+        icon: <IconContainer alt="fastapi" />,
+        link: "/paas/python/related-apps/fastapi"
+      },
     ],
     django: [
       {
@@ -3189,11 +3205,6 @@ export default {
         title: "Reverse Proxy با Nginx",
         icon: <IconContainer alt="nginx" />,
         link: "/paas/docker/related-apps/nginx"
-      },
-      {
-        title: "FastAPI",
-        icon: <IconContainer alt="fastapi" />,
-        link: "/paas/docker/related-apps/fastapi"
       },
       {
         title: "Streamlit",

@@ -16,7 +16,7 @@ import Head from "next/head";
 <Head>
 <title>مستندات استقرار برنامه‌های FastAPI - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه FastAPI در پلتفرم داکر در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه FastAPI در پلتفرم پایتون در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
 # استقرار برنامه‌های FastAPI در لیارا
@@ -33,8 +33,7 @@ import Head from "next/head";
 
 <div className="h-2" />
 
-شما می‌توانید برنامه‌های FastAPI خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های Docker</a> در لیارا، مستقر کنید.
-در ابتدا در نظر داشته باشید که دایرکتوری پروژه شما، ساختاری مشابه با ساختار زیر داشته باشد:
+{/* در ابتدا در نظر داشته باشید که دایرکتوری پروژه شما، ساختاری مشابه با ساختار زیر داشته باشد:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -55,8 +54,10 @@ import Head from "next/head";
 └── .dockerignore                # نادیده گرفتن فایل‌های اضافی`}
     </Highlight>
 </div>
-<div className="h-2" />
+<div className="h-2" /> */}
 
+شما می‌توانید برنامه‌های FastAPI خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های Python</a> در لیارا، مستقر کنید.
+حتماً در نظر داشته باشید که در مسیر اصلی پروژه‌تان، فایل <Important>requirements.txt</Important> شامل پکیج‌های موردنیاز برنامه، وجود داشته باشد. 
 برای ایجاد فایل <Important>requirements.txt</Important> کافیست تا در محیط مجازی پایتونی خود، دستور زیر را اجرا کنید تا این فایل، برای‌تان ایجاد شود:
 
 <div className="h-2" />
@@ -66,7 +67,7 @@ import Head from "next/head";
     </Highlight>
 </div>
 <div className="h-2" />
-
+{/* 
 در ادامه، بایستی درون <Important>Dockerfile</Important>، قطعه کد زیر را، قرار دهید:
 
 <div className="h-2" />
@@ -95,17 +96,25 @@ CMD ["uvicorn", "your-app.main:app", "--host", "0.0.0.0", "--port", "80"]`}
 </div>
 <div className="h-2" />
 
-در قطعه کد بالا در دستور <Important>CMD</Important>، به جای <Important>your-app</Important> نام دایرکتوری خود را وارد کنید. در انتها با اجرای دستور زیر، برنامه خود را در لیارا، مستقر کنید:
+در قطعه کد بالا در دستور <Important>CMD</Important>، به جای <Important>your-app</Important> نام دایرکتوری خود را وارد کنید. در انتها با اجرای دستور زیر، برنامه خود را در لیارا، مستقر کنید: */}
 
+در نهایت کافیست تا با اجرای دستور زیر، برنامه FastAPI خود را در لیارا، مستقر کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`liara deploy --port 80 --platform docker`}
+        {`liara deploy --port 80 --platform python`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-در نظر داشته باشید که اگر در برنامه از ماژول خاصی استفاده می‌کنید یا نیازمند یک پکیج سیستمی هستید که به صورت پیش‌فرض، نصب نیست؛ بایستی دستورات مربوط به نصب آن را در <Important>Dockerfile</Important> مشخص کنید.
+در نظر داشته باشید که اگر در برنامه از ماژول خاصی استفاده می‌کنید یا نیازمند یک پکیج سیستمی هستید که به صورت پیش‌فرض، نصب نیست؛ بایستی دستورات مربوط به نصب آن را با <a href="/paas/python/how-tos/use-hooks/" className="text-[#2196f3]">هوک‌ها</a> مشخص کنید.
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+یک پروژه FastAPI نمونه آماده استقرار در <a href="https://github.com/liara-cloud/fastapi-getting-started" className="text-[#2196f3] ">اینجا</a> قرار دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
 
 <Section id="connect-to-mssql" title="اتصال برنامه FastAPI به دیتابیس MSSQL" />
 برای اتصال برنامه خود به دیتابیس MSSQL در لیارا، بایستی در ابتدا، طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای محیطی مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
@@ -142,7 +151,7 @@ DB_PORT=os.getenv("DB_PORT")
 DB_PASS=os.getenv("DB_PASS")
 
 SQLALCHEMY_DATABASE_URL = (
-    f"mssql+pyodbc://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}?driver=ODBC+Driver+17+for+SQL+Server"
+    f"mssql+pyodbc://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}?driver=ODBC+Driver+18+for+SQL+Server"
 )
 
 engine = create_engine(
@@ -155,46 +164,5 @@ Base = declarative_base()`}
     </Highlight>
 </div>
 <div className="h-2" />
-
-در نهایت، می‌توانید <Important>Dockerfile</Important> خود را مانند قطعه کد زیر بنویسید تا تمامی پکیج‌های مربوط به دیتابیس MSSQL، برای‌تان، نصب بشود و در برنامه، با مشکل خاصی مواجه نشوید:
-
-
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="dockerfile">
-        {`# Dockerfile
-
-# Using Python base image version 3.11
-FROM python:3.11
-
-# Update system packages and install necessary dependencies
-RUN apt-get update && apt-get install -y gcc unixodbc-dev
-
-# Install ODBC driver for SQL Server
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - &&     curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list &&     apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17
-
-# Upgrade pip
-RUN pip install --upgrade pip
-
-# Create working directory /app
-WORKDIR /app
-
-# Copy all project files to the working directory
-COPY . /app
-
-# Install project dependencies from requirements.txt
-RUN pip install -r requirements.txt
-
-# Set the command to run the project using uvicorn
-CMD ["uvicorn", "sql_app.main:app", "--host", "0.0.0.0", "--port", "80"]`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-<Alert variant="success">
-<p>
-یک پروژه FastAPI نمونه آماده استقرار در <a href="https://github.com/liara-cloud/fastapi-getting-started" className="text-[#2196f3] ">اینجا</a> قرار دارد که می‌توانید از آن، استفاده کنید.
-</p>
-</Alert>
 
 </Layout>
