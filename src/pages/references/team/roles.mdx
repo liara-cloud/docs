@@ -1,0 +1,131 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با نقش‌های یک تیم در لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نقش‌های یک تیم در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# آشنایی با نقش‌های یک تیم در لیارا
+<hr className="mb-2" />
+
+اعضای یک تیم در لیارا، می‌توانند نقش‌های متفاوتی داشته باشند؛ یک کاربر می‌تواند نقش مهمان را داشته باشد (بدون هیچ دسترسی خاصی) و یا اینکه 
+بازرس تیم باشد. در ادامه به معرفی نقش‌ها پرداخته شده است. 
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/teams/members-and-roles-in-teams.png" alt="teams on liara"/>
+
+<Section id="guest" title="نقش مهمان " />
+
+کاربری که نقش مهمان را داشته باشد، هیچ دسترسی خاصی به کنسول ندارد. بدیهی است که سرویس‌ها، میزان اعتبار و سایر موارد مربوط به تنظیمات تیم به کاربر مهمان نمایش داده نمی‌شود.
+
+
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/teams/guest-role.png" alt="teams on liara"/>
+<div className="h-4" />
+
+کاربر مهمان، تنها می‌تواند به موارد زیر دسترسی داشته باشد؛ به جز موارد زیر، کاربر مهمان، دسترسی دیگری نخواهد داشت.
+دسترسی‌های زیر، عمومی هستند و هر عضو تیم، می‌تواند به موارد زیر، دسترسی داشته باشد:
+
+
+
+<div className="h-2" />
+<ul className="pr-4">
+    <li style={{textDecorationColor: "#9ca3af"}}> اطلاعات تیم (نام، شناسه، کلید API و اطلاعات اعضای تیم) </li>
+    <li style={{textDecorationColor: "#9ca3af"}}> اعلانات کنسول تیم (بدون دسترسی برای ثبت تغییر) </li>
+    <li style={{textDecorationColor: "#9ca3af"}}> تیکت‌های تیم (مشاهده و مدیریت آن‌ها) </li>
+</ul>
+
+
+<Section id="accountant" title="نقش حسابدار" />
+
+حسابدار همانند <a href="#guest" className="text-[#2196f3]">کاربر مهمان</a> دسترسی محدودی دارد؛ با این تفاوت 
+که کاربر حسابدار، می‌تواند میزان اعتبار مالی تیم و سایر اطلاعات مربوط به آن را مشاهده کند و به آن، دسترسی داشته باشد: 
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/teams/accountant-role.png" alt="teams on liara"/>
+<div className="h-4" />
+
+همچنین، حسابدار می‌تواند حالت اعلان حداقل اعتبار (حالت خودکار یا حالت دستی) را، مشخص کند. 
+
+<Section id="inspector" title="نقش بازرس" />
+
+یک بازرس، طبق مجوزها، دسترسی‌های <a href="/references/team/permissions/#paas" className="text-[#2196f3]">دیدن پلتفرم</a>، <a href="/references/team/permissions/#dbaas" className="text-[#2196f3]">دیدن دیتابیس</a>، <a href="/references/team/permissions/#dns" className="text-[#2196f3]">دیدن سامانه مدیریت دامنه</a>، <a href="/references/team/permissions/#mail-server" className="text-[#2196f3]">دیدن ایمیل‌سرور</a> و <a href="/references/team/permissions/#bucket" className="text-[#2196f3]">دیدن باکت</a> را دارد:
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/teams/inspector-role.png" alt="teams on liara"/>
+<div className="h-4" />
+
+
+<Section id="operator" title="نقش گرداننده" />
+
+گرداننده، طبق مجوزها، دسترسی‌های <a href="/references/team/permissions/#paas" className="text-[#2196f3]">عملیات پلتفرم</a>، <a href="/references/team/permissions/#dbaas" className="text-[#2196f3]">عملیات دیتابیس</a>، <a href="/references/team/permissions/#dns" className="text-[#2196f3]">عملیات سامانه مدیریت دامنه</a>، <a href="/references/team/permissions/#mail-server" className="text-[#2196f3]">عملیات ایمیل‌سرور</a> و <a href="/references/team/permissions/#bucket" className="text-[#2196f3]">عملیات باکت</a> را دارد:
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/teams/operator-role.png" alt="teams on liara"/>
+<div className="h-4" />
+
+<Section id="manager" title="نقش مدیر" />
+
+یک مدیر طبق مجوزها، دسترسی‌های <a href="/references/team/permissions/#paas" className="text-[#2196f3]">مدیریت و ساخت پلتفرم</a>، <a href="/references/team/permissions/#dbaas" className="text-[#2196f3]">مدیریت و ساخت دیتابیس</a>، <a href="/references/team/permissions/#dns" className="text-[#2196f3]">مدیریت و ساخت سامانه مدیریت دامنه</a>، <a href="/references/team/permissions/#mail-server" className="text-[#2196f3]">مدیریت و ساخت ایمیل‌سرور</a> و <a href="/references/team/permissions/#bucket" className="text-[#2196f3]">مدیریت و ساخت باکت</a> را دارد:
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/teams/manager-role.png" alt="teams on liara"/>
+<div className="h-4" />
+
+<Section id="owner" title="نقش مالک" />
+
+نقش مالک همانند مدیر است با این تفاوت که مالک به <a href="/references/team/permissions/#team" className="text-[#2196f3]">تیم</a> و <a href="/references/team/permissions/#billing" className="text-[#2196f3]">اعتبار مالی</a> آن نیز، دسترسی دارد.
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/teams/owner-role.png" alt="teams on liara"/>
+<div className="h-4" />
+
+{/* <div className="h-2" />
+<video
+    src="https://files.liara.ir/liara/teams/create-new-team.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+></video>
+<div className="h-2" /> */}
+
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+    همچنین بخوانید: <a href="/references/team/create-new-role/" className="text-[#2196f3]">شیوه ایجاد نقش جدید در تیم</a>
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+    با توجه به <b>آزمایشی</b> بودن قابلیت تیم‌ها در لیارا، امکان تغییر نوع دسترسی در نقش‌ها وجود خواهد داشت.
+</p>
+</Alert>
+
+</Layout>

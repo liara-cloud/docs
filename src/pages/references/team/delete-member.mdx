@@ -1,0 +1,98 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import Table from "@/components/Common/table";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شیوه حذف یک مجوز، نقش یا عضو در تیم در لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به شیوه حذف یک مجوز، نقش یا عضو در تیم در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شیوه حذف یک مجوز، نقش یا عضو در تیم در لیارا
+<hr className="mb-2" />
+
+
+
+<Tabs 
+  tabs={["حذف یک عضو", "حذف یک مجوز", "حذف یک نقش"]} 
+  content={[
+   <>
+        <p>
+            برای حذف یک عضو در تیم در لیارا، تنها کافیست تا بر روی نام تیم در قسمت بالا سمت راست کنسول، کلیک کرده و بر روی گزینه <b>مدیریت تیم و دسترسی‌ها</b> کلیک کنید. در ادامه
+            در بخش اعضای تیم، عضو مدنظرتان را پیدا کرده و سپس بر روی گزینه <b>حذف</b> کلیک کنید تا کاربر، از گروه حذف شود: 
+        </p>
+        <div className="h-2" />
+        <video
+            src="https://files.liara.ir/liara/teams/delete-member-from-team.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+        ></video>
+        <div className="h-2" />
+   </>,
+   <>
+        <p>
+            برای حذف یک مجوز داده شده به یک عضو در تیم در لیارا، تنها کافیست تا بر روی نام تیم در قسمت بالا سمت راست کنسول، کلیک کرده و بر روی گزینه <b>مدیریت تیم و دسترسی‌ها</b> کلیک کنید. در ادامه
+            در قسمت <b>دسترسی‌ها</b>، وارد قسمت <b>مجوزها</b> شوید و پس از انتخاب مجوز مدنظرتان، بر روی گزینه حذف، کلیک کنید:            
+        </p>
+        <div className="h-2" />
+        <video
+            src="https://files.liara.ir/liara/teams/delete-access-from-team.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+        ></video>
+        <div className="h-2" />
+   </>,
+   <>
+        <p>
+            برای حذف یک نقش شخصی‌سازی شده در تیم در لیارا، تنها کافیست تا بر روی نام تیم در قسمت بالا سمت راست کنسول، کلیک کرده و بر روی گزینه <b>مدیریت تیم و دسترسی‌ها</b> کلیک کنید. در ادامه
+            در قسمت <b>دسترسی‌ها</b>، وارد قسمت نقش را انتخاب کنید و بر روی حذف کلیک کنید تا نقش مدنظرتان، حذف شود:           
+        </p>
+        <div className="h-2" />
+        <video
+            src="https://files.liara.ir/liara/teams/delete-role-from-team.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+        ></video>
+        <div className="h-2" />
+   </>,
+  ]}
+/>
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+    در نظر داشته باشید که برای حذف نقش، مجوز یا یک عضو در تیم، باید نقش مالک تیم را داشته باشید.
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+    امکان حذف مالک اصلی (کاربر ایجاد کننده تیم) در تیم، وجود ندارد.
+</p>
+</Alert>
+
+</Layout>

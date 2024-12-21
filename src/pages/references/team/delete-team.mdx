@@ -1,0 +1,55 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import Table from "@/components/Common/table";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شیوه حذف یک تیم در لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به شیوه حذف یک تیم در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شیوه حذف یک تیم در لیارا
+<hr className="mb-2" />
+
+برای حذف یک تیم در لیارا، تنها کافیست تا بر روی نام تیم در قسمت بالا سمت راست کنسول، کلیک کرده و بر روی گزینه <b>مدیریت تیم و دسترسی‌ها</b> کلیک کنید. در ادامه
+در انتهای صفحه باز شده، در بخش **حذف تیم** بر روی گزینه **حذف تیم** کلیک کنید. پس از تایید حذف، 
+گروه حذف می‌شود و این عملیات، قابل برگشت **نخواهد بود**.
+
+<div className="h-2" />
+<video
+    src="https://files.liara.ir/liara/teams/delete-team.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+></video>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+    باقیمانده اعتبار تیم، به اعتبار حساب مالک اصلی تیم (کاربر ایجاد کننده تیم) عودت داده می‌شود.
+</p>
+</Alert>
+
+</Layout>

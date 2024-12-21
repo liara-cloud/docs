@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import {
   GoFileDirectory,
   GoHome,
+  GoPeople,
   GoGear,
   GoRead,
   GoLock,
@@ -152,8 +153,14 @@ export default {
       link: "/references/console/about"
     },
     {
+      title: "تیم‌ها و دسترسی‌ها",
+      icon: <GoPeople   />,
+      link: "/references/team/about"
+    },
+    {
       hr: true
     },
+
     {
       title: "SLAs",
       icon: <GoLaw  />,
@@ -9388,6 +9395,62 @@ export default {
       {
         title: "فعال‌سازی قابلیت ورود ۲ مرحله‌ای",
         link: "/references/console/enable-two-factor-authentication"
+      },
+    ],
+
+    'team': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPeople />
+           تیم‌ها در لیارا
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "تیم‌ها و دسترسی‌ها در لیارا",
+        icon: <GoInfo />,
+        link: "/references/team/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "ساخت تیم جدید",
+        link: "/references/team/create"
+      },
+      {
+        title: "آشنایی با مجوزها",
+        link: "/references/team/permissions"
+      },
+      {
+        title: "آشنایی با نقش‌های یک تیم",
+        link: "/references/team/roles"
+      },
+      {
+        title: "دعوت اعضای جدید به تیم",
+        link: "/references/team/invite-members"
+      },
+      {
+        title: "ایجاد نقش جدید",
+        link: "/references/team/create-new-role"
+      },
+      {
+        title: "اعطای مجوز",
+        link: "/references/team/grant-access"
+      },
+      {
+        title: "حذف یک عضو، نقش یا مجوز",
+        link: "/references/team/delete-member"
+      },
+      {
+        title: "حذف یک تیم",
+        link: "/references/team/delete-team"
       },
     ],
   },
