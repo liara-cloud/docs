@@ -26,30 +26,32 @@ import Head from "next/head";
     tabs={["Liara Console", "Liara CLI"]} 
     content={[
     <>
-        <video
+        {/* <video
         src="https://files.liara.ir/liara/vue/vue-desktop.mp4"
         controls="controls"
         className="block w-full"
         width="100%"
         ></video>
-        <div className="h-2" />
+        <div className="h-2" /> */}
         <p>
-            برای ساخت برنامه، کافیست تا پس از ورود به <Link className="text-[#2196f3] " href="https://console.liara.ir">پنل کاربری</Link> وارد منوی <Link className="text-[#2196f3] " href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="text-[#2196f3] " href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>Vue</b> تنظیم کنید.
+            برای ساخت برنامه، کافیست تا پس از ورود به <Link className="text-[#2196f3] " href="https://console.liara.ir">پنل کاربری</Link> 
+            {" "} وارد <a href="/references/team/about/" className="text-[#2196f3]">تیم مدنظرتان</a> یا حساب شخصی‌تان، شوید؛ سپس
+            وارد منوی <Link className="text-[#2196f3] " href="https://console.liara.ir/apps">پلتفرم</Link> شوید؛ بر روی گزینه <Link className="text-[#2196f3] " href="https://console.liara.ir/apps/create">ایجاد برنامه</Link> کلیک کرده و پلتفرم را بر روی <b>Vue</b> تنظیم کنید.
             در ادامه باید برای برنامه‌تان یک شناسه و یک <a className="text-[#2196f3] " href="/paas/details/private-network/">شبکه خصوصی</a> انتخاب کنید و در نهایت <a className="text-[#2196f3] " href="/paas/details/plans/about">منابع سخت‌افزاری و بسته امکانات</a> مدنظرتان را انتخاب کنید. 
-            در آخر، کافیست تا بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان ساخته شود:
+            در آخر، کافیست تا بر روی گزینه <b>ایجاد برنامه</b> کلیک کنید تا برنامه‌تان ساخته شود.
         </p>
-        <img src="https://files.liara.ir/liara/docs/create-vue-app-using-console.gif" alt="create app using console" />
-        <div className="h-4" />
+        {/* <img src="https://files.liara.ir/liara/docs/create-vue-app-using-console.gif" alt="create app using console" /> */}
+        {/* <div className="h-4" /> */}
     </>,
 
     <>
-    <video
+    {/* <video
         src="https://files.liara.ir/liara/react/react-cli.mp4"
         controls="controls"
         className="block w-full"
         width="100%"
     ></video>
-    <div className="h-2" />
+    <div className="h-2" /> */}
     <p>
         برای ساخت برنامه در لیارا باید در ابتدا با اجرای دستور زیر، ابزار <Link href="/references/cli/about" className="text-[#2196f3] ">Liara CLI</Link> را بر روی سیستم‌عامل خود، نصب کنید:
     </p>
@@ -93,7 +95,7 @@ import Head from "next/head";
       </Highlight>
     </div>
     <p>
-        با اجرای دستور فوق، شما باید شناسه، نوع پلتفرم (که باید بر روی vue باشد)، شبکه خصوصی و <Link className="text-[#2196f3] " href="/paas/details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> برنامه خود را انتخاب کنید.
+        با اجرای دستور فوق، شما باید تیم یا اکانت شخصی‌تان، شناسه، نوع پلتفرم (که باید بر روی vue باشد)، شبکه خصوصی و <Link className="text-[#2196f3] " href="/paas/details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> برنامه خود را انتخاب کنید.
     </p>
     </>,
 
