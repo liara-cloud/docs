@@ -8,14 +8,11 @@ const Highlight = ({ children, className }) => {
   const [needsReadMore, setNeedsReadMore] = useState(false);
   const containerRef = useRef(null);
 
-  useEffect(
-    () => {
-      if (containerRef.current) {
-        setNeedsReadMore(containerRef.current.scrollHeight > 500);
-      }
-    },
-    [children]
-  );
+  useEffect(() => {
+    if (containerRef.current) {
+      setNeedsReadMore(containerRef.current.scrollHeight > 500);
+    }
+  }, [children]);
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(children);
@@ -34,29 +31,40 @@ const Highlight = ({ children, className }) => {
     <div className="relative mb-2 highlight-container">
       <span
         onClick={handleCopyToClipboard}
-        className="absolute copy z-1 right-2 top-2 text-sm bg-[#fff] border border-[#0002] cursor-pointer hover:bg-[#efefef] px-2 rounded-[6px] text-[gray]"
+        className="absolute copy z-10 right-2 top-2 text-sm bg-[#fff] border border-[#0002] cursor-pointer hover:bg-[#efefef] px-2 rounded-[6px] text-[gray]"
       >
         {isCopy ? "!کپی شد" : "کپی"}
       </span>
+
       <div
         ref={containerRef}
-        className={`highlight-content relative z-[-1] ${!needsReadMore || isExpanded
-          ? "expanded"
-          : "max-h-[500px]"}`}
-        style={{ overflow: "hidden" }}
+        className={`highlight-content relative ${
+          !needsReadMore || isExpanded ? "expanded" : "max-h-[500px]"
+        }`}
+        style={{
+          overflow: "hidden",
+          width: "100%",
+          boxSizing: "border-box",
+        }}
       >
-        <ReactHighlight className={className}>
-          {children}
-        </ReactHighlight>
+        <div
+          style={{
+            overflowX: "auto", 
+            whiteSpace: "pre", 
+          }}
+        >
+          <ReactHighlight className={className}>{children}</ReactHighlight>
+        </div>
       </div>
-      {needsReadMore &&
-        !isExpanded &&
+
+      {needsReadMore && !isExpanded && (
         <Button
           onClick={toggleReadMore}
           className="absolute left-[50%] translate-x-[-50%] bottom-5"
         >
           دیدن بیشتر
-        </Button>}
+        </Button>
+      )}
     </div>
   );
 };
