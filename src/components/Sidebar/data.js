@@ -5325,6 +5325,10 @@ export default {
         link: "/one-click-apps/wordpress/how-tos/see-extensions"
       },
       {
+        title: "تنظیم reverse proxy",
+        link: "/one-click-apps/wordpress/how-tos/set-reverse-proxy"
+      },
+      {
         hr: true
       },
       {

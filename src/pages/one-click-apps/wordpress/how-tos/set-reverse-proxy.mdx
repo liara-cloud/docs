@@ -1,0 +1,205 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم reverse proxy برای WordPress - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم reverse proxy برای برنامه‌های وردپرس و نحوه تنظیم کردن proxy pass برای هدایت آدرس بلاگ به صفحه وردپرسی"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# تنظیم Reverse Proxy برای WordPress
+<hr className="mb-2" />
+
+  <video
+  src="https://files.liara.ir/liara/wordpress/wordpress-reverse-proxy.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  />
+  
+  <br />
+
+ممکن است که شما بخواهید برنامه‌تان را در 
+دامنه اصلی‌تان (مثلاً <Important>example.com</Important>) ارائه 
+و در زیرصفحه‌ای از آن (مثلاً <Important>example.com/blog</Important>)، وب‌سایت وردپرسی‌تان 
+را به کاربر، نمایش دهید. برای این کار می‌توانید از reverse proxy استفاده کنید.
+پروکسی معکوس یا reverse proxy، یک سرور واسط است که درخواست‌های کلاینت‌ها را دریافت و به سرورهای دیگر در بک‌اند منتقل می‌کند. 
+
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/paas/details/reverse-proxy" className="text-[#2196f3]">آشنایی با Reverse Proxy</a>
+</p>
+</Alert>
+<div className="h-2" />
+
+فرض کنید که دو برنامه دارید؛ یک برنامه وردپرسی  که blog شما است و 
+برنامه دیگری که می‌خواهید در دامنه اصلی‌تان ارائه دهید (هر دو برنامه، کاملاً مستقل از هم هستند)
+برای اینکه برنامه اصلی‌تان را در دامنه اصلی ارائه دهید و وب‌سایت وردپرسی‌تان را در زیرصفحه‌ای از آن، نمایش دهید،
+کافیست تا مراحل زیر را طی کنید: 
+
+
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>بررسی شبکه خصوصی</h3>   
+<p>
+    هم برنامه اصلی و هم برنامه وردپرسی، باید درون 
+    یک <a href="/paas/details/private-network" className="text-[#2196f3]">شبکه خصوصی</a> قرار داشته باشند.
+    در غیر این‌صورت، امکان تنظیم reverse proxy برای برنامه‌های مستقر شده در لیارا وجود ندارد.
+</p>
+
+</>
+)
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>ساخت سرور reverse proxy</h3>
+    <p>
+        در شبکه خصوصی مشترک، یک <a href="/paas/docker/getting-started" className="text-[#2196f3]">برنامه Docker</a> جدید ایجاد کنید. 
+        سپس، کافیست تا در لوکال، یک دایرکتوری خالی ایجاد کنید؛ درون دایرکتوری 
+        یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و قطعه کد زیر را درون آن قرار دهید:
+    </p>
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="Dockerfile">
+        {`FROM nginx:1.27.3
+COPY nginx.conf /etc/nginx/nginx.conf`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+
+    <p>
+    در ادامه، در کنار فایل فوق، فایل دیگری به نام <Important>nginx.conf</Important> ایجاد کنید و قطعه کد زیر را درون آن قرار دهید:
+    </p>
+
+        <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="config">
+        {`events {}
+
+http {
+    server {
+        # Resolver settings for reverse proxy
+        resolver 127.0.0.11 ipv6=off valid=5s;
+        listen 80;
+
+        # Redirect /wp-admin/* to /blog/wp-admin/*
+        location ~ ^/wp-admin/(.*)$ {
+            return 301 /blog/wp-admin/$1;
+        }
+
+        # WordPress configuration
+        location /blog {
+            proxy_pass http://wordpress-app:80;  
+            proxy_read_timeout 90;
+            proxy_connect_timeout 90;
+            proxy_redirect off;
+
+            # Pass necessary headers to WordPress
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;   # Important for HTTPS detection
+            proxy_set_header Host $host;    # Ensure correct host header
+            proxy_set_header X-NginX-Proxy true;
+            proxy_set_header Connection ""; # Prevent connection close issues
+
+            # Forward /blog/* to WordPress backend
+            rewrite ^/blog/(.*)$ /$1 break;
+        }
+
+        # Main app service routing
+        location / {
+            proxy_pass http://main-app:3005;  
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+}
+`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+    <p>
+        در قطعه کد فوق، به جای <Important>main-app</Important> و <Important>wordpress-app</Important>، شناسه برنامه اصلی و وردپرسی خود را قرار دهید. 
+        از آنجایی که ارتباط از طریق شبکه خصوصی برقرار می‌شود، درخواست http است و همچنین بعد از شناسه، باید پورت‌هایی که برنامه‌ها در آن به درخواست کاربران listen می‌کنند؛ قرار گرفته باشد.
+        همچنین، اگر که قصد دارید وردپرس را در زیرصفحه‌ای به جز <Important>blog</Important> قرار دهید. نام زیرصفحه مدنظرتان 
+        را جایگزین <Important>blog</Important> در قطعه کد فوق، کنید. 
+    </p>
+    <div className='h-2' />
+    <p>
+        در نهایت با اجرای دستور زیر، برنامه فوق را در لیارا مستقر کنید:
+    </p>
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="bash">
+        {`liara deploy --port=80`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+
+
+  </>
+
+  )
+  },
+{
+step: "۳",
+content: (
+<>
+<h3>پیکربندی تنظیمات WordPress</h3>
+<p>
+    طبق مستندات <a href="/paas/disks/ftp-access" className="text-[#2196f3]"> دسترسی FTP</a>، یک دسترسی FTP برای دیسک data برنامه وردپرسی خود ایجاد کنید
+    و با استفاده از آن، به دیسک متصل شده و در ابتدای فایل <Important>wp-config.php</Important>، پس از خط <Important>php?&gt;</Important>، قطعه کد زیر را قرار دهید:
+        
+</p>    
+    <div className='h-2' />
+    <div dir="ltr">
+    <Highlight className="php">
+        {`<?php // بعد از این خط
+    define( 'WP_SITEURL', 'https://example.com/blog' );
+    define( 'WP_HOME', 'https://example.com/blog' );
+    $_SERVER['HTTPS'] = 'on';
+`}
+    </Highlight>
+    </div>
+    <div className='h-2' />
+    <p>
+        در قطعه کد فوق، به جای <Important>example.com</Important>، دامنه اصلی‌تان را قرار دهید. 
+        همچنین، اگر که قصد دارید وردپرس را در زیرصفحه‌ای به جز <Important>blog</Important> قرار دهید. نام زیرصفحه مدنظرتان 
+        را جایگزین <Important>blog</Important> در قطعه کد فوق، کنید.
+        در نهایت، تنظیمات جدید را ذخیره کرده و دسترسی FTP را ببندید.
+    </p>
+</>
+)
+},
+
+]}/>
+
+
+<br/>   
+<div className="h-1" />
+
+تمامی کارها انجام شده است و اکنون می‌توانید در زیر صفحه <Important>blog</Important>، به برنامه وردپرسی‌تان دسترسی داشته باشید؛ در حالی که 
+ریشه دامنه، بر روی برنامه اصلی، تنظیم شده است.
+</Layout>
