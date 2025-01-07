@@ -1,0 +1,130 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Table from "@/components/Common/table";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ساخت و ایجاد فایل liara.json با Liara CLI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه ساخت و ایجاد فایل liara.json در رابط کاربری خط فرمان لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# ایجاد فایل liara.json با Liara CLI
+<hr className="mb-2" />
+
+برای 
+ایجاد فایل <a href="/paas/liarajson/" className="text-[#2196f3]"><Important>liara.json</Important></a> با Liara CLI،
+می‌توانید از دستور زیر، استفاده کنید (دستور را در مسیر اصلی پروژه‌تان اجرا کنید تا فایل 
+<Important>liara.json</Important> در مسیر اصلی پروژه‌تان ایجاد شود):
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`liara init`}
+</Highlight>
+</div>
+<div className="h-2" />
+<Asciinema id="create-liara-json-using-liara-init" />
+
+
+<Section id="command-parameters" title="پارامترهای دستور" />
+دستور <Important>liara init</Important>، پارامترهای زیر را، می‌پذیرد:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`$ liara init [-h] [--debug] [--api-token <value>] [--account <value>] [-y] [-n <value>] [-p <value>] [-P <value>]
+ [-v <value>] [--build-location <value>] [-d <value> --path <value>]`}
+</Highlight>
+</div>
+
+<Table headers={[
+  "پارامتر",
+  "توضیحات",
+  "مثال",
+]} data={[
+
+  [
+    <Important>h- یا help--</Important>,
+    "نمایش راهنما",
+    <Important>liara init -h</Important>,
+  ],
+  [
+    <Important>debug--</Important>,
+    "برای نمایش لاگ‌های دیباگ",
+    <Important>liara init --debug</Important>,
+  ],
+  [
+    <Important>api-token--</Important>,
+    <div dir="rtl">
+    <p> برای اجرای آنی عملیات ساخت فایل <Important>liara.json</Important> به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
+    </div>,
+    <Important>****=liara init --api-token</Important>,
+  ],
+  [
+    <Important>account--</Important>,
+    "برای تغییر موقتی حساب کاربری",
+    <Important>liara init --account alinajmabadi_iran</Important>,
+  ],
+  [
+    <Important>y- یا yes--</Important>,
+    <div dir="rtl">
+    <p>برای ساخت یک قالب liara.json پیش‌فرض</p>
+    </div>,
+    <Important>liara init -y</Important>,
+  ],
+  [
+    <Important>n- یا name--</Important>,
+    <p>انتخاب شناسه برنامه</p>,
+    <Important> liara init -n mynode-app</Important>,
+  ],
+  [
+    <Important>p- یا port--</Important>,
+    <div dir="rtl">
+    <p>انتخاب پورت برنامه که در آن به درخواست کاربران گوش می‌دهد</p>
+    </div>,
+    <Important>liara init -p 3005</Important>,
+  ],
+  [
+    <Important>P- یا platform--</Important>,
+    "برای انتخاب پلتفرم برنامه",
+    <Important>liara init -P next</Important>,
+  ],
+  [
+    <Important>v- یا version--</Important>,
+    <div dir="rtl">
+    <p>انتخاب ورژن پلتفرم</p>
+    </div>,
+    <Important>liara init -v 22</Important>,
+  ],
+  [
+    <Important>build-location--</Important>,
+    <div dir="rtl">
+    <p>برای انتخاب موقعیت build برنامه</p>
+    </div>,
+    <Important>liara init --build-location=germany</Important>,
+  ],
+  [
+    <Important>d- یا disk--</Important>,
+    <div dir="rtl">
+    <p>انتخاب نام و مسیر دیسک</p>
+    </div>,
+    <Important>liara init -d data --path /path/to/data</Important>,
+  ],
+
+]} />
+<div className="h-3" />
+
+</Layout>

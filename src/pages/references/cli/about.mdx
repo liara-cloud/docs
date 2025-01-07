@@ -73,6 +73,7 @@ import Head from "next/head";
 <Section id="account-commands" title="دستورات مربوط به حساب کاربری" />
 <div className="grid md:grid-cols-2 gap-4">
             {[
+
       {
         title: "اضافه کردن حساب کاربری جدید",
         link: "/references/cli/add-account"
@@ -105,9 +106,13 @@ import Head from "next/head";
           </div>
 
 <Section id="paas-commands" title="دستورات مربوط به پلتفرم" />
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-2 gap-4">
             {[
 
+      {
+        title: "ایجاد فایل liara.json",
+        link: "/references/cli/create-liara-json"
+      },
       {
         title: "ایجاد یک برنامه",
         link: "/references/cli/create-app"

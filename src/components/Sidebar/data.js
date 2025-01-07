@@ -9124,6 +9124,10 @@ export default {
         )
       },
       {
+        title: "ایجاد فایل liara.json",
+        link: "/references/cli/create-liara-json"
+      },
+      {
         title: "ایجاد یک برنامه",
         link: "/references/cli/create-app"
       },

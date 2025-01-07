@@ -43,8 +43,113 @@ import Head from "next/head";
 </div>
 <div className="h-4" />
 
-پس از ایجاد این فایل و شخصی‌سازی‌های لازم (که در ادامه به آن‌ها، پرداخته شده است)؛ لیارا در حین فرایند استقرار، 
+<Section id="init" title="دستور liara init" />
+ در صورتی که ابزار <a href="" className="text-[#2196f3]">Liara CLI</a> را نصب کرده باشید، می‌توانید از دستور <Important>liara init</Important> برای ساخت فایل <Important>liara.json</Important> استفاده کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="bash">
+{`liara init`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+با اجرای دستور فوق، یک فایل <Important>liara.json</Important> در مسیر فعلی‌تان، ایجاد خواهد شد 
+که شامل تمامی فیلدها و پارامترهای مورد نیاز برای استقرار برنامه‌تان در لیارا، خواهد بود. 
+هر پلتفرم، می‌تواند توسط این دستور، به سادگی پیکربندی شود؛ به عنوان مثال: 
+
+
+<Tabs 
+  tabs={["NodeJS", "NextJS", "Laravel", "PHP", "Python", "Django", "Flask", "Go", "React", "Angular", "Vue"]} 
+  content={[
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -p 3005 -P node --build-location=germany -d data --path uploads`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P next --build-location=germany -d database --path database/sqlite`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P laravel --build-location=germany -d uploads --path /var/www/html/uploads`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P php --build-location=germany -d uploads --path uploads`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -p 1200 -P python --build-location=germany -d data --path data`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P django --build-location=germany -d data --path uploads`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P flask --build-location=germany -d data --path uploads`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -p 8080 -P go --build-location=germany -d data --path uploads`}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P react --build-location=germany `}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P angular --build-location=germany `}
+    </Highlight>
+    </div>
+  </>,
+  <>
+    <div dir="ltr">
+    <Highlight className="json">
+    {`liara init -n my-app -P vue --build-location=germany `}
+    </Highlight>
+    </div>
+  </>,
+
+   ]}
+/>
+
+
+
+پس از ایجاد فایل <Important>liara.json</Important> و شخصی‌سازی‌های لازم (که در ادامه به آن‌ها، پرداخته شده است)؛ لیارا در حین فرایند استقرار، 
 این فایل را به صورت خودکار، پیدا می‌کند و پارامترهای مختلفی نظیر شناسه برنامه، پورت برنامه و ... را مطابق با این فایل، تنظیم می‌کند.
+
+
+
 
 <Section id="app-field" title="فیلد app" />
 در این فیلد، شما می‌توانید شناسه برنامه‌تان را انتخاب کنید؛ با انجام این کار، پس از اجرای دستور <a href="/references/cli/deploy-app/" className="text-[#2196f3]"><Important>liara deploy</Important></a>، 
