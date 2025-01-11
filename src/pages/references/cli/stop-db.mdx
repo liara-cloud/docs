@@ -39,13 +39,13 @@ import Head from "next/head";
 
 
 <Section id="command-parameters" title="پارامترهای دستور" />
-دستور <Important>liara db create</Important>، پارامترهای زیر را، می‌پذیرد:
+دستور <Important>liara db stop</Important>، پارامترهای زیر را، می‌پذیرد:
 
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
 {`liara db stop [-h] [--debug] [--api-token <value>] 
-[--account <value>] [-n <value>]`}
+[--account <value>] [-n <value>] [--team-id <value>]`}
 </Highlight>
 </div>
 
@@ -57,29 +57,34 @@ import Head from "next/head";
   [
     <Important>h- یا help--</Important>,
     "نمایش راهنما",
-    <Important>liara db create -h</Important>,
+    <Important>liara db stop -h</Important>,
   ],
   [
     <Important>debug--</Important>,
     "برای نمایش لاگ‌های دیباگ",
-    <Important>liara db create --debug</Important>,
+    <Important>liara db stop --debug</Important>,
+  ],
+   [
+    <Important>team-id--</Important>,
+    <p>انتخاب تیم با استفاده از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه آن</a></p>,
+    <Important>liara db stop --team-id=your-team-id</Important>,
   ],
   [
     <Important>api-token--</Important>,
     <div dir="rtl">
     <p> برای اجرای آنی عملیات خاموش‌کردن دیتابیس به کمک <a href="/references/api/about" className="text-[#2196f3] ">api token</a> (مناسب ci/cd)</p>
     </div>,
-    <Important>****=liara db create --api-token</Important>,
+    <Important>****=liara db stop --api-token</Important>,
   ],
   [
     <Important>account--</Important>,
     "برای تغییر موقتی حساب کاربری ",
-    <Important>liara db create --account john_doe</Important>,
+    <Important>liara db stop --account john_doe</Important>,
   ],
   [
     <Important>n- یا name--</Important>,
     "برای درج نام دیتابیسی که قصد خاموش‌کردن آن را دارید",
-    <Important>liara db create -n my-db</Important>,
+    <Important>liara db stop -n my-db</Important>,
   ],
 
 ]} />

@@ -276,6 +276,16 @@ vendor/`}
       {`liara deploy --app=myapp --port=8080 --platform=go`}
     </Highlight>
     </div>
+    <div className="h-2" />
+    <p>
+       برای استقرار برنامه در تیم مدنظرتان، کافیست تا از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> و فلگ <Important>team-id--</Important> استفاده کنید: 
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`liara deploy --app=myapp --platform=go --port=8080 --team-id=your-unique-team-id`}
+    </Highlight>
+    </div>
   </>
   )
   }

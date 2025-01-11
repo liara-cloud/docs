@@ -70,7 +70,17 @@ import Head from "next/head";
       </Highlight>
     </div>
     <Asciinema id="create-network-using-liara-cli" />
+        <div className="h-2" />
+    <p>
+        برای ساخت شبکه خصوصی در تیم مدنظرتان، از دستور زیر استفاده کنید؛ به جای، <Important>your-team-id</Important>، باید <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> خود را، وارد کنید:  
+    </p>
+    <div className="h-2" />
 
+      <div dir='ltr'>
+      <Highlight className="bash">
+        {`liara network create --team-id=your-team-id`}
+      </Highlight>
+    </div>
     <p>
         سپس، کافیست تا برنامه خود را در لیارا بسازید؛ می‌توانید این کار را با دستور زیر انجام دهید، البته؛ اگر که از قبل برنامه خود را ساخته‌اید، نیاز به اجرای این دستور، نخواهد بود:
     </p>
@@ -82,6 +92,17 @@ import Head from "next/head";
     <p>
         با اجرای دستور فوق، شما باید تیم یا حساب شخصی‌تان، شناسه، نوع پلتفرم (که باید بر روی go باشد)، شبکه خصوصی و <Link className="text-[#2196f3] " href="/paas/details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> برنامه خود را انتخاب کنید.
     </p>
+    <div className="h-2" />
+    <p>
+        برای ساخت برنامه در تیم مدنظرتان، از دستور زیر استفاده کنید؛ به جای، <Important>your-team-id</Important>، باید <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> خود را، وارد کنید:  
+    </p>
+    <div className="h-2" />
+
+      <div dir='ltr'>
+      <Highlight className="bash">
+        {`liara app:create --team-id=your-team-id`}
+      </Highlight>
+    </div>
     {/* <Asciinema id="create-Go-app-using-cli" /> */}
 
     </>,

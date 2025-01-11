@@ -44,7 +44,7 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`liara env unset [ENV...] [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>] [-f]`}
+{`liara env unset [ENV...] [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>] [-f] [--team-id <value>]`}
 </Highlight>
 </div>
 
@@ -70,6 +70,11 @@ import Head from "next/head";
     <Important>account--</Important>,
     "برای تغییر موقتی حساب کاربری ",
     <Important>liara env:unset --account alinajmabadi_iran</Important>,
+  ],
+   [
+    <Important>team-id--</Important>,
+    <p>انتخاب تیم با استفاده از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه آن</a></p>,
+    <Important>liara env:unset --team-id=your-team-id</Important>,
   ],
   [
     <Important>api-token--</Important>,

@@ -44,7 +44,7 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`liara shell [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>] [-c <value>]`}
+{`liara shell [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>] [-c <value>] [--team-id <value>]`}
 </Highlight>
 </div>
 
@@ -67,6 +67,11 @@ import Head from "next/head";
     <Important>account--</Important>,
     "برای تغییر موقتی حساب کاربری ",
     <Important>liara shell --account alinajmabadi_iran</Important>,
+  ],
+   [
+    <Important>team-id--</Important>,
+    <p>انتخاب تیم با استفاده از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه آن</a></p>,
+    <Important>liara shell --team-id=your-team-id</Important>,
   ],
   [
     <Important>api-token--</Important>,

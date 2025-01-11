@@ -46,7 +46,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`$ liara init [-h] [--debug] [--api-token <value>] [--account <value>] [-y] [-n <value>] [-p <value>] [-P <value>]
- [-v <value>] [--build-location <value>] [-d <value> --path <value>]`}
+ [-v <value>] [--build-location <value>] [-d <value> --path <value>] [--team-id <value>]`}
 </Highlight>
 </div>
 
@@ -65,6 +65,11 @@ import Head from "next/head";
     <Important>debug--</Important>,
     "برای نمایش لاگ‌های دیباگ",
     <Important>liara init --debug</Important>,
+  ],
+   [
+    <Important>team-id--</Important>,
+    <p>انتخاب تیم با استفاده از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه آن</a></p>,
+    <Important>liara init --team-id=your-team-id</Important>,
   ],
   [
     <Important>api-token--</Important>,

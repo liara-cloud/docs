@@ -88,6 +88,20 @@ import Head from "next/head";
             در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که Static است، مشخص کنید.
         </p>
         <div className='h-4' />
+                <div className='h-2' />
+        <p>
+            در صورتی که قصد دارید برنامه‌تان را در تیم مدنظرتان، مستقر کنید، باید فیلد <Important>team-id</Important>
+            را به فایل <Important>liara.json</Important> مانند شکل زیر، اضافه کنید. مقدار این فیلد، باید <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> شما در لیارا باشد:
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "team-id": "your-team-id"
+}`}
+            </Highlight>
+        </div> 
+        <div className='h-2' />
 
         <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
         <p>
@@ -124,7 +138,27 @@ import Head from "next/head";
 
         <Alert variant='info'>
           <p>
-            برای استقرار برنامه‌های static با Github، نیازی به فایل <Important>liara.json</Important> نخواهید داشت. اما می‌توانید تنها برای تعیین موقعیت build، از آن استفاده کنید.
+            برای استقرار برنامه‌های static با Github، نیازی به فایل <Important>liara.json</Important> نخواهید داشت. اما می‌توانید تنها برای تعیین موقعیت build، یا تعیین تیم، از آن استفاده کنید.
+          </p>  
+          
+        </Alert>
+                <div className='h-2' />
+        <p>
+            در صورتی که قصد دارید برنامه‌تان را در تیم مدنظرتان، مستقر کنید، باید فیلد <Important>team-id</Important>
+            را به فایل <Important>liara.json</Important> مانند شکل زیر، اضافه کنید. مقدار این فیلد، باید <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> شما در لیارا باشد:
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "team-id": "your-team-id"
+}`}
+            </Highlight>
+        </div> 
+        <div className='h-2' />
+        <Alert variant='error'>
+          <p>
+            در فایل فوق، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
           </p>  
         </Alert>
         <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>

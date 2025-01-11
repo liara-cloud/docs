@@ -46,7 +46,7 @@ import Head from "next/head";
 <Highlight className='bash'>
 {` liara mail list [-h] [--debug] [--api-token <value>]  [--account <value>] [--columns
     <value> | -x] [--filter <value>] [--no-header | [--csv | --no-truncate]] [--output csv|json|yaml] [--sort
-    <value>]`}
+    <value>] [--team-id <value>]`}
 </Highlight>
 </div>
 
@@ -69,6 +69,11 @@ import Head from "next/head";
     <Important>account--</Important>,
     "برای تغییر موقتی حساب کاربری ",
     <Important>liara mail list --account alinajmabadi_iran</Important>,
+  ],
+   [
+    <Important>team-id--</Important>,
+    <p>انتخاب تیم با استفاده از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه آن</a></p>,
+    <Important>liara mail list --team-id=your-team-id</Important>,
   ],
   [
     <Important>api-token--</Important>,

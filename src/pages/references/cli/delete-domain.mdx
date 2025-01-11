@@ -45,7 +45,7 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{` liara zone rm [-h] [--debug] [--api-token <value>] [--account <value>] [-z <value>] [-y]`}
+{` liara zone rm [-h] [--debug] [--api-token <value>] [--account <value>] [-z <value>] [-y] [--team-id <value>]`}
 </Highlight>
 </div>
 
@@ -63,6 +63,11 @@ import Head from "next/head";
     <Important>debug--</Important>,
     "برای نمایش لاگ‌های دیباگ",
     <Important>liara zone rm --debug</Important>,
+  ],
+   [
+    <Important>team-id--</Important>,
+    <p>انتخاب تیم با استفاده از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه آن</a></p>,
+    <Important>liara zone rm --team-id=your-team-id</Important>,
   ],
   [
     <Important>api-token--</Important>,
