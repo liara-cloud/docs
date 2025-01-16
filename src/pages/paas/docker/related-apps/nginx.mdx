@@ -69,13 +69,12 @@ worker_processes auto;
 pid /tmp/nginx.pid;
 
 events {
-
-	worker_connections 1024;
+    worker_connections 1024;
 }
 
 http {
 
-	client_body_temp_path /tmp/client_temp;
+    client_body_temp_path /tmp/client_temp;
 	proxy_temp_path /tmp/proxy_temp_path;
 	fastcgi_temp_path /tmp/fastcgi_temp;
 	uwsgi_temp_path /tmp/uwsgi_temp;
@@ -93,19 +92,24 @@ http {
 	access_log /dev/stdout;
 	error_log stderr;
 
-	server {
+    resolver 127.0.0.11 valid=300s ipv6=off;
+    resolver_timeout 10s;
 
-		resolver 127.0.0.11 ipv6=off valid=5s;
-		listen 80;
-		location / {
+    upstream main {
+        zone main_zone 64k;
+        server app-name:port resolve;
+    }
 
-			proxy_set_header Host $host;
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			set $backend "http://app-name:port";
-			proxy_pass $backend;
-		}
-	}
-}`}
+    server {
+
+        location / {
+            proxy_pass http://main;  
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -153,22 +157,26 @@ scgi_temp_path        /tmp/scgi_temp;`}
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="conf">
-        {`server {
-  resolver 127.0.0.11 ipv6=off valid=5s;
-  listen 80;
-  location / {
-  ...
-  set $backend "http://app-name:port";
-  proxy_pass $backend;
-  }
-}`}
+    <Highlight className="config">
+        {`resolver 127.0.0.11 valid=300s ipv6=off;
+resolver_timeout 10s;
+
+upstream main {
+    zone main_zone 64k;
+    server app-name:port resolve;
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 در قطعه کد فوق، باید شناسه و پورت برنامه‌ی مقصد خود را با مقادیر <Important>app-name</Important> و <Important>port</Important> در فایل <Important>nginx.conf</Important> جایگزین کنید.
 
-
+<div className="h-2" />
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/one-click-apps/wordpress/how-tos/set-reverse-proxy/" className="text-[#2196f3]">نحوه ری‌دایرکت برنامه‌های وردپرسی به زیرمسیر blog</a>
+</p>
+</Alert>
 
 </Layout>
