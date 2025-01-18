@@ -119,7 +119,7 @@ http {
         }
 
         location /blog {
-            proxy_pass http://wordpress;  
+            proxy_pass http://wordpress/;  
             proxy_read_timeout 90;
             proxy_connect_timeout 90;
             proxy_redirect off;
