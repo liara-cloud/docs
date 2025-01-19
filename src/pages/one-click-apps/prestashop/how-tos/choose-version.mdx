@@ -51,18 +51,14 @@ import Head from "next/head";
 <div dir='ltr'>
     <Highlight className="json">
       {`{
-    "image": "bitnami/prestashop:<your-version>",
-    "port": 8080,
+    "image": "prestashop/prestashop:<your-version>",
+    "port": 80,
     "app": "<your-app-name>",
     "disks": [
       {
         "name": "data",
-        "mountTo": "/opt/bitnami"
+        "mountTo": "/var/www/html"
       },
-      {
-        "name": "config",
-        "mountTo": "/bitnami"
-      }
   ]
 }`}
     </Highlight>
