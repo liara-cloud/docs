@@ -92,7 +92,7 @@ http {
 	access_log /dev/stdout;
 	error_log stderr;
 
-    resolver 127.0.0.11 valid=300s ipv6=off;
+    resolver 127.0.0.11 valid=5s ipv6=off;
     resolver_timeout 10s;
 
     upstream main {
@@ -158,7 +158,7 @@ scgi_temp_path        /tmp/scgi_temp;`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="config">
-        {`resolver 127.0.0.11 valid=300s ipv6=off;
+        {`resolver 127.0.0.11 valid=5s ipv6=off;
 resolver_timeout 10s;
 
 upstream main {
