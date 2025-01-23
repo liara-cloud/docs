@@ -4647,17 +4647,17 @@ export default {
       },
       {
         title: "Vikunja",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.webp" />,
         link: "/one-click-apps/vikunja/quick-start"
       },
       {
         title: "Drupal",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.jpg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/favicon.png" />,
         link: "/one-click-apps/drupal/quick-start"
       },
       {
         title: "Onedev",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.webp" />,
         link: "/one-click-apps/onedev/quick-start"
       },
       {
@@ -4672,22 +4672,22 @@ export default {
       },
       {
         title: "Moodle",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/moodle-icon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/favicon.png" />,
         link: "/one-click-apps/moodle/quick-start"
       },
       {
         title: "Kutt",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.webp" />,
         link: "/one-click-apps/kutt/quick-start"
       },
       {
         title: "Flowise AI",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/singlestore.a5b72cb0.svg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/favicon.webp" />,
         link: "/one-click-apps/flowise/quick-start"
       },
       {
         title: "PgHero",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/pghero-icon1.ico" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/pg-hero/favicon.png" />,
         link: "/one-click-apps/pghero/quick-start"
       },
       {
@@ -4727,7 +4727,7 @@ export default {
       },
       {
         title: "Umami",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/_u-7zTZM_400x400.jpg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/favicon.webp" />,
         link: "/one-click-apps/umami/quick-start"
       },
       {
@@ -4802,7 +4802,7 @@ export default {
       },
       {
         title: "Discourse",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/92_Discourse-512.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/favicon.webp" />,
         link: "/one-click-apps/discourse/quick-start"
       },
       {
@@ -4817,127 +4817,127 @@ export default {
       },
       {
         title: "Listmonk",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/listmonk/listmonk-icon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/listmonk/listmonk-icon.webp" />,
         link: "/one-click-apps/listmonk/quick-start"
       },
       {
         title: "Jupyter notebook",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/jupyter/7388996.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/jupyter/jupyter.svg" />,
         link: "/one-click-apps/jupyter-notebook/quick-start"
       },
       {
         title: "SuperTokens",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/supertoken/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/supertoken/favicon.webp" />,
         link: "/one-click-apps/supertokens/quick-start"
       },
       {
         title: "Directus",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.webp" />,
         link: "/one-click-apps/directus/quick-start"
       },
       {
         title: "Affine",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.webp" />,
         link: "/one-click-apps/affine/quick-start"
       },
       {
         title: "Focalboard",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.webp" />,
         link: "/one-click-apps/focalboard/quick-start"
       },
       {
         title: "Maybe",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/maybe-logo.svg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/favicon.webp" />,
         link: "/one-click-apps/maybe/quick-start"
       },
       {
         title: "Paperless",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.webp" />,
         link: "/one-click-apps/paperless/quick-start"
       },
       {
         title: "Typesense",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.webp" />,
         link: "/one-click-apps/typesense/quick-start"
       },
       {
         title: "OpenProject",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.webp" />,
         link: "/one-click-apps/openproject/quick-start"
       },
       {
         title: "Ntfy",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.webp" />,
         link: "/one-click-apps/ntfy/quick-start"
       },
       {
         title: "Formbricks",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.webp" />,
         link: "/one-click-apps/formbricks/quick-start"
       },
       {
         title: "Actual",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.webp" />,
         link: "/one-click-apps/actual/quick-start"
       },
       {
         title: "Grist",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.webp" />,
         link: "/one-click-apps/grist/quick-start"
       },
       {
         title: "Keila",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/keila-logo.ico" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/favicon.jpg" />,
         link: "/one-click-apps/keila/quick-start"
       },
       {
         title: "Zitadel",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/zitadel-icon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/favicon.webp" />,
         link: "/one-click-apps/zitadel/quick-start"
       },
       {
         title: "Passbolt",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.webp" />,
         link: "/one-click-apps/passbolt/quick-start"
       },
       {
         title: "DocuSeal",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.webp" />,
         link: "/one-click-apps/docuseal/quick-start"
       },
       {
         title: "Docmost",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.webp" />,
         link: "/one-click-apps/docmost/quick-start"
       },
       {
         title: "LinkStack",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.webp" />,
         link: "/one-click-apps/linkstack/quick-start"
       },
       {
         title: "Mixpost",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/communityIcon_grq1bunhrg8c1.ico" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/favicon.webp" />,
         link: "/one-click-apps/mixpost/quick-start"
       },
       {
         title: "Nocobase",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.webp" />,
         link: "/one-click-apps/nocobase/quick-start"
       },
       {
         title: "Vvveb",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.webp" />,
         link: "/one-click-apps/vvveb/quick-start"
       },
       {
         title: "Teable",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/teable-icon.jpg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/favicon.webp" />,
         link: "/one-click-apps/teable/quick-start"
       },
       {
         title: "Infisical",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.webp" />,
         link: "/one-click-apps/infisical/quick-start"
       },
       {
