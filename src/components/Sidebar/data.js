@@ -4941,6 +4941,16 @@ export default {
         link: "/one-click-apps/infisical/quick-start"
       },
       {
+        title: "Activepieces",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/activepieces/favicon.png" />,
+        link: "/one-click-apps/activepieces/quick-start"
+      },
+      {
+        title: "Automatisch",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/automatisch/favicon.webp" />,
+        link: "/one-click-apps/automatisch/quick-start"
+      },
+      {
         title: "Rallly",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-good-logo.webp" />,
         link: "/one-click-apps/rallly/quick-start"
@@ -4948,11 +4958,47 @@ export default {
 
     ],
 
+    automatisch: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/automatisch/favicon.webp" />
+            برنامه automatisch
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/automatisch/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/automatisch/how-tos/choose-version"
+      },
+    ],
+
     zitadel: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/zitadel-icon.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/favicon.webp" />
             برنامه Zitadel
           </div>
         )
@@ -4984,11 +5030,47 @@ export default {
       },
     ],
 
+    activepieces: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/activepieces/favicon.png" />
+            برنامه Activepieces
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/activepieces/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/activepieces/how-tos/choose-version"
+      },
+    ],
+
     teable: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/teable-icon.jpg" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/favicon.webp" />
             برنامه Teable
           </div>
         )
@@ -5024,7 +5106,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.webp" />
             برنامه Nocobase
           </div>
         )
@@ -5060,7 +5142,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.webp" />
             برنامه Infisical
           </div>
         )
@@ -5096,7 +5178,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/92_Discourse-512.webp" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/favicon.webp" />
             برنامه Discourse
           </div>
         )
@@ -5168,7 +5250,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/moodle-icon.webp" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/favicon.png" />
             برنامه Moodle
           </div>
         )
@@ -5203,7 +5285,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.webp" />
             برنامه Kutt
           </div>
         )
@@ -5505,7 +5587,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.webp" />
             برنامه Onedev
           </div>
         )
@@ -5540,7 +5622,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.jpg" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.webp" />
             برنامه Drupal
           </div>
         )
@@ -5609,7 +5691,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/singlestore.a5b72cb0.svg" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/favicon.webp" />
             برنامه FlowiseAI
           </div>
         )
@@ -5644,7 +5726,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/pghero-icon1.ico" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/pg-hero/favicon.png" />
             برنامه PgHero
           </div>
         )
@@ -5904,7 +5986,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/_u-7zTZM_400x400.jpg" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/favicon.webp" />
             برنامه Umami
           </div>
         )
@@ -5974,7 +6056,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.webp" />
             برنامه Vikunja
           </div>
         )
@@ -6680,7 +6762,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.webp" />
             برنامه Directus
           </div>
         )
@@ -6715,7 +6797,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.webp" />
             برنامه Affine
           </div>
         )
@@ -6750,7 +6832,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.webp" />
             برنامه Focalboard
           </div>
         )
@@ -6785,7 +6867,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/maybe-logo.svg" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/favicon.webp" />
             برنامه Maybe
           </div>
         )
@@ -6820,7 +6902,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.webp" />
             برنامه Paperless
           </div>
         )
@@ -6855,7 +6937,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.webp" />
             برنامه Typesense
           </div>
         )
@@ -6890,7 +6972,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.webp" />
             برنامه OpenProject
           </div>
         )
@@ -6925,7 +7007,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.webp" />
             برنامه Ntfy
           </div>
         )
@@ -6960,7 +7042,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.webp" />
             برنامه Formbricks
           </div>
         )
@@ -6995,7 +7077,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.webp" />
             برنامه Actual
           </div>
         )
@@ -7030,7 +7112,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.webp" />
             برنامه Grist
           </div>
         )
@@ -7065,7 +7147,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/keila-logo.ico" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/favicon.jpg" />
             برنامه Keila
           </div>
         )
@@ -7100,7 +7182,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.webp" />
             برنامه Passbolt
           </div>
         )
@@ -7139,7 +7221,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.webp" />
             برنامه DocuSeal
           </div>
         )
@@ -7174,7 +7256,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.webp" />
             برنامه Docmost
           </div>
         )
@@ -7209,7 +7291,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.webp" />
             برنامه linkstack
           </div>
         )
@@ -7244,7 +7326,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/communityIcon_grq1bunhrg8c1.ico" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/favicon.webp" />
             برنامه Mixpost
           </div>
         )
@@ -7280,7 +7362,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.webp" />
             برنامه Vvveb
           </div>
         )
@@ -7316,7 +7398,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.webp" />
             برنامه Rallly
           </div>
         )
