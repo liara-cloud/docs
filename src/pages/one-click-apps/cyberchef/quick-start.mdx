@@ -1,0 +1,166 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه‌های cyberchef - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی سریع برنامه cyberchef در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# راه‌اندازی سریع برنامه‌های cyberchef
+<hr className="mb-2" />
+
+{/* <div className="h-2" />
+<video
+src="https://files.liara.ir/liara/docs/cyberchef.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+/>
+<br /> */}
+
+<a href="https://gchq.github.io/CyberChef/" className="text-[#2196f3] ">CyberChef</a> یک ابزار وب قدرتمند و متن‌باز است که برای پردازش داده‌ها و انجام وظایف مختلف رمزنگاری، تبدیل داده‌ها و تحلیل فایل‌ها طراحی شده است. این ابزار با رابط کاربری ساده و Drag and Drop، امکان انجام عملیات‌هایی مثل رمزگذاری، رمزگشایی، فشرده‌سازی، هش کردن و تبدیل داده‌ها را فراهم می‌کند. CyberChef در میان متخصصان امنیت سایبری، تحلیلگران داده و توسعه‌دهندگان برای وظایف سریع و پیچیده محبوب است. این ابزار بر پایه مرورگر اجرا می‌شود و نیاز به نصب ندارد، که آن را بسیار انعطاف‌پذیر و کاربردی می‌سازد.
+
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>ورود به حساب کاربری</h3>   
+<p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+</>
+)
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای راه‌اندازی برنامه آماده را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+{
+step: "۳",
+content: (
+<>
+<h3>راه‌اندازی برنامه</h3>
+<p>
+    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>cyberchef</b>، کلیک کنید. 
+    در ادامه، می‌توانید از گزینه <b>نصب سریع</b> یا گزینه <b>نصب پیشرفته</b> برای استقرار و نصب برنامه‌تان استفاده کنید:
+</p>
+<Tabs 
+    tabs={["نصب سریع", "نصب پیشرفته"]} 
+    content={[
+    <>
+      <p>
+      در صورتی که از قابلیت <b>نصب سریع</b> استفاده کنید؛ لیارا از شما می‌خواهد که یک 
+      ‌نام برای برنامه خود، انتخاب کنید؛ که شما می‌توانید در صورت تمایل و پس از وارد کردن نام موردنظرتان برای برنامه، بر روی گزینه <b>نصب و راه‌اندازی</b> کلیک کنید تا برنامه‌‌تان ساخته و نصب شود. 
+      </p>
+
+      <div className="h-4" />
+      <img src="https://files.liara.ir/liara/docs/one-click-app-quick-setup.gif" alt="create one click app using quick setup feature" />
+      <div className="h-4" />
+
+      <p>
+        با انجام کار فوق، لیارا برای برنامه(برنامه‌ها)ی شما،   
+        شناسه منحصربه‌فرد و یک <a href="/paas/details/private-network" className="text-[#2196f3]">شبکه خصوصی</a> جدید با <a href="/paas/details/plans/hardware-plans" className="text-[#2196f3]">پلن سخت‌افزاری</a> و <a href="/paas/details/plans/software-plans" className="text-[#2196f3]">بسته امکانات </a> پیش‌فرض، ایجاد می‌کند و پس از موفقیت آمیز بودن نصب برنامه، شما می‌توانید وضعیت برنامه‌تان 
+        را در بخش <a href="/paas/details/events" className="text-[#2196f3]">رویدادها</a> و <a href="/paas/details/observations/software" className="text-[#2196f3]">لاگ‌ها</a> بررسی کنید.
+      </p>   
+    </>,
+    <>
+      <p>
+        در صورتی که بر روی گزینه <b>نصب پیشرفته</b> کلیک کنید به یک صفحه جدید هدایت می‌شوید که 
+        در این صفحه می‌توانید برای برنامه (برنامه‌ها) و دیتابیس (دیتابیس‌ها)ی مدنظرتان شناسه  
+        و <a href="/paas/details/plans/hardware-plans" className="text-[#2196f3]">پلن سخت‌‌افزاری</a> انتخاب کنید. 
+        در نظر داشته باشید که <a href="/paas/details/plans/software-plans" className="text-[#2196f3]">بسته امکانات</a> برنامه‌تان، متناسب 
+        با نیازهای برنامه‌تان است که به صورت پیش‌فرض انتخاب می‌شود.
+      </p>
+      <div className="h-4" />
+      <p>
+        در این صفحه، شما می‌توانید <a href="/paas/details/private-network" className="text-[#2196f3]">شبکه خصوصی</a> مدنظرتان را انتخاب کنید 
+        تا برنامه‌تان در شبکه خصوصی انتخاب‌شده، نصب شود. در صورتی که شبکه خصوصی برای برنامه انتخاب نشود، 
+        لیارا به صورت خودکار، یک شبکه خصوصی برای برنامه‌تان ایجاد می‌کند.
+      </p>
+      <div className="h-4" />
+      <p>
+        همچنین، شما می‌توانید با کلیک بر روی گزینه <b>ویرایش Liara Compose</b>، <Important>Liara Compose</Important> برنامه را بنا به نیاز خود، شخصی‌سازی کنید. 
+        در این فایل، شما می‌توانید تگ داکرایمیج، آیدی، پلن سخت‌افزاری، بسته امکانات، متغیرهای محیطی و ... برنامه‌تان 
+        را تغییر داده یا سازمان‌دهی کنید.
+      </p>
+      <div className="h-4" />
+      <Alert variant="success">
+        <p>
+          همچنین بخوانید: <a href="/one-click-apps/liara-compose/about/" className="text-[#2196f3]">فایل <Important>Liara Compose</Important> چیست؟</a>
+        </p>
+      </Alert>
+      <Alert variant="info">
+        <p>
+          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/cyberchef/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
+        </p>
+      </Alert>
+    </>
+    ]} 
+  />
+
+</>
+)
+},
+
+]}/>
+
+{/* <div className='h-4' />
+<Alert className="info">
+  <p>
+    در اولین ورود به حساب کاربری برنامه‌تان، مقدار پیش‌فرض <Important>Email Address</Important> برابر با  <Important>admin@admin.com</Important> است و مقدار <Important>Password</Important> را نیز می‌توانید 
+    در بخش <a href="/paas/details/envs/#see-envs" className="text-[#2196f3]">متغیرهای محیطی برنامه</a> با نام <Important>ADMIN_PASS</Important>، ببینید.
+  </p>
+</Alert>
+<div className='h-2' /> */}
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/cyberchef/how-tos/choose-version"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

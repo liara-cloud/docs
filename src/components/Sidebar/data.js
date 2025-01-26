@@ -4955,7 +4955,53 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-good-logo.webp" />,
         link: "/one-click-apps/rallly/quick-start"
       },
+      {
+        title: "FreeScout",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/freescout/favicon.png" />,
+        link: "/one-click-apps/freescout/quick-start"
+      },
+      {
+        title: "CyberChef",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/cyberchef/favicon.webp" />,
+        link: "/one-click-apps/cyberchef/quick-start"
+      },
 
+    ],
+
+    cyberchef: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/cyberchef/favicon.webp" />
+            برنامه CyberChef
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/cyberchef/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/cyberchef/how-tos/choose-version"
+      },
     ],
 
     automatisch: [
@@ -4963,7 +5009,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
           <IconContainer alt="https://one-click-apps.storage.iran.liara.space/automatisch/favicon.webp" />
-            برنامه automatisch
+            برنامه Automatisch
           </div>
         )
       },
@@ -7391,6 +7437,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/vvveb/how-tos/choose-version"
+      },
+    ], 
+    freescout: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/freescout/favicon.png" />
+            برنامه FreeScout
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/freescout/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/freescout/how-tos/choose-version"
       },
     ], 
 
