@@ -4,6 +4,7 @@ import {
   GoHome,
   GoPeople,
   GoGear,
+  GoCommandPalette,
   GoRead,
   GoLock,
   GoStarFill ,
@@ -8041,6 +8042,11 @@ export default {
         title: "حذف یک ایمیل‌سرور",
         icon: <GoXCircle  />,
         link: "/email-server/details/delete-email-server"
+      },
+      {
+        title: "آیدی یک ایمیل‌سرور",
+        icon: <GoCommandPalette   />,
+        link: "./mail-id",
       },
       {
         title: "خطاهای رایج ایمیل‌سرور",

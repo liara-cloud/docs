@@ -1,0 +1,41 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آیدی ایمیل‌سرور - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات آشنایی با آیدی هاست ایمیل و نحوه مشاهده آن در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# آیدی یک ایمیل‌سرور
+
+<hr className="mb-2" />
+
+آیدی ایمیل سرور (mailServerId) یک شناسه منحصربه‌فرد است که لیارا برای هر سرور ایمیلی که ایجاد می‌کنید، اختصاص می‌دهد. این آیدی برای ارسال، دریافت و مدیریت ایمیل‌ها از طریق API ضروری است. هنگام ارسال درخواست به API لیارا، باید این مقدار را در URL درخواست قرار دهید تا مشخص شود که ایمیل از کدام سرور ارسال می‌شود.
+
+
+<Section id="how-to-see-mail-id" title="نحوه مشاهده آیدی ایمیل‌سرور" />
+روش‌های مختلفی برای مشاهده آیدی ایمیل‌سرور مدنظرتان، وجود دارد 
+که یکی از آن‌ها، استفاده از inspect است. 
+در مرورگر خود، inspect را باز کنید 
+و وارد سرور ایمیل مدنظرتان شوید. 
+در بخش <b>Network</b>، بر روی درخواست <Important>mails</Important> کلیک کنید. 
+وارد زیر بخش <Important>Response</Important> شوید و در بخش <Important>mailServers</Important>، <Important>id</Important> مربوط به سرور ایمیل مدنظرتان را مشاهده کنید.
+
+
+</Layout>

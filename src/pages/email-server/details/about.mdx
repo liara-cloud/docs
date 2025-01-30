@@ -19,6 +19,7 @@ import {
   GoServer,
   GoTerminal,
   GoGlobe,
+  GoCommandPalette,
   GoCode,
   GoBrowser,
   GoArrowRight,
@@ -107,6 +108,12 @@ import Head from "next/head";
       icon: <GoXCircle  />,
       desc: "امکان حذف یک ایمیل‌سرور در لیارا، پس از اتمام روزهای طلایی استفاده از آن",
       link: "./delete-email-server",
+    },
+    {
+      title: "آیدی یک ایمیل‌سرور",
+      icon: <GoCommandPalette   />,
+      desc: "امکان استفاده از ایمیل‌سرور در API نویسی با استفاده از آیدی آن",
+      link: "./mail-id",
     },
     {
       title: "خطاهای رایج ایمیل‌سرور",
