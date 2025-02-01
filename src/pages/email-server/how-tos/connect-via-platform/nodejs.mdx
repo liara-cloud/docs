@@ -204,7 +204,7 @@ transporter.sendMail(mailOptions, (error, info) => {
             <p>
             برای ارسال ایمیل با استفاده از پروتکل HTTP، به <a href="/references/api/about/" className="text-[#2196f3]">API لیارا</a> و <a href="/email-server/details/mail-id" className="text-[#2196f3]">آیدی ایمیل‌سرور </a>  
             و <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">نشانی ایمیل‌سرور</a> نیاز خواهید داشت. 
-            برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید 
+            برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید: 
 
             </p>
             
@@ -220,44 +220,52 @@ MAIL_FROM=info@example.com
             </div>
             <div className="h-2" />
 
-            در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید:
+            در نهایت می‌توانید در پروژه‌ی خود 
+            با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید. 
+            به عنوان مثال، در مسیر <Important>pages/api</Important>، یک فایل به نام <Important>send-email.js</Important> ایجاد کنید و کد زیر را در آن قرار دهید: 
 
             <div className="h-2" />
             <div dir='ltr'>
-                <Highlight className="bash">
-                    {`const axios = require("axios"); // npm install axios
+                <Highlight className="js">
+                    {`import axios from "axios";
 
-const mailServerId = process.env.MAIL_SERVER_ID;
-const url = \`\${process.env.MAIL_SERVICE_URL}/\${mailServerId}/messages\`;
-const token = process.env.MAIL_SERVICE_TOKEN;
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
 
-const headers = {
-  "Authorization": \`Bearer \${token}\`,
-  "Content-Type": "application/json",
-  "x-liara-tag": "test_email" 
-};
+  try {
+    const { to, subject, text } = req.body;
 
-const data = {
-  to: "info@test.test",
-  from: process.env.MAIL_FROM,
-  text: "Hello, this is a test email.",
-  subject: "Test Email",
-  attachments: []
-};
+    const mailServerId = process.env.MAIL_SERVER_ID;
+    const url = \`\${process.env.MAIL_SERVICE_URL}/\${mailServerId}/messages\`;
+    const token = process.env.API_LIARA_TOKEN;
 
-axios.post(url, data, { headers })
-  .then(response => {
-    console.log("Email Sent:", response.data);
-  })
-  .catch(error => {
-    console.error("Error:", error.response ? error.response.data : error.message);
-  });
+    const headers = {
+      "Authorization": \`Bearer \${token}\`,
+      "Content-Type": "application/json",
+      "x-liara-tag": "test_email" // Custom tag
+    };
+
+    const data = {
+      text,
+      subject,
+      to,
+      from: "process.env.MAIL_FROM", 
+      attachments: []
+    };
+
+    const response = await axios.post(url, data, { headers });
+
+    return res.status(200).json({ message: "Email sent successfully!", data: response.data });
+  } catch (error) {
+    return res.status(500).json({ error: error.response ? error.response.data : error.message });
+  }
+}
 `}
                 </Highlight>
             </div>
             <div className="h-2" />
-
-
         </>,
     ]}
 />
