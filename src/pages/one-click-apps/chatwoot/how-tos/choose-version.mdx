@@ -1,0 +1,51 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تغییر نسخه chatwoot - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تغییر نسخه برنامه chatwoot در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تغییر نسخه‌ی برنامه مستقر شده
+<hr className="mb-2" />
+
+      <p>
+        اگر که قصد دارید نسخه برنامه خود را بنا به هر دلیلی تغییر دهید؛ کافیست تا پس از <a href="../../quick-start" className="text-[#2196f3] ">ساخت برنامه در لیارا</a>، در کنسول، در برنامه‌تان، وارد صفحه <b>استقرار جدید</b> شوید، تب <b>Docker Hub</b> را انتخاب کنید و سپس بر روی گزینه <b>شروع استقرار image از Docker Hub</b> کلیک کنید؛ بعد از انجام این کار، به صفحه جدیدی هدایت می‌شوید که کافیست تنها در قسمت <b>نام image</b>، نسخه مورد نظرتان (tag) را پس از <Important>:</Important> وارد کرده و سپس مراحل استقرار را بدون اعمال تغییر دیگری، جلو ببرید:
+      </p> 
+      <div className="h-4" />
+      <video
+        src="https://files.liara.ir/liara/docs/update-one-click-app-version-by-liara-console.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+      />
+      <div className="h-4" />
+      <p>
+        با انجام کار فوق، نسخه برنامه مدنظرتان، تغییر خواهد کرد.
+      </p>        
+   
+<Alert variant="success">
+<p>
+  برای مشاهده تمامی تگ‌های موجود، می‌توانید به <a href="https://hub.docker.com/r/chatwoot/chatwoot/tags" className="text-[#2196f3]">داکرهاب رسمی برنامه</a>، مراجعه کنید.
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+  برای اطلاعات بیشتر مربوط به پیکربندی برنامه و اطلاع از متغیرهای محیطی آن، می‌توانید به <a href="https://www.chatwoot.com/docs/self-hosted/deployment/docker" className="text-[#2196f3]">مستندات رسمی برنامه</a>، مراجعه کنید.
+</p>
+</Alert>
+
+</Layout>

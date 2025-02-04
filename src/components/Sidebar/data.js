@@ -4966,6 +4966,16 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/cyberchef/favicon.webp" />,
         link: "/one-click-apps/cyberchef/quick-start"
       },
+      {
+        title: "chatwoot",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/chatwoot/favicon.avif" />,
+        link: "/one-click-apps/chatwoot/quick-start"
+      },
+      {
+        title: "Harness",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />,
+        link: "/one-click-apps/harness/quick-start"
+      },
 
     ],
 
@@ -5005,6 +5015,42 @@ export default {
       },
     ],
 
+    harness: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />
+            برنامه Harness
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/harness/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/harness/how-tos/choose-version"
+      },
+    ],
+
     automatisch: [
       {
         badge: (
@@ -5038,6 +5084,42 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/automatisch/how-tos/choose-version"
+      },
+    ],
+
+    chatwoot: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/chatwoot/favicon.avif" />
+            برنامه chatwoot
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/chatwoot/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/chatwoot/how-tos/choose-version"
       },
     ],
 
