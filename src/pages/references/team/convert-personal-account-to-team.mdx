@@ -1,0 +1,89 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import Table from "@/components/Common/table";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شیوه تبدیل حساب شخصی به تیم در لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به شیوه تبدیل حساب شخصی به تیم در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شیوه تبدیل حساب شخصی به تیم در لیارا
+<hr className="mb-2" />
+
+قابلیت تبدیل حساب شخصی به تیم در لیارا این امکان را به شما می‌دهد که در کم‌ترین زمان ممکن و فقط با یک کلیک، 
+تمامی برنامه‌ها، شبکه‌های خصوصی، دیتابیس‌ها، باکت‌ها،
+DNSها و سرورهای ایمیل موجود در 
+حساب شخصی‌تان را دقیقاً به همان شکل، به یک تیم جدید منتقل کنید.
+با این کار، تمام اجزای حساب شخصی شما به تیم، منتقل خواهد شد و این اجزا شامل اعتبار و تیکت‌های شما هم می‌شود. 
+برای تبدیل حساب شخصی خود به تیم باید موارد زیر در نظر بگیرید:
+
+<div className="h-4" />
+<ul>
+    <li>حساب شخصی نباید به تازگی، ساخته شده باشد.</li>
+    <div className="h-3" />
+
+    <li>حساب شخصی، از قبل نباید به تیم تبدیل شده باشد.</li>
+    <div className="h-3" />
+
+    <li>سرویس فایل قدیمی (مربوط به کاربران زیر ساخت قدیم) نباید فعال باشد.</li>
+    <div className="h-3" />
+
+    <li>حساب شخصی نباید به گیت‌هاب متصل باشد (در صورت متصل بودن، دسترسی را حذف کنید).</li>
+    <div className="h-3" />
+
+    <li><a href="/references/console/enable-two-factor-authentication/" className="text-[#2196f3]">ورود دو مرحله‌ای</a> باید غیرفعال باشد (در صورت فعال بودن، آن را غیرفعال کنید).</li>
+    <div className="h-3" />
+
+    <li>در اکانت خود، نباید عضو هیچ تیمی باشید (باید در صورت عضویت، تیم  را ترک کنید).</li>
+    <div className="h-3" />
+
+</ul>
+
+<div className="h-4" />
+
+در صورت دارا بودن شرایط برای تبدیل حساب شخصی به تیم، در کنسول لیارا، بر روی 
+آیکون **حساب شخصی** واقع در سمت راست بالای کنسول کلیک کنید؛ گزینه 
+**مدیریت تیم و دسترسی‌ها** را انتخاب کنید و در صفحه جدید باز شده، بر روی گزینه **تبدیل به حساب تیمی** کلیک کنید. 
+
+<div className="h-2" />
+<video
+    src="https://files.liara.ir/liara/teams/convert-personal-account-to-team-account.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+></video>
+<div className="h-2" />
+
+با انجام کار فوق، حساب شخصی شما به تیم تبدیل شده و می‌توانید از آن، استفاده کنید. 
+
+<div className="h-2" />
+<Alert variant="error">
+<p>
+در نظر داشته باشید که این عملیات، برگشت‌ناپذیر هست و بعد از تبدیل حساب شخصی به تیم، امکان بازگشت وجود نخواهد داشت.
+</p>
+</Alert>
+
+</Layout>

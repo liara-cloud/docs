@@ -9708,6 +9708,10 @@ export default {
         link: "/references/team/delete-member"
       },
       {
+        title: "تبدیل اکانت شخصی به تیم",
+        link: "/references/team/convert-personal-account-to-team"
+      },
+      {
         title: "حذف یک تیم",
         link: "/references/team/delete-team"
       },
