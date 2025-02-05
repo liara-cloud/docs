@@ -384,64 +384,19 @@ Route::get('/send-test-email', function () {
                     {`MAIL_SERVER_ID=***
 MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
 API_LIARA_TOKEN=***
+MAIL_FROM_ADDRESS=info@looms.ir
 `}
                 </Highlight>
             </div>
             <div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
 
             در نهایت می‌توانید در پروژه‌ی خود با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید.
-            به عنوان مثال، در ابتدا، با استفاده از دستور زیرو، 
-            یک سرویس جدید ایجاد کنید: 
-
-            <div className="h-2" />
-            <div dir='ltr'>
-                <Highlight className="bash">
-                    {`php artisan make:service LiaraMailService`}
-                </Highlight>
-            </div>
-            <div className="h-2" />
-            سپس، فایل <Important>app/Services/LiaraMailService.php</Important> را به شکل زیر تغییر دهید:
-
-
-            <div className="h-2" />
-            <div dir='ltr'>
-                <Highlight className="bash">
-                    {`<?php
-
-namespace App\Services;
-
-use Illuminate\Support\Facades\Http;
-
-class LiaraMailService
-{
-    public function sendEmail($to, $subject, $text)
-    {
-        $url = env('MAIL_SERVICE_URL') . '/' . env('MAIL_SERVER_ID') . '/messages';
-        $token = env('API_LIARA_TOKEN');
-
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $token,
-            'Content-Type' => 'application/json',
-            'x-liara-tag' => 'test_email' // Add custom tags
-        ])->post($url, [
-            'text' => $text,
-            'subject' => $subject,
-            'to' => $to,
-            'from' => 'contact@looms.ir', // Change this to your sender email
-            'attachments' => []
-        ]);
-
-        return $response->json();
-    }
-}
-`}
-                </Highlight>
-            </div>
-            <div className="h-2" />
-
-            <p>
-                اکنون، با اجرای دستور زیر، یک کنترلر برای ارسال ایمیل ایجاد کنید: 
-            </p>
+            به عنوان مثال، در ابتدا، با اجرای دستور زیر یک کنترلر برای ارسال ایمیل ایجاد کنید: 
 
             <div className="h-2" />
             <div dir='ltr'>
@@ -456,38 +411,44 @@ class LiaraMailService
             </p>
             <div className="h-2" />
             <div dir='ltr'>
-                <Highlight className="bash">
+                <Highlight className="php">
                     {`<?php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\LiaraMailService;
+use Illuminate\Support\Facades\Http;
 
 class MailController extends Controller
 {
-    protected $mailService;
-
-    public function __construct(LiaraMailService $mailService)
+    public function sendTestEmail()
     {
-        $this->mailService = $mailService;
-    }
+        // Fetch configuration from .env
+        $mailServerId = env('MAIL_SERVER_ID');
+        $token = env('API_LIARA_TOKEN');
+        $url = env('MAIL_SERVICE_URL') . $mailServerId . "/messages";
 
-    public function send(Request $request)
-    {
-        $request->validate([
-            'to' => 'required|email',
-            'subject' => 'required|string|max:255',
-            'text' => 'required|string'
-        ]);
+        $headers = [
+            "Authorization" => "Bearer {$token}",
+            "Content-Type" => "application/json",
+            "x-liara-tag" => "test_email"
+        ];
 
-        $response = $this->mailService->sendEmail(
-            $request->input('to'),
-            $request->input('subject'),
-            $request->input('text')
-        );
+        $data = [
+            "to" => "example@example.example",
+            "from" => env('MAIL_FROM_ADDRESS'),
+            "text" => "Hello, this is a test email.",
+            "subject" => "Test Email",
+            "attachments" => []
+        ];
 
-        return response()->json($response);
+        $response = Http::withHeaders($headers)->post($url, $data);
+
+        if ($response->successful()) {
+            return response()->json(["message" => "Email sent successfully", "response" => $response->json()]);
+        } else {
+            return response()->json(["error" => "Email sending failed", "details" => $response->json()], $response->status());
+        }
     }
 }
 `}
@@ -496,73 +457,27 @@ class MailController extends Controller
             <div className="h-2" />
 
             <p>
-                در فایل <Important>routes/api.php</Important>
+                در فایل <Important>routes/web.php</Important>
                 مسیر زیر را برای ارسال ایمیل اضافه کنید:
             </p>
 
             <div className="h-2" />
             <div dir='ltr'>
-                <Highlight className="bash">
-                    {`use App\\Http\\Controllers\\MailController;
+                <Highlight className="php">
+                    {`<?php
 
-Route::post('/send-email', [MailController::class, 'send']);
+use App\Http\Controllers\MailController;
+
+Route::get('/send-email', [MailController::class, 'sendTestEmail']);
+
 `}
                 </Highlight>
             </div>
             <div className="h-2" />
 
             <p>
-                با انجام کارهای فوق، می‌توانید با استفاده از درخواست API مثال زیر، اقدام به ارسال ایمیل کنید:
+                حالا می‌توانید با اجرای برنامه و مراجعه به صفحه <Important>send-email</Important>، ایمیل‌های تراکنشی خود را ارسال کنید.
             </p>
-
-                        <div className="h-2" />
-            <div dir='ltr'>
-                <Highlight className="bash">
-                    {`curl -X POST http://127.0.0.1:8000/api/send-email \\
-     -H "Content-Type: application/json" \\
-     -d '{
-          "to": "example@example.example",
-          "subject": "Test Email",
-          "text": "This is a test email from Laravel!"
-         }'
-`}
-                </Highlight>
-            </div>
-            <div className="h-2" />
-
-            <p>
-                البته، می‌توانید در فرم blade لاراول نیز، از کد زیر برای ارسال ایمیل استفاده کنید (به عنوان مثال، در <Important>resources/views/send-email.blade.php</Important>):    
-            </p>
-
-
-            <div className="h-2" />
-            <div dir='ltr'>
-                <Highlight className="bash">
-                    {`<form method="POST" action="{{ route('send.email') }}">
-    @csrf
-    <input type="email" name="to" placeholder="Recipient Email" required>
-    <input type="text" name="subject" placeholder="Subject" required>
-    <textarea name="text" placeholder="Message" required></textarea>
-    <button type="submit">Send Email</button>
-</form>
-`}
-                </Highlight>
-            </div>
-            <div className="h-2" />
-            <p>
-                فراموش نکنید که مسیر فایل فوق را به فایل <Important>routes/web.php</Important> نیز اضافه کنید:
-            </p>
-            
-            <div className="h-2" />
-            <div dir='ltr'>
-                <Highlight className="bash">
-                    {`use App\\Http\\Controllers\\MailController;
-
-Route::post('/send-email', [MailController::class, 'send'])->name('send.email');
-`}
-                </Highlight>
-            </div>
-            <div className="h-2" />
         </>,
   ]}
 />

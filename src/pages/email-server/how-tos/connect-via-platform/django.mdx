@@ -37,7 +37,7 @@ import Head from "next/head";
 </Alert>
 
 <Tabs 
-  tabs={["SMTPS", "SMTP"]} 
+  tabs={["SMTPS", "SMTP", "HTTP"]} 
     content={[
       <>
 
@@ -88,7 +88,7 @@ EMAIL_HOST_USER = config('MAIL_USER')
 EMAIL_HOST_PASSWORD = config('MAIL_PASSWORD')
 EMAIL_USE_TLS = False # Disable STARTTLS 
 EMAIL_USE_SSL = True  # Force TLS
-DEFAULT_FROM_EMAIL = f"{config('MAIL_FROM_NAME')} <{config('MAIL_FROM_ADDRESS')}>"
+MAIL_FROM = f"{config('MAIL_FROM_NAME')} <{config('MAIL_FROM_ADDRESS')}>"
 `}
     </Highlight>
 </div>
@@ -113,7 +113,7 @@ def send_email(request):
         email = EmailMessage(
             subject=subject,
             body=message,
-            from_email=None,  # Uses DEFAULT_FROM_EMAIL from settings.py
+            from_email=None,  # Uses MAIL_FROM from settings.py
             to=recipient_list,
             headers=headers,
         )
@@ -205,7 +205,127 @@ def send_test_email(request):
 </div>
 <div className="h-2" />
 
-      </>
+      </>,
+            <>
+            <p>
+            برای ارسال ایمیل با استفاده از پروتکل HTTP، به <a href="/references/api/about/" className="text-[#2196f3]">API لیارا</a> و <a href="/email-server/details/mail-id" className="text-[#2196f3]">آیدی ایمیل‌سرور </a>  
+            و <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">نشانی ایمیل‌سرور</a> نیاز خواهید داشت. 
+            برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید: 
+
+            </p>
+            
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`MAIL_SERVER_ID=***
+MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+API_LIARA_TOKEN=***
+MAIL_FROM=info@example.com
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_ADDRESS</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+
+            در ادامه، در فایل <Important>settings.py</Important> قطعه کد زیر را قرار دهید تا متغیرهای محیطی، خوانده شوند: 
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`import os
+# from dotenv import load_dotenv # Install python-dotenv package and uncomment these two lines if using .env
+# load_dotenv()
+
+MAIL_SERVER_ID = os.getenv("MAIL_SERVER_ID")
+MAIL_SERVICE_URL = os.getenv("MAIL_SERVICE_URL")
+LIARA_API_TOKEN = os.getenv("LIARA_API_TOKEN")
+MAIL_FROM = os.getenv("MAIL_FROM")
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            سپس، در app موردنظرتان، یک فایل به نام <Important>utils.py</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+                        <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="python">
+                    {`import requests
+import os
+from django.conf import settings
+
+def send_email(to, subject, text):
+    url = f"{settings.MAIL_SERVICE_URL}/{settings.MAIL_SERVER_ID}/messages"
+
+    headers = {
+        "Authorization": f"Bearer {settings.LIARA_API_TOKEN}",
+        "Content-Type": "application/json",
+        "x-liara-tag": "django_email"  # Custom tag for tracking
+    }
+
+    data = {
+        "text": text,
+        "subject": subject,
+        "to": to,
+        "from": settings.MAIL_FROM,
+        "attachments": []
+    }
+
+    try:
+        response = requests.post(url, json=data, headers=headers)
+        response.raise_for_status()  # Raises an error for HTTP errors
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        return {"error": str(e)}
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+
+            در ادامه، در فایل <Important>views.py</Important> قطعه کد زیر را قرار دهید (یا به آن اضافه کنید):
+
+                        <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="python">
+                    {`from django.http import JsonResponse
+from .utils import send_email
+
+def send_test_email(request):
+    response = send_email("receiver@example.com", "Test Email from Django", "This is a test email from Django using Liara Mail Service.")
+    return JsonResponse(response)
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            در نهایت، در فایل <Important>urls.py</Important>، مسیری برای این view ایجاد کنید:
+
+                        <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="python">
+                    {`
+from <your-app-name>.views import send_test_email
+
+urlpatterns = [
+     path('send-email/', send_test_email, name='send_email'),
+]
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+                 اکنون می‌توانید پس از اجرای برنامه و با اجرای دستور زیر، اقدام به ارسال ایمیل بفرمایید:
+
+            </p>
+                        <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`curl http://127.0.0.1:8000/send-email/`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>,
   ]}
 />
 

@@ -23,7 +23,7 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 <video
-  src="https://files.liara.ir/liara/docs/go-mail-server.mp4"
+  src="https://files.liara.ir/liara/docs/golang-mail-server.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -37,7 +37,7 @@ import Head from "next/head";
 </Alert>
 
 <Tabs 
-  tabs={["SMTPS", "SMTP"]} 
+  tabs={["SMTPS", "SMTP", "HTTP"]} 
     content={[
       <>
 
@@ -239,7 +239,116 @@ func main() {
 </div>
 <div className="h-2" />
 
-      </>
+      </>,
+           <>
+            <p>
+            برای ارسال ایمیل با استفاده از پروتکل HTTP، به <a href="/references/api/about/" className="text-[#2196f3]">API لیارا</a> و <a href="/email-server/details/mail-id" className="text-[#2196f3]">آیدی ایمیل‌سرور </a>  
+            و <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">نشانی ایمیل‌سرور</a> نیاز خواهید داشت. 
+            برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید: 
+
+            </p>
+            
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`MAIL_SERVER_ID=***
+MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+LIARA_API_TOKEN=***
+MAIL_FROM=info@example.com
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+            <div className="h-2" />
+            در ادامه، باید پکیج‌های زیر را برای ارسال ایمیل، نصب کنید: 
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`go get -u github.com/go-resty/resty/v2
+go get -u github.com/joho/godotenv`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+
+            در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید:
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/go-resty/resty/v2"
+	"github.com/joho/godotenv"
+)
+
+// LoadEnv loads environment variables from .env file
+func LoadEnv() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
+
+// SendEmail sends an email using Liara Mail Service
+func SendEmail(to, subject, text string) {
+	// Load environment variables
+	LoadEnv()
+
+	mailServerID := os.Getenv("MAIL_SERVER_ID")
+	mailServiceURL := os.Getenv("MAIL_SERVICE_URL")
+	mailServiceToken := os.Getenv("LIARA_API_TOKEN")
+	defaultFromEmail := os.Getenv("MAIL_FROM")
+
+	// Define API endpoint
+	url := fmt.Sprintf("%s/%s/messages", mailServiceURL, mailServerID)
+
+	// Create email payload
+	data := map[string]interface{}{
+		"text":       text,
+		"subject":    subject,
+		"to":         to,
+		"from":       defaultFromEmail,
+		"attachments": []interface{}{},
+	}
+
+	// Send HTTP request using Resty
+	client := resty.New()
+	resp, err := client.R().
+		SetHeader("Authorization", "Bearer "+mailServiceToken).
+		SetHeader("Content-Type", "application/json").
+		SetHeader("x-liara-tag", "golang_email"). // Custom tag
+		SetBody(data).
+		Post(url)
+
+	if err != nil {
+		log.Fatalf("Error sending email: %v", err)
+	}
+
+	// Print response
+	fmt.Println("Response Status:", resp.Status())
+	fmt.Println("Response Body:", resp.String())
+}
+
+func main() {
+	// Send an email
+	SendEmail("info@looms.ir", "Hello from Golang", "Testing Liara Mail Service in Golang!")
+}
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>,
   ]}
 />
 

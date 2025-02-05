@@ -225,7 +225,8 @@ MAIL_FROM=info@example.com
             <div className="h-2" />
             <div dir='ltr'>
                 <Highlight className="bash">
-                    {`const axios = require("axios"); // npm install axios
+                    {`// pages/api/send-email.js
+const axios = require("axios"); // npm install axios
 
 const mailServerId = process.env.MAIL_SERVER_ID;
 const url = \`\${process.env.MAIL_SERVICE_URL}/\${mailServerId}/messages\`;

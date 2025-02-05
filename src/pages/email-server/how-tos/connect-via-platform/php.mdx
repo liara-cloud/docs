@@ -37,7 +37,7 @@ import Head from "next/head";
 </Alert>
 
 <Tabs 
-  tabs={["SMTPS", "SMTP"]} 
+  tabs={["SMTPS", "SMTP", "HTTP"]} 
     content={[
       <>
 
@@ -228,7 +228,90 @@ try {
     </Highlight>
 </div>
 <div className="h-2" />
-      </>
+      </>,
+           <>
+            <p>
+            برای ارسال ایمیل با استفاده از پروتکل HTTP، به <a href="/references/api/about/" className="text-[#2196f3]">API لیارا</a> و <a href="/email-server/details/mail-id" className="text-[#2196f3]">آیدی ایمیل‌سرور </a>  
+            و <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">نشانی ایمیل‌سرور</a> نیاز خواهید داشت. 
+            برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید: 
+
+            </p>
+            
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`MAIL_SERVER_ID=***
+MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+LIARA_API_TOKEN=***
+MAIL_FROM_EMAIL=info@example.com
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_EMAIL</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+            <div className="h-2" />
+
+
+            در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید:
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`<?php
+
+// send-email.php
+// composer require vlucas/phpdotenv guzzlehttp/guzzle
+require 'vendor/autoload.php';
+
+use GuzzleHttp\Client;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+function sendEmail($to, $subject, $text)
+{
+    $client = new Client();
+
+    $url = $_ENV['MAIL_SERVICE_URL'] . '/' . $_ENV['MAIL_SERVER_ID'] . '/messages';
+    $token = $_ENV['LIARA_API_TOKEN'];
+
+    try {
+        $response = $client->post($url, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json',
+                'x-liara-tag' => 'test_email' // Custom tag
+            ],
+            'json' => [
+                'text' => $text,
+                'subject' => $subject,
+                'to' => $to,
+                'from' => 'contact@looms.ir', // Your sender email
+                'attachments' => []
+            ]
+        ]);
+
+        return json_decode($response->getBody(), true);
+    } catch (Exception $e) {
+        return ['error' => $e->getMessage()];
+    }
+}
+
+// Example Usage
+$response = sendEmail("receiver@looms.ir", "Test Email", "This is a test email from PHP!");
+print_r($response);
+
+?>
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>,
   ]}
 />
 

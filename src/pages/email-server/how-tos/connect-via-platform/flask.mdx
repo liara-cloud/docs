@@ -37,7 +37,7 @@ import Head from "next/head";
 </Alert>
 
 <Tabs 
-  tabs={["SMTPS", "SMTP"]} 
+  tabs={["SMTPS", "SMTP", "HTTP"]} 
     content={[
       <>
 
@@ -220,7 +220,97 @@ if __name__ == '__main__':
 </Alert> */}
 
 
-      </>
+      </>,
+       <>
+            <p>
+            برای ارسال ایمیل با استفاده از پروتکل HTTP، به <a href="/references/api/about/" className="text-[#2196f3]">API لیارا</a> و <a href="/email-server/details/mail-id" className="text-[#2196f3]">آیدی ایمیل‌سرور </a>  
+            و <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">نشانی ایمیل‌سرور</a> نیاز خواهید داشت. 
+            برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید: 
+
+            </p>
+            
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`MAIL_SERVER_ID=***
+MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+LIARA_API_TOKEN=***
+MAIL_FROM_EMAIL=info@example.com
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_EMAIL</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+            <div className="h-2" />
+
+
+            در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید:
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`from flask import Flask, jsonify, request
+import requests # pip install requests
+import os
+
+# pip install python-dotenv uncomment these two lines if using .env
+
+# # Load environment variables from .env file
+# from dotenv import load_dotenv 
+# load_dotenv()
+
+app = Flask(__name__)
+
+MAIL_SERVER_ID = os.getenv("MAIL_SERVER_ID")
+MAIL_SERVICE_URL = os.getenv("MAIL_SERVICE_URL")
+LIARA_API_TOKEN = os.getenv("LIARA_API_TOKEN")
+MAIL_FROM = os.getenv("MAIL_FROM")
+
+def send_email(to, subject, text):
+    url = f"{MAIL_SERVICE_URL}/{MAIL_SERVER_ID}/messages"
+
+    headers = {
+        "Authorization": f"Bearer {LIARA_API_TOKEN}",
+        "Content-Type": "application/json",
+        "x-liara-tag": "flask_email"  # Custom tag for tracking
+    }
+
+    data = {
+        "text": text,
+        "subject": subject,
+        "to": to,
+        "from": MAIL_FROM,
+        "attachments": []
+    }
+
+    try:
+        response = requests.post(url, json=data, headers=headers)
+        response.raise_for_status()  # Raises an error for HTTP errors
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        return {"error": str(e)}
+
+@app.route('/send-email', methods=['POST'])
+def send_email_api():
+    data = request.get_json()
+    to = data.get("to", "receiver@example.com")
+    subject = data.get("subject", "Test Email from Flask")
+    text = data.get("text", "This is a test email from Flask using Liara Mail Service.")
+
+    response = send_email(to, subject, text)
+    return jsonify(response)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>,
   ]}
 />
 

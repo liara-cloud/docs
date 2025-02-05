@@ -37,7 +37,7 @@ import Head from "next/head";
 </Alert>
 
 <Tabs 
-  tabs={["SMTPS", "SMTP"]} 
+  tabs={["SMTPS", "SMTP", "HTTP"]} 
     content={[
       <>
 
@@ -357,7 +357,146 @@ public class TestController : Controller
     </Highlight>
 </div>
 <div className="h-2" />
-      </>
+      </>,
+           <>
+            <p>
+            برای ارسال ایمیل با استفاده از پروتکل HTTP، به <a href="/references/api/about/" className="text-[#2196f3]">API لیارا</a> و <a href="/email-server/details/mail-id" className="text-[#2196f3]">آیدی ایمیل‌سرور </a>  
+            و <a href="/email-server/how-tos/add-account" className="text-[#2196f3] ">نشانی ایمیل‌سرور</a> نیاز خواهید داشت. 
+            برای این‌کار، اطلاعات مربوطه را مشابه زیر در فایل <Important>appsettings.json</Important> قرار دهید: 
+
+            </p>
+            
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="json">
+                    {`{
+  "LiaraMail": {
+    "MailServerId": "66efbaf4b153ef13b8807347",
+    "MailServiceUrl": "https://mail-service.iran.liara.ir/api/v1/mails",
+    "LIARA_API_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGU3NDRjYmIxYWM3OTcyYTZlMGM3ZTQiLCJ0eXBlIjoiYXV0aCIsImlhdCI6MTczMTQwNTIwM30.ynfNoJcmOiY1Ie9eGu4frGbyTihdYLfsx5tumVdbIOI",
+    "MAIL_FROM": "contact@looms.ir"
+  }
+}
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+<Alert variant='info'>
+<p>
+مقدار فیلد <Important>MAIL_FROM_EMAIL</Important> باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
+</p>
+</Alert>
+            <div className="h-2" />
+
+            در ادامه، باید پکیج‌های زیر را برای ارسال ایمیل، نصب کنید: 
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`dotnet add package System.Net.Http.Json
+dotnet add package Microsoft.Extensions.Configuration.Json
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+
+            سپس، در مسیر اصلی پروژه، یک فایل به نام <Important>EmailService.cs</Important> ایجاد کنید و قطعه کد زیر را درون آن قرار دهید: 
+            
+            
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`using System;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
+using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
+
+public class EmailService
+{
+    private readonly HttpClient _httpClient;
+    private readonly string _mailServerId;
+    private readonly string _mailServiceUrl;
+    private readonly string _liaraApiToken;
+    private readonly string _mail_from;
+
+    public EmailService()
+    {
+        // Load configuration from appsettings.json
+        var config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+
+        var mailSettings = config.GetSection("LiaraMail");
+        _mailServerId = mailSettings["MailServerId"];
+        _mailServiceUrl = mailSettings["MailServiceUrl"];
+        _liaraApiToken = mailSettings["LIARA_API_TOKEN"];
+        _mail_from = mailSettings["MAIL_FROM"];
+
+        _httpClient = new HttpClient();
+    }
+
+    public async Task SendEmailAsync(string to, string subject, string text)
+    {
+        var url = $"{_mailServiceUrl}/{_mailServerId}/messages";
+
+        var request = new
+        {
+            text = text,
+            subject = subject,
+            to = to,
+            from = _MAIL_FROM,
+            attachments = new object[] { }
+        };
+
+        var requestMessage = new HttpRequestMessage(HttpMethod.Post, url)
+        {
+            Content = JsonContent.Create(request)
+        };
+
+        requestMessage.Headers.Add("Authorization", $"Bearer {_liaraApiToken}");
+        requestMessage.Headers.Add("x-liara-tag", "dotnet_email"); // Custom tag
+
+        try
+        {
+            var response = await _httpClient.SendAsync(requestMessage);
+            response.EnsureSuccessStatusCode();
+            Console.WriteLine("Email sent successfully!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error sending email: {ex.Message}");
+        }
+    }
+}
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+
+            در نهایت، قطعه کد زیر را در فایل <Important>Program.cs</Important> قرار دهید و بعد از آن، می‌توانید اقدام به ارسال ایمیل، بفرمایید:
+
+            
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        var emailService = new EmailService();
+        await emailService.SendEmailAsync("receiver@example.com", "Hello from .NET", "Testing Liara Mail Service in .NET!");
+    }
+}
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>,
   ]}
 />
 
