@@ -2495,6 +2495,10 @@ export default {
         link: "/paas/dotnet/how-tos/choose-version"
       },
       {
+        title: "تنظیم Cron Job",
+        link: "/paas/dotnet/how-tos/set-cron-job"
+      },
+      {
         title: "راه‌اندازی برنامه WebSocket",
         link: "/paas/dotnet/how-tos/use-websocket"
       },

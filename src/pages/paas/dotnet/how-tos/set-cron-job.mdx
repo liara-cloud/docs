@@ -1,0 +1,115 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم Cron Job در dotNET - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نحوه تنظیم Cron Job در پلتفرم dotNET در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تنظیم Cron Job
+<hr className="mb-2" />
+
+Cron job یک وظیفه زمان‌بندی شده در سیستم‌عامل‌های Unix و Linux است که به کاربران اجازه می‌دهد تا اسکریپت‌ها یا دستورات را در فواصل زمانی منظم اجرا کنند. این ابزار به خصوص برای انجام وظایف دوره‌ای مثل پشتیبان‌گیری، ارسال ایمیل، اجرای اسکریپت‌های نگهداری سیستم، یا به‌روزرسانی اطلاعات مفید است.
+<div className="h-4" />
+
+
+ برای تنظیم یک Cron Job در dotNET می‌توانید از <Important>IHostedService</Important> یا <Important>BackgroundService</Important>، استفاده کنید. 
+به عنوان مثال، فرض کنید که در فایل <Important>Program.cs</Important> مشخص کردید که در صورت ارسال درخواست <Important>POST</Important> به مسیر <Important>execute/</Important>، یک لاگ تحت عنوان <Important>The script is executed</Important> ثبت شود: 
+ 
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="csharp">
+{`app.MapPost("/execute", () =>
+{
+    Console.WriteLine("The script is executed");
+    return Results.Ok("Script executed successfully");
+});`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+و اکنون، فرض کنید که قصد دارید در هر دقیقه، به مسیر 
+مشخص شده، درخواست <Important>POST</Important> ارسال کنید.
+برای این‌کار، می‌توانید در مسیر اصلی پروژه و در کنار فایل <Important>Program.cs</Important>، یک فایل به نام <Important>ScheduledJobService.cs</Important> ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="csharp">
+{`public class ScheduledJobService : BackgroundService
+{
+    private readonly ILogger<ScheduledJobService> _logger;
+    private readonly HttpClient _httpClient;
+
+    public ScheduledJobService(ILogger<ScheduledJobService> logger)
+    {
+        _logger = logger;
+        _httpClient = new HttpClient();
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    {
+        while (!stoppingToken.IsCancellationRequested)
+        {
+            try
+            {
+                _logger.LogInformation("Executing scheduled request...");
+                
+                // send a POST request to the server
+                var response = await _httpClient.PostAsync("http://<app-name>:<app-port>/execute", null, stoppingToken);
+                
+                _logger.LogInformation($"Response: {response.StatusCode}");
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error in ScheduledJobService: {ex.Message}");
+            }
+
+            // wait for 1 minute
+            await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+        }
+    }
+}
+`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+در قطعه کد فوق، به‌جای <Important>&lt;app-name&gt;</Important> و <Important>&lt;app-port&gt;</Important>، نام برنامه و پورت آن را قرار دهید.
+اکنون باید سرویس پس زمینه را مانند شکل زیر به فایل <Important>Program.cs</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="csharp">
+{`builder.Services.AddHostedService<ScheduledJobService>();`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+
+تمامی کارها انجام شده است و اکنون، می‌توانید 
+برنامه‌تان را در لیارا مستقر کنید. 
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+    یک برنامه مثال در <a href="" className="text-[#2196f3] ">گیت‌هاب لیارا</a> قرار گرفته است که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+
+</Layout>
