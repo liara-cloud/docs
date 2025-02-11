@@ -4980,7 +4980,48 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />,
         link: "/one-click-apps/harness/quick-start"
       },
+      {
+        title: "Postiz",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/postiz/favicon.avif" />,
+        link: "/one-click-apps/postiz/quick-start"
+      },
 
+    ],
+
+    postiz: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/postiz/favicon.avif" />
+            برنامه Postiz
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap  />,
+        link: "/one-click-apps/postiz/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/postiz/how-tos/choose-version"
+      },
     ],
 
     cyberchef: [
