@@ -1,0 +1,165 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس PostgreSQL در Flask - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس PostgreSQL در فریم‌ورک Flask در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس PostgreSQL در برنامه‌های Flask
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس PostgreSQL در برنامه‌های Flask، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install psycopg
+pip install psycopg_pool`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`PG_URI=postgresql://root:xXVTSVNzxxluPRnaRt6OYVeT@postis:5432/postgres`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip freeze > requirements.txt`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید 
+برای اتصال به دیتابیس، از قطعه کد زیر، استفاده کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`from psycopg_pool import ConnectionPool
+from flask import Flask
+import os 
+
+app = Flask(__name__)
+
+pool = ConnectionPool(conninfo=os.getenv("PG_URI"))
+
+def get_db_connection():
+    return pool.getconn()
+
+@app.route('/')
+def index():
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            result = cursor.fetchone()
+            return 'connected' if result else 'not connected'
+        
+    except Exception as e:
+        return f'not connected, error: {str(e)}'
+    
+    finally:
+        pool.putconn(conn)
+
+if __name__ == '__main__':
+    app.run(debug=True)`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+{/* <Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+برای استفاده از قابلیت connection pooling در دیتابیس PostgreSQL، فقط کافیست تا با اجرای دستور زیر، ماژول موردنیاز را نصب کنید:
+
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+{`pip install django-db-connection-pool[postgresql]`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+
+سپس، در فایل <Important>settings.py</Important> در بخش <Important>DATABASES</Important>، فیلد مربوط به <Important>ENGINE</Important> را مانند شکل زیر تغییر دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`# other codes ...
+import os
+DATABASES = {
+    'default': {
+        'ENGINE': 'dj_db_conn_pool.backends.postgresql',
+        'NAME':     os.getenv("POSTGRESQL_DB_NAME"), 
+        'USER':     os.getenv("POSTGRESQL_DB_USER"),
+        'PASSWORD': os.getenv("POSTGRESQL_DB_PASS"),
+        'HOST':     os.getenv("POSTGRESQL_DB_HOST"),
+        'PORT':     os.getenv("POSTGRESQL_DB_PORT"),
+    },
+}
+# other codes ...`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+همچنین، می‌توانید تنظیمات مربوط به Connection Pooling را در فیلدی به نام <Important>POOL_OPTIONS</Important>مانند قطعه کد زیر، بر روی دیتابیس خود، اعمال کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`# other codes ...
+import os
+DATABASES = {
+    'default': {
+        'ENGINE': 'dj_db_conn_pool.backends.postgresql',
+        'NAME':     os.getenv("POSTGRESQL_DB_NAME"), 
+        'USER':     os.getenv("POSTGRESQL_DB_USER"),
+        'PASSWORD': os.getenv("POSTGRESQL_DB_PASS"),
+        'HOST':     os.getenv("POSTGRESQL_DB_HOST"),
+        'PORT':     os.getenv("POSTGRESQL_DB_PORT"),
+        'POOL_OPTIONS': {
+            'POOL_SIZE': 10,
+            'MAX_OVERFLOW': 10,
+            'RECYCLE': 24 * 60 * 60
+        }
+    },
+}
+# other codes ...`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important>، به‌روز شود و نام ماژول مورد نیاز، در آن، قرار بگیرد:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`pip freeze > requirements.txt`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+اکنون می‌توانید مجدداً برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>postgresql/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید. */}
+
+</Layout>

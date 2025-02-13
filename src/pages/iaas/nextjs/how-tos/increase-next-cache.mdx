@@ -1,0 +1,106 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات افزایش فضای مسیر cache در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به افزایش فضای مسیر Cache در پلتفرم NextJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# افزایش فضای مسیر cache
+<hr className="mb-2" />
+
+پوشه <Important>next/cache.</Important> در پروژه‌های NextJS محلی است که برای ذخیره داده‌های کش‌شده به کار می‌رود. این داده‌ها شامل مواردی است که می‌تواند در زمان ساخت و اجرای پروژه باعث افزایش سرعت برنامه شود. 
+
+در لیارا، مسیر ذخیره‌سازی فایل‌های کش به <Important>tmp/</Important> متصل شده است و از آنجایی که فضای نوشتن این دایرکتوری در حالتِ پیش‌فرضِ Writable، متغیر و در حالت <a className="text-[#2196f3] " href="/paas/details/file-system">فایل‌سیستم ReadOnly</a> برابر با 100MB است؛ ممکن است که به افزایش فضا برای ذخیره‌سازی کش، نیاز داشته باشید. برای این کار کافیست تا طبق مراحل زیر، عمل کنید:
+
+<Step  steps={[
+    {
+    step: "۱",
+    content: (
+    <>
+            <h3>ایجاد دیسک</h3>
+            <p>طبق مستندات <a href="/paas/disks/create" className="text-[#2196f3] ">ساخت دیسک</a>، یک دیسک با نام و اندازه دلخواه ایجاد کنید.</p>
+    </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+    <>
+            <h3>تعریف مسیر برای دیسک</h3>
+            <p>طبق مستندات <a href="/paas/disks/route" className="text-[#2196f3] ">تعریف مسیر دیسک</a>، دیسک ایجاد شده را به مسیر <Important>tmp/</Important> متصل کنید.</p>
+    </>
+    )
+    },]}/>
+<div className="h-4" />
+با انجام کارهای فوق، فضای پوشه <Important>tmp/</Important> افزایش خواهد یافت. 
+
+<div className="h-2" />
+<Alert variant="warning">
+در صورتی که به دایرکتوری <Important>tmp/</Important> دیسک متصل نکرده باشید، با هر بار استقرار جدید یا ری‌استارت شدن برنامه، تمامی فایل‌های cache شده، حذف می‌شوند.
+</Alert>
+<div className="h-2" />
+
+<Section id="cache-revalidation" title="نگهداری طولانی‌تر فایل‌های کش‌شده" />
+برای اینکه بتوانید فایل‌های cache را به مدت بیشتری نگهداری کنید؛ کافیست تا قطعه کد زیر را 
+به فایل <Important>next.config.js</Important> اضافه کنید و مقدار فیلد <Important>revalidate</Important> را بر حسب نیاز خود، تغییر دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`module.exports = {
+  revalidate: 120, // 120 seconds
+};`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+البته می‌توانید این مقدار را به صورت مستقیم در متد <Important>getStaticProps</Important> تنظیم کنید؛ به عنوان مثال:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`export async function getStaticProps() {
+  // receiving data from an API
+  const data = await fetch('https://api.example.com/data').then(res => res.json());
+
+  return {
+    props: {
+      data,
+    },
+    revalidate: 60, // 60 seconds
+  };
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="cache-images" title="نگهداری طولانی‌تر تصاویر کش‌شده" />
+برای نگهداری طولانی‌تر تصاویر کش‌شده، کافیست تا فیلد <Important>minimumCacheTTL</Important> را به فایل <Important>next.config.js</Important> به شکل زیر، اضافه کنید و مقدار آن را بنا به نیاز خود، تغییر دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`module.exports = {
+  images: {
+    minimumCacheTTL: 60, // 60 seconds
+  },
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+</Layout>

@@ -1,0 +1,74 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Deno - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Deno یا فلاتر در پلتفرم داکر در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Deno در لیارا
+<hr className="mb-2" />
+<a href="https://docs.deno.com/" className="text-[#2196f3] ">Deno</a> یک محیط اجرای جاوااسکریپت و تایپ‌اسکریپت است که با هدف رفع مشکلات امنیتی و پیچیدگی‌های Node.js ساخته شده است. Deno به طور پیش‌فرض از تایپ‌اسکریپت پشتیبانی می‌کند و برخلاف Node.js نیازی به پکیج منیجر ندارد، زیرا بسته‌ها به صورت مستقیم از URL بارگذاری می‌شوند. همچنین Deno دارای امنیت پیشرفته است، به طوری که دسترسی به فایل‌ها، شبکه و محیط به طور پیش‌فرض محدود است و باید به‌طور صریح اجازه داده شود.
+
+<div className="h-2" />
+
+شما می‌توانید برنامه‌های Deno خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های Docker</a> در لیارا، مستقر کنید.
+برای این‌کار، کافیست تا در مسیر اصلی پروژه در Local، یک فایل به نام <Important>Dockerfile</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="dockerfile">
+        {`# Use the official Deno image from Docker Hub
+FROM denoland/deno:alpine-1.30.0
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the Deno app code into the container
+COPY . .
+
+# Allow Deno to read and write the necessary files
+RUN deno cache server.ts
+
+# Command to run the Deno app when the container starts
+CMD ["deno", "run", "--allow-net", "--allow-read", "server.ts"]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، در مسیری که <Important>Dockerfile</Important> قرار گرفته است، دستور زیر را اجرا کنید تا برنامه‌تان در لیارا مستقر شود:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`liara deploy --platform=docker --port=8000`}
+    </Highlight>
+</div>
+<div className="h-2" />
+البته اگر که برنامه‌تان در پورت دیگری به جز 8000 به درخواست کاربران، گوش می‌دهد؛ بایستی به جای 8000، مقدار پورت خود را، وارد کنید. 
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+<Important>Dockerfile</Important> فوق، صرفاً یک نمونه است و شما می‌توانید آن را با توجه به نیاز خودتان ویرایش کنید.
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+یک پروژه Deno آماده به استقرار در <a href="https://github.com/liara-cloud/deno-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+</Layout>

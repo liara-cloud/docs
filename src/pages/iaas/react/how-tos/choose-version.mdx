@@ -1,0 +1,50 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات مشاهده نسخه NodeJS در React - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه مشاهده نسخه NodeJS در پلتفرم React در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# نسخه NodeJS در پلتفرم React
+<hr className="mb-2" />
+
+در حال حاضر در لیارا، نسخه زیر از NodeJS در پلتفرم React ارائه می‌شود:
+
+<ul className="pr-4">
+  {[
+    {text: '20 (پیش‌فرض)',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        نسخه {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-4" />
+<Alert variant='warning'>
+<p>
+در حال حاضر، امکان تغییر نسخه NodeJS در برنامه‌های React وجود ندارد و هر برنامه React پس از ساخته شدن، بر روی NodeJS v20 LTS خواهد بود.
+</p>
+</Alert>
+
+
+</Layout>

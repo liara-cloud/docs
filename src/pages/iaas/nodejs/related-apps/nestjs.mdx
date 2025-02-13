@@ -1,0 +1,114 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های NestJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های NestJS در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های NestJS در لیارا
+<hr className="mb-2" />
+نرم‌افزار NestJS فریم‌ورکی برای ایجاد برنامه‌های کارآمد و مقیاس‌پذیر NodeJS  است. این برنامه  با TypeScript ساخته شده و از آن، کاملاً پشتیبانی می کند. از ویژگی‌های متمایز این فریم‌ورک می‌توان به پشتیبانی آن از OOP، برنامه‌نویسی تابعی (FP) و FRP اشاره کرد.
+
+شما می‌توانید برنامه‌های NestJS خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
+
+برای استقرار برنامه‌های NestJS باید اسکریپت <Important>start</Important> را در فایل <Important>package.json</Important> به شکل زیر، تعریف کنید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "node dist/main",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، در فایل <Important>src/main.ts</Important> برنامه خود، باید حتماً فیلد <Important>host</Important> را با مقدار <Important>'0.0.0.0'</Important> مشخص کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`async function bootstrap() {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  app.useStaticAssets(join(__dirname, '..', 'public'));
+
+  await app.listen(3000, '0.0.0.0');
+}
+bootstrap();`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>
+    در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود. البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید مقدار آن را در فیلد پورت، وارد کنید.
+    </p>
+    </>,
+    <>
+    {/* <video
+        src="https://files.liara.ir/liara/nestjs/nestjs-cli.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+    />
+    <br /> */}
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود (البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید در دستور زیر، مقدار آن را وارد کنید):
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+<Alert variant="success">
+<p>
+یک پروژه NestJS آماده به استقرار در <a href="https://github.com/liara-cloud/nestjs-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="../../fix-common-errors/cors-error/nestjs" className="text-[#2196f3] ">رفع خطای CORS در فریم‌ورک NestJS</a>
+</p>
+</Alert>
+
+</Layout>

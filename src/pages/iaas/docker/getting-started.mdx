@@ -1,0 +1,107 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کار با پلتفرم Docker - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به کار با پلتفرم داکر در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شروع به کار با پلتفرم Docker
+<hr className="mb-2" />
+
+<a href="https://www.docker.com/" className="text-[#2196f3] ">Docker</a> یک پلتفرم متن‌باز است که برای خودکارسازی استقرار برنامه‌ها در کانتینرها استفاده می‌شود. کانتینرها محیط‌های سبک، قابل حمل و ایزوله‌ای هستند که شامل همه اجزای لازم برای اجرای یک نرم‌افزار هستند. Docker به توسعه‌دهندگان اجازه می‌دهد تا برنامه‌ها و وابستگی‌هایشان را بسته‌بندی کرده و بدون توجه به محیط میزبان، به راحتی اجرا کنند. این فناوری باعث افزایش کارایی، تسهیل در توسعه و تست نرم‌افزار و بهبود قابلیت انتقال بین محیط‌های مختلف می‌شود.
+شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه داکرایز شده خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
+<br />
+
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    {
+      text: 'استقرار سریع یک برنامه Docker در لیارا',
+      link: './quick-start',
+    },
+    {
+      text: 'استقرار قدم به قدم برنامه‌های Docker در لیارا',
+      link: './how-tos/create-app',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+لیارا به‌طور کامل از Docker و تمامی ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به راه‌اندازی برخی از فریم‌ورک‌ها، برای شما قرار گرفته است:
+<br />
+
+<div className="grid md:grid-cols-4 gap-4">
+            {[
+    { alt: 'flutter', platform: 'Flutter', link: "/paas/docker/related-apps/flutter" },
+    { alt: 'nginx', platform: 'Nginx', link: "/paas/docker/related-apps/nginx" },
+    // { alt: 'python', platform: 'Python Scripts', link: "/paas/docker/related-apps/python" },
+    { alt: 'streamlit', platform: 'Streamlit', link: "/paas/docker/related-apps/streamlit" },
+    { alt: 'arangodb', platform: 'ArangoDB', link: "/paas/docker/related-apps/arangodb" },
+    { alt: 'https://files.liara.ir/liara/deno/deno-logo.png', platform: 'Deno', link: "/paas/docker/related-apps/deno" },
+    { alt: 'bun', platform: 'Bun', link: "/paas/docker/related-apps/bun" },
+    { alt: 'seq', platform: 'Seq', link: "/paas/docker/related-apps/seq" },
+    // { alt: 'go', platform: 'go', link: "/paas/docker/related-apps/go" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<br />
+
+<Alert variant="success">
+همچنین بخوانید:
+<Link href='./related-links' className="text-[#2196f3] ">
+ لینک‌های مرتبط با پلتفرم Docker
+</Link>
+</Alert>
+<br />
+
+</Layout>

@@ -1,0 +1,606 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import { GoArrowLeft, } from "react-icons/go";
+import NextPage from "@/components/Common/nextpage";
+
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نحوه استقرار برنامه‌های Django در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# استقرار برنامه Django در لیارا
+<hr className="mb-2" />
+
+        <Tabs 
+    tabs={["Liara Console", "Liara CLI", "Github"]} 
+    content={[
+        <>
+        <p>
+            در ابتدا، پس از <a className="text-[#2196f3] " href="../create-app">ساخت برنامه</a> بایستی تمام فایل‌ها و پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، از پروژه پاک کنید. به عنوان مثال، باید پوشه‌های venv. و dist را از پروژه خود پاک کنید؛ چرا که لیارا در حین فرایند استقرار، آن‌ها را برای شما ایجاد خواهد کرد. به صورت کلی، اگر که در پروژه خود فایلی به نام <Important>gitignore.</Important> دارید، کافیست تا فایل‌های و دایرکتوری‌های اشاره شده در این فایل را، از پروژه خود پاک کنید.
+        </p>
+
+        <p>
+            همچنین، پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
+            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Django است:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="txt">
+                {`asgiref==3.8.1
+Django==5.0.6
+sqlparse==0.5.0
+tzdata==2024.1
+`}
+            </Highlight>
+        </div>
+        <div className='h-4' />        
+        <p>
+            در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ وارد تب <b>Drag & Drog</b> شوید و فایل zip را آپلود کنید تا وارد مرحله بعدی استقرار شوید:
+        </p>
+        <div className="h-4" />
+        <video
+        src="https://files.liara.ir/liara/docs/deploy-app-using-console.mp4"
+        controls="control/s"
+        className="block w-full"
+        width="100%"
+        ></video>
+        <div className="h-4" />
+        <p>
+            پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید.
+        </p>
+        {/* <div className="h-4" />
+        <img src="https://files.liara.ir/liara/docs/deploy-django-app-using-console.gif" alt="build app on liara" />
+        <div className="h-4" /> */}
+        <p>
+            در انتها، به صورت مستقیم به <a href="/paas/details/private-registry" className="text-[#2196f3] ">صفحه تاریخچه برنامه</a> هدایت می‌شوید که می‌توانید لاگ‌های مربوط به استقرار را در آن، مشاهده بفرمایید. 
+        </p>
+
+    </>,
+    <>
+
+        <p>
+            پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>liaraignore.</Important> یا <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های venv. و dist به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در یکی از دو فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Django است که می‌توانید از آن، استفاده کنید:
+        </p>
+        <div className="h-2" />
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/django/.gitignore" target="_blank">
+            <Card className="flex cursor-pointer w-full items-center justify-between">
+                <div className="flex items-center gap-3">
+                <h4>
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Django
+                </h4>
+                </div>
+                <GoArrowLeft className="ml-1" />
+            </Card>
+        </Link>
+        <div className="h-2" />
+        <p>
+            همچنین، پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
+            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Django است:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="txt">
+                {`asgiref==3.8.1
+Django==5.0.6
+sqlparse==0.5.0
+tzdata==2024.1
+`}
+            </Highlight>
+        </div>
+        <Section id="liara-json" title="فایل liara.json" />
+        <p>
+            در ادامه، در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "app": "my-web-app", 
+    "platform": "django"
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در قطعه کد فوق، در فیلد <Important>app</Important> باید شناسه برنامه خود را به جای <Important>my-web-app</Important> وارد کنید.
+            در فیلد <Important>platform</Important> باید نوع پلتفرم خود را که django است، مشخص کنید.
+        </p>
+        <Section id="liara-json-mirror" title="mirror لیارا" />
+
+        <p>
+            از آنجایی که لیارا برای نصب پکیج‌های فایل <Important>requirements.txt</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید mirror لیارا را با قراردادن قطعه کد زیر در فایل <Important>liara.json</Important>، غیرفعال کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "mirror": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <Section id="liara-json-version" title="تعیین نسخه" />
+        <p>
+            برای تعیین نسخه Python برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>pythonVersion</Important> را قرار دهید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "pythonVersion": "3.12"
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه Python در لیارا</a></Alert>
+        <Section id="liara-json-timezone" title="تعیین منطقه زمانی" />
+        <p>
+            به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "django": {
+      "timezone": "America/Los_Angeles"
+  }
+}`}
+            </Highlight>
+        </div>
+        <Section id="liara-json-collectstatic" title="دستور collectstatic" />
+        <p>
+            لیارا در هر استقرار، به صورت خودکار دستور <Important>python manage.py collectstatic</Important> را برای جمع‌آوری تمامی فایل‌های Static (مانند JS , CSS , تصاویر و ...) و قراردادن آن‌ها در <Important>STATIC_ROOT</Important>، اجرا می‌کند. برای جلوگیری از اجرای خودکار این دستور، بایستی فیلد <Important>collectStatic</Important> را در فایل liara.json، به شکل زیر، مقداردهی کنید: 
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "collectStatic": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <Section id="liara-json-multi-language" title="برنامه چندزبانه" />
+        <p>
+        همچنین، اگر برنامه شما چند زبانه است و نیازمند اجرای دستور <Important>python manage.py compilemessages</Important> در هر بار استقرار هستید؛ بایستی در فایل liara.json، مقدار فیلد <Important>compileMessages</Important> را به شکل زیر، وارد کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "compileMessages": true
+  }
+}`}
+            </Highlight>
+        </div>
+        <Section id="liara-json-settings-py" title="تغییر فایل settings.py" />
+        <p>
+            لیارا، به صورت خودکار فایل <Important>settings.py</Important> برنامه‌تان را پیدا کرده و در انتهای آن، تنظیمات مشخصی را برای اجرای برنامه، اضافه می‌کند؛ در صورتی که قصد ندارید این فایل دست‌خوش تغییرات شود، کافیست تا مقدار فیلد <Important>modifySettings</Important> را در فایل liara.json به شکل زیر، وارد کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "modifySettings": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <Section id="liara-json-gdal" title="استفاده از GDAL" />
+        <p>
+            برای استفاده از GDAL در پلتفرم Django نیز، می‌توانید فیلد <Important>geospatial</Important> را به شکل زیر، به فایل liara.json برنامه خود، اضافه کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "django": {
+        "geospatial": true
+    }
+}`}
+            </Highlight>
+        </div>
+
+        <div className='h-4' />
+        <Alert variant="warning">
+            <p>
+                توجه داشته باشید که نسخه پکیج GDAL با نسخه Python باید سازگار باشند.
+            </p>
+        </Alert>        
+        <div className='h-4' />
+        <p>
+            در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "app": "my-web-app", 
+  "platform": "django",
+  "django": {
+    "mirror": true,
+    "pythonVersion": "3.12",
+    "timezone": "America/Los_Angeles",
+    "compileMessages": true,
+    "modifySettings": false,
+    "geospatial": true
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        
+                <div className='h-2' />
+        <p>
+            در صورتی که قصد دارید برنامه‌تان را در تیم مدنظرتان، مستقر کنید، باید فیلد <Important>team-id</Important>
+            را به فایل <Important>liara.json</Important> مانند شکل زیر، اضافه کنید. مقدار این فیلد، باید <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> شما در لیارا باشد:
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "team-id": "your-team-id"
+}`}
+            </Highlight>
+        </div> 
+        <div className='h-2' />
+
+        <p>
+            اکنون کافیست تا در مسیر اصلی پروژه و جایی که فایل <Important>liara.json</Important> قرار دارد؛ دستور زیر را اجرا کنید و منتظر بمانید تا عملیات استقرار تمام شود:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`liara deploy`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در حین فرایند استقرار، می‌توانید در ترمینال خود، لاگ‌های مربوط به آن را مشاهده بفرمایید.
+        </p>
+    </>,
+    <>  
+       <p>
+            پس از <a className='text-[#2196f3] ' href="../create-app">ساخت برنامه</a>، باید در مسیر اصلی پروژه، یک فایل به نام <Important>gitignore.</Important> ایجاد کنید و درون آن، اسامی تمامی فایل‌ها یا پوشه‌هایی که قصد ندارید در لیارا آپلود شوند را، وارد کنید؛ به عنوان مثال، نیازی به آپلود دایرکتوری‌های venv. و dist به همراه محتوای آن‌ها نیست؛ چرا که لیارا در حین استقرار برنامه، آن‌ها را برای شما می‌سازد؛ پس بایستی اسامی این دایرکتوری‌ها در فایل فوق، نوشته شود؛ قطعه کد قرار گرفته در لینک زیر، یک <Important>gitignore.</Important> عالی برای برنامه‌های Django است که می‌توانید از آن، استفاده کنید:
+        </p>
+        <div className="h-2" />
+        <Link href="https://github.com/liara-cloud/gitignore-templates/blob/master/django/.gitignore" target="_blank">
+            <Card className="flex cursor-pointer w-full items-center justify-between">
+                <div className="flex items-center gap-3">
+                <h4>
+                    نمونه فایل <Important>gitignore.</Important> برای برنامه‌های Django
+                </h4>
+                </div>
+                <GoArrowLeft className="ml-1" />
+            </Card>
+        </Link>
+        <div className="h-2" />
+        <p>
+            همچنین، پروژه شما باید شامل فایل <Important>requirements.txt</Important> باشد؛ لیارا، در حین فرایند استقرار، به صورت خودکار این فایل را پیدا می‌کند و با اجرای دستور <Important>pip install -r</Important> تمامی ماژول‌های تعریف شده در این فایل را، برای‌تان نصب می‌کند.
+            قطعه کد زیر، یک نمونه از فایل <Important>requirements.txt</Important> برای برنامه‌های Django است:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="txt">
+                {`asgiref==3.8.1
+Django==5.0.6
+sqlparse==0.5.0
+tzdata==2024.1
+`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            لیارا در جهت استقرار سریع‌تر،  برای نصب پکیج‌های موجود در فایل <Important>requirements.txt</Important>، از <Important>mirror</Important> اختصاصی خود استفاده می‌کند؛ از همین رو، ممکن است که در نصب برخی از پکیج‌های جدید، دچار مشکل شود. برای رفع این مشکل، می‌توانید در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و mirror لیارا را با قراردادن قطعه کد زیر در این فایل، غیرفعال کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "django": {
+    "mirror": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            برای تعیین نسخه Python برنامه خود نیز، کافیست تا در فایل <Important>liara.json</Important> فیلد <Important>pythonVersion</Important> را قرار دهید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "pythonVersion": "3.12"
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <Alert variant='success'>همچنین بخوانید:  <a className="text-[#2196f3] " href="../choose-version">نسخه‌های قابل ارائه Python در لیارا</a></Alert>
+        <Section id="liara-json-timezone" title="تعیین منطقه زمانی" />
+        <p>
+            به صورت پیش‌فرض، منطقه‌ی زمانی برنامه‌تان بر روی Asia/Tehran تنظیم شده است؛ برای تغییر مقدار پیش‌فرض، می‌توانید از پارامتر <Important>timezone</Important> در فایل <Important>liara.json</Important> استفاده کنید؛ به عنوان مثال:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "django": {
+      "timezone": "America/Los_Angeles"
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            لیارا در هر استقرار، به صورت خودکار دستور <Important>python manage.py collectstatic</Important> را برای جمع‌آوری تمامی فایل‌های Static (مانند JS , CSS , تصاویر و ...) و قراردادن آن‌ها در <Important>STATIC_ROOT</Important>، اجرا می‌کند. برای جلوگیری از اجرای خودکار این دستور، بایستی فیلد <Important>collectStatic</Important> را در فایل liara.json، به شکل زیر، مقداردهی کنید: 
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "collectStatic": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+        همچنین، اگر برنامه شما چند زبانه است و نیازمند اجرای دستور <Important>python manage.py compilemessages</Important> در هر بار استقرار هستید؛ بایستی در فایل liara.json، مقدار فیلد <Important>compileMessages</Important> را به شکل زیر، وارد کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "compileMessages": true
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            لیارا، به صورت خودکار فایل <Important>settings.py</Important> برنامه‌تان را پیدا کرده و در انتهای آن، تنظیمات مشخصی را برای اجرای برنامه، اضافه می‌کند؛ در صورتی که قصد ندارید این فایل دست‌خوش تغییرات شود، کافیست تا مقدار فیلد <Important>modifySettings</Important> را در فایل liara.json به شکل زیر، وارد کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  "django": {
+    "modifySettings": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            برای استفاده از GDAL در پلتفرم Django نیز، می‌توانید فیلد <Important>geospatial</Important> را به شکل زیر، به فایل liara.json برنامه خود، اضافه کنید:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "django": {
+        "geospatial": true
+    }
+}`}
+            </Highlight>
+        </div>
+
+        <div className='h-4' />
+        <Alert variant="warning">
+            <p>
+                توجه داشته باشید که نسخه پکیج GDAL با نسخه Python باید سازگار باشند.
+            </p>
+        </Alert>        
+        <div className='h-4' />
+        <p>
+            در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+        </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+  
+  "django": {
+    "mirror": true,
+    "pythonVersion": "3.12",
+    "timezone": "America/Los_Angeles",
+    "compileMessages": false,
+    "modifySettings": true,
+    "geospatial": false
+  }
+}`}
+            </Highlight>
+        </div>
+        <div className='h-1' />
+                <Alert variant='error'>
+          <p>
+            در فایل فوق، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
+          </p>  
+        </Alert>
+                <div className='h-2' />
+        <p>
+            در صورتی که قصد دارید برنامه‌تان را در تیم مدنظرتان، مستقر کنید، باید فیلد <Important>team-id</Important>
+            را به فایل <Important>liara.json</Important> مانند شکل زیر، اضافه کنید. مقدار این فیلد، باید <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> شما در لیارا باشد:
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "team-id": "your-team-id"
+}`}
+            </Highlight>
+        </div> 
+        <div className='h-2' />
+        <Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/paas/details/build-location">تعیین موقعیت build برنامه</a></Alert>
+        <p>
+           در ادامه، بایستی یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید، برای این کار، پس از ورود به <a href="https://github.com/" className="text-[#2196f3]">گیت‌هاب</a>، وارد بخش <b>Repositories</b> شوید و بر روی دکمه <b>New</b> کلیک کنید؛ پس از نوشتن نام و توضیحات ریپازیتوری، سطح دسترسی ریپازیتوری را (public یا private)، انتخاب کنید و در نهایت بر روی دکمه <b>create repository</b> کلیک کنید تا ریپازیتوری برای‌تان ساخته شود:
+        </p>
+        <div className="h-2" />
+            <video
+            src="https://files.liara.ir/liara/docs/create-a-new-repository-in-github.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+            ></video>
+        <div className="h-2" />
+        <Alert variant="info">
+        <p>
+        در صورتی که از قبل، این کار را انجام داده‌اید یا قصد دارید از ریپازیتوری‌های فعلی خود استفاده کنید؛ نیازی به ساخت ریپازیتوری جدید نیست.
+        </p>
+        </Alert>
+        <p>
+           اکنون، باید پروژه نهایی خود را در ریپازیتوری‌تان در گیت‌هاب آپلود کنید؛
+            حتماً در نظر داشته باشید که درون پروژه‌تان، فایل <Important>gitignore.</Important> قرار داشته باشد و درون آن، فایل‌های اضافی 
+            برنامه، که قصد ندارید آپلود شوند؛ لیست شده باشند. می‌توانید برای آپلود، مانند دستورات زیر 
+            در ترمینال ریشه پروژه‌تان، عمل کنید:
+            </p>
+            <div className="h-4" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`git init # تعریف اولیه مخزن در ریشه پروژه`}
+                </Highlight>
+            </div>
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`git add . # اضافه کردن تمامی فایل‌ها به استیج`}
+                </Highlight>
+            </div>
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`git commit -m "make ready to deploy on liara" # ثبت کامیت`}
+                </Highlight>
+            </div>
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`git remote add origin https://github.com/your-account-user/your-repo-name.gi # افزودن دسترسی ریموت به مخزن`}
+                </Highlight>
+            </div>
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`git push origin master # آپلود پروژه در گیت‌هاب`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <Alert variant="success">
+            <p>
+                در صورتی که هنوز <Important>git</Important> را در سیستم عامل خود نصب ندارید؛ می‌توانید آن را از <a href="https://git-scm.com/downloads" className="text-[#2196f3]">اینجا</a>، دانلود و نصب نمایید.
+            </p>
+            </Alert>
+            <Alert variant="info">
+        <p>
+            اگر که از قبل، پروژه نهایی خود را همراه با فایل <Important>liara.json</Important>، در گیت‌هاب آپلود کرده‌اید؛ نیازی به انجام مجدد این کار نیست.
+        </p>
+        </Alert>
+        <p>
+            در ادامه، بایستی حساب لیارا خود را به گیت‌هاب متصل کنید. برای اتصال حساب لیارا خود به گیت‌هاب، در لیارا بر روی پروفایل خود کلیک کرده و وارد زیر قسمت <a href="https://console.liara.ir/settings/profile" className="text-[#2196f3]">حساب کاربری</a> شوید. در ادامه 
+            وارد منوی <a href="https://console.liara.ir/settings/github" className="text-[#2196f3]">گیت‌هاب</a> شوید و بر روی دکمه <b>اتصال به گیت‌هاب</b>، کلیک کنید. پس از 
+            انجام این کار و وارد کردن اطلاعات مربوط به گیت‌هاب، حساب لیارا شما به گیت‌هاب متصل خواهد شد:
+            </p>
+            <div className="h-2" />
+            <video
+            src="https://files.liara.ir/liara/docs/connect-liara-account-to-github.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+            ></video>
+        <div className="h-2" />
+        <Alert variant="error">
+        <p>
+        در صورت مواجه با خطای "اتصال به Github"، بایستی از حساب لیارا خود، خارج شده و مجدداً به وسیله Github، به اکانت لیارا خود، وارد شوید.
+        </p>
+        </Alert>
+        <Alert variant="info">
+        <p>
+        اگر که قصد دارید به جای اتصال به حساب شخصی، از حساب سازمانی استفاده کنید. باید در ابتدا با حساب شخصی، به کنسول متصل شوید و بعد از آن می‌توانید به حساب سازمانی هم متصل شوید.
+        </p>
+        </Alert>
+        <p>
+            بعد از اتصال به اکانت گیت‌هاب، بر روی گزینه <b>ویرایش دسترسی‌ها</b> کلیک کرده و ریپازیتوری (ریپازیتوری‌های) مدنظرتان را به حساب لیارا متصل کنید. 
+        </p>
+        <p>    
+            برای این کار در ابتدا، حساب شخصی یا سازمانی خود را انتخاب کنید؛ سپس 
+            در صورتی که قصد دارید تمام ریپازیتوری‌های حساب گیت‌هاب‌تان به لیارا متصل شود؛ گزینه <b>All repositories</b> را انتخاب کنید؛ 
+            اما اگر قصد دارید که فقط یک یا چند ریپازیتوری مدنظرتان را انتخاب کنید؛ گزینه <b>Only select repositories</b> را انتخاب کرده و در ادامه ریپازیتوری‌های مدنظرتان را در کشوی باز شده، انتخاب کنید. 
+            در نهایت، بر روی گزینه <b>Install & Authorize</b> کلیک کنید تا ریپازیتوری‌های انتخابی، به حساب لیارا، متصل شوند:
+            </p>
+            <div className="h-2" />
+            <video
+            src="https://files.liara.ir/liara/docs/edit-access-to-github-account.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+            ></video>
+            <div className="h-2" />
+
+            <p>
+                در نهایت، بر روی برنامه خود کلیک کرده وارد صفحه <b>استقرار جدید</b> شوید؛ سپس در منوی <b>گیت‌هاب</b>، ریپازیتوری مدنظرتان را انتخاب کرده و پس از انتخاب نوع استقرار (استقرار در صورت CI موفق یا استقرار خودکار) و branch مدنظرتان، بر روی گزینه <b>اتصال به برنامه</b> کلیک کنید تا برنامه‌تان به ریپازیتوری مدنظرتان متصل شود.
+                در نهایت، کافیست تا یک‌بار بر روی گزینه <b>استقرار دستی</b> کلیک کنید تا آخرین commit شما در لیارا مستقر شود:
+            </p>
+            <div className="h-2" />
+            <video
+            src="https://files.liara.ir/liara/docs/deploy-project-using-github.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+            ></video>
+            <div className="h-2" />
+            <p>
+            پس از انجام کارهای فوق، با هر بار push کردن پروژه‌تان در ریپازیتوری انتخاب شده، 
+            یک استقرار جدید مطابق آخرین تغییرات شما در لیارا، انجام خواهد شد.
+            </p>
+        <div className="h-2" />
+        <Alert variant="error">
+        <p>
+        برای قطع ارتباط برنامه و ریپازیتوری نیز، می‌توانید بر روی دکمه <b>قطع اتصال</b> کلیک کنید تا تغییرات جدید، مستقر نشوند.
+        </p>
+        </Alert>
+        <Alert variant="info">
+        <p>
+        در صورت انتخاب گزینه <b>استقرار در صورت CI موفق</b>، تمامی تست‌های تعریف شده باید pass شده و تیک سبز رنگ گرفته باشند، در غیر این‌صورت،
+        پروژه‌تان در لیارا، مستقر نخواهد شد.
+        </p>
+        </Alert>
+        <div className="h-1" />
+    </>
+
+
+]} 
+/>
+
+
+<Alert variant='success'>
+<p>
+    پس از استقرار برنامه می‌توانید <a href="/paas/details/events" className="text-[#2196f3] ">رویدادها</a> و <a href="/paas/details/observations/about" className="text-[#2196f3] ">گزارشات</a> مربوط به برنامه را بررسی کنید.
+</p>
+</Alert>
+
+
+
+</Layout>

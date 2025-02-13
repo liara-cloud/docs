@@ -1,0 +1,137 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس با Prisma در NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس‌ با Prisma ORM در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس با استفاده از Prisma در برنامه‌های NodeJS 
+<hr className="mb-2" />
+<video
+    src="https://files.liara.ir/liara/prisma/prisma.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+></video>
+<br />
+
+<Alert variant="info">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a className="text-[#2196f3] " href="https://github.com/liara-cloud/nodejs-getting-started/tree/prisma">اینجا</a> قابل مشاهده و دسترسی است.
+</p>
+</Alert>
+
+<a href="https://www.prisma.io/" className="text-[#2196f3] ">Prisma</a> یک ORM برای NodeJS و زبان TypeScript است که بسیاری از مشکل‌های ORMهای دیگر در آن برطرف شده و به شما امکان اتصال و اجرای کوئری بر روی دیتابیس‌های PostgreSQL, MySQL, SQL Server, SQLite و MongoDB را می‌دهد.<div className="h-2" />
+
+برای استفاده از این ORM، در ابتدا باید با اجرای دستور زیر در خط فرمان سیستم خود، فایل‌های Migration را ایجاد کنید:
+
+
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npx prisma migrate dev --name init --create-only`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، باید در بخش <Important>scripts</Important> فایل <Important>package.json</Important>، اسکریپت <Important>build</Important> را به‌صورت زیر بنویسید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`"scripts": {
+  "build": "npx prisma generate",
+},`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اگر که از قبل اسکریپت <Important>build</Important> را تعریف کرده بودید؛ می‌توانید با استفاده از عملگر <Important>&&</Important> دستور مربوط به Prisma را نیز، به اسکریپت خود اضافه کنید، به عنوان مثال:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`"scripts": {
+  "build": "npx prisma generate && webpack --watch"
+},`}
+    </Highlight>
+</div>
+<div className="h-2" />
+همچنین باید متغیر <Important>DATABASE_URL</Important> را طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی در برنامه</a>، به برنامه خود اضافه کنید. در مثال زیر از دیتابیس PostgreSQL استفاده شده است:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`DATABASE_URL=postgresql://USERNAME:PASSWORD@HOST:PORT/postgres`}
+    </Highlight>
+</div>
+<div className="h-2" />
+اگر که از <a href="/dbaas/about" className="text-[#2196f3] ">دیتابیس لیارا</a> استفاده می‌کنید؛ توصیه می‌شود هم برنامه و هم دیتابیس را در یک <a href="/paas/details/private-network" className="text-[#2196f3] ">شبکه خصوصی</a> قرار دهید و برای ایجاد اتصال ایمن و مطمئن از URI شبکه خصوصی دیتابیس استفاده کنید.
+
+در ادامه، باید طبق <a href="/paas/disks/create" className="text-[#2196f3] ">مستندات مربوط به ایجاد دیسک</a>، یک دیسک به نام <Important>prisma</Important> (یا هر نام دلخواه دیگری) و اندازه موردنیاز در برنامه خود ایجاد کنید. سپس با یکی از روش‌های زیر، مراحل باقی‌مانده را پیش ببرید:
+
+
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+        <p>
+            در ابتدا کافیست تا پروژه را در Console مستقر کنید و در مرحله اتصال دیسک به برنامه، مسیر دیسک را <Important>prisma/migrations</Important> قرار دهید. و ادامه فرایند استقرار را جلو ببرید.
+        </p>
+    
+    </>,
+
+    <>
+        <p>یک فایل <Important>liara.json</Important> در مسیر اصلی پروژه خود ایجاد کنید و با استفاده از قطعه کد زیر، آن دیسک را به برنامه متصل کنید:</p>
+        <div className="h-2" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "disks":[
+        {
+            "name": "prisma",
+            "mountTo": "prisma/migrations"
+        }
+    ]
+}`}
+            </Highlight>
+        </div>
+        <div className="h-2" />
+        <Alert variant='warning'>
+        <p>
+        در نظر داشته باشید که باید در فیلد <Important>name</Important> نام دیسکی که ایجاد کرده‌اید را، وارد کنید.
+        </p>
+        </Alert>
+        <p>درنهایت می‌توانید با اجرای دستور <Important>liara deploy</Important>، پروژه‌ی خود را در لیارا مستقر کنید.</p>
+    </>,
+
+]} 
+/>
+
+پس از استقرار موفق پروژه می‌توانید دستور زیر را برای اعمال Migrationها در خط فرمان سیستم خود اجرا کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`liara shell -c "npx prisma migrate deploy"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+<Alert variant='info'>
+    <p>
+    اگر که در اجرای دستور فوق با خطای <Important>ReadOnly</Important> مواجه شدید کافیست تا <Link href="/paas/details/file-system" className="text-[#2196f3] ">طبق مستندات فایل‌سیستم</Link>، فایل‌سیستم <Important>ReadOnly</Important> برنامه خود را موقتاً به <Important>Writable</Important> تغییر داده، دستور را اجرا کرده و سپس آن را مجدداً به حالت قبلی، برگردانید. 
+    </p>
+</Alert>
+
+</Layout>

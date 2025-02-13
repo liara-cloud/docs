@@ -1,0 +1,106 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار Image از DockerHub یا ghcr.io - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار image از DockerHub یا ghcr.io در پلتفرم داکر در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار Image از DockerHub یا ghcr.io
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/docker/docker-image.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  ></video>
+  <div className="h-2" />
+<div className="h-2" />
+
+یک Docker Image یک قالب غیر قابل تغییر (read-only) است که شامل تمام چیزهایی که برای اجرای یک برنامه نیاز دارید، از جمله کد برنامه، کتابخانه‌ها، ابزارها و تنظیمات پیکربندی می‌باشد. Imageها به عنوان یک واحد مستقل و قابل حمل از نرم‌افزار، امکان ایجاد و استقرار محیط‌های سازگار و قابل تکرار را فراهم می‌کنند.
+
+<div className="h-2" />
+
+<a href="https://hub.docker.com/" className="text-[#2196f3] ">DockerHub</a> یک سرویس میزبانی و مدیریت Imageها در Docker است که توسط خود Docker ارائه می‌شود. این سرویس به شما امکان می‌دهد تا Docker Image مدنظرتان را به راحتی ذخیره، توزیع و مدیریت کنید و همچنین به Imageهای عمومی و رسمی متنوعی دسترسی پیدا کنید. کاربران می‌توانند Imageهای خود را به Docker Hub ارسال کنند و از آن برای اشتراک گذاری و استفاده در محیط‌های مختلف بهره ببرند.
+
+<div className="h-2" />
+
+برای استقرار مستقیم Imageهای build شده از DockerHub یا هر رجیستری‌ عمومی دیگر در لیارا می‌توانید از روش‌های زیر استفاده کنید:
+
+<Tabs 
+    tabs={["liara.json", "Liara CLI"]} 
+    content={[
+    <>
+        <p>
+            پس از <a href="../create-app" className="text-[#2196f3] ">ساخت برنامه Docker</a> در لیارا، کافیست تا در Local یک دایرکتوری با نام دلخواه ایجاد کنید؛ سپس وارد این دایرکتوری شده و یک فایل به نام <Important>liara.json</Important> ایجاد کنید. اکنون کافیست تا در فیلدی به نام <Important>image</Important>، نام Image مدنظرتان را وارد کنید. در صورت نیاز Image به Volume نیز، می‌توانید از <a href="../use-disk" className="text-[#2196f3] ">دیسک‌ها</a> استفاده کنید.
+           در نظر داشته باشید که در فیلد <Important>app</Important> باید شناسه برنامه داکر خود را و در فیلد <Important>port</Important>، پورتی را وارد کنید که برنامه‌تان در آن، به درخواست کاربران، گوش می‌دهد. قطعه کد زیر یک نمونه فایل liara.json برای استقرار برنامه <a href="https://www.meilisearch.com/" className="text-[#2196f3] ">meilisearch</a> است:
+        </p>
+        <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+    "app": "search-app",
+    "image": "getmeili/meilisearch:v0.28",
+    "port": 7700,
+    "disks": [
+        {
+            "name": "data",
+            "mountTo": "/meili_data"
+        }
+    ]
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+        <p>
+            در نهایت، کافیست تا با اجرای دستور زیر یا با استفاده از کنسول لیارا، برنامه خود را در لیارا، مستقر کنید:
+        </p>
+                <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`liara deploy --platform=docker`}
+    </Highlight>
+</div>
+<div className="h-2" />
+    </>,
+    
+    <>
+        <p>
+            پس از <a href="../create-app" className="text-[#2196f3] ">ساخت برنامه Docker</a> در لیارا، کافیست تا در Local، وارد خط فرمان خود شوید و دستوری مشابه با دستور زیر را اجرا کنید:
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="config">
+            {` liara deploy --app search-app \\
+               --image getmeili/meilisearch:v0.28 \\
+               --port 7700 \\
+               --disks data:/meili_data`}
+        </Highlight>
+        </div>
+        <div className="h-2" />
+        <p>
+           بعد از <Important>image--</Important>، نام Image مدنظرتان را وارد کنید. در صورت نیاز Image به Volume نیز، می‌توانید از <a href="../use-disk" className="text-[#2196f3] ">دیسک‌ها</a> استفاده کنید (دستور بعد از <Important>disks--</Important>)
+           در نظر داشته باشید که بعد از <Important>app--</Important> باید شناسه برنامه داکر خود را و بعد از <Important>port--</Important>، پورتی را وارد کنید که برنامه‌تان در آن، به درخواست کاربران، گوش می‌دهد.
+        </p>
+    </>,
+
+
+   ]}
+/>
+
+
+</Layout>

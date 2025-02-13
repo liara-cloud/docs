@@ -1,0 +1,141 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس Redis در NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس‌ Redis در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس Redis در برنامه‌های NodeJS
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس Redis می‌توانید از پکیج <Important>ioredis</Important> استفاده کنید، برای نصب این پکیج، کافیست تا در مسیر اصلی پروژه خود، دستور زیر را اجرا کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install ioredis`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a> اطلاعات مربوط به دیتابیس خود را وارد کنید. به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`REDIS_URI=redis://:5afOLXDmJXOIbzLi95BKfCD2@monte-rosa.liara.cloud:32609/0`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، می‌توانید متغیر محیطی را در برنامه خود خوانده و به دیتابیس متصل شوید؛ در ادامه، یک قطعه کد مثال برای
+اتصال به دیتابیس با استفاده از فریم‌ورک <Important>express</Important> و موتور <Important>ejs</Important> برای شما، قرار گرفته است:
+
+قطعه کد مربوطه برای فایل <Important>index.js</Important>:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const express = require('express');
+const Redis = require('ioredis');
+const path = require('path');
+
+const redisUri = process.env.REDIS_URI;
+const redis = new Redis(redisUri);
+
+redis.on('connect', () => {
+  console.log('Connected to Redis');
+});
+
+redis.on('error', (err) => {
+  console.error('Redis connection error:', err);
+});
+
+const app = express();
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+  res.render('index', { connected: redis.status === 'ready' });
+});
+
+app.post('/store', async (req, res) => {
+  const { key, value } = req.body;
+
+  try {
+    await redis.set(key, value);
+    res.redirect('/');
+  } catch (err) {
+    console.error('Error storing data in Redis:', err);
+    res.status(500).send('Error storing data in Redis');
+  }
+});
+
+app.post('/retrieve', async (req, res) => {
+  const { key } = req.body;
+
+  try {
+    const value = await redis.get(key);
+    res.render('index', { connected: redis.status === 'ready', retrievedData: value });
+  } catch (err) {
+    console.error('Error retrieving data from Redis:', err);
+    res.status(500).send('Error retrieving data from Redis');
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(\`server is running on port \${PORT}\`);
+});
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+قطعه کد مربوطه برای فایل <Important>views/index.ejs</Important>:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ejs">
+        {`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redis Connection</title>
+</head>
+<body>
+  <h1>Redis Connection Status: <%= connected ? 'Connected' : 'Disconnected' %></h1>
+  <form action="/store" method="post">
+    <label for="key">Key:</label>
+    <input type="text" id="key" name="key" required>
+    <label for="value">Value:</label>
+    <input type="text" id="value" name="value" required>
+    <button type="submit">Store Data</button>
+  </form>
+  <form action="/retrieve" method="post">
+    <label for="retrieveKey">Key:</label>
+    <input type="text" id="retrieveKey" name="key" required>
+    <button type="submit">Retrieve Data</button>
+  </form>
+  <% if (typeof retrievedData !== 'undefined') { %>
+    <h2>Retrieved Data: <%= retrievedData %></h2>
+  <% } %>
+</body>
+</html>
+`}
+    </Highlight>
+</div>
+
+</Layout>

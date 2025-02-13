@@ -1,0 +1,102 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شروع به کار با Laravel - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به شروع به کار در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شروع به کار با پلتفرم Laravel
+<hr className="mb-2" />
+
+<a href="https://laravel.com/" className="text-[#2196f3] ">Laravel</a> یک فریم‌ورک وب تحت <a href="/paas/php/getting-started" className="text-[#2196f3] ">زبان PHP</a> است که بخاطر ارائه امکانات متنوع و syntax ساده اما در عین حال کاربردی،
+محبوبیت زیادی پیدا کرده است. از جمله ویژگی‌های این فریم‌ورک قدرتمند، بهینه‌سازی فوق‌العاده، قابلیت تست، صف‌ها، معماری MVC و ... است. 
+ شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
+<br />
+
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    {
+      text: 'استقرار سریع یک برنامه Laravel در لیارا',
+      link: './quick-start',
+    },
+    {
+      text: 'استقرار قدم به قدم برنامه‌های Laravel در لیارا',
+      link: './how-tos/create-app',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+لیارا به‌طور کامل از Laravel و تمامی ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به ابزارهای Laravel برای شما قرار گرفته است:
+<br />
+
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    { alt: 'lumen', platform: 'Lumen', link: "/paas/laravel/related-apps/lumen" },
+    { alt: 'laravel', platform: 'Laravel Octane', link: "/paas/laravel/related-apps/laravel-octane" },
+    { alt: 'laravel', platform: 'Voyager', link: "/paas/laravel/related-apps/voyager" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<br />
+
+<Alert variant="success">
+همچنین بخوانید:
+<Link href='./related-links' className="text-[#2196f3] ">
+ لینک‌های مرتبط با پلتفرم Laravel
+</Link>
+</Alert>
+<br />
+
+</Layout>

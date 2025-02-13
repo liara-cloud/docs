@@ -1,0 +1,107 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شروع به کار با Python - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات شروع به کار با پلتفرم Python در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شروع به کار با پلتفرم Python
+<hr className="mb-2" />
+
+<a href="https://www.python.org/" className="text-[#2196f3] ">Python</a> یک زبان برنامه‌نویسی سطح بالا، چندمنظوره و شی‌گرا است که به دلیل سادگی و خوانایی کد به محبوبیت زیادی دست یافته است. این زبان به توسعه‌دهندگان امکان می‌دهد با نوشتن کدهای کمتر، برنامه‌های پیچیده بسازند. پایتون در زمینه‌های مختلفی از جمله توسعه وب، علم داده، هوش مصنوعی، یادگیری ماشین و خودکارسازی به کار می‌رود. همچنین، جامعه پشتیبان و منابع آموزشی گسترده‌ای دارد که یادگیری آن را برای مبتدیان و حرفه‌ای‌ها ساده‌تر می‌کند. این زبان قابلیت پشتیبانی از کتابخانه‌های قدرتمندی دارد که به توسعه سریع‌تر پروژه‌ها کمک می‌کند.
+
+ شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
+<br />
+
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    {
+      text: 'استقرار سریع یک برنامه Python در لیارا',
+      link: './quick-start',
+    },
+    {
+      text: 'استقرار قدم به قدم برنامه‌های Python در لیارا',
+      link: './how-tos/create-app',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+لیارا به‌طور کامل از Python و تمامی ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به ابزارهای Python برای شما قرار گرفته است:
+<br />
+
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+    { alt: 'fastapi', platform: 'FastAPI', link: "/paas/python/related-apps/fastapi/" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<br />
+
+<Alert variant="success">
+همچنین بخوانید:
+<Link href='./related-links' className="text-[#2196f3] ">
+ لینک‌های مرتبط با پلتفرم Python
+</Link>
+</Alert>
+<Alert variant="info">
+<p>
+برای استقرار برنامه‌های مبتنی بر <a href="/paas/flask/getting-started/" className="text-[#2196f3]">Flask</a> و <a href="/paas/django/getting-started/" className="text-[#2196f3]">Django</a>، می‌توانید از پلتفرم‌های مخصوص خودشان، 
+استفاده کنید. 
+</p>
+</Alert>
+<br />
+
+</Layout>

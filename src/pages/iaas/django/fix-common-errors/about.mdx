@@ -1,0 +1,54 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطاهای رایج در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطاهای رایج در پلتفرم Django"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطاهای رایج در استقرار برنامه‌های Django
+<hr className="mb-2" />
+در فرآیند استقرار برنامه‌های خود ممکن است با خطاهای مختلفی مواجه شوید. این خطاها می‌توانند ناشی از اشتباهات کوچک در تنظیمات سرور، پیکربندی‌های نادرست، یا عدم هماهنگی بین نسخه‌های مختلف ابزارها و کتابخانه‌ها باشند. حتی با داشتن مستندات کامل و دقیق، این مشکلات می‌توانند رخ دهند و اغلب نیز به سادگی قابل حل هستند.
+<div className='h-2' />
+جای نگرانی نیست! در ادامه، رایج‌ترین خطاهایی که ممکن است در هنگام استقرار برنامه‌های خود با آنها مواجه شوید؛ مورد بررسی قرار گرفته است. 
+<div className='h-2' />
+یادآوری این نکته ضروری است که مواجهه با این خطاها بخشی طبیعی از فرآیند توسعه و استقرار نرم‌افزار است. با داشتن دانش لازم و پیروی از راهنمایی‌های ارائه‌شده در این مستندات، می‌توانید به راحتی از این مشکلات عبور کرده و تجربه خوبی از استقرار برنامه‌های خود در لیارا، داشته باشید.
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+    { platform: 'رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB', link: "./upload-limit-size" },
+    { platform: 'رفع خطای CORS', link: "./cors" },
+    { platform: 'رفع خطای CORS فایل‌های Media', link: "./cors-media" },
+    { platform: 'رفع خطای WORKER TIMEOUT', link: "./worker-timeout" },
+    { platform: 'رفع خطای Multiple Settings Files', link: "./multiple-settings-files" },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.platform}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div>
+
+</Layout>

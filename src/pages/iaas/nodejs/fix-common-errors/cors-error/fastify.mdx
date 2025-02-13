@@ -1,0 +1,48 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای CORS در Fastify - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطای CORS در Fastify در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای CORS در فریم‌ورک Fastify
+<hr className="mb-2" />
+
+برای رفع این خطا در فریم‌ورک Fastify، در ابتدا باید ماژول‌های <Important>cors</Important> و <Important>fastify-express</Important> را با اجرای دستور زیر، نصب کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install cors fastify-express`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، می‌توانید در برنامه خود، مانند قطعه کد زیر، عمل کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`await fastify.register(require('fastify-express'))
+fastify.use(require('cors')())`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant='success'>
+<p>
+برای کسب اطلاعات بیشتر می‌توانید <a href="https://fastify.dev/docs/latest/Reference/Middleware/" className="text-[#2196f3] ">مستندات رسمی این فریم‌ورک</a> را مطالعه کنید.
+</p>
+</Alert>
+
+</Layout>

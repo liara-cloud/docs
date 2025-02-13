@@ -6,10 +6,11 @@ import Section from "@/components/Common/section";
 import Head from "next/head";
 import {
   GoContainer,
+  GoServer,
   GoDatabase,
   GoRocket,
-  GoServer,
   GoMail,
+  GoPaperclip,
   GoTerminal,
   GoCode,
   GoPerson,
@@ -304,6 +305,12 @@ const PRODUCTS = [
     link: "/paas/about"
   },
   {
+    title: "سرور مجازی (IaaS)",
+    icon: <GoServer />,
+    desc: "اطلاعات سرورهای ابری و نحوه راه‌اندازی آن‌ها در لیارا",
+    link: "/iaas/about"
+  },
+  {
     title: "دیتابیس (DBaaS)",
     icon: <GoDatabase />,
     desc: "اطلاعات مربوط به دیتابیس‌ها و استفاده اصولی از آن‌ها",
@@ -325,7 +332,7 @@ const PRODUCTS = [
   },
   {
     title: "ذخیره‌سازی ابری (Object Storage)",
-    icon: <GoServer />,
+    icon: <GoPaperclip  />,
     desc:
       "جزئیات دقیق مربوط به سرویس ذخیره‌سازی ابری لیارا، نحوه استفاده از آن و مدیریت باکت‌ها",
     link: "/object-storage/about"

@@ -1,0 +1,60 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات پیکربندی TrustedProxies در Flask - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه پیکربندی و تنظیم Trusted Proxyها در فریم‌ورک Flask در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# پیکربندی TrustedProxies در برنامه‌های Flask
+<hr className="mb-2" />
+با توجه به این نکته که تمامی درخواست‌ها توسط <a href="/paas/details/reverse-proxy" className="text-[#2196f3] ">reverse proxy</a> لیارا به برنامه‌ی شما هدایت می‌شود؛ باید در زمان استفاده از فریم‌ورک‌های مختلف برای مشاهده‌ی IP واقعی کاربران و بسیاری از قابلیت‌های دیگر تعیین کنید که برنامه‌ی شما در پشت یک reverse proxy راه‌اندازی شده است.
+<div className='h-2' />
+عبارت Trusted Proxies یا پروکسی‌های مورد اعتماد، به پروکسی‌هایی گفته می‌شود که سرور به آنها اعتماد دارد تا آدرس‌های IP واقعی کاربران را ارسال کنند. در بسیاری از مواقع، سرورهایی که پشت یک پروکسی معکوس (reverse proxy) قرار دارند، فقط آدرس IP پروکسی را می‌بینند و نه آدرس IP واقعی کاربران. برای رفع این مشکل و برای دلایلی مانند رهگیری، ردیابی یا اعمال سیاست‌های امنیتی، TrustedProxyها، IP واقعی کاربران را از طریق هدرهای HTTP خاصی مثل X-Forwarded-For یا X-Real-IP به سرورهای پشتی ارسال می‌کنند.
+<div className='h-2' />
+<img src="https://files.liara.ir/liara/docs/how-trusted-proxy-works.png" alt="how trusted proxy works" />
+<div className='h-2' />
+
+برای تنظیم این قابلیت در برنامه خود، می‌توانید از نمونه قطعه کد زیر، استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`from flask import Flask, request
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+app = Flask(__name__)
+
+# Use ProxyFix middleware to handle proxy headers
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
+
+@app.route('/')
+def index():
+    # Access client's IP from X-Forwarded-For or X-Real-IP headers
+    client_ip = request.headers.get('X-Forwarded-For').split(',')[0] or 
+        request.headers.get('X-Real-IP') or 
+        request.remote_addr
+
+    return f'Client IP: {client_ip}'
+
+if __name__ == '__main__':
+    app.run(debug=True)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+</Layout>

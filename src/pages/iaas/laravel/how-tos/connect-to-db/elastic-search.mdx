@@ -1,0 +1,135 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس ElasticSearch در Laravel - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه اتصال به دیتابیس ElasticSearch در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس ElasticSearch در برنامه‌های Laravel
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس ElasticSearch، در ابتدا، باید با اجرای دستور زیر، پکیج موردنیاز آن را در پروژه خود در Local، نصب کنید:
+
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`composer require elasticsearch/elasticsearch`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+در ادامه، باید در دایرکتوری <Important>app</Important> یک دایرکتوری به نام <Important>Services</Important>  و درون این دایرکتوری،
+یک فایل به نام <Important>ElasticsearchService.php</Important> ایجاد کنید و محتوای زیر را، درون آن، قرار دهید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+namespace App\\Services;
+
+use Elastic\\Elasticsearch\\ClientBuilder;
+
+class ElasticsearchService
+{
+    protected $client;
+
+    public function __construct()
+    {
+        $this->client = ClientBuilder::create()
+            ->setHosts(['http://elastic:TgRCGavrbOJB82ZjzyVXRKbu@bromo.liara.cloud:30197'])
+            ->build();
+    }
+
+    public function checkConnection()
+    {
+        return $this->client->ping();
+    }
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+<Alert variant='info'>
+<p>
+در کد فوق، باید مقدار فیلد <Important>setHosts</Important> را برابر با آدرس URI دیتابیس ElasticSearch خود، قرار دهید.
+</p>
+</Alert>
+
+تمامی کارها انجام شده است و شما می‌توانید از دیتابیس ElasticSearch خود استفاده کنید؛ به عنوان مثال می‌توانید با اجرای دستور زیر، یک کنترلر برای تست اتصال به دیتابیس ایجاد کنید:
+
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:controller ElasticsearchController`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+اکنون، می‌توانید کنترلر ایجاد شده در مسیر <Important>app/Http/Controllers/ElasticsearchController.php</Important> را با قطعه کد زیر، آپدیت کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+
+namespace App\\Http\\Controllers;
+
+use App\\Services\\ElasticsearchService;
+use Illuminate\\Http\\Request;
+
+class ElasticsearchController extends Controller
+{
+    protected $elasticsearchService;
+
+    public function __construct(ElasticsearchService $elasticsearchService)
+    {
+        $this->elasticsearchService = $elasticsearchService;
+    }
+
+    public function checkConnection()
+    {
+        $isConnected = $this->elasticsearchService->checkConnection();
+
+        if ($isConnected) {
+            return response()->json(['message' => 'Connected to Elasticsearch'], 200);
+        } else {
+            return response()->json(['message' => 'Failed to connect to Elasticsearch'], 500);
+        }
+    }
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="php">
+      {`use App\\Http\\Controllers\\ElasticsearchController;
+
+Route::get('/check-elasticsearch', [ElasticsearchController::class, 'checkConnection']);
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>check-elasticsearch/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+
+
+</Layout>

@@ -1,0 +1,64 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای ModuleNotFoundError در Flask - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطای ModuleNotFoundError در پلتفرم Flask در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای ModuleNotFoundError در برنامه‌های Flask
+<hr className="mb-2" />
+
+لیارا برنامه‌های Flask را با دستوری مشابه دستور زیر اجرا می‌کند:
+<div className="h-2"/>
+<div dir="ltr">
+<Highlight className="bash">
+{`gunicorn app:app`}
+</Highlight>
+</div>
+<div className="h-2"/>
+
+بنابراین، در لیارا، نام ماژول شما به صورت پیش‌فرض <Important>app</Important> در نظر گرفته می‌شود. اما اگر شما از 
+نام دیگری استفاده می‌کنید؛ ممکن است در زمان استقرار برنامه، با خطای زیر مواجه شوید:
+
+<div className="h-2"/>
+<div dir="ltr">
+<Highlight className="bash">
+{`File "/usr/local/lib/python/site-packages/gunicorn/util.py", line 350, in import_app
+  __import__(module)
+  ModuleNotFoundError: No module named 'app'`}
+</Highlight>
+</div>
+<div className="h-2"/>
+
+برای حل این مشکل می‌توانید نام ماژول اصلی برنامه را به <Important>app</Important> تغییر دهید و یا اگر که قصد این‌کار را ندارید؛ 
+می‌توانید در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+<div className="h-2"/>
+<div dir="ltr">
+<Highlight className="bash">
+{`{
+  "flask": {
+    "appModule": "my-app-name:app"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-2"/>
+
+در قطعه کد فوق، بایستی به جای <Important>my-app-name</Important>، نام ماژول اصلی خود را وارد کنید. در نهایت، کافیست تا برنامه خود را مجدداً در لیارا، مستقر کنید.
+
+</Layout>

@@ -1,0 +1,64 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم Nginx در Flask - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم و پیکربندی وب‌سرور Nginx در فریم‌ورک Flask در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تنظیم Nginx در برنامه‌های Flask
+<hr className="mb-2" />
+
+<a href="https://nginx.org/en/" className="text-[#2196f3] ">NGINX</a> یک سرور وب قدرتمند و چندمنظوره است که برای ارائه وب، پروکسی معکوس، کش HTTP، و حتی به عنوان یک لود بالانسر استفاده می‌شود. این سرور به دلیل عملکرد بالا، مقیاس‌پذیری و کارایی در مدیریت ترافیک وب، بسیار محبوب است.
+
+در برنامه‌های Flask لیارا، از وب‌سرور Nginx استفاده می‌شود و پیکربندی پیش‌فرض این وب‌سرور به‌شکل زیر است:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='conf'>
+{`location /public {
+  alias /usr/src/app/public;
+}
+      
+location / {
+  try_files /dev/null @flask_app;
+}
+
+location ~\\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
+}`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+حال شما می‌توانید یک فایل به نام <Important>liara_nginx.conf</Important>در مسیر اصلی پروژه‌ی خود ایجاد کرده و پیکربندی وب‌سرور Nginx را متناسب با نیاز خود تغییر دهید. 
+
+سپس، کافیست تا برنامه خود را، مجدداً در لیارا مستقر کنید تا تنظیمات مدنظرتان، اعمال بشود.
+
+<Alert variant="warning">
+<p>
+ امکان تغییر تنظیمات <Important>nginx</Important> از ابتدا وجود ندارد. شما می‌توانید تنها برخی از این تنظیمات را شخصی‌سازی کنید. در نهایت، فایل تنظیمات شما داخل بلاک server در تنظیمات اصلی، include خواهد شد.
+</p>
+</Alert>
+
+
+
+</Layout>

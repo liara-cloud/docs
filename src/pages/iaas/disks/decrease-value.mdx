@@ -1,0 +1,149 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کاهش حجم دیسک‌ - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه کاهش حجم دیسک‌ها به صورت دستی در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# کاهش حجم دیسک
+
+<hr className="mb-2" />
+به صورت معمول، در کنسول لیارا، تنها، امکان افزایش اندازه‌ی دیسک وجود دارد و برای کاهش با خطا مواجه خواهید شد. از لحاظ فنی، این محدودیت، برای افزایش امنیت فایل‌های شما و جلوگیری از احتمال از دست‌رفتن داده‌ها طی فرایند کاهش حجم اعمال شده‌است.
+اما اگر که دیسک مدنظرتان بیش از حد مورد نیاز، فضای خالی دارد و قصد دارید که مقداری از این فضا را به دیسک جدیدی انتقال دهید؛ کافیست تا آموزش و مراحل زیر را دنبال کنید:
+<div className="h-4" />
+
+<video
+  src="https://files.liara.ir/liara/disks/reduce-disk-size.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" />
+
+<Step  steps={[
+    {
+    step: "۱",
+    content: (
+    <>
+        <p>
+        منابع سخت‌افزاری برنامه خود را در قسمت <b>تغییر اندازه</b>، یک پله ارتقا دهید.
+        </p>
+        <div className="h-4" />
+        <img src="https://files.liara.ir/liara/docs/upgrade-plans.gif" alt="upgrade plan"/>
+        <div className="h-4" />
+    </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+    <>   
+        <p> وارد بخش <b>دیسک‌ها</b> شده و یک دیسک جدید بسازید. این دیسک جدید جایگزین دیسک قدیمی شما خواهد بود؛ پس اندازه آن را به صورت دقیق وارد کنید.</p>            
+    </>
+    )
+    },
+    {
+    step: "۳",
+    content: (
+    <>   
+    <p>دیسک دوم خود را ایجاد کنید؛ این، همان دیسکی است که در ابتدا قصد داشتید به برنامه اضافه کنید.</p>
+    <div className="h-2" />
+    <Alert variant="info">
+    <p>
+        دقت کنید که مجموع اندازه دو دیسک جدید، باید برابر با اندازه دیسک قدیمی باشد.
+    </p>
+    </Alert>
+    <div className="h-2" />
+    <img src="https://files.liara.ir/liara/docs/multiple-disks-availability.png" alt="available disks"/>
+    </>
+    )
+    },
+    {
+    step: "۴",
+    content: (
+    <>
+    اکنون بایستی دیسک‌های جدید را به روش زیر، به برنامه متصل کنید:
+
+    <Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>
+        یک استقرار جدید انجام دهید و در مرحله دوم استقرار، دیسک‌های جدید را برای برنامه مشخص کنید.
+    </p>
+    </>,
+    
+    <>
+    <p>
+        در فایل <Important>liara.json</Important> دو دیسک جدید ساخته شده را به برنامه متصل کنید. سپس دستور <Important>liara deploy</Important> را اجرا کنید. در نظر داشته باشید که نباید نامی از دیسک قدیمی در این فایل، وجود داشته باشد.
+    </p>
+    </>,
+
+    ]} 
+    />   
+    </>
+    )
+    },
+    {
+    step: "۵",
+    content: (
+    <>   
+    <p>
+        اکنون، باید وضعیت دیسک‌ها را بررسی کنید. دو دیسک جدید باید به وضعیت <Important>در حال استفاده</Important> تغییر پیدا کرده باشند. همچنین وضعیت دیسک قدیمی باید <Important>آماده به کار</Important> باشد.
+    </p>
+    </>
+    )
+    },
+    {
+    step: "۶",
+    content: (
+    <>   
+    <p>
+         اکنون، باید یک فایل پشتیبان از دیسک قدیمی خود، به صورت دستی تهیه کنید؛ و سپس آن را در سیستم‌عامل خود، در یک پوشه مشخص، استخراج کنید.
+    </p>
+    </>
+    )
+    },
+    {
+    step: "۷",
+    content: (
+    <>   
+    <p>
+    باید برای دیسک جدیدِ جایگزینِ دیسک قبلی، یک <a href="../ftp-access" className="text-[#2196f3] ">دسترسی FTP</a> ایجاد کنید و محتوای فایل پشتیبانِ دیسک قبلی را درون آن بریزید.
+    </p>
+    </>
+    )
+    },
+    {
+    step: "۸",
+    content: (
+    <>   
+    <p>
+    دیسک قدیمی را پاک کنید و در صفحه <b>تغییر اندازه</b> برنامه خود، پلن‌تان را به پله قبلی برگردانید.
+    </p>
+    </>
+    )
+    },
+]}/>
+
+<div className="h-4" />
+با انجام دستورات فوق، شما می‌توانید حجم یک دیسک را در برنامه کاهش دهید و دیسک دوم خود را بدون نیازی به هزینه اضافی، با استفاده از فضای آزاد شده، به برنامه خود، متصل کنید.
+از آنجایی که محاسبه هزینه‌ها در لیارا ساعتی می‌باشد؛ پس در حین انجام عملیات فوق و تغییر پلن، مبلغ خاصی از حساب شما، کسر نخواهد شد. 
+
+</Layout>

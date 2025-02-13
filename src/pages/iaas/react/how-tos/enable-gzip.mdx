@@ -1,0 +1,74 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات فعال‌سازی gzip و browser caching در React - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه فعال‌سازی gzip و Browser Cachnig در پلتفرم React در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# فعال‌سازی Gzip و Browser Caching در React
+<hr className="mb-2" />
+
+Gzip یک الگوریتم فشرده‌سازی است که اندازه فایل‌های ارسالی از سرور به مرورگر را کاهش می‌دهد و زمان بارگذاری صفحات را بهبود می‌بخشد. 
+Browser caching نیز در React به فرآیند ذخیره‌سازی منابع وب (مانند فایل‌های HTML، CSS، JavaScript) در مرورگر کاربران اشاره دارد تا بارگذاری مجدد صفحات سریع‌تر و مصرف پهنای باند کاهش یابد.
+
+
+ برای فعال‌سازی قابلیت gzip و Browser Caching کافیست که فایلی به‌نام <Important>liara_nginx.conf</Important> در ریشه‌ی برنامه‌ی‌تان، در کنار <Important>package.json</Important>، ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="config">
+        {`gzip             on;
+gzip_disable     "msie6";
+gzip_vary        on;
+gzip_proxied     any;
+gzip_comp_level  6;
+gzip_types       text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+
+location / {
+  index index.html index.htm;
+  try_files $uri $uri/ /index.html =404;
+}
+
+location ~ /\\.well-known {
+  allow all;
+}
+
+# cache.appcache, your document html and data
+location ~* \\.(?:manifest|appcache|html?|xml|json)$ {
+  expires -1;
+}
+
+# Media: images, icons, video, audio, HTC
+location ~* \\.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ {
+  expires 1M;
+  access_log off;
+  add_header Cache-Control "public";
+}
+
+# CSS, Javascript and Fonts
+location ~* \\.(?:css|js|otf|ttf|eot|woff|woff2)$ {
+  expires 1y;
+  access_log off;
+  add_header Cache-Control "public";
+}`}        
+    </Highlight>
+</div>
+<div className="h-2" />
+در نهایت کافیست تا برنامه خود را مجدداً در لیارا، مستقر کنید تا تغییرات بر روی برنامه، اعمال شوند.
+
+
+</Layout>

@@ -1,0 +1,60 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Strapi - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Strapi در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Strapi در لیارا
+<hr className="mb-2" />
+
+نرم‌افزار Strapi یک headless CMS متن‌باز است که برای توسعه وب‌سایت‌ها، برنامه‌های موبایل، سایت‌های تجاری و حتی APIها به کار می‌رود. Strapi به شما این امکان را می‌دهد که بدون دانستن چیزخاصی در مورد بک‌اند یا دیتابیس‌ها، APIهای خود را خلق کنید. این سیستم APIها را بر اساس مدل‌های محتوایی، به صورت خودکار می‌سازد و در نهایت داده را بیش از پیش، ساده‌تر به نمایش می‌گذارد.
+
+<div className='h-4' />
+شما می‌توانید برنامه‌های Strapi خود را با <a href="../../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید. در ادامه بخوانید:
+
+<div className='h-2' />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    { platform: 'استقرار برنامه‌های Strapi با SQLite', link: "./strapi-sqlite" },
+    { platform: 'استقرار برنامه‌های Strapi با Mongodb', link: "./strapi-mongodb" },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.platform}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div>
+<div className='h-2' />
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/object-storage/how-tos/connect-via-platform/strapi" className="text-[#2196f3] ">اتصال برنامه Strapi به سرویس ذخیره‌سازی ابری لیارا</a>
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="../../../fix-common-errors/cors-error/strapi" className="text-[#2196f3] ">رفع خطای CORS در برنامه‌های Strapi</a>
+</p>
+</Alert>
+</Layout>

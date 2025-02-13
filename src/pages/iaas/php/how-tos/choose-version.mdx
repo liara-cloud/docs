@@ -1,0 +1,86 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات انتخاب نسخه PHP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تغییر نسخه PHP در پلتفرم PHP در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# انتخاب نسخه PHP 
+<hr className="mb-2" />
+
+در حال حاضر در پلتفرم لیارا، نسخه‌های زیر از  PHP ارائه می‌شوند: 
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: '7.2 (بدون به‌روزرسانی)',},
+    {text: '7.3 (بدون به‌روزرسانی)',},
+    {text: '7.4',},
+    {text: '8.0 (پیش‌فرض)',},
+    {text: '8.1',},
+    {text: '8.2',},
+    {text: '8.3',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        نسخه {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+<Alert variant="warning">
+<p>
+ قابلیت‌های جدید برای نسخه‌های بدون به‌روزرسانی، ارائه نمی‌شوند و برای رفع این مشکل، باید ورژن PHP برنامه خود را، ارتقاء دهید.
+</p>
+</Alert>
+
+<Section id="change-default-version" title="تغییر نسخه پیش‌فرض" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.</p>
+    <img src="https://files.liara.ir/liara/docs/choose-php-version-of-php-app-via-cosnole.png" alt="how to choose version in liara console" />
+    </>,
+
+    <>
+    <p>
+        برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه PHP به 8.2 می‌باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+    "php": {
+      "version": "8.2"
+  }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+
+</Layout>

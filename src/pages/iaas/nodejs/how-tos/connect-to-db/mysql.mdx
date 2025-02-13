@@ -1,0 +1,149 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس MySQL یا MariaDB در NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس‌ MariaDB یا MySQL در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس MySQL/MariaDB در برنامه‌های NodeJS
+<hr className="mb-2" />
+<video
+    src="https://files.liara.ir/liara/nodejs/nodejs-mysql.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+></video>
+<br />
+
+
+روش‌ها و کتابخانه‌های مختلفی برای اتصال به MySQL/MariaDB در NodeJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>mysql</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install mysql`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از آن، کافیست تا طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a> اطلاعات مربوط به دیتابیس خود را وارد کنید. به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_HOST=olympus.liara.cloud
+DB_PORT=34008
+DB_NAME=festive_villani
+DB_USER=root
+DB_PASS=d0NRg5Rh7TzbAzJVl7SyeMAB`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، می‌توانید متغیرهای محیطی را در برنامه خود خوانده و به دیتابیس متصل شوید؛ در ادامه، یک قطعه کد مثال برای
+اتصال به دیتابیس با استفاده از فریم‌ورک <Important>express</Important> برای شما، قرار گرفته است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const express = require('express');
+const mysql = require('mysql');
+
+const app = express();
+
+const dbConfig = {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS
+};
+const connection = mysql.createConnection(dbConfig);
+
+connection.connect((err) => {
+  if (err) {
+    console.error('error in connecting to db:', err);
+    app.locals.dbConnected = false;
+    return;
+  }
+
+  console.log('connected to db successfully');
+  app.locals.dbConnected = true;
+});
+
+app.get('/', (req, res) => {
+  res.send(app.locals.dbConnected ? 'connected to db successfully' : 'error in connecting to db!');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(\`server is listening on port \${PORT}\`);
+});
+
+process.on('SIGINT', () => {
+  connection.end();
+  console.log('db disconnected.');
+  process.exit();
+});`}
+    </Highlight>
+</div>
+
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+برای فعال‌سازی قابلیت Connection Pooling در دیتابیس MySQL یا MariaDB کافیست تا پکیج <Important>mysql2</Important> را با استفاده از دستور زیر در پروژه خود نصب کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install mysql2`}
+    </Highlight>
+</div>
+<div className="h-2" />
+سپس، می‌توانید مانند قطعه کد زیر، از Connection Pooling استفاده کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const mysql = require('mysql2/promise');
+
+const dbConfig = {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+};
+const pool = mysql.createPool(dbConfig);
+
+
+(async () => {
+  try {
+    const connection = await pool.getConnection();
+    console.log('Connected to the MySQL server.');
+    connection.release();
+  } catch (error) {
+    console.error('Error connecting to the MySQL server:', error);
+  }
+})();`}
+    </Highlight>
+</div>
+
+
+</Layout>

@@ -1,0 +1,41 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اضافه کردن زیر دامنه به برنامه - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اضافه کردن زیردامنه به برنامه در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اضافه کردن زیر دامنه دلخواه
+<hr className="mb-2" />
+درصورتی که قصد داشته باشید زیردامنه‌‌ دلخواه‌تان (مثلاً: api) را به برنامه‌ی خود متصل کنید، باید طبق مراحل اضافه کردن دامنه، وارد برنامه خود شوید و از منوی سمت راست، روی گزینه‌ی **دامنه‌ها** کلیک کنید. سپس روی گزینه‌ی **افزودن دامنه** کلیک کرده و نام دامنه‌تان را به‌صورت **api.example.com** وارد کنید. درنهایت با کلیک روی گزینه‌ی **ایجاد دامنه**، زیردامنه‌ی شما در لیارا اضافه می‌شود و به صفحه‌ی مدیریت دامنه هدایت می‌شوید.
+
+در این مرحله نیز باید رکوردهای DNS درخواست شده را با استفاده از یک سرویس DNS مانند Cloudflare بر روی دامنه‌تان تنظیم کنید. درنهایت پس از ثبت رکوردهای DNS می‌توانید بر روی گزینه‌ی  بررسی وضعیت رکوردها کلیک کنید و با تغییر تیک‌های قرمز رنگ به سبز، یعنی اتصال دامنه‌ی شما به لیارا با موفقیت صورت گرفته است.
+
+<div className="h-4" />
+
+<video
+  src="https://files.liara.ir/docs/domain/add-api-subdomain.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" />
+
+<div className="h-4" />
+
+</Layout>

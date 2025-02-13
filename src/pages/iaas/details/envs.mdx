@@ -1,0 +1,163 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import Asciinema from "@/components/Common/asciinema";
+
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم متغیرهای محیطی در پلتفرم  - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم و استفاده از متغیرهای محیطی در پلتفرم لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# متغیرهای محیطی 
+
+<hr className="mb-2" />
+متغیرهای محیطی یا Environment Variables مقادیری هستند که اطلاعاتی را در مورد محیط اجرای یک برنامه یا سیستم فراهم می‌کنند. این متغیرها به برنامه‌ها کمک می‌کنند تا با محیط اجرایی خود تعامل داشته و اطلاعات لازم را از آن دریافت کنند.
+<div className="h-4" />
+متغیرهای محیطی (Environment Variables) به شما کمک می‌کنند تا برنامه‌ی خود را متناسب با محیط‌های مختلفی اعم از Development و Production پیکربندی کنید.
+یکی از متداول‌ترین کاربردهای این متغیرها، اتصال برنامه به دیتابیس است. برای مثال در زمان توسعه معمولا به دیتابیس لوکال متصل هستید اما پس از استقرار برنامه انتظار می‌رود که برنامه‌ی شما به دیتابیس اصلی‌تان متصل شود.
+
+<Section id="see-envs" title="مشاهده‌ی لیستی از متغیرهای محیطی تنظیم شده" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+        <>
+        <p>
+            برای مشاهده متغیرهای محیطی با استفاده از Console کافیست بر روی برنامه خود کلیک کرده و سپس وارد قسمت <b>تنظیمات</b> برنامه خود شوید. اکنون می‌توانید در بخش <b>متغیرها</b> لیستی از متغیرهای محیطی خود را ببینید:
+        </p>
+        <div className='h-2' />
+        <img src="https://files.liara.ir/liara/docs/see-envs-list-using-console.gif" alt="see envs using liara console" />
+        <div className='h-2' />
+    </>,
+
+    <>
+    <p>
+        برای مشاهده متغیرهای محیطی با استفاده از ابزار Liara CLI کافیست تا دستور زیر را اجرا کنید:
+    </p>
+    <Asciinema id="see-envs-using-cli" />
+    <p>        
+        پس از <Important>app--</Important> بایستی شناسه برنامه خود را وارد کنید.
+    </p>
+    </>,
+
+]} 
+/>
+
+<Section id="add-envs" title="نحوه اضافه‌کردن (ویرایش) متغیرهای محیطی" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI", "COPY/PASTE", ".env آپلود فایل", "های آمادهenv"]} 
+    content={[
+        <>
+        <p>
+            برای اضافه کردن یا تغییر متغیرهای محیطی با استفاده از Console کافیست بر روی برنامه خود کلیک کرده و سپس وارد قسمت <b>تنظیمات</b> برنامه خود شوید. اکنون می‌توانید در بخش <b>متغیرها</b>  متغیرهای محیطی خود را اضافه کنید یا تغییر دهید:
+        </p>
+                <div className="h-4" />
+                <video
+                src="https://files.liara.ir/liara/envs/set-and-edit-environment-variables.mp4"
+                controls="controls"
+                className="block w-full"
+                width="100%" />
+                <div className="h-4" />
+    </>,
+    
+    <>
+    <p>
+        برای اضافه کردن یا تغییر یک متغیر محیطی با استفاده از ابزار Liara CLI، می‌توانید از دستور <Important>liara env:set</Important> استفاده کنید؛ به عنوان مثال:
+    </p>
+    <Asciinema id="add-or-edit-envs-using-cli" />
+    <p>
+    در نظر داشته باشید که بایستی پس از <Important>app--</Important>، شناسه برنامه خود را به جای <Important>django-application</Important> وارد کنید.
+    </p>
+    </>,
+
+    <>
+    <p>
+        برای اضافه کردن متغیرهای محیطی با استفاده از copy/paste باید در ابتدا متغیرهای محیطی‌تان را به همراه مقدارشان copy کرده، سپس در کنسول لیارا، بر روی برنامه‌تان کلیک کرده، وارد قسمت <b>تنظیمات</b> شده، سپس وارد بخش <b>متغیرها</b> شوید. در نهایت، بایستی بر روی تب <b>COPY/PASTE</b> کلیک کرده و مقادیر کپی شده را در قسمت تعبیه شده، paste کنید؛ سپس بر روی گزینه <b>افزودن</b> کلیک کرده و در نهایت بر روی گزینه <b>ثبت تغییرات</b> کلیک کنید:
+    </p>
+    <div className="h-4" />
+                <video
+                src="https://files.liara.ir/liara/envs/copy-paste-envs.mp4"
+                controls="controls"
+                className="block w-full"
+                width="100%" />
+                <div className="h-4" />
+    </>,
+    <>
+    <p>
+        برای اضافه کردن متغیرهای محیطی با استفاده از آپلود فایل <Important>env.</Important> باید در ابتدا در کنسول لیارا، بر روی برنامه‌تان کلیک کرده، وارد قسمت <b>تنظیمات</b> شده، سپس وارد بخش <b>متغیرها</b> شوید. در نهایت، بایستی بر روی تب <b>آپلود فایل ENV</b> کلیک کرده و بر روی گزینه <b>آپلود فایل env.</b> کلیک کنید. فایل <b>env.</b> مورد نظرتان را برای آپلود انتخاب کرده و پس از آپلود آن، بر روی گزینه <b>ثبت تغییرات</b> کلیک کنید تا متغیرهای محیطی به برنامه‌تان اضافه شوند:
+    </p>
+
+    <div className="h-4" />
+    <video
+    src="https://files.liara.ir/liara/envs/upload-env-files.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%" />
+    <div className="h-4" />
+    </>,
+    <>
+    <p>
+    envهای آماده، اطلاعات مربوط به اتصال به دیتابیس مستقر شده در لیارا، در <a href="../private-network" className="text-[#2196f3] ">شبکه‌ خصوصی</a> هستند که در قالب URI و به صورت پیش‌فرض، توسط لیارا، ارائه می‌شوند.
+    در نظر داشته باشید که نام آن‌را، بسته به نام انتخابی در برنامه‌تان، تغییر دهید. یا اینکه می‌توانید از همان نام، استفاده کنید:
+    </p>
+    <div className="h-4" />
+    <video
+    src="https://files.liara.ir/liara/envs/upload-env-files.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%" />
+    <div className="h-4" />
+    
+    </>
+]} 
+/>
+
+
+<Section id="delete-envs" title="نحوه حذف متغیرهای محیطی" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+        <>
+        <p>
+            برای حذف متغیرهای محیطی با استفاده از Console کافیست بر روی برنامه خود کلیک کرده و سپس وارد قسمت <b>تنظیمات</b> برنامه خود شوید. اکنون می‌توانید در بخش <b>متغیرها</b>  متغیرهای محیطی خود را حذف کنید:
+        </p>
+    <div className="h-4" />
+    <video
+    src="https://files.liara.ir/liara/envs/remove-an-environment-variable.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%" />
+    <div className="h-4" />
+    </>,
+
+    <>
+    <p>
+        برای حذف یک متغیر محیطی با استفاده از ابزار Liara CLI، می‌توانید از دستور <Important>liara env:unset</Important> استفاده کنید؛ به عنوان مثال:
+    </p>
+    <Asciinema id="delete-envs-using-cli" />
+    <p>
+    در نظر داشته باشید که بایستی پس از <Important>app--</Important>، شناسه برنامه خود را به جای <Important>django-application</Important> وارد کنید.
+    </p>
+    </>,
+
+]} 
+/>
+
+
+</Layout>

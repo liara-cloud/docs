@@ -14,6 +14,9 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
     if (router.route.startsWith("/paas/")) {
       return data.paas[sidebar_name];
     }
+    if (router.route.startsWith("/iaas/")) {
+      return data.iaas[sidebar_name];
+    }
 
     if (router.route.startsWith("/one-click-apps/")) {
       return data.one_click_apps[sidebar_name];

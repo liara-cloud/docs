@@ -1,0 +1,67 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات دسترسی به فایل‌های static در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به دسترسی به فایل‌های Static در پلتفرم NextJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# دسترسی به فایل‌های Static
+<hr className="mb-2" />
+
+در NextJS می‌توانید فایل‌های استاتیک (مانند تصاویر) را در یک پوشه به نام <Important>public</Important> در مسیر اصلی پروژه قرار دهید. سپس فایل‌های موجود در مسیر public از طریق روت دامنه با شروع از <Important>/</Important> در دسترس هستند. برای مثال اگر شما یک فایل به نام example.png در پوشه‌ی public داشته باشید، می‌توانید طبق مسیر زیر به این فایل دسترسی داشته باشید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://yourdomain.com/example.png`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در برنامه نیز، می‌توانید با استفاده از قطعه کد مثال زیر، به عکس دسترسی داشته باشید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import Image from 'next/image'
+
+export function Example() {
+  return <Image src="/example.png" width="64" height="64" />
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+دایرکتوری public برای ذخیره فایل‌هایی مانند آیکون وب‌سایت، فونت‌ها، google site verification و ... مناسب است. همچنین در نظر داشته باشید که نمی‌توانید نام آن را از <Important>public</Important> به چیز دیگری، تغییر دهید و این دایرکتوری، تنها مسیری است که برای ارائه فایل‌های static، استفاده می‌شود.
+
+<div className="h-2" />
+<Alert variant="error">
+<p>
+ فقط فایل‌های static در زمان build در برنامه نمایش داده می‌شوند و برای نمایش فایل جدید اضافه شده به برنامه، باید برنامه را مجدداً 
+build یا ری‌استارت کنید.
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/object-storage/about" className="text-[#2196f3] ">استفاده از فضای ذخیره‌سازی ابری لیارا برای ذخیره عکس‌های جدید</a>
+</p>
+</Alert>
+
+
+
+</Layout>

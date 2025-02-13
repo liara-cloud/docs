@@ -1,0 +1,44 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از TypeScript در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استفاده از TypeScript در پلتفرم NextJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استفاده از TypeScript در برنامه‌های NextJS
+<hr className="mb-2" />
+
+برای استقرار برنامه‌های NextJS مبتنی بر TypeScript نیاز به انجام کار خاصی نیست و پلتفرم NextJS لیارا به صورت کامل 
+از آن، پشتیبانی می‌کند. تنها نکته قابل توجه این است که فایل <Important>package.json</Important> برنامه‌تان باید در <Important>devDependencies</Important>شامل ماژول TypeScript باشد. به عنوان مثال:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='json'>
+{`"devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3"
+  }`}
+</Highlight>
+</div>
+
+
+
+</Layout>

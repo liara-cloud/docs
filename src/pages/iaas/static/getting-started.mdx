@@ -1,0 +1,110 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شروع به کار با پلتفرم Static - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به شروع به کار با پلتفرم  Static در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شروع به کار با پلتفرم Static
+<hr className="mb-2" />
+
+
+یک پروژه استاتیک می‌تواند شامل یک‌سری فایل HTML , CSS یا JavaScript باشد که بدون نیاز به پردازش سرور، به مرورگر کاربران، ارسال می‌شود.
+شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
+<br />
+
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    {
+      text: 'استقرار سریع یک برنامه Static در لیارا',
+      link: './quick-start',
+    },
+    {
+      text: 'استقرار قدم به قدم برنامه‌های Static در لیارا',
+      link: './how-tos/create-app',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br />
+
+لیارا به‌طور کامل از تمامی فریم‌ورک‌های static-site-generator و ابزارهای مرتبط با آن‌ها، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به ابزارها و فریم‌ورک‌های مختلف برای شما قرار گرفته است:
+<br />
+
+<div className="grid md:grid-cols-4 gap-4">
+            {[
+    { alt: 'gatsby', platform: 'GatsbyJS', link: "./related-apps/gatsby" },
+    { alt: 'gridsome', platform: 'Gridsome', link: "./related-apps/gridsome" },
+    { alt: 'eleventy', platform: 'Eleventy', link: "./related-apps/eleventy" },
+    { alt: 'hugo', platform: 'Hugo', link: "./related-apps/hugo" },
+    { alt: 'jekyll', platform: 'Jekyll', link: "./related-apps/jekyll" },
+    { alt: 'astro', platform: 'Astro', link: "./related-apps/astro" },
+    { alt: 'nuxt', platform: 'NuxtJS', link: "./related-apps/nuxtjs" },
+    { alt: 'HTML5', platform: 'SolidJS', link: "./related-apps/solidjs" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br />
+
+<Alert variant="success">
+همچنین بخوانید:
+<Link href='./related-links' className="text-[#2196f3] ">
+ لینک‌های مرتبط با پلتفرم Static
+</Link>
+</Alert>
+<br />
+
+</Layout>

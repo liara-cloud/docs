@@ -1,0 +1,78 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس PostgreSQL در PHP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس PostgreSQL در پلتفرم PHP در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس PostgreSQL در برنامه‌های PHP
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس PostgreSQL نیاز به انجام کار خاصی نیست؛ چرا که اکستنشن‌های مربوط به آن، مانند <Important>PDO</Important> و <Important>pgsql</Important> از قبل، توسط لیارا، نصب شده است. فقط کافیست تا طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`PG_URI=postgresql://root:2aCRtMfc2oMou67U2GftmLmd@annapurna.liara.cloud:32655/postgres`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+پس از انجام کار فوق، می‌توانید مانند قطعه کد زیر، به دیتابیس متصل شده و از آن، استفاده کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`<?php
+$uri = getenv("PG_URI");
+
+try {
+    $uriParts = parse_url($uri);
+
+    $host = $uriParts['host'];
+    $port = $uriParts['port'];
+    $user = $uriParts['user'];
+    $pass = $uriParts['pass'];
+    $dbname = ltrim($uriParts['path'], '/');
+
+    // Create a new PDO instance with persistent connection enabled
+    $pdo = new PDO(
+        "pgsql:host=$host;port=$port;dbname=$dbname",
+        $user,
+        $pass,
+        array(
+            PDO::ATTR_PERSISTENT => true
+        )
+    );
+
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    echo "Connected to PostgreSQL database successfully with persistent connection!";
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?>`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+در اکستنشن <Important>PDO</Important> و با کمک دستور <Important>ATTR_PERSISTENT</Important> ، قابلیت connection pooling تعبیه شده است و نیازی نیست که شما برای فعال‌سازی این قابلیت، کار خاصی را انجام دهید.
+</p>
+</Alert>
+
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+</Layout>

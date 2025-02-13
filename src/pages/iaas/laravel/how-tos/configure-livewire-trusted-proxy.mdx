@@ -1,0 +1,80 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات پیکربندی TrustedProxies در Laravel-livewire - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه پیکربندی و تنظیم TrustedProxies در Laravel-Livewire در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# پیکربندی TrustedProxies در Laravel-livewire
+<hr className="mb-2" />
+
+    <p>
+      تمامی درخواست‌ها به سمت برنامه‌ی شما توسط
+      <a href="https://en.wikipedia.org/wiki/Reverse_proxy" className="text-[#2196f3]"> Reverse proxy </a>
+      های لیارا هدایت می‌شوند. برای این که در برنامه‌ی‌تان بتوانید به آی‌پی
+      واقعی کاربر دسترسی داشته باشید و یا این که از قابلیت Signed URL های
+      Laravel استفاده کنید، لازم است که تغییراتی را در فایل
+      <Important>app/Http/Middleware/TrustProxies.php</Important>
+      اعمال کنید.
+      در این فایل، یک متغیر با نام
+      <Important >$proxies</Important>
+      وجود دارد. فقط کافیست که مقدار آن را به
+      <Important className="code">*</Important>
+      تغییر دهید.
+    </p>
+
+    <div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="php">
+      {`<?php
+namespace App\\Http\\Middleware;
+use Illuminate\\Http\\Request;
+use Fideloper\\Proxy\\TrustProxies as Middleware;
+class TrustProxies extends Middleware
+{
+    /**
+     * The trusted proxies for this application.
+     *
+     * @var array|string
+     */
+    protected $proxies = '*';
+    /**
+     * The headers that should be used to detect proxies.
+     *
+     * @var int
+     */
+    protected $headers =
+      Request::HEADER_X_FORWARDED_FOR |
+      Request::HEADER_X_FORWARDED_HOST |
+      Request::HEADER_X_FORWARDED_PORT |
+      Request::HEADER_X_FORWARDED_PROTO |
+      Request::HEADER_X_FORWARDED_AWS_ELB;
+}`}
+    </Highlight>
+    
+    </ div>
+    <div className="h-4" />
+
+    <Alert variant="info">
+    <p>
+      اگر از فریم‌ورک <a href="https://laravel-livewire.com/" className="text-[#2196f3]">Livewire</a>
+      در برنامه‌ی لاراولی خود استفاده می‌کنید، باید حتما تنظیمات مرتبط با
+      TrustedProxies را انجام بدهید.
+    </p>
+    </Alert>
+
+</Layout>

@@ -1,0 +1,63 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس Redis در Laravel - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه اتصال به دیتابیس Redis در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس Redis در برنامه‌های Laravel
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس Redis نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`REDIS_CLIENT=phpredis
+REDIS_HOST=bromo.liara.cloud
+REDIS_PASSWORD=WIxYwk60bqJoTif795flsFN8
+REDIS_PORT=34130`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+تمامی کارها انجام شده و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال، قطعه کد زیر را در فایل <Important>routes/web.php</Important> قرار دهید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`use Illuminate\Support\Facades\Redis;
+Route::get('/test-redis', function () {
+    try {
+        Redis::connection()->ping();
+        return "connection successfull";
+    } catch (Exception $e) {
+        return "connection failed: " . $e->getMessage();
+    }
+});
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>test-redis/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+در Redis نیازی به تنظیمات اضافی برای Connection Pooling نخواهید داشت، زیرا درایور <Important>redis</Important> در لاراول، به طور خودکار اتصالات را مدیریت می‌کند.
+
+</Layout>

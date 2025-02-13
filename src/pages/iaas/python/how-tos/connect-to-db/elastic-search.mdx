@@ -1,0 +1,112 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ ElasticSearch در Python - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس ElasticSearch در پلتفرم Python در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس ElasticSearch در برنامه‌های Python
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس ElasticSearch در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install elasticsearch`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+سپس، با فرض فعال بودن محیط مجازی در پروژه پایتونی‌تان (virtualenv)، دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip freeze > requirements.txt`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3]">نحوه تنظیم متغیرهای محیطی</a>، متغیر محیطی مربوط به دیتابیس را، به برنامه اضافه کنید؛ به عنوان مثال: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`ELASTICSEARCH_URI=http://elastic:0sYXnw9OuXUzYVFnXTFdwOUh@monte-rosa.liara.cloud:33159/`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید مشابه قطعه کد زیر، به دیتابیس‌تان متصل شده و از آن، استفاده کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from elasticsearch import Elasticsearch
+from elasticsearch.exceptions import ConnectionError
+
+# Fetch Elasticsearch URI from environment variables
+ELASTICSEARCH_URI = os.getenv("ELASTICSEARCH_URI")
+
+# Initialize Elasticsearch client
+def connect_elasticsearch():
+    try:
+        # Create an Elasticsearch client using the URI
+        es = Elasticsearch([ELASTICSEARCH_URI])
+        # Check connection by pinging Elasticsearch
+        if es.ping():
+            return True
+        return False
+    except ConnectionError:
+        return False
+
+# HTTP request handler class
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        # Check if Elasticsearch is reachable
+        if connect_elasticsearch():
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b"Elasticsearch connection successful!")
+        else:
+            self.send_response(500)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b"Failed to connect to Elasticsearch")
+
+# Run the server
+def run(server_class=HTTPServer, handler_class=RequestHandler, port=8080):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f'Starting server on port {port}...')
+    httpd.serve_forever()
+
+if __name__ == '__main__':
+    run()
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+
+</Layout>

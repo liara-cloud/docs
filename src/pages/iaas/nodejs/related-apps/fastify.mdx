@@ -1,0 +1,109 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Fastify - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Fastify در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Fastify در لیارا
+<hr className="mb-2" />
+نرم‌افزار Fastify یک فریم‌ورک برای NodeJS است که با هدف ارائه‌ی کارایی بالا و سادگی در استفاده طراحی شده است. این فریم‌ورک  برای ساختن APIهای سریع و سبک مورد استفاده قرار می‌گیرد. شما می‌توانید برنامه‌های Fastify خود را با <a href="../../how-tos/create-app" className="">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
+
+برای استقرار برنامه‌های Fastify باید اسکریپت <Important>start</Important> را در فایل <Important>package.json</Important> مشخص کنید؛ به عنوان مثال: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`{
+  "scripts": {"start": "node server.js"}
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، در فایل اصلی برنامه خود، باید حتماً فیلد <Important>host</Important> را با مقدار <Important>'0.0.0.0'</Important> مشخص کنید؛ به عنوان مثال:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const start = async () => {
+  try {
+    await fastify.listen({ port: 3000, host: '0.0.0.0' });
+    fastify.log.info(\`Server listening on \${fastify.server.address().port}\`);
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+};
+start();`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، مقدار داده شده را باید در متغیری به نام <Important>SESSION_SECRET_KEY</Important> بریزید و طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a> آن را به برنامه خود اضافه کنید.
+
+به صورت کلی، کافیست تا متغیرهای محیطی زیر به برنامه اضافه شوند (مقدار <Important>SESSION_SECRET_KEY</Important> فرضی است): 
+
+<div className="h-2" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`SESSION_SECRET_KEY=3a68b914c9c446565090f8f56142924c
+ENV_SILENT=true`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>
+        در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود. البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید مقدار آن را در فیلد پورت، وارد کنید.
+    </p>
+    </>,
+
+    <>
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود (البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید در دستور زیر، مقدار آن را وارد کنید):
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+<Alert variant="success">
+<p>
+یک پروژه Fastify آماده به استقرار در <a href="https://github.com/liara-cloud/fastify-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="../../fix-common-errors/cors-error/fastify" className="text-[#2196f3] ">رفع خطای CORS در فریم‌ورک Fastify</a>
+</p>
+</Alert>
+
+</Layout>

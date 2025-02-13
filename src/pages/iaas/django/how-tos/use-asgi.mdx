@@ -1,0 +1,63 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی برنامه ASGI در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نحوه راه‌اندازی برنامه ASGI در پلتفرم Django در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# راه‌اندازی برنامه ASGI در برنامه‌های Django
+<hr className="mb-2" />
+
+ASGI یا Asynchronous Server Gateway Interface در Django یک استاندارد برای ساخت و مدیریت برنامه‌های وب ناهمگام است که از ویژگی‌های همزمان و ناهمزمان پشتیبانی می‌کند. ASGI، جایگزین WSGI شده و امکان استفاده از قابلیت‌های وب‌سوکت، پروتکل‌های HTTP2 و سایر عملیات‌های ناهمزمان را فراهم می‌کند.
+<div className="h-2" />
+برای استقرار برنامه‌های ASGI در پلتفرم Django لیارا تنها باید <Important>WSGI_APPLICATION</Important> را از فایل <Important>settings.py</Important> برنامه حذف کنید و مسیر فایل پیکربندی برنامه‌ی ASGI خود را در متغیر <Important>ASGI_APPLICATION</Important> مقداردهی کنید. به عنوان مثال، اگر نام پروژه‌تان <Important>myapp</Important> است، باید قطعه کد زیر را از فایل <Important>settings.py</Important> پاک کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`WSGI_APPLICATION = 'myapp.wsgi.application'`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+و به جای آن، از قطعه کد زیر استفاده کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`ASGI_APPLICATION = 'myapp.asgi.application'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+همچنین، به دلیل استفاده از ASGI، ماژول‌ها به شکل async بارگذاری می‌شوند. بنابراین قبل از اجرا شدن برنامه، باید از بارگذاری درست ماژول‌ها، اطمینان حاصل کنید.
+برای این‌کار، بایستی قطعه کد زیر را در ابتدای فایل <Important>asgi.py</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+        {`import os
+import django
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '<path_to_settings>')
+django.setup()`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، بایستی مقدار <Important>&lt;path_to_settings&gt;</Important> را با مسیر فایل <Important>settings.py</Important> خود، جایگزین کنید. 
+
+</Layout>

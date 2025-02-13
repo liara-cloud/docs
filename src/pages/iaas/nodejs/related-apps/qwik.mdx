@@ -1,0 +1,91 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Qwik - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Qwik در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Svelte Kit در لیارا
+<hr className="mb-2" />
+<a href="https://qwik.dev/" className="text-[#2196f3] ">Qwik</a> یک فریم‌ورک جدید در جاوااسکریپت است که توسط تیم سازنده‌ی Builder.io توسعه یافته است. این فریم‌ورک طراحی شده است تا برنامه‌های وب سریع و بهینه‌ای را با تمرکز بر عملکرد بالا و زمان بارگذاری کم ایجاد کند. 
+شما می‌توانید برنامه‌های Qwik خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
+<div className='h-2' />
+
+توجه داشته باشید که برای استقرار برنامه‌های Qwik تنها کافیست تا در مسیر اصلی پروژه، دستور زیر را اجرا کنید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm run qwik add`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+بعد از اجرای این دستور، بایستی گزینه <Important>Adapter: Node.js Server</Important> را انتخاب کرده و سپس گزینه <Important>!Yes looks good, finish update</Important> را بزنید.
+
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/qwik-create-deployment-files.gif" alt="work with qwik" />
+<div className="h-4" />
+با اجرای دستور فوق، یک‌سری فایل جدید برای شما ایجاد می‌شوند. اکنون بایستی اسکریپت <Important>start</Important> را به شکل زیر تغییر دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`"scripts": {
+    // other scripts
+    "start": "node server/entry.node-server",
+    // other scripts
+},`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود.</p>
+    </>,
+
+    <>
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+<Alert variant="success">
+<p>
+یک نمونه پروژه‌ی Qwik که آماده مستقر شدن در لیارا است را می‌توانید در <a href="https://github.com/liara-cloud/qwik-getting-started" className="text-[#2196f3] ">اینجا</a>  مشاهده کنید.
+
+</p>
+</Alert>
+
+
+</Layout>

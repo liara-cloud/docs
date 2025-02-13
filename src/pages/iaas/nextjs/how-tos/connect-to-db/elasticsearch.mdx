@@ -1,0 +1,206 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس ElasticSearch در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس ElasticSearch در پلتفرم NextJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس ElasticSearch در برنامه‌های NextJS
+<hr className="mb-2" />
+        
+
+<Tabs 
+    tabs={["Pages Router", "App Router"]} 
+    content={[
+        <>
+            <p>
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به ElasticSearch در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>elasticsearch</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`npm install @elastic/elasticsearch`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
+            </p>
+                        <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`DB_URI=http://elastic:vrA24CewJsSRdlMgyN2fok1q@bromo.liara.cloud:33172/`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>elasticsearch.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { Client } from '@elastic/elasticsearch';
+
+const client = new Client({
+    node: process.env.DB_URI
+});
+
+export default client;
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>pages/index.js</Important> (یا <Important>src/pages/index.js</Important>) از دیتابیس خود، استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import elasticClient from '@/lib/elasticsearch';
+
+export default function HomePage({ elasticStatus }) {
+    return (
+        <div>
+            <h1>Connection Status</h1>
+            <p>{elasticStatus}</p>
+        </div>
+    );
+}
+
+export async function getServerSideProps() {
+    let elasticStatus;
+
+    try {
+        const info = await elasticClient.info();
+        elasticStatus = info ? 'Connected to ElasticSearch' : 'Failed to connect to ElasticSearch';
+    } catch (error) {
+        elasticStatus = 'Failed to connect to ElasticSearch';
+    }
+
+    return {
+        props: {
+            elasticStatus,
+        },
+    };
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
+            </p>
+
+
+        </>,
+        <>
+            <p>
+            روش‌ها و کتابخانه‌های مختلفی برای اتصال به ElasticSearch در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج <Important>elasticsearch</Important> است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`npm install @elastic/elasticsearch`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            سپس، کافیست تا در فایل <Important>env.production.</Important> متغیرهای محیطی مربوط به دیتابیس خود را قرار دهید؛ به عنوان مثال:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`DB_URI=http://elastic:vrA24CewJsSRdlMgyN2fok1q@bromo.liara.cloud:33172/`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در ادامه، بایستی در مسیر <Important>lib</Important> (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر <Important>src/lib</Important>)، یک فایل به نام <Important>elasticsearch.js</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+            </p>
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import { Client } from '@elastic/elasticsearch';
+
+const client = new Client({
+    node: process.env.DB_URI
+});
+
+export default client;
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+              تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل <Important>app/page.js</Important> (یا <Important>src/app/page.js</Important>) از دیتابیس خود، استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="js">
+                {`import elasticClient from '@/lib/elasticsearch';
+
+export default async function HomePage() {
+    let elasticStatus;
+
+    try {
+        const info = await elasticClient.info();
+        elasticStatus = info ? 'Connected to ElasticSearch' : 'Failed to connect to ElasticSearch';
+    } catch (error) {
+        elasticStatus = 'Failed to connect to ElasticSearch';
+    }
+
+    return (
+        <div>
+            <h1>Connection Status</h1>
+            <p>{elasticStatus}</p>
+        </div>
+    );
+}
+`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
+            </p>
+        </>
+]} 
+/>
+
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+در پکیج <Important>elasticsearch</Important> این قابلیت به صورت خودکار تعبیه شده است و شما می‌توانید در فایل <Important>lib/elasticsearch.js</Important> (یا <Important>src/lib/elasticsearch.js</Important>) حین اتصال به دیتابیس پارامتر‌های زیر را بر اساس نیاز خود، مقدار دهی کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+        {`import { Client } from '@elastic/elasticsearch';
+
+const client = new Client({
+    node: process.env.DB_URI,
+    maxRetries: 5,
+    requestTimeout: 60000,
+    sniffOnStart: true
+});
+
+export default client;
+`}
+    </Highlight>
+</div>
+
+
+</Layout>

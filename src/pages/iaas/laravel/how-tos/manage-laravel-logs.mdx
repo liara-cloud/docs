@@ -1,0 +1,93 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات مدیریت لاگ‌ها در Laravel - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه مدیریت لاگ‌ها در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# مدیریت لاگ‌ها در برنامه‌های Laravel
+<hr className="mb-2" />
+
+لاگ‌های یک فریم‌ورک وظیفه دارند اتفاقات رخ داده در نرم‌افزار مثل errorها یا exceptionها و حتی اطلاعاتی که خود توسعه‌دهنده به دلخواه خود در بخش‌های مختلف نرم‌افزار درنظرگرفته را، ثبت کنند. Laravel روش‌های مختلفی برای لاگ‌‌گیری دارد که اصطلاحاً نام آن‌ Channel Drivers است. 
+برای نمونه، اگر که قصد دارید لاگ‌های برنامه خود را در ترمینال ببینید، می‌توانید از درایور <Important>errorlog</Important> استفاده کنید؛ اگر که قصد دارید لاگ‌های برنامه را در یک فایل ذخیره کنید، می‌توانید از درایور <Important>single</Important> استفاده کنید. همچنین می‌توانید برای ذخیره روزانه لاگ‌ها در فایل‌های مجزا، از درایور <Important>daily</Important> بهره ببرید.
+<div className="h-2" />
+در لیارا، لاراول به صورت خودکار برای مدیریت لاگ‌ها از درایور <Important>errorlog</Important> استفاده می‌کند. اگر که قصد تغییر این درایور را دارید؛ کافیست تا متغیر محیطی <Important>LOG_CHANNEL</Important> را طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a> تغییر دهید. به عنوان مثال:
+<div className="h-2" />
+<div dir='ltr'>
+        <Highlight className="bash">
+            {`LOG_CHANNEL=daily`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+<div className="h-2" />
+
+<Section id="manage-logs-using-multiple-drivers" title="مدیریت لاگ‌ها با چند درایور" />
+
+شما می‌توانید با استفاده از درایور <Important>stack</Important>، از چند درایور به صورت همزمان، برای مدیریت لاگ‌ها، استفاده کنید. به عنوان مثال، فرض کنید که قصد دارید هم لاگ‌ها را در ترمینال ببینید و هم آن‌ها را روزانه، در فایل‌های مجزا، ذخیره کنید؛ برای این‌کار کافیست تا در ابتدا، طبق 
+<a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیر <Important>LOG_CHANNEL</Important> را به شکل زیر، تغییر دهید:
+<div className="h-2" />
+<div dir='ltr'>
+        <Highlight className="bash">
+            {`LOG_CHANNEL=stack`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+در ادامه، کافیست تا در فایل <Important>config/logging.php</Important>، فیلد <Important>channels</Important> آرایه <Important>stack</Important> را، به شکل زیر، تغییر دهید:
+<div className="h-2" />
+<div dir='ltr'>
+        <Highlight className="php">
+            {`return [
+
+    'channels' => [
+
+        'stack' => [
+            'driver' => 'stack',
+            'channels' => ['errorlog', 'daily'],
+            'ignore_exceptions' => false,
+        ],
+
+        'daily' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 14),
+            'replace_placeholders' => true,
+        ],
+
+        'errorlog' => [
+            'driver' => 'errorlog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+    ],
+
+];`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+در نهایت، با استقرار مجدد برنامه، تغییرات مدنظرتان، ذخیره خواهد شد.
+
+<Alert variant="success">
+<p>
+می‌توانید برای اطلاعات بیشتر، به <a href="https://laravel.com/docs/master/logging#building-log-stacks" className="text-[#2196f3] ">مستندات رسمی لاراول</a> مراجعه کنید.
+</p>
+</Alert>
+
+
+</Layout>

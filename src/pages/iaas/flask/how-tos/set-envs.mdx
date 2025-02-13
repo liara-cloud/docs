@@ -1,0 +1,41 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم متغیرهای محیطی در Flask - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم متغیرهای محیطی در فریم‌ورک Flask در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استفاده از متغیرهای محیطی 
+<hr className="mb-2" />
+برای استفاده از متغیرهای محیطی در برنامه خود، در ابتدا باید طبق <Link href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</Link>، متغیرهای محیطی را به برنامه خود، اضافه کنید.
+در ادامه، شما می‌توانید با استفاده از ماژول os و متد <Important>()getenv</Important> به متغیرهای محیطی خود در برنامه Flask دسترسی داشته باشید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="py">
+{`@app.route('/envs')
+def show_envs():
+    return os.getenv('LIARA_URL', 'my-web-app')`}
+</Highlight>
+</ div>
+<div className="h-2" />
+در مثال فوق، <Important>LIARA_URL</Important> یک متغیر محیطی است که از قبل، به برنامه فرضی در لیارا، اضافه شده است و <Important>my-web-app</Important> مقدار پیش‌فرضی است که در صورت تعریف نشدن متغیر محیطی، مورد استفاده قرار می‌گیرد.
+
+
+
+
+
+</Layout>

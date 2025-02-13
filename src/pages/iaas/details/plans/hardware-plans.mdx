@@ -1,0 +1,69 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات منابع سخت‌افزاری پلتفرم  - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به منابع سخت‌افزاری یک پلتفرم در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# آشنایی با منابع سخت‌افزاری لیارا
+
+<hr className="mb-2" />
+بی‌شک از مهم‌ترین مراحل ساخت یک پروژه، انتخاب منابع سخت‌افزاری مناسب و مورد نیاز یک برنامه است. گاهاً ممکن است که علت به خطا خوردن برنامه، سرعت پایین و بازدهی کم آن به خاطر انتخاب منابع سخت‌افزاری نامناسب باشد. پس توجه به این موضوع، حائز اهمیت است.
+
+<br />
+<video
+src="https://files.liara.ir/liara/pricing/pricing.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+/>
+<br />
+
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/paas/details/observations/hardware/#find-best-plan-by-monitoring" className="text-[#2196f3] ">انتخاب بهترین پلن برای برنامه با استفاده از گزارشات سخت‌افزاری</a>
+</p>
+</Alert>
+<div className="h-2" />
+<img src="https://files.liara.ir/liara/docs/hardware-plans.png" alt="see-hardware-plans"/>
+<div className="h-4" />
+
+به صورت کلی، لیارا پلن‌های سخت‌افزاری زیر را ارائه می‌دهد:
+
+<Section id='mercury' title="پلن عطارد (رایگان)" />
+این پلن برای برنامه‌های سبک با تعداد کاربران بسیار کم؛ مناسب است. اگر که صرفاً می‌خواهید از برنامه خود، تست بگیرید و یا برنامه‌تان، نیازی به منابع سخت‌افزاری خاصی ندارد، بیشتر شامل داده‌های ثابت است و کمترین پردازش ممکن را انجام می‌دهد؛ می‌توانید از این پلن استفاده کنید. 
+
+<Section id='earth' title="پلن زمین (اقتصادی)" />
+اگر که در برنامه خود، تعداد کاربرانتان متوسط رو به بالا است و روزانه، تعداد پردازش‌هایی که برنامه انجام می‌دهد؛ در حد متوسط است. می‌توانید از این پلن استفاده کنید. این پلن، نسبت به هزینه‌ای که دارد، صرفه بیشتری دارد و مناسب مواقعی است که قصد ندارید برای خدمات مربوط به میزبانی ابری، هزینه سنگینی را پرداخت کنید.  
+
+<Section id='mars' title="پلن مریخ (اقتصادی پلاس)" />
+این پلن، همانند پلن زمین است و مزیتش نسبت به آن، این است که 
+برای پردازش‌های بیشتر، عملکرد بهتری از خود، ارائه می‌دهد و می‌تواند حجم بیشتری از داده‌های جدید را درون خود، ذخیره کند.
+
+<Section id='jupiter-saturn' title="پلن‌های مشتری و زحل (استاندارد و استاندارد پلاس)" />
+بهترین پلن انتخابی برای کسب و کارهای نیمه حرفه‌ای و رو به بالا، پلن‌های مشتری و زحل، می‌باشند. این پلن‌ها می‌توانند حجم زیادی از درخواست کاربران را بدون کمترین کاهش سرعت، پردازش کنند؛ داده‌های زیادی درون خود ذخیره کنند و در نهایت، عملکرد خوبی را ارائه دهند.
+
+<Section id='uranus-neptune' title="پلن‌های اورانوس و نپتون (حرفه‌ای و حرفه‌ای پلاس)" />
+اگر که کسب و کارتان به حدی حساس است که حداقل کندی و اتلاف وقت، در آن 
+ممکن نیست؛ اگر که کاربران بسیار زیادی دارید؛ در حدودی که روزانه ده‌ها هزار درخواست به برنامه‌تان ارسال می‌شود؛ اگر که داده‌های بسیار زیادی برای پردازش دارید و سر و کارتان حوالی Big Data است؛ اگر که قصد دارید مدل‌های هوش مصنوعی خود را بسازید و ... . این دو پلن مناسب کار شما است.
+
+</Layout>

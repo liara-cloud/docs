@@ -1,0 +1,124 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از قابلیت Static HTML Export در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استفاده از قابلیت Static HTML Export یا SSG در پلتفرم NextJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استفاده از قابلیت Static HTML Export 
+<hr className="mb-2" />
+
+قابلیت <a href="https://nextjs.org/docs/pages/building-your-application/deploying/static-exports" className="text-[#2196f3] ">Static HTML Export</a> به شما اجازه می‌دهد تا یک وب‌سایت کاملاً استاتیک ایجاد کنید که می‌تواند بدون نیاز به سرور NodeJS اجرا شود.
+این قابلیت مناسب صفحه‌های landing، وبلاگ‌ها، سامانه‌های خبری و وب‌سایت‌های این‌چنینی هست و از امکانات زیر نیز، پشتیبانی می‌کند:
+
+<ul>
+  <li>Dynamic Routes</li>
+  <li>Prefetching</li>
+  <li>Preloading JavaScript</li>
+  <li>Dynamic Imports</li>
+  <li>getStaticProps</li>
+  <li>getStaticPaths</li>
+</ul>
+
+برای استفاده از این قابلیت، باید در Local وارد فایل <Important>next.config.js</Important> شوید و مقدار فیلد <Important>output</Important> را به شکل زیر، بنویسید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  // distDir: 'dist', // optional, changes the output dir from 'out' to 'dist'
+}
+
+module.exports = nextConfig
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، کافیست تا دستور <Important>npm run build</Important> را در Local اجرا کنید تا دایرکتوری <Important>out</Important> یا همان دایرکتوری شامل فایل‌های Static برای‌تان ایجاد شود. 
+
+<Section id="deploy-exported-static-html" title="استقرار خروجی نهایی در لیارا" />
+برای استقرار خروجی نهایی برنامه در لیارا، کافیست تا طبق مستندات <a href="/paas/static/how-tos/create-app" className="text-[#2196f3] ">ساخت برنامه‌های Static</a> یک برنامه static در لیارا ایجاد کنید. 
+
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>
+      در نهایت، کافیست تا دایرکتوری نهایی را درون یک فایل <Important>zip</Important> قرار داده و در باکس آپلود تعبیه شده در کنسول، درج کنید و سپس عملیات استقرار را جلو ببرید.
+    </p>
+    </>,
+
+    <>
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --path out`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    بعد از <Important>path--</Important> بایستی اسم دایرکتوری نهایی را وارد کنید که به صورت پیش‌فرض <Important>out</Important> است.
+    </>,
+
+]} 
+/>
+
+
+<Section id="disable-image-optimization" title="غیرفعال کردن قابلیت بهینه‌سازی تصاویر" />
+قابلیت بهینه‌سازی عکس به صورت پیش‌فرض به یک سرور NodeJS نیاز دارد و در محیط Static، قابل استفاده نیست.
+بنابراین باید این قابلیت را در فایل <Important>next.config.js</Important> به شکل زیر، غیر فعال کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  // distDir: 'dist', // optional, changes the output dir from 'out' to 'dist'
+  images: {
+    unoptimized: true
+  }
+}
+
+module.exports = nextConfig
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="unsupported-features" title="قابلیت‌های پشتیبانی نشده" />
+به صورت کلی، امکاناتی که به یک سرور NodeJS یا یک منطق dynamic که در زمان بیلد برنامه نمی‌تواند پردازش شود؛ نیاز دارند؛
+در قابلیت Static HTML Export پشتیبانی نمی‌شوند، نظیر:
+
+<ul>
+  <li>API Routes</li>
+  <li>Redirectها</li>
+  <li>هدرها</li>
+  <li>Middlewareها</li>
+  <li>getStaticPaths با fallback:true</li>
+  <li>getServerSideProps</li>
+</ul>
+
+
+
+
+</Layout>

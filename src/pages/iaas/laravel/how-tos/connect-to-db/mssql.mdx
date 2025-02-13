@@ -1,0 +1,155 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس MSSQL در Laravel - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه اتصال به دیتابیس Microsoft SQL Server در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس MSSQL در برنامه‌های Laravel
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس MSSQL نیاز به انجام کار خاصی نیست. فقط کافیست تا طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را به برنامه اضافه کنید؛ برای نمونه:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`DB_CONNECTION=sqlsrv
+DB_HOST=bromo.liara.cloud
+DB_PORT=34928
+DB_DATABASE=db
+DB_USERNAME=sa
+DB_PASSWORD=SEQdI8BcVutmIWrjBxVBmSNv`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+در ادامه، بایستی در فایل <Important>config/database.php</Important> تنظیمات درایور <Important>sqlsvr</Important> را به شکل زیر، وارد کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="php">
+        {`'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DB_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
+            'database' => env('DB_DATABASE', 'laravel'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+        ],
+
+    ],`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+
+
+پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام <Important>DatabaseController</Important> بسازید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan make:controller DatabaseController`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، می‌توانید قطعه کد زیر را در <Important>app/Http/Controllers/DatabaseController.php</Important> قرار دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`<?php
+
+namespace App\\Http\\Controllers;
+
+use Illuminate\\Support\\Facades\\DB;
+use Illuminate\\Support\\Facades\\Config;
+use Illuminate\\Http\\Request;
+
+class DatabaseController extends Controller
+{
+    public function checkConnection()
+    {
+        $databases = [
+            'sqlsrv' => 'sqlsrv',
+        ];
+
+        $results = [];
+
+        foreach ($databases as $connection) {
+            try {
+                DB::connection($connection)->getPdo();
+                $results[$connection] = 'Connection successful';
+            } catch (\\Exception $e) {
+                $results[$connection] = 'Connection failed: ' . $e->getMessage();
+            }
+        }
+
+        return response()->json($results);
+    }
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست تا در <Important>routes/web.php</Important> قطعه کد زیر را اضافه کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+      {`use App\\Http\\Controllers\\DatabaseController;
+
+Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>check-database-connection/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+
+<Section id="connection-pooling" title="استفاده از Connection Pooling" />
+
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+
+برای استفاده از قابلیت connection pooling در دیتابیس، فقط کافیست تا وارد فایل <Important>config/database.php</Important> شده و قطعه کد مربوط به فیلد <Important>sqlsrv</Important> را به شکل زیر، تغییر دهید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="php">
+{`'sqlsrv' => [
+    'driver' => 'sqlsrv',
+    'url' => env('DB_URL'),
+    'host' => env('DB_HOST', 'localhost'),
+    'port' => env('DB_PORT', '1433'),
+    'database' => env('DB_DATABASE', 'laravel'),
+    'username' => env('DB_USERNAME', 'root'),
+    'password' => env('DB_PASSWORD', ''),
+    'charset' => env('DB_CHARSET', 'utf8'),
+    'prefix' => '',
+    'prefix_indexes' => true,
+    // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+    'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+    'pooling' => env('DB_SQLSERVER_POOLING', true), // enables connection pooling
+],
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+
+</Layout>

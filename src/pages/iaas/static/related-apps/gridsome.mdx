@@ -1,0 +1,55 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Gridsome - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Gridsome در پلتفرم Static در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Gridsome در لیارا
+<hr className="mb-2" />
+<a href="https://gridsome.org/" className="text-[#2196f3] ">Gridsome</a> یک فریم‌ورک متن‌باز برای ساخت وب‌سایت‌های ایستا و برنامه‌های وب با استفاده از Vue است. این فریم‌ورک با بهره‌گیری از GraphQL به توسعه‌دهندگان امکان می‌دهد داده‌ها را از منابع مختلف دریافت و مدیریت کنند. Gridsome به بهینه‌سازی عملکرد و SEO کمک می‌کند و تجربه کاربری سریعی را ارائه می‌دهد. 
+
+<div className="h-2" />
+
+شما می‌توانید برنامه‌های Gridsome خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های Static</a> در لیارا، مستقر کنید.
+برای این‌کار، کافیست تا در مسیر اصلی پروژه در Local، دستور زیر را اجرا کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`npm run build`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+با اجرای دستور فوق، فرایند build گرفتن از برنامه‌ی شما شروع خواهد شد و درنهایت تمام فایل‌های استاتیک اعم از فایل‌های <Important>HTML/CSS/JS</Important> در پوشه‌ی <Important>dist</Important> قرار داده می‌شوند.
+اکنون، کافیست تا وارد پوشه dist شوید و قطعه کد زیر را در آن، اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`liara deploy --platform=static`}
+    </Highlight>
+</div>
+<div className="h-2" />
+با اجرای دستور فوق، برنامه‌تان در لیارا، مستقر خواهد شد.
+{/* <Alert variant="success">
+<p>
+یک پروژه Gridsome آماده به استقرار در <a href="https://github.com/liara-cloud/hapi-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert> */}
+
+</Layout>

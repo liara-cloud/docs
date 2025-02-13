@@ -108,6 +108,11 @@ export default {
       link: "/paas/about"
     },
     {
+      title: "سرور مجازی (VPS)",
+      icon: <GoServer />,
+      link: "/iaas/about"
+    },
+    {
       title: "دیتابیس‌",
       icon: <GoDatabase />,
       link: "/dbaas/about"
@@ -124,7 +129,7 @@ export default {
     },
     {
       title: "ذخیره‌سازی ابری",
-      icon: <GoServer />,
+      icon: <GoPaperclip />,
       link: "/object-storage/about"
     },
     {
@@ -323,6 +328,3016 @@ export default {
         icon: <GoPackageDependents />,
         link: "/paas/move"
       }
+    ],
+    update: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس پلتفرم",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/paas/php/getting-started"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/paas/python/getting-started"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/getting-started"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/paas/flask/getting-started"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "Go",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/go/getting-started"
+      },
+      {
+        title: "React",
+        icon: <IconContainer alt="react" />,
+        link: "/paas/react/getting-started"
+      },
+      {
+        title: "Angular",
+        icon: <IconContainer alt="angularjs" />,
+        link: "/paas/angular/getting-started"
+      },
+      {
+        title: "Vue",
+        icon: <IconContainer alt="vue" />,
+        link: "/paas/vue/getting-started"
+      },
+      {
+        title: "Static",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/getting-started"
+      },
+      {
+        title: "Docker",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas/docker/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/paas/cicd/about"
+      },
+      {
+        title: "فایل liara.json",
+        icon: <GoFile  />,
+        link: "/paas/liarajson"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+    move: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس پلتفرم",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/paas/php/getting-started"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/paas/python/getting-started"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/getting-started"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/paas/flask/getting-started"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "Go",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/go/getting-started"
+      },
+      {
+        title: "React",
+        icon: <IconContainer alt="react" />,
+        link: "/paas/react/getting-started"
+      },
+      {
+        title: "Angular",
+        icon: <IconContainer alt="angularjs" />,
+        link: "/paas/angular/getting-started"
+      },
+      {
+        title: "Vue",
+        icon: <IconContainer alt="vue" />,
+        link: "/paas/vue/getting-started"
+      },
+      {
+        title: "Static",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/getting-started"
+      },
+      {
+        title: "Docker",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas/docker/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/paas/cicd/about"
+      },
+      {
+        title: "فایل liara.json",
+        icon: <GoFile  />,
+        link: "/paas/liarajson"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+    liarajson: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس پلتفرم",
+        icon: <GoInfo />,
+        link: "/paas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "پلتفرم‌های قابل ارائه"
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/paas/php/getting-started"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/paas/python/getting-started"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/paas/django/getting-started"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/paas/flask/getting-started"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "Go",
+        icon: <IconContainer alt="go" />,
+        link: "/paas/go/getting-started"
+      },
+      {
+        title: "React",
+        icon: <IconContainer alt="react" />,
+        link: "/paas/react/getting-started"
+      },
+      {
+        title: "Angular",
+        icon: <IconContainer alt="angularjs" />,
+        link: "/paas/angular/getting-started"
+      },
+      {
+        title: "Vue",
+        icon: <IconContainer alt="vue" />,
+        link: "/paas/vue/getting-started"
+      },
+      {
+        title: "Static",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/getting-started"
+      },
+      {
+        title: "Docker",
+        icon: <IconContainer alt="docker" />,
+        link: "/paas/docker/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow  />,
+        link: "/paas/cicd/about"
+      },
+      {
+        title: "فایل liara.json",
+        icon: <GoFile  />,
+        link: "/paas/liarajson"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoContainer />
+            جزئیات پلتفرم
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "ویژگی‌های یک پلتفرم در لیارا",
+        icon: <GoInfo />,
+        link: "/paas/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "پلن‌های برنامه",
+        icon: <GoCpu />,
+        link: "/paas/details/plans/about"
+      },
+      {
+        title: "شبکه خصوصی",
+        icon: <GoShieldLock  />,
+        link: "/paas/details/private-network"
+      },
+      {
+        title: "آی‌پی ثابت",
+        icon: <GoNumber  />,
+        link: "/paas/details/static-ip"
+      },
+      {
+        title: "فایل‌سیستم",
+        icon: <GoFileBinary />,
+        link: "/paas/details/file-system"
+      },
+      {
+        title: "رویدادها",
+        icon: <GoEye />,
+        link: "/paas/details/events"
+      },
+      {
+        title: "گزارشات",
+        icon: <GoGraph />,
+        link: "/paas/details/observations/about"
+      },
+      {
+        title: "متغیرهای محیطی",
+        icon: <GoKey  />,
+        link: "/paas/details/envs"
+      },
+      {
+        title: "رجیستری خصوصی و تاریخچه",
+        icon: <GoLog />,
+        link: "/paas/details/private-registry"
+      },
+      {
+        title: "خط فرمان کنسول",
+        icon: <GoBrowser />,
+        link: "/paas/details/console-shell"
+      },
+      {
+        title: "نادیده گرفتن فایل‌ها",
+        icon: <GoEyeClosed />,
+        link: "/paas/details/ignoring-files"
+      },
+      {
+        title: "استقرار بدون اختلال",
+        icon: <GoGitPullRequest  />,
+        link: "/paas/details/zero-downtime-deployment"
+      },
+      {
+        title: "بررسی سلامت",
+        icon: <GoPulse />,
+        link: "/paas/details/health-check"
+      },
+      {
+        title: "تنظیم DNS Server",
+        icon: <GoPlug  />,
+        link: "/paas/details/dns-server-settings"
+      },
+      {
+        title: "تنظیم موقعیت build",
+        icon: <GoLocation />,
+        link: "/paas/details/build-location"
+      },
+      {
+        title: "تغییر پلن در برنامه",
+        icon: <GoGitCompare />,
+        link: "/paas/details/change-plan"
+      },
+      {
+        title: "حذف یک برنامه",
+        icon: <GoXCircle  />,
+        link: "/paas/details/delete-app"
+      },
+      {
+        title: "پروکسی معکوس (reverse)",
+        icon: <GoPaperAirplane  />,
+        link: "/paas/details/reverse-proxy"
+      },
+      {
+        title: "قابلیت Basic Auth",
+        icon: <GoLock   />,
+        link: "/paas/details/basic-auth"
+      },
+    ],
+    disks: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "دیسک چیست؟",
+        icon: <GoInfo />,
+        link: "/paas/disks/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+            مدیریت دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "ساخت دیسک",
+        link: "/paas/disks/create"
+      },
+      {
+        title: "تعریف مسیر برای دیسک",
+        link: "/paas/disks/route"
+      },
+      {
+        title: "افزایش حجم دیسک",
+        link: "/paas/disks/increase-value"
+      },
+      {
+        title: "کاهش حجم دیسک",
+        link: "/paas/disks/decrease-value"
+      },
+      {
+        title: "حذف یک دیسک",
+        link: "/paas/disks/delete"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoIterations />
+            پشتیبان‌گیری از دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "تهیه فایل پشتیبان از دیسک‌",
+        link: "/paas/disks/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان با دسترسی FTP",
+        link: "/paas/disks/restore-backup-using-ftp"
+      },
+      {
+        title: "بازیابی فایل پشتیبان با دستور wget",
+        link: "/paas/disks/restore-backup-using-wget"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            انتقال فایل از دیسک
+          </div>
+        )
+      },
+      {
+        title: "انتقال فایل دیسک به دیسک",
+        link: "/paas/disks/move-files-to-other-disk"
+      },
+      {
+        title: "انتقال فایل دیسک به object storage",
+        link: "/paas/disks/move-files-to-bucket"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoKey />
+            دسترسی‌ها
+          </div>
+        )
+      },
+      {
+        title: "دسترسی FTP به دیسک‌ها",
+        link: "/paas/disks/ftp-access"
+      },
+    ],
+    domains: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دامنه‌ها
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "دامنه چیست؟",
+        icon: <GoInfo />,
+        link: "/paas/domains/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+          مدیریت دامنه‌ها در برنامه
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن دامنه به برنامه",
+        link: "/paas/domains/add-domain"
+      },
+      {
+        title: "ساخت زیر دامنه www",
+        link: "/paas/domains/add-www-subdomain"
+      },
+      {
+        title: "اضافه کردن زیر دامنه دلخواه",
+        link: "/paas/domains/add-subdomains"
+      },
+      {
+        title: "تهیه گواهی SSL برای دامنه",
+        link: "/paas/domains/enable-ssl"
+      },
+      {
+        title: "غیرفعال کردن زیر دامنه پیش‌فرض",
+        link: "/paas/domains/default-subdomain"
+      },
+      {
+        title: "حذف دامنه یا زیردامنه از برنامه",
+        link: "/paas/domains/delete-domain"
+      },
+      {
+        title: "انتقال دامنه",
+        link: "/paas/domains/move"
+      },
+      {
+        title: "TLDهای قابل پشتیبانی",
+        link: "/paas/domains/supported-tlds"
+      },
+      {
+        title: "استفاده از CDN",
+        link: "/paas/domains/use-cdn"
+      },
+    ],
+    cicd: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            قابلیت CI/CD
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "آشنایی با CI/CD",
+        icon: <GoInfo />,
+        link: "/paas/cicd/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+          استفاده از CI/CD
+          </div>
+        )
+      },
+      {
+        title: "راه‌اندازی CI/CD در برنامه با Github",
+        link: "/paas/cicd/github"
+      },
+      {
+        title: "راه‌اندازی CI/CD در برنامه با Gitlab",
+        link: "/paas/cicd/gitlab"
+      },
+    ],
+
+    nodejs: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="nodejs" />
+            پلتفرم NodeJS
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/nodejs/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/nodejs/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/nodejs/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/nodejs/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/nodejs/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/nodejs/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/nodejs/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/nodejs/how-tos/set-logs"
+      },
+      {
+        title: "راه‌اندازی برنامه Websocket",
+        link: "/paas/nodejs/how-tos/use-websocket"
+      },
+      {
+        title: "build برنامه با ES6",
+        link: "/paas/nodejs/how-tos/build-and-use-es6"
+      },
+      {
+        title: "استفاده از TypeScript",
+        link: "/paas/nodejs/how-tos/use-type-script"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/nodejs/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/nodejs/how-tos/set-cron-job"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/nodejs/how-tos/configure-trusted-proxy/about"
+      },
+      {
+        title: "انتخاب نسخه NodeJS",
+        link: "/paas/nodejs/how-tos/choose-version"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/nodejs/how-tos/use-ffmpeg-module"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/nodejs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "Prisma ORM",
+        icon: <IconContainer alt="prisma" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/prisma"
+      },
+      {
+        title: "Sequelize ORM",
+        icon: <IconContainer alt="sequelize" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/sequelize/about"
+      },
+      {
+        title: "Drizzle ORM",
+        icon: <IconContainer alt="drizzle" />,
+        link: "/paas/nodejs/how-tos/connect-to-db/drizzle/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "خطای CORS",
+        link: "/paas/nodejs/fix-common-errors/cors-error/about"
+      },
+      {
+        title: "رفع خطای Get query missing",
+        link: "/paas/nodejs/fix-common-errors/graphql-error"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Addonis",
+        icon: <IconContainer alt="adonisjs" />,
+        link: "/paas/nodejs/related-apps/adonisjs"
+      },
+      {
+        title: "BlitzJS",
+        icon: <IconContainer alt="blitz" />,
+        link: "/paas/nodejs/related-apps/blitzjs"
+      },
+      {
+        title: "Fastify",
+        icon: <IconContainer alt="fastify" />,
+        link: "/paas/nodejs/related-apps/fastify"
+      },
+      {
+        title: "Hapi",
+        icon: <IconContainer alt="hapi" />,
+        link: "/paas/nodejs/related-apps/hapi"
+      },
+      {
+        title: "Hono",
+        icon: <IconContainer alt="https://files.liara.ir/liara/docs/hono-logo-icon.png" />,
+        link: "/paas/nodejs/related-apps/hono"
+      },
+      {
+        title: "Nitro",
+        icon: <IconContainer alt="https://files.liara.ir/liara/docs/nitro-icon.svg" />,
+        link: "/paas/nodejs/related-apps/nitro"
+      },
+      {
+        title: "NestJS",
+        icon: <IconContainer alt="nest" />,
+        link: "/paas/nodejs/related-apps/nestjs"
+      },
+      {
+        title: "NuxtJS",
+        icon: <IconContainer alt="nuxt" />,
+        link: "/paas/nodejs/related-apps/nuxtjs"
+      },
+      {
+        title: "Remix",
+        icon: <IconContainer alt="remix" />,
+        link: "/paas/nodejs/related-apps/remix"
+      },
+      {
+        title: "Strapi",
+        icon: <IconContainer alt="strapi" />,
+        link: "/paas/nodejs/related-apps/strapi/starter"
+      },
+      {
+        title: "Svelte",
+        icon: <IconContainer alt="svelte" />,
+        link: "/paas/nodejs/related-apps/svelte"
+      },
+      {
+        title: "Svelte Kit",
+        icon: <IconContainer alt="svelte" />,
+        link: "/paas/nodejs/related-apps/svelte-kit"
+      },
+      {
+        title: "Qwik",
+        icon: <IconContainer alt="qwik" />,
+        link: "/paas/nodejs/related-apps/qwik"
+      },
+      {
+        title: "JSON Server",
+        icon: <IconContainer alt="json" />,
+        link: "/paas/nodejs/related-apps/json-server"
+      },
+    ],
+    nextjs: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="next" />
+            پلتفرم NextJS
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/nextjs/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/nextjs/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/nextjs/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/nextjs/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/nextjs/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/nextjs/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/nextjs/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/nextjs/how-tos/set-logs"
+      },
+      {
+        title: "راه‌اندازی برنامه Websocket",
+        link: "/paas/nextjs/how-tos/use-websocket"
+      },
+      {
+        title: "استفاده از TypeScript",
+        link: "/paas/nextjs/how-tos/use-type-script"
+      },
+      {
+        title: "استفاده از Static HTML Export",
+        link: "/paas/nextjs/how-tos/use-static-html-export"
+      },
+      {
+        title: "افزایش فضای مسیر cache",
+        link: "/paas/nextjs/how-tos/increase-next-cache"
+      },
+      {
+        title: "استفاده از ISR",
+        link: "/paas/nextjs/how-tos/use-isr"
+      },
+      {
+        title: "دسترسی به فایل‌های Static",
+        link: "/paas/nextjs/how-tos/reach-static-files"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/nextjs/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/nextjs/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه NodeJS",
+        link: "/paas/nextjs/how-tos/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/nextjs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/mongodb"
+      },
+      {
+        title: "دیتابیس MariaDB",
+        icon: <IconContainer alt="mariadb" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/mariadb"
+      },
+      {
+        title: "دیتابیس MySQL",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/elasticsearch"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/nextjs/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای ECONNRESET",
+        link: "/paas/nextjs/fix-common-errors/econnreset"
+      },
+      {
+        title: "رفع خطای could not modify config file",
+        link: "/paas/nextjs/fix-common-errors/modify-config-file"
+      },
+    ],
+    laravel: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="laravel" />
+            پلتفرم Laravel
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/laravel/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/laravel/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/laravel/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/laravel/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/laravel/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/laravel/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/laravel/how-tos/use-disk"
+      },
+      // {
+      //   title: "راه‌اندازی برنامه Websocket",
+      //   link: "/paas/laravel/how-tos/use-websocket"
+      // },
+      {
+        title: "تنظیم اختصاصی فایل php.ini",
+        link: "/paas/laravel/how-tos/customize-php-ini"
+      },
+      {
+        title: "کار با Queueها",
+        link: "/paas/laravel/how-tos/use-queues"
+      },
+      {
+        title: "فعال‌سازی SSR با Inertia",
+        link: "/paas/laravel/how-tos/enable-ssr-using-inertia"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/laravel/how-tos/set-http-security-headers"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/laravel/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/laravel/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه PHP و Laravel",
+        link: "/paas/laravel/how-tos/choose-version"
+      },
+      {
+        title: "مدیریت logهای Laravel",
+        link: "/paas/laravel/how-tos/manage-laravel-logs"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/laravel/how-tos/configure-trustedproxies"
+      },
+      {
+        title: "پیکربندی TrustedProxies در livewire",
+        link: "/paas/laravel/how-tos/configure-livewire-trusted-proxy"
+      },
+      {
+        title: "فعال‌سازی Gzip و Caching",
+        link: "/paas/laravel/how-tos/enable-gzip-and-caching"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/laravel/how-tos/use-ffmpeg-module"
+      },
+      {
+        title: "استفاده از Ziggy",
+        link: "/paas/laravel/how-tos/use-ziggy"
+      },
+      {
+        title: "نصب یا به‌روزرسانی اکستنشن ",
+        link: "/paas/laravel/how-tos/install-new-extension"
+      },
+      {
+        title: "مشاهده اکستنشن‌های نصب شده",
+        link: "/paas/laravel/how-tos/see-extension"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/laravel/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/laravel/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MariaDB",
+        icon: <IconContainer alt="mariadb" />,
+        link: "/paas/laravel/how-tos/connect-to-db/mariadb"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
+        link: "/paas/laravel/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/laravel/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/laravel/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/laravel/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/laravel/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/laravel/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB",
+        link: "/paas/laravel/fix-common-errors/upload-limit-size"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/laravel/fix-common-errors/cors"
+      },
+      {
+        title: "رفع خطای 419",
+        link: "/paas/laravel/fix-common-errors/419-page-expired"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Lumen",
+        icon: <IconContainer alt="lumen" />,
+        link: "/paas/laravel/related-apps/lumen"
+      },
+      {
+        title: "Laravel Octane",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/related-apps/laravel-octane"
+      },
+      {
+        title: "Voyager",
+        icon: <IconContainer alt="laravel" />,
+        link: "/paas/laravel/related-apps/voyager"
+      },
+    ],
+    php: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="php" />
+            پلتفرم PHP
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/php/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/php/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/php/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/php/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/php/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/php/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/php/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/php/how-tos/set-logs"
+      },
+      // {
+      //   title: "راه‌اندازی برنامه Websocket",
+      //   link: "/paas/php/how-tos/use-websocket"
+      // },
+      {
+        title: "تنظیم اختصاصی فایل php.ini",
+        link: "/paas/php/how-tos/customize-php-ini"
+      },
+      {
+        title: "تنظیم اختصاصی فایل htaccess.",
+        link: "/paas/php/how-tos/customize-htaccess"
+      },
+      {
+        title: "کار با Queueها",
+        link: "/paas/php/how-tos/use-queues"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/php/how-tos/set-http-security-headers"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/php/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/php/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه PHP",
+        link: "/paas/php/how-tos/choose-version"
+      },
+      {
+        title: "نصب یا به‌روزرسانی اکستنشن ",
+        link: "/paas/php/how-tos/install-new-extension"
+      },
+      {
+        title: "مشاهده اکستنشن‌های نصب شده",
+        link: "/paas/php/how-tos/see-extension"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/php/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mariadb" />,
+        link: "/paas/php/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
+        link: "/paas/php/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/php/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/php/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/php/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/php/how-tos/connect-to-db/mongodb"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/php/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/php/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB",
+        link: "/paas/php/fix-common-errors/upload-limit-size"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/php/fix-common-errors/cors"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Yii",
+        icon: <IconContainer alt="yii" />,
+        link: "/paas/php/related-apps/yii"
+      },
+    ],
+    python: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="python" />
+            پلتفرم Python
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/python/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/python/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/python/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/python/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/python/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/python/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/python/how-tos/use-disk"
+      },
+      {
+        title: "استفاده از Supervisord",
+        link: "/paas/python/how-tos/use-supervisord"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/python/how-tos/use-ffmpeg-module"
+      },
+      // {
+      //   title: "تنظیم Nginx",
+      //   link: "/paas/python/how-tos/customize-nginx"
+      // },
+      // {
+      //   title: "فعال‌سازی قابلیت gzip",
+      //   link: "/paas/python/how-tos/enable-gzip"
+      // },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/python/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/python/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه Python",
+        link: "/paas/python/how-tos/choose-version"
+      },
+      // {
+      //   title: "راه‌اندازی برنامه WebSocket",
+      //   link: "/paas/python/how-tos/use-websocket"
+      // },
+      // {
+      //   title: "تنظیم تعداد workerهای  Gunicorn",
+      //   link: "/paas/python/how-tos/set-gunicorn-workers"
+      // },
+      // {
+      //   title: "تنظیم max_request در Gunicorn",
+      //   link: "/paas/python/how-tos/set-gunicorn-maxrequest"
+      // },
+      // {
+      //   title: "تنظیم هدرهای امنیتی HTTP",
+      //   link: "/paas/python/how-tos/set-http-security-headers"
+      // },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/python/how-tos/set-logs"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/python/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/python/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+      icon: <IconContainer alt="mssql" />,
+        link: "/paas/python/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/python/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/python/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/python/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/python/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/python/how-tos/connect-to-db/mongodb"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBug  />
+      //       <Link href="/paas/python/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //     </div>
+      //   )
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "FastAPI",
+        icon: <IconContainer alt="fastapi" />,
+        link: "/paas/python/related-apps/fastapi"
+      },
+    ],
+    django: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="django" />
+            پلتفرم Django
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/django/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/django/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/django/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/django/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/django/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/django/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/django/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/django/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی قابلیت gzip",
+        link: "/paas/django/how-tos/enable-gzip"
+      },
+      {
+        title: "استفاده از Supervisord",
+        link: "/paas/django/how-tos/use-supervisord"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/django/how-tos/set-http-security-headers"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/django/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/django/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه Python",
+        link: "/paas/django/how-tos/choose-version"
+      },
+      {
+        title: "تنظیم تعداد workerهای  Gunicorn",
+        link: "/paas/django/how-tos/set-gunicorn-workers"
+      },
+      {
+        title: "تنظیم max_request در Gunicorn",
+        link: "/paas/django/how-tos/set-gunicorn-maxrequest"
+      },
+      {
+        title: "راه‌اندازی برنامه WebSocket",
+        link: "/paas/django/how-tos/use-websocket"
+      },
+      {
+        title: "راه‌اندازی برنامه ASGI",
+        link: "/paas/django/how-tos/use-asgi"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/django/how-tos/use-ffmpeg-module"
+      },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/django/how-tos/set-logs"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/django/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/django/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
+        link: "/paas/django/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/django/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/django/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/django/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/django/how-tos/connect-to-db/elastic-search"
+      },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   icon: <IconContainer alt="mongodb" />,
+      //   link: "/paas/django/how-tos/connect-to-db/mongodb"
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/django/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
+        link: "/paas/django/fix-common-errors/upload-limit-size"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/django/fix-common-errors/cors"
+      },
+      {
+        title: "رفع خطای CORS فایل‌های Media",
+        link: "/paas/django/fix-common-errors/cors-media"
+      },
+      {
+        title: "رفع خطای WORKER TIMEOUT",
+        link: "/paas/django/fix-common-errors/worker-timeout"
+      },
+      {
+        title: "رفع خطای Multiple Settings Files",
+        link: "/paas/django/fix-common-errors/multiple-settings-files"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Celery",
+        icon: <IconContainer alt="celery" />,
+        link: "/paas/django/related-apps/celery"
+      },
+    ],
+    flask: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="flask" />
+            پلتفرم Flask
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/flask/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/flask/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/flask/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/flask/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/flask/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/flask/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/flask/how-tos/use-disk"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/flask/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی قابلیت gzip",
+        link: "/paas/flask/how-tos/enable-gzip"
+      },
+      {
+        title: "پیکربندی TrustedProxies",
+        link: "/paas/flask/how-tos/set-trusted-proxies"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/flask/how-tos/use-hooks"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/flask/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه Python",
+        link: "/paas/flask/how-tos/choose-version"
+      },
+      {
+        title: "تنظیم تعداد workerهای  Gunicorn",
+        link: "/paas/flask/how-tos/set-gunicorn-workers"
+      },
+      // {
+      //   title: "راه‌اندازی برنامه WebSocket",
+      //   link: "/paas/flask/how-tos/use-websocket"
+      // },
+      // {
+      //   title: "راه‌اندازی برنامه ASGI",
+      //   link: "/paas/flask/how-tos/use-asgi"
+      // },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/flask/how-tos/use-ffmpeg-module"
+      },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/flask/how-tos/set-logs"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/flask/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/flask/how-tos/connect-to-db/mysql"
+      },
+      // {
+      //   title: "دیتابیس MSSQL",
+      // icon: <IconContainer alt="mssql" />,
+      //   link: "/paas/flask/how-tos/connect-to-db/mssql"
+      // },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/flask/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/flask/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/flask/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/flask/how-tos/connect-to-db/elastic-search"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/flask/how-tos/connect-to-db/mongodb"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/flask/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB",
+        link: "/paas/flask/fix-common-errors/upload-limit-size"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/flask/fix-common-errors/cors"
+      },
+      {
+        title: "رفع خطای WORKER TIMEOUT",
+        link: "/paas/flask/fix-common-errors/worker-timeout"
+      },
+      {
+        title: "رفع خطای ModuleNotFoundError",
+        link: "/paas/flask/fix-common-errors/module-not-found"
+      },
+    ],
+    dotnet: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="netcore" />
+            پلتفرم NET.
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/dotnet/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/dotnet/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/dotnet/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/dotnet/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/dotnet/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/dotnet/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/dotnet/how-tos/use-disk"
+      },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/dotnet/how-tos/use-hooks"
+      },
+      {
+        title: "تغییر نسخه NET.",
+        link: "/paas/dotnet/how-tos/choose-version"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/dotnet/how-tos/set-cron-job"
+      },
+      {
+        title: "راه‌اندازی برنامه WebSocket",
+        link: "/paas/dotnet/how-tos/use-websocket"
+      },
+      {
+        title: "استفاده از ماژول FFMPEG",
+        link: "/paas/dotnet/how-tos/use-ffmpeg-module"
+      },
+      {
+        title: "مدیریت logهای NET.",
+        link: "/paas/dotnet/how-tos/manage-logs"
+      },
+      {
+        title: "استقرار پوشه Solution",
+        link: "/paas/dotnet/how-tos/deploy-solution-directory"
+      },
+      {
+        title: "استقرار فایل‌های DLL",
+        link: "/paas/dotnet/how-tos/deploy-dll-files"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/dotnet/how-tos/connect-to-db/about">اتصال به دیتابیس با Entity Framework</Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MSSQL",
+        icon: <IconContainer alt="mssql" />,
+        link: "/paas/dotnet/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/dotnet/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/dotnet/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
+      },
+      // {
+      //   title: "دیتابیس Redis",
+      //   link: "/paas/dotnet/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس ElasticSearch",
+      //   link: "/paas/dotnet/how-tos/connect-to-db/elastic-search"
+      // },
+      // {
+      //   title: "دیتابیس MongoDB",
+      //   link: "/paas/dotnet/how-tos/connect-to-db/mongodb"
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug  />
+            <Link href="/paas/dotnet/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: " رفع خطای 502 Bad Gateway",
+        link: "/paas/dotnet/fix-common-errors/502-bad-gateway"
+      },
+      {
+        title: "رفع خطای CORS",
+        link: "/paas/dotnet/fix-common-errors/cors"
+      },
+    ],
+    go: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="go" />
+            پلتفرم Go
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/go/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/go/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/go/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/go/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/go/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/go/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از دیسک",
+        link: "/paas/go/how-tos/use-disk"
+      },
+      // {
+      //   title: "استفاده از Supervisord",
+      //   link: "/paas/go/how-tos/use-supervisord"
+      // },
+      // {
+      //   title: "استفاده از ماژول FFMPEG",
+      //   link: "/paas/go/how-tos/use-ffmpeg-module"
+      // },
+      // {
+      //   title: "تنظیم Nginx",
+      //   link: "/paas/go/how-tos/customize-nginx"
+      // },
+      // {
+      //   title: "فعال‌سازی قابلیت gzip",
+      //   link: "/paas/go/how-tos/enable-gzip"
+      // },
+      {
+        title: "استفاده از Hookها",
+        link: "/paas/go/how-tos/use-hooks"
+      },
+      {
+        title: "استفاده از قابلیت cgo",
+        link: "/paas/go/how-tos/use-cgo"
+      },
+      {
+        title: "تنظیم Cron Job",
+        link: "/paas/go/how-tos/set-cron-job"
+      },
+      {
+        title: "تغییر نسخه go",
+        link: "/paas/go/how-tos/choose-version"
+      },
+      {
+        title: "راه‌اندازی برنامه WebSocket",
+        link: "/paas/go/how-tos/use-websocket"
+      },
+      // {
+      //   title: "تنظیم تعداد workerهای  Gunicorn",
+      //   link: "/paas/go/how-tos/set-gunicorn-workers"
+      // },
+      // {
+      //   title: "تنظیم max_request در Gunicorn",
+      //   link: "/paas/go/how-tos/set-gunicorn-maxrequest"
+      // },
+      // {
+      //   title: "تنظیم هدرهای امنیتی HTTP",
+      //   link: "/paas/go/how-tos/set-http-security-headers"
+      // },
+      {
+        title: "تنظیم لاگ‌ها",
+        link: "/paas/go/how-tos/set-logs"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoDatabase  />
+            <Link href="/paas/go/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+          </div>
+        )
+      },
+      {
+        title: "دیتابیس MySQL/MariaDB",
+        icon: <IconContainer alt="mysql" />,
+        link: "/paas/go/how-tos/connect-to-db/mysql"
+      },
+      {
+        title: "دیتابیس MSSQL",
+      icon: <IconContainer alt="mssql" />,
+        link: "/paas/go/how-tos/connect-to-db/mssql"
+      },
+      {
+        title: "دیتابیس PostgreSQL",
+        icon: <IconContainer alt="postgres" />,
+        link: "/paas/go/how-tos/connect-to-db/postgresql"
+      },
+      {
+        title: "دیتابیس SQLite",
+        icon: <IconContainer alt="sqlite" />,
+        link: "/paas/go/how-tos/connect-to-db/sqlite"
+      },
+      {
+        title: "دیتابیس MongoDB",
+        icon: <IconContainer alt="mongodb" />,
+        link: "/paas/go/how-tos/connect-to-db/mongodb"
+      },
+      {
+        title: "دیتابیس Redis",
+        icon: <IconContainer alt="redis" />,
+        link: "/paas/go/how-tos/connect-to-db/redis"
+      },
+      {
+        title: "دیتابیس ElasticSearch",
+        icon: <IconContainer alt="elastic" />,
+        link: "/paas/go/how-tos/connect-to-db/elastic-search"
+      },
+  
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBug  />
+      //       <Link href="/paas/go/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //     </div>
+      //   )
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Gin",
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/go-gin.ico" />,
+        link: "/paas/go/related-apps/gin"
+      },
+      {
+        title: "Beego",
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/beego.ico" />,
+        link: "/paas/go/related-apps/beego"
+      },
+      {
+        title: "Echo",
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/echo-icon.png" />,
+        link: "/paas/go/related-apps/echo"
+      },
+      {
+        title: "Fiber",
+        icon: <IconContainer alt="https://files.liara.ir/liara/go/fiber-icon.ico" />,
+        link: "/paas/go/related-apps/fiber"
+      },
+    ],
+    react: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="react" />
+            پلتفرم React
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/react/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/react/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/react/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/react/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/react/how-tos/deploy-app"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/react/how-tos/set-envs"
+      },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/react/how-tos/use-disk"
+      // },
+
+      {
+        title: "مشاهده نسخه NodeJS",
+        link: "/paas/react/how-tos/choose-version"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/react/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/react/how-tos/enable-gzip"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/react/how-tos/set-http-security-headers"
+      },
+      
+    ],
+    vue: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="vue" />
+            پلتفرم Vue
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/vue/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/vue/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/vue/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/vue/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/vue/how-tos/deploy-app"
+      },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/vue/how-tos/use-disk"
+      // },
+
+      {
+        title: "مشاهده نسخه NodeJS",
+        link: "/paas/vue/how-tos/choose-version"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/vue/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/vue/how-tos/enable-gzip"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/vue/how-tos/set-http-security-headers"
+      },
+      
+    ],
+    angular: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="angularjs" />
+            پلتفرم Angular
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/angular/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/angular/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/angular/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/angular/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/angular/how-tos/deploy-app"
+      },
+      // {
+      //   title: "استفاده از متغیرهای محیطی",
+      //   link: "/paas/angular/how-tos/set-envs"
+      // },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/angular/how-tos/use-disk"
+      // },
+
+      {
+        title: "مشاهده نسخه NodeJS",
+        link: "/paas/angular/how-tos/choose-version"
+      },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/angular/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/angular/how-tos/enable-gzip"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/angular/how-tos/set-http-security-headers"
+      },
+      
+    ],
+    static: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="HTML5" />
+            پلتفرم Static
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/static/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/static/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/static/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/static/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/static/how-tos/deploy-app"
+      },
+      // {
+      //   title: "استفاده از متغیرهای محیطی",
+      //   link: "/paas/static/how-tos/set-envs"
+      // },
+      // {
+      //   title: "استفاده از دیسک",
+      //   link: "/paas/static/how-tos/use-disk"
+      // },
+      {
+        title: "تنظیم Nginx",
+        link: "/paas/static/how-tos/customize-nginx"
+      },
+      {
+        title: "فعال‌سازی gzip و Browser Caching",
+        link: "/paas/static/how-tos/enable-gzip"
+      },
+      {
+        title: "تنظیم هدرهای امنیتی HTTP",
+        link: "/paas/static/how-tos/set-http-security-headers"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "GatsbyJS",
+        icon: <IconContainer alt="gatsby" />,
+        link: "/paas/static/related-apps/gatsby"
+      },
+      {
+        title: "Gridsome",
+        icon: <IconContainer alt="gridsome" />,
+        link: "/paas/static/related-apps/gridsome"
+      },
+      {
+        title: "Eleventy",
+        icon: <IconContainer alt="eleventy" />,
+        link: "/paas/static/related-apps/eleventy"
+      },
+      {
+        title: "Hugo",
+        icon: <IconContainer alt="hugo" />,
+        link: "/paas/static/related-apps/hugo"
+      },
+      {
+        title: "jekyll",
+        icon: <IconContainer alt="jekyll" />,
+        link: "/paas/static/related-apps/jekyll"
+      },
+      {
+        title: "Astro",
+        icon: <IconContainer alt="astro" />,
+        link: "/paas/static/related-apps/astro"
+      },
+      {
+        title: "SolidJS",
+        icon: <IconContainer alt="HTML5" />,
+        link: "/paas/static/related-apps/solidjs"
+      },
+      {
+        title: "NuxtJS",
+        icon: <IconContainer alt="nuxt" />,
+        link: "/paas/static/related-apps/nuxtjs"
+      },
+    ],
+    docker: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="docker" />
+            پلتفرم Docker
+          </div>
+        )
+      },
+      {
+        title: "برگشت به پلتفرم",
+        icon: <GoArrowRight />,
+        link: "/paas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/paas/docker/getting-started"
+      },
+      {
+        title: "استقرار سریع!",
+        icon: <GoZap  />,
+        link: "/paas/docker/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/paas/docker/related-links"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "ساخت برنامه",
+        link: "/paas/docker/how-tos/create-app"
+      },
+      {
+        title: "استقرار برنامه",
+        link: "/paas/docker/how-tos/deploy-app"
+      },
+      {
+        title: "استقرار Image از DockerHub",
+        link: "/paas/docker/how-tos/deploy-image-from-dockerhub"
+      },
+      {
+        title: "استقرار Docker Compose",
+        link: "/paas/docker/how-tos/deploy-docker-compose"
+      },
+      {
+        title: "استفاده از متغیرهای محیطی",
+        link: "/paas/docker/how-tos/set-envs"
+      },
+      {
+        title: "استفاده از Volume (دیسک)",
+        link: "/paas/docker/how-tos/use-disk"
+      },
+      {
+        title: "پیکربندی Supercronic",
+        link: "/paas/docker/how-tos/configure-supercronic"
+      },
+      // {
+      //   title: "فعال‌سازی gzip و Browser Caching",
+      //   link: "/paas/docker/how-tos/enable-gzip"
+      // },
+      // {
+      //   title: "تنظیم هدرهای امنیتی HTTP",
+      //   link: "/paas/docker/how-tos/set-http-security-headers"
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoPaperclip   />
+          برنامه‌های مرتبط
+          </div>
+        )
+      },
+      {
+        title: "Flutter",
+        icon: <IconContainer alt="flutter" />,
+        link: "/paas/docker/related-apps/flutter"
+      },
+      {
+        title: "Reverse Proxy با Nginx",
+        icon: <IconContainer alt="nginx" />,
+        link: "/paas/docker/related-apps/nginx"
+      },
+      {
+        title: "Streamlit",
+        icon: <IconContainer alt="streamlit" />,
+        link: "/paas/docker/related-apps/streamlit"
+      },
+      {
+        title: "ArangoDB",
+        icon: <IconContainer alt="arangodb" />,
+        link: "/paas/docker/related-apps/arangodb"
+      },
+      {
+        title: "Deno",
+        icon: <IconContainer alt="https://files.liara.ir/liara/deno/deno-logo.png" />,
+        link: "/paas/docker/related-apps/deno"
+      },
+      {
+        title: "Bun",
+        icon: <IconContainer alt="bun" />,
+        link: "/paas/docker/related-apps/bun"
+      },
+      {
+        title: "Seq",
+        icon: <IconContainer alt="seq" />,
+        link: "/paas/docker/related-apps/seq"
+      },
+    ],
+
+  },
+
+  iaas: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoServer/>
+            سرور مجازی (VPS)
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرور مجازی",
+        icon: <GoInfo />,
+        link: "/iaas/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "سیستم‌عامل‌های قابل ارائه"
+      },
+      {
+        title: "Ubuntu",
+        icon: <IconContainer alt="https://files.liara.ir/liara/logos/ubuntu.png" />,
+        link: "/iaas/ubuntu/getting-started"
+      },
+      {
+        title: "Debian",
+        icon: <IconContainer alt="https://files.liara.ir/liara/logos/debian.png" />,
+        link: "/iaas/debian/getting-started"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "برنامه‌های مرتبط"
+      },
+      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/supabase.jpg'/> , title: 'Supabase', link: "/iaas/templates/supabase" },
+      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/sentry.svg'/> , title: 'Sentry', link: "/iaas/templates/sentry" },
+      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/hoppscotch.png'/> , title: 'Hoppscotch', link: "/iaas/templates/hoppscotch" },
+      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/posthog.png'/> , title: 'PostHog', link: "/iaas/templates/posthog" },
+      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/gitlab.webp'/> , title: 'Gitlab', link: "/iaas/templates/gitlab" },
+      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/novu.png'/> , title: 'Novu', link: "/iaas/templates/novu" },
+  
+
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات سرور مجازی",
+        icon: <GoNote />,
+        link: "/iaas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/iaas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/iaas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/iaas/cicd/about"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   title: "به‌روزرسانی پلتفرم",
+      //   icon: <GoSync />,
+      //   link: "/iaas/update"
+      // },
+      // {
+      //   title: "انتقال پلتفرم",
+      //   icon: <GoPackageDependents />,
+      //   link: "/iaas/move"
+      // }
     ],
     update: [
       {
@@ -8189,7 +11204,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoServer  />
+            <GoPaperclip  />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -8394,7 +11409,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoServer  />
+            <GoPaperclip  />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -8593,7 +11608,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoServer  />
+            <GoPaperclip  />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -8793,7 +11808,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoServer  />
+            <GoPaperclip  />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -9762,7 +12777,5 @@ export default {
       },
     ],
   },
-
-
 
 };

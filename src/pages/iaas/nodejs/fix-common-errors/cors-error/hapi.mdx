@@ -1,0 +1,50 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای CORS در Hapi - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطای CORS در Hapi در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای CORS در فریم‌ورک Hapi
+<hr className="mb-2" />
+
+برای رفع این خطا در فریم‌ورک Hapi، می‌توانید مانند قطعه کد زیر، در برنامه خود، عمل کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const Hapi = require('@hapi/hapi');
+
+const init = async () => {
+  const server = Hapi.server({
+    port: 3000,
+    host: '0.0.0.0',
+    routes: {
+      cors: true // Enable CORS for all origins
+    }
+  });
+
+
+  await server.start();
+  console.log('Server is running on %s', server.info.uri);
+};
+
+init();`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+</Layout>

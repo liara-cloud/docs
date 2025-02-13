@@ -1,0 +1,76 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Seq - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Seq در پلتفرم داکر در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Seq
+<hr className="mb-2" />
+
+<div className="h-4" />
+<a href="https://datalust.co/seq" className="text-[#2196f3] ">Seq</a> یک پلتفرم مدیریت لاگ (log) و مانیتورینگ است که توسط Datalust توسعه داده شده است. این ابزار برای جمع‌آوری، جستجو، تجزیه و تحلیل و بصری‌سازی لاگ‌های برنامه‌ها استفاده می‌شود. با Seq می‌توان به سادگی لاگ‌های مختلف را از منابع متعدد جمع‌آوری و آنها را به صورت متمرکز مدیریت کرد. این پلتفرم قابلیت‌های قدرتمندی برای فیلتر کردن، جستجو و هشداردهی بر اساس لاگ‌های دریافت‌شده ارائه می‌دهد، که به تیم‌های توسعه و عملیات کمک می‌کند مشکلات را سریع‌تر تشخیص داده و برطرف کنند.
+
+<div className="h-2" />
+
+شما می‌توانید برنامه‌های Seq خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های Docker</a> در لیارا، مستقر کنید.
+برای این‌کار، کافیست تا 
+در Local یک دایرکتوری با نام دلخواه بسازید، وارد دایرکتوری شوید و در آن یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+    "image": "datalust/seq:latest",
+    "port": 80,
+    "disks": [
+        {
+            "name": "data",
+            "mountTo": "/data"
+        }
+    ]
+  }`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a>، متغیر محیطی زیر را به برنامه داکر خود، اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`ACCEPT_EULA=Y`}
+    </Highlight>
+</div>
+<div className="h-2" />
+سپس، طبق <a href="/paas/disks/create" className="text-[#2196f3] ">مستندات ساخت دیسک</a>، یک دیسک به نام <Important>data</Important> با میزان فضای مورد نیاز، ایجاد کنید. 
+در نهایت نیز، کافیست تا در جایی که فایل <Important>liara.json</Important> قرار دارد، دستور زیر را اجرا کنید تا برنامه‌تان در لیارا، مستقر شود:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`liara deploy`}
+    </Highlight>
+</div>
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+پس از راه‌اندازی Seq، وارد تنظیمات کاربران شده و authentication را فعال کنید.
+</p>
+</Alert>
+
+</Layout>

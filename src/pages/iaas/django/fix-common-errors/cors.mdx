@@ -1,0 +1,110 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای CORS در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطای CORS در Django"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای CORS در برنامه‌های Django
+<hr className="mb-2" />
+خطای CORS (Cross-Origin Resource Sharing) یک محدودیت امنیتی در مرورگرها است که جلوی درخواست‌های HTTP از منابع مختلف را می‌گیرد. 
+این خطا ممکن است زمانی رخ دهد که سعی کنید از یک دامنه یا پورت متفاوت به سروری دیگر درخواست ارسال کنید، و معمولاً با پیام خطایی شبیه به <b>Access-Control-Allow-Origin</b> در مرورگر مواجه خواهید شد. در ادامه، به رفع این خطا، پرداخته شده است:
+<div className="h-2" />
+
+برای رفع این خطا، کافیست تا با اجرای دستور زیر، پکیج <Important>django-cors-headers</Important> را در پروژه خود، نصب کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`pip install django-cors-headers`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، بایستی تا به <Important>INSTALLED_APPS</Important> در فایل <Important>settings.py</Important>، مقدار <Important>corsheaders</Important> را اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+      {`INSTALLED_APPS = [
+    # other apps
+    'corsheaders',
+    # other apps
+]
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، باید مقدار <Important>CorsMiddleware</Important> را به <Important>MIDDLEWARE</Important> در فایل <Important>settings.py</Important>، اضافه کنید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    # other middlewares ...
+]
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمامی کارها انجام شده و می‌توانید برای اجازه دادن به همه دامنه‌ها، در فایل <Important>settings.py</Important> دستور زیر را وارد کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+      {`CORS_ALLOW_ALL_ORIGINS = True`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+یا برای اجازه دادن به دامنه‌های خاص، از قطعه کد زیر استفاده کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+      {`CORS_ALLOWED_ORIGINS = [
+    'http://example.com',
+    'http://anotherdomain.com',
+]
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+متدهای مجاز را نیز می‌توانید با اضافه کردن قطعه کد زیر به فایل <Important>settings.py</Important>، در پروژه خود، مشخص کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+      {`CORS_ALLOW_METHODS = [
+  "DELETE",
+  "GET",
+  "OPTIONS",
+  "PATCH",
+  "POST",
+  "PUT",
+]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت کافیست تا برای ثبت تغییرات، برنامه خود را مجدداً در لیارا، مستقر کنید.
+
+</Layout>

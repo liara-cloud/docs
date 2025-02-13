@@ -1,0 +1,747 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import PlatformIcon from "@/components/Common/icons";
+import {GoArrowLeft,} from "react-icons/go";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ساخت برنامه TODO با Drizzle و PostgreSQL در NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به ساخت برنامه TODO با Drizzle ORM و PostgreSQL در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# ساخت برنامه Todo با Drizzle و PostgreSQL , MySQL و SQLite در NextJS
+<hr className="mb-2" />
+
+برای ساخت یک برنامه Todo با استفاده از فریم‌ورک
+<a href="/paas/nextjs/getting-started" className="text-[#2196f3] ">NextJS</a> و Drizzle ORM، در
+ابتدا، بایستی با اجرای دستور زیر، برنامه NextJS خود را ایجاد کنید:
+    
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className="bash">{`npx create-next-app@latest drizzle-todo-app`}</Highlight>
+</div>
+<div className="h-2" />
+
+<Asciinema id="create-drizzle-app" />
+
+<p>
+در ادامه، وارد دایرکتوری پروژه شوید و متناسب با دیتابیس انتخابی خود، مراحل ساخت برنامه را جلو ببرید.
+</p>
+
+<Tabs 
+    tabs={["PostgreSQL", "MySQL", "SQLite"]} 
+    content={[
+    <>
+        <p>
+        با اجرای دستورات زیر، وابستگی‌های
+        برنامه را نصب کنید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`npm update --save
+npm install drizzle-orm dotenv pg
+npm install -D drizzle-kit`}</Highlight>  
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در ادامه، برای به خطا نخوردن برنامه، قطعه کد زیر را به
+        <Important>compilerOptions</Important> در فایل
+        <Important>tsconfig.json</Important> اضافه کنید:
+        </p>
+
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`"target": "es2017",`}</Highlight>
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در مسیر اصلی پروژه، یک فایل به نام <Important >env.</Important>
+        ایجاد کنید و URI مربوط به دیتابیس خود را در آنجا در متغیر
+        <Important >DATABASE_URL</Important> قرار دهید، به عنوان مثال:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`DATABASE_URL=postgresql://root:XkYgSzHmMAf9chdgp2OXOtlb@bromo.liara.cloud:32308/test_db`}</Highlight>
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در دایرکتوری src یک فایل به نام <Important >db.ts</Important> ایجاد
+        کنید و قطعه کد زیر را در آن، قرار دهید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="ts">{`import { drizzle } from "drizzle-orm/node-postgres";
+import { Client } from "pg";
+import { config } from 'dotenv';
+
+config({ path: '.env' });
+
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  });
+
+
+await client.connect();
+export const db = drizzle(client);
+`}      
+        </Highlight>        
+        </div>
+        <div className="h-2" />
+        <p>
+        مجدداً در دایرکتوری src، یک فایل دیگر به نام
+        <Important>schema.ts</Important> قرار دهید و قطعه کد زیر را در آن،
+        وارد کنید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+<Highlight className="ts">{`import { boolean, integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+
+export const todoTable = pgTable('todo_table', {
+  id: serial('id').primaryKey(),
+  text: text('text').notNull(),
+  done: boolean('done').default(false),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export type TodoType = typeof todoTable.$inferSelect;
+`}</Highlight>        </div>
+        <div className="h-2" />
+        <p>
+            سپس، در مسیر اصلی پروژه، یک فایل به نام
+            <Important>drizzle.config.ts</Important> ایجاد کنید و قطعه کد زیر
+            را در آن، قرار دهید:
+        </p>
+        
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="ts">{`import { config } from 'dotenv';
+import { defineConfig } from 'drizzle-kit';
+
+config({ path: '.env' });
+
+export default defineConfig({
+  schema: './src/schema.ts',
+  out: './migrations',
+  dialect: 'postgresql',
+  dbCredentials: {
+    url: process.env.DATABASE_URL!,
+  },
+});`}</Highlight>
+        </div>
+        <div className="h-2" />
+        <p>در نظر داشته باشید که کار با Drizzle در سه مرحله می‌تواند خلاصه شود:</p>
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>
+                <p>تعریف Schema</p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+                <p>ایجاد فایل‌های migration از schema</p>
+            </>
+            )
+            },
+            {
+            step: "۳",
+            content: (
+            <>
+                <p>اجرای migrationها در دیتابیس</p>
+            </>
+            )
+            },
+        ]}/>
+
+        <div className="h-2" />
+        <p>
+        اکنون، می‌توانید با اجرای دو دستور زیر در ترمینال پروژه اصلی خود، مرحله
+        دوم و سوم را نیز انجام دهید:
+        </p>
+        
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`npx drizzle-kit generate
+npx drizzle-kit migrate`}</Highlight>
+        </div>
+        <div className="h-2" />
+         
+    </>,
+
+    <>
+        <p>
+        با اجرای دستورات زیر، وابستگی‌های
+        برنامه را نصب کنید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`npm update --save
+npm install drizzle-orm dotenv mysql2
+npm install -D drizzle-kit`}</Highlight>  
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در ادامه، برای به خطا نخوردن برنامه، قطعه کد زیر را به
+        <Important>compilerOptions</Important> در فایل
+        <Important>tsconfig.json</Important> اضافه کنید:
+        </p>
+
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`"target": "es2017",`}</Highlight>
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در مسیر اصلی پروژه، یک فایل به نام <Important >env.</Important>
+        ایجاد کنید و URI مربوط به دیتابیس خود را در آنجا در متغیر
+        <Important >DATABASE_URL</Important> قرار دهید، به عنوان مثال:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`DATABASE_URL=mysql://root:H8SEXjqVJruODzgbyW74baa1@bromo.liara.cloud:31384/priceless_sanderson
+DB_HOST=bromo.liara.cloud
+DB_PORT=31384
+DB_USER=root
+DB_NAME=priceless_sanderson
+DB_PASS=H8SEXjqVJruODzgbyW74baa1`}</Highlight>
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در دایرکتوری src یک فایل به نام <Important >db.ts</Important> ایجاد
+        کنید و قطعه کد زیر را در آن، قرار دهید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="ts">{`import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
+import { config } from 'dotenv';
+
+config({ path: '.env' });
+
+const poolConnection = mysql.createPool({
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT ?? "3306", 10),
+    user: process.env.DB_USER,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASS
+  });
+  
+export const db = drizzle(poolConnection);`}      
+        </Highlight>        
+        </div>
+        <div className="h-2" />
+        <p>
+        مجدداً در دایرکتوری src، یک فایل دیگر به نام
+        <Important>schema.ts</Important> قرار دهید و قطعه کد زیر را در آن،
+        وارد کنید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+<Highlight className="ts">{`import { boolean, int, mysqlTable, serial, text, timestamp } from 'drizzle-orm/mysql-core';
+
+export const todoTable = mysqlTable('todo_table', {
+  id: serial('id').primaryKey(),
+  text: text('text').notNull(),
+  done: boolean('done').default(false),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export type TodoType = typeof todoTable.$inferSelect;`}</Highlight>        </div>
+        <div className="h-2" />
+        <p>
+            سپس، در مسیر اصلی پروژه، یک فایل به نام
+            <Important>drizzle.config.ts</Important> ایجاد کنید و قطعه کد زیر
+            را در آن، قرار دهید:
+        </p>
+        
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="ts">{`import { config } from 'dotenv';
+import { defineConfig } from 'drizzle-kit';
+
+config({ path: '.env' });
+
+export default defineConfig({
+  schema: './src/schema.ts',
+  out: './migrations',
+  dialect: 'mysql',
+  dbCredentials: {
+    url: process.env.DATABASE_URL!,
+  },
+});`}</Highlight>
+        </div>
+        <div className="h-2" />
+        <p>در نظر داشته باشید که کار با Drizzle در سه مرحله می‌تواند خلاصه شود:</p>
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>
+                <p>تعریف Schema</p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+                <p>ایجاد فایل‌های migration از schema</p>
+            </>
+            )
+            },
+            {
+            step: "۳",
+            content: (
+            <>
+                <p>اجرای migrationها در دیتابیس</p>
+            </>
+            )
+            },
+        ]}/>
+
+        <div className="h-2" />
+        <p>
+        اکنون، می‌توانید با اجرای دو دستور زیر در ترمینال پروژه اصلی خود، مرحله
+        دوم و سوم را نیز انجام دهید:
+        </p>
+        
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`npx drizzle-kit generate
+npx drizzle-kit migrate`}</Highlight>
+        </div>
+        <div className="h-2" /> 
+    </>,
+    
+        <>
+        <p>
+        با اجرای دستورات زیر، وابستگی‌های
+        برنامه را نصب کنید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`npm update --save
+npm install drizzle-orm dotenv better-sqlite3
+npm install --save-dev @types/better-sqlite3
+npm install -D drizzle-kit`}</Highlight>  
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در ادامه، برای به خطا نخوردن برنامه، قطعه کد زیر را به
+        <Important>compilerOptions</Important> در فایل
+        <Important>tsconfig.json</Important> اضافه کنید:
+        </p>
+
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`"target": "es2017",`}</Highlight>
+        </div>
+        <div className="h-2" />
+
+        <p>
+        در دایرکتوری src یک فایل به نام <Important >db.ts</Important> ایجاد
+        کنید و قطعه کد زیر را در آن، قرار دهید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="ts">{`import { drizzle } from 'drizzle-orm/better-sqlite3';
+import Database from 'better-sqlite3'
+
+const sqlite = new Database('./src/database/sqlite.db');
+export const db = drizzle(sqlite);
+`}      
+        </Highlight>        
+        </div>
+        <div className="h-2" />
+        <p>
+        مجدداً در دایرکتوری src، یک دایرکتوری به نام <Important>database</Important> و یک فایل دیگر به نام
+        <Important>schema.ts</Important> قرار دهید و  درون این فایل، قطعه کد زیر را،
+        وارد کنید:
+        </p>
+        <div className="h-2" />
+        <div dir="ltr">
+<Highlight className="ts">{`import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { sql } from "drizzle-orm";
+
+export const todoTable = sqliteTable ('todo_table', {
+  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  text: text('text').notNull(),
+  done: integer('done', {mode: 'boolean'}).default(false),
+  createdAt: text('created_at').default(sql\`(CURRENT_TIMESTAMP)\`).notNull(),
+});
+
+export type TodoType = typeof todoTable.$inferSelect;`}</Highlight>        </div>
+        <div className="h-2" />
+        <p>
+            سپس، در مسیر اصلی پروژه، یک فایل به نام
+            <Important>drizzle.config.ts</Important> ایجاد کنید و قطعه کد زیر
+            را در آن، قرار دهید:
+        </p>
+        
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="ts">{`import { config } from 'dotenv';
+import { defineConfig } from 'drizzle-kit';
+
+config({ path: '.env' });
+
+export default defineConfig({
+  schema: './src/schema.ts',
+  out: './migrations',
+  dialect: 'sqlite',
+  dbCredentials: {
+    url: './src/database/sqlite.db',
+  },
+});`}</Highlight>
+        </div>
+        <div className="h-2" />
+        <p>در نظر داشته باشید که کار با Drizzle در سه مرحله می‌تواند خلاصه شود:</p>
+        <Step  steps={[
+            {
+            step: "۱",
+            content: (
+            <>
+                <p>تعریف Schema</p>
+            </>
+            )
+            },
+            {
+            step: "۲",
+            content: (
+            <>
+                <p>ایجاد فایل‌های migration از schema</p>
+            </>
+            )
+            },
+            {
+            step: "۳",
+            content: (
+            <>
+                <p>اجرای migrationها در دیتابیس</p>
+            </>
+            )
+            },
+        ]}/>
+
+        <div className="h-2" />
+        <p>
+        اکنون، می‌توانید با اجرای دو دستور زیر در ترمینال پروژه اصلی خود، مرحله
+        دوم و سوم را نیز انجام دهید:
+        </p>
+        
+        <div className="h-2" />
+        <div dir="ltr">
+        <Highlight className="bash">{`npx drizzle-kit generate
+npx drizzle-kit migrate`}</Highlight>
+        </div>
+        <div className="h-2" /> 
+    </>,
+    
+
+    ]}
+/>
+
+سپس، بایستی در مسیر <Important>src/pages/api</Important> یک فایل
+به نام <Important>todos.ts</Important> ایجاد کنید و قطعه کد زیر را،
+در آن، قرار دهید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className="ts">{`import type { NextApiRequest, NextApiResponse } from 'next';
+import { db } from '@/db';
+import { todoTable, TodoType } from '@/schema';
+import { eq } from 'drizzle-orm';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { method } = req;
+
+  switch (method) {
+    case 'POST':
+      const { text } = req.body;
+      await db.insert(todoTable).values({ text });
+      res.status(201).end();
+      break;
+
+    case 'GET':
+      const todos: TodoType[] = await db.select().from(todoTable);
+      res.status(200).json(todos);
+      break;
+
+    case 'PUT':
+      const { id, text: newText, done } = req.body;
+      await db.update(todoTable).set({ text: newText, done: done ? true : false }).where(eq(todoTable.id, id));
+      res.status(200).end();
+      break;
+
+    case 'DELETE':
+      const { id: deleteId } = req.body;
+      await db.delete(todoTable).where(eq(todoTable.id, deleteId));
+      res.status(200).end();
+      break;
+
+    default:
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+      res.status(405).end(\`Method \${method} Not Allowed\`);
+  }
+}
+`}</Highlight>
+</div>
+<div className="h-2" />
+
+اکنون می‌توانید componentهای مربوط به front-end را نیز ایجاد کنید. برای
+این‌کار می‌توانید در دایرکتوری src، یک دایرکتوری به نام
+<Important >components</Important> ایجاد کنید و درون این دایرکتوری،
+یک فایل به نام <Important >AddTodo.tsx</Important> ایجاد کنید و قطعه
+کد زیر را، در آن، قرار دهید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className="ts">{`import { useState, FormEvent } from 'react';
+
+interface AddTodoProps {
+  onAdd: () => void;
+}
+
+const AddTodo = ({ onAdd }: AddTodoProps) => {
+  const [text, setText] = useState<string>('');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!text.trim()) return;
+
+    const res = await fetch('/api/todos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text }),
+    });
+
+    if (res.ok) {
+      onAdd();
+      setText('');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input 
+        type="text" 
+        value={text} 
+        onChange={(e) => setText(e.target.value)} 
+        placeholder="Add a new task" 
+      />
+      <button type="submit">Add</button>
+    </form>
+  );
+};
+
+export default AddTodo;`}</Highlight>
+</div>
+<div className="h-2" />
+
+<p>
+    همچنین، در همین مسیر، بایستی یک فایل به نام
+    <Important>Todo.tsx</Important> ایجاد کرده و قطعه کد زیر را، در آن،
+    قرار دهید:
+</p>
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className="bash">{`import { useState } from 'react';
+import { TodoType } from '@/schema';
+
+interface TodoProps {
+  todo: TodoType;
+  onUpdate: () => void;
+  onDelete: () => void;
+}
+
+const Todo = ({ todo, onUpdate, onDelete }: TodoProps) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [text, setText] = useState(todo.text);
+
+  const handleEdit = async () => {
+    await fetch('/api/todos', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: todo.id, text, done: todo.done }),
+    });
+    setIsEditing(false);
+    onUpdate();
+  };
+
+  const handleToggle = async () => {
+    await fetch('/api/todos', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: todo.id, text: todo.text, done: !todo.done }),
+    });
+    onUpdate();
+  };
+
+  const handleDelete = async () => {
+    await fetch('/api/todos', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: todo.id }),
+    });
+    onDelete();
+  };
+
+  return (
+    <div className="todo-item">
+      {isEditing ? (
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+      ) : (
+        <span className={\`todo-text \${todo.done ? 'done' : ''}\`}>
+          {todo.text}
+        </span>
+      )}
+      <div className="todo-actions">
+        {isEditing ? (
+          <button onClick={handleEdit}>Save</button>
+        ) : (
+          <>
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+            <button onClick={handleToggle}>
+              {todo.done ? 'Undone' : 'Done'}
+            </button>
+            <button onClick={handleDelete}>Delete</button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Todo;
+`}</Highlight>
+</div>
+<div className="h-2" />
+
+<p>
+    در نهایت، بایستی یک component دیگر به نام
+    <Important>Todos.tsx</Important> ایجاد کنید و قطعه کد زیر را، در آن
+    قرار دهید:
+</p>
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className="ts">{`// src/components/Todos.tsx
+import { useState, useEffect } from 'react';
+import Todo from './Todo';
+import AddTodo from './AddTodo';
+import { TodoType } from '@/schema';
+
+const Todos = () => {
+  const [todos, setTodos] = useState<TodoType[]>([]);
+
+  const fetchTodos = async () => {
+    const res = await fetch('/api/todos');
+    const data: TodoType[] = await res.json();
+    setTodos(data);
+  };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  const activeTodos = todos.filter(todo => !todo.done);
+  const doneTodos = todos.filter(todo => todo.done);
+
+  return (
+    <div>
+      <AddTodo onAdd={fetchTodos} />
+      <h2>Active Todos</h2>
+      <div>
+        {activeTodos.map((todo) => (
+          <Todo key={todo.id} todo={todo} onUpdate={fetchTodos} onDelete={fetchTodos} />
+        ))}
+      </div>
+      <h2>Done Todos</h2>
+      <div>
+        {doneTodos.map((todo) => (
+          <Todo key={todo.id} todo={todo} onUpdate={fetchTodos} onDelete={fetchTodos} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Todos;
+`}</Highlight>
+</div>
+<div className="h-2" />
+
+<p>
+    در انتها، بایستی در فایل <span className="code">src/pages/index.tsx</span>
+    قطعه کد زیر را، قرار دهید:
+</p>
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className="tsx">{`import Todos from '@/components/Todos';
+
+export default function Home() {
+  return (
+    <div>
+      <h1>Todo List</h1>
+      <Todos />
+    </div>
+  );
+}
+`}</Highlight>
+</div>
+<div className="h-2" />
+
+<p>
+    تمامی کارها انجام شده است و می‌توانید برنامه خود را با دستور زیر، اجرا
+    کرده و از آن، استفاده کنید:
+</p>
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className="bash">{`npm run dev`}</Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="success">
+    <p>
+      یک نمونه کامل از پروژه‌ فوق که آماده مستقر شدن در لیارا است را می‌توانید در <Link className="text-[#2196f3] " href="https://github.com/liara-cloud/drizzle-getting-started">اینجا</Link> مشاهده کنید.
+    </p>
+</Alert>
+</Layout>

@@ -1,0 +1,135 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ SQLite در Go - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس SQLite در پلتفرم Go در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس SQLite در برنامه‌های Go
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس SQLite در برنامه‌های Go،
+تنها کافیست تا 
+طبق مستندات <a href="/paas/disks/create" className="text-[#2196f3] ">ساخت دیسک</a>، یک دیسک برای ذخیره دیتابیس خود بسازید؛ در ادامه، می‌توانید طبق مستندات <a href="/paas/disks/route" className="text-[#2196f3] ">تعریف مسیر برای دیسک</a>، دیسک‌ خود را به دایرکتوری دیتابیس، مشابه قطعه کد زیر در فایل <Important>liara.josn</Important> یا در استقرار با کنسول، متصل کنید: 
+
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+        {`{
+    "disks": [
+        {
+            "name": "database",
+            "mountTo": "database"
+        }
+    ]
+}`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+همچنین، طبق مستندات مربوط به <a href="/paas/go/how-tos/use-cgo" className="text-[#2196f3]">قابلیت Cgo</a>، این قابلیت را بایستی با قرار دادن قطعه کد زیر در فایل <Important>liara.json</Important> یا اعمال در کنسول در حین استقرار، در پروژه خود، فعال کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+        {`{
+  "go" : {
+    "cgoEnabled": "true",
+   }
+}`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی با اجرای دستور زیر، ماژول مربوط به اتصال به دیتابیس را نصب کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`go get github.com/mattn/go-sqlite3`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید مشابه قطعه کد زیر، به دیتابیس‌تان متصل شده و از آن، استفاده کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="go">
+        {`package main
+
+import (
+	"database/sql"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+
+	_ "github.com/mattn/go-sqlite3"
+)
+
+var db *sql.DB
+
+func main() {
+
+	// Ensure the database directory exists
+	if err := os.MkdirAll("./database", os.ModePerm); err != nil {
+		log.Fatalf("Failed to create database directory: %v", err)
+	}
+
+	// Open the database connection with SQLite URI
+	var err error
+	db, err = sql.Open("sqlite3", "sqlite3:./database/mydb.db")
+	if err != nil {
+		log.Fatalf("Failed to open database connection: %v", err)
+	}
+
+	// Set connection pool parameters (SQLite generally uses a single connection, but we can still configure)
+	db.SetMaxOpenConns(1)     // SQLite is usually a single-threaded database
+	db.SetMaxIdleConns(1)     // Only one idle connection
+	db.SetConnMaxIdleTime(0)  // No timeout for idle connections
+
+	// Verify connection
+	if err := db.Ping(); err != nil {
+		log.Fatalf("Failed to ping database: %v", err)
+	}
+	log.Println("Connected to database successfully!")
+
+	// Set up HTTP server
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if err := db.Ping(); err != nil {
+			fmt.Fprintf(w, "Database connection failed: %v", err)
+		} else {
+			fmt.Fprintln(w, "Database connection successful!")
+		}
+	})
+
+	log.Println("Server is running on http://localhost:8080")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatalf("HTTP server failed: %v", err)
+	}
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+
+</Layout>

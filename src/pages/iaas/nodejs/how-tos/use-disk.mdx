@@ -1,0 +1,46 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از دیسک‌ها در NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استفاده از دیسک‌ها در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استفاده از دیسک در برنامه‌های NodeJS
+<hr className="mb-2" />
+<video
+    src="https://files.liara.ir/liara/nodejs/nodejs-disks.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+></video>
+<br />
+
+<Alert variant="info">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/nodejs-getting-started/tree/diskSetup" className="text-[#2196f3] ">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+برای استفاده از <a href="/paas/disks/about" className="text-[#2196f3] ">دیسک‌ها</a> در برنامه‌های NodeJS، در ابتدا باید طبق مستندات <a href="/paas/disks/create" className="text-[#2196f3] ">ساخت دیسک</a>، دیسک‌های مدنظر خود را بسازید؛ در ادامه، می‌توانید طبق مستندات <a href="/paas/disks/route" className="text-[#2196f3] ">تعریف مسیر برای دیسک</a>، دیسک‌های خود را به دایرکتوری‌های مدنظرتان، متصل کنید.
+
+بهتر است که مسیر دایرکتوری مدنظر خود را در برنامه‌های NodeJS، به صورت <b>نسبی</b> (با در نظر گرفتن مسیر اصلی پروژه به عنوان ریشه) مشخص کنید.
+
+<Alert variant='success'>همچنین بخوانید: <a href="/paas/details/file-system" className="text-[#2196f3] ">فایل سیستم لیارا</a></Alert>
+<Alert variant='success'>همچنین بخوانید: <a href="/paas/disks/about" className="text-[#2196f3] ">نحوه مدیریت دیسک‌ها</a></Alert>
+
+
+</Layout>

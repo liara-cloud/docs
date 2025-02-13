@@ -1,0 +1,46 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای 419 Page Expired در Laravel - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه رفع خطای 419 Page Expired در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای 419Page Expired در برنامه‌های Laravel
+<hr className="mb-2" />
+ممکن است در برنامه خود با خطای زیر مواجه شوید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`419 Sorry, your session has expired. Please refresh and try again.`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+این خطا،  زمانی پیش می‌آید که اعتبار سنجی CSRF در برنامه شما، موفق نباشد و یا به خطا بخورد. معمولاً یکی از دلایل اصلی این خطا، در sessionها است. اگر session به درستی ایجاد نشود و یا منقضی شود؛ این خطا، نمایش داده می‌شود.
+
+برای رفع این مشکل، یکی از راه حل‌ها این است که طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a> ،متغیر <Important>SESSION_DRIVER</Important> را با مقدار زیر، به برنامه خود اضافه کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+      {`SESSION_DRIVER=cookie`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

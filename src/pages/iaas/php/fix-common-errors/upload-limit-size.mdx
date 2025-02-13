@@ -1,0 +1,51 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای محدودیت آپلود فایل در PHP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطای محدودیت آپلود فایل در پلتفرم PHP در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای محدودیت آپلود فایل با حجم بیش از 100MB
+<hr className="mb-2" />
+وب‌سرور Apache ابتدا فایل‌های آپلودی را در دایرکتوری <Important>tmp/</Important> ذخیره می‌کند و سپس PHP آن فایل را به دایرکتوری ذخیره فایل مربوطه، منتقل می‌کند. 
+علی‌رغم <a className="text-[#2196f3] " href="/paas/details/file-system">فایل سیستم پیش‌فرض برنامه‌های PHP در لیارا</a>، که ReadOnly است؛ دایرکتوری <Important>tmp/</Important> قابل نوشتن است، اما محدودی 100 مگابایتی دارد.
+در نتیجه شما نمی‌توانید فایل‌هایی با حجم بیش از 100MB را در پروژه خود، آپلود کنید و با خطا، مواجه خواهید شد. برای رفع این مشکل و افزایش حجم داده‌های آپلودی، کافیست تا طبق مراحل زیر، عمل کنید:
+
+<Step  steps={[
+    {
+    step: "۱",
+    content: (
+    <>
+            <h3>ایجاد دیسک</h3>
+            <p>طبق مستندات <a href="/paas/disks/create" className="text-[#2196f3] ">ساخت دیسک</a>، یک دیسک با نام و اندازه دلخواه ایجاد کنید.</p>
+    </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+    <>
+            <h3>تعریف مسیر برای دیسک</h3>
+            <p>طبق مستندات <a href="/paas/disks/route" className="text-[#2196f3] ">تعریف مسیر دیسک</a>، دیسک ایجاد شده را به مسیر <Important>tmp/</Important> متصل کنید.</p>
+    </>
+    )
+    },]}/>
+<div className="h-4" />
+با انجام کارهای فوق، فضای پوشه <Important>tmp/</Important> افزایش خواهد یافت. 
+
+
+</Layout>

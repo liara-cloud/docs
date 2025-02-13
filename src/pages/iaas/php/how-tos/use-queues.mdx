@@ -1,0 +1,70 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کار با Queueها در PHP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه کار با صف‌ها یا Queueها در پلتفرم PHP در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# کار با Queueها در PHP 
+<hr className="mb-2" />
+
+Queue یا صف، یکی از قابلیت‌های PHP است که به شما 
+اجازه می‌دهد تا وظایف سنگین یا زمان‌بر را به جای اجرای همزمان با درخواست‌های کاربر،
+در پس‌زمینه، انجام دهید. این قابلیت می‌تواند در بهبود عملکرد و کاهش زمان پاسخ‌دهی، نقش شایانی داشته باشد.
+شما می‌توانید با استفاده از ابزارهای مدیریت فرایند، از قابلیت صف‌ها استفاده کنید. یکی از این ابزارها، <a href="https://laravel.com/docs/11.x/queues#supervisor-configuration" className="text-[#2196f3] ">Supervisor</a> است که لیارا از آن پشتیبانی می‌کند.
+
+برای ‌به‌کار‌گیری صف‌ها با استفاده از Supervisor، کافیست تا در مسیر اصلی پروژه، یک فایل به نام <Important>supervisor.conf</Important> ایجاد کنید. اکنون شما می‌توانید تنظیمات صف‌های مختلف را در این فایل قرار بدهید. قطعه کد زیر، یک نمونه config ساده برای تعریف یک صف است که:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="config">
+        {`[program:php-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=cd $ROOT && php queues.php
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+numprocs=1
+user=www-data
+redirect_stderr=true
+stdout_logfile=/tmp/php-worker.log`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از تنظیم فایل <Important>supervisor.conf</Important> کافیست تا برنامه خود را مجدداً در لیارا، مستقر کنید. با این کار، صف‌های تعریف شده، شروع به کار می‌کنند.
+
+
+<Section id="check-queue-status" title="مشاهده وضعیت صف‌ها در برنامه" />
+برای مشاهده وضعیت صف‌های تعریف شده در supervisor، کافیست تا در <a href="/paas/details/console-shell" className='text-[#2196f3] '>خط فرمان برنامه</a> دستور زیر را وارد کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`supervisorctl status`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant='success'>
+<p>
+  Supervisor سعی می‌کند تا صف‌های شما را همیشه در حال اجرا نگه دارد. اگر به هر دلیلی، صف‌های تعریف شده، به خطا بخورند و خاموش شوند، Supervisor آن‌ها را دوباره ایجاد و فعال می‌کند. پس نیازی نیست که اقدام خاصی را انجام بدهید.
+</p>
+</Alert>
+
+
+</Layout>

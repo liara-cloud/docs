@@ -1,0 +1,226 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoHome,
+  GoDatabase,
+  GoContainer,
+  GoRocket,
+  GoMail,
+  GoServer,
+  GoTerminal,
+  GoGlobe,
+  GoCode,
+  GoBrowser,
+  GoArrowRight,
+  GoInfo,
+  GoNote,
+  GoCodespaces,
+  GoWorkflow,
+  GoPackageDependents,
+  GoSync,
+  GoPerson,
+  GoTelescope,
+  GoFlame,
+  GoLock,
+  GoPackageDependencies,
+  GoProjectTemplate,
+  GoZap,
+  GoFileSymlinkFile,
+  GoPackage ,
+  GoBug,
+  GoPaperclip,
+  GoMegaphone,
+  GoCpu,
+  GoShieldLock,
+  GoNumber,
+  GoFileBinary,
+  GoEye,
+  GoGraph,
+  GoKey,
+  GoLog,
+  GoEyeClosed,
+  GoPulse,
+  GoGitPullRequest,
+  GoPlug,
+  GoLocation,
+  GoGitCompare,
+  GoXCircle,
+  GoPaperAirplane,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ویژگی‌های پلتفرم  - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به ویژگی‌های پلتفرم و آشنایی با جزئیات آن "  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# ویژگی‌های یک پلتفرم در لیارا
+<hr className="mb-2" />
+لیارا همواره سعی داشته است که با 
+ارائه یک رابط کاربری آسان و همه‌منظوره، نیازهای کاربران خود را تا حد زیادی در خود <a href="https://console.liara.ir" className="text-[#2196f3] ">صفحه کنسول</a>، شناسایی و بر طرف کند. اما گاهاً ممکن است که در برخی از موارد، دچار ابهام شوید و به دنبال پاسخی
+برای سوالات خود، باشید.
+از این رو، در ادامه، تمامی جزئیات مربوط به پلتفرم برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
+
+<div className="h-6" />
+<video
+src="https://files.liara.ir/liara/docs/platform.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<div className="h-6" />
+
+    <div className="grid md:grid-cols-3 gap-4">
+    {[
+  {
+      title: "پلن‌های برنامه",
+      icon: <GoCpu />,
+      desc: " آشنایی با بسته امکانات و پلن‌های سخت‌افزاری یک پلتفرم",
+      link: "./plans/about",
+    },
+    {
+      title: "شبکه خصوصی",
+      icon: <GoShieldLock  />,
+      desc: "امکان ارتباط امن و سریع بین برنامه‌ها و دیتابیس‌های مرتبط بدون محدودیت",
+      link: "./private-network",
+    },
+    {
+      title: "آی‌پی ثابت",
+      icon: <GoNumber  />,
+      desc: "امکان استفاده از آی‌پی ثابت اشتراکی در برنامه‌ها در لیارا برای ارسال درخواست به بانک‌ها و یا سرویس‌های مشابه",
+      link: "./static-ip",
+    },
+    {
+      title: "فایل‌سیستم",
+      icon: <GoFileBinary />,
+      desc: "فایل‌سیستم فقط خواندنی برای افزایش امنیت برنامه‌ها و قابل تغییر به writable برای اعمال تغییرات موقتی",
+      link: "./file-system",
+    },
+    {
+      title: "رویدادها",
+      icon: <GoEye />,
+      desc: "مشاهده وضعیت نهایی استقرار برنامه‌ها برای بررسی تغییرات بر اساس زمان آخرین تغییرات",
+      link: "./events",
+    },
+    {
+      title: "گزارشات",
+      icon: <GoGraph />,
+      desc: "امکان بررسی و عیب‌یابی برنامه‌ها از طریق گزارشات نرم‌افزاری و سخت‌افزاری",
+      link: "./observations/about",
+    },
+    {
+      title: "متغیرهای محیطی",
+      icon: <GoKey  />,
+      desc: "امکان اضافه کردن متغیرهای شامل اطلاعات مهم و امنیتی به برنامه مانند اطلاعات مربوط به دیتابیس",
+      link: "./envs",
+    },
+    {
+      title: "رجیستری خصوصی و تاریخچه",
+      icon: <GoLog />,
+      desc: "آشنایی با نحوه ذخیره‌سازی کدهای برنامه، مدیریت برنامه و مشاهده استقرارهای قبلی، لاگ‌ها و ورژن‌ها",
+      link: "./private-registry",
+    },
+    {
+      title: "خط فرمان کنسول",
+      icon: <GoBrowser />,
+      desc: "امکان اتصال به سرور و اجرای دستورات موردنیاز زمانی که برنامه در حالت اجرا قرار دارد",
+      link: "./console-shell",
+    },
+    {
+      title: "نادیده گرفتن فایل‌ها",
+      icon: <GoEyeClosed />,
+      desc: "امکان نادیده گرفتن فایل‌های اضافی پروژه و عدم آپلود آن‌ها در حین عملیات استقرار",
+      link: "./ignoring-files",
+    },
+    {
+      title: "استقرار بدون اختلال",
+      icon: <GoGitPullRequest  />,
+      desc: "امکان در دسترس بودن برنامه برای همیشه بدون ذره‌ای قطعی یا اختلال در برنامه",
+      link: "./zero-downtime-deployment",
+    },
+    {
+      title: "بررسی سلامت",
+      icon: <GoPulse />,
+      desc: "امکان بهره‌برداری از قابلیت استقرار بدون اختلال، با استفاده از قابلیت بررسی سلامت",
+      link: "./health-check",
+    },
+    {
+      title: "تنظیم DNS Server",
+      icon: <GoPlug  />,
+      desc: "امکان تنظیم DNS بر روی کل سرور برنامه برای شکستن تحریم‌ها ",
+      link: "./dns-server-settings",
+    },
+    {
+      title: "تنظیم موقعیت build",
+      icon: <GoLocation />,
+      desc: "امکان تغییر موقعیت build برنامه‌ها برای نصب سریع‌تر وابستگی‌های برنامه یا وابستگی‌های شامل تحریم",
+      link: "./build-location",
+    },
+    {
+      title: "تغییر پلن در برنامه",
+      icon: <GoGitCompare />,
+      desc: "امکان تغییر پلن‌های یک برنامه در هر زمانی، با توجه به نیازهای یک برنامه",
+      link: "./change-plan",
+    },
+    {
+      title: "حذف یک برنامه",
+      icon: <GoXCircle  />,
+      desc: "امکان حذف یک برنامه در لیارا، پس از اتمام روزهای طلایی استفاده از آن",
+      link: "./delete-app",
+    },
+    {
+      title: "پروکسی معکوس (reverse proxy)",
+      icon: <GoPaperAirplane  />,
+      desc:
+       "ارسال درخواست‌ها از سمت کاربران به سرور توسط پروکسی معکوس برای افزایش امنیت و امور دیگر",
+      link: "./reverse-proxy",
+    },
+    {
+      title: "قابلیت Basic Auth",
+      icon: <GoLock />,
+      desc:
+       "امکان فعال‌سازی قابلیت Basic Authentication در وب‌سرورهای Apache و Nginx در برنامه‌های لیارا",
+      link: "./basic-auth",
+    },
+].map(item =>
+        <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
+        <div>
+            <div className="flex items-center justify-between gap-3">
+            <h4>
+                {item.title}
+            </h4>
+            <div className="bg-[#222] text-white p-1 rounded-md">
+                {item.icon}
+            </div>
+            </div>
+            <p align='justify' className="text-[gray] leading-6 text-[14px] mt-3">
+            {item.desc}
+            </p>
+        </div>
+        <Link href={item.link}>
+        <Button variant="link" href={item.link}>بیشتر بدانید</Button>
+        </Link>
+        </Card>
+    )}
+    </div>
+
+
+
+
+
+
+</Layout>

@@ -1,0 +1,94 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم Cron Job در NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم Cron Job در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تنظیم Cron Job
+<hr className="mb-2" />
+
+Cron job یک وظیفه زمان‌بندی شده در سیستم‌عامل‌های Unix و Linux است که به کاربران اجازه می‌دهد تا اسکریپت‌ها یا دستورات را در فواصل زمانی منظم اجرا کنند. این ابزار به خصوص برای انجام وظایف دوره‌ای مثل پشتیبان‌گیری، ارسال ایمیل، اجرای اسکریپت‌های نگهداری سیستم، یا به‌روزرسانی اطلاعات مفید است.
+<div className="h-4" />
+
+برای تنظیم یک Cron Job در NodeJS، می‌توانید از کتابخانه‌های مختلفی استفاده کنید. یکی از محبوب‌ترین کتابخانه‌های این کار، <Important>node-cron</Important> است. 
+در ادامه، به نحوه استفاده از این کتابخانه، پرداخته شده است. در ابتدا، با اجرای دستور زیر، این کتابخانه را بر روی پروژه خود، نصب کنید: 
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`npm install node-cron`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+اکنون می‌توانید cron jobهای مختلف خود را در برنامه، تنظیم کنید؛ به عنوان مثال: 
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`const cron = require('node-cron');
+
+// create a cron to run every minute
+cron.schedule('* * * * *', () => {
+  console.log('Test Message');
+});
+
+// other codes ...
+`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+<Section id="cron-format" title="فرمت زمان‌بندی Cron Job" />
+در نظر داشته باشید که فرمت زمان‌بندی Cron به صورت زیر است:
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="scss">
+{`* * * * *
+│ │ │ │ │
+│ │ │ │ └── روزهای هفته (۰-۷) (۰ و ۷ هر دو نشان‌دهنده یکشنبه هستند)
+│ │ │ └──── ماه‌ها (۱-۱۲)
+│ │ └────── روزهای ماه (۱-۳۱)
+│ └──────── ساعت‌ها (۰-۲۳)
+└────────── دقیقه‌ها (۰-۵۹)
+`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+به عنوان مثال، قطعه کد زیر، برای تنظیم Cron در هر دوشنبه، ساعت 7 صبح است:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="js">
+{`cron.schedule('0 7 * * 1', () => {
+  console.log('have a good day!');
+});
+`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+<Alert variant="success">
+<p>
+    با کمک <a href="https://crontab.guru/" className="text-[#2196f3] ">این</a> وب‌سایت، می‌توانید زمان دلخواه خود را، بسازید.
+</p>
+</Alert>
+
+
+
+</Layout>

@@ -1,0 +1,56 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Laravel Octane - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به استقرار Laravel Octant در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌ها با Laravel Octane در لیارا
+<hr className="mb-2" />
+<a className="text-[#2196f3] " href="https://github.com/laravel/octane">Larave Octane</a>  ابزاری برای افزایش کارایی اپلیکیشن‌های لاراول است که با استفاده از سرورهای Swoole یا RoadRunner سرعت اجرا و پاسخگویی برنامه‌ها را بهبود می‌بخشد.
+
+
+<div className='h-2' />
+برای استفاده از این ابزار قدرتمند، در ابتدا کافیست تا در Local، با اجرای دستور زیر، آن را در پروژه خود، قرار دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`composer require laravel/octane`}
+    </Highlight>
+</div>
+<div className="h-2" />
+در ادامه، بایستی با اجرای دستور زیر، Octane را نصب کرده و پیکربندی‌های اولیه را انجام دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`php artisan octane:install`}
+    </Highlight>
+</div>
+<div className="h-2" />
+در این مرحله، از شما پرسیده می‌شود که از کدام سرور قصد دارید استفاده کنید و شما باید سرور <Important>Swoole</Important> را انتخاب کنید.
+در نهایت، کافیست تا در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+  "args": [ "php artisan octane:start --server=swoole --host=0.0.0.0 --port=80" ]
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+تمامی تنظیمات مربوط به Octane انجام شده است و کافیست تا برنامه‌تان را در لیارا، مستقر کنید.
+</Layout>

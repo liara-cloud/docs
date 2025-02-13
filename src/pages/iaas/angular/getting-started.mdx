@@ -1,0 +1,78 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شروع به کار با Angular - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به شروع به کار با پلتفرم Angular در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شروع به کار با پلتفرم Angular
+<hr className="mb-2" />
+
+<a href="https://angular.dev/" className="text-[#2196f3] ">Angular</a>  یک فریمورک متن‌باز و قدرتمند برای توسعه برنامه‌های وب تک‌صفحه‌ای (Single Page Applications یا SPA) است که توسط تیم Angular در گوگل توسعه یافته است. این فریمورک از TypeScript به عنوان زبان برنامه‌نویسی اصلی استفاده می‌کند.
+<div className="h-2" />
+Angular به توسعه‌دهندگان این امکان را می‌دهد که برنامه‌های وب با کارایی بالا و تجربه کاربری یکپارچه ایجاد کنند.
+شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
+<br />
+
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    {
+      text: 'استقرار سریع یک برنامه Angular در لیارا',
+      link: './quick-start',
+    },
+    {
+      text: 'استقرار قدم به قدم برنامه‌های Angular در لیارا',
+      link: './how-tos/create-app',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+<Alert variant="success">
+همچنین بخوانید:
+<Link href='./related-links' className="text-[#2196f3] ">
+ لینک‌های مرتبط با پلتفرم Angular
+</Link>
+</Alert>
+<br />
+
+
+</Layout>

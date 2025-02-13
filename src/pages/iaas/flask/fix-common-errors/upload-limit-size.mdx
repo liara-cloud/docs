@@ -1,0 +1,54 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای محدودیت آپلود فایل در Flask - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطای محدودیت آپلود فایل در پلتفرم Flask در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای محدودیت آپلود فایل با حجم بیش از 1MB
+<hr className="mb-2" />
+از آنجایی که در لیارا، برای اجرای برنامه‌های Flask، از <a href="../../how-tos/customize-nginx" className="text-[#2196f3] ">وب‌سرور Nginx</a> استفاده می‌شود.
+در این وب‌سرور، به‌صورت پیش‌فرض حداکثر حجم مجاز آپلود فایل <Important>1MB</Important> در نظر گرفته شده‌است. شما می‌توانید یک فایل با نام <Important>liara_nginx.conf</Important> در مسیر اصلی پروژه ایجاد کنید و محتویات زیر را داخل آن قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="python">
+      {`client_max_body_size 250M;
+
+location /public {
+  alias /usr/src/app/public;
+}
+
+location / {
+  try_files /dev/null @flask_app;
+}
+
+location ~\\.sqlite3$ {
+  deny all;
+  error_page 403 =404 /;
+}
+
+location ~ /\\.well-known {
+  allow all;
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+با قرار دادن فایل بالا در ریشه‌ی برنامه‌ی‌تان حداکثر حجم مجاز آپلود فایل به 250MB افزایش می‌یابد. شما می‌توانید مقدار دلخواه خودتان را تنظیم کنید. در انتها، کافیست تا برنامه را مجدداً در لیارا مستقر کنید تا تغییرات، اعمال شوند.
+
+
+</Layout>

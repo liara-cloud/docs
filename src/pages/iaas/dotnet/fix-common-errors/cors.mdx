@@ -1,0 +1,55 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رفع خطای CORS در NET. - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رفع خطای CORS در پلتفرم دات‌نت در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رفع خطای CORS در برنامه‌های NET.
+<hr className="mb-2" />
+خطای CORS (Cross-Origin Resource Sharing) یک محدودیت امنیتی در مرورگرها است که جلوی درخواست‌های HTTP از منابع مختلف را می‌گیرد. 
+این خطا ممکن است زمانی رخ دهد که سعی کنید از یک دامنه یا پورت متفاوت به سروری دیگر درخواست ارسال کنید، و معمولاً با پیام خطایی شبیه به <b>Access-Control-Allow-Origin</b> در مرورگر مواجه خواهید شد. در ادامه، به رفع این خطا، پرداخته شده است:
+<div className="h-2" />
+
+در برنامه‌های NET. به‌روش‌های مختلفی می‌توانید CORS را فعال‌سازی کنید اما درصورتی که با خطای CORS مواجه شده‌اید بایستی Origins و یا Methods تنظیم شده را مجدد مورد بررسی قرار دهید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="dotnet">
+      {`builder.Services.AddCors(options =>
+{
+  options.AddPolicy(name: "MyPolicy",
+    builder =>
+    {
+      builder.WithOrigins("https://example.com",
+                          "https://subdomain.example.com")
+              .WithMethods("PUT", "DELETE", "GET");
+    });
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="success">
+<p>
+برای اطلاعات بیشتر می‌توانید به <a href="https://stackoverflow.com/a/37349873/6390238" className="text-[#2196f3] ">مستندات رسمی</a> مراجعه کنید.
+</p>
+</Alert>
+
+</Layout>

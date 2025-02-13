@@ -1,0 +1,109 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شروع به کار با Go - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات شروع به کار با پلتفرم Go در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# شروع به کار با پلتفرم Go
+<hr className="mb-2" />
+
+<a href="https://go.dev/" className="text-[#2196f3] ">Go یا Golang</a> یک زبان برنامه‌نویسی متن‌باز است که توسط گوگل در سال 2009 معرفی شد. این زبان با هدف ارائه‌ی عملکرد بالا، سادگی و مدیریت مؤثر منابع طراحی شده است. Go برای برنامه‌نویسی سمت سرور، سیستم‌های توزیع‌شده و اپلیکیشن‌های مبتنی بر شبکه بسیار مناسب است. ویژگی‌هایی نظیر همزمانی پیشرفته با استفاده از Goroutines و کانال‌ها، مدیریت حافظه خودکار و سرعت بالا، آن را برای پروژه‌های با مقیاس بزرگ جذاب کرده است. پشتیبانی قوی از ابزارها و استانداردهای ساده نیز از مزایای اصلی آن هستند. Go در پروژه‌هایی مانند Docker , Kubernetes و سرویس‌های ابری گوگل استفاده می‌شود. به دلیل رشد فرصت‌های شغلی، یادگیری این زبان برای توسعه‌دهندگان ارزشمند است.
+
+
+
+
+
+
+
+ شما می‌توانید در سریع‌ترین زمان ممکن و به سادگی چند کلیک یا اجرای چند دستور ساده، برنامه خود را در لیارا مستقر کنید. در ادامه بخوانید:
+
+<br />
+
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    {
+      text: 'استقرار سریع یک برنامه Go در لیارا',
+      link: './quick-start',
+    },
+    {
+      text: 'استقرار قدم به قدم برنامه‌های Go در لیارا',
+      link: './how-tos/create-app',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br />
+
+لیارا به‌طور کامل از Go و تمامی ابزارهای مرتبط با آن، پشتیبانی می‌کند و شما می‌توانید با خیال راحت از قدرت و انعطاف‌پذیری این ابزارها برای توسعه پروژه‌های خود استفاده کنید؛
+در ادامه، مستندات مربوط به ابزارهای Go برای شما قرار گرفته است:
+<br />
+
+<div className="grid md:grid-cols-4 gap-4">
+            {[
+    { alt: 'https://files.liara.ir/liara/go/go-gin.ico', platform: 'Gin', link: "/paas/go/related-apps/gin/" },
+    { alt: 'https://files.liara.ir/liara/go/beego.ico', platform: 'BeeGo', link: "/paas/go/related-apps/beego/" },
+    { alt: 'https://files.liara.ir/liara/go/echo-icon.png', platform: 'Echo', link: "/paas/go/related-apps/echo/" },
+    { alt: 'https://files.liara.ir/liara/go/fiber-icon.ico', platform: 'Fiber', link: "/paas/go/related-apps/fiber/" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<br />
+
+<Alert variant="success">
+همچنین بخوانید:
+<Link href='./related-links' className="text-[#2196f3] ">
+ لینک‌های مرتبط با پلتفرم Go
+</Link>
+</Alert>
+
+</Layout>

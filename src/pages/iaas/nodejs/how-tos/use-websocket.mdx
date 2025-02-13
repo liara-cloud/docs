@@ -1,0 +1,225 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات وب سوکت در NodeJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی WebSocket در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# راه‌اندازی برنامه Websocket
+<hr className="mb-2" />
+
+وب‌سوکت (WebSocket) یک فناوری ارتباطی در وب است که به سرور و مرورگر اجازه می‌دهد از طریق یک اتصال دوطرفه دائمی، داده‌ها را به صورت تعاملی ارسال و دریافت کنند. در واقع مرورگر می‌تواند داده‌ها را بفرستد و دریافت کند بدون اینکه نیازی به بارگیری دوباره صفحه وب (refresh) باشد. این ویژگی به برنامه‌های تعاملی مانند چت‌های زنده و بازی‌های آنلاین کمک می‌کند.
+در ادامه، به نحوه ایجاد برنامه WebSocket در پلتفرم NodeJS با استفاده از پکیج `ws` و همچنین نحوه استقرار آن در لیارا، پرداخته شده است.
+
+<Section id="build-websocket-app-in-nodejs" title="ساخت برنامه WebSocket در NodeJS" />
+پروژه‌ در پیش‌رو، یک چت‌روم تحت وب در پلتفرم NodeJS است که کاربران می‌توانند در آن به صورت Realtime (با تکیه بر WebSocket) به گفتگو بپردازند.
+در ابتدا، بایستی پکیج‌های مورد نیاز برنامه را با اجرای دستور زیر با استفاده از <Important>npm</Important>، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install ws serve-handler`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، بایستی یک فایل به نام <Important>index.js</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const { createServer } = require('http');
+const staticHandler = require('serve-handler');
+const WebSocket = require('ws');
+const WebSocketServer = WebSocket.Server;
+
+const server = createServer((req, res) => {
+    return staticHandler(req, res, { public: 'public' });
+});
+
+const wss = new WebSocketServer({ server });
+
+wss.on('connection', (client, req) => {
+    const urlParams = new URLSearchParams(req.url.slice(1)); 
+    const username = urlParams.get('username') || 'Anonymous';
+
+    client.username = username;
+    client.send(\`Welcome, \${username}!\`);
+
+    client.on('message', (msg) => {
+        const messageToSend = \`[\${username}]: \${msg}\`;
+        wss.clients.forEach((client) => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(messageToSend);
+            }
+        });
+    });
+
+    client.on('close', () => {
+        console.log(\`Client \${username} disconnected\`);
+    });
+});
+
+server.listen(process.argv[2] || 3000, () => {
+    console.log(\`Server listening...\`);
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، یک دایرکتوری به نام <Important>public</Important> ایجاد کنید و درون آن، یک فایل به نام <Important>index.html</Important> بسازید و قطعه کد زیر را، درون آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+{`<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimlist chat App</title>
+</head>
+
+<body>
+    <!-- Form for entering username -->
+    <div id="usernameForm">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" placeholder="Username">
+        <button onclick="submitUsername()">Submit</button>
+    </div>
+
+    <!-- Chat container -->
+    <div id="chatContainer" style="display: none;">
+        <div class="container">
+            <p class="msg">Messages:</p>
+            <div id="messages" class="messages"></div>
+            <form id="msgForm" class="msgForm">
+                <input type="text" placeholder="Send message" id="inputBox" />
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let ws;
+
+        function submitUsername() {
+            const usernameInput = document.getElementById('username');
+            const username = usernameInput.value.trim();
+            if (username) {
+                // Connect to WebSocket server
+                ws = new WebSocket(\`ws://\${window.document.location.host}?username=\${encodeURIComponent(username)}\`);
+                ws.binaryType = "blob";
+
+                // Handle socket events
+                ws.addEventListener("open", event => {
+                    console.log("Websocket connection opened");
+                    // Show chat container after connection
+                    document.getElementById('usernameForm').style.display = 'none';
+                    document.getElementById('chatContainer').style.display = 'block';
+                });
+                ws.addEventListener("close", event => {
+                    console.log("Websocket connection closed");
+                });
+
+                // Handle incoming messages
+                ws.onmessage = function (message) {
+                    const msgDiv = document.createElement('div');
+                    if (message.data instanceof Blob) {
+                        // Handling Blob data
+                        reader = new FileReader();
+                        reader.onload = () => {
+                            msgDiv.innerHTML = reader.result;
+                            msgDiv.classList.add('msgCtn'); // Adding class for user's messages
+                            document.getElementById('messages').appendChild(msgDiv);
+                        };
+                        reader.readAsText(message.data);
+                    } else {
+                        // Handling text data
+                        msgDiv.innerHTML = message.data;
+                        if (message.sender === 'user') { // Assuming 'user' is the sender's identifier
+                            msgDiv.classList.add('msgCtn'); // Adding class for user's messages
+                        } else {
+                            msgDiv.classList.add('otherMsgCtn'); // Adding class for other users' messages
+                        }
+                        document.getElementById('messages').appendChild(msgDiv);
+                    }
+                };
+
+                // Handle form submission
+                const form = document.getElementById('msgForm');
+                form.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const message = document.getElementById('inputBox').value;
+                    ws.send(message);
+                    document.getElementById('inputBox').value = ''
+                });
+            } else {
+                alert('Please enter a valid username.');
+            }
+        }
+    </script>
+</body>
+</html>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+تمامی کارها، انجام شده است و شما می‌توانید با اجرای دستور <Important>node index.js</Important> برنامه را اجرا کرده و از آن استفاده کنید.
+
+
+
+<Section id="deploy-websocket-nodejs" title="استقرار برنامه NodeJS WebSocket در لیارا" />
+
+برای استقرار برنامه Websocket در لیارا، نیاز به انجام تغییر خاصی در برنامه نیست. فقط، بایستی به جای <Important>ws</Important> برای برقراری اتصال، حتماً از <Important>wss</Important> استفاده کنید تا اتصال موفق و ایمن باشد:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+        {`<script type="text/javascript">
+    // other codes ...
+    // Connect to WebSocket server
+    ws = new WebSocket(\`wss://\${window.document.location.host}?username=\${encodeURIComponent(username)}\`);
+    // other codes ...
+</script>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+همچنین، بایستی در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، اسکریپت <Important>start</Important> را به شکل زیر، تعریف کنید (با توجه به پروژه، نام فایل اصلی را باید وارد کنید):
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="html">
+        {`{
+  "scripts": {
+    "start": "node index.js"
+  }
+}`}
+    </Highlight>
+</div>
+
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+سورس کامل یک برنامه NodeJS WebSocket آماده استقرار در <a href="https://github.com/liara-cloud/nodejs-getting-started/tree/websocket" className="text-[#2196f3] ">اینجا</a> موجود است که می‌توانید از آن استفاده کنید.
+</p>
+</Alert>
+
+
+</Layout>

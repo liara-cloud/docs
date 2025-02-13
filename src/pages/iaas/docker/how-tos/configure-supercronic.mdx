@@ -1,0 +1,60 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات پیکربندی Supercronic در Docker - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به پیکربندی Supercronic در پلتفرم داکر در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# پیکربندی Supercronic
+<hr className="mb-2" />
+
+<a href="https://github.com/aptible/supercronic" className="text-[#2196f3] ">Supercronic</a> یک جایگزین برای cron در محیط‌های Docker و Kubernetes است که برای اجرای وظایف زمانبندی شده (cron jobs) در کانتینرها طراحی شده است.
+برای استفاده از Supercronic در برنامه‌های داکر در لیارا، تنها کافیست تا قطعه‌کد زیر را به <Important>Dockerfile</Important> پروژه‌ی خود اضافه کنید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="dockerfile">
+{`COPY --from=liaracloud/supercronic:v0.1.11 \\
+     /usr/local/bin/supercronic /usr/local/bin/supercronic`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+همچنین، بایستی فایل <Important>crontab</Important> را در مسیر اصلی پروژه‌ی خود ایجاد کرده و به‌شکل زیر Jobهای مورد نظر خود را اضافه کنید:
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="config">
+{`* * * * * cd $ROOT && echo $(date) >> /tmp/time.txt`}
+</Highlight>
+</ div>
+<div className="h-2" />
+
+درنهایت باید یک فایل به نام <Important>entrypoint.sh</Important> در مسیر اصلی پروژه ایجاد کنید و به‌شکل زیر supercronic و برنامه‌تان را اجرا کنید:
+<div className="h-2" />
+<div dir="ltr">
+<Highlight  className="sh">
+{`#!/bin/bash
+
+supercronic /usr/src/app/crontab &
+
+daphne -b 0.0.0.0 -p 80 routeprinter:app`}
+</Highlight>
+</ div>
+
+{/*  */}
+
+</Layout>

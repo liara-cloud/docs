@@ -1,0 +1,185 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌ ElasticSearch در Django - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس ElasticSearch در پلتفرم Django در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس ElasticSearch در برنامه‌های Django
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس ElasticSearch در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install elasticsearch`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+سپس، در فایل <Important>settings.py</Important>، تنظیمات مربوط به دیتابیس را اضافه کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {` # other codes ...
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': os.getenv("ELASTICSEARCH_URI"),
+    },
+}
+# other codes ...`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`ELASTICSEARCH_URI=http://elastic:G4bqHLMHvZKMscUy8OhLomK1@bromo.liara.cloud:328`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip freeze > requirements.txt`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید با اجرای دستور زیر، یک application جدید ایجاد کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`python manage.py startapp elasticsearch_app`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+سپس، این application جدید را به بخش <Important>INSTALLED_APPS</Important> در <Important>settings.py</Important>، اضافه کنید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'elasticsearch_app', # add this
+]`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، در دایرکتوری <Important>elasticsearch_app</Important>، یک فایل جدید به نام <Important>elastic_model.py</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`from elasticsearch import Elasticsearch
+from django.conf import settings
+
+class ElasticModel:
+    def __init__(self):
+        self.client = Elasticsearch(settings.ELASTICSEARCH_DSL['default']['hosts'])
+        self.index = 'test_index'
+
+    def create_index(self):
+        if not self.client.indices.exists(index=self.index):
+            self.client.indices.create(index=self.index)
+
+    def insert_data(self, data):
+        self.client.index(index=self.index, document=data)
+
+    def read_data(self):
+        response = self.client.search(index=self.index, body={"query": {"match_all": {}}})
+        return response['hits']['hits']
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+
+در ادامه، در فایل <Important>elasticsearch_app/views.py</Important> قطعه کد زیر را وارد کنید تا اتصال به دیتابیس، بررسی شود:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`from django.http import JsonResponse
+from .elastic_model import ElasticModel
+
+def elasticsearch_insert_read(request):
+    es_model = ElasticModel()
+    es_model.create_index()
+    
+    # Insert data
+    data = {
+        'name': 'Sample Data',
+        'description': 'This is a sample data entry for Elasticsearch.'
+    }
+    es_model.insert_data(data)
+    
+    # Read data
+    results = es_model.read_data()
+    
+    return JsonResponse(results, safe=False)
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+سپس، بایستی در دایرکتوری <Important>elasticsearch_app</Important>، یک فایل به نام <Important>urls.py</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`from django.urls import path
+from .views import elasticsearch_insert_read
+
+urlpatterns = [
+    path('', elasticsearch_insert_read, name='elasticsearch_insert_read'),
+]
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، می‌توانید در فایل <Important>urls.py</Important> موجود در دایرکتوری اصلی پروژه، قطعه کد زیر را اضافه کنید:
+<div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="python">
+      {`from django.urls import include, path
+
+urlpatterns = [
+   
+    path('elasticsearch/', include('elasticsearch_app.urls')),
+]
+`}
+  </Highlight>
+  </div>
+<div className="h-2" />
+اکنون می‌توانید برنامه‌تان را در لیارا مستقر کرده و در صفحه <Important>elasticsearch/</Important> وضعیت اتصال به دیتابیس خود را بررسی کنید.
+
+</Layout>

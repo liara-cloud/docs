@@ -1,0 +1,630 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار سریع برنامه‌های Vue - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار سریع برنامه‌های Vue یا VueJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# استقرار سریع برنامه‌های Vue
+<hr className="mb-2" />
+
+توجه داشته باشید؛ تنها برنامه‌هایی که با <Important>Vite</Important> و یا <Important>vue-cli</Important> ساخته شده باشند، در پلتفرم Vue لیارا قابل اجرا خواهند بود.
+
+<Tabs 
+  tabs={["Liara Console", "Liara CLI", "Github"]} 
+  content={[
+  <>
+  <video
+  src="https://files.liara.ir/liara/vue/vue-desktop.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  ></video>
+  <div className="h-2" />
+  برای استقرار با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+   {
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای استقرار برنامه را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>برنامه Vue خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>حذف فایل‌های اضافی</h3>
+    <p>پوشه‌ها و فایل‌های درون پروژه که قصد ندارید در لیارا آپلود شوند (به عنوان مثال پوشه node_modules) را پاک کنید.</p>  
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "vue-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "vite preview",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^8.7.1",
+    "vite": "^2.9.8"
+  }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "dist"
+    }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      و یا اگر که برنامه خود را با <Important>vue-cli</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "vue-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  }
+}`}
+    </Highlight>
+    </div>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+  <>
+    <h3>زیپ و آپلود پروژه</h3>
+    <p>پوشه پروژه را در یک فایل <Important>zip</Important> قرار دهید. فایل را کشیده و در باکس آپلود Liara Console رها کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۷",
+  content: (
+  <>
+    <h3>استقرار پروژه</h3>
+    <p>مرحله به مرحله استقرار را با Console جلو بروید و شخصی‌سازی‌های لازم را انجام دهید و در نهایت بر روی گزینه استقرار کلیک کنید تا عملیات استقرار، آغاز شود. </p>
+  </>
+  )
+  }
+
+]}/>
+  </>,
+
+  <>
+  <video
+  src="https://files.liara.ir/liara/vue/vue-cli.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  ></video>
+  <div className="h-2" />
+
+  برای استقرار با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/cli/about">Liara CLI</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>نصب Liara CLI</h3>
+    <p>ترمینال را باز کنید و با اجرای دستور زیر، ابزار Liara CLI را بر روی سیستم خود نصب کنید:</p>
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`npm install -g @liara/cli`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+    <Alert variant="info">
+    <p>
+    دقت کنید که <Link className="text-[#2196f3] " href="https://nodejs.org">npm و NodeJS</Link> باید بر روی سیستم‌عامل‌تان نصب باشد.
+    </p>
+    </Alert>
+    <div className="h-2" />
+    <Alert variant="warning">در ویندوز، ترمینال باید بر روی CMD تنظیم باشد.</Alert>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>لاگین به حساب کاربری</h3>
+    <p>با اجرای دستور زیر، وارد حساب کاربری خود در لیارا، شوید:</p>
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`liara login`}
+      </Highlight>
+    </div>
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد شبکه خصوصی</h3>
+    <p>با دستور زیر، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> برنامه خود را ایجاد کنید:</p>
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`liara network create`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+    <Alert variant="info">اگر که از قبل شبکه خصوصی ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>با اجرای دستور زیر، برنامه Vue خود را ایجاد کنید:</p>
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`liara create`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <Alert variant="info">اگر که از قبل برنامه خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی vue تنظیم شود)، شبکه خصوصی و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>نادیده گرفتن فایل‌های اضافی</h3>
+    <p>برای آپلود نشدن فایل‌های اضافی، از <Important>gitignore.</Important> یا <Important>liaraignore.</Important> استفاده کنید و درون یکی از این دو فایل، اسامی دایرکتوری‌ها و فایل‌های اضافی را بیاورید. به عنوان مثال:</p>
+    <div dir='ltr'>
+    <Highlight className="gitignore">
+      {`node_modules/`}
+    </Highlight>
+    </div>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+  <>
+    <h3>تنظیم اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه، باید حتماً اسکریپت <Important>start</Important> تعریف شده باشد؛  به عنوان مثال، فایل <Important>package.json</Important> یک پروژه <Important>Vite</Important> می‌تواند به شکل زیر باشد:</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "vue-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "vite preview",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^8.7.1",
+    "vite": "^2.9.8"
+  }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "dist"
+    }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      و یا اگر که برنامه خود را با <Important>vue-cli</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "vue-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  }
+}`}
+    </Highlight>
+    </div>
+  </>
+  )
+  },
+  {
+  step: "۷",
+  content: (
+  <>
+    <h3>استقرار برنامه</h3>
+    <p>با اجرای دستور زیر در مسیر اصلی پروژه، برنامه خود را  در لیارا مستقر کنید (بعد از <Important>app--</Important> شناسه برنامه خود را وارد کنید):</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`liara deploy --app=myapp --platform=vue`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+       برای استقرار برنامه در تیم مدنظرتان، کافیست تا از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> و فلگ <Important>team-id--</Important> استفاده کنید: 
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`liara deploy --app=myapp --platform=vue --team-id=your-unique-team-id`}
+    </Highlight>
+    </div>
+  </>
+  )
+  }
+
+]}/>
+  </>,
+  <>
+    <video
+    src="https://files.liara.ir/liara/docs/vue-github.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+    ></video>
+    <br />
+    برای استقرار با Github، کافیست تا مراحل زیر را طی کنید:
+    <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+   {
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای استقرار برنامه را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>برنامه Vue خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+   <>
+    <h3>بررسی فایل <Important>package.json</Important> استاندارد</h3>
+    <p>
+      در نظر داشته باشید که در پروژه‌های استاندارد Vue، یک فایل به نام <Important>package.json</Important>
+      وجود دارد که برای استقرار حائز اهمیت است و این فایل نباید حذف یا دستکاری شود. 
+      قطعه کد زیر یک نمونه استاندارد از فایل <Important>package.json</Important> است:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "vue-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "vite preview",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^8.7.1",
+    "vite": "^2.9.8"
+  }
+}`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+    البته در نظر داشته باشید که برای اجرای موفق پروژه‌های مبتنی بر <Important>vite</Important>، باید قطعه کد زیر به فایل <Important>vite.config.js</Important> اضافه شود:
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="js">
+      {`export default {
+    // ... rest of configuration
+    build: {
+        outDir: "dist"
+    }
+}`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      و یا اگر که برنامه خود را با <Important>vue-cli</Important> ساخته‌اید؛ فایل <Important>package.json</Important> می‌تواند مانند قطعه کد زیر باشد:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "name": "vue-getting-started",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  }
+}`}
+    </Highlight>
+    </div>
+  
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>ساخت فایل <Important>liara.json</Important></h3>
+    <p>
+      در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و پیکربندی‌های مدنظرتان را در این فایل بنویسید؛ به عنوان مثال:
+    </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "vue": {
+    "mirror": true
+    }
+}`}
+            </Highlight>
+        </div>
+        <Alert variant='error'>
+          <p>
+            در فایل فوق، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
+          </p>  
+        </Alert>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+
+  <>
+    <h3>ساخت ریپازیتوری در گیت‌هاب</h3>
+    <p>
+      یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید.
+    </p>
+  <div className="h-2" />
+  <Alert variant="success">
+<p>
+در صورتی که از قبل، این کار را انجام داده‌اید یا قصد دارید از ریپازیتوری‌های فعلی خود استفاده کنید؛ از این مرحله بگذرید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۷",
+  content: (
+  <>
+    <h3>آپلود پروژه در گیت‌هاب</h3>
+    <p>
+      پروژه نهایی خود را در ریپازیتوری‌تان در گیت‌هاب آپلود کنید؛
+      حتماً در نظر داشته باشید که درون پروژه‌تان، فایل <Important>gitignore.</Important> قرار داشته باشد و درون آن، فایل‌های اضافی 
+      برنامه، که قصد ندارید آپلود شوند؛ لیست شده باشند.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۸",
+  content: (
+  <>
+    <h3>اتصال لیارا به گیت‌هاب</h3>
+    <p>
+      برای اتصال حساب لیارا خود به گیت‌هاب، در لیارا بر روی پروفایل خود کلیک کرده و وارد زیر قسمت <a href="https://console.liara.ir/settings/profile" className="text-[#2196f3]">حساب کاربری</a> شوید. در ادامه 
+      وارد منوی <a href="https://console.liara.ir/settings/github" className="text-[#2196f3]">گیت‌هاب</a> شوید و بر روی دکمه <b>اتصال به گیت‌هاب</b>، کلیک کنید. 
+    </p>
+    <div className="h-1" />
+    <img src="https://files.liara.ir/liara/docs/connect-to-github-on-liara.png" alt="connect to github on liara account" />
+    <div className="h-1" />
+    <p> 
+      پس از 
+      انجام این کار و وارد کردن اطلاعات مربوط به گیت‌هاب، حساب لیارا شما به گیت‌هاب متصل خواهد شد.
+    </p>
+    <div className="h-1" />
+    <img src="https://files.liara.ir/liara/docs/added-github-account-on-liara.png" alt="added github account on liara" />
+    <div className="h-1" />
+
+  <div className="h-2" />
+  <Alert variant="error">
+<p>
+  در صورت مواجه با خطای "اتصال به Github"، بایستی از حساب لیارا خود، خارج شده و مجدداً به وسیله Github، به اکانت لیارا خود، وارد شوید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۹",
+  content: (
+  <>
+    <h3>ویرایش دسترسی‌ها</h3>
+    <p>
+      بعد از اتصال به اکانت گیت‌هاب، بر روی گزینه <b>ویرایش دسترسی‌ها</b> کلیک کرده و ریپازیتوری (ریپازیتوری‌های) مدنظرتان را به حساب لیارا متصل کنید.
+    </p>
+    <div className="h-2" />
+    <video
+    src="https://files.liara.ir/liara/docs/edit-access-to-github-account.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+    ></video>
+    <div className="h-2" />
+  </>
+  )
+  },
+  {
+  step: "۱۰",
+  content: (
+  <>
+    <h3>استقرار برنامه</h3>
+    <p>
+        در نهایت، بر روی برنامه خود کلیک کرده وارد صفحه <b>استقرار جدید</b> شوید؛ سپس در منوی <b>گیت‌هاب</b>، ریپازیتوری مدنظرتان را انتخاب کرده و پس از انتخاب نوع استقرار و branch مدنظرتان، بر روی گزینه <b>اتصال به برنامه</b> کلیک کنید تا برنامه‌تان به ریپازیتوری مدنظرتان متصل شود.
+        در نهایت، کافیست تا یک‌بار بر روی گزینه <b>استقرار دستی</b> کلیک کنید تا آخرین commit شما در لیارا مستقر شود.
+    </p>
+  <div className="h-2" />
+            <video
+            src="https://files.liara.ir/liara/docs/deploy-project-using-github.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+            ></video>
+  <div className="h-2" />
+    <Alert variant="info">
+<p>
+  برای قطع ارتباط برنامه و ریپازیتوری نیز، می‌توانید بر روی دکمه <b>قطع اتصال</b> کلیک کنید تا تغییرات جدید، مستقر نشوند.
+</p>
+</Alert>
+<div className="h-1" />
+
+  </>
+  )
+  }
+
+]}/>
+
+  </>
+
+]} 
+/>
+
+<br/>   
+<Alert variant="info">
+<p>
+لیارا با اجرای دستور <Important>npm install</Important> تمامی ماژول‌های موجود در فایل <Important>package.json</Important> را نصب می‌کند. پس حتماً اسامی آن‌ها باید در این فایل باشد.
+</p>
+</Alert>
+<div className="h-1" />
+
+<Alert variant="info">
+<p>
+لیارا به صورت خودکار، در فرایند استقرار برنامه‌های Vue اسکریپت <Important>build</Important> را برای شما اجرا می‌کند.
+</p>
+</Alert>
+<div className="h-1" />
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <Link className="text-[#2196f3] " href="./how-tos/create-app">استقرار قدم به قدم برنامه‌های Vue در لیارا</Link>
+</p>
+</Alert>
+</Layout>

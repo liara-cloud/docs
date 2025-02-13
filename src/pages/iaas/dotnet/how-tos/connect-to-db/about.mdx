@@ -1,0 +1,98 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import PlatformIcon from "@/components/Common/icons";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس‌های مختلف در NET. - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه اتصال به دیتابیس‌های مختلف در فریم‌ورک دات‌نت در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس 
+<hr className="mb-2" />
+
+دیتابیس‌ها، در اکوسیستم یک پلتفرم، نقش حیاتی دارند. دیتابیس‌ها نه تنها محلی برای ذخیره و بازیابی داده‌ها هستند، بلکه به عنوان ستون فقرات یک برنامه، عمل می‌کنند و بر کارایی، مقیاس‌پذیری و قابلیت اعتماد سیستم، تأثیر مستقیم می‌گذارند.
+حال از آنجایی که مستندات رسمی پلتفرم NET. نیز، استفاده از <a href="https://learn.microsoft.com/en-us/ef/" className="text-[#2196f3] ">Entity Framework ORM</a> را، به شدت توصیه می‌کند؛ در ادامه، مستندات مربوط به اتصال به دیتابیس با استفاده از این ORM برای شما، قرار گرفته است:
+
+<div className='h-2' />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
+    { alt: 'mysql', platform: 'MySQL/MariaDB', link: "./mysql" },
+    { alt: 'postgres', platform: 'PostgreSQL', link: "./postgresql" },
+    // { alt: 'mssql', platform: 'MSSQL', link: "./mssql" },
+    { alt: 'sqlite', platform: 'SQLite', link: "./sqlite" },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+            <PlatformIcon platform={item.alt} />
+        </div>
+        <h4>
+            {item.platform}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div>
+{/* 
+<div className='h-4' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+    
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+            <PlatformIcon platform={item.alt} />
+        </div>
+        <h4>
+            {item.platform}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div> */}
+
+<Section id="migrate-db" title="اجرای Migrationها در دیتابیس‌" />
+برای اجرای Migrationها در دیتابیس مد نظر خود، 
+می‌توانید مشابه قطعه کد زیر را به فایل <Important>Program.cs</Important> اضافه کنید. با این کار دیگر نیازی به اجرای دستور <Important>dotnet ef database update</Important> نخواهد بود:
+<div className='h-2' />
+<div dir='ltr'>
+    <Highlight className="dotnet">
+        {`using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}`}        
+    </Highlight>
+</div>
+
+<Section id="connection-pooling-feature" title="قابلیت Connection Pooling" />
+مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
+<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
+از آنجایی که در پلتفرم NET. از EF ORM استفاده می‌شود. بنابراین، قابلیت Connection Pooling به صورت خودکار برقرار است و نیازی نیست که 
+شما برای استفاده از آن، کار خاصی را انجام دهید.
+
+
+
+</Layout>

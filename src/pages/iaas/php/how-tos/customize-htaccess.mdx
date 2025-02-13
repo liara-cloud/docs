@@ -1,0 +1,50 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم اختصاصی فایل htaccess. در PHP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم اختصاصی فایل htaccess. در پلتفرم PHP در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تنظیم اختصاصی فایل htaccess. در PHP
+<hr className="mb-2" />
+
+<Important>htaccess.</Important> یک فایل پیکربندی است که توسط سرور Apache استفاده می‌شود. این فایل به شما اجازه می‌دهد تا تنظیمات سرور را به طور خاص، پیکربندی کنید.
+شما می‌توانید با قرار دادن یک فایل به نام <Important>htaccess.</Important> در ریشه پروژه، از مزایای این فایل استفاده کنید.
+
+به عنوان مثال، فرض کنید می‌خواهید از انتهای همه URLها، پسوند <Important>php.</Important> را حذف کنید. کافیست یک فایل <Important>htaccess.</Important> به ریشه برنامه‌ی‌تان اضافه کنید و سپس قطعه کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='config'>
+{`<IfModule mod_rewrite.c>
+
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.*)$ $1.php [NC,L]
+
+</IfModule>`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+سپس، کافیست تا برنامه خود را، مجدداً در لیارا مستقر کنید تا تنظیمات مدنظرتان، اعمال بشود.
+
+بعد از استقرار موفق برنامه، می‌توانید لینکی مانند <Important>https://liara.ir/about.php</Important> را به صورت <Important>https://liara.ir/about</Important> مشاهده کنید.
+
+
+</Layout>

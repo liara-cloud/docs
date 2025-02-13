@@ -1,0 +1,88 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به دیتابیس MongoDB در Flask - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس MongoDB در فریم‌ورک Flask در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال به دیتابیس MongoDB در برنامه‌های Flask
+<hr className="mb-2" />
+
+برای اتصال به دیتابیس MongoDB در برنامه‌های Flask، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip install pymongo`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در ادامه، بایستی طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی</a>، متغیرهای مربوط به دیتابیس خود را، به برنامه، اضافه کنید؛ به عنوان مثال:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`MONGO_URI=mongodb://root:AOnj2OEXiUkgNk2B1tL23gA9@bromo.liara.cloud:30126/my-app?authSource=admin`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+در نهایت، کافیست دستور زیر را اجرا کنید تا فایل <Important>requirements.txt</Important> به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`pip freeze > requirements.txt`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. 
+به عنوان مثال، می‌توانید
+برای اتصال به دیتابیس، از قطعه کد زیر، استفاده کنید:
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="python">
+        {`from flask import Flask
+from pymongo import MongoClient
+import os
+
+app = Flask(__name__)
+
+mongodb_uri = os.getenv("MONGO_URI")
+
+mongodb_client = MongoClient(mongodb_uri, maxPoolSize=10, minPoolSize=10)
+
+@app.route('/')
+def show_connection_status():
+    try:
+        database = mongodb_client['test']
+        collection = database['test']
+        data = {'name': 'John Doe', 'age': 30, 'city': 'New York'}
+        collection.insert_one(data)
+        return "connected"
+    except Exception as e:
+        print(f"Error connecting to MongoDB: {e}")
+        return "failed to connect"
+
+if __name__ == '__main__':
+    app.run(debug=True)`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+</Layout>

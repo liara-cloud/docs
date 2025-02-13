@@ -1,0 +1,140 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم لاگ‌ها در go - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نحوه تنظیم لاگ‌ها در پلتفرم go در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تنظیم لاگ‌ها
+<hr className="mb-2" />
+
+شما می‌توانید با استفاده از ماژول‌ها و روش‌های متفاوتی، لاگ‌های منحصر به فرد خود را در برنامه go ایجاد کنید که طبق <a href="/paas/details/observations/software" className="text-[#2196f3] ">مستندات گزارشات نرم‌افزاری</a>، در دسترس شما قرار می‌گیرد
+و می‌توانید در هر قسمتی از پردازش برنامه، آن‌ها را ببینید. در ادامه، چند تا از معروف‌ترین روش‌های تنظیم لاگ در go، برای شما قرار گرفته است: 
+
+<Section id="log-moduole" title="ماژول log" />
+کتابخانه <Important>log</Important> برای درج لاگ‌های ساده مناسب است؛ در ادامه، مثالی از استفاده این ماژول، قرار گرفته است:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`package main
+
+import (
+	"log"
+)
+
+func main() {
+	// set flags
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+
+	// display logs
+	log.Println("this is a log")
+	log.Printf("Log with a variable: %d", 123)
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای لاگ‌گیری پیشرفته‌تر، می‌توانید از کتابخانه‌هایی مثل <Important>logrus</Important> یا <Important>zap</Important> استفاده کنید.
+
+<Section id="logrus-moduole" title="ماژول logrus" />
+برای تنظیم لاگ‌ها با استفاده از این ماژول، در ابتدا باید با اجرای دستور زیر، آن را در پروژه خود، نصب کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`go get -u github.com/sirupsen/logrus`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، می‌توانید مشابه قطعه کد زیر، لاگ‌های خود را تنظیم کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`package main
+
+import (
+	"github.com/sirupsen/logrus"
+)
+
+func main() {
+	log := logrus.New()
+
+	// set format
+	log.SetFormatter(&logrus.TextFormatter{})
+
+	// set logs on termianl
+	log.SetOutput(os.Stdout)
+
+	// display logs
+	log.Info("this is info")
+	log.Warn("this is warning")
+	log.Error("this is error")
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="zap-moduole" title="ماژول zap" />
+برای تنظیم لاگ‌ها با استفاده از این ماژول، در ابتدا باید با اجرای دستور زیر، آن را در پروژه خود، نصب کنید: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`go get -u go.uber.org/zap`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، می‌توانید مشابه قطعه کد زیر، لاگ‌های خود را تنظیم کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`package main
+
+import (
+	"go.uber.org/zap"
+)
+
+func main() {
+	// set logger to development
+	logger, _ := zap.NewDevelopment()
+	defer logger.Sync()
+
+	// send logs to terminal
+	logger.Info("this is info",
+		zap.String("type", "example"),
+		zap.Int("amount", 3),
+	)
+	logger.Error("this is error")
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+البته در نظر داشته باشید که قطعه کدهای فوق، صرفاً چندتا از راه‌های تنظیم لاگ است و شما می‌توانید از روش‌های دیگری نیز، استفاده کنید!
+
+
+</Layout>

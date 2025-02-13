@@ -1,0 +1,53 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نصب یا به‌روزرسانی اکستنشن در PHP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه نصب یا به‌روزرسانی اکستنشن یا افزونه جدید در پلتفرم PHP در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# نصب یا به‌روزرسانی اکستنشن در برنامه‌های PHP
+<hr className="mb-2" />
+
+پلتفرم PHP لیارا، به صورت خودکار اکثر اکستنشن‌های مورد نظر کاربران را به صورت پیش‌فرض بر روی سرور خود، نصب دارد.
+
+<div className='h-2' />
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="../see-extension" className="text-[#2196f3] ">مشاهده اکستنشن‌های نصب شده در PHP</a>
+</p>
+</Alert>
+<div className='h-2' />
+
+اما ممکن است که بخواهید یک اکستنشن جدید در برنامه خود، نصب کنید و یا نسخه یک اکستنشن قدیمی را، آپدیت کنید؛ برای این کار می‌توانید از <a href="../use-hooks" className="text-[#2196f3] ">Hookها</a> استفاده کنید.
+برای این‌کار، در مسیر اصلی پروژه، یک فایل به نام <Important>liara_pre_build.sh</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید. 
+<div className='h-2' />
+<div dir='ltr'>
+<Highlight className="sh">
+{`apt-get update;
+apt-get install php8.2-dev  -y --allow-unauthenticated;
+pecl install new_extension;
+printf "extension=new_extension.so\\n" > /etc/php/8.2/mods-available/new_extension.ini;
+phpenmod -v 8.2 new_extension;`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+در قطعه کد فوق، باید به جای <Important>new_extension</Important>، نام اکستنشن مورد نظرتان و به جای <Important>8.2</Important>، نسخه PHP برنامه خود را، وارد کنید.
+تمامی کارها انجام شده است و پس از استقرار برنامه‌تان در لیارا، اکستنشن مورد نظرتان، نصب و یا به‌روز می‌شود که می‌توانید در <a href="/paas/details/console-shell" className="text-[#2196f3] ">خط فرمان</a> برنامه خود، با اجرای دستور <Important>php --ini</Important>، لیست اکستنشن‌های نصب شده را، ببینید.
+
+
+</Layout>

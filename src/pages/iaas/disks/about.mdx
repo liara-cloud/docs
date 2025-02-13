@@ -1,0 +1,99 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+
+    
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات دیسک‌ها - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به دیسک‌ها به عنوان جایگزینی برای Volume در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# دیسک‌ها
+
+<hr className="mb-2" />
+<a href="/paas/details/file-system" className="text-[#2196f3] ">فایل سیستم</a> برنامه‌های لیارا، به‌صورت پیش‌فرض، ReadOnly است. به عبارتی، بعد از عملیات استقرار، امکان ذخیره‌سازی فایل‌های جدید در کنار فایل‌های پروژه، وجود ندارد. البته شما می‌توانید فایل‌سیستم لیارا را در قسمت تنظیمات برنامه از حالت ReadOnly به Writable تغییر بدهید؛ اما تمامی تغییراتی که در این حالت، اعمال می‌شوند؛ موقتی هستند و پس از متوقف شدن برنامه به هردلیلی و اجرای مجدد آن، از بین می‌روند.
+<div className="h-4" />
+
+لیارا امکانی را تحت عنوان **‌دیسک‌ها** ارائه می‌دهد که می‌توانید به کمک آن، فایل‌های  خود را درون پوشه‌هایی که از قبل مشخص کردید؛ پس از استقرار، ذخیره کنید و یا تغییر دهید و این تغییرات، از بین نمی‌روند و دائمی هستند.
+به عنوان مثال، فرض کنید که در برنامه خود، یک دایرکتوری به نام <Important>uploads</Important> دارید و قصد دارید که فایل‌های ارسالی کاربران، در این دایرکتوری ذخیره شود. برای این‌کار کافیست تا یک دیسک جدید ایجاد کنید و در برنامه خود، آن را به این دایرکتوری، متصل کنید. 
+در ادامه، بخوانید:
+
+<div className="h-4" />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "ساخت دیسک",
+        link: "./create"
+      },
+      {
+        title: "تعریف مسیر برای دیسک",
+        link: "./route"
+      },
+      {
+        title: "افزایش حجم دیسک",
+        link: "./increase-value"
+      },
+      {
+        title: "کاهش حجم دیسک",
+        link: "./decrease-value"
+      },
+      {
+        title: "حذف یک دیسک",
+        link: "./delete"
+      },
+      {
+        title: "تهیه فایل پشتیبان از دیسک‌",
+        link: "./create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان با دسترسی FTP",
+        link: "./restore-backup-using-ftp"
+      },
+      {
+        title: "بازیابی فایل پشتیبان با دستور wget",
+        link: "./restore-backup-using-wget"
+      },
+      {
+        title: "انتقال فایل دیسک به دیسک",
+        link: "./move-files-to-other-disk"
+      },
+      {
+        title: "انتقال فایل دیسک به object storage",
+        link: "./move-files-to-bucket"
+      },
+      {
+        title: "دسترسی FTP به دیسک‌ها",
+        link: "./ftp-access"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+</Layout>

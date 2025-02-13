@@ -1,0 +1,81 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Table from "@/components/Common/table";
+
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از قابلیت cgo در go - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نحوه استفاده از قابلیت cgo در پلتفرم Go در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استفاده از قابلیت cgo در برنامه‌های Go
+<hr className="mb-2" />
+
+قابلیت cgo به شما این امکان را می‌دهد که در برنامه‌های go، از کد مبتنی بر زبان C استفاده کنید. این قابلیت به شما کمک می‌کند که بتوانید 
+کتابخانه‌های نوشته شده در زبان C را در Go به کار ببرید و یا عملکرد برنامه خود را بهبود دهید. 
+
+
+این قابلیت به صورت خودکار در برنامه‌های Go در لیارا غیر فعال است. اما برای فعال‌سازی آن می‌توانید در استقرار، به روش زیر، عمل کنید: 
+
+<Tabs 
+    tabs={["Liara Console", "Liara CLI", "Github"]} 
+    content={[
+    <>
+    <p>پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله پیکربندی پروژه، این قابلیت را فعال کنید.</p>
+    {/* <img src="https://files.liara.ir/liara/docs/change-go-version-in-go-using-console.png" alt="how to choose version in liara console" /> */}
+    </>,
+    <>
+    <p>
+        برای فعال‌سازی قابلیت cgo در برنامه‌تان، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+  "go" : {
+    "cgoEnabled": "true"
+   }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+    <>
+    <p>
+        برای فعال‌سازی قابلیت cgo در برنامه‌تان، کافیست تا یک فایل به نام <Important>liara.json</Important> در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="json">
+            {`{
+  "go" : {
+    "cgoEnabled": "true"
+   }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+
+در صورت نیاز به کتابخانه یا هر ماژول خاص دیگر که به صورت built-in در نسخه مدنظرتان در go وجود ندارد؛ بایستی 
+طبق <a href="/paas/go/how-tos/use-hooks/" className="text-[#2196f3]">مستندات Hookها</a>، دستورات مورد نیاز برای نصب ماژول‌ها را در فایل <Important>liara_post_build.sh</Important>، بنویسید.
+
+</Layout>
