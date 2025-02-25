@@ -15,7 +15,8 @@ import {
   GoCode,
   GoPerson,
   GoGlobe,
-  GoArrowLeft
+  GoArrowLeft,
+  GoCloud
 } from "react-icons/go";
 import Card from "@/components/Common/card";
 
@@ -305,8 +306,8 @@ const PRODUCTS = [
     link: "/paas/about"
   },
   {
-    title: "سرور مجازی (IaaS)",
-    icon: <GoServer />,
+    title: "سرور ابری (IaaS)",
+    icon: <GoCloud />,
     desc: "اطلاعات سرورهای ابری و نحوه راه‌اندازی آن‌ها در لیارا",
     link: "/iaas/about"
   },
