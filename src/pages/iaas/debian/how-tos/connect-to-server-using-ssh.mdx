@@ -1,0 +1,234 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به سرور ابری با استفاده از SSH - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه اتصال به سرور مجازی دبیان Debian با استفاده از دسترسی SSH در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# اتصال به سرور ابری Debian با استفاده از SSH
+<hr className="mb-2" />
+
+SSH (Secure Shell) یک پروتکل رمزنگاری‌شده برای اتصال امن به سرورهای ابری از طریق شبکه‌های ناامن، مانند اینترنت است. این پروتکل جایگزین امنی برای Telnet و سایر روش‌های قدیمی ورود به سرورها محسوب می‌شود، زیرا تمام داده‌های ارسالی و دریافتی را رمزنگاری می‌کند. SSH معمولاً برای مدیریت سرورهای لینوکسی، انتقال فایل (با استفاده از SCP یا SFTP) و اجرای دستورات از راه دور استفاده می‌شود. 
+
+    <p>
+      یکی از روش‌های توصیه‌شده برای اتصال به سرور ابری، استفاده از ابزار <a href="https://www.openssh.com/" className="text-[#2196f3]">OpenSSH</a> است که می‌توانید مطابق با سیستم‌عامل‌تان، آن را نصب کرده و به سرور ابری خود، متصل شوید. 
+    </p>
+
+    <Tabs 
+      tabs={["Linux", "Windows", "MacOS"]} 
+      content={[
+        <>
+          <p>
+            پکیج OpenSSH معمولاً به‌صورت پیش‌فرض در اکثر توزیع‌های لینوکس نصب است، می‌توانید نصب بودن یا نبودن این پکیج را با اجرای دستور زیر در ترمینال خود، بررسی کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با توجه به نوع توزیع خود نصب کنید:
+          </p>
+          <Tabs 
+            tabs={["Debian", "Debian", "Rocky Linux", "CentOS", "RHEL", "AlmaLinux", "Arch Linux", "Manjaro"]} 
+            content={[
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+
+          <div className="h-2" />
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+              
+          <div className="h-2" />
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,       
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>                           
+        </>,      
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>         
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+              
+        </>,
+ 
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+        </>,
+            ]}
+          />
+        </>,
+
+        <>
+        <p>
+          از ویندوز ۱۰ به بعد، OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از ابزار PowerShell، بر روی سیستم‌عامل خود، نصب کنید. در ابتدا، PowerShell را با دسترسی administrator باز کنید، سپس دستور زیر را در آن، اجرا کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`Get-WindowsCapability -Online | ? Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+
+        </>,
+        <>
+        <p>
+          در MacOS، پکیج OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از دستور <Important>brew</Important>، بر روی سیستم‌عامل خود، نصب کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`brew install openssh`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+        </>,
+      ]}
+    />
+    
+    <p>
+      در نهایت، پس از نصب OpneSSH، کافیست تا در لیارا، در سرور ابری خود، وارد بخش <b>اتصال</b> شده و با استفاده از دستور قرار گرفته در بخش <b>اتصال سریع</b>، به سرور ابری خود، متصل شوید: 
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`ssh root@<your-ip-address>`}
+    </Highlight>
+    </div>
+    <Asciinema id="connect-to-debian-server-using-ssh" />
+    <div className="h-2" />
+    <p>
+      با اجرای دستور فوق و در صورتی که اتصال مبتنی بر رمز عبور باشد، بایستی رمز عبور موجود در بخش <b>اتصال</b> را وارد کرده و سپس <Important>Enter</Important> را بزنید تا به سرور، با موفقیت، متصل شوید.
+    </p>
+    <div className="h-2" />
+
+      <Alert variant="info">
+      <p>
+        در صورتی که از SSH Keys استفاده می‌کنید. تنها کافیست تا عبارت <Important>yes</Important> را نوشته و سپس <Important>Enter</Important> را بزنید، تا به سرور ابری خود، بدون نیاز به نوشتن رمز عبور، متصل شوید.
+      </p>
+    </Alert>
+
+</Layout>

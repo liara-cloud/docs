@@ -1,0 +1,96 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Hono - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Hono در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Hono در لیارا
+<hr className="mb-2" />
+
+<a href="https://hono.dev/" className="text-[#2196f3] ">Hono</a>
+یک فریم‌ورک وب کوچک، ساده و بسیار سریع است که بر روی هر runtime جاوااسکریپتی، کار می‌کند. از دلایل 
+محبوبیت این فریم‌ورک، می‌توان به سرعت خارق‌العاده و بهینه بودن بی‌نظیر آن، اشاره کرد. 
+
+<div className='h-2' />
+
+
+شما می‌توانید برنامه‌های Hono خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
+برای استقرار برنامه‌های Hono باید اسکریپت <Important>start</Important> را در فایل <Important>package.json</Important> به شکل زیر، تعریف کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+    "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts"
+  },
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+همچنین؛ در نظر داشته باشید که برای اجرای برنامه، حتماً از ماژول <Important>node-server</Important>، استفاده کنید؛ به عنوان مثال:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// src/index.ts
+import { serve } from '@hono/node-server'
+import { Hono } from 'hono'
+
+const app = new Hono()
+app.get('/', (c) => c.text('Hello Node.js!'))
+
+serve(app)`}
+    </Highlight>
+</div>
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>
+    در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود. البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید مقدار آن را در فیلد پورت، وارد کنید.
+    </p>
+    </>,
+
+    <>
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود (البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید در دستور زیر، مقدار آن را وارد کنید):
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+<Alert variant="success">
+<p>
+یک پروژه Hono آماده به استقرار در <a href="https://github.com/liara-cloud/hono-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+</Layout>

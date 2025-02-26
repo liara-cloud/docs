@@ -1,0 +1,98 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Strapi با SQLite - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Strapi با دیتابیس SQLite در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Strapi با SQLite در لیارا
+<hr className="mb-2" />
+
+<video
+    src="https://files.liara.ir/liara/strapi/strapi-sqlite.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/strapi-getting-started/tree/master" className="text-[#2196f3] ">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+پس از ایجاد برنامه NodeJS، باید متغیرهای محیطی موجود در فایل <Important>env.</Important> برنامه Strapi خود را طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات اضافه کردن متغیرهای محیطی</a> به برنامه NodeJS اضافه کنید. به عنوان مثال، متغیرهای زیر با مقادیر فرضی زیر، حتماً باید به برنامه اضافه شوند:
+
+<div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`APP_KEYS=qDSFzezRjBb9CWRgYTNKAQ==,a425msyZKCQLciHemU5XjA==,nRmH9IqqkiKahdd9wE+AXg==,szU9KUlV56pzOVDYynbdKA==
+API_TOKEN_SALT=KHPr2aDzbEhFe56iBRLa6w==
+ADMIN_JWT_SECRET=thazfV/lEGoPPZAqlJGsJg==
+TRANSFER_TOKEN_SALT=X7FvBRJ+T4ddz3yM2ZMv8g==
+# Database
+DATABASE_CLIENT=sqlite
+DATABASE_FILENAME=.tmp/data.db
+JWT_SECRET=qvyu4YsbaS03suqri3sZVQ==`}
+        </Highlight>
+    </div>
+<div className="h-2" />
+
+برای استقرار برنامه‌های Strapi نیازی به تغییر فایل <Important>package.json</Important> نیست و لیارا به صورت کامل از این CMS، پشتیبانی می‌کند. در ادامه یک مثال از اسکریپت‌های استاندارد این فریم‌ورک در فایل <Important>package.json</Important> آمده است:
+
+<div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`{
+    "scripts": {
+        "develop": "strapi develop",
+        "start": "strapi start",
+        "build": "strapi build",
+        "strapi": "strapi"
+    }
+}`}
+        </Highlight>
+    </div>
+<div className="h-2" />
+
+و از آنجایی که <a href="/paas/details/file-system" className="text-[#2196f3] ">فایل سیستم لیارا</a> به صورت پیش‌فرض ReadOnly است؛ پس بایستی برای اتصال موفق به دیتابیس SQLite و ذخیره media، طبق مستندات <a href="/paas/disks/create" className="text-[#2196f3] ">دیسک‌ها</a>، دو دیسک ایجاد و آن‌ها را به آدرس‌های <Important>app/.tmp/</Important> و <Important>app/public/uploads/</Important> متصل کنید.
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود.  </p>
+    </>,
+
+    <>
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+</Layout>

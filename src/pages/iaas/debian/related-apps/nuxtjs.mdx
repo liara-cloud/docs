@@ -1,0 +1,113 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های NuxtJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های NuxtJS در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های NuxtJS در لیارا
+<hr className="mb-2" />
+
+فریم‌ورک NuxtJS یک فریم‌ورک مبتنی بر Vue است که بسیاری از قابلیت‌ها مانند SSR را برای شما به ارمغان می‌آورد. شما می‌توانید برنامه‌های NuxtJS خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> بر روی لیارا استقرار کنید.
+
+توجه داشته باشید که برای استقرار برنامه‌های <b>Nuxt 2</b> نیازی به ایجاد تغییر در فایل <Important>package.json </Important>نیست و لیارا به‌طور کامل از این فریم‌ورک پشتیبانی می‌کند بنابراین تغییری در بخش <Important>scripts</Important> ایجاد نکنید؛ در ادامه، یک مثال از این بخش آورده شده است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`"scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
+},`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+ولی برای استقرار برنامه‌های <b>Nuxt 3</b> باید در بخش <Important>scripts</Important> فایل <Important>package.json</Important> مقدار <Important>start</Important> را به شکل زیر تغییر دهید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`"scripts": {
+    "start": "node .output/server/index.mjs"
+},`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+    در نظر داشته باشید که حتماً بعد از ساخت برنامه NodeJS و قبل از استقرار برنامه‌تان، فایل‌سیستم برنامه را طبق <a href="/paas/details/file-system/#how-to-make-fs-writable" className="text-[#2196f3]">مستندات مربوطه</a>، از Read-Only به Writable تغییر دهید.
+</p>
+</Alert>
+
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    {/* 
+    <video
+        src="https://files.liara.ir/liara/nuxtjs/nuxtjs-desktop.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+    />
+    <br />
+    */}
+    
+    <p>
+    در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود.
+    </p>
+    </>,
+
+    <>
+        <video
+        src="https://files.liara.ir/liara/nuxtjs/nuxtjs-cli.mp4"
+        controls="controls"
+        className="block w-full"
+        width="100%"
+    />
+    <br />
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="/paas/static/related-apps/nuxtjs" className="text-[#2196f3] ">استفاده از قابلیت Static Site Generation در برنامه‌های NuxtJS</a>
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="../../fix-common-errors/cors-error/nuxtjs" className="text-[#2196f3] ">رفع خطای CORS در فریم‌ورک NuxtJS</a>
+</p>
+</Alert>
+
+</Layout>

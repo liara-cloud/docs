@@ -3290,43 +3290,43 @@ export default {
         icon: <IconContainer alt="https://files.liara.ir/liara/logos/debian.png" />,
         link: "/iaas/debian/getting-started"
       },
-      {
-        hr: true
-      },
-      {
-        badge: "برنامه‌های مرتبط"
-      },
-      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/supabase.jpg'/> , title: 'Supabase', link: "/iaas/templates/supabase" },
-      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/sentry.svg'/> , title: 'Sentry', link: "/iaas/templates/sentry" },
-      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/hoppscotch.png'/> , title: 'Hoppscotch', link: "/iaas/templates/hoppscotch" },
-      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/posthog.png'/> , title: 'PostHog', link: "/iaas/templates/posthog" },
-      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/gitlab.webp'/> , title: 'Gitlab', link: "/iaas/templates/gitlab" },
-      { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/novu.png'/> , title: 'Novu', link: "/iaas/templates/novu" },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: "برنامه‌های مرتبط"
+      // },
+      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/supabase.jpg'/> , title: 'Supabase', link: "/iaas/templates/supabase" },
+      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/sentry.svg'/> , title: 'Sentry', link: "/iaas/templates/sentry" },
+      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/hoppscotch.png'/> , title: 'Hoppscotch', link: "/iaas/templates/hoppscotch" },
+      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/posthog.png'/> , title: 'PostHog', link: "/iaas/templates/posthog" },
+      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/gitlab.webp'/> , title: 'Gitlab', link: "/iaas/templates/gitlab" },
+      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/novu.png'/> , title: 'Novu', link: "/iaas/templates/novu" },
   
 
-      {
-        hr: true
-      },
-      {
-        title: "جزئیات سرور ابری",
-        icon: <GoNote />,
-        link: "/iaas/details/about"
-      },
-      {
-        title: "مدیریت دیسک‌",
-        icon: <GoCodespaces />,
-        link: "/iaas/disks/about"
-      },
-      {
-        title: "مدیریت دامنه‌",
-        icon: <GoGlobe />,
-        link: "/iaas/domains/about"
-      },
-      {
-        title: "قابلیت CI/CD",
-        icon: <GoWorkflow />,
-        link: "/iaas/cicd/about"
-      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   title: "جزئیات سرور ابری",
+      //   icon: <GoNote />,
+      //   link: "/iaas/details/about"
+      // },
+      // {
+      //   title: "مدیریت دیسک‌",
+      //   icon: <GoCodespaces />,
+      //   link: "/iaas/disks/about"
+      // },
+      // {
+      //   title: "مدیریت دامنه‌",
+      //   icon: <GoGlobe />,
+      //   link: "/iaas/domains/about"
+      // },
+      // {
+      //   title: "قابلیت CI/CD",
+      //   icon: <GoWorkflow />,
+      //   link: "/iaas/cicd/about"
+      // },
       // {
       //   hr: true
       // },
@@ -3341,603 +3341,603 @@ export default {
       //   link: "/iaas/move"
       // }
     ],
-    update: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoContainer />
-            پلتفرم
-          </div>
-        )
-      },
-      {
-        title: "برگشت به خانه",
-        icon: <GoArrowRight />,
-        link: "/"
-      },
-      {
-        title: "درباره سرویس پلتفرم",
-        icon: <GoInfo />,
-        link: "/paas/about"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: "پلتفرم‌های قابل ارائه"
-      },
-      {
-        title: "NodeJS",
-        icon: <IconContainer alt="nodejs" />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "NextJS",
-        icon: <IconContainer alt="next" />,
-        link: "/paas/nextjs/getting-started"
-      },
-      {
-        title: "Laravel",
-        icon: <IconContainer alt="laravel" />,
-        link: "/paas/laravel/getting-started"
-      },
-      {
-        title: "PHP",
-        icon: <IconContainer alt="php" />,
-        link: "/paas/php/getting-started"
-      },
-      {
-        title: "Python",
-        icon: <IconContainer alt="python" />,
-        link: "/paas/python/getting-started"
-      },
-      {
-        title: "Django",
-        icon: <IconContainer alt="django" />,
-        link: "/paas/django/getting-started"
-      },
-      {
-        title: "Flask",
-        icon: <IconContainer alt="flask" />,
-        link: "/paas/flask/getting-started"
-      },
-      {
-        title: "NET.",
-        icon: <IconContainer alt="netcore" />,
-        link: "/paas/dotnet/getting-started"
-      },
-      {
-        title: "Go",
-        icon: <IconContainer alt="go" />,
-        link: "/paas/go/getting-started"
-      },
-      {
-        title: "React",
-        icon: <IconContainer alt="react" />,
-        link: "/paas/react/getting-started"
-      },
-      {
-        title: "Angular",
-        icon: <IconContainer alt="angularjs" />,
-        link: "/paas/angular/getting-started"
-      },
-      {
-        title: "Vue",
-        icon: <IconContainer alt="vue" />,
-        link: "/paas/vue/getting-started"
-      },
-      {
-        title: "Static",
-        icon: <IconContainer alt="HTML5" />,
-        link: "/paas/static/getting-started"
-      },
-      {
-        title: "Docker",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas/docker/getting-started"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "جزئیات پلتفرم",
-        icon: <GoNote />,
-        link: "/paas/details/about"
-      },
-      {
-        title: "مدیریت دیسک‌",
-        icon: <GoCodespaces />,
-        link: "/paas/disks/about"
-      },
-      {
-        title: "مدیریت دامنه‌",
-        icon: <GoGlobe />,
-        link: "/paas/domains/about"
-      },
-      {
-        title: "قابلیت CI/CD",
-        icon: <GoWorkflow />,
-        link: "/paas/cicd/about"
-      },
-      {
-        title: "فایل liara.json",
-        icon: <GoFile  />,
-        link: "/paas/liarajson"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "به‌روزرسانی پلتفرم",
-        icon: <GoSync />,
-        link: "/paas/update"
-      },
-      {
-        title: "انتقال پلتفرم",
-        icon: <GoPackageDependents />,
-        link: "/paas/move"
-      }
-    ],
-    move: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoContainer />
-            پلتفرم
-          </div>
-        )
-      },
-      {
-        title: "برگشت به خانه",
-        icon: <GoArrowRight />,
-        link: "/"
-      },
-      {
-        title: "درباره سرویس پلتفرم",
-        icon: <GoInfo />,
-        link: "/paas/about"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: "پلتفرم‌های قابل ارائه"
-      },
-      {
-        title: "NodeJS",
-        icon: <IconContainer alt="nodejs" />,
-        link: "/paas/nodejs/getting-started"
-      },
-      {
-        title: "NextJS",
-        icon: <IconContainer alt="next" />,
-        link: "/paas/nextjs/getting-started"
-      },
-      {
-        title: "Laravel",
-        icon: <IconContainer alt="laravel" />,
-        link: "/paas/laravel/getting-started"
-      },
-      {
-        title: "PHP",
-        icon: <IconContainer alt="php" />,
-        link: "/paas/php/getting-started"
-      },
-      {
-        title: "Python",
-        icon: <IconContainer alt="python" />,
-        link: "/paas/python/getting-started"
-      },
-      {
-        title: "Django",
-        icon: <IconContainer alt="django" />,
-        link: "/paas/django/getting-started"
-      },
-      {
-        title: "Flask",
-        icon: <IconContainer alt="flask" />,
-        link: "/paas/flask/getting-started"
-      },
-      {
-        title: "NET.",
-        icon: <IconContainer alt="netcore" />,
-        link: "/paas/dotnet/getting-started"
-      },
-      {
-        title: "Go",
-        icon: <IconContainer alt="go" />,
-        link: "/paas/go/getting-started"
-      },
-      {
-        title: "React",
-        icon: <IconContainer alt="react" />,
-        link: "/paas/react/getting-started"
-      },
-      {
-        title: "Angular",
-        icon: <IconContainer alt="angularjs" />,
-        link: "/paas/angular/getting-started"
-      },
-      {
-        title: "Vue",
-        icon: <IconContainer alt="vue" />,
-        link: "/paas/vue/getting-started"
-      },
-      {
-        title: "Static",
-        icon: <IconContainer alt="HTML5" />,
-        link: "/paas/static/getting-started"
-      },
-      {
-        title: "Docker",
-        icon: <IconContainer alt="docker" />,
-        link: "/paas/docker/getting-started"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "جزئیات پلتفرم",
-        icon: <GoNote />,
-        link: "/paas/details/about"
-      },
-      {
-        title: "مدیریت دیسک‌",
-        icon: <GoCodespaces />,
-        link: "/paas/disks/about"
-      },
-      {
-        title: "مدیریت دامنه‌",
-        icon: <GoGlobe />,
-        link: "/paas/domains/about"
-      },
-      {
-        title: "قابلیت CI/CD",
-        icon: <GoWorkflow />,
-        link: "/paas/cicd/about"
-      },
-      {
-        title: "فایل liara.json",
-        icon: <GoFile  />,
-        link: "/paas/liarajson"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "به‌روزرسانی پلتفرم",
-        icon: <GoSync />,
-        link: "/paas/update"
-      },
-      {
-        title: "انتقال پلتفرم",
-        icon: <GoPackageDependents />,
-        link: "/paas/move"
-      }
-    ],
-    details: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoContainer />
-            جزئیات پلتفرم
-          </div>
-        )
-      },
-      {
-        title: "برگشت به پلتفرم",
-        icon: <GoArrowRight />,
-        link: "/paas/about"
-      },
-      {
-        title: "ویژگی‌های یک پلتفرم در لیارا",
-        icon: <GoInfo />,
-        link: "/paas/details/about"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "پلن‌های برنامه",
-        icon: <GoCpu />,
-        link: "/paas/details/plans/about"
-      },
-      {
-        title: "شبکه خصوصی",
-        icon: <GoShieldLock  />,
-        link: "/paas/details/private-network"
-      },
-      {
-        title: "آی‌پی ثابت",
-        icon: <GoNumber  />,
-        link: "/paas/details/static-ip"
-      },
-      {
-        title: "فایل‌سیستم",
-        icon: <GoFileBinary />,
-        link: "/paas/details/file-system"
-      },
-      {
-        title: "رویدادها",
-        icon: <GoEye />,
-        link: "/paas/details/events"
-      },
-      {
-        title: "گزارشات",
-        icon: <GoGraph />,
-        link: "/paas/details/observations/about"
-      },
-      {
-        title: "متغیرهای محیطی",
-        icon: <GoKey  />,
-        link: "/paas/details/envs"
-      },
-      {
-        title: "رجیستری خصوصی و تاریخچه",
-        icon: <GoLog />,
-        link: "/paas/details/private-registry"
-      },
-      {
-        title: "خط فرمان کنسول",
-        icon: <GoBrowser />,
-        link: "/paas/details/console-shell"
-      },
-      {
-        title: "نادیده گرفتن فایل‌ها",
-        icon: <GoEyeClosed />,
-        link: "/paas/details/ignoring-files"
-      },
-      {
-        title: "استقرار بدون اختلال",
-        icon: <GoGitPullRequest  />,
-        link: "/paas/details/zero-downtime-deployment"
-      },
-      {
-        title: "بررسی سلامت",
-        icon: <GoPulse />,
-        link: "/paas/details/health-check"
-      },
-      {
-        title: "تنظیم DNS Server",
-        icon: <GoPlug  />,
-        link: "/paas/details/dns-server-settings"
-      },
-      {
-        title: "تنظیم موقعیت build",
-        icon: <GoLocation />,
-        link: "/paas/details/build-location"
-      },
-      {
-        title: "تغییر پلن در برنامه",
-        icon: <GoGitCompare />,
-        link: "/paas/details/change-plan"
-      },
-      {
-        title: "حذف یک برنامه",
-        icon: <GoXCircle  />,
-        link: "/paas/details/delete-app"
-      },
-      {
-        title: "پروکسی معکوس (reverse)",
-        icon: <GoPaperAirplane  />,
-        link: "/paas/details/reverse-proxy"
-      },
-      {
-        title: "قابلیت Basic Auth",
-        icon: <GoLock   />,
-        link: "/paas/details/basic-auth"
-      },
-    ],
-    disks: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            دیسک‌ها
-          </div>
-        )
-      },
-      {
-        title: "برگشت به پلتفرم",
-        icon: <GoArrowRight />,
-        link: "/paas/about"
-      },
-      {
-        title: "دیسک چیست؟",
-        icon: <GoInfo />,
-        link: "/paas/disks/about"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          <GoTools />
-            مدیریت دیسک‌ها
-          </div>
-        )
-      },
-      {
-        title: "ساخت دیسک",
-        link: "/paas/disks/create"
-      },
-      {
-        title: "تعریف مسیر برای دیسک",
-        link: "/paas/disks/route"
-      },
-      {
-        title: "افزایش حجم دیسک",
-        link: "/paas/disks/increase-value"
-      },
-      {
-        title: "کاهش حجم دیسک",
-        link: "/paas/disks/decrease-value"
-      },
-      {
-        title: "حذف یک دیسک",
-        link: "/paas/disks/delete"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          < GoIterations />
-            پشتیبان‌گیری از دیسک‌ها
-          </div>
-        )
-      },
-      {
-        title: "تهیه فایل پشتیبان از دیسک‌",
-        link: "/paas/disks/create-backup"
-      },
-      {
-        title: "بازیابی فایل پشتیبان با دسترسی FTP",
-        link: "/paas/disks/restore-backup-using-ftp"
-      },
-      {
-        title: "بازیابی فایل پشتیبان با دستور wget",
-        link: "/paas/disks/restore-backup-using-wget"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            انتقال فایل از دیسک
-          </div>
-        )
-      },
-      {
-        title: "انتقال فایل دیسک به دیسک",
-        link: "/paas/disks/move-files-to-other-disk"
-      },
-      {
-        title: "انتقال فایل دیسک به object storage",
-        link: "/paas/disks/move-files-to-bucket"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          < GoKey />
-            دسترسی‌ها
-          </div>
-        )
-      },
-      {
-        title: "دسترسی FTP به دیسک‌ها",
-        link: "/paas/disks/ftp-access"
-      },
-    ],
-    domains: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            دامنه‌ها
-          </div>
-        )
-      },
-      {
-        title: "برگشت به پلتفرم",
-        icon: <GoArrowRight />,
-        link: "/paas/about"
-      },
-      {
-        title: "دامنه چیست؟",
-        icon: <GoInfo />,
-        link: "/paas/domains/about"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          <GoTools />
-          مدیریت دامنه‌ها در برنامه
-          </div>
-        )
-      },
-      {
-        title: "اضافه کردن دامنه به برنامه",
-        link: "/paas/domains/add-domain"
-      },
-      {
-        title: "ساخت زیر دامنه www",
-        link: "/paas/domains/add-www-subdomain"
-      },
-      {
-        title: "اضافه کردن زیر دامنه دلخواه",
-        link: "/paas/domains/add-subdomains"
-      },
-      {
-        title: "تهیه گواهی SSL برای دامنه",
-        link: "/paas/domains/enable-ssl"
-      },
-      {
-        title: "غیرفعال کردن زیر دامنه پیش‌فرض",
-        link: "/paas/domains/default-subdomain"
-      },
-      {
-        title: "حذف دامنه یا زیردامنه از برنامه",
-        link: "/paas/domains/delete-domain"
-      },
-      {
-        title: "انتقال دامنه",
-        link: "/paas/domains/move"
-      },
-      {
-        title: "TLDهای قابل پشتیبانی",
-        link: "/paas/domains/supported-tlds"
-      },
-      {
-        title: "استفاده از CDN",
-        link: "/paas/domains/use-cdn"
-      },
-    ],
-    cicd: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            قابلیت CI/CD
-          </div>
-        )
-      },
-      {
-        title: "برگشت به پلتفرم",
-        icon: <GoArrowRight />,
-        link: "/paas/about"
-      },
-      {
-        title: "آشنایی با CI/CD",
-        icon: <GoInfo />,
-        link: "/paas/cicd/about"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          <GoTools />
-          استفاده از CI/CD
-          </div>
-        )
-      },
-      {
-        title: "راه‌اندازی CI/CD در برنامه با Github",
-        link: "/paas/cicd/github"
-      },
-      {
-        title: "راه‌اندازی CI/CD در برنامه با Gitlab",
-        link: "/paas/cicd/gitlab"
-      },
-    ],
+    // update: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <GoContainer />
+    //         پلتفرم
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به خانه",
+    //     icon: <GoArrowRight />,
+    //     link: "/"
+    //   },
+    //   {
+    //     title: "درباره سرویس پلتفرم",
+    //     icon: <GoInfo />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: "پلتفرم‌های قابل ارائه"
+    //   },
+    //   {
+    //     title: "NodeJS",
+    //     icon: <IconContainer alt="nodejs" />,
+    //     link: "/paas/nodejs/getting-started"
+    //   },
+    //   {
+    //     title: "NextJS",
+    //     icon: <IconContainer alt="next" />,
+    //     link: "/paas/nextjs/getting-started"
+    //   },
+    //   {
+    //     title: "Laravel",
+    //     icon: <IconContainer alt="laravel" />,
+    //     link: "/paas/laravel/getting-started"
+    //   },
+    //   {
+    //     title: "PHP",
+    //     icon: <IconContainer alt="php" />,
+    //     link: "/paas/php/getting-started"
+    //   },
+    //   {
+    //     title: "Python",
+    //     icon: <IconContainer alt="python" />,
+    //     link: "/paas/python/getting-started"
+    //   },
+    //   {
+    //     title: "Django",
+    //     icon: <IconContainer alt="django" />,
+    //     link: "/paas/django/getting-started"
+    //   },
+    //   {
+    //     title: "Flask",
+    //     icon: <IconContainer alt="flask" />,
+    //     link: "/paas/flask/getting-started"
+    //   },
+    //   {
+    //     title: "NET.",
+    //     icon: <IconContainer alt="netcore" />,
+    //     link: "/paas/dotnet/getting-started"
+    //   },
+    //   {
+    //     title: "Go",
+    //     icon: <IconContainer alt="go" />,
+    //     link: "/paas/go/getting-started"
+    //   },
+    //   {
+    //     title: "React",
+    //     icon: <IconContainer alt="react" />,
+    //     link: "/paas/react/getting-started"
+    //   },
+    //   {
+    //     title: "Angular",
+    //     icon: <IconContainer alt="angularjs" />,
+    //     link: "/paas/angular/getting-started"
+    //   },
+    //   {
+    //     title: "Vue",
+    //     icon: <IconContainer alt="vue" />,
+    //     link: "/paas/vue/getting-started"
+    //   },
+    //   {
+    //     title: "Static",
+    //     icon: <IconContainer alt="HTML5" />,
+    //     link: "/paas/static/getting-started"
+    //   },
+    //   {
+    //     title: "Docker",
+    //     icon: <IconContainer alt="docker" />,
+    //     link: "/paas/docker/getting-started"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     title: "جزئیات پلتفرم",
+    //     icon: <GoNote />,
+    //     link: "/paas/details/about"
+    //   },
+    //   {
+    //     title: "مدیریت دیسک‌",
+    //     icon: <GoCodespaces />,
+    //     link: "/paas/disks/about"
+    //   },
+    //   {
+    //     title: "مدیریت دامنه‌",
+    //     icon: <GoGlobe />,
+    //     link: "/paas/domains/about"
+    //   },
+    //   {
+    //     title: "قابلیت CI/CD",
+    //     icon: <GoWorkflow />,
+    //     link: "/paas/cicd/about"
+    //   },
+    //   {
+    //     title: "فایل liara.json",
+    //     icon: <GoFile  />,
+    //     link: "/paas/liarajson"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     title: "به‌روزرسانی پلتفرم",
+    //     icon: <GoSync />,
+    //     link: "/paas/update"
+    //   },
+    //   {
+    //     title: "انتقال پلتفرم",
+    //     icon: <GoPackageDependents />,
+    //     link: "/paas/move"
+    //   }
+    // ],
+    // move: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <GoContainer />
+    //         پلتفرم
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به خانه",
+    //     icon: <GoArrowRight />,
+    //     link: "/"
+    //   },
+    //   {
+    //     title: "درباره سرویس پلتفرم",
+    //     icon: <GoInfo />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: "پلتفرم‌های قابل ارائه"
+    //   },
+    //   {
+    //     title: "NodeJS",
+    //     icon: <IconContainer alt="nodejs" />,
+    //     link: "/paas/nodejs/getting-started"
+    //   },
+    //   {
+    //     title: "NextJS",
+    //     icon: <IconContainer alt="next" />,
+    //     link: "/paas/nextjs/getting-started"
+    //   },
+    //   {
+    //     title: "Laravel",
+    //     icon: <IconContainer alt="laravel" />,
+    //     link: "/paas/laravel/getting-started"
+    //   },
+    //   {
+    //     title: "PHP",
+    //     icon: <IconContainer alt="php" />,
+    //     link: "/paas/php/getting-started"
+    //   },
+    //   {
+    //     title: "Python",
+    //     icon: <IconContainer alt="python" />,
+    //     link: "/paas/python/getting-started"
+    //   },
+    //   {
+    //     title: "Django",
+    //     icon: <IconContainer alt="django" />,
+    //     link: "/paas/django/getting-started"
+    //   },
+    //   {
+    //     title: "Flask",
+    //     icon: <IconContainer alt="flask" />,
+    //     link: "/paas/flask/getting-started"
+    //   },
+    //   {
+    //     title: "NET.",
+    //     icon: <IconContainer alt="netcore" />,
+    //     link: "/paas/dotnet/getting-started"
+    //   },
+    //   {
+    //     title: "Go",
+    //     icon: <IconContainer alt="go" />,
+    //     link: "/paas/go/getting-started"
+    //   },
+    //   {
+    //     title: "React",
+    //     icon: <IconContainer alt="react" />,
+    //     link: "/paas/react/getting-started"
+    //   },
+    //   {
+    //     title: "Angular",
+    //     icon: <IconContainer alt="angularjs" />,
+    //     link: "/paas/angular/getting-started"
+    //   },
+    //   {
+    //     title: "Vue",
+    //     icon: <IconContainer alt="vue" />,
+    //     link: "/paas/vue/getting-started"
+    //   },
+    //   {
+    //     title: "Static",
+    //     icon: <IconContainer alt="HTML5" />,
+    //     link: "/paas/static/getting-started"
+    //   },
+    //   {
+    //     title: "Docker",
+    //     icon: <IconContainer alt="docker" />,
+    //     link: "/paas/docker/getting-started"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     title: "جزئیات پلتفرم",
+    //     icon: <GoNote />,
+    //     link: "/paas/details/about"
+    //   },
+    //   {
+    //     title: "مدیریت دیسک‌",
+    //     icon: <GoCodespaces />,
+    //     link: "/paas/disks/about"
+    //   },
+    //   {
+    //     title: "مدیریت دامنه‌",
+    //     icon: <GoGlobe />,
+    //     link: "/paas/domains/about"
+    //   },
+    //   {
+    //     title: "قابلیت CI/CD",
+    //     icon: <GoWorkflow />,
+    //     link: "/paas/cicd/about"
+    //   },
+    //   {
+    //     title: "فایل liara.json",
+    //     icon: <GoFile  />,
+    //     link: "/paas/liarajson"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     title: "به‌روزرسانی پلتفرم",
+    //     icon: <GoSync />,
+    //     link: "/paas/update"
+    //   },
+    //   {
+    //     title: "انتقال پلتفرم",
+    //     icon: <GoPackageDependents />,
+    //     link: "/paas/move"
+    //   }
+    // ],
+    // details: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <GoContainer />
+    //         جزئیات پلتفرم
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به پلتفرم",
+    //     icon: <GoArrowRight />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     title: "ویژگی‌های یک پلتفرم در لیارا",
+    //     icon: <GoInfo />,
+    //     link: "/paas/details/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     title: "پلن‌های برنامه",
+    //     icon: <GoCpu />,
+    //     link: "/paas/details/plans/about"
+    //   },
+    //   {
+    //     title: "شبکه خصوصی",
+    //     icon: <GoShieldLock  />,
+    //     link: "/paas/details/private-network"
+    //   },
+    //   {
+    //     title: "آی‌پی ثابت",
+    //     icon: <GoNumber  />,
+    //     link: "/paas/details/static-ip"
+    //   },
+    //   {
+    //     title: "فایل‌سیستم",
+    //     icon: <GoFileBinary />,
+    //     link: "/paas/details/file-system"
+    //   },
+    //   {
+    //     title: "رویدادها",
+    //     icon: <GoEye />,
+    //     link: "/paas/details/events"
+    //   },
+    //   {
+    //     title: "گزارشات",
+    //     icon: <GoGraph />,
+    //     link: "/paas/details/observations/about"
+    //   },
+    //   {
+    //     title: "متغیرهای محیطی",
+    //     icon: <GoKey  />,
+    //     link: "/paas/details/envs"
+    //   },
+    //   {
+    //     title: "رجیستری خصوصی و تاریخچه",
+    //     icon: <GoLog />,
+    //     link: "/paas/details/private-registry"
+    //   },
+    //   {
+    //     title: "خط فرمان کنسول",
+    //     icon: <GoBrowser />,
+    //     link: "/paas/details/console-shell"
+    //   },
+    //   {
+    //     title: "نادیده گرفتن فایل‌ها",
+    //     icon: <GoEyeClosed />,
+    //     link: "/paas/details/ignoring-files"
+    //   },
+    //   {
+    //     title: "استقرار بدون اختلال",
+    //     icon: <GoGitPullRequest  />,
+    //     link: "/paas/details/zero-downtime-deployment"
+    //   },
+    //   {
+    //     title: "بررسی سلامت",
+    //     icon: <GoPulse />,
+    //     link: "/paas/details/health-check"
+    //   },
+    //   {
+    //     title: "تنظیم DNS Server",
+    //     icon: <GoPlug  />,
+    //     link: "/paas/details/dns-server-settings"
+    //   },
+    //   {
+    //     title: "تنظیم موقعیت build",
+    //     icon: <GoLocation />,
+    //     link: "/paas/details/build-location"
+    //   },
+    //   {
+    //     title: "تغییر پلن در برنامه",
+    //     icon: <GoGitCompare />,
+    //     link: "/paas/details/change-plan"
+    //   },
+    //   {
+    //     title: "حذف یک برنامه",
+    //     icon: <GoXCircle  />,
+    //     link: "/paas/details/delete-app"
+    //   },
+    //   {
+    //     title: "پروکسی معکوس (reverse)",
+    //     icon: <GoPaperAirplane  />,
+    //     link: "/paas/details/reverse-proxy"
+    //   },
+    //   {
+    //     title: "قابلیت Basic Auth",
+    //     icon: <GoLock   />,
+    //     link: "/paas/details/basic-auth"
+    //   },
+    // ],
+    // disks: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         دیسک‌ها
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به پلتفرم",
+    //     icon: <GoArrowRight />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     title: "دیسک چیست؟",
+    //     icon: <GoInfo />,
+    //     link: "/paas/disks/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //       <GoTools />
+    //         مدیریت دیسک‌ها
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "ساخت دیسک",
+    //     link: "/paas/disks/create"
+    //   },
+    //   {
+    //     title: "تعریف مسیر برای دیسک",
+    //     link: "/paas/disks/route"
+    //   },
+    //   {
+    //     title: "افزایش حجم دیسک",
+    //     link: "/paas/disks/increase-value"
+    //   },
+    //   {
+    //     title: "کاهش حجم دیسک",
+    //     link: "/paas/disks/decrease-value"
+    //   },
+    //   {
+    //     title: "حذف یک دیسک",
+    //     link: "/paas/disks/delete"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //       < GoIterations />
+    //         پشتیبان‌گیری از دیسک‌ها
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "تهیه فایل پشتیبان از دیسک‌",
+    //     link: "/paas/disks/create-backup"
+    //   },
+    //   {
+    //     title: "بازیابی فایل پشتیبان با دسترسی FTP",
+    //     link: "/paas/disks/restore-backup-using-ftp"
+    //   },
+    //   {
+    //     title: "بازیابی فایل پشتیبان با دستور wget",
+    //     link: "/paas/disks/restore-backup-using-wget"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         انتقال فایل از دیسک
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "انتقال فایل دیسک به دیسک",
+    //     link: "/paas/disks/move-files-to-other-disk"
+    //   },
+    //   {
+    //     title: "انتقال فایل دیسک به object storage",
+    //     link: "/paas/disks/move-files-to-bucket"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //       < GoKey />
+    //         دسترسی‌ها
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "دسترسی FTP به دیسک‌ها",
+    //     link: "/paas/disks/ftp-access"
+    //   },
+    // ],
+    // domains: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         دامنه‌ها
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به پلتفرم",
+    //     icon: <GoArrowRight />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     title: "دامنه چیست؟",
+    //     icon: <GoInfo />,
+    //     link: "/paas/domains/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //       <GoTools />
+    //       مدیریت دامنه‌ها در برنامه
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "اضافه کردن دامنه به برنامه",
+    //     link: "/paas/domains/add-domain"
+    //   },
+    //   {
+    //     title: "ساخت زیر دامنه www",
+    //     link: "/paas/domains/add-www-subdomain"
+    //   },
+    //   {
+    //     title: "اضافه کردن زیر دامنه دلخواه",
+    //     link: "/paas/domains/add-subdomains"
+    //   },
+    //   {
+    //     title: "تهیه گواهی SSL برای دامنه",
+    //     link: "/paas/domains/enable-ssl"
+    //   },
+    //   {
+    //     title: "غیرفعال کردن زیر دامنه پیش‌فرض",
+    //     link: "/paas/domains/default-subdomain"
+    //   },
+    //   {
+    //     title: "حذف دامنه یا زیردامنه از برنامه",
+    //     link: "/paas/domains/delete-domain"
+    //   },
+    //   {
+    //     title: "انتقال دامنه",
+    //     link: "/paas/domains/move"
+    //   },
+    //   {
+    //     title: "TLDهای قابل پشتیبانی",
+    //     link: "/paas/domains/supported-tlds"
+    //   },
+    //   {
+    //     title: "استفاده از CDN",
+    //     link: "/paas/domains/use-cdn"
+    //   },
+    // ],
+    // cicd: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         قابلیت CI/CD
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به پلتفرم",
+    //     icon: <GoArrowRight />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     title: "آشنایی با CI/CD",
+    //     icon: <GoInfo />,
+    //     link: "/paas/cicd/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //       <GoTools />
+    //       استفاده از CI/CD
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "راه‌اندازی CI/CD در برنامه با Github",
+    //     link: "/paas/cicd/github"
+    //   },
+    //   {
+    //     title: "راه‌اندازی CI/CD در برنامه با Gitlab",
+    //     link: "/paas/cicd/gitlab"
+    //   },
+    // ],
 
     ubuntu: [
       {
@@ -4003,6 +4003,202 @@ export default {
       {
         title: "تنظیم فایروال UFW",
         link: "/iaas/ubuntu/how-tos/set-firewall"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoStack  />
+      //       <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی Stack</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "استک LEMP",
+      //   icon: <IconContainer alt="nginx" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک LAMP",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/apache-logo.webp" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // // {
+      // //   title: "استک MEAN",
+      // //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+      // //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // // },
+      // {
+      //   title: "استک MERN",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک TICK",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/tick-stack-logo.png" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک ELK",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/elk-stack.svg" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoDatabase  />
+      //       <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی دیتابیس</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "دیتابیس CockroachDB",
+      //   icon: <IconContainer alt="mysql" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mysql"
+      // },
+      // {
+      //   title: "دیتابیس TimescaleDB",
+      //   icon: <IconContainer alt="postgres" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
+      // },
+      // {
+      //   title: "دیتابیس CouchDB",
+      //   icon: <IconContainer alt="mssql" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mssql"
+      // },
+      // {
+      //   title: "دیتابیس RethinkDB",
+      //   icon: <IconContainer alt="sqlite" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
+      // },
+      // {
+      //   title: "دیتابیس Cassandra",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس Neo4j",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس InfluxDB",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس ClickHouse",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس TiDB",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBug  />
+      //       <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "رفع خطای Get query missing",
+      //   link: "/paas/nodejs/fix-common-errors/graphql-error"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoPaperclip   />
+      //     برنامه‌های مرتبط
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "JSON Server",
+      //   icon: <IconContainer alt="json" />,
+      //   link: "/paas/nodejs/related-apps/json-server"
+      // },
+    ],
+
+    debian: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://files.liara.ir/liara/logos/debian.png" />
+            سیستم‌عامل Debian
+          </div>
+        )
+      },
+      {
+        title: "برگشت به سرور ابری",
+        icon: <GoArrowRight />,
+        link: "/iaas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/iaas/debian/getting-started"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/iaas/debian/quick-start"
+      },
+      {
+        title: "لینک‌های مرتبط",
+        icon: <GoMegaphone   />,
+        link: "/iaas/debian/related-links"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/iaas/debian/choose-version"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          < GoPackage   />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "اتصال به سرور ابری با SSH",
+        link: "/iaas/debian/how-tos/connect-to-server-using-ssh"
+      },
+      {
+        title: "اتصال سرور به دامنه با SSL",
+        link: "/iaas/debian/how-tos/connect-domain"
+      },
+      {
+        title: "ساخت کاربر جدید",
+        link: "/iaas/debian/how-tos/create-new-user"
+      },
+      {
+        title: "اعطای دسترسی مدیریتی به کاربر",
+        link: "/iaas/debian/how-tos/grant-privileges-to-user"
+      },
+      {
+        title: "تنظیم فایروال UFW",
+        link: "/iaas/debian/how-tos/set-firewall"
       },
       // {
       //   hr: true
