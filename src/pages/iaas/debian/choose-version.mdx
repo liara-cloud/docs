@@ -1,0 +1,51 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+
+<Layout>
+<Head>
+<title>مستندات نسخه‌های قابل ارائه سرور ابری Debian  - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نسخه‌های قابل ارائه سرور مجازی دبیان Debian"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# نسخه‌های قابل ارائه در سرور ابری Debian
+<hr className="mb-2" />
+
+در حال حاضر در پلتفرم لیارا، نسخه‌ زیر از  سرور ابری Debian ارائه می‌شود: 
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: '12.9',},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        نسخه {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+<Alert variant="warning">
+<p>
+در نظر داشته باشید که پس از راه‌اندازی سرور ابری، امکان تغییر نسخه در آن به واسطه رابط کاربری لیارا، وجود نخواهد داشت.
+</p>
+</Alert>
+
+</Layout>

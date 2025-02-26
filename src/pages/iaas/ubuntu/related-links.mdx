@@ -1,0 +1,45 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import {GoArrowLeft,} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات لینک‌های مرتبط با سرور ابری اوبونتو Ubuntu - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به لینک‌های مرتبط با سرور مجازی اوبونتو Ubuntu در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# لینک‌های مرتبط با سرور ابری Ubuntu 
+<hr className="mb-2" />
+در ادامه، لینک‌های تمامی مستندات مربوط به سرور ابری Ubuntu برای شما قرار گرفته است تا بتوانید بیش از پیش، با انعطاف‌پذیری و مقیاس‌پذیری به توسعه و ارائه محصولات خود، ادامه دهید:
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+    { platform: 'مستندات راه‌اندازی سرور ایمیل لیارا در سرور ابری Ubuntu', link: "#" },
+    { platform: 'مستندات اتصال سرور ابری Ubuntu به سرویس ذخیره‌سازی ابری لیارا', link: "#" },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.platform}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+          </div>
+
+</Layout>

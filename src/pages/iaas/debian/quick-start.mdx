@@ -1,0 +1,847 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع سرور ابری Debian دبیان - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی سریع سرور مجازی دبیان Debian در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# راه‌اندازی سریع سرور ابری Debian 
+
+<Tabs 
+  tabs={["Liara Console", "Liara CLI"]} 
+  content={[
+  <>
+  {/* <video
+  src="https://files.liara.ir/liara/nodejs/nodejs-desktop.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  ></video>
+  
+  <br /> */}
+
+  برای راه‌اندازی سرور با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای استقرار برنامه را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد سرور ابری</h3>
+    <p>وارد تب <b>سرور ابری</b> شوید، سپس بر روی گزینه <b>ایجاد سرور ابری</b> کلیک کنید و سرور Debian خود را با نسخه، شناسه، <Link className="text-[#2196f3] " href="/iaas/details/ssh-keys">کلید SSH عمومی</Link> و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
+
+    <div className="h-2" />
+    <video
+      src="https://files.liara.ir/liara/vps/create-debian-vm-using-console.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <div className="h-2" />
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>ارسال سیگنال روشن شدن به سرور ابری</h3>
+    <p>
+      پس از ساخت سرور ابری، به‌صورت خودکار، یک سیگنال روشن‌شدن به سرور ساخته شده شما، ارسال می‌شود و سرور شما روشن خواهد شد. اما در صورتی که سرور شما روشن نبود، برای این‌کار، بر روی آن کلیک کرده و سپس وارد بخش <b>تنظیمات</b> آن، شوید. در نهایت 
+      در قسمت <b>ارسال سیگنال</b>، بر روی گزینه <b>انتخاب سیگنال</b>، کلیک کرده، سیگنال <b>روشن کردن</b> را انتخاب کنید و در نهایت بر روی گزینه <b>ارسال سیگنال</b>، کلیک کنید تا سیگنال، ارسال شود.
+      پس از انجام این کار، می‌توانید وضعیت سرور ابری خود را در بخش <a href="/iaas/details/events" className="text-[#2196f3]">رویدادها</a>، بررسی کنید. 
+    </p>
+        
+    <div className="h-2" />
+    <video
+      src="https://files.liara.ir/liara/vps/turning-a-debian-vm-on-by-sending-signal.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    ></video>
+    <div className="h-2" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/iaas/details/signals" className="text-[#2196f3]">آشنایی با سیگنال‌ها در سرور ابری</a>
+      </p>
+    </Alert>
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>اتصال به سرور ابری از لوکال</h3>
+    <p>
+      تمامی کارها انجام شده است و اکنون می‌توانید با روش‌های مرسوم، به سرور ابری خود، متصل شوید. یکی از روش‌های توصیه‌شده برای اتصال به سرور ابری، استفاده از ابزار <a href="https://www.openssh.com/" className="text-[#2196f3]">OpenSSH</a> است که می‌توانید مطابق با سیستم‌عامل‌تان، آن را نصب کرده و به سرور ابری خود، متصل شوید. 
+    </p>
+
+    <Tabs 
+      tabs={["Linux", "Windows", "MacOS"]} 
+      content={[
+        <>
+          <p>
+            پکیج OpenSSH معمولاً به‌صورت پیش‌فرض در اکثر توزیع‌های لینوکس نصب است، می‌توانید نصب بودن یا نبودن این پکیج را با اجرای دستور زیر در ترمینال خود، بررسی کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با توجه به نوع توزیع خود نصب کنید:
+          </p>
+          <Tabs 
+            tabs={["Debian", "Debian", "Rocky Linux", "CentOS", "RHEL", "AlmaLinux", "Arch Linux", "Manjaro"]} 
+            content={[
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+
+          <div className="h-2" />
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+              
+          <div className="h-2" />
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,       
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>                           
+        </>,      
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>         
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+              
+        </>,
+ 
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+        </>,
+            ]}
+          />
+        </>,
+
+        <>
+        <p>
+          از ویندوز ۱۰ به بعد، OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از ابزار PowerShell، بر روی سیستم‌عامل خود، نصب کنید. در ابتدا، PowerShell را با دسترسی administrator باز کنید، سپس دستور زیر را در آن، اجرا کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`Get-WindowsCapability -Online | ? Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+
+        </>,
+        <>
+        <p>
+          در MacOS، پکیج OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از دستور <Important>brew</Important>، بر روی سیستم‌عامل خود، نصب کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`brew install openssh`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+        </>,
+      ]}
+    />
+    
+    <p>
+      در نهایت، پس از نصب OpneSSH، کافیست تا در لیارا، در سرور ابری خود، وارد بخش <b>اتصال</b> شده و با استفاده از دستور قرار گرفته در بخش <b>اتصال سریع</b>، به سرور ابری خود، متصل شوید: 
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`ssh root@<your-ip-address>`}
+    </Highlight>
+    </div>
+    <Asciinema id="connect-to-debian-server-using-ssh" />
+    <div className="h-2" />
+    <p>
+      با اجرای دستور فوق و در صورتی که اتصال مبتنی بر رمز عبور باشد، بایستی رمز عبور موجود در بخش <b>اتصال</b> را وارد کرده و سپس <Important>Enter</Important> را بزنید تا به سرور، با موفقیت، متصل شوید.
+    </p>
+    <div className="h-2" />
+
+      <Alert variant="info">
+      <p>
+        در صورتی که از SSH Keys استفاده می‌کنید. تنها کافیست تا عبارت <Important>yes</Important> را نوشته و سپس <Important>Enter</Important> را بزنید، تا به سرور ابری خود، بدون نیاز به نوشتن رمز عبور، متصل شوید.
+      </p>
+    </Alert>
+  </>
+  )
+  },
+
+]}/>
+  </>,
+
+  <>
+  {/* <video
+  src="https://files.liara.ir/liara/nodejs/nodejs-cli.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  ></video>
+  <br /> */}
+  برای استقرار با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/cli/about">Liara CLI</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>نصب Liara CLI</h3>
+    <p>ترمینال را باز کنید و با اجرای دستور زیر، ابزار Liara CLI را بر روی سیستم خود نصب کنید:</p>
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`npm install -g @liara/cli`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+    <Alert variant="info">
+      <p>
+      دقت کنید که <Link className="text-[#2196f3] " href="https://nodejs.org">npm و NodeJS</Link> باید بر روی سیستم‌عامل‌تان نصب باشد.
+      </p>
+    </Alert>
+    <Alert variant="warning">در ویندوز، ترمینال باید بر روی CMD تنظیم باشد.</Alert>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>لاگین به حساب کاربری</h3>
+    <p>با اجرای دستور زیر، وارد حساب کاربری خود در لیارا، شوید:</p>
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`liara login`}
+      </Highlight>
+    </div>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/liaracli-login.gif" alt="liara cli login to account" />
+    <div className="h-4" />
+  </>
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد سرور ابری</h3>
+    <p>با اجرای دستور زیر، سرور ابری Debian خود را ایجاد کنید:</p>
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`liara vm create`}
+      </Highlight>
+    </div>
+    <Asciinema id="create-debian-vm-using-cli" />
+    <div className="h-2" />
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه (اختیاری)، نوع سرور ابری (که باید بر روی debian تنظیم شود)، ورژن سرور دبیان و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link>، مشخص شوند. در صورتی که قصد دارید از قابلیت <a href="/iaas/details/ssh-keys" className="text-[#2196f3]">SSH Keys</a> استفاده کنید، باید کلید عمومی خود را در مرحله آخر ساخت سرور ابری و پس از وارد کردن گزینه <Important>y</Important> و زدن دکمه <Important>Enter</Important>، وارد کنید.</p>
+    <div className="h-2" />
+
+    <Alert variant="info">اگر که از قبل سرور ابری خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
+
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>ارسال سیگنال روشن شدن به سرور ابری</h3> 
+    <p>با اجرای دستور زیر، سیگنال روشن‌شدن را به سرور ابری خود ارسال کنید تا سرور ابری، روشن شود:</p>
+    
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`liara vm start`}
+    </Highlight>
+    </div>
+    <Asciinema id="start-debian-vm-using-cli" />
+    <Alert variant="info">
+      <p>
+        در صورتی که قصد دارید سیگنال روشن‌شدن در پس‌زمینه، به سرور ابری ارسال شود، دستور <Important>liara vm start -d</Important> را، اجرا کنید. 
+      </p>
+    </Alert>
+        <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/iaas/details/signals" className="text-[#2196f3]">آشنایی با سیگنال‌ها در سرور ابری</a>
+      </p>
+    </Alert>
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>اتصال به سرور ابری از لوکال</h3>
+    <p>
+      تمامی کارها انجام شده است و اکنون می‌توانید با روش‌های مرسوم، به سرور ابری خود، متصل شوید. یکی از روش‌های توصیه‌شده برای اتصال به سرور ابری، استفاده از ابزار <a href="https://www.openssh.com/" className="text-[#2196f3]">OpenSSH</a> است که می‌توانید مطابق با سیستم‌عامل‌تان، آن را نصب کرده و به سرور ابری خود، متصل شوید. 
+    </p>
+
+    <Tabs 
+      tabs={["Linux", "Windows", "MacOS"]} 
+      content={[
+        <>
+          <p>
+            پکیج OpenSSH معمولاً به‌صورت پیش‌فرض در اکثر توزیع‌های لینوکس نصب است، می‌توانید نصب بودن یا نبودن این پکیج را با اجرای دستور زیر در ترمینال خود، بررسی کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با توجه به نوع توزیع خود نصب کنید:
+          </p>
+          <Tabs 
+            tabs={["Debian", "Debian", "Rocky Linux", "CentOS", "RHEL", "AlmaLinux", "Arch Linux", "Manjaro"]} 
+            content={[
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+
+          <div className="h-2" />
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+              
+          <div className="h-2" />
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,       
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>                           
+        </>,      
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>         
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+              
+        </>,
+ 
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+        </>,
+            ]}
+          />
+        </>,
+
+        <>
+        <p>
+          از ویندوز ۱۰ به بعد، OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از ابزار PowerShell، بر روی سیستم‌عامل خود، نصب کنید. در ابتدا، PowerShell را با دسترسی administrator باز کنید، سپس دستور زیر را در آن، اجرا کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`Get-WindowsCapability -Online | ? Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+
+        </>,
+        <>
+        <p>
+          در MacOS، پکیج OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از دستور <Important>brew</Important>، بر روی سیستم‌عامل خود، نصب کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`brew install openssh`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+        </>,
+      ]}
+    />
+    
+    <p>
+      در نهایت، پس از نصب OpneSSH، کافیست تا در لیارا، در سرور ابری خود، وارد بخش <b>اتصال</b> شده و با استفاده از دستور قرار گرفته در بخش <b>اتصال سریع</b>، به سرور ابری خود، متصل شوید: 
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`ssh root@<your-ip-address>`}
+    </Highlight>
+    </div>
+    <Asciinema id="connect-to-debian-server-using-ssh" />
+    <div className="h-2" />
+    <p>
+      با اجرای دستور فوق و در صورتی که اتصال مبتنی بر رمز عبور باشد، بایستی رمز عبور موجود در بخش <b>اتصال</b> را وارد کرده و سپس <Important>Enter</Important> را بزنید تا به سرور، با موفقیت، متصل شوید.
+    </p>
+    <div className="h-2" />
+
+      <Alert variant="info">
+      <p>
+        در صورتی که از SSH Keys استفاده می‌کنید. تنها کافیست تا عبارت <Important>yes</Important> را نوشته و سپس <Important>Enter</Important> را بزنید، تا به سرور ابری خود، بدون نیاز به نوشتن رمز عبور، متصل شوید.
+      </p>
+    </Alert>
+  </>
+  )
+  },
+
+]}/>
+  </>,
+   <>
+    <video
+    src="https://files.liara.ir/liara/nodejs/nodejs-github.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+    ></video>
+    <div className="h-5" />
+    برای استقرار با Github، کافیست تا مراحل زیر را طی کنید:
+    <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای استقرار برنامه را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد برنامه</h3>
+    <p>برنامه NodeJS خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+   <>
+   <h3>تعریف اسکریپت start</h3>
+    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه؛ حتماً اسکریپت <Important>start</Important> را تعریف کنید؛ به عنوان مثال، اگر که نام فایل اصلی برنامه‌تان <Important>server.js</Important> است، باید اسکریپت start را به شکل زیر، تعریف کنید:</p>
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="json">
+      {`{
+  "scripts": {
+    "start": "node server.js"
+  }
+}`}
+    </Highlight>
+    </div>
+  
+  </>
+  )
+  },
+  {
+  step: "۵",
+  content: (
+  <>
+    <h3>ساخت فایل <Important>liara.json</Important></h3>
+    <p>
+      در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و پیکربندی‌های مدنظرتان را در این فایل بنویسید؛ به عنوان مثال:
+    </p>
+        <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{ 
+    "port": 3005,
+    "node": {
+    "mirror": true,
+    "timezone": "America/Los_Angeles",
+    "version": "22"
+    }
+}`}
+            </Highlight>
+        </div>
+        <Alert variant='error'>
+          <p>
+            در فایل فوق، برای جلوگیری از خطا خوردن فرایند استقرار، از فیلدهای <Important>app</Important> و <Important>platform</Important> استفاده نکنید؛ چرا که لیارا، آن‌ها را به صورت خودکار، تشخیص خواهد داد.
+          </p>  
+        </Alert>
+  </>
+  )
+  },
+  {
+  step: "۶",
+  content: (
+
+  <>
+    <h3>ساخت ریپازیتوری در گیت‌هاب</h3>
+    <p>
+      یک ریپازیتوری در حساب گیت‌هاب خود برای برنامه‌مدنظرتان با نام دلخواه‌تان ایجاد کنید.
+    </p>
+  <div className="h-2" />
+  <Alert variant="success">
+<p>
+در صورتی که از قبل، این کار را انجام داده‌اید یا قصد دارید از ریپازیتوری‌های فعلی خود استفاده کنید؛ از این مرحله بگذرید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۷",
+  content: (
+  <>
+    <h3>آپلود پروژه در گیت‌هاب</h3>
+    <p>
+      پروژه نهایی خود را در ریپازیتوری‌تان در گیت‌هاب آپلود کنید؛
+      حتماً در نظر داشته باشید که درون پروژه‌تان، فایل <Important>gitignore.</Important> قرار داشته باشد و درون آن، فایل‌های اضافی 
+      برنامه، که قصد ندارید آپلود شوند؛ لیست شده باشند.
+    </p>
+  </>
+  )
+  },
+  {
+  step: "۸",
+  content: (
+  <>
+    <h3>اتصال لیارا به گیت‌هاب</h3>
+    <p>
+      برای اتصال حساب لیارا خود به گیت‌هاب، در لیارا بر روی پروفایل خود کلیک کرده و وارد زیر قسمت <a href="https://console.liara.ir/settings/profile" className="text-[#2196f3]">حساب کاربری</a> شوید. در ادامه 
+      وارد منوی <a href="https://console.liara.ir/settings/github" className="text-[#2196f3]">گیت‌هاب</a> شوید و بر روی دکمه <b>اتصال به گیت‌هاب</b>، کلیک کنید. 
+    </p>
+    <div className="h-1" />
+    <img src="https://files.liara.ir/liara/docs/connect-to-github-on-liara.png" alt="connect to github on liara account" />
+    <div className="h-1" />
+    <p> 
+      پس از 
+      انجام این کار و وارد کردن اطلاعات مربوط به گیت‌هاب، حساب لیارا شما به گیت‌هاب متصل خواهد شد.
+    </p>
+    <div className="h-1" />
+    <img src="https://files.liara.ir/liara/docs/added-github-account-on-liara.png" alt="added github account on liara" />
+    <div className="h-1" />
+
+  <div className="h-2" />
+  <Alert variant="error">
+<p>
+  در صورت مواجه با خطای "اتصال به Github"، بایستی از حساب لیارا خود، خارج شده و مجدداً به وسیله Github، به اکانت لیارا خود، وارد شوید.
+</p>
+</Alert>
+  </>
+  )
+  },
+  {
+  step: "۹",
+  content: (
+  <>
+    <h3>ویرایش دسترسی‌ها</h3>
+    <p>
+      بعد از اتصال به اکانت گیت‌هاب، بر روی گزینه <b>ویرایش دسترسی‌ها</b> کلیک کرده و ریپازیتوری (ریپازیتوری‌های) مدنظرتان را به حساب لیارا متصل کنید.
+    </p>
+    <div className="h-2" />
+    <video
+    src="https://files.liara.ir/liara/docs/edit-access-to-github-account.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+    ></video>
+    <div className="h-2" />
+  </>
+  )
+  },
+  {
+  step: "۱۰",
+  content: (
+  <>
+    <h3>استقرار برنامه</h3>
+    <p>
+        در نهایت، بر روی برنامه خود کلیک کرده وارد صفحه <b>استقرار جدید</b> شوید؛ سپس در منوی <b>گیت‌هاب</b>، ریپازیتوری مدنظرتان را انتخاب کرده و پس از انتخاب نوع استقرار و branch مدنظرتان، بر روی گزینه <b>اتصال به برنامه</b> کلیک کنید تا برنامه‌تان به ریپازیتوری مدنظرتان متصل شود.
+        در نهایت، کافیست تا یک‌بار بر روی گزینه <b>استقرار دستی</b> کلیک کنید تا آخرین commit شما در لیارا مستقر شود.
+    </p>
+  <div className="h-2" />
+            <video
+            src="https://files.liara.ir/liara/docs/deploy-project-using-github.mp4"
+            controls="controls"
+            className="block w-full"
+            width="100%"
+            ></video>
+  <div className="h-2" />
+    <Alert variant="info">
+<p>
+  برای قطع ارتباط برنامه و ریپازیتوری نیز، می‌توانید بر روی دکمه <b>قطع اتصال</b> کلیک کنید تا تغییرات جدید، مستقر نشوند.
+</p>
+</Alert>
+<div className="h-1" />
+
+  </>
+  )
+  }
+
+]}/>
+
+  </>,
+]} 
+/>
+
+</Layout>

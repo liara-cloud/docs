@@ -1,0 +1,98 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه تنظیم فایروال UFW در سرور ابری Debian - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم فایروال UFW firewall در سرور مجازی دبیان Debian در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# نحوه تنظیم فایروال UFW
+<hr className="mb-2" />
+
+<Alert variant="error">
+<p>
+    در صورتی که با کاربر <Important>root</Important> به سرور دبیان متصل شده‌اید، نیازی نیست که از عبارت <Important>sudo</Important> قبل از دستورات استفاده کنید.
+</p>
+</Alert>
+<div className="h-4" />
+
+فایروال (Firewall) یک ابزار امنیتی است که مانند یک دیوار محافظ بین شبکه داخلی و اینترنت یا بین بخش‌های مختلف یک شبکه عمل می‌کند. این سیستم با بررسی و فیلتر کردن ترافیک ورودی و خروجی، از دسترسی‌های غیرمجاز، حملات سایبری، بدافزارها و نفوذ هکرها جلوگیری می‌کند. فایروال‌ها می‌توانند به‌صورت سخت‌افزاری، نرم‌افزاری یا ترکیبی از هر دو باشند و بسته به نیاز، قوانین مشخصی را برای کنترل ترافیک شبکه اعمال کنند.
+
+<div className="h-4" />
+
+در سرورهای ابری، به دلیل ماهیت در دسترس بودن آن‌ها در بستر اینترنت، استفاده از فایروال اهمیت ویژه‌ای دارد. بدون یک فایروال مناسب، سرور شما در معرض حملاتی مانند DDoS , Brute Force و Port Scanning قرار می‌گیرد. 
+برای تنظیم فایروال در سرور ابری دبیان، می‌توان از UFW (Uncomplicated Firewall) استفاده کرد که یک ابزار ساده و کارآمد برای مدیریت قوانین فایروال است.
+<div className="h-4" />
+
+<p>
+    برای تنظیم فایروال UFW، پس از <a href="/iaas/debian/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور ابری خود با استفاده از SSH</a>، باید در ابتدا، آن را با اجرای دستور زیر، نصب کنید:
+</p>
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`sudo apt update && sudo apt install ufw -y`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، برای اطمینان از اینکه firewall، اجازه اتصالات SSH را می‌دهد تا دفعه بعد، بتوانید به سرور ابری‌تان وارد شوید، این اتصالات را با اجرای دستور زیر مجاز کنید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`sudo ufw allow OpenSSH`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، می‌توانید با اجرای دستور زیر
+UFW را فعال کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`sudo ufw enable`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، بایستی <Important>y</Important> را برای تایید و فعال‌سازی فایروال وارد کنید و سپس <Important>Enter</Important> را بزنید.
+اکنون، می‌توانید با اجرای دستور زیر، وضعیت فایروال را، بررسی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`sudo ufw status`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اگر پس از اجرای دستور فوق، خروجی <Important>Status: active</Important> را مشاهده کردید، یعنی  فایروال فعال است.
+در صورتی که نیاز به غیرفعال کردن فایروال داشتید، می‌توانید دستور زیر را، اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`sudo ufw disable`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

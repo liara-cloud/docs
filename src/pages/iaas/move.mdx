@@ -1,0 +1,152 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات انتقال پلتفرم - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه انتقال پلتفرم از یک هاست به هاست دیگر در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# انتقال سرویس پلتفرم در لیارا
+
+<hr className="mb-2" />
+انتقال یک سرویس می‌تواند دلایل مختلفی داشته باشد و شاید به خاطر عواملی مثل بهبود عملکرد، افزایش امنیت، کاهش هزینه‌ها، و بهره‌وری، نیاز به انجام آن باشد. 
+اگر که قصد دارید برنامه خود را در لیارا انتقال دهید؛ کافیست تا مراحل زیر را قدم به قدم انجام دهید؛ در نظر داشته باشید که برنامه مبدأ با نام فرضی <Important>source-app</Important> و برنامه مقصد با نام فرضی <Important>target-app</Important> مشخص شده‌اند که شما باید آن‌‌ها را طبق شناسه دو برنامه مبدأ و مقصد خود، تغییر دهید.
+
+<Step  steps={[
+    {
+    step: "۱",
+    content: (
+    <>
+            <h3>ایجاد برنامه مقصد</h3>
+            <p>برنامه <Important>target-app</Important> را با <a href="/paas/details/plans/about" className="text-[#2196f3] ">پلن</a> و <a href="/paas/details/private-network" className="text-[#2196f3] ">شبکه خصوصی</a> مدنظر خود، ایجاد کنید.</p>
+    </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+    <>
+            <h3>تنظیم متغیرهای محیطی</h3>
+            <p><a href="/paas/details/envs" className="text-[#2196f3] ">متغیرهای محیطی</a> موجود در برنامه <Important>source-app</Important> را به همراه مقدارشان، در برنامه <Important>target-app</Important> قرار دهید.</p>
+    </>
+    )
+    },
+    {
+    step: "۳",
+    content: (
+    <>
+            <h3>دانلود سورس کد</h3>
+            <p>آخرین سورس‌کد با استقرار موفق را از قسمت <a href="/paas/details/private-registry" className="text-[#2196f3] "><b>تاریخچه</b></a> برنامه <Important>source-app</Important> دانلود کنید:</p>
+                <div className="h-4" />
+                <video
+                src="https://files.liara.ir/liara/docs/downloading-source-code-using-console.mp4"
+                controls="controls"
+                className="block w-full"
+                width="100%" />
+                <div className="h-4" />
+    </>
+    )
+    },
+    {
+    step: "۴",
+    content: (
+    <>
+            <h3>تعریف مجدد دیسک‌ها</h3>
+            <p>تمام <a href="/paas/disks/about" className="text-[#2196f3] ">دیسک‌های</a> برنامه‌ی <Important>source-app</Important> را ترجیحاً با نام یکسان برای برنامه‌ی <Important>target-app</Important> بسازید.</p>
+
+    </>
+    )
+    },
+    {
+    step: "۵",
+    content: (
+    <>
+            <h3>اتصال به دیسک‌ها</h3>
+            <p>با استفاده از Liara CLI دیسک‌ها را به برنامه <Important>target-app</Important> متصل کنید.</p>
+            <div className="h-2" />
+            <Alert variant="success">
+            <p>
+                همچنین بخوانید: <a href="/paas/disks/route/" className="text-[#2196f3] ">نحوه تعریف مسیر و اتصال به دیسک‌ها</a>
+            </p>
+            </Alert>
+            <Alert variant="info">
+            <p>
+                در صورتی که قصد دارید با استفاده از Liara Console استقرار را انجام دهید؛ می‌توانید در مرحله استقرار برنامه (گام ۶)، دیسک‌ها را به برنامه، متصل کنید.
+            </p>
+            </Alert>
+    </>
+   )
+    },
+    {
+    step: "۶",
+    content: (
+    <>
+            <h3>استقرار مجدد پروژه</h3>
+            <p>سورس‌کد دانلود شده را در برنامه <Important>target-app</Important> با یکی از سه روش Liara CLI یا Liara Console یا Github در لیارا مستقر کنید.</p>
+    </>
+   )
+    },
+    {
+    step: "۷",
+    content: (
+    <>
+            <h3>تهیه فایل پشتیبان از دیسک‌های قبلی</h3>
+            <p>از محتوای دیسک‌های <Important>source-app</Important> یک <a href="/paas/disks/create-backup" className="text-[#2196f3] ">فایل پشتیبان</a> به صورت دستی تهیه کنید.</p>
+    </>
+    )
+    },
+    {
+    step: "۸",
+    content: (
+    <>
+            <h3>ایجاد دسترسی FTP</h3>
+            <p><a href="/paas/disks/ftp-access" className="text-[#2196f3] ">یک دسترسی FTP</a> برای تمامی دیسک‌های برنامه <Important>target-app</Important> ایجاد کنید.</p>
+    </>
+    )
+    },
+    {
+    step: "۹",
+    content: (
+    <>
+            <h3>اتصال به دیسک‌ها با دسترسی FTP</h3>
+            <p>با استفاده از دسترسی FTP، به دیسک‌ها متصل شوید و فایل‌های پشتیبان دانلود شده را به صورت فشرده درون آن‌ها بریزید.</p>
+    </>
+    )
+    },
+    {
+    step: "۱۰",
+    content: (
+    <>
+            <h3></h3>
+            <p> در نهایت با استفاده از <a href="/paas/details/console-shell" className="text-[#2196f3] ">خط فرمان</a> برنامه <Important>target-app</Important> و قطعه کد زیر، فایل‌های فشرده درون پوشه‌های متصل به دیسک را، استخراج کنید (در قطعه کد زیر، نام فایل شما به عنوان مثال، <Important>backup.tar.gz</Important> در نظر گرفته شده است):</p>
+            <div className="h-2" />
+            <div dir="ltr">
+            <Highlight className="bash">
+            {`$ cd storage/uploads
+$ tar -xzvf backup.tar.gz`}
+            </Highlight>
+            </div>
+    </>
+    )
+    },
+]}/>
+<div className="h-4" />
+در نهایت؛ تمامی کارها برای انتقال برنامه‌تان انجام شده است و می‌توانید برنامه <Important>source-app</Important> خود را، پاک کنید و از <Important>target-app</Important> استفاده کنید.
+
+</Layout>

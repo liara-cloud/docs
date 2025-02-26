@@ -1,0 +1,73 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات انتقال فایل دیسک‌ به دیسک - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه انتقال فایل از یک دیسک به دیسک دیگر در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# انتقال فایل از یک دیسک به دیسک دیگر
+<hr className="mb-2" />
+
+برای انتقال فایل‌های درون یک دیسک به یک دیسک دیگر در لیارا، در ابتدا کافیست تا برنامه <a href="https://rclone.org/" className="text-[#2196f3] ">Rclone</a> را از صفحه <a href="https://rclone.org/downloads/" className="text-[#2196f3] ">Downloads</a> متناسب با سیستم عامل خود، دانلود کنید. سپس، باید برای هر دو دیسک <a href="../ftp-access" className="text-[#2196f3] ">دسترسی FTP</a> ایجاد کنید.
+<div className="h-4" />
+در قدم بعد باید با اجرای دستور <Important>rclone config</Important> یک <Important>remote</Important> جدید را برای دیسک اول خود، پیکربندی کنید:
+<Asciinema id="rclone-disk-ftp-remote" />
+
+همچنین، توصیه می‌شود که برای اتصال ایمن، از FTPS به جای FTP استفاده کنید؛ برای این منظور، در مرحله
+مربوطه، مقدار <Important>explicit_tls</Important> را بر روی true تنظیم کنید: 
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="bash">
+    {`Option explicit_tls.                                                                        
+Use Explicit FTPS (FTP over TLS).                                                           
+When using explicit FTP over TLS the client explicitly requests                             
+security from the server in order to upgrade a plain text connection                        
+to an encrypted one. Cannot be used in combination with implicit FTPS.                      
+Enter a boolean value (true or false). Press Enter for the default (false).                 
+explicit_tls> true`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+
+بعد از انجام کار فوق، اکنون باید مجدداً با اجرای دستور <Important>rclone config</Important> یک <Important>remote</Important> جدید دیگر برای دیسک دوم، مشابه دیسک اول، پیکربندی کنید.
+درنهایت شما می‌توانید با اجرای دستور زیر یک نسخه از فایل‌های موجود در دیسک موردنظرتان را در دیسک جدید نیز، قرار دهید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="bash">
+    {`rclone copy -PM <disk-remote-1>:/ <disk-remote-2>:/`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+البته اگر که قصد انتقال فایل‌ها را از دیسک اول به دیسک دوم، دارید، می‌توانید دستور زیر را اجرا کنید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="bash">
+    {`rclone move -PM <disk-remote-1>:/ <disk-remote-2>:/`}
+</Highlight>
+</div>
+
+</Layout>

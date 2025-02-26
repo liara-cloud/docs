@@ -1,0 +1,108 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+
+    
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال دامنه به برنامه - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اتصال دامنه به برنامه در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال دامنه به برنامه
+
+<hr className="mb-2" />
+
+یکی از مهم‌ترین بخش‌های یک برنامه، دامنه آن است. دامنه باعث می‌شود که کاربران به راحتی شما را در اینترنت پیدا کنند. 
+یک دامنه با معنا، می‌تواند برای مشتریان شما نشان‌دهنده اعتبار و حرفه‌ای بودن کسب و کار شما باشد و SEO وب‌سایت شما را تا حد زیادی ارتقا دهد.
+
+<Section id="what-is-domain" title="دامنه چیست؟" />
+دامنه یک نشانی یا آدرس یکتاست که برای شناسایی و دسترسی به یک وبسایت یا برنامه در اینترنت استفاده می‌شود.
+
+<Section id="managing-domains" title="مدیریت دامنه در لیارا" />
+شما می‌توانید دامنه خریداری شده خود را بدون انجام کار اضافی و با چند کلیک، به برنامه خود در لیارا، متصل کنید و آن را به سادگی هرچه تمام، در لیارا، مدیریت کنید. در ادامه بخوانید:
+
+<div className="h-4" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "اضافه کردن دامنه به برنامه",
+        link: "./add-domain"
+      },
+      {
+        title: "ساخت زیر دامنه www",
+        link: "./add-www-subdomain"
+      },
+      {
+        title: "اضافه کردن زیر دامنه دلخواه",
+        link: "./add-subdomains"
+      },
+      {
+        title: "تهیه گواهی SSL برای دامنه",
+        link: "./enable-ssl"
+      },
+      {
+        title: "غیرفعال کردن زیر دامنه پیش‌فرض",
+        link: "./default-subdomain"
+      },
+      {
+        title: "حذف دامنه یا زیردامنه متصل شده به برنامه",
+        link: "./delete-domain"
+      },
+      {
+        title: "انتقال دامنه",
+        link: "./move"
+      },
+      {
+        title: "TLDهای قابل پشتیبانی",
+        link: "./supported-tlds"
+      },
+      {
+        title: "استفاده از CDN",
+        link: "./use-cdn"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<div className="h-4" />
+<Alert variant="success">
+<p>
+    همچنین بخوانید: <a href="/paas/docker/related-apps/nginx" className="text-[#2196f3] ">تنظیم reverse proxy با Nginx</a>
+</p>
+</Alert>
+
+
+<Alert variant="success">
+<p>
+    همچنین بخوانید: <a href="/dns-management-system/about" className="text-[#2196f3] ">سرویس DNS لیارا</a>
+</p>
+</Alert>
+
+
+</Layout>

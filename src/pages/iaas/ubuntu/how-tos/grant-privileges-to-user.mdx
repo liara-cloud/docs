@@ -1,0 +1,39 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اعطای دسترسی مدیریتی به یک کاربر در سرور ابری Ubuntu - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه اعطای دسترسی مدیریتی به یک کاربر در سرور مجازی اوبونتو Ubuntu در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# نحوه اعطای دسترسی مدیریتی به یک کاربر
+<hr className="mb-2" />
+
+<p>
+    پس از <a href="/iaas/ubuntu/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور ابری خود با استفاده از SSH</a> و <a href="/iaas/ubuntu/how-tos/create-new-user" className="text-[#2196f3]">ساخت کاربر جدید</a>، برای اعطای دسترسی مدیریتی (sudo) به آن، می‌توانید از دستور زیر استفاده کنید (به جای <Important>lorem</Important>، نام واقعی کاربر خود را، وارد کنید): 
+</p>
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo usermod -aG sudo lorem`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

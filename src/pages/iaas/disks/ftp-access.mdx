@@ -1,0 +1,97 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات دسترسی FTP به دیسک‌ - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به ایجاد و مدیریت دسترسی FTP یا FTP Access در دیسک‌ها در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# دسترسی FTP به دیسک‌ها
+<hr className="mb-2" />
+
+<video
+  src="https://files.liara.ir/liara/ftp/ftp-access.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" />
+<div className="h-4" />
+
+
+<Section id="what-is-ftp" title="FTP چیست؟" />
+پروتکل انتقال فایل (File Transfer Protocol) یا همان FTP راهی برای دانلود، آپلود و انتقال فایل‌ها از یک مکان به مکان دیگری بین سرورها در بستر اینترنت است. 
+FTP به شما اجازه می‌دهد تا به راحتی از سیستم خود، فایل‌ها را بین سرورها و سیستم‌های مختلف و یا حتی به فضای ابری، جا به جا کنید.
+
+<Section id="what-is-ftps" title="FTPS چیست؟" />
+FTPS (FTP Secure) نسخه‌ای امن از FTP (File Transfer Protocol) است که از پروتکل رمزنگاری TLS برای محافظت از اطلاعات استفاده می‌کند. در حالی که FTP اطلاعات را به صورت متنی ساده ارسال می‌کند و مستعد شنود یا حملات است، FTPS با رمزنگاری ارتباط، امنیت بیشتری ارائه می‌دهد. این پروتکل برای انتقال فایل‌های حساس یا محرمانه استفاده می‌شود.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+  در نظر داشته باشید که لیارا به صورت پیش‌فرض از FTPS استفاده می‌کند؛ ولی از FTP نیز، پشتیبانی می‌کند. اما به شدت 
+  توصیه می‌شود که برای اتصال به دیسک‌ها و برقراری اتصال ایمن، از دسترسی FTPS استفاده کنید. 
+</p>
+</Alert>
+
+
+<Section id="access-to-disk-via-ftp" title="دسترسی به دیسک‌ها با FTP یا FTPS" />
+برای مدیریت فایل‌ها و دایرکتوری‌های موجود در دیسک‌های برنامه‌تان، می‌توانید از دسترسی FTP یا FTPS که لیارا در اختیار شما می‌گذارد استفاده کنید.
+برای ایجاد این دسترسی، کافیست تا وارد بخش **دیسک‌ها** شده و روی دیسک مورد نظرتان کلیک کنید. سپس وارد **منوی دسترسی FTP** شوید و بر روی دکمه‌ی **ایجاد دسترسی FTP** کلیک کنید. در پنجره‌ی باز شده، نام کاربری مدنظرتان را وارد کرده و درنهایت بر روی دکمه‌ی **ایجاد دسترسی** کلیک کنید.
+
+<Section id="connect-to-disks" title="اتصال به دیسک" />
+برای اتصال به دیسک از طریق دسترسی FTP یا FTPS می‌توانید از نرم‌افزار <a href="https://files.liara.ir/liara/WinSCP.5.17.5.Build.10414.zip" className="text-[#2196f3] ">WinSCP</a> و یا <a href="https://files.liara.ir/liara/FileZilla.3.48.1.x64.zip" className="text-[#2196f3] ">FileZilla</a> استفاده کنید.
+
+<Section id="connect-to-disk-using-filezilla" title="اتصال به دیسک‌ از طریق FileZilla" />
+پس از اجرای نرم‌افزار، اطلاعات دسترسی FTP ایجاد شده در بخش قبل را در فیلدهای مربوطه وارد کرده و درنهایت بر روی دکمه‌ی **Quickconnect** کلیک کنید.
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/ftp-access-using-filezilla.gif" alt="connect to disk using filezilla"/>
+<div className="h-4" />
+
+برای برقراری ارتباط FTPS در FileZilla، نیازی به انجام کار خاصی نیست؛ پس از آنکه بر روی گزینه **Quickconnect** کلیک کنید، یک صفحه جدید مانند زیر به شما نمایش داده می‌شود:
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/filezilla-ftps-opened-tab.png" alt="connect to disk using filezilla ftps access"/>
+<div className="h-4" />
+در واقع، FileZilla به صورت پیش‌فرض، در ابتدا از دسترسی FTPS استفاده می‌کند و از کاربر می‌خواهد که در 
+اولین استفاده، گواهی نمایش داده شده را، تایید کند. 
+در صورت تایید کاربر، همواره از دسترسی FTPS استفاده خواهد شد و صفحه فوق، دیگر به شما نمایش داده نمی‌شود. 
+پیشنهاد می‌شود که تیک دو تا گزینه موجود در انتهای پنجره را نیز، بزنید. 
+
+<Section id="connect-to-disk-using-winscp" title="اتصال به دیسک‌ از طریق WinSCP" />
+پس از اجرای نرم‌افزار، روی **New Session** کلیک کنید و File protocol را **FTP** قرار دهید. سپس اطلاعات دسترسی FTP ایجاد شده در بخش قبل را در فیلدهای مربوطه وارد کرده و درنهایت بر روی دکمه‌ی **login** کلیک کنید.
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/connect-to-disk-using-winscp.gif" alt="connect to disk using winscp"/>
+<div className="h-4" />
+
+برای برقراری ارتباط FTPS در WinSCP، کافیست که مقدار فیلد <b>Encryption</b> را بر روی <Important>TLS/SSL Explicit encryption</Important> تنظیم کنید: 
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/enable-winscp-ftps-access.png" alt="connect to disk using winscp ftps access"/>
+<div className="h-4" />
+
+<div className="h-4" />
+<Alert variant="warning">
+<p>
+توجه کنید اگر دسترسی‌ای را پاک کنید اتصال کاربری که از طریق آن دسترسی متصل شده است قطع نمی‌شود
+</p>
+</Alert>
+
+
+</Layout>

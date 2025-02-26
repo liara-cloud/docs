@@ -1,0 +1,99 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های Hapi - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های Hapi در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های Hapi در لیارا
+<hr className="mb-2" />
+نرم‌افزار Hapi یک فریم‌ورک قوی و انعطاف‌پذیر برای ساخت اپلیکیشن‌های وب و API‌ها در NodeJS است. 
+شما می‌توانید برنامه‌های Hapi خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
+
+برای استقرار برنامه‌های Hapi باید اسکریپت <Important>start</Important> را در فایل <Important>package.json</Important> به شکل زیر، تعریف کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+    "scripts": {
+    "test": "echo \\"Error: no test specified\\" && exit 1",
+    "start": "node server.js"
+  },
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، در فایل اصلی برنامه خود، مثلاً فایل <Important>server.js</Important>، باید حتماً فیلد <Important>host</Important> را با مقدار <Important>'0.0.0.0'</Important> مشخص کنید؛ به عنوان مثال:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const init = async () => {
+    const server = Hapi.server({
+        port: 3000,
+        host: '0.0.0.0',
+        routes: {
+            files: {
+                relativeTo: Path.join(__dirname, 'public')
+            }
+        }
+    });
+    // other codes ...
+};`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>
+    در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود. البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید مقدار آن را در فیلد پورت، وارد کنید.
+    </p>
+    </>,
+
+    <>
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود (البته اگر که برنامه‌تان در پورت دیگری به جز 3000 به درخواست کاربران listen می‌کند، باید در دستور زیر، مقدار آن را وارد کنید):
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+<Alert variant="success">
+<p>
+یک پروژه Hapi آماده به استقرار در <a href="https://github.com/liara-cloud/hapi-getting-started" className="text-[#2196f3] ">اینجا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="../../fix-common-errors/cors-error/hapi" className="text-[#2196f3] ">رفع خطای CORS در فریم‌ورک Hapi</a>
+</p>
+</Alert>
+
+</Layout>

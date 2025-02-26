@@ -1,0 +1,68 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+
+    
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات پلن‌های پلتفرم  - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به پلن‌های یک پلتفرم"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تعرفه‌ها و پلن‌های برنامه در لیارا
+
+<hr className="mb-2" />
+در لیارا، برای هر پلتفرم، به صورت کلی، دو دسته پلن وجود دارد:
+
+<div className="h-4" />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "پلن سخت‌افرازی (شامل جزئیات مربوط به منابع سخت‌افزاری سرویس)",
+        link: "./hardware-plans"
+      },
+      {
+        title: "بسته امکانات یا پلن نرم‌افزاری (شامل جزئیات مربوط به کیفیت، حداکثری‌ها و حداقلی‌های یک استقرار و پروژه)",
+        link: "./software-plans"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-2" />
+ما اهمیت کسب و کار شما را درک می‌کنیم. تمامی پلن‌های ارائه شده در لیارا، مطابق با استانداردهای جهانی و دارای بالاترین کیفیت ممکن می‌باشد. شما می‌توانید برای کسب اطلاعات بیشتر به صفحات اشاره شده، مراجعه کنید.
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="https://liara.ir/sla" className="text-[#2196f3] ">توافق‌نامه سطح کیفیت خدمات (SLA)</a>
+</p>
+</Alert>
+
+
+</Layout>

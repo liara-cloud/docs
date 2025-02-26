@@ -1,0 +1,211 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات سرور ابری - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با سرور ابری لیارا، ویژگی‌ها و امکانات آن"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# سرور ابری لیارا
+<hr className="mb-2" />
+
+<Section id='what-is-iaas' title='IaaS چیست؟' />
+
+<b>IaaS</b> (یا Infrastructure as a Service) یکی از مدل‌های رایانش ابری است که در آن، منابع محاسباتی مانند سرورها، فضای ذخیره‌سازی، شبکه و ماشین‌های ابری (VMs) به‌صورت سرویس، از طریق اینترنت ارائه می‌شوند.
+
+<Section id='what-is-vps' title='سرور ابری (VPS) چیست؟' />
+
+یک سرور خصوصی ابری (Virtual Private Server - VPS) که با نام سرور مجازی نیز شناخته می‌شود، یک محیط ایزوله روی یک سرور فیزیکی است که یک سیستم لینوکسی خام را به کاربر نهایی، ارائه می‌دهد. 
+در این روش، یک سرور فیزیکی به چندین سرور ابری مستقل تقسیم می‌شود که هرکدام منابع اختصاصی مانند پردازنده، حافظه رم، فضای ذخیره‌سازی و سیستم‌عامل مستقل دارند.
+
+<Section id="liara-provided-vps" title="لیارا چه VPSهایی را ارائه می‌دهد؟" />
+لیارا از جمله اولین سرویس‌های میزبانی ابری ایرانی است که در زمینه ارائه خدمات مربوط به IaaS‌ و VPS، پیش‌تاز است. در حال حاضر، لیارا، سیستم‌عامل‌های زیر را در سرور ابری خود، پوشش می‌دهد:
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    { alt: 'https://files.liara.ir/liara/logos/ubuntu.png', platform: 'Ubuntu', link: "./ubuntu/getting-started" },
+    { alt: 'https://files.liara.ir/liara/logos/debian.png', platform: 'Debian', link: "./debian/getting-started" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+{/* 
+<br />
+
+در ادامه، مستندات برنامه‌های معروفی که می‌توانید روی سرور ابری خود نصب کنید، برای شما، قرار گرفته است:
+<br />
+
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    { alt: 'https://files.liara.ir/liara/logos/vps/supabase.jpg', platform: 'Supabase', link: "/iaas/ubuntu/related-apps/supabase" },
+    { alt: 'https://files.liara.ir/liara/logos/vps/sentry.svg', platform: 'Sentry', link: "/iaas/ubuntu/related-apps/sentry" },
+    { alt: 'https://files.liara.ir/liara/logos/vps/hoppscotch.png', platform: 'Hoppscotch', link: "/iaas/ubuntu/related-apps/hoppscotch" },
+    { alt: 'https://files.liara.ir/liara/logos/vps/posthog.png', platform: 'PostHog', link: "/iaas/debian/related-apps/posthog" },
+    { alt: 'https://files.liara.ir/liara/logos/vps/gitlab.webp', platform: 'Gitlab', link: "/iaas/debian/related-apps/gitlab" },
+    { alt: 'https://files.liara.ir/liara/logos/vps/novu.png', platform: 'Novu', link: "/iaas/debian/related-apps/novu" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br />
+
+<Section id='also-read' title='همچنین بخوانید:' />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    {
+      text: 'آشنایی با جزئیات سرور ابری',
+      link: './details/about',
+    },
+    {
+      text: 'راه‌اندازی CI/CD بر روی سرور ابری',
+      link: './cicd/about',
+    },
+    {
+      text: 'آشنایی با دیسک‌ها در سرور ابری',
+      link: './disks/about',
+    },
+    {
+      text: 'اتصال دامنه خریداری شده به سرور ابری',
+      link: './domains/about',
+    },
+    // {
+    //   text: 'به‌روزرسانی',
+    //   link: './update',
+    // },
+    // {
+    //   text: 'انتقال سرویس IaaS',
+    //   link: './move',
+    // },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br /> */}
+
+
+{/* <Section id="most-visited-docs" title="پربازدیدترین مستندات IaaS" />
+<ul className="pr-4">
+  {[
+
+      {
+        title: "اتصال به دیتابیس SQLite در برنامه‌های NET.",
+        link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
+      },
+      {
+          title: "قابلیت CI/CD",
+          link: "/paas/cicd/about"
+      },
+      {
+          title: "آی‌پی ثابت",
+          link: "/paas/details/static-ip"
+      },
+      {
+        title: "متغیرهای محیطی",
+        link: "/paas/details/envs"
+      },
+      {
+        title: "بازیابی فایل پشتیبان در دیسک‌",
+        link: "/paas/disks/restore-backup-using-ftp"
+      },
+      {
+        title: "اضافه کردن زیر دامنه دلخواه به برنامه",
+        link: "/paas/domains/add-subdomains"
+      },
+      {
+        title: "استفاده از TypeScript در برنامه‌های NextJS",
+        link: "/paas/nextjs/how-tos/use-type-script"
+      },
+      {
+        title: "تنظیم Cron Job در برنامه‌های Django",
+        link: "/paas/django/how-tos/set-cron-job"
+      },
+      {
+        title: "تنظیم DNS Server",
+        link: "/paas/details/dns-server-settings"
+      },
+      
+
+
+    
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        listStyle: "persian",
+        textDecoration: "underline",
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+      <a
+        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
+        href={item.link}
+      >
+        {item.title}
+        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+      </a>
+    </li>
+  ))}
+</ul> */}
+
+</Layout>

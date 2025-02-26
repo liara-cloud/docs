@@ -1,0 +1,111 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ساخت دیسک‌ - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه ساخت دیسک‌ها در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# ساخت دیسک در برنامه
+<hr className="mb-2" />
+
+        <Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>
+    برای ساخت دیسک کافیست تا وارد قسمت <b>دیسک‌ها</b> در برنامه خود شوید:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/app-disks.png" alt="app disks"/>
+    <div className="h-4" />
+    <p>
+    بر روی گزینه <b>ایجاد دیسک</b> کلیک کرده و
+    برای دیسک خود یک شناسه انتخاب کنید و با توجه به فضای قابل رزرو، اندازه دیسک را به GB وارد کنید:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/put-disk-data.png" alt="put disk data"/>
+    <div className="h-4" />
+    <p>
+    در نهایت، کافیست تا بر روی گزینه <b>ساخت دیسک</b> کلیک کنید تا دیسک‌تان ساخته شود. پس از ساخته شدن، دیسک به حالت آماده به کار در می‌آید:
+    </p>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/created-disk.png" alt="created disk"/>
+    <div className="h-4" />
+    </>,
+    <>
+    <p>
+        برای ساخت دیسک جدید با استفاده از ابزار Liara CLI، کافیست تا پس از اجرای دستور <Important>liara login</Important>، دستور <Important>liara disk:create</Important> را اجرا کنید:
+    </p>
+    <Asciinema id="create-new-disk" />
+    <p>البته می‌توانید عملیات ایجاد دیسک را فقط با اجرای یک خط دستور زیر، سرعت ببخشید:</p>
+    <div className="h-2" />
+    <div dir="ltr">
+    <Highlight  className="bash">
+        {`liara disk:create -a my-web-app -n data -s 2.5`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    <p></p>
+    <Asciinema id="make-new-disk-by-one-line" />
+    <p>
+    بعد از <Important>a-</Important> شناسه برنامه، بعد از <Important>n-</Important> نام دیسک، و پس از <Important>s-</Important> باید حجم دیسک خود را با توجه به فضای قابل رزرو، برحسب گیگابایت، وارد کنید.
+    </p>
+    
+    </>,
+
+]} 
+/>
+
+همچنین، شما می‌توانید بیش از یک دیسک، بسازید؛ اما در نظر داشته باشید که باید فضای قابل رزرو داشته باشید؛ در غیر این‌صورت، باید ابتدا فضای قابل رزرو خود را افزایش بدهید. این کار می‌تواند با <a href="../decrease-value" className="text-[#2196f3] ">کاهش حجم یک دیسک</a> و یا <a href="/paas/details/change-plan" className="text-[#2196f3] ">ارتقای پلن</a>، انجام شود.
+
+<Section id="see-also" title="همچنین بخوانید:" />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+    { alt: 'nodejs', platform: 'NodeJS', link: "/paas/nodejs/how-tos/use-disk" },
+    { alt: 'next', platform: 'NextJS', link: "/paas/nextjs/how-tos/use-disk" },
+    { alt: 'laravel', platform: 'Laravel', link: "/paas/laravel/how-tos/use-disk" },
+    { alt: 'php', platform: 'PHP', link: "/paas/php/how-tos/use-disk" },
+    { alt: 'dotnet', platform: 'NET.', link: "/paas/dotnet/how-tos/use-disk" },
+    { alt: 'flask', platform: 'Flask', link: "/paas/flask/how-tos/use-disk" },
+    { alt: 'django', platform: 'Django', link: "/paas/django/how-tos/use-disk" },
+    { alt: 'docker', platform: 'مبتنی بر Docker', link: "/paas/docker/how-tos/use-disk" },
+    
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      اتصال دیسک به برنامه  {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+
+</Layout>

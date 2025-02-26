@@ -1,0 +1,98 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات بررسی سلامت پلتفرم  - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به بررسی سلامت یک پلتفرم در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# بررسی سلامت
+<hr className="mb-2" />
+برای این که بتوانید از قابلیت <a href="../zero-downtime-deployment" className="text-[#2196f3] ">استقرار بدون اختلال</a> لیارا بیشترین استفاده را ببرید، توصیه می‌شود که از قابلیت **بررسی سلامت** هم استفاده کنید.
+با فعال‌سازی این قابلیت، در هر استقرار جدید، یک تست از سلامت برنامه گرفته می‌شود و تا زمانی که تست آن، ناموفق باشد، ترافیک برنامه به استقرار جدید، منتقل نمی‌شود و استقرار موفق قبلی، کماکان مسئول پردازش درخواست‌های ارسالی به برنامه‌تان خواهد بود.
+<div className='h-4' />
+
+بررسی سلامت به این شکل کار می‌کند که شما یک دستور مشخصی را تعریف می‌کنید و لیارا در بازه‌های مشخص، این دستور را در استقرار جدید شما اجرا می‌کند. اگر نتیجه موفقیت‌آمیز باشد، استقرار شما **موفق** در نظر گرفته می‌شود؛ در غیر این‌صورت، استقرار جدید شما، **ناموفق** تلقی خواهد شد.
+
+<Section id="make-health-check-connection" title="ایجاد تست بررسی سلامت" />
+برای ایجاد این تست، کافیست تا در مسیر اصلی پروژه خود، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و محتوای زیر را، درون آن، قرار دهید:
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="json">
+    {`{
+  "port": 3000,
+  "healthCheck": {
+    "command": "CMD curl --fail http://localhost:3000 || exit 1",
+    "interval": 30, 
+    "timeout": 15,
+    "retries": 2,
+    "startPeriod": 5
+   }
+}`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+<Alert variant="warning">
+<p>
+مقادیر <Important>interval</Important> , <Important>timeout</Important> , <Important>retries</Important> و <Important>startPeriod</Important> به میلی‌ثانیه (ms)، هستند. 
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+در نظر داشته باشید که در فیلد <Important>port</Important> و همچنین در فیلد <Important>command</Important> بعد از <Important>:</Important> باید پورتی که برنامه‌تان در آن به درخواست کاربران گوش می‌دهد را، وارد کنید.
+</p>
+</Alert>
+<div className='h-2' />
+
+در قطعه کد بالا، از ابزار <Important>curl</Important> استفاده می‌شود. البته شما می‌توانید از ابزارهای دیگری استفاده کنید؛ به شرطی که این ابزار در سرور برنامه‌تان نصب باشد. 
+<div className='h-2' />
+
+<Alert variant="info">
+<p>
+ لیارا به صورت پیش‌فرض، <Important>curl</Important> را روی تمام پلتفرم‌های پشتیبانی شده نصب دارد. 
+</p>
+</Alert>
+<div className='h-2' />
+دستور <Important>curl --fail http://localhost:port || exit 1</Important> به این صورت عمل می‌کند که یا وب‌سرور شما Status 200 برمیگرداند و در نتیجه curl با کد 0 خارج می‌شود (عملیات موفقیت‌آمیز) و یا این که وب‌سرور شما Status 200 برنمیگرداند و عملیات ناموفق است.
+<div className='h-4' />
+
+در قطعه کد فوق، بعد از اجرا درآمدن استقرار جدید در بخش <a href="../events" className="text-[#2196f3] ">رویدادها</a>، برنامه به اندازه مدت زمانی که در فیلد <Important>startPeriod</Important> مشخص شده است؛ منتظر می‌ماند (در مثال فوق، این مقدار برابر با 5 میلی ثانیه است). چرا که گاهاً برنامه در چند ثانیه‌ی اول پاسخ‌گوی کاربر نیست و برای مثال نیازمند اتصال به دیتابیس است و این مورد ممکن است چندثانیه‌ای طول بکشد.
+<div className='h-4' />
+
+بعد از اتمام 5 میلی‌ثانیه، لیارا به اندازه مدت زمانی که در فیلد <Important>interval</Important> مشخص شده است؛ منتظر می‌ماند و سپس دستور مشخص شده در فیلد <Important>command</Important> را، اجرا می‌کند. در واقع اولین تست سلامت پس از گذشت مدت زمان مشخص شده در فیلدهای <Important>startPeriod</Important> و <Important>interval</Important> اجرا می‌شود که در قطعه کد فوق، بعد از گذشت 35 میلی‌ثانیه، این اتفاق خواهد افتاد.
+<div className='h-4' />
+
+در ادامه، وب‌سرور به اندازه مقداری که در فیلد <Important>timeout</Important> مشخص شده، فرصت پاسخ‌دهی دارد. اگر پاسخی ندهد؛ تست ناموفق خواهد بود.
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/health-check.jpg" alt="health check example"/>
+<div className="h-4" />
+
+<Section id='failed-deployment' title="عملکرد لیارا در استقرارهای ناموفق" />
+در صورتی که تست‌های سلامت استقرار جدید شما ناموفق باشد، در شرایط مختلف، لیارا واکنش‌های متفاوتی نشان خواهد داد:
+<div className="h-4" />
+
+<ul>
+    <li>در زمانی که استقرار جدیدی انجام داده‌اید، ترافیک به استقرار با تست ناموفق هدایت نمی‌شود و صرفاً زمانی که استقرار جدید، تست‌های خود را با موفقیت سپری کند؛ می‌تواند ترافیک ورودی برنامه‌ی شما را پردازش کند.</li>
+    <li>در صورتی که استقرار انجام شود و ساعت‌ها، یا روزهای بعد به هر دلیلی، استقرار جدید، تست ناموفقی ثبت کند؛ لیارا به صورت خودکار، برنامه را ری‌استارت می‌کند تا مشکل احتمالی برطرف شود و برنامه بتواند سرویس‌دهی کند و شما بتوانید در زمان مناسب مشکل برنامه را پیدا کرده و آن را رفع کنید. این اتفاق زمانی رخ می‌دهد که برنامه شما روشن است اما به هر دلیلی پاسخ‌گوی کاربر نیست و نیاز به ری‌استارت دارد.</li>
+</ul>
+
+</Layout>

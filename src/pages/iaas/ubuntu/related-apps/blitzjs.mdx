@@ -1,0 +1,95 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های BlitzJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های BlitzJS در پلتفرم NodeJS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# استقرار برنامه‌های BlitzJS در لیارا
+<hr className="mb-2" />
+نرم‌افزار BlitzJS یک فریم‌ورک جدید برای توسعه وب با زبان جاوااسکریپت و تایپ‌اسکریپت است که بر پایه‌ی NextJS ساخته شده است. این فریم‌ورک توسعه‌دهندگان را قادر می‌سازد تا اپلیکیشن‌های خود را با ساده‌ترین روش ممکن ایجاد کنند. BlitzJS امکاناتی مانند یکپارچه‌سازی داده‌ها، مسیریابی خودکار و احراز هویت داخلی را به شما، ارائه می‌دهد.
+
+شما می‌توانید برنامه‌های BlitzJS خود را با <a href="../../how-tos/create-app" className="text-[#2196f3] ">ایجاد برنامه‌های NodeJS</a> در لیارا، مستقر کنید.
+
+برای استقرار برنامه‌های BlitzJS، بایستی اسکریپت <Important>build</Important> را به شکل زیر بنویسید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`"scripts": {
+    "dev": "blitz dev",
+    "build": "npx prisma generate && blitz build",
+    "start": "blitz start",
+    "studio": "blitz prisma studio",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "prepare": "husky install"
+  },`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+همچنین، بایستی با استفاده از ترمینال Linux یا MacOS دستور زیر را اجرا کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`openssl rand -hex 16`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، مقدار داده شده را باید در متغیری به نام <Important>SESSION_SECRET_KEY</Important> بریزید و طبق <a href="/paas/details/envs" className="text-[#2196f3] ">مستندات تنظیم متغیرهای محیطی</a> آن را به برنامه خود اضافه کنید.
+
+به صورت کلی، کافیست تا متغیرهای محیطی زیر به برنامه اضافه شوند (مقدار <Important>SESSION_SECRET_KEY</Important> فرضی است): 
+
+<div className="h-2" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`SESSION_SECRET_KEY=3a68b914c9c446565090f8f56142924c
+ENV_SILENT=true`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="deploy" title="استقرار برنامه" />
+<Tabs 
+    tabs={["Liara Console", "Liara CLI"]} 
+    content={[
+    <>
+    <p>در نهایت کافیست تا برنامه خود را با کنسول و پورت 3000، در لیارا آپلود کنید و عملیات استقرار را انجام دهید تا برنامه با موفقیت در لیارا مستقر شود.</p>
+    </>,
+
+    <>
+    <p>
+    در نهایت کافیست تا دستور زیر را اجرا کنید تا برنامه شما در لیارا مستقر شود:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`liara deploy --port=3000 --platform=node`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    </>,
+
+]} 
+/>
+
+</Layout>

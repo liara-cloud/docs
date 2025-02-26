@@ -1,0 +1,54 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات گزارشات سخت‌افزاری پلتفرم  - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به گزارشات سخت‌افزاری یک پلتفرم در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# گزارشات سخت‌افزاری
+
+<hr className="mb-2" />
+از گزارشات سخت‌افزاری برنامه خود غافل نشوید! مصرف منابع زیاد در برنامه‌تان شاید نشانه یک هشدار در مورد امنیت برنامه‌تان باشد، شاید هم نشان از این داشته باشد که کاربران شما نسبت به روزهای دیگر، امروز کار با برنامه شما را بیش از پیش، ترجیح داده‌اند. 
+از این رو، مدیریت گزارشات مربوط به سخت‌افزار برنامه‌تان، از جمله موارد مهمی است که به ارتقای روزافزون پروژه شما، کمک خواهد کرد.
+
+<Section id="monitoring-hardware-logs" title="مشاهده گزارشات سخت‌افزاری" />
+برای مشاهده گزارشات سخت‌افزاری برنامه خود، کافیست تا وارد صفحه **گزارشات** شوید. در این صفحه، می‌توانید اطلاعاتی اعم از **میزان مصرف پردازنده**، **میزان مصرف حافظه**، **میزان ترافیک ورودی** و **میزان ترافیک خروجی** را ببینید.
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/docs/hardware-logs.png" alt="hardware logs"/>
+<div className="h-4" />
+همچنین، شما می‌توانید ارائه آنی گزارشات را، متوقف کنید و حتی گزارشات را تا 60 روز گذشته، مشاهده بفرمایید.
+<Section id="find-best-plan-by-monitoring" title="پیدا کردن پلن مناسب با استفاده از گزارشات سخت‌افزاری" />
+یکی از راه‌های ساده پیدا کردن بهترین منابع سخت‌افزاری متناسب با برنامه‌تان، آزمون و خطا با استفاده از گزارشات برنامه است. در ابتدا شما می‌توانید پلن پیش‌فرض لیارا را برای خود انتخاب کنید؛ در ادامه راه، اگر مصرف منابع بیش از حد انتظار باشد، کافیست تا منابع سخت‌افزاری را، ارتقا دهید. از طرفی، شاید نیاز برنامه شما حتی کمتر از پلن تهیه شده باشد؛ در این حالت، شما می‌توانید به پلن‌های قبلی، برگردید.
+
+
+<div className="h-2" />
+<Alert variant='info'>
+<p>
+ در نظر داشته باشید که برای بازگشت به پلن قبلی، بایستی که به اندازه فضای دیسک ارائه شده در پلن جدید، مصرف دیسک داشته باشید.
+</p>
+</Alert>
+<div className="h-2" />
+<Alert variant='success'>
+<p>
+همچنین بخوانید: <a href="/paas/disks/decrease-value" className="text-[#2196f3] ">کاهش فضای یک دیسک</a>
+</p>
+</Alert>
+</Layout>

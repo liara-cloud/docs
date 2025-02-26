@@ -1,0 +1,49 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات به‌روزرسانی پلتفرم - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه به‌روزرسانی یک برنامه در یک پلتفرم در لیارا بدون مواجهه با خطا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# به‌روزرسانی برنامه
+
+<hr className="mb-2" />
+برای به‌روزرسانی برنامه‌های خود در لیارا نیاز به انجام کار خاصی نیست. فقط کافیست تا در Local تغییرات مدنظرتان را بر روی برنامه خود اعمال کنید و پروژه نهایی تغییر یافته را با اجرای دستور <Important>liara deploy</Important> یا با استفاده از Console  در لیارا، به‌روز کنید.
+در نظر داشته باشید که لیارا فقط تغییرات جدید را به برنامه اضافه می‌کند و داده‌های تکراری که تغییر نکردند را در سرورهای خود آپلود نمی‌کند. 
+
+<Section id="no-cache-deployment" title="استقرار بدون استفاده از cache" />
+برای اینکه لیارا در زمان build از cache برنامه‌تان استفاده نکند و تمامی سورس کد مجدداً در لیارا مستقر شود؛ کافیست تا دستور زیر را اجرا کنید:
+
+<div dir="ltr">
+<div className="h-4" />
+<Highlight className="bash">
+{`liara deploy --no-cache`}
+</Highlight>
+<div className="h-4" />
+</div>
+
+<Alert variant="info">
+<p>
+در نظر داشته باشید که امکان تغییر برنامه در حالت Production وجود ندارد و شما بایستی تمامی به‌روزرسانی‌های برنامه خود را در local بر روی برنامه خود لحاظ کرده و در نهایت، برنامه خود را در لیارا، مستقر کنید.
+</p>
+</Alert>
+
+
+</Layout>
