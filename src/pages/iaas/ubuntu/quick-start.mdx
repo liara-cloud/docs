@@ -68,7 +68,7 @@ import Head from "next/head";
   content: (
   <>
     <h3>ایجاد سرور ابری</h3>
-    <p>وارد تب <b>سرور ابری</b> شوید، سپس بر روی گزینه <b>ایجاد سرور ابری</b> کلیک کنید و سرور Ubuntu خود را با نسخه، شناسه، <Link className="text-[#2196f3] " href="../details/ssh-keys">کلید SSH عمومی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
+    <p>وارد تب <b>سرور ابری</b> شوید، سپس بر روی گزینه <b>ایجاد سرور ابری</b> کلیک کنید و سرور Ubuntu خود را با نسخه، شناسه، <Link className="text-[#2196f3] " href="/iaas/details/ssh-keys">کلید SSH عمومی</Link> و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
 
     <div className="h-2" />
     <video
@@ -326,13 +326,13 @@ sudo apt install -y openssh-client
   </>,
 
   <>
-  <video
+  {/* <video
   src="https://files.liara.ir/liara/nodejs/nodejs-cli.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
   ></video>
-  <br />
+  <br /> */}
   برای استقرار با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/cli/about">Liara CLI</Link> کافیست تا مراحل زیر را طی کنید:
   <Step  steps={[
 {
@@ -347,8 +347,11 @@ sudo apt install -y openssh-client
       </Highlight>
     </div>
     <div className="h-2" />
-    <Alert variant="info">دقت کنید که<Link className="text-[#2196f3] " href="https://nodejs.org">npm و NodeJS</Link>باید بر روی سیستم‌عامل‌تان نصب باشد.</Alert>
-    <div className="h-2" />
+    <Alert variant="info">
+      <p>
+      دقت کنید که <Link className="text-[#2196f3] " href="https://nodejs.org">npm و NodeJS</Link> باید بر روی سیستم‌عامل‌تان نصب باشد.
+      </p>
+    </Alert>
     <Alert variant="warning">در ویندوز، ترمینال باید بر روی CMD تنظیم باشد.</Alert>
   </>
   )
@@ -364,6 +367,9 @@ sudo apt install -y openssh-client
         {`liara login`}
       </Highlight>
     </div>
+    <div className="h-4" />
+    <img src="https://files.liara.ir/liara/docs/liaracli-login.gif" alt="liara cli login to account" />
+    <div className="h-4" />
   </>
   )
   },
@@ -371,15 +377,20 @@ sudo apt install -y openssh-client
   step: "۳",
   content: (
   <>
-    <h3>ایجاد شبکه خصوصی</h3>
-    <p>با دستور زیر، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> برنامه خود را ایجاد کنید:</p>
+    <h3>ایجاد سرور ابری</h3>
+    <p>با اجرای دستور زیر، سرور ابری Ubuntu خود را ایجاد کنید:</p>
     <div dir='ltr'>
       <Highlight className="bash">
-        {`liara network create`}
+        {`liara vm create`}
       </Highlight>
     </div>
+    <Asciinema id="create-ubuntu-vm-using-cli" />
     <div className="h-2" />
-    <Alert variant="info">اگر که از قبل شبکه خصوصی ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه (اختیاری)، نوع سرور ابری (که باید بر روی ubuntu تنظیم شود)، ورژن سرور اوبونتو و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link>، مشخص شوند. در صورتی که قصد دارید از قابلیت <a href="/iaas/details/ssh-keys" className="text-[#2196f3]">SSH Keys</a> استفاده کنید، باید کلید عمومی خود را در مرحله آخر ساخت سرور ابری و پس از وارد کردن گزینه <Important>y</Important> و زدن دکمه <Important>Enter</Important>، وارد کنید.</p>
+    <div className="h-2" />
+
+    <Alert variant="info">اگر که از قبل سرور ابری خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
+
   </>
   )
   },
@@ -387,16 +398,26 @@ sudo apt install -y openssh-client
   step: "۴",
   content: (
   <>
-    <h3>ایجاد برنامه</h3>
-    <p>با اجرای دستور زیر، برنامه NodeJS خود را ایجاد کنید:</p>
+    <h3>ارسال سیگنال روشن شدن به سرور ابری</h3> 
+    <p>با اجرای دستور زیر، سیگنال روشن‌شدن را به سرور ابری خود ارسال کنید تا سرور ابری، روشن شود:</p>
+    
+    <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-      {`liara create`}
+      {`liara vm start`}
     </Highlight>
     </div>
-    <div className="h-2" />
-    <Alert variant="info">اگر که از قبل برنامه خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه، نوع پلتفرم (که باید بر روی node تنظیم شود)، شبکه خصوصی و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات برنامه</Link>، مشخص شوند.</p>
+    <Asciinema id="start-vm-using-cli" />
+    <Alert variant="info">
+      <p>
+        در صورتی که قصد دارید سیگنال روشن‌شدن در پس‌زمینه، به سرور ابری ارسال شود، دستور <Important>liara vm start -d</Important> را، اجرا کنید. 
+      </p>
+    </Alert>
+        <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/iaas/details/signals" className="text-[#2196f3]">آشنایی با سیگنال‌ها در سرور ابری</a>
+      </p>
+    </Alert>
   </>
   )
   },
@@ -404,60 +425,215 @@ sudo apt install -y openssh-client
   step: "۵",
   content: (
   <>
-    <h3>نادیده گرفتن فایل‌های اضافی</h3>
-    <p>برای آپلود نشدن فایل‌های اضافی، از <Important>gitignore.</Important> یا <Important>liaraignore.</Important> استفاده کنید و درون یکی از این دو فایل، اسامی دایرکتوری‌ها و فایل‌های اضافی را بیاورید. به عنوان مثال:</p>
-    <div dir='ltr'>
-    <Highlight className="gitignore">
-      {`node_modules/`}
-    </Highlight>
-    </div>
-  </>
-  )
-  },
-  {
-  step: "۶",
-  content: (
-  <>
-    <h3>تعریف اسکریپت start</h3>
-    <p>در فایل <Important>package.json</Important> موجود در مسیر اصلی پروژه؛ حتماً اسکریپت <Important>start</Important> را تعریف کنید؛ به عنوان مثال، اگر که نام فایل اصلی برنامه‌تان <Important>server.js</Important> است، باید اسکریپت start را به شکل زیر، تعریف کنید:</p>
+    <h3>اتصال به سرور ابری از لوکال</h3>
+    <p>
+      تمامی کارها انجام شده است و اکنون می‌توانید با روش‌های مرسوم، به سرور ابری خود، متصل شوید. یکی از روش‌های توصیه‌شده برای اتصال به سرور ابری، استفاده از ابزار <a href="https://www.openssh.com/" className="text-[#2196f3]">OpenSSH</a> است که می‌توانید مطابق با سیستم‌عامل‌تان، آن را نصب کرده و به سرور ابری خود، متصل شوید. 
+    </p>
+
+    <Tabs 
+      tabs={["Linux", "Windows", "MacOS"]} 
+      content={[
+        <>
+          <p>
+            پکیج OpenSSH معمولاً به‌صورت پیش‌فرض در اکثر توزیع‌های لینوکس نصب است، می‌توانید نصب بودن یا نبودن این پکیج را با اجرای دستور زیر در ترمینال خود، بررسی کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با توجه به نوع توزیع خود نصب کنید:
+          </p>
+          <Tabs 
+            tabs={["Debian", "Ubuntu", "Rocky Linux", "CentOS", "RHEL", "AlmaLinux", "Arch Linux", "Manjaro"]} 
+            content={[
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+
+          <div className="h-2" />
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+              
+          <div className="h-2" />
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,       
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>                           
+        </>,      
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>         
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+              
+        </>,
+ 
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+        </>,
+            ]}
+          />
+        </>,
+
+        <>
+        <p>
+          از ویندوز ۱۰ به بعد، OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از ابزار PowerShell، بر روی سیستم‌عامل خود، نصب کنید. در ابتدا، PowerShell را با دسترسی administrator باز کنید، سپس دستور زیر را در آن، اجرا کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`Get-WindowsCapability -Online | ? Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+
+        </>,
+        <>
+        <p>
+          در MacOS، پکیج OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از دستور <Important>brew</Important>، بر روی سیستم‌عامل خود، نصب کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`brew install openssh`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+        </>,
+      ]}
+    />
+    
+    <p>
+      در نهایت، پس از نصب OpneSSH، کافیست تا در لیارا، در سرور ابری خود، وارد بخش <b>اتصال</b> شده و با استفاده از دستور قرار گرفته در بخش <b>اتصال سریع</b>، به سرور ابری خود، متصل شوید: 
+    </p>
+
     <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="json">
-      {`{
-  "scripts": {
-    "start": "node server.js"
-  }
-}`}
+      {`ssh root@<your-ip-address>`}
     </Highlight>
     </div>
+    <Asciinema id="connect-to-ubuntu-server-using-ssh" />
+    <div className="h-2" />
+    <p>
+      با اجرای دستور فوق و در صورتی که اتصال مبتنی بر رمز عبور باشد، بایستی رمز عبور موجود در بخش <b>اتصال</b> را وارد کرده و سپس <Important>Enter</Important> را بزنید تا به سرور، با موفقیت، متصل شوید.
+    </p>
+    <div className="h-2" />
+
+      <Alert variant="info">
+      <p>
+        در صورتی که از SSH Keys استفاده می‌کنید. تنها کافیست تا عبارت <Important>yes</Important> را نوشته و سپس <Important>Enter</Important> را بزنید، تا به سرور ابری خود، بدون نیاز به نوشتن رمز عبور، متصل شوید.
+      </p>
+    </Alert>
   </>
   )
   },
-  {
-  step: "۷",
-  content: (
-  <>
-    <h3>استقرار برنامه</h3>
-    <p>با اجرای دستور زیر در مسیر اصلی پروژه، برنامه خود را  در لیارا مستقر کنید (بعد از <Important>app--</Important> شناسه برنامه و بعد از <Important>port--</Important> پورت برنامه خود را وارد کنید):</p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-      {`liara deploy --app=myapp --platform=node --port=3000`}
-    </Highlight>
-    </div>
-    <div className="h-2" />
-    <p>
-       برای استقرار برنامه در تیم مدنظرتان، کافیست تا از <a href="/references/api/about/#team-id" className="text-[#2196f3]">شناسه تیم</a> و فلگ <Important>team-id--</Important> استفاده کنید: 
-    </p>
-    <div className="h-2" />
-    <div dir='ltr'>
-    <Highlight className="bash">
-      {`liara deploy --app=myapp --platform=node --port=3000 --team-id=your-unique-team-id`}
-    </Highlight>
-    </div>
-  </>
-  )
-  }
 
 ]}/>
   </>,
@@ -502,7 +678,7 @@ sudo apt install -y openssh-client
   content: (
   <>
     <h3>ایجاد برنامه</h3>
-    <p>برنامه NodeJS خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="../details/plans/about">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
+    <p>برنامه NodeJS خود را با شناسه، <Link className="text-[#2196f3] " href="../details/private-network">شبکه خصوصی</Link> و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری و بسته امکانات</Link> مدنظرتان ایجاد کنید.</p>
   </>
   )
   },

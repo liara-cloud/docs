@@ -3,6 +3,7 @@ import {
   GoFileDirectory,
   GoHome,
   GoPeople,
+  GoStack,
   GoGear,
   GoCommandPalette,
   GoRead,
@@ -3968,6 +3969,11 @@ export default {
         link: "/iaas/ubuntu/related-links"
       },
       {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions   />,
+        link: "/iaas/ubuntu/choose-version"
+      },
+      {
         hr: true
       },
       {
@@ -3979,213 +3985,154 @@ export default {
         )
       },
       {
-        title: "ساخت برنامه",
-        link: "/iaas/ubuntu/how-tos/create-app"
+        title: "اتصال به سرور ابری با SSH",
+        link: "/iaas/ubuntu/how-tos/connect-to-server-using-ssh"
       },
       {
-        title: "استقرار برنامه",
-        link: "/paas/nodejs/how-tos/deploy-app"
+        title: "اتصال سرور به دامنه با SSL",
+        link: "/iaas/ubuntu/how-tos/connect-domain"
       },
       {
-        title: "استفاده از متغیرهای محیطی",
-        link: "/paas/nodejs/how-tos/set-envs"
+        title: "ساخت کاربر جدید",
+        link: "/iaas/ubuntu/how-tos/create-new-user"
       },
       {
-        title: "استفاده از دیسک",
-        link: "/paas/nodejs/how-tos/use-disk"
+        title: "اعطای دسترسی مدیریتی به کاربر",
+        link: "/iaas/ubuntu/how-tos/grant-privileges-to-user"
       },
       {
-        title: "تنظیم لاگ‌ها",
-        link: "/paas/nodejs/how-tos/set-logs"
+        title: "تنظیم فایروال UFW",
+        link: "/iaas/ubuntu/how-tos/set-firewall"
       },
-      {
-        title: "راه‌اندازی برنامه Websocket",
-        link: "/paas/nodejs/how-tos/use-websocket"
-      },
-      {
-        title: "build برنامه با ES6",
-        link: "/paas/nodejs/how-tos/build-and-use-es6"
-      },
-      {
-        title: "استفاده از TypeScript",
-        link: "/paas/nodejs/how-tos/use-type-script"
-      },
-      {
-        title: "استفاده از Hookها",
-        link: "/paas/nodejs/how-tos/use-hooks"
-      },
-      {
-        title: "تنظیم Cron Job",
-        link: "/paas/nodejs/how-tos/set-cron-job"
-      },
-      {
-        title: "پیکربندی TrustedProxies",
-        link: "/paas/nodejs/how-tos/configure-trusted-proxy/about"
-      },
-      {
-        title: "انتخاب نسخه NodeJS",
-        link: "/paas/nodejs/how-tos/choose-version"
-      },
-      {
-        title: "استفاده از ماژول FFMPEG",
-        link: "/paas/nodejs/how-tos/use-ffmpeg-module"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-          <GoDatabase  />
-            <Link href="/paas/nodejs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
-          </div>
-        )
-      },
-      {
-        title: "دیتابیس MongoDB",
-        icon: <IconContainer alt="mongodb" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
-      },
-      {
-        title: "دیتابیس MySQL/MariaDB",
-        icon: <IconContainer alt="mysql" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/mysql"
-      },
-      {
-        title: "دیتابیس PostgreSQL",
-        icon: <IconContainer alt="postgres" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
-      },
-      {
-        title: "دیتابیس MSSQL",
-        icon: <IconContainer alt="mssql" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/mssql"
-      },
-      {
-        title: "دیتابیس SQLite",
-        icon: <IconContainer alt="sqlite" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
-      },
-      {
-        title: "دیتابیس Redis",
-        icon: <IconContainer alt="redis" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/redis"
-      },
-      {
-        title: "Prisma ORM",
-        icon: <IconContainer alt="prisma" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/prisma"
-      },
-      {
-        title: "Sequelize ORM",
-        icon: <IconContainer alt="sequelize" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/sequelize/about"
-      },
-      {
-        title: "Drizzle ORM",
-        icon: <IconContainer alt="drizzle" />,
-        link: "/paas/nodejs/how-tos/connect-to-db/drizzle/about"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoBug  />
-            <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
-          </div>
-        )
-      },
-      {
-        title: "خطای CORS",
-        link: "/paas/nodejs/fix-common-errors/cors-error/about"
-      },
-      {
-        title: "رفع خطای Get query missing",
-        link: "/paas/nodejs/fix-common-errors/graphql-error"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
-          </div>
-        )
-      },
-      {
-        title: "Addonis",
-        icon: <IconContainer alt="adonisjs" />,
-        link: "/paas/nodejs/related-apps/adonisjs"
-      },
-      {
-        title: "BlitzJS",
-        icon: <IconContainer alt="blitz" />,
-        link: "/paas/nodejs/related-apps/blitzjs"
-      },
-      {
-        title: "Fastify",
-        icon: <IconContainer alt="fastify" />,
-        link: "/paas/nodejs/related-apps/fastify"
-      },
-      {
-        title: "Hapi",
-        icon: <IconContainer alt="hapi" />,
-        link: "/paas/nodejs/related-apps/hapi"
-      },
-      {
-        title: "Hono",
-        icon: <IconContainer alt="https://files.liara.ir/liara/docs/hono-logo-icon.png" />,
-        link: "/paas/nodejs/related-apps/hono"
-      },
-      {
-        title: "Nitro",
-        icon: <IconContainer alt="https://files.liara.ir/liara/docs/nitro-icon.svg" />,
-        link: "/paas/nodejs/related-apps/nitro"
-      },
-      {
-        title: "NestJS",
-        icon: <IconContainer alt="nest" />,
-        link: "/paas/nodejs/related-apps/nestjs"
-      },
-      {
-        title: "NuxtJS",
-        icon: <IconContainer alt="nuxt" />,
-        link: "/paas/nodejs/related-apps/nuxtjs"
-      },
-      {
-        title: "Remix",
-        icon: <IconContainer alt="remix" />,
-        link: "/paas/nodejs/related-apps/remix"
-      },
-      {
-        title: "Strapi",
-        icon: <IconContainer alt="strapi" />,
-        link: "/paas/nodejs/related-apps/strapi/starter"
-      },
-      {
-        title: "Svelte",
-        icon: <IconContainer alt="svelte" />,
-        link: "/paas/nodejs/related-apps/svelte"
-      },
-      {
-        title: "Svelte Kit",
-        icon: <IconContainer alt="svelte" />,
-        link: "/paas/nodejs/related-apps/svelte-kit"
-      },
-      {
-        title: "Qwik",
-        icon: <IconContainer alt="qwik" />,
-        link: "/paas/nodejs/related-apps/qwik"
-      },
-      {
-        title: "JSON Server",
-        icon: <IconContainer alt="json" />,
-        link: "/paas/nodejs/related-apps/json-server"
-      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoStack  />
+      //       <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی Stack</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "استک LEMP",
+      //   icon: <IconContainer alt="nginx" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک LAMP",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/apache-logo.webp" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // // {
+      // //   title: "استک MEAN",
+      // //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+      // //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // // },
+      // {
+      //   title: "استک MERN",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک TICK",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/tick-stack-logo.png" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک ELK",
+      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/elk-stack.svg" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoDatabase  />
+      //       <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی دیتابیس</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "دیتابیس CockroachDB",
+      //   icon: <IconContainer alt="mysql" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mysql"
+      // },
+      // {
+      //   title: "دیتابیس TimescaleDB",
+      //   icon: <IconContainer alt="postgres" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
+      // },
+      // {
+      //   title: "دیتابیس CouchDB",
+      //   icon: <IconContainer alt="mssql" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mssql"
+      // },
+      // {
+      //   title: "دیتابیس RethinkDB",
+      //   icon: <IconContainer alt="sqlite" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
+      // },
+      // {
+      //   title: "دیتابیس Cassandra",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس Neo4j",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس InfluxDB",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس ClickHouse",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس TiDB",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBug  />
+      //       <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "رفع خطای Get query missing",
+      //   link: "/paas/nodejs/fix-common-errors/graphql-error"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoPaperclip   />
+      //     برنامه‌های مرتبط
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "JSON Server",
+      //   icon: <IconContainer alt="json" />,
+      //   link: "/paas/nodejs/related-apps/json-server"
+      // },
     ],
   },
 
