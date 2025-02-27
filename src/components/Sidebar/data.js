@@ -4,6 +4,7 @@ import {
   GoHome,
   GoPeople,
   GoStack,
+  GoBroadcast,
   GoGear,
   GoCommandPalette,
   GoRead,
@@ -18,6 +19,7 @@ import {
   GoProjectRoadmap,
   GoContainer,
   GoRocket,
+  GoPasskeyFill,
   GoLaw,
   GoStopwatch,
   GoMail,
@@ -3290,28 +3292,14 @@ export default {
         icon: <IconContainer alt="https://files.liara.ir/liara/logos/debian.png" />,
         link: "/iaas/debian/getting-started"
       },
-      // {
-      //   hr: true
-      // },
-      // {
-      //   badge: "برنامه‌های مرتبط"
-      // },
-      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/supabase.jpg'/> , title: 'Supabase', link: "/iaas/templates/supabase" },
-      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/sentry.svg'/> , title: 'Sentry', link: "/iaas/templates/sentry" },
-      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/hoppscotch.png'/> , title: 'Hoppscotch', link: "/iaas/templates/hoppscotch" },
-      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/posthog.png'/> , title: 'PostHog', link: "/iaas/templates/posthog" },
-      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/gitlab.webp'/> , title: 'Gitlab', link: "/iaas/templates/gitlab" },
-      // { icon: <IconContainer alt='https://files.liara.ir/liara/logos/vps/novu.png'/> , title: 'Novu', link: "/iaas/templates/novu" },
-  
-
-      // {
-      //   hr: true
-      // },
-      // {
-      //   title: "جزئیات سرور ابری",
-      //   icon: <GoNote />,
-      //   link: "/iaas/details/about"
-      // },
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات سرور ابری",
+        icon: <GoNote />,
+        link: "/iaas/details/about"
+      },
       // {
       //   title: "مدیریت دیسک‌",
       //   icon: <GoCodespaces />,
@@ -3731,6 +3719,70 @@ export default {
       //   title: "JSON Server",
       //   icon: <IconContainer alt="json" />,
       //   link: "/paas/nodejs/related-apps/json-server"
+      // },
+    ],
+
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoServer />
+            جزئیات سرور ابری
+          </div>
+        )
+      },
+      {
+        title: "برگشت به سرور ابری",
+        icon: <GoArrowRight />,
+        link: "/iaas/about"
+      },
+      {
+        title: "ویژگی‌های سرور ابری در لیارا",
+        icon: <GoInfo />,
+        link: "/iaas/details/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "پلن‌های سرور ابری",
+        icon: <GoCpu />,
+        link: "/iaas/details/hardware-plans"
+      },
+      {
+        title: "آی‌پی سرور ابری",
+        icon: <GoNumber  />,
+        link: "/iaas/details/ip"
+      },
+      {
+        title: "رویدادها",
+        icon: <GoEye />,
+        link: "/iaas/details/events"
+      },
+      {
+        title: "تغییر پلن سرور ابری",
+        icon: <GoGitCompare />,
+        link: "/iaas/details/change-plan"
+      },
+      {
+        title: "حذف یک سرور ابری",
+        icon: <GoXCircle  />,
+        link: "/iaas/details/delete-server"
+      },
+      {
+        title: "کلید SSH",
+        icon: <GoKey  />,
+        link: "/iaas/details/ssh-key"
+      },
+      // {
+      //   title: "سیگنال‌های سرور ابری",
+      //   icon: <GoBroadcast />,
+      //   link: "/iaas/details/signals"
+      // },
+      // {
+      //   title: "بازنشانی رمز root",
+      //   icon: <GoPasskeyFill />,
+      //   link: "/iaas/details/reset-root-password",
       // },
     ],
   },

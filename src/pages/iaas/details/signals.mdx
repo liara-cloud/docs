@@ -1,0 +1,50 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با سیگنال‌های سرور ابری - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با سیگنال‌ها در سرور ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# سیگنال‌ها در سرور ابری
+<hr className="mb-2" />
+
+سیگنال‌هایی که به سرور ابری ارسال می‌شوند، دستورات کنترلی هستند که وضعیت سرور را تغییر می‌دهند. سیگنال روشن شدن، سرور را فعال کرده و امکان اجرای سرویس‌ها را فراهم می‌کند. سیگنال خاموش شدن، منابع را آزاد کرده و از مصرف غیرضروری جلوگیری می‌کند. سیگنال راه‌اندازی مجدد، سرور را برای رفع خطاها و به‌روزرسانی‌ها ریست می‌کند. سیگنال قطع برق نیز در مواقع اضطراری برای محافظت از داده‌ها و سخت‌افزار استفاده می‌شود. این سیگنال‌ها نقش کلیدی در مدیریت و پایداری سرور دارند.
+
+
+
+### سیگنال روشن‌شدن
+این سیگنال زمانی ارسال می‌شود که سرور شما روشن می‌شود. شما می‌توانید با تنظیم قطعه‌کدهای مشابه قطعه کد زیر، لاگ‌های منحصر به فرد خود را در برنامه NodeJS ایجاد کنید که طبق <a href="/paas/details/observations/software" className="text-[#2196f3] ">مستندات گزارشات نرم‌افزاری</a>، در دسترس شما قرار می‌گیرد و می‌توانید در هر قسمتی از پردازش برنامه، آن‌ها را ببینید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`console.log(\`Server started!\`);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+### سیگنال خاموش‌شدن
+این سیگنال زمانی ارسال می‌شود که سرور شما خاموش می‌شود. شما می‌توانید از این سیگنال برای انجام عملیات پاکسازی یا ذخیره‌سازی داده‌ها قبل از خاموش شدن سرور استفاده کنید.
+
+### سیگنال راه‌اندازی مجدد
+این سیگنال زمانی ارسال می‌شود که سرور شما راه‌اندازی مجدد می‌شود. این سیگنال می‌تواند برای انجام عملیات خاصی که نیاز به راه‌اندازی مجدد دارند، مورد استفاده قرار گیرد.
+
+### سیگنال قطع برق
+این سیگنال زمانی ارسال می‌شود که سرور شما به دلیل قطع برق خاموش می‌شود. این سیگنال می‌تواند برای اطلاع‌رسانی به شما و انجام عملیات بازیابی مورد استفاده قرار گیرد.
+
+</Layout>

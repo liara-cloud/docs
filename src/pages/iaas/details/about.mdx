@@ -1,0 +1,166 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoHome,
+  GoPasskeyFill,
+  GoDatabase,
+  GoContainer,
+  GoBroadcast,
+  GoRocket,
+  GoMail,
+  GoServer,
+  GoTerminal,
+  GoGlobe,
+  GoCode,
+  GoBrowser,
+  GoArrowRight,
+  GoInfo,
+  GoNote,
+  GoCodespaces,
+  GoWorkflow,
+  GoPackageDependents,
+  GoSync,
+  GoPerson,
+  GoTelescope,
+  GoFlame,
+  GoLock,
+  GoPackageDependencies,
+  GoProjectTemplate,
+  GoZap,
+  GoFileSymlinkFile,
+  GoPackage ,
+  GoBug,
+  GoPaperclip,
+  GoMegaphone,
+  GoCpu,
+  GoShieldLock,
+  GoNumber,
+  GoFileBinary,
+  GoEye,
+  GoGraph,
+  GoKey,
+  GoLog,
+  GoEyeClosed,
+  GoPulse,
+  GoGitPullRequest,
+  GoPlug,
+  GoLocation,
+  GoGitCompare,
+  GoXCircle,
+  GoPaperAirplane,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ویژگی‌های سرور ابری  - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به ویژگی‌های سرور مجازی یا VPS و آشنایی با جزئیات آن "  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# ویژگی‌های یک سرور ابری در لیارا
+<hr className="mb-2" />
+لیارا همواره سعی داشته است که با 
+ارائه یک رابط کاربری آسان و همه‌منظوره، نیازهای کاربران خود را تا حد زیادی در خود <a href="https://console.liara.ir" className="text-[#2196f3] ">صفحه کنسول</a>، شناسایی و بر طرف کند. اما گاهاً ممکن است که در برخی از موارد، دچار ابهام شوید و به دنبال پاسخی
+برای سوالات خود، باشید.
+از این رو، در ادامه، تمامی جزئیات مربوط به سرور ابری برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
+
+<div className="h-6" />
+<video
+src="https://files.liara.ir/liara/vps/cloud-server-introduction.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<div className="h-6" />
+
+<div className="grid md:grid-cols-4 gap-4">
+{[
+  {
+    title: "پلن‌های سرور ابری",
+    icon: <GoCpu />,
+    desc: "آشنایی با پلن‌های سخت‌افزاری یک سرور ابری و مشاهده تعداد هسته‌های CPU، میزان RAM و مقدار Disk",
+    link: "./hardware-plans",
+  },
+  {
+    title: "آی‌پی سرورابری",
+    icon: <GoNumber />,
+    desc: "آی‌پی ورژن چهار که با استفاده از آن، می‌توانید به صورت مستقیم، به سرور ابری دسترسی داشته باشید.",
+    link: "./ip",
+  },
+  {
+    title: "رویدادها",
+    icon: <GoEye />,
+    desc: "مشاهده وضعیت نهایی سرور ابری برای بررسی تغییرات بر اساس زمان آخرین تغییرات",
+    link: "./events",
+  },
+  {
+    title: "تغییر پلن سرور ابری",
+    icon: <GoGitCompare />,
+    desc: "تغییر پلن سرور ابری برای افزایش یا کاهش منابع سخت‌افزاری",
+    link: "./change-plan",
+  },
+  {
+    title: "حذف یک سرور ابری",
+    icon: <GoXCircle />,
+    desc: "راهنمایی برای حذف یک سرور ابری از حساب کاربری ",
+    link: "./delete-server",
+  },
+  {
+    title: "کلید SSH",
+    icon: <GoKey />,
+    desc: "نحوه استفاده از کلید SSH برای اتصال خیلی راحت‌تر به سرور ابری",
+    link: "./ssh-key",
+  },
+  // {
+  //   title: "سیگنال‌های سرور ابری",
+  //   icon: <GoBroadcast />,
+  //   desc: "آشنایی با سیگنال‌های مختلف سرور ابری و نحوه استفاده از آن‌ها",
+  //   link: "./signals",
+  // },
+  // {
+  //   title: "بازنشانی رمز root",
+  //   icon: <GoPasskeyFill />,
+  //   desc: "آشنایی با سیگنال‌های مختلف سرور ابری و نحوه استفاده از آن‌ها",
+  //   link: "./reset-root-password",
+  // },
+].map(item =>
+        <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
+        <div>
+            <div className="flex items-center justify-between gap-3">
+            <h4>
+                {item.title}
+            </h4>
+            <div className="bg-[#222] text-white p-1 rounded-md">
+                {item.icon}
+            </div>
+            </div>
+            <p align='justify' className="text-[gray] leading-6 text-[14px] mt-3">
+            {item.desc}
+            </p>
+        </div>
+        <Link href={item.link}>
+        <Button variant="link" href={item.link}>بیشتر بدانید</Button>
+        </Link>
+        </Card>
+    )}
+    </div>
+
+
+
+
+
+
+</Layout>

@@ -68,7 +68,7 @@ import Head from "next/head";
   content: (
   <>
     <h3>ایجاد سرور ابری</h3>
-    <p>وارد تب <b>سرور ابری</b> شوید، سپس بر روی گزینه <b>ایجاد سرور ابری</b> کلیک کنید و سرور Debian خود را با نسخه، شناسه، <Link className="text-[#2196f3] " href="/iaas/details/ssh-keys">کلید SSH عمومی</Link> و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
+    <p>وارد تب <b>سرور ابری</b> شوید، سپس بر روی گزینه <b>ایجاد سرور ابری</b> کلیک کنید و سرور Debian خود را با نسخه، شناسه، <Link className="text-[#2196f3] " href="/iaas/details/ssh-key">کلید SSH عمومی</Link> و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link> مدنظرتان ایجاد کنید.</p>
 
     <div className="h-2" />
     <video
@@ -386,7 +386,7 @@ sudo apt install -y openssh-client
     </div>
     <Asciinema id="create-debian-vm-using-cli" />
     <div className="h-2" />
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه (اختیاری)، نوع سرور ابری (که باید بر روی debian تنظیم شود)، ورژن سرور دبیان و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link>، مشخص شوند. در صورتی که قصد دارید از قابلیت <a href="/iaas/details/ssh-keys" className="text-[#2196f3]">SSH Keys</a> استفاده کنید، باید کلید عمومی خود را در مرحله آخر ساخت سرور ابری و پس از وارد کردن گزینه <Important>y</Important> و زدن دکمه <Important>Enter</Important>، وارد کنید.</p>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه (اختیاری)، نوع سرور ابری (که باید بر روی debian تنظیم شود)، ورژن سرور دبیان و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link>، مشخص شوند. در صورتی که قصد دارید از قابلیت <a href="/iaas/details/ssh-key" className="text-[#2196f3]">SSH Keys</a> استفاده کنید، باید کلید عمومی خود را در مرحله آخر ساخت سرور ابری و پس از وارد کردن گزینه <Important>y</Important> و زدن دکمه <Important>Enter</Important>، وارد کنید.</p>
     <div className="h-2" />
 
     <Alert variant="info">اگر که از قبل سرور ابری خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>

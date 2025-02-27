@@ -1,0 +1,53 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات رویدادهای سرور ابری  - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به رویدادهای یک سرور مجازی VPS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# رویدادها
+
+<hr className="mb-2" />
+رویدادها، از وضعیت سرور ابری ما خبر می‌دهند؛ در واقع رویدادها به ما می‌گویند که هم‌اکنون وضعیت نهایی سرور چگونه است. شما می‌توانید وضعیت نهایی سرور ابری خود را در قسمت <b>رویدادها</b> آن سرور، بررسی کنید:
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/vps/iaas-events.png" alt="tab of events on Liara"/>
+<div className="h-4" />
+
+لیست رویدادها، بر اساس زمان آخرین تغییری که روی سرور ابری اعمال شده، مرتب شده‌اند. در ادامه لیستی از رویدادها که ممکن است با آن  در سرور ابری‌تان، مواجه شوید؛ برای‌تان قرار گرفته است:
+
+<Section id="start" title="رویداد start" />
+این رویداد زمانی رخ می‌دهد که سرور ابری شما شروع به کار می‌کند. این نشان می‌دهد که سرور شما به درستی راه‌اندازی شده و آماده استفاده است.
+
+<Section id="stop" title="رویداد stop" />
+این رویداد زمانی رخ می‌دهد که سرور ابری شما متوقف می‌شود. این می‌تواند به دلیل خاموش کردن دستی سرور یا رخ دادن یک خطا باشد.
+
+<Section id="reboot" title="رویداد reboot" />
+این رویداد زمانی رخ می‌دهد که سرور ابری شما راه‌اندازی مجدد می‌شود. این معمولاً به دلیل اعمال تغییرات سیستمی یا به‌روزرسانی‌ها است.
+
+<Section id="shutdown" title="رویداد shutdown" />
+این رویداد زمانی رخ می‌دهد که سرور ابری شما خاموش می‌شود. این می‌تواند به دلیل خاموش کردن دستی سرور یا رخ دادن یک خطا باشد.
+
+
+
+
+
+</Layout>

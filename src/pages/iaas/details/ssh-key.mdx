@@ -1,0 +1,118 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کلیدهای SSH - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به کلیدهای SSH در سرور مجازی یا VPS لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# کلیدهای SSH
+<hr className="mb-2" />
+
+کلیدهای SSH یک روش امن برای ورود به سرورها و سیستم‌های راه دور هستند. این کلیدها از دو بخش تشکیل شده‌اند: کلید عمومی و کلید خصوصی. کلید عمومی بر روی سرور قرار می‌گیرد و کلید خصوصی در سیستم کاربر نگهداری می‌شود. با استفاده از این کلیدها، می‌توانید بدون نیاز به وارد کردن رمز عبور، به سرور متصل شوید.
+
+
+<Section id="create-key" title="ایجاد یک جفت کلید SSH" />
+برای ایجاد یک جفت کلید SSH، می‌توانید از دستور زیر در ترمینال استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در دستور فوق، به جای <Important>your_email@example.com</Important>، ایمیل خود را، وارد کنید. 
+این دستور یک جفت کلید RSA با طول 4096 بیت ایجاد می‌کند. پس از اجرای این دستور، از شما خواسته می‌شود که یک نام برای فایل کلید و یک رمز عبور اختیاری وارد کنید.
+
+<Section id="add-public-key" title="اضافه کردن کلید عمومی به سرور" />
+
+<Tabs 
+  tabs={["Linux - MacOS", "Windows"]} 
+  content={[
+  <>
+    <p>
+        برای اضافه کردن کلید عمومی به سرور، می‌توانید در حین ساخت سرور ابری، آن را به سرور خود، اضافه کنید. اما در صورتی که سرور ابری خود را ساخته‌اید و اکنون قصد اضافه کردن کلید را دارید، می‌توانید از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`ssh-copy-id root@<your-ip-address>`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        این دستور کلید عمومی شما را به فایل <Important>~/.ssh/authorized_keys</Important> در سرور اضافه می‌کند.
+    </p>
+
+  </>,
+  <>
+    <p>
+        برای اضافه کردن کلید عمومی به سرور، می‌توانید در حین ساخت سرور ابری، آن را به سرور خود، اضافه کنید. اما در صورتی که سرور ابری خود را ساخته‌اید و اکنون قصد اضافه کردن کلید را دارید، می‌توانید در PowerShell، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`scp $env:USERPROFILE\.ssh\id_rsa.pub <user-name>@<your-ip-address>:~/`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        پس از اجرای دستور فوق، با SSH به سرور خود، متصل شوید و با اجرای دستور زیر، کلید عمومی را به فایل <Important>~/.ssh/authorized_keys</Important> اضافه کنید.
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`cat ~/id_rsa.pub >> ~/.ssh/authorized_keys`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    
+    <p>
+        در نهایت، می‌توانید فایل اضافی <Important>id_rsa.pub</Important> را حذف کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`rm ~/id_rsa.pub`}
+        </Highlight>
+    </div>
+    <div className="h-2" />   
+
+  </>
+  ]}
+/>
+
+<Section id="connect-server" title="اتصال به سرور با استفاده از کلید SSH" />
+
+پس از اضافه کردن کلید عمومی به سرور، می‌توانید با استفاده از دستور زیر به سرور متصل شوید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`ssh <user-name>@<your-ip-address>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، به جای <Important>user-name</Important>، نام کاربری خود و به جای <Important>your-ip-address</Important>، آدرس IP سرور خود را وارد کنید.
+
+</Layout>
