@@ -1,0 +1,89 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+
+    
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات دیسک‌ها در سرور ابری - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به دیسک‌ها در سرور مجازی یا VPS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# دیسک‌ها در سرور ابری 
+
+<hr className="mb-2" />
+
+در سرورهای ابری، دیسک‌ها نقش مهمی در ذخیره‌سازی داده‌ها و اجرای سیستم‌عامل دارند. این دیسک‌ها به دو دسته Primary (اصلی) و Secondary (ثانویه) تقسیم می‌شوند. دیسک Primary معمولاً برای نصب سیستم‌عامل و اجرای برنامه‌های حیاتی استفاده می‌شود، در حالی که دیسک Secondary برای ذخیره داده‌های اضافی، بکاپ‌گیری و افزایش فضای ذخیره‌سازی به کار می‌رود. استفاده از این ساختار به بهینه‌سازی عملکرد سرور کمک می‌کند، زیرا عملیات پردازشی و ذخیره‌سازی داده‌ها از یکدیگر جدا می‌شوند. 
+در ادامه، بخوانید:
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "مشاهده دیسک‌ها در کنسول",
+        link: "./see-disks"
+      },
+      {
+        title: "ساخت دیسک‌ جدید",
+        link: "./create"
+      },
+    //   {
+    //     title: "مشاهده اطلاعات  دیسک‌ها",
+    //     link: "./see-disk-details"
+    //   },
+    // //   {
+    // //     title: "افزایش حجم یک دیسک",
+    // //     link: "./increase-value"
+    // //   },
+    //   {
+    //     title: "تعریف مسیر برای دیسک (mount کردن دیسک)",
+    //     link: "./route"
+    //   },
+    //   {
+    //     title: "حذف اتصال دیسک (dismount کردن دیسک)",
+    //     link: "./route"
+    //   },
+    //   {
+    //     title: "کاهش حجم یک دیسک",
+    //     link: "./decrease-value"
+    //   },
+    //   {
+    //     title: "حذف یک دیسک",
+    //     link: "./delete"
+    //   },
+    //   {
+    //     title: "تهیه فایل پشتیبان از دیسک‌",
+    //     link: "./create-backup"
+    //   },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                     {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+</Layout>

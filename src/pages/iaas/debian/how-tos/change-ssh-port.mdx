@@ -1,0 +1,113 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تغییر پورت SSH در سرور ابری Debian - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تغییر پورت SSH سرور مجازی VPS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تغییر پورت SSH سرور ابری دبیان در لیارا
+
+<hr className="mb-2" />
+
+پورت پیش‌فرض SSH در لینوکس و اکثر سیستم‌ها <Important>22</Important> است. این پورت برای ارتباط امن از راه دور (Secure Shell) به‌کار می‌رود و به مدیران سیستم اجازه می‌دهد تا به سرورها متصل شوند و دستورات را اجرا کنند. بااین‌حال، بسیاری از افراد پورت پیش‌فرض را تغییر می‌دهند تا امنیت را افزایش دهند. 
+
+<div className="h-2" />
+
+دلیل اصلی این کار کاهش حملات Brute Force و Port Scanning است، زیرا ربات‌ها و مهاجمان معمولاً به‌صورت خودکار پورت <Important>22</Important> را هدف قرار می‌دهند. تغییر پورت به مقدار دیگری باعث می‌شود تلاش‌های نفوذ کاهش یابد، هرچند به‌تنهایی امنیت را تضمین نمی‌کند و باید در کنار روش‌هایی مانند کلیدهای SSH و فایروال استفاده شود.
+
+<div className="h-2" />
+
+برای تغییر پورت SSH، در ابتدا، طبق مستندات <a href="/iaas/Debian/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور با SSH</a>، به سرور متصل شوید و سپس با استفاده از <Important>nano</Important> فایل <Important>etc/ssh/sshd_config/</Important> را، باز کنید.
+
+<div className="h-4" />
+<Alert variant="error">
+<p>
+    در صورتی که با کاربر <Important>root</Important> به سرور دبیان متصل شده‌اید، نیازی نیست که از عبارت <Important>sudo</Important> قبل از دستورات استفاده کنید.
+</p>
+</Alert>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo nano /etc/ssh/sshd_config`}
+    </Highlight>
+</div>
+<div className="h-2" />  
+
+برای تغییر پورت پیش‌فرض SSH، باید علامت <Important>#</Important> را از ابتدای خط <Important>Port 22 #</Important> حذف کرده و مقدار <Important>22</Important> را به پورت دلخواه خود تغییر دهید. در مثال زیر، مقدار <Important>22</Important> به <Important>20202</Important> تغییر داده شده است، بنابراین از این پس، تنها از طریق پورت <Important>20202</Important> می‌توان به سرور متصل شد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="config">
+        {`# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+Include /etc/ssh/sshd_config.d/*.conf
+
+Port 20202
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::`}
+    </Highlight>
+</div>
+<div className="h-2" /> 
+
+پس از انجام کار فوق و در صورتی که از firewall استفاده می‌کنید؛ باید دسترسی پورت جدید را آزاد کنید؛ به عنوان مثال، اگر که از UFW استفاده می‌کنید، می‌توانید دستور زیر را،اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo ufw allow 20202/tcp`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+پس از اعمال تغییرات فوق، کلیدهای ترکیبی <Important>Ctrl + X</Important> و سپس <Important>Y</Important> را بزنید تا تغییرات ذخیره شود و سپس کلید <Important>Enter</Important> را بزنید تا از ویرایشگر خارج شوید.
+برای اعمال تغییرات، سرور را مجدداً راه‌اندازی کنید، می‌توانید برای این کار، از دستور زیر استفاده کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`reboot`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+یا اینکه، سیگنال راه‌اندازی مجدد را طبق مستندات <a href="/iaas/details/signals" className="text-[#2196f3]">سیگنال‌ها</a>، ارسال کنید.
+
+<div className="h-2" />
+
+بعد از راه‌اندازی مجدد سرور، می‌توانید با استفاده از SSH و فلگ <Important>p-</Important>، تغییرات را بررسی کنید. این فلگ برای تعیین شماره پورت جدید سرور به‌کار می‌رود:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`ssh <user-name>@<your-ip-address> -p <new-port-number>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، به جای <Important>user-name</Important>، نام کاربری خود را و به جای <Important>your-ip-address</Important>، آدرس IP سرور خود را و به جای <Important>new-port-number</Important>، پورت جدید تعیین شده را وارد کنید.
+درصورتی‌که ورود موفقیت‌آمیز باشد، یعنی پورت SSH به‌درستی تغییر کرده است.
+
+
+</Layout>

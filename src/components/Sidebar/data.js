@@ -3300,28 +3300,13 @@ export default {
         icon: <GoNote />,
         link: "/iaas/details/about"
       },
-      // {
-      //   title: "مدیریت دیسک‌",
-      //   icon: <GoCodespaces />,
-      //   link: "/iaas/disks/about"
-      // },
-      // {
-      //   title: "مدیریت دامنه‌",
-      //   icon: <GoGlobe />,
-      //   link: "/iaas/domains/about"
-      // },
-      // {
-      //   title: "قابلیت CI/CD",
-      //   icon: <GoWorkflow />,
-      //   link: "/iaas/cicd/about"
-      // },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/iaas/disks/about"
+      },
       // {
       //   hr: true
-      // },
-      // {
-      //   title: "به‌روزرسانی پلتفرم",
-      //   icon: <GoSync />,
-      //   link: "/iaas/update"
       // },
       // {
       //   title: "انتقال پلتفرم",
@@ -3394,6 +3379,10 @@ export default {
       {
         title: "تنظیم فایروال UFW",
         link: "/iaas/ubuntu/how-tos/set-firewall"
+      },
+      {
+        title: "تغییر پورت SSH",
+        link: "/iaas/ubuntu/how-tos/change-ssh-port",
       },
       // {
       //   hr: true
@@ -3590,6 +3579,10 @@ export default {
       {
         title: "تنظیم فایروال UFW",
         link: "/iaas/debian/how-tos/set-firewall"
+      },
+      {
+        title: "تغییر پورت SSH",
+        link: "/iaas/debian/how-tos/change-ssh-port",
       },
       // {
       //   hr: true
@@ -3789,6 +3782,129 @@ export default {
         icon: <GoPasskeyFill />,
         link: "/iaas/details/reset-root-password",
       },
+    ],
+
+    disks: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "برگشت به سرور ابری",
+        icon: <GoArrowRight />,
+        link: "/iaas/about"
+      },
+      {
+        title: "درباره دیسک‌ها",
+        icon: <GoInfo />,
+        link: "/iaas/disks/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+            مدیریت دیسک‌ها
+          </div>
+        )
+      },
+      {
+        title: "مشاهده دیسک‌‌ها در کنسول",
+        link: "./see-disks"
+      },
+      {
+        title: "ساخت دیسک‌ جدید",
+        link: "./create"
+      },
+      // {
+      //   title: "مشاهده اطلاعات دیسک‌ها",
+      //   link: "./see-disk-details"
+      // },
+      // // {
+      // //   title: "افزایش حجم یک دیسک",
+      // //   link: "./increase-value"
+      // // },
+      // {
+      //   title: "تعریف مسیر برای دیسک",
+      //   link: "./route"
+      // },
+      // {
+      //   title: "حذف اتصال دیسک ",
+      //   link: "./route"
+      // },
+      // {
+      //   title: "کاهش حجم یک دیسک",
+      //   link: "./decrease-value"
+      // },
+      // {
+      //   title: "حذف یک دیسک",
+      //   link: "./delete"
+      // },
+      // {
+      //   title: "تهیه فایل پشتیبان از دیسک‌",
+      //   link: "./create-backup"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     < GoIterations />
+      //       پشتیبان‌گیری از دیسک‌ها
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "تهیه فایل پشتیبان از دیسک‌",
+      //   link: "/paas/disks/create-backup"
+      // },
+      // {
+      //   title: "بازیابی فایل پشتیبان با دسترسی FTP",
+      //   link: "/paas/disks/restore-backup-using-ftp"
+      // },
+      // {
+      //   title: "بازیابی فایل پشتیبان با دستور wget",
+      //   link: "/paas/disks/restore-backup-using-wget"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       انتقال فایل از دیسک
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "انتقال فایل دیسک به دیسک",
+      //   link: "/paas/disks/move-files-to-other-disk"
+      // },
+      // {
+      //   title: "انتقال فایل دیسک به object storage",
+      //   link: "/paas/disks/move-files-to-bucket"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     < GoKey />
+      //       دسترسی‌ها
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "دسترسی FTP به دیسک‌ها",
+      //   link: "/paas/disks/ftp-access"
+      // },
     ],
   },
 
