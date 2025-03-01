@@ -3380,7 +3380,7 @@ export default {
         link: "/iaas/ubuntu/how-tos/connect-to-server-using-ssh"
       },
       {
-        title: "اتصال سرور به دامنه با SSL",
+        title: "اتصال دامنه به سرور با SSL",
         link: "/iaas/ubuntu/how-tos/connect-domain"
       },
       {
@@ -3576,7 +3576,7 @@ export default {
         link: "/iaas/debian/how-tos/connect-to-server-using-ssh"
       },
       {
-        title: "اتصال سرور به دامنه با SSL",
+        title: "اتصال دامنه به سرور با SSL",
         link: "/iaas/debian/how-tos/connect-domain"
       },
       {
@@ -3770,20 +3770,25 @@ export default {
         link: "/iaas/details/delete-server"
       },
       {
+        title: "ابزار OpenSSH",
+        icon: <GoTools  />,
+        link: "/iaas/details/openssh-package"
+      },
+      {
         title: "کلید SSH",
         icon: <GoKey  />,
         link: "/iaas/details/ssh-key"
       },
-      // {
-      //   title: "سیگنال‌های سرور ابری",
-      //   icon: <GoBroadcast />,
-      //   link: "/iaas/details/signals"
-      // },
-      // {
-      //   title: "بازنشانی رمز root",
-      //   icon: <GoPasskeyFill />,
-      //   link: "/iaas/details/reset-root-password",
-      // },
+      {
+        title: "سیگنال‌های سرور ابری",
+        icon: <GoBroadcast />,
+        link: "/iaas/details/signals"
+      },
+      {
+        title: "بازنشانی رمز root",
+        icon: <GoPasskeyFill />,
+        link: "/iaas/details/reset-root-password",
+      },
     ],
   },
 

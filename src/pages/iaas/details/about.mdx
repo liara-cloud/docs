@@ -86,7 +86,7 @@ width="100%"
 ></video>
 <div className="h-6" />
 
-<div className="grid md:grid-cols-4 gap-4">
+<div className="grid md:grid-cols-3 gap-4">
 {[
   {
     title: "پلن‌های سرور ابری",
@@ -115,7 +115,7 @@ width="100%"
   {
     title: "حذف یک سرور ابری",
     icon: <GoXCircle />,
-    desc: "راهنمایی برای حذف یک سرور ابری از حساب کاربری ",
+    desc: "راهنمایی برای حذف یک سرور ابری از حساب کاربری و پایان روزهای طلایی استفاده از آن ",
     link: "./delete-server",
   },
   {
@@ -124,18 +124,18 @@ width="100%"
     desc: "نحوه استفاده از کلید SSH برای اتصال خیلی راحت‌تر به سرور ابری",
     link: "./ssh-key",
   },
-  // {
-  //   title: "سیگنال‌های سرور ابری",
-  //   icon: <GoBroadcast />,
-  //   desc: "آشنایی با سیگنال‌های مختلف سرور ابری و نحوه استفاده از آن‌ها",
-  //   link: "./signals",
-  // },
-  // {
-  //   title: "بازنشانی رمز root",
-  //   icon: <GoPasskeyFill />,
-  //   desc: "آشنایی با سیگنال‌های مختلف سرور ابری و نحوه استفاده از آن‌ها",
-  //   link: "./reset-root-password",
-  // },
+  {
+    title: "سیگنال‌های سرور ابری",
+    icon: <GoBroadcast />,
+    desc: "آشنایی با سیگنال‌های مختلف سرور ابری و نحوه استفاده از آن‌ها",
+    link: "./signals",
+  },
+  {
+    title: "بازنشانی رمز root",
+    icon: <GoPasskeyFill />,
+    desc: "آشنایی با سیگنال‌های مختلف سرور ابری و نحوه استفاده از آن‌ها",
+    link: "./reset-root-password",
+  },
 ].map(item =>
         <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
         <div>

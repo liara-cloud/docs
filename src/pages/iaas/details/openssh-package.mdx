@@ -1,0 +1,223 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه نصب OpenSSH در سیستم‌عامل‌های مختلف - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه نصب پکیج OpenSSH در سیستم عامل‌های مختلف برای اتصال به سرور مجازی در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# ابزار OpenSSH 
+<hr className="mb-2" />
+
+
+<a href="https://www.openssh.com/" className="text-[#2196f3]">OpenSSH</a> یک ابزار متن‌باز برای برقراری ارتباط امن از طریق پروتکل SSH (Secure Shell) است. این ابزار شامل سرویس‌دهنده sshd، سرویس‌گیرنده ssh و ابزارهایی مانند scp و sftp برای انتقال امن داده‌ها است. OpenSSH از رمزگذاری (encryption)، احراز هویت (authentication) و port forwarding پشتیبانی می‌کند و برای مدیریت امن سرورها در شبکه‌های ناامن استفاده می‌شود. این پروژه توسط OpenBSD توسعه داده شده و روی اکثر سیستم‌عامل‌های یونیکس و لینوکس در دسترس است.
+
+
+<Section id="what-is-ssh" title="SSH چیست؟" />
+
+
+SSH (Secure Shell) یک پروتکل رمزنگاری‌شده برای اتصال امن به سرورهای ابری از طریق شبکه‌های ناامن، مانند اینترنت است. این پروتکل جایگزین امنی برای Telnet و سایر روش‌های قدیمی ورود به سرورها محسوب می‌شود، زیرا تمام داده‌های ارسالی و دریافتی را رمزنگاری می‌کند. SSH معمولاً برای مدیریت سرورهای لینوکسی، انتقال فایل (با استفاده از SCP یا SFTP) و اجرای دستورات از راه دور استفاده می‌شود. 
+
+
+<div className="h-4" />
+<p>
+    یکی از روش‌های توصیه‌شده برای اتصال به سرور ابری، استفاده از ابزار OpenSSH است که می‌توانید مطابق با سیستم‌عامل‌تان، آن را نصب کرده و به سرور ابری خود، متصل شوید. 
+</p>
+
+
+<Section id="install-ssh" title="نصب OpenSSH" />
+    <Tabs 
+      tabs={["Windows", "MacOS", "Linux"]} 
+      content={[
+
+        <>
+        <p>
+          از ویندوز ۱۰ به بعد، OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از ابزار PowerShell، بر روی سیستم‌عامل خود، نصب کنید. در ابتدا، PowerShell را با دسترسی administrator باز کنید، سپس دستور زیر را در آن، اجرا کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`Get-WindowsCapability -Online | ? Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+
+        </>,
+        <>
+        <p>
+          در MacOS، پکیج OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است. 
+          می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
+        </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با استفاده از دستور <Important>brew</Important>، بر روی سیستم‌عامل خود، نصب کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`brew install openssh`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+        </>,
+
+        <>
+          <p>
+            پکیج OpenSSH معمولاً به‌صورت پیش‌فرض در اکثر توزیع‌های لینوکس نصب است، می‌توانید نصب بودن یا نبودن این پکیج را با اجرای دستور زیر در ترمینال خود، بررسی کنید:
+          </p>
+          <div className="h-2" />
+          <div dir='ltr'>
+            <Highlight className="bash">
+              {`ssh -V`}
+            </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            اگر OpenSSH بر روی سیستم‌عامل‌تان، نصب نیست، می‌توانید آن را با توجه به نوع توزیع خود نصب کنید:
+          </p>
+          <Tabs 
+            tabs={["Debian", "Debian", "Rocky Linux", "CentOS", "RHEL", "AlmaLinux", "Arch Linux", "Manjaro"]} 
+            content={[
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+
+          <div className="h-2" />
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo apt update
+sudo apt install -y openssh-client
+`}
+                </Highlight>
+              </div>
+              
+          <div className="h-2" />
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,       
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>                           
+        </>,      
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>
+              
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo yum install -y openssh-clients
+# sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر`}
+                </Highlight>
+              </div>         
+        </>,
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+              
+        </>,
+ 
+            <>
+              <p>
+                برای نصب OpenSSH، دستور زیر را اجرا کنید:
+              </p>
+              <div className="h-2" />
+              <div dir='ltr'>
+                <Highlight className="bash">
+                  {`sudo pacman -S openssh`}
+                </Highlight>
+              </div>
+        </>,
+            ]}
+          />
+        </>,
+      ]}
+    />
+
+</Layout>
