@@ -3815,11 +3815,11 @@ export default {
       },
       {
         title: "مشاهده دیسک‌‌ها در کنسول",
-        link: "./see-disks"
+        link: "/iaas/disks/see-disks"
       },
       {
         title: "ساخت دیسک‌ جدید",
-        link: "./create"
+        link: "/iaas/disks/create"
       },
       // {
       //   title: "مشاهده اطلاعات دیسک‌ها",
