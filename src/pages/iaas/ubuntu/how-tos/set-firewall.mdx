@@ -15,7 +15,7 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم فایروال UFW در سرور ابری Ubuntu - لیارا</title>
+<title>مستندات نحوه تنظیم فایروال UFW در سرور مجازی ابری Ubuntu - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
 <meta property="og:description" content="مستندات مربوط به نحوه تنظیم فایروال UFW firewall در سرور مجازی اوبونتو Ubuntu در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
@@ -29,11 +29,11 @@ import Head from "next/head";
 <div className="h-4" />
 
 در سرورهای ابری، به دلیل ماهیت در دسترس بودن آن‌ها در بستر اینترنت، استفاده از فایروال اهمیت ویژه‌ای دارد. بدون یک فایروال مناسب، سرور شما در معرض حملاتی مانند DDoS , Brute Force و Port Scanning قرار می‌گیرد. 
-برای تنظیم فایروال در سرور ابری اوبونتو، می‌توان از UFW (Uncomplicated Firewall) استفاده کرد که یک ابزار ساده و کارآمد برای مدیریت قوانین فایروال است.
+برای تنظیم فایروال در سرور مجازی ابری اوبونتو، می‌توان از UFW (Uncomplicated Firewall) استفاده کرد که یک ابزار ساده و کارآمد برای مدیریت قوانین فایروال است.
 <div className="h-4" />
 
 <p>
-    برای تنظیم فایروال UFW، پس از <a href="/iaas/ubuntu/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور ابری خود با استفاده از SSH</a>، باید در ابتدا، آن را با اجرای دستور زیر، نصب کنید:
+    برای تنظیم فایروال UFW، پس از <a href="/iaas/ubuntu/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور مجازی ابری خود با استفاده از SSH</a>، باید در ابتدا، آن را با اجرای دستور زیر، نصب کنید:
 </p>
 
 <div className="h-2" />
@@ -44,7 +44,7 @@ import Head from "next/head";
 </div>
 <div className="h-2" />
 
-در ادامه، برای اطمینان از اینکه firewall، اجازه اتصالات SSH را می‌دهد تا دفعه بعد، بتوانید به سرور ابری‌تان وارد شوید، این اتصالات را با اجرای دستور زیر مجاز کنید:
+در ادامه، برای اطمینان از اینکه firewall، اجازه اتصالات SSH را می‌دهد تا دفعه بعد، بتوانید به سرور مجازی ابری‌تان وارد شوید، این اتصالات را با اجرای دستور زیر مجاز کنید:
 
 
 <div className="h-2" />

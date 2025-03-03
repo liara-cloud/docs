@@ -112,7 +112,7 @@ export default {
       link: "/paas/about"
     },
     {
-      title: "سرور ابری (VPS)",
+      title: "سرور مجازی ابری (VPS)",
       icon: <GoCloud />,
       link: "/iaas/about"
     },
@@ -3262,7 +3262,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoCloud />
-            سرور ابری (VPS)
+            سرور مجازی ابری (VPS)
           </div>
         )
       },
@@ -3272,7 +3272,7 @@ export default {
         link: "/"
       },
       {
-        title: "درباره سرور ابری",
+        title: "درباره سرور مجازی ابری",
         icon: <GoInfo />,
         link: "/iaas/about"
       },
@@ -3296,7 +3296,7 @@ export default {
         hr: true
       },
       {
-        title: "جزئیات سرور ابری",
+        title: "جزئیات سرور مجازی ابری",
         icon: <GoNote />,
         link: "/iaas/details/about"
       },
@@ -3325,7 +3325,7 @@ export default {
         )
       },
       {
-        title: "برگشت به سرور ابری",
+        title: "برگشت به سرور مجازی ابری",
         icon: <GoArrowRight />,
         link: "/iaas/about"
       },
@@ -3361,7 +3361,7 @@ export default {
         )
       },
       {
-        title: "اتصال به سرور ابری با SSH",
+        title: "اتصال به سرور مجازی ابری با SSH",
         link: "/iaas/ubuntu/how-tos/connect-to-server-using-ssh"
       },
       {
@@ -3525,7 +3525,7 @@ export default {
         )
       },
       {
-        title: "برگشت به سرور ابری",
+        title: "برگشت به سرور مجازی ابری",
         icon: <GoArrowRight />,
         link: "/iaas/about"
       },
@@ -3561,7 +3561,7 @@ export default {
         )
       },
       {
-        title: "اتصال به سرور ابری با SSH",
+        title: "اتصال به سرور مجازی ابری با SSH",
         link: "/iaas/debian/how-tos/connect-to-server-using-ssh"
       },
       {
@@ -3720,17 +3720,17 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoServer />
-            جزئیات سرور ابری
+            جزئیات سرور مجازی ابری
           </div>
         )
       },
       {
-        title: "برگشت به سرور ابری",
+        title: "برگشت به سرور مجازی ابری",
         icon: <GoArrowRight />,
         link: "/iaas/about"
       },
       {
-        title: "ویژگی‌های سرور ابری در لیارا",
+        title: "ویژگی‌های سرور مجازی ابری در لیارا",
         icon: <GoInfo />,
         link: "/iaas/details/about"
       },
@@ -3738,12 +3738,12 @@ export default {
         hr: true
       },
       {
-        title: "پلن‌های سرور ابری",
+        title: "پلن‌های سرور مجازی ابری",
         icon: <GoCpu />,
         link: "/iaas/details/hardware-plans"
       },
       {
-        title: "آی‌پی سرور ابری",
+        title: "آی‌پی سرور مجازی ابری",
         icon: <GoNumber  />,
         link: "/iaas/details/ip"
       },
@@ -3753,12 +3753,12 @@ export default {
         link: "/iaas/details/events"
       },
       {
-        title: "تغییر پلن سرور ابری",
+        title: "تغییر پلن سرور مجازی ابری",
         icon: <GoGitCompare />,
         link: "/iaas/details/change-plan"
       },
       {
-        title: "حذف یک سرور ابری",
+        title: "حذف یک سرور مجازی ابری",
         icon: <GoXCircle  />,
         link: "/iaas/details/delete-server"
       },
@@ -3773,7 +3773,7 @@ export default {
         link: "/iaas/details/ssh-key"
       },
       {
-        title: "سیگنال‌های سرور ابری",
+        title: "سیگنال‌های سرور مجازی ابری",
         icon: <GoBroadcast />,
         link: "/iaas/details/signals"
       },
@@ -3793,7 +3793,7 @@ export default {
         )
       },
       {
-        title: "برگشت به سرور ابری",
+        title: "برگشت به سرور مجازی ابری",
         icon: <GoArrowRight />,
         link: "/iaas/about"
       },

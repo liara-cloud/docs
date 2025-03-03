@@ -306,7 +306,7 @@ const PRODUCTS = [
     link: "/paas/about"
   },
   {
-    title: "سرور ابری (IaaS)",
+    title: "سرور مجازی ابری (IaaS)",
     icon: <GoCloud />,
     desc: "اطلاعات سرورهای ابری و نحوه راه‌اندازی آن‌ها در لیارا",
     link: "/iaas/about"

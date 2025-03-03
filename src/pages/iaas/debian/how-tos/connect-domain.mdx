@@ -14,16 +14,16 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دامنه با گواهی SSL در سرور ابری Debian - لیارا</title>
+<title>مستندات اتصال به دامنه با گواهی SSL در سرور مجازی ابری Debian - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
 <meta property="og:description" content="مستندات مربوط به نحوه اتصال به دامنه به همراه تهیه گواهی SSL در سرور مجازی دبیان Debian در لیارا"  />
 <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
 </Head>
 
-# اتصال دامنه به سرور ابری به همراه تهیه گواهی SSL
+# اتصال دامنه به سرور مجازی ابری به همراه تهیه گواهی SSL
 <hr className="mb-2" />
 
-برای اتصال دامنه مدنظرتان به سرور ابری خود و تهیه گواهی SSL، بسته به نوع وب‌سرور خود (Apache یا Nginx) کافیست تا گام‌های زیر را به ترتیب، طی کنید. 
+برای اتصال دامنه مدنظرتان به سرور مجازی ابری خود و تهیه گواهی SSL، بسته به نوع وب‌سرور خود (Apache یا Nginx) کافیست تا گام‌های زیر را به ترتیب، طی کنید. 
 
 <div className="h-4" />
 <Alert variant="error">
@@ -45,7 +45,7 @@ import Head from "next/head";
                     <h3>اضافه کردن رکورد <Important>A</Important> در سامانه مدیریت دامنه</h3>   
                     <p>
                         در ابتدا، بایستی دامنه خود را در یک سامانه مدیریت دامنه، مانند <a href="https://liara.ir/products/dns" className="text-[#2196f3]">Cloudflare</a> یا <a href="" className="text-[#2196f3]">لیارا</a>، ثبت کنید. سپس، 
-                        یک رکورد از نوع <Important>A</Important> با نام <Important>@</Important> یا زیر دامنه‌ای از دامنه‌تان و مقدار IP سرور ابری‌تان که در بخش <b>اتصال</b> سرور ابری در کنسول لیارا، قرار گرفته است؛ به آن، اضافه کنید.
+                        یک رکورد از نوع <Important>A</Important> با نام <Important>@</Important> یا زیر دامنه‌ای از دامنه‌تان و مقدار IP سرور مجازی ابری‌تان که در بخش <b>اتصال</b> سرور مجازی ابری در کنسول لیارا، قرار گرفته است؛ به آن، اضافه کنید.
                     </p>
                     <div className="h-4" />
                     <video
@@ -63,7 +63,7 @@ import Head from "next/head";
                 <>
                     <h3>نصب وب‌سرور NginX</h3>   
                     <p>
-                        پس از <a href="/iaas/Debian/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور ابری خود با استفاده از SSH</a>، کافیست تا با اجرای دستور زیر، NginX را بر روی سرور خود، نصب کنید:
+                        پس از <a href="/iaas/Debian/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور مجازی ابری خود با استفاده از SSH</a>، کافیست تا با اجرای دستور زیر، NginX را بر روی سرور خود، نصب کنید:
                     </p>
                     <div className="h-2" />
                     <div dir='ltr'>
@@ -239,7 +239,7 @@ import Head from "next/head";
                     <div className="h-2" />  
                     <p>
                         در صورتی که صفحه سایت، با موفقیت، برایتان بالا آمد؛ بدین معناست که تمامی کارها 
-                        را به درستی انجام داده‌اید و دامنه شما به سرور ابری‌تان، متصل شده است.
+                        را به درستی انجام داده‌اید و دامنه شما به سرور مجازی ابری‌تان، متصل شده است.
                     </p>
                 </>
             )
@@ -259,7 +259,7 @@ import Head from "next/head";
                     <h3>اضافه کردن رکورد <Important>A</Important> در سامانه مدیریت دامنه</h3>   
                     <p>
                         در ابتدا، بایستی دامنه خود را در یک سامانه مدیریت دامنه، مانند <a href="https://liara.ir/products/dns" className="text-[#2196f3]">Cloudflare</a> یا <a href="" className="text-[#2196f3]">لیارا</a>، ثبت کنید. سپس، 
-                        یک رکورد از نوع <Important>A</Important> با نام <Important>@</Important> یا زیر دامنه‌ای از دامنه‌تان و مقدار IP سرور ابری‌تان که در بخش <b>اتصال</b> سرور ابری در کنسول لیارا، قرار گرفته است؛ به آن، اضافه کنید.
+                        یک رکورد از نوع <Important>A</Important> با نام <Important>@</Important> یا زیر دامنه‌ای از دامنه‌تان و مقدار IP سرور مجازی ابری‌تان که در بخش <b>اتصال</b> سرور مجازی ابری در کنسول لیارا، قرار گرفته است؛ به آن، اضافه کنید.
                     </p>
                     <div className="h-4" />
                     <video
@@ -277,7 +277,7 @@ import Head from "next/head";
                 <>
                     <h3>نصب وب‌سرور Apache</h3>   
                     <p>
-                        پس از <a href="/iaas/Debian/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور ابری خود با استفاده از SSH</a>، کافیست تا با اجرای دستور زیر، Apache را بر روی سرور خود، نصب کنید:
+                        پس از <a href="/iaas/Debian/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور مجازی ابری خود با استفاده از SSH</a>، کافیست تا با اجرای دستور زیر، Apache را بر روی سرور خود، نصب کنید:
                     </p>
                     <div className="h-2" />
                     <div dir='ltr'>
@@ -454,7 +454,7 @@ import Head from "next/head";
                     <div className="h-2" />  
                     <p>
                         در صورتی که صفحه سایت، با موفقیت، برایتان بالا آمد؛ بدین معناست که تمامی کارها 
-                        را به درستی انجام داده‌اید و دامنه شما به سرور ابری‌تان، متصل شده است.
+                        را به درستی انجام داده‌اید و دامنه شما به سرور مجازی ابری‌تان، متصل شده است.
                     </p>
                 </>
             )
