@@ -4,6 +4,7 @@ import {
   GoHome,
   GoPeople,
   GoStack,
+  GoFileSymlinkFile,
   GoBroadcast,
   GoGear,
   GoCommandPalette,
@@ -15,11 +16,10 @@ import {
   GoDatabase,
   GoDiff,
   GoVideo,
-  GoPencil,
   GoProjectRoadmap,
   GoContainer,
   GoRocket,
-  GoPasskeyFill,
+  GoPencil,
   GoLaw,
   GoStopwatch,
   GoMail,
@@ -43,7 +43,6 @@ import {
   GoProjectTemplate,
   GoZap,
   GoVersions,
-  GoFileSymlinkFile,
   GoPackage ,
   GoBug,
   GoPaperclip,
@@ -3305,6 +3304,11 @@ export default {
         icon: <GoCodespaces />,
         link: "/iaas/disks/about"
       },
+      {
+        title: "تهیه و بازیابی فایل پشتیبان",
+        icon: <GoFileSymlinkFile />,
+        link: "/iaas/backups/about"
+      },
       // {
       //   hr: true
       // },
@@ -3730,7 +3734,7 @@ export default {
         link: "/iaas/about"
       },
       {
-        title: "ویژگی‌های سرور مجازی ابری در لیارا",
+        title: "ویژگی‌های سرور مجازی در لیارا",
         icon: <GoInfo />,
         link: "/iaas/details/about"
       },
@@ -3779,7 +3783,7 @@ export default {
       },
       {
         title: "بازنشانی رمز root",
-        icon: <GoPasskeyFill />,
+        icon: <GoPencil />,
         link: "/iaas/details/reset-root-password",
       },
     ],
@@ -3823,7 +3827,7 @@ export default {
       },
       // {
       //   title: "مشاهده اطلاعات دیسک‌ها",
-      //   link: "./see-disk-details"
+      //   link: "/iaas/disks/see-disk-details"
       // },
       // // {
       // //   title: "افزایش حجم یک دیسک",
@@ -3904,6 +3908,53 @@ export default {
       // {
       //   title: "دسترسی FTP به دیسک‌ها",
       //   link: "/paas/disks/ftp-access"
+      // },
+    ],
+
+    backups: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            فایل پشتیبان
+          </div>
+        )
+      },
+      {
+        title: "برگشت به سرور مجازی ابری",
+        icon: <GoArrowRight />,
+        link: "/iaas/about"
+      },
+      {
+        title: "فایل پشتیبان چیست؟",
+        icon: <GoInfo />,
+        link: "/iaas/backups/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+            روش‌های پشتیبان‌گیری
+          </div>
+        )
+      },
+      {
+        title: "تهیه و بازیابی بکاپ کامل ",
+        link: "/iaas/backups/take-full-backup"
+      },
+      // {
+      //   title: "تهیه و بازیابی بکاپ incremental ",
+      //   link: "/iaas/backups/take-incremental-backup"
+      // },
+      // {
+      //   title: "تهیه و بازیابی بکاپ differential  ",
+      //   link: "/iaas/backups/take-differential-backup"
+      // },
+      // {
+      //   title: "تهیه و بازیابی بکاپ از دیتابیس ",
+      //   link: "/iaas/backups/take-db-backup"
       // },
     ],
   },

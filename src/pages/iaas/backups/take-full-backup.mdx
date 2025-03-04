@@ -1,0 +1,291 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+
+    
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تهیه فایل پشتیبان کامل از سرور مجازی ابری - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تهیه فایل پشتیبان کامل از سرور مجازی یا VPS در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+
+# تهیه و بازیابی فایل پشتیبان کامل از سرور
+
+<hr className="mb-2" />
+
+در این روش، یک نسخه‌ی کامل از تمام فایل‌ها و تنظیمات سرور ذخیره می‌شود. این نوع بکاپ معمولاً فضای زیادی اشغال می‌کند اما برای بازیابی کل سیستم بسیار مفید است.
+روش‌های زیادی برای تهیه فایل پشتیبان کامل از سرور وجود دارد که یکی از معروف‌ترین آن‌ها، استفاده از دستورات <Important>tar</Important> یا <Important>rsync</Important> است.
+در ادامه، نحوه تهیه فایل پشتیبان کامل از سرور با استفاده از دستورات <Important>tar</Important> یا <Important>rsync</Important> توضیح داده شده است.
+
+
+
+<Tabs 
+  tabs={["tar", "rsync"]} 
+  content={[
+  <>
+
+<Step  steps={[
+
+    {
+    step: "۱",
+    content: (
+    <>
+        <h3>ایجاد دایرکتوری برای بکاپ</h3>   
+        <p>
+            ابتدا باید محلی را برای ذخیره‌ی فایل بکاپ تعیین کنید. فرض کنید دایرکتوری <Important>backup/</Important> محل ذخیره‌ی بکاپ‌ها است؛ پس در ابتدا، این دایرکتوری را، ایجاد کنید.
+        </p>
+
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`mkdir -p /backup`}
+        </Highlight>
+        </div>
+        <div className="h-2" />
+    </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+    <>
+        <h3>اجرای دستور tar برای بکاپ‌گیری</h3>   
+        <p>
+            دستور زیر یک فایل آرشیو فشرده‌شده از کل سیستم می‌سازد:
+        </p>
+
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`tar -cvpzf /backup/full_backup_$(date +%F).tar.gz \\
+    --exclude=/backup --exclude=/proc --exclude=/tmp --exclude=/sys \\
+    --exclude=/dev --exclude=/mnt --exclude=/media --exclude=/run \\
+    --exclude=/lost+found /
+`}
+        </Highlight>
+        </div>
+        <div className="h-2" />  
+
+        <p>
+            در قطعه کد فوق، فلگ <Important>exclude</Important> برای مشخص کردن فایل‌ها و دایرکتوری‌هایی است که نباید در بکاپ قرار بگیرند. برای مثال، فایل‌های موقتی که در <Important>tmp/</Important> ذخیره می‌شوند، اهمیتی ندارند و نیازی به گرفتن بکاپ از آن‌ها نیست.
+        </p>      
+    </>
+    )
+    },
+    {
+    step: "۳",
+    content: (
+    <>
+        <h3>انتقال بکاپ با <Important>scp</Important></h3>   
+        <p>
+            برای دانلود فایل بکاپ روی کامپیوتر شخصی خود از دستور زیر، استفاده کنید:
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`scp <user>@<your-server-address>:/backup/full_backup_YYYY-DD-MM.tar.gz /local/path/`}
+        </Highlight>
+        </div>
+        <div className="h-2" />
+        <p>
+            در دستور فوق، به جای <Important>&lt;user&gt;</Important>، نام کاربری SSH خود را و به جای <Important>&lt;your-server-address&gt;</Important>، آدرس سرور خود را وارد کنید. همچنین، به جای <Important>backup/full_backup_YYYY-DD-MM.tar.gz/</Important> مسیر فایل بکاپ روی سرور و به جای <Important>/local/path/</Important> مسیر مورد نظر برای ذخیره‌سازی فایل بکاپ روی کامپیوتر خود را وارد کنید.
+        </p>
+        <div className="h-2" />
+        <p>
+            اگر فایل بکاپ حجم زیادی دارد، می‌توانید از دستور <Important>rsync</Important> برای انتقال فایل بکاپ استفاده کنید.
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`rsync -avz --progress user@your-server:/backup/full_backup_YYYY-DD-MM.tar.gz /local/path/`}
+        </Highlight>
+        </div>
+        <div className="h-2" />        
+    </>
+    )
+    },
+    {
+    step: "۴",
+    content: (
+    <>
+        <h3>بازیابی بکاپ با <Important>tar</Important></h3>   
+        <p>
+            اگر فایل بکاپ را روی کامپیوتر شخصی دارید و می‌خواهید آن را به سرور برگردانید، از دستور زیر، استفاده کنید:
+        </p>
+
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`scp /local/path/full_backup_YYYY-DD-MM.tar.gz <user>@<your-server>:/backup/`}
+        </Highlight>
+        </div>
+        <div className="h-2" />    
+        <p>
+            در دستور فوق، به جای <Important>local/path/full_backup_YYYY-DD-MM.tar.gz/</Important>، مسیر فایل بکاپ روی کامپیوتر شخصی خود و به جای <Important>&lt;user&gt;</Important>، نام کاربری SSH خود و به جای <Important>&lt;your-server&gt;</Important>، آدرس سرور خود را وارد کنید.
+        </p>
+    </>
+    )
+    },
+    {
+    step: "۵",
+    content: (
+    <>
+        <h3>بازیابی کامل سیستم</h3>   
+        <p>
+            برای بازیابی کل سیستم از فایل بکاپ، دستور زیر را اجرا کنید:
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`tar -xvpzf /backup/full_backup_YYYY-DD-MM.tar.gz -C /`}
+        </Highlight>
+        </div>
+        <div className="h-2" />  
+        <p>
+            اگر می‌خواهید فقط یک دایرکتوری را از بکاپ برگردانید:
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`tar -xvpzf /backup/full_backup_YYYY-DD-MM.tar.gz -C / home/user/Documents/`}
+        </Highlight>
+        </div>
+        <div className="h-2" />  
+    </>
+    )
+    },
+    {
+    step: "۵",
+    content: (
+    <>
+        <h3>به‌روزرسانی GRUB بعد از بازیابی</h3>   
+        <p>
+            اگر کل سیستم را بازیابی کرده‌اید، ممکن است <Important>GRUB</Important> نیاز به نصب مجدد داشته باشد:
+        </p>
+        <div className="h-2" />
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`grub-install /dev/sda
+update-grub`}
+        </Highlight>
+        </div>
+        <div className="h-2" />  
+    </>
+    )
+    },
+
+ ]}
+/>
+
+</>,
+
+<>
+<Step steps={[
+    {
+        step: "۱",
+        content: (
+            <>
+                <h3>ایجاد دایرکتوری برای بکاپ</h3>   
+                <p>ابتدا باید محلی را برای ذخیره‌ی فایل بکاپ تعیین کنید. فرض کنید دایرکتوری <Important>backup/</Important> محل ذخیره‌ی بکاپ‌ها است؛ پس ابتدا این دایرکتوری را ایجاد کنید.</p>
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`mkdir -p /backup`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />
+            </>
+        )
+    },
+    {
+        step: "۲",
+        content: (
+            <>
+                <h3>اجرای دستور rsync برای بکاپ‌گیری</h3>   
+                <p>دستور زیر برای بکاپ‌گیری از کل سیستم به دایرکتوری بکاپ استفاده می‌شود:</p>
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`rsync -aAXv --exclude={"/backup","/proc","/tmp","/sys","/dev","/mnt","/media","/run","/lost+found"} / /backup/`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />
+                <p>در این دستور، دایرکتوری‌هایی که نیازی به بکاپ‌گیری ندارند، با <Important>exclude--</Important> حذف شده‌اند.</p>      
+            </>
+        )
+    },
+    {
+        step: "۳",
+        content: (
+            <>
+                <h3>انتقال بکاپ به سیستم دیگر</h3>   
+                <p>برای انتقال فایل‌های بکاپ به یک سرور دیگر از دستور زیر استفاده کنید:</p>
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`rsync -aAXv --progress /backup/ user@remote-server:/remote/backup/`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />
+                <p>در این دستور، <Important>user@remote-server</Important> نام کاربری و آدرس سرور مقصد است.</p>
+            </>
+        )
+    },
+    {
+        step: "۴",
+        content: (
+            <>
+                <h3>بازیابی بکاپ از سرور دیگر</h3>   
+                <p>برای بازگردانی بکاپ از سرور دیگر، دستور زیر را اجرا کنید:</p>
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`rsync -aAXv --progress user@remote-server:/remote/backup/ /`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />
+                <p>این دستور، فایل‌های بکاپ را در محل اصلی آن‌ها بازگردانی می‌کند.</p>
+            </>
+        )
+    },
+    {
+        step: "۵",
+        content: (
+            <>
+                <h3>به‌روزرسانی GRUB بعد از بازیابی</h3>   
+                <p>اگر کل سیستم را بازیابی کرده‌اید، ممکن است <Important>GRUB</Important> نیاز به نصب مجدد داشته باشد:</p>
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`grub-install /dev/sda
+update-grub`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />
+            </>
+        )
+    }
+]}/>
+
+</>
+
+  ]}
+/>
+</Layout>
