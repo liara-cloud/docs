@@ -3,7 +3,7 @@ import React, {
   useCallback,
   useEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 import { GoSearch, GoRows } from "react-icons/go";
 import { GoSun, GoMoon } from "react-icons/go";
@@ -17,7 +17,7 @@ import Link from "next/link";
 
 const client = new MeiliSearch({
   host: "https://search.liara.ir",
-  apiKey: "53c93d9ce3308e48a7ad701d4b402d3190324a09e1607f14baae9bd4f805bb11"
+  apiKey: "53c93d9ce3308e48a7ad701d4b402d3190324a09e1607f14baae9bd4f805bb11",
 });
 
 const Header = ({ setShowSidebar }) => {
@@ -42,10 +42,10 @@ const Header = ({ setShowSidebar }) => {
   });
 
   useEffect(() => {
-    const handleKeydown = event => {
+    const handleKeydown = (event) => {
       if ((event.metaKey || event.ctrlKey) && event.key === "k") {
         event.preventDefault();
-        setSearchOpen(prev => !prev);
+        setSearchOpen((prev) => !prev);
       }
       if (event.key === "Escape") {
         setSearchOpen(false);
@@ -57,43 +57,43 @@ const Header = ({ setShowSidebar }) => {
     };
   }, []);
 
-  useEffect(
-    () => {
-      if (darkMode) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-      localStorage.setItem("dark", JSON.stringify(darkMode));
-    },
-    [darkMode]
-  );
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("dark", JSON.stringify(darkMode));
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
   };
 
-  const handleMeiliSearch = value => {
+  const handleMeiliSearch = (value) => {
     const userAgent = new UAParser(window.navigator.userAgent);
     const eventData = {
       term: value,
       browser: userAgent.getBrowser().name,
       browserVersion: userAgent.getBrowser().version,
       os: userAgent.getOS().name,
-      osVersion: userAgent.getOS().version
+      osVersion: userAgent.getOS().version,
     };
 
-    return client.index("docs").search(value, { limit: 10 }).then(res => {
-      setResults(res.hits);
-      setNotFound(value != "" && res.hits.length == 0);
-      if (res.hits.length == 0) {
-        setCurrent(undefined);
-      }
-    });
+    return client
+      .index("docs")
+      .search(value, { limit: 10 })
+      .then((res) => {
+        setResults(res.hits);
+        setNotFound(value != "" && res.hits.length == 0);
+        if (res.hits.length == 0) {
+          setCurrent(undefined);
+        }
+      });
   };
 
-  const handleChangeValue = e => {
+  const handleChangeValue = (e) => {
     const { value } = e.target;
     setValue(value);
     if (value != "") {
@@ -107,7 +107,7 @@ const Header = ({ setShowSidebar }) => {
     setSearchOpen(!searchOpen);
   };
 
-  const handleArrow = arrow => {
+  const handleArrow = (arrow) => {
     switch (arrow.keyCode) {
       case 38:
         const Negative = index > 0 ? index - 1 : results.length - 1;
@@ -128,21 +128,18 @@ const Header = ({ setShowSidebar }) => {
         break;
     }
   };
-  useEffect(
-    () => {
-      if (results.length == 0) return;
-      setCurrent(results.filter((_, idx) => idx == index)["0"]);
-      if (value == "") {
-        setValue(false);
-      }
-    },
-    [results, index]
-  );
+  useEffect(() => {
+    if (results.length == 0) return;
+    setCurrent(results.filter((_, idx) => idx == index)["0"]);
+    if (value == "") {
+      setValue(false);
+    }
+  }, [results, index]);
 
-  const handleHover = item => {
+  const handleHover = (item) => {
     setCurrent(results.filter((_, idx) => idx == item)["0"]);
   };
-  const handleSuggestion = value => {
+  const handleSuggestion = (value) => {
     handleMeiliSearch(value);
     return (valueRef.current.value = value);
   };
@@ -154,7 +151,7 @@ const Header = ({ setShowSidebar }) => {
           href="/"
           className="flex md:hidden mt-4  mb-3 items-center gap-2 font-semibold"
         >
-          <img className="logo-sidebar" src={"/static/logo.svg"} width="55" />
+          <img src={"/static/logo.svg"} width="60" />
           <span className="text-[11px] px-1 py-0 font-medium text-[#fff] bg-[#333] rounded">
             مستندات
           </span>
@@ -170,8 +167,7 @@ const Header = ({ setShowSidebar }) => {
             جستجو کنید
           </div>
           <div className="badge-cmd-k hidden absolute md:block top-[5px]  left-[5px] text-[15px] h-[21px] w-[40px] text-[#707070] bg-[#ededed] px-1 rounded  border border-[#d7d7d7]">
-            K
-            <span className="text-[10px] mr-[5px]">⌘</span>
+            K<span className="text-[10px] mr-[5px]">⌘</span>
           </div>
         </button>
 
@@ -208,9 +204,9 @@ const Header = ({ setShowSidebar }) => {
           </button>
         </div>
       </nav>
-      {searchOpen &&
+      {searchOpen && (
         <Fragment>
-          <div className="search-box" onKeyDown={e => handleArrow(e)}>
+          <div className="search-box" onKeyDown={(e) => handleArrow(e)}>
             <input
               ref={valueRef}
               placeholder="جستجو"
@@ -240,30 +236,35 @@ const Header = ({ setShowSidebar }) => {
             <div className="results">
               <ul>
                 {results != "" &&
-                  results.map((item, index) =>
+                  results.map((item, index) => (
                     <li key={index}>
                       <Link
                         href={item.element ? item.url + item.element : item.url}
                         onClick={() => setSearchOpen(false)}
-                        className={`url_results ${current != undefined &&
+                        className={`url_results ${
+                          current != undefined &&
                           item.id == current.id &&
-                          `current-result `}`}
+                          `current-result `
+                        }`}
                         onMouseEnter={() => handleHover(index)}
                       >
                         <div className="platform_container">
-                          {item.platform &&
+                          {item.platform && (
                             <div className="w-[30px] p-1 ml-3  bg-[#333] rounded-md">
                               <PlatformIcon platform={item.platform} />
-                            </div>}
+                            </div>
+                          )}
                           <p className="">
                             {item.title}
-                            {item.type === "video" &&
+                            {item.type === "video" && (
                               <Fragment>
-                                {" "}-{" "}
+                                {" "}
+                                -{" "}
                                 <span className="bg-[#2563eb22] px-2 text-[12px] py-1 rounded-lg">
                                   ویدیو
                                 </span>
-                              </Fragment>}
+                              </Fragment>
+                            )}
                           </p>
                         </div>
                         <img
@@ -272,8 +273,8 @@ const Header = ({ setShowSidebar }) => {
                         />
                       </Link>
                     </li>
-                  )}
-                {notFound &&
+                  ))}
+                {notFound && (
                   <li>
                     <a className="url_results">
                       <div className="platform_container">
@@ -283,12 +284,14 @@ const Header = ({ setShowSidebar }) => {
                         </p>
                       </div>
                     </a>
-                  </li>}
+                  </li>
+                )}
               </ul>
             </div>
           </div>
           <span className="search-box-effect" onClick={handleSearch} />
-        </Fragment>}
+        </Fragment>
+      )}
     </header>
   );
 };

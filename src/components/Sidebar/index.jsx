@@ -55,23 +55,24 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
 
   return (
     <Fragment>
-      {showSidebar &&
+      {showSidebar && (
         <div
           onClick={() => setShowSidebar(false)}
           className="bg-[#0006] z-[40] backdrop-blur-sm fixed top-0 left-0 w-full h-full"
-        />}
+        />
+      )}
       <sidebar
-        className={`py-4 ${showSidebar
-          ? "block"
-          : "hidden"} z-50 p-8 overflow-auto bg-[#fbfbfb] top-0 fixed md:block w-[300px] h-[100vh] border-l border-[#00000015]`}
+        className={`py-4 ${
+          showSidebar ? "block" : "hidden"
+        } z-50 p-8 overflow-auto bg-[#fbfbfb] top-0 fixed md:block w-[300px] h-[100vh] border-l border-[#00000015]`}
       >
         <div
-          className={`transition-all duration-300 ease-in-out transform ${!isVisible
-            ? " opacity-50"
-            : " opacity-100"} `}
+          className={`transition-all duration-300 ease-in-out transform ${
+            !isVisible ? " opacity-50" : " opacity-100"
+          } `}
         >
           <Link href="/" className="flex mb-3 items-center gap-2 font-semibold">
-            <img className="logo-sidebar" src={"/static/logo.svg"} width="55" />
+            <img src={"/static/logo.svg"} width="60" />
 
             <span className="text-[11px] px-1 py-0 font-medium text-[#fff] bg-[#333] rounded">
               مستندات
@@ -80,7 +81,7 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
           <div id="sidebar-items">
             <ul className="mt-8">
               {handleSidebarContent().length &&
-                handleSidebarContent().map(item => {
+                handleSidebarContent().map((item) => {
                   if (item.hr) {
                     return <hr className="my-4" />;
                   }
@@ -97,8 +98,10 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
                   return (
                     <Link href={item.link}>
                       <li
-                        className={`flex mt-3  pr-2 items-center gap-3 ${isActive &&
-                          "text-[#2196f3] border-r-2 border-[#2196f3]"}`}
+                        className={`flex mt-3  pr-2 items-center gap-3 ${
+                          isActive &&
+                          "text-[#2196f3] border-r-2 border-[#2196f3]"
+                        }`}
                       >
                         {item.icon}
                         {item.title}

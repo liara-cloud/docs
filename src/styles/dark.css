@@ -33,10 +33,6 @@ img {
     border: none !important;
 }
 
-.dark .logo-sidebar {
-    filter: invert(1);
-}
-
 .dark hr {
     border-color: #fff2;
 }
