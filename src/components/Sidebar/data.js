@@ -3825,22 +3825,22 @@ export default {
         title: "ساخت دیسک‌ جدید",
         link: "/iaas/disks/create"
       },
+      {
+        title: "مشاهده دیسک‌ها در سرور",
+        link: "/iaas/disks/see-disk-details"
+      },
       // {
-      //   title: "مشاهده اطلاعات دیسک‌ها",
-      //   link: "/iaas/disks/see-disk-details"
+      //   title: "اتصال به دیسک (mount)",
+      //   link: "/iaas/disks/mount"
+      // },
+      // {
+      //   title: "حذف اتصال دیسک (dismount)",
+      //   link: "/iaas/disks/dismount"
       // },
       // // {
       // //   title: "افزایش حجم یک دیسک",
       // //   link: "./increase-value"
       // // },
-      // {
-      //   title: "تعریف مسیر برای دیسک",
-      //   link: "./route"
-      // },
-      // {
-      //   title: "حذف اتصال دیسک ",
-      //   link: "./route"
-      // },
       // {
       //   title: "کاهش حجم یک دیسک",
       //   link: "./decrease-value"

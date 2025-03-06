@@ -1,0 +1,10 @@
+{"version": 2, "width": 102, "height": 20, "timestamp": 1741247502, "idle_time_limit": 1.0, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.048608, "o", "\u001b[?2004h\u001b]0;root@ubuntu-my-server: ~\u0007root@ubuntu-my-server:~# "]
+[0.511741, "o", "d"]
+[0.630077, "o", "f"]
+[0.830965, "o", " "]
+[1.347741, "o", "-"]
+[1.575497, "o", "h"]
+[1.904176, "o", "\r\n\u001b[?2004l\r"]
+[1.909734, "o", "Filesystem                         Size  Used Avail Use% Mounted on\r\ntmpfs                              387M  1.4M  386M   1% /run\r\nefivarfs                           256K   64K  188K  26% /sys/firmware/efi/efivars\r\n/dev/mapper/ubuntu--vg-ubuntu--lv   37G  5.9G   30G  17% /\r\ntmpfs                              1.9G   24K  1.9G   1% /dev/shm\r\ntmpfs                              5.0M     0  5.0M   0% /run/lock\r\n/dev/sda2                          1.7G  185M  1.5G  12% /boot\r\n/dev/sda1                          714M  6.2M  708M   1% /boot/efi\r\ntmpfs                              387M   12K  387M   1% /run/user/0\r\n\u001b[?2004h"]
+[1.910221, "o", "\u001b]0;root@ubuntu-my-server: ~\u0007root@ubuntu-my-server:~# "]

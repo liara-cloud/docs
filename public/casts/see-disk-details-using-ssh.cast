@@ -1,0 +1,13 @@
+{"version": 2, "width": 102, "height": 30, "timestamp": 1741242709, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.031649, "o", "\u001b[?2004h"]
+[0.033203, "o", "\u001b]0;root@ubuntu-my-server: ~\u0007root@ubuntu-my-server:~# "]
+[1.3045, "o", "l"]
+[1.41602, "o", "s"]
+[1.956072, "o", "b"]
+[2.298631, "o", "l"]
+[2.454525, "o", "k"]
+[2.7025, "o", "\r\n"]
+[2.70269, "o", "\u001b[?2004l\r"]
+[2.716689, "o", "NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS\r\nsda                         8:0    0   15G  0 disk \r\n"]
+[2.717567, "o", "├─sda1                      8:1    0  715M  0 part /boot/efi\r\n├─sda2                      8:2    0  1.8G  0 part /boot\r\n└─sda3                      8:3    0 12.5G  0 part \r\n  └─ubuntu--vg-ubuntu--lv 252:0    0 37.5G  0 lvm  /\r\nsdb                         8:16   0   25G  0 disk \r\n└─ubuntu--vg-ubuntu--lv   252:0    0 37.5G  0 lvm  /\r\n"]
+[2.718783, "o", "\u001b[?2004h\u001b]0;root@ubuntu-my-server: ~\u0007root@ubuntu-my-server:~# "]

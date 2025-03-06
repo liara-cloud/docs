@@ -1,0 +1,252 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال یک نقطه به دیسک (mount) - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه اتصال یک نقطه به دیسک (mount) در سرور مجازی ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# اتصال یک نقطه به دیسک (mount)
+<hr className="mb-2" />
+
+مفهوم Mount کردن به معنای اتصال یک دستگاه ذخیره‌سازی (مانند دیسک سخت، پارتیشن یا درایو USB) به سیستم فایل لینوکس است. وقتی یک دیسک یا پارتیشن را mount می‌کنید، سیستم عامل آن را در دایرکتوری خاصی (که به آن "mount point" گفته می‌شود) در دسترس قرار می‌دهد تا شما بتوانید به داده‌های ذخیره‌شده روی آن دسترسی پیدا کنید. به عبارت دیگر، با mount کردن یک دیسک، آن دیسک به بخشی از ساختار فایل سیستم لینوکس تبدیل می‌شود و شما می‌توانید با دستورات معمول سیستم‌عامل، به فایل‌ها و پوشه‌های آن دسترسی داشته باشید.
+<div className="h-2" />
+
+هنگام ساخت سرور مجازی ابری جدید، به طور پیش‌فرض دو دیسک اولیه و ثانویه، به صورت LVM پیکربندی می‌شوند. این امر باعث می‌شود که مدیریت فضای دیسک بسیار انعطاف‌پذیرتر باشد و شما قادر به گسترش یا کاهش فضای ذخیره‌سازی به راحتی باشید. 
+به صورت کلی، تمام دیسک‌های موجود پس از ساخت سرور مجازی، به مسیر <Important>/</Important> متصل می‌شوند. بنابراین 
+نیاز به انجام کار خاصی نیست و می‌توانید به راحتی از فضای دیسک‌ها استفاده کنید.
+<div className="h-2" />
+
+اما در صورتی که پلن سرور مجازی خود را، ارتقا داده‌اید و دیسک‌های جدیدی را به سرور خود، اضافه کرده‌اید، می‌توانید به دو صورت عمل کنید. یا 
+فضای دیسک جدید را به گروه LVM اضافه کنید و یا به‌صورت سنتی، دیسک را پارتیشن‌بندی کرده و آن را به مسیر موردنظر خود، mount کنید. 
+<div className="h-2" />
+
+<Tabs 
+  tabs={["LVM", "Traditional"]} 
+  content={[
+  <>
+   <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>مشاهده دیسک‌های موجود</h3>   
+
+    <p>
+     با استفاده از دستور <Important>lsblk</Important> دیسک‌های موجود و پارتیشن‌های آن‌ها را مشاهده کنید.
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`lsblk`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <Asciinema id="see-disk-details-using-ssh" />
+  </>
+  )
+},
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ساخت پارتیشن (در صورت نیاز)</h3>   
+
+    <p>
+        اگر دیسک جدید دارید که پارتیشن‌بندی نشده است، می‌توانید با دستور <Important>fdisk</Important> پارتیشن جدید بسازید. با فرض اینکه دیسک جدید شما <Important>dev/sdb/</Important> است، دستور زیر را اجرا کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo fdisk /dev/sdb`}
+        </Highlight>
+    </div>
+    <div className="h-6" />
+    با اجرای دستور فوق، وارد خط فرمان <Important>fdisk</Important> می‌شوید. برای ساخت پارتیشن جدید، <Important>n</Important> را وارد کنید و <Important>Enter</Important> بزنید. 
+    در ادامه، از شما خواسته می‌شود که نوع پارتیشن (Primary یا Extended) وارد کنید.
+    برای پارتیشن معمولی، <Important>p</Important> را وارد کنید. سیستم به‌طور پیش‌فرض شماره پارتیشن را پیشنهاد می‌کند (معمولاً اولین پارتیشن آزاد)؛ این شماره را تایید کنید. در نهایت، کافیست تا
+    اندازه پارتیشن را وارد کنید. می‌توانید اندازه را به‌طور دقیق مشخص کنید. بعد از ایجاد پارتیشن جدید، دستور <Important>w</Important> را وارد کنید تا تغییرات ذخیره شود.
+
+    <Asciinema id="create-new-partition-using-fdisk" />
+
+  </>
+  )
+},
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ایجاد Physical Volume (PV)</h3>   
+
+    <p>
+        پس از شناسایی دیسک جدید، باید آن را به عنوان یک Physical Volume (PV) برای LVM آماده کنید:    
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo mkfs.ext4 /dev/sdb1`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    {/* <Asciinema id="" /> */}
+
+  </>
+  )
+},
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>فرمت پارتیشن جدید</h3>   
+
+    <p>
+
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {``}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    {/* <Asciinema id="" /> */}
+
+  </>
+  )
+},
+
+]}
+
+/>
+  </>,
+
+  <>
+ <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>مشاهده دیسک‌های موجود</h3>   
+
+    <p>
+     با استفاده از دستور <Important>lsblk</Important> دیسک‌های موجود و پارتیشن‌های آن‌ها را مشاهده کنید.
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`lsblk`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <Asciinema id="see-disk-details-using-ssh" />
+    <p>
+        در صورتی که پارتیشنی برای mount کردن پیدا کردید و نیازی به ساخت پارتیشن جدید ندارید، می‌توانید مراحل ۲ و ۳ را رد کنید.
+    </p>
+  </>
+  )
+},
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ساخت پارتیشن (در صورت نیاز)</h3>   
+
+    <p>
+        اگر دیسک جدید دارید که پارتیشن‌بندی نشده است، می‌توانید با دستور <Important>fdisk</Important> پارتیشن جدید بسازید. با فرض اینکه دیسک جدید شما <Important>dev/sdb/</Important> است، دستور زیر را اجرا کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo fdisk /dev/sdb`}
+        </Highlight>
+    </div>
+    <div className="h-6" />
+    با اجرای دستور فوق، وارد خط فرمان <Important>fdisk</Important> می‌شوید. برای ساخت پارتیشن جدید، <Important>n</Important> را وارد کنید و <Important>Enter</Important> بزنید. 
+    در ادامه، از شما خواسته می‌شود که نوع پارتیشن (Primary یا Extended) وارد کنید.
+    برای پارتیشن معمولی، <Important>p</Important> را وارد کنید. سیستم به‌طور پیش‌فرض شماره پارتیشن را پیشنهاد می‌کند (معمولاً اولین پارتیشن آزاد)؛ این شماره را تایید کنید. در نهایت، کافیست تا
+    اندازه پارتیشن را وارد کنید. می‌توانید اندازه را به‌طور دقیق مشخص کنید. بعد از ایجاد پارتیشن جدید، دستور <Important>w</Important> را وارد کنید تا تغییرات ذخیره شود.
+
+    <Asciinema id="create-new-partition-using-fdisk" />
+
+  </>
+  )
+},
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>فرمت پارتیشن جدید</h3>   
+
+    <p>
+        حالا که پارتیشن ایجاد شده است، باید آن را فرمت کنید. برای فرمت کردن پارتیشن به سیستم‌فایل مدنظرتان، مثلاً <Important>ext4</Important>، از دستور <Important>mkfs</Important> استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo mkfs.ext4 /dev/sdb1`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    {/* <Asciinema id="" /> */}
+
+  </>
+  )
+},
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>فرمت پارتیشن جدید</h3>   
+
+    <p>
+
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {``}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    {/* <Asciinema id="" /> */}
+
+  </>
+  )
+},
+
+]}
+
+/>
+  </>
+  ]}
+/>
+
+
+
+
+
+
+
+</Layout>
