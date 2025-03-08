@@ -3829,13 +3829,13 @@ export default {
         title: "مشاهده دیسک‌ها در سرور",
         link: "/iaas/disks/see-disk-details"
       },
+      {
+        title: "اتصال به دیسک (mount)",
+        link: "/iaas/disks/mount"
+      },
       // {
-      //   title: "اتصال به دیسک (mount)",
-      //   link: "/iaas/disks/mount"
-      // },
-      // {
-      //   title: "حذف اتصال دیسک (dismount)",
-      //   link: "/iaas/disks/dismount"
+      //   title: "قطع اتصال دیسک (unmount)",
+      //   link: "/iaas/disks/unmount"
       // },
       // // {
       // //   title: "افزایش حجم یک دیسک",

@@ -1,0 +1,458 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات قطع اتصال یک نقطه از دیسک (unmount) - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه قطع اتصال یک نقطه از دیسک (unmount) در سرور مجازی ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# قطع اتصال یک نقطه از دیسک (unmount)
+<hr className="mb-2" />
+
+مفهوم unmount کردن به معنای قطع اتصال یک دستگاه ذخیره‌سازی (مانند دیسک سخت، پارتیشن یا درایو USB) از سیستم فایل لینوکس است. وقتی یک دیسک یا پارتیشن را unmount می‌کنید، سیستم عامل آن را از دایرکتوری خاصی (که به آن "mount point" گفته می‌شود) جدا می‌کند تا شما دیگر نتوانید به داده‌های ذخیره‌شده روی آن دسترسی پیدا کنید. به عبارت دیگر، با unmount کردن یک دیسک، آن دیسک از ساختار فایل سیستم لینوکس جدا می‌شود و شما نمی‌توانید با دستورات معمول سیستم‌عامل، به فایل‌ها و پوشه‌های آن دسترسی داشته باشید.
+<div className="h-4" />
+
+هنگام قطع اتصال دیسک از سرور مجازی ابری، باید مطمئن شوید که هیچ فرآیندی در حال استفاده از دیسک نیست. در غیر این صورت، ممکن است داده‌ها از دست بروند یا سیستم دچار مشکل شود.
+<div className="h-4" />
+
+برای قطع اتصال دیسک، می‌توانید به دو صورت عمل کنید. یا فضای دیسک را از گروه LVM جدا کنید و یا به‌صورت سنتی، دیسک را از مسیر موردنظر خود، unmount کنید.
+<div className="h-4" />
+
+<Tabs 
+  tabs={["LVM", "Traditional"]} 
+  content={[
+  <>
+    <p>
+      برای قطع اتصال دیسک، با استفاده از سیستم LVM از مسیر مدنظرتان، گام‌های زیر را دنبال کنید:
+    </p>
+
+   <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>بررسی نام Logical Volume</h3>   
+
+    <p>
+      ابتدا نام Logical Volume (LV) و Mount Point را با اجرای دستور زیر، پیدا کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`lvdisplay`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      خروجی، مشابه زیر خواهد بود:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`--- Logical volume ---
+  LV Path                /dev/some/some-lv
+  LV Name                some-lv
+  VG Name                some
+  LV UUID                G9L8KX-LQ8R-vbFn-Y2yg-PmYd-IaJM-IEKF6f
+  LV Write Access        read/write
+  LV Creation host, time ubuntu-vm-name, 2025-03-08 08:14:36 +0000
+  LV Status              available
+  # open                 0
+  LV Size                <5.00 GiB
+  Current LE             1279
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:0
+
+  --- Logical volume ---
+  LV Path                /dev/ubuntu-vg/ubuntu-lv
+  LV Name                ubuntu-lv
+  VG Name                ubuntu-vg
+  LV UUID                SXzKTt-zdfc-CraI-GYlS-bOqB-0r6Q-jlRYSI
+  LV Write Access        read/write
+  LV Creation host, time ubuntu-server, 2025-02-22 12:31:15 +0000
+  LV Status              available
+  # open                 1
+  LV Size                <32.54 GiB
+  Current LE             8330
+  Segments               3
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:1`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+      در خروجی دستور فوق، <Important>LV Path</Important> مسیری است برای قطع اتصال دیسک، باید آن را unmount کنید.
+    </p>
+  </>
+  )
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>Unmount کردن Logical Volume</h3>   
+
+    <p>
+      اگر نام Logical Volume (مثلاً <Important>&lt;dev/&lt;vg-name&gt;/&lt;lv-name/</Important>) را پیدا کردید، آن را با دستور زیر unmount کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`umount /dev/<vg-name>/<lv-name>`}
+        </Highlight>
+    </div>
+    {/* <Asciinema id="reduce-lv-space" /> */}
+  </>
+  )
+},
+{
+  step: "۳",
+  content: (
+  <>
+    <h3>حذف Logical Volume (اختیاری)</h3>   
+
+    <p>
+      پس از کاهش فضای Logical Volume، حالا می‌توانید Physical Volume را از Volume Group حذف کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`vgreduce <vg-group-name> /dev/<disk-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="remove-pv-from-vg" />
+
+    <p>
+      دستور فوق، Physical Volume را از Volume Group حذف می‌کند.
+    </p>
+  </>
+  )
+},
+{
+  step: "۴",
+  content: (
+  <>
+    <h3>حذف Physical Volume (PV)</h3>   
+
+    <p>
+      حالا می‌توانید Physical Volume را حذف کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`pvremove /dev/<disk-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="remove-pv" />
+
+    <p>
+      دستور فوق، Physical Volume را حذف می‌کند.
+    </p>
+  </>
+  )
+},
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>قطع اتصال دیسک</h3>   
+
+    <p>
+      در نهایت، می‌توانید دیسک را از سیستم جدا کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`umount /dev/<disk-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="umount-disk" />
+
+    <p>
+      دستور فوق، دیسک را از سیستم جدا می‌کند.
+    </p>
+  </>
+  )
+},
+
+]}
+
+/>
+  </>,
+
+  <>
+    <p>
+      برای قطع اتصال دیسک، با استفاده از سیستم LVM از مسیر دلخواه (مثلاً <Important>path/to/myDir/</Important>)، گام‌های زیر را دنبال کنید:
+    </p>
+
+   <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>مشاهده دیسک‌های موجود</h3>   
+
+    <p>
+     با استفاده از دستور <Important>lsblk</Important> دیسک‌های موجود و پارتیشن‌های آن‌ها را مشاهده کنید.
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`lsblk`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <Asciinema id="run-lsblk-in-vm-using-ssh" />
+    <p>
+      همانطور که در خروجی دستور فوق مشاهده می‌کنید، دیسک‌های متصل به سرور نمایش داده می‌شوند.
+    </p>
+  </>
+  )
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>کاهش فضای Logical Volume (LV)</h3>   
+
+    <p>
+      قبل از قطع اتصال دیسک، باید فضای Logical Volume را کاهش دهید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`lvreduce -L <size> /dev/<vg-group-name>/<lv-group-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="reduce-lv-space" />
+
+    <p>
+      دستور فوق، فضای Logical Volume را کاهش می‌دهد.
+    </p>
+  </>
+  )
+},
+{
+  step: "۳",
+  content: (
+  <>
+    <h3>حذف Physical Volume (PV) از Volume Group (VG)</h3>   
+
+    <p>
+      پس از کاهش فضای Logical Volume، حالا می‌توانید Physical Volume را از Volume Group حذف کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`vgreduce <vg-group-name> /dev/<disk-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="remove-pv-from-vg" />
+
+    <p>
+      دستور فوق، Physical Volume را از Volume Group حذف می‌کند.
+    </p>
+  </>
+  )
+},
+{
+  step: "۴",
+  content: (
+  <>
+    <h3>حذف Physical Volume (PV)</h3>   
+
+    <p>
+      حالا می‌توانید Physical Volume را حذف کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`pvremove /dev/<disk-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="remove-pv" />
+
+    <p>
+      دستور فوق، Physical Volume را حذف می‌کند.
+    </p>
+  </>
+  )
+},
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>قطع اتصال دیسک</h3>   
+
+    <p>
+      در نهایت، می‌توانید دیسک را از سیستم جدا کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`umount /dev/<disk-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="umount-disk" />
+
+    <p>
+      دستور فوق، دیسک را از سیستم جدا می‌کند.
+    </p>
+  </>
+  )
+},
+
+]}
+
+/>
+  </>,
+
+  <>
+      <p>
+        برای قطع اتصال دیسک از مسیر دلخواه (مثلاً <Important>path/to/myDir/</Important>) با استفاده از پارتیشن‌بندی سنتی، مراحل زیر را دنبال کنید:
+      </p>
+
+    <Step  steps={[
+  {
+    step: "۱",
+    content: (
+    <>
+      <h3>مشاهده دیسک‌های موجود</h3>   
+
+      <p>
+      با استفاده از دستور <Important>lsblk</Important> دیسک‌های موجود و پارتیشن‌های آن‌ها را مشاهده کنید.
+      </p>
+
+      <div className="h-2" />
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`lsblk`}
+          </Highlight>
+      </div>
+      <Asciinema id="run-lsblk-in-vm-using-ssh" />
+    </>
+    )
+  },
+  {
+    step: "۲",
+    content: (
+    <>
+      <h3>قطع اتصال دیسک از دایرکتوری (umount)</h3>   
+
+      <p>
+        پارتیشن را از دایرکتوری جدا کنید:
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`umount /dev/<disk-name>`}
+          </Highlight>
+      </div>
+    </>
+    )
+  },
+  {
+    step: "۳",
+    content: (
+    <>
+      <h3>حذف پارتیشن</h3>   
+
+      <p>
+        برای حذف پارتیشن روی دیسک جدید، از ابزار <Important>fdisk</Important> استفاده کنید:
+      </p>
+
+      <div className="h-2" />
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`fdisk /dev/<disk-name>`}
+          </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+      پس از اجرای دستور فوق، وارد ترمینال fdisk می‌شوید. برای حذف پارتیشن، باید در ابتدا <Important>d</Important> را انتخاب کنید. در ادامه، باید شماره پارتیشن را وارد کنید و بعد از آن، با زدن <Important>w</Important> تغییرات را ذخیره کنید و از حالت <Important>fdisk</Important>، خارج شوید.      </p>
+      <Asciinema id="delete-partition-using-fdisk" />
+
+    </>
+    )
+  },
+  {
+    step: "۴",
+    content: (
+    <>
+      <h3>حذف mount point از fstab</h3>   
+
+      <p>
+        برای اینکه mount point جدید در هر بار راه‌اندازی سیستم mount نشود، آن را از فایل <Important>etc/fstab/</Important> حذف کنید:
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`sed -i '/\/dev\/<disk-name>/d' /etc/fstab`}
+          </Highlight>
+      </div>
+    </>
+    )
+  },
+    {
+    step: "۵",
+    content: (
+    <>
+      <h3>بررسی جدا شدن دیسک</h3>   
+
+      <p>
+        پس از قطع اتصال دیسک، دستور زیر را اجرا کنید تا مطمئن شوید که دیسک به درستی، جدا شده است یا خیر.
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`lsblk`}
+          </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+        در صورتی که دیسک در خروجی دستور فوق نمایش داده نشود، به این معنی است که دیسک به درستی، جدا شده است.
+      </p>  
+    </>
+    )
+  }
+  ]}
+
+  />
+    </>
+
+]}
+/>
+
+</Layout>

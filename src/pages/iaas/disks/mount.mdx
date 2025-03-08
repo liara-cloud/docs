@@ -24,21 +24,25 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 مفهوم Mount کردن به معنای اتصال یک دستگاه ذخیره‌سازی (مانند دیسک سخت، پارتیشن یا درایو USB) به سیستم فایل لینوکس است. وقتی یک دیسک یا پارتیشن را mount می‌کنید، سیستم عامل آن را در دایرکتوری خاصی (که به آن "mount point" گفته می‌شود) در دسترس قرار می‌دهد تا شما بتوانید به داده‌های ذخیره‌شده روی آن دسترسی پیدا کنید. به عبارت دیگر، با mount کردن یک دیسک، آن دیسک به بخشی از ساختار فایل سیستم لینوکس تبدیل می‌شود و شما می‌توانید با دستورات معمول سیستم‌عامل، به فایل‌ها و پوشه‌های آن دسترسی داشته باشید.
-<div className="h-2" />
+<div className="h-4" />
 
-هنگام ساخت سرور مجازی ابری جدید، به طور پیش‌فرض دو دیسک اولیه و ثانویه، به صورت LVM پیکربندی می‌شوند. این امر باعث می‌شود که مدیریت فضای دیسک بسیار انعطاف‌پذیرتر باشد و شما قادر به گسترش یا کاهش فضای ذخیره‌سازی به راحتی باشید. 
-به صورت کلی، تمام دیسک‌های موجود پس از ساخت سرور مجازی، به مسیر <Important>/</Important> متصل می‌شوند. بنابراین 
+هنگام ساخت سرور مجازی ابری جدید، به طور پیش‌فرض دو دیسک اولیه و ثانویه، به صورت LVM پیکربندی می‌شوند. این امر باعث می‌شود که مدیریت فضای دیسک بسیار منعطف باشد و شما قادر به گسترش یا کاهش فضای ذخیره‌سازی به راحتی باشید. 
+به صورت کلی، تمام دیسک‌های موجود، **پس از ساخت سرور مجازی**، به مسیر <Important>/</Important> متصل می‌شوند. بنابراین 
 نیاز به انجام کار خاصی نیست و می‌توانید به راحتی از فضای دیسک‌ها استفاده کنید.
-<div className="h-2" />
+<div className="h-4" />
 
 اما در صورتی که پلن سرور مجازی خود را، ارتقا داده‌اید و دیسک‌های جدیدی را به سرور خود، اضافه کرده‌اید، می‌توانید به دو صورت عمل کنید. یا 
-فضای دیسک جدید را به گروه LVM اضافه کنید و یا به‌صورت سنتی، دیسک را پارتیشن‌بندی کرده و آن را به مسیر موردنظر خود، mount کنید. 
-<div className="h-2" />
+فضای دیسک جدید را به گروه LVM در مسیر <Important>/</Important> یا هر مسیر دیگری، اضافه کنید و یا به‌صورت سنتی، دیسک را پارتیشن‌بندی کرده و آن را به مسیر موردنظر خود، mount کنید. 
+<div className="h-4" />
 
 <Tabs 
-  tabs={["LVM", "Traditional"]} 
+  tabs={["LVM (/)", "LVM (myDir)", "Traditional"]} 
   content={[
   <>
+    <p>
+      برای اتصال دیسک، با استفاده از سیستم LVM به مسیر <Important>/</Important>، گام‌های زیر را دنبال کنید:
+    </p>
+
    <Step  steps={[
 {
   step: "۱",
@@ -57,78 +61,154 @@ import Head from "next/head";
         </Highlight>
     </div>
     <div className="h-2" />
-    <Asciinema id="see-disk-details-using-ssh" />
+    <Asciinema id="run-lsblk-in-vm-using-ssh" />
+    <p>
+      همانطور که در خروجی دستور فوق مشاهده می‌کنید، یک دیسک به نام <Important>sdc</Important> به سرور متصل است که پیکربندی نشده است و فاقد پارتیشن است. این دیسک، در واقع 
+      دیسکی است که توسط کاربر به سرور اضافه می‌شود. 
+    </p>
   </>
   )
 },
 {
-  step: "۱",
+  step: "۲",
   content: (
   <>
-    <h3>ساخت پارتیشن (در صورت نیاز)</h3>   
+    <h3>ایجاد Physical Volume یا PV</h3>   
 
     <p>
-        اگر دیسک جدید دارید که پارتیشن‌بندی نشده است، می‌توانید با دستور <Important>fdisk</Important> پارتیشن جدید بسازید. با فرض اینکه دیسک جدید شما <Important>dev/sdb/</Important> است، دستور زیر را اجرا کنید:
+      پس از شناسایی دیسک جدید، باید با اجرای دستور زیر، دیسک را به عنوان یک Physical Volume یا PV برای LVM آماده کنید:
     </p>
 
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo fdisk /dev/sdb`}
+            {`pvcreate /dev/<disk-name>`}
         </Highlight>
     </div>
-    <div className="h-6" />
-    با اجرای دستور فوق، وارد خط فرمان <Important>fdisk</Important> می‌شوید. برای ساخت پارتیشن جدید، <Important>n</Important> را وارد کنید و <Important>Enter</Important> بزنید. 
-    در ادامه، از شما خواسته می‌شود که نوع پارتیشن (Primary یا Extended) وارد کنید.
-    برای پارتیشن معمولی، <Important>p</Important> را وارد کنید. سیستم به‌طور پیش‌فرض شماره پارتیشن را پیشنهاد می‌کند (معمولاً اولین پارتیشن آزاد)؛ این شماره را تایید کنید. در نهایت، کافیست تا
-    اندازه پارتیشن را وارد کنید. می‌توانید اندازه را به‌طور دقیق مشخص کنید. بعد از ایجاد پارتیشن جدید، دستور <Important>w</Important> را وارد کنید تا تغییرات ذخیره شود.
+    <Asciinema id="create-physical-volume-for-lvm" />
 
-    <Asciinema id="create-new-partition-using-fdisk" />
-
+    <p>
+      دستور فوق، دیسک جدید را به عنوان یک PV شناسایی کرده و آن را آماده اضافه شدن به Volume Group می‌کند.
+    </p>
   </>
   )
 },
 {
-  step: "۱",
+  step: "۳",
   content: (
   <>
-    <h3>ایجاد Physical Volume (PV)</h3>   
+    <h3>افزودن PV به Volume Group (VG)</h3>   
 
     <p>
-        پس از شناسایی دیسک جدید، باید آن را به عنوان یک Physical Volume (PV) برای LVM آماده کنید:    
+       در این مرحله، باید دیسک جدید را به Volume Group موجود اضافه کنید. برای این کار، ابتدا باید نام Volume Group (VG) را بدانید. 
+       می‌توانید با استفاده از دستور <Important>vgdisplay</Important>، نام VG را مشاهده کنید.
     </p>
 
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo mkfs.ext4 /dev/sdb1`}
+            {`vgdisplay`}
         </Highlight>
     </div>
     <div className="h-2" />
-    {/* <Asciinema id="" /> */}
+    <p> 
+      خروجی مانند زیر است:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`  --- Volume group ---
+  VG Name               ubuntu-vg
+  System ID
+  Format                lvm2
+  ....`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+      طبق خروجی فوق، در این مثال، نام VG برابر با <Important>ubuntu-vg</Important> است. حالا می‌توانید با اجرای دستور زیر، دیسک جدید را به VG اضافه کنید:  
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`vgextend <vg-group-name> /dev/<disk-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="add-disk-to-vp-using-ssh" />
+
 
   </>
   )
 },
 {
-  step: "۱",
+  step: "۴",
   content: (
   <>
-    <h3>فرمت پارتیشن جدید</h3>   
+
+    <h3>افزایش فضای Logical Volume (LV)</h3>   
 
     <p>
-
+      بعد از اینکه دیسک جدید به Volume Group افزوده شد، حالا می‌توانید فضای جدید را به Logical Volume موجود اضافه کنید. برای پیدا کردن نام LV، می‌توانید از دستور <Important>lvdisplay</Important> استفاده کنید.
     </p>
 
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-            {``}
+            {`lvdisplay`}
         </Highlight>
     </div>
     <div className="h-2" />
-    {/* <Asciinema id="" /> */}
+    <p>
+      خروجی مانند زیر است:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {` --- Logical volume ---
+  LV Path                /dev/ubuntu-vg/ubuntu-lv
+  LV Name                ubuntu-lv
+  VG Name                ubuntu-vg
+  ....`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+      طبق خروجی فوق، در این مثال، نام LV برابر با <Important>ubuntu-lv</Important> است. حالا می‌توانید با اجرای دستور زیر، فضای جدید را به LV اضافه کنید:  
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`lvextend -l +100%FREE /dev/<vg-group-name>/<lv-group-name>`}
+        </Highlight>
+    </div>
+    <Asciinema id="add-disk-to-lv" />
+    <p>
+      دستور فوق، تمام فضای آزاد در Volume Group را به Logical Volume اضافه می‌کند.
+    </p>
+  </>
+  )
+},
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>گسترش سیستم فایل</h3>   
 
+    <p>
+      پس از اینکه حجم Logical Volume افزایش یافت، باید سیستم فایل را گسترش دهید تا از فضای جدید استفاده کند. برای این‌کار، دستور زیر را، اجرا کنید:    
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`resize2fs /dev/<vg-group-name>/<lv-group-name>`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <Asciinema id="increase-space-of-root-using-lvm" />
+    <p>
+      تمامی کارها، انجام شده است و شما، اکنون می‌توانید از فضای جدید، در سیستم‌عامل خود استفاده کنید. برای اطمینان از اتصال دیسک جدید، می‌توانید دستور <Important>lsblk</Important> را اجرا کنید.     
+    </p>
   </>
   )
 },
@@ -139,7 +219,11 @@ import Head from "next/head";
   </>,
 
   <>
- <Step  steps={[
+    <p>
+      برای اتصال دیسک، با استفاده از سیستم LVM به مسیر دلخواه (مثلاً <Important>path/to/myDir/</Important>)، گام‌های زیر را دنبال کنید:
+    </p>
+
+   <Step  steps={[
 {
   step: "۱",
   content: (
@@ -157,90 +241,328 @@ import Head from "next/head";
         </Highlight>
     </div>
     <div className="h-2" />
-    <Asciinema id="see-disk-details-using-ssh" />
+    <Asciinema id="run-lsblk-in-vm-using-ssh" />
     <p>
-        در صورتی که پارتیشنی برای mount کردن پیدا کردید و نیازی به ساخت پارتیشن جدید ندارید، می‌توانید مراحل ۲ و ۳ را رد کنید.
+      همانطور که در خروجی دستور فوق مشاهده می‌کنید، یک دیسک به نام <Important>sdc</Important> به سرور متصل است که پیکربندی نشده است و فاقد پارتیشن است. این دیسک، در واقع 
+      دیسکی است که توسط کاربر به سرور اضافه می‌شود. 
     </p>
   </>
   )
 },
 {
-  step: "۱",
+  step: "۲",
   content: (
   <>
-    <h3>ساخت پارتیشن (در صورت نیاز)</h3>   
+    <h3>ایجاد Physical Volume یا PV</h3>   
 
     <p>
-        اگر دیسک جدید دارید که پارتیشن‌بندی نشده است، می‌توانید با دستور <Important>fdisk</Important> پارتیشن جدید بسازید. با فرض اینکه دیسک جدید شما <Important>dev/sdb/</Important> است، دستور زیر را اجرا کنید:
+      پس از شناسایی دیسک جدید، باید با اجرای دستور زیر، دیسک را به عنوان یک Physical Volume یا PV برای LVM آماده کنید:
     </p>
 
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo fdisk /dev/sdb`}
+            {`pvcreate /dev/<disk-name>`}
         </Highlight>
     </div>
-    <div className="h-6" />
-    با اجرای دستور فوق، وارد خط فرمان <Important>fdisk</Important> می‌شوید. برای ساخت پارتیشن جدید، <Important>n</Important> را وارد کنید و <Important>Enter</Important> بزنید. 
-    در ادامه، از شما خواسته می‌شود که نوع پارتیشن (Primary یا Extended) وارد کنید.
-    برای پارتیشن معمولی، <Important>p</Important> را وارد کنید. سیستم به‌طور پیش‌فرض شماره پارتیشن را پیشنهاد می‌کند (معمولاً اولین پارتیشن آزاد)؛ این شماره را تایید کنید. در نهایت، کافیست تا
-    اندازه پارتیشن را وارد کنید. می‌توانید اندازه را به‌طور دقیق مشخص کنید. بعد از ایجاد پارتیشن جدید، دستور <Important>w</Important> را وارد کنید تا تغییرات ذخیره شود.
+    <Asciinema id="create-physical-volume-for-lvm" />
 
-    <Asciinema id="create-new-partition-using-fdisk" />
-
+    <p>
+      دستور فوق، دیسک جدید را به عنوان یک PV شناسایی کرده و آن را آماده اضافه شدن به Volume Group می‌کند.
+    </p>
   </>
   )
 },
 {
-  step: "۱",
+  step: "۳",
   content: (
   <>
-    <h3>فرمت پارتیشن جدید</h3>   
+    <h3>ایجاد Volume Group (VG) جدید (در صورت نیاز)</h3>   
 
     <p>
-        حالا که پارتیشن ایجاد شده است، باید آن را فرمت کنید. برای فرمت کردن پارتیشن به سیستم‌فایل مدنظرتان، مثلاً <Important>ext4</Important>، از دستور <Important>mkfs</Important> استفاده کنید:
+      اگر می‌خواهید دیسک جدید را به یک Volume Group جدید اضافه کنید، می‌توانید با استفاده از دستور زیر یک VG جدید ایجاد کنید:
     </p>
 
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo mkfs.ext4 /dev/sdb1`}
+            {`vgcreate <new-vg-name> /dev/<disk-name>`}
         </Highlight>
     </div>
+    {/* <Asciinema id="create-new-vg" /> */}
     <div className="h-2" />
-    {/* <Asciinema id="" /> */}
 
+    <p>
+      دستور فوق، یک VG جدید ایجاد و دیسک جدید را به آن اضافه می‌کند.
+    </p>
   </>
   )
 },
 {
-  step: "۱",
+  step: "۴",
   content: (
   <>
-    <h3>فرمت پارتیشن جدید</h3>   
+    <h3>ایجاد Logical Volume (LV) جدید</h3>   
 
     <p>
-
+      حالا می‌توانید یک Logical Volume جدید در VG جدید ایجاد کنید. برای این کار، از دستور زیر استفاده کنید:
     </p>
 
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-            {``}
+            {`lvcreate -n <lv-name> -l 100%FREE <new-vg-name>`}
         </Highlight>
     </div>
+    {/* <Asciinema id="create-new-lv" /> */}
     <div className="h-2" />
-    {/* <Asciinema id="" /> */}
 
+    <p>
+      دستور فوق، یک LV جدید ایجاد می‌کند و تمام فضای آزاد VG جدید را به آن اختصاص می‌دهد.
+    </p>
   </>
   )
 },
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>فرمت کردن LV جدید</h3>   
+
+    <p>
+      پس از ایجاد LV جدید، باید آن را فرمت کنید تا بتوانید از آن استفاده کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`mkfs.ext4 /dev/<new-vg-name>/<lv-name>`}
+        </Highlight>
+    </div>
+    {/* <Asciinema id="format-new-lv" /> */}
+  </>
+  )
+},
+{
+  step: "۶",
+  content: (
+  <>
+    <h3>اتصال LV جدید به مسیر دلخواه</h3>   
+
+    <p>
+      حالا می‌توانید LV جدید را به مسیر دلخواه خود mount کنید. برای این کار، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`mount /dev/<new-vg-name>/<lv-name> /path/to/myDir`}
+        </Highlight>
+    </div>
+    {/* <Asciinema id="mount-new-lv" /> */}
+    <div className="h-4" />
+
+    <p>
+      دستور فوق، LV جدید را به مسیر <Important>path/to/myDir/</Important> متصل می‌کند.
+    </p>
+  </>
+  )
+},
+{
+  step: "۷",
+  content: (
+  <>
+    <h3>اضافه کردن mount point به fstab</h3>   
+
+    <p>
+      برای اینکه mount point جدید به صورت دائمی باشد، باید آن را به فایل <Important>/etc/fstab</Important> اضافه کنید. برای این کار، فایل fstab را با یک ویرایشگر متن باز کنید و خط زیر را به آن اضافه کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`/dev/<new-vg-name>/<lv-name> /path/to/myDir ext4 defaults 0 0`}
+        </Highlight>
+    </div>
+    {/* <Asciinema id="add-to-fstab" /> */}
+    <div className="h-2" />
+
+    <p>
+      دستور فوق، mount point جدید را به فایل fstab اضافه می‌کند تا در هر بار راه‌اندازی سیستم، به صورت خودکار mount شود.
+    </p>
+  </>
+  )
+},
+    {
+    step: "۸",
+    content: (
+    <>
+      <h3>بررسی اتصال دیسک</h3>   
+
+      <p>
+        پس از mount کردن دیسک، دستور زیر را اجرا کنید تا مطمئن شوید که دیسک به درستی، mount شده است یا خیر.
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`mount -a`}
+          </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+        در صورتی که دستور فوق، هیچ پیامی نمایش ندهد، به این معنی است که دیسک به درستی، mount شده است.
+      </p>  
+    </>
+    )
+  }
 
 ]}
 
 />
-  </>
+  </>,
+
+  <>
+      <p>
+        برای اتصال دیسک به مسیر دلخواه (مثلاً <Important>path/to/myDir/</Important>) با استفاده از پارتیشن‌بندی سنتی، مراحل زیر را دنبال کنید:
+      </p>
+
+    <Step  steps={[
+  {
+    step: "۱",
+    content: (
+    <>
+      <h3>مشاهده دیسک‌های موجود</h3>   
+
+      <p>
+      با استفاده از دستور <Important>lsblk</Important> دیسک‌های موجود و پارتیشن‌های آن‌ها را مشاهده کنید.
+      </p>
+
+      <div className="h-2" />
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`lsblk`}
+          </Highlight>
+      </div>
+      <Asciinema id="run-lsblk-in-vm-using-ssh" />
+    </>
+    )
+  },
+  {
+    step: "۲",
+    content: (
+    <>
+      <h3>ایجاد پارتیشن جدید</h3>   
+
+      <p>
+        برای ایجاد پارتیشن روی دیسک جدید، از ابزار <Important>fdisk</Important> استفاده کنید:
+      </p>
+
+      <div className="h-2" />
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`fdisk /dev/<disk-name>`}
+          </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+      پس از اجرای دستور فوق، وارد ترمینال fdisk می‌شوید. برای ایجاد پارتیشن جدید، باید در ابتدا <Important>n</Important> را و سپس <Important>p</Important> را انتخاب کنید. در ادامه، باید شماره پارتیشن را وارد کنید و بعد از آن، اندازه پارتیشن را وارد کنید. در نهایت، با زدن <Important>w</Important> تغییرات را ذخیره کنید و از حالت <Important>fdisk</Important>، خارج شوید.      </p>
+      <Asciinema id="create-new-partition-using-fdisk" />
+
+    </>
+    )
+  },
+  {
+    step: "۳",
+    content: (
+    <>
+      <h3>فرمت کردن پارتیشن جدید</h3>   
+
+      <p>
+        بعد از ایجاد پارتیشن، آن را با استفاده از فایل‌سیستم ext4 فرمت کنید:
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`mkfs.ext4 /dev/<disk-name>`}
+          </Highlight>
+      </div>
+      {/* <Asciinema id="format-partition" /> */}
+
+      <p>
+        پس از اجرای دستور فوق، ممکن است پیامی نمایش داده شود که از شما تاییدیه می‌گیرد. برای تایید، <Important>y</Important> را وارد کنید تا عملیات فرمت کردن پارتیشن انجام شود.
+      </p>
+    </>
+    )
+  },
+  {
+    step: "۴",
+    content: (
+    <>
+      <h3>اتصال دیسک به دایرکتوری (mount)</h3>   
+
+      <p>
+        پارتیشن را به دایرکتوری ایجادشده mount کنید:
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`mount /dev/<disk-name> /path/to/myDir`}
+          </Highlight>
+      </div>
+    </>
+    )
+  },
+  {
+    step: "۵",
+    content: (
+    <>
+      <h3>اضافه کردن mount point به fstab</h3>   
+
+      <p>
+        برای اینکه پارتیشن جدید در هر بار راه‌اندازی سیستم mount شود، آن را به فایل <Important>etc/fstab/</Important> اضافه کنید:
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`echo "/dev/<disk-name> /path/to/myDir ext4 defaults 0 0" >> /etc/fstab`}
+          </Highlight>
+      </div>
+    </>
+    )
+  },
+    {
+    step: "۶",
+    content: (
+    <>
+      <h3>بررسی اتصال دیسک</h3>   
+
+      <p>
+        پس از mount کردن دیسک، دستور زیر را اجرا کنید تا مطمئن شوید که دیسک به درستی، mount شده است یا خیر.
+      </p>
+      <div className="h-2" />
+
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`mount -a`}
+          </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+        در صورتی که دستور فوق، هیچ پیامی نمایش ندهد، به این معنی است که دیسک به درستی، mount شده است.
+      </p>  
+    </>
+    )
+  }
   ]}
+
+  />
+    </>
+
+]}
 />
 
 
