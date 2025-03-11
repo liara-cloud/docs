@@ -3833,10 +3833,10 @@ export default {
         title: "اتصال به دیسک (mount)",
         link: "/iaas/disks/mount"
       },
-      // {
-      //   title: "قطع اتصال دیسک (unmount)",
-      //   link: "/iaas/disks/unmount"
-      // },
+      {
+        title: "قطع اتصال دیسک (unmount)",
+        link: "/iaas/disks/unmount"
+      },
       // // {
       // //   title: "افزایش حجم یک دیسک",
       // //   link: "./increase-value"
