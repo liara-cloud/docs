@@ -1556,10 +1556,10 @@ export default {
         title: "فعال‌سازی SSR با Inertia",
         link: "/paas/laravel/how-tos/enable-ssr-using-inertia"
       },
-      {
-        title: "راه‌اندازی صفحه Status",
-        link: "/paas/laravel/how-tos/set-status-page"
-      },
+      // {
+      //   title: "راه‌اندازی صفحه Status",
+      //   link: "/paas/laravel/how-tos/set-status-page"
+      // },
       {
         title: "تنظیم هدرهای امنیتی HTTP",
         link: "/paas/laravel/how-tos/set-http-security-headers"
