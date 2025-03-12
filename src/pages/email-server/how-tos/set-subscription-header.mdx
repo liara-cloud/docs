@@ -71,17 +71,30 @@ async function sendEmail() {
         to: "someguy@example.com",
         subject: "Test Email",
         text: "Hello, this is a test email sent from Node.js using your SMTP server.",
-        headers: {
-            "List-Subscribe": "<http://www.example.com/subscribe> ",
-            "List-Unsubscribe": "<http://www.example.com/unsubscribe>"
+        list: {
+            unsubscribe: {
+                url: 'http://example.com',
+                comment: 'Unsubscribe'
+            },
+            subscribe: [
+                '<mailto:admin@example.com?subject=subscribe>',
+                {
+                    url: 'http://example.com',
+                    comment: 'Subscribe'
+                }
+            ]
         }
     };
 
-    let info = await transporter.sendMail(mailOptions);
-    console.log("Email sent: " + info.messageId);
+    try {
+        let info = await transporter.sendMail(mailOptions);
+        console.log("Email sent: " + info.messageId);
+    } catch (error) {
+        console.error("Error sending email:", error);
+    }
 }
 
-sendEmail().catch(console.error);
+sendEmail();
 `}
             </Highlight>
         </div>
@@ -92,29 +105,49 @@ sendEmail().catch(console.error);
                 {`import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-    let transporter = nodemailer.createTransport({
-        host: "smtp.c1.liara.email",
-        port: 465,
-        secure: true,
-        auth: {
-            user: "your-smtp-user",
-            pass: "your-smtp-pass"
-        }
-    });
+    if (req.method !== "POST") {
+        return res.status(405).json({ error: "Method Not Allowed" });
+    }
 
-    let mailOptions = {
-        from: "info@example.com",
-        to: "someguy@example.com",
-        subject: "Test Email",
-        text: "Hello, this is a test email sent from Next.js.",
-        headers: {
-            "List-Subscribe": "<http://www.example.com/subscribe>",
-            "List-Unsubscribe": "<http://www.example.com/unsubscribe>"
-        }
-    };
+    try {
+        let transporter = nodemailer.createTransport({
+            host: "smtp.c1.liara.email",
+            port: 465,
+            secure: true,
+            auth: {
+                user: "your-smtp-user",
+                pass: "your-smtp-pass"
+            }
+        });
 
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "Email sent successfully!" });
+        let mailOptions = {
+            from: "info@example.com",
+            to: "someguy@example.com",
+            subject: "Test Email",
+            text: "Hello, this is a test email sent from Next.js.",
+            list: {
+                subscribe: [
+                    '<mailto:admin@example.com?subject=subscribe>',
+                    {
+                        url: "http://www.example.com/subscribe",
+                        comment: "Subscribe"
+                    }
+                ],
+                unsubscribe: {
+                    url: "http://www.example.com/unsubscribe",
+                    comment: "Unsubscribe"
+                }
+            }
+        };
+
+        let info = await transporter.sendMail(mailOptions);
+        console.log("Email sent:", info.messageId);
+
+        return res.status(200).json({ message: "Email sent successfully!" });
+    } catch (error) {
+        console.error("Error sending email:", error);
+        return res.status(500).json({ error: "Failed to send email." });
+    }
 }
 `}
             </Highlight>
@@ -373,7 +406,7 @@ send_email()
     <p>
         در قطعه کدهای فوق، به‌جای <Important>http://www.example.com/subscribe</Important> و <Important>http://www.example.com/unsubscribe</Important>، آدرس‌های مربوط به صفحه‌های Subscribe و Unsubscribe خود را قرار دهید.
         همچنین، عبارت <Important>(Click here to subscribe/unsubscribe to our mailing list)</Important> که یک نوع comment می‌باشد را، می‌توانید تغییر دهید. البته 
-        این نوع comment در NodeJS و NextJS قابل استفاده، نیست.
+        این نوع comment در NodeJS و NextJS در فیلد <Important>comment</Important>، قرار می‌گیرد. 
     </p>    
 </Alert>
 
