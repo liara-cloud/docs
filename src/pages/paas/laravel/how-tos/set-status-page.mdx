@@ -1,0 +1,184 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی صفحه status در Laravel - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی صفحه status در پلتفرم Laravel در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# راه‌اندازی صفحه status
+<hr className="mb-2" />
+
+صفحه <Important>status/</Important> در لاراول یک مسیر اختصاصی برای بررسی سلامت اپلیکیشن است که معمولاً در Load Balancer , Kubernetes و سرویس‌های مانیتورینگ استفاده می‌شود. این صفحه می‌تواند اتصال به دیتابیس، کش، سرویس‌های خارجی و سلامت کلی سرور را بررسی کرده و در قالب یک پاسخ JSON استاندارد وضعیت سیستم را گزارش دهد. 
+
+<div className="h-2" />
+داشتن این صفحه باعث بهبود پایداری اپلیکیشن، تشخیص سریع مشکلات و جلوگیری از Downtime می‌شود. همچنین، در زیرساخت‌های ابری و مقیاس‌پذیر، وجود یک Health Check دقیق، برای اتصال صحیح بین سرویس‌ها و عملکرد پایدار سرور ضروری است.
+
+<div className="h-2" />
+برای ایجاد صفحه <Important>status/</Important> در لاراول، کافیست در فایل <Important>routes/web.php</Important> یک مسیر جدید برای این صفحه تعریف کنید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="laravel">
+{`Route::get('/status', function () {
+    return response()->json([
+        'status' => 'OK',
+        'timestamp' => now()
+    ], 200);
+});`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+مسیر فوق، به سادگی بررسی می‌کند که اپلیکیشن در حال اجرا است و یک پاسخ <Important>OK</Important> ارسال می‌کند.
+در نسخه پیشرفته‌تر، می‌توان بررسی کرد که اتصال به دیتابیس، کش و APIهای خارجی برقرار است یا خیر:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="laravel">
+{`use Illuminate\\Support\\Facades\\DB;
+use Illuminate\\Support\\Facades\\Cache;
+use Illuminate\\Support\\Facades\\Http;
+use Illuminate\\Support\\Facades\\Route;
+
+Route::get('/status', function () {
+    try {
+       
+        DB::connection()->getPdo();
+
+        Cache::put('health_check', 'ok', 10);
+        $cacheStatus = Cache::get('health_check');
+
+        // check external service
+        $externalService = Http::get('https://www.google.com')->successful() ? 'available' : 'unavailable';
+
+        return response()->json([
+            'status' => 'OK',
+            'database' => 'connected',
+            'cache' => $cacheStatus === 'ok' ? 'available' : 'unavailable',
+            'external_service' => $externalService,
+            'timestamp' => now()
+        ], 200);
+    } catch (\\Exception $e) {
+        return response()->json([
+            'status' => 'FAIL',
+            'error' => $e->getMessage()
+        ], 500);
+    }
+});
+`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+قطعه کد فوق، ابتدا اتصال به دیتابیس، کش و یک سرویس خارجی را بررسی می‌کند و در صورت موفقیت، یک پاسخ <Important>OK</Important> ارسال می‌کند. در غیر این صورت، یک پاسخ <Important>FAIL</Important> با خطای مربوطه ارسال می‌شود.
+همچنین، می‌توانید یک کنترلر جداگانه برای مدیریت وضعیت سلامت برنامه ایجاد کنید. در ابتدا، دستور 
+زیر را اجرا کنید تا کنترلر ساخته شود:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="laravel">
+{`php artisan make:controller HealthCheckController`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+در ادامه، فایل <Important>app/Http/Controllers/HealthCheckController.php/</Important> را به صورت زیر تغییر دهید:
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="bash">
+{`<?php
+
+namespace App\\Http\\Controllers;
+
+use Illuminate\\Http\\Request;
+use Illuminate\\Support\\Facades\\DB;
+use Illuminate\\Support\\Facades\\Cache;
+use Illuminate\\Support\\Facades\\Http;
+
+class HealthCheckController extends Controller
+{
+    public function status()
+    {
+        try {
+            
+            DB::connection()->getPdo();
+
+            
+            Cache::put('health_check', 'ok', 10);
+            $cacheStatus = Cache::get('health_check');
+
+            
+            $externalService = Http::get('https://www.google.com')->successful() ? 'available' : 'unavailable';
+
+            return response()->json([
+                'status' => 'OK',
+                'database' => 'connected',
+                'cache' => $cacheStatus === 'ok' ? 'available' : 'unavailable',
+                'external_service' => $externalService,
+                'timestamp' => now()
+            ], 200);
+        } catch (\\Exception $e) {
+            return response()->json([
+                'status' => 'FAIL',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+}
+`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+در نهایت، مسیر مربوط به کنترلر را در فایل <Important>routes/web.php</Important> تعریف کنید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="laravel">
+{`use App\\Http\\Controllers\\HealthCheckController;
+
+Route::get('/status', [HealthCheckController::class, 'status']);
+`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+برای اضافه‌کردن Health Check در Kubernetes نیز، کافیست تا در فایل <Important>deployment.yaml</Important> لاراول، قطعه کد زیر را، اضافه کنید:
+
+<div className='h-2' />
+<div dir="ltr">
+<Highlight className="yaml">
+{`livenessProbe:
+  httpGet:
+    path: /status
+    port: 80
+  initialDelaySeconds: 3
+  periodSeconds: 5
+
+readinessProbe:
+  httpGet:
+    path: /status
+    port: 80
+  initialDelaySeconds: 3
+  periodSeconds: 5
+`}
+</Highlight>
+</div>
+<div className='h-2' />
+
+
+</Layout>
