@@ -8437,6 +8437,10 @@ export default {
         link: "/email-server/how-tos/use-tags"
       },
       {
+        title: "فعال‌سازی هدر Subscibtion",
+        link: "/email-server/how-tos/set-subscription-header"
+      },
+      {
         hr: true
       },
       {
@@ -8596,6 +8600,10 @@ export default {
         link: "/email-server/how-tos/use-tags"
       },
       {
+        title: "فعال‌سازی هدر Subscibtion",
+        link: "/email-server/how-tos/set-subscription-header"
+      },
+      {
         hr: true
       },
       {
@@ -8753,6 +8761,10 @@ export default {
       {
         title: "استفاده از تگ (tag)",
         link: "/email-server/how-tos/use-tags"
+      },
+      {
+        title: "فعال‌سازی هدر Subscibtion",
+        link: "/email-server/how-tos/set-subscription-header"
       },
       {
         hr: true
