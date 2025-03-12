@@ -48,7 +48,7 @@ import Head from "next/head";
 
 
 <Tabs 
-    tabs={["NodeJS", "NextJS", "Laravel", "PHP", "Django", "Flask", ".NET", "go"]} 
+    tabs={["NodeJS", "NextJS", "Laravel", "PHP", "Django", "Flask", ".NET", "go", "Python"]} 
     content={[
     <>
         <div dir='ltr'>
@@ -72,7 +72,7 @@ async function sendEmail() {
         subject: "Test Email",
         text: "Hello, this is a test email sent from Node.js using your SMTP server.",
         headers: {
-            "List-Subscribe": "<http://www.example.com/subscribe>",
+            "List-Subscribe": "<http://www.example.com/subscribe> ",
             "List-Unsubscribe": "<http://www.example.com/unsubscribe>"
         }
     };
@@ -131,8 +131,8 @@ Mail::raw('Hello, this is a test email sent from Laravel.', function ($message) 
         ->subject('Test Email')
         ->withSwiftMessage(function ($swiftMessage) {
             $headers = $swiftMessage->getHeaders();
-            $headers->addTextHeader('List-Subscribe', '<http://www.example.com/subscribe>');
-            $headers->addTextHeader('List-Unsubscribe', '<http://www.example.com/unsubscribe>');
+            $headers->addTextHeader('List-Subscribe', '<http://www.example.com/subscribe> (Click here to subscribe to our mailing list)');
+            $headers->addTextHeader('List-Unsubscribe', '<http://www.example.com/unsubscribe> (Click here to unsubscribe to our mailing list)');
         });
 });
 `}
@@ -165,8 +165,8 @@ try {
     $mail->Subject = 'Test Email';
     $mail->Body = 'Hello, this is a test email sent from PHP.';
 
-    $mail->addCustomHeader('List-Subscribe', '<http://www.example.com/subscribe>');
-    $mail->addCustomHeader('List-Unsubscribe', '<http://www.example.com/unsubscribe>');
+    $mail->addCustomHeader('List-Subscribe', '<http://www.example.com/subscribe> (Click here to subscribe to our mailing list)');
+    $mail->addCustomHeader('List-Unsubscribe', '<http://www.example.com/unsubscribe> (Click here to unsubscribe to our mailing list)');
 
     $mail->send();
     echo 'Email sent successfully!';
@@ -192,8 +192,8 @@ def send_email():
     )
 
     email.extra_headers = {
-        "List-Subscribe": "<http://www.example.com/subscribe>",
-        "List-Unsubscribe": "<http://www.example.com/unsubscribe>"
+        "List-Subscribe": "<http://www.example.com/subscribe> (Click here to subscribe to our mailing list)",
+        "List-Unsubscribe": "<http://www.example.com/unsubscribe> (Click here to unsubscribe to our mailing list)"
     }
 
     email.send()
@@ -232,8 +232,8 @@ def send_email():
     message["Subject"] = subject
     message.attach(MIMEText(body, "plain"))
 
-    message["List-Subscribe"] = "<http://www.example.com/subscribe>"
-    message["List-Unsubscribe"] = "<http://www.example.com/unsubscribe>"
+    message["List-Subscribe"] = "<http://www.example.com/subscribe> (Click here to subscribe to our mailing list)"
+    message["List-Unsubscribe"] = "<http://www.example.com/unsubscribe> (Click here to unsubscribe to our mailing list)"
 
     try:
         with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
@@ -267,8 +267,8 @@ class Program {
         var message = new MailMessage("info@example.com", "someguy@example.com", "Test Email", "Hello, this is a test email sent from .NET.")
         {
             Headers = {
-                {"List-Subscribe", "<http://www.example.com/subscribe>"},
-                {"List-Unsubscribe", "<http://www.example.com/unsubscribe>"}
+                {"List-Subscribe", "<http://www.example.com/subscribe> (Click here to subscribe to our mailing list)"},
+                {"List-Unsubscribe", "<http://www.example.com/unsubscribe> (Click here to unsubscribe to our mailing list)"}
             }
         };
 
@@ -302,8 +302,8 @@ func main() {
     headers := "From: " + from + "\\r\\n" +
         "To: " + to + "\\r\\n" +
         "Subject: " + subject + "\\r\\n" +
-        "List-Subscribe: <http://www.example.com/subscribe>\\r\\n" +
-        "List-Unsubscribe: <http://www.example.com/unsubscribe>\\r\\n\\r\\n"
+        "List-Subscribe: <http://www.example.com/subscribe> (Click here to subscribe to our mailing list)\\r\\n" +
+        "List-Unsubscribe: <http://www.example.com/unsubscribe> (Click here to unsubscribe to our mailing list)\\r\\n\\r\\n"
 
     message := []byte(headers + body)
 
@@ -318,9 +318,64 @@ func main() {
             </Highlight>
         </div>
     </>,
+    <>
+        <div dir='ltr'>
+            <Highlight className="py">
+                {`import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+def send_email():
+    
+    smtp_host = "smtp.c1.liara.email"        
+    smtp_port = 465                 
+    smtp_user = "your-smtp-user" 
+    smtp_password = "your-smtp-pass"
+
+    # Email details
+    sender_email = "info@example.com"  
+    receiver_email = "someguy@example.com"  # Receiver's email address
+    subject = "Test Email"
+    body = "Hello, this is a test email sent from Python using your SMTP server."
+
+    # Set up the MIME
+    message = MIMEMultipart()
+    message["From"] = sender_email
+    message["To"] = receiver_email
+    message["Subject"] = subject
+    message.attach(MIMEText(body, "plain"))
+
+    message["List-Subscribe"] = "<http://www.example.com/subscribe> (Click here to subscribe to our mailing list)" 
+    message["List-Unsubscribe"] = "<http://www.example.com/unsubscribe> (Click here to unsubscribe to our mailing list)" 
+
+    try:
+        # Connect to the SMTP server
+        with smtplib.SMTP(smtp_host, smtp_port) as server:
+            # server.starttls()  # Start TLS encryption (recommended)
+            server.login(smtp_user, smtp_password)  # Log in to the SMTP server
+            server.sendmail(sender_email, receiver_email, message.as_string())  # Send the email
+            print("Email sent successfully!")
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+# Run the function to send the email
+send_email()
+`}
+            </Highlight>
+        </div>
+    </>,
     
     ]} 
 />
+
+<Alert variant="info">
+    <p>
+        در قطعه کدهای فوق، به‌جای <Important>http://www.example.com/subscribe</Important> و <Important>http://www.example.com/unsubscribe</Important>، آدرس‌های مربوط به صفحه‌های Subscribe و Unsubscribe خود را قرار دهید.
+        همچنین، عبارت <Important>(Click here to subscribe/unsubscribe to our mailing list)</Important> که یک نوع comment می‌باشد را، می‌توانید تغییر دهید. البته 
+        این نوع comment در NodeJS و NextJS قابل استفاده، نیست.
+    </p>    
+</Alert>
 
 
 </Layout>
