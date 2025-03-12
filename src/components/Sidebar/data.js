@@ -10485,6 +10485,10 @@ export default {
         link: "/references/team/convert-personal-account-to-team"
       },
       {
+        title: "انتقال مالکیت",
+        link: "/references/team/transfer-ownership"
+      },
+      {
         title: "حذف یک تیم",
         link: "/references/team/delete-team"
       },
