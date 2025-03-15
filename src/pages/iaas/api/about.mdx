@@ -1,0 +1,65 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات API سرور مجازی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات آشنایی با API سرور مجازی ابری و نحوه کار با آن در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# API سرور مجازی ابری لیارا
+
+<hr className="mb-2" />
+
+API سرور مجازی ابری امکان مدیریت خودکار ماشین‌های مجازی را از طریق درخواست‌های HTTP فراهم می‌کند. با استفاده از این API، کاربران می‌توانند سرور جدید ایجاد کرده، وضعیت آن را بررسی کنند و سیگنال‌های قطع برق، روشن شدن، خاموش شدن و ریبوت را به آن، ارسال کنند. 
+در ادامه، بخوانید:
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "ایجاد سرور مجازی ابری",
+        link: "/iaas/api/create-vm"
+      },
+      {
+        title: "مشاهده رویدادهای سرور مجازی ابری",
+        link: "/iaas/api/see-vm-events"
+      },
+      {
+        title: "ارسال سیگنال به سرور مجازی ابری",
+        link: "/iaas/api/send-vm-signals"
+      },
+
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                     {item.title} با API
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+
+</Layout>

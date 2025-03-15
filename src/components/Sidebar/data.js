@@ -3313,6 +3313,11 @@ export default {
         icon: <GoFileSymlinkFile />,
         link: "/iaas/backups/about"
       },
+      {
+        title: "کار با سرور مجازی از طریق API",
+        icon: <GoFileSymlinkFile />,
+        link: "/iaas/api/about"
+      },
       // {
       //   hr: true
       // },
@@ -3775,6 +3780,13 @@ export default {
         icon: <GoTools  />,
         link: "/iaas/details/openssh-package"
       },
+      
+      {
+        title: "آیدی یک سرور مجازی",
+        icon: <GoCommandPalette   />,
+        link: "/iaas/details/vm-id",
+      },
+
       {
         title: "کلید SSH",
         icon: <GoKey  />,
@@ -3960,6 +3972,49 @@ export default {
       //   title: "تهیه و بازیابی بکاپ از دیتابیس ",
       //   link: "/iaas/backups/take-db-backup"
       // },
+    ],
+
+    api: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            کار با سرور مجازی با API
+          </div>
+        )
+      },
+      {
+        title: "برگشت به سرور مجازی ابری",
+        icon: <GoArrowRight />,
+        link: "/iaas/about"
+      },
+      {
+        title: "API سرور مجازی",
+        icon: <GoInfo />,
+        link: "/iaas/api/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoTools />
+            کار با API
+          </div>
+        )
+      },
+      {
+        title: "ایجاد سرور مجازی ابری",
+        link: "/iaas/api/create-vm"
+      },
+      {
+        title: "مشاهده رویدادهای سرور مجازی",
+        link: "/iaas/api/see-vm-events"
+      },
+      {
+        title: "ارسال سیگنال به سرور مجازی",
+        link: "/iaas/api/send-vm-signals"
+      },
     ],
   },
 
@@ -8901,7 +8956,7 @@ export default {
       {
         title: "آیدی یک ایمیل‌سرور",
         icon: <GoCommandPalette   />,
-        link: "./mail-id",
+        link: "/email-server/details/mail-id",
       },
       {
         title: "خطاهای رایج ایمیل‌سرور",

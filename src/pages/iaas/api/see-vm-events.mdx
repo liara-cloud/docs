@@ -1,0 +1,195 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات مشاهده رویدادهای سرور مجازی با API - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه مشاهده رویدادهای سرور مجازی با API در سرور مجازی ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# مشاهده رویدادهای سرور مجازی با API
+<hr className="mb-2" />
+
+برای مشاهده رویدادهای سرور مجازی، باید به آدرس <Important>https://iaas-api.liara.ir/vm/operation/vmID</Important>، یک درخواست <Important>GET</Important>، ارسال کنید. مقدار <Important>vmID</Important>، باید با <a href="/iaas/details/vm-id/" className="text-[#2196f3]">آیدی سرور مجازی</a> مورد نظرتان جایگزین شود.
+در ادامه، نحوه مشاهده رویدادهای سرور مجازی با API با استفاده از ابزار <Important>cURL</Important> و برخی از زبان‌های برنامه‌نویسی، قرار گرفته است:
+
+<Tabs 
+  tabs={["cURL", "NodeJS", "Python", "Go", "PHP", "C#"]} 
+  content={[
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`curl -X GET https://iaas-api.liara.ir/vm/operation/vmID \\
+  -H "Authorization: Bearer YOUR-API-TOKEN" \\
+  -H "Content-Type: application/json" | jq .
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`const axios = require('axios');
+
+const url = "https://iaas-api.liara.ir/vm/operation/vmID";
+const token = "YOUR-API-TOKEN";
+
+axios.get(url, {
+    headers: {
+        "Authorization": \`Bearer \${token}\`,
+        "Content-Type": "application/json"
+    }
+})
+.then(response => {
+    console.log(JSON.stringify(response.data, null, 2)); 
+})
+.catch(error => {
+    console.error("Error:", error.response.data);
+});
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="py">
+            {`import requests
+import json
+
+url = "https://iaas-api.liara.ir/vm/operation/vmID"
+token = "YOUR-API-TOKEN"
+
+headers = {
+    "Authorization": f"Bearer {token}",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+print(json.dumps(response.json(), indent=2))
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="go">
+            {`package main
+
+import (
+    "fmt"
+    "net/http"
+    "io/ioutil"
+    "encoding/json"
+)
+
+func main() {
+    url := "https://iaas-api.liara.ir/vm/operation/vmID"
+    token := "YOUR-API-TOKEN"
+
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    body, _ := ioutil.ReadAll(resp.Body)
+    var result map[string]interface{}
+    json.Unmarshal(body, &result)
+
+    prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+    fmt.Println(string(prettyJSON)) 
+}
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="php">
+            {`<?php
+
+    $url = "https://iaas-api.liara.ir/vm/operation/vmID";
+    $token = "YOUR-API-TOKEN";
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Authorization: Bearer {$token}",
+        "Content-Type: application/json"
+    ]);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    echo json_encode(json_decode($response), JSON_PRETTY_PRINT);
+
+?>
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="csharp">
+            {`class Program
+{
+    static async Task Main(string[] args)
+    {
+        string url = "https://iaas-api.liara.ir/vm/operation/vmID";
+        string token = "YOUR-API-TOKEN";
+
+        using (HttpClient client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = await client.GetAsync(url);
+            string result = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(result);
+        }
+    }
+}
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+ 
+  ]}
+/>
+
+<Alert variant="info">
+<p>
+    در دستورات و قطعه کدهای فوق، به‌جای <Important>YOUR-API-TOKEN</Important>، <a href="/references/api/about" className="text-[#2196f3]">توکن API حساب خود</a> و به‌جای <Important>vmID</Important>، <a href="/iaas/details/vm-id/" className="text-[#2196f3]">آیدی سرور مجازی</a> مورد نظرتان را وارد کنید.
+</p>
+</Alert>
+
+</Layout>

@@ -1,0 +1,245 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ارسال سیگنال به سرور مجازی با API - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه ارسال سیگنال به سرور مجازی با API در سرور مجازی ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# ارسال سیگنال به سرور مجازی با API
+<hr className="mb-2" />
+
+برای ارسال سیگنال به سرور مجازی، باید به آدرس <Important>https://iaas-api.liara.ir/vm/power/vmID</Important>، یک درخواست <Important>PATCH</Important>، ارسال کنید. مقدار <Important>vmID</Important>، باید با <a href="/iaas/details/vm-id/" className="text-[#2196f3]">آیدی سرور مجازی</a> مورد نظرتان جایگزین شود.
+در ادامه، نحوه ارسال سیگنال به سرور مجازی با API با استفاده از ابزار <Important>cURL</Important> و برخی از زبان‌های برنامه‌نویسی، قرار گرفته است:
+
+<Tabs 
+  tabs={["cURL", "NodeJS", "Python", "Go", "PHP", "C#"]} 
+  content={[
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`curl -X PATCH https://iaas-api.liara.ir/vm/power/:vmID \\
+  -H "Authorization: Bearer YOUR-API-TOKEN" \\
+  -H "Content-Type: application/json" \\
+  -d '{"action": "ACTION"}'
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`const axios = require('axios');
+
+const vmID = "vmID"; 
+const token = "YOUR-API-TOKEN"; 
+const url = \`https://iaas-api.liara.ir/vm/power/\${vmID}\`;
+
+const data = {
+    action: "ACTION" 
+};
+
+axios.patch(url, data, {
+    headers: {
+        "Authorization": \`Bearer \${token}\`,
+        "Content-Type": "application/json"
+    }
+})
+.then(response => {
+    console.log(response.data); 
+})
+.catch(error => {
+    console.error("Error:", error.response.data);
+});
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="python">
+            {`import requests
+
+vmID = "vmID"  
+token = "YOUR-API-TOKEN"  
+url = f"https://iaas-api.liara.ir/vm/power/{vmID}"
+
+data = {
+    "action": "ACTION"  
+}
+
+headers = {
+    "Authorization": f"Bearer {token}",
+    "Content-Type": "application/json"
+}
+
+response = requests.patch(url, json=data, headers=headers)
+
+if response.status_code == 200:
+    print("VM changed successfully")
+else: 
+    print(response.json())
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="go">
+            {`package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    vmID := "vmID"
+    token := "YOUR-API-TOKEN" 
+    url := fmt.Sprintf("https://iaas-api.liara.ir/vm/power/%s", vmID)
+
+    data := map[string]string{"action": "ACTION"} 
+    jsonData, _ := json.Marshal(data)
+
+    req, _ := http.NewRequest("PATCH", url, bytes.NewBuffer(jsonData))
+    req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
+    req.Header.Set("Content-Type", "application/json")
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
+
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&result)
+
+  if result != nil {
+      fmt.Println(result) 
+  } else {
+    fmt.Println("VM changed successfully")
+  }
+}
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="php">
+            {`<?php
+
+$vmID = "vmID"; 
+$token = "YOUR-API-TOKEN"; 
+$url = "https://iaas-api.liara.ir/vm/power/{$vmID}";
+
+$data = json_encode(["action" => "ACTION"]);
+
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Authorization: Bearer {$token}",
+    "Content-Type: application/json",
+    "Content-Length: " . strlen($data)
+]);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+?>
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="csharp">
+            {`using System.Text;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        var url = "https://iaas-api.liara.ir/vm/power/vmID";
+        var token = "YOUR-API-TOKEN";
+        var jsonPayload = "{\"action\": \"ACTION\"}";
+
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+            var request = new HttpRequestMessage(new HttpMethod("PATCH"), url)
+            {
+                Content = content
+            };
+
+            var response = await client.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Response:");
+                Console.WriteLine(responseBody);
+            }
+            else
+            {
+                Console.WriteLine($"Error: {response.StatusCode}");
+                var errorResponse = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(errorResponse);
+            }
+        }
+    }
+}
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+  </>,
+ 
+  ]}
+/>
+
+<Alert variant="info">
+<p>
+    در دستورات و قطعه کدهای فوق، به‌جای <Important>YOUR-API-TOKEN</Important>، <a href="/references/api/about" className="text-[#2196f3]">توکن API حساب خود</a> و به‌جای <Important>vmID</Important>، <a href="/iaas/details/vm-id/" className="text-[#2196f3]">آیدی سرور مجازی</a> مورد نظرتان را وارد کنید.
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+در قطعه کد فوق، باید <Important>ACTION</Important> را با سیگنالی که قصد دارید بفرستید، جایگزین کنید. سیگنال‌ها می‌توانند <Important>start</Important> برای روشن کردن سرور، <Important>stop</Important> برای خاموش کردن سرور، <Important>reboot</Important> برای ری‌استارت کردن سرور و <Important>shutdown</Important> برای قطع برق سرور مجازی باشند.
+</p>
+</Alert>
+
+</Layout>

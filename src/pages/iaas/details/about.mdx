@@ -13,6 +13,7 @@ import PlatformIcon from "@/components/Common/icons";
 import {
   GoHome,
   GoPasskeyFill,
+  GoTools,
   GoDatabase,
   GoContainer,
   GoBroadcast,
@@ -45,6 +46,7 @@ import {
   GoCpu,
   GoShieldLock,
   GoNumber,
+  GoCommandPalette,
   GoFileBinary,
   GoEye,
   GoGraph,
@@ -86,7 +88,7 @@ width="100%"
 ></video>
 <div className="h-6" />
 
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-4 gap-4">
 {[
   {
     title: "پلن‌های سرور مجازی ابری",
@@ -117,6 +119,18 @@ width="100%"
     icon: <GoXCircle />,
     desc: "راهنمایی برای حذف یک سرور مجازی ابری از حساب کاربری و پایان روزهای طلایی استفاده از آن ",
     link: "./delete-server",
+  },
+  {
+    title: "ابزار OpenSSH",
+    icon: <GoTools  />,
+    desc: "نحوه نصب ابزار OpenSSH بر روی سیستم‌عامل‌های مختلف ویندوز، لینوکس و مک برای کار با SSH",
+    link: "./openssh-package"
+  },
+  {
+    title: "آیدی یک سرور مجازی",
+    icon: <GoCommandPalette  />,
+    desc: "نحوه مشاهده آیدی سرور مجازی ابری برای کار با آن از طریق API لیارا",
+    link: "./vm-id"
   },
   {
     title: "کلید SSH",

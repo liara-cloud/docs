@@ -1,0 +1,53 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آیدی سرور مجازی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات آشنایی با آیدی سرور مجازی ابری و نحوه مشاهده آن در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# آیدی یک سرور مجازی ابری
+
+<hr className="mb-2" />
+
+آیدی سرور مجازی (vmID) یک شناسه منحصربه‌فرد است که لیارا به هر سرور مجازی ابری که ایجاد می‌کنید، اختصاص می‌دهد. این آیدی برای مشاهده رویدادهای سرور مجازی و ارسال سیگنال‌های قطع برق، روشن کردن، خاموش کردن و ری‌استارت از طریق API به کار می‌رود. هنگام ارسال درخواست به API لیارا، باید این مقدار را در URL درخواست قرار دهید تا سرور مجازی ابری شما، مشخص شود.
+
+
+<Section id="how-to-see-vm-id" title="نحوه مشاهده آیدی سرور مجازی ابری" />
+روش‌های مختلفی برای مشاهده آیدی سرور مجازی مدنظرتان، وجود دارد 
+که یکی از آن‌ها، استفاده از URL کنسول لیارا در حین مشاهده سرور مجازی است.
+
+<div className="h-4" />
+<img src="https://files.liara.ir/liara/vps/see-vmid-in-console.png" alt="work with panel"/>
+<div className="h-4" />
+آیدی سرور مجازی بعد از <Important>/vms</Important> و قبل از <Important>/</Important> بعدی، قرار دارد.
+به‌عنوان مثال، اگر URL کنسول شما در صفحه اطلاعات کلی سرور مجازی‌تان مانند زیر باشد:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://console.liara.ir/vms/67cfe08f8ff9796bd0d7045f/overview`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+آیدی سرور مجازی شما برابر با، <Important>67cfe08f8ff9796bd0d7045f</Important> است.
+
+</Layout>
