@@ -6159,7 +6159,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/wiki-js/wikijs-full-2021-768t-svg-yOi8.png" />
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/wiki-js/wikijs-full-2021-768t-svg-yOi8.webp" />
             برنامه Wiki.js
           </div>
         )
