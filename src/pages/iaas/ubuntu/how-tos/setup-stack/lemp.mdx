@@ -1,0 +1,307 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه اندازی استک LEMP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه اندازی استک LEMP در سرور مجازی ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# راه اندازی استک LEMP
+<hr className="mb-2" />
+
+استک LEMP یک پیکربندی محبوب برای میزبانی وب‌سایت‌ها و اپلیکیشن‌های تحت وب است که شامل Linux (سیستم‌عامل)، Nginx (وب سرور)، MySQL (پایگاه داده) و PHP (مفسر سمت سرور) می‌شود. در این استک، Nginx جایگزین Apache در <a href="/iaas/ubuntu/how-tos/setup-stack/lemp" className="text-[#2196f3]">استک LAMP</a> شده و به دلیل کارایی بالا، مصرف کمتر منابع و مدیریت بهتر درخواست‌ها، برای پروژه‌های مقیاس‌پذیر گزینه‌ی بهتری محسوب می‌شود.
+در ادامه، نحوه راه‌اندازی استک LEMP در سرور مجازی Ubuntu به‌صورت گام‌به‌گام توضیح داده شده است:
+
+<Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>به‌روزرسانی سیستم</h3>   
+    <p>
+    قبل از نصب بسته‌های مورد نیاز، بهتر است که مخازن سیستم به‌روز شوند تا جدیدترین نسخه‌های نرم‌افزارها نصب شوند. برای به‌روزرسانی سیستم، از دستور زیر استفاده کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apt update && sudo apt upgrade -y`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+  </>
+  )
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>نصب Nginx</h3>   
+    <p>
+        وب‌سرور Nginx یکی از سریع‌ترین و محبوب‌ترین وب‌سرورها برای اجرای برنامه‌های PHP است. برای نصب آن، از دستور زیر استفاده کنید:
+    </p>
+    <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo apt install nginx -y`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<p>
+پس از نصب، بررسی کنید که آیا سرویس Nginx به درستی اجرا شده است:
+</p>
+    <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo systemctl status nginx`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<p>
+    در صورتی که در خروجی دستور فوق، عبارت <Important>active (running)</Important> را مشاهده کردید، به این معنی است که Nginx به درستی نصب و اجرا شده است.
+</p>  
+  </>
+  )
+},
+{
+  step: "۳",
+  content: (
+  <>
+    <h3>تنظیم فایروال</h3>   
+    <p>
+        برای تنظیم فایروال، می‌توانید از UFW (Uncomplicated Firewall) استفاده کنید که مستندات نصب و فعال‌سازی آن در <a href="/iaas/ubuntu/how-tos/set-firewall/" className="text-[#2196f3]">اینجا</a> موجود است. 
+        برای اینکه Nginx بتواند ترافیک HTTP و HTTPS را مدیریت کند، باید قوانین مناسب را در فایروا با اجرای دستورات زیر اضافه کنید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo ufw allow 'Nginx Full'
+sudo ufw enable`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+  </>
+  )
+},
+{
+  step: "۴",
+  content: (
+  <>
+    <h3>نصب و ایمن‌سازی MySQL</h3>   
+    <p>
+    برای مدیریت پایگاه داده، از MySQL استفاده می‌شود. برای نصب این سرویس، دستور زیر را اجرا کنید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apt install mysql-server -y`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        پس از نصب، لازم است که پایگاه داده را ایمن‌سازی کنید. این کار را می‌توان با اجرای ابزار امنیتی MySQL انجام داد:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo mysql_secure_installation`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+    <p>
+        با اجرای دستور فوق، باید به سوالات امنیتی پاسخ دهید. 
+    </p>
+    </>
+  )
+},
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>ایجاد دیتابیس و کاربر MySQL</h3>   
+    <p>
+    پس از نصب MySQL، نیاز به ایجاد یک دیتابیس و یک کاربر جدید برای مدیریت آن دارید. برای این کار، در ابتدا وارد محیط MySQL شوید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo mysql`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        سپس دستورات زیر را اجرا کنید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`CREATE DATABASE lemp_db;
+CREATE USER 'lemp_user'@'localhost' IDENTIFIED BY 'StrongPassword';
+GRANT ALL PRIVILEGES ON lemp_db.* TO 'lemp_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        می‌توانید دستورات فوق و اسامی مذکور را با توجه به نیازهای خود تغییر دهید.
+    </p>
+  </>
+  )
+},
+{
+  step: "۶",
+  content: (
+  <>
+    <h3>نصب PHP</h3>   
+    <p>
+    برای اجرای اسکریپت‌های PHP در وب‌سرور Nginx، باید PHP و افزونه MySQL را نصب کنید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apt install php-fpm php-mysql -y`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        پس از نصب، می‌توان نسخه PHP را بررسی کرد:
+    </p>
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`php -v`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+  </>
+  )
+},
+{
+  step: "۷",
+  content: (
+  <>
+    <h3>تنظیمات Nginx برای PHP</h3>   
+    <p>
+    برای اجرای PHP از طریق Nginx، باید یک فایل پیکربندی جدید ایجاد کنید. این فایل مشخص می‌کند که چگونه درخواست‌های PHP پردازش شوند. برای این کار، فایل زیر را ایجاد می‌کنید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo nano /etc/nginx/sites-available/lemp`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        سپس قطعه کد زیر را در این فایل قرار دهید:
+    </p> 
+        <div className="h-2" /> 
+        <div dir='ltr'>
+        <Highlight className="bash">
+            {`server {
+    listen 80;
+    server_name YOUR-IP-ADDRESS;
+    root /var/www/lemp;
+    index index.php index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \\.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+    <p>
+        در قطعه کد فوق، به جای <Important>YOUR-IP-ADDRESS</Important> باید آدرس IP سرور خود را وارد کنید.
+        برای فعال‌سازی سایت، از دستور زیر استفاده کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo ln -s /etc/nginx/sites-available/lemp /etc/nginx/sites-enabled/`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    
+    <p>
+        سپس پیکربندی Nginx را تست کرده و سرویس را مجدداً راه‌اندازی کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo nginx -t
+sudo systemctl restart nginx`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+  </>
+  )
+},
+{
+  step: "۸",
+  content: (
+  <>
+    <h3>تست PHP</h3>   
+    <p>
+        برای بررسی عملکرد صحیح PHP، یک فایل تستی ایجاد کنید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo mkdir -p /var/www/lemp
+sudo nano /var/www/lemp/index.php`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        سپس کد زیر را در این فایل قرار دهید:
+    </p>
+    <div className="h-2" />  
+
+        <div dir='ltr'>
+        <Highlight className="php">
+            {`<?php
+phpinfo();
+?>`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        سپس مرورگر را باز کرده و به آدرس <Important>http://YOUR-IP-ADDRESS/index.php</Important> بروید تا صحت عملکرد PHP را بررسی کنید.
+        بدیهی است که باید به جای <Important>YOUR-IP-ADDRESS</Important> باید آدرس IP سرور خود را وارد کنید.
+    </p>
+  </>
+  )
+},
+{
+  step: "۹",
+  content: (
+  <>
+    <h3>اتصال دامنه به سرور و فعال‌سازی SSL</h3>   
+    <p>
+        برای اتصال دامنه به سرور و فعال‌سازی SSL، می‌توانید از <a href="/iaas/ubuntu/how-tos/connect-domain/" className="text-[#2196f3]">این راهنما</a> استفاده کنید.
+    </p>
+    <div className="h-2" />  
+  </>
+  )
+},
+
+]}
+/>
+
+<div className="h-4" />  
+
+با اجرای قدم به قدم گام‌های فوق، انتظار می‌رود که استک LEMP به‌درستی بر روی سرور مجازی شما نصب و پیکربندی شده باشد.
+
+</Layout>

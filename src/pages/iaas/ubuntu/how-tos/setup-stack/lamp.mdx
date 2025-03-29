@@ -1,0 +1,265 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه اندازی استک LAMP - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه اندازی استک LAMP در سرور مجازی ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# راه اندازی استک LAMP
+<hr className="mb-2" />
+
+استک LAMP شامل Linux (سیستم‌عامل)، Apache (وب سرور)، MySQL (پایگاه داده) و PHP (مفسر سمت سرور) است. این استک یکی از محبوب‌ترین پیکربندی‌ها برای میزبانی وبسایت‌های پویا محسوب می‌شود.
+در ادامه، مراحل نصب و پیکربندی استک LAMP بر روی سرور Ubuntu برای شما توضیح داده شده است:
+
+<Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>به‌روزرسانی سیستم</h3>   
+    <p>
+    ابتدا مخازن سیستم را به‌روزرسانی کنید تا آخرین نسخه‌های نرم‌افزارها دریافت شوند:
+    </p>
+    <div className="h-2" />  
+
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apt update && sudo apt upgrade -y`}
+        </Highlight>
+    </div>
+  </>
+  )
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>نصب Apache</h3>   
+    <p>
+    Apache وب‌سرور اصلی در استک LAMP است. برای نصب آن از دستور زیر استفاده کنید:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apt install apache2 -y`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+    سپس بررسی کنید که سرویس Apache در حال اجرا باشد:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo systemctl status apache2`}
+        </Highlight>
+    </div>
+<div className="h-2" />
+<p>
+    در صورتی که در خروجی دستور فوق، عبارت <Important>active (running)</Important> را مشاهده کردید، به این معنی است که Nginx به درستی نصب و اجرا شده است.
+</p> 
+  </>
+  )
+},
+{
+  step: "۳",
+  content: (
+  <>
+    <h3>تنظیم فایروال</h3>   
+    <p>
+         برای تنظیم فایروال، می‌توانید از UFW (Uncomplicated Firewall) استفاده کنید که مستندات نصب و فعال‌سازی آن در <a href="/iaas/ubuntu/how-tos/set-firewall/" className="text-[#2196f3]">اینجا</a> موجود است. 
+    برای فعال کردن دسترسی به وب‌سرور از طریق HTTP و HTTPS، دستورات زیر را اجرا کنید:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo ufw allow 'Apache Full'
+sudo ufw enable`}
+        </Highlight>
+    </div>
+  </>
+  )
+},
+{
+  step: "۴",
+  content: (
+  <>
+    <h3>نصب و ایمن‌سازی MySQL</h3>   
+    <p>
+    برای مدیریت پایگاه داده، MySQL را نصب کنید:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apt install mysql-server -y`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+    سپس برای افزایش امنیت MySQL، ابزار زیر را اجرا کنید:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo mysql_secure_installation`}
+        </Highlight>
+    </div>
+    
+  </>
+  )
+},
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>ایجاد دیتابیس و کاربر MySQL</h3>   
+    <p>
+    پس از نصب MySQL، نیاز به ایجاد یک دیتابیس و یک کاربر جدید برای مدیریت آن دارید. برای این کار، در ابتدا وارد محیط MySQL شوید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo mysql`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        سپس دستورات زیر را اجرا کنید:
+    </p>
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`CREATE DATABASE lamp_db;
+CREATE USER 'lamp_user'@'localhost' IDENTIFIED BY 'StrongPassword';
+GRANT ALL PRIVILEGES ON lamp_db.* TO 'lamp_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        می‌توانید دستورات فوق و اسامی مذکور را با توجه به نیازهای خود تغییر دهید.
+    </p>
+  </>
+  )
+},
+{
+  step: "۶",
+  content: (
+  <>
+    <h3>نصب PHP</h3>   
+    <p>
+    برای اجرای اسکریپت‌های PHP در Apache، باید PHP و افزونه MySQL را نصب کنید:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apt install php libapache2-mod-php php-mysql -y`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+    سپس نسخه PHP نصب شده را بررسی کنید:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`php -v`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+  </>
+  )
+},
+{
+  step: "۷",
+  content: (
+  <>
+    <h3>تنظیم Apache برای PHP</h3>   
+    <p>
+        Apache به‌طور پیش‌فرض فایل <Important>index.html</Important> را در اولویت قرار می‌دهد. برای تغییر این اولویت، باید فایل پیکربندی Apache را ویرایش کنید:    
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo nano /etc/apache2/mods-enabled/dir.conf`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+    <p>
+        سپس مقدار آن را به شکل زیر تغییر دهید:    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        پس از ویرایش، Apache را مجدداً راه‌اندازی کنید:
+    </p> 
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo systemctl restart apache2`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+  </>
+  )
+},
+{
+  step: "۸",
+  content: (
+  <>
+    <h3>تست PHP</h3>   
+    <p>
+    یک فایل تستی برای بررسی عملکرد PHP ایجاد کنید:
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php`}
+        </Highlight>
+        
+    </div>
+    <div className="h-2" />  
+    <p>
+    سپس در مرورگر خود آدرس <Important>http://YOUR-IP-ADDRESS/info.php</Important> را باز کنید.
+    </p>
+  </>
+  )
+},
+{
+  step: "۹",
+  content: (
+  <>
+    <h3>اتصال دامنه و فعال‌سازی SSL</h3>   
+    <p>
+    برای اتصال دامنه به سرور و فعال‌سازی SSL، از <a href="/iaas/ubuntu/how-tos/connect-domain/" className="text-[#2196f3]">این راهنما</a> استفاده کنید.
+    </p>
+  </>
+  )
+}
+]}
+/>
+
+<div className="h-4" />  
+
+با اجرای گام‌های فوق، استک LAMP به‌درستی بر روی سرور مجازی شما نصب و پیکربندی خواهد شد.
+
+</Layout>

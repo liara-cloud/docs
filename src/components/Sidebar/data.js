@@ -3397,26 +3397,27 @@ export default {
         title: "تغییر پورت SSH",
         link: "/iaas/ubuntu/how-tos/change-ssh-port",
       },
-      // {
-      //   hr: true
-      // },
-      // {
-      //   badge: (
-      //     <div className="flex items-center gap-2">
-      //     <GoStack  />
-      //       <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی Stack</Link>
-      //     </div>
-      //   )
-      // },
-      // {
-      //   title: "استک LEMP",
-      //   icon: <IconContainer alt="nginx" />,
-      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
-      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <GoStack  />
+          راه‌اندازی Stack
+            {/* <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی Stack</Link> */}
+          </div>
+        )
+      },
+      {
+        title: "استک LEMP",
+        icon: <IconContainer alt="nginx" />,
+        link: "/iaas/ubuntu/how-tos/setup-stack/lemp"
+      },
       // {
       //   title: "استک LAMP",
       //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/apache-logo.webp" />,
-      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      //   link: "/iaas/ubuntu/how-tos/setup-stack/lamp"
       // },
       // // {
       // //   title: "استک MEAN",
