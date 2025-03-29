@@ -3802,6 +3802,11 @@ export default {
         icon: <GoPencil />,
         link: "/iaas/details/reset-root-password",
       },
+      {
+        title: "‌گزارشات شبکه‌ای",
+        icon: <GoGraph />,
+        link: "/iaas/details/network-observation",
+      },
     ],
 
     disks: [

@@ -52,34 +52,18 @@ LVM شامل سه لایه اصلی است: Physical Volume (PV) که شامل �
         title: "ساخت دیسک‌ جدید",
         link: "./create"
       },
-    //   {
-    //     title: "مشاهده اطلاعات  دیسک‌ها",
-    //     link: "./see-disk-details"
-    //   },
-    // //   {
-    // //     title: "افزایش حجم یک دیسک",
-    // //     link: "./increase-value"
-    // //   },
-    //   {
-    //     title: "تعریف مسیر برای دیسک (mount کردن دیسک)",
-    //     link: "./route"
-    //   },
-    //   {
-    //     title: "حذف اتصال دیسک (unmount کردن دیسک)",
-    //     link: "./route"
-    //   },
-    //   {
-    //     title: "کاهش حجم یک دیسک",
-    //     link: "./decrease-value"
-    //   },
-    //   {
-    //     title: "حذف یک دیسک",
-    //     link: "./delete"
-    //   },
-    //   {
-    //     title: "تهیه فایل پشتیبان از دیسک‌",
-    //     link: "./create-backup"
-    //   },
+      {
+        title: "مشاهده دیسک‌ها در سرور",
+        link: "/iaas/disks/see-disk-details"
+      },
+      {
+        title: "اتصال به دیسک (mount)",
+        link: "/iaas/disks/mount"
+      },
+      {
+        title: "قطع اتصال دیسک (unmount)",
+        link: "/iaas/disks/unmount"
+      },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
