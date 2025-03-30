@@ -1,0 +1,158 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیم DNS بر روی سرور مجازی Debian - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تنظیم DNS بر روی سرور مجازی Debian در سرور مجازی Debian در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# تنظیم DNS بر روی سرور مجازی Debian
+<hr className="mb-2" />
+
+شاید بارها برای شما پیش آمده باشد که قصد داشته باشید درون برنامه خود از API یا ویژگی‌های خاص دیگری استفاده کنید؛ اما به هر نحوی (مانند تحریم‌ها) نتوانسته‌اید ارتباط موفقی را در سرور مجازی خود شکل دهید. در این صورت شما بایستی DNS خاصی را بر روی VPS خود تنظیم کنید.
+
+<div className="h-4" />
+
+شما می‌توانید به دو شکل DNS خود را تنظیم کنید. در صورتی که قصد دارید به‌صورت موقتی و تا زمانی که سرور مجازی شما روشن است، DNS فعال باشد، می‌توانید از روش Temporary استفاده کنید. اما در صورتی که قصد دارید DNS خود را به‌صورت دائمی و برای همیشه بر روی سرور مجازی خود فعال داشته باشید، می‌توانید از روش Permanent استفاده کنید.
+
+
+<Tabs 
+    tabs={["Temporary", "Permanent"]} 
+    content={[
+        <>
+            <p>
+                در ابتدا، دستور زیر را اجرا کنید:
+            </p>
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="js">
+                    {`ip link show`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <div className="h-4" />
+
+            <p>
+                با استفاده از دستور فوق، می‌توانید لیست شبکه‌های موجود در سرور مجازی خود را مشاهده کنید.
+            </p>
+            <p>
+                به‌عنوان مثال، <Important>ens33</Important>، نام رابط شبکه‌ای است که در خروجی دستور فوق، قرار گرفته است. در صورتی که نام رابط شبکه شما متفاوت بود، باید از آن استفاده کنید.
+                در ادامه، بایستی دستور زیر را اجرا کنید:
+            </p>
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="js">
+                    {`resolvectl dns ens33 8.8.8.8 8.8.4.4`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+
+            <p>
+                در دستور فوق، به جای <Important>ens33</Important>، نام رابط شبکه خود و به جای <Important>8.8.8.8</Important> و <Important>8.8.4.4</Important>، DNS مورد نظر خود را قرار دهید. 
+                تمامی کارها انجام شده است و اکنون برای بررسی استفاده از DNS خود، می‌توانید دستور زیر را اجرا کنید:
+            </p>
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="js">
+                    {`resolvectl status`}
+                </Highlight>
+            </div>
+            <p>
+                با انجام کارهای فوق، DNSها به‌صورت موقت بر روی سرور مجازی Debian شما تنظیم شده و تا زمان reboot شدن سرور مجازی، باقی می‌مانند.
+            </p>
+        </>,
+
+        <>
+            <p>
+                در ابتدا، با اجرای دستور زیر، بررسی کنید که آیا سرویس <Important>systemd-resolved</Important> فعال است یا خیر:
+            </p>
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="conf">
+                    {`systemctl is-active systemd-resolved`}
+                </Highlight>
+            </div>            
+            <div className="h-2" />
+
+            <p>
+                در صورتی که خروجی دستور فوق، <Important>inactive</Important> بود، دستور زیر را اجرا کنید تا سرویس <Important>systemd-resolved</Important>نصب و فعال شود؛ در غیر این‌صورت، می‌توانید به مرحله بعدی بروید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="js">
+                    {`sudo apt update && sudo apt install -y systemd-resolved && sudo systemctl enable --now systemd-resolved`}
+                </Highlight>
+            </div>            
+            <div className="h-2" />
+            <p>
+                برای تنظیم DNS در ادامه، بایستی فایل <Important>etc/systemd/resolved.conf/</Important> را ویرایش کنید. برای این کار، می‌توانید از ویرایشگر nano استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="js">
+                    {`sudo nano /etc/systemd/resolved.conf`}
+                </Highlight>
+            </div>            
+            <div className="h-2" />
+            <p>
+                در این فایل، بایستی خط <Important>=DNS#</Important> و <Important>=FallbackDNS#</Important> را پیدا کرده، از حالت کامنت خارج کنید (با حذف <Important>#</Important> از ابتدای آن) و سپس مقادیر آن‌ها را مانند شکل زیر، تغییر دهید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="conf">
+                    {`[Resolve]
+DNS=8.8.8.8 8.8.4.4
+FallbackDNS=1.1.1.1 1.0.0.1
+`}
+                </Highlight>
+            </div>            
+            <div className="h-2" />
+            <p>
+                در قطعه کد فوق، به جای <Important>8.8.8.8</Important> و <Important>8.8.4.4</Important> آدرس‌های DNSهای خود را قرار دهید. 
+                در نظر داشته باشید که متغیر <Important>FallbackDNS</Important>، شامل DNSهای پشتیبان شما هست که در صورت عدم دسترسی به DNS اصلی، از آن‌ها استفاده می‌شود.
+            </p>
+            <div className="h-2" />
+            <p>
+                در ادامه، بایستی سرویس <Important>systemd-resolved</Important> را مجدداً راه‌اندازی کنید. برای این کار، می‌توانید از دستور زیر استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="conf">
+                    {`sudo systemctl restart systemd-resolved`}
+                </Highlight>
+            </div>            
+            <div className="h-2" />
+
+            <p>
+                در نهایت، برای بررسی DNSهای تنظیم شده، می‌توانید از دستور زیر استفاده کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="conf">
+                    {`resolvectl status`}
+                </Highlight>
+            </div>            
+            <Asciinema id="run-resolvectl-status-for-vps" />
+        </>
+    ]}
+/>
+
+
+</Layout>

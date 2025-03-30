@@ -3315,7 +3315,7 @@ export default {
       },
       {
         title: "کار با سرور مجازی از طریق API",
-        icon: <GoFileSymlinkFile />,
+        icon: <GoNumber />,
         link: "/iaas/api/about"
       },
       // {
@@ -3396,6 +3396,10 @@ export default {
       {
         title: "تغییر پورت SSH",
         link: "/iaas/ubuntu/how-tos/change-ssh-port",
+      },
+      {
+        title: "تنظیم DNS",
+        link: "/iaas/ubuntu/how-tos/set-dns"
       },
       {
         hr: true
@@ -3597,6 +3601,10 @@ export default {
       {
         title: "تغییر پورت SSH",
         link: "/iaas/debian/how-tos/change-ssh-port",
+      },
+      {
+        title: "تنظیم DNS",
+        link: "/iaas/debian/how-tos/set-dns"
       },
       // {
       //   hr: true
