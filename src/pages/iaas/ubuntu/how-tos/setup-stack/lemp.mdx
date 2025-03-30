@@ -22,7 +22,7 @@ import Head from "next/head";
 # راه اندازی استک LEMP
 <hr className="mb-2" />
 
-استک LEMP یک پیکربندی محبوب برای میزبانی وب‌سایت‌ها و اپلیکیشن‌های تحت وب است که شامل Linux (سیستم‌عامل)، Nginx (وب سرور)، MySQL (پایگاه داده) و PHP (مفسر سمت سرور) می‌شود. در این استک، Nginx جایگزین Apache در <a href="/iaas/ubuntu/how-tos/setup-stack/lemp" className="text-[#2196f3]">استک LAMP</a> شده و به دلیل کارایی بالا، مصرف کمتر منابع و مدیریت بهتر درخواست‌ها، برای پروژه‌های مقیاس‌پذیر گزینه‌ی بهتری محسوب می‌شود.
+استک LEMP یک پیکربندی محبوب برای میزبانی وب‌سایت‌ها و اپلیکیشن‌های تحت وب است که شامل Linux (سیستم‌عامل)، Nginx (وب سرور)، MySQL (پایگاه داده) و PHP (مفسر سمت سرور) می‌شود. در این استک، Nginx جایگزین Apache در <a href="/iaas/ubuntu/how-tos/setup-stack/lamp" className="text-[#2196f3]">استک LAMP</a> شده و به دلیل کارایی بالا، مصرف کمتر منابع و مدیریت بهتر درخواست‌ها، برای پروژه‌های مقیاس‌پذیر گزینه‌ی بهتری محسوب می‌شود.
 در ادامه، نحوه راه‌اندازی استک LEMP در سرور مجازی Ubuntu به‌صورت گام‌به‌گام توضیح داده شده است:
 
 <Step  steps={[
@@ -37,7 +37,7 @@ import Head from "next/head";
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo apt update && sudo apt upgrade -y`}
+            {`sudo apt update`}
         </Highlight>
     </div>
     <div className="h-2" />
@@ -82,11 +82,11 @@ import Head from "next/head";
     <h3>تنظیم فایروال</h3>   
     <p>
         برای تنظیم فایروال، می‌توانید از UFW (Uncomplicated Firewall) استفاده کنید که مستندات نصب و فعال‌سازی آن در <a href="/iaas/ubuntu/how-tos/set-firewall/" className="text-[#2196f3]">اینجا</a> موجود است. 
-        برای اینکه Nginx بتواند ترافیک HTTP و HTTPS را مدیریت کند، باید قوانین مناسب را در فایروا با اجرای دستورات زیر اضافه کنید:
+        برای اینکه Nginx بتواند ترافیک HTTP و HTTPS را مدیریت کند، باید قوانین مناسب را در فایروال با اجرای دستور زیر اضافه کنید:
     </p>
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo ufw allow 'Nginx Full'
+            {`sudo ufw allow 'Nginx HTTP'
 sudo ufw enable`}
         </Highlight>
     </div>
@@ -242,7 +242,7 @@ EXIT;`}
     <div dir='ltr'>
         <Highlight className="bash">
             {`sudo nginx -t
-sudo systemctl restart nginx`}
+sudo systemctl reload nginx`}
         </Highlight>
     </div>
     <div className="h-2" />

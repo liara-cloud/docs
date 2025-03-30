@@ -3414,16 +3414,16 @@ export default {
         icon: <IconContainer alt="nginx" />,
         link: "/iaas/ubuntu/how-tos/setup-stack/lemp"
       },
-      // {
-      //   title: "استک LAMP",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/apache-logo.webp" />,
-      //   link: "/iaas/ubuntu/how-tos/setup-stack/lamp"
-      // },
-      // // {
-      // //   title: "استک MEAN",
-      // //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
-      // //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
-      // // },
+      {
+        title: "استک LAMP",
+        icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/apache-logo.webp" />,
+        link: "/iaas/ubuntu/how-tos/setup-stack/lamp"
+      },
+      {
+        title: "استک MEAN",
+        icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+        link: "/iaas/ubuntu/how-tos/setup-stack/mean"
+      },
       // {
       //   title: "استک MERN",
       //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,

@@ -1,0 +1,418 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "react-highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی استک MEAN - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی استک MEAN در سرور مجازی ابری در لیارا"  />
+<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+</Head>
+# راه‌اندازی استک MEAN
+<hr className="mb-2" />
+
+MEAN یک استک توسعه‌ی وب است که از چهار فناوری اصلی MongoDB (پایگاه داده NoSQL)، Express.js (فریم‌ورک وب برای Node.js)، Angular (فریم‌ورک فرانت‌اند) و Node.js (محیط اجرایی جاوااسکریپت) تشکیل شده است. این استک به توسعه‌دهندگان این امکان را می‌دهد که اپلیکیشن‌های وب پویا و مقیاس‌پذیر بسازند. 
+در ادامه، نحوه راه‌اندازی استک MEAN در سرور مجازی Ubuntu به‌صورت گام‌به‌گام توضیح داده شده است:
+
+<Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>به‌روزرسانی repositoryهای سرور</h3>   
+    <p>
+        با اجرای دستور زیر، repositoryهای سرور را به‌روز کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`sudo apt update`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+  </>
+  )
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>نصب Node.js و NPM</h3>   
+    <p>
+        با اجرای دستورات زیر، نسخه پایدار LTS از Node.js را نصب کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        برای بررسی نصب Node.js و NPM، از دستورات زیر استفاده کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`node -v
+npm -v`}
+        </Highlight>
+    </div>
+    <div className="h-2" />    
+  </>
+  )
+},
+{
+  step: "۳",
+  content: (
+  <>
+    <h3>نصب MongoDB</h3>   
+    <p>
+        برای نصب MongoDB، در ابتدا، دستور زیر را اجرا کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \\
+  sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor && \\
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] \\
+  https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | \\
+  sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list && \\
+sudo apt-get update
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        سپس، دستور زیر را اجرا کنید تا MongoDB نصب شود:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`sudo apt-get install -y mongodb-org`}
+        </Highlight>
+    </div>
+    <div className="h-2" />    
+
+    <p>
+       پس از نصب MongoDB، سرویس آن را با دستورات زیر، فعال‌سازی و راه‌اندازی کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`sudo systemctl daemon-reload
+sudo systemctl start mongod`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        در نهایت، برای اطمینان از اینکه MongoDB به‌درستی نصب شده است، می‌توانید از دستور زیر استفاده کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`sudo systemctl status mongod`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        در صورتی که در خروجی دستور فوق، عبارت <Important>active (running)</Important> را مشاهده کردید، به این معنی است که MongoDB به درستی نصب و اجرا شده است.
+    </p>
+  </>
+  )
+},
+{
+  step: "۴",
+  content: (
+  <>
+    <h3>نصب و راه‌اندازی Express.js</h3>   
+    <p>
+        یک دایرکتوری جدید برای پروژه خود ایجاد کنید و وارد آن شوید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`mkdir mean-app && cd mean-app`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        سپس، با اجرای دستور زیر، یک پروژه جدید Node.js ایجاد کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`npm init -y`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        در ادامه، Express.js را نصب کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`npm install express --save`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        اکنون، یک فایل جدید به نام <Important>server.js</Important> ایجاد کنید و کد زیر را در آن قرار دهید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Express Server is Running');
+});
+
+app.listen(port, () => {
+  console.log(\`Server running on http://localhost:\${port}\`);
+});
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />  
+
+    <p>
+        برای اجرای سرور، می‌توانید از دستور زیر استفاده کنید: 
+    </p> 
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`node server.js`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        با اجرای کار فوق، سرور اجرا می‌شود و می‌توانید با مراجعه به آدرس <Important>http://YOUR-IP-ADDRESS:3000</Important>، وب‌سرور خود را مشاهده کنید.
+        بدیهی است که باید به جای <Important>YOUR-IP-ADDRESS</Important>، آدرس IP سرور خود را قرار دهید.
+    </p>
+    
+  </>
+  )
+},
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>نصب Angular و ایجاد پروژه جدید با آن</h3>   
+    <p>
+     با اجرای دستور زیر، Angular CLI را نصب کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`npm install -g @angular/cli`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        سپس، یک پروژه جدید Angular ایجاد کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`ng new client`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        پس از ایجاد پروژه، وارد دایرکتوری آن شوید و سرور Angular را اجرا کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`cd client
+ng serve --host 0.0.0.0 --port 4200`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        با اجرای کار فوق، سرور Angular اجرا می‌شود و می‌توانید با مراجعه به آدرس <Important>http://YOUR-IP-ADDRESS:4200</Important>، وب‌سرور خود را مشاهده کنید.
+        بدیهی است که باید به جای <Important>YOUR-IP-ADDRESS</Important>، آدرس IP سرور خود را قرار دهید.
+    </p>
+  </>
+  )
+},
+{
+  step: "۶",
+  content: (
+  <>
+    <h3>اتصال Node.js به MongoDB</h3>   
+    <p>
+        برای اتصال Node.js به MongoDB، ابتدا باید <Important>mongoose</Important> را نصب کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`npm install mongoose --save`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        سپس، در فایل <Important>server.js</Important>، کد زیر را اضافه کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://127.0.0.1:27017/meanDB', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        اکنون، می‌توانید سرور را دوباره اجرا کنید تا اتصال به دیتابیس، برقرار شود.
+    </p>
+  </>
+  )
+},
+{
+  step: "۷",
+  content: (
+  <>
+    <h3>ایجاد API با Express</h3>   
+    <p>
+        در فایل <Important>server.js</Important>، یک مدل کاربر ساده ایجاد کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`const UserSchema = new mongoose.Schema({
+  name: String,
+  email: String
+});
+const User = mongoose.model('User', UserSchema);
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        سپس، یک API ساده برای اضافه کردن کاربر ایجاد کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`app.use(express.json());
+
+app.post('/users', async (req, res) => {
+  const newUser = new User(req.body);
+  await newUser.save();
+  res.send(newUser);
+});
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        اکنون، سرور را مجدداً با دستور <Important>node server.js</Important>، اجرا کنید.
+    </p>
+
+  </>
+  )
+},
+{
+  step: "۸",
+  content: (
+  <>
+    <h3>اتصال Angular به API</h3>   
+    <p>
+        در Angular، با اجرای دستور زیر، یک سرویس جدید ایجاد کنید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`ng generate service user`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        سپس، در فایل <Important>user.service.ts</Important>، کد زیر را اضافه کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+            {`import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  private apiUrl = 'http://<your-server-ip>:3000/users';
+
+  constructor(private http: HttpClient) { }
+
+  createUser(user: any) {
+    return this.http.post(this.apiUrl, user);
+  }
+}
+`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+  </>
+  )
+},
+{
+  step: "۹",
+  content: (
+  <>
+    <h3>اتصال دامنه به سرور و فعال‌سازی SSL</h3>   
+    <p>
+        برای اتصال دامنه به سرور و فعال‌سازی SSL، می‌توانید از <a href="/iaas/ubuntu/how-tos/connect-domain/" className="text-[#2196f3]">این راهنما</a> استفاده کنید.
+    </p>
+    <div className="h-2" />  
+  </>
+  )
+},
+
+
+]}
+/>
+
+<div className="h-4" />  
+
+با اجرای قدم به قدم گام‌های فوق، انتظار می‌رود که استک MEAN به‌درستی بر روی سرور مجازی شما نصب و پیکربندی شده باشد.
+
+
+</Layout>

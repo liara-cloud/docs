@@ -38,7 +38,7 @@ import Head from "next/head";
 
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo apt update && sudo apt upgrade -y`}
+            {`sudo apt update`}
         </Highlight>
     </div>
   </>
@@ -87,7 +87,7 @@ import Head from "next/head";
     <div className="h-2" />  
     <div dir='ltr'>
         <Highlight className="bash">
-            {`sudo ufw allow 'Apache Full'
+            {`sudo ufw allow in "Apache"
 sudo ufw enable`}
         </Highlight>
     </div>
@@ -189,7 +189,8 @@ EXIT;`}
   <>
     <h3>تنظیم Apache برای PHP</h3>   
     <p>
-        Apache به‌طور پیش‌فرض فایل <Important>index.html</Important> را در اولویت قرار می‌دهد. برای تغییر این اولویت، باید فایل پیکربندی Apache را ویرایش کنید:    
+        Apache به‌طور پیش‌فرض فایل <Important>index.html</Important> را در اولویت قرار می‌دهد. برای تغییر این اولویت، باید فایل پیکربندی Apache را ویرایش کنید. در ابتدا،
+        فایل مورد نظر را با ویرایشگر مورد نظر خود باز کنید:   
     </p>
     <div className="h-2" />  
     <div dir='ltr'>
@@ -199,10 +200,11 @@ EXIT;`}
     </div>
     <div className="h-2" />  
     <p>
-        سپس مقدار آن را به شکل زیر تغییر دهید:    </p>
+        سپس، محتوای آن را پاک کنید و قطعه کد زیر را درون فایل، قرار دهید:
+    </p>
     <div className="h-2" />  
     <div dir='ltr'>
-        <Highlight className="bash">
+        <Highlight className="conf">
             {`<IfModule mod_dir.c>
     DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
 </IfModule>`}
@@ -226,26 +228,144 @@ EXIT;`}
   step: "۸",
   content: (
   <>
-    <h3>تست PHP</h3>   
+    <h3>ساخت virtual host برای وب‌سایت</h3>   
     <p>
-    یک فایل تستی برای بررسی عملکرد PHP ایجاد کنید:
+      برای میزبانی بیشتر از یک دامنه و وب‌سایت، باید virtual host ایجاد کنید. به‌منظور این کار، متناسب با نام دامنه‌تان، می‌توانید دایرکتوری زیر را ایجاد کنید (به جای <Important>your-domain</Important> نام دامنه یا نام دلخواه خود را وارد کنید):
     </p>
     <div className="h-2" />  
     <div dir='ltr'>
         <Highlight className="bash">
-            {`echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php`}
+            {`sudo mkdir /var/www/your_domain`}
         </Highlight>
-        
     </div>
     <div className="h-2" />  
     <p>
-    سپس در مرورگر خود آدرس <Important>http://YOUR-IP-ADDRESS/info.php</Important> را باز کنید.
+        در ادامه، مالکیت دایرکتوری ساخته شده را با اجرای دستور زیر، به کاربر فعلی که در حال کار با آن هستید، تغییر دهید:
     </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo chown -R $USER:$USER /var/www/your_domain`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+
+    <p>
+      در ادامه، یک فایل پیکربندی در دایرکتوری <Important>sites-available</Important> ایجاد کنید: 
+    </p>
+
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo nano /etc/apache2/sites-available/your_domain.conf`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+    <p>
+      در ادامه، قطعه کد زیر را درون فایل قرار دهید (به جای <Important>your_domain</Important> نام دامنه یا آدرس IP سرور خود را وارد کنید):
+    </p>
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="conf">
+            {`<VirtualHost *:80>
+    ServerName your_domain
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/your_domain
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>`}
+        </Highlight>
+    </div>
+    <div className="h-2" /> 
+
+    <p>
+      برای فعال‌سازی virtual host، دستور زیر را اجرا کنید:   
+    </p> 
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo a2ensite your_domain`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+      برای غیرفعال کردن صفحه پیش‌فرض Apache، دستور زیر را اجرا کنید (در صورتی که قصد ندارید از دامنه خودتان استفاده کنید و فقط قصد استفاده از IP را دارید، اجرای این دستور، ضروری است):
+    </p>
+
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo a2dissite 000-default`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+      برای بررسی اینکه فایل پیکربندی‌تان، خطای نحوی ندارد، دستور زیر را اجرا کنید:
+    </p>
+
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo apache2ctl configtest`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+      در نهایت، Apache را با اجرای دستور زیر، مجدداً راه‌اندازی کنید:
+    </p>
+
+
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`sudo systemctl reload apache2`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
   </>
   )
 },
 {
   step: "۹",
+  content: (
+  <>
+    <h3>ساخت صفحه سایت و تست PHP</h3>   
+    <p>
+      با انجام مراحل فوق، وب‌سایت فعال است؛ اما هنوز صفحه ریشه سایت، خالی است. با اجرای دستور زیر، یک صفحه برای آن 
+      ایجاد کنید:
+    </p>
+
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="bash">
+            {`nano /var/www/your_domain/index.php`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+      سپس کد زیر را درون فایل صفحه ایجاد شده، قرار دهید:
+    </p>
+
+
+    <div className="h-2" />  
+    <div dir='ltr'>
+        <Highlight className="php">
+            {`<?php
+phpinfo();`}
+        </Highlight>
+    </div>
+    <div className="h-2" />
+
+  </>
+  )
+},
+{
+  step: "۱۰",
   content: (
   <>
     <h3>اتصال دامنه و فعال‌سازی SSL</h3>   
@@ -254,7 +374,7 @@ EXIT;`}
     </p>
   </>
   )
-}
+},
 ]}
 />
 
