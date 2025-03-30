@@ -145,7 +145,7 @@ const Header = ({ setShowSidebar }) => {
   };
 
   return (
-    <header className="h-[55px] bg-[#fbfbfb] fixed md:mr-[300px]  top-0 p-2 w-[100vw] md:w-[100%] border-b text-[#707070] border-[#00000015]">
+    <header className="h-[55px] z-[999] bg-[#fbfbfb] fixed md:mr-[300px]  top-0 p-2 w-[100vw] md:w-[100%] border-b text-[#707070] border-[#00000015]">
       <nav className="max-w-[1350px] md:pl-[300px] h-full flex items-center justify-between mx-auto ">
         <Link
           href="/"
