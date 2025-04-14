@@ -22,14 +22,42 @@ import Head from "next/head";
 # اتصال به فضای ذخیره‌سازی ابری در برنامه‌های NextJS
 <hr className="mb-2" />
 
+{/* <Tabs 
+  tabs={["Pages Router", "App Router",]} 
+  content={[
+  <>
+
+    <Tabs 
+      tabs={["Pages Router", "App Router",]} 
+        content={[
+          <>
+            
+    
+          </>,
+
+          <>
+
+          </>
+    ]}
+  />
+
+
+  </>,
+
+  <>
+
+  </>
+  ]}
+/> */}
+
 
 برای استفاده از Object Storage در برنامه‌های NextJS، می‌توانید از 
-پکیج <Important>aws-sdk</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+پکیج‌های <Important>aws-sdk</Important> استفاده کنید که بایستی با دستور زیر، آن‌ها را در پروژه خود، نصب کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`npm install aws-sdk`}
+        {`npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -44,301 +72,309 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
-LIARA_BUCKET_NAME=<Bucket Name>
-LIARA_ACCESS_KEY=<Access Key>
-LIARA_SECRET_KEY=<Secret Key>`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
-در ادامه، مثال‌‌هایی از این مورد برای‌تان آورده شده است (هر مورد یک component جدا در نظر گرفته شده است):
-
-<Section id="upload-download-file" title="نمونه کد آپلود و دانلود فایل" />
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {`import React, { useState } from 'react';
-import { S3 } from 'aws-sdk';
-
-const UploadFile = ({ accessKeyId, secretAccessKey, endpoint, bucket, onUpload }) => {
-  const [file, setFile] = useState(null);
-  const [error, setError] = useState(null);
-  const [uploadLink, setUploadLink] = useState(null);
-  const [permanentLink, setPermanentLink] = useState(null);
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-    setError(null);
-    setUploadLink(null);
-    setPermanentLink(null);
-  };
-
-  const handleUpload = async () => {
-    try {
-      if (!file) {
-        setError('Please select a file');
-        return;
-      }
-
-      const s3 = new S3({
-        accessKeyId,
-        secretAccessKey,
-        endpoint,
-      });
-
-      const params = {
-        Bucket: bucket,
-        Key: file.name,
-        Body: file,
-      };
-
-      const response = await s3.upload(params).promise();
-      const signedUrl = s3.getSignedUrl('getObject', {
-        Bucket: bucket,
-        Key: file.name,
-        Expires: 3600,
-      });
-
-      setUploadLink(signedUrl);
-
-      // Get permanent link
-      const permanentSignedUrl = s3.getSignedUrl('getObject', {
-        Bucket: bucket,
-        Key: file.name,
-        Expires: 31536000, // 1 year
-      });
-      setPermanentLink(permanentSignedUrl);
-
-      onUpload(response);
-
-      console.log('File uploaded successfully');
-    } catch (error) {
-      setError('Error uploading file: ' + error.message);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Upload File to S3</h1>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload} disabled={!file}>
-        Upload
-      </button>
-      {uploadLink && (
-        <h3>
-          File uploaded successfully. Temporary Link:{' '}
-          <a href={uploadLink} target="_blank" rel="noopener noreferrer">
-            Temporary Link
-          </a>
-        </h3>
-      )}
-      {permanentLink && (
-        <h3>
-          Permanent Link:{' '}
-          <a href={permanentLink} target="_blank" rel="noopener noreferrer">
-            Permanent Link
-          </a>
-        </h3>
-      )}
-      {error && <p>{error}</p>}
-    </div>
-  );
-};
-
-export default UploadFile;
+        {`LIARA_ENDPOINT=https://storage.iran.liara.space
+LIARA_BUCKET_NAME=my-bucket-name
+LIARA_ACCESS_KEY=nieiou08cnbod58p
+LIARA_SECRET_KEY=df67ef3e-ccb6-4a25-97ba-3526f33da3fc
 `}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<Section id="list-files" title="نمونه کد لیست اسامی فایل‌ها" />
+<p>
+سپس، می‌توانید در مسیر اصلی پروژه (ریشه پروژه یا اگر که از  دایرکتوری <Important>src</Important> استفاده می‌کنید در داخل این دایرکتوری)، یک فایل جدید به نام <Important>lib/s3.ts</Important> بسازید و کد زیر را در آن قرار دهید: 
+</p>
+
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="js">
-        {`import React, { useState, useEffect } from 'react';
-import { S3 } from 'aws-sdk';
+    <Highlight className="ts">
+        {`// src/lib/s3.ts or /lib/s3.ts
+import { S3Client } from "@aws-sdk/client-s3";
 
-const ListFiles = ({ accessKeyId, secretAccessKey, endpoint, bucket }) => {
-  const [allFiles, setAllFiles] = useState([]);
-  const [error, setError] = useState(null);
-
-  const fetchAllFiles = async () => {
-    const s3 = new S3({
-      accessKeyId,
-      secretAccessKey,
-      endpoint,
-    });
-
-    try {
-      const response = await s3.listObjectsV2({ Bucket: bucket }).promise();
-      setAllFiles(response.Contents);
-    } catch (error) {
-      setError('Error fetching files: ' + error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchAllFiles();
-  }, []);
-
-  return (
-    <div>
-      <h2>All Files:</h2>
-      {error && <p>{error}</p>}
-      {allFiles.length > 0 && (
-        <ul>
-          {allFiles.map((file) => {
-            const s3 = new S3({
-              accessKeyId,
-              secretAccessKey,
-              endpoint,
-            });
-
-            return (
-              <li key={file.Key}>
-                {file.Key}{' '}
-                <a
-                  href={s3.getSignedUrl('getObject', {
-                    Bucket: bucket,
-                    Key: file.Key,
-                    Expires: 3600,
-                  })}
-                  download
-                >
-                  Download
-                </a>{' '}
-                <button onClick={() => handleDeleteFile(file)}>Delete</button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-    </div>
-  );
-};
-
-export default ListFiles;
+export const s3 = new S3Client({
+  region: "default",
+  endpoint: process.env.LIARA_ENDPOINT,
+  credentials: {
+    accessKeyId: process.env.LIARA_ACCESS_KEY!,
+    secretAccessKey: process.env.LIARA_SECRET_KEY!,
+  },
+  forcePathStyle: true,
+});
 `}
     </Highlight>
 </div>
 <div className="h-2" />
 
+<p>
+تمامی کارها انجام شده است و اکنون، می‌توانید APIهای مربوط به S3 را در پروژه خود، استفاده کنید. برای استفاده از APIهای مختلف S3، بایستی ساختار پروژه مانند شکل زیر باشد:
+</p>
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`app/api/storage/ 
+├── upload/route.ts            
+├── list-files/route.ts        
+├── download/route.ts          
+├── presigned/route.ts         
+├── delete/route.ts            
+├── list-buckets/route.ts      
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+<Section id="upload-file" title="نمونه کد آپلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`// src/app/api/storage/upload/route.ts or /app/api/storage/upload/route.ts
+import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { s3 } from "@/lib/s3";
+
+export async function POST(req: Request) {
+  const formData = await req.formData();
+  const file = formData.get("file") as File;
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  const command = new PutObjectCommand({
+    Bucket: process.env.LIARA_BUCKET_NAME,
+    Key: file.name,
+    Body: buffer,
+    ContentType: file.type,
+  });
+
+  await s3.send(command);
+
+  return Response.json({ message: "File uploaded" });
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="presigned-file" title="نمونه کد دریافت لینک موقت فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`// src/app/api/storage/presigned/route.ts or /app/api/storage/presigned/route.ts
+import { GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { s3 } from "@/lib/s3";
+
+export async function POST(req: Request) {
+  const { key } = await req.json();
+
+  const command = new GetObjectCommand({
+    Bucket: process.env.LIARA_BUCKET_NAME,
+    Key: key,
+  });
+
+  const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+
+  return Response.json({ url });
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="list-files" title="نمونه کد لیست کردن فایل‌های داخل باکت" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`// src/app/api/storage/list-files/route.ts or /app/api/storage/list-files/route.ts
+import { ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { s3 } from "@/lib/s3";
+
+export async function GET() {
+  const command = new ListObjectsV2Command({
+    Bucket: process.env.LIARA_BUCKET_NAME,
+  });
+
+  const data = await s3.send(command);
+  return Response.json({ files: data.Contents });
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="list-buckets" title="نمونه کد لیست کردن باکت‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`// src/app/api/storage/list-buckets/route.ts or /app/api/storage/list-buckets/route.ts
+import { ListBucketsCommand } from "@aws-sdk/client-s3";
+import { s3 } from "@/lib/s3";
+
+export async function GET() {
+  const command = new ListBucketsCommand({});
+  const data = await s3.send(command);
+  return Response.json({ buckets: data.Buckets });
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
 <Section id="delete-file" title="نمونه کد حذف فایل" />
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="js">
-        {`import React from 'react';
-import { S3 } from 'aws-sdk';
+    <Highlight className="ts">
+        {`// src/app/api/storage/delete/route.ts or /app/api/storage/delete/route.ts
+import { DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { s3 } from "@/lib/s3";
 
-const DeleteFile = ({ accessKeyId, secretAccessKey, endpoint, bucket, fileKey, onDelete }) => {
-  const handleDeleteFile = async () => {
-    const s3 = new S3({
-      accessKeyId,
-      secretAccessKey,
-      endpoint,
+export async function DELETE(req: Request) {
+  const { key } = await req.json();
+
+  const command = new DeleteObjectCommand({
+    Bucket: process.env.LIARA_BUCKET_NAME,
+    Key: key,
+  });
+
+  await s3.send(command);
+
+  return Response.json({ message: "File deleted" });
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="create-ui-for-s3" title="ایجاد رابط کاربری برای کار با S3" />
+
+روش‌های زیادی برای استفاده از S3 وجود دارد. یکی از این راه‌ها، ایجاد رابط کاربری است که می‌توان با استفاده از ابزار <Important>shadcn</Important> یک رابط کاربری زیبا و ساده ایجاد کرد. برای استفاده از این ابزار، در ابتدا، آن را با اجرای دستور زیر، نصب کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`npx shadcn@latest init`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس با اجرای دستور زیر، کامپوننت‌های مورد نیاز برنامه را نصب کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`npx shadcn@latest add button input card`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، در مسیر اصلی پروژه، یک فایل جدید به نام <Important>app/storage/page.tsx</Important> بسازید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`// src/app/storage/page.tsx or /app/storage/page.tsx
+'use client';
+
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
+import { toast } from 'sonner';
+
+export default function FileManager() {
+  const [files, setFiles] = useState<any[]>([]);
+  const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchFiles = async () => {
+    const res = await fetch('/api/storage/list-files');
+    const data = await res.json();
+    setFiles(data.files || []);
+  };
+
+  const uploadFile = async () => {
+    if (!file) return;
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+    const res = await fetch('/api/storage/upload', {
+      method: 'POST',
+      body: formData,
     });
-
-    try {
-      await s3.deleteObject({ Bucket: bucket, Key: fileKey }).promise();
-      onDelete(fileKey);
-      console.log('File deleted successfully');
-    } catch (error) {
-      console.error('Error deleting file: ', error);
+    setLoading(false);
+    if (res.ok) {
+      toast.success('Upload Successful');
+      fetchFiles();
+    } else {
+      toast.error('Error uploading file');
     }
   };
 
-  return (
-    <button onClick={handleDeleteFile}>
-      Delete
-    </button>
-  );
-};
-
-export default DeleteFile;
-`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-<Section id="list-buckets" title="نمونه کد فایل اصلی برای استفاده" />
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {`import React, { useState } from 'react';
-import UploadFile from './UploadFile';
-import ListFiles from './ListFiles';
-import DeleteFile from './DeleteFile';
-
-const App = () => {
-  const ACCESSKEY = 'your-access-key'; // or process.env.LIARA_ACCESS_KEY;
-  const SECRETKEY = 'your-secret-key'; // or process.env.LIARA_SECRET_KEY;
-  const ENDPOINT = 'https://storage.iran.liara.space'; // or process.env.LIARA_ENDPOINT;
-  const BUCKET = 'your-bucket-name'; // or process.env.LIARA_BUCKET_NAME;
-
-  const [uploadedFiles, setUploadedFiles] = useState([]);
-
-  const handleUpload = (file) => {
-    setUploadedFiles((prevFiles) => [...prevFiles, file]);
+  const deleteFile = async (key: string) => {
+    const res = await fetch('/api/storage/delete', {
+      method: 'DELETE',
+      body: JSON.stringify({ key }),
+    });
+    if (res.ok) {
+      toast.success('File deleted successfully');
+      fetchFiles();
+    } else {
+      toast.error('Error deleting file');
+    }
   };
 
-  const handleDelete = (fileKey) => {
-    setUploadedFiles((prevFiles) => prevFiles.filter((file) => file.Key !== fileKey));
+  const downloadFile = async (key: string) => {
+    const res = await fetch('/api/storage/presigned', {
+      method: 'POST',
+      body: JSON.stringify({ key }),
+    });
+    const data = await res.json();
+    window.open(data.url, '_blank');
   };
 
+  useEffect(() => {
+    fetchFiles();
+  }, []);
+
   return (
-    <div>
-      <UploadFile
-        accessKeyId={ACCESSKEY}
-        secretAccessKey={SECRETKEY}
-        endpoint={ENDPOINT}
-        bucket={BUCKET}
-        onUpload={handleUpload}
-      />
-      <ListFiles
-        accessKeyId={ACCESSKEY}
-        secretAccessKey={SECRETKEY}
-        endpoint={ENDPOINT}
-        bucket={BUCKET}
-      />
-      <div>
-        <h2>Uploaded Files:</h2>
-        <ul>
-          {uploadedFiles.map((file) => (
-            <li key={file.Key}>
-              {file.Key}{' '}
-              <DeleteFile
-                accessKeyId={ACCESSKEY}
-                secretAccessKey={SECRETKEY}
-                endpoint={ENDPOINT}
-                bucket={BUCKET}
-                fileKey={file.Key}
-                onDelete={handleDelete}
-              />
-            </li>
-          ))}
-        </ul>
+    <div className="p-4 max-w-2xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Managing Files</h1>
+
+      <div className="flex gap-2 mb-4">
+        <Input type="file" onChange={(e) => setFile(e.target.files?.[0] || null)} />
+        <Button onClick={uploadFile} disabled={loading || !file}>
+          {loading ? 'Uploading...' : 'Uploading file'}
+        </Button>
+      </div>
+
+      <div className="grid gap-2">
+        {files.map((file) => (
+          <Card key={file.Key} className="flex items-center justify-between p-2">
+            <CardContent className="flex-1 truncate">{file.Key}</CardContent>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => downloadFile(file.Key)}>Download</Button>
+              <Button variant="destructive" onClick={() => deleteFile(file.Key)}>Delete</Button>
+            </div>
+          </Card>
+        ))}
       </div>
     </div>
   );
-};
-
-export default App;
+}
 `}
     </Highlight>
 </div>
 <div className="h-2" />
 
-{/* 
-<Section id="upload-file" title="نمونه کد آپلود فایل" />
+
+تمامی کارها انجام شده است و شما می‌توانید پس از اجرای پروژه، وارد صفحه <Important>storage/</Important> شوید و فایل‌های خود را در فضای ذخیره‌سازی ابری، مدیریت کنید.
+
 <div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {``}
-    </Highlight>
-</div>
-<div className="h-2" /> */}
+<Alert variant="success">
+<p>
+یک پروژه آماده استقرار در <a target="_blank" href="https://github.com/liara-cloud/nextjs-getting-started/tree/object-storage" className="text-[#2196f3] ">گیت‌هاب لیارا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
 
 </Layout>
