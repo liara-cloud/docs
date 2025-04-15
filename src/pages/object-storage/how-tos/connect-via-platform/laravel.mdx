@@ -37,12 +37,12 @@ import Head from "next/head";
 </Alert>
 
 برای استفاده از Object Storage در برنامه‌های Laravel، می‌توانید از 
-پکیج <Important>league/flysystem-aws-s3</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+پکیج <Important>league/flysystem-aws-s3-v3</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`composer require league/flysystem-aws-s3-v3 "^3.0"`}
+        {`composer require league/flysystem-aws-s3-v3`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -52,245 +52,329 @@ import Head from "next/head";
 برای شما قرار گرفته است.
 در نهایت نیز، بایستی 
 اطلاعات مربوط به Object Storage خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال (در صورتی که متغیرهای زیر از قبل تعریف شده بودند، فقط آن‌ها را مقداردهی کنید):
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`ENDPOINT_URL=https://<Endpoint>
-ACCESS_KEY=<Access Key>
-SECRET_KEY=<Secret Key>
-BUCKET_NAME=<Bucket Name>
-DEFAULT_REGION=us-east-1`}
+        {`AWS_ACCESS_KEY_ID=nieiou08cnbod58p
+AWS_SECRET_ACCESS_KEY=c2a8704a-c200-4848-82ca-2ddad28c12f1
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=bucket-name
+AWS_USE_PATH_STYLE_ENDPOINT=true
+AWS_ENDPOINT=https://storage.iran.liara.space`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-در ادامه، قطعه کد زیر را به <Important>config/filesystems.php</Important> اضافه کنید:
+در ادامه، قطعه کد زیر را در <Important>config/filesystems.php</Important> بررسی کنید و در صورت عدم وجود، آن را اضافه کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="php">
-        {`'liara' => [
-    'driver' => 's3',
-    'endpoint' => env('ENDPOINT_URL'),
-    'key' => env('ACCESS_KEY'),
-    'secret' => env('SECRET_KEY'),
-    'region' => env('DEFAULT_REGION'),
-    'bucket' => env('BUCKET_NAME'),
-],`}
+        {`'s3' => [
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_URL'),
+            'endpoint' => env('AWS_ENDPOINT'),
+            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+            'throw' => false,
+            'report' => false,
+        ],
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
-در ادامه، مثالی از این مورد برای‌تان آورده شده است.
-<div className="h-2" />
+به عنوان مثال، 
+می‌توانید با اجرای دستورات زیر، در پروژه خود، 
+برای هر عملیات در فضای ذخیره‌سازی ابری، یک کنترلر ایجاد کنید:
 
-می‌توانید در پروژه خود، یک کنترلر به نام <Important>S3Controller.php</Important> در مسیر <Important>app/Http/Controllers</Important> ایجاد کنید. بعد از ایجاد فایل مذکور، کافیست تا محتوای آن را به شکل زیر بنویسید:
+
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="php">
-        {`<?php
+    <Highlight className="bash">
+        {`php artisan make:controller S3/StorageController
+php artisan make:controller S3/UploadController
+php artisan make:controller S3/DownloadController
+php artisan make:controller S3/DeleteController
+php artisan make:controller S3/PresignedController`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
-namespace App\\Http\\Controllers;
 
-use Illuminate\\Http\\Request;
-use Illuminate\\Support\\Facades\\Storage;
+<Section id="list-files" title="نمونه کد برای نمایش فایل‌های یک باکت و اسامی باکت‌ها " />
 
-class S3Controller extends Controller
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {` // app/Http/Controllers/S3/StorageController.php
+<?php
+
+namespace App\Http\Controllers\S3;
+
+use App\Http\Controllers\Controller; 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+
+class StorageController extends Controller
 {
-    public function showUserInterface()
+    public function index()
     {
-        return view('userinterface');
-    }
+        $files = Storage::disk('s3')->allFiles();
+        $buckets = ['default' => config('filesystems.disks.s3.bucket')]; 
 
-    public function uploadFile(Request $request)
-    {
-        $request->validate([
-            'upload_file' => 'required|max:2048', // Adjust the file size validation as needed
-        ]);
-
-        $file = $request->file('upload_file');
-        $fileName = $file->getClientOriginalName();
-
-        $uploaded = Storage::disk('liara')->put($fileName, file_get_contents($file));
-
-        if($uploaded)
-          return redirect()->route('user.interface')->with('success', 'File uploaded successfully');
-        else
-          return redirect()->route('user.interface')->with('error', 'Something went wrong');
-
-    }
-
-    public function showObjects()
-    {
-        $objects = Storage::disk('liara')->allFiles('');
-    
-        $files = [];
-        foreach ($objects as $object) {
-            $files[] = [
-                'name' => $object,
-                'download_link' => Storage::disk('liara')->temporaryUrl($object, now()->addMinutes(5)),
-            ];
-        }
-    
-        return view('userinterface', ['files' => $files]);
-    }
-    
-
-    public function downloadFile(Request $request)
-    {
-        $fileName = $request->input('download_file');
-        return Storage::disk('liara')->download($fileName);
-    }
-
-    public function deleteFile(Request $request)
-    {
-        $fileName = $request->input('delete_file');
-        Storage::disk('liara')->delete($fileName);
-        
-        return redirect()->route('user.interface')->with('success', 'File deleted successfully');
+        return view('s3-storage', compact('files', 'buckets'));
     }
 }`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-اکنون، می‌بایست یک فایل به نام <Important>userinterface.blade.php</Important> در مسیر <Important>/resources/views</Important>ایجاد کنید و قطعه کد زیر را درون آن قرار دهید:
+
+<Section id="upload-file" title="نمونه کد برای آپلود فایل در باکت و مشاهده لینک دائمی آن" />
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="php">
+    <Highlight className="laravel">
+        {`// app/Http/Controllers/S3/UploadController.php
+<?php
+
+namespace App\Http\Controllers\S3;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+
+class UploadController extends Controller
+{
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file',
+        ]);
+
+        $file = $request->file('file');
+        $path = $file->store('', 's3'); 
+
+        
+        $permanentLink = Storage::disk('s3')->url($path);
+
+        return redirect()->route('s3.index')->with('success', 'File uploaded successfully.')
+                         ->with('permanentLink', $permanentLink);
+    }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="download-file" title="نمونه کد برای دانلود فایل از باکت " />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`// app/Http/Controllers/S3/DownloadController.php
+<?php
+
+namespace App\Http\Controllers\S3;
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
+
+class DownloadController extends Controller
+{
+    public function download($file)
+    {
+        if (!Storage::disk('s3')->exists($file)) {
+            return back()->withErrors(['error' => 'File not found.']);
+        }
+
+        return Storage::disk('s3')->download($file);
+    }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="delete-file" title="نمونه کد برای حذف فایل از باکت " />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`// app/Http/Controllers/S3/DeleteController.php
+<?php
+
+namespace App\Http\Controllers\S3;
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
+
+class DeleteController extends Controller
+{
+    public function delete($file)
+    {
+        if (!Storage::disk('s3')->exists($file)) {
+            return back()->withErrors(['error' => 'File not found.']);
+        }
+
+        Storage::disk('s3')->delete($file);
+
+        return redirect()->route('s3.index')->with('success', 'File deleted successfully.');
+    }
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="presigned-url" title="نمونه کد برای ایجاد لینک موقت برای فایل‌ها " />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`// app/Http/Controllers/S3/PresignedController.php
+<?php
+
+namespace App\Http\Controllers\S3;
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
+
+class PresignedController extends Controller
+{
+    public function generatePresignedUrl($file)
+    {
+        if (!Storage::disk('s3')->exists($file)) {
+            return back()->withErrors(['error' => 'File not found.']);
+        }
+
+        $url = Storage::disk('s3')->temporaryUrl($file, now()->addHours(1));
+
+        return response()->json(['url' => $url]);
+    }
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای استفاده از کنترلرها، بایستی قطعه کد زیر را، به فایل <Important>web.php</Important> در مسیر <Important>routes</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="laravel">
+        {`use App\Http\Controllers\S3\StorageController;
+use App\Http\Controllers\S3\UploadController;
+use App\Http\Controllers\S3\DownloadController;
+use App\Http\Controllers\S3\DeleteController;
+use App\Http\Controllers\S3\PresignedController;
+
+Route::prefix('s3-storage')->group(function () {
+    Route::get('/', [StorageController::class, 'index'])->name('s3.index');
+    Route::post('/upload', [UploadController::class, 'upload'])->name('s3.upload');
+    Route::get('/download/{file}', [DownloadController::class, 'download'])->name('s3.download');
+    Route::delete('/delete/{file}', [DeleteController::class, 'delete'])->name('s3.delete');
+    Route::get('/presigned/{file}', [PresignedController::class, 'generatePresignedUrl'])->name('s3.presigned');
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در نهایت، کافیست تا یک فایل Blade به نام <Important>s3-storage.blade.php</Important> در پوشه <Important>resources/views</Important>، ایجاد کنید و قطعه کد زیر را درون آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="blade">
         {`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S3 Controller User Interface</title>
-
-    <!-- Add some simple styles for a cleaner look -->
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px;
-            margin: 5px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .error-message {
-            color: #f44336;
-            margin-top: 5px;
-        }
-    </style>
+    <title>S3 Storage Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>S3 Controller User Interface</h1>
+<div class="container mt-5">
+    <h1>S3 Storage Management</h1>
 
     @if(session('success'))
-        <div style="color: green">{{ session('success') }}</div>
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if(session('permanentLink'))
+        <div class="alert alert-info">
+            Permanent Link: <a href="{{ session('permanentLink') }}" target="_blank">{{ session('permanentLink') }}</a>
+        </div>
     @endif
 
     @if(session('error'))
-        <div style="color: red">{{ session('error') }}</div>
+        <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    <form action="{{ route('upload.file') }}" method="post" enctype="multipart/form-data">
+    <h3>Buckets</h3>
+    <ul>
+        @foreach($buckets as $name => $bucket)
+            <li>{{ $name }}: {{ $bucket }}</li>
+        @endforeach
+    </ul>
+
+    <h3>Files</h3>
+    <form action="{{ route('s3.upload') }}" method="POST" enctype="multipart/form-data" class="mb-3">
         @csrf
-        <input type="file" name="upload_file" style="margin-right: 10px;">
-        <button type="submit">Upload File</button>
-        @error('upload_file')
-            <div class="error-message">{{ $message }}</div>
-        @enderror
+        <input type="file" name="file" class="form-control">
+        <button type="submit" class="btn btn-primary mt-2">Upload</button>
     </form>
 
-    <form action="{{ route('show.objects') }}" method="post" style="margin-top: 20px;">
-        @csrf
-        <button type="submit">Show Objects</button>
-    </form>
-
-    @if(isset($files) && count($files) > 0)
-        <ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>File</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach($files as $file)
-                <li>
-                    <span>{{ $file['name'] }}</span>
-                    <div>
-                        <form action="{{ route('download.file') }}" method="post" style="display: inline-block;">
+                <tr>
+                    <td>{{ $file }}</td>
+                    <td>
+                        <a href="{{ route('s3.download', $file) }}" class="btn btn-sm btn-info">Download</a>
+                        <a href="#" onclick="getPresignedUrl('{{ route('s3.presigned', $file) }}')" class="btn btn-sm btn-secondary">Get Pre-Signed URL</a>
+                        <a href="{{ Storage::disk('s3')->url($file) }}" target="_blank" class="btn btn-sm btn-success">Get Permanent Link</a>
+                        <form action="{{ route('s3.delete', $file) }}" method="POST" style="display:inline;">
                             @csrf
-                            <input type="hidden" name="download_file" value="{{ $file['name'] }}">
-                            <button type="submit">Download</button>
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
-                        <form action="{{ route('delete.file') }}" method="post" style="display: inline-block;">
-                            @csrf
-                            <input type="hidden" name="delete_file" value="{{ $file['name'] }}">
-                            <button type="submit" style="background-color: #f44336;">Delete</button>
-                        </form>
-                    </div>
-                </li>
+                    </td>
+                </tr>
             @endforeach
-        </ul>
-    @endif
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function getPresignedUrl(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                alert('Pre-Signed URL: ' + data.url);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
 </body>
 </html>`}
     </Highlight>
 </div>
 <div className="h-2" />
-
-پس از این کار، کافیست تا قطعه کد زیر را در فایل <Important>web.php</Important> در مسیر <Important>routes</Important> وارد کنید:
-
-
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="php">
-        {`use AppHttpControllersS3Controller;
-
-Route::get('/userinterface', function () {
-    return view('userinterface');
-});
-
-Route::get('/userinterface', [S3Controller::class, 'showUserInterface'])->name('user.interface');
-Route::post('/upload-file', [S3Controller::class, 'uploadFile'])->name('upload.file');
-Route::post('/show-objects', [S3Controller::class, 'showObjects'])->name('show.objects');
-Route::post('/retrieve-file', [S3Controller::class, 'retrieveFile'])->name('retrieve.file');
-Route::post('/delete-file', [S3Controller::class, 'deleteFile'])->name('delete.file');
-Route::post('/download-file', [S3Controller::class, 'downloadFile'])->name('download.file');`}
-    </Highlight>
-</div>
-<div className="h-2" />
-می‌توانید پس از اجرای برنامه، در مسیر <Important>userinterface/</Important> از فضای ذخیره‌سازی ابری لیارا استفاده کنید؛ با استفاده از قطعه کدهای فوق، شما می‌توانید فایل‌های مدنظرتان را در فضای ذخیره‌سازی ابری لیارا آپلود کنید، دانلود کنید، حذف کنید و یا یک لیست از آن‌ها داشته باشید. بدیهی است که برای تغییر قابلیت‌ها و موارد استفاده، می‌توانید کدهای بالا را شخصی‌سازی کنید.
+می‌توانید پس از اجرای برنامه، در مسیر <Important>s3-storage/</Important> از فضای ذخیره‌سازی ابری لیارا استفاده کنید. 
 
 </Layout>
