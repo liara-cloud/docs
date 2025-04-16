@@ -16,8 +16,8 @@ const flask = () => {
       <Head>
         <title>مستندات - آموزش استفاده از لیارا</title>
         <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم Flask"  />
-        <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم Flask" />
+        <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
       </Head>
 
       <Button
@@ -40,39 +40,39 @@ const flask = () => {
         links={[
           {
             videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
-            link: "https://files.liara.ir/liara/flask/course/e00-intro-to-project.mp4",
+            link: "https://media.liara.ir/flask/course/e00-intro-to-project.mp4",
           },
           {
             videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از local",
-            link: "https://files.liara.ir/liara/flask/course/e01-connect-db-locally.mp4",
+            link: "https://media.liara.ir/flask/course/e01-connect-db-locally.mp4",
           },
           {
             videoTitle: "جلسه 2: اتصال به سرویس DNS و ایمیل سرور",
-            link: "https://files.liara.ir/liara/flask/course/e02-email-and-dns.mp4",
+            link: "https://media.liara.ir/flask/course/e02-email-and-dns.mp4",
           },
           {
             videoTitle: "جلسه 3: بازیابی دیتابیس از فایل پشتیبان",
-            link: "https://files.liara.ir/liara/flask/course/e03-restore-db.mp4",
+            link: "https://media.liara.ir/flask/course/e03-restore-db.mp4",
           },
           {
             videoTitle: "جلسه 4: اتصال به فضای ذخیره‌سازی ابری لیار",
-            link: "https://files.liara.ir/liara/flask/course/e04-use-bucket.mp4",
+            link: "https://media.liara.ir/flask/course/e04-use-bucket.mp4",
           },
           {
             videoTitle: "جلسه 5: استقرار کامل برنامه در لیارا",
-            link: "https://files.liara.ir/liara/flask/course/e05-deployment-in-liara.mp4",
+            link: "https://media.liara.ir/flask/course/e05-deployment-in-liara.mp4",
           },
           {
             videoTitle: "جلسه 6: مدیریت دیسک‌ها با استفاده از FTP Access",
-            link: "https://files.liara.ir/liara/flask/course/e07-ftp-access-to-disks.mp4",
+            link: "https://media.liara.ir/flask/course/e07-ftp-access-to-disks.mp4",
           },
           {
             videoTitle: "جلسه 7: اتصال دامنه خریداری شده به برنامه",
-            link: "https://files.liara.ir/liara/flask/course/e08-connect-domain-to-app.mp4",
+            link: "https://media.liara.ir/flask/course/e08-connect-domain-to-app.mp4",
           },
           {
             videoTitle: "جلسه 8: راه‌اندازی CI/CD در برنامه",
-            link: "https://files.liara.ir/liara/flask/course/e09-cicd-feature.mp4",
+            link: "https://media.liara.ir/flask/course/e09-cicd-feature.mp4",
           },
         ]}
       />

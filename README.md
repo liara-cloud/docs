@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://files.liara.ir/liara/logos/download.svg" alt="Liar Logo" />
+  <img src="https://media.liara.ir/logos/download.svg" alt="Liar Logo" />
 </p>
 
 ---
