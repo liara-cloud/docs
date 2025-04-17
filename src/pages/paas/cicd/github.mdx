@@ -21,14 +21,14 @@ import Head from "next/head";
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
 <meta property="og:description" content="مستندات مربوط به راه‌اندازی قابلیت CI/CD با استفاده از Github در لیارا"  />
-<meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
 </Head>
 # راه‌اندازی CI/CD در برنامه با Github
 
 <hr className="mb-2" />
 
 <video
-  src="https://files.liara.ir/liara/CICD/cicd-github.mp4"
+  src="https://media.liara.ir/CICD/cicd-github.mp4"
   controls="controls"
   className="block w-full"
   width="100%" />
@@ -81,13 +81,13 @@ jobs:
 برای این کار وارد تنظیمات ریپازیتوری شوید و از منوی Secrets، روی گزینه‌ی Actions کلیک کنید.
 
 <div className="h-4" />
-<img src="https://files.liara.ir/liara/docs/github-action-secrets-setting.png" alt="github actions secret settings"/>
+<img src="https://media.liara.ir/docs/github-action-secrets-setting.png" alt="github actions secret settings"/>
 <div className="h-4" />
 
 سپس برای تعریف یک Secret جدید، روی گزینه‌ی **New repository secret** کلیک کنید. نام این Secret را **LIARA_API_TOKEN** و مقدار آن را از صفحه‌ی کلید <a href="https://console.liara.ir/API" className="text-[#2196f3] ">دسترسی به API</a> کپی کرده و در بخش Value قرار داده و بر روی گزینه‌ی **Add secret** کلیک کنید.
 
 <div className="h-4" />
-<img src="https://files.liara.ir/liara/docs/add-new-secret-in-github-action.png" alt="add-new-secret-in-github-action"/>
+<img src="https://media.liara.ir/docs/add-new-secret-in-github-action.png" alt="add-new-secret-in-github-action"/>
 <div className="h-4" />
 
 در آخر با push کردن فایل <Important>github/workflows/liara.yaml.</Important> در ریپازیتوری GitHub متوجه خواهید شد که یک pipeline به‌صورت خودکار در تب Action ریپازیتوری شما اجرا شده است و شما نیز می‌توانید مراحل استقرار پروژه‌ی خود را در صفحه‌ی تاریخچه دنبال کنید.

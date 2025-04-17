@@ -16,8 +16,8 @@ const Node = () => {
       <Head>
         <title>مستندات - آموزش استفاده از لیارا</title>
         <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم NodeJS"  />
-        <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم NodeJS" />
+        <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
       </Head>
 
       <Button
@@ -40,35 +40,35 @@ const Node = () => {
         links={[
           {
             videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
-            link: "https://files.liara.ir/liara/nodejs/cource/e00-intro-to-project.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e00-intro-to-project.mp4",
           },
           {
             videoTitle: "جلسه 1: اتصال به دیتابیس لیارا از Local",
-            link: "https://files.liara.ir/liara/nodejs/cource/e01-connect-to-database.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e01-connect-to-database.mp4",
           },
           {
             videoTitle: "جلسه 2: اتصال به DNS و Email Server",
-            link: "https://files.liara.ir/liara/nodejs/cource/e02-using-dns-and-email-server.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e02-using-dns-and-email-server.mp4",
           },
           {
             videoTitle: "جلسه 3: استقرار پروژه در لیارا",
-            link: "https://files.liara.ir/liara/nodejs/cource/e03-deployment-in-liara.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e03-deployment-in-liara.mp4",
           },
           {
             videoTitle: "جلسه 4: استفاده از Diskها در پروژه ",
-            link: "https://files.liara.ir/liara/nodejs/cource/e04-using-disks.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e04-using-disks.mp4",
           },
           {
             videoTitle: "جلسه 5: استفاده از باکت لیارا به جای دیسک‌ها",
-            link: "https://files.liara.ir/liara/nodejs/cource/e05-using-buckets.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e05-using-buckets.mp4",
           },
           {
             videoTitle: "جلسه 6: اتصال دامنه به برنامه در لیارا",
-            link: "https://files.liara.ir/liara/nodejs/cource/e06-domain.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e06-domain.mp4",
           },
           {
             videoTitle: "جلسه 7: راه‌اندازی CI/CD در برنامه",
-            link: "https://files.liara.ir/liara/nodejs/cource/e07-cicd-feature.mp4",
+            link: "https://media.liara.ir/nodejs/cource/e07-cicd-feature.mp4",
           },
         ]}
       />

@@ -16,8 +16,8 @@ const Django = () => {
       <Head>
         <title>مستندات - آموزش استفاده از لیارا</title>
         <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم Django"  />
-        <meta property="og:image" content="https://files.liara.ir/liara/logos/liara-poster.jpg" />
+        <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم Django" />
+        <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
       </Head>
 
       <Button className="mb-2 py-1 px-4 rounded-md">
@@ -39,42 +39,42 @@ const Django = () => {
           {
             videoTitle: "جلسه 0: مقدمه‌ای بر پروژه",
             link:
-              "https://files.liara.ir/liara/django/cource/e0-intro-to-project.mp4"
+              "https://media.liara.ir/django/cource/e0-intro-to-project.mp4"
           },
           {
             videoTitle: "جلسه 1: اتصال به سرویس DNS و Email",
             link:
-              "https://files.liara.ir/liara/django/cource/e1-dns-and-email-services.mp4"
+              "https://media.liara.ir/django/cource/e1-dns-and-email-services.mp4"
           },
           {
             videoTitle: "جلسه 2: استقرار برنامه در لیارا",
             link:
-              "https://files.liara.ir/liara/django/cource/e2-deployment-in-liara.mp4"
+              "https://media.liara.ir/django/cource/e2-deployment-in-liara.mp4"
           },
           {
             videoTitle: "جلسه 3: فعال‌سازی حالت Live ایمیل",
             link:
-              "https://files.liara.ir/liara/django/cource/e3-convert-email-to-live-mode.mp4"
+              "https://media.liara.ir/django/cource/e3-convert-email-to-live-mode.mp4"
           },
           {
             videoTitle: "جلسه 4: اتصال دامنه به برنامه",
             link:
-              "https://files.liara.ir/liara/django/cource/e4-connect-to-domain.mp4"
+              "https://media.liara.ir/django/cource/e4-connect-to-domain.mp4"
           },
           {
             videoTitle: "جلسه 5: مدیریت دیسک‌ها با دسترسی FTP",
             link:
-              "https://files.liara.ir/liara/django/cource/e5-managing-disks-using-ftp-access.mp4"
+              "https://media.liara.ir/django/cource/e5-managing-disks-using-ftp-access.mp4"
           },
           {
             videoTitle: "جلسه 6: استفاده از باکت لیارا به جای دیسک‌ها",
             link:
-              "https://files.liara.ir/liara/django/cource/e6-using-s3-instead-of-disks.mp4"
+              "https://media.liara.ir/django/cource/e6-using-s3-instead-of-disks.mp4"
           },
           {
             videoTitle: "جلسه 7: راه‌اندازی CI/CD در برنامه",
             link:
-              "https://files.liara.ir/liara/django/cource/e7-using-cicd-feature.mp4"
+              "https://media.liara.ir/django/cource/e7-using-cicd-feature.mp4"
           }
         ]}
       />

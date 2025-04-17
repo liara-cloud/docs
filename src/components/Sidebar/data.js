@@ -43,7 +43,7 @@ import {
   GoProjectTemplate,
   GoZap,
   GoVersions,
-  GoPackage ,
+  GoPackage,
   GoBug,
   GoPaperclip,
   GoMegaphone,
@@ -72,7 +72,7 @@ import {
   GoLink,
   GoCopy,
   GoDownload,
-  
+
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
@@ -163,7 +163,7 @@ export default {
     },
     {
       title: "تیم‌ها و دسترسی‌ها",
-      icon: <GoPeople   />,
+      icon: <GoPeople />,
       link: "/references/team/about"
     },
     {
@@ -172,7 +172,7 @@ export default {
 
     {
       title: "SLAs",
-      icon: <GoLaw  />,
+      icon: <GoLaw />,
       link: "https://liara.ir/sla/"
     },
     {
@@ -180,7 +180,7 @@ export default {
     },
     {
       title: "تلویزیون لیارا",
-      icon: <GoVideo   />,
+      icon: <GoVideo />,
       link: "/tv"
     },
     {
@@ -188,7 +188,7 @@ export default {
     },
     {
       title: "صفحه وضعیت (Status Page)",
-      icon: <GoStopwatch   />,
+      icon: <GoStopwatch />,
       link: "https://liara.online/"
     },
 
@@ -315,7 +315,7 @@ export default {
       },
       {
         title: "فایل liara.json",
-        icon: <GoFile  />,
+        icon: <GoFile />,
         link: "/paas/liarajson"
       },
       {
@@ -452,7 +452,7 @@ export default {
       },
       {
         title: "فایل liara.json",
-        icon: <GoFile  />,
+        icon: <GoFile />,
         link: "/paas/liarajson"
       },
       {
@@ -589,7 +589,7 @@ export default {
       },
       {
         title: "فایل liara.json",
-        icon: <GoFile  />,
+        icon: <GoFile />,
         link: "/paas/liarajson"
       },
       {
@@ -721,12 +721,12 @@ export default {
       },
       {
         title: "قابلیت CI/CD",
-        icon: <GoWorkflow  />,
+        icon: <GoWorkflow />,
         link: "/paas/cicd/about"
       },
       {
         title: "فایل liara.json",
-        icon: <GoFile  />,
+        icon: <GoFile />,
         link: "/paas/liarajson"
       },
       {
@@ -772,12 +772,12 @@ export default {
       },
       {
         title: "شبکه خصوصی",
-        icon: <GoShieldLock  />,
+        icon: <GoShieldLock />,
         link: "/paas/details/private-network"
       },
       {
         title: "آی‌پی ثابت",
-        icon: <GoNumber  />,
+        icon: <GoNumber />,
         link: "/paas/details/static-ip"
       },
       {
@@ -797,7 +797,7 @@ export default {
       },
       {
         title: "متغیرهای محیطی",
-        icon: <GoKey  />,
+        icon: <GoKey />,
         link: "/paas/details/envs"
       },
       {
@@ -817,7 +817,7 @@ export default {
       },
       {
         title: "استقرار بدون اختلال",
-        icon: <GoGitPullRequest  />,
+        icon: <GoGitPullRequest />,
         link: "/paas/details/zero-downtime-deployment"
       },
       {
@@ -827,7 +827,7 @@ export default {
       },
       {
         title: "تنظیم DNS Server",
-        icon: <GoPlug  />,
+        icon: <GoPlug />,
         link: "/paas/details/dns-server-settings"
       },
       {
@@ -842,17 +842,17 @@ export default {
       },
       {
         title: "حذف یک برنامه",
-        icon: <GoXCircle  />,
+        icon: <GoXCircle />,
         link: "/paas/details/delete-app"
       },
       {
         title: "پروکسی معکوس (reverse)",
-        icon: <GoPaperAirplane  />,
+        icon: <GoPaperAirplane />,
         link: "/paas/details/reverse-proxy"
       },
       {
         title: "قابلیت Basic Auth",
-        icon: <GoLock   />,
+        icon: <GoLock />,
         link: "/paas/details/basic-auth"
       },
     ],
@@ -880,7 +880,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoTools />
+            <GoTools />
             مدیریت دیسک‌ها
           </div>
         )
@@ -911,7 +911,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoIterations />
+            < GoIterations />
             پشتیبان‌گیری از دیسک‌ها
           </div>
         )
@@ -952,7 +952,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoKey />
+            < GoKey />
             دسترسی‌ها
           </div>
         )
@@ -986,8 +986,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoTools />
-          مدیریت دامنه‌ها در برنامه
+            <GoTools />
+            مدیریت دامنه‌ها در برنامه
           </div>
         )
       },
@@ -1052,8 +1052,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoTools />
-          استفاده از CI/CD
+            <GoTools />
+            استفاده از CI/CD
           </div>
         )
       },
@@ -1071,7 +1071,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="nodejs" />
+            <IconContainer alt="nodejs" />
             پلتفرم NodeJS
           </div>
         )
@@ -1088,12 +1088,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/nodejs/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/nodejs/related-links"
       },
       {
@@ -1102,7 +1102,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -1165,7 +1165,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/nodejs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -1221,7 +1221,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -1240,8 +1240,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
@@ -1267,12 +1267,12 @@ export default {
       },
       {
         title: "Hono",
-        icon: <IconContainer alt="https://files.liara.ir/liara/docs/hono-logo-icon.png" />,
+        icon: <IconContainer alt="https://media.liara.ir/docs/hono-logo-icon.png" />,
         link: "/paas/nodejs/related-apps/hono"
       },
       {
         title: "Nitro",
-        icon: <IconContainer alt="https://files.liara.ir/liara/docs/nitro-icon.svg" />,
+        icon: <IconContainer alt="https://media.liara.ir/docs/nitro-icon.svg" />,
         link: "/paas/nodejs/related-apps/nitro"
       },
       {
@@ -1320,7 +1320,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="next" />
+            <IconContainer alt="next" />
             پلتفرم NextJS
           </div>
         )
@@ -1337,12 +1337,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/nextjs/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/nextjs/related-links"
       },
       {
@@ -1351,7 +1351,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -1418,7 +1418,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/nextjs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -1463,14 +1463,14 @@ export default {
         icon: <IconContainer alt="elastic" />,
         link: "/paas/nextjs/how-tos/connect-to-db/elasticsearch"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/paas/nextjs/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -1488,7 +1488,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="laravel" />
+            <IconContainer alt="laravel" />
             پلتفرم Laravel
           </div>
         )
@@ -1505,12 +1505,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/laravel/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/laravel/related-links"
       },
       {
@@ -1519,7 +1519,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -1614,7 +1614,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/laravel/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -1660,7 +1660,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/paas/laravel/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -1683,8 +1683,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
@@ -1708,7 +1708,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="php" />
+            <IconContainer alt="php" />
             پلتفرم PHP
           </div>
         )
@@ -1725,12 +1725,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/php/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/php/related-links"
       },
       {
@@ -1739,7 +1739,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -1810,7 +1810,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/php/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -1856,7 +1856,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/paas/php/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -1875,8 +1875,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
@@ -1890,7 +1890,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="python" />
+            <IconContainer alt="python" />
             پلتفرم Python
           </div>
         )
@@ -1907,12 +1907,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/python/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/python/related-links"
       },
       {
@@ -1921,7 +1921,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -1996,7 +1996,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/python/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -2008,7 +2008,7 @@ export default {
       },
       {
         title: "دیتابیس MSSQL",
-      icon: <IconContainer alt="mssql" />,
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/python/how-tos/connect-to-db/mssql"
       },
       {
@@ -2053,8 +2053,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
@@ -2068,7 +2068,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="django" />
+            <IconContainer alt="django" />
             پلتفرم Django
           </div>
         )
@@ -2085,12 +2085,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/django/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/django/related-links"
       },
       {
@@ -2099,7 +2099,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -2172,14 +2172,14 @@ export default {
         title: "تنظیم لاگ‌ها",
         link: "/paas/django/how-tos/set-logs"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/django/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -2225,7 +2225,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/paas/django/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -2256,8 +2256,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
@@ -2271,7 +2271,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="flask" />
+            <IconContainer alt="flask" />
             پلتفرم Flask
           </div>
         )
@@ -2288,12 +2288,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/flask/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/flask/related-links"
       },
       {
@@ -2302,7 +2302,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -2367,14 +2367,14 @@ export default {
         title: "تنظیم لاگ‌ها",
         link: "/paas/flask/how-tos/set-logs"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/flask/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -2420,7 +2420,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/paas/flask/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -2446,7 +2446,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="netcore" />
+            <IconContainer alt="netcore" />
             پلتفرم NET.
           </div>
         )
@@ -2463,12 +2463,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/dotnet/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/dotnet/related-links"
       },
       {
@@ -2477,7 +2477,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -2530,14 +2530,14 @@ export default {
         title: "استقرار فایل‌های DLL",
         link: "/paas/dotnet/how-tos/deploy-dll-files"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/dotnet/how-tos/connect-to-db/about">اتصال به دیتابیس با Entity Framework</Link>
           </div>
         )
@@ -2580,7 +2580,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/paas/dotnet/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -2598,7 +2598,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="go" />
+            <IconContainer alt="go" />
             پلتفرم Go
           </div>
         )
@@ -2615,12 +2615,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/go/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/go/related-links"
       },
       {
@@ -2629,7 +2629,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -2708,7 +2708,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoDatabase  />
+            <GoDatabase />
             <Link href="/paas/go/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
           </div>
         )
@@ -2720,7 +2720,7 @@ export default {
       },
       {
         title: "دیتابیس MSSQL",
-      icon: <IconContainer alt="mssql" />,
+        icon: <IconContainer alt="mssql" />,
         link: "/paas/go/how-tos/connect-to-db/mssql"
       },
       {
@@ -2748,7 +2748,7 @@ export default {
         icon: <IconContainer alt="elastic" />,
         link: "/paas/go/how-tos/connect-to-db/elastic-search"
       },
-  
+
       // {
       //   hr: true
       // },
@@ -2766,29 +2766,29 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
       {
         title: "Gin",
-        icon: <IconContainer alt="https://files.liara.ir/liara/go/go-gin.ico" />,
+        icon: <IconContainer alt="https://media.liara.ir/go/go-gin.ico" />,
         link: "/paas/go/related-apps/gin"
       },
       {
         title: "Beego",
-        icon: <IconContainer alt="https://files.liara.ir/liara/go/beego.ico" />,
+        icon: <IconContainer alt="https://media.liara.ir/go/beego.ico" />,
         link: "/paas/go/related-apps/beego"
       },
       {
         title: "Echo",
-        icon: <IconContainer alt="https://files.liara.ir/liara/go/echo-icon.png" />,
+        icon: <IconContainer alt="https://media.liara.ir/go/echo-icon.png" />,
         link: "/paas/go/related-apps/echo"
       },
       {
         title: "Fiber",
-        icon: <IconContainer alt="https://files.liara.ir/liara/go/fiber-icon.ico" />,
+        icon: <IconContainer alt="https://media.liara.ir/go/fiber-icon.ico" />,
         link: "/paas/go/related-apps/fiber"
       },
     ],
@@ -2796,7 +2796,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="react" />
+            <IconContainer alt="react" />
             پلتفرم React
           </div>
         )
@@ -2813,12 +2813,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/react/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/react/related-links"
       },
       {
@@ -2827,7 +2827,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -2865,13 +2865,13 @@ export default {
         title: "تنظیم هدرهای امنیتی HTTP",
         link: "/paas/react/how-tos/set-http-security-headers"
       },
-      
+
     ],
     vue: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="vue" />
+            <IconContainer alt="vue" />
             پلتفرم Vue
           </div>
         )
@@ -2888,12 +2888,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/vue/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/vue/related-links"
       },
       {
@@ -2902,7 +2902,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -2936,13 +2936,13 @@ export default {
         title: "تنظیم هدرهای امنیتی HTTP",
         link: "/paas/vue/how-tos/set-http-security-headers"
       },
-      
+
     ],
     angular: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="angularjs" />
+            <IconContainer alt="angularjs" />
             پلتفرم Angular
           </div>
         )
@@ -2959,12 +2959,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/angular/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/angular/related-links"
       },
       {
@@ -2973,7 +2973,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -3011,13 +3011,13 @@ export default {
         title: "تنظیم هدرهای امنیتی HTTP",
         link: "/paas/angular/how-tos/set-http-security-headers"
       },
-      
+
     ],
     static: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="HTML5" />
+            <IconContainer alt="HTML5" />
             پلتفرم Static
           </div>
         )
@@ -3034,12 +3034,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/static/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/static/related-links"
       },
       {
@@ -3048,7 +3048,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -3087,8 +3087,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
@@ -3137,7 +3137,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="docker" />
+            <IconContainer alt="docker" />
             پلتفرم Docker
           </div>
         )
@@ -3154,12 +3154,12 @@ export default {
       },
       {
         title: "استقرار سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/paas/docker/quick-start"
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/paas/docker/related-links"
       },
       {
@@ -3168,7 +3168,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -3215,8 +3215,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip   />
-          برنامه‌های مرتبط
+            <GoPaperclip />
+            برنامه‌های مرتبط
           </div>
         )
       },
@@ -3242,7 +3242,7 @@ export default {
       },
       {
         title: "Deno",
-        icon: <IconContainer alt="https://files.liara.ir/liara/deno/deno-logo.png" />,
+        icon: <IconContainer alt="https://media.liara.ir/deno/deno-logo.png" />,
         link: "/paas/docker/related-apps/deno"
       },
       {
@@ -3287,12 +3287,12 @@ export default {
       },
       {
         title: "Ubuntu",
-        icon: <IconContainer alt="https://files.liara.ir/liara/logos/ubuntu.png" />,
+        icon: <IconContainer alt="https://media.liara.ir/logos/ubuntu.png" />,
         link: "/iaas/ubuntu/getting-started"
       },
       {
         title: "Debian",
-        icon: <IconContainer alt="https://files.liara.ir/liara/logos/debian.png" />,
+        icon: <IconContainer alt="https://media.liara.ir/logos/debian.png" />,
         link: "/iaas/debian/getting-started"
       },
       {
@@ -3332,7 +3332,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://files.liara.ir/liara/logos/ubuntu.png" />
+            <IconContainer alt="https://media.liara.ir/logos/ubuntu.png" />
             سیستم‌عامل Ubuntu
           </div>
         )
@@ -3354,12 +3354,12 @@ export default {
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/iaas/ubuntu/related-links"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/iaas/ubuntu/choose-version"
       },
       {
@@ -3368,7 +3368,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -3407,8 +3407,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoStack  />
-          راه‌اندازی Stack
+            <GoStack />
+            راه‌اندازی Stack
             {/* <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی Stack</Link> */}
           </div>
         )
@@ -3420,27 +3420,27 @@ export default {
       },
       {
         title: "استک LAMP",
-        icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/apache-logo.webp" />,
+        icon: <IconContainer alt="https://media.liara.ir/logos/vps/apache-logo.webp" />,
         link: "/iaas/ubuntu/how-tos/setup-stack/lamp"
       },
       {
         title: "استک MEAN",
-        icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+        icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
         link: "/iaas/ubuntu/how-tos/setup-stack/mean"
       },
       // {
       //   title: "استک MERN",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // },
       // {
       //   title: "استک TICK",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/tick-stack-logo.png" />,
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/tick-stack-logo.png" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // },
       // {
       //   title: "استک ELK",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/elk-stack.svg" />,
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/elk-stack.svg" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // },
       // {
@@ -3499,7 +3499,7 @@ export default {
       //   icon: <IconContainer alt="redis" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
       // },
-      
+
       // {
       //   hr: true
       // },
@@ -3537,7 +3537,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://files.liara.ir/liara/logos/debian.png" />
+            <IconContainer alt="https://media.liara.ir/logos/debian.png" />
             سیستم‌عامل Debian
           </div>
         )
@@ -3559,12 +3559,12 @@ export default {
       },
       {
         title: "لینک‌های مرتبط",
-        icon: <GoMegaphone   />,
+        icon: <GoMegaphone />,
         link: "/iaas/debian/related-links"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/iaas/debian/choose-version"
       },
       {
@@ -3573,7 +3573,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -3624,27 +3624,27 @@ export default {
       // },
       // {
       //   title: "استک LAMP",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/apache-logo.webp" />,
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/apache-logo.webp" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // },
       // // {
       // //   title: "استک MEAN",
-      // //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+      // //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
       // //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // // },
       // {
       //   title: "استک MERN",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/expressjslogo.png" />,
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // },
       // {
       //   title: "استک TICK",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/tick-stack-logo.png" />,
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/tick-stack-logo.png" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // },
       // {
       //   title: "استک ELK",
-      //   icon: <IconContainer alt="https://files.liara.ir/liara/logos/vps/elk-stack.svg" />,
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/elk-stack.svg" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
       // },
       // {
@@ -3703,7 +3703,7 @@ export default {
       //   icon: <IconContainer alt="redis" />,
       //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
       // },
-      
+
       // {
       //   hr: true
       // },
@@ -3766,7 +3766,7 @@ export default {
       },
       {
         title: "آی‌پی سرور مجازی ابری",
-        icon: <GoNumber  />,
+        icon: <GoNumber />,
         link: "/iaas/details/ip"
       },
       {
@@ -3781,24 +3781,24 @@ export default {
       },
       {
         title: "حذف یک سرور مجازی ابری",
-        icon: <GoXCircle  />,
+        icon: <GoXCircle />,
         link: "/iaas/details/delete-server"
       },
       {
         title: "ابزار OpenSSH",
-        icon: <GoTools  />,
+        icon: <GoTools />,
         link: "/iaas/details/openssh-package"
       },
-      
+
       {
         title: "آیدی یک سرور مجازی",
-        icon: <GoCommandPalette   />,
+        icon: <GoCommandPalette />,
         link: "/iaas/details/vm-id",
       },
 
       {
         title: "کلید SSH",
-        icon: <GoKey  />,
+        icon: <GoKey />,
         link: "/iaas/details/ssh-key"
       },
       {
@@ -3842,7 +3842,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoTools />
+            <GoTools />
             مدیریت دیسک‌ها
           </div>
         )
@@ -3965,7 +3965,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoTools />
+            <GoTools />
             روش‌های پشتیبان‌گیری
           </div>
         )
@@ -4012,7 +4012,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoTools />
+            <GoTools />
             کار با API
           </div>
         )
@@ -4217,7 +4217,7 @@ export default {
       },
       {
         title: "شبکه خصوصی",
-        icon: <GoShieldLock  />,
+        icon: <GoShieldLock />,
         link: "/dbaas/details/private-network"
       },
       {
@@ -4237,22 +4237,22 @@ export default {
       },
       {
         title: "حذف یک دیتابیس",
-        icon: <GoXCircle  />,
+        icon: <GoXCircle />,
         link: "/dbaas/details/delete-database"
       },
       {
         title: "لینک‌های اتصال",
-        icon: <GoLink   />,
+        icon: <GoLink />,
         link: "/dbaas/details/connection-links"
       },
       {
         title: "شخصی‌سازی پارامترهای دیتابیس",
-        icon: <GoProjectTemplate    />,
+        icon: <GoProjectTemplate />,
         link: "/dbaas/details/customizing-db-parameters"
       },
       {
         title: "قابلیت Connection Pooling",
-        icon: <GoDiff/>,
+        icon: <GoDiff />,
         link: "/dbaas/details/connection-pool"
       },
     ],
@@ -4260,8 +4260,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="mariadb" />
-            دیتابیس MariaDB 
+            <IconContainer alt="mariadb" />
+            دیتابیس MariaDB
           </div>
         )
       },
@@ -4272,17 +4272,17 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/mariadb/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/mariadb/choose-version"
       },
       {
         title: "ایجاد و مدیریت کاربر جدید",
-        icon: <GoKey  />,
+        icon: <GoKey />,
         link: "/dbaas/mariadb/create-user"
       },
       {
@@ -4291,10 +4291,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/mariadb/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/mariadb/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -4349,8 +4349,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoBrowser   />
-          <Link href="/dbaas/mariadb/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+            <GoBrowser />
+            <Link href="/dbaas/mariadb/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
@@ -4368,7 +4368,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal   />
+            <GoTerminal />
             <Link href="/dbaas/mariadb/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
           </div>
         )
@@ -4387,8 +4387,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoReply    />
-          مدیریت فایل‌های پشتیبان
+            <GoReply />
+            مدیریت فایل‌های پشتیبان
           </div>
         )
       },
@@ -4400,14 +4400,14 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/mariadb/how-tos/restore-backup"
       },
-      
+
     ],
     mysql: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="mysql" />
-            دیتابیس MySQL 
+            <IconContainer alt="mysql" />
+            دیتابیس MySQL
           </div>
         )
       },
@@ -4418,17 +4418,17 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/mysql/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/mysql/choose-version"
       },
       {
         title: "ایجاد و مدیریت کاربر جدید",
-        icon: <GoKey   />,
+        icon: <GoKey />,
         link: "/dbaas/mysql/create-user"
       },
       {
@@ -4437,10 +4437,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/mysql/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/mysql/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -4495,8 +4495,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoBrowser   />
-          <Link href="/dbaas/mysql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+            <GoBrowser />
+            <Link href="/dbaas/mysql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
@@ -4518,7 +4518,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal   />
+            <GoTerminal />
             <Link href="/dbaas/mysql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
           </div>
         )
@@ -4533,8 +4533,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoReply    />
-          مدیریت فایل‌های پشتیبان
+            <GoReply />
+            مدیریت فایل‌های پشتیبان
           </div>
         )
       },
@@ -4546,14 +4546,14 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/mysql/how-tos/restore-backup"
       },
-      
+
     ],
     postgresql: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="postgres" />
-            دیتابیس PostgreSQL 
+            <IconContainer alt="postgres" />
+            دیتابیس PostgreSQL
           </div>
         )
       },
@@ -4564,17 +4564,17 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/postgresql/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/postgresql/choose-version"
       },
       {
         title: "ایجاد و مدیریت کاربر جدید",
-        icon: <GoKey   />,
+        icon: <GoKey />,
         link: "/dbaas/postgresql/create-user"
       },
       {
@@ -4583,10 +4583,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/postgresql/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/postgresql/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -4641,8 +4641,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoBrowser   />
-          <Link href="/dbaas/postgresql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+            <GoBrowser />
+            <Link href="/dbaas/postgresql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
@@ -4660,7 +4660,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal   />
+            <GoTerminal />
             <Link href="/dbaas/postgresql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
           </div>
         )
@@ -4675,8 +4675,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoReply    />
-          مدیریت فایل‌های پشتیبان
+            <GoReply />
+            مدیریت فایل‌های پشتیبان
           </div>
         )
       },
@@ -4688,14 +4688,14 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/postgresql/how-tos/restore-backup"
       },
-      
+
     ],
     mssql: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="mssql" />
-            دیتابیس MSSQL (SQL Server) 
+            <IconContainer alt="mssql" />
+            دیتابیس MSSQL (SQL Server)
           </div>
         )
       },
@@ -4706,17 +4706,17 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/mssql/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/mssql/choose-version"
       },
       {
         title: "ایجاد و مدیریت کاربر جدید",
-        icon: <GoKey   />,
+        icon: <GoKey />,
         link: "/dbaas/mssql/create-user"
       },
       {
@@ -4725,10 +4725,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/mssql/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/mssql/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -4783,8 +4783,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoBrowser   />
-          <Link href="/dbaas/mssql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+            <GoBrowser />
+            <Link href="/dbaas/mssql/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
@@ -4806,7 +4806,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal   />
+            <GoTerminal />
             <Link href="/dbaas/mssql/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
           </div>
         )
@@ -4821,8 +4821,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoReply    />
-          مدیریت فایل‌های پشتیبان
+            <GoReply />
+            مدیریت فایل‌های پشتیبان
           </div>
         )
       },
@@ -4834,13 +4834,13 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/mssql/how-tos/restore-backup"
       },
-      
+
     ],
     mongodb: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="mongodb" />
+            <IconContainer alt="mongodb" />
             دیتابیس MongoDB
           </div>
         )
@@ -4852,17 +4852,17 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/mongodb/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/mongodb/choose-version"
       },
       {
         title: "ایجاد و مدیریت کاربر جدید",
-        icon: <GoKey   />,
+        icon: <GoKey />,
         link: "/dbaas/mongodb/create-user"
       },
       {
@@ -4871,10 +4871,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/mongodb/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/mongodb/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -4929,8 +4929,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoBrowser   />
-          <Link href="/dbaas/mongodb/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+            <GoBrowser />
+            <Link href="/dbaas/mongodb/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
@@ -4944,7 +4944,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal   />
+            <GoTerminal />
             <Link href="/dbaas/mongodb/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
           </div>
         )
@@ -4959,8 +4959,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoReply    />
-          مدیریت فایل‌های پشتیبان
+            <GoReply />
+            مدیریت فایل‌های پشتیبان
           </div>
         )
       },
@@ -4972,13 +4972,13 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/mongodb/how-tos/restore-backup"
       },
-      
+
     ],
     redis: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="redis" />
+            <IconContainer alt="redis" />
             دیتابیس Redis
           </div>
         )
@@ -4990,17 +4990,17 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/redis/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/redis/choose-version"
       },
       {
         title: "ایجاد و مدیریت کاربر جدید",
-        icon: <GoKey   />,
+        icon: <GoKey />,
         link: "/dbaas/redis/create-user"
       },
       {
@@ -5009,10 +5009,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/redis/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/redis/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -5067,8 +5067,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoBrowser   />
-          <Link href="/dbaas/redis/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+            <GoBrowser />
+            <Link href="/dbaas/redis/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
@@ -5082,7 +5082,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal   />
+            <GoTerminal />
             <Link href="/dbaas/redis/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
           </div>
         )
@@ -5097,8 +5097,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoReply    />
-          مدیریت فایل‌های پشتیبان
+            <GoReply />
+            مدیریت فایل‌های پشتیبان
           </div>
         )
       },
@@ -5110,13 +5110,13 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/redis/how-tos/restore-backup"
       },
-      
+
     ],
     'elastic-search': [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="elastic" />
+            <IconContainer alt="elastic" />
             دیتابیس ElasticSearch
           </div>
         )
@@ -5128,12 +5128,12 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/elastic-search/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/elastic-search/choose-version"
       },
       {
@@ -5142,10 +5142,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/elastic-search/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/elastic-search/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -5244,14 +5244,14 @@ export default {
       //   title: "بازیابی فایل پشتیبان",
       //   link: "/dbaas/elastic-search/how-tos/restore-backup"
       // },
-      
+
     ],
 
     rabbitmq: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="rabbitmq" />
+            <IconContainer alt="rabbitmq" />
             پیام‌رسان RabbitMQ
           </div>
         )
@@ -5263,12 +5263,12 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/dbaas/rabbitmq/quick-setup"
       },
       {
         title: "نسخه‌های قابل ارائه",
-        icon: <GoVersions   />,
+        icon: <GoVersions />,
         link: "/dbaas/rabbitmq/choose-version"
       },
       {
@@ -5277,10 +5277,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
-          <Link href="/dbaas/rabbitmq/how-tos/connect-via-platform/about">
-            اتصال از طریق پلتفرم
-          </Link>
+            < GoPackage />
+            <Link href="/dbaas/rabbitmq/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
           </div>
         )
       },
@@ -5335,8 +5335,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <GoBrowser   />
-          <Link href="/dbaas/rabbitmq/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+            <GoBrowser />
+            <Link href="/dbaas/rabbitmq/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
           </div>
         )
       },
@@ -5350,7 +5350,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal   />
+            <GoTerminal />
             اتصال Consumer/Producer
           </div>
         )
@@ -5378,7 +5378,7 @@ export default {
       //   title: "بازیابی فایل پشتیبان",
       //   link: "/dbaas/rabbitmq/how-tos/restore-backup"
       // },
-      
+
     ],
 
 
@@ -5406,7 +5406,7 @@ export default {
       },
       {
         title: "ساخت app با Liara Compose",
-        icon: <GoPencil  />,
+        icon: <GoPencil />,
         link: "/one-click-apps/liara-compose/about"
       },
       {
@@ -5777,7 +5777,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/postiz/favicon.avif" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/postiz/favicon.avif" />
             برنامه Postiz
           </div>
         )
@@ -5789,7 +5789,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/postiz/quick-start"
       },
       {
@@ -5798,7 +5798,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -5813,7 +5813,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/cyberchef/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/cyberchef/favicon.webp" />
             برنامه CyberChef
           </div>
         )
@@ -5825,7 +5825,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/cyberchef/quick-start"
       },
       {
@@ -5834,7 +5834,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -5849,7 +5849,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />
             برنامه Harness
           </div>
         )
@@ -5861,7 +5861,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/harness/quick-start"
       },
       {
@@ -5870,7 +5870,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -5885,7 +5885,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/automatisch/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/automatisch/favicon.webp" />
             برنامه Automatisch
           </div>
         )
@@ -5897,7 +5897,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/automatisch/quick-start"
       },
       {
@@ -5906,7 +5906,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -5921,7 +5921,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/chatwoot/favicon.avif" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/chatwoot/favicon.avif" />
             برنامه chatwoot
           </div>
         )
@@ -5933,7 +5933,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/chatwoot/quick-start"
       },
       {
@@ -5942,7 +5942,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -5957,7 +5957,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/favicon.webp" />
             برنامه Zitadel
           </div>
         )
@@ -5969,7 +5969,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/zitadel/quick-start"
       },
       {
@@ -5978,7 +5978,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -5993,7 +5993,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/activepieces/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/activepieces/favicon.png" />
             برنامه Activepieces
           </div>
         )
@@ -6005,7 +6005,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/activepieces/quick-start"
       },
       {
@@ -6014,7 +6014,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6029,7 +6029,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/favicon.webp" />
             برنامه Teable
           </div>
         )
@@ -6041,7 +6041,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/teable/quick-start"
       },
       {
@@ -6050,7 +6050,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6065,7 +6065,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.webp" />
             برنامه Nocobase
           </div>
         )
@@ -6077,7 +6077,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/nocobase/quick-start"
       },
       {
@@ -6086,7 +6086,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6101,7 +6101,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.webp" />
             برنامه Infisical
           </div>
         )
@@ -6113,7 +6113,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/infisical/quick-start"
       },
       {
@@ -6122,7 +6122,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6137,7 +6137,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/favicon.webp" />
             برنامه Discourse
           </div>
         )
@@ -6149,7 +6149,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/discourse/quick-start"
       },
       {
@@ -6158,7 +6158,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6173,7 +6173,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/wiki-js/wikijs-full-2021-768t-svg-yOi8.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/wiki-js/wikijs-full-2021-768t-svg-yOi8.webp" />
             برنامه Wiki.js
           </div>
         )
@@ -6185,7 +6185,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/wikijs/quick-start"
       },
       {
@@ -6194,7 +6194,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6209,7 +6209,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/favicon.png" />
             برنامه Moodle
           </div>
         )
@@ -6221,7 +6221,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/moodle/quick-start"
       },
       {
@@ -6230,7 +6230,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6244,7 +6244,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.webp" />
             برنامه Kutt
           </div>
         )
@@ -6256,7 +6256,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/kutt/quick-start"
       },
       {
@@ -6265,7 +6265,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6280,7 +6280,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            Liara Compose 
+            Liara Compose
           </div>
         )
       },
@@ -6291,7 +6291,7 @@ export default {
       },
       {
         title: "Liara Compose چیست؟",
-        icon: <GoInfo  />,
+        icon: <GoInfo />,
         link: "/one-click-apps/liara-compose/about"
       },
       {
@@ -6327,7 +6327,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/wordpress/quick-start"
       },
       {
@@ -6336,7 +6336,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6375,7 +6375,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoBug  />
+            <GoBug />
             <Link href="/one-click-apps/wordpress/fix-common-errors/about">رفع خطاهای رایج</Link>
           </div>
         )
@@ -6392,13 +6392,13 @@ export default {
         title: "رفع خطاهای مربوط به دسترسی فایل",
         link: "/one-click-apps/wordpress/fix-common-errors/file-access-errors"
       },
-  
+
     ],
     'headless-chrome': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            برنامه Headless Chrome 
+            برنامه Headless Chrome
           </div>
         )
       },
@@ -6409,7 +6409,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/headless-chrome/quick-start"
       },
       {
@@ -6418,7 +6418,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6453,7 +6453,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            برنامه Soketi 
+            برنامه Soketi
           </div>
         )
       },
@@ -6464,7 +6464,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/soketi/quick-start"
       },
       {
@@ -6473,7 +6473,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6492,7 +6492,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            برنامه ImgProxy 
+            برنامه ImgProxy
           </div>
         )
       },
@@ -6503,7 +6503,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/imgproxy/quick-start"
       },
       {
@@ -6512,7 +6512,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6546,7 +6546,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.webp" />
             برنامه Onedev
           </div>
         )
@@ -6558,7 +6558,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/onedev/quick-start"
       },
       {
@@ -6567,7 +6567,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6581,7 +6581,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.webp" />
             برنامه Drupal
           </div>
         )
@@ -6593,7 +6593,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/drupal/quick-start"
       },
       {
@@ -6602,7 +6602,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6616,7 +6616,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            برنامه Rocket.Chat 
+            برنامه Rocket.Chat
           </div>
         )
       },
@@ -6627,7 +6627,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/rocketchat/quick-start"
       },
       {
@@ -6636,7 +6636,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6650,7 +6650,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/favicon.webp" />
             برنامه FlowiseAI
           </div>
         )
@@ -6662,7 +6662,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/flowise/quick-start"
       },
       {
@@ -6671,7 +6671,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6685,7 +6685,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/pg-hero/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/pg-hero/favicon.png" />
             برنامه PgHero
           </div>
         )
@@ -6697,7 +6697,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/pghero/quick-start"
       },
       {
@@ -6706,7 +6706,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6720,7 +6720,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="strapi" />
+            <IconContainer alt="strapi" />
             برنامه Strapi
           </div>
         )
@@ -6732,16 +6732,16 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/strapi/quick-start"
       },
-      
+
     ],
     metabase: [
       {
         badge: (
           <div className="flex items-center gap-2">
-            برنامه Metabase 
+            برنامه Metabase
           </div>
         )
       },
@@ -6752,7 +6752,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/metabase/quick-start"
       },
       // {
@@ -6786,7 +6786,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/nextcloud/quick-start"
       },
       {
@@ -6795,7 +6795,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6820,7 +6820,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/gitea/quick-start"
       },
       {
@@ -6829,7 +6829,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6854,7 +6854,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/mattermost/quick-start"
       },
       {
@@ -6863,7 +6863,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6888,7 +6888,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/kibana/quick-start"
       },
       // {
@@ -6922,7 +6922,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/grafana/quick-start"
       },
       {
@@ -6931,7 +6931,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6945,7 +6945,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/favicon.webp" />
             برنامه Umami
           </div>
         )
@@ -6957,7 +6957,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/umami/quick-start"
       },
       {
@@ -6966,7 +6966,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -6980,7 +6980,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/etherpad/favicon.ico" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/etherpad/favicon.ico" />
             برنامه Etherpad
           </div>
         )
@@ -6992,7 +6992,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/etherpad/quick-start"
       },
       {
@@ -7001,7 +7001,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7015,7 +7015,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.webp" />
             برنامه Vikunja
           </div>
         )
@@ -7027,7 +7027,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/vikunja/quick-start"
       },
       {
@@ -7036,7 +7036,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7061,7 +7061,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/prestashop/quick-start"
       },
       {
@@ -7070,7 +7070,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7095,7 +7095,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/vscode/quick-start"
       },
       {
@@ -7104,7 +7104,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7129,7 +7129,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/odoo/quick-start"
       },
       {
@@ -7138,7 +7138,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7163,7 +7163,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/ghost/quick-start"
       },
       {
@@ -7172,7 +7172,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7197,7 +7197,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/n8n/quick-start"
       },
       {
@@ -7206,7 +7206,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7231,7 +7231,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/pocketbase/quick-start"
       },
       // {
@@ -7265,7 +7265,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/matomo/quick-start"
       },
       {
@@ -7274,7 +7274,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7299,7 +7299,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/unleash/quick-start"
       },
       {
@@ -7308,7 +7308,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7333,7 +7333,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/uptime-kuma/quick-start"
       },
       {
@@ -7342,7 +7342,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7371,7 +7371,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/ackee/quick-start"
       },
       {
@@ -7380,7 +7380,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7405,7 +7405,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/appsmith/quick-start"
       },
       {
@@ -7414,7 +7414,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7443,7 +7443,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/varnish/quick-start"
       },
       {
@@ -7452,7 +7452,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7481,7 +7481,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/apache-answer/quick-start"
       },
       {
@@ -7490,7 +7490,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7519,7 +7519,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/nocodb/quick-start"
       },
       {
@@ -7528,7 +7528,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7553,7 +7553,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/chroma/quick-start"
       },
       {
@@ -7562,7 +7562,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7587,7 +7587,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/meilisearch/quick-start"
       },
       {
@@ -7596,7 +7596,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7609,7 +7609,7 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/meilisearch/how-tos/choose-version"
       },
-    ], 
+    ],
     listmonk: [
       {
         badge: (
@@ -7625,7 +7625,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/listmonk/quick-start"
       },
       {
@@ -7634,7 +7634,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7643,7 +7643,7 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/listmonk/how-tos/choose-version"
       },
-    ], 
+    ],
 
     'jupyter-notebook': [
       {
@@ -7660,7 +7660,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/jupyter-notebook/quick-start"
       },
       {
@@ -7669,7 +7669,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7678,7 +7678,7 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/jupyter-notebook/how-tos/choose-version"
       },
-    ], 
+    ],
     supertokens: [
       {
         badge: (
@@ -7694,7 +7694,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/supertokens/quick-start"
       },
       {
@@ -7703,7 +7703,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7716,12 +7716,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/supertokens/how-tos/choose-version"
       },
-    ], 
+    ],
     directus: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.webp" />
             برنامه Directus
           </div>
         )
@@ -7733,7 +7733,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/directus/quick-start"
       },
       {
@@ -7742,7 +7742,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7751,12 +7751,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/directus/how-tos/choose-version"
       },
-    ], 
+    ],
     affine: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.webp" />
             برنامه Affine
           </div>
         )
@@ -7768,7 +7768,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/affine/quick-start"
       },
       {
@@ -7777,7 +7777,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7786,12 +7786,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/affine/how-tos/choose-version"
       },
-    ], 
+    ],
     focalboard: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.webp" />
             برنامه Focalboard
           </div>
         )
@@ -7803,7 +7803,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/focalboard/quick-start"
       },
       {
@@ -7812,7 +7812,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7821,12 +7821,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/focalboard/how-tos/choose-version"
       },
-    ], 
+    ],
     maybe: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/favicon.webp" />
             برنامه Maybe
           </div>
         )
@@ -7838,7 +7838,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/maybe/quick-start"
       },
       {
@@ -7847,7 +7847,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7856,12 +7856,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/maybe/how-tos/choose-version"
       },
-    ], 
+    ],
     paperless: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.webp" />
             برنامه Paperless
           </div>
         )
@@ -7873,7 +7873,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/paperless/quick-start"
       },
       {
@@ -7882,7 +7882,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7891,12 +7891,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/paperless/how-tos/choose-version"
       },
-    ], 
+    ],
     typesense: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.webp" />
             برنامه Typesense
           </div>
         )
@@ -7908,7 +7908,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/typesense/quick-start"
       },
       {
@@ -7917,7 +7917,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7926,12 +7926,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/typesense/how-tos/choose-version"
       },
-    ], 
+    ],
     openproject: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.webp" />
             برنامه OpenProject
           </div>
         )
@@ -7943,7 +7943,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/openproject/quick-start"
       },
       {
@@ -7952,7 +7952,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7961,12 +7961,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/openproject/how-tos/choose-version"
       },
-    ], 
+    ],
     ntfy: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.webp" />
             برنامه Ntfy
           </div>
         )
@@ -7978,7 +7978,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/ntfy/quick-start"
       },
       {
@@ -7987,7 +7987,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -7996,12 +7996,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/ntfy/how-tos/choose-version"
       },
-    ], 
+    ],
     formbricks: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.webp" />
             برنامه Formbricks
           </div>
         )
@@ -8013,7 +8013,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/formbricks/quick-start"
       },
       {
@@ -8022,7 +8022,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8031,12 +8031,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/formbricks/how-tos/choose-version"
       },
-    ], 
+    ],
     actual: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.webp" />
             برنامه Actual
           </div>
         )
@@ -8048,7 +8048,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/actual/quick-start"
       },
       {
@@ -8057,7 +8057,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8066,12 +8066,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/actual/how-tos/choose-version"
       },
-    ], 
+    ],
     grist: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.webp" />
             برنامه Grist
           </div>
         )
@@ -8083,7 +8083,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/grist/quick-start"
       },
       {
@@ -8092,7 +8092,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8101,12 +8101,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/grist/how-tos/choose-version"
       },
-    ], 
+    ],
     keila: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/favicon.jpg" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/favicon.jpg" />
             برنامه Keila
           </div>
         )
@@ -8118,7 +8118,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/keila/quick-start"
       },
       {
@@ -8127,7 +8127,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8136,12 +8136,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/keila/how-tos/choose-version"
       },
-    ], 
+    ],
     passbolt: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.webp" />
             برنامه Passbolt
           </div>
         )
@@ -8153,7 +8153,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/passbolt/quick-start"
       },
       {
@@ -8162,7 +8162,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8175,12 +8175,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/passbolt/how-tos/choose-version"
       },
-    ], 
+    ],
     docuseal: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.webp" />
             برنامه DocuSeal
           </div>
         )
@@ -8192,7 +8192,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/docuseal/quick-start"
       },
       {
@@ -8201,7 +8201,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8210,12 +8210,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/docuseal/how-tos/choose-version"
       },
-    ], 
+    ],
     docmost: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.webp" />
             برنامه Docmost
           </div>
         )
@@ -8227,7 +8227,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/docmost/quick-start"
       },
       {
@@ -8236,7 +8236,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8245,12 +8245,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/docmost/how-tos/choose-version"
       },
-    ], 
+    ],
     linkstack: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.webp" />
             برنامه linkstack
           </div>
         )
@@ -8262,7 +8262,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/linkstack/quick-start"
       },
       {
@@ -8271,7 +8271,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8280,12 +8280,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/linkstack/how-tos/choose-version"
       },
-    ], 
+    ],
     mixpost: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/favicon.webp" />
             برنامه Mixpost
           </div>
         )
@@ -8297,7 +8297,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/mixpost/quick-start"
       },
       {
@@ -8306,7 +8306,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8315,13 +8315,13 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/mixpost/how-tos/choose-version"
       },
-    ], 
+    ],
 
     vvveb: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.webp" />
             برنامه Vvveb
           </div>
         )
@@ -8333,7 +8333,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/vvveb/quick-start"
       },
       {
@@ -8342,7 +8342,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8351,12 +8351,12 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/vvveb/how-tos/choose-version"
       },
-    ], 
+    ],
     freescout: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/freescout/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/freescout/favicon.png" />
             برنامه FreeScout
           </div>
         )
@@ -8368,7 +8368,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/freescout/quick-start"
       },
       {
@@ -8377,7 +8377,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8386,13 +8386,13 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/freescout/how-tos/choose-version"
       },
-    ], 
+    ],
 
     rallly: [
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.webp" />
             برنامه Rallly
           </div>
         )
@@ -8404,7 +8404,7 @@ export default {
       },
       {
         title: "راه‌اندازی سریع!",
-        icon: <GoZap  />,
+        icon: <GoZap />,
         link: "/one-click-apps/rallly/quick-start"
       },
       {
@@ -8413,7 +8413,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -8422,7 +8422,7 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/rallly/how-tos/choose-version"
       },
-    ], 
+    ],
   },
 
   email_server: {
@@ -8430,7 +8430,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoMail  />
+            <GoMail />
             ایمیل‌سرور
           </div>
         )
@@ -8456,7 +8456,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoRead />
+            < GoRead />
             شیوه‌ی
           </div>
         )
@@ -8515,10 +8515,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage />
-          <a href="/email-server/how-tos/connect-via-platform/about">
-          اتصال با پلتفرم
-          </a>
+            < GoPackage />
+            <a href="/email-server/how-tos/connect-via-platform/about">
+              اتصال با پلتفرم
+            </a>
           </div>
         )
       },
@@ -8586,14 +8586,14 @@ export default {
         link: "/email-server/details/about"
       },
 
-      
+
     ],
 
     'quick-setup': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoMail  />
+            <GoMail />
             ایمیل‌سرور
           </div>
         )
@@ -8619,7 +8619,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoRead />
+            < GoRead />
             شیوه‌ی
           </div>
         )
@@ -8678,10 +8678,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage />
-          <a href="/email-server/how-tos/connect-via-platform/about">
-          اتصال با پلتفرم
-          </a>
+            < GoPackage />
+            <a href="/email-server/how-tos/connect-via-platform/about">
+              اتصال با پلتفرم
+            </a>
           </div>
         )
       },
@@ -8749,14 +8749,14 @@ export default {
         link: "/email-server/details/about"
       },
 
-      
+
     ],
 
-    'how-tos':  [
+    'how-tos': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoMail  />
+            <GoMail />
             ایمیل‌سرور
           </div>
         )
@@ -8782,7 +8782,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoRead />
+            < GoRead />
             شیوه‌ی
           </div>
         )
@@ -8841,10 +8841,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage />
-          <a href="/email-server/how-tos/connect-via-platform/about">
-          اتصال با پلتفرم
-          </a>
+            < GoPackage />
+            <a href="/email-server/how-tos/connect-via-platform/about">
+              اتصال با پلتفرم
+            </a>
           </div>
         )
       },
@@ -8912,7 +8912,7 @@ export default {
         link: "/email-server/details/about"
       },
 
-      
+
     ],
 
     details: [
@@ -8944,7 +8944,7 @@ export default {
       },
       {
         title: "رکوردهای DNS",
-        icon: <GoFileBinary  />,
+        icon: <GoFileBinary />,
         link: "/email-server/details/dns-records"
       },
       {
@@ -8964,21 +8964,21 @@ export default {
       },
       {
         title: "حذف یک ایمیل‌سرور",
-        icon: <GoXCircle  />,
+        icon: <GoXCircle />,
         link: "/email-server/details/delete-email-server"
       },
       {
         title: "آیدی یک ایمیل‌سرور",
-        icon: <GoCommandPalette   />,
+        icon: <GoCommandPalette />,
         link: "/email-server/details/mail-id",
       },
       {
         title: "خطاهای رایج ایمیل‌سرور",
-        icon: <GoBug  />,
+        icon: <GoBug />,
         link: "/email-server/details/common-errors"
       },
     ],
-    
+
   },
 
   object_storage: {
@@ -8986,7 +8986,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip  />
+            <GoPaperclip />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -9012,7 +9012,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoFileDirectory  />
+            < GoFileDirectory />
             شیوه‌ی کار با باکت
           </div>
         )
@@ -9047,7 +9047,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoKey   />
+            < GoKey />
             شیوه‌ی مدیریت کلیدها
           </div>
         )
@@ -9068,15 +9068,15 @@ export default {
         title: "حذف کلید",
         link: "/object-storage/how-tos/delete-key"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoCopy   />
-            انتقالات  
+            < GoCopy />
+            انتقالات
           </div>
         )
       },
@@ -9098,10 +9098,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage />
-          <a href="/object-storage/how-tos/connect-via-platform/about">
-          اتصال با AWS SDK از طریق پلتفرم
-          </a>
+            < GoPackage />
+            <a href="/object-storage/how-tos/connect-via-platform/about">
+              اتصال با AWS SDK از طریق پلتفرم
+            </a>
           </div>
         )
       },
@@ -9184,14 +9184,14 @@ export default {
         link: "/object-storage/add-domain"
       },
 
-      
+
     ],
 
     'add-domain': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip  />
+            <GoPaperclip />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -9217,7 +9217,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoFileDirectory  />
+            < GoFileDirectory />
             شیوه‌ی کار با باکت
           </div>
         )
@@ -9252,7 +9252,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoKey   />
+            < GoKey />
             شیوه‌ی مدیریت کلیدها
           </div>
         )
@@ -9273,15 +9273,15 @@ export default {
         title: "حذف کلید",
         link: "/object-storage/how-tos/delete-key"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoCopy   />
-            انتقالات  
+            < GoCopy />
+            انتقالات
           </div>
         )
       },
@@ -9303,10 +9303,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage />
-          <a href="/object-storage/how-tos/connect-via-platform/about">
-          اتصال با AWS SDK از طریق پلتفرم
-          </a>
+            < GoPackage />
+            <a href="/object-storage/how-tos/connect-via-platform/about">
+              اتصال با AWS SDK از طریق پلتفرم
+            </a>
           </div>
         )
       },
@@ -9390,7 +9390,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip  />
+            <GoPaperclip />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -9416,7 +9416,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoFileDirectory  />
+            < GoFileDirectory />
             شیوه‌ی کار با باکت
           </div>
         )
@@ -9451,7 +9451,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoKey   />
+            < GoKey />
             شیوه‌ی مدیریت کلیدها
           </div>
         )
@@ -9472,15 +9472,15 @@ export default {
         title: "حذف کلید",
         link: "/object-storage/how-tos/delete-key"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoCopy   />
-            انتقالات  
+            < GoCopy />
+            انتقالات
           </div>
         )
       },
@@ -9502,10 +9502,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage />
-          <a href="/object-storage/how-tos/connect-via-platform/about">
-          اتصال با AWS SDK از طریق پلتفرم
-          </a>
+            < GoPackage />
+            <a href="/object-storage/how-tos/connect-via-platform/about">
+              اتصال با AWS SDK از طریق پلتفرم
+            </a>
           </div>
         )
       },
@@ -9583,14 +9583,14 @@ export default {
         link: "/object-storage/add-domain"
       },
 
-      
+
     ],
 
-    'how-tos':  [
+    'how-tos': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoPaperclip  />
+            <GoPaperclip />
             فضای ذخیره‌سازی ابری
           </div>
         )
@@ -9616,7 +9616,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoFileDirectory  />
+            < GoFileDirectory />
             شیوه‌ی کار با باکت
           </div>
         )
@@ -9651,7 +9651,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoKey   />
+            < GoKey />
             شیوه‌ی مدیریت کلیدها
           </div>
         )
@@ -9672,15 +9672,15 @@ export default {
         title: "حذف کلید",
         link: "/object-storage/how-tos/delete-key"
       },
-      
+
       {
         hr: true
       },
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoCopy   />
-            انتقالات  
+            < GoCopy />
+            انتقالات
           </div>
         )
       },
@@ -9702,10 +9702,10 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage />
-          <a href="/object-storage/how-tos/connect-via-platform/about">
-          اتصال با AWS SDK از طریق پلتفرم
-          </a>
+            < GoPackage />
+            <a href="/object-storage/how-tos/connect-via-platform/about">
+              اتصال با AWS SDK از طریق پلتفرم
+            </a>
           </div>
         )
       },
@@ -9783,7 +9783,7 @@ export default {
         link: "/object-storage/add-domain"
       },
 
-      
+
     ],
 
     details: [
@@ -9825,7 +9825,7 @@ export default {
       },
       {
         title: "حذف باکت",
-        icon: <GoXCircle  />,
+        icon: <GoXCircle />,
         link: "/object-storage/details/delete-object-storage"
       },
     ],
@@ -9836,8 +9836,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoGlobe  />
-          سامانه مدیریت دامنه
+            <GoGlobe />
+            سامانه مدیریت دامنه
           </div>
         )
       },
@@ -9862,7 +9862,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <  GoGear  />
+            <  GoGear />
             شیوه‌ی
           </div>
         )
@@ -9875,7 +9875,7 @@ export default {
         title: "مدیریت رکوردها",
         link: "/dns-management-system/how-tos/manage-records"
       },
-      
+
       {
         hr: true
       },
@@ -9883,15 +9883,15 @@ export default {
         title: "جزئیات سرویس DNS",
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
-      },  
+      },
     ],
 
     'quick-setup': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoGlobe  />
-          سامانه مدیریت دامنه
+            <GoGlobe />
+            سامانه مدیریت دامنه
           </div>
         )
       },
@@ -9916,7 +9916,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <  GoGear  />
+            <  GoGear />
             شیوه‌ی
           </div>
         )
@@ -9929,7 +9929,7 @@ export default {
         title: "مدیریت رکوردها",
         link: "/dns-management-system/how-tos/manage-records"
       },
-      
+
       {
         hr: true
       },
@@ -9937,15 +9937,15 @@ export default {
         title: "جزئیات سرویس DNS",
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
-      },  
+      },
     ],
 
-    'how-tos':  [
+    'how-tos': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoGlobe  />
-          سامانه مدیریت دامنه
+            <GoGlobe />
+            سامانه مدیریت دامنه
           </div>
         )
       },
@@ -9970,7 +9970,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <  GoGear  />
+            <  GoGear />
             شیوه‌ی
           </div>
         )
@@ -9983,7 +9983,7 @@ export default {
         title: "مدیریت رکوردها",
         link: "/dns-management-system/how-tos/manage-records"
       },
-      
+
       {
         hr: true
       },
@@ -9991,7 +9991,7 @@ export default {
         title: "جزئیات سرویس DNS",
         icon: <GoNote />,
         link: "/dns-management-system/details/about"
-      },  
+      },
     ],
 
     details: [
@@ -10018,17 +10018,17 @@ export default {
       },
       {
         title: "رکوردهای قابل پشتیبانی",
-        icon: <GoGoal  />,
+        icon: <GoGoal />,
         link: "/dns-management-system/details/supported-records"
       },
       {
         title: "رکوردهای Wildcard DNS",
-        icon: <GoStarFill   />,
+        icon: <GoStarFill />,
         link: "/dns-management-system/details/wildcard-dns-records"
       },
       {
         title: "حذف یک سامانه مدیریت دامنه",
-        icon: <GoXCircle  />,
+        icon: <GoXCircle />,
         link: "/dns-management-system/details/delete-dns-management-system"
       },
     ],
@@ -10039,8 +10039,8 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTelescope  />
-          لیارا در یک نگاه
+            <GoTelescope />
+            لیارا در یک نگاه
           </div>
         )
       },
@@ -10059,33 +10059,33 @@ export default {
       },
       {
         title: "دیتاسنترهای لیارا",
-        icon: <GoOrganization  />,
+        icon: <GoOrganization />,
         link: "/overview/data-centers"
       },
       {
         title: "قیمت‌ها و تعرفه‌ها در لیارا",
-        icon: <GoStrikethrough   />,
+        icon: <GoStrikethrough />,
         link: "https://liara.ir/pricing/"
       },
       {
         title: "وبلاگ لیارا",
-        icon: <GoProjectRoadmap    />,
+        icon: <GoProjectRoadmap />,
         link: "https://liara.ir/blog"
       },
       {
         title: "changelog لیارا (به زودی ...)",
-        icon: <GoLog     />,
+        icon: <GoLog />,
         link: ""
       },
-      
+
     ],
 
     'data-centers': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTelescope  />
-          لیارا در یک نگاه
+            <GoTelescope />
+            لیارا در یک نگاه
           </div>
         )
       },
@@ -10104,34 +10104,34 @@ export default {
       },
       {
         title: "دیتاسنترهای لیارا",
-        icon: <GoOrganization  />,
+        icon: <GoOrganization />,
         link: "/overview/data-centers"
       },
       {
         title: "قیمت‌ها و تعرفه‌ها در لیارا",
-        icon: <GoStrikethrough   />,
+        icon: <GoStrikethrough />,
         link: "https://liara.ir/pricing/"
       },
       {
         title: "وبلاگ لیارا",
-        icon: <GoProjectRoadmap    />,
+        icon: <GoProjectRoadmap />,
         link: "https://liara.ir/blog"
       },
       {
         title: "changelog لیارا (به زودی ...)",
-        icon: <GoLog     />,
+        icon: <GoLog />,
         link: ""
       },
-      
+
     ],
   },
 
-  references:  {
+  references: {
     'cli': [
       {
         badge: (
           <div className="flex items-center gap-2">
-            <GoTerminal  />
+            <GoTerminal />
             ابزار Liara CLI
           </div>
         )
@@ -10157,7 +10157,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          < GoPackage   />
+            < GoPackage />
             شیوه‌ی
           </div>
         )
@@ -10184,7 +10184,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          مدیریت حساب کاربری 
+            مدیریت حساب کاربری
           </div>
         )
       },
@@ -10212,7 +10212,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          مدیریت برنامه‌ها 
+            مدیریت برنامه‌ها
           </div>
         )
       },
@@ -10504,7 +10504,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <GoPeople />
-           تیم‌ها در لیارا
+            تیم‌ها در لیارا
           </div>
         )
       },
