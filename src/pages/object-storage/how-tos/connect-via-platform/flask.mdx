@@ -57,10 +57,10 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
-LIARA_BUCKET_NAME=<Bucket Name>
-LIARA_ACCESS_KEY=<Access Key>
-LIARA_SECRET_KEY=<Secret Key>`}
+        {`LIARA_ENDPOINT_URL=https://storage.iran.liara.space
+LIARA_ACCESS_KEY=nieiou08cnbod58p
+LIARA_SECRET_KEY=20b71a4c-1168-4945-8ed3-4724dbf9e997
+BUCKET_NAME=my-bucket`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -68,28 +68,23 @@ LIARA_SECRET_KEY=<Secret Key>`}
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
 در ادامه، مثالی از نحوه استفاده برای‌تان آورده شده است: 
 
-<Section id="connect-code" title="پیکربندی اولیه و اتصال به باکت در برنامه" />
+<Section id="init-code" title="پیکربندی اولیه و اتصال به باکت در برنامه" />
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`from dotenv import load_dotenv
+        {`from flask import Flask, render_template, request, flash
 import boto3
-from botocore.exceptions import NoCredentialsError
-from urllib.parse import quote
+from botocore.exceptions import NoCredentialsError, ClientError
+import os
 
-load_dotenv()
+app = Flask(__name__)
+app.secret_key = "your_secret_key_here"
 
-LIARA_ENDPOINT = os.getenv("LIARA_ENDPOINT")
-LIARA_ACCESS_KEY = os.getenv("LIARA_ACCESS_KEY")
-LIARA_SECRET_KEY = os.getenv("LIARA_SECRET_KEY")
-LIARA_BUCKET_NAME = os.getenv("LIARA_BUCKET_NAME")
-
-s3 = boto3.client(
-    "s3",
-    endpoint_url=LIARA_ENDPOINT,
-    aws_access_key_id=LIARA_ACCESS_KEY,
-    aws_secret_access_key=LIARA_SECRET_KEY,
-)`}
+# Load environment variables
+LIARA_ENDPOINT_URL = os.getenv("LIARA_ENDPOINT_URL")
+LIARA_ACCESS_KEY   = os.getenv("LIARA_ACCESS_KEY")
+LIARA_SECRET_KEY   = os.getenv("LIARA_SECRET_KEY")
+BUCKET_NAME        = os.getenv("BUCKET_NAME")`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -98,16 +93,23 @@ s3 = boto3.client(
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`s3.upload_fileobj(file, LIARA_BUCKET_NAME, file.filename)`}
+        {`def upload_file(file, bucket_name):
+    try:
+        s3_client.upload_fileobj(file, bucket_name, file.filename)
+        flash(f"File '{file.filename}' uploaded successfully.", "success")
+    except ClientError as e:
+        flash(f"Error uploading file: {e}", "error")
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<Section id="download-file" title="دانلود فایل" />
+<Section id="permanent-link" title="دریافت لینک دائمی فایل" />
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`s3.download_file(LIARA_BUCKET_NAME, filename_in_bucket, filename_in_system)`}
+        {`def generate_permanent_url(bucket_name, file_name):
+    return f"{LIARA_ENDPOINT_URL}/{bucket_name}/{file_name}"`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -116,9 +118,13 @@ s3 = boto3.client(
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`files = s3.list_objects(Bucket=LIARA_BUCKET_NAME)
-for file in files["Contents"]:
-    print(file["Key"])`}
+        {`def list_files(bucket_name):
+    try:
+        response = s3_client.list_objects_v2(Bucket=bucket_name)
+        return [obj['Key'] for obj in response.get('Contents', [])]
+    except ClientError as e:
+        flash(f"Error listing files: {e}", "error")
+        return []`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -127,21 +133,250 @@ for file in files["Contents"]:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`pre_signed_url = s3.generate_presigned_url(
-    "get_object",
-    Params={"Bucket": LIARA_BUCKET_NAME, "Key": filename},
-    ExpiresIn=12 * 60 * 60,  # 12 hours
-)`}
+        {`def generate_presigned_url(bucket_name, file_name, expiration=3600):
+    try:
+        url = s3_client.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': bucket_name, 'Key': file_name},
+            ExpiresIn=expiration
+        )
+        return url
+    except ClientError as e:
+        flash(f"Error generating pre-signed URL: {e}", "error")
+        return None`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<Section id="permanent-link-file" title="دریافت لینک دائمی دانلود فایل‌ها" />
+<Section id="delete-file" title="حذف فایل" />
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`filename_encoded = quote(filename)
-permanent_url = f"https://{LIARA_BUCKET_NAME}.{LIARA_ENDPOINT.replace('https://', '')}/{filename_encoded}"`}
+        {`def delete_file(bucket_name, file_name):
+    try:
+        s3_client.delete_object(Bucket=bucket_name, Key=file_name)
+        flash(f"File '{file_name}' deleted successfully.", "success")
+    except ClientError as e:
+        flash(f"Error deleting file: {e}", "error")
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="list-buckets" title="مشاهده لیست باکت‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`def list_buckets():
+    try:
+        response = s3_client.list_buckets()
+        return [bucket['Name'] for bucket in response.get('Buckets', [])]
+    except NoCredentialsError:
+        flash("Credentials not available.", "error")
+        return []
+    except ClientError as e:
+        flash(f"Error listing buckets: {e}", "error")
+        return []`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="manage-bucket" title="قطعه کد شامل تمامی قابلیت‌ها + مدیریت فایل" />
+
+برای استفاده از تمامی قابلیت‌های بالا، می‌توانید از کد زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`from flask import Flask, render_template, request, flash
+import boto3
+from botocore.exceptions import NoCredentialsError, ClientError
+import os
+
+app = Flask(__name__)
+app.secret_key = "your_secret_key_here"
+
+# Load environment variables
+LIARA_ENDPOINT_URL = os.getenv("LIARA_ENDPOINT_URL")
+LIARA_ACCESS_KEY   = os.getenv("LIARA_ACCESS_KEY")
+LIARA_SECRET_KEY   = os.getenv("LIARA_SECRET_KEY")
+BUCKET_NAME        = os.getenv("BUCKET_NAME")
+
+# Initialize S3 client
+s3_client = boto3.client(
+    "s3",
+    endpoint_url=LIARA_ENDPOINT_URL,
+    aws_access_key_id=LIARA_ACCESS_KEY,
+    aws_secret_access_key=LIARA_SECRET_KEY
+)
+
+# Controller: List all buckets
+def list_buckets():
+    try:
+        response = s3_client.list_buckets()
+        return [bucket['Name'] for bucket in response.get('Buckets', [])]
+    except NoCredentialsError:
+        flash("Credentials not available.", "error")
+        return []
+    except ClientError as e:
+        flash(f"Error listing buckets: {e}", "error")
+        return []
+
+# Controller: List all files in a bucket
+def list_files(bucket_name):
+    try:
+        response = s3_client.list_objects_v2(Bucket=bucket_name)
+        return [obj['Key'] for obj in response.get('Contents', [])]
+    except ClientError as e:
+        flash(f"Error listing files: {e}", "error")
+        return []
+
+# Controller: Upload a file
+def upload_file(file, bucket_name):
+    try:
+        s3_client.upload_fileobj(file, bucket_name, file.filename)
+        flash(f"File '{file.filename}' uploaded successfully.", "success")
+    except ClientError as e:
+        flash(f"Error uploading file: {e}", "error")
+
+# Controller: Delete a file
+def delete_file(bucket_name, file_name):
+    try:
+        s3_client.delete_object(Bucket=bucket_name, Key=file_name)
+        flash(f"File '{file_name}' deleted successfully.", "success")
+    except ClientError as e:
+        flash(f"Error deleting file: {e}", "error")
+
+# Controller: Generate a pre-signed URL
+def generate_presigned_url(bucket_name, file_name, expiration=3600):
+    try:
+        url = s3_client.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': bucket_name, 'Key': file_name},
+            ExpiresIn=expiration
+        )
+        return url
+    except ClientError as e:
+        flash(f"Error generating pre-signed URL: {e}", "error")
+        return None
+
+# Controller: Generate a permanent URL
+def generate_permanent_url(bucket_name, file_name):
+    return f"{LIARA_ENDPOINT_URL}/{bucket_name}/{file_name}"
+
+# Main route
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        # Handle file upload
+        if "file" in request.files:
+            file = request.files["file"]
+            if file.filename:
+                upload_file(file, BUCKET_NAME)
+
+        # Handle file deletion
+        file_to_delete = request.form.get("delete_file")
+        if file_to_delete:
+            delete_file(BUCKET_NAME, file_to_delete)
+
+    # Fetch bucket names and files
+    buckets = list_buckets()
+    files = list_files(BUCKET_NAME)
+
+    # Generate pre-signed URLs and permanent URLs for each file
+    presigned_urls = {}
+    permanent_urls = {}
+    for file in files:
+        presigned_urls[file] = generate_presigned_url(BUCKET_NAME, file)
+        permanent_urls[file] = generate_permanent_url(BUCKET_NAME, file)
+
+    return render_template(
+        "index.html",
+        buckets=buckets,
+        files=files,
+        presigned_urls=presigned_urls,
+        permanent_urls=permanent_urls
+    )
+
+# Run the app
+if __name__ == "__main__":
+    app.run(debug=True)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+همچنین، بایستی در مسیر اصلی پروژه، یک دایرکتوری به نام <Important>templates</Important> بسازید و درون آن، یک فایل به نام <Important>index.html</Important> ایجاد کنید و قطعه کد زیر را درون آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S3 File Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .file-item { margin-bottom: 10px; display: flex; align-items: center; }
+        .file-actions button { margin-left: 10px; }
+        .message { margin-top: 20px; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>S3 File Manager</h1>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Bucket Information -->
+        <h2>Buckets</h2>
+        <ul>
+            {% for bucket in buckets %}
+                <li>{{ bucket }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- File Management -->
+        <h2>Files in Bucket: {{ BUCKET_NAME }}</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload File</button>
+        </form>
+
+        <h3>File List</h3>
+        {% if files %}
+            <div>
+                {% for file in files %}
+                    <div class="file-item">
+                        <span>{{ file }}</span>
+                        <div class="file-actions">
+                            <a href="{{ permanent_urls[file] }}" target="_blank">Permanent Link</a>
+                            <a href="{{ presigned_urls[file] }}" target="_blank">Pre-signed Link</a>
+                            <form method="POST" style="display: inline;">
+                                <input type="hidden" name="delete_file" value="{{ file }}">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No files found in the bucket.</p>
+        {% endif %}
+    </div>
+</body>
+</html>`}
     </Highlight>
 </div>
 <div className="h-2" />

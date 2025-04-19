@@ -37,12 +37,12 @@ import Head from "next/head";
 </Alert>
 
 برای استفاده از Object Storage در برنامه‌های Django، می‌توانید از 
-پکیج‌های <Important>boto3</Important> و <Important>django-storages</Important> استفاده کنید که بایستی با دستور زیر، آن‌ها را در پروژه خود، نصب کنید:
+پکیج <Important>boto3</Important> استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`pip install boto3 django-storages`}
+        {`pip install boto3`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -57,10 +57,10 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
-LIARA_BUCKET_NAME=<Bucket Name>
-LIARA_ACCESS_KEY=<Access Key>
-LIARA_SECRET_KEY=<Secret Key>`}
+        {`LIARA_ENDPOINT_URL=https://storage.iran.liara.space
+LIARA_ACCESS_KEY=nieiou08cnbod58p
+LIARA_SECRET_KEY=20b71a4c-1168-4945-8ed3-4724dbf9e997
+BUCKET_NAME=my-bucket`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -71,169 +71,281 @@ LIARA_SECRET_KEY=<Secret Key>`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`# S3 Settings
-LIARA_ENDPOINT    = os.getenv("LIARA_ENDPOINT")
-LIARA_BUCKET_NAME = os.getenv("LIARA_BUCKET_NAME")
-LIARA_ACCESS_KEY  = os.getenv("LIARA_ACCESS_KEY")
-LIARA_SECRET_KEY  = os.getenv("LIARA_SECRET_KEY")
+        {`# AWS S3 Settings for Liara
+AWS_ACCESS_KEY_ID = os.getenv('LIARA_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.getenv('LIARA_SECRET_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('BUCKET_NAME')
+AWS_S3_ENDPOINT_URL = os.getenv('LIARA_ENDPOINT_URL')
 
-# S3 Settings Based on AWS (optional)
-AWS_ACCESS_KEY_ID       = LIARA_ACCESS_KEY
-AWS_SECRET_ACCESS_KEY   = LIARA_SECRET_KEY
-AWS_STORAGE_BUCKET_NAME = LIARA_BUCKET_NAME
-AWS_S3_ENDPOINT_URL     = LIARA_ENDPOINT
-AWS_S3_REGION_NAME      = 'us-east-1'  
-
-# Django-storages configuration
-STORAGES = {
-  "default": {
-      "BACKEND": "storages.backends.s3.S3Storage",
-  },
-  "staticfiles": {
-      "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-  },
-}`}
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
 در نظر داشته باشید که با انجام کار فوق، 
- فایل های آپلود شده به طور خودکار در ذخیره‌سازی ابری لیارا قرار می‌گیرند؛ به عنوان مثال، شما می‌توانید با استفاده از قطعه کد زیر، محتوای <Important>Contents</Important> را در فایلی به نام <Important>example.txt</Important> قرار داده و آن را در فضای ذخیره‌سازی ابری، ذخیره کنید:
+فایل های آپلود شده به طور خودکار در ذخیره‌سازی ابری لیارا قرار می‌گیرند.
+در ادامه، مثال‌هایی برای استفاده از Object Storage در Django آورده شده است.
+
+
+<div className="h-4" />
+در ابتدا، با استفاده از دستور زیر، یک app جدید برای کار با Object Storage بسازید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
-
-path = default_storage.save('/example.txt', ContentFile(b'Contents'))`}
-    </Highlight>
-</div>
-<div className="h-2" />
-برای استفاده از Object Storage در مدل‌ها نیز، می‌توان به شکل زیر عمل کرد:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="py">
-        {`from django.db import models
-
-
-class Storage(models.Model):
-    my_file = models.FileField()`}
+        {`python manage.py startapp object_storage`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-
-برای استفاده از Object Storage در viewها نیز، می‌توان مشابه شکل زیر عمل کرد:
-
+سپس، بایستی در فایل <Important>views.py</Important>، قطعه کد زیر را، قرار دهید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {`from django.shortcuts import render, redirect
-from .forms import PhotoForm
-from .models import Photo
-from django.conf import settings as s
-import boto3
-import datetime
-import os
+        {`import boto3
+from django.conf import settings
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
-# set Liara Bucket Conf
-LIARA = {
-    'endpoint': s.LIARA_ENDPOINT,
-    'accesskey': s.LIARA_ACCESS_KEY,
-    'secretkey': s.LIARA_SECRET_KEY,
-    'bucket': s.LIARA_BUCKET_NAME
-}
-
-# upload photo in bucket using s3 access
-def upload_photo(request):
-    if request.method == 'POST':
-        form = PhotoForm(request.POST, request.FILES)
-        if form.is_valid():
-            photo_instance = form.save(commit=False)
-            
-            # Get the original filename and extension
-            original_filename, file_extension = os.path.splitext(photo_instance.image.name)
-            
-            # Get current date and time
-            current_date = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            
-            # Construct unique filename with date and original filename
-            filename = f"{current_date}_{original_filename}{file_extension}"
-            
-            # Set the filename
-            photo_instance.image.name = filename
-            photo_instance.save()
-            return redirect('upload_photo')
-    else:
-        form = PhotoForm()
-
-    # Retrieve a list of uploaded photos from the S3 bucket
-    s3 = boto3.client('s3',
-        endpoint_url=LIARA['endpoint'],
-        aws_access_key_id=LIARA['accesskey'],
-        aws_secret_access_key=LIARA['secretkey']
+# Initialize S3 Client
+def get_s3_client():
+    return boto3.client(
+        's3',
+        endpoint_url=settings.AWS_S3_ENDPOINT_URL,
+        aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
     )
-    bucket_name = LIARA['bucket']
-    objects = s3.list_objects(Bucket=bucket_name)
-
-    # show uploaded files (photos) in bucket using s3 access
-    uploaded_photos = []
-    if 'Contents' in objects:
-        for obj in objects['Contents']:
-            uploaded_photos.append({
-                'name': obj['Key'],  # Assuming key name as file name
-                'permanent_link': f"{LIARA['endpoint']}/{bucket_name}/{obj['Key']}",
-                'temporary_link': s3.generate_presigned_url(
-                    'get_object',
-                    Params={'Bucket': bucket_name, 'Key': obj['Key']},
-                    ExpiresIn=3600  # 1 hour expiry
-                )
-            })
-    else:
-        uploaded_photos.append({'name': 'no file', 'permanent_link': '', 'temporary_link': ''})
-
-    return render(request, 'photos/upload_photo.html', {'form': form, 'uploaded_photos': uploaded_photos})
-
-# download photo (file) using s3 access
-def download_photo(request, photo_name):
-    s3 = boto3.client('s3',
-        endpoint_url=LIARA['endpoint'],
-        aws_access_key_id=LIARA['accesskey'],
-        aws_secret_access_key=LIARA['secretkey']
-    )
-    bucket_name = LIARA['bucket']
-    file_url = s3.generate_presigned_url(
-        'get_object',
-        Params={'Bucket': bucket_name, 'Key': photo_name},
-        ExpiresIn=3600  # 1 hour expiry
-    )
-    return redirect(file_url)
-
-# delete photo using s3 access
-def delete_photo(request, photo_name):
-    s3 = boto3.client('s3',
-        endpoint_url=LIARA['endpoint'],
-        aws_access_key_id=LIARA['accesskey'],
-        aws_secret_access_key=LIARA['secretkey']
-    )
-    bucket_name = LIARA['bucket']
-    s3.delete_object(Bucket=bucket_name, Key=photo_name)
-    return redirect('upload_photo')`}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-{/* 
+اکنون، می‌توانید در فایل <Important>views.py</Important>، بنا به نیاز خود، قطعه کدهای زیر را، به قطعه کد فعلی، اضافه کنید.
+
 <Section id="upload-file" title="نمونه کد آپلود فایل" />
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="py">
-        {``}
+        {`@csrf_exempt
+def upload_file(request):
+    if request.method == 'POST' and request.FILES.get('file'):
+        s3_client = get_s3_client()
+        file = request.FILES['file']
+        try:
+            s3_client.upload_fileobj(file, settings.AWS_STORAGE_BUCKET_NAME, file.name)
+            return JsonResponse({'message': f'{file.name} uploaded successfully.'})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+`}
     </Highlight>
 </div>
-<div className="h-2" /> */}
+<div className="h-2" />
+
+<Section id="list-files" title="نمونه کد لیست کردن فایل‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`def list_files(request):
+    s3_client = get_s3_client()
+    try:
+        response = s3_client.list_objects_v2(Bucket=settings.AWS_STORAGE_BUCKET_NAME)
+        files = [obj['Key'] for obj in response.get('Contents', [])]
+        return JsonResponse({'files': files})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="delete-file" title="نمونه کد حذف فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`@csrf_exempt
+def delete_file(request):
+    if request.method == 'POST':
+        file_name = request.POST.get('file_name')
+        if not file_name:
+            return JsonResponse({'error': 'File name is required'}, status=400)
+        s3_client = get_s3_client()
+        try:
+            s3_client.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=file_name)
+            return JsonResponse({'message': f'{file_name} deleted successfully.'})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="pre-signed-url" title="نمونه کد ساخت لینک موقت دانلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`def generate_presigned_url(request):
+    file_name = request.GET.get('file_name')
+    if not file_name:
+        return JsonResponse({'error': 'File name is required'}, status=400)
+    s3_client = get_s3_client()
+    try:
+        url = s3_client.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': settings.AWS_STORAGE_BUCKET_NAME, 'Key': file_name},
+            ExpiresIn=3600  # URL valid for 1 hour
+        )
+        return JsonResponse({'url': url})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="manage-files" title="نمونه کد برای مدیریت فایل‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`def manage_files(request):
+    context = {
+        'AWS_STORAGE_BUCKET_NAME': settings.AWS_STORAGE_BUCKET_NAME,
+        'AWS_S3_ENDPOINT_URL': settings.AWS_S3_ENDPOINT_URL,
+    }
+    return render(request, 'manage_files.html', context)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="use-all-features" title="تجمیع قابلیت‌ها در یک فایل" />
+
+برای استفاده از تمامی قابلیت‌های فوق، بایستی در ابتدا، به فایل <Important>urls.py</Important>، قطعه کد زیر را اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`from django.urls import path
+from object_storage import views
+
+urlpatterns = [
+    path('', views.manage_files, name='manage_files'),
+    path('api/files/list/', views.list_files, name='list_files'),
+    path('api/files/upload/', views.upload_file, name='upload_file'),
+    path('api/files/delete/', views.delete_file, name='delete_file'),
+    path('api/files/presigned-url/', views.generate_presigned_url, name='generate_presigned_url'),
+]`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، در app ساخته شده، یک دایرکتوری به نام <Important>templates</Important> بسازید و درون آن، یک فایل به نام <Important>manage_files.html</Important> ایجاد کنید و قطعه کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="py">
+        {`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Files</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>File Management</h1>
+
+    <!-- Upload Form -->
+    <h2>Upload File</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="uploadMessage"></div>
+
+    <!-- File List -->
+    <h2>File List</h2>
+    <ul id="fileList"></ul>
+
+    <script>
+        $(document).ready(function () {
+            // Load file list
+            function loadFiles() {
+                $.get('/api/files/list/', function (data) {
+                    $('#fileList').empty();
+                    data.files.forEach(function (file) {
+                        const listItem = \`
+                            <li>
+                                \${file}
+                                <button class="delete-btn" data-file="\${file}">Delete</button>
+                                <button class="presigned-btn" data-file="\${file}">Pre-Signed URL</button>
+                                <a href="\${generatePermanentUrl(file)}" target="_blank">Permanent URL</a>
+                            </li>
+                        \`;
+                        $('#fileList').append(listItem);
+                    });
+                });
+            }
+
+            // Generate permanent URL
+            function generatePermanentUrl(fileName) {
+                const bucketName = "{{ AWS_STORAGE_BUCKET_NAME }}";
+                const endpointUrl = "{{ AWS_S3_ENDPOINT_URL }}";
+                return \`\${endpointUrl}/\${bucketName}/\${fileName}\`;
+            }
+
+            // Upload file
+            $('#uploadForm').on('submit', function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: '/api/files/upload/',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        $('#uploadMessage').text(response.message);
+                        loadFiles();
+                    },
+                    error: function (xhr) {
+                        $('#uploadMessage').text('Error: ' + xhr.responseJSON.error);
+                    }
+                });
+            });
+
+            // Delete file
+            $(document).on('click', '.delete-btn', function () {
+                const fileName = $(this).data('file');
+                $.post('/api/files/delete/', { file_name: fileName }, function (response) {
+                    alert(response.message);
+                    loadFiles();
+                }).fail(function (xhr) {
+                    alert('Error: ' + xhr.responseJSON.error);
+                });
+            });
+
+            // Generate pre-signed URL
+            $(document).on('click', '.presigned-btn', function () {
+                const fileName = $(this).data('file');
+                $.get('/api/files/presigned-url/', { file_name: fileName }, function (response) {
+                    window.open(response.url, '_blank');
+                }).fail(function (xhr) {
+                    alert('Error: ' + xhr.responseJSON.error);
+                });
+            });
+
+            // Initial file load
+            loadFiles();
+        });
+    </script>
+</body>
+</html>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
 
 </Layout>
