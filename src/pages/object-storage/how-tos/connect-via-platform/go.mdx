@@ -22,13 +22,11 @@ import Head from "next/head";
 # اتصال به فضای ذخیره‌سازی ابری در برنامه‌های go
 <hr className="mb-2" />
 
-برای استفاده از Object Storage در برنامه‌های go، بایستی پکیج‌های مورد نیاز را با اجرای دستورات زیر، نصب کنید:
+برای استفاده از Object Storage در برنامه‌های go، بایستی پکیج مورد نیاز را با اجرای دستور زیر، نصب کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`go get github.com/aws/aws-sdk-go-v2/aws 
-go get github.com/aws/aws-sdk-go-v2/config
-go get github.com/aws/aws-sdk-go-v2/service/s3`}
+        {`go get github.com/aws/aws-sdk-go`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -43,243 +41,475 @@ go get github.com/aws/aws-sdk-go-v2/service/s3`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
-LIARA_BUCKET_NAME=<Bucket Name>
-LIARA_ACCESS_KEY=<Access Key>
-LIARA_SECRET_KEY=<Secret Key>`}
+        {`LIARA_ENDPOINT_URL=https://storage.iran.liara.space
+LIARA_ACCESS_KEY=nieiou08cnbod58p
+LIARA_SECRET_KEY=20b71a4c-1168-4945-8ed3-4724dbf9e997
+BUCKET_NAME=bucket-name`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
-در ادامه، یک قطعه کد نمونه برای‌تان قرار گرفته است که عملیات مختلف را روی فایل در باکت در برنامه go انجام می‌دهد:
+در ادامه، مثال‌هایی از نحوه استفاده از Object Storage در برنامه‌های go برای شما قرار گرفته است.
 
+<Section id="init-s3" title="پیکربندی اولیه، ساخت نشست و کلاینت S3" />
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="go">
-        {`package main
+        {`// s3client.go
+package main
 
 import (
-    "bytes"
-    "context"
-    "fmt"
     "log"
     "os"
-    "time"
 
-    "github.com/aws/aws-sdk-go-v2/aws"
-    "github.com/aws/aws-sdk-go-v2/config"
-    "github.com/aws/aws-sdk-go-v2/service/s3"
+    "github.com/aws/aws-sdk-go/aws"
+    "github.com/aws/aws-sdk-go/aws/credentials"
+    "github.com/aws/aws-sdk-go/aws/session"
+    "github.com/aws/aws-sdk-go/service/s3"
     "github.com/joho/godotenv"
 )
 
-// uploadUsingS3 uploads a file to the specified S3-compatible storage.
-func uploadUsingS3(fileContent *bytes.Reader, fileName string) (string, error) {
+var s3Client *s3.S3
+var bucket string
+
+func initS3Client() {
+    // Load environment variables from .env file
     err := godotenv.Load()
     if err != nil {
         log.Fatal("Error loading .env file")
     }
 
-    cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-west-2"))
-    if err != nil {
-        return "", err
+    endpoint := os.Getenv("LIARA_ENDPOINT_URL")
+    accessKey := os.Getenv("LIARA_ACCESS_KEY")
+    secretKey := os.Getenv("LIARA_SECRET_KEY")
+    bucket = os.Getenv("BUCKET_NAME")
+
+    if endpoint == "" || accessKey == "" || secretKey == "" || bucket == "" {
+        log.Fatal("Environment variables are not set properly")
     }
 
-    // Define AWS credentials and bucket information
-    awsAccessKeyID := os.Getenv("LIARA_ACCESS_KEY")
-    awsSecretAccessKey := os.Getenv("LIARA_SECRET_KEY")
-    endpoint := os.Getenv("LIARA_ENDPOINT")
-    bucketName := os.Getenv("LIARA_BUCKET_NAME")
-
-    // Initialize S3 client with custom configuration
-    cfg.Credentials = aws.CredentialsProviderFunc(func(ctx context.Context) (aws.Credentials, error) {
-        return aws.Credentials{
-            AccessKeyID:     awsAccessKeyID,
-            SecretAccessKey: awsSecretAccessKey,
-        }, nil
-    })
-    cfg.BaseEndpoint = aws.String(endpoint)
-
-    client := s3.NewFromConfig(cfg)
-
-    // Specify the destination key in the bucket
-    destinationKey := "uploads/" + fileName
-
-    // Use the S3 client to upload the file
-    _, err = client.PutObject(context.TODO(), &s3.PutObjectInput{
-        Bucket: aws.String(bucketName),
-        Key:    aws.String(destinationKey),
-        Body:   fileContent,
+    // Create a new AWS session
+    sess, err := session.NewSession(&aws.Config{
+        Endpoint:    aws.String(endpoint),
+        Region:      aws.String("us-east-1"), // Region is required but can be arbitrary for S3-compatible storage
+        Credentials: credentials.NewStaticCredentials(accessKey, secretKey, ""),
     })
     if err != nil {
-        return "", err
+        log.Fatalf("Failed to create AWS session: %v", err)
     }
 
-    // Generate a permanent link
-    permanentLink := fmt.Sprintf("%s/%s/%s", endpoint, bucketName, destinationKey)
-
-    return permanentLink, nil
-}
-
-// getTemporaryLink generates a temporary signed URL for the given object in the bucket.
-func getTemporaryLink(bucketName, objectKey string, expiration time.Duration) (string, error) {
-    err := godotenv.Load()
-    if err != nil {
-        log.Fatal("Error loading .env file")
-    }
-
-    cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-west-2"))
-    if err != nil {
-        return "", err
-    }
-
-    // Define AWS credentials and bucket information
-    awsAccessKeyID := os.Getenv("LIARA_ACCESS_KEY")
-    awsSecretAccessKey := os.Getenv("LIARA_SECRET_KEY")
-    endpoint := os.Getenv("LIARA_ENDPOINT")
-
-    // Initialize S3 client with custom configuration
-    cfg.Credentials = aws.CredentialsProviderFunc(func(ctx context.Context) (aws.Credentials, error) {
-        return aws.Credentials{
-            AccessKeyID:     awsAccessKeyID,
-            SecretAccessKey: awsSecretAccessKey,
-        }, nil
-    })
-    cfg.BaseEndpoint = aws.String(endpoint)
-
-    client := s3.NewFromConfig(cfg)
-
-    // Generate a pre-signed URL for the object
-    presignClient := s3.NewPresignClient(client)
-    presignedReq, err := presignClient.PresignGetObject(context.TODO(), &s3.GetObjectInput{
-        Bucket: aws.String(bucketName),
-        Key:    aws.String(objectKey),
-    }, s3.WithPresignExpires(expiration))
-    if err != nil {
-        return "", err
-    }
-
-    return presignedReq.URL, nil
-}
-
-// listFiles lists all files in the specified bucket and prefix.
-func listFiles(bucketName, prefix string) ([]string, error) {
-    err := godotenv.Load()
-    if err != nil {
-        log.Fatal("Error loading .env file")
-    }
-
-    cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-west-2"))
-    if err != nil {
-        return nil, err
-    }
-
-    // Define AWS credentials and bucket information
-    awsAccessKeyID := os.Getenv("LIARA_ACCESS_KEY")
-    awsSecretAccessKey := os.Getenv("LIARA_SECRET_KEY")
-    endpoint := os.Getenv("LIARA_ENDPOINT")
-
-    // Initialize S3 client with custom configuration
-    cfg.Credentials = aws.CredentialsProviderFunc(func(ctx context.Context) (aws.Credentials, error) {
-        return aws.Credentials{
-            AccessKeyID:     awsAccessKeyID,
-            SecretAccessKey: awsSecretAccessKey,
-        }, nil
-    })
-    cfg.BaseEndpoint = aws.String(endpoint)
-
-    client := s3.NewFromConfig(cfg)
-
-    // List objects in the bucket
-    result, err := client.ListObjectsV2(context.TODO(), &s3.ListObjectsV2Input{
-        Bucket: aws.String(bucketName),
-        Prefix: aws.String(prefix),
-    })
-    if err != nil {
-        return nil, err
-    }
-
-    var files []string
-    for _, item := range result.Contents {
-        files = append(files, aws.ToString(item.Key))
-    }
-
-    return files, nil
-}
-
-// deleteFile deletes a file from the specified bucket.
-func deleteFile(bucketName, objectKey string) error {
-    err := godotenv.Load()
-    if err != nil {
-        log.Fatal("Error loading .env file")
-    }
-
-    cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithRegion("us-west-2"))
-    if err != nil {
-        return err
-    }
-
-    // Define AWS credentials and bucket information
-    awsAccessKeyID := os.Getenv("LIARA_ACCESS_KEY")
-    awsSecretAccessKey := os.Getenv("LIARA_SECRET_KEY")
-    endpoint := os.Getenv("LIARA_ENDPOINT")
-
-    // Initialize S3 client with custom configuration
-    cfg.Credentials = aws.CredentialsProviderFunc(func(ctx context.Context) (aws.Credentials, error) {
-        return aws.Credentials{
-            AccessKeyID:     awsAccessKeyID,
-            SecretAccessKey: awsSecretAccessKey,
-        }, nil
-    })
-    cfg.BaseEndpoint = aws.String(endpoint)
-
-    client := s3.NewFromConfig(cfg)
-
-    // Delete the object
-    _, err = client.DeleteObject(context.TODO(), &s3.DeleteObjectInput{
-        Bucket: aws.String(bucketName),
-        Key:    aws.String(objectKey),
-    })
-    return err
-}
-
-func main() {
-    // Example usage of the functions
-
-    // Upload a file
-    fileContent := bytes.NewReader([]byte("Hello, World!"))
-    fileName := "example.txt"
-    permanentLink, err := uploadUsingS3(fileContent, fileName)
-    if err != nil {
-        log.Fatalf("Failed to upload file: %v", err)
-    }
-    fmt.Printf("File uploaded successfully. Permanent link: %s\n", permanentLink)
-
-    // Generate a temporary link (valid for 1 hour)
-    temporaryLink, err := getTemporaryLink(os.Getenv("LIARA_BUCKET_NAME"), "uploads/example.txt", time.Hour)
-    if err != nil {
-        log.Fatalf("Failed to generate temporary link: %v", err)
-    }
-    fmt.Printf("Temporary link (valid for 1 hour): %s\n", temporaryLink)
-
-    // List files in the bucket
-    files, err := listFiles(os.Getenv("LIARA_BUCKET_NAME"), "uploads/")
-    if err != nil {
-        log.Fatalf("Failed to list files: %v", err)
-    }
-    fmt.Println("Files in the bucket:")
-    for _, file := range files {
-        fmt.Println(file)
-    }
-
-    // Delete a file
-    err = deleteFile(os.Getenv("LIARA_BUCKET_NAME"), "uploads/example.txt")
-    if err != nil {
-        log.Fatalf("Failed to delete file: %v", err)
-    }
-    fmt.Println("File deleted successfully.")
+    // Create S3 client
+    s3Client = s3.New(sess)
 }`}
     </Highlight>
 </div>
 <div className="h-2" />
+
+
+<Section id="upload-file" title="آپلود کردن فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// upload.go
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
+)
+
+func uploadFile(w http.ResponseWriter, r *http.Request) {
+    r.ParseMultipartForm(10 << 20) // 10 MB limit
+    file, handler, err := r.FormFile("file")
+    if err != nil {
+        http.Redirect(w, r, "/list?message="+url.QueryEscape("Error: Unable to parse file."), http.StatusSeeOther)
+        return
+    }
+    defer file.Close()
+
+    buf := bytes.NewBuffer(nil)
+    io.Copy(buf, file)
+
+    _, err = s3Client.PutObject(&s3.PutObjectInput{
+        Bucket: aws.String(bucket),
+        Key:    aws.String(handler.Filename),
+        Body:   bytes.NewReader(buf.Bytes()),
+    })
+    if err != nil {
+        http.Redirect(w, r, "/list?message="+url.QueryEscape("Error: Failed to upload file."), http.StatusSeeOther)
+        return
+    }
+
+    // Redirect with success message
+    http.Redirect(w, r, "/list?message="+url.QueryEscape(fmt.Sprintf("File '%s' uploaded successfully.", handler.Filename)), http.StatusSeeOther)
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="get-permanent-url" title="دریافت لینک دائمی" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// permanent.go
+package main
+
+import "fmt"
+
+var endpointURL string
+
+// SetEndpointURL sets the endpoint URL for generating permanent URLs
+func setEndpointURL(url string) {
+    endpointURL = url
+}
+
+// GeneratePermanentURL generates the permanent URL for a file
+func GeneratePermanentURL(fileKey string) string {
+    return fmt.Sprintf("%s/%s/%s", endpointURL, bucket, fileKey)
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="pre-signed-url" title="دریافت لینک موقتی" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// presigned.go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"time"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
+)
+
+func generatePreSignedURL(w http.ResponseWriter, r *http.Request) {
+    fileKey := r.URL.Query().Get("key")
+    if fileKey == "" {
+        http.Error(w, "Missing 'key' query parameter", http.StatusBadRequest)
+        return
+    }
+
+    req, _ := s3Client.GetObjectRequest(&s3.GetObjectInput{
+        Bucket: aws.String(bucket),
+        Key:    aws.String(fileKey),
+    })
+
+    urlStr, err := req.Presign(15 * time.Minute)
+    if err != nil {
+        http.Error(w, fmt.Sprintf("Failed to generate pre-signed URL: %v", err), http.StatusInternalServerError)
+        return
+    }
+
+    fmt.Fprintf(w, "Pre-signed URL for file '%s': %s\n", fileKey, urlStr)
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="download-file" title="دانلود فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// download.go
+package main
+
+import (
+	"fmt"
+	"io"
+	"net/http"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
+)
+
+func downloadFile(w http.ResponseWriter, r *http.Request) {
+    fileKey := r.URL.Query().Get("key")
+    if fileKey == "" {
+        http.Error(w, "Missing 'key' query parameter", http.StatusBadRequest)
+        return
+    }
+
+    resp, err := s3Client.GetObject(&s3.GetObjectInput{
+        Bucket: aws.String(bucket),
+        Key:    aws.String(fileKey),
+    })
+    if err != nil {
+        http.Error(w, fmt.Sprintf("Failed to download file: %v", err), http.StatusInternalServerError)
+        return
+    }
+    defer resp.Body.Close()
+
+    w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=%s", fileKey))
+    w.Header().Set("Content-Type", "application/octet-stream")
+    io.Copy(w, resp.Body)
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="delete-file" title="حذف فایل" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// delete.go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"net/url"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
+)
+
+func deleteFile(w http.ResponseWriter, r *http.Request) {
+    fileKey := r.URL.Query().Get("key")
+    if fileKey == "" {
+        http.Redirect(w, r, "/list?message="+url.QueryEscape("Error: Missing 'key' query parameter."), http.StatusSeeOther)
+        return
+    }
+
+    _, err := s3Client.DeleteObject(&s3.DeleteObjectInput{
+        Bucket: aws.String(bucket),
+        Key:    aws.String(fileKey),
+    })
+    if err != nil {
+        http.Redirect(w, r, "/list?message="+url.QueryEscape(fmt.Sprintf("Error: Failed to delete file '%s'.", fileKey)), http.StatusSeeOther)
+        return
+    }
+
+    // Redirect with success message
+    http.Redirect(w, r, "/list?message="+url.QueryEscape(fmt.Sprintf("File '%s' deleted successfully.", fileKey)), http.StatusSeeOther)
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="list-files" title="لیست‌کردن فایل‌ها" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// list.go
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"net/http"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
+)
+
+func listFiles(w http.ResponseWriter, r *http.Request) {
+    // Fetch optional message or link from query parameters
+    message := r.URL.Query().Get("message")
+    permanentLink := r.URL.Query().Get("permanent_link")
+    presignedURL := r.URL.Query().Get("presigned_url")
+
+    // Fetch files from the S3 bucket
+    result, err := s3Client.ListObjectsV2(&s3.ListObjectsV2Input{
+        Bucket: aws.String(bucket),
+    })
+    if err != nil {
+        http.Error(w, fmt.Sprintf("Failed to list files: %v", err), http.StatusInternalServerError)
+        return
+    }
+
+    // Generate HTML dynamically
+    var html bytes.Buffer
+    html.WriteString(\`
+    <h1>File Manager</h1>\`)
+
+    // Display message if present
+    if message != "" {
+        html.WriteString(fmt.Sprintf(\`<p>%s</p>\`, message))
+    }
+
+    // Display permanent link if present
+    if permanentLink != "" {
+        html.WriteString(fmt.Sprintf(\`<p><strong>Permanent Link:</strong> <a href="%s" target="_blank">%s</a></p>\`, permanentLink, permanentLink))
+    }
+
+    // Display pre-signed URL if present
+    if presignedURL != "" {
+        html.WriteString(fmt.Sprintf(\`<p><strong>Pre-Signed URL:</strong> <a href="%s" target="_blank">%s</a></p>\`, presignedURL, presignedURL))
+    }
+
+    // Upload form
+    html.WriteString(\`
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Upload File:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Upload</button>
+    </form>
+    <table border="1">
+        <tr>
+            <th>File Name</th>
+            <th>Actions</th>
+        </tr>\`)
+
+    for _, item := range result.Contents {
+        fileKey := *item.Key
+
+        // Add table row
+        html.WriteString(fmt.Sprintf(\`
+        <tr>
+            <td>%s</td>
+            <td>
+                <form action="/get-permanent-link" method="get" style="display:inline;">
+                    <input type="hidden" name="key" value="%s">
+                    <button type="submit">Get Permanent Link</button>
+                </form>
+                <form action="/get-presigned-url" method="get" style="display:inline;">
+                    <input type="hidden" name="key" value="%s">
+                    <button type="submit">Get Pre-Signed URL</button>
+                </form>
+                <form action="/delete" method="get" style="display:inline;">
+                    <input type="hidden" name="key" value="%s">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>\`, fileKey, fileKey, fileKey, fileKey))
+    }
+
+    html.WriteString(\`</table>\`)
+
+    w.Header().Set("Content-Type", "text/html")
+    w.Write(html.Bytes())
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="all-features" title="تجمیع قابلیت‌ها" />
+
+برای استفاده از تمامی کدهای ذکر شده، یک فایل به اسم <Important>main.go</Important> ایجاد کنید و کدهای زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// main.go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"net/url"
+	"os"
+	"time"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
+)
+
+func main() {
+    // Initialize S3 client
+    initS3Client()
+
+    // Set the endpoint URL for generating permanent URLs
+    setEndpointURL(os.Getenv("LIARA_ENDPOINT_URL"))
+
+    // Define routes
+    http.HandleFunc("/", mainPage)
+    http.HandleFunc("/upload", uploadFile)
+    http.HandleFunc("/download", downloadFile)
+    http.HandleFunc("/delete", deleteFile)
+    http.HandleFunc("/list", listFiles)
+
+    // New routes for getting links
+    http.HandleFunc("/get-permanent-link", getPermanentLink)
+    http.HandleFunc("/get-presigned-url", getPreSignedURL)
+
+    // Start the server
+    port := "8080"
+    fmt.Printf("Server started on port %s\n", port)
+    log.Fatal(http.ListenAndServe(":"+port, nil))
+}
+
+func getPermanentLink(w http.ResponseWriter, r *http.Request) {
+    fileKey := r.URL.Query().Get("key")
+    if fileKey == "" {
+        http.Redirect(w, r, "/list?message=Error: Missing file key.", http.StatusSeeOther)
+        return
+    }
+
+    // Generate permanent link
+    permanentLink := GeneratePermanentURL(fileKey)
+
+    // Redirect back to /list with the permanent link
+    redirectURL := fmt.Sprintf("/list?permanent_link=%s", url.QueryEscape(permanentLink))
+    http.Redirect(w, r, redirectURL, http.StatusSeeOther)
+}
+
+func getPreSignedURL(w http.ResponseWriter, r *http.Request) {
+    fileKey := r.URL.Query().Get("key")
+    if fileKey == "" {
+        http.Redirect(w, r, "/list?message=Error: Missing file key.", http.StatusSeeOther)
+        return
+    }
+
+    // Generate pre-signed URL
+    req, _ := s3Client.GetObjectRequest(&s3.GetObjectInput{
+        Bucket: aws.String(bucket),
+        Key:    aws.String(fileKey),
+    })
+    presignedURL, _ := req.Presign(15 * time.Minute)
+
+    // Redirect back to /list with the pre-signed URL
+    redirectURL := fmt.Sprintf("/list?presigned_url=%s", url.QueryEscape(presignedURL))
+    http.Redirect(w, r, redirectURL, http.StatusSeeOther)
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در ادامه، یک فایل به اسم <Important>templates.go</Important> ایجاد کنید و کدهای زیر را در آن قرار دهید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// templates.go
+package main
+
+import "net/http"
+
+func mainPage(w http.ResponseWriter, r *http.Request) {
+    http.Redirect(w, r, "/list", http.StatusSeeOther)
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تمامی کارها انجام شده است و می‌توانید با اجرای دستور زیر، برنامه خود را اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`go run .`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="success">
+<p>
+یک پروژه آماده استقرار در <a target="_blank" href="https://github.com/liara-cloud/go-getting-started/tree/object-storage" className="text-[#2196f3] ">گیت‌هاب لیارا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
 </Layout>
