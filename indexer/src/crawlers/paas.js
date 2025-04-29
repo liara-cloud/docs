@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import URLS from '../utils/getUrl.js';
 import { __dirname } from '../../constant.js';
+import delay from '../utils/delay.js';
 
 const DATA = [];
 
@@ -27,6 +28,8 @@ const PLATFORMS = [
 
 async function crawlPaas() {
   for (const paas of URLS.paas) {
+    await delay();
+
     const $ = cheerio.load((await got.get(paas)).body);
 
     const title = $('h1').text();

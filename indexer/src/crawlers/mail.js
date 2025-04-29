@@ -7,11 +7,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 import URLS from '../utils/getUrl.js';
 import { __dirname } from '../../constant.js';
+import delay from '../utils/delay.js';
 
 const DATA = [];
 
 async function crawlMail() {
   for (const mail of URLS.mail) {
+    await delay();
+
     const $ = cheerio.load((await got.get(mail)).body);
 
     const title = $('h1').text();

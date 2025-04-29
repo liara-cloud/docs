@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import URLS from '../utils/getUrl.js';
 import { __dirname } from '../../constant.js';
+import delay from '../utils/delay.js';
 
 const DATA = [];
 const DATABASES = [
@@ -21,6 +22,8 @@ const DATABASES = [
 
 async function crawlDbaas() {
   for (const dbaas of URLS.dbass) {
+    await delay();
+
     const $ = cheerio.load((await got.get(dbaas)).body);
 
     const title = $('h1').text();
