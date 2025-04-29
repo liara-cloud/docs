@@ -13,7 +13,7 @@ const DATA = [];
 
 async function crawlOneClickApp() {
   for (const oneClickApp of URLS.oneClickApp) {
-    await delay();
+    await delay(3_500);
 
     const $ = cheerio.load((await got.get(oneClickApp)).body);
 
