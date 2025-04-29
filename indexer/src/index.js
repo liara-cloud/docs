@@ -22,8 +22,8 @@ const crawlers = [
   crawlDbaas,
   crawlOverview,
   crawlReference,
-  crawlOneClickApp,
   crawlObjectStorage,
+  crawlOneClickApp,
   crawlPaas,
 ];
 

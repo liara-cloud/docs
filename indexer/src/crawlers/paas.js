@@ -28,7 +28,7 @@ const PLATFORMS = [
 
 async function crawlPaas() {
   for (const paas of URLS.paas) {
-    await delay(3_500);
+    await delay(4_500);
 
     const $ = cheerio.load((await got.get(paas)).body);
 
