@@ -19,12 +19,12 @@ import delay from './utils/delay.js';
 const crawlers = [
   crawlDns,
   crawlMail,
-  crawlPaas,
   crawlDbaas,
   crawlOverview,
   crawlReference,
   crawlOneClickApp,
   crawlObjectStorage,
+  crawlPaas,
 ];
 
 async function runIndexer() {
@@ -32,7 +32,7 @@ async function runIndexer() {
 
   for (const crawler of crawlers) {
     data.push(await crawler());
-    await delay(5_000);
+    await delay(10_000);
   }
 
   // Development
@@ -57,4 +57,4 @@ async function runIndexer() {
   ]);
 }
 
-runIndexer().catch(console.error);
+runIndexer();
