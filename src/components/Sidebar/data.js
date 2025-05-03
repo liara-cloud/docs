@@ -3770,6 +3770,11 @@ export default {
         link: "/iaas/details/ip"
       },
       {
+        title: "محدودیت‌های سرور مجازی ابری",
+        icon: <GoLock />,
+        link: "/iaas/details/limitations"
+      },
+      {
         title: "رویدادها",
         icon: <GoEye />,
         link: "/iaas/details/events"

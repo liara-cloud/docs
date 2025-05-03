@@ -1,0 +1,45 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات محدودیت‌های سرور مجازی ابری - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به محدودیت‌های سرور مجازی VPS در لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+# محدودیت‌های سرور مجازی ابری
+
+<hr className="mb-2" />
+
+سرور مجازی ابری لیارا، شامل یک‌سری محدودیت‌ها در استفاده است تا کاربران بتوانند به بهترین و بهینه‌ترین شکل ممکن از این سرویس استفاده کنند. در ادامه، به بررسی این محدودیت‌ها پرداخته شده است..
+
+<Section id="port-25" title="محدودیت در استفاده از پورت ۲۵" />
+
+پورت 25 در سرور
+مجازی، غالباً برای راه‌اندازی و استفاده از ایمیل‌سرور به کار می‌رود. 
+راه‌اندازی سرور ایمیل بر روی سرور مجازی لیارا، به دلیل وجود محدودیت‌های امنیتی و جلوگیری از ارسال اسپم، امکان‌پذیر نیست. بنابراین، پورت 25 بر روی سرور مجازی ابری لیارا بسته است و شما نمی‌توانید از آن استفاده کنید.
+
+<div className="h-4" />
+<Alert variant="success">
+<p>
+    در صورت نیاز به سرور ایمیل و ارسال ایمیل به کاربران‌تان، می‌توانید از <a className='text-[#2196f3]' href="https://liara.ir/products/email/">هاست ایمیل لیارا</a> استفاده کنید.
+</p>
+</Alert>
+
+</Layout>
