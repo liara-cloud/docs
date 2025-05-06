@@ -1,4 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+/src/pages/paas/nextjs/how-tos/connect-to-db/prisma.mdx
 
 # dependencies
 /node_modules

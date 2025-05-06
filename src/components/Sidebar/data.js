@@ -1463,6 +1463,11 @@ export default {
         icon: <IconContainer alt="elastic" />,
         link: "/paas/nextjs/how-tos/connect-to-db/elasticsearch"
       },
+      {
+        title: "Prisma ORM",
+        icon: <IconContainer alt="prisma" />,
+        link: "/paas/nextjs/how-tos/connect-to-db/prisma"
+      },
 
       {
         hr: true
