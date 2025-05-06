@@ -29,15 +29,37 @@ import Head from "next/head";
 در نظر داشته باشید که لیارا فقط تغییرات جدید را به برنامه اضافه می‌کند و داده‌های تکراری که تغییر نکردند را در سرورهای خود آپلود نمی‌کند. 
 
 <Section id="no-cache-deployment" title="استقرار بدون استفاده از cache" />
-برای اینکه لیارا در زمان build از cache برنامه‌تان استفاده نکند و تمامی سورس کد مجدداً در لیارا مستقر شود؛ کافیست تا دستور زیر را اجرا کنید:
+برای اینکه لیارا در زمان build از cache برنامه‌تان استفاده نکند و تمامی سورس کد مجدداً در لیارا مستقر شود؛ می‌توانید یکی از روش‌های زیر را 
+انتخاب کرده و آن را انجام دهید:
 
-<div dir="ltr">
-<div className="h-4" />
-<Highlight className="bash">
-{`liara deploy --no-cache`}
-</Highlight>
-<div className="h-4" />
-</div>
+
+<Tabs 
+  tabs={["Liara Console", "Liara CLI"]} 
+  content={[
+    <>
+
+        در استقرار با Liara CLI، کافیست تا دستور زیر را اجرا کنید:
+
+        <div dir="ltr">
+        <div className="h-4" />
+        <Highlight className="bash">
+        {`liara deploy --no-cache`}
+        </Highlight>
+        <div className="h-4" />
+        </div>
+
+    </>,
+
+    <>
+        در استقرار با Liara Console، کافیست تا در مرحله <b>تنظیمات Build</b>، گزینه <b>Build Cache</b> را خاموش کنید.
+        <div className="h-4" />
+        <img src="https://media.liara.ir/docs/build-cache-option-deploying-using-console.png"/>
+        <div className="h-4" />
+    </>,
+
+
+  ]}
+/>
 
 <Alert variant="info">
 <p>
