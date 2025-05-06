@@ -9,6 +9,7 @@ import { MeiliSearchClient } from './services/meilisearch.js';
 import crawlDns from './crawlers/dns.js';
 import crawlMail from './crawlers/mail.js';
 import crawlPaas from './crawlers/paas.js';
+import crawlIaas from './crawlers/iaas.js';
 import crawlDbaas from './crawlers/dbaas.js';
 import crawlOverview from './crawlers/overview.js';
 import crawlReference from './crawlers/reference.js';
@@ -25,6 +26,7 @@ const crawlers = [
   crawlObjectStorage,
   crawlOneClickApp,
   crawlPaas,
+  crawlIaas,
 ];
 
 async function runIndexer() {
