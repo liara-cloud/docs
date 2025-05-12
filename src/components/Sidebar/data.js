@@ -1578,7 +1578,7 @@ export default {
         link: "/paas/laravel/how-tos/set-cron-job"
       },
       {
-        title: "تغییر نسخه PHP و Laravel",
+        title: "تغییر نسخه PHP در Laravel",
         link: "/paas/laravel/how-tos/choose-version"
       },
       {
