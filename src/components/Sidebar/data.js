@@ -241,7 +241,7 @@ export default {
       {
         title: "Google/Gemini",
         icon: <IconContainer alt="https://media.liara.ir/logos/ai/gemini-google.svg" />,
-        link: "/ai/goole-gemini"
+        link: "/ai/google-gemini"
       },
       {
         title: "X-AI/Grok",
@@ -269,47 +269,47 @@ export default {
         link: "/ai/mistral-nemo"
       },
       
-      {
-        hr: true
-      },
-      {
-        title: "جزئیات پلتفرم",
-        icon: <GoNote />,
-        link: "/paas/details/about"
-      },
-      {
-        title: "مدیریت دیسک‌",
-        icon: <GoCodespaces />,
-        link: "/paas/disks/about"
-      },
-      {
-        title: "مدیریت دامنه‌",
-        icon: <GoGlobe />,
-        link: "/paas/domains/about"
-      },
-      {
-        title: "قابلیت CI/CD",
-        icon: <GoWorkflow />,
-        link: "/paas/cicd/about"
-      },
-      {
-        title: "فایل liara.json",
-        icon: <GoFile />,
-        link: "/paas/liarajson"
-      },
-      {
-        hr: true
-      },
-      {
-        title: "به‌روزرسانی پلتفرم",
-        icon: <GoSync />,
-        link: "/paas/update"
-      },
-      {
-        title: "انتقال پلتفرم",
-        icon: <GoPackageDependents />,
-        link: "/paas/move"
-      }
+      // {
+      //   hr: true
+      // },
+      // {
+      //   title: "جزئیات پلتفرم",
+      //   icon: <GoNote />,
+      //   link: "/paas/details/about"
+      // },
+      // {
+      //   title: "مدیریت دیسک‌",
+      //   icon: <GoCodespaces />,
+      //   link: "/paas/disks/about"
+      // },
+      // {
+      //   title: "مدیریت دامنه‌",
+      //   icon: <GoGlobe />,
+      //   link: "/paas/domains/about"
+      // },
+      // {
+      //   title: "قابلیت CI/CD",
+      //   icon: <GoWorkflow />,
+      //   link: "/paas/cicd/about"
+      // },
+      // {
+      //   title: "فایل liara.json",
+      //   icon: <GoFile />,
+      //   link: "/paas/liarajson"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   title: "به‌روزرسانی پلتفرم",
+      //   icon: <GoSync />,
+      //   link: "/paas/update"
+      // },
+      // {
+      //   title: "انتقال پلتفرم",
+      //   icon: <GoPackageDependents />,
+      //   link: "/paas/move"
+      // }
     ],
 
     // update: [
