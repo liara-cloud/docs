@@ -1,0 +1,256 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با هوش مصنوعی‌های لیارا، ویژگی‌ها و امکانات آن"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+# سرویس هوش مصنوعی لیارا
+<hr className="mb-2" />
+
+<Section id='what-is-aiaas' title='سرویس AI چیست؟' />
+
+یک سرویس AI یا اصطلاحاً AIaaS (مخفف AI as a Service)، سرویسی است که خدمات و ابزارهای هوش مصنوعی را از طریق API به کاربران ارائه می‌دهد؛ این خدمات می‌تواند شامل یادگیری ماشین، پردازش زبان طبیعی، بینایی ماشین و دیگر فناوری‌های AI باشد
+و نیازی نیست که کاربر خود را درگیر زیرساخت‌های پیچیده و هزینه‌بر کند. به عبارت دیگر، AIaaS به کاربران این امکان را می‌دهد که از قدرت هوش مصنوعی بدون نیاز به تخصص عمیق در این حوزه استفاده کنند.
+<div className="h-4" />
+
+در ادامه، بخوانید: 
+
+<div className="h-4" />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+    { platform: 'راه‌اندازی سریع سرویس هوش مصنوعی لیارا', link: "./quick-start" },
+    
+    ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<Section id="liara-provided-ais" title="API لیارا، از چه AIهایی پشتیبانی می‌کند؟" />
+لیارا از جمله اولین سرویس‌های میزبانی ابری ایرانی است که در زمینه ارائه خدمات مربوط به هوش مصنوعی، پیش‌تاز است. 
+در حال حاضر، لیارا در API خود، از هوش مصنوعی‌های زیر پشتیبانی می‌کند:
+
+<div className="h-4" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    { alt: 'https://media.liara.ir/logos/ai/openai-light.svg', platform: 'OpenAI/GPT', link: "./openai" },
+    { alt: 'https://media.liara.ir/logos/ai/gemini-google.svg', platform: 'Google/Gemini', link: "./google-gemini" },
+    { alt: 'https://media.liara.ir/logos/ai/grok-x-ai.svg', platform: 'X-AI/Grok', link: "./grok-x-ai" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+<div className="grid md:grid-cols-4 gap-4">
+            {[
+    { alt: 'https://media.liara.ir/logos/ai/deepseek.svg', platform: 'DeepSeek', link: "./deepseek" },
+    { alt: 'https://media.liara.ir/logos/ai/claude.svg', platform: 'Anthropic/Claude', link: "./anthropic-claude" },
+    { alt: 'https://media.liara.ir/logos/ai/meta-llama.svg', platform: 'Meta/Llama', link: "./meta-llama" },
+    { alt: 'https://media.liara.ir/logos/ai/mistral-nemo.svg', platform: 'Mistral NeMo', link: "./mistral-nemo" },
+    ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+{/* <br />
+اگر که در حال حاضر، لیارا از پلتفرم مورد نظر شما به صورت مستقیم پشتیبانی نمی‌کند؛ جای نگرانی نیست! شما می‌توانید با استفاده از <a href="/paas/docker/getting-started" className="text-[#2196f3] ">سرویس Docker لیارا</a> برنامه‌های خود را به سرعت و با بیشترین بازدهی، مستقر کنید؛ در ادامه مستندات برخی از پلتفرم‌های مورد استفاده، آمده است:
+<br />
+
+<div className="grid md:grid-cols-4 gap-4">
+            {[
+    { alt: 'nginx', platform: 'Nginx', link: "/paas/docker/related-apps/nginx" },
+    { alt: 'streamlit', platform: 'Streamlit', link: "/paas/docker/related-apps/streamlit" },
+    { alt: 'fastapi', platform: 'FastAPI', link: "/paas/docker/related-apps/fastapi" },
+    { alt: 'arangodb', platform: 'ArangoDB', link: "/paas/docker/related-apps/arangodb" },
+    { alt: 'https://media.liara.ir/deno/deno-logo.png', platform: 'Deno', link: "/paas/docker/related-apps/deno" },
+    { alt: 'bun', platform: 'Bun', link: "/paas/docker/related-apps/bun" },
+    { alt: 'seq', platform: 'Seq', link: "/paas/docker/related-apps/seq" },
+    { alt: 'flutter', platform: 'Flutter', link: "/paas/docker/related-apps/flutter" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+<br />
+
+<Section id='also-read' title='همچنین بخوانید:' />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    {
+      text: 'آشنایی با جزئیات پلتفرم',
+      link: './details/about',
+    },
+    {
+      text: 'راه‌اندازی CI/CD بر روی پلتفرم',
+      link: './cicd/about',
+    },
+    {
+      text: 'آشنایی با دیسک‌ها در پلتفرم',
+      link: './disks/about',
+    },
+    {
+      text: 'اتصال دامنه خریداری شده به پلتفرم',
+      link: './domains/about',
+    },
+    {
+      text: 'به‌روزرسانی پلتفرم',
+      link: './update',
+    },
+    {
+      text: 'انتقال سرویس پلتفرم',
+      link: './move',
+    },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+<br /> */}
+
+{/* 
+<Section id="most-visited-docs" title="پربازدیدترین مستندات پلتفرم" />
+<ul className="pr-4">
+  {[
+
+      {
+        title: "اتصال به دیتابیس SQLite در برنامه‌های NET.",
+        link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
+      },
+      {
+          title: "قابلیت CI/CD",
+          link: "/paas/cicd/about"
+      },
+      {
+          title: "آی‌پی ثابت",
+          link: "/paas/details/static-ip"
+      },
+      {
+        title: "متغیرهای محیطی",
+        link: "/paas/details/envs"
+      },
+      {
+        title: "بازیابی فایل پشتیبان در دیسک‌",
+        link: "/paas/disks/restore-backup-using-ftp"
+      },
+      {
+        title: "اضافه کردن زیر دامنه دلخواه به برنامه",
+        link: "/paas/domains/add-subdomains"
+      },
+      {
+        title: "استفاده از TypeScript در برنامه‌های NextJS",
+        link: "/paas/nextjs/how-tos/use-type-script"
+      },
+      {
+        title: "تنظیم Cron Job در برنامه‌های Django",
+        link: "/paas/django/how-tos/set-cron-job"
+      },
+      {
+        title: "تنظیم DNS Server",
+        link: "/paas/details/dns-server-settings"
+      },
+      
+
+
+    
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        listStyle: "persian",
+        textDecoration: "underline",
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+      <a
+        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
+        href={item.link}
+      >
+        {item.title}
+        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
+      </a>
+    </li>
+  ))}
+</ul> */}
+
+</Layout>

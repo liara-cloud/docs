@@ -7,48 +7,49 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
 
+  const getSectionData = (section, sidebar_name) => {
+    const sectionData = data[section];
+    return sectionData?.[sidebar_name] ?? sectionData?.["about"];
+  };
+
   const handleSidebarContent = () => {
     const route = router.route.substring(1);
-    const [_, sidebar_name] = route.split("/");
+    const [section, sidebar_name] = route.split("/");
 
-    if (router.route.startsWith("/paas/")) {
-      return data.paas[sidebar_name];
+    if (section === "paas") {
+      return getSectionData("paas", sidebar_name);
     }
-    if (router.route.startsWith("/iaas/")) {
-      return data.iaas[sidebar_name];
+    if (section === "iaas") {
+      return getSectionData("iaas", sidebar_name);
     }
-
-    if (router.route.startsWith("/one-click-apps/")) {
-      return data.one_click_apps[sidebar_name];
+    if (section === "one-click-apps") {
+      return getSectionData("one_click_apps", sidebar_name);
     }
-
-    if (router.route.startsWith("/dbaas/")) {
-      return data.dbaas[sidebar_name];
+    if (section === "dbaas") {
+      return getSectionData("dbaas", sidebar_name);
     }
-
-    if (router.route.startsWith("/email-server/")) {
-      return data.email_server[sidebar_name];
+    if (section === "email-server") {
+      return getSectionData("email_server", sidebar_name);
     }
-
-    if (router.route.startsWith("/object-storage/")) {
-      return data.object_storage[sidebar_name];
+    if (section === "object-storage") {
+      return getSectionData("object_storage", sidebar_name);
     }
-
-    if (router.route.startsWith("/dns-management-system/")) {
-      return data.dns[sidebar_name];
+    if (section === "dns-management-system") {
+      return getSectionData("dns", sidebar_name);
     }
-
-    if (router.route.startsWith("/overview/")) {
-      return data.overview[sidebar_name];
+    if (section === "overview") {
+      return getSectionData("overview", sidebar_name);
     }
-
-    if (router.route.startsWith("/references/")) {
-      return data.references[sidebar_name];
+    if (section === "references") {
+      return getSectionData("references", sidebar_name);
+    }
+    if (section === "ai") {
+      return getSectionData("ai", sidebar_name);
     }
 
     return data.home;
   };
-
+  
   useEffect(() => {
     setIsVisible(true);
   }, []);
