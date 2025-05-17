@@ -76,6 +76,9 @@ import {
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
+import { SiOpenai } from "react-icons/si";
+
+
 import PlatformIcon from "../Common/icons";
 import Link from "next/link";
 
@@ -109,6 +112,11 @@ export default {
       title: "پلتفرم",
       icon: <GoContainer />,
       link: "/paas/about"
+    },
+    {
+      title: "هوش مصنوعی",
+      icon: <SiOpenai />,
+      link: "/ai/about"
     },
     {
       title: "سرور مجازی ابری (VPS)",
@@ -193,6 +201,506 @@ export default {
     },
 
   ],
+
+  ai: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <SiOpenai />
+            هوش مصنوعی
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره سرویس AI",
+        icon: <GoInfo />,
+        link: "/ai/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/ai/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: "AIهای قابل ارائه"
+      },
+      {
+        title: "OpenAI/GPT",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/openai-light.svg" />,
+        link: "/ai/openai"
+      },
+      {
+        title: "Google/Gemini",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/gemini-google.svg" />,
+        link: "/ai/goole-gemini"
+      },
+      {
+        title: "X-AI/Grok",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/grok-x-ai.svg" />,
+        link: "/ai/grok-x-ai"
+      },
+      {
+        title: "DeepSeek",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/deepseek.svg" />,
+        link: "/ai/deepseek"
+      },
+      {
+        title: "Anthropic/Claude",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/claude.svg" />,
+        link: "/ai/anthropic-claude"
+      },
+      {
+        title: "Meta/Llama",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/meta-llama.svg" />,
+        link: "/ai/meta-llama"
+      },
+      {
+        title: "Mistral NeMo",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/mistral-nemo.svg" />,
+        link: "/ai/mistral-nemo"
+      },
+      
+      {
+        hr: true
+      },
+      {
+        title: "جزئیات پلتفرم",
+        icon: <GoNote />,
+        link: "/paas/details/about"
+      },
+      {
+        title: "مدیریت دیسک‌",
+        icon: <GoCodespaces />,
+        link: "/paas/disks/about"
+      },
+      {
+        title: "مدیریت دامنه‌",
+        icon: <GoGlobe />,
+        link: "/paas/domains/about"
+      },
+      {
+        title: "قابلیت CI/CD",
+        icon: <GoWorkflow />,
+        link: "/paas/cicd/about"
+      },
+      {
+        title: "فایل liara.json",
+        icon: <GoFile />,
+        link: "/paas/liarajson"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "به‌روزرسانی پلتفرم",
+        icon: <GoSync />,
+        link: "/paas/update"
+      },
+      {
+        title: "انتقال پلتفرم",
+        icon: <GoPackageDependents />,
+        link: "/paas/move"
+      }
+    ],
+
+    // update: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <GoContainer />
+    //         پلتفرم
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به خانه",
+    //     icon: <GoArrowRight />,
+    //     link: "/"
+    //   },
+    //   {
+    //     title: "درباره سرویس پلتفرم",
+    //     icon: <GoInfo />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: "پلتفرم‌های قابل ارائه"
+    //   },
+    //   {
+    //     title: "NodeJS",
+    //     icon: <IconContainer alt="nodejs" />,
+    //     link: "/paas/nodejs/getting-started"
+    //   },
+    //   {
+    //     title: "NextJS",
+    //     icon: <IconContainer alt="next" />,
+    //     link: "/paas/nextjs/getting-started"
+    //   },
+    //   {
+    //     title: "Laravel",
+    //     icon: <IconContainer alt="laravel" />,
+    //     link: "/paas/laravel/getting-started"
+    //   },
+    //   {
+    //     title: "PHP",
+    //     icon: <IconContainer alt="php" />,
+    //     link: "/paas/php/getting-started"
+    //   },
+    //   {
+    //     title: "Python",
+    //     icon: <IconContainer alt="python" />,
+    //     link: "/paas/python/getting-started"
+    //   },
+    //   {
+    //     title: "Django",
+    //     icon: <IconContainer alt="django" />,
+    //     link: "/paas/django/getting-started"
+    //   },
+    //   {
+    //     title: "Flask",
+    //     icon: <IconContainer alt="flask" />,
+    //     link: "/paas/flask/getting-started"
+    //   },
+    //   {
+    //     title: "NET.",
+    //     icon: <IconContainer alt="netcore" />,
+    //     link: "/paas/dotnet/getting-started"
+    //   },
+    //   {
+    //     title: "Go",
+    //     icon: <IconContainer alt="go" />,
+    //     link: "/paas/go/getting-started"
+    //   },
+    //   {
+    //     title: "React",
+    //     icon: <IconContainer alt="react" />,
+    //     link: "/paas/react/getting-started"
+    //   },
+    //   {
+    //     title: "Angular",
+    //     icon: <IconContainer alt="angularjs" />,
+    //     link: "/paas/angular/getting-started"
+    //   },
+    //   {
+    //     title: "Vue",
+    //     icon: <IconContainer alt="vue" />,
+    //     link: "/paas/vue/getting-started"
+    //   },
+    //   {
+    //     title: "Static",
+    //     icon: <IconContainer alt="HTML5" />,
+    //     link: "/paas/static/getting-started"
+    //   },
+    //   {
+    //     title: "Docker",
+    //     icon: <IconContainer alt="docker" />,
+    //     link: "/paas/docker/getting-started"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     title: "جزئیات پلتفرم",
+    //     icon: <GoNote />,
+    //     link: "/paas/details/about"
+    //   },
+    //   {
+    //     title: "مدیریت دیسک‌",
+    //     icon: <GoCodespaces />,
+    //     link: "/paas/disks/about"
+    //   },
+    //   {
+    //     title: "مدیریت دامنه‌",
+    //     icon: <GoGlobe />,
+    //     link: "/paas/domains/about"
+    //   },
+    //   {
+    //     title: "قابلیت CI/CD",
+    //     icon: <GoWorkflow />,
+    //     link: "/paas/cicd/about"
+    //   },
+    //   {
+    //     title: "فایل liara.json",
+    //     icon: <GoFile />,
+    //     link: "/paas/liarajson"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     title: "به‌روزرسانی پلتفرم",
+    //     icon: <GoSync />,
+    //     link: "/paas/update"
+    //   },
+    //   {
+    //     title: "انتقال پلتفرم",
+    //     icon: <GoPackageDependents />,
+    //     link: "/paas/move"
+    //   }
+    // ],
+
+    // nodejs: [
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <IconContainer alt="nodejs" />
+    //         پلتفرم NodeJS
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "برگشت به پلتفرم",
+    //     icon: <GoArrowRight />,
+    //     link: "/paas/about"
+    //   },
+    //   {
+    //     title: "شروع به کار",
+    //     icon: <GoFlame />,
+    //     link: "/paas/nodejs/getting-started"
+    //   },
+    //   {
+    //     title: "استقرار سریع!",
+    //     icon: <GoZap />,
+    //     link: "/paas/nodejs/quick-start"
+    //   },
+    //   {
+    //     title: "لینک‌های مرتبط",
+    //     icon: <GoMegaphone />,
+    //     link: "/paas/nodejs/related-links"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         < GoPackage />
+    //         شیوه‌ی
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "ساخت برنامه",
+    //     link: "/paas/nodejs/how-tos/create-app"
+    //   },
+    //   {
+    //     title: "استقرار برنامه",
+    //     link: "/paas/nodejs/how-tos/deploy-app"
+    //   },
+    //   {
+    //     title: "استفاده از متغیرهای محیطی",
+    //     link: "/paas/nodejs/how-tos/set-envs"
+    //   },
+    //   {
+    //     title: "استفاده از دیسک",
+    //     link: "/paas/nodejs/how-tos/use-disk"
+    //   },
+    //   {
+    //     title: "تنظیم لاگ‌ها",
+    //     link: "/paas/nodejs/how-tos/set-logs"
+    //   },
+    //   {
+    //     title: "راه‌اندازی برنامه Websocket",
+    //     link: "/paas/nodejs/how-tos/use-websocket"
+    //   },
+    //   {
+    //     title: "build برنامه با ES6",
+    //     link: "/paas/nodejs/how-tos/build-and-use-es6"
+    //   },
+    //   {
+    //     title: "استفاده از TypeScript",
+    //     link: "/paas/nodejs/how-tos/use-type-script"
+    //   },
+    //   {
+    //     title: "استفاده از Hookها",
+    //     link: "/paas/nodejs/how-tos/use-hooks"
+    //   },
+    //   {
+    //     title: "تنظیم Cron Job",
+    //     link: "/paas/nodejs/how-tos/set-cron-job"
+    //   },
+    //   {
+    //     title: "پیکربندی TrustedProxies",
+    //     link: "/paas/nodejs/how-tos/configure-trusted-proxy/about"
+    //   },
+    //   {
+    //     title: "انتخاب نسخه NodeJS",
+    //     link: "/paas/nodejs/how-tos/choose-version"
+    //   },
+    //   {
+    //     title: "استفاده از ماژول FFMPEG",
+    //     link: "/paas/nodejs/how-tos/use-ffmpeg-module"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <GoDatabase />
+    //         <Link href="/paas/nodejs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "دیتابیس MongoDB",
+    //     icon: <IconContainer alt="mongodb" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+    //   },
+    //   {
+    //     title: "دیتابیس MySQL/MariaDB",
+    //     icon: <IconContainer alt="mysql" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/mysql"
+    //   },
+    //   {
+    //     title: "دیتابیس PostgreSQL",
+    //     icon: <IconContainer alt="postgres" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
+    //   },
+    //   {
+    //     title: "دیتابیس MSSQL",
+    //     icon: <IconContainer alt="mssql" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/mssql"
+    //   },
+    //   {
+    //     title: "دیتابیس SQLite",
+    //     icon: <IconContainer alt="sqlite" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
+    //   },
+    //   {
+    //     title: "دیتابیس Redis",
+    //     icon: <IconContainer alt="redis" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/redis"
+    //   },
+    //   {
+    //     title: "Prisma ORM",
+    //     icon: <IconContainer alt="prisma" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/prisma"
+    //   },
+    //   {
+    //     title: "Sequelize ORM",
+    //     icon: <IconContainer alt="sequelize" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/sequelize/about"
+    //   },
+    //   {
+    //     title: "Drizzle ORM",
+    //     icon: <IconContainer alt="drizzle" />,
+    //     link: "/paas/nodejs/how-tos/connect-to-db/drizzle/about"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <GoBug />
+    //         <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "خطای CORS",
+    //     link: "/paas/nodejs/fix-common-errors/cors-error/about"
+    //   },
+    //   {
+    //     title: "رفع خطای Get query missing",
+    //     link: "/paas/nodejs/fix-common-errors/graphql-error"
+    //   },
+    //   {
+    //     hr: true
+    //   },
+    //   {
+    //     badge: (
+    //       <div className="flex items-center gap-2">
+    //         <GoPaperclip />
+    //         برنامه‌های مرتبط
+    //       </div>
+    //     )
+    //   },
+    //   {
+    //     title: "Addonis",
+    //     icon: <IconContainer alt="adonisjs" />,
+    //     link: "/paas/nodejs/related-apps/adonisjs"
+    //   },
+    //   {
+    //     title: "BlitzJS",
+    //     icon: <IconContainer alt="blitz" />,
+    //     link: "/paas/nodejs/related-apps/blitzjs"
+    //   },
+    //   {
+    //     title: "Fastify",
+    //     icon: <IconContainer alt="fastify" />,
+    //     link: "/paas/nodejs/related-apps/fastify"
+    //   },
+    //   {
+    //     title: "Hapi",
+    //     icon: <IconContainer alt="hapi" />,
+    //     link: "/paas/nodejs/related-apps/hapi"
+    //   },
+    //   {
+    //     title: "Hono",
+    //     icon: <IconContainer alt="https://media.liara.ir/docs/hono-logo-icon.png" />,
+    //     link: "/paas/nodejs/related-apps/hono"
+    //   },
+    //   {
+    //     title: "Nitro",
+    //     icon: <IconContainer alt="https://media.liara.ir/docs/nitro-icon.svg" />,
+    //     link: "/paas/nodejs/related-apps/nitro"
+    //   },
+    //   {
+    //     title: "NestJS",
+    //     icon: <IconContainer alt="nest" />,
+    //     link: "/paas/nodejs/related-apps/nestjs"
+    //   },
+    //   {
+    //     title: "NuxtJS",
+    //     icon: <IconContainer alt="nuxt" />,
+    //     link: "/paas/nodejs/related-apps/nuxtjs"
+    //   },
+    //   {
+    //     title: "Remix",
+    //     icon: <IconContainer alt="remix" />,
+    //     link: "/paas/nodejs/related-apps/remix"
+    //   },
+    //   {
+    //     title: "Strapi",
+    //     icon: <IconContainer alt="strapi" />,
+    //     link: "/paas/nodejs/related-apps/strapi/starter"
+    //   },
+    //   {
+    //     title: "Svelte",
+    //     icon: <IconContainer alt="svelte" />,
+    //     link: "/paas/nodejs/related-apps/svelte"
+    //   },
+    //   {
+    //     title: "Svelte Kit",
+    //     icon: <IconContainer alt="svelte" />,
+    //     link: "/paas/nodejs/related-apps/svelte-kit"
+    //   },
+    //   {
+    //     title: "Qwik",
+    //     icon: <IconContainer alt="qwik" />,
+    //     link: "/paas/nodejs/related-apps/qwik"
+    //   },
+    //   {
+    //     title: "JSON Server",
+    //     icon: <IconContainer alt="json" />,
+    //     link: "/paas/nodejs/related-apps/json-server"
+    //   },
+    // ],
+
+  },
 
   paas: {
     about: [

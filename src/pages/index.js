@@ -20,6 +20,9 @@ import {
 } from "react-icons/go";
 import Card from "@/components/Common/card";
 
+import { SiOpenai } from "react-icons/si";
+
+
 const GETTING_START_DATA = [
   {
     title: "docs",
@@ -298,13 +301,24 @@ const GETTING_STARTED_ITEMS = [
   }
 ];
 
+const BEST_PRODUCTS = [
+    {
+      title: "پلتفرم (PaaS)",
+      icon: <GoContainer />,
+      desc: " بررسی انواع پلتفرم‌های پشتیبانی‌شده در لیارا و آموزش گام‌به‌گام راه‌اندازی و استقرار اپلیکیشن‌ها در هر کدام از این پلتفرم‌ها ",
+      link: "/paas/about"
+    },
+    {
+      title: "هوش مصنوعی (AI API)",
+      icon: <SiOpenai />,
+      desc: "شامل معرفی APIهای مرتبط با هوش مصنوعی، نحوه اتصال آن‌ها به پروژه‌ها، و نحوه استفاده از آن‌ها در بستر لیارا",
+      link: "/paas/about"
+    },
+  
+  ]
+
+
 const PRODUCTS = [
-  {
-    title: "پلتفرم (PaaS)",
-    icon: <GoContainer />,
-    desc: "اطلاعات پلتفرم‌ها و نحوه راه‌اندازی آن‌ها در لیارا",
-    link: "/paas/about"
-  },
   {
     title: "سرور مجازی ابری (IaaS)",
     icon: <GoCloud />,
@@ -458,6 +472,29 @@ export default function Home() {
           </div>
         </Section>
         <Section id="home-products" title={"محصولات لیارا"}>
+          <div className="grid md:grid-cols-2 gap-4">
+            {BEST_PRODUCTS.map(item =>
+              <Link href={item.link}>
+                <Card className="min-h-[180px] flex flex-col cursor-pointer justify-between items-start w-full">
+                  <div className="w-full">
+                    <div className="flex items-center justify-between gap-3">
+                      <h4>
+                        {item.title}
+                      </h4>
+                      <div className="bg-[#222] text-white p-1 rounded-md">
+                        {item.icon}
+                      </div>
+                    </div>
+                    <p className="text-[gray] leading-6 text-[14px] mt-3">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <Button variant="link">بیشتر بدانید</Button>
+                </Card>
+              </Link>
+            )}
+          </div>
+          <div className="h-4" />
           <div className="grid md:grid-cols-3 gap-4">
             {PRODUCTS.map(item =>
               <Link href={item.link}>

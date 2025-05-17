@@ -1,0 +1,151 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع سرویس هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات راه‌اندازی سریع سرویس هوش مصنوعی در لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# راه‌اندازی سریع سرویس هوش مصنوعی
+<hr className="mb-2" />
+
+{/* <video
+src="https://media.liara.ir/mariadb/create-mariadb.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br /> */}
+
+  برای ایجاد سرویس هوش مصنوعی، کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای ایجاد سرویس هوش مصنوعی را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد سرویس هوش مصنوعی</h3>
+    <p>
+      وارد منوی <b>هوش مصنوعی</b> شوید، بر روی گزینه <b>ایجاد پروژه جدید</b> کلیک کنید؛ در ادامه، یک نام برای پروژه‌تان انتخاب کنید و بر روی <b>ایجاد پروژه</b> کلیک کنید.
+    </p>
+    <div className="h-3" />
+
+    <video
+    src="https://media.liara.ir/ai/create-new-ai-app.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+    ></video>    
+    
+    <div className="h-1" />
+  </>
+  )
+  },
+]}/>
+<div className="h-4" />
+با انجام مراحل فوق، سرویس هوش مصنوعی شما ساخته می‌شود و می‌توانید از آن، استفاده کنید.
+پس از راه‌اندازی سرویس، به شما یک <Important>baseUrl</Important> با آدرس آغازین <Important>https://ai.liara.ir</Important> تعلق می‌گیرد. به عنوان مثال:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`https://ai.liara.ir/api/v1/682833f68c7347b1c1612d00`}
+    </Highlight>
+    </div>
+<div className="h-4" />
+
+شما می‌توانید با استفاده از این آدرس و <a href="/references/api/about" className="text-[#2196f3]">کلید API خود</a>، به تمامی مدل‌های هوش مصنوعی ارائه شده توسط لیارا، دسترسی داشته باشید.
+
+<div className="h-3" />
+<Alert variant="success">
+    <p>
+      همچنین بخوانید: <a href="/ai/about/#liara-provided-ais" className="text-[#2196f3] ">AIهای قابل ارائه در لیارا</a>
+    </p>
+</Alert>
+<div className="h-3" />
+
+
+
+{/* <Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "نسخه‌های ارائه شده دیتابیس",
+        link: "./choose-version"
+      },
+      {
+        title: "اتصال از طریق پلتفرم‌های مختلف به دیتابیس",
+        link: "./how-tos/connect-via-platform/about"
+      },
+      {
+        title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به دیتابیس",
+        link: "./how-tos/connect-via-gui/about"
+      },
+      {
+        title: "اتصال از طریق CommandLine Interface (CLI)",
+        link: "./how-tos/connect-via-cli/about"
+      },
+      {
+        title: "ایجاد فایل پشتیبان",
+        link: "./how-tos/create-backup"
+      },
+      {
+        title: "بازیابی فایل پشتیبان",
+        link: "./how-tos/restore-backup"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div> */}
+
+</Layout>
