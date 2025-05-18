@@ -82,19 +82,6 @@ const HighlightTabs = ({ tabs }) => {
         )}
       </div>
 
-      {currentTab.output && (
-  <div className="mt-6 bg-gray-100 p-4 rounded-md" dir="rtl">
-    <div className="flex justify-between items-start mb-2">
-      <div className="text-gray-800 font-semibold text-sm">خروجی:</div>
-    </div>
-    <div
-      className="bg-white p-3 rounded-md text-left text-sm text-gray-700 whitespace-pre-wrap border border-gray-300"
-      dir="ltr"
-    >
-      {currentTab.output}
-    </div>
-  </div>
-      )}
     </div>
   );
 };

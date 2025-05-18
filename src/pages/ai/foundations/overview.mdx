@@ -79,25 +79,81 @@ import Head from "next/head";
       label: "openAI",
       icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/openai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
       language: "javascript",
-      code: `const response = await googleGenerate({
-  prompt: "What is love?",
-  model: "gemini-1.5"
-})`,
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
     },
     {
       label: "xAI",
         icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/xai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
       language: "javascript",
-      code: ``,
-      output: "5"
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("x-ai/grok-3-mini-beta"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
     },
     {
-      label: "Custom",
+      label: "Claude",
       icon: <GoTelescope />,
       language: "javascript",
-      code: `const answer = await myModel.generate({
-  prompt: "What is love?"
-})`,
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("anthropic/claude-3.7-sonnet"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "Google",
+      icon: <GoTelescope />,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("google/gemini-2.0-flash-001"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
     },
   ]}
 />
