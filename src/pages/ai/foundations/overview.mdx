@@ -76,26 +76,20 @@ import Head from "next/head";
 <HighlightTabs
   tabs={[
     {
-      label: "xAI",
-      icon: <PlatformIcon platform={document.documentElement.classList.contains("dark")?"https://ofs-liara.storage.c2.liara.space/logos/ai/xai-dark.svg":"https://ofs-liara.storage.c2.liara.space/logos/ai/xai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
-      language: "javascript",
-      code: `import { generateText } from "ai"
-import { xai } from "@ai-sdk/xai"
-
-const { text } = await generateText({
-  model: xai("grok-3-beta"),
-  prompt: "What is love?"
-})`,
-    output: "5"
-    },
-    {
-      label: "Google",
-      icon: <GoTelescope />,
+      label: "openAI",
+      icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/openai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
       language: "javascript",
       code: `const response = await googleGenerate({
   prompt: "What is love?",
   model: "gemini-1.5"
 })`,
+    },
+    {
+      label: "xAI",
+        icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/xai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
+      language: "javascript",
+      code: ``,
+      output: "5"
     },
     {
       label: "Custom",

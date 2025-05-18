@@ -29,7 +29,7 @@ const HighlightTabs = ({ tabs }) => {
   return (
     <div className="w-full mt-10" dir="rtl" id="tab">
       {/* Tabs */}
-      <div className="flex overflow-auto border-b flex-row-reverse justify-end">
+      <div className="flex overflow-auto border-b justify-start">
         {tabs.map((tab, index) => (
           <button
             key={index}
