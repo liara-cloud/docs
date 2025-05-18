@@ -280,6 +280,11 @@ export default {
         icon: <GoTelescope />,
         link: "/ai/foundations/overview"
       },
+      {
+        title: "ورودی‌ها (پرامپت‌ها)",
+        icon: <GoRocket />,
+        link: "/ai/foundations/prompts"
+      },
 
 
     ],

@@ -71,7 +71,7 @@ import Head from "next/head";
 
 <div className="h-4" />
 
-به‌عنوان مثال، شما می‌توانید برای برقراری ارتباط با مدل‌های هوش مصنوعی، مانند شکل زیر از <Important>AI SDK</Important> که یکی از فوق‌العاده‌ترین SDKهای ساخته شده برای هوش مصنوعی است؛ استفاده کنید:
+به‌عنوان مثال، شما می‌توانید برای برقراری ارتباط با مدل‌های هوش مصنوعی، مانند شکل زیر از <Important>AI SDK</Important> که یکی از فوق‌العاده‌ترین SDKهای ساخته شده برای هوش مصنوعی است؛ استفاده کنید (این SDK تنها برای زبان جاوااسکریپت و تایپ‌اسکریپت در دسترس است):
 
 
 <HighlightTabs
@@ -160,197 +160,34 @@ console.log('Generated Text:', text);
 />
 
 
-<Section id="liara-provided-ais" title="API لیارا، از چه AIهایی پشتیبانی می‌کند؟" />
-لیارا از جمله اولین سرویس‌های میزبانی ابری ایرانی است که در زمینه ارائه خدمات مربوط به هوش مصنوعی، پیش‌تاز است. 
-در حال حاضر، لیارا در API خود، از هوش مصنوعی‌های زیر پشتیبانی می‌کند:
+<Section id="generative-artificial-intelligence" title="هوش مصنوعی مولد چیست؟" />
+
+هوش مصنوعی مولد به مدل‌هایی گفته می‌شود که 
+بهترین خروجی را با توجه به ورودی‌های دریافتی، تولید می‌کنند.
+این مدل‌ها می‌توانند متن، تصویر، صدا و یا هر نوع داده دیگری را تولید کنند. 
+در واقع، این مدل‌ها از الگوهایی که در داده‌های آموزشی خود داشته‌اند، استفاده می‌کنند. 
 
 <div className="h-4" />
-<div className="grid md:grid-cols-3 gap-4">
-            {[
-    { alt: 'https://media.liara.ir/logos/ai/openai-light.svg', platform: 'OpenAI/GPT', link: "./openai" },
-    { alt: 'https://media.liara.ir/logos/ai/gemini-google.svg', platform: 'Google/Gemini', link: "./google-gemini" },
-    { alt: 'https://media.liara.ir/logos/ai/grok-x-ai.svg', platform: 'X-AI/Grok', link: "./grok-x-ai" },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                      <PlatformIcon platform={item.alt} />
-                    </div>
-                    <h4>
-                      {item.platform}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
+<Alert variant="info">
+  <p>
+    در نظر داشته باشید که در حال حاضر، تنها خروجی مدل‌های ارائه‌شده توسط لیارا، به‌صورت متنی است.
+  </p>
+</Alert>
+
+<Section id="large-language-models" title="مدل زبانی بزرگ (LLM) چیست؟" />
+
+مدل زبانی بزرگ، زیرمجموعه‌ای از مدل‌های مولد است که تمرکز اصلی آن بر <b>تولید متن</b> می‌باشد. یک LLM یک متن را به عنوان ورودی دریافت کرده و سعی می‌کند محتمل‌ترین متن بعدی را پیش‌بینی کند.
 <div className="h-4" />
+مدل‌های زبانی بزرگ از روی مجموعه‌های عظیمی از متون نوشتاری، آموزش می‌بینند. این بدان معناست که عملکرد آن‌ها در برخی حوزه‌ها بهتر از سایر موارد خواهد بود. برای مثال، مدلی که بر روی داده‌های GitHub آموزش دیده باشد، سوالات مربوط به برنامه‌نویسی را بهتر از سوالات عمومی پاسخ می‌دهد.
+<div className="h-4" />
+با این حال، درک محدودیت‌های LLMها بسیار مهم است. زمانی که از آن‌ها درباره اطلاعات نادر سوال شود — مانند تاریخ تولد یکی از بستگان شخصی‌ — ممکن است مدل دچار «توهم» شود و اطلاعاتی ساختگی ارائه دهد. بنابراین، ضروری است که در نظر داشته باشید اطلاعات موردنیاز شما تا چه اندازه در داده‌های آموزشی مدل وجود دارد.
 
-<div className="grid md:grid-cols-4 gap-4">
-            {[
-    { alt: 'https://media.liara.ir/logos/ai/deepseek.svg', platform: 'DeepSeek', link: "./deepseek" },
-    { alt: 'https://media.liara.ir/logos/ai/claude.svg', platform: 'Anthropic/Claude', link: "./anthropic-claude" },
-    { alt: 'https://media.liara.ir/logos/ai/meta-llama.svg', platform: 'Meta/Llama', link: "./meta-llama" },
-    { alt: 'https://media.liara.ir/logos/ai/mistral-nemo.svg', platform: 'Mistral NeMo', link: "./mistral-nemo" },
-    ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                      <PlatformIcon platform={item.alt} />
-                    </div>
-                    <h4>
-                      {item.platform}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
+<Section id="embedding-models" title="مدل تعبیه‌سازی چیست؟" />
 
-{/* <br />
-اگر که در حال حاضر، لیارا از پلتفرم مورد نظر شما به صورت مستقیم پشتیبانی نمی‌کند؛ جای نگرانی نیست! شما می‌توانید با استفاده از <a href="/paas/docker/getting-started" className="text-[#2196f3] ">سرویس Docker لیارا</a> برنامه‌های خود را به سرعت و با بیشترین بازدهی، مستقر کنید؛ در ادامه مستندات برخی از پلتفرم‌های مورد استفاده، آمده است:
-<br />
+مدل تعبیه‌سازی (Embedding Model) به مدل‌هایی گفته می‌شود که وظیفه آن‌ها تبدیل داده‌های پیچیده به یک فضای برداری است. این مدل‌ها 
+بر خلاف مدل‌های مولد، داده یا متن جدید تولید نمی‌کنند؛ بلکه 
+نمایشی از روابط معنادار بین موجودیت‌ها، به شما ارائه می‌دهند.
+خروجی مدل‌های تعبیه‌سازی؛ می‌تواند به‌عنوان ورودی مدل‌های زبان طبیعی (NLP) استفاده شود.
 
-<div className="grid md:grid-cols-4 gap-4">
-            {[
-    { alt: 'nginx', platform: 'Nginx', link: "/paas/docker/related-apps/nginx" },
-    { alt: 'streamlit', platform: 'Streamlit', link: "/paas/docker/related-apps/streamlit" },
-    { alt: 'fastapi', platform: 'FastAPI', link: "/paas/docker/related-apps/fastapi" },
-    { alt: 'arangodb', platform: 'ArangoDB', link: "/paas/docker/related-apps/arangodb" },
-    { alt: 'https://media.liara.ir/deno/deno-logo.png', platform: 'Deno', link: "/paas/docker/related-apps/deno" },
-    { alt: 'bun', platform: 'Bun', link: "/paas/docker/related-apps/bun" },
-    { alt: 'seq', platform: 'Seq', link: "/paas/docker/related-apps/seq" },
-    { alt: 'flutter', platform: 'Flutter', link: "/paas/docker/related-apps/flutter" },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                      <PlatformIcon platform={item.alt} />
-                    </div>
-                    <h4>
-                      {item.platform}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
-
-
-<br />
-
-<Section id='also-read' title='همچنین بخوانید:' />
-<div className="grid md:grid-cols-3 gap-4">
-            {[
-    {
-      text: 'آشنایی با جزئیات پلتفرم',
-      link: './details/about',
-    },
-    {
-      text: 'راه‌اندازی CI/CD بر روی پلتفرم',
-      link: './cicd/about',
-    },
-    {
-      text: 'آشنایی با دیسک‌ها در پلتفرم',
-      link: './disks/about',
-    },
-    {
-      text: 'اتصال دامنه خریداری شده به پلتفرم',
-      link: './domains/about',
-    },
-    {
-      text: 'به‌روزرسانی پلتفرم',
-      link: './update',
-    },
-    {
-      text: 'انتقال سرویس پلتفرم',
-      link: './move',
-    },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <h4>
-                      {item.text}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
-
-<br /> */}
-
-{/* 
-<Section id="most-visited-docs" title="پربازدیدترین مستندات پلتفرم" />
-<ul className="pr-4">
-  {[
-
-      {
-        title: "اتصال به دیتابیس SQLite در برنامه‌های NET.",
-        link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
-      },
-      {
-          title: "قابلیت CI/CD",
-          link: "/paas/cicd/about"
-      },
-      {
-          title: "آی‌پی ثابت",
-          link: "/paas/details/static-ip"
-      },
-      {
-        title: "متغیرهای محیطی",
-        link: "/paas/details/envs"
-      },
-      {
-        title: "بازیابی فایل پشتیبان در دیسک‌",
-        link: "/paas/disks/restore-backup-using-ftp"
-      },
-      {
-        title: "اضافه کردن زیر دامنه دلخواه به برنامه",
-        link: "/paas/domains/add-subdomains"
-      },
-      {
-        title: "استفاده از TypeScript در برنامه‌های NextJS",
-        link: "/paas/nextjs/how-tos/use-type-script"
-      },
-      {
-        title: "تنظیم Cron Job در برنامه‌های Django",
-        link: "/paas/django/how-tos/set-cron-job"
-      },
-      {
-        title: "تنظیم DNS Server",
-        link: "/paas/details/dns-server-settings"
-      },
-      
-
-
-    
-  ].map((item, index) => (
-    <li
-      key={index}
-      style={{
-        listStyle: "persian",
-        textDecoration: "underline",
-        textDecorationColor: "#9ca3af"
-      }}
-    >
-      <a
-        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
-        href={item.link}
-      >
-        {item.title}
-        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
-      </a>
-    </li>
-  ))}
-</ul> */}
 
 </Layout>

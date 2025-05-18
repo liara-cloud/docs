@@ -1,0 +1,80 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ورودی ها (پرامپت ها) - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با ورودی ها (پرامپت ها) در سرویس هوش مصنوعی لیارا، ویژگی‌ها و امکانات آن"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# ورودی‌ها (پرامپت‌ها) در هوش مصنوعی
+<hr className="mb-2" />
+
+پرامپت‌ها دستوراتی هستند که شما به یک مدل زبانی بزرگ (LLM) می‌دهید تا به آن بگویید چه کاری انجام دهد. این فرآیند شبیه زمانی است که از کسی سوالی می‌پرسید؛ هرچه سؤال شما واضح‌تر باشد، پاسخ دقیق‌تری دریافت خواهید کرد.
+<div className="h-2" />
+بسیاری از ارائه‌دهندگان مدل‌های هوش مصنوعی، از جمله OpenAI، یک‌سری راه‌‌حل برای تعریف پرامپت‌ها به شما ارائه 
+می‌دهند. این واسط‌ها، شامل نقش‌های مختلف و پیام‌های متفاوت هستند. در ادامه، 
+
+
+<Section id='' title='' />
+
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p></p>},
+    {text: <p></p>},
+    {text: <p></p>},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStyle:"disc"
+      }}
+    >
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "openAI",
+      icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/openai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
+      language: "javascript",
+      code: ``,
+    },
+  ]}
+/>
+
+</Layout>
