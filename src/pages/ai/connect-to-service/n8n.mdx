@@ -1,0 +1,116 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال هوش مصنوعی به N8N - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات اتصال سرویس هوش مصنوعی لیارا به N8N در لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# اتصال هوش مصنوعی به برنامه N8N
+<hr className="mb-2" />
+
+<video
+src="https://media.liara.ir/ai/n8n-ai.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
+
+برای راه‌اندازی برنامه N8N مجهز به هوش مصنوعی، در ابتدا باید، دو سرویس زیر را در لیارا، ایجاد کنید: 
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p><a href="/one-click-apps/n8n/quick-start/" className="text-[#2196f3]">برنامه آماده N8N</a></p>,},
+    {text: <p><a href="/ai/quick-start/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a></p>,},
+
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<br />
+
+بعد از راه‌اندازی دو سرویس فوق، تنها کافیست تا گام‌های زیر را طی کنید: 
+
+
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ایجاد حساب کاربری N8N</h3>   
+    <p>وارد برنامه آماده N8N خود شوید و با وارد کردن فیلدهای خواسته شده و کلیک بر روی گزینه <Important>Next</Important>، حساب کاربری خود را ایجاد کنید.</p>
+    <div className="h-2" />
+    <img
+        src="https://media.liara.ir/ai/n8n/n8n-first-welcome.png"
+        alt="n8n-first-welcome"
+    />    
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد credential برای OpenAI</h3>
+    <p>
+      وارد بخش credentials شوید و بر روی گزینه <Important>Add first credential</Important> کلیک کنید؛ گزینه <Important>OpenAi</Important> را انتخاب کنید و بر روی <Important>Continue</Important> کلیک کنید. 
+      در بخش <Important>API Key</Important>، <a href="/references/api/about/" className="text-[#2196f3] ">کلید API لیارا</a> و در بخش <Important>Base URL</Important>، آدرس <Important>baseUrl</Important> سرویس هوش مصنوعی خود را، وارد کنید و در نهایت بر روی گزینه <Important>Save</Important>، کلیک کنید. 
+    </p>
+    <div className="h-2" />
+    <img
+        src="https://media.liara.ir/ai/n8n/save-openai-credential.png"
+        alt="save-openai-credential"
+    />   
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد Workflow هوش مصنوعی</h3>
+    <p>
+    وارد بخش Workflow شوید؛ بر روی گزینه <Important>Create Workflow</Important> کلیک کنید و در صفحه جدید باز شده، علامت <Important>+</Important> را انتخاب کنید. در نهایت، ماژول <Important>OpenAI Chat Model</Important> را انتخاب کرده و پس از انتخاب نوع مدل، می‌توانید از هوش مصنوعی خود، استفاده کنید.
+    </p>
+    <div className="h-3" />
+    <img
+        src="https://media.liara.ir/ai/n8n/n8n-and-liara-ai.png"
+        alt="n8n-and-liara-ai"
+    /> 
+
+    <div className="h-1" />
+  </>
+  )
+  },
+]}/>
+
+<div className="h-4" />
+با انجام مراحل فوق، سرویس هوش مصنوعی شما در N8N آماده استفاده است.
+
+</Layout>
