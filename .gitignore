@@ -8,6 +8,9 @@
 .pnp.js
 .yarn/install-state.gz
 
+/sample.mdx 
+
+
 # testing
 /coverage
 

@@ -1,0 +1,193 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات هوش مصنوعی در یک نگاه - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با هوش مصنوعی‌های لیارا در یک نگاه، ویژگی‌ها و امکانات آن"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+# هوش مصنوعی لیارا، در یک نگاه
+<hr className="mb-2" />
+
+<Section id='how-to-work-with-liara-ai' title='چگونه از سرویس هوش مصنوعی لیارا استفاده کنیم؟' />
+
+سرویس هوش مصنوعی لیارا، 
+به شما سه پارامتر اصلی برای کار با هوش مصنوعی‌ها ارائه می‌دهد:
+
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p><b>کلید API</b>، که برای احراز هویت، استفاده می‌شود.</p>},
+    {text: <p><b>مدل</b>، که مشخص می‌کند کدام مدل هوش مصنوعی استفاده شود.</p>},
+    {text: <p><b>baseUrl</b>، که آدرس API هوش مصنوعی اختصاصی شما است.</p>},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStyle:"disc"
+      }}
+    >
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+
+با استفاده از این سه پارامتر، شما می‌توانید به راحتی با هوش مصنوعی‌های مختلف ارتباط برقرار کنید و از قابلیت‌های آن‌ها استفاده کنید.
+
+<div className="h-4" />
+
+یکی از راه‌های اتصال به مدل هوش مصنوعی، استفاده از SDKها است. 
+استفاده از SDK به توسعه‌دهندگان این امکان را می‌دهد که تمرکز خود را بر روی ساخت برنامه‌های خود بگذارند و زمان خود را صرف جزئیات فنی نکنند. 
+
+<div className="h-4" />
+
+به‌عنوان مثال، شما می‌توانید برای برقراری ارتباط با مدل‌های هوش مصنوعی، مانند شکل زیر از <Important>AI SDK</Important> که یکی از فوق‌العاده‌ترین SDKهای ساخته شده برای هوش مصنوعی است؛ استفاده کنید (این SDK تنها برای زبان جاوااسکریپت و تایپ‌اسکریپت در دسترس است):
+
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "openAI",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/openai-svg-black.svg" dark="https://media.liara.ir/logos/ai/openai-light.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "xAI",
+        icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/xai-light.svg" dark="https://media.liara.ir/logos/ai/xai-dark.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("x-ai/grok-3-mini-beta"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "Claude",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/claude-black.svg" dark="https://media.liara.ir/logos/ai/claude.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("anthropic/claude-3.7-sonnet"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "Google",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/gemini-black.svg" dark="https://media.liara.ir/logos/ai/gemini-google.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("google/gemini-2.0-flash-001"),
+  prompt: 'hey.',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+  ]}
+/>
+
+
+<Section id="generative-artificial-intelligence" title="هوش مصنوعی مولد چیست؟" />
+
+هوش مصنوعی مولد به مدل‌هایی گفته می‌شود که 
+بهترین خروجی را با توجه به ورودی‌های دریافتی، تولید می‌کنند.
+این مدل‌ها می‌توانند متن، تصویر، صدا و یا هر نوع داده دیگری را تولید کنند. 
+در واقع، این مدل‌ها از الگوهایی که در داده‌های آموزشی خود داشته‌اند، استفاده می‌کنند. 
+
+<div className="h-4" />
+<Alert variant="info">
+  <p>
+    در نظر داشته باشید که در حال حاضر، تنها خروجی مدل‌های ارائه‌شده توسط لیارا، به‌صورت متنی است.
+  </p>
+</Alert>
+
+<Section id="large-language-models" title="مدل زبانی بزرگ (LLM) چیست؟" />
+
+مدل زبانی بزرگ، زیرمجموعه‌ای از مدل‌های مولد است که تمرکز اصلی آن بر <b>تولید متن</b> می‌باشد. یک LLM یک متن را به عنوان ورودی دریافت کرده و سعی می‌کند محتمل‌ترین متن بعدی را پیش‌بینی کند.
+<div className="h-4" />
+مدل‌های زبانی بزرگ از روی مجموعه‌های عظیمی از متون نوشتاری، آموزش می‌بینند. این بدان معناست که عملکرد آن‌ها در برخی حوزه‌ها بهتر از سایر موارد خواهد بود. برای مثال، مدلی که بر روی داده‌های GitHub آموزش دیده باشد، سوالات مربوط به برنامه‌نویسی را بهتر از سوالات عمومی پاسخ می‌دهد.
+<div className="h-4" />
+با این حال، درک محدودیت‌های LLMها بسیار مهم است. زمانی که از آن‌ها درباره اطلاعات نادر سوال شود — مانند تاریخ تولد یکی از بستگان شخصی‌ — ممکن است مدل دچار «توهم» شود و اطلاعاتی ساختگی ارائه دهد. بنابراین، ضروری است که در نظر داشته باشید اطلاعات موردنیاز شما تا چه اندازه در داده‌های آموزشی مدل وجود دارد.
+
+<Section id="embedding-models" title="مدل تعبیه‌سازی چیست؟" />
+
+مدل تعبیه‌سازی (Embedding Model) به مدل‌هایی گفته می‌شود که وظیفه آن‌ها تبدیل داده‌های پیچیده به یک فضای برداری است. این مدل‌ها 
+بر خلاف مدل‌های مولد، داده یا متن جدید تولید نمی‌کنند؛ بلکه 
+نمایشی از روابط معنادار بین موجودیت‌ها، به شما ارائه می‌دهند.
+خروجی مدل‌های تعبیه‌سازی؛ می‌تواند به‌عنوان ورودی مدل‌های زبان طبیعی (NLP) استفاده شود.
+
+
+</Layout>

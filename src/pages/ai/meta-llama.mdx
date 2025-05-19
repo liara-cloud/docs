@@ -76,9 +76,9 @@ import Head from "next/head";
     <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-        {`curl <baseUrl> \\
+        {`curl <baseUrl>\chat\completions \\
   -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer <LIARA_API_TOKEN>" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
   -d '{
   "model": "<model_name>",
   "messages": [
@@ -113,7 +113,7 @@ import Head from "next/head";
 
 const openai = new OpenAI({
   baseURL: '<baseUrl>',
-  apiKey: '<LIARA_API_TOKEN>',
+  apiKey: '<LIARA_API_KEY>',
 });
 
 async function main() {
@@ -163,7 +163,7 @@ use OpenAI\\Client;
 use OpenAI\\Laravel\\Facades\\OpenAI;
 use OpenAI\\Contracts\\ResponseContracts\\Chat\\CreateResponse;
 
-$yourApiKey = '<LIARA_API_TOKEN>'; 
+$yourApiKey = '<LIARA_API_KEY>'; 
 $baseUrl = '<baseUrl>'; 
 $model = '<model_name>'; 
 
@@ -214,7 +214,7 @@ echo $result->choices[0]->message->content;
 
 client = OpenAI(
   base_url="<baseUrl>",
-  api_key="<LIARA_API_TOKEN>",
+  api_key="<LIARA_API_KEY>",
 )
 
 completion = client.chat.completions.create(
@@ -261,7 +261,7 @@ class Program
 {
     static void Main()
     {
-        string apiKey = "<LIARA_API_TOKEN>";
+        string apiKey = "<LIARA_API_KEY>";
         
         string baseUrl = "<baseUrl>";
         
@@ -318,7 +318,7 @@ func main() {
 
 	
 	client := openai.NewClient(
-		option.WithAPIKey("<LIARA_API_TOKEN>"),
+		option.WithAPIKey("<LIARA_API_KEY>"),
 		option.WithBaseURL("<baseUrl>"),       
 	)
 
