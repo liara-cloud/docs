@@ -268,6 +268,17 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/logos/ai/mistral-nemo.svg" />,
         link: "/ai/mistral-nemo"
       },
+      {
+        hr: true
+      },
+      {
+        badge: "اتصال به سرویس"
+      },
+      {
+        title: "N8N",
+        icon: <IconContainer alt="n8n" />,
+        link: "/ai/connect-to-service/n8n"
+      },
       
       {
         hr: true
