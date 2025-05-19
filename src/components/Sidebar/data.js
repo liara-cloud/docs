@@ -231,7 +231,7 @@ export default {
         hr: true
       },
       {
-        badge: "AIهای قابل ارائه"
+        badge: "مدل‌های قابل ارائه"
       },
       {
         title: "OpenAI/GPT",
