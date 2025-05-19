@@ -76,7 +76,7 @@ import {
 } from "react-icons/go";
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
-import { SiOpenai } from "react-icons/si";
+import { BsStars } from "react-icons/bs";
 
 
 import PlatformIcon from "../Common/icons";
@@ -115,7 +115,7 @@ export default {
     },
     {
       title: "هوش مصنوعی",
-      icon: <SiOpenai />,
+      icon: <BsStars />,
       link: "/ai/about"
     },
     {
@@ -207,7 +207,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <SiOpenai />
+            <BsStars />
             هوش مصنوعی
           </div>
         )

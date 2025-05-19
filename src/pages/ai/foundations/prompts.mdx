@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Button from "@/components/Common/button";
 import Section from "@/components/Common/section";
 import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
 import Tabs from "@/components/Common/tab";
 import Step from "@/components/Common/step";
 import Card from "@/components/Common/card";
@@ -39,7 +40,371 @@ import Head from "next/head";
 پرامپت‌ها دستوراتی هستند که شما به یک مدل زبانی بزرگ (LLM) می‌دهید تا به آن بگویید چه کاری انجام دهد. این فرآیند شبیه زمانی است که از کسی سوالی می‌پرسید؛ هرچه سؤال شما واضح‌تر باشد، پاسخ دقیق‌تری دریافت خواهید کرد.
 <div className="h-2" />
 بسیاری از ارائه‌دهندگان مدل‌های هوش مصنوعی، از جمله OpenAI، یک‌سری راه‌‌حل برای تعریف پرامپت‌ها به شما ارائه 
-می‌دهند. این واسط‌ها، شامل نقش‌های مختلف و پیام‌های متفاوت هستند. در ادامه، 
+می‌دهند. این واسط‌ها، شامل نقش‌های مختلف و پیام‌های متفاوت هستند. در ادامه، نحوه تعریف و کار با پرامپت‌ها در سرویس هوش مصنوعی لیارا، هم با <Important>OpenAI SDK</Important> و هم با <Important>AI SDK</Important> بررسی شده است.
+
+
+<Section id='text-prompt' title='پرامپت متنی (Text Prompt)' />
+
+پرامپت‌های متنی، رشته‌های متنی هستند. این نوع پرامپت‌ها، برای تولید محتوای ساده، مورد استفاده قرار می‌گیرند.
+
+<Tabs 
+  tabs={["OpenAI SDK", "AI SDK"]} 
+  content={[
+    <>
+        برای استفاده از پرامپت‌های متنی با OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید:
+        <HighlightTabs
+            tabs={[
+                {
+                label: "cURL",
+                language: "bash",
+                code: `curl <baseUrl>/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
+  -d '{
+  "model": "<modelName>",
+  "messages": [
+    {"role": "user", "content": "Hello!"}
+  ]
+}'`,
+                description: (
+                  <p>
+                    در دستور فوق، مقدار فیلد <Important>content</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
+                  </p>
+                ),
+                },
+                {
+                label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+                language: "javascript",
+                code: `// npm install openai
+                
+const OpenAI = require('openai');
+
+const openai = new OpenAI({
+  baseURL: '<baseUrl>',
+  apiKey: '<LIARA_API_KEY>',
+});
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    model: '<model_name>',
+    messages: [
+      {
+        role: 'user',
+        content: 'Hello!',
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message);
+}
+
+main();`,
+                description: (
+                  <p>
+                    در کد فوق، مقدار فیلد <Important>content</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
+                  </p>
+                ),
+                },
+                {
+                label: "PHP",
+                icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+                language: "php",
+                code: `// composer require openai-php/client guzzlehttp/guzzle
+
+<?php
+
+require 'vendor/autoload.php';
+
+use OpenAI\\Client;
+use OpenAI\\Laravel\\Facades\\OpenAI;
+use OpenAI\\Contracts\\ResponseContracts\\Chat\\CreateResponse;
+
+$yourApiKey = '<LIARA_API_KEY>'; 
+$baseUrl = '<baseUrl>'; 
+$model = '<model_name>'; 
+
+// Create the OpenAI client
+$client = \\OpenAI::factory()
+    ->withApiKey($yourApiKey)
+    ->withBaseUri($baseUrl)
+    ->make();
+
+// Send a chat completion request
+$result = $client->chat()->create([
+    'model' => $model,
+    'messages' => [
+        ['role' => 'user', 'content' => 'I love U Bro!'],
+    ],
+]);
+
+// Print the response
+echo $result->choices[0]->message->content;
+
+`,
+                description: (
+                  <p>
+                    در قطعه کد فوق، مقدار فیلد <Important>content</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
+                  </p>
+                ),
+                },
+                {
+                label: "Python",
+                icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+                language: "python",
+                code: `# pip install openai
+                
+from openai import OpenAI
+
+client = OpenAI(
+  base_url="<baseUrl>",
+  api_key="<LIARA_API_KEY>",
+)
+
+completion = client.chat.completions.create(
+  model="<model_name>",
+  messages=[
+    {
+      "role": "user",
+      "content": 'Hello!'
+    }
+  ]
+)
+
+print(completion.choices[0].message.content)`,
+                },
+                {
+                label: "NET.",
+                icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+                language: "dotnet",
+                code: `// dotnet add package OpenAI
+                
+using System.ClientModel;
+using OpenAI;
+using OpenAI.Chat;
+
+class Program
+{
+    static void Main()
+    {
+        string apiKey = "<LIARA_API_KEY>";
+        
+        string baseUrl = "<baseUrl>";
+        
+        OpenAIClientOptions options = new OpenAIClientOptions
+        {
+            Endpoint = new Uri(baseUrl)
+        };
+
+        ChatClient client = new(model: "<model_name>", credential: new ApiKeyCredential(apiKey), options: options);
+
+        ChatCompletion completion = client.CompleteChat("Hello!");
+
+        Console.WriteLine($"[ASSISTANT]: {completion.Content[0].Text}");
+    }
+}`,
+                description: (
+                  <p>
+                    در کد فوق، ورودی متد <Important>client.CompleteChat</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
+                  </p>
+                ),
+                },
+                {
+                label: "Go",
+                icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+                language: "go",
+                code: `// go get package github.com/openai/openai-go
+// go get package github.com/openai/openai-go/option
+                
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go"
+	"github.com/openai/openai-go/option"
+)
+
+func main() {
+	const model = "<model_name>" 
+
+	
+	client := openai.NewClient(
+		option.WithAPIKey("<LIARA_API_KEY>"),
+		option.WithBaseURL("<baseUrl>"),       
+	)
+
+	chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
+		Messages: []openai.ChatCompletionMessageParamUnion{
+			openai.UserMessage("Hello!"),          
+		},
+		Model: model,                                           
+	})
+	if err != nil {
+		panic(err.Error())          
+	}
+
+	fmt.Println("Model Response:", chatCompletion.Choices[0].Message.Content)
+}`,
+                description: (
+                  <p>
+                    در دستور فوق، ورودی متد <Important>openai.UserMessage</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
+                  </p>
+                ),
+                },
+            ]}
+        />
+        <div className="h-4" />
+        <p>
+        در قطعه کد‌های فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_KEY&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های فوق را قرار دهید.
+        </p>
+    </>,
+
+    <>
+    <p>
+    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کدهای جاوااسکریپت زیر، استفاده کنید.
+    فیلد <Important>prompt</Important>، فیلدی است که پرامپت متنی شما را مشخص می‌کند:
+    </p>
+
+    <HighlightTabs
+        tabs={[
+            {
+            label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+            language: "javascript",
+            code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+  
+  
+  prompt: 'hey.',
+
+});
+
+console.log('Generated Text:', text);
+`,
+            },
+            {
+            label: "TypeScript",
+            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+            language: "typescript",
+            code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+async function main() {
+  const model = createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL as string,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY as string,
+  }).chatModel("openai/gpt-4o-mini");
+
+  const { text } = await generateText({
+    model,
+
+
+    prompt: 'hey.',
+
+  });
+
+  console.log('Generated Text:', text);
+}
+
+main().catch(console.error);
+`,
+            },
+        ]}
+    />
+    
+    <br />
+    <p>
+      همچنین، می‌توانید از template literalها برای تعریف پرامپت‌های متنی استفاده کنید تا امکان استفاده از متغیرها و رشته‌های چندخطی را داشته باشید. به‌عنوان مثال:
+    </p>
+    
+    <HighlightTabs
+        tabs={[
+            {
+            label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+            language: "javascript",
+            code: `import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const destination = "Paris";
+const lengthOfStay = 5;
+
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+
+
+  prompt: \`I am planning a trip to \${destination} for \${lengthOfStay} days. \` +
+    \`Please suggest the best tourist activities for me to do.\`,
+
+});
+
+console.log('Generated Text:', text);
+`,
+            },
+            {
+            label: "TypeScript",
+            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+            language: "typescript",
+            code: `import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const destination = "Paris";
+const lengthOfStay = 5;
+
+async function main() {
+  const model = createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL as string,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY as string,
+  }).chatModel("openai/gpt-4o-mini");
+
+  const { text } = await generateText({
+    model,
+    prompt:
+      \`I am planning a trip to \${destination} for \${lengthOfStay} days. \` +
+      \`Please suggest the best tourist activities for me to do.\`,
+  });
+
+  console.log('Generated Text:', text);
+}
+
+main().catch(console.error);
+`,
+            },
+        ]}
+    />
+    
+    
+    
+    </>
+
+    
+
+  ]}
+
+/>
+
+
+
+
+{/* 
 
 
 <Section id='' title='' />
@@ -75,6 +440,6 @@ import Head from "next/head";
       code: ``,
     },
   ]}
-/>
+/> */}
 
 </Layout>

@@ -78,7 +78,7 @@ import Head from "next/head";
   tabs={[
     {
       label: "openAI",
-      icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/openai-light.svg"} style={{ width: 18, height: 18, color:"#ccc" }} />,
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/openai-svg-black.svg" dark="https://media.liara.ir/logos/ai/openai-light.svg" style={{ width: 18, height: 18 }}/>,
       language: "javascript",
       code: `// npm i @ai-sdk/openai-compatible
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
@@ -118,7 +118,7 @@ console.log('Generated Text:', text);
     },
     {
       label: "Claude",
-      icon: <GoTelescope />,
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/claude-black.svg" dark="https://media.liara.ir/logos/ai/claude.svg" style={{ width: 18, height: 18 }}/>,
       language: "javascript",
       code: `// npm i @ai-sdk/openai-compatible
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
@@ -138,7 +138,7 @@ console.log('Generated Text:', text);
     },
     {
       label: "Google",
-      icon: <GoTelescope />,
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/gemini-black.svg" dark="https://media.liara.ir/logos/ai/gemini-google.svg" style={{ width: 18, height: 18 }}/>,
       language: "javascript",
       code: `// npm i @ai-sdk/openai-compatible
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';

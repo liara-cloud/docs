@@ -20,7 +20,7 @@ import {
 } from "react-icons/go";
 import Card from "@/components/Common/card";
 
-import { SiOpenai } from "react-icons/si";
+import { BsStars } from "react-icons/bs";
 
 
 const GETTING_START_DATA = [
@@ -310,7 +310,7 @@ const BEST_PRODUCTS = [
     },
     {
       title: "هوش مصنوعی (AI API)",
-      icon: <SiOpenai />,
+      icon: <BsStars />,
       desc: "شامل معرفی APIهای مرتبط با هوش مصنوعی، نحوه اتصال آن‌ها به پروژه‌ها، و نحوه استفاده از آن‌ها در بستر لیارا",
       link: "/paas/about"
     },
