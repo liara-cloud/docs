@@ -279,7 +279,12 @@ export default {
         icon: <IconContainer alt="n8n" />,
         link: "/ai/connect-to-service/n8n"
       },
-      
+      {
+        title: "OpenWeb UI",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
+        link: "/ai/connect-to-service/openweb"
+      },
+
       {
         hr: true
       },
