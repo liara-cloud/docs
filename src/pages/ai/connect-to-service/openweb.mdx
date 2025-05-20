@@ -1,0 +1,116 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال هوش مصنوعی به OpenWeb UI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات اتصال سرویس هوش مصنوعی لیارا به OpenWeb UI - در لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# اتصال هوش مصنوعی به برنامه OpenWeb UI
+<hr className="mb-2" />
+
+{/* <video
+src="https://media.liara.ir/ai/openweb UI-ai.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br /> */}
+
+برای راه‌اندازی برنامه OpenWeb UI مجهز به هوش مصنوعی، در ابتدا باید، دو سرویس زیر را در لیارا، ایجاد کنید:
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p><a href="/one-click-apps/openwebui/quick-start/" className="text-[#2196f3]">برنامه آماده OpenWeb</a></p>,},
+    {text: <p><a href="/ai/quick-start/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a></p>,},
+
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStyleType: "arabic-indic !important",
+        listStylePosition: "outside",
+      }}
+    >
+        
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<br />
+
+بعد از راه‌اندازی دو سرویس فوق، تنها کافیست تا گام‌های زیر را طی کنید: 
+
+
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>تغییر متغیرهای محیطی</h3>   
+    <p>
+        وارد بخش <a href="/paas/details/envs/" className="text-[#2196f3]">متغیرهای محیطی</a> برنامه OpenWeb UI خود شوید و مقدار <Important>baseUrl</Important> سرویس هوش مصنوعی خود را با مقدار پیش‌فرض متغیر محیطی <Important>OPENAI_API_BASE_URL</Important>، جایگزین کنید.
+        سپس، مقدار پیش‌فرض متغیر محیطی <Important>OPENAI_API_KEY</Important> را با <a href="/references/api/about/" className="text-[#2196f3]">کلید API لیارا</a> جایگزین کنید و سپس بر روی گزینه <b>ثبت تغییرات</b> کلیک کنید تا تغییرات ذخیره شوند.
+    </p>  
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد حساب کاربری جدید</h3>
+    <p>
+        وارد برنامه OpenWeb UI خود شوید و با وارد کردن فیلدهای خواسته شده و کلیک بر روی گزینه <Important>Create Admin Account</Important>، حساب کاربری جدیدی ایجاد کنید.
+    </p>
+    <div className="h-2" />
+    <img
+        src="https://media.liara.ir/ai/openwebui/create-account.png"
+        alt="create-account-in-openwebui"
+    />   
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>خاموش کردن گزینه Stream</h3>
+    <p>
+        پس از ورود به حساب کاربری، آیکن تنظیمات در
+        گوشه سمت راست بالای صفحه را انتخاب کنید. در بخش <b>Advanced Params</b>، گزینه <Important>Stream Chat Response</Important> را بر روی <Important>Off</Important> قرار دهید. 
+    </p>
+    <div className="h-3" />
+    <img
+        src="https://media.liara.ir/ai/openwebui/turn-off-stream-option.png"
+        alt="turn-off-stream-option"
+    />
+
+    <div className="h-1" />
+  </>
+  )
+  },
+]}/>
+
+<div className="h-4" />
+با انجام مراحل فوق، سرویس هوش مصنوعی شما در OpenWeb UI آماده استفاده است و می‌توانید پس از انتخاب مدل، از آن استفاده کنید.
+
+</Layout>
