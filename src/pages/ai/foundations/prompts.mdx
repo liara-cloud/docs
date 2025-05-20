@@ -401,7 +401,41 @@ main().catch(console.error);
 
 />
 
+<Section id='system-prompt' title='پرامپت سیستمی' />
 
+پرامپت‌های سیستمی مجموعه‌ای از دستورالعمل‌های اولیه هستند که به مدل‌ها داده می‌شوند تا رفتارها و پاسخ‌های آن‌ها را هدایت و محدود کنند. این نوع از پرامپت‌ها به مدل کمک می‌کنند تا در یک چارچوب خاص عمل کند یا لحن و نقش مشخصی را ایفا نماید.
+
+<div className="h-2" />
+
+
+
+<Tabs 
+  tabs={["AI SDK"]} 
+  content={[
+    <>
+      شما می‌توانید به شکل زیر، پرامپت‌های سیستمی را در برنامه خود تعریف کنید.
+
+    <HighlightTabs
+        tabs={[
+            {
+            label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+            language: "javascript",
+            code: ``,
+            },
+            {
+            label: "TypeScript",
+            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+            language: "typescript",
+            code: ``,
+            },
+        ]}
+    />
+    </>
+
+  ]}
+
+/>
 
 
 {/* 
