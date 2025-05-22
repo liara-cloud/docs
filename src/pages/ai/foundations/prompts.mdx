@@ -110,7 +110,7 @@ main();`,
                 label: "PHP",
                 icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
                 language: "php",
-                code: `// composer require openai-php/client guzzlehttp/guzzle
+                code: `<!-- composer require openai-php/client guzzlehttp/guzzle -->
 
 <?php
 
@@ -213,8 +213,8 @@ class Program
                 label: "Go",
                 icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
                 language: "go",
-                code: `// go get package github.com/openai/openai-go
-// go get package github.com/openai/openai-go/option
+                code: `// go get github.com/openai/openai-go
+// go get github.com/openai/openai-go/option
                 
 package main
 
@@ -421,22 +421,897 @@ main().catch(console.error);
             label: "JavaScript",
                 icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
             language: "javascript",
-            code: ``,
+            code: `// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const destination = "Paris";
+const lengthOfStay = 5;
+
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+
+  system:
+    \`You help planning travel itineraries. \` +
+    \`Respond to the users' request with a list \` +
+    \`of the best stops to make in their destination.\`,
+
+  prompt: \`I am planning a trip to \${destination} for \${lengthOfStay} days. \` +
+    \`Please suggest the best tourist activities for me to do.\`,
+
+});
+
+console.log('Generated Text:', text);
+`,
             },
             {
             label: "TypeScript",
             icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
             language: "typescript",
-            code: ``,
+            code: `import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+// import { config } from 'dotenv';
+// config();
+
+const destination = "Paris";
+const lengthOfStay = 5;
+
+async function main() {
+  const model = createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL as string,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY as string,
+  }).chatModel("openai/gpt-4o-mini");
+
+  const { text } = await generateText({
+    model,
+
+    
+    system:
+      \`You help planning travel itineraries. \` +
+      \`Respond to the users' request with a list \` +
+      \`of the best stops to make in their destination.\`,
+
+    prompt:
+      \`I am planning a trip to \${destination} for \${lengthOfStay} days. \` +
+      \`Please suggest the best tourist activities for me to do.\`,
+  });
+
+  console.log('Generated Text:', text);
+}
+
+main().catch(console.error);
+`,
             },
         ]}
     />
+    <br />
+    <p>
+        در قطعه کدهای فوق، مقدار فیلد <Important>system</Important>، پرامپت سیستمی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
+    </p>
+    </>
+
+
+  ]}
+/>
+
+
+<Section id='message-prompt' title='پرامپت‌های پیام‌محور' />
+
+پرامپت پیام‌محور، آرایه‌ای از پیام‌ها است 
+که هر پیام دارای نقش مشخصی مانند <Important>user</Important> (کاربر)، <Important>assistant</Important> (دستیار)، یا <Important>tool</Important> (ابزار) است. این نوع پرامپت‌ها برای چت‌بات‌ها و پرامپت‌های پیچیده‌تر و چندوجهی (multi-modal) بسیار مناسب‌اند.
+
+<Tabs 
+  tabs={["OpenAI SDK", "AI SDK"]} 
+  content={[
+    <>
+        برای استفاده از پرامپت‌های پیام‌محور با OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید:
+        <HighlightTabs
+            tabs={[
+                {
+                label: "cURL",
+                language: "javascript",
+                code: `curl <baseUrl>/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
+  -d '{
+  "model": "<modelName>",
+  "messages": [
+    {
+            "role": "developer",
+            "content": "Talk like a pirate."
+    },
+    {
+            "role": "user",
+            "content": "Are semicolons optional in JavaScript?"
+    }
+
+  ]
+}'`,
+                description: (
+                  <>
+                    <p>
+                        در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
+                    </p>
+                    
+                    <div className="h-2" />
+                    <ul className="pr-4">
+                      {[
+                        {text: <p><Important>developer</Important> (توسعه‌دهنده): دستورالعمل‌هایی که توسط توسعه‌دهنده‌ی اپلیکیشن ارائه می‌شود.</p>},
+                        {text: <p><Important>system</Important> (سیستم): تنظیم کلی رفتار مدل. لحن، سبک، دستورالعمل‌های کلی و نقش‌آفرینی.</p>},
+                        {text: <p><Important>user</Important> (کاربر): ورودی که از سمت کاربر نهایی به مدل داده می‌شود.</p>},
+                        {text: <p><Important>assistant</Important> (دستیار): نقش پاسخ‌دهنده مدل را دارد؛ یعنی پیام‌هایی که مدل تولید کرده با این نقش ذخیره می‌شوند.</p>},
+                        {text: <p><Important>tool</Important> (ابزار): یک ابزار ثالت که باعث بهبود پاسخگویی مدل، می‌شود. </p>},
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            textDecorationColor: "#9ca3af",
+                            listStyle:"arabic-indic"
+                          }}
+                        >
+                        {item.text}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="h-2" />
+
+                  </>
+                ),
+                },
+                {
+                label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+                language: "javascript",
+                code: `// npm install openai
+                
+const OpenAI = require('openai');
+const { config } = require('dotenv');
+config();
+
+const openai = new OpenAI({
+  baseURL: process.env.MY_BASE_URL,
+  apiKey: process.env.MY_API_KEY,
+});
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    model: "openai/gpt-4o-mini",
+    messages: [
+        {
+            role: "developer",
+            content: "Talk like a pirate."
+        },
+        {
+            role: "user",
+            content: "Are semicolons optional in JavaScript?",
+        },
+    ],
+  });
+
+  console.log(completion.choices[0].message);
+}
+
+main();`,
+                description: (
+                  <>
+                    <p>
+                        در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
+                    </p>
+                    
+                    <div className="h-2" />
+                    <ul className="pr-4">
+                      {[
+                        {text: <p><Important>developer</Important> (توسعه‌دهنده): دستورالعمل‌هایی که توسط توسعه‌دهنده‌ی اپلیکیشن ارائه می‌شود.</p>},
+                        {text: <p><Important>system</Important> (سیستم): تنظیم کلی رفتار مدل. لحن، سبک، دستورالعمل‌های کلی و نقش‌آفرینی.</p>},
+                        {text: <p><Important>user</Important> (کاربر): ورودی که از سمت کاربر نهایی به مدل داده می‌شود.</p>},
+                        {text: <p><Important>assistant</Important> (دستیار): نقش پاسخ‌دهنده مدل را دارد؛ یعنی پیام‌هایی که مدل تولید کرده با این نقش ذخیره می‌شوند.</p>},
+                        {text: <p><Important>tool</Important> (ابزار): یک ابزار ثالت که باعث بهبود پاسخگویی مدل، می‌شود. </p>},
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            textDecorationColor: "#9ca3af",
+                            listStyle:"arabic-indic"
+                          }}
+                        >
+                        {item.text}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="h-2" />
+
+                  </>
+                ),
+                },
+                {
+                label: "PHP",
+                icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+                language: "php",
+                code: `<!-- composer require openai-php/client guzzlehttp/guzzle -->
+
+<?php
+
+require 'vendor/autoload.php';
+
+use OpenAI\\Client;
+use OpenAI\\Laravel\\Facades\\OpenAI;
+use OpenAI\\Contracts\\ResponseContracts\\Chat\\CreateResponse;
+
+$yourApiKey = '<LIARA_API_KEY>'; 
+$baseUrl = '<baseUrl>'; 
+$model = '<model_name>'; 
+
+// Create the OpenAI client
+$client = \\OpenAI::factory()
+    ->withApiKey($yourApiKey)
+    ->withBaseUri($baseUrl)
+    ->make();
+
+// Send a chat completion request
+$result = $client->chat()->create([
+    'model' => $model,
+    'messages' => [
+        ['role' => 'developer', 'content' => 'Talk like a pirate.'],
+        ['role' => 'user', 'content' => 'Are semicolons optional in JavaScript?'],
+    ],
+]);
+
+// Print the response
+echo $result->choices[0]->message->content;
+
+`,
+                description: (
+                  <>
+                    <p>
+                        در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
+                    </p>
+                    
+                    <div className="h-2" />
+                    <ul className="pr-4">
+                      {[
+                        {text: <p><Important>developer</Important> (توسعه‌دهنده): دستورالعمل‌هایی که توسط توسعه‌دهنده‌ی اپلیکیشن ارائه می‌شود.</p>},
+                        {text: <p><Important>system</Important> (سیستم): تنظیم کلی رفتار مدل. لحن، سبک، دستورالعمل‌های کلی و نقش‌آفرینی.</p>},
+                        {text: <p><Important>user</Important> (کاربر): ورودی که از سمت کاربر نهایی به مدل داده می‌شود.</p>},
+                        {text: <p><Important>assistant</Important> (دستیار): نقش پاسخ‌دهنده مدل را دارد؛ یعنی پیام‌هایی که مدل تولید کرده با این نقش ذخیره می‌شوند.</p>},
+                        {text: <p><Important>tool</Important> (ابزار): یک ابزار ثالت که باعث بهبود پاسخگویی مدل، می‌شود. </p>},
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            textDecorationColor: "#9ca3af",
+                            listStyle:"arabic-indic"
+                          }}
+                        >
+                        {item.text}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="h-2" />
+
+                  </>
+                ),
+                },
+                {
+                label: "Python",
+                icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+                language: "python",
+                code: `from openai import OpenAI
+
+client = OpenAI(
+  base_url="<baseUrl>",
+  api_key="<LIARA_API_KEY>",
+)
+
+completion = client.chat.completions.create(
+  model="openai/gpt-4o-mini",
+  messages=[
+    {
+        "role": "developer",
+        "content": "Talk like a pirate."
+    },
+    {
+        "role": "user",
+        "content": "Are semicolons optional in JavaScript?"
+    }
+  ]
+)
+
+print(completion.choices[0].message.content)`,
+                description: (
+                  <>
+                    <p>
+                        در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
+                    </p>
+                    
+                    <div className="h-2" />
+                    <ul className="pr-4">
+                      {[
+                        {text: <p><Important>developer</Important> (توسعه‌دهنده): دستورالعمل‌هایی که توسط توسعه‌دهنده‌ی اپلیکیشن ارائه می‌شود.</p>},
+                        {text: <p><Important>system</Important> (سیستم): تنظیم کلی رفتار مدل. لحن، سبک، دستورالعمل‌های کلی و نقش‌آفرینی.</p>},
+                        {text: <p><Important>user</Important> (کاربر): ورودی که از سمت کاربر نهایی به مدل داده می‌شود.</p>},
+                        {text: <p><Important>assistant</Important> (دستیار): نقش پاسخ‌دهنده مدل را دارد؛ یعنی پیام‌هایی که مدل تولید کرده با این نقش ذخیره می‌شوند.</p>},
+                        {text: <p><Important>tool</Important> (ابزار): یک ابزار ثالت که باعث بهبود پاسخگویی مدل، می‌شود. </p>},
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            textDecorationColor: "#9ca3af",
+                            listStyle:"arabic-indic"
+                          }}
+                        >
+                        {item.text}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="h-2" />
+
+                  </>
+                ),
+                },
+                {
+                label: "NET.",
+                icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+                language: "dotnet",
+                code: `// dotnet add package OpenAI
+                
+using System.ClientModel;
+using OpenAI;
+using OpenAI.Chat;
+
+class Program
+{
+    static void Main()
+    {
+    
+        string apiKey = "<LIARA_API_KEY>";
+        string baseUrl = "<baseUrl>";  
+        OpenAIClientOptions options = new OpenAIClientOptions
+        {
+            Endpoint = new Uri(baseUrl)
+        };
+
+        ChatClient client = new(model: "<model_name>", credential: new ApiKeyCredential(apiKey), options: options);
+
+
+        ChatCompletion completion = client.CompleteChat(
+        [
+            // System messages represent instructions or other guidance about how the assistant should behave
+            new SystemChatMessage("You are a helpful assistant that talks like a pirate."),
+
+            // User messages represent user input, whether historical or the most recent input
+            new UserChatMessage("Hi, can you help me?"),
+
+            // Assistant messages in a request represent conversation history for responses
+            new AssistantChatMessage("Arrr! Of course, me hearty! What can I do for ye?"),
+
+            new UserChatMessage("What's the best way to train a parrot?"),
+        ]);
+
+        Console.WriteLine($"{completion.Role}: {completion.Content[0].Text}");        
+    }
+}`,
+                description: (
+                  <>
+                    <p>
+                        در دستور فوق، سه متد <Important>ChatClient</Important> تعریف شده است (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
+                    </p>
+                    
+                    <div className="h-2" />
+                    <ul className="pr-4">
+                      {[
+                        {text: <p><Important>SystemChatMessage</Important> (سیستم): تنظیم کلی رفتار مدل. لحن، سبک، دستورالعمل‌های کلی و نقش‌آفرینی.</p>},
+                        {text: <p><Important>UserChatMessage</Important> (کاربر): ورودی که از سمت کاربر نهایی به مدل داده می‌شود.</p>},
+                        {text: <p><Important>AssistantChatMessage</Important> (دستیار): نقش پاسخ‌دهنده مدل را دارد؛ یعنی پیام‌هایی که مدل تولید کرده با این نقش ذخیره می‌شوند.</p>},
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            textDecorationColor: "#9ca3af",
+                            listStyle:"arabic-indic"
+                          }}
+                        >
+                        {item.text}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="h-2" />
+
+                  </>
+                ),
+                },
+                {
+                label: "Go",
+                icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+                language: "go",
+                code: `// go get github.com/openai/openai-go
+// go get github.com/openai/openai-go/option
+                
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go"
+	"github.com/openai/openai-go/option"
+)
+
+func main() {
+	const model = "<model_name>"
+
+
+	client := openai.NewClient(
+		option.WithAPIKey("<LIARA_API_KEY>"),
+		option.WithBaseURL("<baseUrl>"),       
+	)
+
+	chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
+		Messages: []openai.ChatCompletionMessageParamUnion{
+			openai.DeveloperMessage("Talk like a pirate!"),
+			openai.UserMessage("Are semicolons optional in JavaScript?"),          
+		},
+		Model: model,                                           
+	})
+	if err != nil {
+		panic(err.Error())          
+	}
+
+	fmt.Println("Model Response:", chatCompletion.Choices[0].Message.Content)
+}`,
+                description: (
+                  <>
+                    <p>
+                        در دستور فوق، پنج متد برای نقش می‌توان تعریف کرد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
+                    </p>
+                    
+                    <div className="h-2" />
+                    <ul className="pr-4">
+                      {[
+                        {text: <p><Important>openai.DeveloperMessage</Important> (توسعه‌دهنده): دستورالعمل‌هایی که توسط توسعه‌دهنده‌ی اپلیکیشن ارائه می‌شود.</p>},
+                        {text: <p><Important>openai.SystemMessage</Important> (سیستم): تنظیم کلی رفتار مدل. لحن، سبک، دستورالعمل‌های کلی و نقش‌آفرینی.</p>},
+                        {text: <p><Important>openai.UserMessage</Important> (کاربر): ورودی که از سمت کاربر نهایی به مدل داده می‌شود.</p>},
+                        {text: <p><Important>openai.AssistantMessage</Important> (دستیار): نقش پاسخ‌دهنده مدل را دارد؛ یعنی پیام‌هایی که مدل تولید کرده با این نقش ذخیره می‌شوند.</p>},
+                        {text: <p><Important>openai.ToolMessage</Important> (ابزار): یک ابزار ثالت که باعث بهبود پاسخگویی مدل، می‌شود. </p>},
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            textDecorationColor: "#9ca3af",
+                            listStyle:"arabic-indic"
+                          }}
+                        >
+                        {item.text}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="h-2" />
+
+                  </>
+                ),
+                },
+            ]}
+        />
+
+    </>,
+
+    <>
+    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کدهای جاوااسکریپت زیر، استفاده کنید:
+
+    <HighlightTabs
+        tabs={[
+            {
+            label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+            language: "javascript",
+            code: `// npm i @ai-sdk/openai-compatible
+
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+  
+  messages: [
+    { role: 'user', content: 'Hi!' },
+    { role: 'assistant', content: 'Hello, how can I help?' },
+    { role: 'user', content: 'Where can I buy the best Ghormeh Sabzi in Iran?' },
+  ],
+});
+
+console.log('Generated Text:', text);
+`,
+            },
+             {
+            label: "TypeScript",
+            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+            language: "typescript",
+            code: `import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+// import { config } from 'dotenv';
+// config();
+
+
+async function main() {
+  const model = createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL as string,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY as string,
+  }).chatModel("openai/gpt-4o-mini");
+
+  const { text } = await generateText({
+    model,
+
+    messages: [
+      { role: 'user', content: 'Hi!' },
+      { role: 'assistant', content: 'Hello, how can I help?' },
+      { role: 'user', content: 'Where can I buy the best Ghormeh Sabzi in Iran?' },
+    ],
+
+
+  });
+
+  console.log('Generated Text:', text);
+}
+
+main().catch(console.error);
+`,
+            },
+        ]}
+    />
+    <br />
+    <p>
+      در قطعه کد فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
+    </p>
+
+    <div className="h-2" />
+    <ul className="pr-4">
+      {[
+        {text: <p><Important>system</Important> (سیستم): تعیین رفتار، شخصیت، سبک و محدودیت‌های مدل در طول پاسخ‌دهی.</p>},
+        {text: <p><Important>data</Important> (اطلاعات زمینه‌ای): ارائه اطلاعات کمکی یا پایه‌ای به مدل، مثلاً نتایج یک API یا محتوای یک سند.</p>},
+        {text: <p><Important>user</Important> (کاربر): ورودی که از سمت کاربر نهایی به مدل داده می‌شود.</p>},
+        {text: <p><Important>assistant</Important> (دستیار): نقش پاسخ‌دهنده مدل را دارد؛ یعنی پیام‌هایی که مدل تولید کرده با این نقش ذخیره می‌شوند.</p>},
+      ].map((item, index) => (
+        <li
+          key={index}
+          style={{
+            textDecorationColor: "#9ca3af",
+            listStyle:"arabic-indic"
+          }}
+        >
+        {item.text}
+        </li>
+      ))}
+    </ul>
+
+    <div className="h-2" />
     </>
 
   ]}
 
 />
 
+<Alert variant="warning">
+<p>
+در نظر داشته باشید که در دستورات فوق، بیش از یک پیام در یک زمان، به مدل ارسال می‌شود و ممکن است که همه مدل‌های زبانی از roleهای مختلف و چند محتوایی، پشتیبانی نکنند. 
+</p>
+</Alert>
+
+
+<Section id='user-prompt-types' title='انواع پرامپت‌ها با نقش کاربر (user)' />
+
+در ادامه، تمامی پرامپت‌هایی که یک مدل با نقش <Important>user</Important> می‌تواند دریافت کند، توضیح داده شده است.
+
+<div className="h-4" />
+<h3>۱. پرامپت متنی ساده</h3>
+<div className="h-2" />
+
+<p>
+رایج ترین پرامپت با نقش <Important>user</Important> که یک رشته متنی ساده است که 
+در بخش <a href="/ai/foundations/prompts/#text-prompt" className='text-[#2196f3]'>پرامپت متنی</a> توضیح داده شده است.
+</p>
+
+<div className="h-4" />
+<h3>۲. پرامپت متنی به همراه عکس</h3>
+<div className="h-2" />
+
+شما می‌توانید در یک ورودی به مدل، همزمان از متن و عکس استفاده کنید. به عنوان مثال، می‌توانید از یک عکس به عنوان ورودی استفاده کنید و از مدل بخواهید که در مورد آن عکس توضیح دهد یا سوالاتی را پاسخ دهد.
+
+<Tabs 
+  tabs={["OpenAI SDK", "AI SDK"]} 
+  content={[
+    <>
+        برای استفاده از پرامپت‌های متنی همراه با عکس در OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید:
+        <HighlightTabs
+            tabs={[
+                {
+                label: "cURL",
+                language: "bash",
+                code: `curl <baseUrl>/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <LIARA_API_KEY>" \
+  -d '{
+  "model": "<modelName>",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Describe the image in detail."
+        },
+        {
+          "type": "image_url",
+          "image_url": {
+            "url": "https://media.liara.ir/ai/dog.png"
+          }
+        }
+      ]
+    }
+
+  ]
+}'
+`,
+                description: (
+                  <>
+                    <p>
+                      در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
+                    </p>
+                  </>
+                ),
+                },
+                {
+                label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+                language: "javascript",
+                code: `// npm install openai
+                
+const OpenAI = require('openai');
+// const { config } = require('dotenv');
+// config();
+
+const openai = new OpenAI({
+  baseURL: process.env.MY_BASE_URL,
+  apiKey: process.env.MY_API_KEY,
+});
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    model: "openai/gpt-4o-mini",
+    messages: [
+        {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Describe the images in detail."
+        },
+        {
+          "type": "image_url",
+          "image_url": {"url": "https://media.liara.ir/ai/dog.png"}
+        }
+      ]
+    }
+    ],
+  });
+
+  console.log(completion.choices[0].message);
+}
+
+main();`,
+                description: (
+                  <>
+                    <p>
+                      در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
+                    </p>
+                  </>
+                ),
+                },
+                {
+                label: "PHP",
+                icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+                language: "php",
+                code: `<!-- composer require openai-php/client guzzlehttp/guzzle -->
+
+<?php
+
+require 'vendor/autoload.php';
+
+use OpenAI\\Client;
+use OpenAI\\Laravel\\Facades\\OpenAI;
+use OpenAI\\Contracts\\ResponseContracts\\Chat\\CreateResponse;
+
+
+$yourApiKey = '<LIARA_API_KEY>'; 
+$baseUrl = '<baseUrl>'; 
+$model = '<model_name>'; 
+
+// Create the OpenAI client
+$client = \\OpenAI::factory()
+    ->withApiKey($yourApiKey)
+    ->withBaseUri($baseUrl)
+    ->make();
+
+// Send a chat completion request
+$result = $client->chat()->create([
+    'model' => $model,
+    'messages' => [
+        ['role' => 'user', 'content' => [
+            [
+            "type" => "text",
+            "text" => "Describe the image in detail."
+            ],
+            [
+                "type" => "image_url",
+                "image_url" => ["url" => "https://media.liara.ir/ai/dog.png"]
+            ]
+        ]],
+    ],
+]);
+
+// Print the response
+echo $result->choices[0]->message->content;
+
+`,
+                description: (
+                  <>
+                    <p>
+                      در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
+                    </p>
+                  </>
+                ),
+                },
+                {
+                label: "Python",
+                icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+                language: "python",
+                code: `from openai import OpenAI
+
+client = OpenAI(
+  base_url="<baseUrl>",
+  api_key="<LIARA_API_KEY>",
+)
+
+completion = client.chat.completions.create(
+  model="openai/gpt-4o-mini",
+  messages= [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Describe the image in detail."
+        },
+        {
+          "type": "image_url",
+          "image_url": {"url": "https://media.liara.ir/ai/dog.png"}
+        }
+      ]
+    }
+  ],
+)
+
+print(completion.choices[0].message.content)`,
+                description: (
+                  <>
+                    <p>
+                      در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
+                    </p>
+                  </>
+                ),
+                },
+                {
+                label: "NET.",
+                icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+                language: "dotnet",
+                code: `using System.ClientModel;
+using OpenAI;
+using OpenAI.Chat;
+
+string apiKey = "<LIARA_API_KEY>";
+string baseUrl = "<baseUrl>";
+
+OpenAIClientOptions options = new OpenAIClientOptions
+{
+    Endpoint = new Uri(baseUrl)
+};
+
+ChatClient client = new(
+    model: "<model_name>",
+    credential: new ApiKeyCredential(apiKey),
+    options: options
+);
+
+// Use a public image URL
+Uri imageUri = new Uri("https://media.liara.ir/ai/dog.png");
+
+var messages = new List<ChatMessage>
+{
+    new UserChatMessage(
+        ChatMessageContentPart.CreateTextPart("Describe this image."),
+        ChatMessageContentPart.CreateImagePart(imageUri)
+    )
+};
+
+ClientResult<ChatCompletion> result = await client.CompleteChatAsync(messages);
+string response = result.Value.Content[0].Text;
+Console.WriteLine(response);
+`,
+                description: (
+                  <>
+                    <p>
+                      در قطعه کد فوق، ورودی متد <Important>ChatMessageContentPart.CreateImagePart</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد. 
+                    </p>
+                  </>
+                ),
+                },
+                {
+                label: "Go",
+                icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+                language: "go",
+                code: ``,
+                description: (
+                  <>
+                    <p>
+                      در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
+                    </p>
+                  </>
+                ),
+                },
+            ]}
+        />
+  
+
+    </>,
+
+    <>
+    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کدهای جاوااسکریپت زیر، استفاده کنید:
+
+    <HighlightTabs
+        tabs={[
+            {
+            label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+            language: "javascript",
+            code: ``,
+            
+            },
+            
+        ]}
+    />
+    </>
+
+  ]}
+/>
+
+<div className="h-4" />
+<Alert variant="success">
+<p>
+یک عکس Base64، به جای فرمت‌های معمولی تصویری (مانند <Important>jpg</Important> یا <Important>png</Important>)، یک رشته متنی طولانی کدگذاری شده است که می‌تواند به عنوان ورودی به مدل ارسال شود.
+شما می‌توانید برای تبدیل عکس‌های خود به فرمت Base64، از وب‌سایت <a href="https://www.base64-image.de" rel="nofollow" className='text-[#2196f3]'>base64-image</a> استفاده کنید.
+</p>
+</Alert>
 
 {/* 
 
