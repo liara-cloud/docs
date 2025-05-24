@@ -67,9 +67,13 @@ import Head from "next/head";
   ]
 }'`,
                 description: (
-                  <p>
-                    در دستور فوق، مقدار فیلد <Important>content</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
-                  </p>
+                  <>
+                    <div dir="rtl">
+                      <p>
+                        در دستور فوق، مقدار فیلد <Important>content</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
+                      </p>
+                    </div>
+                  </>
                 ),
                 },
                 {
@@ -101,9 +105,11 @@ async function main() {
 
 main();`,
                 description: (
+                  <div dir="rtl">
                   <p>
                     در کد فوق، مقدار فیلد <Important>content</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
                   </p>
+                  </div>
                 ),
                 },
                 {
@@ -143,9 +149,11 @@ echo $result->choices[0]->message->content;
 
 `,
                 description: (
+                  <div dir="rtl">
                   <p>
                     در قطعه کد فوق، مقدار فیلد <Important>content</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
                   </p>
+                  </div>
                 ),
                 },
                 {
@@ -204,9 +212,11 @@ class Program
     }
 }`,
                 description: (
+                  <div dir="rtl">
                   <p>
                     در کد فوق، ورودی متد <Important>client.CompleteChat</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
                   </p>
+                  </div>
                 ),
                 },
                 {
@@ -248,9 +258,11 @@ func main() {
 	fmt.Println("Model Response:", chatCompletion.Choices[0].Message.Content)
 }`,
                 description: (
+                  <div dir="rtl">
                   <p>
                     در دستور فوق، ورودی متد <Important>openai.UserMessage</Important>، پرامپت متنی شما است که می‌توانید بنا به نیاز خود، آن را تغییر دهید.
                   </p>
+                  </div>
                 ),
                 },
             ]}
@@ -535,9 +547,11 @@ main().catch(console.error);
 }'`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                         در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
                     </p>
+                  
                     
                     <div className="h-2" />
                     <ul className="pr-4">
@@ -561,6 +575,7 @@ main().catch(console.error);
                     </ul>
 
                     <div className="h-2" />
+                    </div>
 
                   </>
                 ),
@@ -601,6 +616,7 @@ async function main() {
 main();`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                         در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
                     </p>
@@ -627,6 +643,7 @@ main();`,
                     </ul>
 
                     <div className="h-2" />
+                    </div>
 
                   </>
                 ),
@@ -670,6 +687,7 @@ echo $result->choices[0]->message->content;
 `,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                         در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
                     </p>
@@ -697,6 +715,7 @@ echo $result->choices[0]->message->content;
 
                     <div className="h-2" />
 
+                  </div>
                   </>
                 ),
                 },
@@ -728,6 +747,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                         در دستور فوق، مقدار فیلد <Important>role</Important>، می‌تواند یکی از مقادیر زیر باشد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
                     </p>
@@ -754,7 +774,7 @@ print(completion.choices[0].message.content)`,
                     </ul>
 
                     <div className="h-2" />
-
+                </div>
                   </>
                 ),
                 },
@@ -802,6 +822,7 @@ class Program
 }`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                         در دستور فوق، سه متد <Important>ChatClient</Important> تعریف شده است (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
                     </p>
@@ -826,7 +847,7 @@ class Program
                     </ul>
 
                     <div className="h-2" />
-
+                  </div>
                   </>
                 ),
                 },
@@ -871,6 +892,7 @@ func main() {
 }`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                         در دستور فوق، پنج متد برای نقش می‌توان تعریف کرد (به ترتیب اولویت، نقش‌ها قرار گرفته‌اند):
                     </p>
@@ -897,7 +919,7 @@ func main() {
                     </ul>
 
                     <div className="h-2" />
-
+                  </div>
                   </>
                 ),
                 },
@@ -1042,9 +1064,9 @@ main().catch(console.error);
                 {
                 label: "cURL",
                 language: "bash",
-                code: `curl <baseUrl>/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <LIARA_API_KEY>" \
+                code: `curl <baseUrl>/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
   -d '{
   "model": "<modelName>",
   "messages": [
@@ -1069,10 +1091,13 @@ main().catch(console.error);
 `,
                 description: (
                   <>
+
+                  <div dir="rtl">
                     <p>
                       در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
                       این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
                     </p>
+                  </div>
                   </>
                 ),
                 },
@@ -1117,10 +1142,12 @@ async function main() {
 main();`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                       در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
                       این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
                     </p>
+                  </div>
                   </>
                 ),
                 },
@@ -1172,10 +1199,12 @@ echo $result->choices[0]->message->content;
 `,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                       در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
                       این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
                     </p>
+                  </div>
                   </>
                 ),
                 },
@@ -1212,10 +1241,12 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                       در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
                       این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
                     </p>
+                  </div>
                   </>
                 ),
                 },
@@ -1258,10 +1289,12 @@ Console.WriteLine(response);
 `,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
                       در قطعه کد فوق، ورودی متد <Important>ChatMessageContentPart.CreateImagePart</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
                       این آدرس، می‌تواند یک لینک به عکس باشد. 
                     </p>
+                  </div>
                   </>
                 ),
                 },
@@ -1269,13 +1302,68 @@ Console.WriteLine(response);
                 label: "Go",
                 icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
                 language: "go",
-                code: ``,
+                code: `// go get github.com/sashabaranov/go-openai
+
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/sashabaranov/go-openai"
+)
+
+func main() {
+
+
+	
+	config := openai.DefaultConfig("<LIARA_API_KEY>")
+	config.BaseURL = "<baseUrl>"
+	client := openai.NewClientWithConfig(config)
+
+
+	model := "openai/gpt-4o-mini" 
+	imageURL := "https://media.liara.ir/ai/dog.png"
+
+	req := openai.ChatCompletionRequest{
+		Model: model,
+		Messages: []openai.ChatCompletionMessage{
+			{
+				Role: openai.ChatMessageRoleUser,
+				
+				MultiContent: []openai.ChatMessagePart{
+					{Type: openai.ChatMessagePartTypeText, Text: "Describe the image."},
+					{Type: openai.ChatMessagePartTypeImageURL, ImageURL: &openai.ChatMessageImageURL{URL: imageURL}},
+				},
+			},
+		},
+	}
+
+	resp, err := client.CreateChatCompletion(context.Background(), req)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Model Response:", resp.Choices[0].Message.Content)
+}`,
                 description: (
                   <>
+                  <div dir="rtl">
                     <p>
-                      در قطعه کد فوق، فیلد <Important>image_url.url</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      در قطعه کد فوق، فیلد <Important>ImageURL</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
                       این آدرس، می‌تواند یک لینک به عکس باشد یا می‌تواند بر پایه فرمت Base64 باشد. 
                     </p>
+                    <div className="h-2" />
+                    <p>
+                        در نظر داشته باشید که برای ارسال عکس به عنوان ورودی، به‌جای استفاده از کتابخانه اصلی OpenAI، از کتابخانه <Important>sashabaranov/go-openai</Important> استفاده شده است که می‌توانید با اجرای دستور زیر، آن را نصب کنید: 
+                    </p>
+                    </div>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`go get github.com/sashabaranov/go-openai`}
+                    </Highlight>
+                    </div>
                   </>
                 ),
                 },
@@ -1294,8 +1382,143 @@ Console.WriteLine(response);
             label: "JavaScript",
                 icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
             language: "javascript",
-            code: ``,
+            code: `// npm i @ai-sdk/openai-compatible
+
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+import fs from 'fs';
+config();
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+  
+  messages: [
+    {
+      role: 'user',
+      content: [
+        { type: 'text', text: 'Describe the image in detail.' },
+        {
+          type: 'image',
+          image: fs.readFileSync('dog.png'),
+        },
+      ],
+    },
+  ],
+});
+
+console.log('Generated Text:', text);
+`,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                      در قطعه کد فوق، فیلد <Important>image</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد، همچنین، می‌تواند بر پایه فرمت Base64 باشد. به عنوان مثال:
+                    </p>
+                  </div>  
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="js">
+                      {`{
+  type: 'image',
+  image: fs.readFileSync('./data/cat.png').toString('base64'),
+}`}
+  </Highlight>
+</div>
+                    <p>
+                      یا اینکه یک لینک باشد:
+                    </p>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`{
+type: 'image',
+image:
+  'https://media.liara.ir/ai/dog.png',
+},`}
+                    </Highlight>
+                    </div>
+                  </>
+                ),
             
+            },
+                        {
+            label: "TypeScript",
+            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+            language: "typescript",
+            code: `import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+import fs from 'fs';
+config();
+
+async function main() {
+  const model = createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL as string,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY as string,
+  }).chatModel("openai/gpt-4.1");
+
+  const { text } = await generateText({
+    model,
+
+     messages: [
+        {
+          role: 'user',
+          content: [
+            { type: 'text', text: 'Describe the image in detail.' },
+            {
+              type: 'image',
+              image: fs.readFileSync('dog.png'),
+            },
+          ],
+        },
+      ],
+
+  });
+
+  console.log('Generated Text:', text);
+}
+
+main().catch(console.error);
+`,
+                          description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                      در قطعه کد فوق، فیلد <Important>image</Important>، آدرس عکس ورودی است که می‌خواهید به مدل ارسال کنید.
+                      این آدرس، می‌تواند یک لینک به عکس باشد، همچنین، می‌تواند بر پایه فرمت Base64 باشد. به عنوان مثال:
+                    </p>
+                  </div>  
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="js">
+                      {`{
+  type: 'image',
+  image: fs.readFileSync('./data/cat.png').toString('base64'),
+}`}
+  </Highlight>
+</div>
+                    <p>
+                      یا اینکه یک لینک باشد:
+                    </p>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`{
+type: 'image',
+image:
+  'https://media.liara.ir/ai/dog.png',
+},`}
+                    </Highlight>
+                    </div>
+                  </>
+                ),
             },
             
         ]}
@@ -1313,8 +1536,242 @@ Console.WriteLine(response);
 </p>
 </Alert>
 
+<Section id='assistant-prompt-types' title='انواع پرامپت‌ها با نقش دستیار (assistant) در AI SDK' />
+
+پیام‌های Assistant معمولاً پاسخ‌های قبلی دستیار به کاربر هستند و می‌توانند شامل متن، استدلال یا بخش‌هایی مربوط به فراخوانی ابزار (tool call) باشند.
+در ادامه، تمامی پرامپت‌هایی که یک مدل با نقش <Important>assistant</Important> می‌تواند دریافت کند، توضیح داده شده است.
+
+<div className="h-4" />
+<h3>۱. پرامپت متنی</h3>
+<div className="h-2" />
+
+نحوه تعریف پرامپت متنی با نقش <Important>assistant</Important>، مشابه با پرامپت متنی با نقش <Important>user</Important> است که در بخش <a href="/ai/foundations/prompts/#message-prompt" className='text-[#2196f3]'>پرامپت‌های پیام‌محور</a> توضیح داده شده است.
+مثال زیر، یک پرامپت متنی با نقش <Important>assistant</Important> با استفاده از AI SDK را، نشان می‌دهد: 
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "JavaScript",
+      icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai-compatible
+
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+
+import 'dotenv/config';
+
+config();
+
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+  
+  messages: [
+    { role: 'user', content: 'Hi!' },
+    { role: 'assistant', content: 'Hello, how can I help?' },
+  ],
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "TypeScript",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+      language: "typescript",
+      code: `import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+config();
+
+async function main() {
+  const model = createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL as string,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY as string,
+  }).chatModel("openai/gpt-4.1");
+
+  const { text } = await generateText({
+    model,
+
+     messages: [
+    { role: 'user', content: 'Hi!' },
+    { role: 'assistant', content: 'Hello, how can I help?' },
+  ],
+
+  });
+
+  console.log('Generated Text:', text);
+}
+
+main().catch(console.error);
+`,
+    },
+  ]}
+/> 
+
+<div className="h-2" />
+
+<div className="h-4" />
+<h3>۲. پرامپت متنی به‌صورت آرایه‌ای از پیام‌ها</h3>
+<div className="h-2" />
+
+شما می‌توانید به جای یک پیام با نقش <Important>assistant</Important>، آرایه‌ای از پیام‌ها را به مدل، ارسال کنید: 
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "JavaScript",
+      icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai-compatible
+
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+
+import 'dotenv/config';
+
+config();
+
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY,
+  }).chatModel("openai/gpt-4o-mini"),
+  
+  messages: [
+    { role: 'user', content: 'Hi!' },
+    {
+      role: 'assistant',
+      content: [
+        { type: 'text', text: 'Hello, how can I help?' },
+        { type: 'text', text: 'Hi, Good Morning' },
+      ],
+    },
+  ],
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "TypeScript",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+      language: "typescript",
+      code: `import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+config();
+
+async function main() {
+  const model = createOpenAICompatible({
+    baseURL: process.env.MY_BASE_URL as string,
+    name: 'example',
+    apiKey: process.env.MY_API_KEY as string,
+  }).chatModel("openai/gpt-4.1");
+
+  const { text } = await generateText({
+    model,
+
+     messages: [
+        { role: 'user', content: 'Hi!' },
+    {
+      role: 'assistant',
+      content: [
+        { type: 'text', text: 'Hello, how can I help?' },
+        { type: 'text', text: 'Hi, Good Morning' },
+      ],
+    },
+      ],
+
+  });
+
+  console.log('Generated Text:', text);
+}
+
+main().catch(console.error);
+`,
+    },
+  ]}
+/> 
+
+
+<Section id='prompt-engineering' title='مهندسی پرامپت (Prompt Engineering)' />
+
+مهندسی پرامپت فرآیند نوشتن پرامپت‌های مؤثر برای یک مدل است؛ به گونه‌ای که مدل به‌طور پیوسته محتوایی تولید کند که با نیازهای شما مطابقت داشته باشد.
+از آنجا که محتوای تولیدشده توسط مدل‌ها غیر قطعی (non-deterministic) است، طراحی یک پرامپت که خروجی را در قالب و فرم مطلوب تولید کند، ترکیبی از هنر و علم محسوب می‌شود. با این حال، تکنیک‌ها و روش‌های اثبات‌شده‌ای وجود دارند که می‌توان از آن‌ها برای دستیابی مداوم به نتایج مطلوب استفاده کرد.
+<div className="h-4" />
+
+برخی تکنیک‌های مهندسی پرامپت برای همه‌ی مدل‌ها قابل استفاده‌اند، مانند استفاده از نقش‌ها (roleها). اما هر نوع مدل، برای بهینه‌سازی نتایج، نیاز به پرامپت نویسی متفاوتی دارد. حتی نسخه‌های مختلف از یک مدل (مانند <Important>openai/gpt-4o-mini</Important> و <Important>openai/gpt-4.1</Important>) ممکن است خروجی‌های متفاوتی تولید کنند.
+<div className="h-4" />
+
+بنابراین، اگر در حال ساخت برنامه‌های پیچیده هستید، اکیداً توصیه می‌شود که اقدامات زیر را انجام دهید:
+
+<div className="h-4" />
+<h3>استفاده از یک مدل مشخص</h3>
+<div className="h-2" />
+
+در برنامه‌های خود، فقط از یک مدل مشخص استفاده کنید تا رفتار مدل همواره ثابت باقی بماند.
+
+<div className="h-4" />
+<h3>ساخت ابزارهای ارزیابی (evals)</h3>
+<div className="h-2" />
+
+معیارهایی طراحی و اجرا کنید که رفتار پرامپت‌های شما را ارزیابی کند، تا بتوانید عملکرد آن‌ها را در طول زمان رصد کرده و هنگام تغییر یا ارتقای نسخه‌ی مدل، دید بهتری در انتخاب مدل، داشته باشید.
+
+<div className="h-4" />
+<h3>تعیین محدودیت در استفاده از Toolها</h3>
+<div className="h-2" />
+
+زمانی که پرامپت‌هایی طراحی می‌کنید که از Toolها استفاده می‌کنند، دستیابی به نتایج مطلوب می‌تواند با افزایش تعداد و پیچیدگی Toolها دشوارتر شود.
+در ادامه، چند نکته برای بهبود عملکرد مدل هنگام استفاده از Toolها ارائه شده است:
+
+<div className="h-4" />
+
+<ul>
+<li>از مدلی استفاده کنید که توانایی بالایی در Tool Calling (فراخوانی یک Tool) دارد، مانند <Important>openai/gpt-4.1</Important>.
+مدل‌های ضعیف‌تر اغلب در این زمینه دچار مشکل می‌شوند.</li>
+
+<li>تعداد Toolها را پایین نگه دارید؛ به‌طور کلی، بهتر است از پنج  Tool یا کمتر استفاده کنید.</li>
+
+<li>پارامترهای Tool را ساده نگه دارید و از المان‌های تو در تو، استفاده نکنید.</li>
+
+<li>نام‌های با معنا برای ابزارها، پارامترها و ویژگی‌های پارامتر انتخاب کنید.</li>
+
+<li>نمونه‌هایی از ورودی/خروجی ابزارها را در پرامپت بگنجانید تا مدل درک بهتری از نحوه‌ی استفاده داشته باشد.</li>
+
+</ul>
+
+
+
 {/* 
 
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "JavaScript",
+      icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+      language: "javascript",
+      code: ``,
+    },
+    {
+      label: "TypeScript",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+      language: "typescript",
+      code: ``,
+    },
+  ]}
+/> 
 
 <Section id='' title='' />
 
