@@ -76,7 +76,6 @@ const HighlightTabs = ({ tabs }) => {
             </div>
           </div>
 
-          {/* Moved "دیدن بیشتر" here, outside absolute layout */}
           {needsReadMore && !isExpanded && (
             <div className="text-center mt-4">
               <Button onClick={toggleReadMore}>دیدن بیشتر</Button>
@@ -85,11 +84,7 @@ const HighlightTabs = ({ tabs }) => {
 
           {currentTab.description && (
             <div className="mt-4 text-right" dir="rtl">
-              {typeof currentTab.description === "string" ? (
-                <p>{currentTab.description}</p>
-              ) : (
-                currentTab.description
-              )}
+              {currentTab.description}
             </div>
           )}
         </div>
