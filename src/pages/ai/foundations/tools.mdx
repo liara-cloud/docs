@@ -1,0 +1,392 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات Toolها (ابزارها) - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با Toolها (ابزارها) در سرویس هوش مصنوعی لیارا، ویژگی‌ها و امکانات آن"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# Toolها (ابزارها) در هوش مصنوعی
+<hr className="mb-2" />
+
+مدل‌های زبانی بزرگ (LLMها) توانایی چشم‌گیری در تولید محتوا دارند، اما در انجام وظایف گسسته (مانند ریاضیات) و تعامل با دنیای بیرونی (مانند دریافت اطلاعات آب‌وهوا) با چالش‌هایی مواجه‌اند.
+Toolها یا ابزارها، توابعی هستند که یک مدل زبانی می‌تواند آن‌ها را فراخوانی کند. نتایج این توابع، می‌تواند به مدل بازگردانده شود تا در پاسخ بعدی مورد استفاده قرار گیرد.
+
+<div className="h-2" />
+
+به عنوان مثال، وقتی از یک مدل می‌پرسید: «هوای تهران چطور است؟» و ابزاری برای دریافت وضعیت آب‌وهوا در دسترس باشد، مدل می‌تواند این ابزار را با آرگومان «تهران» فراخوانی کند. ابزار، داده‌های مربوط به وضعیت آب‌وهوا را واکشی (fetch) کرده و به مدل بازمی‌گرداند. سپس مدل می‌تواند از این اطلاعات در پاسخ خود استفاده کند.
+
+
+
+<Section id='definition' title='Tool در برنامه‌نویسی چیست؟' />
+
+Tool، یک object قابل فراخوانی توسط مدل است که یک کار خاص را انجام می‌دهد.
+در حال حاضر، API لیارا، از دو نوع Tool زیر، پشتیبانی می‌کند:
+<ul>
+<div className="h-4" />
+
+<div dir="ltr">
+<li>Function calling</li>
+<li>Web search</li>
+</div>
+</ul>
+<div className="h-4" />
+
+در ادامه، به توضیح هر یک از این Toolها پرداخته شده است.
+
+
+<Section id='function-calling' title='فراخوانی تابع (Function calling)' />
+
+با استفاده از قابلیت Function calling، شما می‌توانید به داده‌ها یا قابلیت‌هایی دسترسی پیدا کنید که به‌صورت مستقیم درون مدل در دسترس نیستند.
+در واقع، شما می‌توانید تابع مدنظر خودتان را در قالب یک Tool تعریف کنید و مدل می‌تواند این تابع را با پارامترهای مشخص شده فراخوانی کند.
+<div className="h-4" />
+
+وقتی که در برنامه خود، یک Function Calling تعریف می‌کنید؛ در حقیقت، به مدل این اجازه را می‌دهید که وقتی در دریافت ورودی (Prompt)، متوجه شود که سؤال کاربر مربوط به یک تابع مشخص است، به‌صورت خودکار پارامترهای موردنیاز آن تابع را استخراج کند و برای اجرای آن تابع پیشنهاد دهد.
+<div className="h-4" />
+
+
+<Tabs 
+  tabs={["OpenAI SDK", "AI SDK"]} 
+  content={[
+    <>
+      <p>
+        در ادامه، نحوه استفاده از Function calling با استفاده از OpenAI SDK در زبان‌های برنامه‌نویسی مختلف، توضیح داده شده است.
+      </p>
+      <div className="h-4" />
+
+    <Tabs
+      tabs={[
+        {
+        label: "cURL",
+        },
+        {
+        label: "JavaScript",
+        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "PHP",
+        icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Python",
+        icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "NET.",
+        icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Go",
+        icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+        },
+      ]}
+      content={[
+        <>
+          curl
+        </>,
+
+        <>
+          <p>
+             فرض کنید که در برنامه خود، یک تابع تعریف کرده‌اید که با گرفتن دو ورودی <b>نام شهر</b> و <b>واحد دما</b>، دمای هوای شهر مذکور را در خروجی، بر می‌گرداند.
+          </p>
+        </>,
+
+        <>
+        </>,
+
+        <>
+          <p>
+            در ابتدا، فرض کنید که تمام کارهای اتصال به مدل را با استفاده از ماژول <Important>openai</Important> انجام داده‌اید:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`from openai import OpenAI
+
+client = OpenAI(
+  base_url="<baseUrl>",
+  api_key="<LIARA_API_KEY>",
+)`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+
+          <p>
+             اکنون، فرض کنید که در برنامه خود، یک تابع تعریف کرده‌اید که با گرفتن دو ورودی <b>نام شهر</b> و <b>واحد دما</b>، دمای هوای شهر مذکور را در خروجی، بر می‌گرداند:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`def get_current_weather(location, unit="celsius"):
+    
+  return {
+      "location": location,
+      "temperature": unit == "celsius" and 35 or 68,  # Celsius or Fahrenheit
+      "unit": unit,
+      "condition": "Sunny"
+    }`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <Alert variant="info">
+            <p>
+              در نظر داشته باشید که تابع فوق، یک تابع شبیه‌سازی‌شده (mocked) است. در اصل، این تابع، هیچ‌گونه داده واقعی را واکشی نمی‌کند و فقط یک پاسخ ثابت را برمی‌گرداند.
+              در صورتی که، واحد دما، <b>celsius</b> باشد، دمای ۳۵ درجه سانتی‌گراد و در غیر این صورت، دمای ۶۸ درجه فارنهایت را برمی‌گرداند.
+            </p>
+          </Alert>
+          <div className="h-2" />
+          <p>
+           پس از ساخت <Important>client</Important> برای اتصال به مدل و یک تابع برای دریافت وضعیت آب‌وهوا، اکنون باید یک Tool برای مدل تعریف کنید 
+           که تابع <Important>get_current_weather</Important> را به مدل معرفی کند. برای این‌کار یک آرایه یک عضوی به نام <Important>tools</Important> مشابه قطعه کد زیر، ایجاد کنید:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`tools = [
+  {
+    "type": "function",
+    "function": {
+      "name": "get_current_weather",
+      "description": "Get the current weather in a given location",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "The city and state, e.g. San Francisco, CA",
+          },
+          "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+        },
+        "required": ["location"],
+      },
+    }
+  }
+]`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <Alert variant="info">
+            <p>
+              مدل، می‌تواند بیش از یک Tool داشته باشد؛ به‌همین خاطر، در این مثال، Toolها در قالب یک لیست تعریف شده‌اند.
+            </p>
+          </Alert>
+          <div className="h-2" />
+          <p>
+            در قطعه کد فوق، با استفاده از <Important>"type": "function"</Important>، نوع Tool، تابع تعریف شده است و با انجام این کار،
+            مدل متوجه می‌شود که این Tool، عملیات پردازشی با ورودی/خروجی، انجام می‌دهد.
+          </p>
+          <div className="h-2" />
+          <p>
+            در ادامه، تابع، به شکل زیر تعریف شده است:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`"function": {
+    "name": "get_current_weather",
+    "description": "Get the current weather in a given location",
+    "parameters": {
+    "type": "object",
+    "properties": {
+        "location": {
+        "type": "string",
+        "description": "The city and state, e.g. San Francisco, CA",
+        },
+        "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+    },
+    "required": ["location"],
+    },
+}`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            فیلد <Important>name</Important> اسم تابع است و باید با نام تابعی که در برنامه خود تعریف کرده‌اید، یکسان باشد.
+            فیلد <Important>description</Important>، توضیحاتی درباره تابع است که به مدل کمک می‌کند تا متوجه شود این تابع چه کاری انجام می‌دهد و چه زمانی باید از آن استفاده کند.
+          </p>
+          <div className="h-2" />
+          <p>
+            فیلد <Important>parameters</Important>، ورودی‌های تابع، نوع آن‌ها و اجباری بودن یا اختیاری بودن استفاده از آن‌ها را مشخص می‌کند:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`"parameters": {
+  "type": "object",
+  "properties": {
+    "location": {
+      "type": "string",
+      "description": "The city and state, e.g. San Francisco, CA",
+    },
+    "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+  },
+  "required": ["location"],
+  },`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            مقدار فیلد <Important>properties</Important>، یک Object است که شامل ورودی‌های تابع می‌باشد.
+            در این مثال، تابع <Important>get_current_weather</Important>، دو ورودی به نام‌های <Important>location</Important> و <Important>unit</Important> دارد.
+          </p>
+          <div className="h-4" />
+          <p>  
+            ورودی <Important>location</Important>، یک رشته است که نام شهر و ایالت را دریافت می‌کند و ورودی <Important>unit</Important>، یک رشته است که می‌تواند یکی از دو مقدار <Important>celsius</Important> یا <Important>fahrenheit</Important> باشد.
+            فیلد <Important>enum</Important>، می‌گوید که این ورودی، محدود به یکی از مقادیر مشخص شده است. 
+          </p>
+          <div className="h-4" />
+          <p>  
+          فیلد <Important>required</Important>، مشخص می‌کند که ورودی <Important>location</Important>، اجباری است و مدل باید حتماً این ورودی را دریافت کند.
+          ورودی‌های دیگر، اختیاری هستند و مدل می‌تواند آن‌ها را دریافت نکند.
+          </p>  
+          <div className="h-4" />
+          <p>
+            پس از تعریف Tool، کافیست تا propmt نهایی که قرار است به مدل ارسال شود را، ایجاد کنید:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`messages = [{"role": "user", "content": "What's the weather in Tehran today?"}]`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            حال، شما می‌توانید با استفاده از متد <Important>chat.completions.create</Important> و مانند شکل زیر، پرامپت را به مدل ارسال کنید:
+          </p>
+<div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`completion = client.chat.completions.create(
+  model="openai/gpt-4.1",
+  messages=messages,
+  tools=tools,
+  tool_choice="auto"
+)`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+
+          <p>
+            در قطعه کد فوق، با استفاده از <Important>model</Important>، مدل مورد نظر برای پردازش پرامپت مشخص شده است.
+            با استفاده از <Important>messages</Important>، پرامپت به مدل ارسال می‌شود و با استفاده از <Important>tools</Important>، Toolهایی که مدل می‌تواند از آن‌ها استفاده کند، مشخص شده است.
+          </p>
+          <div className="h-2" />
+          <p>
+            خروجی <Important>completion</Important>، به‌صورت زیر خواهد بود: 
+          </p>
+
+        </>
+
+
+      ]}
+    
+
+    
+    
+    
+    />
+
+    </>,
+
+
+
+
+    <>
+      <p>
+      
+      </p>
+          <Tabs
+      tabs={[
+        {
+        label: "JavaScript",
+        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "TypeScript",
+        icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+        },
+
+      ]}
+    />
+    </>
+
+  ]}
+
+/>
+
+
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="bash">
+            {``}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+
+
+
+
+<Section id='' title='' />
+
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p></p>},
+    {text: <p></p>},
+    {text: <p></p>},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStyle:"disc"
+      }}
+    >
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "openAI",
+      icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/openai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
+      language: "javascript",
+      code: ``,
+    },
+  ]}
+/>
+
+</Layout>
