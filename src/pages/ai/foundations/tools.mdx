@@ -11,6 +11,7 @@ import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import HighlightTabs from "@/components/Common/HighlightTabs";
+import LightboxImage   from "@/components/Common/LightboxImage";
 import IconContainer from "@/components/Common/IconContainer";
 import {
   GoContainer,
@@ -113,11 +114,456 @@ Tool، یک object قابل فراخوانی توسط مدل است که یک ک
           curl
         </>,
 
+
         <>
           <p>
-             فرض کنید که در برنامه خود، یک تابع تعریف کرده‌اید که با گرفتن دو ورودی <b>نام شهر</b> و <b>واحد دما</b>، دمای هوای شهر مذکور را در خروجی، بر می‌گرداند.
+            در ابتدا، فرض کنید که تمام کارهای اتصال به مدل را با استفاده از ماژول <Important>openai</Important> انجام داده‌اید:
           </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`import { OpenAI } from "openai";
+
+const openai = new OpenAI({
+  baseURL: '<baseUrl>',
+  apiKey: '<LIARA_API_KEY>',
+});`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+
+          <p>
+             اکنون، فرض کنید که در برنامه خود، یک تابع تعریف کرده‌اید که با گرفتن دو ورودی <b>نام شهر</b> و <b>واحد دما</b>، دمای هوای شهر مذکور را در خروجی، بر می‌گرداند:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`function getCurrentWeather(location, unit = "celsius") {
+  return {
+    location: location,
+    temperature: unit === "celsius" ? 35 : 68, // Celsius or Fahrenheit
+    unit: unit,
+    condition: "Sunny"
+  };
+}`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <Alert variant="info">
+            <p>
+              در نظر داشته باشید که تابع فوق، یک تابع شبیه‌سازی‌شده (mocked) است. در اصل، این تابع، هیچ‌گونه داده واقعی را واکشی نمی‌کند و فقط یک پاسخ ثابت را برمی‌گرداند.
+              در صورتی که، واحد دما، <b>celsius</b> باشد، دمای ۳۵ درجه سانتی‌گراد و در غیر این صورت، دمای ۶۸ درجه فارنهایت را برمی‌گرداند.
+            </p>
+          </Alert>
+          <div className="h-2" />
+          <p>
+           پس از ساخت <Important>openai</Important> برای اتصال به مدل و یک تابع برای دریافت وضعیت آب‌وهوا، اکنون باید یک Tool برای مدل تعریف کنید 
+           که تابع <Important>getCurrentWeather</Important> را به مدل معرفی کند. برای این‌کار یک آرایه یک عضوی به نام <Important>tools</Important> مشابه قطعه کد زیر، ایجاد کنید:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`const tools = [{
+    "type": "function",
+    "function": {
+        "name": "getCurrentWeather",
+        "description": "Get current temperature for a given location.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "City and country e.g. Bogotá, Colombia"
+                },
+                "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+            },
+            "required": [
+                "location"
+            ],  
+        },
+    }
+}];`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <Alert variant="info">
+            <p>
+              مدل، می‌تواند بیش از یک Tool داشته باشد؛ به‌همین خاطر، در این مثال، Toolها در قالب یک لیست تعریف شده‌اند.
+            </p>
+          </Alert>
+          <div className="h-2" />
+          <p>
+            در قطعه کد فوق، با استفاده از <Important>"type": "function"</Important>، نوع Tool، تابع تعریف شده است و با انجام این کار،
+            مدل متوجه می‌شود که این Tool، عملیات پردازشی با ورودی/خروجی، انجام می‌دهد.
+          </p>
+          <div className="h-2" />
+          <p>
+            در ادامه، تابع، به شکل زیر تعریف شده است:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`"function": {
+  "name": "getCurrentWeather",
+  "description": "Get current temperature for a given location.",
+  "parameters": {
+      "type": "object",
+      "properties": {
+          "location": {
+              "type": "string",
+              "description": "City and country e.g. Bogotá, Colombia"
+          },
+          "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+      },
+      "required": [
+          "location"
+      ],  
+  },
+}`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            فیلد <Important>name</Important> اسم تابع است و باید با نام تابعی که در برنامه خود تعریف کرده‌اید، یکسان باشد.
+            فیلد <Important>description</Important>، توضیحاتی درباره تابع است که به مدل کمک می‌کند تا متوجه شود این تابع چه کاری انجام می‌دهد و چه زمانی باید از آن استفاده کند.
+          </p>
+          <div className="h-2" />
+          <p>
+            فیلد <Important>parameters</Important>، ورودی‌های تابع، نوع آن‌ها و اجباری بودن یا اختیاری بودن استفاده از آن‌ها را مشخص می‌کند:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`"parameters": {
+  "type": "object",
+  "properties": {
+    "location": {
+      "type": "string",
+      "description": "The city and state, e.g. San Francisco, CA",
+    },
+    "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+  },
+  "required": ["location"],
+  },`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            مقدار فیلد <Important>properties</Important>، یک Object است که شامل ورودی‌های تابع می‌باشد.
+            در این مثال، تابع <Important>getCurrentWeather</Important>، دو ورودی به نام‌های <Important>location</Important> و <Important>unit</Important> دارد.
+          </p>
+          <div className="h-4" />
+          <p>  
+            ورودی <Important>location</Important>، یک رشته است که نام شهر و ایالت را دریافت می‌کند و ورودی <Important>unit</Important>، یک رشته است که می‌تواند یکی از دو مقدار <Important>celsius</Important> یا <Important>fahrenheit</Important> باشد.
+            فیلد <Important>enum</Important>، می‌گوید که این ورودی، محدود به یکی از مقادیر مشخص شده است. 
+          </p>
+          <div className="h-4" />
+          <p>  
+          فیلد <Important>required</Important>، مشخص می‌کند که ورودی <Important>location</Important>، اجباری است و مدل باید حتماً این ورودی را دریافت کند.
+          ورودی‌های دیگر، اختیاری هستند و مدل می‌تواند آن‌ها را دریافت نکند.
+          </p>  
+          <div className="h-4" />
+          <p>
+            پس از تعریف Tool، کافیست تا propmt نهایی که قرار است به مدل ارسال شود را، ایجاد کنید:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`const messages = [{ role: "user", content: "What is the weather like in Paris today?" }];`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            حال، شما می‌توانید با استفاده از متد <Important>chat.completions.create</Important> و مانند شکل زیر، پرامپت را به مدل ارسال کنید:
+          </p>
+<         div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`const completion = await openai.chat.completions.create({
+    model: "openai/gpt-4.1",
+    messages: messages,
+    tools,
+    tool_choice: "auto",
+});`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+
+          <p>
+            در قطعه کد فوق، با استفاده از <Important>model</Important>، مدل مورد نظر برای پردازش پرامپت مشخص شده است.
+            با استفاده از <Important>messages</Important>، پرامپت به مدل ارسال می‌شود و با استفاده از <Important>tools</Important>، Toolهایی که مدل می‌تواند از آن‌ها استفاده کند، مشخص شده است.
+            وقتی که مقدار فیلد <Important>tool_choice</Important>، بر روی <Important>auto</Important> تنظیم شده باشد، خود مدل تصمیم می‌گیرد که آیا لازم است از توابع تعریف‌شده استفاده کند یا خیر.
+          </p>
+          <div className="h-2" />
+          <p>
+            خروجی <Important>completion</Important>، شامل اطلاعات مربوط به پاسخ مدل است. برای 
+            مشاهده خروجی خواناتر، می‌توان مانند قطعه کد زیر، عمل کرد: 
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`console.log(JSON.stringify(completion, null, 2));`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            خروجی، به شکل زیر خواهد بود:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`{
+  "id": "6834381c546e1efa313fa872",
+  "model": "openai/gpt-4.1",
+  "object": "chat.completion",
+  "created": 1748252700,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "tool_calls",
+      "native_finish_reason": "tool_calls",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "refusal": null,
+        "reasoning": null,
+        "tool_calls": [
+          {
+            "index": 0,
+            "id": "call_DzeyygbKgYRe6gYvk73fv152",
+            "type": "function",
+            "function": {
+              "name": "getCurrentWeather",
+              "arguments": "{\"location\":\"Paris, France\"}"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 17,
+    "total_tokens": 94,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  }
+}`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            نمودار قطعه کد JSON فوق، به شکل زیر است (برای وضوح بیشتر، بر روی تصویر کلیک کنید):
+          </p>
+          <div className="h-2" />
+          <LightboxImage 
+              src="https://media.liara.ir/ai/completion/javascript/completion-weather-output.svg"
+              alt="n8n-first-welcome"
+          />    
+
+          <div className="h-2" />
+          <p>
+            در ادامه، فیلدهای خروجی فوق، به‌صورت سطح به سطح، توضیح داده شده است:
+          </p>
+          <div className="h-4" />
+          <h3>سطح اول</h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>id</Important>: شناسه یکتای درخواست ایجاد شده</li>
+            <li><Important>model</Important>: نام مدل مورد استفاده</li>
+            <li><Important>object</Important>: نوع شیء بازگشتی (همیشه <Important>chat.completion</Important>)</li>
+            <li><Important>created</Important>: زمان ایجاد پاسخ (Unix Timestamp)</li>
+            <li><Important>choices</Important>: لیست پاسخ‌های مدل (معمولاً فقط یکی)</li>
+            <li><Important>usage</Important>:  اطلاعات مربوط به تعداد توکن‌های استفاده‌شده</li>
+          </ul>
+
+          <div className="h-4" />
+          <h3>داخل <Important>choices[0]</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>logprobs</Important>: احتمال کلمات تولیدی (در حالت عادی <Important>null</Important>)</li>
+            <li><Important>finish_reason</Important>: دلیل توقف تولید مدل (اینجا بخاطر فراخوانی ابزار)</li>
+            <li><Important>native_finish_reason</Important>: مشابه <Important>finish_reason</Important> برای سازگاری با API جدید</li>
+            <li><Important>index</Important>: شماره پاسخ در لیست (<Important>0</Important> یعنی اولین)</li>
+            <li><Important>message</Important>: پاسخ تولیدشده شامل محتوا و اطلاعات فراخوانی تابع</li>
+          </ul>
+          
+          <div className="h-4" />
+          <h3>داخل <Important>choices[0].message</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>role</Important>: نقش گوینده (در اینجا <Important>assistant</Important>)</li>
+            <li><Important>content</Important>: محتوای متنی پاسخ (در حالت فراخوانی ابزار، خالی است)</li>
+            <li><Important>refusal</Important> , <Important>reasoning</Important>: قابلیت‌های جدیدتر (در اینجا همه <Important>null</Important> هستند)</li>
+            <li><Important>tool_calls</Important>: لیست توابعی که مدل پیشنهاد اجرای آن‌ها را می‌دهد</li>
+          </ul>
+          
+          <div className="h-4" />
+          <h3>داخل <Important>tool_calls[0]</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>index</Important>: شماره ترتیب این فراخوان در لیست <Important>tool_calls</Important></li>
+            <li><Important>id</Important>: شناسه فراخوان تابع توسط مدل </li>
+            <li><Important>type</Important>: نوع فراخوان (اینجا همیشه <Important>function</Important>)</li>
+            <li><Important>function.name</Important>: نام تابعی که مدل تصمیم می‌گیرد صدا بزند</li>
+            <li><Important>function.arguments</Important>:  پارامترهای استخراج‌شده از prompt به‌شکل رشته JSON</li>
+          </ul>
+          
+          <div className="h-4" />
+          <h3>داخل <Important>usage</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>prompt_tokens</Important>: تعداد توکن‌های استفاده‌شده برای پیام‌های ورودی</li>
+            <li><Important>completion_tokens</Important>:  تعداد توکن‌های استفاده‌شده برای تولید پاسخ مدل</li>
+            <li><Important>total_tokens</Important>: مجموع توکن‌ها  (prompt + completion)</li>
+            <li><Important>prompt_tokens_details</Important>: اطلاعات جزئی‌تر برای ورودی</li>
+            <li><Important>cached_tokens</Important>: تعداد توکن‌هایی از ورودی که با استفاده از حافظه‌ی کش مدل، بدون پردازش مجدد مورد استفاده قرار گرفته‌اند (<Important>0</Important> یعنی هیچی) </li>
+            <li><Important>completion_tokens_details</Important>: جزئیات پیشرفته برای آنالیز مدل</li>
+            <li><Important>reasoning_tokens</Important>: تعداد توکن‌هایی که مدل برای تحلیل، استدلال یا تصمیم‌گیری در فرآیند تولید پاسخ صرف کرده است</li>
+          </ul>
+          <div className="h-4" />
+          <p>
+            پس از دریافت خروجی، برای یافتن پارامترهایی که مدل برای فراخوانی تابع پیشنهاد داده است، می‌توان از کد زیر استفاده کرد:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`const argsRaw = completion.choices[0].message.tool_calls[0].function.arguments;
+const args = JSON.parse(argsRaw);
+console.log(args);`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            خروجی کد فوق، مانند شکل زیر، خواهد بود:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`{ location: 'Paris, France' }`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            خروجی فوق، نشان می‌دهد که مدل، با موفقیت، رابطه Tool با پرامپت را تشخیص داده و پارامترهای لازم برای فراخوانی تابع <Important>getCurrentWeather</Important> را استخراج کرده است.
+            اکنون؛ می‌توان این پارامترها را به تابع <Important>getCurrentWeather</Important> ارسال کرد:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`const weather = getCurrentWeather(
+  args["location"],
+  args["unit"] || "celsius"
+);`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            در نهایت، می‌توان از خروجی تابع <Important>getCurrentWeather</Important>، برای پاسخ به کاربر استفاده کرد:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`console.log(\`The current weather in \${args.location} is \${weather.temperature}°\${weather.unit === "celsius" ? "C" : "F"} and \${weather.condition}.\`);`}
+          </Highlight>
+          </div>
+          <div className="h-2" />   
+          <p>
+            خروجی نهایی، به شکل زیر خواهد بود:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="bash">
+            {`The current weather in Paris, France is 35°C and Sunny.`}
+          </Highlight>
+          </div>
+          <div className="h-2" />     
+          <p> 
+            قطعه کد کامل، برنامه، به شکل زیر است:
+          </p> 
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="js">
+            {`import { OpenAI } from "openai";
+
+const openai = new OpenAI({
+  baseURL: '<baseUrl>',
+  apiKey: '<LIARA_API_KEY>',
+});
+
+function getCurrentWeather(location, unit = "celsius") {
+  return {
+    location: location,
+    temperature: unit === "celsius" ? 35 : 68, // Celsius or Fahrenheit
+    unit: unit,
+    condition: "Sunny"
+  };
+}
+
+const tools = [{
+    "type": "function",
+    "function": {
+        "name": "getCurrentWeather",
+        "description": "Get current temperature for a given location.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "City and country e.g. Bogotá, Colombia"
+                },
+                "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+            },
+            "required": [
+                "location"
+            ],  
+        },
+    }
+}];
+
+
+
+const messages = [{ role: "user", content: "What is the weather like in Paris today?" }];
+
+const completion = await openai.chat.completions.create({
+    model: "openai/gpt-4.1",
+    messages: messages,
+    tools,
+    tool_choice: "auto",
+});
+
+const argsRaw = completion.choices[0].message.tool_calls[0].function.arguments;
+const args = JSON.parse(argsRaw);
+
+const weather = getCurrentWeather(
+  args["location"],
+  args["unit"] || "celsius"
+);
+
+console.log(\`The current weather in \${args.location} is \${weather.temperature}°\${weather.unit === "celsius" ? "C" : "F"} and \${weather.condition}.\`);
+`}
+          </Highlight>
+          </div>
+          <div className="h-2" />   
+
+          <p>
+            بدین صورت، شما می‌توانید با استفاده از قابلیت Function calling، توابع خود را به مدل معرفی کنید و از مدل، در پاسخ به سؤالات کاربران خود، استفاده کنید.
+          </p>
+          <div className="h-2" />   
+          <Alert variant="info">
+            <p>
+              شما می‌توانید برنامه واقعی مثال فوق را در <a href="https://github.com/liara-cloud/python-getting-started/tree/ai" className="text-[#2196f3]" target="_blank">گیت‌هاب لیارا</a> مشاهده و استفاده کنید.
+            </p>
+          </Alert>
+
         </>,
+
+
 
         <>
         </>,
@@ -281,7 +727,7 @@ client = OpenAI(
           <p>
             حال، شما می‌توانید با استفاده از متد <Important>chat.completions.create</Important> و مانند شکل زیر، پرامپت را به مدل ارسال کنید:
           </p>
-<div className="h-2" />
+<         div className="h-2" />
           <div dir="ltr">
           <Highlight className="python">
             {`completion = client.chat.completions.create(
@@ -297,11 +743,282 @@ client = OpenAI(
           <p>
             در قطعه کد فوق، با استفاده از <Important>model</Important>، مدل مورد نظر برای پردازش پرامپت مشخص شده است.
             با استفاده از <Important>messages</Important>، پرامپت به مدل ارسال می‌شود و با استفاده از <Important>tools</Important>، Toolهایی که مدل می‌تواند از آن‌ها استفاده کند، مشخص شده است.
+            وقتی که مقدار فیلد <Important>tool_choice</Important>، بر روی <Important>auto</Important> تنظیم شده باشد، خود مدل تصمیم می‌گیرد که آیا لازم است از توابع تعریف‌شده استفاده کند یا خیر.
           </p>
           <div className="h-2" />
           <p>
-            خروجی <Important>completion</Important>، به‌صورت زیر خواهد بود: 
+            خروجی <Important>completion</Important>، یک شیء خواهد بود که شامل اطلاعات مربوط به پاسخ مدل است. برای 
+            خوانایی بهتر خروجی آن، می‌توان مانند قطعه کد زیر، عمل کرد: 
           </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`import json
+
+print(json.dumps(completion.model_dump(), indent=2))`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            خروجی، به شکل زیر خواهد بود:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`{
+  "id": "68340a90546e1efa313fa724",
+  "choices": [
+    {
+      "finish_reason": "tool_calls",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": [
+          {
+            "id": "call_IGlizOLwLJWLUT4uXv60pW9P",
+            "function": {
+              "arguments": "{\"location\":\"Tehran\",\"unit\":\"fahrenheit\"}",
+              "name": "get_current_weather"
+            },
+            "type": "function",
+            "index": 0
+          }
+        ],
+        "reasoning": null
+      },
+      "native_finish_reason": "tool_calls"
+    }
+  ],
+  "created": 1748241039,
+  "model": "openai/gpt-4.1",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 21,
+    "prompt_tokens": 83,
+    "total_tokens": 104,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            نمودار قطعه کد JSON فوق، به شکل زیر است (برای وضوح بیشتر، بر روی تصویر کلیک کنید):
+          </p>
+          <div className="h-2" />
+          <LightboxImage 
+              src="https://media.liara.ir/ai/chat-completion-output-json.svg"
+              alt="n8n-first-welcome"
+          />    
+
+          <div className="h-2" />
+          <p>
+            در ادامه، فیلدهای خروجی فوق، به‌صورت سطح به سطح، توضیح داده شده است:
+          </p>
+          <div className="h-4" />
+          <h3>سطح اول</h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>id</Important>: شناسه یکتای درخواست ایجاد شده</li>
+            <li><Important>choices</Important>: لیست پاسخ‌های مدل (معمولاً فقط یکی)</li>
+            <li><Important>created</Important>: زمان ایجاد پاسخ (Unix Timestamp)</li>
+            <li><Important>model</Important>: نام مدل مورد استفاده</li>
+            <li><Important>object</Important>: نوع شیء بازگشتی (همیشه <Important>chat.completion</Important>)</li>
+            <li><Important>service_tier</Important>: سطح دسترسی به سرویس (در اینجا <Important>null</Important>)</li>
+            <li><Important>system_fingerprint</Important>: هش یا شناسه‌ سیستمی مدل (در اینجا <Important>null</Important>)</li>
+            <li><Important>usage</Important>:  اطلاعات مربوط به تعداد توکن‌های استفاده‌شده</li>
+          </ul>
+
+          <div className="h-4" />
+          <h3>داخل <Important>choices[0]</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>finish_reason</Important>: دلیل توقف تولید مدل (اینجا بخاطر فراخوانی ابزار)</li>
+            <li><Important>index</Important>: شماره پاسخ در لیست (<Important>0</Important> یعنی اولین)</li>
+            <li><Important>logprobs</Important>: احتمال کلمات تولیدی (در حالت عادی <Important>null</Important>)</li>
+            <li><Important>message</Important>: پاسخ تولیدشده شامل محتوا و اطلاعات فراخوانی تابع</li>
+            <li><Important>native_finish_reason</Important>: مشابه <Important>finish_reason</Important> برای سازگاری با API جدید</li>
+          </ul>
+          
+          <div className="h-4" />
+          <h3>داخل <Important>choices[0].message</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>content</Important>: محتوای متنی پاسخ (در حالت فراخوانی ابزار، خالی است)</li>
+            <li><Important>role</Important>: نقش گوینده (در اینجا <Important>assistant</Important>)</li>
+            <li><Important>tool_calls</Important>: لیست توابعی که مدل پیشنهاد اجرای آن‌ها را می‌دهد</li>
+            <li><Important>function_call</Important>: اگر از API قدیمی function calling استفاده شود؛ این فیلد، پر خواهد شد (در اینجا <Important>null</Important>)</li>
+            <li><Important>audio</Important> , <Important>reasoning</Important> , <Important>annotations</Important> , <Important>refusal</Important>: قابلیت‌های جدیدتر (در اینجا همه <Important>null</Important> هستند)</li>
+          </ul>
+          
+          <div className="h-4" />
+          <h3>داخل <Important>tool_calls[0]</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>id</Important>: شناسه فراخوان تابع توسط مدل </li>
+            <li><Important>type</Important>: نوع فراخوان (اینجا همیشه <Important>function</Important>)</li>
+            <li><Important>function.name</Important>: نام تابعی که مدل تصمیم می‌گیرد صدا بزند</li>
+            <li><Important>function.arguments</Important>:  پارامترهای استخراج‌شده از prompt به‌شکل رشته JSON</li>
+            <li><Important>index</Important>: شماره ترتیب این فراخوان در لیست <Important>tool_calls</Important></li>
+          </ul>
+          
+          <div className="h-4" />
+          <h3>داخل <Important>usage</Important></h3>
+          <div className="h-2" />
+          <ul>
+            <li><Important>completion_tokens</Important>:  تعداد توکن‌های استفاده‌شده برای تولید پاسخ مدل</li>
+            <li><Important>prompt_tokens</Important>: تعداد توکن‌های استفاده‌شده برای پیام‌های ورودی</li>
+            <li><Important>total_tokens</Important>: مجموع توکن‌ها  (prompt + completion)</li>
+            <li><Important>completion_tokens_details</Important>: جزئیات پیشرفته برای آنالیز مدل (معمولاً خالی یا <Important>null</Important>)</li>
+            <li><Important>prompt_tokens_details</Important>: اطلاعات جزئی‌تر برای ورودی</li>
+          </ul>
+          <div className="h-4" />
+          <p>
+            پس از دریافت خروجی، برای یافتن پارامترهایی که مدل برای فراخوانی تابع پیشنهاد داده است، می‌توان از کد زیر استفاده کرد:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`args = json.loads(completion.choices[0].message.tool_calls[0].function.arguments)
+print(args)`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            خروجی کد فوق، مانند شکل زیر، خواهد بود:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="json">
+            {`{'location': 'Tehran', 'unit': 'fahrenheit'}`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            خروجی فوق، نشان می‌دهد که مدل، با موفقیت، رابطه Tool با پرامپت را تشخیص داده و پارامترهای لازم برای فراخوانی تابع <Important>get_current_weather</Important> را استخراج کرده است.
+            اکنون؛ می‌توان این پارامترها را به تابع <Important>get_current_weather</Important> ارسال کرد:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`weather = get_current_weather(
+    location=args["location"],
+    unit=args.get("unit", "celsius")
+)`}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+          <p>
+            در نهایت، می‌توان از خروجی تابع <Important>get_current_weather</Important>، برای پاسخ به کاربر استفاده کرد:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`print(f"The weather in {weather['location']} is {weather['temperature']}°{weather['unit'][0].upper()} and {weather['condition']}.")`}
+          </Highlight>
+          </div>
+          <div className="h-2" />   
+          <p>
+            خروجی نهایی، به شکل زیر خواهد بود:
+          </p>
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="bash">
+            {`The weather in Tehran is 68°F and Sunny.`}
+          </Highlight>
+          </div>
+          <div className="h-2" />     
+          <p> 
+            قطعه کد کامل، برنامه، به شکل زیر است:
+          </p> 
+          <div className="h-2" />
+          <div dir="ltr">
+          <Highlight className="python">
+            {`from openai import OpenAI
+import json
+
+client = OpenAI(
+  base_url="<LIARA_API_KEY>",
+  api_key="<baseUrl>",
+)
+
+def get_current_weather(location, unit="celsius"):
+    return {
+        "location": location,
+        "temperature": unit == "celsius" and 35 or 68,  # Celsius or Fahrenheit
+        "unit": unit,
+        "condition": "Sunny"
+    }
+
+tools = [
+  {
+    "type": "function",
+    "function": {
+      "name": "get_current_weather",
+      "description": "Get the current weather in a given location",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "The city and state, e.g. San Francisco, CA",
+          },
+          "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+        },
+        "required": ["location"],
+      },
+    }
+  }
+]
+
+messages = [{"role": "user", "content": "What's the weather in fahrenheit like in Tehran today?"}]
+
+completion = client.chat.completions.create(
+  model="openai/gpt-4.1",
+  messages=messages,
+  tools=tools,
+  tool_choice="auto"
+)
+
+args = json.loads(completion.choices[0].message.tool_calls[0].function.arguments)
+print(args)
+
+weather = get_current_weather(
+    location=args["location"],
+    unit=args.get("unit", "celsius")
+)
+
+print(f"The weather in {weather['location']} is {weather['temperature']}°{weather['unit'][0].upper()} and {weather['condition']}.")`}
+          </Highlight>
+          </div>
+          <div className="h-2" />   
+
+          <p>
+            بدین صورت، شما می‌توانید با استفاده از قابلیت Function calling، توابع خود را به مدل معرفی کنید و از مدل، در پاسخ به سؤالات کاربران خود، استفاده کنید.
+          </p>
+          <div className="h-2" />   
+          <Alert variant="info">
+            <p>
+              شما می‌توانید برنامه واقعی مثال فوق را در <a href="https://github.com/liara-cloud/python-getting-started/tree/ai" className="text-[#2196f3]" target="_blank">گیت‌هاب لیارا</a> مشاهده و استفاده کنید.
+            </p>
+          </Alert>
 
         </>
 
