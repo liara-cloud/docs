@@ -301,6 +301,11 @@ export default {
         icon: <GoRocket />,
         link: "/ai/foundations/prompts"
       },
+      {
+        title: "Toolها (ابزارها)",
+        icon: <GoTools />,
+        link: "/ai/foundations/tools"
+      },
 
 
     ],
