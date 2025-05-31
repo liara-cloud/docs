@@ -312,7 +312,7 @@ const BEST_PRODUCTS = [
       title: "هوش مصنوعی (AI API)",
       icon: <BsStars />,
       desc: "شامل معرفی APIهای مرتبط با هوش مصنوعی، نحوه اتصال آن‌ها به پروژه‌ها، و نحوه استفاده از آن‌ها در بستر لیارا",
-      link: "/paas/about"
+      link: "/ai/about"
     },
   
   ]
