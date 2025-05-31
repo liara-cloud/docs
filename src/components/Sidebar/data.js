@@ -228,6 +228,11 @@ export default {
         link: "/ai/quick-start"
       },
       {
+        title: "اتصال تیم‌ها به AI",
+        icon: <GoPeople />,
+        link: "/ai/teams"
+      },
+      {
         hr: true
       },
       {
