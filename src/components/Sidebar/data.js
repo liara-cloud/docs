@@ -289,6 +289,11 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
         link: "/ai/connect-to-service/openweb"
       },
+      {
+        title: "افزونه Copilot در VSCode",
+        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
+        link: "/ai/connect-to-service/chat-gpt-copilot"
+      },
 
       {
         hr: true
