@@ -75,7 +75,7 @@ Tool، یک object قابل فراخوانی توسط مدل است که یک ک
 
 
 <Tabs 
-  tabs={["OpenAI SDK"]} 
+  tabs={["OpenAI SDK", "AI SDK"]} 
   content={[
     <>
       <p>
@@ -2722,9 +2722,56 @@ func main() {
     </>,
     <>
       <p>
-      
+      در <Important>AI SDK</Important>، یک <Important>tool</Important> می‌تواند هم در <Important>generateText</Important> استفاده شود، هم در <Important>streamText</Important>. این کار با قرار دادن یک یا چند Tool در پارامتری به نام <Important>tools</Important>، انجام می‌شود.
+      یک <Important>tool</Important>، شامل سه خصیصه (property)، می‌باشد: 
       </p>
-          <Tabs
+      <div className="h-4" />
+      <ul>
+        <li><Important>description</Important>: توضیحات اختیاری در مورد ابزار که هنگام استفاده مدل از ابزار، می‌تواند تاثیرگذار باشد.</li>
+        <li><Important>parameters</Important>: یک <a href="/ai/references/ai-sdk-core/zodschema/" className="text-[#2196f3]">Zod Schema</a> یا یک <a href="#" className="text-[#2196f3]">JSON Schema</a> که پارامترهای مورد نیاز tool را تعریف می‌کند. این اسکیما توسط مدل استفاده می‌شود. </li>
+        <li><Important>execute</Important>: یک تابع async اختیاری که با آرگومان‌های داده شده توسط فراخوانی tool، صدا زده می‌شود. این خصیصه، یک مقدار از نوع <Important>RESULT</Important> ایجاد می‌کند. </li>
+      </ul>
+      <div className="h-4" />
+      <p>
+        پارامتر <Important>tools</Important> در <Important>generateText</Important> و <Important>streamText</Important>، یک آبجکت است که باید در آن، اسم tool را به عنوان کلید تعریف کرده و خود tool را به‌عنوان مقدار، به کلید تعریف شده، بدهید: 
+      </p>
+      
+      <div className="h-4" />
+      <div dir="ltr">
+      <Highlight className="js">
+      {`// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText, tool } from 'ai';
+import { z } from 'zod';
+
+const result = await generateText({
+  model: createOpenAICompatible({
+    baseURL: "<baseUrl>",
+    name: 'example',
+    apiKey: "<LIARA_API_KEY>",
+  }).chatModel("openai/gpt-4o-mini"),
+  
+  tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+  
+  prompt: 'What is the weather in San Francisco?',
+});
+`}
+      </Highlight>
+      </div>
+      <div className="h-4" />
+
+      {/* <Tabs
       tabs={[
         {
         label: "JavaScript",
@@ -2736,7 +2783,26 @@ func main() {
         },
 
       ]}
-    />
+      content={[
+        <>
+          <div dir="ltr">
+          <Highlight className="js">
+            {``}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+        </>,
+
+        <>
+          <div dir="ltr">
+          <Highlight className="ts">
+            {``}
+          </Highlight>
+          </div>
+          <div className="h-2" />
+        </>
+      ]}
+    /> */}
     </>
 
   ]}

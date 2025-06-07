@@ -289,6 +289,11 @@ export default {
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
         link: "/ai/connect-to-service/openweb"
       },
+      {
+        title: "افزونه Copilot در VSCode",
+        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
+        link: "/ai/connect-to-service/chat-gpt-copilot"
+      },
 
       {
         hr: true
@@ -311,6 +316,49 @@ export default {
         icon: <GoTools />,
         link: "/ai/foundations/tools"
       },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        hr: true
+      },
+      {
+        badge: (
+        <div className="flex items-center gap-2">
+          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
+             ارجاعات AI SDK
+        </div>
+        )
+      },
+      {
+        title: "Zod Schema",
+        link: "/ai/references/ai-sdk-core/zodschema"
+      },
+      {
+        title: "JSON Schema",
+        link: "/ai/references/ai-sdk-core/jsonschema"
+      },
+
+
 
 
     ],

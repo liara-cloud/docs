@@ -1,0 +1,112 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+import LightboxImage   from "@/components/Common/LightboxImage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال هوش مصنوعی به افزونه ChatGPT Copilot - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات اتصال سرویس هوش مصنوعی لیارا به افزونه ChatGPT Copilot - در لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# اتصال هوش مصنوعی به افزونه ChatGPT Copilot
+<hr className="mb-2" />
+
+{/* <video
+src="https://media.liara.ir/ai/افزونه ChatGPT Copilot-ai.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br /> */}
+
+برای راه‌اندازی افزونه ChatGPT Copilot مجهز به هوش مصنوعی، در ابتدا باید، با کلیک بر روی <a href="vscode:extension/feiskyer.chatgpt-copilot" className="text-[#2196f3]">این لینک</a> افزونه <a href="https://marketplace.visualstudio.com/items?itemName=feiskyer.chatgpt-copilot" className="text-[#2196f3]">ChatGPT Copilot</a> را بر روی VSCode خود نصب کنید. پس از نصب آن، بایستی سرویس زیر را در لیارا، ایجاد کنید:
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p><a href="/ai/quick-start/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a></p>,},
+
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStyleType: "arabic-indic !important",
+        listStylePosition: "outside",
+      }}
+    >
+        
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<br />
+
+بعد از راه‌اندازی، تنها کافیست تا گام‌های زیر را طی کنید: 
+
+
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>پیکربندی افزونه در VSCode</h3>   
+    <p>
+        پس از نصب افزونه، از سایدبار، <Important>ChatGPT</Important> را انتخاب کنید و پس از انتخاب در صفحه باز شده، گزینه <Important>Update settings</Important> را، انتخاب کنید.
+    </p> 
+    <div className="h-2" />
+    <LightboxImage
+        src="https://media.liara.ir/ai/chat-gpt-copilot/step-one.png"
+        alt="add chatgpt copilot"
+    />    
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>ایجاد حساب کاربری جدید</h3>
+    <p>
+        در صفحه جدید باز شده، مقدار <Important>ChatGPT &gt; Gpt3: Provider</Important> را بر روی <Important>OpenAI</Important>، قرار دهید. در فیلد <Important>Chatgpt &gt; Gpt3: Api Key</Important>، <a href="" className="text-[#2196f3]">کلید API لیارا</a>  و در فیلد <Important>Chatgpt &gt; Gpt3: Api Base Url</Important>، مقدار <Important>baseUrl</Important> سرویس هوش مصنوعی خود را قرار دهید. 
+        مقدار فیلد <Important>Chatgpt &gt; Gpt3: Model</Important> را بر روی <Important>custom</Important> بگذارید و اکنون، می‌توانید در فیلد <Important>Chatgpt &gt; Gpt3: Custom Model</Important>، نام مدل خود را از میان مدل‌های موجود در سرویس هوش مصنوعی خود، بگذارید. 
+    </p>
+    <div className="h-2" />
+    <LightboxImage
+        src="https://media.liara.ir/ai/chat-gpt-copilot/step-two.png"
+        alt="configure chatgpt copilot"
+    />   
+        <div className="h-2" />
+  
+  </>
+
+  )
+  },
+  
+]}/>
+
+<div className="h-4" />
+با انجام مراحل فوق، 
+        تمامی کارها انجام شده است و شما، می‌توانید از این افزونه در VSCode، استفاده کنید. 
+
+    <div className="h-2" />
+    <LightboxImage
+        src="https://media.liara.ir/ai/chat-gpt-copilot/final-look.png"
+        alt="configure chatgpt copilot"
+    />   
+
+</Layout>

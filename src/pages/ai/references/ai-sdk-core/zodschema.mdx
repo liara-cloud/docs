@@ -1,0 +1,231 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import LightboxImage   from "@/components/Common/LightboxImage";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با zodSchema - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با zodSchema در AI SDK در سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# آشنایی با Zod Schema
+<hr className="mb-2" />
+<Important>zodSchema</Important> یک تابع کمکی است که یک اسکیمای Zod را به یک آبجکت اسکیمای JSON تبدیل می‌کند و این آبجکت، با AI SDK سازگار است. 
+تابع <Important>zodSchema</Important> یک اسکیمای Zod و در صورت نیاز، یک پیکربندی را به عنوان ورودی دریافت می‌کند و در نهایت، یک <Important>typed schema</Important> را بازمی‌گرداند.
+شما می‌توانید از این تابع، برای تولید داده‌های ساختار یافته استفاده کنید. همچنین می‌توانید در <a href="" className="text-[#2196f3]">toolها</a>، از این تابع، بهره ببرید. 
+
+<div className="h-4" />
+<Alert variant="success">
+<p>
+
+در نظر داشته باشید که امکان ارسال مستقیم آبجکت‌های Zod به توابع AI SDK نیز، وجود دارد.
+در این حالت، SDK، اسکیمای Zod را با استفاده از تابع <Important>zodSchema</Important>، به اسکیمای <Important>JSON</Important>، تبدیل می‌کند.
+با این حال، اگر بخواهید گزینه‌هایی مانند <Important>useReferences</Important> را تنظیم کنید؛ می‌توانید به جای ارسال مستقیم اسکیمای Zod، از تابع <Important>zodSchema</Important>، استفاده کنید.
+</p>
+</Alert>
+
+<Section id='example' title='مثال استفاده' />
+
+در ابتدا برای کار با zod، باید آن را با استفاده از <Important>npm</Important> نصب کنید 
+(امکان نصب با <Important>yarn</Important> و <Important>pnpm</Important> نیز، وجود دارد):
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="bash">
+{`npm install zod`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+پس از نصب zod، بایستی توابع و ماژول‌های مورد نیاز را، مانند شکل زیر، وارد برنامه کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`import { zodSchema } from 'ai';
+import { z } from 'zod';
+`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+سپس، می‌توانید مانند قطعه کد زیر، یک اسکیمای ساده با فقط یک ویژگی به اسم <Important>name</Important>، ایجاد کنید:
+
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`const baseCategorySchema = z.object({
+  name: z.string(),
+});`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+در ادامه، می‌توانید مانند قطعه کد زیر، یک Category از نوع بازگشتی (Recursive)، تعریف کنید:
+
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`type Category = z.infer<typeof baseCategorySchema> & {
+  subcategories: Category[];
+};`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+در قطعه کد فوق، <Important>subcategories</Important>، آرایه‌ای از همان نوع <Important>Category</Important> است و این، به‌منزله بازگشتی بودن اسکیما است. 
+در نهایت، می‌توانید مانند قطعه کد زیر، اسکیمای بازگشتی را با <Important>z.lazy</Important> تعریف کنید: 
+
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`const categorySchema: z.ZodType<Category> = baseCategorySchema.extend({
+  subcategories: z.lazy(() => categorySchema.array()),
+});
+`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+در قطعه کد فوق، <Important>categorySchema</Important>، دارای همه ویژگی‌های <Important>baseCategorySchema</Important> و یک ویژگی جدید به نام <Important>subcategories</Important> است. 
+در نظر داشته باشید که استفاده از <Important>z.lazy</Important> برای ساختارهای بازگشتی و جلوگیری از خطای ارجاع ناموجود، ضروری است.
+<div className="h-4" />
+
+حال، برای ساخت یک آبجکت جدید با یک ویژگی به اسم <Important>category</Important> (که از <Important>categorySchema</Important> استفاده می‌کند)، می‌توانید مانند قطعه کد زیر، عمل کنید: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`const mySchema = zodSchema(
+  z.object({
+    category: categorySchema,
+  }),
+  { useReferences: true },
+);`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+در قطعه کد فوق، با استفاده از تابع <Important>zodSchema</Important>، آبجکت به <Important>JSON Schema</Important>، تبدیل می‌شود.
+همچنین، گزینه <Important>useReferences</Important> فعال شده است چرا که برای پشتیبانی از ساختارهای بازگشتی حیاتی است 
+و در <Important>JSON Schema</Important> از حلقه (loop) بی‌نهایت، جلوگیری می‌کند.
+
+<div className="h-4" />
+
+قطعه کد کامل مثال استفاده از <Important>zodSchema</Important>، در ادامه، قرار گرفته است: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`import { zodSchema } from 'ai';
+import { z } from 'zod';
+
+// Define a base category schema
+const baseCategorySchema = z.object({
+  name: z.string(),
+});
+
+// Define the recursive Category type
+type Category = z.infer<typeof baseCategorySchema> & {
+  subcategories: Category[];
+};
+
+// Create the recursive schema using z.lazy
+const categorySchema: z.ZodType<Category> = baseCategorySchema.extend({
+  subcategories: z.lazy(() => categorySchema.array()),
+});
+
+// Create the final schema with useReferences enabled for recursive support
+const mySchema = zodSchema(
+  z.object({
+    category: categorySchema,
+  }),
+  { useReferences: true },
+);
+
+console.log(JSON.stringify(mySchema, null, 2));`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+خروجی کد فوق، مانند زیر است: 
+
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "category": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "subcategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/properties/category"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "subcategories"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "category"
+    ],
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+<p>
+نمودار قطعه کد JSON فوق، به شکل زیر است (برای وضوح بیشتر، بر روی تصویر کلیک کنید):
+</p>
+<div className="h-2" />
+<LightboxImage 
+    src="https://media.liara.ir/ai/ai-sdk/zodschema-converted-to-jsonschema.svg"
+    alt="completion output"
+/>    
+
+</Layout>
