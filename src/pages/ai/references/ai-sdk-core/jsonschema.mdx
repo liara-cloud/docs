@@ -1,0 +1,229 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import LightboxImage   from "@/components/Common/LightboxImage";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با JSON Schema - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با JSON Schema در AI SDK در سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# آشنایی با JSON Schema
+<hr className="mb-2" />
+
+<Important>jsonSchema</Important> یک تابع کمکی است که یک آبجکت اسکیمای JSON سازگار با AI SDK تولید می‌کند. این تابع اسکیمای JSON و در صورت نیاز، یک تابع اعتبارسنجی اختیاری را به عنوان ورودی دریافت می‌کند و قابلیت تایپ‌پذیری نیز دارد.
+شما می‌توانید از این تابع، برای تولید داده‌های ساختار یافته استفاده کنید. همچنین می‌توانید در <a href="" className="text-[#2196f3]">toolها</a>، از این تابع، بهره ببرید. 
+
+<Important>jsonSchema</Important> جایگزینی برای <Important>Zod Schema</Important> نیز، است و در شرایط پویاتر یا هنگام استفاده از کتابخانه‌های اعتبارسنجی، انعطاف‌پذیری بیشتری دارد.
+
+
+<Section id='example' title='مثال استفاده' />
+
+در ابتدا، برای کار با <Important>jsonSchema</Important> باید آن را وارد برنامه کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="ts">
+{`import { jsonSchema } from 'ai';
+`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+سپس، می‌توانید مانند قطعه کد زیر، یک اسکیمای ساده با سه ویژگی <Important>name</Important>، <Important>ingredients</Important> و <Important>steps</Important> ایجاد کنید:
+
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`const mySchema = jsonSchema<{
+  recipe: {
+    name: string;
+    ingredients: { name: string; amount: string }[];
+    steps: string[];
+  };
+}>
+`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+در ادامه، می‌توانید مانند قطعه کد زیر، بدنه اسکیمای JSON را تعریف کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`({
+  type: 'object',
+  properties: {
+    recipe: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        ingredients: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              name: { type: 'string' },
+              amount: { type: 'string' },
+            },
+            required: ['name', 'amount'],
+          },
+        },
+        steps: {
+          type: 'array',
+          items: { type: 'string' },
+        },
+      },
+      required: ['name', 'ingredients', 'steps'],
+    },
+  },
+  required: ['recipe'],
+});
+`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+قطعه کد کامل مثال استفاده از <Important>jsonSchema</Important>، در ادامه، قرار گرفته است: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`import { jsonSchema } from 'ai';
+
+const mySchema = jsonSchema<{
+  recipe: {
+    name: string;
+    ingredients: { name: string; amount: string }[];
+    steps: string[];
+  };
+}>({
+  type: 'object',
+  properties: {
+    recipe: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        ingredients: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              name: { type: 'string' },
+              amount: { type: 'string' },
+            },
+            required: ['name', 'amount'],
+          },
+        },
+        steps: {
+          type: 'array',
+          items: { type: 'string' },
+        },
+      },
+      required: ['name', 'ingredients', 'steps'],
+    },
+  },
+  required: ['recipe'],
+});
+
+console.log(JSON.stringify(mySchema, null, 2))`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+خروجی کد فوق، مانند زیر است: 
+
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="json">
+{`{
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "recipe": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "amount"
+              ]
+            }
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "ingredients",
+          "steps"
+        ]
+      }
+    },
+    "required": [
+      "recipe"
+    ]
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+<p>
+نمودار قطعه کد JSON فوق، به شکل زیر است (برای وضوح بیشتر، بر روی تصویر کلیک کنید):
+</p>
+<div className="h-2" />
+<LightboxImage 
+    src="https://media.liara.ir/ai/ai-sdk/json-schema.svg"
+    alt="completion output"
+/>    
+
+</Layout>

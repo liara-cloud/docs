@@ -313,6 +313,49 @@ export default {
       },
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {
+        hr: true
+      },
+      {
+        badge: (
+        <div className="flex items-center gap-2">
+          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
+             ارجاعات AI SDK
+        </div>
+        )
+      },
+      {
+        title: "Zod Schema",
+        link: "/ai/references/ai-sdk-core/zodschema"
+      },
+      {
+        title: "JSON Schema",
+        link: "/ai/references/ai-sdk-core/jsonschema"
+      },
+
+
+
+
     ],
 
 
