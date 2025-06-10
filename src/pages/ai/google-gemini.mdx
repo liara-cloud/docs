@@ -64,38 +64,79 @@ import Head from "next/head";
 
 <br />
 
-پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/references/api/about/" className="text-[#2196f3]" >کلید API</a>، می‌توانید مانند دستورات و قطعه‌های کد زیر، از مدل‌های Gemini استفاده کنید.
-
+پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/references/api/about/" className="text-[#2196f3]" >کلید API</a>، می‌توانید از مدل‌های Gemini استفاده کنید.
 
 <div className="h-2" />
 <Alert variant="success">
 <p>
-در کدهای زیر، برای اتصال به مدل، از OpenAI SDK استفاده شده است. چون تمامی مدل‌های AI که لیارا ارائه می‌دهد؛ سازگار با OpenAI SDK هستند.
+در قطعه کدهای ارائه‌شده توسط لیارا برای اتصال به مدل، از OpenAI SDK استفاده می‌شود. تمامی مدل‌هایی که لیارا ارائه می‌دهد؛ سازگار با OpenAI SDK هستند.
 </p>
 </Alert>
 
 
-<Tabs 
-  tabs={["cURL", "JavaScript", "PHP", "Python", "C#", "Go"]} 
-  content={[
-  <>
-    <div className="h-2" />
-    <div dir='ltr'>
-        <Highlight className="bash">
-        {`curl <baseUrl>\chat\completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer <LIARA_API_KEY>" \\
-  -d '{
-  "model": "<model_name>",
-  "messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Hello!"}
-  ]
-}'`}
-        </Highlight>
-    </div>
-  </>,
 
+<Section id="connect" title="اتصال به مدل" />
+
+برای اتصال به مدل در سطح کد، می‌توانید از دو ابزار استفاده کنید: 
+
+<div className="h-4" />
+
+<ul>
+  <li><Important>OpenAI SDK</Important>: ابزار رسمی ارائه‌شده توسط <a href="https://openai.com/" className="text-[#2196f3]">OpenAI</a>. تمامی مدل‌های ارائه‌شده در لیارا، با این SDK سازگار هستند.</li>
+  <li><Important>AI SDK</Important>: ابزار ارائه‌شده توسط <a href="https://ai-sdk.dev/" className="text-[#2196f3]">Vercel</a>. این SDK، تنها برای جاوااسکریپت و تایپ‌اسکریپت در دسترس است.</li>
+</ul>
+
+<div className="h-4" />
+
+<p>
+در ادامه، نحوه اتصال به مدل، هم با <Important>OpenAI SDK</Important> و هم با <Important>AI SDK</Important>، بررسی شده است. 
+</p>
+
+
+<Tabs
+  tabs={[
+        {
+        label: "OpenAI SDK",
+        },
+        {
+        label: "AI SDK",
+        },
+  ]}
+
+  content={[
+
+  <>
+  <p>
+    برای اتصال به مدل با OpenAI SDK، می‌توانید از قطعه کدهای زیر، استفاده کنید.
+  </p>
+  <Tabs 
+  tabs={[
+        {
+        label: "JavaScript",
+        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "PHP",
+        icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Python",
+        icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "NET.",
+        icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Go",
+        icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "cURL",
+        },
+      ]}
+  content={[
+  
   <>
     <p>
         در ابتدا، برای استفاده از مدل هوش مصنوعی مدنظر خود در جاوااسکریپت، باید پکیج <Important>openai</Important> را نصب کنید. برای این کار، می‌توانید از npm یا yarn استفاده کنید:
@@ -344,12 +385,75 @@ func main() {
     </div>
   </>,
 
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+        {`curl <baseUrl>\chat\completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
+  -d '{
+  "model": "<model_name>",
+  "messages": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Hello!"}
+  ]
+}'`}
+        </Highlight>
+    </div>
+  </>,
 
+  ]}
+  />
+
+  </>,
+
+  <>
+  <p>
+    برای اتصال به مدل با AI SDK، در ابتدا باید با اجرای دستور زیر، ماژول‌های مورد نیاز را نصب کنید:
+  </p>
+  <div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+    {`npm i ai @ai-sdk/openai-compatible`}
+  </Highlight>
+  </div>
+  <div className="h-2" />
+  <p>
+    در ادامه، می‌توانید مانند قطعه کد زیر، به مدل متصل شوید:
+  </p>
+  <div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+    {`// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: "<baseUrl>",
+    name: 'example',
+    apiKey: "<LIARA_API_TOKEN>",
+  }).chatModel("<model_name>"),
+  
+  
+  prompt: 'hey.',
+
+});
+
+console.log('Generated Text:', text);
+`}
+  </Highlight>
+  </div>
+  <div className="h-2" />
+
+  </>
 
 
   ]}
 
 />
+
 
 در قطعه کد‌های فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_TOKEN&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های فوق را قرار دهید.
 

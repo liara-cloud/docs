@@ -2979,33 +2979,33 @@ console.log(JSON.stringify(steps, null, 2))`}
 <div className="h-2" />
 <ul>
   <li><Important>stepType</Important>: مرحله فعلی در فرآیند پاسخ‌دهی مدل </li>
-  <li><Important>text</Important>: متن مستقیم تولید شده توسط مدل (در اینجا خالی است چون از ابزار استفاده شده)</li>
-  <li><Important>finishReason</Important>: دلیلی که مدل را متوقف کرده (اینجا "tool-calls" یعنی به‌خاطر فراخوانی ابزار)</li>
+  <li><Important>text</Important>: متن مستقیم تولید شده توسط مدل (در اینجا خالی است چون از Tool استفاده شده)</li>
+  <li><Important>finishReason</Important>: دلیلی که مدل را متوقف کرده (اینجا "tool-calls" یعنی به‌خاطر فراخوانی Tool)</li>
   <li><Important>isContinued</Important>: مشخص می‌کند آیا پاسخ در پیام‌های بعدی ادامه دارد یا خیر</li>
-  <li><Important>toolCalls</Important>: لیستی از فراخوانی‌هایی است که مدل برای ابزارها انجام داده</li>
-  <li><Important>toolResults</Important>: پاسخ‌هایی هستند که ابزارها به فراخوانی‌های مدل داده‌اند</li>
-  <li><Important>usage</Important>: میزان استفاده از توکن‌ها برای این تعامل را نشان می‌دهد</li>
-  <li><Important>request</Important>: اطلاعات مربوط به درخواستی که به API ارسال شده را شامل می‌شود</li>
-  <li><Important>response</Important>: پاسخ کامل دریافت‌شده از API، شامل بدنه، هدرها و پیام‌ها</li>
-  <li><Important>providerMetadata</Important>: متادیتای مرتبط با ارائه‌دهنده مدل است که به صورت آزمایشی استفاده می‌شود</li>
-  <li><Important>experimental_providerMetadata</Important>: مشابه providerMetadata، اطلاعات اضافی آزمایشی مدل را نشان می‌دهد</li>
+  <li><Important>toolCalls</Important>: لیستی از Toolهای فراخوانی شده توسط مدل</li>
+  <li><Important>toolResults</Important>: پاسخ‌هایی که Tool های فراخوانی‌شده به مدل داده‌اند</li>
+  <li><Important>usage</Important>: میزان استفاده از توکن‌ها</li>
+  <li><Important>request</Important>: اطلاعات مربوط به درخواستی که به API ارسال شده</li>
+  <li><Important>response</Important>: پاسخ کامل دریافت‌شده از API</li>
+  <li><Important>providerMetadata</Important>: متادیتای مرتبط با ارائه‌دهنده مدل </li>
+  <li><Important>experimental_providerMetadata</Important>: مشابه providerMetadata، شامل اطلاعات اضافی آزمایشی مدل</li>
 </ul>
 
 <div className="h-4" />
 <h3>داخل <Important>toolCalls[0]</Important></h3>
 <div className="h-2" />
 <ul>
-  <li><Important>type</Important>: نوع فراخوانی ابزار را مشخص می‌کند (در اینجا "tool-call")</li>
-  <li><Important>toolCallId</Important>: شناسه یکتای این فراخوانی ابزار</li>
-  <li><Important>toolName</Important>: نام ابزاری که فراخوانی شده (مثل getCurrentWeather)</li>
-  <li><Important>args</Important>: آرگومان‌هایی که به ابزار ارسال شده‌اند</li>
+  <li><Important>type</Important>: نوع فراخوانی Tool را مشخص می‌کند (در اینجا "tool-call")</li>
+  <li><Important>toolCallId</Important>: شناسه یکتای فراخوانی Tool</li>
+  <li><Important>toolName</Important>: نام Tool فراخوانی شده (اینجا: getCurrentWeather)</li>
+  <li><Important>args</Important>: آرگومان‌های ارسال شده به Tool</li>
 </ul>
 
 <div className="h-4" />
 <h3>داخل <Important>toolCalls[0].args</Important></h3>
 <div className="h-2" />
 <ul>
-  <li><Important>locations</Important>: (اشتباه تایپی است، درست: <Important>location</Important>): شهری که برای آن آب‌وهوا درخواست شده</li>
+  <li><Important>location</Important>: شهری که برای آن وضعیت آب‌وهوا درخواست شده</li>
   <li><Important>unit</Important>: واحد دمایی مورد نظر برای نمایش (سانتی‌گراد یا فارنهایت)</li>
 </ul>
 
@@ -3013,9 +3013,9 @@ console.log(JSON.stringify(steps, null, 2))`}
 <h3>داخل <Important>toolResults[0]</Important></h3>
 <div className="h-2" />
 <ul>
-  <li><Important>type</Important>: نوع نتیجه ابزاری را مشخص می‌کند (اینجا "tool-result")</li>
-  <li><Important>toolCallId</Important>: شناسه مربوط به toolCallی که نتیجه‌اش این است</li>
-  <li><Important>toolName</Important>: نام ابزاری که این نتیجه را برگردانده</li>
+  <li><Important>type</Important>: نوع نتیجه Tool را مشخص می‌کند (اینجا "tool-result")</li>
+  <li><Important>toolCallId</Important>: شناسه مربوط به toolCall که نتیجه‌اش این است</li>
+  <li><Important>toolName</Important>: نام Tool که این نتیجه را برگردانده</li>
   <li><Important>args</Important>: آرگومان‌هایی که به ابزار داده شده بود</li>
   <li><Important>result</Important>: داده‌های برگشتی از ابزار شامل اطلاعات آب‌وهوا</li>
 </ul>
@@ -3024,7 +3024,7 @@ console.log(JSON.stringify(steps, null, 2))`}
 <h3>داخل <Important>toolResults[0].args</Important></h3>
 <div className="h-2" />
 <ul>
-  <li><Important>location</Important>: شهر و کشور مقصد درخواست آب‌وهوا</li>
+  <li><Important>location</Important>: شهر و کشور مقصد درخواست وضعیت آب‌وهوا</li>
   <li><Important>unit</Important>: واحد اندازه‌گیری دما</li>
 </ul>
 <div className="h-4" />
@@ -3052,7 +3052,7 @@ console.log(JSON.stringify(steps, null, 2))`}
 <h3>داخل <Important>request</Important></h3>
 <div className="h-2" />
 <ul>
-  <li><Important>body</Important>: محتوای کامل درخواست ارسالی به API به صورت رشته JSON</li>
+  <li><Important>body</Important>: محتوای کامل درخواست ارسال‌شده به API به صورت رشته JSON</li>
 </ul>
 
 <div className="h-4" />
@@ -3073,17 +3073,17 @@ console.log(JSON.stringify(steps, null, 2))`}
 <ul>
   <li><Important>access-control-allow-origin</Important>: مجوز دسترسی برای مرورگرها جهت اشتراک‌گذاری بین دامنه‌ای</li>
   <li><Important>connection</Important>: وضعیت اتصال HTTP</li>
-  <li><Important>content-length</Important>: طول محتویات پاسخ در بایت</li>
+  <li><Important>content-length</Important>: طول محتویات پاسخ به بایت</li>
   <li><Important>content-type</Important>: نوع محتوای پاسخ (JSON)</li>
   <li><Important>date</Important>: تاریخ و زمان ارسال پاسخ</li>
-  <li><Important>server</Important>: اطلاعات درباره سرور پاسخ‌دهنده (مثلاً nginx)</li>
+  <li><Important>server</Important>: اطلاعات درباره سرور پاسخ‌دهنده</li>
 </ul>
 
 <div className="h-4" />
 <h3>داخل <Important>response.body</Important></h3>
 <div className="h-2" />
 <ul>
-  <li><Important>id</Important>: شناسه یکتای تعامل تولید شده توسط API</li>
+  <li><Important>id</Important>: شناسه یکتای گفتگوی تولید شده توسط API</li>
   <li><Important>model</Important>: مدل استفاده‌شده برای تولید پاسخ</li>
   <li><Important>object</Important>: نوع شیء پاسخ (مثلاً chat.completion)</li>
   <li><Important>created</Important>: زمان ایجاد پاسخ به صورت timestamp</li>
@@ -3108,17 +3108,17 @@ console.log(JSON.stringify(steps, null, 2))`}
 <ul>
   <li><Important>role</Important>: نقش پیام (مثلاً assistant)</li>
   <li><Important>content</Important>: محتوای متن پاسخ یا فراخوان ابزار</li>
-  <li><Important>refusal</Important>: در صورت امتناع از پاسخ، دلیل آن</li>
+  <li><Important>refusal</Important>: دلیل امتناع از پاسخ در صورت عدم پاسخ‌دهی </li>
   <li><Important>reasoning</Important>: توضیح منطق پشت تصمیم (در اینجا null)</li>
-  <li><Important>tool_calls</Important>: لیست فراخوانی‌های ابزاری انجام شده توسط مدل</li>
+  <li><Important>tool_calls</Important>: لیست فراخوانی‌های Tool انجام شده توسط مدل</li>
 </ul>
 
 <div className="h-4" />
 <h3>داخل <Important>response.body.choices.tool_calls[0]</Important></h3>
 <div className="h-2" />
 <ul>
-  <li><Important>index</Important>: ترتیب این tool_call در لیست</li>
-  <li><Important>id</Important>: شناسه یکتای این فراخوان ابزار</li>
+  <li><Important>index</Important>: ایندکس این tool_call در لیست</li>
+  <li><Important>id</Important>: شناسه یکتای این فراخوان Tool</li>
   <li><Important>type</Important>: نوع فراخوانی (function)</li>
   <li><Important>function</Important>: آبجکت شامل نام تابع و آرگومان‌ها</li>
   <li><Important>function.name</Important>: نام تابع فراخوانی‌شده</li>
@@ -3133,7 +3133,7 @@ console.log(JSON.stringify(steps, null, 2))`}
   <li><Important>completion_tokens</Important>: توکن‌های مصرف‌شده برای پاسخ مدل</li>
   <li><Important>total_tokens</Important>: جمع کل توکن‌های مصرف‌شده</li>
   <li><Important>prompt_tokens_details</Important>: جزئیات بیشتر درباره prompt tokens</li>
-  <li><Important>prompt_tokens_details.cached_tokens</Important>: تعداد توکن‌هایی که از کش استفاده شده‌اند (در اینجا صفر)</li>
+  <li><Important>prompt_tokens_details.cached_tokens</Important>: تعداد توکن‌های واکشی‌شده از cache (در اینجا صفر)</li>
   <li><Important>completion_tokens_details</Important>: جزئیات بیشتر درباره completion tokens</li>
   <li><Important>completion_tokens_details.reasoning_tokens</Important>: تعداد توکن‌هایی که صرف reasoning شده‌اند (در اینجا صفر)</li>
 </ul>
@@ -3174,20 +3174,10 @@ console.log(JSON.stringify(steps, null, 2))`}
 <ul>
   <li><Important>example</Important>: مشابه providerMetadata اما در بخش آزمایشی</li>
   <li><Important>reasoningTokens</Important>: تعداد توکن‌های مرتبط با منطق مدل</li>
-  <li><Important>cachedPromptTokens</Important>: توکن‌هایی که از کش استفاده شده‌اند</li>
+  <li><Important>cachedPromptTokens</Important>: توکن‌هایی که از کش واکشی شده‌اند</li>
 </ul>
 
-
-
-
-
-
-
-
-
-
-
-
+          <div className="h-4" />
 
 
           <p>
@@ -3196,9 +3186,8 @@ console.log(JSON.stringify(steps, null, 2))`}
           <div className="h-2" />
           <div dir="ltr">
           <Highlight className="js">
-            {`const argsRaw = completion.choices[0].message.tool_calls[0].function.arguments;
-const args = JSON.parse(argsRaw);
-console.log(args);`}
+            {`const toolResults = steps.flatMap(step => step.toolResults);
+console.log(toolResults[0].args)`}
           </Highlight>
           </div>
           <div className="h-2" />
@@ -3208,41 +3197,40 @@ console.log(args);`}
           <div className="h-2" />
           <div dir="ltr">
           <Highlight className="json">
-            {`{ location: 'Paris, France' }`}
+            {`{ location: 'Qom, Iran', unit: 'celsius' }`}
           </Highlight>
           </div>
           <div className="h-2" />
           <p>
             خروجی فوق، نشان می‌دهد که مدل، با موفقیت، رابطه Tool با پرامپت را تشخیص داده و پارامترهای لازم برای فراخوانی تابع <Important>getCurrentWeather</Important> را استخراج کرده است.
-            اکنون؛ می‌توان این پارامترها را به تابع <Important>getCurrentWeather</Important> ارسال کرد:
+            از آنجایی که با فراخوانی Tool، فیلد <Important>execute</Important> آن نیز، اجرا می‌شود. بنابراین؛ می‌توان مانند شکل زیر، از خروجی تابع تعریف شده در 
+            فیلد <Important>execute</Important> استفاده کرد. برای مدیریت خطاهای احتمالی، می‌توان از قطعه کد زیر استفاده کرد: 
           </p>
           <div className="h-2" />
           <div dir="ltr">
           <Highlight className="js">
-            {`const weather = getCurrentWeather(
-  args["location"],
-  args["unit"] || "celsius"
-);`}
+            {`if (toolResults.length > 0) {
+  for (const tool of toolResults) {
+    if (tool.toolName === "getCurrentWeather") {
+      const args = tool.result;
+      console.log(\`The current weather in \${args.location} is \${args.temperature}°\${args.unit === "celsius" ? "C" : "F"} and \${args.condition}.\`);
+    } else {
+      console.log(\`Tool "\${tool.toolName}" was called, but no handler is defined for it.\`);
+    }
+  }
+} else {
+  console.log("No tool call was triggered.");
+}`}
           </Highlight>
           </div>
           <div className="h-2" />
           <p>
-            در نهایت، می‌توان از خروجی تابع <Important>getCurrentWeather</Important>، برای پاسخ به کاربر استفاده کرد:
+              خروجی قطعه کد فوق، در صورتی که Tool تعریف شد فراخوانی شود؛ مشابه زیر خواهد بود:
           </p>
           <div className="h-2" />
           <div dir="ltr">
           <Highlight className="js">
-            {`console.log(\`The current weather in \${args.location} is \${weather.temperature}°\${weather.unit === "celsius" ? "C" : "F"} and \${weather.condition}.\`);`}
-          </Highlight>
-          </div>
-          <div className="h-2" />   
-          <p>
-            خروجی نهایی، به شکل زیر خواهد بود:
-          </p>
-          <div className="h-2" />
-          <div dir="ltr">
-          <Highlight className="bash">
-            {`The current weather in Paris, France is 35°C and Sunny.`}
+            {`The current weather in Qom, Iran is 35°C and Sunny.`}
           </Highlight>
           </div>
           <div className="h-2" />     
@@ -3252,63 +3240,56 @@ console.log(args);`}
           <div className="h-2" />
           <div dir="ltr">
           <Highlight className="js">
-            {`import { OpenAI } from "openai";
+            {`import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText, tool } from 'ai';
+import { z } from 'zod';
 
-const openai = new OpenAI({
-  baseURL: '<baseUrl>',
-  apiKey: '<LIARA_API_KEY>',
+const getCurrentWeatherTool = tool({
+  description: "Get current temperature for a given location.",
+  parameters: z.object({
+    location: z.string().describe("City and country e.g. Bogotá, Colombia"),
+    unit: z.enum(["celsius", "fahrenheit"]).default("celsius"),
+  }),
+  execute: async ({ location, unit }) => {
+    const temperature = unit === "celsius" ? 35 : 68;
+    const condition = "Sunny";
+    return {
+      location,
+      temperature,
+      unit,
+      condition,
+    };
+  },
 });
 
-function getCurrentWeather(location, unit = "celsius") {
-  return {
-    location: location,
-    temperature: unit === "celsius" ? 35 : 68, // Celsius or Fahrenheit
-    unit: unit,
-    condition: "Sunny"
-  };
+const { steps } = await generateText({
+  model: createOpenAICompatible({
+    baseURL: "<baseUrl>",
+    name: 'example',
+    apiKey: "<LIARA_API_KEY>",
+  }).chatModel("openai/gpt-4o-mini"),
+  
+  tools: {
+    getCurrentWeather: getCurrentWeatherTool,
+  },
+  
+  prompt: 'What is the weather like in Qom today?',
+});
+
+const toolResults = steps.flatMap(step => step.toolResults);
+if (toolResults.length > 0) {
+  for (const tool of toolResults) {
+    if (tool.toolName === "getCurrentWeather") {
+      const args = tool.result;
+      console.log(\`The current weather in \${args.location} is \${args.temperature}°\${args.unit === "celsius" ? "C" : "F"} and \${args.condition}.\`);
+    } else {
+      console.log(\`Tool "\${tool.toolName}" was called, but no handler is defined for it.\`);
+    }
+  }
+} else {
+  console.log("No tool call was triggered.");
 }
 
-const tools = [{
-    "type": "function",
-    "function": {
-        "name": "getCurrentWeather",
-        "description": "Get current temperature for a given location.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "location": {
-                    "type": "string",
-                    "description": "City and country e.g. Bogotá, Colombia"
-                },
-                "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
-            },
-            "required": [
-                "location"
-            ],  
-        },
-    }
-}];
-
-
-
-const messages = [{ role: "user", content: "What is the weather like in Paris today?" }];
-
-const completion = await openai.chat.completions.create({
-    model: "openai/gpt-4.1",
-    messages: messages,
-    tools,
-    tool_choice: "auto",
-});
-
-const argsRaw = completion.choices[0].message.tool_calls[0].function.arguments;
-const args = JSON.parse(argsRaw);
-
-const weather = getCurrentWeather(
-  args["location"],
-  args["unit"] || "celsius"
-);
-
-console.log(\`The current weather in \${args.location} is \${weather.temperature}°\${weather.unit === "celsius" ? "C" : "F"} and \${weather.condition}.\`);
 `}
           </Highlight>
           </div>
@@ -3320,7 +3301,7 @@ console.log(\`The current weather in \${args.location} is \${weather.temperature
           <div className="h-2" />   
           <Alert variant="info">
             <p>
-              شما می‌توانید برنامه واقعی مثال فوق را در <a href="https://github.com/liara-cloud/nodejs-getting-started/tree/ai" className="text-[#2196f3]" target="_blank">گیت‌هاب لیارا</a> مشاهده و استفاده کنید.
+              شما می‌توانید برنامه واقعی مثال فوق را در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/Tool-Calling-Weather-API" className="text-[#2196f3]" target="_blank">گیت‌هاب لیارا</a> مشاهده و استفاده کنید.
             </p>
           </Alert>
 
@@ -3328,7 +3309,6 @@ console.log(\`The current weather in \${args.location} is \${weather.temperature
 
   ]}
 />
-
 {/* 
           <div className="h-2" />
           <div dir="ltr">
