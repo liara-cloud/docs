@@ -1,0 +1,117 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات tool calling در AI SDK - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با قابلیت Tool Calling در AI SDK با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# قابلیت Tool Calling در AI SDK 
+<hr className="mb-2" />
+
+
+<p>
+در <Important>AI SDK</Important>، یک <Important>tool</Important> می‌تواند هم در <Important>generateText</Important> استفاده شود، هم در <Important>streamText</Important>. این کار با قرار دادن یک یا چند Tool در پارامتری به نام <Important>tools</Important>، انجام می‌شود.
+یک <Important>tool</Important>، شامل سه خصیصه (property)، می‌باشد: 
+</p>
+<div className="h-4" />
+<ul>
+<li><Important>description</Important>: توضیحات اختیاری در مورد ابزار که هنگام استفاده مدل از ابزار، می‌تواند تاثیرگذار باشد.</li>
+<li><Important>parameters</Important>: یک <a href="/ai/references/ai-sdk-core/zodschema/" className="text-[#2196f3]">Zod Schema</a> یا یک <a href="#" className="text-[#2196f3]">JSON Schema</a> که پارامترهای مورد نیاز tool را تعریف می‌کند. این اسکیما توسط مدل استفاده می‌شود. </li>
+<li><Important>execute</Important>: یک تابع async اختیاری که با آرگومان‌های داده شده در فراخوانی tool، صدا زده می‌شود. این خصیصه، یک مقدار از نوع <Important>RESULT</Important> ایجاد می‌کند. </li>
+</ul>
+<div className="h-4" />
+<p>
+پارامتر <Important>tools</Important> در <Important>generateText</Important> و <Important>streamText</Important>، یک آبجکت است که باید در آن، اسم toolها را به عنوان کلید تعریف کرده و خود toolها را به‌عنوان مقدار، به کلید تعریف شده، بدهید: 
+</p>
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`// npm i @ai-sdk/openai-compatible
+import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
+import { generateText, tool } from 'ai';
+import { z } from 'zod';
+
+const result = await generateText({
+model: createOpenAICompatible({
+baseURL: "<baseUrl>",
+name: 'example',
+apiKey: "<LIARA_API_KEY>",
+}).chatModel("openai/gpt-4o-mini"),
+
+tools: {
+weather: tool({
+description: 'Get the weather in a location',
+parameters: z.object({
+location: z.string().describe('The location to get the weather for'),
+}),
+execute: async ({ location }) => ({
+location,
+temperature: 72 + Math.floor(Math.random() * 21) - 10,
+}),
+}),
+},
+
+prompt: 'What is the weather in San Francisco?',
+});
+`}
+</Highlight>
+</div>
+<div className="h-4" />
+
+<p>
+
+در قطعه کد فوق، در فیلد <Important>tools</Important>، یک tool به نام <Important>weather</Important> تعریف شده است که در آن، پارامتر <Important>location</Important> با 
+استفاده از ماژول <Important>zod</Important> مشخص شده است.
+وقتی که این tool فراخوانی شود. تابع تعریف شده در بخش <Important>execute</Important> فراخوانی می‌شود 
+و خروجی که بر اساس <Important>location</Important> است، یک دما را به‌صورت تصادفی (بین 62 تا 82 درجه فارنهایت)، تولید می‌کند.  
+
+</p>
+
+
+
+<div className="h-4" />
+
+
+
+<p>
+وقتی که مدل تصمیم می‌گیرد از یک tool استفاده کند؛ یک <Important>tool call</Important> ایجاد می‌کند. 
+در صورتی که فیلد <Important>execute</Important>، در یک tool تعریف شده باشد، 
+در حین <Important>tool calling</Important>، تابع آن فیلد، اجرا می‌شود. 
+در نهایت، خروجی تابع اجرا شده توسط <Important>tool calling</Important>، با استفاده از <Important>tool result object</Important>، برگردانده می‌شود.
+</p>
+<div className="h-4" />
+<p>
+شما می‌توانید با استفاده از قابلیت فراخوانی چند مرحله‌ای (multi-step calls)، خروجی یک tool را مجدداً به LLM برگردانید. 
+</p>
+
+</Layout>

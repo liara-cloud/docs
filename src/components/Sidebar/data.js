@@ -345,6 +345,21 @@ export default {
         badge: (
         <div className="flex items-center gap-2">
           <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
+             هسته AI SDK
+        </div>
+        )
+      },
+      {
+        title: "قابلیت Tool Calling",
+        link: "/ai/ai-sdk-core/tool-calling"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+        <div className="flex items-center gap-2">
+          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
              ارجاعات AI SDK
         </div>
         )
