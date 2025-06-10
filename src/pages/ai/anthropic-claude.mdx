@@ -457,4 +457,24 @@ console.log('Generated Text:', text);
 در قطعه کد‌های فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_TOKEN&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های فوق را قرار دهید.
 
 
+<Section id="set-parameters" title="پارامترهای قابل تنظیم" />
+
+در OpenAI SDK، شما می‌توانید پارامترهای زیر را تنظیم کنید.
+
+<div className="h-4" />
+
+<ul>
+<li><Important>temperature</Important>: عددی بین <Important>0</Important> تا <Important>2</Important>. کنترل میزان تصادفی بودن خروجی؛ عدد کمتر، واقع‌گرایی بیشتر و عدد بیشتر، خلاقیت بیشتر</li>
+<li><Important>top_p</Important>: عددی بین <Important>0</Important> تا <Important>1</Important>. مشابه <Important>temperature</Important> است اما در کنترل تصادفی‌بودن خروجی، از روش‌های دیگری استفاده می‌کند.</li>
+<li><Important>max_tokens</Important>: بیشترین تعداد توکن قابل مصرف توسط مدل برای تولید خروجی</li>
+<li><Important>presence_penalty</Important>: عددی بین <Important>-2</Important> تا <Important>2</Important>. هرچه بالاتر باشد؛ مدل تشویق می‌شود تا از ذکر مطالب تکراری، خودداری کند.</li>
+<li><Important>frequency_penalty</Important>:  عددی بین <Important>-2</Important> تا <Important>2</Important>. هرچه بالاتر باشد؛ بیشتر تضمین می‌کند تا مدل از ذکر مطالب تکراری، خودداری کند.</li>
+<li><Important>stop</Important>: آرایه‌ای از رشته‌ها برای اینکه مدل هنگام رسیدن به آن‌ها پاسخ را متوقف کند.</li>
+<li><Important>n</Important>: تعداد پاسخ‌هایی که قرار است مدل همزمان تولید کند.</li>
+<li><Important>logit_bias</Important>: تعیین احتمال انتخاب توکن‌های خاص (پیشرفته)</li>
+<li><Important>seed</Important>: مقدار عددی ثابت برای شروع تولید تصادفی، در صورت نیاز، به خروجی‌های قابل تکرار</li>
+<li><Important>tools</Important>: مشخص کردن یک‌سری Tool که مدل در صورت نیاز، آن‌ها را فراخوانی کند</li>
+<li><Important>tool_choice</Important>: تعیین کردن اینکه مدل چه زمانی Tool را فراخوانی کند (به‌صورت هوشمند یا همیشه)</li>
+</ul>
+
 </Layout>
