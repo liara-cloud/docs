@@ -451,24 +451,119 @@ console.log('Generated Text:', text);
 
 در قطعه کد‌های فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_TOKEN&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های فوق را قرار دهید.
 
+
 <Section id="set-parameters" title="پارامترهای قابل تنظیم" />
 
-در OpenAI SDK، شما می‌توانید پارامترهای زیر را تنظیم کنید.
+<Tabs
+  tabs={[
+        {
+        label: "OpenAI SDK",
+        },
+  ]}
+  content={[
+  <>
+    
+    در OpenAI SDK، شما می‌توانید پارامترهای زیر را تنظیم کنید.
+    <div className="h-4" />
 
-<div className="h-4" />
+    <Alert variant="info">
+    <p>
+    در نظر داشته باشید که پارامترهای زیر، ممکن است در برخی از مدل‌ها، پشتیبانی نشوند.
+    </p>
+    </Alert>
 
-<ul>
-<li><Important>temperature</Important>: عددی بین <Important>0</Important> تا <Important>2</Important>. کنترل میزان تصادفی بودن خروجی؛ عدد کمتر، واقع‌گرایی بیشتر و عدد بیشتر، خلاقیت بیشتر</li>
-<li><Important>top_p</Important>: عددی بین <Important>0</Important> تا <Important>1</Important>. مشابه <Important>temperature</Important> است اما در کنترل تصادفی‌بودن خروجی، از روش‌های دیگری استفاده می‌کند.</li>
-<li><Important>max_tokens</Important>: بیشترین تعداد توکن قابل مصرف توسط مدل برای تولید خروجی</li>
-<li><Important>presence_penalty</Important>: عددی بین <Important>-2</Important> تا <Important>2</Important>. هرچه بالاتر باشد؛ مدل تشویق می‌شود تا از ذکر مطالب تکراری، خودداری کند.</li>
-<li><Important>frequency_penalty</Important>:  عددی بین <Important>-2</Important> تا <Important>2</Important>. هرچه بالاتر باشد؛ بیشتر تضمین می‌کند تا مدل از ذکر مطالب تکراری، خودداری کند.</li>
-<li><Important>stop</Important>: آرایه‌ای از رشته‌ها برای اینکه مدل هنگام رسیدن به آن‌ها پاسخ را متوقف کند.</li>
-<li><Important>n</Important>: تعداد پاسخ‌هایی که قرار است مدل همزمان تولید کند.</li>
-<li><Important>logit_bias</Important>: تعیین احتمال انتخاب توکن‌های خاص (پیشرفته)</li>
-<li><Important>seed</Important>: مقدار عددی ثابت برای شروع تولید تصادفی، در صورت نیاز، به خروجی‌های قابل تکرار</li>
-<li><Important>tools</Important>: مشخص کردن یک‌سری Tool که مدل در صورت نیاز، آن‌ها را فراخوانی کند</li>
-<li><Important>tool_choice</Important>: تعیین کردن اینکه مدل چه زمانی Tool را فراخوانی کند (به‌صورت هوشمند یا همیشه)</li>
-</ul>
+    <div className="h-4" />
+
+    <ul>
+    <li><Important>frequency_penalty</Important>:  عددی بین <Important>-2</Important> تا <Important>2</Important>. کاهش یا افزایش احتمال تکرار کلمات پرتکرار در پاسخ. هرچه بالاتر باشد؛ تنوع بیشتر است</li>
+    <li><Important>logit_bias</Important>:  تغییر احتمال ظاهر شدن توکن‌های خاص</li>
+    <li><Important>n</Important>: تعداد پاسخ‌هایی که قرار است مدل همزمان تولید کند.</li>
+    <li><Important>response_format</Important>: مدل را مجبور می‌کند خروجی را به فرمت خاصی برگرداند</li>
+    <li><Important>seed</Important>: مقدار عددی ثابت برای شروع تولید تصادفی، در صورت نیاز، به خروجی‌های قابل تکرار</li>
+    <li><Important>stop</Important>: آرایه‌ای از رشته‌ها برای اینکه مدل هنگام رسیدن به آن‌ها پاسخ را متوقف کند</li>
+    <li><Important>stream</Important>: اگر <Important>true</Important> باشد، پاسخ مدل به صورت استریم ارسال می‌شود. برای پیاده‌سازی‌های real-time یا رابط کاربری، این حالت مفید است</li>
+    <li><Important>stream_options</Important>: تنظیمات مربوط به حالت <Important>stream</Important>. فقط وقتی استفاده می‌شود که <Important>stream: true</Important> باشد</li>
+    <li><Important>temperature</Important>: عددی بین <Important>0</Important> تا <Important>2</Important>. کنترل میزان تصادفی بودن خروجی؛ عدد کمتر، واقع‌گرایی بیشتر و عدد بیشتر، خلاقیت بیشتر</li>
+    <li><Important>tool_choice</Important>: تعیین کردن اینکه مدل چه زمانی Tool را فراخوانی کند (به‌صورت هوشمند یا همیشه)</li>
+    <li><Important>tools</Important>: مشخص کردن یک‌سری Tool که مدل در صورت نیاز، آن‌ها را فراخوانی کند</li>
+    <li><Important>user</Important>: شناسه‌ی کاربر نهایی. برای دسته‌بندی بهتر درخواست‌ها و جلوگیری از سوءاستفاده، به‌کار می‌رود</li>
+    </ul>
+
+    <div className="h-8" />
+    <p>
+      در ادامه، مثال استفاده از این پارامترها، در زبان‌های مختلف، قرار گرفته است:
+    </p>
+
+    <Tabs 
+      tabs={[
+            {
+            label: "Python",
+            icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+            },
+          ]}
+      content={[
+  
+    <>
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`from openai import OpenAI
+
+client = OpenAI(
+  base_url='<baseUrl>',
+  api_key='<LIARA_API_KEY>',
+)
+
+response = client.chat.completions.create(
+    model="<model_name>",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "write a short article about Machine Learning in json"}
+    ],
+    frequency_penalty=1.2,
+    presence_penalty=1.0,
+    temperature=0.8,
+    top_p=0.9,
+    n=2,
+    seed=42,
+    stop=["\\nUser:", "\\nSystem:"],
+    logit_bias={"50256": -100}, 
+    stream=False,
+    stream_options=None,
+    response_format={"type": "json_object"},
+    tool_choice="auto",
+    tools=[
+        {
+            "type": "function",
+            "function": {
+                "name": "summarize_text",
+                "description": "summarizing a long text",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "text": {"type": "string", "description": "the text should be summarized"}
+                    },
+                    "required": ["text"]
+                }
+            }
+        }
+    ],
+)
+
+print(response)
+`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+  </>
+  ]}
+  />
+
+  <p>
+  در قطعه کد‌ فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_TOKEN&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های فوق را قرار دهید.
+  </p>
+  
+  </>
+  ]}
+/>
 
 </Layout>
