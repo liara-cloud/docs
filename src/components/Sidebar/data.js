@@ -6208,6 +6208,11 @@ export default {
         link: "/one-click-apps/chatwoot/quick-start"
       },
       {
+        title: "CheckCle",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/checkcle/logo-checkcle.ico" />,
+        link: "/one-click-apps/checkcle/quick-start"
+      },
+      {
         title: "Harness",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />,
         link: "/one-click-apps/harness/quick-start"
@@ -6397,6 +6402,42 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/chatwoot/how-tos/choose-version"
+      },
+    ],
+
+    checkcle: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/checkcle/logo-checkcle.ico" />
+            برنامه CheckCle
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/one-click-apps/checkcle/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            < GoPackage />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/checkcle/how-tos/choose-version"
       },
     ],
 
