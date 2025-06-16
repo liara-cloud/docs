@@ -114,4 +114,268 @@ prompt: 'What is the weather in San Francisco?',
 شما می‌توانید با استفاده از قابلیت فراخوانی چند مرحله‌ای (multi-step calls)، خروجی یک tool را مجدداً به LLM برگردانید. 
 </p>
 
+
+<Section id="multi-step-calls" title="فراخوانی چندمرحله‌ای (با استفاده از maxSteps)" />
+
+با <Important>maxSteps</Important>، می‌توانید فراخوانی چندمرحله‌ای را در <Important>generateText</Important> و <Important>streamText</Important>، فعال کنید. زمانی که مقدار <Important>maxSteps</Important> عددی بزرگ‌تر از <Important>1</Important> باشد و مدل، یک <Important>tool call</Important> ایجاد کند؛ <Important>AI SDK</Important>، با ارسال نتیجه Tool به مدل، یک پاسخ جدید ایجاد می‌کند و این کار تا زمانی که دیگر هیچ <Important>tool call</Important> جدیدی ایجاد نشود یا حد مقدار <Important>maxSteps</Important> زده نشود؛ ادامه پیدا می‌کند.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+برای تنظیم مقدار <Important>maxSteps</Important>، به‌جای در نظر گرفتن تعداد Toolهای موجود، تعداد مراحل پاسخ دادن به پیچیده‌ترین تسکی که قرار است به مدل، ارسال شود را، در نظر بگیرید. 
+</p>
+</Alert>
+<div className="h-4" />
+
+به‌صورت پیش‌فرض، وقتی که از <Important>generateText</Important> یا <Important>streamText</Important> استفاده می‌کنید؛ مدل یک پاسخ برای شما، 
+تولید می‌کند (که به آن <Important>generation</Important> گفته می‌شود). در این حالت، مقدار پیش‌فرض <Important>maxSteps</Important>، برابر با <Important>1</Important> است. این حالت، در زمانی که شما به داده‌های 
+خود مدل اکتفا می‌کنید، در بسیاری از موارد، قابل‌قبول است. با این حال، وقتی که 
+از Toolها استفاده می‌کنید، مدل تصمیم می‌گیرد که 
+یک پیام متنی معمولی تولید کند یا یک <Important>tool call</Important>. اگر که برای مدل، پارامتر <Important>maxSteps</Important> را تنظیم کرده باشید و مدل، یک <Important>tool call</Important> ایجاد کند؛ مرحله اول آن به‌صورت کامل انجام شده 
+و وارد مرحله دوم می‌شود. 
+
+<div className="h-4" />
+
+ممکن است که بخواهید مدل، پس از اجرای یک Tool، یک متن تولید کند یا حتی،
+نتایج Tool استفاده شده را خلاصه کند و در شکلی خوانا، به شما، تحویل دهد. در 
+بسیاری از موارد، ممکن است شما بخواهید که مدل، در یک پاسخ، از چند تا Tool مختلف، استفاده کند. 
+این، همانجایی است که مرحله دوم (و به مراتب، مراحل بعدی) در <Important>maxSteps</Important>، معنا پیدا می‌کند و نیاز به فراخوانی چندمرحله‌ای، احساس می‌شود. 
+
+<div className="h-4" />
+<h3>مثالی از فراخوانی چند مرحله‌ای با <Important>maxSteps</Important></h3>
+<div className="h-2" />
+
+مثال دو مرحله‌ای زیر را، در نظر بگیرید:
+
+
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>مرحله اول</h3>   
+<p>
+  پرامپتِ <Important>'What is the weather in San Francisco'</Important>، به‌ مدل، ارسال می‌شود. 
+  مدل، یک <Important>tool call</Important>، ایجاد می‌کند. در نهایت، <Important>tool call</Important>، اجرا می‌شود. 
+</p>
+</>
+)
+},
+{
+step: "۲",
+content: (
+<>
+<h3>مرحله دوم</h3>   
+<p>
+  نتایج Tool، به مدل، ارسال می‌شود. مدل، با در نظر گرفتن نتایج Tool، یک پاسخ ایجاد می‌کند. 
+</p>
+</>
+)
+},
+]}
+/>
+
+قطعه کد دو مرحله فوق، در ادامه، قرار گرفته است: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`import { generateText, tool  } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+  compatibility: "strict",
+});
+
+const { text, steps } = await generateText({
+  model: model('<model_name>'),
+ tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+  maxSteps: 2, // allow up to 2 steps
+  prompt: 'What is the weather in San Francisco',
+});
+`}
+</Highlight>
+</div>
+
+<Alert variant="info">
+<p>
+در قطعه کد فوق، می‌توانید به‌طور مشابه، از <Important>streamText</Important> استفاده کنید. 
+</p>
+</Alert>
+
+<Section id="steps" title="Stepها" />
+
+برای دسترسی به <Important>tool call</Important>های میانی و نتایج آن‌ها، 
+می‌توانید از ویژگی <Important>steps</Important> یا یک callback به‌نام <Important>onFinish</Important>، استفاده کنید. این ویژگی، شامل تمامی متن‌ها، <Important>tool call</Important>ها، نتایج Tool و ... در هر مرحله، می‌باشد
+<div className="h-2" />
+
+در مثال زیر، نتایج Toolها، از تمامی مراحل، استخراج می‌شود: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`import { generateText, tool  } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+  compatibility: "strict",
+});
+
+const { steps } = await generateText({
+  model: model('<model_name>'),
+ tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+  maxSteps: 5, 
+  prompt: 'What is the weather in San Francisco?',
+});
+
+const allToolCalls = steps.flatMap(step => step.toolCalls);
+console.log(allToolCalls)`}
+</Highlight>
+</div>
+
+<Section id="onStepFinish" title="کال‌بک onStepFinish" />
+زمانی که از <Important>generateText</Important> یا <Important>streamText</Important> استفاده می‌کنید؛ می‌توانید یک <Important>callback</Important> از نوع <Important>onStepFinish</Important> تعریف کنید. این <Important>callback</Important> پس از پایان هر مرحله، فراخوانی می‌شود؛ یعنی 
+زمانی که تمام موارد (از جمله متن، <Important>tool call</Important>ها و نتایج tool) برای مرحله بعدی، آماده هستند. 
+در صورت وجود چند مرحله، این <Important>callback</Important>، برای هر مرحله، به‌صورت جداگانه، اجرا می‌شود.
+<div className="h-2" />
+
+به شکل زیر، می‌توانید از این <Important>callback</Important> استفاده کنید: 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`import { generateText, tool  } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+  compatibility: "strict",
+});
+
+const result = await generateText({
+ model: model('<model_name>'),
+ tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+  maxSteps: 5, 
+  prompt: 'What is the weather in San Francisco?',
+  onStepFinish({ text, toolCalls, toolResults, finishReason, usage }) {
+  // your own logic, e.g. for saving the chat history or recording usage
+  console.log(text, toolCalls, toolResults, finishReason, usage)
+  },
+});
+`}
+</Highlight>
+</div>
+
+<Section id="experimental_prepareStep" title="کال‌بک experimental_prepareStep" />
+
+<Alert variant="warning">
+<p>
+<Important>experimental_prepareStep</Important> در <Important>AI SDK</Important>، آزمایشی است و ممکن است در آینده، تغییر کند. این <Important>callback</Important>، فقط در <Important>generateText</Important>، موجود است. 
+</p>
+</Alert>
+<div className="h-2" />
+کال‌بک <Important>experimental_prepareStep</Important>، قبل از اجرای یک مرحله (step)، صدا زده می‌شود. 
+این <Important>callback</Important>، با پارامترهای زیر، فراخوانی می‌شود:
+
+<div className="h-2" />
+<ul>
+  <li><Important>model</Important>: مشابه همان مدل تعریف شده در <Important>generateText</Important></li>
+  <li><Important>maxSteps</Important>: مشابه همان <Important>maxSteps</Important> تعریف شده در <Important>generateText</Important></li>
+  <li><Important>stepNumber</Important>: شماره مرحله‌ای که در حال اجراست</li>
+  <li><Important>steps</Important>: شماره نشان‌دهنده مراحلی که تا الان، اجرا شده‌اند</li>
+</ul>
+<div className="h-2" />
+
+می‌توانید مانند قطعه کد زیر، از این <Important>callback</Important> استفاده کنید تا برای یک مرحله، تنظیمات مختلفی، درج کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className="js">
+{`import { generateText, tool  } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+  compatibility: "strict",
+});
+
+const result = await generateText({
+ model: model('<model_name>'),
+ tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+  maxSteps: 5, 
+  prompt: 'What is the weather in San Francisco?',
+  
+  experimental_prepareStep: async ({ model, stepNumber, maxSteps, steps }) => {
+    if (stepNumber === 0) {
+      return {
+        // use a different model for this step:
+        model: model('<other_model_name>'),
+        // force a tool choice for this step:
+        toolChoice: { type: 'tool', toolName: 'tool1' },
+        // limit the tools that are available for this step:
+        experimental_activeTools: ['tool1'],
+      };
+    }
+
+    // when nothing is returned, the default settings are used
+  },
+});
+`}
+</Highlight>
+</div>
+
 </Layout>
