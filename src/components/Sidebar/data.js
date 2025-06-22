@@ -6038,6 +6038,16 @@ export default {
         link: "/one-click-apps/nocodb/quick-start"
       },
       {
+        title: "OpenWebUI",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
+        link: "/one-click-apps/openwebui/quick-start"
+      },
+      {
+        title: "Registry",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/liara-docker-image-registry/logo-registry.png" />,
+        link: "/one-click-apps/registry/quick-start"
+      },
+      {
         title: "Discourse",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/favicon.webp" />,
         link: "/one-click-apps/discourse/quick-start"
@@ -6655,6 +6665,28 @@ export default {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/discourse/how-tos/choose-version"
       },
+    ],
+
+    registry: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/liara-docker-image-registry/logo-registry.png" />            
+          برنامه Registry
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/one-click-apps/registry/quick-start"
+      },
+
     ],
 
     wikijs: [
@@ -7702,6 +7734,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/n8n/how-tos/choose-version"
+      },
+    ],
+
+    openwebui: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه OpenWebUI
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/one-click-apps/openwebui/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            < GoPackage />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/openwebui/how-tos/choose-version"
       },
     ],
     pocketbase: [

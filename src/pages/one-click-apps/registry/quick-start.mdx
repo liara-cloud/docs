@@ -14,20 +14,30 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات راه‌اندازی سریع برنامه‌های Openweb UI - لیارا</title>
+<title>مستندات راه‌اندازی سریع برنامه‌های Registry - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی سریع برنامه Openweb UI در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به راه‌اندازی سریع برنامه Registry در لیارا"  />
 <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
 </Head>
 
-# راه‌اندازی سریع برنامه‌های Openweb UI
+# راه‌اندازی سریع برنامه‌های Registry
 <hr className="mb-2" />
 
+{/* <div className="h-4" />
+<video
+  src="https://media.liara.ir/docs/Registry.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-4" /> */}
 
-
-<a href="" className="text-[#2196f3] ">Openweb UI</a> یک رابط کاربری متن‌باز برای تعامل با مدل‌های هوش مصنوعی است که معمولاً به عنوان جایگزینی سبک، ساده و محلی برای ChatGPT استفاده می‌شود. این پروژه به کاربران اجازه می‌دهد تا با مدل‌های هوش مصنوعی مثل LLaMA , Mistral  و دیگر LLMها تعامل داشته باشند. رابط کاربری آن مبتنی بر وب است و با زبان‌هایی مثل Python و JavaScript توسعه داده شده است. از ویژگی‌های مهم آن می‌توان به نصب آسان، پشتیبانی از چندین مدل و چت‌های real-time اشاره کرد.
-
+<a href="https://hub.docker.com/_/registry" className="text-[#2196f3] ">Registry2</a> در واقع نسخه دوم از رجیستری رسمی داکر است که به شما اجازه می‌دهد یک رجیستری خصوصی برای مدیریت ایمیج‌های داکر راه‌اندازی کنید. با استفاده از این ایمیج، می‌توانید به‌راحتی یک محیط امن و اختصاصی برای ذخیره‌سازی، نسخه‌بندی و اشتراک‌گذاری ایمیج‌های داکر درون سازمانی ایجاد کنید؛ بدون اینکه به رجیستری‌های عمومی مانند Docker Hub وابسته باشید. 
 <div className="h-4" />
+Liara Image Docker Registry نسخه‌ای سفارشی‌سازی‌شده از همین سرویس است که توسط پلتفرم لیارا ارائه می‌شود. این سرویس به تیم‌های توسعه ایرانی امکان می‌دهد بدون نیاز به رجیستری‌های خارجی، ایمیج‌های خود را در یک فضای خصوصی و تحت کنترل نگهداری کنند. با استقرار این رجیستری در بستر ابری لیارا، کاربران می‌توانند با سرعت بالا، امنیت بیشتر، و در چارچوب قوانین داخلی کشور، ایمیج‌های داکر خود را مدیریت کرده و آن‌ها را با اعضای تیم خود به اشتراک بگذارند.
+<div className="h-4" />
+
+
 
 برای راه‌اندازی برنامه با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
 
@@ -64,7 +74,7 @@ content: (
 <>
 <h3>راه‌اندازی برنامه</h3>
 <p>
-    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>Openwebui</b>، کلیک کنید. 
+    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>registry</b>، کلیک کنید. 
     در ادامه، می‌توانید از گزینه <b>نصب سریع</b> یا گزینه <b>نصب پیشرفته</b> برای استقرار و نصب برنامه‌تان استفاده کنید:
 </p>
 <Tabs 
@@ -114,7 +124,7 @@ content: (
       </Alert>
       <Alert variant="info">
         <p>
-          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/openwebui/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
+          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/registry/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
         </p>
       </Alert>
     </>
@@ -126,7 +136,7 @@ content: (
 },
 
 ]}/>
-
+{/* 
 <Section id="see-also" title="همچنین بخوانید:" />
 
 <div className='h-2' />
@@ -134,7 +144,7 @@ content: (
             {[
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
-        link: "/one-click-apps/openwebui/how-tos/choose-version"
+        link: "./how-tos/choose-version"
       },
   ].map(item =>
     <Link href={item.link}>
@@ -148,7 +158,7 @@ content: (
     </Card>
     </Link>
             )}
-</div>
+</div> */}
 
 
 </Layout>
