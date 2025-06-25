@@ -316,6 +316,11 @@ export default {
         icon: <GoTools />,
         link: "/ai/foundations/tools"
       },
+      {
+        title: "قابلیت استریم (Streaming)",
+        icon: <GoTools />,
+        link: "/ai/foundations/streaming"
+      },
 
 
 

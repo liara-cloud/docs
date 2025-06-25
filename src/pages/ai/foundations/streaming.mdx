@@ -1,0 +1,161 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استریم - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با قابلیت استریم در سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# قابلیت استریم
+<hr className="mb-2" />
+
+رابط‌های متنی محاوره‌ای استریمی، مانند ChatGPT، طی ماه‌های اخیر محبوبیت زیادی داشته‌اند
+این بخش، مزایا و معایب رابط‌های کاربری استریمی و قطعه‌ای (blocking) را بررسی خواهد کرد. 
+<div className="h-2" />
+
+<a href="/ai/foundations/overview/#large-language-models" className="text-[#2196f3]">مدل‌های زبانی بزرگ (LLMها)</a>،  از قدرت بسیار بالایی برخوردارند. با این حال، هنگام تولید خروجی‌های طولانی، ممکن است 
+حتی نسبت به تاخیر رایجی که کاربران به آن عادت دارند، بسیار کندتر، عمل کنند. 
+اگر قصد دارید که یک رابط کاربری سنتی و قطعه‌ای طراحی کنید، ممکن است 
+کاربران شما ناچاراً، برای دریافت کل پاسخ تولید شده توسط LLM، تا ۴۰ ثانیه هم حتی منتظر بمانند و در این حین، 
+به صفحه بارگذاری، خیره شوند. این موضوع، می‌تواند تجربه کاربری (UX) ضعیفی را رقم بزند؛ مخصوصاً در برنامه‌های محاوره‌ای مثل چت‌بات‌ها. 
+<div className="h-2" />
+رابط‌های کاربری استریمی (Streaming UIها)، می‌توانند با نمایش تدریجی بخش به بخش پاسخ در حین تولید، تا حدودی این مشکل را کاهش دهند.
+
+
+<Section id='text-prompt' title='پرامپت متنی (Text Prompt)' />
+پرامپت‌های متنی، رشته‌های متنی هستند. این نوع پرامپت‌ها، برای تولید محتوای ساده، مورد استفاده قرار می‌گیرند.
+
+
+<Tabs 
+  tabs={["OpenAI SDK", "AI SDK"]} 
+  content={[
+    <>
+      <p>
+      
+      </p>
+    <Tabs
+      tabs={[
+        {
+        label: "cURL",
+        },
+        {
+        label: "JavaScript",
+        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "PHP",
+        icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Python",
+        icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "NET.",
+        icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Go",
+        icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+        },
+      ]}
+    />
+
+    </>,
+
+
+    <>
+      <p>
+      
+      </p>
+          <Tabs
+      tabs={[
+        {
+        label: "JavaScript",
+        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "TypeScript",
+        icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+        },
+
+      ]}
+    />
+    </>
+
+  ]}
+
+/>
+
+/>
+
+
+
+
+
+
+
+<Section id='' title='' />
+
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p></p>},
+    {text: <p></p>},
+    {text: <p></p>},
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStyle:"disc"
+      }}
+    >
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<div className="h-2" />
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "openAI",
+      icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/openai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
+      language: "javascript",
+      code: ``,
+    },
+  ]}
+/>
+
+</Layout>
