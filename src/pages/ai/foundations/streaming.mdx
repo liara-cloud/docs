@@ -50,112 +50,64 @@ import Head from "next/head";
 رابط‌های کاربری استریمی (Streaming UIها)، می‌توانند با نمایش تدریجی بخش به بخش پاسخ در حین تولید، تا حدودی این مشکل را کاهش دهند.
 
 
-<Section id='text-prompt' title='پرامپت متنی (Text Prompt)' />
-پرامپت‌های متنی، رشته‌های متنی هستند. این نوع پرامپت‌ها، برای تولید محتوای ساده، مورد استفاده قرار می‌گیرند.
+<Section id='what-is-blocking-response' title='پاسخ قطعه‌ای چیست؟' />
 
-
-<Tabs 
-  tabs={["OpenAI SDK", "AI SDK"]} 
-  content={[
-    <>
-      <p>
-      
-      </p>
-    <Tabs
-      tabs={[
-        {
-        label: "cURL",
-        },
-        {
-        label: "JavaScript",
-        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
-        },
-        {
-        label: "PHP",
-        icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
-        },
-        {
-        label: "Python",
-        icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
-        },
-        {
-        label: "NET.",
-        icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
-        },
-        {
-        label: "Go",
-        icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
-        },
-      ]}
-    />
-
-    </>,
-
-
-    <>
-      <p>
-      
-      </p>
-          <Tabs
-      tabs={[
-        {
-        label: "JavaScript",
-        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
-        },
-        {
-        label: "TypeScript",
-        icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
-        },
-
-      ]}
-    />
-    </>
-
-  ]}
-
-/>
-
-/>
-
-
-
-
-
-
-
-<Section id='' title='' />
-
+پاسخ‌های قطعه‌ای، قبل از نمایش، منتظر می‌مانند تا تمام پاسخ در دسترس قرار بگیرد. 
 
 <div className="h-2" />
-<ul className="pr-4">
-  {[
-    {text: <p></p>},
-    {text: <p></p>},
-    {text: <p></p>},
-  ].map((item, index) => (
-    <li
-      key={index}
-      style={{
-        textDecorationColor: "#9ca3af",
-        listStyle:"disc"
-      }}
-    >
-     {item.text}
-    </li>
-  ))}
-</ul>
-
+<video
+  src="https://media.liara.ir/ai/ai-sdk/blocking-ui-example.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+></video>
 <div className="h-2" />
 
-<HighlightTabs
-  tabs={[
-    {
-      label: "openAI",
-      icon: <PlatformIcon platform={"https://media.liara.ir/logos/ai/openai-light.svg"} style={{ width: 18, height: 18,color:"#ccc" }} />,
-      language: "javascript",
-      code: ``,
-    },
-  ]}
-/>
+<Section id='what-is-streaming-response' title='پاسخ استریمی چیست؟' />
+پاسخ‌های استریمی (در جریان) می‌توانند بخش‌هایی از پاسخ را، به محض در دسترس قرار گرفتن، نمایش دهند.
+<div className="h-2" />
+<video
+  src="https://media.liara.ir/ai/ai-sdk/streaming-ui-example.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+></video>
+<div className="h-4" />
+
+همان‌طور که مشاهده کردید، رابط کاربری استریمی، می‌تواند پاسخ را بسیار سریع‌تر از رابط قطعه‌ای، نمایش دهد. دلیل این امر آن است که رابط قطعه‌ای، باید منتظر بماند تا کل پاسخ به‌طور کامل تولید شود و سپس آن را نمایش دهد، در حالی که رابط استریمی می‌تواند بخش‌هایی از پاسخ را به‌محض آماده‌شدن، نمایش دهد.
+<div className="h-3" />
+
+اگرچه رابط‌های استریمی می‌توانند تجربه‌ی کاربری را هنگام استفاده از مدل‌های زبانی بزرگ تا حد زیادی بهبود بخشند، اما همیشه ضروری یا مفید نیستند. اگر بتوانید عملکرد موردنظر خود را با استفاده از یک مدل کوچک‌تر و سریع‌تر، بدون نیاز به streaming، محقق کنید، این مسیر اغلب، توسعه‌ای ساده‌تر و قابل‌مدیریت‌تر خواهد داشت.
+<div className="h-3" />
+
+با این حال، صرف‌نظر از سرعت مدل شما، <Important>AI SDK</Important> به‌گونه‌ای طراحی شده است که پیاده‌سازی رابط‌های استریمی را تا حد امکان ساده کند. 
+شما می‌توانید مانند قطعه کد زیر و با استفاده از <Important>streamText</Important>، پاسخ‌های استریمی، تولید کنید: 
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+
+
+const model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+});
+
+const { textStream } = streamText({
+  model: model('<model_name>'),
+  prompt: 'Who is John Wick?',
+
+});
+
+for await (const textPart of textStream) {
+  console.log(textPart);
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+در قطعه کد‌ فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_KEY&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های خود را قرار دهید.
 
 </Layout>

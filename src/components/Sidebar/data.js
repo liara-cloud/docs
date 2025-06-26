@@ -66,6 +66,8 @@ import {
   GoXCircle,
   GoPaperAirplane,
   GoTools,
+  GoKebabHorizontal,
+  GoMortarBoard,
   GoIterations,
   GoSignOut,
   GoReply,
@@ -318,8 +320,13 @@ export default {
       },
       {
         title: "قابلیت استریم (Streaming)",
-        icon: <GoTools />,
+        icon: <GoKebabHorizontal />,
         link: "/ai/foundations/streaming"
+      },
+      {
+        title: "Agentها (عامل‌ها)",
+        icon: <GoMortarBoard />,
+        link: "/ai/foundations/agents"
       },
 
 
