@@ -116,7 +116,7 @@ import Head from "next/head";
 
 <div className="h-4" />
 <div dir='ltr'>
-    <Highlight className="js">
+    <Highlight className="ts">
         {`import { generateText, generateObject } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { z } from 'zod';
@@ -199,7 +199,7 @@ generateMarketingCopy(input).then(({ copy, qualityMetrics }) => {
 
 <div className="h-4" />
 <div dir='ltr'>
-    <Highlight className="js">
+    <Highlight className="ts">
         {`import { generateText, generateObject } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { z } from 'zod';
@@ -313,13 +313,13 @@ parallelCodeReview(testCode)
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="js">
+    <Highlight className="ts">
         {`import { generateText, generateObject } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { z } from 'zod';
 
 const my_model = createOpenAI({
-  baseURL: "openai/gpt-4o-mini",
+  baseURL: "<baseUrl>",
   apiKey: "<LIARA_API_KEY>",
 });
 
@@ -421,7 +421,7 @@ translateWithFeedback(text, targetLanguage)
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="js">
+    <Highlight className="ts">
         {`import { generateObject } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { z } from 'zod';
@@ -527,23 +527,274 @@ implementFeature(featureRequest)
   });`}
     </Highlight>
 </div>
+
+<Section id='routing' title='مسیردهی (Routing)' />
+
+این الگو به مدل اجازه می‌دهد تا بر اساس زمینه (context) و نتایج میانی، تصمیم بگیرد که کدام مسیر را در جریان‌کاری دنبال کند. در این حالت، مدل به‌عنوان یک مسیردهنده‌ی هوشمند، عمل می‌کند و اجرای Taskها را بین شاخه‌های مختلف هدایت می‌کند.
+این الگو زمانی مفید است که با ورودی‌های متنوعی سروکار دارید که هرکدام نیازمند شیوه‌ی پردازش متفاوتی هستند.
+<div className="h-2" />
+
+
+در مثال زیر، نتایج فراخوانی LLM اول، ویژگی‌های فراخوانی LLM دوم را مانند model size و system prompt، تغییر می‌دهد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { generateObject, generateText } from 'ai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+});
+
+
+async function handleCustomerQuery(query: string) {
+  const model = my_model('openai/gpt-4.1');
+
+  // First step: Classify the query type
+  const { object: classification } = await generateObject({
+    model,
+    schema: z.object({
+      reasoning: z.string(),
+      type: z.enum(['general', 'refund', 'technical']),
+      complexity: z.enum(['simple', 'complex']),
+    }),
+    prompt: \`Classify this customer query:
+    \${query}
+
+    Determine:
+    1. Query type (general, refund, or technical)
+    2. Complexity (simple or complex)
+    3. Brief reasoning for classification\`,
+  });
+
+  // Route based on classification
+  // Set model and system prompt based on query type and complexity
+  const { text: response } = await generateText({
+    model:
+      classification.complexity === 'simple'
+        ? my_model('openai/gpt-4o-mini')
+        : my_model('openai/o4-mini-high'),
+    system: {
+      general:
+        'You are an expert customer service agent handling general inquiries.',
+      refund:
+        'You are a customer service agent specializing in refund requests. Follow company policy and collect necessary information.',
+      technical:
+        'You are a technical support specialist with deep product knowledge. Focus on clear step-by-step troubleshooting.',
+    }[classification.type],
+    prompt: query,
+  });
+
+  return { response, classification };
+}
+
+const query = "Why My Order is not in my hands?";
+
+handleCustomerQuery(query).then((result) => {
+  console.log("🔍 Classification:", result.classification);
+  console.log("💬 Response:", result.response);
+}).catch((error) => {
+  console.error("❌ Error:", error);
+});`}
+    </Highlight>
+</div>
+
+
+<Section id="multi-step-tool-usage" title="استفاده چندمرحله‌ای از ابزارها (Multi-Step Tool Usage)" />
+
+اگر برنامه شما، شامل حل مسائلی است که مسیر حل آن‌ها از قبل، به‌خوبی تعریف نشده و یا بیش از حد پیچیده است که نمی‌توان یک جریان کاری مشخص برای آن تعریف کرد؛ بهتر است مجموعه‌ای از Toolهای سطح پایین را در اختیار LLM قرار دهید و به آن اجازه دهید تا Task را به بخش‌های کوچک‌تری تقسیم کرده و به‌صورت تکراری، بدون دستورالعمل صریح، آن‌ها را حل کند.
+برای پیاده‌سازی چنین الگویی، باید LLM را در یک حلقه، بارها و بارها فراخوانی کنید، تا زمانی که Task تکمیل شود. AI SDK با پارامتر <Important>maxSteps</Important>، این فرآیند را ساده می‌سازد.
+<div className="h-2" />   
+
+با استفاده از <Important>maxSteps</Important>، ماژول AI SDK به‌طور خودکار پس از دریافت نتیجه‌ی هر Tool، یک درخواست جدید به مدل ارسال می‌کند (هر درخواست به‌عنوان یک مرحله یا step در نظر گرفته می‌شود). اگر مدل tool call ایجاد نکند، یا اگر آستانه‌ی <Important>maxSteps</Important> به پایان برسد، فرآیند تولید پایان می‌یابد.
+
+<div className="h-4" />   
+<Alert variant="info">
+<p>
+<Important>maxSteps</Important> را می‌توان هم در <Important>generateText</Important> و هم در <Important>streamText</Important>، به‌کار برد. 
+</p>
+</Alert>
+
+<Section id="using-maxsteps" title="استفاده از maxSteps" />
+
+مثال زیر، نشان می‌دهد که چگونه می‌توان یک Agent ایجاد کرد که مسائل ریاضی را حل کند. این Agent به یک Tool ماشین‌حساب (calculator) مجهز است که از کتابخانه‌ی <a href="https://mathjs.org/" className="text-[#2196f3]">math.js</a> استفاده می‌کند و می‌تواند برای ارزیابی عبارات ریاضی 
+فراخوانی شود.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { tool, generateText } from 'ai';
+import { z } from 'zod';
+import * as mathjs from 'mathjs';
+
+const my_model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+});
+
+(async () => {
+  const { text: answer } = await generateText({
+    model: my_model('openai/gpt-4.1', { structuredOutputs: true }),
+    tools: {
+      calculate: tool({
+        description:
+          'A tool for evaluating mathematical expressions. ' +
+          "Example expressions: '1.2 * (2 + 4.5)', '12.7 cm to inch', 'sin(45 deg) ^ 2'.",
+        parameters: z.object({ expression: z.string() }),
+        execute: async ({ expression }) => mathjs.evaluate(expression),
+      }),
+    },
+    maxSteps: 10,
+    system:
+      'You are solving math problems. ' +
+      'Reason step by step. ' +
+      'Use the calculator when necessary. ' +
+      'When you give the final answer, ' +
+      'provide an explanation for how you arrived at it.',
+    prompt:
+      'A taxi driver earns $9461 per 1-hour of work. ' +
+      'If he works 12 hours a day and in 1 hour ' +
+      'he uses 12 liters of petrol with a price of $134 for 1 liter. ' +
+      'How much money does he earn in one day?',
+  });
+
+  console.log(\`ANSWER: \${answer}\`);
+})();
+`}
+    </Highlight>
+</div>
+
+<Section id="structured-answers" title="پاسخ‌های ساختارمند (Structured Answers)" />
+
+زمانی که قصد دارید یک Agent برای Taskهایی مانند تحلیل ریاضی یا تولید گزارش طراحی کنید، اغلب مفید است که خروجی نهایی Agent، دارای قالبی ساختارمند و یکپارچه باشد تا بتوان آن را به‌راحتی در برنامه پردازش کرد.
+برای این کار، می‌توانید از یک answer tool همراه با  <Important>'toolChoice: 'required</Important> استفاده کنید تا LLM را ملزم کنید که پاسخ نهایی خود را به‌صورت ساختارمند و مطابق با الگوی تعیین‌شده در answer tool، ارائه دهد.
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { tool, generateText } from 'ai';
+import { z } from 'zod';
+import * as mathjs from 'mathjs';
+
+
+const my_model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+});
+
+(async () => {
+const { toolCalls } = await generateText({
+  model: my_model('openai/gpt-4.1', { structuredOutputs: true }),
+  tools: {
+    calculate: tool({
+      description:
+        'A tool for evaluating mathematical expressions. Example expressions: ' +
+        "'1.2 * (2 + 4.5)', '12.7 cm to inch', 'sin(45 deg) ^ 2'.",
+      parameters: z.object({ expression: z.string() }),
+      execute: async ({ expression }) => mathjs.evaluate(expression),
+    }),
+    // answer tool: the LLM will provide a structured answer
+    answer: tool({
+      description: 'A tool for providing the final answer.',
+      parameters: z.object({
+        steps: z.array(
+          z.object({
+            calculation: z.string(),
+            reasoning: z.string(),
+          }),
+        ),
+        answer: z.string(),
+      }),
+      // no execute function - invoking it will terminate the agent
+    }),
+  },
+  toolChoice: 'required',
+  maxSteps: 10,
+  system:
+    'You are solving math problems. ' +
+    'Reason step by step. ' +
+    'Use the calculator when necessary. ' +
+    'The calculator can only do simple additions, subtractions, multiplications, and divisions. ' +
+    'When you give the final answer, provide an explanation for how you got it.',
+  prompt:
+    'A taxi driver earns $9461 per 1-hour work. ' +
+    'If he works 12 hours a day and in 1 hour he uses 14-liters petrol with price $134 for 1-liter. ' +
+    'How much money does he earn in one day?',
+});
+
+console.log(\`FINAL TOOL CALLS: \${JSON.stringify(toolCalls, null, 2)}\`);
+})();`}
+    </Highlight>
+</div>
 <div className="h-2" />   
 
 
+<Section id="accessing-all-steps" title="دسترسی به تمام مراحل (Accessing all steps)" />
+
+فراخوانی تابع <Important>generateText</Important> با استفاده از پارامتر <Important>maxSteps</Important> می‌تواند منجر به فراخوانی چندباره LLM شود (هر فراخوانی، به‌عنوان یک مرحله یا <Important>step</Important> در نظر گرفته می‌شود).
+برای دسترسی به اطلاعات مربوط به تمام این مراحل، می‌توانید از خصیصه <Important>steps</Important> در پاسخ نهایی استفاده کنید. این خصیصه شامل جزئیات مربوط به هر مرحله از اجرای Agent است و امکان بررسی روند حل مسئله یا تحلیل فرآیند تصمیم‌گیری مدل را فراهم می‌کند.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+
+const my_model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+});
+
+(async () => {
+
+const { steps } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  maxSteps: 10,
+  // ...
+});
+
+// extract all tool calls from the steps:
+const allToolCalls = steps.flatMap(step => step.toolCalls);
+
+})();`}
+    </Highlight>
+</div>
+
+<Section id="getting-notified-on-each-completed-step" title="دریافت اعلان پس از پایان هر مرحله" />
+
+می‌توانید از تابع callback به نام <Important>onStepFinish</Important> استفاده کنید تا پس از اتمام هر مرحله، اعلان دریافت کنید. این تابع زمانی فراخوانی می‌شود که یک مرحله به‌طور کامل به پایان رسیده باشد؛ یعنی زمانی که تمام تغییرات متنی (text deltas)، فراخوانی‌های Toolها، و نتایج Tool مربوط به آن مرحله، در دسترس قرار گرفته باشد.
 
 
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
 
+const my_model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY>",
+});
 
-
-
-
-
-
-
-
-
-
-
+(async () => {
+const result = await generateText({
+  model: my_model("openai/gpt-4o-mini"),
+  maxSteps: 10,
+  onStepFinish({ text, toolCalls, toolResults, finishReason, usage }) {
+    // your own logic, e.g. for saving the chat history or recording usage
+  },
+  // ...
+});
+})();`}
+    </Highlight>
+</div>
+<div className="h-2" />   
 
 
 </Layout>
