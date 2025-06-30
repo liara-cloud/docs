@@ -1,0 +1,160 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کار با AI SDK در NextJS App Router - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به کار با AI SDK در محصول هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# کار با AI SDK در برنامه‌های NextJS App Router
+<hr className="mb-2" />
+
+در این آموزش کوتاه، یک چت‌بات ساده‌ی هوش مصنوعی با رابط کاربری استریمی خواهید ساخت. در طول مسیر، با مفاهیم و تکنیک‌های کلیدی آشنا می‌شوید که برای استفاده از SDK در پروژه‌های شخصی‌تان ضروری هستند.
+
+
+<Section id='prerequisites' title='پیش‌نیازها (Prerequisites)' />
+
+برای دنبال‌کردن این آموزش، به موارد زیر نیاز دارید:
+
+
+<div className="h-2" />
+<ul>
+<li>نصب داشتن NodeJS نسخه ۱۸ یا بالاتر و <Important>npm</Important> بر روی سیستم local</li>
+<li>یک <Important>baseUrl</Important> از محصول <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">هوش مصنوعی لیارا</a> و کلید API کنسول</li>
+</ul>
+<div className="h-2" />
+<hr className="mb-2" />
+
+
+<Section id='create-your-application' title='ساخت برنامه' />
+
+برای شروع، یک برنامه‌ی جدید <a href="/paas/nextjs/getting-started/" className="text-[#2196f3]">NextJS</a>، ایجاد کنید. دستور زیر یک دایرکتوری جدید به نام <Important>my-ai-app</Important> ایجاد می‌کند و درون آن، یک پروژه پایه NextJS می‌سازد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npx create-next-app@latest my-ai-app`}
+    </Highlight>
+</div>
+
+<Alert variant="warning">
+<p>
+هنگامی که از شما سوال شد، حتماً گزینه‌های <Important>TypeScript</Important> , <Important>App Router</Important> و <Important>Tailwind CSS</Important> را روی <Important>yes</Important> تنظیم کنید.
+</p>
+</Alert>
+<div className="h-2" />
+
+وارد دایرکتوری پروژه شوید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`cd my-ai-app`}
+    </Highlight>
+</div>
+
+<Section id='install-dependencies' title='نصب وابستگی‌ها' />
+با اجرای دستور قرار گرفته در ادامه، پکیج‌های زیر را نصب کنید:
+
+<div className="h-2" />
+<ul>
+<li><Important>ai</Important>: پکیج اصلی AI SDK</li>
+<li><Important>ai-sdk/react@</Important>: هوک‌های React</li>
+<li><Important>ai-sdk/openai@</Important>: ارائه‌دهنده‌ی OpenAI برای SDK (سازگار با تمامی مدل‌های ارائه‌شده توسط لیارا)</li>
+<li><Important>zod</Important>: برای بهبود ساختار خروجی</li>
+</ul>
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`npm install ai @ai-sdk/react @ai-sdk/openai zod`}
+    </Highlight>
+</div>
+<Alert variant="warning">
+<p>
+اطمینان حاصل کنید که نسخه‌ی <Important>ai</Important> حداقل ۳.۱ یا بالاتر باشد.
+</p>
+</Alert>
+
+<Section id='configure-keys' title='تنظیم اطلاعات AI' />
+با اجرای دستور زیر (در لینوکس)، یک فایل <Important>env.local.</Important> در مسیر اصلی پروژه ایجاد کنید تا درون آن <Important>baseUrl</Important> هوش مصنوعی و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> را، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`touch .env.local`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+درون فایل ایجاد شده، قطعه کد زیر را، قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`BASE_URL=xxxxxxxxx
+LIARA_API_KEY=xxxxxxxxx`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، به‌جای <Important>xxxxxxxxx</Important>، مقادیر واقعی خود را، قرار دهید. 
+<hr className="mb-2" />
+
+<Section id='create-a-route-handler' title='ایجاد یک Route Handler' />
+
+در مسیر <Important>app/api/chat</Important>، یک فایل به نام <Important>route.ts</Important> ایجاد کنید؛ این فایل همان route handler خواهد بود. قطعه کد زیر را، درون آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`import { openai } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: openai('gpt-4o'),
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+</Layout>
