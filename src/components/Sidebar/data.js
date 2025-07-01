@@ -296,7 +296,6 @@ export default {
         icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
         link: "/ai/connect-to-service/chat-gpt-copilot"
       },
-
       {
         hr: true
       },
@@ -328,6 +327,18 @@ export default {
         icon: <GoMortarBoard />,
         link: "/ai/foundations/agents"
       },
+      {
+        hr: true
+      },
+      {
+        badge: "شروع به کار با AI SDK"
+      },
+      {
+        title: "NextJS App Router",
+        icon: <IconContainer alt="next" />,
+        link: "/ai/getting-started/nextjs-app-router"
+      },
+
 
 
 
