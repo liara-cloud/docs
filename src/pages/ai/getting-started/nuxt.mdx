@@ -27,17 +27,19 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات کار با AI SDK در NextJS App Router - لیارا</title>
+<title>مستندات کار با AI SDK در VueJS (Nuxt) - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به استفاده از AI SDK در NextJS App Router محصول هوش مصنوعی لیارا"  />
+<meta property="og:description" content="مستندات مربوط به استفاده از AI SDK در VueJS (Nuxt) محصول هوش مصنوعی لیارا"  />
 <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
 </Head>
 
 
-# کار با AI SDK در برنامه‌های NextJS App Router
+# کار با AI SDK در برنامه‌های VueJS (Nuxt)
 <hr className="mb-2" />
 
-در این آموزش کوتاه، یک چت‌بات ساده‌ی هوش مصنوعی با رابط کاربری استریمی خواهید ساخت. در طول مسیر، با مفاهیم و تکنیک‌های کلیدی آشنا می‌شوید که برای استفاده از SDK در پروژه‌های شخصی‌تان ضروری هستند.
+AI SDK یک کتابخانه‌ی قدرتمند TypeScript است که برای کمک به توسعه‌دهندگان در ساخت برنامه‌های مبتنی بر هوش مصنوعی طراحی شده است.
+در این آموزش، یک چت‌بات ساده‌ی مبتنی بر هوش مصنوعی با رابط کاربری استریمی ایجاد خواهید کرد. در این مسیر، با مفاهیم کلیدی و تکنیک‌های اساسی آشنا می‌شوید که برای استفاده از این SDK ضروری هستند.
+
 
 
 <Section id='prerequisites' title='پیش‌نیازها (Prerequisites)' />
@@ -47,7 +49,7 @@ import Head from "next/head";
 
 <div className="h-2" />
 <ul>
-<li>نصب داشتن NodeJS نسخه ۱۸ یا بالاتر و <Important>npm</Important> و <Important>pnpm</Important> بر روی سیستم local</li>
+<li>نصب داشتن NodeJS نسخه ۱۸ یا بالاتر و <Important>pnpm</Important> بر روی سیستم local</li>
 <li>یک <Important>baseUrl</Important> از محصول <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">هوش مصنوعی لیارا</a> و کلید API کنسول</li>
 </ul>
 <div className="h-2" />
@@ -56,21 +58,18 @@ import Head from "next/head";
 
 <Section id='create-your-application' title='ساخت برنامه' />
 
-برای شروع، یک برنامه‌ی جدید <a href="/paas/nextjs/getting-started/" className="text-[#2196f3]">NextJS</a>، ایجاد کنید. دستور زیر یک دایرکتوری جدید به نام <Important>my-ai-app</Important> ایجاد می‌کند و درون آن، یک پروژه پایه NextJS می‌سازد:
+برای شروع، یک برنامه‌ی جدید <a href="/paas/nodejs/related-apps/nuxtjs/" className="text-[#2196f3]">Nuxt</a>، ایجاد کنید. دستور زیر یک دایرکتوری جدید به نام <Important>my-ai-app</Important> ایجاد می‌کند و درون آن، یک پروژه پایه Nuxt می‌سازد:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`npx create-next-app@latest my-ai-app`}
+        {`npx sv create my-ai-app`}
     </Highlight>
 </div>
 
-<Alert variant="warning">
-<p>
-هنگامی که از شما سوال شد، حتماً گزینه‌های <Important>TypeScript</Important> , <Important>App Router</Important> و <Important>Tailwind CSS</Important> را روی <Important>yes</Important> تنظیم کنید.
-</p>
-</Alert>
-<div className="h-2" />
+{/* <div className="h-2" />   
+<img src="https://media.liara.ir/ai/ai-sdk/svelte/set-up-svelte.png" alt="set up svelte"/>
+<div className="h-4" /> */}
 
 وارد دایرکتوری پروژه شوید:
 
@@ -87,7 +86,7 @@ import Head from "next/head";
 <div className="h-2" />
 <ul>
 <li><Important>ai</Important>: پکیج اصلی AI SDK</li>
-<li><Important>ai-sdk/react@</Important>: هوک‌های React</li>
+<li><Important>ai-sdk/vue@</Important>: توابع مربوط به Vue.js برای کار با SDK</li>
 <li><Important>ai-sdk/openai@</Important>: ارائه‌دهنده‌ی OpenAI برای SDK (سازگار با تمامی مدل‌های ارائه‌شده توسط لیارا)</li>
 <li><Important>zod</Important>: برای بهبود ساختار خروجی</li>
 </ul>
@@ -95,7 +94,7 @@ import Head from "next/head";
 <div className="h-4" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`npm install ai @ai-sdk/react @ai-sdk/openai zod`}
+        {`pnpm add ai @ai-sdk/openai @ai-sdk/vue zod`}
     </Highlight>
 </div>
 <Alert variant="warning">
@@ -105,7 +104,7 @@ import Head from "next/head";
 </Alert>
 
 <Section id='configure-keys' title='تنظیم اطلاعات AI' />
-با اجرای دستور زیر (در لینوکس)، یک فایل <Important>env.local.</Important> در مسیر اصلی پروژه ایجاد کنید تا درون آن <Important>baseUrl</Important> هوش مصنوعی و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> را، قرار دهید:
+با اجرای دستور زیر (در لینوکس)، یک فایل <Important>env.</Important> در مسیر اصلی پروژه ایجاد کنید تا درون آن <Important>baseUrl</Important> هوش مصنوعی و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> را، قرار دهید:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -126,37 +125,57 @@ LIARA_API_KEY=xxxxxxxxx`}
 </div>
 <div className="h-2" />
 
-در قطعه کد فوق، به‌جای <Important>xxxxxxxxx</Important>، مقادیر واقعی خود را، قرار دهید. 
-<hr className="mb-2" />
-
-<Section id='create-a-route-handler' title='ایجاد یک Route Handler' />
-
-در مسیر <Important>app/api/chat</Important>، یک فایل به نام <Important>route.ts</Important> ایجاد کنید؛ این فایل همان route handler خواهد بود. قطعه کد زیر را، درون آن، قرار دهید:
+در قطعه کد فوق، به‌جای <Important>xxxxxxxxx</Important>، مقادیر واقعی خود را، قرار دهید؛ در ادامه، متغیرهای تعریف‌شده 
+را مانند قطعه کد زیر در فایل <Important>nuxt.config.ts</Important>، وارد کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="ts">
-        {`import { createOpenAI } from '@ai-sdk/openai';
-import { streamText } from 'ai';
+        {`export default defineNuxtConfig({
+  // rest of your nuxt config
+  runtimeConfig: {
+    liaraApiKey: process.env.LIARA_API_KEY,
+    baseUrl: process.env.BASE_URL,
+  },
+})
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<hr className="mb-2" />
 
-const my_model = createOpenAI({
-  baseURL: process.env.BASE_URL,
-  apiKey: process.env.LIARA_API_KEY,
-});
+<Section id='create-an-api-route' title='ایجاد یک API Route' />
 
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
+در مسیر <Important>server/api/chat.ts</Important>، یک API Route بسازید و قطعه کد زیر را درون آن، قرار دهید:
 
-export async function POST(req: Request) {
-  const { messages } = await req.json();
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts" >
+        {`import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
 
-  const result = streamText({
-    model: my_model('openai/gpt-4o-mini'),
-    messages,
+export default defineLazyEventHandler(async () => {
+  const apiKey = useRuntimeConfig().liaraApiKey;
+  if (!apiKey) throw new Error('Missing OpenAI API key');
+  const baseUrl = useRuntimeConfig().baseUrl;
+  if (!apiKey) throw new Error('Missing OpenAI API key');
+  
+  const my_model = createOpenAI({
+    apiKey: apiKey,
+    baseURL: baseUrl
   });
 
-  return result.toDataStreamResponse();
-}`}
+  return defineEventHandler(async (event: any) => {
+    const { messages } = await readBody(event);
+
+    const result = streamText({
+      model: my_model('openai/gpt-4o-mini'),
+      messages,
+    });
+
+    return result.toDataStreamResponse();
+  });
+});`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -165,8 +184,9 @@ export async function POST(req: Request) {
 
 <div className="h-2" />
 
-۱. یک تابع برای مدیریت درخواست‌های POST تعریف شده که به‌صورت asynchronous اجرا می‌شود. این تابع ابتدا پیام‌ها (messages) را از بدنه‌ی درخواست استخراج می‌کند.
-مقدار <Important>messages</Important> شامل تاریخچه‌ی مکالمه بین کاربر و چت‌بات است و زمینه (context) مورد نیاز برای تولید پاسخ بعدی را در اختیار مدل قرار می‌دهد.
+۱. یک Event Handler تعریف شده است که پیام‌ها را از بدنه‌ی request استخراج می‌کند. متغیر <Important>messages</Important> شامل سابقه‌ی گفتگو میان شما و چت‌بات است و context لازم را برای چت‌بات فراهم می‌کند تا پاسخ بعدی را تولید کند.
+
+
 <div className="h-2" />
 
 ۲. سپس، تابع <Important>streamText</Important> فراخوانی می‌شود. این تابع از پکیج <Important>ai</Important> می‌باشد و یک پیکربندی دریافت می‌کند که شامل <Important>model</Important>
@@ -185,73 +205,64 @@ export async function POST(req: Request) {
 ۳. در ادامه، تابع <Important>streamText</Important> یک object از نوع <Important>StreamTextResult</Important> برمی‌گرداند. این object دارای متدی به نام <Important>toDataStreamResponse</Important> است که نتیجه را به یک پاسخ استریمی برای کلاینت، تبدیل می‌کند.
 
 <div className="h-2" /> 
-۴. در انتها، نتیجه به‌صورت یک پاسخ HTTP استریمی، به کلاینت بازگردانده می‌شود.
-
-<div className="h-4" /> 
-Route Handler فوق یک endpoint از نوع POST در مسیر <Important>api/chat/</Important> ایجاد می‌کند. این endpoint می‌تواند توسط رابط کاربری برای ارسال پیام و دریافت پاسخ استریمی از مدل، استفاده شود.
+۴. در انتها، نتیجه به‌صورت یک پاسخ استریمی، به کلاینت بازگردانده می‌شود.
 
 <div className="h-2" />
 <hr className="mb-2" />
 
 <Section id='wire-up-the-ui' title="اتصال رابط کاربری" />
 
-حالا که یک Route Handler دارید که می‌تواند با یک LLM ارتباط برقرار کند، زمان آن رسیده که رابط کاربری (frontend) خود را راه‌اندازی کنید. پکیج UI در AI SDK، پیچیدگی‌های مربوط به رابط چت را در یک هوک به نام <Important>useChat</Important> ساده کرده است.
-در فایل  <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید تا یک لیست از پیام‌های چت، نمایش داده شود و امکان ارسال پیام کاربر، فراهم گردد:
+حالا که یک API route دارید که می‌تواند با یک LLM ارتباط برقرار کند، زمان آن رسیده که رابط کاربری (frontend) خود را راه‌اندازی کنید. پکیج UI در AI SDK، پیچیدگی‌های مربوط به رابط چت را در یک هوک به نام <Important>useChat</Important> ساده کرده است.
+در فایل  <Important>pages/index.vue</Important>، قطعه کد زیر را قرار دهید تا یک لیست از پیام‌های چت، نمایش داده شود و امکان ارسال پیام کاربر، فراهم گردد:
 
 <div className="h-2" />
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
+        {`<script setup lang="ts">
+import { useChat } from '@ai-sdk/vue';
 
-import { useChat } from '@ai-sdk/react';
+const { messages, input, handleSubmit } = useChat();
+</script>
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
-  return (
-    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      {messages.map(message => (
-        <div key={message.id} className="whitespace-pre-wrap">
-          {message.role === 'user' ? 'User: ' : 'AI: '}
-          {message.parts.map((part, i) => {
-            switch (part.type) {
-              case 'text':
-                return <div key={\`\${message.id}-\${i}\`}>{part.text}</div>;
-            }
-          })}
-        </div>
-      ))}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          className="fixed dark:bg-zinc-900 bottom-0 w-full max-w-md p-2 mb-8 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl"
-          value={input}
-          placeholder="Say something..."
-          onChange={handleInputChange}
-        />
-      </form>
+<template>
+  <div>
+    <div
+      v-for="m in messages"
+      :key="m.id ? m.id : index"
+    >
+      {{ m.role === 'user' ? 'User: ' : 'AI: ' }}
+      <div v-for="part in m.parts" :key="part.id">
+        <div v-if="part.type === 'text'">{{ part.text }}</div>
+      </div>
     </div>
-  );
-}`}
+
+    <form @submit="handleSubmit">
+      <input
+        v-model="input"
+        placeholder="Say something..."
+      />
+    </form>
+  </div>
+</template>`}
     </Highlight>
 </div>
-<div className="h-2" />   
+<div className="h-2" />  
 <Alert variant="warning">
 <p>
-حتماً دستور <Important>'use client'</Important> را به ابتدای فایل خود اضافه کنید. این کار به شما اجازه می‌دهد تا با استفاده از جاوااسکریپت، قابلیت‌های  interactive را به صفحه اضافه کنید.
+اگر پروژه شما شامل <Important>app.vue</Important> به‌جای <Important>pages/index.vue</Important> است، تنها کافیست تا فایل <Important>app.vue</Important> را پاک کنید و یک <Important>pages/index.vue</Important> جدید با قطعه کد فوق ایجاد کنید.
 </p>
 </Alert>
-<div className="h-2" />   
-
-این صفحه از هوک <Important>useChat</Important> استفاده می‌کند که به‌صورت پیش‌فرض، از مسیر POST که قبل‌تر ایجاد کرده بودید (همان <Important>api/chat</Important>)، استفاده خواهد کرد.
+ 
+این صفحه از هوک <Important>useChat</Important> استفاده می‌کند که به‌صورت پیش‌فرض، از API Route که قبل‌تر ایجاد کرده بودید، استفاده خواهد کرد.
 این هوک توابع لازم برای مدیریت ورودی کاربر و ارسال فرم را فراهم می‌کند. هوک <Important>useChat</Important> چندین تابع و متغیر ارائه می‌دهد:
 
 <div className="h-4" />   
 <ul>
 <li><Important>messages</Important>: پیام‌های فعلی چت (آرایه‌ای از آبجکت‌ها با ویژگی‌های <Important>id</Important> , <Important>role</Important> و <Important>parts</Important>).</li>
 <li><Important>input</Important>: مقدار فعلی فیلد ورودی کاربر.</li>
-<li><Important>handleInputChange</Important> و <Important>handleSubmit</Important>: توابعی برای مدیریت تعاملات کاربر (تایپ در فیلد ورودی و ارسال فرم).</li>    
+<li><Important>handleSubmit</Important>: تابعی برای مدیریت تعاملات کاربر (تایپ در فیلد ورودی و ارسال فرم).</li>    
 </ul>
 <div className="h-4" />   
 
@@ -273,7 +284,7 @@ export default function Chat() {
 <div className="h-2" />   
 سپس مرورگر خود را باز کرده و به آدرس <Important>http://localhost:3000</Important> بروید. باید یک فیلد ورودی مشاهده کنید. یک پیام وارد کنید تا آن را امتحان کنید و ببینید چت‌بات هوش مصنوعی چگونه به‌صورت بلادرنگ پاسخ می‌دهد:
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/wotking-with-chatbot.png" alt="work with chatbot in nextjs"/>
+<img src="https://media.liara.ir/ai/ai-sdk/nuxt/working-with-chat-bot.png" alt="work with chatbot in VueJS (Nuxt)"/>
 <div className="h-4" />
 
 <hr className="mb-2" />
@@ -290,50 +301,56 @@ Toolها، Actionهایی هستند که یک LLM می‌تواند آن‌ها
 در ادامه، خواهید آموخت که چگونه می‌توانید با اضافه کردن یک Tool ساده مربوط به وضعیت آب‌وهوا، چت‌بات خود را بهبود دهید. 
 
 <div className="h-5" />   
-<h3>به‌روزرسانی Route Handler</h3>
+<h3>به‌روزرسانی API Route</h3>
 <div className="h-2" />   
-مانند قطعه کد زیر، به فایل <Important>app/api/chat/route.ts</Important> خود، Tool مربوط به وضعیت آب‌وهوا را اضافه کنید:
+مانند قطعه کد زیر، به فایل <Important>server/api/chat.ts</Important> خود، Tool مربوط به وضعیت آب‌وهوا را اضافه کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { createOpenAI } from '@ai-sdk/openai';
-import { streamText, tool } from 'ai';
+        {`import { streamText, tool } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
 import { z } from 'zod';
 
-const my_model = createOpenAI({
-  baseURL: process.env.BASE_URL,
-  apiKey: process.env.LIARA_API_KEY,
-});
-
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
-
-export async function POST(req: Request) {
-  const { messages } = await req.json();
-
-  const result = streamText({
-    model: my_model('openai/gpt-4o-mini'),
-    messages,
-    tools: {
-      weather: tool({
-        description: 'Get the weather in a location (fahrenheit)',
-        parameters: z.object({
-          location: z.string().describe('The location to get the weather for'),
-        }),
-        execute: async ({ location }) => {
-          const temperature = Math.round(Math.random() * (90 - 32) + 32);
-          return {
-            location,
-            temperature,
-          };
-        },
-      }),
-    },
+export default defineLazyEventHandler(async () => {
+  const apiKey = useRuntimeConfig().liaraApiKey;
+  if (!apiKey) throw new Error('Missing OpenAI API key');
+  const baseUrl = useRuntimeConfig().baseUrl;
+  if (!apiKey) throw new Error('Missing OpenAI API key');
+  
+  const my_model = createOpenAI({
+    apiKey: apiKey,
+    baseURL: baseUrl
   });
 
-  return result.toDataStreamResponse();
-}`}
+  return defineEventHandler(async (event: any) => {
+    const { messages } = await readBody(event);
+
+    const result = streamText({
+      model: my_model('openai/gpt-4o-mini'),
+      messages,
+      tools: {
+        weather: tool({
+          description: 'Get the weather in a location (fahrenheit)',
+          parameters: z.object({
+            location: z
+              .string()
+              .describe('The location to get the weather for'),
+          }),
+          execute: async ({ location }) => {
+            const temperature = Math.round(Math.random() * (90 - 32) + 32);
+            return {
+              location,
+              temperature,
+            };
+          },
+        }),
+      },
+    });
+
+    return result.toDataStreamResponse();
+  });
+});`}
     </Highlight>
 </div>
 <div className="h-2" />   
@@ -359,49 +376,40 @@ export async function POST(req: Request) {
 <h3>به‌روزرسانی رابط کاربری</h3>
 <div className="h-2" />  
 
-برای به‌روزرسانی رابط کاربری و نمایش <Important>tool invocation</Important>، باید فایل <Important>app/page.tsx</Important> را تغییر دهید تا پیام‌هایی که شامل Tool هستند نیز، به درستی نمایش داده شوند.
+برای به‌روزرسانی رابط کاربری و نمایش <Important>tool invocation</Important>، باید فایل <Important>pages/index.vue</Important> را تغییر دهید تا پیام‌هایی که شامل Tool هستند نیز، به درستی نمایش داده شوند.
 در ادامه، نمونه کدی آورده شده که این قابلیت را اضافه می‌کند:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
+        {`<script>
+  import { Chat } from '@ai-sdk/svelte';
 
-import { useChat } from '@ai-sdk/react';
+  const chat = new Chat();
+</script>
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
-  return (
-    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      {messages.map(message => (
-        <div key={message.id} className="whitespace-pre-wrap">
-          {message.role === 'user' ? 'User: ' : 'AI: '}
-          {message.parts.map((part, i) => {
-            switch (part.type) {
-              case 'text':
-                return <div key={\`\${message.id}-\${i}\`}>{part.text}</div>;
-              case 'tool-invocation':
-                return (
-                  <pre key={\`\${message.id}-\${i}\`}>
-                    {JSON.stringify(part.toolInvocation, null, 2)}
-                  </pre>
-                );
-            }
-          })}
+<main>
+  <ul>
+    {#each chat.messages as message, messageIndex (messageIndex)}
+      <li>
+        <div>{message.role}</div>
+        <div>
+          {#each message.parts as part, partIndex (partIndex)}
+            {#if part.type === 'text'}
+              <div>{part.text}</div>
+            {:else if part.type === 'tool-invocation'}
+              <pre>{JSON.stringify(part.toolInvocation, null, 2)}</pre>
+            {/if}
+          {/each}
         </div>
-      ))}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          className="fixed dark:bg-zinc-900 bottom-0 w-full max-w-md p-2 mb-8 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl"
-          value={input}
-          placeholder="Say something..."
-          onChange={handleInputChange}
-        />
-      </form>
-    </div>
-  );
-}`}
+      </li>
+    {/each}
+  </ul>
+  <form onsubmit={chat.handleSubmit}>
+    <input bind:value={chat.input} />
+    <button type="submit">Send</button>
+  </form>
+</main>`}
     </Highlight>
 </div>
 <div className="h-2" />   
@@ -410,7 +418,7 @@ export default function Chat() {
 اکنون، زمانی که درباره‌ی وضعیت هوا سوال می‌پرسید، tool calling و نتیجه‌ی آن در رابط چت شما، نمایش داده می‌شود:
 
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/chatbot-using-tools.png" alt="work with chatbot in nextjs with tools"/>
+<img src="https://media.liara.ir/ai/ai-sdk/nuxt/working-with-tools-in-chatbots.png" alt="work with chatbot in vuejs (nuxt) with tools"/>
 <div className="h-4" />
 <hr className="mb-2" />
 
@@ -427,22 +435,18 @@ export default function Chat() {
 <h3>به‌روزرسانی کد سمت کلاینت</h3>
 <div className="h-2" />   
 
-فایل <Important>app/page.tsx</Important> خود را ویرایش کرده تا گزینه‌ی <Important>maxSteps</Important> را به آن، اضافه کنید:
+فایل <Important>pages/index.vue</Important> خود را ویرایش کرده تا گزینه‌ی <Important>maxSteps</Important> را به آن، اضافه کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
+        {`<script setup lang="ts">
+import { useChat } from '@ai-sdk/vue';
 
-import { useChat } from '@ai-sdk/react';
+const { messages, input, handleSubmit } = useChat({ maxSteps: 5 });
+</script>
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    maxSteps: 5,
-  });
-
-  // ... rest of your component code
-}`}
+<!-- ... rest of your component code -->`}
     </Highlight>
 </div>
 <div className="h-2" />   
@@ -450,71 +454,77 @@ export default function Chat() {
 به مرورگر بازگردید و درباره‌ی وضعیت هوای یک مکان سوال بپرسید. حالا باید ببینید که مدل از نتایج Tool هواشناسی برای پاسخ به سوال شما استفاده می‌کند:
 
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/chatbot-with-maxsteps.png" alt="work with chatbot in nextjs with tools and maxsteps"/>
+<img src="https://media.liara.ir/ai/ai-sdk/nuxt/chatbots-tools-and-maxsteps.png" alt="work with chatbot in vuejs (nuxt) with tools and maxsteps"/>
 <div className="h-4" />
 
 با تنظیم مقدار <Important>maxSteps</Important> روی ۵، این امکان را فراهم می‌کنید که مدل حداکثر تا ۵ مرحله، پاسخ جدیدی را تولید کند. این قابلیت، تعاملات پیچیده‌تر را ممکن می‌سازد و به مدل اجازه می‌دهد اطلاعات را طی چند مرحله جمع‌آوری و پردازش کند (در صورت نیاز). می‌توانید این قابلیت را در عمل مشاهده کنید؛ کافیست Tool دیگری اضافه کنید که دما را از فارنهایت به سلسیوس تبدیل کند.
 
 <div className="h-4" />   
-<h3>به‌روزرسانی Route Handler</h3>
+<h3>به‌روزرسانی API Route</h3>
 <div className="h-2" /> 
 
-Tool جدید برای تبدیل دما از فارنهایت به سلسیوس را به فایل <Important>app/api/chat/route.ts</Important> خود، مانند شکل زیر، اضافه کنید:
+Tool جدید برای تبدیل دما از فارنهایت به سلسیوس را به فایل <Important>server/api/chat.ts</Important> خود، مانند شکل زیر، اضافه کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { createOpenAI } from '@ai-sdk/openai';
-import { streamText, tool } from 'ai';
+        {`import { streamText, tool } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
 import { z } from 'zod';
 
-const my_model = createOpenAI({
-  baseURL: process.env.BASE_URL,
-  apiKey: process.env.LIARA_API_KEY,
-});
-
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
-
-export async function POST(req: Request) {
-  const { messages } = await req.json();
-
-  const result = streamText({
-    model: my_model('openai/gpt-4o-mini'),
-    messages,
-    tools: {
-      weather: tool({
-        description: 'Get the weather in a location (fahrenheit)',
-        parameters: z.object({
-          location: z.string().describe('The location to get the weather for'),
-        }),
-        execute: async ({ location }) => {
-          const temperature = Math.round(Math.random() * (90 - 32) + 32);
-          return {
-            location,
-            temperature,
-          };
-        },
-      }),
-      convertFahrenheitToCelsius: tool({
-        description: 'Convert a temperature in fahrenheit to celsius',
-        parameters: z.object({
-          temperature: z
-            .number()
-            .describe('The temperature in fahrenheit to convert'),
-        }),
-        execute: async ({ temperature }) => {
-          const celsius = Math.round((temperature - 32) * (5 / 9));
-          return {
-            celsius,
-          };
-        },
-      }),
-    },
-  });
+export default defineLazyEventHandler(async () => {
+  const apiKey = useRuntimeConfig().liaraApiKey;
+  if (!apiKey) throw new Error('Missing OpenAI API key');
+  const baseUrl = useRuntimeConfig().baseUrl;
+  if (!apiKey) throw new Error('Missing OpenAI API key');
   
-  return result.toDataStreamResponse();
-}`}
+  const my_model = createOpenAI({
+    apiKey: apiKey,
+    baseURL: baseUrl
+  });
+
+  return defineEventHandler(async (event: any) => {
+    const { messages } = await readBody(event);
+
+    const result = streamText({
+      model: my_model('openai/gpt-4o-mini'),
+      messages,
+      tools: {
+        weather: tool({
+          description: 'Get the weather in a location (fahrenheit)',
+          parameters: z.object({
+            location: z
+              .string()
+              .describe('The location to get the weather for'),
+          }),
+          execute: async ({ location }) => {
+            const temperature = Math.round(Math.random() * (90 - 32) + 32);
+            return {
+              location,
+              temperature,
+            };
+          },
+        }),
+        convertFahrenheitToCelsius: tool({
+          description: 'Convert a temperature in fahrenheit to celsius',
+          parameters: z.object({
+            temperature: z
+              .number()
+              .describe('The temperature in fahrenheit to convert'),
+          }),
+          execute: async ({ temperature }) => {
+            const celsius = Math.round((temperature - 32) * (5 / 9));
+            return {
+              celsius,
+            };
+          },
+        }),
+      },
+    });
+
+    return result.toDataStreamResponse();
+  });
+});`}
     </Highlight>
 </div>
 <div className="h-2" />   
@@ -523,7 +533,7 @@ export async function POST(req: Request) {
 
 
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/chatbot-with-two-tools.png" alt="work with chatbot in nextjs with two tools and maxsteps on 5"/>
+<img src="https://media.liara.ir/ai/ai-sdk/nuxt/chatbot-with-two-tools-and-maxsteps.png" alt="work with chatbot in nuxt with two tools and maxsteps on 5"/>
 <div className="h-4" />
 
 در برنامه فوق: 
@@ -544,9 +554,8 @@ export async function POST(req: Request) {
 <div className="h-2" />
 <Alert variant="success">
 <p>
-پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS-App-Router-ChatBot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
+پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/Vue-Nuxt-ChatBot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
 </p>
 </Alert>
-
 
 </Layout>

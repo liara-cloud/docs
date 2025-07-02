@@ -27,17 +27,20 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات کار با AI SDK در NextJS App Router - لیارا</title>
+<title>مستندات کار با AI SDK در NextJS Pages Router - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به استفاده از AI SDK در NextJS App Router محصول هوش مصنوعی لیارا"  />
+<meta property="og:description" content="مستندات مربوط به استفاده از AI SDK در NextJS Pages Router محصول هوش مصنوعی لیارا"  />
 <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
 </Head>
 
 
-# کار با AI SDK در برنامه‌های NextJS App Router
+# کار با AI SDK در برنامه‌های NextJS Pages Router
 <hr className="mb-2" />
 
-در این آموزش کوتاه، یک چت‌بات ساده‌ی هوش مصنوعی با رابط کاربری استریمی خواهید ساخت. در طول مسیر، با مفاهیم و تکنیک‌های کلیدی آشنا می‌شوید که برای استفاده از SDK در پروژه‌های شخصی‌تان ضروری هستند.
+AI SDK یک کتابخانه‌ی قدرتمند TypeScript است که برای کمک به توسعه‌دهندگان در ساخت برنامه‌های مبتنی بر هوش مصنوعی طراحی شده است.
+در این آموزش، یک چت‌بات ساده‌ی مبتنی بر هوش مصنوعی با رابط کاربری استریمی ایجاد خواهید کرد. در این مسیر، با مفاهیم کلیدی و تکنیک‌های اساسی آشنا می‌شوید که برای استفاده از این SDK ضروری هستند.
+
+
 
 
 <Section id='prerequisites' title='پیش‌نیازها (Prerequisites)' />
@@ -67,7 +70,7 @@ import Head from "next/head";
 
 <Alert variant="warning">
 <p>
-هنگامی که از شما سوال شد، حتماً گزینه‌های <Important>TypeScript</Important> , <Important>App Router</Important> و <Important>Tailwind CSS</Important> را روی <Important>yes</Important> تنظیم کنید.
+هنگامی که از شما سوال شد، حتماً گزینه <Important>App Router</Important> را بر روی <Important>no</Important> و گزینه‌های <Important>TypeScript</Important> و <Important>Tailwind CSS</Important> را روی <Important>yes</Important> تنظیم کنید.
 </p>
 </Alert>
 <div className="h-2" />
@@ -131,6 +134,14 @@ LIARA_API_KEY=xxxxxxxxx`}
 
 <Section id='create-a-route-handler' title='ایجاد یک Route Handler' />
 
+<Alert variant="warning">
+<p>
+تا زمانی که از نسخه ۱۳ یا بالاتر NextJS استفاده می‌کنید، می‌توانید از Route Handlerها (با استفاده از App Router) در کنار Pages Router استفاده کنید. این روش توصیه می‌شود، زیرا به شما این امکان را می‌دهد که از رابط Web APIها استفاده کنید و همچنین پشتیبانی بهتری از قابلیت استریم فراهم می‌سازد.
+</p>
+</Alert>
+<div className="h-2" />
+
+
 در مسیر <Important>app/api/chat</Important>، یک فایل به نام <Important>route.ts</Important> ایجاد کنید؛ این فایل همان route handler خواهد بود. قطعه کد زیر را، درون آن، قرار دهید:
 
 <div className="h-2" />
@@ -144,7 +155,6 @@ const my_model = createOpenAI({
   apiKey: process.env.LIARA_API_KEY,
 });
 
-// Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
@@ -196,16 +206,14 @@ Route Handler فوق یک endpoint از نوع POST در مسیر <Important>api
 <Section id='wire-up-the-ui' title="اتصال رابط کاربری" />
 
 حالا که یک Route Handler دارید که می‌تواند با یک LLM ارتباط برقرار کند، زمان آن رسیده که رابط کاربری (frontend) خود را راه‌اندازی کنید. پکیج UI در AI SDK، پیچیدگی‌های مربوط به رابط چت را در یک هوک به نام <Important>useChat</Important> ساده کرده است.
-در فایل  <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید تا یک لیست از پیام‌های چت، نمایش داده شود و امکان ارسال پیام کاربر، فراهم گردد:
+در فایل  <Important>pages/index.tsx</Important>، قطعه کد زیر را قرار دهید تا یک لیست از پیام‌های چت، نمایش داده شود و امکان ارسال پیام کاربر، فراهم گردد:
 
 <div className="h-2" />
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
-
-import { useChat } from '@ai-sdk/react';
+        {`import { useChat } from '@ai-sdk/react';
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
@@ -237,12 +245,7 @@ export default function Chat() {
     </Highlight>
 </div>
 <div className="h-2" />   
-<Alert variant="warning">
-<p>
-حتماً دستور <Important>'use client'</Important> را به ابتدای فایل خود اضافه کنید. این کار به شما اجازه می‌دهد تا با استفاده از جاوااسکریپت، قابلیت‌های  interactive را به صفحه اضافه کنید.
-</p>
-</Alert>
-<div className="h-2" />   
+
 
 این صفحه از هوک <Important>useChat</Important> استفاده می‌کند که به‌صورت پیش‌فرض، از مسیر POST که قبل‌تر ایجاد کرده بودید (همان <Important>api/chat</Important>)، استفاده خواهد کرد.
 این هوک توابع لازم برای مدیریت ورودی کاربر و ارسال فرم را فراهم می‌کند. هوک <Important>useChat</Important> چندین تابع و متغیر ارائه می‌دهد:
@@ -306,7 +309,6 @@ const my_model = createOpenAI({
   apiKey: process.env.LIARA_API_KEY,
 });
 
-// Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
@@ -359,15 +361,13 @@ export async function POST(req: Request) {
 <h3>به‌روزرسانی رابط کاربری</h3>
 <div className="h-2" />  
 
-برای به‌روزرسانی رابط کاربری و نمایش <Important>tool invocation</Important>، باید فایل <Important>app/page.tsx</Important> را تغییر دهید تا پیام‌هایی که شامل Tool هستند نیز، به درستی نمایش داده شوند.
+برای به‌روزرسانی رابط کاربری و نمایش <Important>tool invocation</Important>، باید فایل <Important>pages/index.tsx</Important> را تغییر دهید تا پیام‌هایی که شامل Tool هستند نیز، به درستی نمایش داده شوند.
 در ادامه، نمونه کدی آورده شده که این قابلیت را اضافه می‌کند:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
-
-import { useChat } from '@ai-sdk/react';
+        {`import { useChat } from '@ai-sdk/react';
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
@@ -406,6 +406,7 @@ export default function Chat() {
 </div>
 <div className="h-2" />   
 
+
 با این تغییر، رابط کاربری به‌گونه‌ای به‌روزرسانی می‌شود که بتواند بخش‌های مختلف پیام را مدیریت کند. برای بخش‌های متنی، همانند گذشته، محتوای متن نمایش داده می‌شود. برای tool callها، یک JSON از tool calling و نتیجه آن نشان داده خواهد شد.
 اکنون، زمانی که درباره‌ی وضعیت هوا سوال می‌پرسید، tool calling و نتیجه‌ی آن در رابط چت شما، نمایش داده می‌شود:
 
@@ -427,14 +428,12 @@ export default function Chat() {
 <h3>به‌روزرسانی کد سمت کلاینت</h3>
 <div className="h-2" />   
 
-فایل <Important>app/page.tsx</Important> خود را ویرایش کرده تا گزینه‌ی <Important>maxSteps</Important> را به آن، اضافه کنید:
+فایل <Important>pages/index.tsx</Important> خود را ویرایش کرده تا گزینه‌ی <Important>maxSteps</Important> را به آن، اضافه کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
-
-import { useChat } from '@ai-sdk/react';
+        {`import { useChat } from '@ai-sdk/react';
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -544,7 +543,7 @@ export async function POST(req: Request) {
 <div className="h-2" />
 <Alert variant="success">
 <p>
-پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS-App-Router-ChatBot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
+پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS-Pages-Router-ChatBot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
 </p>
 </Alert>
 
