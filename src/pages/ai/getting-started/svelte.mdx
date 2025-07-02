@@ -27,17 +27,19 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات کار با AI SDK در NextJS App Router - لیارا</title>
+<title>مستندات کار با AI SDK در Svelte - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به استفاده از AI SDK در NextJS App Router محصول هوش مصنوعی لیارا"  />
+<meta property="og:description" content="مستندات مربوط به استفاده از AI SDK در Svelte محصول هوش مصنوعی لیارا"  />
 <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
 </Head>
 
 
-# کار با AI SDK در برنامه‌های NextJS App Router
+# کار با AI SDK در برنامه‌های Svelte
 <hr className="mb-2" />
 
-در این آموزش کوتاه، یک چت‌بات ساده‌ی هوش مصنوعی با رابط کاربری استریمی خواهید ساخت. در طول مسیر، با مفاهیم و تکنیک‌های کلیدی آشنا می‌شوید که برای استفاده از SDK در پروژه‌های شخصی‌تان ضروری هستند.
+AI SDK یک کتابخانه‌ی قدرتمند TypeScript است که برای کمک به توسعه‌دهندگان در ساخت برنامه‌های مبتنی بر هوش مصنوعی طراحی شده است.
+در این آموزش، یک چت‌بات ساده‌ی مبتنی بر هوش مصنوعی با رابط کاربری استریمی ایجاد خواهید کرد. در این مسیر، با مفاهیم کلیدی و تکنیک‌های اساسی آشنا می‌شوید که برای استفاده از این SDK ضروری هستند.
+
 
 
 <Section id='prerequisites' title='پیش‌نیازها (Prerequisites)' />
@@ -47,7 +49,7 @@ import Head from "next/head";
 
 <div className="h-2" />
 <ul>
-<li>نصب داشتن NodeJS نسخه ۱۸ یا بالاتر و <Important>npm</Important> و <Important>pnpm</Important> بر روی سیستم local</li>
+<li>نصب داشتن NodeJS نسخه ۱۸ یا بالاتر و <Important>pnpm</Important> بر روی سیستم local</li>
 <li>یک <Important>baseUrl</Important> از محصول <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">هوش مصنوعی لیارا</a> و کلید API کنسول</li>
 </ul>
 <div className="h-2" />
@@ -56,21 +58,24 @@ import Head from "next/head";
 
 <Section id='create-your-application' title='ساخت برنامه' />
 
-برای شروع، یک برنامه‌ی جدید <a href="/paas/nextjs/getting-started/" className="text-[#2196f3]">NextJS</a>، ایجاد کنید. دستور زیر یک دایرکتوری جدید به نام <Important>my-ai-app</Important> ایجاد می‌کند و درون آن، یک پروژه پایه NextJS می‌سازد:
+<Alert variant="info">
+<p>
+این راهنما قابل استفاده در نسخه ۴ و نسخه‌های پایین‌تر SvelteKit می‌باشد.
+</p>
+</Alert>
+
+برای شروع، یک برنامه‌ی جدید <a href="/paas/nodejs/related-apps/svelte/" className="text-[#2196f3]">Svelte</a>، ایجاد کنید. دستور زیر یک دایرکتوری جدید به نام <Important>my-ai-app</Important> ایجاد می‌کند و درون آن، یک پروژه پایه Svelte می‌سازد:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`npx create-next-app@latest my-ai-app`}
+        {`npx sv create my-ai-app`}
     </Highlight>
 </div>
 
-<Alert variant="warning">
-<p>
-هنگامی که از شما سوال شد، حتماً گزینه‌های <Important>TypeScript</Important> , <Important>App Router</Important> و <Important>Tailwind CSS</Important> را روی <Important>yes</Important> تنظیم کنید.
-</p>
-</Alert>
-<div className="h-2" />
+<div className="h-2" />   
+<img src="https://media.liara.ir/ai/ai-sdk/svelte/set-up-svelte.png" alt="set up svelte"/>
+<div className="h-4" />
 
 وارد دایرکتوری پروژه شوید:
 
@@ -87,7 +92,7 @@ import Head from "next/head";
 <div className="h-2" />
 <ul>
 <li><Important>ai</Important>: پکیج اصلی AI SDK</li>
-<li><Important>ai-sdk/react@</Important>: هوک‌های React</li>
+<li><Important>ai-sdk/svelte@</Important>: توابع مربوط به Svelte برای کار با SDK</li>
 <li><Important>ai-sdk/openai@</Important>: ارائه‌دهنده‌ی OpenAI برای SDK (سازگار با تمامی مدل‌های ارائه‌شده توسط لیارا)</li>
 <li><Important>zod</Important>: برای بهبود ساختار خروجی</li>
 </ul>
@@ -95,7 +100,7 @@ import Head from "next/head";
 <div className="h-4" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`npm install ai @ai-sdk/react @ai-sdk/openai zod`}
+        {`pnpm add -D ai @ai-sdk/openai @ai-sdk/svelte zod`}
     </Highlight>
 </div>
 <Alert variant="warning">
@@ -127,28 +132,36 @@ LIARA_API_KEY=xxxxxxxxx`}
 <div className="h-2" />
 
 در قطعه کد فوق، به‌جای <Important>xxxxxxxxx</Important>، مقادیر واقعی خود را، قرار دهید. 
+
+<div className="h-2" />
+<Alert variant="warning">
+<p>
+Vite به‌صورت خودکار، متغیرهای محیطی را با <Important>process.env</Important> بارگذاری نمی‌کند، بنابراین لازم است که متغیرها را از مسیر <Important>env/static/private$</Important> در کد خود، وارد کنید.
+</p>
+</Alert>
+
+
 <hr className="mb-2" />
 
-<Section id='create-a-route-handler' title='ایجاد یک Route Handler' />
+<Section id='create-an-api-route' title='ایجاد یک API Route' />
 
-در مسیر <Important>app/api/chat</Important>، یک فایل به نام <Important>route.ts</Important> ایجاد کنید؛ این فایل همان route handler خواهد بود. قطعه کد زیر را، درون آن، قرار دهید:
+در مسیر <Important>src/routes/api/chat/+server.ts</Important>، یک اندپوینت SvelteKit بسازید و قطعه کد زیر را درون آن، قرار دهید:
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="ts">
+    <Highlight className="ts" >
         {`import { createOpenAI } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 
+import { LIARA_API_KEY , BASE_URL } from '$env/static/private';
+
 const my_model = createOpenAI({
-  baseURL: process.env.BASE_URL,
-  apiKey: process.env.LIARA_API_KEY,
+    baseURL: BASE_URL,
+    apiKey: LIARA_API_KEY,
 });
 
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
-
-export async function POST(req: Request) {
-  const { messages } = await req.json();
+export async function POST({ request }) {
+  const { messages } = await request.json();
 
   const result = streamText({
     model: my_model('openai/gpt-4o-mini'),
@@ -160,6 +173,14 @@ export async function POST(req: Request) {
     </Highlight>
 </div>
 <div className="h-2" />
+
+<Alert variant="warning">
+<p>
+اگر خطای <Important>Module '"$env/static/private"' has no exported member</Important> را مشاهده کردید؛ تنها کافیست تا دستور <Important>pnpm run check</Important> را، اجرا کنید.
+</p>
+</Alert>
+
+
 
 در قطعه کد فوق: 
 
@@ -185,73 +206,59 @@ export async function POST(req: Request) {
 ۳. در ادامه، تابع <Important>streamText</Important> یک object از نوع <Important>StreamTextResult</Important> برمی‌گرداند. این object دارای متدی به نام <Important>toDataStreamResponse</Important> است که نتیجه را به یک پاسخ استریمی برای کلاینت، تبدیل می‌کند.
 
 <div className="h-2" /> 
-۴. در انتها، نتیجه به‌صورت یک پاسخ HTTP استریمی، به کلاینت بازگردانده می‌شود.
-
-<div className="h-4" /> 
-Route Handler فوق یک endpoint از نوع POST در مسیر <Important>api/chat/</Important> ایجاد می‌کند. این endpoint می‌تواند توسط رابط کاربری برای ارسال پیام و دریافت پاسخ استریمی از مدل، استفاده شود.
+۴. در انتها، نتیجه به‌صورت یک پاسخ استریمی، به کلاینت بازگردانده می‌شود.
 
 <div className="h-2" />
 <hr className="mb-2" />
 
 <Section id='wire-up-the-ui' title="اتصال رابط کاربری" />
 
-حالا که یک Route Handler دارید که می‌تواند با یک LLM ارتباط برقرار کند، زمان آن رسیده که رابط کاربری (frontend) خود را راه‌اندازی کنید. پکیج UI در AI SDK، پیچیدگی‌های مربوط به رابط چت را در یک هوک به نام <Important>useChat</Important> ساده کرده است.
-در فایل  <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید تا یک لیست از پیام‌های چت، نمایش داده شود و امکان ارسال پیام کاربر، فراهم گردد:
+حالا که یک API route دارید که می‌تواند با یک LLM ارتباط برقرار کند، زمان آن رسیده که رابط کاربری (frontend) خود را راه‌اندازی کنید. پکیج UI در AI SDK، پیچیدگی‌های مربوط به رابط چت را در یک کلاس به نام <Important>Chat</Important> ساده کرده است.
+در فایل  <Important>src/routes/+page.svelte</Important>، قطعه کد زیر را قرار دهید تا یک لیست از پیام‌های چت، نمایش داده شود و امکان ارسال پیام کاربر، فراهم گردد:
 
 <div className="h-2" />
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
+        {`<script>
+  import { Chat } from '@ai-sdk/svelte';
 
-import { useChat } from '@ai-sdk/react';
+  const chat = new Chat();
+</script>
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
-  return (
-    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      {messages.map(message => (
-        <div key={message.id} className="whitespace-pre-wrap">
-          {message.role === 'user' ? 'User: ' : 'AI: '}
-          {message.parts.map((part, i) => {
-            switch (part.type) {
-              case 'text':
-                return <div key={\`\${message.id}-\${i}\`}>{part.text}</div>;
-            }
-          })}
+<main>
+  <ul>
+    {#each chat.messages as message, messageIndex (messageIndex)}
+      <li>
+        <div>{message.role}</div>
+        <div>
+          {#each message.parts as part, partIndex (partIndex)}
+            {#if part.type === 'text'}
+              <div>{part.text}</div>
+            {/if}
+          {/each}
         </div>
-      ))}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          className="fixed dark:bg-zinc-900 bottom-0 w-full max-w-md p-2 mb-8 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl"
-          value={input}
-          placeholder="Say something..."
-          onChange={handleInputChange}
-        />
-      </form>
-    </div>
-  );
-}`}
+      </li>
+    {/each}
+  </ul>
+  <form onsubmit={chat.handleSubmit}>
+    <input bind:value={chat.input} />
+    <button type="submit">Send</button>
+  </form>
+</main>`}
     </Highlight>
 </div>
 <div className="h-2" />   
-<Alert variant="warning">
-<p>
-حتماً دستور <Important>'use client'</Important> را به ابتدای فایل خود اضافه کنید. این کار به شما اجازه می‌دهد تا با استفاده از جاوااسکریپت، قابلیت‌های  interactive را به صفحه اضافه کنید.
-</p>
-</Alert>
-<div className="h-2" />   
-
-این صفحه از هوک <Important>useChat</Important> استفاده می‌کند که به‌صورت پیش‌فرض، از مسیر POST که قبل‌تر ایجاد کرده بودید (همان <Important>api/chat</Important>)، استفاده خواهد کرد.
-این هوک توابع لازم برای مدیریت ورودی کاربر و ارسال فرم را فراهم می‌کند. هوک <Important>useChat</Important> چندین تابع و متغیر ارائه می‌دهد:
+ 
+این صفحه از کلاس <Important>Chat</Important> استفاده می‌کند که به‌صورت پیش‌فرض، از مسیر POST که قبل‌تر ایجاد کرده بودید، استفاده خواهد کرد.
+. کلاس <Important>Chat</Important> چندین تابع و متغیر ارائه می‌دهد:
 
 <div className="h-4" />   
 <ul>
 <li><Important>messages</Important>: پیام‌های فعلی چت (آرایه‌ای از آبجکت‌ها با ویژگی‌های <Important>id</Important> , <Important>role</Important> و <Important>parts</Important>).</li>
 <li><Important>input</Important>: مقدار فعلی فیلد ورودی کاربر.</li>
-<li><Important>handleInputChange</Important> و <Important>handleSubmit</Important>: توابعی برای مدیریت تعاملات کاربر (تایپ در فیلد ورودی و ارسال فرم).</li>    
+<li><Important>handleSubmit</Important>: تابعی برای مدیریت تعاملات کاربر (تایپ در فیلد ورودی و ارسال فرم).</li>    
 </ul>
 <div className="h-4" />   
 
@@ -271,9 +278,9 @@ export default function Chat() {
     </Highlight>
 </div>
 <div className="h-2" />   
-سپس مرورگر خود را باز کرده و به آدرس <Important>http://localhost:3000</Important> بروید. باید یک فیلد ورودی مشاهده کنید. یک پیام وارد کنید تا آن را امتحان کنید و ببینید چت‌بات هوش مصنوعی چگونه به‌صورت بلادرنگ پاسخ می‌دهد:
+سپس مرورگر خود را باز کرده و به آدرس <Important>http://localhost:5173</Important> بروید. باید یک فیلد ورودی مشاهده کنید. یک پیام وارد کنید تا آن را امتحان کنید و ببینید چت‌بات هوش مصنوعی چگونه به‌صورت بلادرنگ پاسخ می‌دهد:
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/wotking-with-chatbot.png" alt="work with chatbot in nextjs"/>
+<img src="https://media.liara.ir/ai/ai-sdk/svelte/working-with-chatbot.png" alt="work with chatbot in svelte"/>
 <div className="h-4" />
 
 <hr className="mb-2" />
@@ -290,9 +297,9 @@ Toolها، Actionهایی هستند که یک LLM می‌تواند آن‌ها
 در ادامه، خواهید آموخت که چگونه می‌توانید با اضافه کردن یک Tool ساده مربوط به وضعیت آب‌وهوا، چت‌بات خود را بهبود دهید. 
 
 <div className="h-5" />   
-<h3>به‌روزرسانی Route Handler</h3>
+<h3>به‌روزرسانی API Route</h3>
 <div className="h-2" />   
-مانند قطعه کد زیر، به فایل <Important>app/api/chat/route.ts</Important> خود، Tool مربوط به وضعیت آب‌وهوا را اضافه کنید:
+مانند قطعه کد زیر، به فایل <Important>src/routes/api/chat/+server.ts</Important> خود، Tool مربوط به وضعیت آب‌وهوا را اضافه کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -301,16 +308,15 @@ Toolها، Actionهایی هستند که یک LLM می‌تواند آن‌ها
 import { streamText, tool } from 'ai';
 import { z } from 'zod';
 
+import { LIARA_API_KEY , BASE_URL } from '$env/static/private';
+
 const my_model = createOpenAI({
-  baseURL: process.env.BASE_URL,
-  apiKey: process.env.LIARA_API_KEY,
+    baseURL: BASE_URL,
+    apiKey: LIARA_API_KEY,
 });
 
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
-
-export async function POST(req: Request) {
-  const { messages } = await req.json();
+export async function POST({ request }) {
+  const { messages } = await request.json();
 
   const result = streamText({
     model: my_model('openai/gpt-4o-mini'),
@@ -359,49 +365,40 @@ export async function POST(req: Request) {
 <h3>به‌روزرسانی رابط کاربری</h3>
 <div className="h-2" />  
 
-برای به‌روزرسانی رابط کاربری و نمایش <Important>tool invocation</Important>، باید فایل <Important>app/page.tsx</Important> را تغییر دهید تا پیام‌هایی که شامل Tool هستند نیز، به درستی نمایش داده شوند.
+برای به‌روزرسانی رابط کاربری و نمایش <Important>tool invocation</Important>، باید فایل <Important>src/routes/+page.svelte</Important> را تغییر دهید تا پیام‌هایی که شامل Tool هستند نیز، به درستی نمایش داده شوند.
 در ادامه، نمونه کدی آورده شده که این قابلیت را اضافه می‌کند:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
+        {`<script>
+  import { Chat } from '@ai-sdk/svelte';
 
-import { useChat } from '@ai-sdk/react';
+  const chat = new Chat();
+</script>
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
-  return (
-    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      {messages.map(message => (
-        <div key={message.id} className="whitespace-pre-wrap">
-          {message.role === 'user' ? 'User: ' : 'AI: '}
-          {message.parts.map((part, i) => {
-            switch (part.type) {
-              case 'text':
-                return <div key={\`\${message.id}-\${i}\`}>{part.text}</div>;
-              case 'tool-invocation':
-                return (
-                  <pre key={\`\${message.id}-\${i}\`}>
-                    {JSON.stringify(part.toolInvocation, null, 2)}
-                  </pre>
-                );
-            }
-          })}
+<main>
+  <ul>
+    {#each chat.messages as message, messageIndex (messageIndex)}
+      <li>
+        <div>{message.role}</div>
+        <div>
+          {#each message.parts as part, partIndex (partIndex)}
+            {#if part.type === 'text'}
+              <div>{part.text}</div>
+            {:else if part.type === 'tool-invocation'}
+              <pre>{JSON.stringify(part.toolInvocation, null, 2)}</pre>
+            {/if}
+          {/each}
         </div>
-      ))}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          className="fixed dark:bg-zinc-900 bottom-0 w-full max-w-md p-2 mb-8 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl"
-          value={input}
-          placeholder="Say something..."
-          onChange={handleInputChange}
-        />
-      </form>
-    </div>
-  );
-}`}
+      </li>
+    {/each}
+  </ul>
+  <form onsubmit={chat.handleSubmit}>
+    <input bind:value={chat.input} />
+    <button type="submit">Send</button>
+  </form>
+</main>`}
     </Highlight>
 </div>
 <div className="h-2" />   
@@ -410,7 +407,7 @@ export default function Chat() {
 اکنون، زمانی که درباره‌ی وضعیت هوا سوال می‌پرسید، tool calling و نتیجه‌ی آن در رابط چت شما، نمایش داده می‌شود:
 
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/chatbot-using-tools.png" alt="work with chatbot in nextjs with tools"/>
+<img src="https://media.liara.ir/ai/ai-sdk/svelte/working-with-tools-and-chatbot.png" alt="work with chatbot in svelte with tools"/>
 <div className="h-4" />
 <hr className="mb-2" />
 
@@ -420,29 +417,25 @@ export default function Chat() {
 ممکن است متوجه شده باشید که با وجود نمایش نتایج Toolها در رابط چت، مدل از این اطلاعات برای پاسخ به پرسش اصلی شما، استفاده نمی‌کند. دلیل آن این است که به‌محض اینکه مدل یک tool call تولید می‌کند، از نظر فنی، فرآیند تولید متن را کامل کرده است.
 <div className="h-2" />
 
-برای حل این مسئله، می‌توانید با استفاده از گزینه‌ی <Important>maxSteps</Important> در هوک <Important>useChat</Important>، فراخوانی چندمرحله‌ای Toolها را فعال کنید. این قابلیت، به‌طور خودکار، نتایج Tool را دوباره به مدل ارسال می‌کند تا یک مرحله‌ی تولید اضافی را آغاز کند. در این حالت، شما می‌خواهید مدل با استفاده از نتیجه‌ی Tool هواشناسی، به سوال شما پاسخ دهد.
+برای حل این مسئله، می‌توانید با استفاده از گزینه‌ی <Important>maxSteps</Important> در کلاس <Important>Chat</Important>، فراخوانی چندمرحله‌ای Toolها را فعال کنید. این قابلیت، به‌طور خودکار، نتایج Tool را دوباره به مدل ارسال می‌کند تا یک مرحله‌ی تولید اضافی را آغاز کند. در این حالت، شما می‌خواهید مدل با استفاده از نتیجه‌ی Tool هواشناسی، به سوال شما پاسخ دهد.
 
 
 <div className="h-4" />   
 <h3>به‌روزرسانی کد سمت کلاینت</h3>
 <div className="h-2" />   
 
-فایل <Important>app/page.tsx</Important> خود را ویرایش کرده تا گزینه‌ی <Important>maxSteps</Important> را به آن، اضافه کنید:
+فایل <Important>src/routes/+page.svelte</Important> خود را ویرایش کرده تا گزینه‌ی <Important>maxSteps</Important> را به آن، اضافه کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`'use client';
+        {`<script>
+  import { Chat } from '@ai-sdk/svelte';
 
-import { useChat } from '@ai-sdk/react';
+  const chat = new Chat({ maxSteps: 5 });
+</script>
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    maxSteps: 5,
-  });
-
-  // ... rest of your component code
-}`}
+<!-- ... rest of your component code -->`}
     </Highlight>
 </div>
 <div className="h-2" />   
@@ -450,16 +443,16 @@ export default function Chat() {
 به مرورگر بازگردید و درباره‌ی وضعیت هوای یک مکان سوال بپرسید. حالا باید ببینید که مدل از نتایج Tool هواشناسی برای پاسخ به سوال شما استفاده می‌کند:
 
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/chatbot-with-maxsteps.png" alt="work with chatbot in nextjs with tools and maxsteps"/>
+<img src="https://media.liara.ir/ai/ai-sdk/svelte/chatbot-using-tools-and-maxsteps.png" alt="work with chatbot in svelte with tools and maxsteps"/>
 <div className="h-4" />
 
 با تنظیم مقدار <Important>maxSteps</Important> روی ۵، این امکان را فراهم می‌کنید که مدل حداکثر تا ۵ مرحله، پاسخ جدیدی را تولید کند. این قابلیت، تعاملات پیچیده‌تر را ممکن می‌سازد و به مدل اجازه می‌دهد اطلاعات را طی چند مرحله جمع‌آوری و پردازش کند (در صورت نیاز). می‌توانید این قابلیت را در عمل مشاهده کنید؛ کافیست Tool دیگری اضافه کنید که دما را از فارنهایت به سلسیوس تبدیل کند.
 
 <div className="h-4" />   
-<h3>به‌روزرسانی Route Handler</h3>
+<h3>به‌روزرسانی API Route</h3>
 <div className="h-2" /> 
 
-Tool جدید برای تبدیل دما از فارنهایت به سلسیوس را به فایل <Important>app/api/chat/route.ts</Important> خود، مانند شکل زیر، اضافه کنید:
+Tool جدید برای تبدیل دما از فارنهایت به سلسیوس را به فایل <Important>src/routes/api/chat/+server.ts</Important> خود، مانند شکل زیر، اضافه کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -468,16 +461,15 @@ Tool جدید برای تبدیل دما از فارنهایت به سلسیوس
 import { streamText, tool } from 'ai';
 import { z } from 'zod';
 
+import { LIARA_API_KEY , BASE_URL } from '$env/static/private';
+
 const my_model = createOpenAI({
-  baseURL: process.env.BASE_URL,
-  apiKey: process.env.LIARA_API_KEY,
+    baseURL: BASE_URL,
+    apiKey: LIARA_API_KEY,
 });
 
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
-
-export async function POST(req: Request) {
-  const { messages } = await req.json();
+export async function POST({ request }) {
+  const { messages } = await request.json();
 
   const result = streamText({
     model: my_model('openai/gpt-4o-mini'),
@@ -512,7 +504,7 @@ export async function POST(req: Request) {
       }),
     },
   });
-  
+
   return result.toDataStreamResponse();
 }`}
     </Highlight>
@@ -523,7 +515,7 @@ export async function POST(req: Request) {
 
 
 <div className="h-2" />   
-<img src="https://media.liara.ir/ai/ai-sdk/nextjs/chatbot-with-two-tools.png" alt="work with chatbot in nextjs with two tools and maxsteps on 5"/>
+<img src="https://media.liara.ir/ai/ai-sdk/svelte/chatbot-using-two-tools-and-maxsteps.png" alt="work with chatbot in svelte with two tools and maxsteps on 5"/>
 <div className="h-4" />
 
 در برنامه فوق: 
@@ -544,9 +536,105 @@ export async function POST(req: Request) {
 <div className="h-2" />
 <Alert variant="success">
 <p>
-پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS-App-Router-ChatBot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
+پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/Svelte-ChatBot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
 </p>
 </Alert>
 
+<hr className="mb-2" />
+
+<Section id='how-does-ai-sdksvelte-differ-from-ai-sdkreact' title='تفاوت ai-sdk/svelte@ با ai-sdk/react@ چیست؟' />
+
+تفاوت در سطح ظاهری این است که Svelte از کلاس‌ها برای مدیریت state استفاده می‌کند، در حالی که React از هوک‌ها استفاده می‌کند. بنابراین، <Important>useChat</Important> در React معادل <Important>Chat</Important> در Svelte است. به‌جز این مورد، چند نکته دیگر وجود دارد که باید در نظر داشته باشید:
+
+<div className="h-5" />
+<h3>۱. آرگومان‌های کلاس‌ها به‌صورت پیش‌فرض، reactive نیستند</h3>
+<div className="h-2" />
+
+بر خلاف React که در آن، هوک‌ها هر بار که کامپوننت دوباره اجرا شود، بازخوانی می‌شوند، در Svelte کدی که در بلوک <Important>&lt;script&gt;</Important> نوشته شده، فقط یک‌بار هنگام ساخته‌شدن کامپوننت، اجرا می‌شود. این یعنی که اگر می‌خواهید آرگومان‌هایی که به کلاس داده می‌شوند، reactive باشند، باید به جای <Important>value</Important>، یک <Important>reference</Important> را به کلاس بدهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`<script>
+  import { Chat } from '@ai-sdk/svelte';
+
+  let { id } = $props();
+
+  // won't work; the class instance will be created once, \`id\` will be copied by value, and won't update when $props.id changes
+  let chat = new Chat({ id });
+
+  // will work; passes \`id\` by reference, so \`Chat\` always has the latest value
+  let chat = new Chat({
+    get id() {
+      return id;
+    },
+  });
+</script>`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+به خاطر داشته باشید که این موضوع معمولاً اهمیت زیادی ندارد؛ بیشتر پارامترهایی که به کلاس Chat می‌دهید، ایستا (static) هستند (برای مثال، معمولاً انتظار نمی‌رود که <Important>onError Handler</Important> در طول زمان تغییر کند).
+
+<div className="h-5" />
+<h3>۲. نمی‌توانید propertyهای کلاس را Destructure کنید</h3>
+<div className="h-2" />
+
+در Vanilla JavaScript، زمانی که propertyهای یک کلاس را destructure می‌کنید، این propertyها به‌صورت value کپی می‌شوند و اتصالشان با instance کلاس، قطع می‌شود:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const classInstance = new Whatever();
+classInstance.foo = 'bar';
+const { foo } = classInstance;
+classInstance.foo = 'baz';
+
+console.log(foo); // 'bar'`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+همین مسئله در مورد کلاس‌ها در Svelte نیز صادق است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`<script>
+  import { Chat } from '@ai-sdk/svelte';
+
+  const chat = new Chat();
+  let { messages } = chat;
+
+  chat.append({ content: 'Hello, world!', role: 'user' }).then(() => {
+    console.log(messages); // []
+    console.log(chat.messages); // [{ content: 'Hello, world!', role: 'user' }] (plus some other stuff)
+  });
+</script>`}
+    </Highlight>
+</div>
+
+<div className="h-5" />
+<h3>۳. همگام‌سازی instance نیازمند context است</h3>
+<div className="h-2" />
+در React، نمونه‌های (instanceها) هوک با یک id یکسان، همگام‌سازی می‌شوند؛ بنابراین اگر دو instance از <Important>useChat</Important> آیدی مشابه داشته باشند، مقدار <Important>messages</Important> , <Important>status</Important> و ... آن‌ها یکسان خواهد بود. در اکثر موارد استفاده، احتمالاً به این رفتار نیازی ندارید. اما اگر لازم باشد، می‌توانید در فایل <Important>layout</Important> خود با استفاده از <Important>createAIContext</Important>، یک context ایجاد کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`<script>
+  import { createAIContext } from '@ai-sdk/svelte';
+
+  let { children } = $props();
+
+  createAIContext();
+  // all hooks created after this or in components that are children of this component
+  // will have synchronized state
+</script>
+
+{@render children()}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
 
 </Layout>

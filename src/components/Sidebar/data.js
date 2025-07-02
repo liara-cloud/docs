@@ -338,6 +338,21 @@ export default {
         icon: <IconContainer alt="next" />,
         link: "/ai/getting-started/nextjs-app-router"
       },
+      {
+        title: "NextJS Page Router",
+        icon: <IconContainer alt="next" />,
+        link: "/ai/getting-started/nextjs-page-router"
+      },
+      {
+        title: "Svelte",
+        icon: <IconContainer alt="svelte" />,
+        link: "/ai/getting-started/svelte"
+      },
+      {
+        title: "VueJS (Nuxt)",
+        icon: <IconContainer alt="nuxt" />,
+        link: "/ai/getting-started/nuxt"
+      },
 
 
 
