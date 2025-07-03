@@ -1513,7 +1513,7 @@ export default {
         link: "/paas/domains/use-cdn"
       },
       {
-        title: "اضافه کردن دامنه Wild Card",
+        title: "اضافه کردن دامنه WildCard",
         link: "/paas/domains/add-wildcard-domain"
       },
     ],

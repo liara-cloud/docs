@@ -38,7 +38,7 @@ import Head from "next/head";
 شما می‌توانید دامنه خریداری شده خود را بدون انجام کار اضافی و با چند کلیک، به برنامه خود در لیارا، متصل کنید و آن را به سادگی هرچه تمام، در لیارا، مدیریت کنید. در ادامه بخوانید:
 
 <div className="h-4" />
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-2 gap-4">
             {[
       {
         title: "اضافه کردن دامنه به برنامه",
@@ -75,6 +75,10 @@ import Head from "next/head";
       {
         title: "استفاده از CDN",
         link: "./use-cdn"
+      },
+      {
+        title: "اضافه کردن دامنه WildCard",
+        link: "/paas/domains/add-wildcard-domain"
       },
   ].map(item =>
               <Link href={item.link}>
