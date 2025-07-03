@@ -1512,6 +1512,10 @@ export default {
         title: "استفاده از CDN",
         link: "/paas/domains/use-cdn"
       },
+      {
+        title: "اضافه کردن دامنه Wild Card",
+        link: "/paas/domains/add-wildcard-domain"
+      },
     ],
     cicd: [
       {

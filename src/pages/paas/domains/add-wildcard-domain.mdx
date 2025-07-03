@@ -1,0 +1,59 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اضافه کردن دامنه WildCard - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اضافه کردن دامنه WildCard به برنامه در لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+# اضافه کردن دامنه WildCard
+<hr className="mb-2" />
+
+دامنه WildCard نوعی از دامنه است که در آن، علامت ستاره (*)، به‌عنوان جایگزین برای یک یا چند زیردامنه به‌کار می‌رود و بدین‌گونه، امکان پاسخ‌دهی یکنواخت به درخواست‌های متعدد و متغیر، فراهم می‌شود. این ساختار به سرور اجازه می‌دهد تا تمامی زیردامنه‌های تعریف‌نشده نیز، تحت پوشش قرار داده شوند.
+
+<div className="h-4" />
+<Alert variant="success">
+<p>
+بیشتر بخوانید: <Link href="/dns-management-system/details/wildcard-dns-records/" className="text-[#2196f3]">رکوردهای WildCard DNS</Link>
+</p>
+</Alert>
+<div className="h-4" />
+
+برای اضافه کردن دامنه (زیردامنه) WildCard به برنامه خود، کافیست مانند قبل عمل کنید 
+و در هنگام وارد کردن نام دامنه، به‌جای وارد کردن یک زیردامنه خاص، از علامت ستاره (*) استفاده کنید. 
+<div className="h-4" />
+
+به عنوان مثال، فرض کنید که می‌خواهید تمام درخواست‌هایی که منتهی به دامنه <Important>looms.ir</Important> می‌شود را، به برنامه خود هدایت کنید. در این‌صورت کافیست تا زیر دامنه WildCard را به‌صورت <Important>looms.ir.*</Important> به برنامه خود، اضافه کنید:
+<div className="h-4" />
+
+<video
+  src="https://media.liara.ir/domain/add-wildcard-subdomain-to-app.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" />
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+در نظر داشته باشید که برای استفاده از این قابلیت در پلتفرم، باید بسته امکانات طلایی را تهیه کنید.
+</p>
+</Alert>
+
+
+</Layout>
