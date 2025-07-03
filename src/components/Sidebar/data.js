@@ -353,6 +353,11 @@ export default {
         icon: <IconContainer alt="nuxt" />,
         link: "/ai/getting-started/nuxt"
       },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/ai/getting-started/nodejs"
+      },
 
 
 
