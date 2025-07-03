@@ -358,6 +358,11 @@ export default {
         icon: <IconContainer alt="nodejs" />,
         link: "/ai/getting-started/nodejs"
       },
+      {
+        title: "Expo",
+        icon: <IconContainer alt="https://media.liara.ir/ai/ai-sdk/expo/expo-logo.png" />,
+        link: "/ai/getting-started/expo"
+      },
 
 
 

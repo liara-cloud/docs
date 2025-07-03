@@ -1,0 +1,724 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کار با AI SDK در Expo - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به استفاده از AI SDK در Expo محصول هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# کار با AI SDK در برنامه‌های Expo
+<hr className="mb-2" />
+
+AI SDK یک کتابخانه‌ی قدرتمند TypeScript است که برای کمک به توسعه‌دهندگان در ساخت برنامه‌های مبتنی بر هوش مصنوعی طراحی شده است.
+در این آموزش، یک چت‌بات ساده‌ی مبتنی بر هوش مصنوعی با رابط کاربری استریمی ایجاد خواهید کرد. در این مسیر، با مفاهیم کلیدی و تکنیک‌های اساسی آشنا می‌شوید که برای استفاده از این SDK ضروری هستند.
+
+
+
+<Section id='prerequisites' title='پیش‌نیازها (Prerequisites)' />
+
+برای دنبال‌کردن این آموزش، به موارد زیر نیاز دارید:
+
+
+<div className="h-2" />
+<ul>
+<li>نصب داشتن NodeJS نسخه ۱۸ یا بالاتر و <Important>pnpm</Important> بر روی سیستم local</li>
+<li>یک <Important>baseUrl</Important> از محصول <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">هوش مصنوعی لیارا</a> و کلید API کنسول</li>
+</ul>
+<div className="h-2" />
+<hr className="mb-2" />
+
+
+<Section id='create-your-application' title='ساخت برنامه' />
+
+<Alert variant="info">
+<p>
+این راهنما قابل استفاده در نسخه ۵۲ و نسخه‌های بالاتر Expo می‌باشد.
+</p>
+</Alert>
+
+برای شروع، یک برنامه‌ی جدید Expo، ایجاد کنید. دستور زیر یک دایرکتوری جدید به نام <Important>my-ai-app</Important> ایجاد می‌کند و درون آن، یک پروژه پایه Expo می‌سازد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pnpm create expo-app@latest my-ai-app`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+وارد دایرکتوری پروژه شوید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`cd my-ai-app`}
+    </Highlight>
+</div>
+
+<Section id='install-dependencies' title='نصب وابستگی‌ها' />
+با اجرای دستور قرار گرفته در ادامه، پکیج‌های زیر را نصب کنید:
+
+<div className="h-2" />
+<ul>
+<li><Important>ai</Important>: پکیج اصلی AI SDK</li>
+<li><Important>ai-sdk/react@</Important>: توابع مربوط به React برای کار با SDK</li>
+<li><Important>ai-sdk/openai@</Important>: ارائه‌دهنده‌ی OpenAI برای SDK (سازگار با تمامی مدل‌های ارائه‌شده توسط لیارا)</li>
+<li><Important>zod</Important>: برای بهبود ساختار خروجی</li>
+</ul>
+
+<div className="h-4" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pnpm add ai @ai-sdk/openai @ai-sdk/react zod`}
+    </Highlight>
+</div>
+<Alert variant="warning">
+<p>
+اطمینان حاصل کنید که نسخه‌ی <Important>ai</Important> حداقل ۳.۱ یا بالاتر باشد.
+</p>
+</Alert>
+
+<Section id='configure-keys' title='تنظیم اطلاعات AI' />
+با اجرای دستور زیر (در لینوکس)، یک فایل <Important>env.local.</Important> در مسیر اصلی پروژه ایجاد کنید تا درون آن <Important>baseUrl</Important> هوش مصنوعی و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> را، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`touch .env.local`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+درون فایل ایجاد شده، قطعه کد زیر را، قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`BASE_URL=xxxxxxxxx
+LIARA_API_KEY=xxxxxxxxx`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، به‌جای <Important>xxxxxxxxx</Important>، مقادیر واقعی خود را، قرار دهید. 
+
+<hr className="mb-2" />
+
+<Section id='create-an-api-route' title='ایجاد یک API Route' />
+
+در مسیر <Important>app/api/chat+api.ts</Important>، یک route handler بسازید و قطعه کد زیر را درون آن، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts" >
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    messages,
+  });
+
+  return result.toDataStreamResponse({
+    headers: {
+      'Content-Type': 'application/octet-stream',
+      'Content-Encoding': 'none',
+    },
+  });
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق: 
+
+<div className="h-2" />
+
+۱. یک تابع برای مدیریت درخواست‌های POST تعریف شده که به‌صورت asynchronous اجرا می‌شود. این تابع ابتدا پیام‌ها (messages) را از بدنه‌ی درخواست استخراج می‌کند.
+مقدار <Important>messages</Important> شامل تاریخچه‌ی مکالمه بین کاربر و چت‌بات است و زمینه (context) مورد نیاز برای تولید پاسخ بعدی را در اختیار مدل قرار می‌دهد.
+<div className="h-2" />
+
+۲. سپس، تابع <Important>streamText</Important> فراخوانی می‌شود. این تابع از پکیج <Important>ai</Important> می‌باشد و یک پیکربندی دریافت می‌کند که شامل <Important>model</Important>
+و <Important>messages</Important> است. 
+شما می‌توانید تنظیمات اضافی دیگری را نیز، برای سفارشی‌سازی رفتار مدل به <Important>streamText</Important> اضافه کنید.
+
+<div className="h-2" /> 
+<Alert variant="info">
+<p>
+در نظر داشته باشید که برای اتصال به مدل‌های هوش مصنوعی لیارا، باید از <Important>createOpenAI</Important> استفاده کنید و در آن، <Important>baseURL</Important> و <Important>apiKey</Important> را تنظیم کنید.
+</p>
+</Alert>
+<div className="h-2" /> 
+
+۳. در ادامه، تابع <Important>streamText</Important> یک object از نوع <Important>StreamTextResult</Important> برمی‌گرداند. این object دارای متدی به نام <Important>toDataStreamResponse</Important> است که نتیجه را به یک پاسخ استریمی برای کلاینت، تبدیل می‌کند.
+
+<div className="h-2" /> 
+۴. در انتها، نتیجه به‌صورت یک پاسخ استریمی، به کلاینت بازگردانده می‌شود.
+
+<div className="h-2" />
+<hr className="mb-2" />
+
+<Section id='wire-up-the-ui' title="اتصال رابط کاربری" />
+
+اکنون که یک API دارید که می‌تواند به یک LLM درخواست بزند، وقت آن است که رابط کاربری (frontend) خود را پیاده‌سازی کنید.
+پکیج رابط کاربری (UI) در AI SDK پیچیدگی‌های یک رابط چت را در یک هوک به نام <Important>useChat</Important> ساده کرده است.
+
+<div className="h-2" />
+
+صفحه‌ی اصلی برنامه خود را (در مسیر <Important>app/(tabs)/index.tsx</Important>) با کد زیر به‌روزرسانی کنید تا فهرستی از پیام‌های چت نمایش داده شود و امکان وارد کردن پیام توسط کاربر وجود داشته باشد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateAPIUrl } from '@/utils';
+import { useChat } from '@ai-sdk/react';
+import { fetch as expoFetch } from 'expo/fetch';
+import { View, TextInput, ScrollView, Text, SafeAreaView } from 'react-native';
+
+export default function App() {
+  const { messages, error, handleInputChange, input, handleSubmit } = useChat({
+    fetch: expoFetch as unknown as typeof globalThis.fetch,
+    api: generateAPIUrl('/api/chat'),
+    onError: error => console.error(error, 'ERROR'),
+  });
+
+  if (error) return <Text>{error.message}</Text>;
+
+  return (
+    <SafeAreaView style={{ height: '100%' }}>
+      <View
+        style={{
+          height: '95%',
+          display: 'flex',
+          flexDirection: 'column',
+          paddingHorizontal: 8,
+        }}
+      >
+        <ScrollView style={{ flex: 1 }}>
+          {messages.map(m => (
+            <View key={m.id} style={{ marginVertical: 8 }}>
+              <View>
+                <Text style={{ fontWeight: 700 }}>{m.role}</Text>
+                <Text>{m.content}</Text>
+              </View>
+            </View>
+          ))}
+        </ScrollView>
+
+        <View style={{ marginTop: 8 }}>
+          <TextInput
+            style={{ backgroundColor: 'white', padding: 8 }}
+            placeholder="Say something..."
+            value={input}
+            onChange={e =>
+              handleInputChange({
+                ...e,
+                target: {
+                  ...e.target,
+                  value: e.nativeEvent.text,
+                },
+              } as unknown as React.ChangeEvent<HTMLInputElement>)
+            }
+            onSubmitEditing={e => {
+              handleSubmit(e);
+              e.preventDefault();
+            }}
+            autoFocus={true}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+ 
+این صفحه از هوک <Important>useChat</Important> استفاده می‌کند که به‌صورت پیش‌فرض، از مسیر POST که قبل‌تر ایجاد کرده بودید، استفاده خواهد کرد.
+. هوک <Important>useChat</Important> چندین تابع و متغیر ارائه می‌دهد:
+
+<div className="h-4" />   
+<ul>
+<li><Important>messages</Important>: پیام‌های فعلی چت (آرایه‌ای از آبجکت‌ها با ویژگی‌های <Important>id</Important> , <Important>role</Important> و <Important>parts</Important>).</li>
+<li><Important>input</Important>: مقدار فعلی فیلد ورودی کاربر.</li>
+<li><Important>handleInputChange</Important> و <Important>handleSubmit</Important>: توابعی برای مدیریت تعاملات کاربر (تایپ در فیلد ورودی و ارسال فرم).</li>    
+</ul>
+<div className="h-4" />   
+<Alert variant="info">
+<p>
+در قطعه کدهای فوق، به جای <Important>fetch</Important> سنتی در Node از تابع <Important>expo/fetch</Important> استفاده شده است تا امکان استریم‌ پاسخ‌های چت فراهم شود.
+برای این کار، به Expo نسخه‌ی ۵۲ یا بالاتر نیاز دارید.
+</p>
+</Alert>
+<div className="h-2" />
+
+<div className="h-2" />   
+<h3>ایجاد API URL Generator</h3>
+<div className="h-2" /> 
+
+از آنجایی که برای دریافت پاسخ‌های استریمی، به جای تابع <Important>fetch</Important> از <Important>expo/fetch</Important> استفاده می‌شود، نیاز است تا در فایل <Important>utils.ts</Important> یک API URL Generator ایجاد شود تا بسته به محیط کلاینت (مثلاً وب یا موبایل) مطمئن شوید که از پایه URL و فرمت صحیح استفاده می‌شود:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import Constants from 'expo-constants';
+
+export const generateAPIUrl = (relativePath: string) => {
+  const origin = Constants.experienceUrl.replace('exp://', 'http://');
+
+  const path = relativePath.startsWith('/') ? relativePath : \`/\${relativePath}\`;
+
+  if (process.env.NODE_ENV === 'development') {
+    return origin.concat(path);
+  }
+
+  if (!process.env.EXPO_PUBLIC_API_BASE_URL) {
+    throw new Error(
+      'EXPO_PUBLIC_API_BASE_URL environment variable is not defined',
+    );
+  }
+
+  return process.env.EXPO_PUBLIC_API_BASE_URL.concat(path);
+};`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+utility function فوق، وظیفه‌ی تولید URL را هم در محیط development و هم در محیط production بر عهده دارد و اطمینان حاصل می‌کند که فراخوانی‌های API شما در دستگاه‌ها و پیکربندی‌های مختلف به‌درستی کار می‌کنند.
+
+<div className="h-2" />   
+<Alert variant="info">
+<p>
+پیش از استقرار پروژه در محیط production، باید متغیر محیطی <Important>EXPO_PUBLIC_API_BASE_URL</Important> را در محیط production تنظیم کنید.
+این متغیر باید به Base URL سرور API شما اشاره داشته باشد.
+</p>
+</Alert>
+<div className="h-2" />   
+
+<hr className="mb-2" />
+
+<Section id='running-your-application' title='اجرای برنامه' />
+
+با انجام مراحل فوق، اکنون تمام اجزای لازم برای چت‌بات خود را ساخته‌اید. برای اجرای برنامه، از دستور زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`pnpm expo`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+سپس مرورگر خود را باز کرده و به آدرس <Important>http://localhost:8081</Important> بروید. باید یک فیلد ورودی مشاهده کنید. یک پیام وارد کنید تا آن را امتحان کنید و ببینید چت‌بات هوش مصنوعی چگونه به‌صورت بلادرنگ پاسخ می‌دهد:
+<div className="h-2" />   
+<img src="https://media.liara.ir/ai/ai-sdk/expo/work-with-chatbot.png" alt="work with chatbot in expo"/>
+<div className="h-4" />
+
+<hr className="mb-2" />
+
+<Section id='enhance-your-chatbot-with-tools' title='بهبود چت‌بات با Toolها' />
+
+در حالی که LLMها توانایی فوق‌العاده‌ای در تولید متن دارند، اما در انجام Taskهای گسسته (مانند ریاضیات) و تعامل با دنیای خارج (مانند دریافت وضعیت آب‌وهوا) با چالش‌هایی مواجه هستند. اینجاست که Toolها وارد عمل می‌شوند.
+<div className="h-2" />   
+
+Toolها، Actionهایی هستند که یک LLM می‌تواند آن‌ها را فراخوانی کند. نتایج حاصل از اجرای این Toolها می‌توانند به مدل بازگردانده شوند تا در تولید پاسخ بعدی در نظر گرفته شوند.
+برای مثال، اگر کاربری درباره‌ی وضعیت فعلی آب‌وهوا سؤال کند، بدون استفاده از ابزارها، مدل تنها می‌تواند اطلاعات عمومی بر پایه‌ی داده‌های آموزشی‌اش ارائه دهد. اما با استفاده از یک ابزار آب‌وهوا، می‌تواند اطلاعات به‌روز و مختص مکان مشخص کاربر را دریافت کرده و ارائه دهد.
+<div className="h-2" />   
+
+در ادامه، خواهید آموخت که چگونه می‌توانید با اضافه کردن یک Tool ساده مربوط به وضعیت آب‌وهوا، چت‌بات خود را بهبود دهید. 
+
+<div className="h-5" />   
+<h3>به‌روزرسانی API Route</h3>
+<div className="h-2" />   
+مانند قطعه کد زیر، به فایل <Important>app/api/chat+api.ts</Important> خود، Tool مربوط به وضعیت آب‌وهوا را اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { streamText, tool } from 'ai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    messages,
+    tools: {
+      weather: tool({
+        description: 'Get the weather in a location (fahrenheit)',
+        parameters: z.object({
+          location: z.string().describe('The location to get the weather for'),
+        }),
+        execute: async ({ location }) => {
+          const temperature = Math.round(Math.random() * (90 - 32) + 32);
+          return {
+            location,
+            temperature,
+          };
+        },
+      }),
+    },
+  });
+
+  return result.toDataStreamResponse({
+    headers: {
+      'Content-Type': 'application/octet-stream',
+      'Content-Encoding': 'none',
+    },
+  });
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+در قطعه کد به‌روزرسانی‌شده فوق:
+
+۱. تابع <Important>tool</Important> از پکیج <Important>ai</Important> و نیز <Important>z</Important> از کتابخانه‌ی <Important>zod</Important> برای اعتبارسنجی schema، وارد شده است.
+
+۲. یک object به نام <Important>tools</Important> تعریف شده است که شامل یک tool آب‌وهوا (weather) است. این Tool:
+
+<div className="h-2" />   
+<ul>
+<li>دارای یک توضیح (description) است که به مدل کمک می‌کند بفهمد چه زمانی باید از آن استفاده کند.</li>
+<li>پارامترهایی را با استفاده از Zod Schema تعریف می‌کند و مشخص می‌کند که برای اجرای این Tool، یک string به‌عنوان <Important>location</Important> مورد نیاز است. مدل تلاش می‌کند این پارامتر را از متن مکالمه استخراج کند. اگر نتواند، از کاربر برای دریافت اطلاعات موردنیاز، سؤال خواهد کرد.</li>
+<li>دارای یک تابع execute است که عملیات فرضی دریافت داده‌های آب‌وهوا را انجام می‌دهد (در این مثال، دمایی تصادفی بازمی‌گردد). این تابع به‌صورت asynchronous روی سرور اجرا می‌شود، بنابراین می‌توانید از APIهای خارجی داده‌های واقعی را واکشی کنید.</li>
+</ul>
+<div className="h-2" />   
+
+اکنون چت‌بات شما می‌تواند اطلاعات آب‌وهوا را برای هر مکانی که کاربر مشخص کند، واکشی کند. زمانی که مدل تشخیص دهد باید از Tool آب‌وهوا استفاده کند، یک tool call با پارامترهای لازم تولید می‌کند. سپس تابع execute به‌صورت خودکار اجرا می‌شود و نتیجه‌ی آن از طریق بخش <Important>tool-invocations</Important> موجود در آرایه‌ی <Important>message.parts</Important> قابل دسترسی خواهد بود.
+
+<div className="h-2" />   
+<Alert variant="info">
+<p>
+ممکن است لازم باشد سرور development خود را ری‌استارت کنید تا تغییرات اعمال شوند.
+</p>
+</Alert>
+
+<div className="h-2" />   
+<h3>به‌روزرسانی رابط کاربری</h3>
+<div className="h-2" />  
+
+برای به‌روزرسانی رابط کاربری و نمایش <Important>tool invocation</Important>، باید فایل <Important>app/(tabs)/index.tsx</Important> را تغییر دهید تا پیام‌هایی که شامل Tool هستند نیز، به درستی نمایش داده شوند.
+در ادامه، نمونه کدی آورده شده که این قابلیت را اضافه می‌کند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateAPIUrl } from '@/utils';
+import { useChat } from '@ai-sdk/react';
+import { fetch as expoFetch } from 'expo/fetch';
+import { View, TextInput, ScrollView, Text, SafeAreaView } from 'react-native';
+
+export default function App() {
+  const { messages, error, handleInputChange, input, handleSubmit } = useChat({
+    fetch: expoFetch as unknown as typeof globalThis.fetch,
+    api: generateAPIUrl('/api/chat'),
+    onError: error => console.error(error, 'ERROR'),
+  });
+
+  if (error) return <Text>{error.message}</Text>;
+
+  return (
+    <SafeAreaView style={{ height: '100vh' }}>
+      <View
+        style={{
+          height: '95%',
+          display: 'flex',
+          flexDirection: 'column',
+          paddingHorizontal: 8,
+        }}
+      >
+        <ScrollView style={{ flex: 1 }}>
+          {messages.map(m => (
+            <View key={m.id} style={{ marginVertical: 8 }}>
+              <View>
+                <Text style={{ fontWeight: 700 }}>{m.role}</Text>
+                {m.toolInvocations ? (
+                  <Text>{JSON.stringify(m.toolInvocations, null, 2)}</Text>
+                ) : (
+                  <Text>{m.content}</Text>
+                )}
+              </View>
+            </View>
+          ))}
+        </ScrollView>
+
+        <View style={{ marginTop: 8 }}>
+          <TextInput
+            style={{ backgroundColor: 'white', padding: 8 }}
+            placeholder="Say something..."
+            value={input}
+            onChange={e =>
+              handleInputChange({
+                ...e,
+                target: {
+                  ...e.target,
+                  value: e.nativeEvent.text,
+                },
+              } as unknown as React.ChangeEvent<HTMLInputElement>)
+            }
+            onSubmitEditing={e => {
+              handleSubmit(e);
+              e.preventDefault();
+            }}
+            autoFocus={true}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+<Alert variant="info">
+<p>
+ممکن است لازم باشد سرور development خود را ری‌استارت کنید تا تغییرات اعمال شوند.
+</p>
+</Alert>
+<div className="h-2" />   
+
+با این تغییر، رابط کاربری به‌گونه‌ای به‌روزرسانی می‌شود که بتواند بخش‌های مختلف پیام را مدیریت کند. برای بخش‌های متنی، همانند گذشته، محتوای متن نمایش داده می‌شود. برای tool callها، یک JSON از tool calling و نتیجه آن نشان داده خواهد شد.
+اکنون، زمانی که درباره‌ی وضعیت هوا سوال می‌پرسید، tool calling و نتیجه‌ی آن در رابط چت شما، نمایش داده می‌شود:
+
+<div className="h-2" />   
+<img src="https://media.liara.ir/ai/ai-sdk/expo/working-with-chatbot-using-tools.png" alt="work with chatbot in expo with tools"/>
+<div className="h-4" />
+<hr className="mb-2" />
+
+<Section id='enabling-multi-step-tool-calls' title="فعال‌سازی فراخوانی چندمرحله‌ای Toolها" />
+
+
+ممکن است متوجه شده باشید که با وجود نمایش نتایج Toolها در رابط چت، مدل از این اطلاعات برای پاسخ به پرسش اصلی شما، استفاده نمی‌کند. دلیل آن این است که به‌محض اینکه مدل یک tool call تولید می‌کند، از نظر فنی، فرآیند تولید متن را کامل کرده است.
+<div className="h-2" />
+
+برای حل این مسئله، می‌توانید با استفاده از گزینه‌ی <Important>maxSteps</Important> در هوک <Important>useChat</Important>، فراخوانی چندمرحله‌ای Toolها را فعال کنید. این قابلیت، به‌طور خودکار، نتایج Tool را دوباره به مدل ارسال می‌کند تا یک مرحله‌ی تولید اضافی را آغاز کند. در این حالت، شما می‌خواهید مدل با استفاده از نتیجه‌ی Tool هواشناسی، به سوال شما پاسخ دهد.
+
+
+<div className="h-4" />   
+<h3>به‌روزرسانی کد سمت کلاینت</h3>
+<div className="h-2" />   
+
+فایل <Important>app/(tabs)/index.tsx</Important> خود را ویرایش کرده تا گزینه‌ی <Important>maxSteps</Important> را به آن، اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { useChat } from '@ai-sdk/react';
+// ... rest of your imports
+
+export default function App() {
+  const { messages, error, handleInputChange, input, handleSubmit } = useChat({
+    fetch: expoFetch as unknown as typeof globalThis.fetch,
+    api: generateAPIUrl('/api/chat'),
+    onError: error => console.error(error, 'ERROR'),
+    maxSteps: 5,
+  });
+
+  // ... rest of your component code
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+به مرورگر بازگردید و درباره‌ی وضعیت هوای یک مکان سوال بپرسید. حالا باید ببینید که مدل از نتایج Tool هواشناسی برای پاسخ به سوال شما استفاده می‌کند.
+با تنظیم مقدار <Important>maxSteps</Important> روی ۵، این امکان را فراهم می‌کنید که مدل حداکثر تا ۵ مرحله، پاسخ جدیدی را تولید کند. این قابلیت، تعاملات پیچیده‌تر را ممکن می‌سازد و به مدل اجازه می‌دهد اطلاعات را طی چند مرحله جمع‌آوری و پردازش کند (در صورت نیاز). می‌توانید این قابلیت را در عمل مشاهده کنید؛ کافیست Tool دیگری اضافه کنید که دما را از فارنهایت به سلسیوس تبدیل کند.
+
+<div className="h-4" />   
+<h3>به‌روزرسانی API Route</h3>
+<div className="h-2" /> 
+
+Tool جدید برای تبدیل دما از فارنهایت به سلسیوس را به فایل <Important>app/api/chat+api.ts</Important> خود، مانند شکل زیر، اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { streamText, tool } from 'ai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    messages,
+    tools: {
+      weather: tool({
+        description: 'Get the weather in a location (fahrenheit)',
+        parameters: z.object({
+          location: z.string().describe('The location to get the weather for'),
+        }),
+        execute: async ({ location }) => {
+          const temperature = Math.round(Math.random() * (90 - 32) + 32);
+          return {
+            location,
+            temperature,
+          };
+        },
+      }),
+      convertFahrenheitToCelsius: tool({
+        description: 'Convert a temperature in fahrenheit to celsius',
+        parameters: z.object({
+          temperature: z
+            .number()
+            .describe('The temperature in fahrenheit to convert'),
+        }),
+        execute: async ({ temperature }) => {
+          const celsius = Math.round((temperature - 32) * (5 / 9));
+          return {
+            celsius,
+          };
+        },
+      }),
+    },
+  });
+
+  return result.toDataStreamResponse({
+    headers: {
+      'Content-Type': 'application/octet-stream',
+      'Content-Encoding': 'none',
+    },
+  });
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+اکنون، وقتی می‌پرسید: «هوای تهران چند درجه سلسیوس است؟»، باید یک پاسخ کامل‌تر را مشاهده کنید.
+
+<div className="h-2" />
+
+در برنامه فوق: 
+
+<div className="h-2" />
+<ul>
+<li>مدل، Tool هواشناسی را برای دریافت وضعیت هوای تهران، فراخوانی می‌کند.</li>
+<li>نتیجه‌ی Tool نمایش داده می‌شود.</li>
+<li>سپس، مدل، Tool تبدیل دما را فراخوانی می‌کند تا دما را از فارنهایت به سلسیوس تبدیل کند.</li>
+<li>در نهایت، مدل از این اطلاعات استفاده می‌کند تا پاسخی طبیعی و قابل فهم درباره‌ی وضعیت هوای تهران، ارائه دهد.</li>
+</ul>
+<div className="h-2" />
+این رویکرد چندمرحله‌ای به مدل اجازه می‌دهد تا اطلاعات را جمع‌آوری کرده و از آن‌ها برای ارائه‌ی پاسخ‌هایی دقیق‌تر و مرتبط‌تر استفاده کند؛ در نتیجه، چت‌بات شما به‌طور قابل توجهی کاربردی‌تر خواهد شد.
+
+<div className="h-2" />
+این مثال ساده نشان می‌دهد که Toolها چگونه می‌توانند قابلیت‌های مدل را گسترش دهند. شما می‌توانید Toolهای پیچیده‌تری ایجاد کنید که با APIهای واقعی، پایگاه‌های داده یا سایر سیستم‌های خارجی ادغام شوند. این کار به مدل این امکان را می‌دهد تا به داده‌های واقعی و به‌روز دسترسی پیدا کرده و آن‌ها را در زمان واقعی، پردازش کند. Toolها پلی هستند میان محدودیت دانش مدل و اطلاعات جاری دنیا.
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/Expo-ChatBot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+<hr className="mb-2" />
+
+<Section id='polyfills' title='Polyfillها' />
+
+برخی از توابعی که به‌صورت داخلی توسط AI SDK استفاده می‌شوند، ممکن است بسته به پیکربندی شما و پلتفرم هدف، در محیط اجرایی Expo در دسترس نباشند.
+برای رفع این مشکل، در ابتدا، پکیج‌های زیر موردنیاز را با اجرای دستور زیر، نصب کنید: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`pnpm add @ungap/structured-clone @stardazed/streams-text-encoding`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+سپس یک فایل جدید به اسم <Important>polyfills.js</Important> در مسیر اصلی پروژه‌ی خود ایجاد کرده و Polyfillهای زیر را در آن قرار دهید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { Platform } from 'react-native';
+import structuredClone from '@ungap/structured-clone';
+
+if (Platform.OS !== 'web') {
+  const setupPolyfills = async () => {
+    const { polyfillGlobal } = await import(
+      'react-native/Libraries/Utilities/PolyfillFunctions'
+    );
+
+    const { TextEncoderStream, TextDecoderStream } = await import(
+      '@stardazed/streams-text-encoding'
+    );
+
+    if (!('structuredClone' in global)) {
+      polyfillGlobal('structuredClone', () => structuredClone);
+    }
+
+    polyfillGlobal('TextEncoderStream', () => TextEncoderStream);
+    polyfillGlobal('TextDecoderStream', () => TextDecoderStream);
+  };
+
+  setupPolyfills();
+}
+
+export {};`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+در نهایت، polyfillها را در فایل <Important>layout.tsx_</Important> خود، وارد کنید :
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import '@/polyfills';`}
+    </Highlight>
+</div>
+
+
+</Layout>
