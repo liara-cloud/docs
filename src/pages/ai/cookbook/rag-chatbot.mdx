@@ -1,0 +1,251 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ساخت RAG Chatbot - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="راهنمای پخت‌وپز یک RAG Chatbot با کمک سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# ساخت RAG Chatbot
+<hr className="mb-2" />
+
+
+در این راهنما، خواهید آموخت که چگونه می‌توانید یک برنامه چت‌بات مبتنی بر RAG (یا Retrieval-Augmented Generation)، ایجاد کنید. 
+
+<div className="h-2" />
+<video
+  src="https://ai-sdk.dev/images/rag-guide-demo.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+></video>
+<div className="h-2" />
+
+قبل از آنکه وارد جزئیات شویم، بیایید ببینیم RAG چیست و چرا ممکن است بخواهیم از آن استفاده کنیم.
+
+
+<Section id='what-is-rag' title='RAG چیست؟' />
+
+RAG مخفف عبارت Retrieval-Augmented Generation (یا تولید مبتنی‌بر بازیابی)، است.
+به زبان ساده، RAG فرآیند ارائه LLM با اطلاعات مشخص و مرتبط با پرامپت ورودی، می‌باشد.
+
+<Section id='why-is-rag-important' title='چرا RAG مهم است؟' />
+
+با وجود اینکه LLMها، قدرتمند هستند، اما توانایی آن‌ها در استدلال، فقط محدود به داده‌هایی است که بر روی آن‌ها، آموزش دیده‌اند.
+این محدودیت، زمانی نمایان می‌شود که 
+از یک LLM اطلاعاتی درخواست شود که خارج از داده‌های آموزشی آن است؛
+مانند داده‌های اختصاصی (در یک شرکت) یا اطلاعات عمومی که پس از تاریخ اتمام آموزش مدل، به‌وجود آمده‌اند.
+RAG این مشکل را حل می‌کند؛ به این صورت که ابتدا اطلاعات مرتبط با پرامپت را بازیابی کرده و سپس آن را به‌عنوان context در اختیار مدل، قرار می‌دهد.
+
+<div className="h-2" />
+
+به‌عنوان مثال، فرض کنید که از مدل می‌پرسید "غذای مورد علاقه من چیست؟". پاسخ مدل، احتمالاً
+مشابه زیر، خواهد بود: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="text">
+        {`**input**
+What is my favorite food?
+
+**generation**
+I do not have access to personal information about individuals, including their
+favorite foods.`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+جای تعجب نیست که مدل پاسخ این سؤال را نمی‌داند.
+اما فرض کنید که همراه با پرامپت شما، مدل، مقداری context اضافی نیز، دریافت کند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="text">
+        {`**input**
+Respond to the user's prompt using only the provided context.
+user prompt: 'What is my favorite food?'
+context: user loves ghormeh sabzi
+
+**generation**
+Your favorite food is ghormeh sabzi!`}
+    </Highlight>
+</div>
+<div className="h-2" /> 
+
+به همین سادگی، شما فرآیند تولید مدل را با ارائه اطلاعات مرتبط با پرسش، تقویت کرده‌اید.
+اگر مدل به اطلاعات مناسب دسترسی داشته باشد، احتمال زیادی وجود دارد که پاسخ دقیقی به پرسش کاربر، ارائه دهد.
+
+<div className="h-2" /> 
+
+
+اما سؤال اینجاست: چگونه مدل این اطلاعات مرتبط را بازیابی می‌کند؟
+پاسخ در مفهومی به نام Embedding، نهفته است.
+
+<div className="h-2" /> 
+<Alert variant="info">
+<p>
+شما می‌توانید از هر منبعی برای فراهم کردن context در برنامه RAG خود استفاده کنید (برای مثال، جستجوی گوگل).
+Embeddings و پایگاه‌داده‌های برداری (Vector Databasها) تنها یکی از روش‌های خاص بازیابی اطلاعات هستند که برای رسیدن به جستجوی معنایی (Semantic Search) به‌کار می‌روند.
+</p>
+</Alert>
+
+<Section id='embedding' title='Embedding' />
+
+Embedding یا بردارسازی، روشی است برای نمایش کلمات، عبارات یا تصاویر، به‌صورت بردارهایی در فضایی با ابعاد بالا (High-Dimensional Space).
+در این فضا، واژه‌های مشابه از نظر معنایی، به یکدیگر نزدیک هستند و فاصله بین این 
+کلمات، راهی برای اندازه‌گیری شباهت آن‌ها است.
+
+<div className="h-3" /> 
+
+در عمل، اگر شما کلمات "گربه" و "سگ" را بردارسازی کنید، انتظار دارید که در فضای برداری، در نزدیکی هم ترسیم شوند.
+فرآیند محاسبه شباهت بین دو بردار، شباهت کسینوسی (Cosine Similarity) نام دارد؛ که در آن، مقدار <Important>1</Important> نشان‌دهنده شباهت بسیار بالا، و مقدار <Important>1-</Important> نشان‌دهنده تضاد کامل بین دو بردار است.
+
+<div className="h-2" /> 
+<Alert variant="info">
+<p>
+اگر این مفاهیم در ابتدا پیچیده به نظر می‌رسند، نیازی به نگرانی نیست. درک کلی و انتزاعی موضوع، برای شروع کاملاً کافی است.
+</p>
+</Alert>
+<div className="h-2" /> 
+
+همان‌طور که قبل‌تر اشاره شد، بردارسازی روشی است برای نمایش معنای مفهومی (semantic meaning) کلمات و عبارات.
+نکته‌ی مهم این است که هرچه ورودی بردارساز، بزرگ‌تر باشد، کیفیت بردار تولید‌شده ممکن است پایین‌تر بیاید.
+اکنون، سوال اصلی این است که چگونه می‌توانید
+محتوایی را که از یک عبارت ساده، خیلی طولانی‌تر است، به بردار تبدیل کنید؟
+
+<Section id='chunking' title='Chunking' />
+
+Chunking یا تکه‌تکه‌سازی، فرآیندی است که در آن، یک منبع اطلاعاتی به بخش‌های کوچک‌تر، تقسیم می‌شود.
+روش‌های مختلفی برای انجام این کار وجود دارد و پیشنهاد می‌شود که بسته به نوع پروژه، فرایند‌های Chunking متفاوتی را آزمایش و مقایسه کنید، چرا که بهترین روش، با توجه به use case شما، می‌تواند متفاوت باشد.
+یکی از روش‌های ساده و رایج در Chunking (و روشی که در این راهنما از آن استفاده خواهید کرد)، تقسیم محتوای متنی بر اساس جملات است.
+
+<div className="h-4" /> 
+
+پس از آنکه منبع شما، به‌درستی قطعه‌قطعه شد، می‌توانید هر قطعه را بردارسازی کرده و سپس بردار به‌دست‌آمده را به‌همراه محتوای همان قطعه، در یک پایگاه‌داده ذخیره کنید.
+بردارها را می‌توان در هر پایگاه‌داده‌ای که از vectorها پشتیبانی می‌کند ذخیره کرد.
+در این آموزش، از <a href="https://www.postgresql.org/" className="text-[#2196f3]">Postgres</a> به‌همراه افزونه‌ی <a href="https://github.com/pgvector/pgvector" className="text-[#2196f3]">pgvector</a> استفاده خواهید کرد.
+
+<div className="h-2" />
+<img
+    src="https://media.liara.ir/ai/ai-sdk/rag/chunking-process.png"
+    alt="chunking process"
+/>    
+<div className="h-2" />  
+
+<Section id='all-together-now' title='همه‌چیز در کنار هم' />
+
+با کنار هم قرار دادن تمام این موارد، می‌توان گفت که RAG فرآیندی است که در آن، مدل می‌تواند به اطلاعاتی فراتر از داده‌های آموزشی خود پاسخ دهد؛ این کار با بردارسازی پرسش کاربر، بازیابی قطعه‌هایی از منبع اطلاعاتی (چانک‌ها) که بیشترین شباهت معنایی را دارند، و سپس ارسال آن‌ها به‌همراه پرامپت اولیه به مدل به‌عنوان context، انجام می‌شود.
+اگر به مثال قبلی بازگردیم، یعنی زمانی که از مدل می‌پرسید "غذای مورد علاقه من چیه؟"، فرآیند آماده‌سازی پرامپت به این صورت خواهد بود:
+
+
+<div className="h-2" />
+<img
+    src="https://media.liara.ir/ai/ai-sdk/rag/all-the-process.png"
+    alt="all the rag process"
+/>    
+<div className="h-2" /> 
+
+با ارائه context مناسب و تنظیم هدف مدل به‌درستی، می‌توانید به‌خوبی از توانایی آن به‌عنوان یک ماشین استدلال‌گر (reasoning machine) بهره‌مند شوید.
+<hr className="mb-2" />
+
+<Section id='project-setup' title="راه‌اندازی پروژه" />
+
+در این پروژه، شما یک چت‌بات خواهید ساخت که تنها با استفاده از اطلاعات موجود در پایگاه دانش خود پاسخ می‌دهد.
+این چت‌بات قابلیت ذخیره‌سازی و بازیابی اطلاعات را خواهد داشت و کاربردهای جالبی دارد، از پشتیبانی مشتریان گرفته تا ساختن یک نسخه دیجیتالی از "ذهن دوم" خودتان.
+<div className="h-4" /> 
+
+فناوری‌های استفاده‌شده در این پروژه، عبارتند از:
+
+<div className="h-2" />
+<ul>
+<li><a href="/paas/nextjs/getting-started" className="text-[#2196f3]">فریم‌ورک NextJS</a></li>
+<li><a href="https://ai-sdk.dev/" className="text-[#2196f3]">ماژول AI SDK</a></li>
+<li><a href="https://liara.ir/products/ai/" className="text-[#2196f3]">API هوش مصنوعی لیارا</a></li>
+<li><a href="/paas/nodejs/how-tos/connect-to-db/drizzle/about/" className="text-[#2196f3]">Drizzle ORM</a></li>
+<li><a href="https://www.postgresql.org/" className="text-[#2196f3]">دیتابیس Postgres</a> به همراه <a href="https://github.com/pgvector/pgvector" className="text-[#2196f3]">pgvector</a></li>
+<li><a href="https://ui.shadcn.com/" className="text-[#2196f3]">ماژول shadcn-ui</a> و <a href="https://tailwindcss.com/" className="text-[#2196f3]">TailwindCSS</a> برای استایل‌دهی</li>
+</ul>
+
+
+<Section id="clone-repo" title="کلون ریپازیتوری" />
+
+برای ساده‌تر کردن این آموزش، از یک <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/rag-starter-raw" className="text-[#2196f3]">ریپازیتوری آماده</a> استفاده می‌کنیم که برخی از تنظیمات اولیه را از قبل دارد:
+<div className="h-2" />
+<ul>
+<li>Drizzle ORM (فایل <Important>lib/db</Important>) شامل یک migration اولیه و یک اسکریپت برای انجام migrate (<Important>db:migrate</Important>)</li>
+<li>یک schema ساده برای جدول <Important>resources</Important> (این جدول برای منبع اطلاعات یا همان source material به‌کار خواهد رفت)</li>
+<li>یک Server Action برای ایجاد منبع (resource)</li>
+</ul>
+<div className="h-2" />
+
+برای شروع، ابتدا ریپازیتوری اولیه را با دستور زیر کلون کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`git clone https://github.com/liara-cloud/ai-sdk-examples.git
+cd ai-sdk-examples/rag-starter-raw`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در مرحله اول، برای نصب وابستگی‌های پروژه، دستور زیر را اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pnpm install`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="create-database" title="ایجاد دیتابیس" />
+
+برای تکمیل این آموزش، به یک پایگاه‌داده Postgres نیاز دارید.
+اگر Postgres روی سیستم‌تان نصب نیست، می‌توانید با
+دنبال‌کردن <a href="https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database" className="text-[#2196f3]">این راهنما</a>، اقدام به نصب Postgres بر روی سیستم خود کنید. 
+
+<Section id="migrate-database" title="migrate دیتابیس" />
+پس از ساخت دیتابیس، باید connection string آن را به‌عنوان متغیر محیطی، به برنامه اضافه کنید.
+برای این کار، با اجرای دستور زیر (در لینوکس)، یک کپی از فایل <Important>env.example.</Important> ایجاد کنید و نام آن را به <Important>env.</Important> تغییر دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`cp env.example .env`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+یا اینکه، به‌سادگی نام فایل <Important>env.example.</Important> را به <Important>env.</Important> تغییر دهید
+
+
+</Layout>
