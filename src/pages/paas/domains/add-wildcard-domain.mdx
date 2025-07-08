@@ -55,5 +55,34 @@ import Head from "next/head";
 </p>
 </Alert>
 
+<Section id="differences-between-ssl-certificates" title="تفاوت گواهی SSL استاندارد با گواهی Wildcard SSL" />
 
+گواهی SSL معمولی که به آن <Important>Single-Domain SSL</Important> هم گفته می‌شود، فقط یک دامنه اصلی را پوشش می‌دهد. یعنی اگر گواهی را برای <Important>looms.ir</Important> بگیرید، از آن فقط می‌توانید برای همین دامنه استفاده کنید. این گواهی برای وب‌سایت‌هایی که زیردامنه ندارند یا فقط یک وب‌سایت اصلی دارند، بسیار مناسب است.
+
+<div className="h-4" />
+گواهی Wildcard SSL نیز مانند گواهی معمولی، امنیت ارتباط را تضمین می‌کند؛ اما با این تفاوت که برای محدوده گسترده‌ای از زیر دامنه‌ها، به‌کار می‌رود. این نوع SSL، می‌تواند تمام زیردامنه‌های سطح اول را پوشش دهد. برای مثال، با صدور گواهی برای <Important>looms.ir.*</Important> می‌توان هم‌زمان <Important>blog.looms.ir</Important>، <Important>shop.looms.ir</Important>، <Important>mail.looms.ir</Important> و هر زیردامنه دیگری را با یک گواهی ایمن کرد. این نوع گواهی زمانی کاربردی است که شما تعداد زیادی زیردامنه دارید و نمی‌خواهید برای هرکدام جداگانه گواهی بگیرید.
+
+
+<div className="h-4" />
+هر دو نوع گواهی (استاندارد و وایلدکارد) از رمزنگاری قوی ۲۵۶ بیتی استفاده می‌کنند و بر پایه الگوریتم امن <Important>SHA-2</Important> و کلیدهای <Important>RSA</Important> ۲۰۴۸ بیتی یا <Important>ECC</Important> ۲۵۶ بیتی عمل می‌کنند. هر دو می‌توانند از اعتبارسنجی نوع Domain Validation (DV) استفاده کنند. همچنین در صورت نیاز، گواهی‌های OV (Organization Validation) هم برای هر دو قابل صدور هستند، اما Wildcard SSL هیچ‌وقت از نوع EV (Extended Validation) صادر نمی‌شود.
+
+<div className="h-4" />
+به‌صورت کلی، می‌توان گفت: 
+
+<div className="h-4" />
+<ul>
+<li>SSL معمولی فقط یک دامنه (مثلاً <Important>looms.ir</Important>) را پوشش می‌دهد.</li>
+<li>Wildcard SSL بی‌نهایت زیردامنه در سطح مشخص‌شده (مثل <Important>blog.looms.ir</Important>، <Important>login.looms.ir</Important> و ...) را با یک گواهی واحد پوشش می‌دهد.</li>
+</ul>
+
+<Section id="disadvantages-of-wildcard-domains" title="معایب استفاده از دامنه WildCard" />
+
+در کنار مزایا، Wildcard SSL چند محدودیت نیز دارد:
+
+<div className="h-4" />
+<ul>
+<li>کلید خصوصی مشترک: همه زیردامنه‌ها از یک کلید خصوصی استفاده می‌کنند؛ اگر این کلید لو برود، امنیت تمام دامنه‌ها در خطر است.</li>
+<li>نداشتن EV: نمی‌توانید از نوع Extended Validation برای Wildcard استفاده کنید؛ بنابراین نام شرکت در مرورگر نمایش داده نمی‌شود.</li>
+<li>نقطه شکست مرکزی (Single Point of Failure): اگر مشکلی برای گواهی پیش بیاید، تمام زیردامنه‌های شما از کار می‌افتند.</li>
+</ul>
 </Layout>

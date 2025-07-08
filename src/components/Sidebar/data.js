@@ -363,22 +363,22 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/ai/ai-sdk/expo/expo-logo.png" />,
         link: "/ai/getting-started/expo"
       },
-      {
-        hr: true
-      },
-      {
-        badge: (
-        <div className="flex items-center gap-2">
-          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
-            راهنمای پخت‌وپز
-        </div>
-        )
-      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //   <div className="flex items-center gap-2">
+      //     <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
+      //       راهنمای پخت‌وپز
+      //   </div>
+      //   )
+      // },
 
-      {
-        title: "ساخت RAG Chatbot",
-        link: "/ai/cookbook/rag-chatbot"
-      },
+      // {
+      //   title: "ساخت RAG Chatbot",
+      //   link: "/ai/cookbook/rag-chatbot"
+      // },
 
       {
         hr: true
