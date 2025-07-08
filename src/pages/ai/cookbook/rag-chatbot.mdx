@@ -200,7 +200,7 @@ Chunking یا تکه‌تکه‌سازی، فرآیندی است که در آن�
 برای ساده‌تر کردن این آموزش، از یک <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/rag-starter-raw" className="text-[#2196f3]">ریپازیتوری آماده</a> استفاده می‌کنیم که برخی از تنظیمات اولیه را از قبل دارد:
 <div className="h-2" />
 <ul>
-<li>Drizzle ORM (فایل <Important>lib/db</Important>) شامل یک migration اولیه و یک اسکریپت برای انجام migrate (<Important>db:migrate</Important>)</li>
+<li>Drizzle ORM (دایرکتوری <Important>lib/db</Important>) شامل یک migration اولیه و یک اسکریپت برای انجام migrate (<Important>db:migrate</Important>)</li>
 <li>یک schema ساده برای جدول <Important>resources</Important> (این جدول برای منبع اطلاعات یا همان source material به‌کار خواهد رفت)</li>
 <li>یک Server Action برای ایجاد منبع (resource)</li>
 </ul>
@@ -240,12 +240,302 @@ cd ai-sdk-examples/rag-starter-raw`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`cp env.example .env`}
+        {`cp .env.example .env`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-یا اینکه، به‌سادگی نام فایل <Important>env.example.</Important> را به <Important>env.</Important> تغییر دهید
+یا اینکه، به‌سادگی نام فایل <Important>env.example.</Important> را به <Important>env.</Important> تغییر دهید.
+در ادامه، فایل <Important>env.</Important> جدید را باز کنید. باید متغیری را با نام <Important>DATABASE_URL</Important> مشاهده کنید. connection string دیتابیس خود را پس از علامت مساوی (<Important>=</Important>) در این قسمت، قرار دهید.
+با انجام کارهای فوق، اکنون می‌توانید اولین migration دیتابیس را اجرا کنید. دستور زیر را اجرا نمایید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pnpm db:migrate`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+دستور فوق، ابتدا افزونه‌ی <Important>pgvector</Important> را به دیتابیس شما اضافه می‌کند. سپس یک جدول جدید برای اسکیمای <Important>resources</Important> ایجاد خواهد کرد که در فایل <Important>lib/db/schema/resources.ts</Important> تعریف شده است. این اسکیما شامل چهار ستون <Important>id</Important>، <Important>content</Important>، <Important>createdAt</Important> و <Important>updatedAt</Important> است.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+اگر هنگام اجرای migration با خطا مواجه شدید، فایل migration خود را باز کنید (<Important>lib/db/migrations/0000_yielding_bloodaxe.sql</Important>)، خط اول آن را cut کنید (کپی کرده و سپس حذف کنید)، و آن خط را مستقیماً روی instance دیتابیس PostgreSQL خود، اجرا نمایید. اکنون، می‌توانید migration به‌روزشده را اجرا کنید.
+</p>
+</Alert>
+
+<Section id="liara-api-key-and-ai-base-url" title="baseUrl و کلید API لیارا" />
+
+برای استفاده از این راهنما، در ابتدا باید، محصول هوش مصنوعی لیارا را تهیه کنید. البته می‌توانید از کلید خریداری شده <a href="https://platform.openai.com/docs/overview" className="text-[#2196f3]">OpenAI</a> نیز استفاده کنید.
+در صورتی که قصد دارید مدل خود را از لیارا تهیه کنید؛ تنها به baseUrl محصول <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API کنسول خود</a> نیاز دارید.
+<hr className="mb-2" />
+
+<Section id="build" title="ساخت (build)" />
+
+بیایید یک فهرست از کارهایی که باید انجام شوند تهیه کنیم:
+
+<div className="h-2" />
+<ul>
+<li>ایجاد یک جدول در دیتابیس برای ذخیره‌ی embeddingها</li>
+<li>افزودن منطق chunking و ایجاد embeddingها هنگام ساخت resources</li>
+<li>ایجاد یک چت‌بات</li>
+<li>اتصال چت‌بات به ابزارهایی برای جستجو و ایجاد resources برای پایگاه دانش آن</li>
+</ul>
+
+<Section id="create-embeddings-table" title="ایجاد جدول Embeddings" />
+
+در حال حاضر، برنامه‌ی شما دارای یک جدول به نام <Important>resources</Important> است که یک ستون به نام <Important>content</Important> برای ذخیره‌ی محتوا دارد. هر منبع (منبع اولیه‌ی اطلاعات) باید به قطعه‌هایی تقسیم شود؛ embedding آن تولید گردد و سپس ذخیره شود. در این مرحله، باید یک جدول به نام <Important>embeddings</Important> برای ذخیره‌ی این قطعه‌ها ایجاد کنیم.
+<div className="h-2" />
+
+یک فایل جدید به نام <Important>lib/db/schema/embeddings.ts</Important> ایجاد کرده و کد زیر را به آن اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { nanoid } from '@/lib/utils';
+import { index, pgTable, text, varchar, vector } from 'drizzle-orm/pg-core';
+import { resources } from './resources';
+
+export const embeddings = pgTable(
+  'embeddings',
+  {
+    id: varchar('id', { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    resourceId: varchar('resource_id', { length: 191 }).references(
+      () => resources.id,
+      { onDelete: 'cascade' },
+    ),
+    content: text('content').notNull(),
+    embedding: vector('embedding', { dimensions: 1536 }).notNull(),
+  },
+  table => ({
+    embeddingIndex: index('embeddingIndex').using(
+      'hnsw',
+      table.embedding.op('vector_cosine_ops'),
+    ),
+  }),
+);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+این جدول شامل چهار ستون است:
+
+<ul>
+<li><Important>id</Important>: شناسه‌ی یکتا</li>
+<li><Important>resourceId</Important>: کلید خارجی که به منبع کامل اطلاعات اشاره می‌کند</li>
+<li><Important>content</Important>: قطعه متنی (chunk) ساده شده</li>
+<li><Important>embedding</Important>: نمایش برداری (وکتوری) از بخش متنی ساده‌شده</li>
+</ul>
+<div className="h-2" />
+
+برای انجام جستجوی شباهت (similarity search)، همچنین باید یک ایندکس (از نوع <a href="https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw" className="text-[#2196f3]">HNSW</a> یا <a href="https://github.com/pgvector/pgvector?tab=readme-ov-file#ivfflat" className="text-[#2196f3]">IVFFlat</a>) بر روی ستون <Important>embedding</Important> ایجاد کنید تا عملکرد بهتری داشته باشید.
+برای اعمال تغییرات در پایگاه داده، دستور زیر را اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pnpm db:push`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="add-embedding-logic" title="افزودن منطق Embedding" />
+اکنون که یک جدول برای ذخیره‌ی embeddingها دارید، نوبت نوشتن منطق لازم برای ایجاد embeddingها است.
+برای این کار، ابتدا با استفاده از دستور زیر (در لینوکس)، فایل موردنیاز را ایجاد کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`mkdir lib/ai && touch lib/ai/embedding.ts`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+یا اینکه کافیست به سادگی، در دایرکتوری <Important>lib</Important>، یک دایرکتوری جدید به نام <Important>ai</Important> ایجاد کنید و سپس یک فایل جدید به نام <Important>embedding.ts</Important> در آن دایرکتوری بسازید.
+
+<Section id="generate-chunks" title="تولید chunkها" />
+
+برای ایجاد یک embedding، ابتدا باید یک قطعه از منبع اطلاعاتی (با طول نامشخص) را گرفته و سپس آن را به قطعه‌های کوچک‌تر تقسیم کنید، در ادامه، روی هر قطعه، بردارسازی کنید و سپس هر قطعه را در دیتابیس، ذخیره نمایید. بیایید با ساخت تابعی برای تقسیم محتوای منبع به قطعه‌های کوچک، شروع کنیم:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const generateChunks = (input: string): string[] => {
+  return input
+    .trim()
+    .split('.')
+    .filter(i => i !== '');
+};
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تابع فوق، یک رشته‌ی متنی را به‌عنوان ورودی می‌گیرد و جملات درون آن را با استفاده از نقطه (<Important>.</Important>)، از هم جدا می‌کند. سپس، هر عضو خالی آرایه را حذف می‌کند و در نهایت، آرایه‌ای از رشته‌های متنی برمی‌گرداند. لازم به ذکر است که در پروژه‌های مختلف، تکنیک‌های chunking متفاوت، ممکن است عملکرد بهتری داشته باشند، بنابراین آزمایش با روش‌های گوناگون پیشنهاد می‌شود.
+
+<Section id="install-ai-sdk" title="نصب AI SDK" />
+برای ایجاد embeddingها از AI SDK استفاده خواهیم کرد. این کار به چند ماژول اضافی نیاز دارد. برای نصب آن‌ها، دستور زیر را اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`pnpm add ai@beta @ai-sdk/react@beta @ai-sdk/openai@beta`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+دستور فوق، <Important>AI SDK</Important>، هوک‌های <Important>@ai-sdk/react</Important> و <Important>@ai-sdk/openai</Important> (برای اتصال به مدل) را به پروژه‌ی شما اضافه می‌کند.
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+با AI SDK و محصول هوش مصنوعی لیارا، شما می‌توانید به LLMهای متنوع و متفاوتی دسترسی داشته باشید؛ آن هم تنها با یک خط تغییر در کد. 
+</p>
+</Alert>
+
+<Section id="generate-embeddings" title="تولید embeddingها" />
+
+بیایید تابعی برای تولید embeddingها اضافه کنیم. کد زیر را در فایل <Important>lib/ai/embedding.ts</Important> خود قرار دهید:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`import { embedMany } from 'ai';
+import { openai } from '@ai-sdk/openai';
+
+const embeddingModel = openai.embedding('text-embedding-ada-002');
+
+const generateChunks = (input: string): string[] => {
+  return input
+    .trim()
+    .split('.')
+    .filter(i => i !== '');
+};
+
+export const generateEmbeddings = async (
+  value: string,
+): Promise<Array<{ embedding: number[]; content: string }>> => {
+  const chunks = generateChunks(value);
+  const { embeddings } = await embedMany({
+    model: embeddingModel,
+    values: chunks,
+  });
+  return embeddings.map((e, i) => ({ content: chunks[i], embedding: e }));
+};
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، ابتدا، مدلی که برای تولید embeddingها می‌خواهید استفاده کنید تعریف می‌شود. در این مثال، از مدل بردارساز OpenAI به نام <Important>text-embedding-ada-002</Important> استفاده شده است.
+
+در ادامه، یک تابع asynchronous به نام <Important>generateEmbeddings</Important> تعریف می‌شود. این تابع، داده‌ی ورودی (که در اینجا <Important>value</Important> نام دارد) را دریافت می‌کند و یک Promise از آرایه‌ای از objectها را برمی‌گرداند. هر object شامل یک embedding و محتوای مربوط به آن است.
+درون این تابع، ابتدا ورودی به یک‌سری قطعه (chunk) تقسیم می‌شود. سپس این قطعه‌ها به تابع <Important>embedMany</Important>، که از AI SDK وارد شده، ارسال می‌شوند؛ این تابع، embedding مربوط به هر chunk را تولید می‌کند. در نهایت، روی embeddingها پیمایش (map) انجام می‌شود تا خروجی نهایی در قالبی آماده برای ذخیره‌سازی در دیتابیس، تولید شود.
+
+<Section id="update-server-action" title="به‌روزرسانی Server Action" />
+
+فایل <Important>lib/actions/resources.ts</Important> را باز کنید. این فایل حاوی تنها یک تابع به نام <Important>createResource</Important> است که همان‌طور که از نامش پیداست، برای ایجاد یک resource جدید مورد استفاده قرار می‌گیرد.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`'use server';
+
+import {
+  NewResourceParams,
+  insertResourceSchema,
+  resources,
+} from '@/lib/db/schema/resources';
+import { db } from '../db';
+
+export const createResource = async (input: NewResourceParams) => {
+  try {
+    const { content } = insertResourceSchema.parse(input);
+
+    const [resource] = await db
+      .insert(resources)
+      .values({ content })
+      .returning();
+
+    return 'Resource successfully created.';
+  } catch (e) {
+    if (e instanceof Error)
+      return e.message.length > 0 ? e.message : 'Error, please try again.';
+  }
+};`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+تابع تعریف‌شده در قطعه کد فوق، یک <a href="https://nextjs.org/docs/app/getting-started/updating-data#with-client-components" className="text-[#2196f3]">Server Action</a> محسوب می‌شود، که با دستور <Important>;'use server'</Important> در ابتدای فایل مشخص شده است. به همین دلیل، این تابع را می‌توان از هر نقطه‌ای در برنامه‌ی Next.js فراخوانی کرد.
+عملکرد این تابع به این صورت است که یک ورودی دریافت می‌کند، آن را با استفاده از یک اسکیما‌ی Zod اعتبارسنجی می‌کند تا اطمینان حاصل شود که ساختار ورودی مطابق با استاندارد مورد انتظار است، در نهایت، یک resource جدید در دیتابیس ایجاد می‌کند.
+<div className="h-2" />
+
+
+این نقطه، مکان مناسبی است تا embedding مربوط به resourceهای جدید نیز در همین مرحله، تولید و ذخیره شوند. به عبارت دیگر، پس از ایجاد resource و پیش از ذخیره‌سازی نهایی در دیتابیس، می‌توانید در همین تابع، از مدل بردارساز استفاده کرده و خروجی آن را به همراه سایر داده‌ها نگه‌داری کنید.
+<div className="h-2" />
+
+فایل را با قطعه کد زیر، آپدیت کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use server';
+
+import {
+  NewResourceParams,
+  insertResourceSchema,
+  resources,
+} from '@/lib/db/schema/resources';
+import { db } from '../db';
+import { generateEmbeddings } from '../ai/embedding';
+import { embeddings as embeddingsTable } from '../db/schema/embeddings';
+
+export const createResource = async (input: NewResourceParams) => {
+  try {
+    const { content } = insertResourceSchema.parse(input);
+
+    const [resource] = await db
+      .insert(resources)
+      .values({ content })
+      .returning();
+
+    const embeddings = await generateEmbeddings(content);
+    await db.insert(embeddingsTable).values(
+      embeddings.map(embedding => ({
+        resourceId: resource.id,
+        ...embedding,
+      })),
+    );
+
+    return 'Resource successfully created and embedded.';
+  } catch (error) {
+    return error instanceof Error && error.message.length > 0
+      ? error.message
+      : 'Error, please try again.';
+  }
+};`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+در قطعه کد فوق، ابتدا، تابع <Important>generateEmbeddings</Important> که در مرحله‌ی قبل ایجاد کرده‌اید؛ فراخوانی می‌شود و محتوای منبع (content)، به آن داده می‌شود. پس از آنکه embeddingها متن را دریافت کردند (که در اینجا با <Important>e</Important> نشان داده شده‌اند)، در پایگاه داده ذخیره می‌شوند؛ به‌طوری که هر embedding در کنار resourceId مرتبط با خودش، ذخیره می‌شود.
+
+
+
+
+
+
+
+
+
+
+
 
 
 </Layout>
