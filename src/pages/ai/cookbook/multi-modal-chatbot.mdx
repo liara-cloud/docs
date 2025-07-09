@@ -1,0 +1,482 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ساخت چت بات چندمنظوره - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="راهنمای پخت‌وپز برای ساخت چت‌بات چندمنظوره با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# ساخت چت بات چندمنظوره
+<hr className="mb-2" />
+
+در این راهنما، شما یک چت‌بات چندمنظوره مبتنی بر هوش مصنوعی خواهید ساخت که می‌تواند افزون بر متن، ورودی عکس را نیز، درک کند.
+
+<div className="h-2" />
+عبارت چندمنظوره (Multi-modal) به قابلیت چت‌بات اشاره دارد که می‌تواند در قالب‌های مختلفی نظیر متن، تصویر، PDF و ویدئو ورودی بگیرد یا خروجی تولید کند. در این مثال، تمرکز ما بر ارسال تصاویر و دریافت پاسخ‌هایی مبتنی بر متن خواهد بود.
+سطح پشتیبانی از ورودی‌های چندمنظوره در مدل‌های مختلف هوش مصنوعی متفاوت است. به‌عنوان مثال:
+
+<div className="h-4" />
+<ul>
+<li>مدل <Important>OpenAI: GPT-4o-mini</Important> از ورودی متن و عکس، پشتیبانی می‌کند</li>
+<li>مدل <Important>DeepSeek: DeepSeek V3 0324</Important> فقط از ورودی متن، پشتیبانی می‌کند</li>
+<li>مدل <Important>Google: Gemini 1.5 Flash 8B</Important> از ورودی متن و عکس، پشتیبانی می‌کند</li>
+</ul>
+<div className="h-4" />
+
+در ابتدا، یک چت‌بات طراحی خواهیم کرد که بتواند با استفاده از یکی از مدل‌های DeepSeek، ورودی متنی بپذیرد. سپس، قابلیت تغییر مدل برای پشتیبانی از ورودی عکس را نیز به برنامه، اضافه خواهیم کرد.
+
+<hr className="mb-2" />
+<Section id='prerequisites' title='پیش‌نیازها' />
+
+
+برای دنبال‌کردن این راهنما، به موارد زیر نیاز دارید:
+
+<div className="h-4" />
+<ul>
+<li>نصب داشتن <a href="https://nodejs.org/en/download" className="text-[#2196f3]">NodeJS نسخه 18</a> و یا بالاتر و pnpm بر روی سیستم local</li>
+<li><a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API کنسول لیارا</a></li>
+</ul>
+<div className="h-4" />
+
+پس از تهیه سرویس هوش مصنوعی لیارا، یک <Important>baseUrl</Important> به شما تعلق می‌گیرد که با استفاده از آن، می‌توانید به مدل‌های هوش مصنوعی مختلف و متنوع، متصل بشوید.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+در نظر داشته باشید که شما می‌توانید از ارائه‌دهنده‌های دیگر نیز (مانند کمپانی رسمی OpenAI) برای اتصال به مدل، استفاده کنید. 
+اما برای افزایش سرعت و دسترسی به مدل‌های متنوع، پیشنهاد می‌شود که از سرویس هوش مصنوعی لیارا استفاده کنید.
+</p>
+</Alert>
+<hr className="mb-2" />
+
+<Section id='create-your-application' title='ایجاد برنامه' />
+
+ابتدا، یک برنامه‌ی جدید مبتنی بر <a href="/paas/nextjs/getting-started/" className="text-[#2196f3]">NextJS</a> ایجاد کنید. با اجرای دستور زیر، یک دایرکتوری جدید به نام <Important>multi-modal-chatbot</Important> ایجاد می‌شود و یک برنامه‌ی پایه‌ی NextJS درون آن قرار خواهد گرفت:
+
+<div className="h-2" />
+<Alert variant="warning">
+<p>
+هنگامی که از شما درباره‌ی استفاده از App Router سؤال می‌شود، حتماً گزینه‌ی Yes را انتخاب کنید.
+اگر به دنبال راهنما برای استفاده از Pages Router در NextJS هستید، می‌توانید بر روی این <a href="/ai/getting-started/nextjs-page-router/" className="text-[#2196f3]">لینک</a>، کلیک کنید.
+</p>
+</Alert>
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`pnpm create next-app@latest multi-modal-chatbot`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/multi-modal-chatbot/create-next-js-app.png" alt="create-nextjs-app instructions"/>
+<div className="h-4" />
+
+اکنون با دستور زیر، وارد پوشه ساخته شده شوید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`cd multi-modal-chatbot`}
+    </Highlight>
+</div>
+
+<Section id='install-dependencies' title='نصب وابستگی‌ها' />
+پکیج‌های <Important>ai</Important> و <Important>@ai-sdk/openai</Important> را با اجرای دستور زیر نصب کنید (پکیج <Important>ai</Important> مربوط به Vercel و پکیج <Important>@ai-sdk/openai</Important> برای اتصال به مدل‌های مختلف در AI SDK است):
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`pnpm add ai @ai-sdk/react @ai-sdk/openai`}
+    </Highlight>
+</div>
+
+<Section id='configure-keys' title='تنظیم اطلاعات AI' />
+با اجرای دستور زیر (در لینوکس)، یک فایل <Important>env.local.</Important> در مسیر اصلی پروژه ایجاد کنید تا درون آن <Important>baseUrl</Important> هوش مصنوعی و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> را، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`touch .env.local`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+درون فایل ایجاد شده، قطعه کد زیر را، قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`BASE_URL=xxxxxxxxx
+LIARA_API_KEY=xxxxxxxxx`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد فوق، به‌جای <Important>xxxxxxxxx</Important>، مقادیر واقعی خود را، قرار دهید. 
+
+<hr className="mb-2" />
+<Section id='implementation-plan' title='نقشه پیاده‌سازی' />
+
+برای ساخت یک چت‌بات چندمنظوره، مراحل زیر را دنبال خواهید کرد:
+
+<div className="h-4" />
+<ul>
+<li>ایجاد یک Route Handler برای پردازش پیام‌های ورودی چت و تولید پاسخ</li>
+<li>اتصال رابط کاربری (UI) برای نمایش پیام‌های چت، دریافت ورودی از کاربر و ارسال پیام‌های جدید</li>
+<li>افزودن قابلیت آپلود تصویر و اتصال آن به پیام‌های چت</li>
+</ul>
+<hr className="mb-2" />
+
+<Section id='create-a-route-handler' title='ایجاد Route Handler' />
+یک فایل در مسیر <Important>app/api/chat/route.ts</Important> ایجاد کرده و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('deepseek/deepseek-chat-v3-0324'),
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+در قطعه کد فوق: 
+
+<div className="h-2" />   
+
+۱. با استفاده از تابع <Important>createOpenAI</Important> از پکیج <Important>@ai-sdk/openai</Important>، یک object مدل هوش مصنوعی ایجاد شده است. این object با استفاده از <Important>baseURL</Important> و <Important>apiKey</Important> که در فایل <Important>env.local.</Important> تنظیم کرده‌اید، پیکربندی می‌شود.
+
+<div className="h-2" />   
+
+
+۲. یک asynchronous handler برای درخواست‌های <Important>POST</Important> و استخراج پیام‌ها از بدنه‌ی request تعریف شده است.
+متغیر <Important>messages</Important> شامل تاریخچه‌ی گفت‌وگو بین کاربر و چت‌بات است و context لازم را برای مدل فراهم می‌کند تا بتواند پاسخ بعدی را به‌درستی تولید کند.
+
+<div className="h-2" />   
+
+۳. پیام‌های رابط کاربری (UI)، با استفاده از تابع <Important>convertToCoreMessages</Important>، به پیام‌های قابل فهم برای مدل تبدیل می‌شود. این تابع فرمت پیام‌های رابط کاربری را به فرمتی که مدل زبانی انتظار دارد، تبدیل می‌کند.
+
+<div className="h-2" />   
+
+۴. تابع <Important>streamText</Important> که از پکیج <Important>ai</Important> ایمپورت شده است، فراخوانی می‌شود.
+این تابع یک object پیکربندی شده دریافت می‌کند که شامل مدل هوش مصنوعی و پیام‌های تبدیل‌شده است.
+همچنین، می‌توانید تنظیمات اضافی را نیز جهت سفارشی‌سازی رفتار مدل به آن، اضافه کنید.
+
+<div className="h-2" />   
+
+۵. تابع <Important>streamText</Important> یک object از نوع <Important>StreamTextResult</Important> بازمی‌گرداند. این object شامل تابع <Important>toDataStreamResponse</Important> است که نتیجه را به یک پاسخ استریمی قابل استفاده در رابط کاربری، تبدیل می‌کند.
+
+<div className="h-2" />   
+
+۶. در نهایت، نتیجه‌ی تولیدشده به کلاینت بازگردانده می‌شود تا پاسخ به‌صورت استریم ارسال گردد.
+
+<div className="h-2" />   
+
+این Route Handler یک endpoint برای درخواست‌های <Important>POST</Important> در مسیر <Important>api/chat/</Important> ایجاد می‌کند.
+
+<hr className="mb-2" />
+<Section id='wire-up-the-ui' title='ایجاد رابط کاربری' />
+
+اکنون که یک Route Handler برای ارسال درخواست به یک LLM پیاده‌سازی کرده‌اید، زمان آن رسیده است که فرانت‌اند را تنظیم کنید.
+AI SDK پیچیدگی‌های مربوط به پیاده‌سازی رابط چت را در قالب یک هوک ساده به نام <Important>useChat</Important> برطرف کرده است.
+
+<div className="h-4" />
+
+برای نمایش لیستی از پیام‌های چت و اضافه‌کردن قابلیت وارد کردن پیام توسط کاربر، فایل <Important>app/page.tsx</Important> را با کد زیر به‌روزرسانی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  return (
+    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      {messages.map(m => (
+        <div key={m.id} className="whitespace-pre-wrap">
+          {m.role === 'user' ? 'User: ' : 'AI: '}
+          {m.content}
+        </div>
+      ))}
+
+      <form
+        onSubmit={handleSubmit}
+        className="fixed bottom-0 w-full max-w-md mb-8 border border-gray-300 rounded shadow-xl"
+      >
+        <input
+          className="w-full p-2"
+          value={input}
+          placeholder="Say something..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+<Alert variant="info">
+<p>
+حتماً دستور <Important>'use client'</Important> را به ابتدای فایل خود اضافه کنید.
+این دستور به شما اجازه می‌دهد تا از قابلیت‌های تعاملی JavaScript استفاده کنید.
+</p>
+</Alert>
+<div className="h-2" />   
+
+صفحه فوق از هوک <Important>useChat</Important> استفاده می‌کند. این هوک، به‌صورت پیش‌فرض، از مسیر <Important>POST</Important> که قبل‌تر ایجاد کردید استفاده می‌کند (<Important>api/chat/</Important>).
+هوک <Important>useChat</Important> یک‌سری توابع و state را برای مدیریت ورودی کاربر و ارسال فرم، فراهم می‌کند:
+
+<div className="h-2" />   
+<ul>
+<li><Important>messages</Important>:  پیام‌های فعلی چت؛ یک آرایه از objectهایی که دارای ویژگی‌های <Important>id</Important>، <Important>role</Important> و <Important>content</Important> هستند</li>
+<li><Important>input</Important>:  مقدار فعلی فیلد ورودی کاربر</li>
+<li><Important>handleInputChange</Important> و <Important>handleSubmit</Important>: توابعی برای مدیریت تعاملات کاربر؛ به ترتیب، برای زمانی که کاربر در فیلد متنی تایپ می‌کند یا فرم را ارسال می‌کند</li>
+<li><Important>status</Important>: وضعیت درخواست API</li>
+</ul>
+
+<hr className="mb-2" />
+<Section id='add-image-upload' title='افزودن قابلیت بارگذاری تصویر ' />
+
+برای اضافه‌کردن قابلیت ارسال تصویر در برنامه، در ابتدا، در فایل <Important>app/api/chat/route.ts</Important>، باید منطقی را اضافه کنید که 
+بررسی کند ورودی شما شامل عکس هست یا خیر. در صورتی که در تاریخچه‌ی پیام‌های ارسالی، عکس نیز وجود داشته باشد؛ متغیری به‌نام <Important>messagesHaveImage</Important>، مقدار <Important>true</Important> می‌گیرد و در حین تعیین LLM برای پاسخ، این متغیر 
+بررسی خواهد شد.
+<div className="h-2" />   
+
+
+در صورت <Important>true</Important> بودن متغیر مذکور، مدل <Important>openai/gpt-4.1</Important> به کار گرفته خواهد شد و در غیراین‌صورت، از مدل <Important>deepseek/deepseek-chat-v3-0324</Important> برای پاسخ، استفاده می‌شود.
+برای اضافه‌کردن این منطق به برنامه‌تان، کد زیر را درون فایل <Important>app/api/chat/route.ts</Important>، قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const messagesHaveImage = messages.some(
+    (message: { experimental_attachments?: any[] }) =>
+      message.experimental_attachments?.some(
+        (a) =>
+          typeof a.contentType === 'string' &&
+          a.contentType.startsWith('image/')
+      )
+  );
+
+  console.log('Messages have image:', messagesHaveImage);
+
+  const result = streamText({
+    model: messagesHaveImage
+      ? my_model('openai/gpt-4.1')
+      : my_model('deepseek/deepseek-chat-v3-0324'),
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+
+همچنین، برای چندمنظوره کردن چت‌بات خود، باید قابلیت بارگذاری و ارسال تصویر به مدل را به رابط کاربری، اضافه کنید.
+هوک <Important>useChat</Important> دو روش را برای ارسال فایل‌های پیوست‌شده همراه با یک پیام ارائه می‌دهد:
+
+<div className="h-2" />   
+<ul>
+<li>استفاده از یک آبجکت <Important>FileList</Important></li>
+<li>استفاده از یک لیست از URLها در تابع <Important>handleSubmit</Important></li>
+</ul>
+<div className="h-2" />   
+در این راهنما، از روش <Important>FileList</Important> استفاده خواهید کرد، زیرا نیازی به پیکربندی یا راه‌اندازی اضافی ندارد.
+<div className="h-4" />   
+برای این کار، فایل <Important>app/page.tsx</Important> را با کد زیر به‌روزرسانی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+import { useRef, useState } from 'react';
+import Image from 'next/image';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+
+  const [files, setFiles] = useState<FileList | undefined>(undefined);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      {messages.map(m => (
+        <div key={m.id} className="whitespace-pre-wrap">
+          {m.role === 'user' ? 'User: ' : 'AI: '}
+          {m.content}
+          <div>
+          {m.experimental_attachments
+            ?.filter(
+              attachment =>
+                typeof attachment.contentType === 'string' &&
+                attachment.contentType.startsWith('image/')
+                )
+                .map((attachment, index) => (
+                    <Image
+                      src={attachment.url}
+                      width={500}
+                      height={500}
+                      key={\`\${m.id}-\${index}\`}
+                      alt={attachment.name ?? \`attachment-\${index}\`}
+                    />
+                  ))}
+              </div>
+        </div>
+      ))}
+
+      <form 
+        className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl space-y-2"
+        onSubmit={event => {
+          handleSubmit(event, {
+            experimental_attachments: files,
+          });
+
+          setFiles(undefined);
+
+          if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+          }
+        }}
+      >
+        <input
+          type="file"
+          className=""
+          onChange={event => {
+            if (event.target.files) {
+              setFiles(event.target.files);
+            }
+          }}
+          multiple
+          ref={fileInputRef}
+        />
+        <input
+          className="w-full p-2"
+          value={input}
+          placeholder="Say something..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
+  );
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+در قطعه کد فوق، کارهای زیر، انجام می‌شود:
+
+
+<ul>
+  <li>ایجاد یک <Important>state</Important> برای نگه‌داری فایل‌ها و همچنین ایجاد یک <Important>ref</Important> برای فیلد بارگذاری فایل (file input)</li>
+  <li>نمایش فایل‌های بارگذاری‌شده در رابط کاربری (UI) برای اطلاع کاربر از فایل‌های انتخاب‌شده</li>
+  <li>به‌روزرسانی تابع <Important>onSubmit</Important> به‌طوری که <Important>handleSubmit</Important> را فراخوانی کرده و فایل‌ها را از طریق <Important>experimental_attachments</Important> به‌عنوان گزینه، ارسال می‌کند</li>
+  <li>افزودن یک فیلد بارگذاری فایل (file input) به فرم، به‌همراه یک تابع <Important>onChange</Important> برای مدیریت به‌روزرسانی <Important>state</Important> مربوط به فایل‌ها</li>
+</ul>
+
+<hr className="mb-2" />
+<Section id='running-your-application' title='اجرای برنامه' />
+
+با انجام مراحل فوق، تمام اجزای موردنیاز برای ساخت چت‌بات چندمنظوره خود را پیاده‌سازی کرده‌اید!
+برای اجرای برنامه، از دستور زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`pnpm run dev`}
+    </Highlight>
+</div>
+<div className="h-2" /> 
+
+سپس مرورگر خود را باز کرده و به آدرس <Important>http://localhost:3000</Important> مراجعه کنید. در این صفحه باید یک فیلد ورودی متنی و یک دکمه برای بارگذاری تصویر مشاهده کنید.
+اکنون یک تصویر بارگذاری کرده و از مدل بخواهید آنچه در تصویر می‌بیند را توصیف کند.
+پاسخ مدل به‌صورت استریمی برای شما ارسال خواهد شد و می‌توانید به‌صورت زنده آن را مشاهده کنید.
+
+<div className="h-2" />   
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/multi-modal-chatbot/working-with-multi-modal-chatbot.png" alt="work with multi modal chatbot in nextjs"/>
+<div className="h-4" />
+
+تا اینجا، شما یک چت‌بات هوش مصنوعی چندمنظوره با استفاده از AI SDK ساختید.
+اکنون می‌توانید با آزمایش و گسترش قابلیت‌های این برنامه (مثلاً استفاده از <a href="/ai/ai-sdk-core/tool-calling/" className="text-[#2196f3]">قابلیت tool calling</a>)، آن را توسعه دهید.
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه نهایی مورد بررسی در این آموزش، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/multi-modal-chatbot" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+</Layout>
