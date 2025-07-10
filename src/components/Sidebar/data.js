@@ -54,6 +54,7 @@ import {
   GoEye,
   GoGraph,
   GoKey,
+  GoQuote,
   GoLog,
   GoStrikethrough,
   GoOrganization,
@@ -5360,6 +5361,11 @@ export default {
         title: "ایجاد و مدیریت کاربر جدید",
         icon: <GoKey />,
         link: "/dbaas/mongodb/create-user"
+      },
+      {
+        title: "مدیریت داده‌ها در کنسول",
+        icon: <GoQuote />,
+        link: "/dbaas/mongodb/inspector"
       },
       {
         hr: true

@@ -1,0 +1,231 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+import Asciinema from "@/components/Common/asciinema";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات مدیریت داده های MongoDB در کنسول - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات آشنایی با نحوه مدیریت داده‌های دیتابیس MongoDB در کنسول لیارا "  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# مدیریت داده های دیتابیس MongoDB در کنسول 
+<hr className="mb-2" />
+
+قابلیت مدیریت داده های دیتابیس مونگو دی‌بی (inspector) به شما این امکان را می‌دهد که داده‌های دیتابیس‌تان را بدون نیاز به ابزارهای جانبی مانند <Important>Compass</Important> مستقیماً از طریق پنل لیارا مدیریت کنید.
+در ادامه، شیوه کار با این بخش، توضیح داده شده است.
+
+<div className="h-2" />   
+<img src="https://media.liara.ir/mongodb/mongodb-inspector.png" alt="mongodb inspector"/>
+<div className="h-4" />
+
+<Section id="select-database" title="انتخاب دیتابیس" />
+
+برای انتخاب دیتابیس، تنها کافیست تا پس از ورود به پنل کاربری و انتخاب دیتابیس MongoDB از بخش <b>دیتابیس</b>، وارد قسمت <b>مدیریت داده‌ها</b> شوید.  در این بخش، می‌توانید 
+در قسمت سمت راست و بالای صفحه کنسول از <b>Databases</b>، دیتابیس مورد نظر خود را انتخاب کنید.
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/select-database-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="create-database" title="ایجاد دیتابیس جدید" />
+
+برای ایجاد دیتابیس جدید، کافیست در قسمت <b>Databases</b>، بر روی گزینه <Important>+</Important> کلیک کنید. سپس نام دیتابیس و collection خود را وارد کرده و بر روی گزینه <b>اضافه کردن</b> کلیک کنید:
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/create-database-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="delete-database" title="حذف دیتابیس" />
+برای حذف دیتابیس، کافیست در قسمت <b>Databases</b>، ابتدا دیتابیس مدنظر خود را انتخاب کنید؛ سپس بر روی آیکون سطل زباله کنار دیتابیس مورد نظر کلیک کنید. در نهایت، با نوشتن اسم دیتابیس و کلیک بر روی گزینه <b>حذف دیتابیس</b>، دیتابیس شما حذف خواهد شد:
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/delete-database-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="select-collection" title="انتخاب collection" />
+
+برای انتخاب collection، کافیست تا پس از انتخاب دیتابیس، در قسمت سمت راست و بالای صفحه کنسول، collection مورد نظر خود را انتخاب کنید.
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/select-collection-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="create-collection" title="ایجاد collection جدید" />
+
+برای ایجاد collection جدید، کافیست تا بر روی گزینه <Important>+</Important> کلیک کنید. سپس نام collection خود را وارد کرده و بر روی گزینه <b>اضافه کردن</b> کلیک کنید:
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/create-collection-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="rename-collection" title="تغییر نام collection" />
+
+برای تغییر نام collection، کافیست تا پس از انتخاب collection مورد نظر، بر روی سه نقطه کلیک کرده و سپس گزینه <b>تغییر نام مجموعه</b> را انتخاب کنید. سپس نام جدید collection خود را وارد کرده و بر روی گزینه <b>تغییر نام</b> کلیک کنید:
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/rename-collection-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="delete-collection" title="حذف collection" />
+
+برای حذف collection، کافیست تا پس از انتخاب collection مورد نظر، بر روی سه نقطه کلیک کرده و سپس گزینه <b>حذف مجموعه</b> را انتخاب کنید. سپس نام collection خود را وارد کرده و بر روی گزینه <b>حذف مجموعه</b> کلیک کنید:
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/delete-collection-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="add-record-to-collection" title="اضافه‌کردن رکورد به collection" />
+برای اضافه‌کردن رکورد به collection، کافیست تا پس از انتخاب دیتابیس و collection مورد نظر، بر روی گزینه <Important>Add Record+</Important> کلیک کنید؛ داکیومنت خود را قرار دهید و سپس بر روی گزینه <b>اضافه کردن</b> کلیک کنید:
+
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/add-record-to-collection-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<div className="h-2" />   
+
+در نظر داشته باشید که برای اضافه کردن رکورد جدید به collection: 
+
+<div className="h-2" />   
+<ul>
+<li>تمامی Key ها باید به صورت رشته (string) باشند</li>
+<li>گذاشتن کاما (,) در انتهای آخرین جفت &lt;Key,Value&gt; مجاز نیست</li>
+</ul>
+<div className="h-2" />   
+
+نمونه‌ای از یک داکیومنت صحیح:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`{
+  "name": "Test User",
+  "email": "testuser@example.com",
+  "role": "tester",
+  "isActive": true,
+  "created_at": { "$date": "2025-07-10T00:00:00Z" }
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+<Section id="edit-record" title="ویرایش رکورد در collection" />
+برای ویرایش رکورد، تنها کافیست تا پس از انتخاب رکورد، بر روی آیکون ویرایش (قلم)، کلیک کنید و پس از تغییر داکیومنت، بر روی گزینه <b>ویرایش</b> کلیک کنید تا داکیومنت مدنظرتان، ویرایش شود: 
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/edit-record-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="delete-record" title="حذف رکورد در collection" />
+
+برای حذف رکود در collection، کافیست تا پس از انتخاب رکورد، بر روی آیکون سطل زباله کلیک کنید و سپس با تایید حذف با کلیک بر روی گزینه <b>حذف</b>، رکورد انتخابی، حذف خواهد شد:
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/delete-record-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+<Section id="execute-query" title="اجرای کوئری" />
+
+برای اجرای کوئری، کافیست تا پس از انتخاب colleciton مدنظرتان، کوئری خود را در باکس خالی تعبیه شده، قرار دهید 
+و سپس گزینه <Important>Find</Important> را بزنید. برای خالی کردن باکس و حذف نتایج هم، تنها کافیست تا گزینه <Important>Reset</Important> را انتخاب کنید. 
+در صورتی که قصد دارید که کوئری خود را همزمان بنویسید، می‌توانید برای تجربه کاربری بهتر، آیکون قلم را انتخاب کنید تا یک صفحه جدید، برای شما باز شود:
+
+<div className="h-2" />   
+<video
+    src="https://media.liara.ir/mongodb/execute-query-using-inspector.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+<div className="h-2" />   
+
+در نظر داشته باشید که برای نوشتن کوئری و اجرای صحیح آن: 
+
+<div className="h-2" />   
+
+<ul>
+<li>از ساختار Aggregation Framework استفاده کنید</li>
+<li>ورودی باید به صورت یک آرایه از اشیاء باشد</li>
+<li>در انتهای آخرین عضو از آرایه، گذاشتن کاما (,) مجاز نیست</li>
+<li>تمامی Key ها باید به صورت رشته (string) باشند</li>
+<li>گذاشتن کاما (,) در انتهای آخرین جفت &lt;Key,Value&gt; مجاز نیست</li>
+
+</ul>
+<div className="h-2" />   
+
+نمونه‌ای از یک کوئری صحیح: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`[
+  {
+    "$match": {
+      "created_at": {
+        "$gte": {
+          "$date": "2025-07-01T00:00:00Z"
+        }
+      }
+    }
+  }
+]`}
+    </Highlight>
+</div>
+<div className="h-2" />   
+
+
+</Layout>
