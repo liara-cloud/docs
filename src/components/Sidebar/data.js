@@ -383,6 +383,10 @@ export default {
         title: "ساخت چت بات چندمنظوره",
         link: "/ai/cookbook/multi-modal-chatbot"
       },
+      {
+        title: "شروع به کار با OpenAI/GPT-4.1",
+        link: "/ai/cookbook/openai-gpt-4-1"
+      },
 
       {
         hr: true
