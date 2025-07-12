@@ -16,7 +16,7 @@ import {
   GoDatabase,
   GoDiff,
   GoVideo,
-  GoProjectRoadmap,
+  GoProjectRoadmap
   GoContainer,
   GoRocket,
   GoPencil,
@@ -4321,11 +4321,11 @@ export default {
         icon: <GoGraph />,
         link: "/iaas/details/network-observation",
       },
-      // {
-      //   title: "دورنما",
-      //   icon: <GoCodespaces />,
-      //   link: "/iaas/details/console",
-      // },
+      {
+        title: "دورنما",
+        icon: <GoCodespaces />,
+        link: "/iaas/details/console",
+      },
     ],
 
     disks: [
