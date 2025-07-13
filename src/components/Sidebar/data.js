@@ -391,6 +391,10 @@ export default {
         title: "شروع به کار با o4-mini",
         link: "/ai/cookbook/openai-o4-mini"
       },
+      {
+        title: "شروع به کار با DeepSeek R1",
+        link: "/ai/cookbook/deepseek-r1"
+      },
 
       {
         hr: true

@@ -27,40 +27,29 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات کار با OpenAI o4-mini - لیارا</title>
+<title>مستندات کار با DeepSeek R1 - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به کار با OpenAI o4-mini در سرویس هوش مصنوعی لیارا"  />
+<meta property="og:description" content="مستندات مربوط به کار با DeepSeek R1 در سرویس هوش مصنوعی لیارا"  />
 <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
 </Head>
 
 
-# شروع به کار با OpenAI o4-mini
+# شروع به کار با DeepSeek R1
 <hr className="mb-2" />
 
-مدل‌های <Important>o4-mini</Important> و <Important>o4-mini high</Important> به‌طور ویژه برای استدلال در حوزه‌های STEM (علم، ریاضیات و برنامه‌نویسی) بهینه‌سازی شده‌اند. این دو مدل، در انجام Taskهای مرتبط با علوم، ریاضی و کدنویسی عملکرد بسیار خوبی دارند. این مدل‌ها، در حالی که پاسخ‌دهی سریع‌تری دارند و هزینه‌های کمتری را ایجاد می‌کنند، اما در عمل، با مدل <Important>o1</Important> برابری می‌کنند.
-<div className="h-2" />
+<Important>DeepSeek R1</Important> مجموعه‌ای از مدل‌های پیشرفته هوش مصنوعی است که برای انجام Taskهای پیچیده استدلالی در حوزه‌های علم، برنامه‌نویسی، و ریاضیات طراحی شده‌اند. این مدل‌ها به‌گونه‌ای بهینه‌سازی شده‌اند که «پیش از پاسخ‌گویی فکر کنند»، به این معنا که زنجیره‌ای از تفکر درونی دقیق را برای حل مسائل دشوار تولید می‌کنند.
+
+<Section id="prompt-engineering-for-r1" title="مهندسی پرامپت در DeepSeek R1" />
+مدل‌ <Important>DeepSeek R1</Important> در مواجهه با دستورات ساختارمند و صریح، عملکرد بسیار خوبی دارد. برای دستیابی به بهترین نتایج، رعایت نکات زیر توصیه می‌شود:
 
 
-مدل‌های <Important>o4-mini</Important> و <Important>o4-mini high</Important> از قابلیت‌هایی نظیر tool calling، خروجی‌های ساختاریافته (structured outputs)، و system messages پشتیبانی می‌کنند؛ ویژگی‌هایی که این دو مدل را به گزینه‌ای مناسب برای طیف گسترده‌ای از کاربردها تبدیل کرده‌اند.
-<div className="h-2" />
-
-در نظر داشته باشید که مدل <Important>o4-mini</Important> برای سرعت بالا بهینه شده است و در این حال، توانایی استدلال منطقی قابل‌قبولی را نیز دارد. همچنین، مدل <Important>o4-mini high</Important> همان مدل <Important>o4-mini</Important> است. با این تفاوت که reasoning effort آن بر روی <Important>high</Important> تنظیم شده است و توان استدلالی تقویت‌شده آن در بسیاری از حوزه‌های STEM از <Important>o1</Important> نیز فراتر می‌رود.
-
-<div className="h-2" />
-
-<Section id="prompt-engineering-for-41" title="مهندسی پرامپت در o4-mini" />
-
-مدل <Important>o4-mini</Important> بهترین عملکرد خود را با دستورات ساده و مستقیم ارائه می‌دهد. برخی از تکنیک‌های مهندسی پرامپت (مانند few-shot prompting یا درخواست از مدل برای تفکر مرحله به مرحله) الزامی نیستند و حتی ممکن است عملکرد مدل را بدتر کنند. در ادامه، چندین روش توصیه‌شده برای نگارش پرامپت آورده شده است:
 
 <div className="h-4" />
 
 <ul>
-<li>پرامپت‌ها را ساده و مستقیم نگه دارید: این مدل در درک و پاسخ‌گویی به دستورالعمل‌های کوتاه و شفاف بسیار خوب عمل می‌کند و نیازی به راهنمایی طولانی یا پیچیده ندارد</li>
-<div className="h-2" />
-<li>از پرامپت‌های زنجیره‌ای اجتناب کنید: از آنجایی که مدل، فرآیند استدلال را به‌صورت داخلی انجام می‌دهد، درخواست‌هایی مانند «مرحله به مرحله فکر کن» یا «دلایل خود را توضیح بده» معمولاً غیرضروری هستند و می‌توانند مزاحم عملکرد طبیعی مدل شوند.</li>
-<div className="h-2" />
-<li>برای شفافیت از جداکننده‌ها استفاده کنید: برای مشخص‌کردن بخش‌های مختلف ورودی، می‌توانید از جداکننده‌هایی مانند <Important>"""</Important>، تگ‌های XML، یا عناوین بخش‌ها استفاده کنید. این کار به مدل کمک می‌کند تا ساختار ورودی را بهتر تشخیص دهد.</li>
-<div className="h-2" />
+<li>از تگ‌های <Important>&lt;think&gt;</Important> برای استدلال و <Important>&lt;answer&gt;</Important> برای ارائه‌ی نتیجه‌ی نهایی استفاده کنید</li>
+<li>از ارائه‌ی نمونه‌های متعدد (few-shot prompting) پرهیز کنید، زیرا ممکن است باعث کاهش عملکرد مدل شود. در عوض، مسئله را به‌صورت مستقیم بیان کنید</li>
+<li>با تعریف فرمت خروجی مورد نظر (مانند markdown یا تگ‌های شبیه به XML)، مدل را در جهت ارائه‌ی پاسخ دقیق راهنمایی کنید</li>
 </ul>
 
 
@@ -74,28 +63,28 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`npm add ai @ai-sdk/openai zod`}
+        {`npm add ai @ai-sdk/deepseek zod`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 اکنون، تمامی کارها انجام شده است و
-قطعه کد زیر تمام چیزی است که برای اتصال به <Important>o4-mini</Important> با استفاده از AI SDK نیاز دارید:
+قطعه کد زیر تمام چیزی است که برای اتصال به <Important>DeepSeek R1</Important> با استفاده از AI SDK نیاز دارید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
         {`import { generateText  } from 'ai';
-import { createOpenAI } from '@ai-sdk/openai';
+import { createDeepSeek } from '@ai-sdk/deepseek';
 
 
-const my_model = createOpenAI({
+const my_model = createDeepSeek({
     baseURL: "<baseUrl>",
     apiKey: "<LIARA_API_KEY>",
 });
 
 const { text } = await generateText ({
-  model: my_model('openai/o4-mini'), // or openai/o4-mini-high
+  model: my_model('deepseek/deepseek-r1-distill-llama-70b'),
   prompt: 'Explain the concept of quantum entanglement.',
 });
 
@@ -118,16 +107,16 @@ AI SDK دو تابع به نام‌های <Important>generateObject</Important> 
 <div dir='ltr'>
     <Highlight className="js">
         {`import { generateObject } from 'ai';
-import { createOpenAI } from '@ai-sdk/openai';
+import { createDeepSeek } from '@ai-sdk/deepseek';
 import { z } from 'zod';
 
-const my_model = createOpenAI({
+const my_model = createDeepSeek({
     baseURL: "<baseUrl>",
     apiKey: "<LIARA_API_KEY>",
 });
 
 const { object } = await generateObject({
-  model: my_model('openai/o4-mini'),
+  model: my_model('deepseek/deepseek-r1-distill-llama-70b'),
   prompt: 'Generate a lasagna recipe.',
    schema: z.object({
     recipe: z.object({
@@ -141,66 +130,25 @@ const { object } = await generateObject({
 console.log(object);`}
     </Highlight>
 </div>
-<div className="h-2" />
-
-قطعه کد فوق، دستور پخت type-safe تولید می‌کند که با schema مشخص‌شده‌ی Zod مطابقت دارد. خروجی قطعه کد فوق، می‌تواند مشابه زیر باشد:
-
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="json">
-        {`{
-  recipe: {
-    name: 'Classic Beef Lasagna',
-    ingredients: [
-      [Object], [Object], [Object],
-      [Object], [Object], [Object],
-      [Object], [Object], [Object],
-      [Object], [Object], [Object],
-      [Object], [Object], [Object],
-      [Object], [Object], [Object],
-      [Object]
-    ],
-    steps: [
-      'Preheat oven to 375°F (190°C).',
-      'Bring a large pot of salted water to a boil. Cook lasagna noodles according to package instructions until al dente; drain and set aside, separating sheets to avoid sticking.',
-      'In a large skillet over medium heat, add olive oil. Sauté onion until translucent, about 4 minutes. Add garlic and cook 1 more minute.',
-      'Add ground beef and Italian sausage. Cook until browned, breaking up meat with a spoon. Drain excess fat.',
-      'Stir in tomato sauce, crushed tomatoes, and tomato paste. Add sugar, basil, oregano, salt, and pepper. Simmer uncovered for 15 minutes, stirring occasionally.',
-      'In a bowl, combine ricotta cheese, egg, and chopped parsley. Season with a pinch of salt and pepper.',
-      'Spread a thin layer of meat sauce in the bottom of a 9x13-inch baking dish.',
-      'Arrange 3 lasagna noodles over the sauce. Spread one-third of the ricotta mixture over noodles, then sprinkle one cup of mozzarella and two tablespoons Parmesan. Top with one-third of the meat sauce.',
-      'Repeat layering twice: noodles, ricotta mixture, cheeses, and meat sauce.',
-      'Finish with a final layer of noodles, remaining meat sauce, mozzarella, and Parmesan cheese.',
-      'Cover the dish with foil (tent foil to prevent cheese sticking) and bake for 25 minutes. Remove foil and bake an additional 20 minutes, until cheese is melted and bubbly.',
-      'Let lasagna rest for 10–15 minutes before slicing. Garnish with extra parsley and serve warm.'
-    ]
-  }
-}`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-
-
 
 <Section id='using-tools-with-the-ai-sdk' title='استفاده از Toolها با AI SDK' />
 
-o4-mini به‌صورت پیش‌فرض از قابلیت Tool Calling پشتیبانی می‌کند، که به آن اجازه می‌دهد با سیستم‌های خارجی تعامل داشته و Taskهای مستقل را اجرا کند. در ادامه، مثالی از استفاده از Tool Calling با AI SDK آمده است:
+DeepSeek R1 به‌صورت پیش‌فرض از قابلیت Tool Calling پشتیبانی می‌کند، که به آن اجازه می‌دهد با سیستم‌های خارجی تعامل داشته و Taskهای مستقل را اجرا کند. در ادامه، مثالی از استفاده از Tool Calling با AI SDK آمده است:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
         {`import { generateText, tool } from 'ai';
-import { createOpenAI } from '@ai-sdk/openai';
+import { createDeepSeek } from '@ai-sdk/deepseek';
 import { z } from 'zod';
 
-const my_model = createOpenAI({
+const my_model = createDeepSeek({
     baseURL: "<baseUrl>",
     apiKey: "<LIARA_API_KEY>",
 });
 
 const { text } = await generateText({
-  model: my_model('openai/o4-mini'),
+  model: my_model('deepseek/deepseek-r1-distill-llama-70b'),
   prompt: 'What is the weather like today in San Francisco?',
   maxSteps: 3,
   tools: {
