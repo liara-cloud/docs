@@ -16,7 +16,7 @@ import {
   GoDatabase,
   GoDiff,
   GoVideo,
-  GoProjectRoadmap
+  GoProjectRoadmap,
   GoContainer,
   GoRocket,
   GoPencil,
