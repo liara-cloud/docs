@@ -1,0 +1,263 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کار با OpenAI o4-mini - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به کار با OpenAI  o4-mini در سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# شروع به کار با OpenAI o4-mini
+<hr className="mb-2" />
+
+مدل‌های <Important>o4-mini</Important> و <Important>o4-mini high</Important> به‌طور ویژه برای استدلال در حوزه‌های STEM (علم، ریاضیات و برنامه‌نویسی) بهینه‌سازی شده‌اند. این دو مدل، در انجام Taskهای مرتبط با علوم، ریاضی و کدنویسی عملکرد بسیار خوبی دارند. این مدل‌ها، در حالی که پاسخ‌دهی سریع‌تری دارند و هزینه‌های کمتری را ایجاد می‌کنند، اما در عمل، با مدل <Important>o1</Important> برابری می‌کنند.
+<div className="h-2" />
+
+
+مدل‌های <Important>o4-mini</Important> و <Important>o4-mini high</Important> از قابلیت‌هایی نظیر tool calling، خروجی‌های ساختاریافته (structured outputs)، و system messages پشتیبانی می‌کنند؛ ویژگی‌هایی که این دو مدل را به گزینه‌ای مناسب برای طیف گسترده‌ای از کاربردها تبدیل کرده‌اند.
+<div className="h-2" />
+
+در نظر داشته باشید که مدل <Important>o4-mini</Important> برای سرعت بالا بهینه شده است و در این حال، توانایی استدلال منطقی قابل‌قبولی را نیز دارد. همچنین، مدل <Important>o4-mini high</Important> همان مدل <Important>o4-mini</Important> است. با این تفاوت که reasoning effort آن بر روی <Important>high</Important> تنظیم شده است و توان استدلالی تقویت‌شده آن در بسیاری از حوزه‌های STEM از <Important>o1</Important> نیز فراتر می‌رود.
+
+<div className="h-2" />
+
+<Section id="prompt-engineering-for-41" title="مهندسی پرامپت در o4-mini" />
+
+مدل <Important>o4-mini</Important> بهترین عملکرد خود را با دستورات ساده و مستقیم ارائه می‌دهد. برخی از تکنیک‌های مهندسی پرامپت (مانند few-shot prompting یا درخواست از مدل برای تفکر مرحله به مرحله) الزامی نیستند و حتی ممکن است عملکرد مدل را بدتر کنند. در ادامه، چندین روش توصیه‌شده برای نگارش پرامپت آورده شده است:
+
+<div className="h-4" />
+
+<ul>
+<li>پرامپت‌ها را ساده و مستقیم نگه دارید: این مدل در درک و پاسخ‌گویی به دستورالعمل‌های کوتاه و شفاف بسیار خوب عمل می‌کند و نیازی به راهنمایی طولانی یا پیچیده ندارد</li>
+<div className="h-2" />
+<li>از پرامپت‌های زنجیره‌ای اجتناب کنید: از آنجایی که مدل، فرآیند استدلال را به‌صورت داخلی انجام می‌دهد، درخواست‌هایی مانند «مرحله به مرحله فکر کن» یا «دلایل خود را توضیح بده» معمولاً غیرضروری هستند و می‌توانند مزاحم عملکرد طبیعی مدل شوند.</li>
+<div className="h-2" />
+<li>برای شفافیت از جداکننده‌ها استفاده کنید: برای مشخص‌کردن بخش‌های مختلف ورودی، می‌توانید از جداکننده‌هایی مانند <Important>"""</Important>، تگ‌های XML، یا عناوین بخش‌ها استفاده کنید. این کار به مدل کمک می‌کند تا ساختار ورودی را بهتر تشخیص دهد.</li>
+<div className="h-2" />
+</ul>
+
+
+
+<hr className="mb-2" />
+
+<Section id="getting-started-with-the-ai-sdk" title="شروع به کار با AI SDK" />
+
+قبل از هرچیزی، با اجرای دستور زیر در دایرکتوری مدنظرتان، ماژول‌های مورد نیاز را نصب کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`npm add ai @ai-sdk/openai zod`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون، تمامی کارها انجام شده است و
+قطعه کد زیر تمام چیزی است که برای اتصال به <Important>o4-mini</Important> با استفاده از AI SDK نیاز دارید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText  } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+
+
+const my_model = createOpenAI({
+    baseURL: "<baseUrl>",
+    apiKey: "<LIARA_API_KEY>",
+});
+
+const { text } = await generateText ({
+  model: my_model('openai/o4-mini'), // or openai/o4-mini-high
+  prompt: 'Explain the concept of quantum entanglement.',
+});
+
+console.log(text);
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در قطعه کد‌ فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_TOKEN&gt;</Important>، کلید API کنسول خود را وارد کنید.
+
+<Section id='generating-structured-data' title='تولید داده‌های ساختاریافته' />
+
+اگرچه تولید متن خالی، کاربردهای زیادی دارد، اما در بسیاری از موارد ممکن است نیاز داشته باشید داده‌ی ساختاریافته‌ی JSON تولید کنید. به عنوان مثال، ممکن است بخواهید اطلاعاتی را از یک متن استخراج کنید، داده‌ها را دسته‌بندی نمایید، یا داده‌های مصنوعی بسازید.
+<div className="h-2" />
+
+AI SDK دو تابع به نام‌های <Important>generateObject</Important> و <Important>streamObject</Important> ارائه می‌دهد که برای تولید داده‌ی ساختاریافته به کار می‌روند و امکان محدود کردن خروجی مدل به یک shcema مشخص را فراهم می‌کنند.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+    baseURL: "<baseUrl>",
+    apiKey: "<LIARA_API_KEY>",
+});
+
+const { object } = await generateObject({
+  model: my_model('openai/o4-mini'),
+  prompt: 'Generate a lasagna recipe.',
+   schema: z.object({
+    recipe: z.object({
+      name: z.string(),
+      ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
+      steps: z.array(z.string()),
+    }),
+  }),
+});
+
+console.log(object);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+قطعه کد فوق، دستور پخت type-safe تولید می‌کند که با schema مشخص‌شده‌ی Zod مطابقت دارد. خروجی قطعه کد فوق، می‌تواند مشابه زیر باشد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+  recipe: {
+    name: 'Classic Beef Lasagna',
+    ingredients: [
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object], [Object], [Object],
+      [Object]
+    ],
+    steps: [
+      'Preheat oven to 375°F (190°C).',
+      'Bring a large pot of salted water to a boil. Cook lasagna noodles according to package instructions until al dente; drain and set aside, separating sheets to avoid sticking.',
+      'In a large skillet over medium heat, add olive oil. Sauté onion until translucent, about 4 minutes. Add garlic and cook 1 more minute.',
+      'Add ground beef and Italian sausage. Cook until browned, breaking up meat with a spoon. Drain excess fat.',
+      'Stir in tomato sauce, crushed tomatoes, and tomato paste. Add sugar, basil, oregano, salt, and pepper. Simmer uncovered for 15 minutes, stirring occasionally.',
+      'In a bowl, combine ricotta cheese, egg, and chopped parsley. Season with a pinch of salt and pepper.',
+      'Spread a thin layer of meat sauce in the bottom of a 9x13-inch baking dish.',
+      'Arrange 3 lasagna noodles over the sauce. Spread one-third of the ricotta mixture over noodles, then sprinkle one cup of mozzarella and two tablespoons Parmesan. Top with one-third of the meat sauce.',
+      'Repeat layering twice: noodles, ricotta mixture, cheeses, and meat sauce.',
+      'Finish with a final layer of noodles, remaining meat sauce, mozzarella, and Parmesan cheese.',
+      'Cover the dish with foil (tent foil to prevent cheese sticking) and bake for 25 minutes. Remove foil and bake an additional 20 minutes, until cheese is melted and bubbly.',
+      'Let lasagna rest for 10–15 minutes before slicing. Garnish with extra parsley and serve warm.'
+    ]
+  }
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+
+
+<Section id='using-tools-with-the-ai-sdk' title='استفاده از Toolها با AI SDK' />
+
+o4-mini به‌صورت پیش‌فرض از قابلیت Tool Calling پشتیبانی می‌کند، که به آن اجازه می‌دهد با سیستم‌های خارجی تعامل داشته و Taskهای مستقل را اجرا کند. در ادامه، مثالی از استفاده از Tool Calling با AI SDK آمده است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText, tool } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+    baseURL: "<baseUrl>",
+    apiKey: "<LIARA_API_KEY>",
+});
+
+const { text } = await generateText({
+  model: my_model('openai/o4-mini'),
+  prompt: 'What is the weather like today in San Francisco?',
+  maxSteps: 3,
+  tools: {
+    getWeather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+});
+
+console.log(text);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در مثال فوق، یک Tool به نام <Important>getWeather</Important> تعریف شده است که به مدل اجازه می‌دهد تا داده‌های آب‌و‌هوای لحظه‌ای (که برای سادگی به‌صورت شبیه‌سازی‌شده ارائه شده‌اند) را بازیابی کند. این قابلیت، توانایی مدل را برای ارائه اطلاعات دقیق و به‌روز افزایش می‌دهد.
+
+<Section id='building-interactive-interfaces' title='ساخت رابط‌های interactive' />
+
+AI SDK Core می‌تواند در کنار AI SDK UI، که یکی دیگر از ماژول‌های قدرتمند AI SDK است، مورد استفاده قرار گیرد تا فرآیند ساخت رابط‌های چت، تکمیل متن، و دستیارهای interactive را در فریم‌ورک‌های محبوبی مانند NextJS , Nuxt و Svelte ساده کند.
+<div className="h-2" />
+
+با استفاده از سه هوک اصلی <Important>useChat</Important>، <Important>useCompletion</Important>، و <Important>useObject</Important> می‌توانید قابلیت‌های چت لحظه‌ای، تکمیل متن و ویژگی‌های interactive دستیار هوشمند را در برنامه‌ی خود، پیاده‌سازی کنید.
+<div className="h-2" />
+
+راهنمای ساخت چت‌بات در فریم‌ورک‌های مختلف، با استفاده از AI SDK، در ادامه، آمده است: 
+
+<br />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    { alt: 'nextjs', platform: 'NextJS App Router', link: "/ai/getting-started/nextjs-app-router" },
+    { alt: 'nextjs', platform: 'NextJS Pages Router', link: "/ai/getting-started/nextjs-page-router" },
+    { alt: 'svelte', platform: 'Svelte', link: "/ai/getting-started/svelte" },
+    { alt: 'nuxt', platform: 'VueJS (Nuxt)', link: "/ai/getting-started/nuxt" },
+    { alt: 'nodejs', platform: 'NodeJS', link: "/ai/getting-started/nodejs" },
+    { alt: 'https://media.liara.ir/ai/ai-sdk/expo/expo-logo.png', platform: 'Expo', link: "/ai/getting-started/expo" },
+    ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+</Layout>

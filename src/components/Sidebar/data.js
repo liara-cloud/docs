@@ -384,8 +384,12 @@ export default {
         link: "/ai/cookbook/multi-modal-chatbot"
       },
       {
-        title: "شروع به کار با OpenAI/GPT-4.1",
+        title: "شروع به کار با GPT-4.1",
         link: "/ai/cookbook/openai-gpt-4-1"
+      },
+      {
+        title: "شروع به کار با o4-mini",
+        link: "/ai/cookbook/openai-o4-mini"
       },
 
       {
@@ -4317,6 +4321,11 @@ export default {
         icon: <GoGraph />,
         link: "/iaas/details/network-observation",
       },
+      // {
+      //   title: "دورنما",
+      //   icon: <GoCodespaces />,
+      //   link: "/iaas/details/console",
+      // },
     ],
 
     disks: [
