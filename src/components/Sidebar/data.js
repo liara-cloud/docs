@@ -384,6 +384,10 @@ export default {
         link: "/ai/cookbook/multi-modal-chatbot"
       },
       {
+        title: "ساخت چت بات در Slack",
+        link: "/ai/cookbook/slackbot"
+      },
+      {
         title: "شروع به کار با GPT-4.1",
         link: "/ai/cookbook/openai-gpt-4-1"
       },
