@@ -371,7 +371,7 @@ export default {
         badge: (
         <div className="flex items-center gap-2">
           <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
-            راهنمای پخت‌وپز
+            راهنمای گام‌به‌گام
         </div>
         )
       },
@@ -386,6 +386,10 @@ export default {
       {
         title: "ساخت چت بات در Slack",
         link: "/ai/cookbook/slackbot"
+      },
+      {
+        title: "ساخت ربات تلگرام مترجم",
+        link: "/ai/cookbook/translator-telegrambot"
       },
       {
         title: "شروع به کار با GPT-4.1",
