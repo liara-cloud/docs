@@ -392,6 +392,10 @@ export default {
         link: "/ai/cookbook/translator-telegrambot"
       },
       {
+        title: "کار با Postgres با زبان طبیعی",
+        link: "/ai/cookbook/natural-language-postgres"
+      },
+      {
         title: "شروع به کار با GPT-4.1",
         link: "/ai/cookbook/openai-gpt-4-1"
       },
