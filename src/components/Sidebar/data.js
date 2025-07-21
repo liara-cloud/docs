@@ -2001,6 +2001,10 @@ export default {
         title: "فعال‌سازی SSR با Inertia",
         link: "/paas/laravel/how-tos/enable-ssr-using-inertia"
       },
+      {
+        title: "پیکربندی HTTPS برای assetها",
+        link: "/paas/laravel/how-tos/configure-https-for-assets"
+      },
       // {
       //   title: "راه‌اندازی صفحه Status",
       //   link: "/paas/laravel/how-tos/set-status-page"

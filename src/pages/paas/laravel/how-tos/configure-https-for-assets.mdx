@@ -1,0 +1,59 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات پیکربندی HTTPS برای Assets - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به "  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# پیکربندی HTTPS برای assetها
+<hr className="mb-2" />
+
+ممکن است که پس از استقرار پروژه لاراولی خود روی لیارا، تصاویر، فایل‌های CSS یا JavaScript به درستی بارگذاری نشوند یا مرورگر خطاهایی مثل <Important>mixed content</Important> نمایش دهد.
+این مشکل معمولاً به این دلیل رخ می‌دهد که لاراول به صورت پیش‌فرض ممکن است آدرس assetها را با <Important>http</Important> تولید کند، حتی با وجود اینکه وب‌سایت شما از <Important>https</Important> استفاده می‌کند. این مسئله در محیط‌های production که گواهی SSL فعال است، می‌تواند باعث بروز اختلال یا پیام‌های هشدار در مرورگر شود.
+<div className="h-2" />
+
+برای رفع این مشکل، تنها کافیست تا قطعه کد زیر را در متد <Important>()boot</Important> در فایل <Important>app/Providers/AppServiceProvider.php</Important> قرار دهید تا لاراول را مجبور کنید که در حالت production، همیشه از <Important>https</Important> برای تولید آدرس assetها استفاده کند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="php">
+        {`if($this->app->environment('production')) {
+    \\URL::forceScheme('https');
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+قطعه کد فوق، به سادگی بررسی می‌کند که اگر متغیر <Important>APP_ENV</Important> برابر با <Important>production</Important> باشد، لاراول حتماً از <Important>https</Important> برای نمایش تصاویر و سایر assetها استفاده کند. این متغیر به‌صورت پیش‌فرض در برنامه‌های لاراول لیارا، برابر با <Important>production</Important> است، مگر این‌که از بخش <a href="/paas/details/envs" className="text-[#2196f3]">متغیرهای محیطی برنامه</a> مقدار آن را تغییر داده باشید.
+
+
+</Layout>
