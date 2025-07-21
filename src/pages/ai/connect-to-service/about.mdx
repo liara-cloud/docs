@@ -1,0 +1,85 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال به هوش مصنوعی در سرویس‌های مختلف  - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه اتصال به سرویس هوش مصنوعی در برنامه‌های مختلف "  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# اتصال به هوش مصنوعی در سرویس‌های مختلف 
+<hr className="mb-2" />
+
+امروزه، اتصال به هوش مصنوعی در سرویس‌های مختلف، به عنوان بخشی حیاتی از معماری نرم‌افزارها شناخته می‌شود. 
+ادغام هوش مصنوعی در برنامه‌ها می‌تواند باعث بهبود جریان خودکارسازی، افزایش دقت و بهینه‌سازی عملکرد سیستم‌ها، شود.
+
+<div className="h-2" />
+
+شما می‌توانید در نرم‌افزارهایی که از openai-compatible پشتیبانی می‌کنند 
+و یا به‌صورت کلی، در تنظیمات خود، پارامتر <Important>baseUrl</Important> را می‌پذیرند، به سرویس هوش مصنوعی لیارا، متصل شوید. 
+در ادامه، مستندات اتصال به برخی از این برنامه‌ها، قرار گرفته است:
+
+<div className="h-4" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    {
+        title: "N8N",
+        icon: "n8n",
+        link: "/ai/connect-to-service/n8n"
+      },
+      {
+        title: "OpenWeb UI",
+        icon: "https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png",
+        link: "/ai/connect-to-service/openweb"
+      },
+      {
+        title: "افزونه Copilot در VSCode",
+        icon: "https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png",
+        link: "/ai/connect-to-service/chat-gpt-copilot"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.icon} />
+                    </div>
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+</Layout>

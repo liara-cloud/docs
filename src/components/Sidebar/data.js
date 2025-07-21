@@ -4,6 +4,10 @@ import {
   GoHome,
   GoPeople,
   GoStack,
+  GoHubot,
+  GoMilestone,
+  GoInfinity,
+  GoRepoPush,
   GoFileSymlinkFile,
   GoBroadcast,
   GoGear,
@@ -280,27 +284,6 @@ export default {
         hr: true
       },
       {
-        badge: "اتصال به سرویس"
-      },
-      {
-        title: "N8N",
-        icon: <IconContainer alt="n8n" />,
-        link: "/ai/connect-to-service/n8n"
-      },
-      {
-        title: "OpenWeb UI",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
-        link: "/ai/connect-to-service/openweb"
-      },
-      {
-        title: "افزونه Copilot در VSCode",
-        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
-        link: "/ai/connect-to-service/chat-gpt-copilot"
-      },
-      {
-        hr: true
-      },
-      {
         badge: "پایه و اساس کار با هوش مصنوعی"
       },
       {
@@ -332,7 +315,92 @@ export default {
         hr: true
       },
       {
-        badge: "شروع به کار با AI SDK"
+        title: "جزئیات سرویس AI لیارا",
+        icon: <GoNote />,
+        link: "/ai/details/about"
+      },
+      {
+        title: "اتصال به سرویس‌های مختلف",
+        icon: <GoStack />,
+        link: "/ai/connect-to-service/about"
+      },
+      {
+        title: "شروع به کار با AI SDK",
+        icon: <GoHubot  />,
+        link: "/ai/getting-started/about"
+      },
+      {
+        title: "راهنمای گام‌به‌گام",
+        icon: <GoMilestone />,
+        link: "/ai/cookbook/about"
+      },
+      {
+        title: "هسته AI SDK",
+        icon: <GoInfinity  />,
+        link: "/ai/ai-sdk-core/about"
+      },
+      {
+        title: "ارجاعات AI SDK",
+        icon: <GoRepoPush />,
+        link: "/ai/references/about"
+      },
+  
+    ],
+
+    'references': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoRepoPush />
+           ارجاعات AI SDK
+          </div>
+        )
+      },
+      {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "وابستگی‌های AI SDK",
+        icon: <GoInfo />,
+        link: "/ai/references/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "Zod Schema",
+        link: "/ai/references/zodschema"
+      },
+      {
+        title: "JSON Schema",
+        link: "/ai/references/jsonschema"
+      },
+    ],
+
+
+    'getting-started': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoHubot />
+           شروع به کار با AI SDK
+          </div>
+        )
+      },
+      {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "AI SDK چیست؟",
+        icon: <GoInfo />,
+        link: "/ai/getting-started/about"
+      },
+      {
+        hr: true
       },
       {
         title: "NextJS App Router",
@@ -340,7 +408,7 @@ export default {
         link: "/ai/getting-started/nextjs-app-router"
       },
       {
-        title: "NextJS Page Router",
+        title: "NextJS Pages Router",
         icon: <IconContainer alt="next" />,
         link: "/ai/getting-started/nextjs-page-router"
       },
@@ -364,36 +432,63 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/ai/ai-sdk/expo/expo-logo.png" />,
         link: "/ai/getting-started/expo"
       },
+      
+    ],
+
+    cookbook: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoMilestone />
+            راهنمای گام‌به‌گام
+          </div>
+        )
+      },
+      {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "دستورالعمل‌ها",
+        icon: <GoInfo />,
+        link: "/ai/cookbook/about"
+      },
       {
         hr: true
       },
       {
         badge: (
-        <div className="flex items-center gap-2">
-          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
-            راهنمای گام‌به‌گام
-        </div>
+          <div className="flex items-center gap-2">
+            پروژه‌ها
+          </div>
         )
       },
-      // {
-      //   title: "ساخت RAG Chatbot",
-      //   link: "/ai/cookbook/rag-chatbot"
-      // },
       {
-        title: "ساخت چت بات چندمنظوره",
+        title: "چت بات چندمنظوره",
         link: "/ai/cookbook/multi-modal-chatbot"
       },
       {
-        title: "ساخت چت بات در Slack",
+        title: "چت بات در Slack",
         link: "/ai/cookbook/slackbot"
       },
       {
-        title: "ساخت ربات تلگرام مترجم",
+        title: "ربات تلگرام مترجم",
         link: "/ai/cookbook/translator-telegrambot"
       },
       {
         title: "کار با Postgres با زبان طبیعی",
         link: "/ai/cookbook/natural-language-postgres"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            LLMهای پرکاربرد
+          </div>
+        )
       },
       {
         title: "شروع به کار با GPT-4.1",
@@ -411,293 +506,127 @@ export default {
       {
         hr: true
       },
+      
+    ],
+
+    'ai-sdk-core': [
       {
         badge: (
-        <div className="flex items-center gap-2">
-          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
-             هسته AI SDK
-        </div>
+          <div className="flex items-center gap-2">
+            <GoInfinity />
+           هسته AI SDK
+          </div>
         )
       },
       {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "قابلیت‌های AI SDK",
+        icon: <GoInfo />,
+        link: "/ai/ai-sdk-core/about"
+      },
+
+      {
+        hr: true
+      },
+      
+      {
         title: "قابلیت Tool Calling",
         link: "/ai/ai-sdk-core/tool-calling"
+      },
+    ],
+
+    
+  
+
+    'connect-to-service': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoStack />
+           اتصال به سرویس‌های مختلف
+          </div>
+        )
+      },
+      {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "سرویس‌های مبتنی بر AI",
+        icon: <GoInfo />,
+        link: "/ai/connect-to-service/about"
+      },
+
+      {
+        hr: true
+      },
+      {
+        title: "N8N",
+        icon: <IconContainer alt="n8n" />,
+        link: "/ai/connect-to-service/n8n"
+      },
+      {
+        title: "OpenWeb UI",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
+        link: "/ai/connect-to-service/openweb"
+      },
+      {
+        title: "افزونه Copilot در VSCode",
+        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
+        link: "/ai/connect-to-service/chat-gpt-copilot"
+      },
+    ],
+
+    details: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <BsStars />
+            جزئیات سرویس هوش مصنوعی
+          </div>
+        )
+      },
+      {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "ویژگی‌های یک پلتفرم در لیارا",
+        icon: <GoInfo />,
+        link: "/ai/details/about"
       },
       {
         hr: true
       },
       {
-        badge: (
-        <div className="flex items-center gap-2">
-          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
-             ارجاعات AI SDK
-        </div>
-        )
+        title: "پلن‌های AI",
+        icon: <GoCpu />,
+        link: "/ai/details/plans"
       },
       {
-        title: "Zod Schema",
-        link: "/ai/references/ai-sdk-core/zodschema"
+        title: "لاگ‌ها",
+        icon: <GoEye />,
+        link: "/ai/details/logs"
       },
       {
-        title: "JSON Schema",
-        link: "/ai/references/ai-sdk-core/jsonschema"
+        title: "تغییر پلن AI",
+        icon: <GoGitCompare />,
+        link: "/ai/details/change-plan"
       },
-
-
-
-
+      {
+        title: "حذف یک سرویس AI",
+        icon: <GoXCircle />,
+        link: "/ai/details/delete"
+      },
     ],
 
 
-    // nodejs: [
-    //   {
-    //     badge: (
-    //       <div className="flex items-center gap-2">
-    //         <IconContainer alt="nodejs" />
-    //         پلتفرم NodeJS
-    //       </div>
-    //     )
-    //   },
-    //   {
-    //     title: "برگشت به پلتفرم",
-    //     icon: <GoArrowRight />,
-    //     link: "/paas/about"
-    //   },
-    //   {
-    //     title: "شروع به کار",
-    //     icon: <GoFlame />,
-    //     link: "/paas/nodejs/getting-started"
-    //   },
-    //   {
-    //     title: "استقرار سریع!",
-    //     icon: <GoZap />,
-    //     link: "/paas/nodejs/quick-start"
-    //   },
-    //   {
-    //     title: "لینک‌های مرتبط",
-    //     icon: <GoMegaphone />,
-    //     link: "/paas/nodejs/related-links"
-    //   },
-    //   {
-    //     hr: true
-    //   },
-    //   {
-    //     badge: (
-    //       <div className="flex items-center gap-2">
-    //         < GoPackage />
-    //         شیوه‌ی
-    //       </div>
-    //     )
-    //   },
-    //   {
-    //     title: "ساخت برنامه",
-    //     link: "/paas/nodejs/how-tos/create-app"
-    //   },
-    //   {
-    //     title: "استقرار برنامه",
-    //     link: "/paas/nodejs/how-tos/deploy-app"
-    //   },
-    //   {
-    //     title: "استفاده از متغیرهای محیطی",
-    //     link: "/paas/nodejs/how-tos/set-envs"
-    //   },
-    //   {
-    //     title: "استفاده از دیسک",
-    //     link: "/paas/nodejs/how-tos/use-disk"
-    //   },
-    //   {
-    //     title: "تنظیم لاگ‌ها",
-    //     link: "/paas/nodejs/how-tos/set-logs"
-    //   },
-    //   {
-    //     title: "راه‌اندازی برنامه Websocket",
-    //     link: "/paas/nodejs/how-tos/use-websocket"
-    //   },
-    //   {
-    //     title: "build برنامه با ES6",
-    //     link: "/paas/nodejs/how-tos/build-and-use-es6"
-    //   },
-    //   {
-    //     title: "استفاده از TypeScript",
-    //     link: "/paas/nodejs/how-tos/use-type-script"
-    //   },
-    //   {
-    //     title: "استفاده از Hookها",
-    //     link: "/paas/nodejs/how-tos/use-hooks"
-    //   },
-    //   {
-    //     title: "تنظیم Cron Job",
-    //     link: "/paas/nodejs/how-tos/set-cron-job"
-    //   },
-    //   {
-    //     title: "پیکربندی TrustedProxies",
-    //     link: "/paas/nodejs/how-tos/configure-trusted-proxy/about"
-    //   },
-    //   {
-    //     title: "انتخاب نسخه NodeJS",
-    //     link: "/paas/nodejs/how-tos/choose-version"
-    //   },
-    //   {
-    //     title: "استفاده از ماژول FFMPEG",
-    //     link: "/paas/nodejs/how-tos/use-ffmpeg-module"
-    //   },
-    //   {
-    //     hr: true
-    //   },
-    //   {
-    //     badge: (
-    //       <div className="flex items-center gap-2">
-    //         <GoDatabase />
-    //         <Link href="/paas/nodejs/how-tos/connect-to-db/about">اتصال به دیتابیس </Link>
-    //       </div>
-    //     )
-    //   },
-    //   {
-    //     title: "دیتابیس MongoDB",
-    //     icon: <IconContainer alt="mongodb" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
-    //   },
-    //   {
-    //     title: "دیتابیس MySQL/MariaDB",
-    //     icon: <IconContainer alt="mysql" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/mysql"
-    //   },
-    //   {
-    //     title: "دیتابیس PostgreSQL",
-    //     icon: <IconContainer alt="postgres" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
-    //   },
-    //   {
-    //     title: "دیتابیس MSSQL",
-    //     icon: <IconContainer alt="mssql" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/mssql"
-    //   },
-    //   {
-    //     title: "دیتابیس SQLite",
-    //     icon: <IconContainer alt="sqlite" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
-    //   },
-    //   {
-    //     title: "دیتابیس Redis",
-    //     icon: <IconContainer alt="redis" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/redis"
-    //   },
-    //   {
-    //     title: "Prisma ORM",
-    //     icon: <IconContainer alt="prisma" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/prisma"
-    //   },
-    //   {
-    //     title: "Sequelize ORM",
-    //     icon: <IconContainer alt="sequelize" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/sequelize/about"
-    //   },
-    //   {
-    //     title: "Drizzle ORM",
-    //     icon: <IconContainer alt="drizzle" />,
-    //     link: "/paas/nodejs/how-tos/connect-to-db/drizzle/about"
-    //   },
-    //   {
-    //     hr: true
-    //   },
-    //   {
-    //     badge: (
-    //       <div className="flex items-center gap-2">
-    //         <GoBug />
-    //         <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
-    //       </div>
-    //     )
-    //   },
-    //   {
-    //     title: "خطای CORS",
-    //     link: "/paas/nodejs/fix-common-errors/cors-error/about"
-    //   },
-    //   {
-    //     title: "رفع خطای Get query missing",
-    //     link: "/paas/nodejs/fix-common-errors/graphql-error"
-    //   },
-    //   {
-    //     hr: true
-    //   },
-    //   {
-    //     badge: (
-    //       <div className="flex items-center gap-2">
-    //         <GoPaperclip />
-    //         برنامه‌های مرتبط
-    //       </div>
-    //     )
-    //   },
-    //   {
-    //     title: "Addonis",
-    //     icon: <IconContainer alt="adonisjs" />,
-    //     link: "/paas/nodejs/related-apps/adonisjs"
-    //   },
-    //   {
-    //     title: "BlitzJS",
-    //     icon: <IconContainer alt="blitz" />,
-    //     link: "/paas/nodejs/related-apps/blitzjs"
-    //   },
-    //   {
-    //     title: "Fastify",
-    //     icon: <IconContainer alt="fastify" />,
-    //     link: "/paas/nodejs/related-apps/fastify"
-    //   },
-    //   {
-    //     title: "Hapi",
-    //     icon: <IconContainer alt="hapi" />,
-    //     link: "/paas/nodejs/related-apps/hapi"
-    //   },
-    //   {
-    //     title: "Hono",
-    //     icon: <IconContainer alt="https://media.liara.ir/docs/hono-logo-icon.png" />,
-    //     link: "/paas/nodejs/related-apps/hono"
-    //   },
-    //   {
-    //     title: "Nitro",
-    //     icon: <IconContainer alt="https://media.liara.ir/docs/nitro-icon.svg" />,
-    //     link: "/paas/nodejs/related-apps/nitro"
-    //   },
-    //   {
-    //     title: "NestJS",
-    //     icon: <IconContainer alt="nest" />,
-    //     link: "/paas/nodejs/related-apps/nestjs"
-    //   },
-    //   {
-    //     title: "NuxtJS",
-    //     icon: <IconContainer alt="nuxt" />,
-    //     link: "/paas/nodejs/related-apps/nuxtjs"
-    //   },
-    //   {
-    //     title: "Remix",
-    //     icon: <IconContainer alt="remix" />,
-    //     link: "/paas/nodejs/related-apps/remix"
-    //   },
-    //   {
-    //     title: "Strapi",
-    //     icon: <IconContainer alt="strapi" />,
-    //     link: "/paas/nodejs/related-apps/strapi/starter"
-    //   },
-    //   {
-    //     title: "Svelte",
-    //     icon: <IconContainer alt="svelte" />,
-    //     link: "/paas/nodejs/related-apps/svelte"
-    //   },
-    //   {
-    //     title: "Svelte Kit",
-    //     icon: <IconContainer alt="svelte" />,
-    //     link: "/paas/nodejs/related-apps/svelte-kit"
-    //   },
-    //   {
-    //     title: "Qwik",
-    //     icon: <IconContainer alt="qwik" />,
-    //     link: "/paas/nodejs/related-apps/qwik"
-    //   },
-    //   {
-    //     title: "JSON Server",
-    //     icon: <IconContainer alt="json" />,
-    //     link: "/paas/nodejs/related-apps/json-server"
-    //   },
-    // ],
 
   },
 

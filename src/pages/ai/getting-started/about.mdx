@@ -1,0 +1,100 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با AI SDK - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با SDK هوش مصنوعی یا همان AI SDK"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# آشنایی با AI SDK
+<hr className="mb-2" />
+
+<a href="https://ai-sdk.dev/" className="text-[#2196f3]">AI SDK</a> یک کیت توسعه نرم‌افزار (Software Development Kit) است که برای تعامل ساده، سریع و انعطاف‌پذیر با مدل‌های هوش مصنوعی در JavaScript و TypeScript طراحی شده است. این SDK یک رابط واحد و استاندارد ارائه می‌دهد که به شما اجازه می‌دهد بدون وابستگی به ارائه‌دهنده‌ی خاص، مدل‌های مختلف زبانی را فراخوانی و مدیریت کنید. از مزیت‌های اصلی آن می‌توان به پشتیبانی از چندین ارائه‌دهنده (مثل OpenAI و Anthropic و HuggingFace)، مدیریت هوشمند توکن‌ها و درخواست‌ها، و امکانات پیشرفته برای کنترل ورودی/خروجی اشاره کرد.
+<div className="h-4" />
+
+سرویس هوش مصنوعی لیارا، از جمله سرویس‌هایی است که با AI SDK به‌طور کامل سازگار است و شما می‌توانید با ترکیب هوش مصنوعی لیارا و AI SDK، برنامه‌های قدرتمند و در عین حال، به‌صرفه، در زمینه هوش مصنوعی، ایجاد کنید. 
+در ادامه، مستندات صفر تا صد استفاده از AI SDK در زبان NodeJS و فریم‌ورک‌های مختلف، برای شما، قرار گرفته است: 
+
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    {
+        title: "NextJS App Router",
+        icon: "next",
+        link: "/ai/getting-started/nextjs-app-router"
+      },
+      {
+        title: "NextJS Pages Router",
+        icon: "next",
+        link: "/ai/getting-started/nextjs-page-router"
+      },
+      {
+        title: "Svelte",
+        icon: "svelte",
+        link: "/ai/getting-started/svelte"
+      },
+      {
+        title: "VueJS (Nuxt)",
+        icon: "nuxt",
+        link: "/ai/getting-started/nuxt"
+      },
+      {
+        title: "NodeJS",
+        icon: "nodejs",
+        link: "/ai/getting-started/nodejs"
+      },
+      {
+        title: "Expo",
+        icon: "https://media.liara.ir/ai/ai-sdk/expo/expo-logo.png",
+        link: "/ai/getting-started/expo"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.icon} />
+                    </div>
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+
+</Layout>

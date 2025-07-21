@@ -1,0 +1,69 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات وابستگی‌های AI SDK - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با وابستگی‌های AI SDK برای استفاده از نهایت قدرت AI SDK"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+# آشنایی با وابستگی‌های AI SDK 
+<hr className="mb-2" />
+
+AI SDK به‌تنهایی یک ابزار قدرتمند برای تعامل با مدل‌های هوش مصنوعی است، اما برای بهره‌گیری کامل از قابلیت‌های آن، استفاده از برخی ابزارهای جانبی توصیه می‌شود. این ابزارها، باعث می‌شوند توسعه و مدیریت درخواست‌ها ساده‌تر و بهینه‌تر انجام شود. درواقع، با بهره‌گیری از این وابستگی‌ها می‌توان عملکرد AI SDK را به سطح بالاتری ارتقا داد و تجربه توسعه روان‌تری داشت. بنابراین اگرچه AI SDK در هسته خود قدرتمند است، اما در کنار ابزارهای مکمل به یک اکوسیستم توسعه‌ی هوش مصنوعی کامل تبدیل می‌شود.
+
+<div className="h-4" />
+
+در ادامه، مستندات استفاده از برخی از مهم‌ترین ابزارهای کارآمد در AI SDK، برای شما قرار گرفته است:
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-2 gap-4">
+  {[
+      {
+        title: "Zod Schema",
+        link: "/ai/references/zodschema"
+      },
+      {
+        title: "JSON Schema",
+        link: "/ai/references/jsonschema"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+
+</Layout>

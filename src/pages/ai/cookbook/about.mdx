@@ -1,0 +1,115 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات دستورالعمل‌های کار با هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به دستورالعمل‌ها و آموزش‌های کار با AI"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# دستورالعمل‌های کار با سرویس AI
+<hr className="mb-2" />
+
+بخش **دستورالعمل‌ها** به منظور معرفی نحوه بهره‌برداری صحیح و مؤثر از قابلیت‌های هوش مصنوعی تدوین شده است. این بخش 
+شامل مثال‌های متفاوتی از استفاده از سرویس AI است و شما را با قدرت کامل ابزارهای کار با هوش مصنوعی، آشنا می‌کند.
+<div className="h-2" />
+
+در ادامه، راهنمای گام‌به‌گام پیاده‌سازی پروژه‌های مختلف در فریم‌ورک‌های متفاوت، برای شما قرار گرفته است که بنا به نیاز خود، می‌توانید از آن‌ها استفاده کنید: 
+
+<div className="h-4" />
+<div className="grid md:grid-cols-4 gap-4">
+            {[
+      {
+        title: "ساخت چت بات چندمنظوره",
+        link: "/ai/cookbook/multi-modal-chatbot"
+      },
+      {
+        title: "ساخت چت بات در Slack",
+        link: "/ai/cookbook/slackbot"
+      },
+      {
+        title: "ساخت ربات تلگرام مترجم",
+        link: "/ai/cookbook/translator-telegrambot"
+      },
+      {
+        title: "کار با Postgres با زبان طبیعی",
+        link: "/ai/cookbook/natural-language-postgres"
+      },
+     
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+<br />
+همچنین، مستندات استفاده از LLMهای معروف و پرکاربرد نیز برای شما، قرار گرفته است: 
+
+<div className="h-4" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "شروع به کار با GPT-4.1",
+        link: "/ai/cookbook/openai-gpt-4-1"
+      },
+      {
+        title: "شروع به کار با o4-mini",
+        link: "/ai/cookbook/openai-o4-mini"
+      },
+      {
+        title: "شروع به کار با DeepSeek R1",
+        link: "/ai/cookbook/deepseek-r1"
+      },
+
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+</Layout>

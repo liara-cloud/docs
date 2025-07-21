@@ -1,0 +1,72 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با قابلیت‌های AI SDK - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با قابلیت‌های AI SDK"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# آشنایی با قابلیت‌های AI SDK
+<hr className="mb-2" />
+
+<a href="https://ai-sdk.dev/" className="text-[#2196f3]">AI SDK</a> قابلیت‌های متنوعی را برای کار با مدل‌های هوش مصنوعی در اختیار توسعه‌دهندگان قرار می‌دهد. با استفاده از این SDK می‌توانید به‌صورت یکپارچه به LLMها متصل شوید، بدون آن‌که نیاز باشد برای هر ارائه‌دهنده، پیاده‌سازی جداگانه انجام دهید. AI SDK امکان تنظیمات دقیق مانند محدود کردن نرخ درخواست‌ها یا انتخاب مسیر fallback در صورت بروز خطا را فراهم می‌سازد. به‌علاوه، طراحی آن به گونه‌ای است که بتوان به‌راحتی در محیط‌های مختلف مانند اپلیکیشن‌های وب، اسکریپت‌های پردازشی و APIهای سمت سرور استفاده کرد.
+
+
+<div className="h-4" />
+
+در ادامه، به توضیح هر یک از قابلیت‌های AI SDK به تفصیل، پرداخته شده است: 
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "قابلیت Tool Calling",
+        link: "/ai/ai-sdk-core/tool-calling"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+
+</Layout>

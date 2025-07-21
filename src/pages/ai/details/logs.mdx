@@ -1,0 +1,68 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات لاگ‌های سرویس AI - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به لاگ‌های سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# لاگ‌های سرویس AI
+
+<hr className="mb-2" />
+
+بخش <b>لاگ‌های</b> یک سرویس هوش مصنوعی در لیارا، شامل تمامی درخواست‌هایی است که در بازه مشخص تعیین‌شده (با توجه به پلن)، به LLMها ارسال شده است. 
+این درخواست‌ها، شامل اطلاعات زیر است: 
+
+<div className="h-4" />
+<ul>
+<li><b>زمان</b>: زمانی که درخواست به LLM ارسال شده است</li>
+<li><b>وضعیت</b>: موفق بودن یا نبودن درخواست ارسالی</li>
+<li><b>ارائه‌دهنده/مدل</b>: اسم مدل (LLM) و ارائه‌دهنده‌اش، که درخواست به آن، ارسال شده است</li>
+<li><b>توکن‌ها</b>: تعداد توکن‌هایی که برای ورودی دادن به مدل و برای خروجی گرفتن از آن، مصرف شده است</li>
+<li><b>هزینه</b>: هزینه تمام شده درخواست ارسال شده به LLM</li>
+<li><b>سرعت</b>: نسبت توکن تولید شده توسط مدل به کل زمان تولید، هرچقدر بیشتر، یعنی سریع‌تر</li>
+<li><b>دلیل پایان</b>: دلیل توقف مدل در تولید توکن (stop یعنی که مدل جوابش درست و کامل ارسال شده است)</li>
+</ul>
+
+
+<div className="h-4" />
+<img src="https://media.liara.ir/ai/details/logs.png" alt="logs of Liara AI service"/>
+<div className="h-4" />
+
+امکان فیلتر کردن لاگ‌ها بر اساس <b>مدل مورد استفاده</b> و <b>زمان ارسال درخواست</b> نیز وجود دارد:
+
+<div className="h-4" />
+<img src="https://media.liara.ir/ai/details/filtered-logs-by-llm-and-date.png" alt="filtered logs of Liara AI service"/>
+<div className="h-4" />
+
+شما می‌توانید برای کسب اطلاعات بیشتر در مورد یک درخواست ارسال‌شده به LLM، بر روی درخواست، کلیک کنید: 
+
+<div className="h-4" />
+<img src="https://media.liara.ir/ai/details/opened-log.png" alt="opened log of Liara AI service"/>
+<div className="h-4" />
+
+برای مشاهده تمامی جزئیات درخواست ارسال‌شده، کافیست تا پس از کلیک بر روی درخواست، بر روی گزینه <b>مشاهده‌ی تمام جزییات</b>، کلیک کنید:
+
+<div className="h-4" />
+<img src="https://media.liara.ir/ai/details/opened-detailed-log.png" alt="opened detailed log of Liara AI service"/>
+<div className="h-4" />
+
+</Layout>

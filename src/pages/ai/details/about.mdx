@@ -1,0 +1,100 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoCpu,
+  GoEye,
+  GoGitCompare,
+  GoXCircle,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات جزئیات سرویس هوش مصنوعی لیارا  - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با جزئیات سرویس هوش مصنوعی لیارا "  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# جزئیات سرویس هوش مصنوعی لیارا 
+<hr className="mb-2" />
+
+لیارا همواره سعی داشته است که با 
+ارائه یک رابط کاربری آسان و همه‌منظوره، نیازهای کاربران خود را تا حد زیادی در خود <a href="https://console.liara.ir" className="text-[#2196f3] ">صفحه کنسول</a>، شناسایی و بر طرف کند. اما گاهاً ممکن است که در برخی از موارد، دچار ابهام شوید و به دنبال پاسخی
+برای سوالات خود، باشید.
+از این رو، در ادامه، تمامی جزئیات مربوط به سرویس هوش مصنوعی لیارا، برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
+<div className="h-6" />
+
+<div className="grid md:grid-cols-4 gap-4">
+{[
+  {
+    title: "پلن‌های AI",
+    icon: <GoCpu />,
+    desc: "آشنایی با پلن‌های سرویس هوش مصنوعی و مشاهده تعداد LLMها، امکان آپلود و پردازش تصویر و ...",
+    link: "./plans",
+  },
+ 
+  {
+    title: "لاگ‌ها",
+    icon: <GoEye />,
+    desc: "مشاهده تمامی درخواست‌های ارسال شده به LLMهای سرویس هوش مصنوعی لیارا ",
+    link: "./logs",
+  },
+  {
+    title: "تغییر پلن سرویس AI",
+    icon: <GoGitCompare />,
+    desc: "تغییر پلن سرویس هوش مصنوعی برای افزایش یا کاهش LLMها، توکن‌ها و ...",
+    link: "./change-plan",
+  },
+  {
+    title: "حذف یک سرویس AI",
+    icon: <GoXCircle />,
+    desc: "راهنمایی برای حذف یک سرویس AI از حساب کاربری و پایان روزهای طلایی استفاده از آن ",
+    link: "./delete",
+  },
+].map(item =>
+        <Card className="min-h-[180px] flex flex-col justify-between items-start w-full">
+        <div>
+            <div className="flex items-center justify-between gap-3">
+            <h4>
+                {item.title}
+            </h4>
+            <div className="bg-[#222] text-white p-1 rounded-md">
+                {item.icon}
+            </div>
+            </div>
+            <p align='justify' className="text-[gray] leading-6 text-[14px] mt-3">
+            {item.desc}
+            </p>
+        </div>
+        <Link href={item.link}>
+        <Button variant="link" href={item.link}>بیشتر بدانید</Button>
+        </Link>
+        </Card>
+    )}
+    </div>
+
+
+</Layout>

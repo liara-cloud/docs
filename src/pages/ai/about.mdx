@@ -12,6 +12,11 @@ import PlatformIcon from "@/components/Common/icons";
 
 import {
   GoContainer,
+  GoKebabHorizontal,
+  GoMortarBoard,
+  GoTelescope, 
+  GoTools,
+
   GoDatabase,
   GoRocket,
   GoServer,
@@ -41,18 +46,47 @@ import Head from "next/head";
 در ادامه، بخوانید: 
 
 <div className="h-4" />
-<div className="grid md:grid-cols-1 gap-4">
+<div className="grid md:grid-cols-4 gap-4">
             {[
-    { platform: 'راه‌اندازی سریع سرویس هوش مصنوعی لیارا', link: "./quick-start" },
+      { title: 'راه‌اندازی سریع سرویس AI لیارا', link: "./quick-start" },
+      {
+        title: "اتصال تیم‌ها به AI",
+        link: "/ai/teams"
+      },
+      {
+        title: "جزئیات سرویس AI لیارا",
+        link: "/ai/details/about"
+      },
+      {
+        title: "اتصال به سرویس‌های مختلف",
+        link: "/ai/connect-to-service/about"
+      },
+      {
+        title: "شروع به کار با AI SDK",
+        link: "/ai/getting-started/about"
+      },
+      {
+        title: "راهنمای گام‌به‌گام",
+        link: "/ai/cookbook/about"
+      },
+      {
+        title: "هسته AI SDK",
+        link: "/ai/ai-sdk-core/about"
+      },
+      {
+        title: "ارجاعات AI SDK",
+        link: "/ai/references/about"
+      },
+
     
     ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
                   <div className="flex items-center gap-3">
-
                     <h4>
-                      {item.platform}
+                      {item.title}
                     </h4>
+                    
                   </div>
                   <GoArrowLeft className="ml-1" />
                 </Card>
@@ -111,29 +145,49 @@ import Head from "next/head";
             )}
           </div>
 
-{/* <br />
-اگر که در حال حاضر، لیارا از پلتفرم مورد نظر شما به صورت مستقیم پشتیبانی نمی‌کند؛ جای نگرانی نیست! شما می‌توانید با استفاده از <a href="/paas/docker/getting-started" className="text-[#2196f3] ">سرویس Docker لیارا</a> برنامه‌های خود را به سرعت و با بیشترین بازدهی، مستقر کنید؛ در ادامه مستندات برخی از پلتفرم‌های مورد استفاده، آمده است:
-<br />
+<Section id="foundations" title="پایه و اساس کار با هوش مصنوعی" />
 
-<div className="grid md:grid-cols-4 gap-4">
+لیارا از جمله اولین ارائه‌دهندگان سرویس هوش مصنوعی در ایران است که برای این سرویس، در جهت تسهیل روند توسعه پروژه‌تان، مستندات کامل و جامعی را 
+فراهم کرده است. مستندات سرویس هوش مصنوعی لیارا، از پایه و اساس توضیح داده شده است و نیازی نیست که شما یک متخصص هوش مصنوعی باشید؛ در هر سطحی که هستید، می‌توانید پرقدرت، شروع کنید: 
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-1 gap-4">
             {[
-    { alt: 'nginx', platform: 'Nginx', link: "/paas/docker/related-apps/nginx" },
-    { alt: 'streamlit', platform: 'Streamlit', link: "/paas/docker/related-apps/streamlit" },
-    { alt: 'fastapi', platform: 'FastAPI', link: "/paas/docker/related-apps/fastapi" },
-    { alt: 'arangodb', platform: 'ArangoDB', link: "/paas/docker/related-apps/arangodb" },
-    { alt: 'https://media.liara.ir/deno/deno-logo.png', platform: 'Deno', link: "/paas/docker/related-apps/deno" },
-    { alt: 'bun', platform: 'Bun', link: "/paas/docker/related-apps/bun" },
-    { alt: 'seq', platform: 'Seq', link: "/paas/docker/related-apps/seq" },
-    { alt: 'flutter', platform: 'Flutter', link: "/paas/docker/related-apps/flutter" },
+           {
+             title: "در یک نگاه",
+             icon: <GoTelescope />,
+             link: "/ai/foundations/overview"
+           },
+           {
+             title: "ورودی‌ها (پرامپت‌ها)",
+             icon: <GoRocket />,
+             link: "/ai/foundations/prompts"
+           },
+           {
+             title: "Toolها (ابزارها)",
+             icon: <GoTools />,
+             link: "/ai/foundations/tools"
+           },
+           {
+             title: "قابلیت استریم (Streaming)",
+             icon: <GoKebabHorizontal />,
+             link: "/ai/foundations/streaming"
+           },
+           {
+             title: "Agentها (عامل‌ها)",
+             icon: <GoMortarBoard />,
+             link: "/ai/foundations/agents"
+           },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                      <PlatformIcon platform={item.alt} />
+                    <div className="bg-[#222] text-white p-1 rounded-md">
+                        {item.icon}
                     </div>
                     <h4>
-                      {item.platform}
+                      {item.title}
                     </h4>
                   </div>
                   <GoArrowLeft className="ml-1" />
@@ -141,116 +195,9 @@ import Head from "next/head";
               </Link>
             )}
           </div>
+<div className="h-4" />
 
 
-<br />
 
-<Section id='also-read' title='همچنین بخوانید:' />
-<div className="grid md:grid-cols-3 gap-4">
-            {[
-    {
-      text: 'آشنایی با جزئیات پلتفرم',
-      link: './details/about',
-    },
-    {
-      text: 'راه‌اندازی CI/CD بر روی پلتفرم',
-      link: './cicd/about',
-    },
-    {
-      text: 'آشنایی با دیسک‌ها در پلتفرم',
-      link: './disks/about',
-    },
-    {
-      text: 'اتصال دامنه خریداری شده به پلتفرم',
-      link: './domains/about',
-    },
-    {
-      text: 'به‌روزرسانی پلتفرم',
-      link: './update',
-    },
-    {
-      text: 'انتقال سرویس پلتفرم',
-      link: './move',
-    },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <h4>
-                      {item.text}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
-
-<br /> */}
-
-{/* 
-<Section id="most-visited-docs" title="پربازدیدترین مستندات پلتفرم" />
-<ul className="pr-4">
-  {[
-
-      {
-        title: "اتصال به دیتابیس SQLite در برنامه‌های NET.",
-        link: "/paas/dotnet/how-tos/connect-to-db/sqlite"
-      },
-      {
-          title: "قابلیت CI/CD",
-          link: "/paas/cicd/about"
-      },
-      {
-          title: "آی‌پی ثابت",
-          link: "/paas/details/static-ip"
-      },
-      {
-        title: "متغیرهای محیطی",
-        link: "/paas/details/envs"
-      },
-      {
-        title: "بازیابی فایل پشتیبان در دیسک‌",
-        link: "/paas/disks/restore-backup-using-ftp"
-      },
-      {
-        title: "اضافه کردن زیر دامنه دلخواه به برنامه",
-        link: "/paas/domains/add-subdomains"
-      },
-      {
-        title: "استفاده از TypeScript در برنامه‌های NextJS",
-        link: "/paas/nextjs/how-tos/use-type-script"
-      },
-      {
-        title: "تنظیم Cron Job در برنامه‌های Django",
-        link: "/paas/django/how-tos/set-cron-job"
-      },
-      {
-        title: "تنظیم DNS Server",
-        link: "/paas/details/dns-server-settings"
-      },
-      
-
-
-    
-  ].map((item, index) => (
-    <li
-      key={index}
-      style={{
-        listStyle: "persian",
-        textDecoration: "underline",
-        textDecorationColor: "#9ca3af"
-      }}
-    >
-      <a
-        className="flex w-[max-content] items-center gap-2 text-[18px] mt-4"
-        href={item.link}
-      >
-        {item.title}
-        <GoArrowLeft className="ml-2 text-[15px] text-[gray]" />
-      </a>
-    </li>
-  ))}
-</ul> */}
 
 </Layout>
