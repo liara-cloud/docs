@@ -1,0 +1,178 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید متن با AI در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه تولید متن با استفاده از سرویس هوش مصنوعی لیارا و فریم‌ورک NextJS"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# تولید متن با AI در NextJS
+<hr className="mb-2" />
+
+ممکن است شرایطی پیش آید که نیاز به تولید متن بر اساس یک پرامپت (prompt) داشته باشید.
+برای مثال، ممکن است بخواهید به یک پرسش، پاسخ بدهید؛ یا از یک متن، خلاصه بسازید.
+تابع <Important>generateText</Important> می‌تواند برای تولید متن بر اساس پرامپت ورودی، مورد استفاده قرار گیرد.
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+بیایید یک کامپوننت ساده‌ی React ایجاد کنیم که هنگام کلیک روی یک دکمه، یک درخواست POST به مسیر <Important>api/completion/</Important> ارسال کند. این endpoint وظیفه دارد بر اساس پرامپت ورودی، متنی را تولید کند.
+در فایل <Important>app/page.tsx</Important> قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useState } from 'react';
+
+export default function Page() {
+  const [generation, setGeneration] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  return (
+    <div>
+      <div
+        onClick={async () => {
+          setIsLoading(true);
+
+          await fetch('/api/completion', {
+            method: 'POST',
+            body: JSON.stringify({
+              prompt: 'Why is the sky blue?',
+            }),
+          }).then(response => {
+            response.json().then(json => {
+              setGeneration(json.text);
+              setIsLoading(false);
+            });
+          });
+        }}
+      >
+        Generate
+      </div>
+
+      {isLoading ? 'Loading...' : generation}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+
+بیایید یک route handler برای مسیر <Important>api/completion/</Important> ایجاد کنیم که وظیفه دارد بر اساس پرامپت ورودی، متنی تولید کند.
+این route، تابع <Important>generateText</Important> از ماژول <Important>ai</Important> را فراخوانی خواهد کرد. این تابع، متن را بر اساس پرامپت ورودی تولید کرده و نتیجه را بازمی‌گرداند.
+قطعه کد زیر را در مسیر <Important>app/api/completion/route.ts</Important>، قرار دهید: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+
+export async function POST(req: Request) {
+  const { prompt }: { prompt: string } = await req.json();
+
+  const { text } = await generateText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You are a helpful assistant.',
+    prompt,
+  });
+
+  return Response.json({ text });
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+خروجی برنامه فوق: 
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/generate-text-final.png" alt="example of generating text in nextjs app router"/>
+<div className="h-2" />  
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/generate-text" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+{/* 
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>

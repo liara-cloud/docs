@@ -1,0 +1,187 @@
+
+
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استریم متن با ورودی با AI در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه استریم متن با وردی با استفاده از سرویس هوش مصنوعی لیارا و فریم‌ورک NextJS"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+#  استریم متن با ورودی با AI در NextJS
+<hr className="mb-2" />
+
+chat completion گاهی ممکن است زمان‌بر باشد، مخصوصاً وقتی که پاسخ بزرگ باشد.
+در چنین مواردی، استریم پاسخ گفتگو به‌صورت بلادرنگ به سمت کلاینت بسیار مفید است و این امکان را فراهم می‌کند که کلاینت پیام جدید را هم‌زمان حین تولید توسط مدل، نمایش دهد، به‌جای اینکه کاربران منتظر بمانند تا تولید به‌طور کامل به پایان برسد.
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+بیایید یک کامپوننت React ایجاد کنیم که در آن از هوک <Important>useChat</Important> از ماژول <Important>ai-sdk/react@</Important> استفاده شده است.
+هوک <Important>useChat</Important> هنگام ارسال پیام توسط کاربر، یک endpoint به نام  <Important>api/chat/</Important> را فراخوانی می‌کند.
+این endpoint، پاسخ دستیار را بر اساس تاریخچه‌ی گفتگو تولید کرده و آن را به‌صورت استریم به کلاینت ارسال می‌نماید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {` // npm i @ai-sdk/react
+'use client';
+
+import { useChat } from '@ai-sdk/react';
+import { useState } from 'react';
+
+export default function Page() {
+  const [input, setInput] = useState('');
+
+  const { messages, append } = useChat({
+    api: '/api/chat',
+  });
+
+  return (
+    <div>
+      <input
+        value={input}
+        onChange={event => {
+          setInput(event.target.value);
+        }}
+        onKeyDown={async event => {
+          if (event.key === 'Enter') {
+            append({
+              content: input,
+              role: 'user',
+            });
+          }
+        }}
+      />
+
+      {messages.map((message, index) => (
+        <div key={index}>
+          {message.parts.map(part => {
+            if (part.type === 'text') {
+              return <div key={\`\${message.id}-text\`}>{part.text}</div>;
+            }
+            return null;
+          })}
+        </div>
+      ))}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+
+در مرحله بعد، بیایید endpoint <Important>api/chat/</Important> را ایجاد کنیم که وظیفه دارد پاسخ دستیار را بر اساس تاریخچه‌ی گفتگو تولید کند.
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { convertToCoreMessages, streamText, type UIMessage } from 'ai';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+
+
+export async function POST(req: Request) {
+  const { messages }: { messages: UIMessage[] } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You are a helpful assistant.',
+    messages: convertToCoreMessages(messages),
+  });
+
+  return result.toDataStreamResponse();
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+خروجی برنامه فوق: 
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/generate-text-with-chat-prompt.png" alt="example of generating text with chat prompt in nextjs app router"/>
+<div className="h-2" />  
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/stream-text-with-chat-prompt" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+{/* 
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>

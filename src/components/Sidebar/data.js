@@ -379,7 +379,6 @@ export default {
       },
     ],
 
-
     'getting-started': [
       {
         badge: (
@@ -502,11 +501,32 @@ export default {
         title: "شروع به کار با DeepSeek R1",
         link: "/ai/cookbook/deepseek-r1"
       },
-
       {
         hr: true
       },
-      
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            NextJS
+          </div>
+        )
+      },
+      {
+        title: "تولید متن",
+        link: "/ai/cookbook/nextjs/generate-text"
+      },
+      {
+        title: "تولید متن با ورودی",
+        link: "/ai/cookbook/nextjs/generate-text-with-chat-prompt"
+      },
+      {
+        title: "استریم متن",
+        link: "/ai/cookbook/nextjs/stream-text"
+      },
+      {
+        title: "استریم متن با ورودی",
+        link: "/ai/cookbook/nextjs/stream-text-with-chat-prompt"
+      },
     ],
 
     'ai-sdk-core': [

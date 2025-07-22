@@ -1,0 +1,208 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید متن با ورودی با AI در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه تولید متن با وردی با استفاده از سرویس هوش مصنوعی لیارا و فریم‌ورک NextJS"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+#  تولید متن با ورودی با AI در NextJS
+<hr className="mb-2" />
+
+ممکن است مواقعی وجود داشته باشد که بخواهید متنی را بر اساس مجموعه‌ای از پیام‌ها تولید نمایید. 
+قابلیت <Important>chat completion</Important> این امکان را فراهم می‌کند که متن را بر اساس یک رشته از پیام‌ها تولید کنید.
+
+<div className="h-2" />
+
+این مجموعه پیام‌ها می‌تواند شامل هرگونه تعامل بین چندین سیستم مختلف باشد، اما متداول‌ترین و قابل‌درک‌ترین کاربرد آن، نمایش گفت‌وگویی میان یک کاربر و یک مدل است.
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+بیایید ابتدا یک رابط چت ساده ایجاد کنیم که شامل یک فیلد ورودی برای ارسال پیام کاربر و نمایش تاریخچه‌ی گفتگو باشد.
+در این رابط، هنگام ارسال پیام توسط کاربر، درخواست به endpoint در <Important>api/chat/</Important> ارسال می‌شود تا پاسخ دستیار (assistant) تولید و نمایش داده شود.
+در فایل <Important>app/page.tsx</Important> قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useState } from 'react';
+
+type Part = { type: string; text: string };
+type ModelMessage = { role: string; content: string | Part[] };
+
+export default function Page() {
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState<ModelMessage[]>([]);
+
+  return (
+    <div>
+      <input
+        value={input}
+        onChange={event => {
+          setInput(event.target.value);
+        }}
+        onKeyDown={async event => {
+          if (event.key === 'Enter') {
+            setMessages(currentMessages => [
+              ...currentMessages,
+              { role: 'user', content: input },
+            ]);
+
+            const response = await fetch('/api/chat', {
+              method: 'POST',
+              body: JSON.stringify({
+                messages: [...messages, { role: 'user', content: input }],
+              }),
+            });
+
+            const { messages: newMessages } = await response.json();
+
+            setMessages(currentMessages => [
+              ...currentMessages,
+              ...newMessages,
+            ]);
+          }
+        }}
+      />
+
+      {messages.map((message, index) => (
+        <div key={\`\${message.role}-\${index}\`}>
+          {typeof message.content === 'string'
+            ? message.content
+            : message.content
+                .filter((part: Part) => part.type === 'text')
+                .map((part: Part, partIndex: number) => (
+                  <div key={partIndex}>{part.text}</div>
+                ))}
+        </div>
+      ))}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+
+در گام بعد، بیایید یک endpoint به نام <Important>api/chat/</Important> ایجاد کنیم که وظیفه دارد پاسخ دستیار را بر اساس تاریخچه‌ی گفتگو تولید کند.
+در مسیر <Important>app/api/chat/route.ts</Important>، قطعه کد زیر را قرار دهید: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+
+
+interface ModelMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+}
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+
+export async function POST(req: Request) {
+  const { messages }: { messages: ModelMessage[] } = await req.json();
+
+  const { response } = await generateText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You are a helpful assistant.',
+    messages,
+  });
+
+  return Response.json({ messages: response.messages });
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+خروجی برنامه فوق: 
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/generate-text-with-chat-prompt.png" alt="example of generating text with chat prompt in nextjs app router"/>
+<div className="h-2" />  
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/generate-text-with-chat-prompt" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+{/* 
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>
