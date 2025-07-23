@@ -1,0 +1,389 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استریم آبجکت با AI در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه استریم object یا آبجکت (شی) با استفاده از سرویس هوش مصنوعی لیارا و فریم‌ورک NextJS"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+#  استریم آبجکت با AI در NextJS
+<hr className="mb-2" />
+
+تولید object گاهی ممکن است زمان زیادی طول بکشد، مخصوصاً زمانی که در حال تولید یک schema بزرگ باشید.
+در چنین مواردی، استریم فرآیند تولید آبجکت به‌صورت بلادرنگ به سمت کلاینت، بسیار مفید است.
+این کار به کلاینت اجازه می‌دهد که آبجکت تولیدشده را هم‌زمان با تولید آن نمایش دهد، به‌جای اینکه کاربران منتظر بمانند تا کل فرآیند به پایان برسد و سپس نتیجه نمایش داده شود.
+
+<hr className="mb-2" />
+<Section id='object-mode' title='حالت آبجکت' />
+
+تابع <Important>streamObject</Important> این امکان را فراهم می‌کند که با استفاده از پارامتر <Important>output</Important>، استراتژی‌های مختلفی برای خروجی تعیین کنید.
+به‌صورت پیش‌فرض، حالت خروجی روی <Important>object</Important> تنظیم شده است، که در این حالت دقیقاً همان آبجکت ساختاریافته‌ای تولید می‌شود که در فیلد <Important>schema</Important> تعریف کرده‌اید.
+
+<Section id='schema' title='اسکیما' />
+
+برای مدیریت بهتر، توصیه می‌شود که schema را در یک فایل جداگانه تعریف کرده و آن را هم در سمت کلاینت، و هم در سمت سرور، ایمپورت کنید.
+این کار موجب افزایش قابلیت maintainability و اطمینان از سازگاری بین کلاینت و سرور می‌شود.
+<div className="h-2" />
+
+در مسیر <Important>app/api/use-object/schema.ts</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { z } from 'zod';
+
+// define a schema for the notifications
+export const notificationSchema = z.object({
+  notifications: z.array(
+    z.object({
+      name: z.string().describe('Name of a fictional person.'),
+      message: z.string().describe('Message. Do not use emojis or links.'),
+    }),
+  ),
+});
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id='client' title='کلاینت' />
+
+در سمت کلاینت، از هوک <Important>useObject</Important> برای استریم فرآیند تولید object استفاده می‌شود.
+نتایج به‌صورت partial دریافت و نمایش داده می‌شوند؛ یعنی هر بخش از object به‌محض تولید، بلافاصله به رابط کاربری ارسال و نمایش داده می‌شود.
+توجه داشته باشید که در کد JSX باید مقادیر <Important>undefined</Important> را به‌درستی مدیریت کنید، زیرا برخی از قسمت‌های آبجکت ممکن است هنوز به‌طور کامل تولید نشده باشند.
+
+<div className="h-2" />
+
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { experimental_useObject as useObject } from '@ai-sdk/react';
+import { notificationSchema } from './api/use-object/schema';
+
+export default function Page() {
+  const { object, submit } = useObject({
+    api: '/api/use-object',
+    schema: notificationSchema,
+  });
+
+  return (
+    <div>
+      <button onClick={() => submit('Messages during finals week.')}>
+        Generate notifications
+      </button>
+
+      {object?.notifications?.map((notification, index) => (
+        <div key={index}>
+          <p>{notification?.name}</p>
+          <p>{notification?.message}</p>
+        </div>
+      ))}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<Section id='server' title='سرور' />
+در سمت سرور، از <Important>streamObject</Important> برای استریم فرآیند تولید object استفاده می‌کنیم.
+در مسیر <Important>app/api/use-object/route.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai zod
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamObject } from 'ai';
+import { notificationSchema } from './schema';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const context = await req.json();
+
+  const result = streamObject({
+    model: my_model('openai/gpt-4o-mini'),
+    schema: notificationSchema,
+    prompt:
+      \`Generate 3 notifications for a messages app in this context:\` + context,
+  });
+
+  return result.toTextStreamResponse();
+}`}
+    </Highlight>
+</div>
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/stream-object-(object-mode)" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+<hr className="mb-2" />
+<Section id='loading-state-and-stopping-the-stream' title='state بارگذاری و متوقف کردن استریم' />
+
+می‌توانید از loading state برای نمایش یک loading indicator در حین تولید آبجکت، استفاده کنید.
+همچنین می‌توانید از تابع <Important>stop</Important> برای متوقف کردن فرآیند تولید آبجکت استفاده کنید.
+
+<div className="h-2" />
+
+برای اضافه‌کردن این دو قابلیت به برنامه، قطعه کد زیر را در مسیر <Important>app/page.tsx</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { experimental_useObject as useObject } from '@ai-sdk/react';
+import { notificationSchema } from './api/use-object/schema';
+
+export default function Page() {
+  const { object, submit, isLoading, stop } = useObject({
+    api: '/api/use-object',
+    schema: notificationSchema,
+  });
+
+  return (
+    <div>
+      <button
+        onClick={() => submit('Messages during finals week.')}
+        disabled={isLoading}
+      >
+        Generate notifications
+      </button>
+
+      {isLoading && (
+        <div>
+          <div>Loading...</div>
+          <button type="button" onClick={() => stop()}>
+            Stop
+          </button>
+        </div>
+      )}
+
+      {object?.notifications?.map((notification, index) => (
+        <div key={index}>
+          <p>{notification?.name}</p>
+          <p>{notification?.message}</p>
+        </div>
+      ))}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+
+<hr className="mb-2" />
+<Section id='array-mode' title='حالت Array' />
+
+حالت خروجی <Important>array</Important> این امکان را فراهم می‌کند که یک آرایه‌ای از آبجکت‌ها را به‌صورت عنصر به عنصر (one element at a time) استریم کنید.
+این حالت هنگام تولید فهرست‌هایی از آیتم‌ها بسیار کاربردی است.
+
+<Section id='schema-1' title='اسکیما' />
+
+ابتدا، اسکیما را به‌روزرسانی کنید تا فقط یک object را تولید کند (یعنی <Important>()z.array</Important> را حذف کنید).
+قطعه کد زیر را در مسیر <Important>app/api/use-object/schema.ts</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { z } from 'zod';
+
+// define a schema for a single notification
+export const notificationSchema = z.object({
+  name: z.string().describe('Name of a fictional person.'),
+  message: z.string().describe('Message. Do not use emojis or links.'),
+});
+`}
+    </Highlight>
+</div>
+
+
+<Section id='client' title='کلاینت' />
+
+در سمت کلاینت، schema را در <Important>()z.array</Important> قرار دهید تا یک آرایه‌ای از آبجکت‌ها تولید شود.
+در فایل <Important>app/page.tsx</Important> قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+
+import { experimental_useObject as useObject } from '@ai-sdk/react';
+import { notificationSchema } from './api/use-object/schema';
+import { z } from 'zod';
+
+export default function Page() {
+  const { object, submit, isLoading, stop } = useObject({
+    api: '/api/use-object',
+    schema: z.array(notificationSchema),
+  });
+
+  return (
+    <div>
+      <button
+        onClick={() => submit('Messages during finals week.')}
+        disabled={isLoading}
+      >
+        Generate notifications
+      </button>
+
+      {isLoading && (
+        <div>
+          <div>Loading...</div>
+          <button type="button" onClick={() => stop()}>
+            Stop
+          </button>
+        </div>
+      )}
+
+      {object?.map((notification, index) => (
+        <div key={index}>
+          <p>{notification.name}</p>
+          <p>{notification.message}</p>
+        </div>
+      ))}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<Section id='server' title='سرور' />
+
+
+در سمت سرور، با تنظیم گزینه‌ی <Important>output: 'array'</Important>، می‌توانید یک آرایه از objectها را تولید کنید.
+در مسیر <Important>app/api/use-object/route.ts</Important>، قطعه کد زیر را قرار دهید: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai zod
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamObject } from 'ai';
+import { notificationSchema } from './schema';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const context = await req.json();
+
+  const result = streamObject({
+    model: my_model('openai/gpt-4o-mini'),
+    output: 'array',
+    schema: notificationSchema,
+    prompt:
+      \`Generate 3 notifications for a messages app in this context:\` + context,
+  });
+
+  return result.toTextStreamResponse();
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+{/* <div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/generate-object" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert> */}
+
+
+{/* 
+خروجی برنامه فوق: 
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/generate-text-with-chat-prompt.png" alt="example of generating text with chat prompt in nextjs app router"/>
+<div className="h-2" />   */}
+
+
+{/* 
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>

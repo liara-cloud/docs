@@ -31,7 +31,7 @@ import Head from "next/head";
 <Head>
 <title>مستندات استریم متن با ورودی با AI در NextJS - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه استریم متن با وردی با استفاده از سرویس هوش مصنوعی لیارا و فریم‌ورک NextJS"  />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه استریم متن با ورودی با استفاده از سرویس هوش مصنوعی لیارا و فریم‌ورک NextJS"  />
 <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
 </Head>
 
@@ -48,6 +48,8 @@ chat completion گاهی ممکن است زمان‌بر باشد، مخصوصا
 بیایید یک کامپوننت React ایجاد کنیم که در آن از هوک <Important>useChat</Important> از ماژول <Important>ai-sdk/react@</Important> استفاده شده است.
 هوک <Important>useChat</Important> هنگام ارسال پیام توسط کاربر، یک endpoint به نام  <Important>api/chat/</Important> را فراخوانی می‌کند.
 این endpoint، پاسخ دستیار را بر اساس تاریخچه‌ی گفتگو تولید کرده و آن را به‌صورت استریم به کلاینت ارسال می‌نماید.
+در فایل <Important>app/page.tsx</Important> قطعه کد زیر را قرار دهید: 
+
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -103,6 +105,7 @@ export default function Page() {
 
 
 در مرحله بعد، بیایید endpoint <Important>api/chat/</Important> را ایجاد کنیم که وظیفه دارد پاسخ دستیار را بر اساس تاریخچه‌ی گفتگو تولید کند.
+قطعه کد زیر را در مسیر <Important>app/api/chat/route.ts</Important>، قرار دهید: 
 
 
 <div className="h-2" />
@@ -145,7 +148,7 @@ export async function POST(req: Request) {
 خروجی برنامه فوق: 
 
 <div className="h-2" />  
-<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/generate-text-with-chat-prompt.png" alt="example of generating text with chat prompt in nextjs app router"/>
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/generate-text-with-chat-prompt.png" alt="example of streaming text with chat prompt in nextjs app router"/>
 <div className="h-2" />  
 
 <Alert variant="success">

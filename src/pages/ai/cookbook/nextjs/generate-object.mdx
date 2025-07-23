@@ -1,0 +1,192 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید آبجکت با AI در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه تولید object یا آبجکت (شی) با استفاده از سرویس هوش مصنوعی لیارا و فریم‌ورک NextJS"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+#  تولید آبجکت با AI در NextJS
+<hr className="mb-2" />
+
+توابعی مانند <Important>generateText</Important> و <Important>streamText</Important> امکان تولید متن بدون ساختار را فراهم می‌کنند.
+اما اگر بخواهید داده‌های ساختاریافته مانند <Important>JSON</Important> تولید کنید، می‌توانید با استفاده از تابع <Important>generateObject</Important> و ارائه‌ی یک طرح‌واره (schema)، ساختار object مورد نظر را مشخص نمایید.
+
+<div className="h-2" />
+این تابع نیاز دارد که اسکیما را با استفاده از کتابخانه‌ی <a href="https://zod.dev" className="text-[#2196f3]">Zod</a> تعریف کنید؛ Zod کتابخانه‌ای برای تعریف و اعتبارسنجی ساختار objectها در جاوااسکریپت است.
+با استفاده از Zod نه‌تنها می‌توانید ساختار مورد انتظار را مشخص کنید، بلکه امکان validation آبجکت تولیدشده نیز وجود دارد تا مطمئن شوید که با ساختار تعریف‌شده مطابقت دارد.
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+بیایید یک کامپوننت ساده‌ی React ایجاد کنیم که هنگام کلیک روی یک دکمه، یک درخواست POST به endpoint به نام  <Important>api/completion/</Important> ارسال می‌کند.
+این endpoint، یک object ساختاریافته را بر اساس پرامپت ورودی تولید کرده و آن را بازمی‌گرداند.
+ما نیز پس از دریافت پاسخ، object تولیدشده را در رابط کاربری نمایش خواهیم داد.
+در فایل <Important>app/page.tsx</Important> قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useState } from 'react';
+
+export default function Page() {
+  const [generation, setGeneration] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  return (
+    <div>
+      <div
+        onClick={async () => {
+          setIsLoading(true);
+
+          await fetch('/api/completion', {
+            method: 'POST',
+            body: JSON.stringify({
+              prompt: 'Messages during finals week.',
+            }),
+          }).then(response => {
+            response.json().then(json => {
+              setGeneration(json.notifications);
+              setIsLoading(false);
+            });
+          });
+        }}
+      >
+        Generate
+      </div>
+
+      {isLoading ? 'Loading...' : <pre>{JSON.stringify(generation)}</pre>}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+
+بیایید یک route handler برای <Important>api/completion/</Important> ایجاد کنیم که بر اساس پرامپت ورودی، یک object ساختاریافته تولید کند.
+این route، تابع <Important>generateObject</Important> از ماژول <Important>ai</Important> را فراخوانی می‌کند.
+این تابع با استفاده از پرامپت ورودی، یک آبجکت تولید کرده و آن را به‌عنوان پاسخ بازمی‌گرداند.
+در مسیر <Important>app/api/completion/route.ts</Important>، قطعه کد زیر را قرار دهید: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai zod
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateObject } from 'ai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function POST(req: Request) {
+  const { prompt }: { prompt: string } = await req.json();
+
+  const result = await generateObject({
+    model: my_model('openai/gpt-4o-mini', { structuredOutputs: true }),
+    system: 'You generate three notifications for a messages app.',
+    prompt,
+    schema: z.object({
+      notifications: z.array(
+        z.object({
+          name: z.string().describe('Name of a fictional person.'),
+          message: z.string().describe('Do not use emojis or links.'),
+          minutesAgo: z.number(),
+        }),
+      ),
+    }),
+  });
+
+  return result.toJsonResponse();
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+{/* 
+خروجی برنامه فوق: 
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/generate-text-with-chat-prompt.png" alt="example of generating text with chat prompt in nextjs app router"/>
+<div className="h-2" />   */}
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/generate-object" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+{/* 
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>

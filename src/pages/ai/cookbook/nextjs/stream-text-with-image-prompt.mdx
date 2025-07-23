@@ -1,0 +1,157 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استریم متن با ورودی عکس با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه استریم متن با ورودی عکس با استفاده از سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# استریم متن با ورودی عکس با AI
+<hr className="mb-2" />
+
+برخی از LLMها مانند <Important>openai/gpt-4o-mini</Important> قادر به پردازش هم‌زمان متن و تصویر هستند.
+در این مثال، نشان خواهیم داد که چگونه می‌توان یک URL تصویر را همراه با پیام کاربر به مدل ارسال کرد.
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+ما پیام کاربر را به دو بخش تقسیم می‌کنیم: متن و آدرس URL تصویر.
+سپس هر دو بخش را به مدل ارسال می‌کنیم.
+آخرین پیام، پیام متنی کاربر است و ما آدرس تصویر را به آن اضافه می‌کنیم.
+قطعه کد زیر را در مسیر <Important>app/api/chat/route.ts</Important>، قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export const maxDuration = 60;
+
+export async function POST(req: Request) {
+  // 'data' contains the additional data that you have sent:
+  const { messages, data } = await req.json();
+
+  const initialMessages = messages.slice(0, -1);
+  const currentMessage = messages[messages.length - 1];
+
+  // Call the language model
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    messages: [
+      ...initialMessages,
+      {
+        role: 'user',
+        content: [
+          { type: 'text', text: currentMessage.content },
+          { type: 'image', image: new URL(data.imageUrl) },
+        ],
+      },
+    ],
+  });
+
+  // Respond with the stream
+  return result.toDataStreamResponse();
+}`}
+    </Highlight>
+</div>
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+<Section id='client' title='کلاینت' />
+
+در سمت کلاینت، می‌توانیم آدرس URL تصویر را همراه با پیام کاربر با افزودن یک object به اسم <Important>data</Important> به تابع <Important>handleSubmit</Important> ارسال کنیم.
+شما می‌توانید مقدار <Important>imageUrl</Important> را با آدرس واقعی تصویری که می‌خواهید ارسال کنید جایگزین نمایید.
+در فایل <Important>app/page.tsx</Important> قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  return (
+    <div>
+      {messages.map(m => (
+        <div key={m.id}>
+          {m.role === 'user' ? 'User: ' : 'AI: '}
+          {m.content}
+        </div>
+      ))}
+
+      <form
+        onSubmit={e => {
+          handleSubmit(e, {
+            data: { imageUrl: 'https://media.liara.ir/ai/dog.png' },
+          });
+        }}
+      >
+        <input
+          value={input}
+          placeholder="What does the image show..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+خروجی برنامه فوق: 
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/stream-text-with-image-prompt.png" alt="example of streaming text with image prompt in nextjs app router"/>
+<div className="h-2" />  
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/stream-text-with-image-prompt" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

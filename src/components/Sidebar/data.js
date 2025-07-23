@@ -527,6 +527,26 @@ export default {
         title: "استریم متن با ورودی",
         link: "/ai/cookbook/nextjs/stream-text-with-chat-prompt"
       },
+      {
+        title: "استریم متن با ورودی عکس",
+        link: "/ai/cookbook/nextjs/stream-text-with-image-prompt"
+      },
+      {
+        title: "استریم متن Multi-Step",
+        link: "/ai/cookbook/nextjs/stream-text-multistep"
+      },
+      {
+        title: "چت‌بات مبتنی بر Markdown",
+        link: "/ai/cookbook/nextjs/markdown-chatbot-with-memoization"
+      },
+      {
+        title: "تولید object",
+        link: "/ai/cookbook/nextjs/generate-object"
+      },
+      {
+        title: "استریم object",
+        link: "/ai/cookbook/nextjs/stream-object"
+      },
     ],
 
     'ai-sdk-core': [
