@@ -547,6 +547,23 @@ export default {
         title: "استریم object",
         link: "/ai/cookbook/nextjs/stream-object"
       },
+      {
+        title: "فراخوانی Toolها",
+        link: "/ai/cookbook/nextjs/call-tools"
+      },
+      {
+        title: "فراخوانی Toolها به‌صورت موازی",
+        link: "/ai/cookbook/nextjs/call-tools-in-parallel"
+      },
+      {
+        title: "فراخوانی Toolها در چندمرحله",
+        link: "/ai/cookbook/nextjs/call-tools-multiple-steps"
+      },
+      // {
+      //   title: "ارسال بدنه سفارشی از useChat",
+      //   link: "/ai/cookbook/nextjs/send-custom-body-from-use-chat"
+      // },
+
     ],
 
     'ai-sdk-core': [

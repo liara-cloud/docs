@@ -1,0 +1,186 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات فراخوانی Tool با AI در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط  به آشنایی با نحوه فراخوانی Toolها یا ابزارها در فریم‌ورک NextJS با استفاده از سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# فراخوانی Toolها با AI در NextJS
+<hr className="mb-2" />
+
+برخی از مدل‌ها به توسعه‌دهندگان اجازه می‌دهند فهرستی از Toolها را ارائه دهند که بتوان در هر زمان طی فرآیند تولید محتوا آن‌ها را فراخوانی کرد.
+این قابلیت برای گسترش توانایی‌های LLM بسیار مفید است، زیرا در این صورت، امکان تعامل با سیستم‌های خارج از مدل، فراهم می‌شود.
+
+<hr className="mb-2" />
+
+
+<Section id='client' title='کلاینت' />
+
+بیایید یک کامپوننت React ایجاد کنیم که در آن از هوک <Important>useChat</Important> از ماژول <Important>ai-sdk/react@</Important> استفاده شده است.
+این هوک هنگام ارسال پیام توسط کاربر، یک endpoint به نام <Important>api/chat/</Important> را فراخوانی می‌کند. این endpoint، پاسخ دستیار را بر اساس تاریخچه‌ی گفتگو تولید کرده و آن را به‌صورت استریم، به کلاینت ارسال می‌کند.
+اگر دستیار در پاسخ خود از فراخوانی Tool استفاده کند، این هوک به‌طور خودکار آن‌ها را نیز نمایش خواهد داد.
+<div className="h-4" />
+
+ما از فیلد <Important>maxSteps</Important> برای مشخص کردن حداکثر تعداد مراحل (یا فراخوانی LLM) استفاده می‌کنیم تا از بروز حلقه‌های بی‌نهایت جلوگیری شود.
+در این مثال، مقدار آن روی <Important>2</Important> تنظیم می‌شود تا دو فراخوانی به بک‌اند امکان‌پذیر باشد.
+<div className="h-4" />
+
+در فایل <Important>app/page.tsx</Important> قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Page() {
+  const { messages, input, setInput, append } = useChat({
+    api: '/api/chat',
+    maxSteps: 2,
+  });
+
+  return (
+    <div>
+      <input
+        value={input}
+        onChange={event => {
+          setInput(event.target.value);
+        }}
+        onKeyDown={async event => {
+          if (event.key === 'Enter') {
+            append({ content: input, role: 'user' });
+          }
+        }}
+      />
+
+      {messages.map((message, index) => (
+        <div key={index}>{message.content}</div>
+      ))}
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+<hr className="mb-2" />
+
+<Section id='server' title='سرور' />
+
+در این بخش، یک مسیر جدید در <Important>api/chat/</Important> ایجاد کنید که از تابع <Important>streamText</Important> از ماژول <Important>ai</Important> برای تولید پاسخ دستیار بر اساس تاریخچه‌ی گفتگو استفاده کند.
+از فیلد <Important>tools</Important> استفاده کنید تا ابزاری به نام <Important>celsiusToFahrenheit</Important> تعریف کنید که مقدار داده‌شده توسط کاربر را از سلسیوس به فارنهایت تبدیل کند.
+<div className="h-4" />
+
+همچنین با استفاده از Zod، یک schema برای پارامترهای تابع <Important>celsiusToFahrenheit</Important> تعریف کنید تا اعتبارسنجی داده‌های ورودی به درستی انجام شود.
+<div className="h-4" />
+
+
+در مسیر <Important>app/api/chat/route.ts</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai zod
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { ToolInvocation, streamText } from 'ai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+  toolInvocations?: ToolInvocation[];
+}
+
+export async function POST(req: Request) {
+  const { messages }: { messages: Message[] } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You are a helpful assistant.',
+    messages,
+    tools: {
+      getWeather: {
+        description: 'Get the weather for a location',
+        parameters: z.object({
+          city: z.string().describe('The city to get the weather for'),
+          unit: z
+            .enum(['C', 'F'])
+            .describe('The unit to display the temperature in'),
+        }),
+        execute: async ({ city, unit }) => {
+          const weather = {
+            value: 24,
+            description: 'Sunny',
+          };
+
+          return \`It is currently \${weather.value}°\${unit} and \${weather.description} in \${city}!\`;
+        },
+      },
+    },
+  });
+
+  return result.toDataStreamResponse();
+}`}
+    </Highlight>
+</div>
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+خروجی برنامه فوق: 
+
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/ai-sdk/cookbook/nextjs/tool-calls.png" alt="usage of tool calls in nextjs app router"/>
+<div className="h-2" />  
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/tool-calls" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+
+
+</Layout>

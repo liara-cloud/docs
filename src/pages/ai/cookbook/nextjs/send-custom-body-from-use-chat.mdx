@@ -1,0 +1,138 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ارسال بدنه‌ی سفارشی از useChat در NextJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه ارسال بدنه سفارشی (custom body) از useChat در NextJS با استفاده از سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# ارسال بدنه‌ی سفارشی از useChat 
+
+<hr className="mb-2" />
+
+<Alert variant="warning">
+<p>
+در حال حاضر، <Important>experimental_prepareRequestBody</Important> یک قابلیت آزمایشی است و تنها در فریم‌ورک‌های React و Solid و Vue در دسترس است.
+</p>
+</Alert>
+<div className="h-2" />
+
+به‌صورت پیش‌فرض، <Important>useChat</Important> تمام پیام‌ها و اطلاعات مربوط به درخواست را به سرور ارسال می‌کند. با این حال، معمولاً نیاز است که محتوای بدنه‌ی ارسال‌شده به سرور کنترل شود، برای مثال:
+
+<div className="h-2" />
+<ul>
+<li>فقط آخرین پیام ارسال شود</li>
+<li>داده‌های اضافی همراه با پیام ارسال شوند</li>
+<li>ساختار بدنه‌ی درخواست تغییر کند</li>
+</ul>
+<div className="h-2" />
+
+گزینه‌ی <Important>experimental_prepareRequestBody</Important> به شما امکان می‌دهد محتوای بدنه‌ی ارسالی به سرور را سفارشی‌سازی کنید.
+این تابع لیست پیام‌ها، داده‌های درخواست و بدنه‌ی درخواست دریافتی از append call را به عنوان ورودی دریافت می‌کند و محتوایی که قرار است به سرور ارسال شود را بازمی‌گرداند.
+
+<hr className="mb-2" />
+
+مثال زیر نشان می‌دهد که چگونه فقط متن آخرین پیام را به سرور ارسال کنید.
+این کار می‌تواند زمانی که بخواهید حجم داده‌های ارسالی به سرور را کاهش دهید، مفید باشد 
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+قطعه کد زیر را در فایل <Important>app/page.tsx</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    experimental_prepareRequestBody: ({ messages }) => {
+      // e.g. only the text of the last message:
+      return messages[messages.length - 1].content;
+    },
+  });
+
+  return (
+    <div>
+      {messages.map(m => (
+        <div key={m.id}>
+          {m.role === 'user' ? 'User: ' : 'AI: '}
+          {m.content}
+        </div>
+      ))}
+
+      <form onSubmit={handleSubmit}>
+        <input value={input} onChange={handleInputChange} />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+
+
+<Important>
+</Important>
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+
+
+
+
+
+</Layout>
