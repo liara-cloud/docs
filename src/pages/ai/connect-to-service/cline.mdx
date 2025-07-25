@@ -1,0 +1,97 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+import LightboxImage   from "@/components/Common/LightboxImage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال هوش مصنوعی به افزونه Cline - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات اتصال سرویس هوش مصنوعی لیارا به افزونه Cline در VSCode با استفاده از سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# اتصال هوش مصنوعی به افزونه Cline
+<hr className="mb-2" />
+
+افزونه <a href="https://cline.bot" className="text-[#2196f3]">Cline</a> یک ابزار هوشمند برای محیط توسعه VSCode است که به‌منظور افزایش بهره‌وری در نوشتن و درک بهتر کد طراحی شده است. این افزونه با کمک هوش مصنوعی و تکنیک‌های پردازش زبان طبیعی، توضیحات متنی (Comment یا Docstring) را به کد تبدیل می‌کند یا برعکس، برای قطعه‌کدها توضیحات دقیق و قابل فهم تولید می‌کند. Cline به توسعه‌دهندگان کمک می‌کند تا مستندسازی کد را سریع‌تر انجام دهند، کدهای قدیمی را بهتر درک کنند، و همکاری تیمی را بهبود ببخشند. این افزونه  برای تیم‌هایی که روی پروژه‌های بزرگ و پیچیده کار می‌کنند، کاربرد زیادی دارد.
+
+<div className="h-2" />
+
+برای راه‌اندازی افزونه Cline مجهز به هوش مصنوعی، در ابتدا باید، با کلیک بر روی <a href="vscode:extension/saoudrizwan.claude-dev" className="text-[#2196f3]">این لینک</a> افزونه Cline را بر روی VSCode خود نصب کنید. پس از نصب آن، بایستی سرویس زیر را در لیارا، ایجاد کنید:
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p><a href="/ai/quick-start/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a></p>,},
+
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStyleType: "arabic-indic !important",
+        listStylePosition: "outside",
+      }}
+    >
+        
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+
+بعد از راه‌اندازی، تنها کافیست تا گام‌های زیر را طی کنید: 
+<div className="h-2" />
+
+<video
+src="https://media.liara.ir/ai/cline-bot/setup.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
+
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>پیکربندی افزونه در VSCode</h3>   
+    <p>
+        پس از نصب افزونه، از سایدبار، <Important>Cline</Important> را انتخاب کنید و سپس در صفحه باز شده، گزینه <Important>Use your own API Key</Important> را، انتخاب کنید.
+    </p>  
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>اضافه‌کردن هوش مصنوعی لیارا</h3>
+    <p>
+        در صفحه جدید باز شده، در فیلد <b>API Provider</b>، گزینه <b>OpenAI Compatible</b> را انتخاب کنید. در قسمت <b>Base URL</b>، مقدار baseUrl سرویس هوش مصنوعی خود را وارد کنید و در قسمت <b>OpenAI Compatible API Key</b>، بایستی کلید API کنسول لیارا را وارد کنید. 
+        پس از وارد کردن فیلدهای مذکور، تنها کافیست تا در فیلد <b>Model ID</b>، مدل زبانی (LLM) خود را بنویسید و در نهایت بر روی گزینه <b>!Let's go</b> کلیک کنید.
+    </p>
+    <div className="h-2" />
+  </>
+  )
+  },
+]}/> 
+
+    <div className="h-2" />
+
+با انجام مراحل فوق، 
+        تمامی کارها انجام شده است و شما، می‌توانید از این افزونه در VSCode، استفاده کنید. 
+
+</Layout>

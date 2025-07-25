@@ -1,0 +1,102 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اتصال هوش مصنوعی به SillyTavern - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات اتصال سرویس هوش مصنوعی لیارا به SillyTavern در لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+# اتصال هوش مصنوعی به برنامه SillyTavern
+<hr className="mb-2" />
+
+<a href="https://docs.sillytavern.app" className="text-[#2196f3]">SillyTavern</a> (که به اختصار ST نیز نامیده می‌شود) یک رابط کاربری است که به شما امکان می‌دهد با LLMها تعامل داشته باشید. 
+SillyTavern در ابتدا زیرمجموعه‌ای از TavernAI به حساب می‌آمد؛ اما امروزه، با پشتیبانی جامعه‌ای فعال، به یکی از ابزارهای محبوب علاقه‌مندان به هوش مصنوعی تبدیل شده است. 
+<div className="h-4" />
+
+برای اتصال سرویس AI لیارا به برنامه SillyTavern، در ابتدا باید، سرویس زیر را در لیارا، ایجاد کنید: 
+
+<div className="h-2" />
+<ul className="pr-4">
+  {[
+    {text: <p><a href="/ai/quick-start/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a></p>,},
+
+  ].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af",
+        listStylePosition: "outside",
+      }}
+    >
+        
+     {item.text}
+    </li>
+  ))}
+</ul>
+
+<br />
+
+بعد از راه‌اندازی سرویس فوق، تنها کافیست تا گام‌های زیر را طی کنید: 
+
+<div className="h-2" />
+<video
+src="https://media.liara.ir/ai/sillytavern/setup.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
+
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>راه‌اندازی SillyTavern</h3>   
+    <p>با اجرای دستور زیر در ترمینال خود، یک کلون از ریپازیتوری رسمی SillyTavern تهیه کنید</p>
+    <div className="h-2" />
+    <div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`git clone https://github.com/SillyTavern/SillyTavern -b`}
+    </Highlight>
+    </div>
+    <div className="h-4" />
+    <p>در ادامه، فایل <Important>Start.bat</Important> (در لینوکس و مک، فایل <Important>start.sh</Important>) را اجرا کنید، سپس وارد مرورگر شده و صفحه <Important>http://127.0.0.1:8000</Important> را باز کنید. با انجام کارهای فوق،  SillyTavern برای شما به اجرا در می‌آید. 
+    </p>  
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>اتصال به سرویس هوش مصنوعی لیارا</h3>
+    <p>
+     در صفحه باز شده، گزینه <b>API Connections</b> را انتخاب کنید. در فیلد <b>API</b>، گزینه <b>Chat Completion</b> را انتخاب کرده و سپس در بخش <b>Chat Completion Source</b>، گزینه <b>Custom (OpenAI-compatible)</b> را انتخاب کنید. در ادامه، در قسمت <b>Custom Endpoint (Base URL)</b> مقدار baseUrl سرویس هوش مصنوعی خود، و در بخش <b>Custom API Key</b>، مقدار کلید API کنسول لیارا خود را، وارد کنید. 
+     در نهایت و پس از نوشتن نام مدل خود در فیلد <b>Enter a Model ID</b>، کافیست تا بر روی گزینه <b>Connect</b> کلیک کنید. 
+    </p>
+  </>
+
+  )
+  },
+]}/>
+
+<div className="h-4" />
+با انجام مراحل فوق، سرویس هوش مصنوعی شما در SillyTavern آماده استفاده است.
+
+</Layout>

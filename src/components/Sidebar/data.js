@@ -618,9 +618,15 @@ export default {
         icon: <GoInfo />,
         link: "/ai/connect-to-service/about"
       },
-
       {
         hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            برنامه‌ها
+          </div>
+        )
       },
       {
         title: "N8N",
@@ -633,9 +639,34 @@ export default {
         link: "/ai/connect-to-service/openweb"
       },
       {
-        title: "افزونه Copilot در VSCode",
+        title: "SillyTavern",
+        icon: <IconContainer alt="https://media.liara.ir/ai/sillytavern/SillyTavern_logo.png" />,
+        link: "/ai/connect-to-service/sillytavern"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            افزونه‌های VSCode
+          </div>
+        )
+      },
+      {
+        title: "Copilot",
         icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
         link: "/ai/connect-to-service/chat-gpt-copilot"
+      },
+      {
+        title: "Kilo Code",
+        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/kilo-code/kilocode-logo.png" />,
+        link: "/ai/connect-to-service/kilo-code"
+      },
+      {
+        title: "Cline",
+        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/cline-bot/cline.png" />,
+        link: "/ai/connect-to-service/cline"
       },
     ],
 
