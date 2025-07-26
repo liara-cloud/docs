@@ -559,10 +559,14 @@ export default {
         title: "فراخوانی Toolها در چندمرحله",
         link: "/ai/cookbook/nextjs/call-tools-multiple-steps"
       },
-      // {
-      //   title: "ارسال بدنه سفارشی از useChat",
-      //   link: "/ai/cookbook/nextjs/send-custom-body-from-use-chat"
-      // },
+      {
+        title: "اضافه کردن HITL",
+        link: "/ai/cookbook/nextjs/human-in-the-loop"
+      },
+      {
+        title: "ارسال بدنه سفارشی از useChat",
+        link: "/ai/cookbook/nextjs/send-custom-body-from-use-chat"
+      },
 
     ],
 

@@ -61,13 +61,11 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 مثال زیر نشان می‌دهد که چگونه فقط متن آخرین پیام را به سرور ارسال کنید.
-این کار می‌تواند زمانی که بخواهید حجم داده‌های ارسالی به سرور را کاهش دهید، مفید باشد 
+این کار می‌تواند زمانی که بخواهید حجم داده‌های ارسالی به سرور را کاهش دهید، مفید باشد.
 
-<hr className="mb-2" />
 <Section id='client' title='کلاینت' />
 
 قطعه کد زیر را در فایل <Important>app/page.tsx</Important> قرار دهید:
-
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
@@ -101,34 +99,59 @@ export default function Chat() {
     </Highlight>
 </div>
 
+<Section id='server' title='سرور' />
 
+ما باید سرور را طوری تنظیم کنیم که تنها متن آخرین پیام را دریافت کند. باقی تاریخچه‌ی پیام‌ها می‌تواند از فضای ذخیره‌سازی (storage) بارگذاری شود.
+قطعه کد زیر را در مسیر <Important>app/api/chat/route.ts</Important> قرار دهید:
 
-<Important>
-</Important>
-<Section id='' title='' />
-<div className="h-2" />
-<ul>
-<li></li>
-</ul>
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {``}
+        {`// npm i ai @ai-sdk/openai zod
+
+import { createOpenAI } from '@ai-sdk/openai'
+import { Message, streamText } from 'ai';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export const maxDuration = 30
+
+// Stub for loading message history
+async function loadHistory(): Promise<Message[]> {
+  // TODO: Implement actual history loading from storage
+  return [];
+}
+
+export async function POST(req: Request) {
+  // we receive only the text from the last message
+  const text = await req.json()
+
+  // e.g. load message history from storage
+  const history = await loadHistory()
+
+  // Call the language model
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    messages: [...history, { role: 'user', content: text }],
+    onFinish({ text }) {
+      // e.g. save the message and the response to storage
+    }
+  })
+
+  // Respond with the stream
+  return result.toDataStreamResponse()
+}`}
     </Highlight>
 </div>
 <div className="h-2" />
-
-<div className="h-2" />  
-<img src="https://media.liara.ir/" alt=""/>
-<div className="h-2" />  
-
-
-<video
-  src="https://media.liara.ir/"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-/>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/send-custom-body-from-use-chat" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
 
 
 
