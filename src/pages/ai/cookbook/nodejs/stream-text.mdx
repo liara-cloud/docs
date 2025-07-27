@@ -1,0 +1,132 @@
+
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+ <Layout>
+<Head>
+<title>مستندات استریم متن در NodeJS با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه استریم متن در NodeJS با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# استریم متن در NodeJS با هوش مصنوعی
+<hr className="mb-2" />
+
+تولید متن ممکن است گاهی زمان‌بر باشد، مخصوصاً زمانی که چند پاراگراف تولید می‌شود. در چنین مواردی، استریم متن به سمت کلاینت مفید است. این روش به کلاینت اجازه می‌دهد که متن تولیدشده را هم‌زمان در حین تولید ادامه آن، نمایش دهد، به‌جای اینکه کاربر منتظر بماند تا کل متن تولید شده و سپس نمایش داده شود.
+<hr className="mb-2" />
+
+<Section id='without-reader' title='بدون reader' />
+
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv
+
+import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+ 
+const result = streamText({
+  model: my_model('openai/gpt-4o-mini'),
+  maxTokens: 512,
+  temperature: 0.3,
+  maxRetries: 5,
+  prompt: 'Invent a new holiday and describe its traditions.',
+});
+
+for await (const textPart of result.textStream) {
+  console.log(textPart);
+}`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+
+<Section id='with-reader' title='با استفاده از reader' />
+
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv
+
+import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+ 
+const result = streamText({
+  model: my_model('openai/gpt-4o-mini'),
+  maxTokens: 512,
+  temperature: 0.3,
+  maxRetries: 5,
+  prompt: 'Invent a new holiday and describe its traditions.',
+});
+
+const reader = result.textStream.getReader();
+
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) {
+    break;
+  }
+  console.log(value);
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NodeJS/stream-text" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+
+</Layout>

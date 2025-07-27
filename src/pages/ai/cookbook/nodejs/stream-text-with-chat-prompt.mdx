@@ -1,0 +1,97 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+ <Layout>
+<Head>
+<title>مستندات استریم متن با ورودی در NodeJS با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه استریم متن با ورودی در NodeJS با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# استریم متن با ورودی در NodeJS با هوش مصنوعی
+<hr className="mb-2" />
+
+تولید متن گاهی ممکن است زمان‌بر باشد، مخصوصاً زمانی که پاسخ طولانی است. در چنین مواردی، استریم chat completion به‌صورت بلادرنگ به سمت کلاینت بسیار مفید است. این کار به کلاینت اجازه می‌دهد که پیام جدید را هم‌زمان با تولید آن توسط LLM نمایش دهد، به‌جای اینکه کاربران منتظر بمانند تا پاسخ به‌طور کامل تولید شده و سپس نمایش داده شود.
+
+<div className="h-2" />
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv
+
+import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+ 
+const result = streamText({
+  model: my_model('openai/gpt-4o-mini'),
+  maxTokens: 1024,
+  system: 'You are a helpful chatbot.',
+  messages: [
+    {
+      role: 'user',
+      content: 'Hello!',
+    },
+    {
+      role: 'assistant',
+      content: 'Hello! How can I help you today?',
+    },
+    {
+      role: 'user',
+      content: 'I need help with my computer.',
+    },
+  ],
+});
+
+for await (const textPart of result.textStream) {
+  console.log(textPart);
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NodeJS/stream-text-with-chat-prompt" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

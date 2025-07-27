@@ -575,6 +575,36 @@ export default {
         title: "کش Middleware",
         link: "/ai/cookbook/nextjs/caching-middleware"
       },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            NodeJS
+          </div>
+        )
+      },
+      {
+        title: "تولید متن",
+        link: "/ai/cookbook/nodejs/generate-text"
+      },
+      {
+        title: "تولید متن با ورودی",
+        link: "/ai/cookbook/nodejs/generate-text-with-chat-prompt"
+      },
+      {
+        title: "استریم متن",
+        link: "/ai/cookbook/nodejs/stream-text"
+      },
+      {
+        title: "استریم متن با ورودی",
+        link: "/ai/cookbook/nodejs/stream-text-with-chat-prompt"
+      },
+      {
+        title: "استریم متن با ورودی عکس",
+        link: "/ai/cookbook/nodejs/stream-text-with-image-prompt"
+      },
     ],
 
     'ai-sdk-core': [
