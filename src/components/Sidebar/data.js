@@ -605,6 +605,22 @@ export default {
         title: "استریم متن با ورودی عکس",
         link: "/ai/cookbook/nodejs/stream-text-with-image-prompt"
       },
+      {
+        title: "تولید آبجکت با مدل استدلالی",
+        link: "/ai/cookbook/nodejs/generate-object-reasoning"
+      },
+      {
+        title: "تولید آبجکت",
+        link: "/ai/cookbook/nodejs/generate-object"
+      },
+      {
+        title: "استریم آبجکت",
+        link: "/ai/cookbook/nodejs/stream-object"
+      },
+      {
+        title: "استریم آبجکت با ورودی عکس",
+        link: "/ai/cookbook/nodejs/stream-object-with-image-prompt"
+      },
     ],
 
     'ai-sdk-core': [

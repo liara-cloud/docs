@@ -1,0 +1,101 @@
+
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+ <Layout>
+<Head>
+<title>مستندات تولید آبجکت در NodeJS با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه تولید آبجکت در NodeJS با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# تولید آبجکت در NodeJS با هوش مصنوعی
+<hr className="mb-2" />
+
+تابع‌هایی مانند <Important>generateText</Important> و <Important>streamText</Important> امکان تولید متن غیرساختارمند را فراهم می‌کردند. با این حال، اگر بخواهید داده‌های ساختارمند مانند JSON تولید کنید، می‌توانید با استفاده از تابع <Important>generateObject</Important>، یک اسکیما (schema) که ساختار آبجکت موردنظر شما را توصیف می‌کند، ارائه دهید.
+<div className="h-2" />
+
+این تابع الزام می‌کند که اسکیما را با استفاده از کتابخانه‌ی <Important>Zod</Important> تعریف کنید؛ کتابخانه‌ای برای تعریف اسکیما برای آبجکت‌های جاوااسکریپت. با استفاده از <Important>Zod</Important>، نه‌تنها می‌توانید ساختار خروجی را مشخص کنید، بلکه می‌توانید اعتبارسنجی (validation) نیز انجام دهید تا اطمینان حاصل شود که آبجکت تولیدشده با ساختار تعیین‌شده مطابقت دارد.
+
+<div className="h-2" />
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv zod 
+
+import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+
+const result = await generateObject({
+  model: my_model('openai/gpt-4o-mini'),
+  schema: z.object({
+    recipe: z.object({
+      name: z.string(),
+      ingredients: z.array(
+        z.object({
+          name: z.string(),
+          amount: z.string(),
+        }),
+      ),
+      steps: z.array(z.string()),
+    }),
+  }),
+  prompt: 'Generate a lasagna recipe.',
+});
+
+console.log(JSON.stringify(result.object.recipe, null, 2));`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NodeJS/generate-object" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+
+</Layout>
