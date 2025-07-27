@@ -567,7 +567,14 @@ export default {
         title: "ارسال بدنه سفارشی از useChat",
         link: "/ai/cookbook/nextjs/send-custom-body-from-use-chat"
       },
-
+      {
+        title: "رندر کردن رابط تصویری در چت",
+        link: "/ai/cookbook/nextjs/render-visual-interface-in-chat"
+      },
+      {
+        title: "کش Middleware",
+        link: "/ai/cookbook/nextjs/caching-middleware"
+      },
     ],
 
     'ai-sdk-core': [

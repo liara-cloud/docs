@@ -1,0 +1,281 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کش Middleware دستیار در NextJS با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه کش Middleware در فریم‌ورک NextJS با استفاده از سرویس هوش مصنوعی (AI) لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# کش Middleware در NextJS با AI
+<hr className="mb-2" />
+
+بیایید یک رابط چت ساده ایجاد کنیم که با استفاده از <Important>LanguageModelMiddleware</Important>، پاسخ‌های دستیار را در یک فضای ذخیره‌سازی کلید-مقدار (KV) سریع کش کند. این میان‌افزار باعث می‌شود که پاسخ‌های تولیدشده توسط مدل زبانی ذخیره شوند و در صورت تکرار درخواست مشابه، بدون نیاز به پردازش مجدد مدل، از کش بازگردانده شوند.
+<hr className="mb-2" />
+
+<Section id='client' title='کلاینت' />
+
+بیایید یک رابط چت ساده ایجاد کنیم که به کاربران اجازه دهد پیام‌هایی را به دستیار ارسال کرده و پاسخ‌ها را دریافت کنند. در این پیاده‌سازی، شما از هوک <Important>useChat</Important> از پکیج <Important>ai-sdk/react@</Important> استفاده خواهید کرد تا پاسخ‌ها به‌صورت استریمی دریافت شوند.
+در مسیر <Important>app/page.tsx</Important>، کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit, error } = useChat();
+  if (error) return <div>{error.message}</div>;
+
+  return (
+    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      <div className="space-y-4">
+        {messages.map(m => (
+          <div key={m.id} className="whitespace-pre-wrap">
+            <div>
+              <div className="font-bold">{m.role}</div>
+              {m.toolInvocations ? (
+                <pre>{JSON.stringify(m.toolInvocations, null, 2)}</pre>
+              ) : (
+                <p>{m.content}</p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
+          value={input}
+          placeholder="Say something..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+
+<hr className="mb-2" />
+<Section id='middleware' title='Middleware' />
+
+
+در مرحله‌ی بعد، شما باید یک <Important>LanguageModelMiddleware</Important> ایجاد کنید که پاسخ‌های دستیار را در فضای ذخیره‌سازی کلید-مقدار (KV) کش کند.
+<Important>LanguageModelMiddleware</Important> دو متد دارد: <Important>wrapGenerate</Important> و <Important>wrapStream</Important>.
+<div className="h-4" />
+
+<Important>wrapGenerate</Important> زمانی فراخوانی می‌شود که از توابع <Important>generateText</Important> و <Important>generateObject</Important> استفاده شود، و در این حالت می‌توان پاسخ را مستقیماً کش کرد.
+<div className="h-4" />
+
+
+در مقابل، <Important>wrapStream</Important> زمانی استفاده می‌شود که از <Important>streamText</Important> یا <Important>streamObject</Important> استفاده شود. در این حالت، شما آرایه‌ای از بخش‌های استریم‌شده را کش می‌کنید.
+<div className="h-4" />
+
+می‌توان با استفاده از تابع <Important>simulateReadableStream</Important>، از پاسخ کش‌شده یک <Important>ReadableStream</Important> شبیه‌سازی‌شده ساخت که پاسخ را chunk به chunk بازمی‌گرداند، انگار که مدل آن را در لحظه تولید می‌کند.
+برای کنترل نحوه‌ی شبیه‌سازی استریم، می‌توان از دو پارامتر <Important>initialDelayInMs</Important> (تأخیر اولیه پیش از ارسال اولین chunk) و <Important>chunkDelayInMs</Important> (تأخیر بین ارسال هر chunk) استفاده کرد.
+به این ترتیب، پاسخ کش‌شده به‌صورت تدریجی و مشابه تولید زنده LLM، به کاربر بازگردانده می‌شود.
+<div className="h-4" />
+
+قطعه کد زیر را در مسیر <Important>ai/middleware.ts</Important> قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ioredis
+
+import Redis from 'ioredis';
+import {
+  type LanguageModelV1,
+  type LanguageModelV1Middleware,
+  type LanguageModelV1StreamPart,
+  simulateReadableStream,
+} from 'ai';
+
+const redis = new Redis(process.env.KV_URL!); 
+
+export const cacheMiddleware: LanguageModelV1Middleware = {
+  wrapGenerate: async ({ doGenerate, params }) => {
+    const cacheKey = JSON.stringify(params);
+
+    const cachedRaw = await redis.get(cacheKey);
+    const cached = cachedRaw ? JSON.parse(cachedRaw) as Awaited<ReturnType<LanguageModelV1['doGenerate']>> : null;
+
+    if (cached !== null) {
+      return {
+        ...cached,
+        response: {
+          ...cached.response,
+          timestamp: cached?.response?.timestamp
+            ? new Date(cached?.response?.timestamp)
+            : undefined,
+        },
+      };
+    }
+
+    const result = await doGenerate();
+    redis.set(cacheKey, JSON.stringify(result));
+    return result;
+  },
+
+  wrapStream: async ({ doStream, params }) => {
+    const cacheKey = JSON.stringify(params);
+
+    const cachedRaw = await redis.get(cacheKey);
+    const cached = cachedRaw ? JSON.parse(cachedRaw) as LanguageModelV1StreamPart[] : null;
+
+    if (cached !== null) {
+      const formattedChunks = cached.map(p => {
+        if (p.type === 'response-metadata' && p.timestamp) {
+          return { ...p, timestamp: new Date(p.timestamp) };
+        } else return p;
+      });
+
+      return {
+        stream: simulateReadableStream({
+          initialDelayInMs: 0,
+          chunkDelayInMs: 10,
+          chunks: formattedChunks,
+        }),
+        rawCall: { rawPrompt: null, rawSettings: {} },
+      };
+    }
+
+    const { stream, ...rest } = await doStream();
+
+    const fullResponse: LanguageModelV1StreamPart[] = [];
+
+    const transformStream = new TransformStream<
+      LanguageModelV1StreamPart,
+      LanguageModelV1StreamPart
+    >({
+      transform(chunk, controller) {
+        fullResponse.push(chunk);
+        controller.enqueue(chunk);
+      },
+      flush() {
+        redis.set(cacheKey, JSON.stringify(fullResponse));
+      },
+    });
+
+    return {
+      stream: stream.pipeThrough(transformStream),
+      ...rest,
+    };
+  },
+};
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیر محیطی <Important>KV_URL</Important> باید به URL دیتابیس Redis شما اشاره کند. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+برای اتصال به دیتابیس Redis می‌توانید از <a href="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D8%A7%D8%A8%D8%B1%DB%8C-redis/" className="text-[#2196f3]">دیتابیس ردیس لیارا</a>، استفاده کنید. 
+</p>
+</Alert>
+
+
+<hr className="mb-2" />
+
+<Section id='server' title='سرور' />
+
+در نهایت، باید یک  API route به نام <Important>api/chat</Important> ایجاد کنید تا پیام‌ها و پاسخ‌های دستیار را مدیریت کند. برای استفاده از cache middleware، می‌توانید مدل را با استفاده از تابع <Important>wrapLanguageModel</Important> پیکربندی کرده و middleware را به عنوان آرگومان به آن منتقل کنید.
+
+<div className="h-2" />
+در مسیر <Important>app/api/chat/route.ts</Important>، کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai zod
+
+import { createOpenAI } from '@ai-sdk/openai'
+import { cacheMiddleware } from '@/ai/middleware';
+import { wrapLanguageModel, streamText, tool } from 'ai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const wrappedModel = wrapLanguageModel({
+  model: my_model('openai/gpt-4o-mini'),
+  middleware: cacheMiddleware,
+});
+
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: wrappedModel,
+    messages,
+    tools: {
+      weather: tool({
+        description: 'Get the weather in a location',
+        parameters: z.object({
+          location: z.string().describe('The location to get the weather for'),
+        }),
+        execute: async ({ location }) => ({
+          location,
+          temperature: 72 + Math.floor(Math.random() * 21) - 10,
+        }),
+      }),
+    },
+  });
+  return result.toDataStreamResponse();
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NextJS/caching-middleware" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>
