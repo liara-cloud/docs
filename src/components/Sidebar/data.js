@@ -621,6 +621,22 @@ export default {
         title: "استریم آبجکت با ورودی عکس",
         link: "/ai/cookbook/nodejs/stream-object-with-image-prompt"
       },
+      {
+        title: "ثبت آبجکت نهایی پس از استریم",
+        link: "/ai/cookbook/nodejs/stream-object-record-final-object"
+      },
+      {
+        title: "فراخوانی Toolها",
+        link: "/ai/cookbook/nodejs/call-tools"
+      },
+      {
+        title: "فراخوانی Toolها به‌صورت موازی",
+        link: "/ai/cookbook/nodejs/call-tools-in-parallel"
+      },
+      {
+        title: "فراخوانی Toolها با ورودی عکس",
+        link: "/ai/cookbook/nodejs/call-tools-with-image-prompt"
+      },
     ],
 
     'ai-sdk-core': [

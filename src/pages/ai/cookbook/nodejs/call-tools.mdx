@@ -1,0 +1,247 @@
+
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+ <Layout>
+<Head>
+<title>مستندات فراخوانی Toolها در NodeJS با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه فراخوانی Toolها در NodeJS با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# فراخوانی Toolها در NodeJS با هوش مصنوعی
+<hr className="mb-2" />
+
+برخی از مدل‌ها به توسعه‌دهندگان اجازه می‌دهند که فهرستی از Toolها را فراهم کنند که در هر زمان از فرآیند تولید، قابل فراخوانی باشند. این قابلیت برای گسترش توانایی‌های LLM بسیار مفید است، زیرا مدل می‌تواند برای انجام منطق یا دسترسی به داده‌ها، با سیستم‌های خارجی تعامل برقرار کند.
+
+
+<div className="h-2" />
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv zod 
+
+import { generateText, tool } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+const result = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+    cityAttractions: tool({
+      parameters: z.object({ city: z.string() }),
+    }),
+  },
+  prompt:
+    'What is the weather in San Francisco and what attractions should I visit?',
+});
+
+console.log(result.toolResults);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+
+<hr className="mb-2" />
+<Section id='accessing-tool-calls-and-tool-results' title='دسترسی به Tool Callها و Tool Resultها' />
+
+اگر مدل تصمیم بگیرد که یک Tool را فراخوانی کند، یک tool call تولید خواهد کرد. شما می‌توانید با بررسی پارامتر <Important>toolCalls</Important> در خروجی مدل، به این فراخوانی دسترسی پیدا کنید.
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv zod 
+
+import { generateText, tool } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+async function main() {
+  const result = await generateText({
+    model: my_model('openai/gpt-4o-mini'),
+    maxTokens: 512,
+    tools: {
+      weather: tool({
+        description: 'Get the weather in a location',
+        parameters: z.object({
+          location: z.string().describe('The location to get the weather for'),
+        }),
+        execute: async ({ location }) => ({
+          location,
+          temperature: 72 + Math.floor(Math.random() * 21) - 10,
+        }),
+      }),
+      cityAttractions: tool({
+        parameters: z.object({ city: z.string() }),
+      }),
+    },
+    prompt:
+      'What is the weather in San Francisco and what attractions should I visit?',
+  });
+
+  // typed tool calls:
+  for (const toolCall of result.toolCalls) {
+    switch (toolCall.toolName) {
+      case 'cityAttractions': {
+        toolCall.args.city; // string
+        break;
+      }
+
+      case 'weather': {
+        toolCall.args.location; // string
+        break;
+      }
+    }
+  }
+
+  console.log(JSON.stringify(result, null, 2));
+}
+
+main().catch(console.error);`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='accessing-tool-results' title='دسترسی به Tool Results' />
+
+شما می‌توانید با بررسی پارامتر <Important>toolResults</Important> در خروجی، به نتیجه‌ی فراخوانی Tool دسترسی پیدا کنید.
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv zod 
+
+import { generateText, tool } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+async function main() {
+  const result = await generateText({
+    model: my_model('openai/gpt-4o-mini'),
+    maxTokens: 512,
+    tools: {
+      weather: tool({
+        description: 'Get the weather in a location',
+        parameters: z.object({
+          location: z.string().describe('The location to get the weather for'),
+        }),
+        execute: async ({ location }) => ({
+          location,
+          temperature: 72 + Math.floor(Math.random() * 21) - 10,
+        }),
+      }),
+      cityAttractions: tool({
+        parameters: z.object({ city: z.string() }),
+      }),
+    },
+    prompt:
+      'What is the weather in San Francisco and what attractions should I visit?',
+  });
+
+  // typed tool results for tools with execute method:
+  for (const toolResult of result.toolResults) {
+    switch (toolResult.toolName) {
+      case 'weather': {
+        toolResult.args.location; // string
+        toolResult.result.location; // string
+        toolResult.result.temperature; // number
+        break;
+      }
+    }
+  }
+
+  console.log(JSON.stringify(result, null, 2));
+}
+
+main().catch(console.error);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+<Important>toolResults</Important>ها تنها در صورتی در دسترس خواهند بود که Tool، دارای یک تابع <Important>execute</Important> باشد.
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NodeJS/call-tools" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+<hr className="mb-2" />
+
+<Section id='model-response' title='پاسخ مدل' />
+
+هنگام استفاده از Toolها، توجه به این نکته مهم است که مدل به‌صورت پیش‌فرض پاسخی با نتایج Tool ارائه نمی‌دهد. دلیل این موضوع آن است که مدل، از نظر فنی، پاسخ خود به پرامپت را در قالب یک tool call تولید کرده است.
+در بسیاری از کاربردها، لازم است که مدل نتایج حاصل از tool call را خلاصه کرده و آن را در زمینه‌ی پرامپت اصلی ارائه دهد. برای دستیابی به این هدف، می‌توانید از فیلد <Important>maxSteps</Important> استفاده کنید؛ این پارامتر به‌طور خودکار toolResultها را به مدل بازمی‌گرداند تا یک مرحله‌ی تولید دیگر را فعال کند.
+
+
+</Layout>
