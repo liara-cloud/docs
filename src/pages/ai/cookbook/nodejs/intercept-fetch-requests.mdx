@@ -1,0 +1,110 @@
+
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+ <Layout>
+<Head>
+<title>مستندات رهگیری درخواست‌های Fetch در NodeJS با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه رهگیری درخواست‌های Fetch در NodeJS با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# رهگیری درخواست‌های Fetch در NodeJS با هوش مصنوعی
+<hr className="mb-2" />
+
+بسیاری از LLMها امکان تنظیم تابع <Important>fetch</Important> سفارشی را از طریق آرگومان <Important>fetch</Important> در factory function خود فراهم می‌کنند.
+تابع <Important>fetch</Important> سفارشی می‌تواند برای رهگیری و اصلاح درخواست‌ها پیش از ارسال به API مدل، و همچنین برای رهگیری و اصلاح پاسخ‌ها پیش از بازگشت آن‌ها به caller مورد استفاده قرار گیرد.
+
+برخی از کاربردهای رهگیری درخواست‌ها عبارت‌اند از:
+
+<div className="h-2" />
+<ul>
+<li>ثبت لاگ (Logging) درخواست‌ها و پاسخ‌ها</li>
+<li>افزودن هدرهای احراز هویت</li>
+<li>اصلاح بدنهٔ درخواست‌ها</li>
+<li>کش کردن (Caching) پاسخ‌ها</li>
+<li>استفاده از یک کلاینت HTTP سفارشی</li>
+</ul>
+<hr className="mb-2" />
+
+<Section id='example' title='مثال' />
+
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv zod 
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+
+  // example fetch wrapper that logs the input to the API call:
+  fetch: async (url, options) => {
+    console.log('URL', url);
+    console.log('Headers', JSON.stringify(options?.headers ?? {}, null, 2));
+    console.log(
+      \`Body \${JSON.stringify(
+        options?.body ? JSON.parse(options.body) : {},
+        null,
+        2
+      )}\`,
+    );
+    return await fetch(url, options);
+  },
+});
+
+
+const { text } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Why is the sky blue?',
+});
+
+console.log(text);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NodeJS/intercept-fetch-requests" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

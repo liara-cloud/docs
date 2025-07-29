@@ -637,6 +637,36 @@ export default {
         title: "فراخوانی Toolها با ورودی عکس",
         link: "/ai/cookbook/nodejs/call-tools-with-image-prompt"
       },
+      {
+        title: "فراخوانی Toolها در چندمرحله",
+        link: "/ai/cookbook/nodejs/call-tools-multiple-steps"
+      },
+      {
+        title: "رهگیری درخواست‌های Fetch",
+        link: "/ai/cookbook/nodejs/intercept-fetch-requests"
+      },
+      {
+        title: "Local Caching Middleware",
+        link: "/ai/cookbook/nodejs/local-caching-middleware"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            سرورهای API
+          </div>
+        )
+      },
+      {
+        title: "سرور HTTP مبتنی بر NodeJS",
+        link: "/ai/cookbook/api-servers/node-http-server"
+      },
+      {
+        title: "سرور Express",
+        link: "/ai/cookbook/api-servers/express"
+      },
     ],
 
     'ai-sdk-core': [

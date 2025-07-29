@@ -1,0 +1,96 @@
+
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+ <Layout>
+<Head>
+<title>مستندات فراخوانی Toolها در چند مرحله در NodeJS با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه فراخوانی Toolها در چند مرحله در NodeJS با سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# فراخوانی Toolها در چند مرحله در NodeJS با هوش مصنوعی
+<hr className="mb-2" />
+
+مدل‌ها برای جمع‌آوری اطلاعات یا انجام کارهایی که مستقیماً در دسترس آن‌ها نیست، اقدام به فراخوانی Toolها می‌کنند. زمانی که نتایج Toolها در دسترس قرار می‌گیرند، مدل می‌تواند از آن‌ها برای تولید پاسخ دیگری استفاده کند.
+شما می‌توانید قابلیت فراخوانی چندمرحله‌ای Toolها را در تابع <Important>generateText</Important> با تنظیم گزینه‌ی <Important>maxSteps</Important> روی عددی بزرگ‌تر از <Important>1</Important> فعال کنید. این گزینه، حداکثر تعداد مراحل (یعنی فراخوانی‌های LLM) را مشخص می‌کند تا از وقوع حلقه‌های بی‌پایان جلوگیری شود.
+
+<div className="h-4" />
+یک فایل به نام <Important>main.js</Important> در پوشه پروژه خود ایجاد کنید و کد زیر را در آن قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai @ai-sdk/openai dotenv zod 
+
+import { generateText, tool } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+const { text } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  maxSteps: 5,
+  tools: {
+    weather: tool({
+      description: 'Get the weather in a location',
+      parameters: z.object({
+        location: z.string().describe('The location to get the weather for'),
+      }),
+      execute: async ({ location }) => ({
+        location,
+        temperature: 72 + Math.floor(Math.random() * 21) - 10,
+      }),
+    }),
+  },
+  prompt: 'What is the weather in San Francisco?',
+});
+
+console.log(text);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/NodeJS/call-tools-multiple-steps" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>
