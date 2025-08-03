@@ -1,0 +1,177 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید متن با ورودی با AI با ساخت RSC - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تولید متن با ورودی با استفاده از سرویس هوش مصنوعی لیارا به وسیله ساخت کامپوننت سرور ری‌اکت"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# تولید متن با ورودی با هوش مصنوعی با ساخت RSC
+<hr className="mb-2" />
+
+
+<Alert variant="info">
+<p>
+این مثال از React Server Components (یا همان RSC)، استفاده می‌کند. اگر که قصد دارید از 
+client side rendering و هوک‌ها استفاده کنید؛ می‌توانید به <a href="/ai/cookbook/nextjs/generate-text-with-chat-prompt/" className="text-[#2196f3]">این مستندات</a> مراجعه کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+
+ما می‌توانیم با استفاده از یک پرامپت ورودی یا یک پرامپت سیستمی، یا ترکیبی از هر دوی آن‌ها، متن و آبجکت تولید کنیم.
+با این حال، گاهی ممکن است بخواهید متنی را بر اساس مجموعه‌ای از پیام‌ها تولید کنید.
+<div className="h-2" />
+
+قابلیت chat completion این امکان را فراهم می‌کند که متنی را بر پایه‌ی دنباله‌ای از پیام‌ها تولید کنید.
+این دنباله از پیام‌ها می‌تواند هر نوع تعاملی میان چند سیستم مختلف باشد، اما رایج‌ترین و قابل‌درک‌ترین کاربرد آن، مکالمه‌ای میان یک کاربر و یک LLM است.
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+
+بیایید یک فضای مکالمه‌‌ای ساده میان یک کاربر و یک LLM ایجاد کنیم و یک دکمه در آن قرار دهیم که <Important>continueConversation</Important> را فراخوانی می‌کند.
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useState } from 'react';
+import { Message, continueConversation } from '@/app/actions';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export default function Home() {
+  const [conversation, setConversation] = useState<Message[]>([]);
+  const [input, setInput] = useState<string>('');
+
+  return (
+    <div>
+      <div>
+        {conversation.map((message, index) => (
+          <div key={index}>
+            {message.role}: {message.content}
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={event => {
+            setInput(event.target.value);
+          }}
+        />
+        <button
+          onClick={async () => {
+            const { messages } = await continueConversation([
+              ...conversation,
+              { role: 'user', content: input },
+            ]);
+
+            setConversation(messages);
+          }}
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+اکنون، بیایید تابع <Important>continueConversation</Important> را پیاده‌سازی کنیم که پیام کاربر را درون مکالمه‌، قرار می‌دهد 
+و یک پاسخ تولید می‌کند.
+در مسیر <Important>app/actions.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+
+'use server';
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export async function continueConversation(history: Message[]) {
+  'use server';
+
+  const { text } = await generateText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You are a friendly assistant!',
+    messages: history,
+  });
+
+  return {
+    messages: [
+      ...history,
+      {
+        role: 'assistant' as const,
+        content: text,
+      },
+    ],
+  };
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/RSC/generate-text-with-chat-prompt" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

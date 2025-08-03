@@ -1,0 +1,178 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استریم آبجکت با AI با ساخت RSC - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استریم آبجکت با استفاده از سرویس هوش مصنوعی لیارا به وسیله ساخت کامپوننت سرور ری‌اکت"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# استریم آبجکت با هوش مصنوعی با ساخت RSC
+<hr className="mb-2" />
+
+
+<Alert variant="info">
+<p>
+این مثال از React Server Components (یا همان RSC)، استفاده می‌کند. اگر که قصد دارید از 
+client side rendering و هوک‌ها استفاده کنید؛ می‌توانید به <a href="/ai/cookbook/nextjs/stream-object" className="text-[#2196f3]">این مستندات</a> مراجعه کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+تولید object گاهی ممکن است زمان‌بر باشد، مخصوصاً زمانی که در حال تولید یک schema بزرگ هستید.
+در چنین مواردی، استریم فرآیند تولید آبجکت به‌صورت بلادرنگ به سمت کلاینت می‌تواند بسیار مفید باشد.
+این کار به کلاینت اجازه می‌دهد که آبجکت تولیدشده را در حین فرایند تولید، نمایش دهد، به‌جای اینکه کاربر منتظر بماند تا کل عملیات تولید به پایان برسد و سپس نتیجه را مشاهده کند.
+
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+
+بیایید یک کامپوننت ساده React ایجاد کنیم که هنگام کلیک روی یک دکمه، تابع <Important>getNotifications</Important> را فراخوانی می‌کند.
+تابع <Important>getNotifications</Important>، یک لیست از نوتیفیکیشن‌ها را همانطور که در schema مشخص شده است، تولید می‌کند.
+<div className="h-2" />
+
+
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/rsc
+
+'use client';
+
+import { useState } from 'react';
+import { generate } from '@/app/actions';
+import { readStreamableValue } from '@ai-sdk/rsc';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export default function Home() {
+  const [generation, setGeneration] = useState<string>('');
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const { object } = await generate('Messages during finals week.');
+
+          for await (const partialObject of readStreamableValue(object)) {
+            if (partialObject) {
+              setGeneration(
+                JSON.stringify(partialObject.notifications, null, 2),
+              );
+            }
+          }
+        }}
+      >
+        Ask
+      </button>
+
+      <pre>{generation}</pre>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+
+اکنون بیایید تابع <Important>getNotifications</Important> را پیاده‌سازی کنیم که درون خود، تابع <Important>generateObject</Important> را فراخوانی می‌کند تا یک لیست از نوتیفیکیشن‌ها بر اساس 
+اسکیمایی که قبل‌تر تعریف کردیم، تولید کند.
+
+<div className="h-2" />
+در مسیر <Important>app/actions.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 zod
+'use server';
+
+import { streamObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { createStreamableValue } from '@ai-sdk/rsc';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function generate(input: string) {
+  'use server';
+
+  const stream = createStreamableValue();
+
+  (async () => {
+    const { partialObjectStream } = streamObject({
+      model: my_model('openai/gpt-4o-mini'),
+      system: 'You generate three notifications for a messages app.',
+      prompt: input,
+      schema: z.object({
+        notifications: z.array(
+          z.object({
+            name: z.string().describe('Name of a fictional person.'),
+            message: z.string().describe('Do not use emojis or links.'),
+            minutesAgo: z.number(),
+          }),
+        ),
+      }),
+    });
+
+    for await (const partialObject of partialObjectStream) {
+      stream.update(partialObject);
+    }
+
+    stream.done();
+  })();
+
+  return { object: stream.value };
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/RSC/stream-object" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

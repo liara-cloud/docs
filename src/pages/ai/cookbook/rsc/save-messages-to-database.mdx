@@ -1,0 +1,184 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ذخیره پیام‌های مکالمه با AI در دیتابیس با ساخت RSC - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه ذخیره پیام‌های مکالمه با سرویس هوش مصنوعی لیارا در دیتابیس به وسیله ساخت کامپوننت سرور ری‌اکت"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# ذخیره پیام‌های مکالمه با هوش مصنوعی در دیتابیس با ساخت RSC
+<hr className="mb-2" />
+
+
+گاهی اوقات، گفت‌وگو با LLMها می‌تواند جالب و ارزشمند باشد و ممکن است بخواهید وضعیت فعلی گفت‌وگو را ذخیره کنید تا بعداً بتوانید به آن بازگردید یا ادامه‌اش دهید.
+تابع <Important>createAI</Important> یک تابع callback آزمایشی به نام <Important>onSetAIState</Important> دارد که هر زمان AI state تغییر کند، فراخوانی می‌شود.
+می‌توانید از این تابع استفاده کنید تا AI state را در یک فایل یا پایگاه داده ذخیره نمایید.
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+در مسیر <Important>app/layout.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { ServerMessage } from '@/app/actions';
+import { AI } from '@/app/ai';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  // get chat history from database
+  const history: ServerMessage[] = getChat();
+
+  return (
+    <html lang="en">
+      <body>
+        <AI initialAIState={history} initialUIState={[]}>
+          {children}
+        </AI>
+      </body>
+    </html>
+  );
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/rsc
+
+'use client';
+
+import { useState } from 'react';
+import { ClientMessage } from '@/app/actions';
+import { useActions, useUIState } from '@ai-sdk/rsc';
+import { generateId } from 'ai';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export default function Home() {
+  const [input, setInput] = useState<string>('');
+  const [conversation, setConversation] = useUIState();
+  const { continueConversation } = useActions();
+
+  return (
+    <div>
+      <div>
+        {conversation.map((message: ClientMessage) => (
+          <div key={message.id}>
+            {message.role}: {message.display}
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={event => {
+            setInput(event.target.value);
+          }}
+        />
+        <button
+          onClick={async () => {
+            setConversation((currentConversation: ClientMessage[]) => [
+              ...currentConversation,
+              { id: generateId(), role: 'user', display: input },
+            ]);
+
+            const message = await continueConversation(input);
+
+            setConversation((currentConversation: ClientMessage[]) => [
+              ...currentConversation,
+              message,
+            ]);
+          }}
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+
+<Section id='server' title='سرور' />
+
+ما از تابع callback برای گوش‌دادن به تغییرات وضعیت استفاده خواهیم کرد و زمانی که یک رویداد done دریافت کنیم، گفت‌وگو را ذخیره خواهیم کرد.
+
+<div className="h-2" />
+در مسیر <Important>app/actions.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در مسیر <Important>app/actions.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/RSC/generate-text" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

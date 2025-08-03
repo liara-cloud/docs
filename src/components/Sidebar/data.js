@@ -667,6 +667,69 @@ export default {
         title: "سرور Express",
         link: "/ai/cookbook/api-servers/express"
       },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            کامپوننت‌های سرور React
+          </div>
+        )
+      },
+      {
+        title: "تولید متن",
+        link: "/ai/cookbook/rsc/generate-text"
+      },
+      {
+        title: "تولید متن با ورودی",
+        link: "/ai/cookbook/rsc/generate-text-with-chat-prompt"
+      },
+      {
+        title: "استریم متن",
+        link: "/ai/cookbook/rsc/stream-text"
+      },
+      {
+        title: "استریم متن با ورودی",
+        link: "/ai/cookbook/rsc/stream-text-with-chat-prompt"
+      },
+      {
+        title: "تولید آبجکت",
+        link: "/ai/cookbook/rsc/generate-object"
+      },
+      {
+        title: "استریم آبجکت",
+        link: "/ai/cookbook/rsc/stream-object"
+      },
+      {
+        title: "فراخوانی Toolها",
+        link: "/ai/cookbook/rsc/call-tools"
+      },
+      {
+        title: "فراخوانی Toolها به‌صورت موازی",
+        link: "/ai/cookbook/rsc/call-tools-in-parallel"
+      },
+      // {
+      //   title: "ذخیره پیام‌ها در دیتابیس",
+      //   link: "/ai/cookbook/rsc/save-messages-to-database"
+      // },
+      // {
+      //   title: "",
+      //   link: "/ai/cookbook/rsc/restore-messages-from-database"
+      // },
+      // {
+      //   title: "",
+      //   link: "/ai/cookbook/rsc/render-visual-interface-in-chat"
+      // },
+      // {
+      //   title: "",
+      //   link: "/ai/cookbook/rsc/stream-updates-to-visual-interfaces"
+      // },
+      // {
+      //   title: "",
+      //   link: "/ai/cookbook/rsc/stream-ui-record-token-usage"
+      // },
+      
     ],
 
     'ai-sdk-core': [

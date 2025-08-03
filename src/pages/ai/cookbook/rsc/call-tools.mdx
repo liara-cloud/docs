@@ -1,0 +1,193 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات فراخوانی Toolها با AI با ساخت RSC - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه فراخوانی Toolها با استفاده از سرویس هوش مصنوعی لیارا به وسیله ساخت کامپوننت سرور ری‌اکت"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# فراخوانی Toolها با هوش مصنوعی با ساخت RSC
+<hr className="mb-2" />
+
+
+<Alert variant="info">
+<p>
+این مثال از React Server Components (یا همان RSC)، استفاده می‌کند. اگر که قصد دارید از 
+client side rendering و هوک‌ها استفاده کنید؛ می‌توانید به <a href="/ai/cookbook/nextjs/call-tools" className="text-[#2196f3]">این مستندات</a> مراجعه کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+برخی از مدل‌ها به توسعه‌دهندگان اجازه می‌دهند فهرستی از Toolها را ارائه دهند که بتوان در هر زمان طی فرآیند تولید محتوا آن‌ها را فراخوانی کرد. این قابلیت برای گسترش توانایی‌های LLM بسیار مفید است، زیرا در این صورت، امکان تعامل با سیستم‌های خارج از مدل، فراهم می‌شود.
+
+
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+
+بیایید یک فضای مکالمه‌‌ای ساده میان یک کاربر و یک LLM ایجاد کنیم و یک دکمه در آن قرار دهیم که <Important>continueConversation</Important> را فراخوانی می‌کند.
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/rsc
+
+'use client';
+
+import { useState } from 'react';
+import { Message, continueConversation } from '@/app/actions';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export default function Home() {
+  const [conversation, setConversation] = useState<Message[]>([]);
+  const [input, setInput] = useState<string>('');
+
+  return (
+    <div>
+      <div>
+        {conversation.map((message, index) => (
+          <div key={index}>
+            {message.role}: {message.content}
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          value={input}
+          onChange={event => {
+            setInput(event.target.value);
+          }}
+        />
+        <button
+          onClick={async () => {
+            const { messages } = await continueConversation([
+              ...conversation,
+              { role: 'user', content: input },
+            ]);
+
+            setConversation(messages);
+          }}
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+
+اکنون بیایید تابع <Important>continueConversation</Important> را پیاده‌سازی کنیم که درون خود، تابع <Important>generateText</Important> را برای تولید پاسخ به سوال کاربر، فراخوانی می‌کند. ما از پارامتر <Important>tools</Important> استفاده خواهیم کرد تا تابع خودمان را به اسم <Important>celsiusToFahrenheit</Important> مشخص کنیم که در آن، مقدار داده شده در سلسیوس، به فارنهایت تبدیل می‌شود. 
+برای تعیین اسکیمای پارامترهای تابع <Important>celsiusToFahrenheit</Important>، از کتابخانه‌ی Zod استفاده خواهیم کرد.
+
+
+<div className="h-2" />
+در مسیر <Important>app/actions.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 zod
+'use server';
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export async function continueConversation(history: Message[]) {
+  'use server';
+
+  const { text, toolResults } = await generateText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You are a friendly assistant!',
+    messages: history,
+    tools: {
+      celsiusToFahrenheit: {
+        description: 'Converts celsius to fahrenheit',
+        parameters: z.object({
+          value: z.string().describe('The value in celsius'),
+        }),
+        execute: async ({ value }) => {
+          const celsius = parseFloat(value);
+          const fahrenheit = celsius * (9 / 5) + 32;
+          return \`\${celsius}°C is \${fahrenheit.toFixed(2)}°F\`;
+        },
+      },
+    },
+  });
+
+  return {
+    messages: [
+      ...history,
+      {
+        role: 'assistant' as const,
+        content:
+          text || toolResults.map(toolResult => toolResult.result).join('\\n'),
+      },
+    ],
+  };
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/RSC/call-tools" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

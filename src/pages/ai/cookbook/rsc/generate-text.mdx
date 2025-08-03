@@ -1,0 +1,137 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید متن با AI با ساخت RSC - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تولید متن با استفاده از سرویس هوش مصنوعی لیارا به وسیله ساخت کامپوننت سرور ری‌اکت"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# تولید متن با هوش مصنوعی با ساخت RSC
+<hr className="mb-2" />
+
+
+<Alert variant="info">
+<p>
+این مثال از React Server Components (یا همان RSC)، استفاده می‌کند. اگر که قصد دارید از 
+client side rendering و هوک‌ها استفاده کنید؛ می‌توانید به <a href="/ai/cookbook/nextjs/generate-text/" className="text-[#2196f3]">این مستندات</a> مراجعه کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+
+در برخی موارد ممکن است نیاز داشته باشید متنی را بر اساس یک prompt تولید کنید. به‌عنوان مثال، ممکن است بخواهید به یک سؤال پاسخ دهید یا متنی را خلاصه‌سازی کنید. تابع <Important>generateText</Important> می‌تواند برای تولید متن بر اساس ورودی، مورد استفاده قرار گیرد.
+
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+بیایید یک کامپوننت ساده React ایجاد کنیم که هنگام کلیک روی یک دکمه، تابع <Important>getAnswer</Important> را فراخوانی می‌کند.
+تابع <Important>getAnswer</Important>، تابع <Important>generateText</Important> را از ماژول <Important>ai</Important> فراخوانی خواهد کرد که سپس متنی را بر اساس prompt تولید می‌کند.
+<div className="h-2" />
+
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useState } from 'react';
+import { getAnswer } from '@/app/actions';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export default function Home() {
+  const [generation, setGeneration] = useState<string>('');
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const { text } = await getAnswer('Why is the sky blue?');
+          setGeneration(text);
+        }}
+      >
+        Answer
+      </button>
+      <div>{generation}</div>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+در سمت سرور، باید تابع <Important>getAnswer</Important> را پیاده‌سازی کنیم که درون خود، تابع <Important>generateText</Important> از ماژول <Important>ai</Important> را فراخوانی می‌کند. تابع <Important>generateText</Important>، یک متن بر اساس پرامپت ورودی تولید می‌کند.
+<div className="h-2" />
+در مسیر <Important>app/actions.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+
+'use server';
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function getAnswer(question: string) {
+  const { text, finishReason, usage } = await generateText({
+    model: my_model('openai/gpt-4o-mini'),
+    prompt: question,
+  });
+
+  return { text, finishReason, usage };
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/RSC/generate-text" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>

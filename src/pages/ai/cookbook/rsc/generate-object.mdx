@@ -1,0 +1,159 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید آبجکت با AI با ساخت RSC - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تولید آبجکت با استفاده از سرویس هوش مصنوعی لیارا به وسیله ساخت کامپوننت سرور ری‌اکت"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# تولید آبجکت با هوش مصنوعی با ساخت RSC
+<hr className="mb-2" />
+
+
+<Alert variant="info">
+<p>
+این مثال از React Server Components (یا همان RSC)، استفاده می‌کند. اگر که قصد دارید از 
+client side rendering و هوک‌ها استفاده کنید؛ می‌توانید به <a href="/ai/cookbook/nextjs/generate-object/" className="text-[#2196f3]">این مستندات</a> مراجعه کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+
+توابع <Important>generateText</Important> و <Important>streamText</Important> این امکان را به ما می‌دادند که متن بدون ساختار تولید کنیم.
+با این حال، اگر بخواهید داده‌ی ساختارمند مانند JSON تولید کنید، می‌توانید یک schema که ساختار آبجکت موردنظر شما را توصیف می‌کند، به تابع <Important>generateObject</Important> ارائه دهید.
+<div className="h-2" />
+
+این تابع نیاز دارد که شما یک schema را با استفاده از کتابخانه‌ی Zod ارائه دهید.
+با استفاده از Zod، نه‌تنها می‌توانید ساختار آبجکت را تعریف کنید، بلکه درستی و تطابق آبجکت تولیدشده با ساختار مشخص‌شده را نیز اعتبارسنجی کنید.
+<hr className="mb-2" />
+<Section id='client' title='کلاینت' />
+
+بیایید یک کامپوننت ساده React ایجاد کنیم که هنگام کلیک روی یک دکمه، تابع <Important>getNotifications</Important> را فراخوانی می‌کند.
+تابع <Important>getNotifications</Important>، یک لیست از نوتیفیکیشن‌ها را همانطور که در schema مشخص شده است، تولید می‌کند.
+<div className="h-2" />
+
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useState } from 'react';
+import { getNotifications } from '@/app/actions';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export default function Home() {
+  const [generation, setGeneration] = useState<string>('');
+
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const { notifications } = await getNotifications(
+            'Messages during finals week.',
+          );
+
+          setGeneration(JSON.stringify(notifications, null, 2));
+        }}
+      >
+        View Notifications
+      </button>
+
+      <pre>{generation}</pre>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+<Section id='server' title='سرور' />
+
+اکنون بیایید تابع <Important>getNotifications</Important> را پیاده‌سازی کنیم که درون خود، تابع <Important>generateObject</Important> را فراخوانی می‌کند تا یک لیست از نوتیفیکیشن‌ها بر اساس 
+اسکیمایی که قبل‌تر تعریف کردیم، تولید کند.
+
+<div className="h-2" />
+در مسیر <Important>app/actions.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 zod
+'use server';
+
+import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function getNotifications(input: string) {
+  'use server';
+
+  const { object: notifications } = await generateObject({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You generate three notifications for a messages app.',
+    prompt: input,
+    schema: z.object({
+      notifications: z.array(
+        z.object({
+          name: z.string().describe('Name of a fictional person.'),
+          message: z.string().describe('Do not use emojis or links.'),
+          minutesAgo: z.number(),
+        }),
+      ),
+    }),
+  });
+
+  return { notifications };
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/RSC/generate-object" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+</Layout>
