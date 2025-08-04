@@ -1,0 +1,61 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با رکورد ACME-Challenge - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با رکورد acme-challenge پس از اضافه کردن دامنه به برنامه در بخش دامنه‌ها در پلتفرم لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# آشنایی با رکورد ACME-Challenge
+<hr className="mb-2" />
+
+رکورد DNS با نام <Important>acme-challenge_</Important> یکی از اجزای کلیدی در پیاده‌سازی استاندارد ACME (Automatic Certificate Management Environment) برای احراز مالکیت دامنه در فرآیند صدور گواهی‌نامه SSL است. این رکورد به‌طور خاص در روش DNS-01 challenge مورد استفاده قرار می‌گیرد که توسط Let's Encrypt پشتیبانی می‌شود.
+
+<Section id="what-is-dns-challenge" title="DNS Challenge چیست؟" />
+
+DNS Challenge یکی از روش‌های استاندارد احراز هویت دامنه در چارچوب پروتکل ACME است که برای صدور گواهی‌های SSL توسط Let's Encrypt مورد استفاده قرار می‌گیرد.
+<div className="h-4" />
+
+در روش DNS Challenge، بر خلاف HTTP Challenge، به‌جای نیاز به راه‌اندازی سرور و پاسخ‌دهی به درخواست HTTP، کاربر موظف است یک رکورد DNS خاص (معمولاً از نوع CNAME) را در دامنه‌ی مورد نظر خود ثبت کند. این رکورد حاوی یک token منحصر‌به‌فرد است که از سوی CA تولید می‌شود.
+
+
+<Section id="dns-challenge-benefits" title="مزایای DNS Challenge" />
+
+مهم‌ترین مزیت DNS Challenge، قابلیت صدور گواهی wildcard است. این نوع گواهی‌ها امکان اعتبارسنجی و ایمن‌سازی تمام زیر‌دامنه‌های یک دامنه سطح‌بالا را فراهم می‌کنند. برخلاف HTTP Challenge که فقط برای دامنه‌های مشخص قابل استفاده است، فقط DNS Challenge توانایی اعتبارسنجی دامنه‌های wildcard را دارد. 
+<div className="h-4" />
+
+DNS Challenge نیازی به اجرای اپلیکیشن یا سرویس HTTP روی دامنه ندارد. در روش HTTP Challenge، لازم است سروری روی پورت <Important>80</Important> یا <Important>443</Important> فعال باشد تا توکن اعتبارسنجی سرو شود. در مقابل، DNS Challenge صرفاً با تنظیم یک رکورد DNS عمل می‌کند و هیچ وابستگی به وضعیت یا معماری سمت سرور ندارد. 
+<div className="h-4" />
+
+DNS Challenge حتی در مواقعی که دامنه هنوز به هیچ اپلیکیشن یا سروری متصل نشده، قابل استفاده است. این ویژگی امکان صدور پیش‌دستانه گواهی SSL برای دامنه‌هایی که در مراحل اولیه راه‌اندازی هستند را فراهم می‌کند. در نتیجه، می‌توان امنیت HTTPS را قبل از راه‌اندازی نهایی پیاده‌سازی و تست کرد.
+
+
+</Layout>

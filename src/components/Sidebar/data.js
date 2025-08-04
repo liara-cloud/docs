@@ -1721,6 +1721,10 @@ export default {
         title: "اضافه کردن دامنه WildCard",
         link: "/paas/domains/add-wildcard-domain"
       },
+      {
+        title: "رکورد ACME-Challenge",
+        link: "/paas/domains/acme-challenge-record"
+      },
     ],
     cicd: [
       {

@@ -48,8 +48,13 @@ import Head from "next/head";
 
 <Alert variant="warning">
 <p>
-    برای تهیه گواهی SSL لیارا،
-    در صورتی که CDN فعال است، آن را به صورت موقت غیرفعال نمایید و پس از تهیه گواهی SSL، آن را فعال کنید.
+    برای تهیه گواهی SSL لیارا، در صورتی که رکورد <Important>acme-challenge</Important> را به سامانه مدیریت دامنه خود اضافه نکرده‌اید و 
+    در صورتی که CDN فعال است، باید CDN را به صورت موقت غیرفعال نمایید و پس از تهیه گواهی SSL، آن را فعال کنید.
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="" className="text-[#2196f3]">آشنایی با رکورد acme-challenge</a>
 </p>
 </Alert>
 

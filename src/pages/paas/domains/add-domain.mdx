@@ -29,8 +29,24 @@ import Head from "next/head";
 برای اتصال دامنه به برنامه مورد نظرتان در لیارا باید وارد برنامه شوید و از منوی سمت راست، روی گزینه‌ی **دامنه‌ها** کلیک کنید. سپس روی گزینه‌ی **افزودن دامنه** کلیک کرده و نام دامنه‌تان (مثلاً: mydomain.com) را وارد کنید. درنهایت با کلیک روی گزینه‌ی **ایجاد دامنه**، دامنه شما به برنامه اضافه می‌شود و همچنین به صفحه‌ی مدیریت دامنه هدایت می‌شوید.
 
 <div className="h-4" />
-<img src="https://media.liara.ir/docs/add-domain.gif" alt="add-domain"/>
+<video
+  src="https://media.liara.ir/domain/add-domain.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" 
+/>
+<div className="h-4"/>
+با انجام کار فوق، سه رکورد DNS به شما داده می‌شود: 
+
 <div className="h-4" />
+<ul>
+<li>رکورد اول از نوع <Important>ALIAS / CNAME</Important>: این رکورد برای هدایت دامنه اصلی به سرور لیارا جهت سرویس‌دهی وب‌سایت یا اپلیکیشن استفاده می‌شود</li>
+<div className="h-2" />
+<li>رکورد دوم از نوع <Important>TXT</Important>: این رکورد برای احراز هویت دامنه توسط لیارا، جهت اتصال اولیه دامنه و ثبت مالکیت آن کاربرد دارد</li>
+<div className="h-2" />
+<li>رکورد سوم از نوع <Important>CNAME (DNS-01 Challenge)</Important>: این رکورد جهت اعتبارسنجی مالکیت دامنه در فرآیند صدور یا تمدید گواهی SSL مورد استفاده قرار می‌گیرد</li>
+<div className="h-2" />
+</ul>
 
 در این مرحله باید رکوردهای DNS درخواست شده را با استفاده از یک سرویس DNS مانند <a href="https://www.cloudflare.com/" className="text-[#2196f3] ">Cloudflare</a> بر روی دامنه‌تان تنظیم کنید. 
 درنهایت پس از ثبت رکوردهای DNS می‌توانید بر روی گزینه‌ی  **بررسی وضعیت رکوردها** کلیک کنید و با تغییر تیک‌های قرمز رنگ به سبز، یعنی اتصال دامنه‌ی شما به لیارا با موفقیت صورت گرفته است:
@@ -41,8 +57,8 @@ import Head from "next/head";
 
 در حین ثبت دامنه، نکات زیر را حتماً در نظر بگیرید:
 <ul>
-    <li>درصورت استفاده از CDN باید گواهی SSL را نیز از سرویس‌دهنده‌ی DNS فعلی‌تان تهیه کنید.</li>
-    <li>درصورت استفاده از CDN می‌توانید تیک قرمز رنگ و خطای تنظیم نشدن رکوردها را نادیده بگیرید.</li>
+    <li>در صورتی که قصد دارید از CDN استفاده کنید، به <a href="/paas/domains/use-cdn" className="text-[#2196f3]">این مستندات</a>، مراجعه کنید</li>
+    <li>درصورت استفاده از CDN می‌توانید تیک قرمز رنگ و خطای تنظیم نشدن رکوردها را نادیده بگیرید</li>
 </ul>
 
 <div className="h-2" />
@@ -58,7 +74,7 @@ import Head from "next/head";
   tabs={["Cloudflare", "ابر آروان", "WordPress"]} 
   content={[
   <>
-    <video
+  <video
   src="https://media.liara.ir/domain/domain.mp4"
   controls="controls"
   className="block w-full"
