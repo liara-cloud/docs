@@ -34,7 +34,7 @@ import Head from "next/head";
 </Head>
 
 
-# قابلیت Tool Calling در AI SDK 
+ قابلیت Tool Calling در AI SDK 
 <hr className="mb-2" />
 
 
@@ -218,6 +218,7 @@ const { text, steps } = await generateText({
 </Alert>
 
 <Section id="steps" title="Stepها" />
+
 
 برای دسترسی به <Important>tool call</Important>های میانی و نتایج آن‌ها، 
 می‌توانید از ویژگی <Important>steps</Important> یا یک callback به‌نام <Important>onFinish</Important>، استفاده کنید. این ویژگی، شامل تمامی متن‌ها، <Important>tool call</Important>ها، نتایج Tool و ... در هر مرحله، می‌باشد

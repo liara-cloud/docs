@@ -16,7 +16,7 @@ import {
   GoDatabase,
   GoDiff,
   GoVideo,
-  GoProjectRoadmap
+  GoProjectRoadmap,
   GoContainer,
   GoRocket,
   GoPencil,
@@ -410,6 +410,37 @@ export default {
       {
         hr: true
       },
+      {
+        badge: (
+        <div className="flex items-center gap-2">
+          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
+             کتابخانه‌ AI SDK UI
+        </div>
+        )
+      },
+      {
+        title: "آشنایی با AI SDK UI",
+        link: "/ai/ai-sdk-ui/overview"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+        <div className="flex items-center gap-2">
+          <IconContainer alt="https://media.liara.ir/ai/ai-sdk/ai-sdk-official-icon.png" />
+             خطاهای AI SDK
+        </div>
+        )
+      },
+      {
+        title: "خطای AI_APICall",
+        link: "/ai/ai-sdk-errors/error"
+      },
+      {
+        hr: true
+      },
+      
       {
         badge: (
         <div className="flex items-center gap-2">

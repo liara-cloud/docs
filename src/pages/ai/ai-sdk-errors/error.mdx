@@ -1,0 +1,63 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات خطاهای AI SDK - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به "  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+# خطای AI_APICall
+<hr className="mb-2" />
+این خطا زمانی رخ می‌دهد که فراخوانی یک API با شکست مواجه شود.
+<div className="h-2" /> ویژگی‌های این خطا عبارت است از:
+<ul>
+<li><Important>url</Important>: نشانی کامل (URL) درخواست HTTP که هنگام فراخوانی API با خطا مواجه شده است.</li>
+<li><Important>requestBodyValues</Important>: داده‌های ارسال‌شده در بدنه (payload) درخواست، که معمولاً شامل پارامترها یا مقادیر مورد نیاز برای عملکرد API است.</li>
+<li><Important>statusCode</Important>: کد وضعیت HTTP که توسط سرور API بازگردانده شده؛ این کد نشان‌دهنده موفقیت یا نوع خطای رخ‌داده در پاسخ به درخواست است (مثلاً 200، 400، 500 و غیره).</li>
+<li><Important>responseHeaders</Important>: مجموعه هدرهای HTTP موجود در پاسخ API، شامل اطلاعات متا مانند نوع محتوا، وضعیت احراز هویت، نرخ محدودیت و غیره.</li>
+<li><Important>responseBody</Important>: محتوای اصلی پاسخ بازگردانده‌شده از API، که می‌تواند شامل داده‌های خروجی یا پیام خطا باشد.</li>
+<li><Important>isRetryable</Important>: بیانگر این است که آیا با توجه به نوع خطا (مثلاً خطاهای موقتی مانند 503 یا 429)، امکان تلاش مجدد خودکار برای این درخواست وجود دارد یا خیر.</li>
+<li><Important>data</Important>: اطلاعات یا متادیتای اضافی مرتبط با خطا که ممکن است برای اشکال‌زدایی (debugging) یا ثبت گزارش‌های خطا (logging) استفاده شود.</li>
+</ul>
+<hr className="mb-2" />
+<Section id="errors" title="بررسی خطا" />
+<div className="h-2" />  
+برای بررسی اینکه آیا یک خطا نمونه‌ای از AI_APICallError است یا نه، می‌توانید از روش زیر استفاده کنید:
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { APICallError } from 'ai';
+
+if (APICallError.isInstance(error)) {
+  // Handle the error}
+  `}
+
+    </Highlight>
+</div>
+</Layout>

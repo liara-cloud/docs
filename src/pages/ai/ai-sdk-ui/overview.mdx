@@ -1,0 +1,88 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات AI SDK UI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content=" مستندات مربوط به آشنایی با AI SDK UI با سرویس هوش مصنوعی لیارا "  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+# معرفی کتابخانه‌ی AI SDK UI
+<hr className="mb-2" />
+کتابخانه‌ی <Important>AI SDK UI</Important>مجموعه‌ای از ابزارهای آماده برای ساخت APIهای تعاملی مبتنی بر هوش مصنوعی است. این ابزار امکان پیاده‌سازی چت بات، تکمیل متن و دستیارهای هوشمند را با کمترین پیچیدگی فراهم می‌کند.
+<hr className="mb-2" />
+<Important>َAI SDK UI</Important> مستقل از فریم‌ورک خاصی توسعه داده شده و به‌سادگی در پروژه‌های مختلف قابل استفاده می‌باشد. با این کتابخانه، نیازی به مدیریت دستی پیام‌ها، وضعیت بارگذاری یا بروزرسانی رابط کاربری نخواهید داشت. تمام این موارد از طریق هوک‌های ساده و کاربردی در<Important>
+ AI SDK UI</Important>قابل مدیریت هستند.
+<hr className="mb-2" />
+<Section id="multi-step-calls" title="هوک‌های کلیدی" />
+این کتابخانه سه هوک اصلی را در اختیار شما قرار می‌دهد که هر کدام بخشی از نیازهای رایج در تعامل با مدل‌های زبانی را پوشش می‌دهند:
+
+<div className="h-2" />
+<ul>
+<li><Important>useChat</Important></li>
+<p>
+این هوک برای پیاده‌سازی چت بلادرنگ طراحی شده است. با استفاده از <Important>useChat</Important>می‌توانید جریان پیام‌ها را به‌صورت استریمی دریافت و ارسال کنید. وضعیت‌هایی مانند ورودی کاربر، لیست پیام‌ها، خطاها و بارگذاری به‌صورت داخلی مدیریت می‌شوند و تناه کافیست UI مورد نظر خودتان را به آن متصل کنید..
+</p>
+<li><Important>useCompletion</Important></li>
+<p>
+برای کاربردهایی که نیاز به تکمیل متن یا پاسخ‌دهی خودکار دارند،<Important>useCompletion</Important>یک گزینه‌ی ساده و کاراآمد می‌باشد. این هوک پرامپت ورودی را دریافت کرده و پاسخ‌ها را به‌صورت استریمی و مرحله‌به‌مرحله در اختیار شما قرار می‌دهد. همزمان، رابط کاربری شما را با هر تغییر بروزرسانی می‌کند.
+</p>
+<li><Important>useObject</Important></li>
+<p>
+در مواردی که مدل، خروجی را به‌صورت ساخت‌یافته تولید می‌کند، می‌توانید از<Important>useObject</Important>استفاده کنید. این هوک داده‌های ساخت‌یافته را به‌صورت بلادرنگ دریافت کرده و امکان استفاده‌ی مستقیم آن‌ها در رابط کاربری را فراهم می‌کند.
+</p>
+</ul>
+<div className="h-2" />
+<hr className="mb-2" />
+
+در واقع <Important>AI SDK UI</Important>برای کاهش زمان توسعه و حذف پیچیدگی‌های پیاده‌سازی مدل‌های هوش مصنوعی طراحی شده است. بنابراین با استفاده از این ابزار، تمرکزتان روی طراحی تجربه‌کاربری باقی می‌ماند.
+<div className="h-2" />
+<hr className="mb-2" />
+<Section id="multi-step-calls" title="پشتیبانی از فریم‌ورک‌های UI" />
+ناگفته نماند کتابخانه‌ی <Important>AI SDK UI</Important> از فریم‌ورک‌های رابط کاربری <a href="https://vuejs.org/" class="text-[#2196f3]">Vue.js</a> ,<a href="https://svelte.dev/" class="text-[#2196f3]">Svelte</a> ,<a href="https://react.dev/" class="text-[#2196f3]">React</a> و <a href="https://angular.dev/" class="text-[#2196f3]">Angular </a> پشتیبانی می‌کند، که در جدول زیر می‌توانید مقایسه‌ای از قابلیت‌های پشتیبانی شده در هر یک از این فریم‌ورک‌ها را مشاهده کنید:
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+</Layout>
