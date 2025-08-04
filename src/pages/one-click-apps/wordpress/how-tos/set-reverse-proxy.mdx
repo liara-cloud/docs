@@ -103,12 +103,12 @@ http {
 
     upstream wordpress {
         zone wordpress_zone 64k;
-        server http://wordpress-app:80 resolve;
+        server wordpress-app:80 resolve;
     }
 
     upstream main {
         zone main_zone 64k;
-        server http://main-app:3005 resolve;
+        server main-app:3005 resolve;
     }
 
 
