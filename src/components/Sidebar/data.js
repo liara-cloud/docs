@@ -345,16 +345,16 @@ export default {
         icon: <GoRepoPush />,
         link: "/ai/references/about"
       },
-      // {
-      //   title: "کتابخانه AI SDK UI",
-      //   icon: <GoBook />,
-      //   link: "/ai/ai-sdk-ui/about"
-      // },
-      // {
-      //   title: "خطاهای AI SDK",
-      //   icon: <GoXCircle />,
-      //   link: "/ai/ai-sdk-errors/about"
-      // },
+      {
+        title: "کتابخانه AI SDK UI",
+        icon: <GoBook />,
+        link: "/ai/ai-sdk-ui/about"
+      },
+      {
+        title: "خطاهای AI SDK",
+        icon: <GoXCircle />,
+        link: "/ai/ai-sdk-errors/about"
+      },
   
     ],
 
