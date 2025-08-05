@@ -8,6 +8,7 @@ import {
   GoMilestone,
   GoInfinity,
   GoRepoPush,
+  GoBook,
   GoFileSymlinkFile,
   GoBroadcast,
   GoGear,
@@ -344,7 +345,66 @@ export default {
         icon: <GoRepoPush />,
         link: "/ai/references/about"
       },
+      // {
+      //   title: "کتابخانه AI SDK UI",
+      //   icon: <GoBook />,
+      //   link: "/ai/ai-sdk-ui/about"
+      // },
+      // {
+      //   title: "خطاهای AI SDK",
+      //   icon: <GoXCircle />,
+      //   link: "/ai/ai-sdk-errors/about"
+      // },
   
+    ],
+
+    'ai-sdk-errors': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoXCircle />
+           خطاهای AI SDK
+          </div>
+        )
+      },
+      {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "آشنایی با خطاهای AI SDK",
+        icon: <GoInfo />,
+        link: "/ai/ai-sdk-errors/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "AI_APICallError",
+        link: "/ai/ai-sdk-errors/ai-api-call-error"
+      },
+    ],
+
+    'ai-sdk-ui': [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBook />
+           کتابخانه AI SDK UI
+          </div>
+        )
+      },
+      {
+        title: "برگشت به هوش مصنوعی",
+        icon: <GoArrowRight />,
+        link: "/ai/about"
+      },
+      {
+        title: "آشنایی با کتابخانه AI SDK UI",
+        icon: <GoInfo />,
+        link: "/ai/ai-sdk-ui/about"
+      },
     ],
 
     'references': [
