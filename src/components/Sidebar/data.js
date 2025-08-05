@@ -377,13 +377,13 @@ export default {
         icon: <GoInfo />,
         link: "/ai/ai-sdk-errors/about"
       },
-      {
-        hr: true
-      },
-      {
-        title: "AI_APICallError",
-        link: "/ai/ai-sdk-errors/ai-api-call-error"
-      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   title: "AI_APICallError",
+      //   link: "/ai/ai-sdk-errors/ai-api-call-error"
+      // },
     ],
 
     'ai-sdk-ui': [
