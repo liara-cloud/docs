@@ -99,35 +99,16 @@ import Head from "next/head";
 در حال حاضر، لیارا در API خود، از هوش مصنوعی‌های زیر پشتیبانی می‌کند:
 
 <div className="h-4" />
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-4 gap-4">
             {[
     { alt: 'https://media.liara.ir/logos/ai/openai-light.svg', platform: 'OpenAI/GPT', link: "./openai" },
     { alt: 'https://media.liara.ir/logos/ai/gemini-google.svg', platform: 'Google/Gemini', link: "./google-gemini" },
     { alt: 'https://media.liara.ir/logos/ai/grok-x-ai.svg', platform: 'X-AI/Grok', link: "./grok-x-ai" },
-  ].map(item =>
-              <Link href={item.link}>
-                <Card className="flex cursor-pointer w-full items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
-                      <PlatformIcon platform={item.alt} />
-                    </div>
-                    <h4>
-                      {item.platform}
-                    </h4>
-                  </div>
-                  <GoArrowLeft className="ml-1" />
-                </Card>
-              </Link>
-            )}
-          </div>
-<div className="h-4" />
-
-<div className="grid md:grid-cols-4 gap-4">
-            {[
     { alt: 'https://media.liara.ir/logos/ai/deepseek.svg', platform: 'DeepSeek', link: "./deepseek" },
     { alt: 'https://media.liara.ir/logos/ai/claude.svg', platform: 'Anthropic/Claude', link: "./anthropic-claude" },
     { alt: 'https://media.liara.ir/logos/ai/meta-llama.svg', platform: 'Meta/Llama', link: "./meta-llama" },
     { alt: 'https://media.liara.ir/logos/ai/mistral-nemo.svg', platform: 'Mistral NeMo', link: "./mistral-nemo" },
+    { alt: 'https://media.liara.ir/logos/ai/perplexity.svg', platform: 'Perplexity', link: "./perplexity" },
     ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">

@@ -1,0 +1,196 @@
+
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+ <Layout>
+<Head>
+<title>مستندات اتصال به AI در سرور NestJS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه اتصال به سرویس هوش مصنوعی لیارا در سرور NestJS"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# اتصال به هوش مصنوعی در سرور NestJS
+<hr className="mb-2" />
+
+می‌توانید از AI SDK در یک سرور NestJS برای تولید و ارسال متن و objectها به‌صورت استریم به سمت کلاینت، استفاده کنید.
+
+<hr className="mb-2" />
+<Section id='examples' title='مثال‌ها' />
+
+مثال‌های زیر، 
+نشان می‌دهند که چگونه می‌توانید یک کنترلر NestJS ایجاد کنید که از AI SDK برای استریم متن و آبجکت‌ها به سمت کلاینت، استفاده می‌کند.
+می‌توانید با استفاده از دستور زیر در <Important>curl</Important>، سرور خود را آزمایش کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`curl -X POST http://localhost:3000`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id='data-stream' title='استریم داده‌ها' />
+
+می‌توانید از متد <Important>pipeDataStreamToResponse</Important> برای استریم داده‌ها از خروجی result استفاده کرده و سپس آن را به سمت response هدایت (pipe) کنید.
+<div className="h-4" />
+
+در مسیر <Important>src/app.controller.ts</Important> قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { Controller, Post, Res } from '@nestjs/common';
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+import { Response } from 'express';
+import { config } from 'dotenv';
+config();
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+@Controller()
+export class AppController {
+  @Post()
+  async example(@Res() res: Response) {
+    const result = streamText({
+      model: my_model('openai/gpt-4o-mini'),
+      prompt: 'Invent a new holiday and describe its traditions.',
+    });
+
+    result.pipeDataStreamToResponse(res);
+  }
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+
+
+<hr className="mb-2" />
+<Section id='sending-custom-data' title='ارسال داده‌های سفارشی' />
+
+متد <Important>pipeDataStreamToResponse</Important> می‌تواند برای ارسال داده‌های سفارشی به کلاینت مورد استفاده قرار گیرد.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// curl -X POST http://localhost:3000/stream-data
+import { Controller, Post, Res } from '@nestjs/common';
+import { createOpenAI } from '@ai-sdk/openai';
+import { pipeDataStreamToResponse, streamText } from 'ai';
+import { Response } from 'express';
+import { config } from 'dotenv';
+config();
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+@Controller()
+export class AppController {
+  @Post('/stream-data')
+  async streamData(@Res() res: Response) {
+    pipeDataStreamToResponse(res, {
+      execute: async (dataStreamWriter) => {
+        dataStreamWriter.writeData('initialized call');
+
+        const result = streamText({
+          model: my_model('openai/gpt-4o-mini'),
+          prompt: 'Invent a new holiday and describe its traditions.',
+        });
+
+        result.mergeIntoDataStream(dataStreamWriter);
+      },
+      onError: (error) => {
+        // Error messages are masked by default for security reasons.
+        // If you want to expose the error message to the client, you can do so here:
+        return error instanceof Error ? error.message : String(error);
+      },
+    });
+  }
+}
+`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='text-stream' title='استریم متن' />
+
+می‌توانید با استفاده از متد <Important>pipeTextStreamToResponse</Important>، یک استریم متنی به کلاینت ارسال کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { Controller, Post, Res } from '@nestjs/common';
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+import { Response } from 'express';
+import { config } from 'dotenv';
+config();
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+@Controller()
+export class AppController {
+  @Post()
+  async example(@Res() res: Response) {
+    const result = streamText({
+      model: my_model('openai/gpt-4o-mini'),
+      prompt: 'Invent a new holiday and describe its traditions.',
+    });
+
+    result.pipeTextStreamToResponse(res);
+  }
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+<Alert variant="success">
+<p>
+پروژه فوق را می‌توانید به‌صورت کامل در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/API-Servers/nest" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
+
+
+</Layout>

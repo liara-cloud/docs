@@ -282,6 +282,11 @@ export default {
         link: "/ai/mistral-nemo"
       },
       {
+        title: "Perplexity",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/perplexity.svg" />,
+        link: "/ai/perplexity"
+      },
+      {
         hr: true
       },
       {
@@ -720,12 +725,29 @@ export default {
         )
       },
       {
-        title: "سرور HTTP مبتنی بر NodeJS",
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
         link: "/ai/cookbook/api-servers/node-http-server"
       },
       {
-        title: "سرور Express",
+        title: "Express",
+        icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
         link: "/ai/cookbook/api-servers/express"
+      },
+      {
+        title: "Hono",
+        icon: <IconContainer alt="https://media.liara.ir/docs/hono-logo-icon.png" />,
+        link: "/ai/cookbook/api-servers/hono"
+      },
+      {
+        title: "Fastify",
+        icon: <IconContainer alt="fastify" />,
+        link: "/ai/cookbook/api-servers/fastify"
+      },
+      {
+        title: "NestJS",
+        icon: <IconContainer alt="nest" />,
+        link: "/ai/cookbook/api-servers/nest"
       },
       {
         hr: true
@@ -769,27 +791,6 @@ export default {
         title: "فراخوانی Toolها به‌صورت موازی",
         link: "/ai/cookbook/rsc/call-tools-in-parallel"
       },
-      // {
-      //   title: "ذخیره پیام‌ها در دیتابیس",
-      //   link: "/ai/cookbook/rsc/save-messages-to-database"
-      // },
-      // {
-      //   title: "",
-      //   link: "/ai/cookbook/rsc/restore-messages-from-database"
-      // },
-      // {
-      //   title: "",
-      //   link: "/ai/cookbook/rsc/render-visual-interface-in-chat"
-      // },
-      // {
-      //   title: "",
-      //   link: "/ai/cookbook/rsc/stream-updates-to-visual-interfaces"
-      // },
-      // {
-      //   title: "",
-      //   link: "/ai/cookbook/rsc/stream-ui-record-token-usage"
-      // },
-      
     ],
 
     'ai-sdk-core': [
