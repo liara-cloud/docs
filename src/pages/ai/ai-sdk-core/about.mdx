@@ -37,10 +37,124 @@ import Head from "next/head";
 # آشنایی با قابلیت‌های AI SDK
 <hr className="mb-2" />
 
-<a href="https://ai-sdk.dev/" className="text-[#2196f3]">AI SDK</a> قابلیت‌های متنوعی را برای کار با مدل‌های هوش مصنوعی در اختیار توسعه‌دهندگان قرار می‌دهد. با استفاده از این SDK می‌توانید به‌صورت یکپارچه به LLMها متصل شوید، بدون آن‌که نیاز باشد برای هر ارائه‌دهنده، پیاده‌سازی جداگانه انجام دهید. AI SDK امکان تنظیمات دقیق مانند محدود کردن نرخ درخواست‌ها یا انتخاب مسیر fallback در صورت بروز خطا را فراهم می‌سازد. به‌علاوه، طراحی آن به گونه‌ای است که بتوان به‌راحتی در محیط‌های مختلف مانند اپلیکیشن‌های وب، اسکریپت‌های پردازشی و APIهای سمت سرور استفاده کرد.
-
-
+مدل‌های زبانی بزرگ (Large Language Modelها یا LLMها) برنامه‌های پیشرفته‌ای هستند که قادرند زبان انسانی را در مقیاس وسیع درک و تولید کرده و با آن تعامل برقرار کنند. این مدل‌ها با استفاده از حجم عظیمی از متون، آموزش داده می‌شوند تا الگوهای موجود در زبان را تشخیص داده و پیش‌بینی کنند که در یک قطعه‌ی متنی، کلمه یا عبارت بعدی چه خواهد بود.
 <div className="h-4" />
+
+
+هسته‌ی AI SDK، کار با LLMها را با فراهم‌کردن یک روش استاندارد برای یکپارچه‌سازی آن‌ها در اپلیکیشن شما ساده‌تر می‌کند؛ به این ترتیب، می‌توانید تمرکز خود را بر ساخت برنامه‌های هوش مصنوعی برای کاربران‌تان بگذارید و نه برای جزئیات فنی.
+<div className="h-4" />
+
+برای مثال، در ادامه نحوه‌ی تولید متن با استفاده از مدل‌های مختلف از طریق AI SDK آورده شده است:
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "openAI",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/openai-svg-black.svg" dark="https://media.liara.ir/logos/ai/openai-light.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai@^1 ai@^4
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey:  process.env.LIARA_API_KEY,
+});
+
+const { text } = await generateText({
+    model: my_model(""),
+    prompt: 'Why is the sky blue?',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "xAI",
+        icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/xai-light.svg" dark="https://media.liara.ir/logos/ai/xai-dark.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai@^1 ai@^4
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey:  process.env.LIARA_API_KEY,
+});
+
+const { text } = await generateText({
+    model: my_model("x-ai/grok-3-mini-beta"),
+    prompt: 'Why is the sky blue?',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "Claude",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/claude-black.svg" dark="https://media.liara.ir/logos/ai/claude.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai@^1 ai@^4
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey:  process.env.LIARA_API_KEY,
+});
+
+const { text } = await generateText({
+    model: my_model("anthropic/claude-3.7-sonnet"),
+    prompt: 'Why is the sky blue?',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+    {
+      label: "Google",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/ai/gemini-black.svg" dark="https://media.liara.ir/logos/ai/gemini-google.svg" style={{ width: 18, height: 18 }}/>,
+      language: "javascript",
+      code: `// npm i @ai-sdk/openai@^1 ai@^4
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey:  process.env.LIARA_API_KEY,
+});
+
+const { text } = await generateText({
+    model: my_model("google/gemini-2.0-flash-001"),
+    prompt: 'Why is the sky blue?',
+});
+
+console.log('Generated Text:', text);
+`,
+    },
+  ]}
+/>
+<hr className="mb-2" />
+
+<Section id="ai-sdk-core-functions" title="توابع اصلی AI SDK" />
+
+هسته‌ی AI SDK شامل مجموعه‌ای از توابع است که برای تولید متن، تولید داده‌ی ساختارمند و استفاده از Toolها طراحی شده‌اند. این توابع از یک روش استاندارد برای تنظیم پرامپت‌ها (prompts) و پیکربندی‌ها استفاده می‌کنند تا کار با مدل‌های مختلف را ساده‌تر کنند.
+
+
+
+
 
 در ادامه، به توضیح هر یک از قابلیت‌های AI SDK به تفصیل، پرداخته شده است: 
 
