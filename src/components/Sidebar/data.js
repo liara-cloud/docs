@@ -818,6 +818,10 @@ export default {
       },
       
       {
+        title: "تولید و استریم متن",
+        link: "/ai/ai-sdk-core/generating-text"
+      },
+      {
         title: "قابلیت Tool Calling",
         link: "/ai/ai-sdk-core/tool-calling"
       },

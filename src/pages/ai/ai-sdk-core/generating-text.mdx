@@ -1,0 +1,425 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید و استریم متن با AI SDK - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تولید و استریم متن با استفاده از AI SDK و سرویس هوش مصنوعی لیارا"  />
+<meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
+</Head>
+
+
+# تولید و استریم متن با AI SDK
+<hr className="mb-2" />
+
+مدل‌های زبانی بزرگ (LLMها) قادرند در پاسخ به یک prompt، متن تولید کنند؛ این پرامپت می‌تواند شامل دستورالعمل‌ها و اطلاعاتی برای پردازش باشد.
+به عنوان مثال، می‌توان از یک مدل خواست که یک دستور پخت ارائه دهد، پیش‌نویس یک ایمیل را تهیه کند، یا یک داکیومنت را خلاصه نماید.
+<div className="h-2" />
+
+هسته‌ی AI SDK دو تابع برای تولید متن و استریم آن از LLMها فراهم می‌کند:
+
+<div className="h-2" />
+<ul>
+<li><Important>generateText</Important>: متنی را با توجه به پرامپت و مدل، تولید می‌کند</li>
+<li><Important>streamText</Important>: متن را با یک پرامپت و مدل مشخص، به‌صورت stream ارائه می‌دهد</li>
+</ul>
+<div className="h-2" />
+
+قابلیت‌های پیشرفته‌ی LLMها، مانند فراخوانی toolها و تولید داده‌های ساختارمند، بر پایه‌ی همین قابلیت تولید متن ساخته شده‌اند.
+<hr className="mb-2" />
+
+<Section id='generatetext' title='تابع generateText' />
+
+شما می‌توانید با استفاده از تابع <Important>generateText</Important> متن تولید کنید.
+این تابع برای موارد غیرتعاملی ایده‌آل است؛ مانند زمانی که نیاز به تولید متن دارید (برای مثال: تهیه‌ی پیش‌نویس یک ایمیل یا خلاصه‌سازی صفحات وب) و همچنین برای agentهایی که از toolها استفاده می‌کنند.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { text } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Write a vegetarian lasagna recipe for 4 people.',
+});
+
+console.log(text)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+می‌توانید از پرامپت‌های پیشرفته‌تر نیز، برای تولید متنی با دستورالعمل‌ها و محتوای پیچیده‌تر، استفاده کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const article = 
+\`Octopus Brains Are Even Weirder Than We Thought
+A new study has revealed that octopuses may process information using their arms
+independently from their central brain, adding to their reputation as some of
+the most intelligent and alien-like creatures on Earth.
+
+Researchers from the University of Naples used electrodes to monitor neural activity
+in Octopus vulgaris. They found that not only do octopus arms have their
+own neural circuits, but they can also make decisions without input from
+the central brain. This means each arm has a semi-autonomous "mini-brain,"
+allowing the animal to multitask in complex ways—like opening a shell with
+one arm while exploring its surroundings with another.
+
+What’s more fascinating is the discovery of neurotransmitters in octopus arms
+that are more commonly associated with learning and memory in mammals. 
+This hints at convergent evolution—where different species independently
+evolve similar traits.
+
+Understanding how octopuses process information could offer clues for building
+more adaptive robots or even new models of decentralized AI. As neuroscientist
+Dr. Francesca Ferrante puts it: "If intelligence evolved this way in
+an invertebrate, we have a lot to learn about the nature of cognition."
+\`
+
+const { text } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  system:
+    'You are a professional writer. ' +
+    'You write simple, clear, and concise content.',
+  prompt: \`Summarize the following article in 3-5 sentences: \${article}\`,
+});
+
+console.log(text)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+آبجکت result که از تابع <Important>generateText</Important> بازگردانده می‌شود، شامل چندین promise است و زمانی که تمامی داده‌های مورد نیاز در دسترس قرار گیرند، مقداردهی می‌شوند: 
+
+<div className="h-2" />
+<ul>
+<li><Important>result.text</Important>: متن تولید شده</li>
+<div className="h-1" />
+<li><Important>result.reasoning</Important>: استدلال کاملی که مدل در مرحله آخر، تولید کرده است</li>
+<div className="h-1" />
+<li><Important>result.sources</Important>: منابعی که به عنوان مرجع در مرحله آخر، استفاده شده‌اند (موجود فقط برای برخی مدل‌ها)</li>
+<div className="h-1" />
+<li><Important>result.finishReason</Important>: دلیلی که مدل تولید متن را متوقف کرده است</li>
+<div className="h-1" />
+<li><Important>result.usage</Important>: میزان مصرف مدل طی مرحله آخر تولید متن</li>
+</ul>
+
+<Section id='accessing-response-headers-body' title='دسترسی به هدرهای response و body' />
+
+در برخی موارد، نیاز است به پاسخ کامل ارائه‌شده از سوی ارائه‌دهنده مدل دسترسی داشته باشید؛ برای مثال، جهت مشاهده‌ی برخی هدرها یا محتوای بدنه که به‌صورت خاص توسط ارائه‌دهنده ارسال می‌شوند.
+می‌توانید با استفاده از ویژگی <Important>response</Important> به هدرها و بدنه‌ی خام پاسخ دسترسی پیدا کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Who is Arthur Schopenhauer?',
+});
+
+console.log(JSON.stringify(result.response.headers, null, 2));
+console.log(JSON.stringify(result.response.body, null, 2));`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+<Section id='streamtext' title='تابع streamText' />
+
+بسته به مدل مورد استفاده و نوع prompt، ممکن است تولید پاسخ توسط یک LLM تا یک دقیقه طول بکشد.
+این تأخیر در موارد استفاده‌ی تعاملی، مانند چت‌بات‌ها یا برنامه‌های بلادرنگ (real-time)، جایی که کاربران انتظار پاسخ‌های فوری دارند، غیرقابل‌قبول است.
+<div className="h-4" />
+
+هسته‌ی AI SDK تابعی به نام <Important>streamText</Important> دارد که stream متن از LLM را ساده می‌سازد.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = streamText({
+  model: my_model('openai/gpt-4.1'),
+  prompt: 'Invent a new holiday and describe its traditions.',
+});
+
+// example: use textStream as an async iterable
+for await (const textPart of result.textStream) {
+  console.log(textPart);
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+<Important>result.textStream</Important> هم <Important>ReadableStream</Important> و هم <Important>AsyncIterable</Important> است.
+</p>
+</Alert>
+<Alert variant="warning">
+<p>
+تابع <Important>streamText</Important> بلافاصله استریم متن را آغاز می‌کند و برای جلوگیری از کرش کردن سرور، خطاها را نادیده می‌گیرد.
+برای لاگ‌گرفتن از خطاها، از یک callback به نام <Important>onError</Important> استفاده کنید.
+</p>
+</Alert>
+<div className="h-2" />
+
+می‌توانید از <Important>streamText</Important> به‌صورت مستقل یا در ترکیب با AI SDK UI و AI SDK RSC استفاده کنید.
+آبجکت result شامل چندین تابع کمکی است که ادغام با AI SDK UI را ساده‌تر می‌سازند:
+
+<div className="h-2" />
+<ul>
+<li><Important>()result.toDataStreamResponse</Important>: این تابع یک HTTP respone مبتنی بر UI Message stream (با فراخوانی tool و ...)، تولید می‌کند که می‌تواند در API Route برنامه‌های NextJS App Router مورد استفاده قرار بگیرد</li>
+<div className="h-1" />
+<li><Important>()result.pipeDataStreamToResponse</Important>: این تابع delta output مربوط به UI Message Stream را به یک آبجکت مشابه response در NodeJS قرار می‌دهد</li>
+<div className="h-1" />
+<li><Important>()result.toTextStreamResponse</Important>:  یک پاسخ HTTP ساده برای استریم متن ایجاد می‌کند</li>
+<div className="h-1" />
+<li><Important>()result.pipeTextStreamToResponse</Important>: این تابع delta output متنی را به یک آبجکت مشابه respone در NodeJS می‌نویسد</li>
+</ul>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+تابع <Important>streamText</Important> از backpressure استفاده می‌کند و تنها زمانی توکن‌ها را تولید می‌کند که مورد درخواست قرار گیرند.
+برای پایان یافتن فرآیند، لازم است که stream را مصرف (consume) کنید
+</p>
+</Alert>
+<div className="h-2" />
+
+تابع <Important>streamText</Important> شامل چندین promise است که زمانی که تمامی داده‌های مورد نیاز در دسترس قرار گیرند، مقداردهی می‌شوند:
+
+<div className="h-2" />
+<ul>
+<li><Important>()result.toDataStreamResponse</Important>: این تابع یک HTTP respone مبتنی بر UI Message stream (با فراخوانی tool و ...)، تولید می‌کند که می‌تواند در API Route برنامه‌های NextJS App Router مورد استفاده قرار بگیرد</li>
+<div className="h-1" />
+<li><Important>()result.pipeDataStreamToResponse</Important>: این تابع delta output مربوط به UI Message Stream را به یک آبجکت مشابه response در NodeJS قرار می‌دهد</li>
+<div className="h-1" />
+<li><Important>()result.toTextStreamResponse</Important>:  یک پاسخ HTTP ساده برای استریم متن ایجاد می‌کند</li>
+<div className="h-1" />
+<li><Important>()result.pipeTextStreamToResponse</Important>: این تابع delta output متنی را به یک آبجکت مشابه respone در NodeJS می‌نویسد</li>
+</ul>
+
+<Section id='onerror-callback' title='onError callback' />
+
+تابع <Important>streamText</Important> بلافاصله فرآیند streaming را آغاز می‌کند تا امکان ارسال داده بدون انتظار فراهم شود.
+در این روش، خطاها به‌صورت بخشی از استریم در نظر گرفته می‌شوند و throw نمی‌شوند، تا از بروز مشکلاتی مانند کرش کردن سرور جلوگیری شود.
+<div className="h-4" />
+
+برای log کردن خطاها، می‌توانید یک callback به نام <Important>onError</Important> تعریف کنید که در زمان وقوع خطا فعال (trigger) می‌شود.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = streamText({
+  model: my_model('openai/gpt-4.1'),
+  prompt: 'Invent a new holiday and describe its traditions.',
+  onError({ error }) {
+    console.error(error); // your error logging logic here
+  },
+});
+
+for await (const textPart of result.textStream) {
+  console.log(textPart);
+}`}
+    </Highlight>
+</div>
+
+<Section id='onchunk-callback' title='onChunk callback' />
+
+هنگام استفاده از تابع <Important>streamText</Important>، می‌توانید یک callback به نام <Important>onChunk</Important> تعریف کنید که برای هر بخش (chunk) از استریم فراخوانی می‌شود.
+این callback، انواع chunkهای زیر را دریافت می‌کند:
+
+<div className="h-2" />
+<ul>
+<li><Important>text-delta</Important></li>
+<div className="h-1" />
+<li><Important>reasoning</Important></li>
+<div className="h-1" />
+<li><Important>source</Important></li>
+<div className="h-1" />
+<li><Important>tool-call</Important></li>
+<div className="h-1" />
+<li><Important>tool-result</Important></li>
+<div className="h-1" />
+<li><Important>tool-call-streaming-start</Important> (وقتی که <Important>toolCallStreaming</Important> فعال است)</li>
+<div className="h-1" />
+<li><Important>tool-call-delta</Important> (وقتی که <Important>toolCallStreaming</Important> فعال است)</li>
+<div className="h-1" />
+</ul>
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = streamText({
+  model: my_model('openai/gpt-4.1'),
+  prompt: 'Invent a new holiday and describe its traditions.',
+  onChunk({ chunk }) {
+
+    // implement your own logic here, e.g.:
+    if (chunk.type === 'text-delta') {
+      console.log(chunk.textDelta);
+    }
+  },
+});
+
+for await (const textPart of result.textStream) {}`}
+    </Highlight>
+</div>
+
+<Section id='onfinish-callback' title='onFinish callback' />
+
+هنگام استفاده از تابع <Important>streamText</Important>، می‌توانید یک callback به نام <Important>onFinish</Important> تعریف کنید که زمانی که استریم به پایان می‌رسد، فراخوانی می‌شود. 
+این callback شامل اطلاعات جامعی از فرآیند تولید متن است، از جمله متن، اطلاعات مصرف توکن، علت توقف، پیام‌ها، مراحل، مصرف کلی توکن‌ها و ...
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = streamText({
+  model: my_model('openai/gpt-4.1'),
+  prompt: 'hey',
+  onFinish({ text, finishReason, usage, response, steps }) {
+
+    // your own logic, e.g. for saving the chat history or recording usage
+    console.log("finish reason:", finishReason)
+  },
+});
+
+for await (const textPart of result.textStream) {
+}`}
+    </Highlight>
+</div>
+{/* 
+<Section id='fullstream-property' title='ویژگی fullStream' />
+
+می‌توانید با استفاده از ویژگی <Important>fullStream</Important> به استریم کامل، شامل تمامی رویدادها دسترسی داشته باشید.
+این ویژگی زمانی مفید است که بخواهید رابط کاربری اختصاصی خود را پیاده‌سازی کنید یا استریم را به روشی متفاوت مدیریت نمایید.
+در ادامه، یک مثال از نحوه‌ی استفاده از ویژگی <Important>fullStream</Important> آورده شده است: */}
+
+{/* <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>
