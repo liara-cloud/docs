@@ -44,11 +44,14 @@ import Head from "next/head";
 <div className="h-2" />
 <ul className="pr-4">
   {[
+    {text: <Important>openai/gpt-5-chat</Important>,},
+    {text: <Important>openai/gpt-5-mini</Important>,},
+    {text: <Important>openai/gpt-5-nano</Important>,},
+    {text: <Important>openai/gpt-4.1</Important>,},
+    {text: <Important>openai/gpt-4.1-mini</Important>,},
     {text: <Important>openai/gpt-4o-mini</Important>,},
     {text: <Important>openai/o4-mini</Important>,},
     {text: <Important>openai/o4-mini-high</Important>,},
-    {text: <Important>openai/gpt-4.1</Important>,},
-    {text: <Important>openai/gpt-4.1-mini</Important>,},
   ].map((item, index) => (
     <li
       key={index}
