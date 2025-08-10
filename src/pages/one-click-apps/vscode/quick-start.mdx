@@ -22,13 +22,6 @@ import Head from "next/head";
 
 # راه‌اندازی سریع برنامه‌های VSCode Server
 <hr className="mb-2" />
-<video
-  src="https://media.liara.ir/docs/code-server.mp4"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-/>
-<div className="h-4" />
 
 Visual Studio Code Server نسخه‌ای از ویرایشگر Visual Studio Code است که به صورت سرور اجرا می‌شود و امکان استفاده از قابلیت‌های این ویرایشگر را از راه دور فراهم می‌کند. این ابزار به توسعه‌دهندگان این امکان را می‌دهد که با استفاده از مرورگر وب و از هر دستگاهی به محیط کد نویسی خود دسترسی داشته باشند، بدون نیاز به نصب مستقیم VS Code روی آن دستگاه. Visual Studio Code Server به ویژه در محیط‌های تیمی و پروژه‌های بزرگ مفید است که نیاز به همگام‌سازی و اشتراک‌گذاری سریع کدها دارند.
 
@@ -131,6 +124,14 @@ content: (
 },
 
 ]}/>
+<div className='h-2' />
+
+<Alert className="info">
+  <p>
+    اطلاعات ورود به حساب کاربری نظیر رمزعبور در بخش <a href="/paas/details/envs" className="text-[#2196f3]">متغیرهای محیطی برنامه</a>، به نام‌ <Important>PASSWORD</Important> قرار گرفته است که می‌توانید از آن برای ورود به حساب برنامه‌تان، استفاده کنید.
+  </p>
+</Alert>
+
 <Section id="see-also" title="همچنین بخوانید:" />
 
 <div className='h-2' />
@@ -153,6 +154,7 @@ content: (
     </Link>
             )}
 </div>
+
 
 
 </Layout>
