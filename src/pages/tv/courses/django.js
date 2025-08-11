@@ -17,8 +17,7 @@ const Django = () => {
         <title>مستندات - آموزش استفاده از لیارا</title>
         <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
         <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم Django" />
-        <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
-      </Head>
+        </Head>
 
       <Button className="mb-2 py-1 px-4 rounded-md">
         <Link id="init-a" href={"/tv"}>

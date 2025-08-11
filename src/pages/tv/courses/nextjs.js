@@ -17,8 +17,7 @@ const Laravel = () => {
         <title>مستندات - آموزش استفاده از لیارا</title>
         <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
         <meta property="og:description" content="دوره آموزش صفر تا صد استقرار پلتفرم NextJS" />
-        <meta property="og:image" content="https://media.liara.ir/logos/liara-poster.jpg" />
-      </Head>
+        </Head>
 
       <Button
         style={{ background: "#cccccc11" }}
