@@ -54,13 +54,13 @@ import Head from "next/head";
 
 <Section id='generatetext' title='تابع generateText' />
 
-شما می‌توانید با استفاده از تابع <Important>generateText</Important> متن تولید کنید.
-این تابع برای موارد غیرتعاملی ایده‌آل است؛ مانند زمانی که نیاز به تولید متن دارید (برای مثال: تهیه‌ی پیش‌نویس یک ایمیل یا خلاصه‌سازی صفحات وب) و همچنین برای agentهایی که از toolها استفاده می‌کنند.
+شما می‌توانید با استفاده از تابع <Important>generateText</Important> متن تولید کنید. برای موارد غیرتعاملی ایده‌آل است؛ مانند زمانی که نیاز به تولید متن دارید (برای مثال: تهیه‌ی پیش‌نویس یک ایمیل یا خلاصه‌سازی صفحات وب) و همچنین برای agentهایی که از toolها استفاده می‌کنند.
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { generateText } from 'ai';
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { generateText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { config } from 'dotenv';
 
@@ -85,7 +85,8 @@ console.log(text)`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { generateText } from 'ai';
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { generateText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { config } from 'dotenv';
 
@@ -155,7 +156,8 @@ console.log(text)`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { generateText } from 'ai';
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { generateText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { config } from 'dotenv';
 
@@ -187,7 +189,8 @@ console.log(JSON.stringify(result.response.body, null, 2));`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { streamText } from 'ai';
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { streamText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { config } from 'dotenv';
 
@@ -228,15 +231,15 @@ for await (const textPart of result.textStream) {
 
 <div className="h-2" />
 <ul>
-<li><Important>()result.toDataStreamResponse</Important>: این تابع یک HTTP respone مبتنی بر UI Message stream (با فراخوانی tool و ...)، تولید می‌کند که می‌تواند در API Route برنامه‌های NextJS App Router مورد استفاده قرار بگیرد</li>
+<li><Important>()result.toDataStreamResponse</Important>: یک HTTP respone (با فراخوانی tool و ...)، تولید می‌کند که می‌تواند در API Route برنامه‌های NextJS مورد استفاده قرار بگیرد</li>
 <div className="h-1" />
-<li><Important>()result.pipeDataStreamToResponse</Important>: این تابع delta output مربوط به UI Message Stream را به یک آبجکت مشابه response در NodeJS قرار می‌دهد</li>
+<li><Important>()result.pipeDataStreamToResponse</Important>: delta output را در یک آبجکت مشابه response در NodeJS قرار می‌دهد</li>
 <div className="h-1" />
 <li><Important>()result.toTextStreamResponse</Important>:  یک پاسخ HTTP ساده برای استریم متن ایجاد می‌کند</li>
 <div className="h-1" />
-<li><Important>()result.pipeTextStreamToResponse</Important>: این تابع delta output متنی را به یک آبجکت مشابه respone در NodeJS می‌نویسد</li>
+<li><Important>()result.pipeTextStreamToResponse</Important>: delta output متنی را در یک آبجکت مشابه respone در NodeJS قرار می‌دهد</li>
 </ul>
-<div className="h-2" />
+<div className="h-4" />
 
 <Alert variant="info">
 <p>
@@ -244,20 +247,23 @@ for await (const textPart of result.textStream) {
 برای پایان یافتن فرآیند، لازم است که stream را مصرف (consume) کنید
 </p>
 </Alert>
-<div className="h-2" />
+<div className="h-4" />
 
-تابع <Important>streamText</Important> شامل چندین promise است که زمانی که تمامی داده‌های مورد نیاز در دسترس قرار گیرند، مقداردهی می‌شوند:
+تابع <Important>streamText</Important> شامل چندین promise است که زمانی که استریم پایان می‌یابد، مقداردهی می‌شوند:
 
-<div className="h-2" />
+<div className="h-4" />
 <ul>
-<li><Important>()result.toDataStreamResponse</Important>: این تابع یک HTTP respone مبتنی بر UI Message stream (با فراخوانی tool و ...)، تولید می‌کند که می‌تواند در API Route برنامه‌های NextJS App Router مورد استفاده قرار بگیرد</li>
+<li><Important>result.text</Important>: متن تولیدشده</li>
 <div className="h-1" />
-<li><Important>()result.pipeDataStreamToResponse</Important>: این تابع delta output مربوط به UI Message Stream را به یک آبجکت مشابه response در NodeJS قرار می‌دهد</li>
+<li><Important>result.reasoning</Important>: متن استدلالی مدل (موجود، فقط برای برخی مدل‌ها)</li>
 <div className="h-1" />
-<li><Important>()result.toTextStreamResponse</Important>:  یک پاسخ HTTP ساده برای استریم متن ایجاد می‌کند</li>
+<li><Important>result.sources</Important>: منابعی که به‌عنوان ورودی، برای تولید پاسخ، استفاده شده‌اند (موجود، فقط برای برخی مدل‌ها)</li>
 <div className="h-1" />
-<li><Important>()result.pipeTextStreamToResponse</Important>: این تابع delta output متنی را به یک آبجکت مشابه respone در NodeJS می‌نویسد</li>
+<li><Important>result.finishReason</Important>: دلیلی که مدل تولید متن را متوقف کرده است</li>
+<div className="h-1" />
+<li><Important>result.usage</Important>: میزان مصرف توکن مدل در طی تولید متن</li>
 </ul>
+
 
 <Section id='onerror-callback' title='onError callback' />
 
@@ -270,7 +276,9 @@ for await (const textPart of result.textStream) {
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { streamText } from 'ai';
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+
+import { streamText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { config } from 'dotenv';
 
@@ -320,7 +328,9 @@ for await (const textPart of result.textStream) {
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { streamText } from 'ai';
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+        
+import { streamText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { config } from 'dotenv';
 
@@ -354,7 +364,9 @@ for await (const textPart of result.textStream) {}`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {`import { streamText } from 'ai';
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+
+import { streamText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { config } from 'dotenv';
 
@@ -378,47 +390,361 @@ for await (const textPart of result.textStream) {
 }`}
     </Highlight>
 </div>
-{/* 
+
+
+
 <Section id='fullstream-property' title='ویژگی fullStream' />
 
 می‌توانید با استفاده از ویژگی <Important>fullStream</Important> به استریم کامل، شامل تمامی رویدادها دسترسی داشته باشید.
 این ویژگی زمانی مفید است که بخواهید رابط کاربری اختصاصی خود را پیاده‌سازی کنید یا استریم را به روشی متفاوت مدیریت نمایید.
-در ادامه، یک مثال از نحوه‌ی استفاده از ویژگی <Important>fullStream</Important> آورده شده است: */}
+در ادامه، یک مثال از نحوه‌ی استفاده از ویژگی <Important>fullStream</Important> آورده شده است:
 
-{/* <div className="h-2" />
+<div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {``}
+        {`// npm i @ai-sdk/openai@^1 ai@^4 zod dotenv
+
+import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = streamText({
+  model: my_model("openai/gpt-4o-mini"),
+  tools: {
+    cityAttractions: {
+      parameters: z.object({ city: z.string() }),
+      execute: async ({ city }) => ({
+        attractions: ['attraction1', 'attraction2', 'attraction3'],
+      }),
+    },
+  },
+  prompt: 'What are some San Francisco tourist attractions?',
+});
+
+for await (const part of result.fullStream) {
+  switch (part.type) {
+    case 'text-delta': {
+      // handle text delta here
+      break;
+    }
+    case 'reasoning': {
+      // handle reasoning here
+      break;
+    }
+    case 'source': {
+      // handle source here
+      break;
+    }
+    case 'tool-call': {
+      switch (part.toolName) {
+        case 'cityAttractions': {
+          // handle tool call here
+          break;
+        }
+      }
+      break;
+    }
+    case 'tool-result': {
+      switch (part.toolName) {
+        case 'cityAttractions': {
+          // handle tool result here
+          break;
+        }
+      }
+      break;
+    }
+    case 'finish': {
+      // handle finish here
+      break;
+    }
+    case 'error': {
+      // handle error here
+      break;
+    }
+  }
+}`}
+    </Highlight>
+</div>
+
+<Section id='stream-transformation' title='تبدیل (تغییر) استریم' />
+
+شما می‌توانید از <Important>experimental_transform</Important> برای تبدیل (transform) استریم استفاده کنید. این قابلیت، برای مواردی مانند فیلتر کردن، تغییر دادن یا روان‌سازی (smoothing) استریم متنی مفید است.
+<div className="h-2" />
+
+تبدیل‌ها پیش از فراخوانی callbackها و مقداردهی شدن پرامیس‌ها، اعمال می‌شوند. به عنوان مثال، اگر تبدیل شما، تمام متن را به حروف بزرگ تبدیل کند، تابع <Important>onFinish</Important> متن تبدیل‌شده را دریافت خواهد کرد.
+
+<Section id='smoothing-streams' title='روان‌سازی استریم' />
+
+AI SDK Core تابعی به نام <Important>smoothStream</Important> ارائه می‌دهد که می‌توان از آن برای روان‌سازی جریان متنی استفاده کرد.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { smoothStream, streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = streamText({
+  model: my_model("openai/gpt-4o-mini"),
+  prompt: "Is Kafka German?",
+  experimental_transform: smoothStream(),
+});
+`}
+    </Highlight>
+</div>
+
+<Section id='custom-transformations' title='تبدیل‌های سفارشی' />
+
+شما همچنین می‌توانید تبدیل‌های سفارشی خود را پیاده‌سازی کنید. تابع transformation، toolهایی که در اختیار مدل قرار دارند را دریافت می‌کند و تابعی را بازمی‌گرداند که برای تبدیل استریم استفاده می‌شود. toolها می‌توانند عمومی باشند یا محدود به toolهایی که شما استفاده می‌کنید.
+
+<div className="h-2" />
+در ادامه مثالی از نحوه پیاده‌سازی یک تبدیل سفارشی آورده شده است که تمام متن را به حروف بزرگ تبدیل می‌کند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { streamText, TextStreamPart, ToolSet } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const upperCaseTransform =
+  <TOOLS extends ToolSet>() =>
+  (options: { tools: TOOLS; stopStream: () => void }) =>
+    new TransformStream<TextStreamPart<TOOLS>, TextStreamPart<TOOLS>>({
+      transform(chunk, controller) {
+        controller.enqueue(
+          // for text-delta chunks, convert the text to uppercase:
+          chunk.type === 'text-delta'
+            ? { ...chunk, textDelta: chunk.textDelta.toUpperCase() }
+            : chunk,
+        );
+      },
+    });
+
+const result = streamText({
+  model: my_model("openai/gpt-4o-mini"),
+  prompt: "Is Kafka German?",
+  experimental_transform: upperCaseTransform(),
+});
+
+for await (const textPart of result.textStream) {
+  console.log(textPart);
+}
+
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+همچنین می‌توانید استریم را با استفاده از تابع <Important>stopStream</Important> متوقف کنید. این کار زمانی مفید است که بخواهید استریم را در صورت نقض محدودیت‌های مدل، مانند تولید محتوای نامناسب، متوقف نمایید.
+<div className="h-2" />
+
+هنگامی که تابع <Important>stopStream</Important> را فراخوانی می‌کنید، مهم است که رویدادهای <Important>step-finish</Important> و <Important>finish</Important> را شبیه‌سازی کنید تا تضمین شود استریم به‌درستی خاتمه می‌یابد و تمامی توابع callback فراخوانی می‌شوند.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { streamText, TextStreamPart, ToolSet } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const stopWordTransform =
+  <TOOLS extends ToolSet>() =>
+  ({ stopStream }: { stopStream: () => void }) =>
+    new TransformStream<TextStreamPart<TOOLS>, TextStreamPart<TOOLS>>({
+      // note: this is a simplified transformation for testing;
+      // in a real-world version more there would need to be
+      // stream buffering and scanning to correctly emit prior text
+      // and to detect all STOP occurrences.
+      transform(chunk, controller) {
+        if (chunk.type !== 'text-delta') {
+          controller.enqueue(chunk);
+          return;
+        }
+
+        if (chunk.textDelta.includes('STOP')) {
+          // stop the stream
+          stopStream();
+
+          // simulate the step-finish event
+          controller.enqueue({
+            type: 'step-finish',
+            messageId: 'mock-message-id',
+            finishReason: 'stop',
+            logprobs: undefined,
+            usage: {
+              completionTokens: NaN,
+              promptTokens: NaN,
+              totalTokens: NaN,
+            },
+            request: {} as any,
+            response: {
+              id: 'response-id',
+              modelId: 'mock-model-id',
+              timestamp: new Date(0),
+            },
+            providerMetadata: {} as any,
+            warnings: [],
+            isContinued: false,
+          });
+
+          // simulate the finish event
+          controller.enqueue({
+            type: 'finish',
+            finishReason: 'stop',
+            logprobs: undefined,
+            usage: {
+              completionTokens: NaN,
+              promptTokens: NaN,
+              totalTokens: NaN,
+            },
+            response: {
+              id: 'response-id',
+              modelId: 'mock-model-id',
+              timestamp: new Date(0),
+            },
+            providerMetadata: {} as any,
+          });
+
+          return;
+        }
+
+        controller.enqueue(chunk);
+      },
+});
+
+const result = streamText({
+  model: my_model("openai/gpt-4o-mini"),
+  prompt: "Is ",
+  experimental_transform: stopWordTransform(),
+});
+
+for await (const textPart of result.textStream) {
+  console.log(textPart);
+}`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<Important>
-</Important>
-<hr className="mb-2" />
-<Section id='' title='' />
+<Section id='multiple-transformations' title='تبدیل‌های چندگانه' />
+
+شما همچنین می‌توانید چندین تبدیل را به‌صورت همزمان ارائه دهید. این تبدیل‌ها به ترتیبی که ارائه شده‌اند، اعمال می‌شوند.
+
 <div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const result = streamText({
+  model,
+  prompt,
+  experimental_transform: [firstTransform, secondTransform],
+});`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+<Section id='generating-long-text' title='تولید متن طولانی' />
+
+بیشتر LLMها دارای محدودیت طول خروجی هستند که معمولاً بسیار کوتاه‌تر از پنجره‌ی متنی (context window) آن‌هاست. این بدان معناست که نمی‌توان متن‌های طولانی را در یک مرحله تولید کرد، اما امکان اضافه کردن پاسخ‌های تولید شده به ورودی و ادامه‌ی تولید متن برای ایجاد متن‌های بلندتر وجود دارد.
+<div className="h-2" />
+
+توابع <Important>generateText</Important> و <Important>streamText</Important> از چنین قابلیتی برای تولید متن‌های طولانی (با تنظیم <Important>experimental_continueSteps</Important>) پشتیبانی می‌کنند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { generateText } from 'ai';
+import { config } from 'dotenv';
+import { createOpenAI } from '@ai-sdk/OpenAI';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const {
+  text, // combined text
+  usage, // combined usage of all steps
+} = await generateText({
+  model: my_model('openai/gpt-4o-mini'), // 4096 output tokens
+  maxSteps: 5, // enable multi-step calls
+  experimental_continueSteps: true,
+  prompt:
+    'Write a book about Roman history, ' +
+    'from the founding of the city of Rome ' +
+    'to the fall of the Western Roman Empire. ' +
+    'Each chapter MUST HAVE at least 1000 words.',
+});
+
+console.log(text)
+console.log(usage)`}
+    </Highlight>
+</div>
+
+<Alert variant="info">
+<p>
+زمانی که گزینه <Important>experimental_continueSteps</Important> فعال باشد، در تابع <Important>streamText</Important> تنها کلمات کامل، استریم می‌شوند و هر دو تابع <Important>generateText</Important> و <Important>streamText</Important> ممکن است برای جلوگیری از مشکلات فاصله‌گذاری، توکن‌های انتهایی برخی فراخوانی‌ها را حذف کنند.
+</p>
+</Alert>
+<Alert variant="warning">
+<p>
+برخی مدل‌ها ممکن است همیشه به درستی به‌صورت خودکار، متوقف نشوند و تا رسیدن به مقدار <Important>maxSteps</Important> به تولید ادامه دهند. شما می‌توانید با استفاده از پیام‌های سیستمی، مانند "زمانی که اطلاعات کافی ارائه شد، متوقف شو!"" به مدل اشاره کنید که فرآیند تولید را متوقف کند.
+</p>
+</Alert>
+
+<Section id='examples' title='مثال‌ها' />
+
+شما می‌توانید از توابع <Important>generateText</Important> و <Important>streamText</Important> در فریم‌ورک‌های مختلفی که مستندات آن‌ها در ادامه قرار گرفته است، استفاده کنید: 
+
+<Section id='generatetext-1' title='generateText' />
+
 <ul>
-<li></li>
+<li><a href="/ai/cookbook/nodejs/generate-text" className="text-[#2196f3]">تولید متن در NodeJS</a></li>
+<li><a href="/ai/cookbook/nextjs/generate-text" className="text-[#2196f3]">تولید متن در NextJS App Router</a></li>
+<li><a href="/ai/cookbook/rsc/generate-text" className="text-[#2196f3]">تولید متن در RSC</a></li>
 </ul>
 <div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {``}
-    </Highlight>
-</div>
+
+<Section id='streamtext-1' title='streamText' />
+
+<ul>
+<li><a href="/ai/cookbook/nodejs/stream-text" className="text-[#2196f3]">استریم متن در NodeJS</a></li>
+<li><a href="/ai/cookbook/nextjs/stream-text" className="text-[#2196f3]">استریم متن در NextJS App Router</a></li>
+<li><a href="/ai/cookbook/rsc/stream-text" className="text-[#2196f3]">استریم متن در RSC</a></li>
+</ul>
 <div className="h-2" />
 
-<div className="h-2" />  
-<img src="https://media.liara.ir/" alt=""/>
-<div className="h-2" />  
-
-
-<video
-  src="https://media.liara.ir/"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-/> */}
 
 </Layout>

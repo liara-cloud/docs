@@ -64,7 +64,7 @@ const my_model = createOpenAI({
 });
 
 const { text } = await generateText({
-    model: my_model(""),
+    model: my_model("openai/gpt-5-chat"),
     prompt: 'Why is the sky blue?',
 });
 
