@@ -822,6 +822,10 @@ export default {
         link: "/ai/ai-sdk-core/generating-text"
       },
       {
+        title: "تولید داده‌های ساختارمند",
+        link: "/ai/ai-sdk-core/generating-structured-data"
+      },
+      {
         title: "قابلیت Tool Calling",
         link: "/ai/ai-sdk-core/tool-calling"
       },

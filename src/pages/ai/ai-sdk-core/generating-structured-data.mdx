@@ -1,0 +1,75 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تولید داده‌های ساختارمند با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه تولید داده‌های ساختارمند یا دارای ساختار با استفاده از سرویس هوش مصنوعی لیارا و AI SDK"  />
+</Head>
+
+
+# تولید داده‌های دارای ساختار با AI
+<hr className="mb-2" />
+
+در حالی که تولید متن می‌تواند مفید باشد، use case شما احتمالاً نیازمند تولید داده‌های ساختارمند، خواهد بود. برای مثال، ممکن است بخواهید اطلاعاتی را از متن استخراج کنید، داده‌ها را طبقه‌بندی نمایید یا داده‌های ترکیبی ایجاد کنید.
+<div className="h-2" />
+
+بسیاری از LLMها توانایی تولید داده‌های دارای ساختار را دارند که اغلب به‌عنوان "JSON modes" یا "tools" شناخته می‌شود. با این حال، شما باید به‌صورت دستی schemaها را ارائه دهید و سپس داده‌ی تولید شده را اعتبارسنجی کنید، زیرا LLMها می‌توانند داده‌های نادرست یا ناقص تولید کنند.
+<div className="h-2" />
+
+AI SDK فرآیند تولید آبجکت‌های دارای ساختار را برای LLMها استانداردسازی کرده است و توابع <Important>generateObject</Important> و <Important>streamObject</Important> را به این منظور، ارائه می‌دهد. شما می‌توانید از هر دو تابع با استراتژی‌های خروجی متفاوت مانند آرایه، object، یا no-schema استفاده کنید، و همچنین از حالت‌های تولید متفاوت مانند <Important>auto</Important>، <Important>tool</Important> یا <Important>json</Important> بهره ببرید. برای مشخص کردن ساختار داده‌ای که می‌خواهید، می‌توانید از Zod Schema یا Valibot یا JSON استفاده کنید و LLM داده‌هایی تولید خواهد کرد که با آن ساختار مطابقت دارند.
+{/* 
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>
