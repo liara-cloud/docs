@@ -888,11 +888,11 @@ export default {
           </div>
         )
       },
-      {
-        title: "Copilot",
-        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
-        link: "/ai/connect-to-service/chat-gpt-copilot"
-      },
+      // {
+      //   title: "Copilot",
+      //   icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
+      //   link: "/ai/connect-to-service/chat-gpt-copilot"
+      // },
       {
         title: "Kilo Code",
         icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/kilo-code/kilocode-logo.png" />,

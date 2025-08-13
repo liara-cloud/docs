@@ -43,33 +43,577 @@ import Head from "next/head";
 <div className="h-2" />
 
 AI SDK فرآیند تولید آبجکت‌های دارای ساختار را برای LLMها استانداردسازی کرده است و توابع <Important>generateObject</Important> و <Important>streamObject</Important> را به این منظور، ارائه می‌دهد. شما می‌توانید از هر دو تابع با استراتژی‌های خروجی متفاوت مانند آرایه، object، یا no-schema استفاده کنید، و همچنین از حالت‌های تولید متفاوت مانند <Important>auto</Important>، <Important>tool</Important> یا <Important>json</Important> بهره ببرید. برای مشخص کردن ساختار داده‌ای که می‌خواهید، می‌توانید از Zod Schema یا Valibot یا JSON استفاده کنید و LLM داده‌هایی تولید خواهد کرد که با آن ساختار مطابقت دارند.
-{/* 
-<Important>
-</Important>
-<hr className="mb-2" />
-<Section id='' title='' />
+
 <div className="h-2" />
-<ul>
-<li></li>
-</ul>
+<Alert variant="info">
+<p>
+شما می‌توانید آبجکت‌های Zod را مستقیماً درون توابع AI SDK قرار دهید و یا اینکه از تابع کمکی <Important>zodSchema</Important> استفاده کنید. 
+</p>
+</Alert>
+
+<Alert variant="warning">
+<p>
+AI SDK v4 فقط از Zod v3 پشتیبانی می‌کند. اگر که از Zod v4 استفاده کنید ممکن است خطاهای اعتبارسنجی 
+برای اسکیما، دریافت کنید. 
+</p>
+</Alert>
+
+<hr className="mb-2" />
+<Section id='generate-object' title='تولید آبجکت' />
+
+تابع <Important>generateObject</Important> داده‌های ساختارمند را بر اساس یک پرامپت تولید می‌کند. schema همچنین برای اعتبارسنجی داده‌های تولید شده استفاده می‌شود تا از type safety و درستی آن اطمینان حاصل شود.
+
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {``}
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { object } = await generateObject({
+  model: my_model('openai/gpt-4o-mini'),
+  schema: z.object({
+    recipe: z.object({
+      name: z.string(),
+      ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
+      steps: z.array(z.string()),
+    }),
+  }),
+  prompt: 'Generate a lasagna recipe.',
+});
+
+console.log(object.recipe.steps);`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='stream-object' title='استریم آبجکت' />
+
+با توجه به پیچیدگی return داده‌های دارای ساختار، زمان پاسخ مدل ممکن است برای use caseهای تعاملی شما، غیرقابل‌قبول باشد. 
+با استفاده از تابع <Important>streamObject</Important>، می‌توانید پاسخ مدل را در حین تولید شدنش، استریم و دریافت کنید. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { streamObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { partialObjectStream } = await streamObject({
+  model: my_model('openai/gpt-4o-mini'),
+  schema: z.object({
+    recipe: z.object({
+      name: z.string(),
+      ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
+      steps: z.array(z.string()),
+    }),
+  }),
+  prompt: 'Generate a lasagna recipe.',
+});
+
+// use partialObjectStream as an async iterable
+for await (const partialObject of partialObjectStream) {
+  console.log(partialObject);
+}`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<div className="h-2" />  
-<img src="https://media.liara.ir/" alt=""/>
-<div className="h-2" />  
+می‌توانید از تابع <Important>streamObject</Important> برای استریم UIهای تولیدشده در ترکیب با React Server Componentها یا هوک <Important>useObject</Important> استفاده کنید.
+
+<Section id='onerror-callback' title='onError callback' />
+
+تابع <Important>streamObject</Important> بلافاصله شروع به استریم می‌کند. در این حین، خطاها نیز بخشی از استریم
+می‌شوند و با throw نشدن، از کرش‌کردن سرورها و اتفاقات دیگر، جلوگیری می‌کنند. 
+برای لاگ‌کردن خطاها، شما باید از یک callback به نام <Important>onError</Important> استفاده کنید که وقتی یک ارور رخ می‌دهد، فراخوانی می‌شود.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { streamObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = await streamObject({
+  model: my_model('openai/gpt-4o-mini'),
+  schema: z.object({
+    recipe: z.object({
+      name: z.string(),
+    }),
+  }),
+  prompt: 'Generate a lasagna recipe.',
+
+  onError({ error }) {
+    console.error(error); // your error logging logic here
+  },
+});`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+<Section id='output-strategy' title='استراتژی‌های خروجی گرفتن' />
+
+هر دو تابع ذکر شده، به شما این امکان را می‌دهند که 
+استراتژی‌های خروجی گرفتن متفاوتی را مانند <Important>array</Important>، <Important>object</Important> یا <Important>no-schema</Important> پیاده‌سازی کنید. 
+
+<div className="h-6" />
+<h3>Object</h3>
+<div className="h-2" />
+
+استراتژی پیش‌فرض خروجی، <Important>object</Important> است. که داده‌های تولید شده را تحت عنوان یک آبجکت برمی‌گرداند. 
+اگر که قصد دارید از این حالت پیش‌فرض استفاده کنید؛ نیازی نیست که استراتژی خروجی را مشخص کنید.  
 
 
-<video
-  src="https://media.liara.ir/"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-/> */}
+<div className="h-6" />
+<h3>Array</h3>
+<div className="h-2" />
+
+اگر می‌خواهید که یک آرایه از objectها ایجاد کنید، می‌توانید استراتژی خروجی  را به 
+<Important>array</Important> تنظیم کنید. وقتی که از این استراتژی خروجی، استفاده می‌کنید؛ اسکیما 
+به شکل عنصر آرایه، تعریف می‌شود. با استفاده از <Important>streamObject</Important>، شما می‌توانید اعضای آرایه تولید شده را با استفاده از <Important>elementStream</Important>، استریم کنید. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { streamObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { elementStream } = streamObject({
+  model: my_model('openai/gpt-4o-mini'),
+  output: 'array',
+  schema: z.object({
+    name: z.string(),
+    class: z
+      .string()
+      .describe('Character class, e.g. warrior, mage, or thief.'),
+    description: z.string(),
+  }),
+  prompt: 'Generate 3 hero descriptions for a fantasy role playing game.',
+});
+
+for await (const hero of elementStream) {
+  console.log(hero);
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-4" />
+<h3>Enum</h3>
+<div className="h-2" />
+
+اگر که می‌خواهید یک enum مشخص تولید کنید (مثلاً در تسک‌های مربوط به طبقه‌بندی)، می‌توانید استراتژی خروجی را بر روی <Important>enum</Important> تنظیم کنید و یک لیست از مقادیر ممکن را در فیلدی به نام <Important>enum</Important> قرار دهید. 
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+خروجی Enum فقط در تابع <Important>generateObject</Important>، در دسترس است. 
+</p>
+</Alert>
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { object } = await generateObject({
+  model: my_model('openai/gpt-4o-mini'),
+  output: 'enum',
+  enum: ['action', 'comedy', 'drama', 'horror', 'sci-fi'],
+  prompt:
+    'Classify the genre of this movie plot: ' +
+    '"A group of astronauts travel through a wormhole in search of a ' +
+    'new habitable planet for humanity."',
+});
+
+console.log(object) // sci-fi`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-4" />
+<h3>No Schema</h3>
+<div className="h-2" />
+
+در برخی از موارد، ممکن است که نخواهید از اسکیما استفاده کنید؛ به‌عنوان مثال، وقتی که 
+داده‌های ورودی، درخواست کاربر هستند که ممکن است داینامیک و متفاوت از قبلی، باشد. 
+در این مواقع، شما می‌توانید از خروجی <Important>no-schema</Important> استفاده کنید و فیلد مربوط به اسکیما را از تابع، حذف کنید. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { object } = await generateObject({
+  model: my_model('openai/gpt-4o-mini'),
+  output: 'no-schema',
+  prompt: 'Generate a lasagna recipe.',
+});
+
+console.log(object) `}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+{/* <Section id='generation-mode' title='حالت تولید' />
+
+در حالی که برخی از مدل‌ها (مانند OpenAI) از تولید object پشتیبانی می‌کنند، اما در برخی از مدل‌ها، باید از متد‌های
+جایگزین، مانند فراخوانی toolها، برای انجام این کار استفاده کرد. 
+تابع <Important>generateObject</Important> به شما این امکان را می‌دهد متدی که قرار است با آن داده‌های
+دارای ساختار را برگرداند، مشخص کنید. 
+<div className="h-2" />
+
+شما می‌توانید با تنظیم فیلد <Important>mode</Important> و استفاده از یکی از مقادیر زیر، حالت تولید آبجکت 
+را برای مدل، مشخص کنید:
+<div className="h-2" />
+<ul>
+<li><Important>auto</Important>: خود مدل، بهترین حالت را انتخاب می‌کند، این حالت، پیش‌فرض است</li>
+<li><Important>tool</Important>: یک tool با اسکیمای JSON که به مدل دستور می‌دهد از آن استفاده کند</li>
+</ul>
+<div className="h-2" /> */}
+
+<Section id='schema-name-and-description' title='نام و توضیحات اسکیما' />
+
+شما می‌توانید به‌صورت اختیاری، برای اسکیمای خود، یک نام و یک توضیحات مشخص کنید. 
+این اطلاعات توسط برخی از مدل‌های برای دریافت اطلاعات و راهنمایی‌های بیشتر، 
+مورد استفاده قرار می‌گیرد. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { object } = await generateObject({
+  model: my_model("openai/gpt-4o-mini"),
+  schemaName: 'Recipe',
+  schemaDescription: 'A recipe for a dish.',
+  schema: z.object({
+    name: z.string(),
+    ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
+    steps: z.array(z.string()),
+  }),
+  prompt: 'Generate a lasagna recipe.',
+});
+
+console.log(object);`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+<Section id='error-handling' title='مدیریت خطاها' />
+
+وقتی که تابع <Important>generateObject</Important> نمی‌تواند یک آبجکت معتبر تولید کند، 
+یک <Important>AI_NoObjectGeneratedError</Important> را throw می‌کند. 
+این ارور وقتی رخ می‌دهد که مدل در تولید یک آبجکت قابل تجزیه که مطابق با اسکیما است، شکست می‌خورد.
+از جمله دلایل رخ دادن این خطا، عبارتند از: 
+
+<div className="h-2" />
+<ul>
+<li>مدل در تولید یک پاسخ، شکست خورده است</li>
+<li>مدل یک پاسخ تولید کرده است که قابل تجزیه نیست</li>
+<li>مدل یک پاسخ تولید کرده است که توسط اسکیما، قابل اعتبارسنجی نیست</li>
+</ul>
+<div className="h-2" />
+
+خطای فوق، اطلاعات زیر را در جهت لاگ‌کردن خطا، حفظ می‌کند: 
+
+<div className="h-2" />
+<ul>
+<li><Important>text</Important>: متنی که توسط مدل تولید شده است که می‌تواند بسته به حالت تولید object، متن خام یا متن فراخوانی tool باشد</li>
+<div className="h-1" />
+<li><Important>response</Important>: متادیتا در مورد پاسخ مدل، نظیر id پاسخ، timestamp و مدل</li>
+<div className="h-1" />
+<li><Important>usage</Important>: میزان مصرف توکن درخواست</li>
+<div className="h-1" />
+<li><Important>caues</Important>: دلیل خطا (مثلاً خطای تجزیه JSON). شما می‌توانید از این فیلد برای مدیریت خطا با جزئیات بیشتر، استفاده کنید</li>
+</ul>
+<div className="h-2" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { generateObject, NoObjectGeneratedError } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const model  = my_model("openai/gpt-4o-mini");
+
+const schema = z.object({
+    name: z.string(),
+    ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
+    steps: z.array(z.string()),
+  });
+
+const prompt = 'Generate a lasagna recipe.';
+
+try {
+  await generateObject({ model, schema, prompt });
+} catch (error) {
+  if (NoObjectGeneratedError.isInstance(error)) {
+    console.log('NoObjectGeneratedError');
+    console.log('Cause:', error.cause);
+    console.log('Text:', error.text);
+    console.log('Response:', error.response);
+    console.log('Usage:', error.usage);
+  }
+}`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='repairing-invalid-or-malformed-json' title='اصلاح JSON نامعتبر یا معیوب' />
+
+<Alert variant="warning">
+<p>
+تابع <Important>repairText</Important>، آزمایشی است و ممکن است در آینده، تغییر کند. 
+</p>
+</Alert>
+<div className="h-2" />
+
+بعضی وقت‌ها، ممکن است که مدل، JSON نامعتبر یا معیوب، تولید کند. 
+شما می‌توانید از تابع <Important>repairText</Important> در جهت تلاش برای اصلاح JSON، استفاده کنید. 
+<div className="h-2" />
+
+این تابع، ارور (از نوع <Important>JSONParseError</Important> یا <Important>TypeValidationError</Important>) و متنی که توسط مدل تولید شده است را، دریافت می‌کند. 
+شما می‌توانید در جهت اصلاح متن اقدام کرده و متن اصلاح‌شده را، return کنید. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { generateObject } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const model  = my_model("openai/gpt-4o-mini");
+
+const schema = z.object({
+    name: z.string(),
+    ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
+    steps: z.array(z.string()),
+  });
+
+const prompt = 'Generate a lasagna recipe.';
+
+const { object } = await generateObject({
+  model,
+  schema,
+  prompt,
+  experimental_repairText: async ({ text, error }) => {
+    // example: add a closing brace to the text
+    return text + '}';
+  },
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<hr className="mb-2" />
+<Section id='structured-outputs-with-generatetext-and-streamtext' title='خروجی‌های دارای ساختار با generateText و streamText' />
+
+شما می‌توانید داده‌های دارای ساختار را با <Important>generateText</Important> و <Important>streamText</Important> با تنظیم <Important>experimental_output</Important> تولید کنید. 
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+برخی از مدل‌ها مانند مدل‌های OpenAI همزمان از خروجی دارای ساختار و فراخوانی tool پشتیبانی می‌کنند. این قابلیت فقط 
+در توابع <Important>generateText</Important> و <Important>streamText</Important> در دسترس است. 
+</p>
+</Alert>
+<Alert variant="warning">
+<p>
+تولید خروجی دارای ساختار با استفاده از توابع <Important>generateText</Important> و <Important>streamText</Important> یک قابلیت آزمایشی است و ممکن است در آینده تغییر کند.
+</p>
+</Alert>
+
+<Section id='generatetext' title='generateText' />
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { generateText, Output } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { experimental_output } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  experimental_output: Output.object({
+    schema: z.object({
+      name: z.string(),
+      age: z.number().nullable().describe('Age of the person.'),
+      contact: z.object({
+        type: z.literal('email'),
+        value: z.string(),
+      }),
+      occupation: z.object({
+        type: z.literal('employed'),
+        company: z.string(),
+        position: z.string(),
+      }),
+    }),
+  }),
+  prompt: 'Generate an example person for testing.',
+});
+
+console.log(experimental_output)`}
+    </Highlight>
+</div>
+
+<Section id='streamtext' title='streamText' />
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv zod@^3
+
+import { streamText, Output } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { z } from 'zod';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { experimental_partialOutputStream  } = streamText({
+  model: my_model('openai/gpt-4o-mini'),
+  experimental_output: Output.object({
+    schema: z.object({
+      name: z.string(),
+      age: z.number().nullable().describe('Age of the person.'),
+      contact: z.object({
+        type: z.literal('email'),
+        value: z.string(),
+      }),
+      occupation: z.object({
+        type: z.literal('employed'),
+        company: z.string(),
+        position: z.string(),
+      }),
+    }),
+  }),
+  prompt: 'Generate an example person for testing.',
+});
+
+for await (const part of experimental_partialOutputStream) {
+  console.log(part);
+}`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='more-examples' title='مثال‌های بیشتر' />
+
+شما می‌توانید از توابع <Important>generateObject</Important> و <Important>streamObject</Important> در فریم‌ورک‌های مختلفی که مستندات آن‌ها در ادامه قرار گرفته است، استفاده کنید: 
+
+<Section id='generateobject-1' title='generateObject' />
+
+<ul>
+<li><a href="/ai/cookbook/nodejs/generate-object" className="text-[#2196f3]">تولید آبجکت در NodeJS</a></li>
+<li><a href="/ai/cookbook/nextjs/generate-object" className="text-[#2196f3]">تولید آبجکت در NextJS App Router</a></li>
+<li><a href="/ai/cookbook/rsc/generate-object" className="text-[#2196f3]">تولید آبجکت در RSC</a></li>
+</ul>
+<div className="h-2" />
+
+<Section id='streamobject-1' title='streamObject' />
+
+<ul>
+<li><a href="/ai/cookbook/nodejs/stream-object" className="text-[#2196f3]">استریم آبجکت در NodeJS</a></li>
+<li><a href="/ai/cookbook/nextjs/stream-object" className="text-[#2196f3]">استریم آبجکت در NextJS App Router</a></li>
+<li><a href="/ai/cookbook/rsc/stream-object" className="text-[#2196f3]">استریم آبجکت در RSC</a></li>
+</ul>
+<div className="h-2" />
 
 </Layout>
