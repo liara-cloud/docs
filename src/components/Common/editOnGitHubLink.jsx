@@ -4,7 +4,7 @@ import { GoPencil } from "react-icons/go";
 
 const EditOnGitHubLink = () => {
   const router = useRouter();
-  const path = router.asPath.replace(/\/$/, "");
+  const path = router.asPath.replace(/\/$/, "").split("/#")[0];
   const githubUrl = `https://github.com/liara-cloud/docs/edit/master/src/pages${path}.mdx`;
 
   return (
