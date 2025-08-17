@@ -21,6 +21,7 @@ import {
   GoEye,
   GoGitCompare,
   GoXCircle,
+  GoGear,
   GoMail,
   GoGlobe,
   GoArrowLeft,
@@ -46,7 +47,7 @@ import Head from "next/head";
 از این رو، در ادامه، تمامی جزئیات مربوط به سرویس هوش مصنوعی لیارا، برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
 <div className="h-6" />
 
-<div className="grid md:grid-cols-4 gap-4">
+<div className="grid md:grid-cols-3 gap-4">
 {[
   {
     title: "پلن‌های AI",
@@ -66,6 +67,12 @@ import Head from "next/head";
     icon: <GoGitCompare />,
     desc: "تغییر پلن سرویس هوش مصنوعی برای افزایش یا کاهش LLMها، توکن‌ها و ...",
     link: "./change-plan",
+  },
+  {
+    title: "بهینه‌سازی عملکرد",
+    icon: <GoGear />,
+    desc: "بهینه‌سازی عملکرد مدل‌های هوش مصنوعی بر اساس ترجیحات زمانی، کیفی یا مالی شما",
+    link: "./performance-optimization",
   },
   {
     title: "حذف یک سرویس AI",

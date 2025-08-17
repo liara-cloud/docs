@@ -943,6 +943,11 @@ export default {
         link: "/ai/details/change-plan"
       },
       {
+        title: "بهینه‌سازی عملکرد",
+        icon: <GoGear />,
+        link: "/ai/details/performance-optimization"
+      },
+      {
         title: "حذف یک سرویس AI",
         icon: <GoXCircle />,
         link: "/ai/details/delete"

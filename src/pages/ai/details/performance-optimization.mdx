@@ -1,0 +1,112 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات بهینه‌سازی عملکرد - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه بهینه‌سازی عملکرد مدل‌های سرویس هوش مصنوعی لیارا در کنسول لیارا"  />
+</Head>
+
+
+# بهینه سازی عملکرد مدل ها 
+<hr className="mb-2" />
+
+بخش **بهینه‌سازی عملکرد** این امکان را به شما می‌دهد که ترجیحات کلی خود را در استفاده از مدل‌های هوش مصنوعی مشخص کنید.
+از آنجا که مدل‌ها توسط چندین ارائه‌دهنده (Provider) مختلف عرضه می‌شوند، تفاوت‌هایی میان آنها از نظر قیمت، سرعت پاسخگویی، و ظرفیت پردازشی وجود دارد. 
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+در نظر داشته باشید که شما نمی‌توانید مستقیماً ارائه‌دهنده را انتخاب کنید، اما می‌توانید با تنظیم این بخش، اولویت کلی خود را مشخص نمایید.
+</p>
+</Alert>
+<div className="h-2" />
+
+برای انتخاب نوع عملکرد، تنها کافیست تا وارد پروژه هوش مصنوعی خود شوید و در قسمت **تنظیمات**، از بخش **بهینه‌سازی عملکرد**، گزینه مدنظر خود را انتخاب کنید.
+<div className="h-2" />  
+<img src="https://media.liara.ir/ai/details/performance-optimization.png" alt="performance optimization option in Liara Console"/>
+<div className="h-2" />  
+سه گزینه‌ی اصلی برای بهینه‌سازی عملکرد وجود دارد که در ادامه به توضیح هر گزینه، پرداخته شده است. 
+
+
+<Section id='lower-Cost-option' title='قیمت پایین‌تر' />
+
+در این حالت سیستم تلاش می‌کند از ارائه‌دهنده‌هایی استفاده کند که هزینه کمتری دارند.
+اگر ارائه‌دهنده‌ی ارزان‌تر در دسترس نباشد، سیستم به‌طور خودکار به ارائه‌دهنده‌های دیگر تغییر می‌کند.
+این گزینه
+مناسب برای کاربرانی است که هزینه پایین‌تر را نسبت به سرعت یا ظرفیت در اولویت قرار می‌دهند.
+
+<Section id='higher-concurrency' title='تعداد درخواست همزمان بالاتر' />
+
+وقتی شما از یک مدل هوش مصنوعی استفاده می‌کنید، هر بار که پیامی می‌فرستید یا پردازشی انجام می‌دهید، یک درخواست (Request) به سیستم ارسال می‌شود.
+اگر فقط یک کاربر یا سرویس در لحظه از مدل استفاده کند، معمولاً همه‌چیز سریع و روان اجرا می‌شود.
+اما در بعضی پروژه‌ها (مثلاً یک ربات تلگرام یا اپلیکیشن با تعداد زیادی کاربر همزمان)، ممکن است ده‌ها یا حتی صدها درخواست در یک لحظه ارسال شوند.
+<div className="h-2" />
+
+
+برخی ارائه‌دهندگان، ظرفیتِ پردازش تعداد بیشتری درخواست همزمان دارند.
+اگر پروژه‌ی شما نیاز به ارسال تعداد زیادی درخواست همزمان داشته باشد، این گزینه بهترین انتخاب است.
+
+<Section id='faster-response' title='سرعت پاسخگویی بالاتر' />
+
+اگر شما این گزینه را فعال کنید؛
+در این حالت، سیستم ارائه‌دهنده‌هایی را انتخاب می‌کند که سریع‌تر پاسخ می‌دهند، حتی اگر قیمت آن‌ها بالاتر باشد.
+این گزینه مناسب برای پروژه‌هایی است که زمان پاسخ در آن، اهمیت زیادی دارد (مثلاً چت‌بات‌های زنده یا سرویس‌های Real-Time).
+
+<hr className="mb-2" />
+<Section id='important-notes' title='نکات قابل توجه' />
+
+<ul>
+<li>به‌صورت مستقیم، امکان مشاهده ارائه‌دهنده نهایی برای شما وجود ندارد</li>
+<li>قیمت‌هایی که در بخش **مدل‌ها** نمایش داده می‌شوند بر اساس ارزان‌ترین ارائه‌دهنده درج شده‌اند</li>
+<li>در صورتی که شما گزینه‌های **سرعت بالاتر** یا **تعداد درخواست همزمان بیشتر** را انتخاب کنید، ممکن است هزینه‌ی نهایی کمی بیشتر از جدول باشد</li>
+<li>هزینه‌ی دقیق محاسبه‌شده در بخش لاگ‌ها قابل مشاهده است</li>
+</ul>
+
+<hr className="mb-2" />
+<Section id='example' title='مثال' />
+
+فرض کنید که از مدل <Important>gpt-4o-mini</Important> استفاده می‌کنید و گزینه‌ی **قیمت پایین‌تر** را انتخاب کرده‌اید. 
+در این حالت: 
+
+<div className="h-2" />
+<ul>
+<li>سیستم به احتمال زیاد از ارائه‌دهنده‌ای مثل Azure استفاده می‌کند چون هزینه کمتری دارد</li>
+<li>اگر Azure در دسترس نباشد، به‌صورت خودکار از OpenAI یا سایر ارائه‌دهندگان استفاده می‌شود</li>
+</ul>
+<div className="h-2" />
+
+اگر گزینه‌ی سرعت پاسخگویی بالاتر را انتخاب کنید:
+
+<div className="h-2" />
+<ul>
+<li>ممکن است سیستم همان مدل را از ارائه‌دهنده‌ای انتخاب کند که گران‌تر است اما پاسخ سریع‌تری ارائه می‌دهد</li>
+</ul>
+<div className="h-2" />
+
+</Layout>
