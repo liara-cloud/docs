@@ -98,6 +98,93 @@ import Head from "next/head";
 ]} 
 />
 
+
+<Section id="set-envs" title="تنظیم متغیرها در برنامه NuxtJS"/>
+
+یکی از بهترین روش‌ها برای تنظیم پویای متغیرهای محیطی بدون نیاز به اجرای مجدد دستور <Important>npm run build</Important>، استفاده از روش زیر است: 
+<div className="h-2" />
+
+۱. فرض کنید که قصد دارید از یک متغیر به نام <Important>API_BASE</Important> به‌صورت public (در دسترس در فرانت‌اند) و از یک متغیر به نام <Important>API_SECRET</Important> به صورت private (در دسترس فقط برای بک‌اند)، استفاده کنید. بنابراین در ابتدا، باید 
+در فایل <Important>nuxt.config</Important> خود، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`export default defineNuxtConfig({
+          runtimeConfig: {
+            apiSecret: '',
+            public: {
+              apiBase: '', 
+            }
+          },
+        })`}
+    </Highlight>
+</div>
+<div className="h-2" />
+به شکل فوق، متغیرهای محیطی در برنامه شناخته می‌شوند. 
+<div className="h-2" />
+
+
+۲. در ادامه، باید متغیرهای <Important>NUXT_PUBLIC_API_BASE</Important> و <Important>NUXT_API_SECRET</Important> را به همراه مقادیرشان، طبق <a href="/paas/details/envs/#add-envs" className="text-[#2196f3]">مستندات تنظیم متغیر محیطی</a>، به برنامه خود در لیارا، اضافه کنید. 
+<div className="h-2" />
+
+در NuxtJS، باید قوانین زیر را برای متغیرهای public رعایت کنید:
+
+<div className="h-2" />
+<ul>
+<li>متغیرها باید با عبارت <Important>NUXT_PUBLIC</Important> شروع شوند</li>
+<li>تمامی حروف متغیرها، UPPERCASE (حروف انگلیسی بزرگ) باشند</li>
+<li>در صورتی که متغیر چندکلمه‌ای است، به جای ساختار camelCase، قبل از شروع هر کلمه جدید، علامت <Important>_</Important> گذاشته شود</li>
+</ul>
+<div className="h-2" />
+مثال: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`apiBase --> NUXT_PUBLIC_API_BASE
+myOwnVar --> NUXT_PUBLIC_MY_OWN_VAR
+some --> NUXT_PUBLIC_SOME`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+همچنین، باید قوانین زیر را برای متغیرهای private رعایت کنید:
+
+
+<div className="h-2" />
+<ul>
+<li>متغیرها باید با عبارت <Important>NUXT</Important> شروع شوند</li>
+<li>تمامی حروف متغیرها، UPPERCASE (حروف انگلیسی بزرگ) باشند</li>
+<li>در صورتی که متغیر چندکلمه‌ای است، به جای ساختار camelCase، قبل از شروع هر کلمه جدید، علامت <Important>_</Important> گذاشته شود</li>
+</ul>
+<div className="h-2" />
+مثال: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`apiBase --> NUXT_API_BASE
+myOwnVar --> NUXT_MY_OWN_VAR
+some --> NUXT_SOME`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+بعد از انجام کارهای فوق، می‌توانید از متغیر محیطی در برنامه خود استفاده کنید
+و در صورت نیاز، تنها کافیست تا متغیر محیطی را تغییر دهید و دیگر نیازی به build مجدد برنامه، نخواهد بود. 
+
+<br />
+<video
+    src="https://media.liara.ir/nuxtjs/set-envs.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>
+
+
+
+<br />
 <Alert variant="success">
 <p>
 همچنین بخوانید: <a href="/paas/static/related-apps/nuxtjs" className="text-[#2196f3] ">استفاده از قابلیت Static Site Generation در برنامه‌های NuxtJS</a>
