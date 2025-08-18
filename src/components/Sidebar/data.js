@@ -287,6 +287,11 @@ export default {
         link: "/ai/perplexity"
       },
       {
+        title: "Qwen",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/qwen-svg-white.png" />,
+        link: "/ai/qwen"
+      },
+      {
         hr: true
       },
       {
