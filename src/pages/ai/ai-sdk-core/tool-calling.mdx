@@ -1006,36 +1006,40 @@ const result = await generateText({
 console.log(result)`}
     </Highlight>
 </div>
-<div className="h-2" />
-{/* 
-<Important>
-</Important>
 <hr className="mb-2" />
-<Section id='' title='' />
-<div className="h-2" />
-<ul>
-<li></li>
-</ul>
+
+<Section id='extracting-tools' title='استخراج Toolها' />
+
+هنگامی که تعداد Toolهای شما زیاد می‌شود، ممکن است بخواهید آن‌ها را در فایل‌های جداگانه قرار دهید. تابع tool helper در این زمینه بسیار مهم است، زیرا این اطمینان را به شما می‌دهد که type inference به‌درستی انجام شده است.
+
+<div className="h-4" />
+به عنوان مثال، فرض کنید که قصد دارید 
+یک Tool برای اعلام وضعیت آب و هوا در برنامه خود تعریف کنید. 
+تنها کافیست تا یک دایرکتوری برای toolهای خود به نام <Important>tools</Important> ایجاد کنید، درون آن یک فایل به نام 
+<Important>weather-tool.ts</Important> بسازید و کدی مشابه قطعه کد زیر را، درون آن 
+قرار دهید: 
+
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {``}
+        {`import { tool } from 'ai';
+import { z } from 'zod';
+
+// the \`tool\` helper function ensures correct type inference:
+export const weatherTool = tool({
+  description: 'Get the weather in a location',
+  parameters: z.object({
+    location: z.string().describe('The location to get the weather for'),
+  }),
+  execute: async ({ location }) => ({
+    location,
+    temperature: 72 + Math.floor(Math.random() * 21) - 10,
+  }),
+});
+`}
     </Highlight>
 </div>
 <div className="h-2" />
-
-<div className="h-2" />  
-<img src="https://media.liara.ir/" alt=""/>
-<div className="h-2" />  
-
-
-<video
-  src="https://media.liara.ir/"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-/> */}
-
 
 
 </Layout>
