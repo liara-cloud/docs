@@ -834,6 +834,10 @@ export default {
         title: "قابلیت Tool Calling",
         link: "/ai/ai-sdk-core/tool-calling"
       },
+      {
+        title: "مهندسی پرامپت",
+        link: "/ai/ai-sdk-core/prompt-engineering"
+      },
     ],
 
     
