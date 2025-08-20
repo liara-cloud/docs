@@ -838,6 +838,10 @@ export default {
         title: "مهندسی پرامپت",
         link: "/ai/ai-sdk-core/prompt-engineering"
       },
+      {
+        title: "تنظیمات",
+        link: "/ai/ai-sdk-core/settings"
+      },
     ],
 
     

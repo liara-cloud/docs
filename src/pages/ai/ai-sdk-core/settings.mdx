@@ -1,0 +1,216 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تنظیمات AI SDK - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با تنظیمات AI SDK برای کار با سرویس هوش مصنوعی لیارا"  />
+</Head>
+
+
+# تنظیمات مربوط به AI SDK 
+<hr className="mb-2" />
+
+LLMها معمولاً تنظیماتی را برای بهبود یا تقویت خروجی خود فراهم می‌کنند.
+تمامی توابع AI SDK علاوه بر مدل، <a href="/ai/foundations/prompts/" className="text-[#2196f3]">پرامپت</a> و تنظیمات اختصاصی OpenAI، از تنظیمات عمومی زیر نیز پشتیبانی می‌کنند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { text } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  maxTokens: 512,
+  temperature: 0.3,
+  maxRetries: 5,
+  prompt: 'Invent a new holiday and describe its traditions.',
+});
+
+console.log(text)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+برخی از مدل‌ها ممکن است از همه تنظیمات عمومی پشتیبانی نکنند. 
+اگر شما برای یک مدل، یک حالت خاص را تعریف کنید و 
+از آن حالت، پشتیبانی نکند. عدم تاثیر آن حالت 
+را می‌توانید در خروجی مدل مشاهده کنید (برای بررسی بیشتر هم، می‌توانید از یک مدل متفاوت استفاده کنید و خروجی‌ها را مقایسه کنید).
+</p>
+</Alert>
+
+<Section id='maxtokens' title='maxTokens' />
+
+بیشترین مقدار توکن‌هایی که قرار است تولید شوند. 
+
+<Section id='temperature' title='temperature' />
+این پارامتر برای تنظیم خلاقیت مدل است.
+مقدار این تنظیم به ارائه‌دهنده منتقل می‌شود و بازه‌ی آن به ارائه‌دهنده و مدل بستگی دارد. در بیشتر ارائه‌دهندگان، مقدار <Important>0</Important> به معنای نتایج تقریباً قطعی (deterministic) است و مقادیر بالاتر به معنای افزایش میزان تصادفی بودن (randomness) نتایج می‌باشد.
+
+<div className="h-4" />
+توصیه می‌شود که فقط یا <Important>temperature</Important> را تنظیم کنید یا <Important>topP</Important>، اما نه هر دو را به‌طور همزمان.
+
+<Section id='topp' title='topP' />
+
+پارامتر <Important>topP</Important> (که nucleus sampling نیز نامیده می‌شود) یکی از روش‌های کنترل نمونه‌گیری تصادفی است. 
+وقتی مدل می‌خواهد کلمه بعدی را تولید کند، به هر کلمه ممکن، یک احتمال اختصاص می‌دهد. برای انتخاب، دو استراتژی وجود دارد:
+
+<div className="h-2" />
+<ul>
+<li><Important>topK</Important>: مدل، فقط بین محتمل‌ترین <Important>k</Important> تا گزینه انتخاب می‌کند</li>
+<div className="h-1" />
+<li><Important>topP</Important>: به جای یک عدد ثابت (مثل <Important>k=50</Important>)، یک آستانهٔ تجمعی (<Important>p</Important>) در نظر گرفته می‌شود</li>
+</ul>
+<div className="h-2" />
+
+مقدار تنظیم <Important>topP</Important> به ارائه‌دهنده منتقل می‌شود و بازه‌ی آن به ارائه‌دهنده و مدل بستگی دارد. در بیشتر ارائه‌دهندگان، nucleus sampling عددی بین <Important>0</Important> تا <Important>1</Important> است. به‌عنوان مثال، مقدار <Important>0.1</Important> به این معناست که تنها توکن‌هایی با ۱۰٪ بالاترین جرم احتمالی (probability mass) در نظر گرفته می‌شوند.
+
+<div className="h-2" />
+توصیه می‌شود که فقط یا <Important>temperature</Important> را تنظیم کنید یا <Important>topP</Important>، اما نه هر دو را به‌طور همزمان.
+
+<Section id='topk' title='topK' />
+
+نمونه‌گیری تنها از میان <Important>k</Important> گزینه‌ی برتر برای هر توکن بعدی.
+<div className="h-2" />
+
+
+این روش برای حذف پاسخ‌های با احتمال پایین و موجود در long tail استفاده می‌شود. استفاده از این تنظیم تنها برای موارد پیشرفته توصیه می‌شود، زیرا معمولاً کافی است که صرفاً از <Important>temperature</Important> استفاده کنید.
+
+<Section id='presencepenalty' title='presencePenalty' />
+
+Presence penalty بر احتمال تکرار اطلاعاتی که از قبل در پرامپت وجود دارد تأثیر می‌گذارد.
+<div className="h-2" />
+
+مقدار این تنظیم به ارائه‌دهنده منتقل می‌شود و بازه‌ی آن به ارائه‌دهنده و مدل بستگی دارد. در بیشتر ارائه‌دهندگان، مقدار <Important>0</Important> به معنای no penalty است.
+
+<Section id='frequencypenalty' title='frequencyPenalty'/>
+
+Frequency penalty بر احتمال استفاده‌ی مکرر از کلمات یا عبارات یکسان، تأثیر می‌گذارد.
+<div className="h-2" />
+
+مقدار این تنظیم به ارائه‌دهنده منتقل می‌شود و بازه‌ی آن به ارائه‌دهنده و مدل بستگی دارد. در بیشتر ارائه‌دهندگان، مقدار <Important>0</Important> به معنای no penalty است.
+
+<Section id='stopsequences' title='stopSequences' />
+
+دنباله‌های توقف (stop sequences) برای متوقف کردن تولید متن استفاده می‌شوند.
+<div className="h-2" />
+
+اگر این مقدار تنظیم شود، مدل هنگام تولید یکی از دنباله‌های توقف، تولید متن را متوقف خواهد کرد. برخی از ارائه‌دهندگان ممکن است محدودیتی در تعداد دنباله‌های توقف داشته باشند.
+
+<Section id='seed' title='seed' />
+
+عددی صحیح (integer) که به‌عنوان seed برای نمونه‌گیری تصادفی استفاده می‌شود.
+<div className="h-2" />
+
+
+اگر این مقدار تنظیم شده و توسط مدل پشتیبانی شود، فراخوانی‌ها نتایج قطعی (deterministic) تولید خواهند کرد.
+
+<Section id='maxretries' title='maxRetries' />
+
+حداکثر تعداد تلاش‌های مجدد (retries).
+برای غیرفعال کردن تلاش مجدد، مقدار آن را روی <Important>0</Important> تنظیم کنید. مقدار پیش‌فرض آن، <Important>2</Important> است.
+
+<Section id='abortsignal' title='abortSignal' />
+
+یک سیگنال اختیاری برای توقف (abort signal) که می‌تواند جهت لغو فراخوانی استفاده شود.
+
+
+برای مثال، این سیگنال می‌تواند از رابط کاربری به فراخوانی منتقل شود تا آن را لغو کند، یا برای تعریف یک مهلت زمانی (timeout) به کار رود.
+
+<Section id='example-timeout' title='مثال: Timeout' />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { text } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Invent a new holiday and describe its traditions.',
+  abortSignal: AbortSignal.timeout(60000), // 60 seconds 
+});
+
+console.log(text)`}
+    </Highlight>
+</div>
+
+<Section id='headers' title='headers' />
+
+هدرهای اضافی HTTP که همراه با درخواست ارسال می‌شوند. 
+<div className="h-2" />
+
+می‌توانید از هدرهای درخواست (request headers) برای ارائه‌ی اطلاعات اضافی به ارائه‌دهنده استفاده کنید، بسته به این‌که ارائه‌دهنده چه قابلیت‌هایی را پشتیبانی کند. برای مثال، برخی از ارائه‌دهندگان حوزه‌ی observability از هدرهایی مانند Prompt-Id پشتیبانی می‌کنند.
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { text } = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Invent a new holiday and describe its traditions.',
+  headers: {
+    'Prompt-Id': 'my-prompt-id',
+  },
+});
+
+console.log(text)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<Alert variant="info">
+<p>
+این هدرها با هر درخواستی که توسط ارائه‌دهنده ایجاد می‌شود، ارسال می‌شوند. 
+</p>
+</Alert>
+
+
+</Layout>
