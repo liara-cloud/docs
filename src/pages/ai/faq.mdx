@@ -1,0 +1,117 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import QuestionBox from "@/components/Common/QuestionBox";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات پرسش‌های متداول سرویس هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به سوالات پر تکرار و متداول کاربران در مورد سرویس و ای پی آی هوش مصنوعی لیارا و پاسخ آن‌ها"  />
+</Head>
+
+
+# سوالات متداول سرویس هوش مصنوعی لیارا
+<hr className="mb-2" />
+
+<QuestionBox
+  id="does-liara-provide-built-in-memory-in-its-models"
+  question="آیا قابلیت حافظه (Memory) در مدل‌های هوش مصنوعی لیارا به صورت پیش‌فرض ارائه می‌شود؟"
+  answer={
+    <>
+      <p>
+        خیر. هیچ یک از مدل‌های هوش مصنوعی لیارا به‌طور پیش‌فرض قابلیت حافظه ندارند.
+        اگر مایل باشید که مدل در هر درخواست، اطلاعات ورودی و پاسخ‌های قبلی را نیز در نظر بگیرد،
+        باید این قابلیت را پیاده‌سازی کنید.
+      </p>
+      <div className="h-2" />
+      <ul className="list-disc pr-5">
+        <li>Langchain (Memory feature)</li>
+        <li>n8n</li>
+        <li>OpenWebUI</li>
+      </ul>
+      <div className="h-2" />
+      <p>
+        استفاده کنید. روش کار بدین شکل است که در هر درخواستی که به مدل ارسال می‌کنید،
+        تاریخچه‌ی چت (chat history) را نیز ضمیمه کنید تا مدل از محتوای قبلی آگاه باشد.
+      </p>
+    </>
+  }
+/>
+
+
+<QuestionBox
+  id="are-input-and-output-requests-stored-in-liara-ai-service"
+  question="آیا اطلاعات درخواست‌های ورودی و خروجی مدل‌ها در سرویس هوش مصنوعی لیارا ذخیره می‌شوند؟"
+  answer={
+    <>
+      <p>
+        خیر. با توجه به سیاست‌های حفظ امنیت و حریم خصوصی کاربران، هیچ‌گونه اطلاعاتی از درخواست‌های ورودی و خروجی ذخیره نمی‌شود.
+      </p>
+    </>
+  }
+/>
+
+<QuestionBox
+  id="does-liara-ai-have-access-to-my-data"
+  question="آیا لیارا به محتوای داده‌های من دسترسی خواهد داشت؟"
+  answer={
+    <>
+      <p>
+        خیر. داده‌های شما فقط در لحظه پردازش می‌شوند و پس از پاسخ‌دهی، در هیچ دیتابیس یا لاگی ذخیره نخواهند شد.
+      </p>
+    </>
+  }
+/>
+
+<QuestionBox
+  id="how-can-i-add-memory-to-my-chatbot-or-application"
+  question="چگونه می‌توانم قابلیت حافظه را به ربات یا اپلیکیشن خودم اضافه کنم؟"
+  answer={
+    <>
+      <p>
+        با ترکیب سرویس هوش مصنوعی لیارا و ابزارهای مدیریت مکالمه مانند Langchain یا n8n می‌توانید قابلیت حافظه را اضافه کنید. کافی است تاریخچه‌ی گفتگو را در سمت اپلیکیشن مدیریت کنید و آن را همراه هر درخواست جدید به مدل ارسال نمایید.
+      </p>
+    </>
+  }
+/>
+
+<QuestionBox
+  id="does-implementing-memory-affect-usage-costs"
+  question="آیا پیاده‌سازی قابلیت حافظه تاثیری روی هزینه مصرف دارد؟"
+  answer={
+    <>
+      <p>
+        بله. چون در هر درخواست باید تاریخچه‌ی گفتگو هم ارسال شود، حجم داده‌های ورودی بیشتر خواهد شد. این موضوع می‌تواند باعث افزایش میزان توکن‌های مصرفی و در نتیجه افزایش هزینه شود.
+      </p>
+      <p>
+        البته می‌توانید برای بهینه‌سازی مصرف توکن‌ها، از سیستم‌های کشینگ یا خلاصه‌سازی (summarization) استفاده کنید تا فقط اطلاعات مهم و ضروری در تاریخچه باقی بماند.
+      </p>
+    </>
+  }
+/>
+
+</Layout>

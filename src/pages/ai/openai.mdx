@@ -51,6 +51,9 @@ import Head from "next/head";
     {text: <Important>openai/gpt-4o-mini</Important>,},
     {text: <Important>openai/o4-mini</Important>,},
     {text: <Important>openai/o4-mini-high</Important>,},
+    {text: <Important>openai/text-embedding-ada-002</Important>,},
+    {text: <Important>openai/text-embedding-3-small</Important>,},
+    {text: <Important>openai/text-embedding-3-large</Important>,},
   ].map((item, index) => (
     <li
       key={index}
@@ -59,13 +62,20 @@ import Head from "next/head";
       }}
     >
         مدل {item.text}
-    </li>
-  ))}
+    </li>  ))}
 </ul>
 
 <br />
 
+
 پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/references/api/about/" className="text-[#2196f3]" >کلید API</a>، می‌توانید مانند دستورات و قطعه‌های کد زیر، از مدل‌های OpenAI استفاده کنید.
+
+<div className="h-4" />
+<Alert variant="info">
+  <p>
+    همچنین بخوانید: <Link href="/ai/ai-sdk-core/embeddings" className="text-[#2196f3] " >مستندات کار با Embedding Modelها</Link>
+  </p>
+</Alert>
 
 <Section id="connect" title="اتصال به مدل" />
 

@@ -3,6 +3,7 @@ import {
   GoFileDirectory,
   GoHome,
   GoPeople,
+  GoQuestion,
   GoStack,
   GoHubot,
   GoMilestone,
@@ -239,6 +240,11 @@ export default {
         title: "اتصال تیم‌ها به AI",
         icon: <GoPeople />,
         link: "/ai/teams"
+      },
+      {
+        title: "پرسش‌های متداول",
+        icon: <GoQuestion />,
+        link: "/ai/faq"
       },
       {
         hr: true
@@ -841,6 +847,10 @@ export default {
       {
         title: "تنظیمات",
         link: "/ai/ai-sdk-core/settings"
+      },
+      {
+        title: "قابلیت Embeddings",
+        link: "/ai/ai-sdk-core/embeddings"
       },
     ],
 

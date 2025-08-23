@@ -45,7 +45,8 @@ import Head from "next/head";
 <Highlight className='bash'>
 {`liara deploy [-h] [--debug] [--api-token <value>]  [--account <value>] [--path
     <value>] [--platform <value>] [-a <value>] [-p <value>] [-i <value>] [--detach] [--no-app-logs] [--args <value>]
-    [--build-arg <value>...] [-m <value>] [-d <value>...] [--no-cache] [-f <value>] [-b iran|germany] [--team-id <value>]`}
+    [--build-arg <value>...] [-m <value>] [-d <value>...] [--no-cache] [-f <value>] [-b iran|germany] [--team-id <value>]
+    [--liara-json <value>]`}
 </Highlight>
 </div>
 
@@ -162,6 +163,11 @@ import Head from "next/head";
     <Important>no-cache--</Important>,
     "عدم استفاده از کش ورژن قبلی در هنگام استقرار برنامه",
     <Important>liara deploy --no-cache</Important>,
+  ],
+  [
+    <Important>liara-json--</Important>,
+    <div dir="rtl"><p>تعیین فایل JSON جایگزین فایل liara.json</p></div>,
+    <Important>liara deploy --liara-json=myapp.json</Important>,
   ],
 
 ]} />

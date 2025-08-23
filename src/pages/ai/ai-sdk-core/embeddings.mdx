@@ -1,0 +1,245 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات قابلیت Embeddings - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به معرفی قابلیت Embeddings یا بردارسازی با استفاده از مدل‌های Embedding سرویس هوش مصنوعی لیارا"  />
+</Head>
+
+
+
+# قابلیت Embeddings (بردارسازی)
+<hr className="mb-2" />
+
+Embedding روشی برای نمایش کلمات، عبارات یا تصاویر به‌صورت بردارها (vectors) در یک فضای با ابعاد بالا (high-dimensional) است. در این فضا، کلمات مشابه به یکدیگر نزدیک‌اند و فاصله بین کلمات می‌تواند برای اندازه‌گیری میزان شباهت آن‌ها به کار رود.
+<hr className="mb-2" />
+
+<Section id='embedding-a-single-value' title='بردارسازی یک مقدار واحد' />
+
+AI SDK تابع <Important>embed</Important> را برای ساخت بردار مقادیر منفرد ارائه می‌دهد که برای کارهایی مانند یافتن کلمات یا عبارات مشابه و یا خوشه‌بندی متن مفید است.
+می‌توانید از این تابع به شکل زیر به همراه مدل‌های Embedding استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embed } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+// 'embedding' is a single embedding object (number[])
+const { embedding } = await embed({
+  model: my_model.embedding('openai/text-embedding-3-small'),
+  value: 'sunny day at the beach',
+});
+
+console.log(embedding);`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='embedding-many-values' title='بردارسازی چندین مقدار' />
+
+هنگام بارگذاری داده‌ها، مثلاً هنگام آماده‌سازی یک data store برای retrieval-augmented generation (RAG)، اغلب مفید است که از چندین مقدار به‌صورت همزمان، بردار ساخته شود (batch embedding).
+AI SDK برای این منظور تابع <Important>embedMany</Important> را ارائه می‌دهد که مشابه تابع <Important>embed</Important> می‌توانید از آن همراه با مدل‌های embeddings استفاده کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embedMany } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+// 'embeddings' is an array of embedding objects (number[][]).
+// It is sorted in the same order as the input values.
+const { embeddings } = await embedMany({
+  model: my_model.embedding('openai/text-embedding-3-small'),
+  values: [
+    'sunny day at the beach',
+    'rainy afternoon in the city',
+    'snowy night in the mountains',
+  ],
+});
+
+console.log(embeddings);`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='embedding-similarity' title='شباهت بردارها' />
+
+پس از ساخت بردار از مقادیر، می‌توانید با استفاده از تابع <Important>cosineSimilarity</Important> میزان شباهت بین آن‌ها را محاسبه کنید. این روش برای یافتن کلمات یا عبارات مشابه در یک مجموعه داده مفید است. همچنین می‌توانید آیتم‌های مرتبط را بر اساس میزان شباهت آن‌ها رتبه‌بندی و فیلتر کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { cosineSimilarity, embedMany } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { embeddings } = await embedMany({
+  model: my_model.embedding('openai/text-embedding-3-small'),
+  values: ['sunny day at the beach', 'rainy afternoon in the city'],
+});
+
+console.log(
+  \`cosine similarity: \${cosineSimilarity(embeddings[0], embeddings[1])}\`,
+);`}
+    </Highlight>
+</div>
+
+
+<hr className="mb-2" />
+<Section id='token-usage' title='میزان مصرف توکن‌ها' />
+
+بسیاری از ارائه‌دهندگان هزینه را بر اساس تعداد توکن‌های استفاده‌شده برای تولید embeddingها محاسبه می‌کنند.
+توابع <Important>embed</Important> و <Important>embedMany</Important> اطلاعات مربوط به مصرف توکن‌ها را در <Important>usage</Important> از <Important>result object</Important> ارائه می‌دهند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embed } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { embedding, usage } = await embed({
+  model: my_model.embedding('openai/text-embedding-3-small'),
+  value: 'sunny day at the beach',
+});
+
+console.log(usage);`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='settings' title='تنظیمات' />
+
+<Section id='retries' title='Retries' headingTag="h3" />
+
+هر دو تابع <Important>embed</Important> و <Important>embedMany</Important> یک پارامتر اختیاری به نام <Important>maxRetries</Important> از نوع <Important>number</Important> می‌پذیرند که می‌توانید از آن برای تعیین حداکثر تعداد تلاش‌های مجدد در فرایند بردارسازی استفاده کنید.
+به‌طور پیش‌فرض، مقدار آن <Important>2</Important> بار تلاش مجدد (در مجموع <Important>3</Important> تلاش) است.
+برای غیرفعال کردن تلاش‌های مجدد، می‌توانید مقدار آن را روی <Important>0</Important> تنظیم کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embed } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { embedding } = await embed({
+  model: my_model.embedding('openai/text-embedding-3-small'),
+  value: 'sunny day at the beach',
+  maxRetries: 0, // Disable retries
+});`}
+    </Highlight>
+</div>
+
+<Section id='abort-signals-and-timeouts' title='سیگنال‌های توقف و Timeoutها' headingTag="h3" />
+
+هر دو تابع <Important>embed</Important> و <Important>embedMany</Important> یک پارامتر اختیاری به نام <Important>abortSignal</Important> می‌پذیرند که می‌توانید از آن برای متوقف کردن فرایند بردارسازی یا تعیین یک timeout استفاده کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embed } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { embedding } = await embed({
+  model: my_model.embedding('openai/text-embedding-3-small'),
+  value: 'sunny day at the beach',
+  abortSignal: AbortSignal.timeout(1000), // Abort after 1 second
+});`}
+    </Highlight>
+</div>
+
+<Section id='custom-headers' title='هدرهای سفارشی' headingTag="h3" />
+
+هر دو تابع <Important>embed</Important> و <Important>embedMany</Important> یک پارامتر اختیاری به نام <Important>headers</Important> از نوع <Important>&lt;Record&lt;string, string</Important> می‌پذیرند که می‌توانید از آن برای افزودن هدرهای سفارشی به درخواست بردارسازی (embedding request) استفاده کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embed } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { embedding } = await embed({
+  model: my_model.embedding('openai/text-embedding-3-small'),
+  value: 'sunny day at the beach',
+  headers: { 'X-Custom-Header': 'custom-value' },
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+</Layout>
