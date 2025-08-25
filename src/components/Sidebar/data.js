@@ -852,6 +852,10 @@ export default {
         title: "قابلیت Embeddings",
         link: "/ai/ai-sdk-core/embeddings"
       },
+      {
+        title: "Middleware مدل‌های زبانی",
+        link: "/ai/ai-sdk-core/middleware"
+      },
     ],
 
     

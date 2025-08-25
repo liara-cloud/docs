@@ -1,0 +1,129 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات Middleware مدل در سرویس هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به کار با Middleware مدل زبانی در سرویس هوش مصنوعی لیارا"  />
+</Head>
+
+
+# Middleware مدل‌های زبانی سرویس AI
+<hr className="mb-2" />
+
+Middleware مدل زبانی راهی است برای بهینه‌سازی رفتار مدل‌های هوش مصنوعی با 
+اصلاح فراخوانی‌های مدل. 
+Middleware می‌تواند برای افزودن قابلیت‌هایی مثل guardrailها، RAG، کشینگ و لاگ‌گیری در مدل زبانی، به شکلی مستقل، به کار رود. 
+چنین میان‌افزاری می‌تواند به‌صورت جداگانه توسعه یافته و توزیع شود، بدون آن‌که وابستگی مستقیمی به مدل‌های زبانی که روی آن‌ها اعمال می‌شود داشته باشد.
+
+<hr className="mb-2" />
+<Section id='' title='استفاده از middleware مدل زبانی' />
+
+شما می‌توانید از middleware مدل زبانی از طریق تابع <Important>wrapLanguageModel</Important> استفاده کنید. 
+این تابع یک مدل زبان و یک middleware مدل زبانی را می‌گیرد و یک مدل زبانی که با middleware ادغام شده است، برمی‌گرداند.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { wrapLanguageModel } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const wrappedLanguageModel = wrapLanguageModel({
+  model: my_model("openai/gpt-4o-mini"),
+  middleware: yourLanguageModelMiddleware,
+});`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+مدل زبانیِ بسته‌بندی‌شده (Wrapped Language Model) می‌تواند درست مانند هر مدل زبانی دیگر مورد استفاده قرار گیرد؛ برای مثال، در <Important>streamText</Important>:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const result = streamText({
+  model: wrappedLanguageModel,
+  prompt: 'What cities are in the United States?',
+});`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+<Section id='multiple-middlewares' title='middlewareهای متعدد' />
+
+می‌توان چندین  middleware را به تابع <Important>wrapLanguageModel</Important> ارائه کرد. این  middlewareها به همان ترتیبی اعمال خواهند شد که ارائه شده‌اند.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const wrappedLanguageModel = wrapLanguageModel({
+  model: yourModel,
+  middleware: [firstMiddleware, secondMiddleware],
+});
+
+// applied as: firstMiddleware(secondMiddleware(yourModel))`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+{/* 
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>
