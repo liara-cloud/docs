@@ -860,6 +860,10 @@ export default {
         title: "مدیریت مدل و ارائه‌دهنده",
         link: "/ai/ai-sdk-core/provider-management"
       },
+      {
+        title: "مدیریت خطاها",
+        link: "/ai/ai-sdk-core/error-handling"
+      },
     ],
 
     

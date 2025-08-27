@@ -1,0 +1,169 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات مدیریت خطا در سرویس هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه مدیریت خطا در سرویس هوش مصنوعی لیارا در AI SDK"  />
+</Head>
+
+
+# مدیریت خطا در سرویس AI 
+<hr className="mb-2" />
+
+<Section id='' title='مدیریت خطاهای معمول' />
+
+خطاهای معمول throw می‌شوند و می‌توان 
+آن‌ها را با استفاده از بلوک <Important>try/cathch</Important> مدیریت کرد. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+try {
+  const { text } = await generateText({
+    model: my_model("openai/gpt-4o-mini"),
+    prompt: 'Write a vegetarian lasagna recipe for 4 people.',
+  });
+} catch (error) {
+  // handle error
+}`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+<Section id='handling-streaming-errors-simple-streams' title='مدیریت خطاهای استریمی (استریم‌های ساده)' />
+
+وقتی خطاها در طول استریم‌هایی رخ می‌دهند که از error chunks پشتیبانی نمی‌کنند، خطا به‌صورت یک خطای معمولی throw می‌شود. می‌توان این خطاها را با استفاده از بلوک <Important>try/catch</Important> مدیریت کرد.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+try {
+  const { textStream } = streamText({
+    model: my_model("openai/gpt-4o-mini"),
+    prompt: 'Write a vegetarian lasagna recipe for 4 people.',
+  });
+
+  for await (const textPart of textStream) {
+    process.stdout.write(textPart);
+  }
+} catch (error) {
+  // handle error
+}
+
+`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+<Section id='handling-streaming-errors-streaming-with-error-support' title='مدیریت خطاهای استریمی (استریم‌های با پشتیبانی از خطا)' />
+
+استریم‌های کامل از error parts پشتیبانی می‌کنند. می‌توان این بخش‌ها را مشابه سایر بخش‌ها مدیریت کرد. همچنین توصیه می‌شود که یک بلوک <Important>try/catch</Important> برای مدیریت خطاهایی که خارج از استریم رخ می‌دهند نیز اضافه شود.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { streamText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+try {
+  const { textStream } = streamText({
+    model: my_model("openai/gpt-4o-mini"),
+    prompt: 'Write a vegetarian lasagna recipe for 4 people.',
+  });
+
+  for await (const textPart of textStream) {
+    process.stdout.write(textPart);
+  }
+} catch (error) {
+  // handle error
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+</Layout>
