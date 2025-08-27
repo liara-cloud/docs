@@ -856,6 +856,10 @@ export default {
         title: "Middleware مدل‌های زبانی",
         link: "/ai/ai-sdk-core/middleware"
       },
+      {
+        title: "مدیریت مدل و ارائه‌دهنده",
+        link: "/ai/ai-sdk-core/provider-management"
+      },
     ],
 
     

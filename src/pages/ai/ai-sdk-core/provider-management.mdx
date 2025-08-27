@@ -1,0 +1,265 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات مدل و ارائه دهنده در سرویس هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه مدیریت مدل و ارائه‌دهنده در سرویس هوش مصنوعی لیارا با استفاده از AI SDK"  />
+</Head>
+
+
+# مدیریت مدل و ارائه‌دهنده در سرویس AI
+<hr className="mb-2" />
+
+هنگامی که با ارائه‌دهنده‌ها و مدل‌های متعدد کار می‌کنید، 
+اغلب مفید است که آن‌ها را در یک مکان مرکزی مدیریت کنید و از طریق رشته‌های متنی ساده به آن‌ها دسترسی داشته باشید.
+<div className="h-2" />
+
+AI SDK برای این منظور دو قابلیت custom providers و provider registry را ارائه می‌دهد: 
+
+<div className="h-2" />
+<ul>
+<li>با custom providers می‌توانید تنظیمات مدل را از پیش پیکربندی کرده، نام‌های مستعار (Aliases) برای مدل‌ها ارائه دهید و مدل‌های در دسترس را محدود کنید</li>
+<li>provider registry به شما این امکان را می‌دهد که چندین ارائه‌دهنده را ترکیب کرده و از طریق رشته‌های متنی ساده به آن‌ها دسترسی پیدا کنید</li>
+</ul>
+<div className="h-2" />
+
+شما می‌توانید custom providers , provider registry و middleware را در برنامه خود با هم ترکیب و استفاده کنید.
+
+<hr className="mb-2" />
+<Section id='custom-providers' title='Custom Providers' />
+
+شما می‌توانید ارائه‌دهنده شخصی خود را با استفاده از <Important>customProvider</Important> ایجاد کنید. 
+
+<Section id='example-custom-model-settings' title='مثال: تنظیمات سفارشی مدل' />
+
+ممکن است بخواهید تنظیمات پیش‌فرض مدل را برای یک ارائه‌دهنده بازنویسی کنید 
+یا برای مدل، یک نام مستعار (Alias) با تنظیمات از پیش‌تعریف‌شده ایجاد کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { customProvider, generateText } from 'ai';
+import { createOpenAI as originalOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = originalOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+// custom provider with different model settings:
+export const openai = customProvider({
+  languageModels: {
+    // replacement model with custom settings:
+    'gpt-4.1': my_model('openai/gpt-4.1', { structuredOutputs: true }),
+    // alias model with custom settings:
+    'gpt-4o-mini-structured': my_model('gpt-4o-mini', {
+      structuredOutputs: true,
+    }),
+  },
+  fallbackProvider: my_model,
+});
+
+const { text } = await generateText({
+  model: openai.languageModel('gpt-4.1'),
+  prompt: 'Hey buddy, how are you?',
+});
+
+console.log(text);`}
+    </Highlight>
+</div>
+
+<Section id='example-model-name-alias' title='مثال: نام مستعار برای مدل' />
+
+شما می‌توانید نام‌های مستعار برای مدل‌ها تعریف کنید، تا در آینده بتوانید نسخه‌ی مدل را تنها در یک مکان به‌روزرسانی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { customProvider, generateText } from 'ai';
+import { createOpenAI as originalOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = originalOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export const anthropic = customProvider({
+  languageModels: {
+    opus: my_model('anthropic/claude-opus-4'),
+    sonnet: my_model('anthropic/claude-sonnet-4'),
+    thinking_sonnet: my_model('anthropic/claude-3.7-sonnet:thinking'),
+  },
+  fallbackProvider: my_model,
+});
+
+const { text } = await generateText({
+  model: anthropic.languageModel('thinking_sonnet'),
+  prompt: 'Hey buddy, how are you?',
+});
+
+console.log(text);`}
+    </Highlight>
+</div>
+
+<Section id='example-limit-available-models' title='محدودسازی مدل‌های در دسترس' />
+
+می‌توانید مدل‌های در دسترس در سیستم را محدود کنید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { customProvider } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const openai = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+export const myProvider = customProvider({
+  languageModels: {
+    'text-medium': openai('deepseek/deepseek-r1-distill-llama-70b'),
+    'text-small': openai('openai/gpt-4o-mini'),
+    'structure-medium': openai('openai/gpt-4.1', { structuredOutputs: true }),
+    'structure-fast': openai('openai/o4-mini-high', { structuredOutputs: true }),
+  },
+  textEmbeddingModels: {
+    embedding: openai.embedding('openai/text-embedding-3-large'),
+  },
+  // no fallback provider
+});
+`}
+    </Highlight>
+</div>
+<hr className="mb-2" />
+
+<Section id='provider-registry' title='Provider Registry' />
+
+می‌توانید با استفاده از تابع <Important>createProviderRegistry</Important> یک رجیستری ایجاد کنید که شامل چندین مدل است.
+
+<Section id='setup' title='راه اندازی' />
+
+می‌توانید یک فایل به نام <Important>registry.ts</Important> ایجاد کنید و قطعه کد 
+زیر را درون آن، قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createProviderRegistry } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { anthropic } from '@ai-sdk/anthropic';
+
+config();
+
+export const registry = createProviderRegistry({
+  // register provider with prefix and custom setup:
+  anthropic,
+  
+  openai: createOpenAI({
+    apiKey: process.env.LIARA_API_KEY,
+    baseURL: process.env.BASE_URL,
+  }),
+});
+`}
+    </Highlight>
+</div>
+
+
+<Section id='setup-with-custom-separator' title='راه‌اندازی با Custom Separator' />
+
+به‌صورت پیش‌فرض، رجیستری از <Important>:</Important> به‌عنوان جداکننده بین شناسه‌های ارائه‌دهنده و مدل استفاده می‌کند. می‌توانید این جداکننده را سفارشی‌سازی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createProviderRegistry } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+
+export const registry = createProviderRegistry(
+  // register provider with prefix and custom setup:
+  {
+    openai: createOpenAI({
+        apiKey: process.env.LIARA_API_KEY,
+        baseURL: process.env.BASE_URL,
+    }),
+  },
+  { separator: ' > ' },
+);
+`}
+    </Highlight>
+</div>
+
+<Section id='example-use-language-models' title='مثال: استفاده از مدل‌ها' />
+
+می‌توانید از طریق متد <Important>languageModel</Important> در رجیستری، به مدل‌ها دسترسی پیدا کنید. در این حالت، شناسه ارائه‌دهنده (Provider ID) به‌عنوان پیشوند شناسه مدل قرار می‌گیرد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateText } from 'ai';
+import { registry } from './registry';
+
+
+const { text } = await generateText({
+  model: registry.languageModel('openai:openai/gpt-4o-mini'), // default separator
+  // or with custom separator:
+  // model: customSeparatorRegistry.languageModel('openai > openai/gpt-4o-mini'),
+  prompt: 'Invent a new holiday and describe its traditions.',
+});`}
+    </Highlight>
+</div>
+
+<Section id='example-use-text-embedding-models' title='استفاده از مدل‌های embedding' />
+
+می‌توانید از طریق متد <Important>textEmbeddingModel</Important> در رجیستری به مدل‌های Text Embedding دسترسی پیدا کنید. در این حالت، شناسه ارائه‌دهنده (Provider ID) به‌عنوان پیشوند شناسه مدل قرار می‌گیرد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embed } from 'ai';
+import { registry } from './registry';
+
+const { embedding } = await embed({
+  model: registry.textEmbeddingModel('openai:openai:text-embedding-3-small'),
+  value: 'sunny day at the beach',
+});`}
+    </Highlight>
+</div>
+
+</Layout>
