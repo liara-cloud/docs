@@ -1,0 +1,218 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آزمایش (Testing) هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با نحوه تست و آزمایش یا همان Testing هوش مصنوعی لیارا با استفاده از AI SDK"  />
+</Head>
+
+
+# آزمایش و تست هوش مصنوعی با AI SDK
+<hr className="mb-2" />
+
+آزمایش و تست LLMها می‌تواند چالش‌برانگیز باشد، زیرا این مدل‌ها غیرقطعی (non-deterministic) هستند و فراخوانی آن‌ها نیز فرایندی کند و پرهزینه محسوب می‌شود.
+برای این‌که بتوانید کد خود را که از AI SDK استفاده می‌کند به‌صورت unit آزمایش کنید، AI SDK Core شامل mock providers و ابزارهای کمکی برای تست است. شما می‌توانید ابزارهای کمکی زیر را از <Important>ai/test</Important> به درون برنامه خود import کنید:
+
+<div className="h-2" />
+<ul>
+<li><Important>MockEmbeddingModelV1</Important>: یک مدل embedding شبیه‌سازی‌شده بر اساس مشخصات embedding model v1</li>
+<div className="h-1" />
+<li><Important>MockLanguageModelV1</Important>: یک LLM شبیه‌سازی‌شده بر اساس مشخصات language model v1</li>
+<div className="h-1" />
+<li><Important>mockId</Important>: تولید ID عدد صحیح به صورت افزایشی</li>
+<div className="h-1" />
+<li><Important>mockValues</Important>: پیمایش بر روی یک آرایه از مقادیر در هر فراخوانی (زمانی که آرایه به پایان برسد، آخرین مقدار را بازمی‌گرداند)</li>
+<div className="h-1" />
+<li><Important>simulateReadableStream</Important>: شبیه‌سازی یک استریم readable همراه با تاخیر</li>
+</ul>
+<div className="h-2" />
+
+با استفاده از mock providerها و ابزارهای کمکی تست، شما می‌توانید خروجی AI SDK را کنترل کرده و کد خود را به‌صورت تکرارپذیر و قطعی (deterministic)، بدون نیاز به فراخوانی مستقیم یک ارائه‌دهنده LLM، آزمایش کنید.
+<hr className="mb-2" />
+
+<Section id='examples' title='مثال‌ها' />
+
+شما می‌توانید از ابزارهای کمکی تست (test helperها) همراه با توابع AI Core در unit testهای خود استفاده کنید:
+
+<Section id='generatetext' title='generateText' headingTag="h3" />
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai@^4
+import { generateText } from 'ai';
+import { MockLanguageModelV1 } from 'ai/test';
+
+const result = await generateText({
+  model: new MockLanguageModelV1({
+    doGenerate: async () => ({
+      rawCall: { rawPrompt: null, rawSettings: {} },
+      finishReason: 'stop',
+      usage: { promptTokens: 10, completionTokens: 20 },
+      text: \`Hello, world!\`,
+    }),
+  }),
+  prompt: 'Hello, test!',
+});`}
+    </Highlight>
+</div>
+
+
+<Section id='streamtext' title='streamText' headingTag="h3" />
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i ai@^4
+import { streamText, simulateReadableStream } from 'ai';
+import { MockLanguageModelV1 } from 'ai/test';
+
+const result = streamText({
+  model: new MockLanguageModelV1({
+    doStream: async () => ({
+      stream: simulateReadableStream({
+        chunks: [
+          { type: 'text-delta', textDelta: 'Hello' },
+          { type: 'text-delta', textDelta: ', ' },
+          { type: 'text-delta', textDelta: \`world!\` },
+          {
+            type: 'finish',
+            finishReason: 'stop',
+            logprobs: undefined,
+            usage: { completionTokens: 10, promptTokens: 3 },
+          },
+        ],
+      }),
+      rawCall: { rawPrompt: null, rawSettings: {} },
+    }),
+  }),
+  prompt: 'Hello, test!',
+});
+`}
+    </Highlight>
+</div>
+
+
+<Section id='generateobject' title='generateObject' headingTag="h3" />
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { generateObject } from 'ai';
+import { MockLanguageModelV1 } from 'ai/test';
+import { z } from 'zod';
+
+const result = await generateObject({
+  model: new MockLanguageModelV1({
+    defaultObjectGenerationMode: 'json',
+    doGenerate: async () => ({
+      rawCall: { rawPrompt: null, rawSettings: {} },
+      finishReason: 'stop',
+      usage: { promptTokens: 10, completionTokens: 20 },
+      text: \`{"content":"Hello, world!"}\`,
+    }),
+  }),
+  schema: z.object({ content: z.string() }),
+  prompt: 'Hello, test!',
+});
+`}
+    </Highlight>
+</div>
+
+<Section id='streamobject' title='streamObject' headingTag="h3" />
+
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { streamObject, simulateReadableStream } from 'ai';
+import { MockLanguageModelV1 } from 'ai/test';
+import { z } from 'zod';
+
+const result = streamObject({
+  model: new MockLanguageModelV1({
+    defaultObjectGenerationMode: 'json',
+    doStream: async () => ({
+      stream: simulateReadableStream({
+        chunks: [
+          { type: 'text-delta', textDelta: '{ ' },
+          { type: 'text-delta', textDelta: '"content": ' },
+          { type: 'text-delta', textDelta: \`"Hello, \` },
+          { type: 'text-delta', textDelta: \`world\` },
+          { type: 'text-delta', textDelta: \`!"\` },
+          { type: 'text-delta', textDelta: ' }' },
+          {
+            type: 'finish',
+            finishReason: 'stop',
+            logprobs: undefined,
+            usage: { completionTokens: 10, promptTokens: 3 },
+          },
+        ],
+      }),
+      rawCall: { rawPrompt: null, rawSettings: {} },
+    }),
+  }),
+  schema: z.object({ content: z.string() }),
+  prompt: 'Hello, test!',
+});`}
+    </Highlight>
+</div>
+
+<Section id='simulate-data-stream-protocol-responses' title='شبیه سازی پاسخ های پروتکل Data Stream' />
+
+شما می‌توانید برای آزمایش (testing)، اشکال‌زدایی (debugging) یا نمایش (demonstration)، پاسخ‌های پروتکل Data Stream را شبیه‌سازی کنید.
+در ادامه، یک مثال در فریم‌ورک NextJS قرار گرفته است (می‌توانید قطعه کد را در یک فایل <Important>route.ts</Important> قرار دهید):
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { simulateReadableStream } from 'ai';
+
+export async function POST(req: Request) {
+  return new Response(
+    simulateReadableStream({
+      initialDelayInMs: 1000, // Delay before the first chunk
+      chunkDelayInMs: 300, // Delay between chunks
+      chunks: [
+        \`0:"This"\\n\`,
+        \`0:" is an"\\n\`,
+        \`0:"example."\\n\`,
+        \`e:{"finishReason":"stop","usage":{"promptTokens":20,"completionTokens":50},"isContinued":false}\\n\`,
+        \`d:{"finishReason":"stop","usage":{"promptTokens":20,"completionTokens":50}}\\n\`,
+      ],
+    }).pipeThrough(new TextEncoderStream()),
+    {
+      status: 200,
+      headers: {
+        'X-Vercel-AI-Data-Stream': 'v1',
+        'Content-Type': 'text/plain; charset=utf-8',
+      },
+    },
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

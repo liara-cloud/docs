@@ -1,0 +1,216 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات تله متری هوش مصنوعی (Telemetry) - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استفاده از Telemetry در سرویس هوش مصنوعی لیارا با استفاده از AI SDK Core"  />
+</Head>
+
+
+# مستندات تله متری (Telemetry) در AI
+<hr className="mb-2" />
+
+<Alert variant="warning">
+<p>
+تله‌متری AI SDK در حال حاضر آزمایشی بوده و ممکن است در آینده تغییر کند.
+</p>
+</Alert>
+<div className="h-2" />
+
+AI SDK از <a href="https://opentelemetry.io" className="text-[#2196f3]">OpenTelemetry</a> برای جمع‌آوری داده‌های تله‌متری استفاده می‌کند. OpenTelemetry یک فریم‌ورک متن‌باز مشاهده‌پذیر است که به‌منظور ساخت ابزاری استاندارد جهت جمع‌آوری داده‌های تله‌متری طراحی شده است.
+<hr className="mb-2" />
+<Section id='enabling-telemetry' title='فعال سازی Telemetry' />
+
+برای برنامه‌های NextJS، ابتدا <a href="https://nextjs.org/docs/app/guides/open-telemetry" className="text-[#2196f3]">راهنمای Next.js OpenTelemetry</a> را دنبال کنید تا تله‌متری فعال شود.
+<div className="h-2" />
+
+می‌توانید از <Important>experimental_telemetry</Important> برای فعال‌سازی تله‌متری در فراخوانی‌های مشخص یک تابع استفاده کنید، در حالی که این قابلیت هنوز در حالت آزمایشی قرار دارد.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Write a short story about a cat.',
+  experimental_telemetry: { isEnabled: true },
+});
+
+console.log(result.text)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+وقتی که تله‌متری فعال است، شما می‌توانید مشخص کنید که در صورت نیاز، مقادیر ورودی و مقادیر خروجی یک تابع ثبت شوند یا نه. 
+به صورت پیش‌فرض، هر دو مقادیر، ثبت می‌شوند. شما می‌توانید با تنظیم فیلدهای <Important>recordInputs</Important> و <Important>recordOutputs</Important> بر روی <Important>false</Important>، قابلیت ثبت مقادیر خروجی و ورودی را، غیرفعال کنید. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Write a short story about a cat.',
+  experimental_telemetry: { 
+    isEnabled: true,
+    recordInputs: false,
+    recordOutputs: false
+  },
+});
+
+console.log(result.text)`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+غیرفعال کردن ثبت ورودی‌ها و خروجی‌ها می‌تواند به خاطر دلایلی چون حریم‌خصوصی، جابه‌جایی داده و بهینه‌سازی عملکرد، مفید باشد. 
+به عنوان مثال، ممکن است بخاطر حساس بودن اطلاعات، بخواهید که قابلیت ثبت ورودی‌ها، غیرفعال باشد.  
+
+<hr className="mb-2" />
+<Section id='telemetry-metadata' title='متادیتای Telemetry' />
+
+شما می‌توانید یک تابع <Important>functionId</Important> ایجاد کنید تا تابعی که داده‌های تله‌متری مربوط به آن است را، شناسایی کند
+همچنین می‌توانید از <Important>metadata</Important> استفاده کنید تا اطلاعات بیشتری را به داده‌های تله‌متری اضافه کنید. 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Write a short story about a cat.',
+  experimental_telemetry: {
+    isEnabled: true,
+    functionId: 'my-awesome-function',
+    metadata: {
+      something: 'custom',
+      someOtherThing: 'other-value',
+    },
+  },
+});
+`}
+    </Highlight>
+</div>
+
+<hr className="mb-2" />
+<Section id='custom-tracer' title='tracer سفارشی' />
+
+می‌توانید یک tracer ایجاد کنید (که باید یک <Important>Tracer</Important> از نوع OpenTelemetry بازگرداند). این قابلیت در شرایطی مفید است که بخواهید traceها از یک <Important>TracerProvider</Important> متفاوت نسبت به آنچه که توسط <Important>opentelemetry/api@</Important> فراهم شده است، استفاده کنند.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4
+// npm install --save @opentelemetry/sdk-trace-node
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import { NodeTracerProvider }  from '@opentelemetry/sdk-trace-node';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const tracerProvider = new NodeTracerProvider();
+const result = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  prompt: 'Write a short story about a cat.',
+  experimental_telemetry: {
+    isEnabled: true,
+    tracer: tracerProvider.getTracer('ai'),
+  },
+});`}
+    </Highlight>
+</div>
+{/* <hr className="mb-2" /> */}
+{/* 
+
+
+<Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>

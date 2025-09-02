@@ -864,6 +864,14 @@ export default {
         title: "مدیریت خطاها",
         link: "/ai/ai-sdk-core/error-handling"
       },
+      {
+        title: "آزمایش و تست",
+        link: "/ai/ai-sdk-core/testing"
+      },
+      {
+        title: "تله‌متری (Telemetry)",
+        link: "/ai/ai-sdk-core/telemetry"
+      },
     ],
 
     
