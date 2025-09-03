@@ -181,36 +181,437 @@ const result = await generateText({
 });`}
     </Highlight>
 </div>
-{/* <hr className="mb-2" /> */}
-{/* 
-
-
-<Important>
-</Important>
 <hr className="mb-2" />
-<Section id='' title='' />
+
+<Section id='collected-data' title='داده‌های جمع‌آوری شده' />
+
+<Section id='generatetext-function' title='تابع generateText' headingTag="h3" />
+
+<Important>generateText</Important> سه نوع span را ثبت می‌کند:
+<div className="h-4" />
+
+۱. <Important>ai.generateText</Important> (span): طول کامل یک فراخوانی generateText که شامل یک یا چند تا span از نوع <Important>ai.generateText.doGenerate</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#basic-llm-span-information" className="text-[#2196f3]">اطلاعات پایه LLM span</a> و attributeهای زیر است: 
+
 <div className="h-2" />
 <ul>
-<li></li>
+<li><Important>operation.name</Important>: <Important>ai.generateText</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.generateText"</Important></li>
+<div className="h-2" />
+<li><Important>ai.prompt</Important>: پرامپتی که هنگام فراخوانی <Important>generateText</Important> استفاده شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.text</Important>: متنی که تولید شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.toolCalls</Important>: فراخوانی‌های tool که به عنوان بخشی از تولید هستند (در قالب stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.response.finishReason</Important>: دلیلی که باعث پایان فرایند تولید شده است </li>
+<div className="h-2" />
+<li><Important>ai.settings.maxSteps</Important>: maximum تعداد گام‌ها (steps) که تنظیم شده است</li>
 </ul>
+<div className="h-6" />
+
+۲. <Important>ai.generateText.doGenerate</Important> (span): یک ارائه‌دهنده فراخوانی doGenerate که می‌تواند شامل spanهای <Important>ai.toolCall</Important> باشد. این span شامل <a href="/ai/ai-sdk-core/telemetry/#call-llm-span-information" className="text-[#2196f3]">اطلاعات فراخوانی LLM span</a> و attributeهای زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.generateText.doGenerate</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
 <div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="js">
-        {``}
-    </Highlight>
-</div>
+<li><Important>ai.operationId</Important>: <Important>"ai.generateText.doGenerate"</Important></li>
 <div className="h-2" />
+<li><Important>ai.prompt.format</Important>: فرمت پرامپت</li>
+<div className="h-2" />
+<li><Important>ai.prompt.messages</Important>: پیام‌هایی که به ارائه‌دهنده پاس داده شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.prompt.tools</Important>: آرایه stringified تعاریف toolها. toolها می‌توانند از نوع <Important>function</Important> یا <Important>provider-defined</Important> باشند. toolهای از نوع function شامل <Important>name</Important>، <Important>description</Important> (اختیاری) و <Important>parameters</Important> هستند (JSON Schema). toolهای provider-defined شامل <Important>name</Important> و <Important>id</Important> و <Important>args</Important> هستند</li>
+<div className="h-2" />
+<li><Important>ai.prompt.toolChoice</Important>: تنظیمات stringified انتخاب tool (به صورت JSON) که یک property به نام <Important>type</Important> دارد (<Important>auto</Important> , <Important>none</Important> , <Important>required</Important> , <Important>tool</Important>)؛ و اگر که type از نوع <Important>tool</Important> باشد؛ یک <Important>toolName</Important> نیز در دسترس خواهد بود</li>
+<div className="h-2" />
+<li><Important>ai.response.text</Important>: متنی که تولید شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.toolCalls</Important>: فراخوانی‌های tool که به عنوان بخشی از تولید هستند (stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.response.finishReason</Important>: دلیلی که تولید به خاطر آن پایان یافته است</li>
+<div className="h-2" />
+</ul>
+<div className="h-4" />
 
-<div className="h-2" />  
-<img src="https://media.liara.ir/" alt=""/>
-<div className="h-2" />  
+۳. <Important>ai.toolCall</Important> (span): یک فراخوانی tool که به عنوان بخشی از فراخوانی generateText ایجاد شده است. برای جزئیات بیشتر <a href="/ai/ai-sdk-core/telemetry/#tool-call-spans" className="text-[#2196f3]"> spanهای فراخوانی tool</a> را ببینید.
+
+<Section id='streamtext-function' title='تابع streamText' headingTag="h3" />
+
+<Important>streamText</Important> سه نوع span و دو نوع event را ثبت می‌کند:
+<div className="h-4" />
+
+۱. <Important>ai.streamText</Important> (span): طول کامل یک فراخوانی streamText که شامل یک یا چند تا span از نوع <Important>ai.streamText.doStream</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#basic-llm-span-information" className="text-[#2196f3]">اطلاعات پایه LLM span</a> و attributeهای زیر است: 
+
+<div className="h-2" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.streamText</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.streamText"</Important></li>
+<div className="h-2" />
+<li><Important>ai.prompt</Important>: پرامپتی که هنگام فراخوانی <Important>streamText</Important> استفاده شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.text</Important>: متنی که تولید شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.toolCalls</Important>: فراخوانی‌های tool که به عنوان بخشی از تولید هستند (در قالب stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.response.finishReason</Important>: دلیلی که باعث پایان فرایند تولید شده است </li>
+<div className="h-2" />
+<li><Important>ai.settings.maxSteps</Important>: maximum تعداد گام‌ها (steps) که تنظیم شده است</li>
+</ul>
+<div className="h-6" />
+
+۲. <Important>ai.streamText.doStream</Important> (span): یک ارائه‌دهنده فراخوانی doStream که شامل یک رویداد <Important>ai.stream.firstChunk</Important> و spanهای <Important>ai.toolCall</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#call-llm-span-information" className="text-[#2196f3]">اطلاعات فراخوانی LLM span</a> و attributeهای زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.streamText.doStream</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.streamText.doStream"</Important></li>
+<div className="h-2" />
+<li><Important>ai.prompt.format</Important>: فرمت پرامپت</li>
+<div className="h-2" />
+<li><Important>ai.prompt.messages</Important>: پیام‌هایی که به ارائه‌دهنده پاس داده شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.prompt.tools</Important>: آرایه stringified تعاریف toolها. toolها می‌توانند از نوع <Important>function</Important> یا <Important>provider-defined</Important> باشند. toolهای از نوع function شامل <Important>name</Important>، <Important>description</Important> (اختیاری) و <Important>parameters</Important> هستند (JSON Schema). toolهای provider-defined شامل <Important>name</Important> و <Important>id</Important> و <Important>args</Important> هستند</li>
+<div className="h-2" />
+<li><Important>ai.prompt.toolChoice</Important>: تنظیمات stringified انتخاب tool (به صورت JSON) که یک property به نام <Important>type</Important> دارد (<Important>auto</Important> , <Important>none</Important> , <Important>required</Important> , <Important>tool</Important>)؛ و اگر که type از نوع <Important>tool</Important> باشد؛ یک <Important>toolName</Important> نیز در دسترس خواهد بود</li>
+<div className="h-2" />
+<li><Important>ai.response.text</Important>: متنی که تولید شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.toolCalls</Important>: فراخوانی‌های tool که به عنوان بخشی از تولید هستند (stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.response.msToFirstChunk</Important>: زمانی که طول کشیده است تا اولین قطعه (chunk) دریافت شود (به میلی ثانیه)</li>
+<div className="h-2" />
+<li><Important>ai.response.msToFinish</Important>: زمانی که طول کشیده است تا آخرین قسمت از استریم LLM دریافت شود (به میلی ثانیه)</li>
+<div className="h-2" />
+<li><Important>ai.response.avgCompletionTokensPerSecond</Important>: عدد میانگین توکن‌های completion بر ثانیه</li>
+<div className="h-2" />
+<li><Important>ai.response.finishReason</Important>: دلیلی که تولید به خاطر آن متوقف شده است</li>
+</ul>
+<div className="h-4" />
+
+۳. <Important>ai.toolCall</Important> (span): یک فراخوانی tool که به عنوان بخشی از فراخوانی streamText ایجاد شده است. برای جزئیات بیشتر <a href="/ai/ai-sdk-core/telemetry/#tool-call-spans" className="text-[#2196f3]"> spanهای فراخوانی tool</a> را ببینید.
+<div className="h-4" />
+
+۴. <Important>ai.stream.firstChunk</Important> (event): رویدادی که هنگام دریافت اولین قطعه (chunk) استریم رخ می‌دهد. 
+این event شامل attribute زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>ai.response.msToFirstChunk</Important>: زمانی که طول کشیده است تا اولین chunk دریافت شود</li>
+</ul>
+<div className="h-4" />
+
+۵. <Important>ai.stream.finish</Important> (event): رویدادی که هنگام دریافت بخش پایانی استریم LLM رخ می‌دهد.
+
+<Section id='generateobject-function' title='تابع generateObject' headingTag="h3" />
+
+<Important>generateObject</Important> دو نوع span را ثبت می‌کند:
+<div className="h-4" />
 
 
-<video
-  src="https://media.liara.ir/"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-/> */}
+۱. <Important>ai.generateObject</Important> (span): طول کامل یک فراخوانی generateObject که شامل یک یا چند تا span از نوع <Important>ai.generateObject.doGenerate</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#basic-llm-span-information" className="text-[#2196f3]">اطلاعات پایه LLM span</a> و attributeهای زیر است: 
+
+<div className="h-2" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.generateObject</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.generateObject"</Important></li>
+<div className="h-2" />
+<li><Important>ai.prompt</Important>: پرامپتی که هنگام فراخوانی <Important>generateObject</Important> استفاده شده است</li>
+<div className="h-2" />
+<li><Important>ai.schema</Important>: ورژن اسکیمای JSON به صورت stringified از اسکیمایی که به تابع <Important>generateObject</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.schema.name</Important>: نام اسکیمایی که به تابع <Important>generateObject</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.schema.description</Important>: توضیحات اسکیمایی که به تابع <Important>generateObject</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.object</Important>: آبجکتی که تولید شده است (stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.settings.mode</Important>: حالت تولید آبجکت؛ مثلاً <Important>json</Important></li>
+<div className="h-2" />
+<li><Important>ai.settings.output</Important>: نوع خروجی که استفاده شده است؛ مثلاً <Important>object</Important> یا <Important>no-schema</Important></li>
+<div className="h-2" />
+</ul>
+<div className="h-6" />
+
+۲. <Important>ai.generateObject.doGenerate</Important> (span): یک ارائه‌دهنده فراخوانی doGenerate که شامل <a href="/ai/ai-sdk-core/telemetry/#call-llm-span-information" className="text-[#2196f3]">اطلاعات فراخوانی LLM span</a> و attributeهای زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.generateObject.doGenerate</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.generateObject.doGenerate"</Important></li>
+<div className="h-2" />
+<li><Important>ai.prompt.format</Important>: فرمت پرامپت</li>
+<div className="h-2" />
+<li><Important>ai.prompt.messages</Important>: پیام‌هایی که به ارائه‌دهنده پاس داده شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.response.object</Important>: آبجکتی که تولید شده است (stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.settings.mode</Important>: حالت تولید آبجکت</li>
+<div className="h-2" />
+<li><Important>ai.response.finishReason</Important>: دلیلی که تولید به خاطر آن متوقف شده است</li>
+<div className="h-2" />
+</ul>
+<div className="h-4" />
+
+<Section id='streamobject-function' title='تابع streamObject' headingTag="h3" />
+
+<Important>streamObject</Important> دو نوع span و یک نوع event را ثبت می‌کند:
+<div className="h-4" />
+
+
+۱. <Important>ai.streamObject</Important> (span): طول کامل یک فراخوانی streamObject که شامل یک یا چند تا span از نوع <Important>ai.streamObject.doStream</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#basic-llm-span-information" className="text-[#2196f3]">اطلاعات پایه LLM span</a> و attributeهای زیر است: 
+
+<div className="h-2" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.streamObject</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.streamObject"</Important></li>
+<div className="h-2" />
+<li><Important>ai.prompt</Important>: پرامپتی که هنگام فراخوانی <Important>streamObject</Important> استفاده شده است</li>
+<div className="h-2" />
+<li><Important>ai.schema</Important>: ورژن اسکیمای JSON به صورت stringified از اسکیمایی که به تابع <Important>streamObject</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.schema.name</Important>: نام اسکیمایی که به تابع <Important>streamObject</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.schema.description</Important>: توضیحات اسکیمایی که به تابع <Important>streamObject</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.response.object</Important>: آبجکتی که تولید شده است (stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.settings.mode</Important>: حالت تولید آبجکت؛ مثلاً <Important>json</Important></li>
+<div className="h-2" />
+<li><Important>ai.settings.output</Important>: نوع خروجی که استفاده شده است؛ مثلاً <Important>object</Important> یا <Important>no-schema</Important></li>
+<div className="h-2" />
+</ul>
+<div className="h-6" />
+
+۲. <Important>ai.streamObject.doStream</Important> (span): یک ارائه‌دهنده فراخوانی doStream که شامل یک رویداد <Important>ai.stream.firstChunk</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#call-llm-span-information" className="text-[#2196f3]">اطلاعات فراخوانی LLM span</a> و attributeهای زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.streamText.doStream</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.streamText.doStream"</Important></li>
+<div className="h-2" />
+<li><Important>ai.prompt.format</Important>: فرمت پرامپت</li>
+<div className="h-2" />
+<li><Important>ai.prompt.messages</Important>: پیام‌هایی که به ارائه‌دهنده پاس داده شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.settings.mode</Important>: حالت تولید آبجکت</li>
+<div className="h-2" />
+<li><Important>ai.response.object</Important>: آبجکتی که تولید شده است (stringified JSON)</li>
+<div className="h-2" />
+<li><Important>ai.response.msToFirstChunk</Important>: زمانی که طول کشیده است تا اولین قطعه (chunk) دریافت شود (به میلی ثانیه)</li>
+<div className="h-2" />
+<li><Important>ai.response.finishReason</Important>: دلیلی که تولید به خاطر آن متوقف شده است</li>
+</ul>
+<div className="h-4" />
+
+۳. <Important>ai.stream.firstChunk</Important> (event): رویدادی که هنگام دریافت اولین قطعه (chunk) استریم رخ می‌دهد. 
+این event شامل attribute زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>ai.response.msToFirstChunk</Important>: زمانی که طول کشیده است تا اولین chunk دریافت شود</li>
+</ul>
+
+<Section id='embed-function' title='تابع embed' />
+
+<Important>embed</Important> دو نوع span را ثبت می‌کند:
+
+<div className="h-4" />
+
+۱. <Important>ai.embed</Important> (span): طول کامل یک فراخوانی embed که شامل یک span از نوع <Important>ai.embed.doEmbed</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#basic-embedding-span-information" className="text-[#2196f3]">اطلاعات پایه embedding span</a> و attributeهای زیر است: 
+
+<div className="h-2" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.embed</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.embed"</Important></li>
+<div className="h-2" />
+<li><Important>ai.value</Important>: مقداری که به تابع <Important>embed</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.embedding</Important>: یک embedding از نوع JSON-stringified</li>
+<div className="h-2" />
+</ul>
+<div className="h-6" />
+
+۲. <Important>ai.embed.doEmbed</Important> (span): یک ارائه‌دهنده فراخوانی doEmbed که شامل <a href="/ai/ai-sdk-core/telemetry/#basic-embedding-span-information" className="text-[#2196f3]">اطلاعات پایه embedding span</a> و attributeهای زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.embed.doEmbed</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.embed.doEmbed"</Important></li>
+<div className="h-2" />
+<li><Important>ai.values</Important>: مقادیری که به ارائه‌دهنده پاس داده شده‌اند (تحت یک آرایه)</li>
+<div className="h-2" />
+<li><Important>ai.embeddings</Important>: یک آرایه از embeddingها به صورت JSON-stringified</li>
+<div className="h-2" />
+</ul>
+<div className="h-4" />
+
+
+<Section id='embed-function' title='تابع embedMany' />
+
+<Important>embedMany</Important> دو نوع span را ثبت می‌کند:
+
+<div className="h-4" />
+
+۱. <Important>ai.embedMany</Important> (span): طول کامل یک فراخوانی embedMany که شامل یک span از نوع <Important>ai.embedMany.doEmbed</Important> است. این span شامل <a href="/ai/ai-sdk-core/telemetry/#basic-embedding-span-information" className="text-[#2196f3]">اطلاعات پایه embedding span</a> و attributeهای زیر است: 
+
+<div className="h-2" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.embedMany</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.embedMany"</Important></li>
+<div className="h-2" />
+<li><Important>ai.values</Important>: مقادیری که به تابع <Important>embedMany</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.embeddings</Important>: یک آرایه از embeddingها به صورت JSON-stringified</li>
+<div className="h-2" />
+</ul>
+<div className="h-6" />
+
+۲. <Important>ai.embedMany.doEmbed</Important> (span): یک ارائه‌دهنده فراخوانی doEmbed که شامل <a href="/ai/ai-sdk-core/telemetry/#basic-embedding-span-information" className="text-[#2196f3]">اطلاعات پایه embedding span</a> و attributeهای زیر است:
+
+<div className="h-4" />
+<ul>
+<li><Important>operation.name</Important>: <Important>ai.embedMany.doEmbed</Important> و functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.embedMany.doEmbed"</Important></li>
+<div className="h-2" />
+<li><Important>ai.values</Important>: مقادیری که به ارائه‌دهنده پاس داده شده‌اند </li>
+<div className="h-2" />
+<li><Important>ai.embeddings</Important>: یک آرایه از embeddingها به صورت JSON-stringified برای هر مقدار</li>
+</ul>
+<hr className="mb-2" />
+
+<Section id='span-details' title='جزئیات span' />
+
+<Section id='basic-llm-span-information' title='اطلاعات پایه LLM span' headingTag="h3" />
+
+بسیاری از spanها از LLMها استفاده می‌کنند (<Important>ai.generateText</Important> , <Important>ai.generateText.doGenerate</Important> , <Important>ai.streamText</Important>, <Important>ai.streamText.doStream</Important>, <Important>ai.generateObject</Important> , <Important>ai.generateObject.doGenerate</Important> , <Important>ai.streamObject</Important> , <Important>ai.streamObject.doStream</Important>)، شامل attributeهای زیر هستند:
+
+<div className="h-4" />
+<ul>
+<li><Important>resource.name</Important>: همان functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>ai.model.id</Important>: آیدی مدل</li>
+<div className="h-2" />
+<li><Important>ai.model.provider</Important>: ارائه‌دهنده مدل</li>
+<div className="h-2" />
+<li><Important>\*.ai.request.headers</Important>: هدرهای درخواست که از طریق <Important>headers</Important> پاس داده شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.response.providerMetadata</Important>: متادیتای مختص ارائه‌دهنده که با پاسخ تولید برگردانده می‌شود</li>
+<div className="h-2" />
+<li><Important>ai.settings.maxRetries</Important>: بیشینه تعداد تلاش‌هایی که تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>ai.telemetry.functionId</Important>: همان functionId  که از طریق <Important>telemetry.functionId</Important> تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>\*.ai.telemetry.metadata</Important>: متادیتایی که از طریق <Important>telemetry.metadata</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.usage.completionTokens</Important>: تعداد توکن‌های completion که استفاده شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.usage.promptTokens</Important>: تعداد توکن‌های پرامپت که استفاده شده‌اند</li>
+</ul>
+
+<Section id='call-llm-span-information' title='اطلاعات فراخوانی LLM span' headingTag="h3" />
+
+span‌هایی که برابر با فراخوانی‌های تکی LLM هستند (<Important>ai.generateText.doGenerate</Important> , <Important>ai.streamText.doStream</Important> , <Important>ai.generateObject.doGenerate</Important> , <Important>ai.streamObject.doStream</Important>)
+شامل <a href="/ai/ai-sdk-core/telemetry/#basic-llm-span-information" className="text-[#2196f3]">اطلاعات پایه LLM span</a> و attributeهای زیر هستند:
+<div className="h-4" />
+
+۱. <Important>ai.response.model</Important>: مدلی که استفاده شده است تا پاسخ را تولید کند. در صورتی که ارائه‌دهنده از aliasها پشتیبانی کند، مقدار این فیلد می‌تواند 
+متفاوت از مدلی که از آن درخواست شده است، باشد.
+<div className="h-4" />
+
+۲. <Important>ai.response.id</Important>: آیدی پاسخ. این فیلد از مقدار ID که توسط ارائه‌دهنده برگردانده شده است، استفاده می‌کند (در صورت موجود بودن).
+<div className="h-4" />
+
+۳. <Important>ai.response.timestamp</Important>: timestamp پاسخ. این فیلد از مقدار timestamp که توسط ارائه‌دهنده برگردانده شده است، استفاده می‌کند (در صورت موجود بودن).
+<div className="h-4" />
+
+۴. <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/gen-ai-spans/" className="text-[#2196f3]">conventionهای معنایی برای عملیات GenAI</a>:
+<div className="h-4" />
+<ul>
+<li><Important>gen_ai.system</Important>: ارائه‌دهنده‌ای که استفاده شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.model</Important>: مدلی که از آن درخواست شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.temperature</Important>: مقدار temperature که تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.max_tokens</Important>: بیشینه تعداد توکن‌هایی که تنظیم شده‌اند</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.frequency_penalty</Important>: مقدار frequency penalty که تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.presence_penalty</Important>: مقدار presence penalty که تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.top_k</Important>: مقدار پارامتر topK که تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.top_p</Important>: مقدار پارامتر topP که تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.request.stop_sequences</Important>: توالی‌های توقف (stop sequences)</li>
+<div className="h-2" />
+<li><Important>gen_ai.response.finish_reasons</Important>: دلیل پایانی که توسط ارائه‌دهنده بازگردانده شده است</li>
+<div className="h-2" />
+<li><Important>gen_ai.response.model</Important>: مدلی که استفاده شده است تا پاسخ را تولید کند. در صورتی که ارائه‌دهنده از aliasها پشتیبانی کند، مقدار این فیلد می‌تواند 
+متفاوت از مدلی که از آن درخواست شده است، باشد.</li>
+<div className="h-2" />
+<li><Important>gen_ai.response.id</Important>: آیدی پاسخ. این فیلد مقدار آیدی که توسط ارائه‌دهنده بازگردانده می‌شود را ارائه می‌دهد (در صورت موجود بودن)</li>
+<div className="h-2" />
+<li><Important>gen_ai.usage.input_tokens</Important>: تعداد توکن‌های پرامپت که استفاده شده‌اند</li>
+<div className="h-2" />
+<li><Important>gen_ai.usage.output_tokens</Important>: تعداد توکن‌های completion که استفاده شده‌اند</li>
+</ul>
+
+<Section id='basic-embedding-span-information' title='اطلاعات پایه embedding span' />
+
+بسیاری از spanها از مدل‌های embedding استفاده می‌کنند (<Important>ai.embed</Important> , <Important>ai.embed.doEmbed</Important> , <Important>ai.embedMany</Important> , <Important>ai.embedMany.doEmbed</Important>) که شامل attributeهای زیر هستند:
+
+<div className="h-2" />
+<ul>
+<li><Important>ai.model.id</Important>: آیدی مدل</li>
+<div className="h-2" />
+<li><Important>ai.model.provider</Important>: ارائه‌دهنده مدل</li>
+<div className="h-2" />
+<li><Important>\*.ai.request.headers</Important>: هدرهای درخواست که از طریق <Important>headers</Important> پاس داده شده‌اند</li>
+<div className="h-2" />
+<li><Important>ai.response.providerMetadata</Important>: متادیتای مختص ارائه‌دهنده که با پاسخ تولید برگردانده شده است</li>
+<div className="h-2" />
+<li><Important>ai.settings.maxRetries</Important>: بیشینه تعداد تلاش‌هایی که تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>ai.telemetry.functionId</Important>: همان functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده است</li>
+<div className="h-2" />
+<li><Important>\*.ai.telemetry.metadata</Important>: متادیتایی که از طریق <Important>telemetry.metadata</Important> پاس داده شده است</li>
+<div className="h-2" />
+<li><Important>ai.usage.tokens</Important>: تعداد توکن‌هایی که استفاده شده‌اند</li>
+<div className="h-2" />
+<li><Important>resource.name</Important>: همان functionId که از طریق <Important>telemetry.functionId</Important> تنظیم شده است</li>
+</ul>
+
+<Section id='tool-call-spans' title='spanهای فراخوانی tool' />
+
+spanهای فراخوانی tool (<Important>ai.toolCall</Important>) شامل attributeهای زیر هستند:
+
+<div className="h-4" />
+<ul>
+<li><Important>operation.name</Important>: <Important>"ai.toolCall"</Important></li>
+<div className="h-2" />
+<li><Important>ai.operationId</Important>: <Important>"ai.toolCall"</Important></li>
+<div className="h-2" />
+<li><Important>ai.toolCall.name</Important>: نام tool</li>
+<div className="h-2" />
+<li><Important>ai.toolCall.id</Important>: آیدی فراخوانی tool</li>
+<div className="h-2" />
+<li><Important>ai.toolCall.args</Important>: پارامترهای فراخوانی tool</li>
+<div className="h-2" />
+<li><Important>ai.toolCall.result</Important>: نتایج فراخوانی tool. در صورتی در دسترس است که فراخوانی tool موفق باشد و نتیجه قابلیت سریال‌سازی (serializable) داشته باشد</li>
+</ul>
+
 
 </Layout>
