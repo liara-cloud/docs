@@ -1047,9 +1047,8 @@ main().catch(console.error);
 در بخش <a href="/ai/foundations/prompts/#text-prompt" className='text-[#2196f3]'>پرامپت متنی</a> توضیح داده شده است.
 </p>
 
-<div className="h-4" />
-<h3>۲. پرامپت متنی به همراه عکس</h3>
-<div className="h-2" />
+<Section id="text-prompt-with-image-input" title="۲. پرامپت متنی به همراه عکس" headingTag="h3"/>
+
 
 شما می‌توانید در یک ورودی به مدل، همزمان از متن و عکس استفاده کنید. به عنوان مثال، می‌توانید از یک عکس به عنوان ورودی استفاده کنید و از مدل بخواهید که در مورد آن عکس توضیح دهد یا سوالاتی را پاسخ دهد.
 
@@ -1535,23 +1534,30 @@ image:
 </p>
 </Alert>
 
-<Section id="text-prompt-with-audio-file" title="۳. پرامپت متنی به همراه فایل صوتی" headingTag="h3" />
+<Section id="text-prompt-with-audio-input" title="۳. پرامپت متنی به همراه ورودی صوتی" headingTag="h3" />
 <div className="h-2" />
 
 شما می‌توانید در یک ورودی به مدل، همزمان از متن و فایل صوتی استفاده کنید. به عنوان مثال، می‌توانید از یک فایل صوتی به عنوان ورودی استفاده کنید و از مدل بخواهید که در مورد آن فایل توضیح دهد یا سوالاتی را پاسخ دهد.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+در نظر داشته باشید که تنها راه ارائه فایل صوتی به مدل، استفاده از Buffer یا قرار دادن فایل به صورت محلی کنار کد است و امکان استفاده از لینک مستقیم وجود ندارد.
+</p>
+</Alert>
 
 <Tabs 
   tabs={["OpenAI SDK", "AI SDK"]} 
   content={[
     <>
-        برای استفاده از پرامپت‌های متنی همراه با ورودی صوتی در OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید 
-        (در نظر داشته باشید که باید فایل صوتی، در کنار فایل‌های کد قرار گرفته باشد یا مسیری را برای آن مشخص کرده باشد):
+        برای استفاده از پرامپت‌های متنی همراه با ورودی صوتی در OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید: 
         <HighlightTabs
             tabs={[
                 {
                 label: "cURL",
                 language: "bash",
-                code: `#!/bin/bash
+                code: `# /bin/bash
+# create a file named command.sh and run with \`bash command.sh liara-song.mp3\`
 
 if [ $# -eq 0 ]; then
     echo "Usage: $0 <audio_file.mp3>"
@@ -1598,9 +1604,9 @@ EOF
 
 echo "Sending request to API..."
 
-curl -X POST "<baseUrl>/chat/completions" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <LIARA_API_KEY>" \
+curl -X POST "<baseUrl>/chat/completions" \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
   -d @/tmp/payload.json
 
 echo ""
@@ -1797,289 +1803,51 @@ class Program
                 },
             ]}
         />
-  
-
     </>,
 
     <>
-    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کدهای جاوااسکریپت زیر، استفاده کنید:
+    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کد زیر، استفاده کنید:
 
-    <HighlightTabs
-        tabs={[
-            {
-            label: "JavaScript",
-                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
-            language: "javascript",
-            code: ``,
-                description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>  
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="js">
-                      {``}
-  </Highlight>
-</div>
-                    <p>
-                      یا اینکه یک لینک باشد:
-                    </p>
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="bash">
-                      {`{
-type: 'image',
-image:
-  'https://media.liara.ir/ai/dog.png',
-},`}
-                    </Highlight>
-                    </div>
-                  </>
-                ),
-            
-            },
-                        {
-            label: "TypeScript",
-            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
-            language: "typescript",
-            code: ``,
-                          description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>  
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="js">
-                      {`{
-  type: 'image',
-  image: fs.readFileSync('./data/cat.png').toString('base64'),
-}`}
-  </Highlight>
-</div>
-                    <p>
-                      یا اینکه یک لینک باشد:
-                    </p>
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="bash">
-                      {`{
-type: 'image',
-image:
-  'https://media.liara.ir/ai/dog.png',
-},`}
-                    </Highlight>
-                    </div>
-                  </>
-                ),
-            },
-            
-        ]}
-    />
+    <div className='h-3' />
+    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+      <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import fs from 'fs';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = await generateText({
+  model: my_model('google/gemini-2.5-flash'),
+  messages: [
+    {
+      role: 'user',
+      content: [
+        {
+          type: 'file',
+          mimeType: 'audio/mpeg',
+          data: fs.readFileSync('./data/liara-song.mp3'),
+        },
+      ],
+    },
+  ],
+});
+
+console.log(result.text);`}
+      </Highlight>
+    </div>
+
     </>
 
   ]}
 />
-
-
-
-<div className="h-4" />
-<h3>۳. پرامپت متنی به همراه فایل صوتی</h3>
-<div className="h-2" />
-
-<Tabs 
-  tabs={["OpenAI SDK", "AI SDK"]} 
-  content={[
-    <>
-        برای استفاده از پرامپت‌های متنی همراه با ورودی صوتی در OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید:
-        <HighlightTabs
-            tabs={[
-                {
-                label: "cURL",
-                language: "bash",
-                code: ``,
-                description: (
-                  <>
-
-                  <div dir="rtl">
-                    <p>
-                    
-                    </p>
-                  </div>
-                  </>
-                ),
-                },
-                {
-                label: "JavaScript",
-                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
-                language: "javascript",
-                code: ``,
-                description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>
-                  </>
-                ),
-                },
-                {
-                label: "PHP",
-                icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
-                language: "php",
-                code: ``,
-                description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>
-                  </>
-                ),
-                },
-                {
-                label: "Python",
-                icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
-                language: "python",
-                code: ``,
-                description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>
-                  </>
-                ),
-                },
-                {
-                label: "NET.",
-                icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
-                language: "dotnet",
-                code: ``,
-                description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>
-                  </>
-                ),
-                },
-                {
-                label: "Go",
-                icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
-                language: "go",
-                code: ``,
-                description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                    <div className="h-2" />
-                    <p>
-                    </p>
-                    </div>
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="bash">
-                      {`go get github.com/sashabaranov/go-openai`}
-                    </Highlight>
-                    </div>
-                  </>
-                ),
-                },
-            ]}
-        />
-  
-
-    </>,
-
-    <>
-    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کدهای جاوااسکریپت زیر، استفاده کنید:
-
-    <HighlightTabs
-        tabs={[
-            {
-            label: "JavaScript",
-                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
-            language: "javascript",
-            code: ``,
-                description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>  
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="js">
-                      {``}
-  </Highlight>
-</div>
-                    <p>
-                      یا اینکه یک لینک باشد:
-                    </p>
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="bash">
-                      {`{
-type: 'image',
-image:
-  'https://media.liara.ir/ai/dog.png',
-},`}
-                    </Highlight>
-                    </div>
-                  </>
-                ),
-            
-            },
-                        {
-            label: "TypeScript",
-            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
-            language: "typescript",
-            code: ``,
-                          description: (
-                  <>
-                  <div dir="rtl">
-                    <p>
-                    </p>
-                  </div>  
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="js">
-                      {`{
-  type: 'image',
-  image: fs.readFileSync('./data/cat.png').toString('base64'),
-}`}
-  </Highlight>
-</div>
-                    <p>
-                      یا اینکه یک لینک باشد:
-                    </p>
-                    <div className="h-2" />
-                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
-                    <Highlight className="bash">
-                      {`{
-type: 'image',
-image:
-  'https://media.liara.ir/ai/dog.png',
-},`}
-                    </Highlight>
-                    </div>
-                  </>
-                ),
-            },
-            
-        ]}
-    />
-    </>
-
-  ]}
-/>
-
 
 <Section id='assistant-prompt-types' title='انواع پرامپت‌ها با نقش دستیار (assistant) در AI SDK' />
 

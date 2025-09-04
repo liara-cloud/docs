@@ -181,6 +181,15 @@ img {
         background: #fff2 !important;
         /* z-index: 22; */
     }
+
+    button {
+        color: #000 !important;
+    }
+}
+
+/* Light mode styles for the highlight button */
+.highlight-container button {
+    color: #fff !important;
 }
 
 
