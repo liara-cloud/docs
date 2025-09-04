@@ -1535,6 +1535,552 @@ image:
 </p>
 </Alert>
 
+<Section id="text-prompt-with-audio-file" title="۳. پرامپت متنی به همراه فایل صوتی" headingTag="h3" />
+<div className="h-2" />
+
+شما می‌توانید در یک ورودی به مدل، همزمان از متن و فایل صوتی استفاده کنید. به عنوان مثال، می‌توانید از یک فایل صوتی به عنوان ورودی استفاده کنید و از مدل بخواهید که در مورد آن فایل توضیح دهد یا سوالاتی را پاسخ دهد.
+
+<Tabs 
+  tabs={["OpenAI SDK", "AI SDK"]} 
+  content={[
+    <>
+        برای استفاده از پرامپت‌های متنی همراه با ورودی صوتی در OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید 
+        (در نظر داشته باشید که باید فایل صوتی، در کنار فایل‌های کد قرار گرفته باشد یا مسیری را برای آن مشخص کرده باشد):
+        <HighlightTabs
+            tabs={[
+                {
+                label: "cURL",
+                language: "bash",
+                code: `#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <audio_file.mp3>"
+    echo "Example: $0 liara-song.mp3"
+    exit 1
+fi
+
+AUDIO_FILE="$1"
+
+if [ ! -f "$AUDIO_FILE" ]; then
+    echo "Error: Audio file '$AUDIO_FILE' not found"
+    exit 1
+fi
+
+echo "Encoding audio file to base64..."
+
+AUDIO_BASE64=$(base64 -w 0 "$AUDIO_FILE")
+
+echo "Creating JSON payload..."
+
+cat > /tmp/payload.json << EOF
+{
+  "model": "google/gemini-2.5-flash",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is the audio saying?"
+        },
+        {
+          "type": "input_audio",
+          "input_audio": {
+            "data": "$AUDIO_BASE64",
+            "format": "mp3"
+          }
+        }
+      ]
+    }
+  ]
+}
+EOF
+
+echo "Sending request to API..."
+
+curl -X POST "<baseUrl>/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <LIARA_API_KEY>" \
+  -d @/tmp/payload.json
+
+echo ""
+echo "Cleaning up temporary files..."
+
+rm /tmp/payload.json
+
+echo "Done!"`,
+                },
+                {
+                label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+                language: "javascript",
+                code: `// npm install openai
+
+import OpenAI from "openai";
+import fs from "fs";
+
+const openai = new OpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_KEY",
+});
+
+async function main() {
+
+  // Read and base64 encode the audio file
+  const audioFile = fs.readFileSync("liara-song.mp3");
+  const audioBase64 = audioFile.toString("base64");
+
+  const completion = await openai.chat.completions.create({
+    model: "google/gemini-2.5-flash", 
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: "What is the audio saying?",
+          },
+          {
+            type: "input_audio",
+            input_audio: {
+              data: audioBase64,
+              format: "mp3",
+            },
+          },
+        ],
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message.content);
+}
+
+main();
+`,
+
+                },
+                {
+                label: "PHP",
+                icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+                language: "php",
+                code: `<!-- composer require openai-php/client guzzlehttp/guzzle -->
+
+<?php
+require 'vendor/autoload.php';
+
+use OpenAI\\Client;
+
+$client = OpenAI::factory()
+    ->withApiKey('<LIARA_API_KEY>')
+    ->withBaseUri('<baseUrl>') 
+    ->make();
+
+// Read and base64 encode the audio file
+$audioData = base64_encode(file_get_contents("liara-song.mp3"));
+
+$response = $client->chat()->create([
+    "model" => "google/gemini-2.5-flash",
+    "messages" => [
+        [
+            "role" => "user",
+            "content" => [
+                [
+                    "type" => "text",
+                    "text" => "What is the audio saying?"
+                ],
+                [
+                    "type" => "input_audio",
+                    "input_audio" => [
+                        "data" => $audioData,
+                        "format" => "mp3"
+                    ]
+                ]
+            ]
+        ]
+    ],
+]);
+
+echo $response->choices[0]->message->content;
+`,
+                },
+                {
+                label: "Python",
+                icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+                language: "python",
+                code: `# pip install openai
+
+from openai import OpenAI
+import base64
+
+client = OpenAI(
+  base_url="<baseUrl>",
+  api_key="<LIARA_API_KEY>",
+)
+
+with open("liara-song.mp3", "rb") as audio_file:
+    audio_data = base64.b64encode(audio_file.read()).decode('utf-8')
+
+completion = client.chat.completions.create(
+  model="google/gemini-2.5-flash",
+  messages=[
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is the audio saying?"
+        },
+        {
+          "type": "input_audio",
+          "input_audio": {
+            "data": audio_data,
+            "format": "mp3"
+          }
+        }
+      ]
+    }
+  ],
+)
+
+print(completion.choices[0].message.content)
+`,
+                },
+                {
+                label: "NET.",
+                icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+                language: "dotnet",
+                code: `// dotnet add package OpenAI
+
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using System.ClientModel;
+using OpenAI;
+using OpenAI.Chat;
+
+class Program
+{
+    static async Task Main()
+    {
+        string apiKey  = "<LIARA_API_KEY>";
+        string baseUrl = "<baseUrl>";
+
+        OpenAIClientOptions options = new OpenAIClientOptions
+        {
+            Endpoint = new Uri(baseUrl)
+        };
+
+        ChatClient client = new(
+            model: "google/gemini-2.5-flash",
+            credential: new ApiKeyCredential(apiKey),
+            options: options
+        );
+
+        
+        byte[] audioBytes = File.ReadAllBytes("liara-song.mp3");
+        BinaryData audioData = BinaryData.FromBytes(audioBytes);
+
+        var messages = new List<ChatMessage>
+        {
+            new UserChatMessage(
+                ChatMessageContentPart.CreateTextPart("What is the audio saying?"),
+                ChatMessageContentPart.CreateInputAudioPart(audioData, ChatInputAudioFormat.Mp3) // ✅ FIXED
+            )
+        };
+
+        ClientResult<ChatCompletion> result = await client.CompleteChatAsync(messages);
+        string response = result.Value.Content[0].Text;
+        Console.WriteLine(response);
+    }
+}
+`,
+                },
+            ]}
+        />
+  
+
+    </>,
+
+    <>
+    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کدهای جاوااسکریپت زیر، استفاده کنید:
+
+    <HighlightTabs
+        tabs={[
+            {
+            label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+            language: "javascript",
+            code: ``,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>  
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="js">
+                      {``}
+  </Highlight>
+</div>
+                    <p>
+                      یا اینکه یک لینک باشد:
+                    </p>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`{
+type: 'image',
+image:
+  'https://media.liara.ir/ai/dog.png',
+},`}
+                    </Highlight>
+                    </div>
+                  </>
+                ),
+            
+            },
+                        {
+            label: "TypeScript",
+            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+            language: "typescript",
+            code: ``,
+                          description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>  
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="js">
+                      {`{
+  type: 'image',
+  image: fs.readFileSync('./data/cat.png').toString('base64'),
+}`}
+  </Highlight>
+</div>
+                    <p>
+                      یا اینکه یک لینک باشد:
+                    </p>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`{
+type: 'image',
+image:
+  'https://media.liara.ir/ai/dog.png',
+},`}
+                    </Highlight>
+                    </div>
+                  </>
+                ),
+            },
+            
+        ]}
+    />
+    </>
+
+  ]}
+/>
+
+
+
+<div className="h-4" />
+<h3>۳. پرامپت متنی به همراه فایل صوتی</h3>
+<div className="h-2" />
+
+<Tabs 
+  tabs={["OpenAI SDK", "AI SDK"]} 
+  content={[
+    <>
+        برای استفاده از پرامپت‌های متنی همراه با ورودی صوتی در OpenAI SDK، می‌توانید از کدها و دستورات زیر استفاده کنید:
+        <HighlightTabs
+            tabs={[
+                {
+                label: "cURL",
+                language: "bash",
+                code: ``,
+                description: (
+                  <>
+
+                  <div dir="rtl">
+                    <p>
+                    
+                    </p>
+                  </div>
+                  </>
+                ),
+                },
+                {
+                label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+                language: "javascript",
+                code: ``,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>
+                  </>
+                ),
+                },
+                {
+                label: "PHP",
+                icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+                language: "php",
+                code: ``,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>
+                  </>
+                ),
+                },
+                {
+                label: "Python",
+                icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+                language: "python",
+                code: ``,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>
+                  </>
+                ),
+                },
+                {
+                label: "NET.",
+                icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+                language: "dotnet",
+                code: ``,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>
+                  </>
+                ),
+                },
+                {
+                label: "Go",
+                icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+                language: "go",
+                code: ``,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                    <div className="h-2" />
+                    <p>
+                    </p>
+                    </div>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`go get github.com/sashabaranov/go-openai`}
+                    </Highlight>
+                    </div>
+                  </>
+                ),
+                },
+            ]}
+        />
+  
+
+    </>,
+
+    <>
+    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کدهای جاوااسکریپت زیر، استفاده کنید:
+
+    <HighlightTabs
+        tabs={[
+            {
+            label: "JavaScript",
+                icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+            language: "javascript",
+            code: ``,
+                description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>  
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="js">
+                      {``}
+  </Highlight>
+</div>
+                    <p>
+                      یا اینکه یک لینک باشد:
+                    </p>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`{
+type: 'image',
+image:
+  'https://media.liara.ir/ai/dog.png',
+},`}
+                    </Highlight>
+                    </div>
+                  </>
+                ),
+            
+            },
+                        {
+            label: "TypeScript",
+            icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+            language: "typescript",
+            code: ``,
+                          description: (
+                  <>
+                  <div dir="rtl">
+                    <p>
+                    </p>
+                  </div>  
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="js">
+                      {`{
+  type: 'image',
+  image: fs.readFileSync('./data/cat.png').toString('base64'),
+}`}
+  </Highlight>
+</div>
+                    <p>
+                      یا اینکه یک لینک باشد:
+                    </p>
+                    <div className="h-2" />
+                    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+                    <Highlight className="bash">
+                      {`{
+type: 'image',
+image:
+  'https://media.liara.ir/ai/dog.png',
+},`}
+                    </Highlight>
+                    </div>
+                  </>
+                ),
+            },
+            
+        ]}
+    />
+    </>
+
+  ]}
+/>
+
+
 <Section id='assistant-prompt-types' title='انواع پرامپت‌ها با نقش دستیار (assistant) در AI SDK' />
 
 پیام‌های Assistant معمولاً پاسخ‌های قبلی دستیار به کاربر هستند و می‌توانند شامل متن، استدلال یا بخش‌هایی مربوط به فراخوانی ابزار (tool call) باشند.
