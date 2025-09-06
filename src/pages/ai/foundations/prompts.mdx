@@ -1546,6 +1546,12 @@ image:
 </p>
 </Alert>
 
+<Alert variant="success">
+<p>
+API هوش مصنوعی لیارا، ورودی صوتی با فرمت <Important>mp3</Important> و <Important>wav</Important> را پشتیبانی می‌کند.
+</p>
+</Alert>
+
 <Tabs 
   tabs={["OpenAI SDK", "AI SDK"]} 
   content={[
@@ -1848,6 +1854,71 @@ console.log(result.text);`}
 
   ]}
 />
+
+
+<Section id="text-prompt-with-file-input" title="۴. پرامپت متنی به همراه ورودی فایل" headingTag="h3" />
+<div className="h-2" />
+
+شما می‌توانید در یک ورودی به مدل، همزمان از متن و فایل استفاده کنید. به عنوان مثال، می‌توانید از یک فایل به عنوان ورودی استفاده کنید و از مدل بخواهید که در مورد آن فایل توضیح دهد یا سوالاتی را پاسخ دهد.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+در نظر داشته باشید که تنها راه ارائه فایل به مدل، استفاده از Buffer یا قرار دادن فایل به صورت محلی کنار کد است و امکان استفاده از لینک مستقیم وجود ندارد.
+</p>
+</Alert>
+
+
+<Tabs 
+  tabs={["AI SDK"]} 
+  content={[
+    <>
+    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کد زیر، استفاده کنید:
+
+    <div className='h-3' />
+    <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
+      <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+import fs from 'fs';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const result = await generateText({
+  model: my_model('openai/gpt-4o-mini'),
+  messages: [
+    {
+      role: 'user',
+      content: [
+        { type: 'text', text: 'What is the file about?' },
+        {
+          type: 'file',
+          mimeType: 'application/pdf',
+          data: fs.readFileSync('./data/sample.pdf'),
+          filename: 'sample.pdf', // optional, not used by all providers
+        },
+      ],
+    },
+  ],
+});
+
+console.log(result.text)`}
+      </Highlight>
+    </div>
+
+    </>
+
+  ]}
+/>
+
+
 
 <Section id='assistant-prompt-types' title='انواع پرامپت‌ها با نقش دستیار (assistant) در AI SDK' />
 
