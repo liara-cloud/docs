@@ -357,14 +357,14 @@ export default {
         link: "/ai/ai-sdk-core/about"
       },
       {
-        title: "ارجاعات AI SDK",
-        icon: <GoRepoPush />,
-        link: "/ai/references/about"
-      },
-      {
         title: "کتابخانه AI SDK UI",
         icon: <GoBook />,
         link: "/ai/ai-sdk-ui/about"
+      },
+      {
+        title: "ارجاعات AI SDK",
+        icon: <GoRepoPush />,
+        link: "/ai/references/about"
       },
       {
         title: "خطاهای AI SDK",
@@ -420,6 +420,13 @@ export default {
         title: "آشنایی با کتابخانه AI SDK UI",
         icon: <GoInfo />,
         link: "/ai/ai-sdk-ui/about"
+      },
+      {
+        hr: true
+      },
+      {
+        title: "چت بات",
+        link: "/ai/ai-sdk-ui/chatbot"
       },
     ],
 

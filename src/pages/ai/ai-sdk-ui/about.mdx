@@ -101,4 +101,33 @@ AI SDK UI در فریم‌ورک‌های <a href="https://liara.ir/landing/%D9%
 ]}
 />
 
+<hr className="mb-2" />
+
+در ادامه، به توضیح هر یک از قابلیت‌های AI SDK به تفصیل، پرداخته شده است: 
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+      {
+        title: "چت بات",
+        link: "/ai/ai-sdk-ui/chatbot"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+<div className="h-4" />
+
+
 </Layout>

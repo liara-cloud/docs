@@ -1,0 +1,429 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات چت بات با AI SDK UI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با چت‌بات و ساخت آن با استفاده از AI SDK UI و اتصال آن به سرویس هوش مصنوعی لیارا"  />
+</Head>
+
+
+# چت بات هوش مصنوعی با AI SDK UI
+<hr className="mb-2" />
+
+هوک <Important>useChat</Important> ایجاد رابط کاربری مکالمه‌ای برای برنامه‌ی چت‌بات شما را بسیار آسان می‌کند. این هوک امکان استریم پیام‌های چت از ارائه‌دهنده هوش مصنوعی را فراهم می‌کند، وضعیت چت (chat state) را مدیریت می‌نماید و با رسیدن پیام‌های جدید، رابط کاربری را به‌صورت خودکار به‌روزرسانی می‌کند.
+<div className="h-4" />
+
+به‌طور خلاصه، هوک useChat امکانات زیر را ارائه می‌دهد:
+
+<div className="h-2" />
+<ul>
+<li><b>استریم پیام‌ها</b>: تمامی پیام‌ها از ارائه‌دهنده هوش مصنوعی به صورت بلادرنگ به رابط کاربری چت ارسال می‌شوند</li>
+<li><b>مدیریت stateها</b>: این هوک stateهای مربوط به ورودی، پیام‌ها، وضعیت کلی، خطا و موارد دیگر را برای شما مدیریت می‌کند</li>
+<li><b>یکپارچه‌سازی</b>: به‌سادگی می‌توانید هوش مصنوعی چت خود را در هر طراحی یا چیدمان رابط کاربری با کمترین تلاش ادغام کنید</li>
+</ul>
+<div className="h-2" />
+
+در این راهنما، شما خواهید آموخت چگونه از هوک <Important>useChat</Important> برای ساخت یک برنامه چت‌بات با استریم پیام‌های بلادرنگ (real-time) استفاده کنید. 
+<hr className="mb-2" />
+
+<Section id='example' title='مثال' />
+
+در پروژه NextJS خود در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/react@^1.2.12
+
+'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Page() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat({});
+
+  return (
+    <>
+      {messages.map(message => (
+        <div key={message.id}>
+          {message.role === 'user' ? 'User: ' : 'AI: '}
+          {message.content}
+        </div>
+      ))}
+
+      <form onSubmit={handleSubmit}>
+        <input name="prompt" value={input} onChange={handleInputChange} />
+        <button type="submit">Submit</button>
+      </form>
+    </>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در مسیر <Important>app/api/chat/route.ts</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm add @ai-sdk/openai@^1 ai@^4
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: 'You are a helpful assistant.',
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}`}
+    </Highlight>
+</div>
+
+<Alert variant="info">
+<p>
+متغیرهای محیطی <Important>BASE_URL</Important> و <Important>LIARA_API_KEY</Important> همان baseUrl <a href="https://liara.ir/products/ai/" className="text-[#2196f3]">سرویس هوش مصنوعی لیارا</a> و <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API لیارا</a> هستند که باید در بخش متغیرهای محیطی برنامه خود، آن‌ها را تنظیم کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+پیام‌های رابط کاربری اکنون دارای ویژگی جدیدی به نام <Important>parts</Important> هستند که شامل بخش‌های مختلف پیام می‌باشد. پیشنهاد می‌شود برای نمایش پیام‌ها از ویژگی <Important>parts</Important> به جای <Important>content</Important> استفاده کنید.
+ویژگی <Important>parts</Important> از انواع مختلف پیام پشتیبانی می‌کند، از جمله متن (text)، فراخوانی tool و نتیجه tool، و امکان ایجاد رابط‌های کاربری چت پیچیده‌تر و انعطاف‌پذیرتر را فراهم می‌آورد.
+
+<div className="h-4" />
+
+در کامپوننت <Important>Page</Important>، هوک <Important>useChat</Important> هر بار که کاربر پیامی ارسال می‌کند، درخواست را به endpoint ارائه‌دهنده هوش مصنوعی شما می‌فرستد. پیام‌ها سپس به‌صورت بلادرنگ (real-time) استریم شده و در رابط کاربری چت نمایش داده می‌شوند.
+این ویژگی تجربه چتی را فراهم می‌کند که در آن کاربر می‌تواند پاسخ هوش مصنوعی را به محض آماده شدن مشاهده کند، بدون آنکه نیاز باشد منتظر دریافت کامل پاسخ بماند.
+<hr className="mb-2" />
+
+<Section id='customized-ui' title='رابط کاربری سفارشی' />
+
+هوک <Important>useChat</Important> همچنین روش‌هایی برای مدیریت وضعیت پیام‌های چت و ورودی‌ها از طریق کدنویسی فراهم می‌کند، امکان نمایش وضعیت (status) را می‌دهد و قابلیت به‌روزرسانی پیام‌ها را بدون نیاز به تعامل مستقیم کاربر ارائه می‌دهد.
+
+<Section id='status' title='Status' headingTag="h3" />
+
+هوک <Important>useChat</Important> یک status بازمی‌گرداند که می‌تواند مقادیر زیر را داشته باشد:
+
+<div className="h-2" />
+<ul>
+<li><Important>submitted</Important>: پیام به API ارسال شده و در انتظار شروع استریم پاسخ هستیم</li>
+<div className="h-2" />
+<li><Important>streaming</Important>: پاسخ به‌صورت فعال از API استریم می‌شود و chunkهای داده دریافت می‌شوند</li>
+<div className="h-2" />
+<li><Important>ready</Important>: پاسخ کامل دریافت و پردازش شده است؛ کاربر می‌تواند پیام جدیدی ارسال کند</li>
+<div className="h-2" />
+<li><Important>error</Important>: در طول درخواست API خطایی رخ داده و درخواست به صورت کامل انجام نشده است</li>
+</ul>
+<div className="h-4" />
+
+می‌توانید از <Important>status</Important> برای اهداف زیر استفاده کنید:
+
+<div className="h-2" />
+<ul>
+<li>نمایش یک spinner بارگذاری هنگام پردازش پیام کاربر توسط چت‌بات</li>
+<li>نمایش یک دکمه Stop برای متوقف کردن پیام جاری</li>
+<li>غیرفعال کردن دکمه ارسال (submit button)</li>
+</ul>
+<div className="h-6" />
+
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Page() {
+  const { messages, input, handleInputChange, handleSubmit, status, stop } =
+    useChat({});
+
+  return (
+    <>
+      {messages.map(message => (
+        <div key={message.id}>
+          {message.role === 'user' ? 'User: ' : 'AI: '}
+          {message.content}
+        </div>
+      ))}
+
+      {(status === 'submitted' || status === 'streaming') && (
+        <div>
+          {status === 'submitted' && <Spinner />}
+          <button type="button" onClick={() => stop()}>
+            Stop
+          </button>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit}>
+        <input
+          name="prompt"
+          value={input}
+          onChange={handleInputChange}
+          disabled={status !== 'ready'}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+می‌توانید کامپوننت <Important>Spinner</Important> را با کامپوننت دلخواه خود جایگزین کنید؛ یا اینکه در مسیر <Important>components/Spinner.tsx</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`export default function Spinner() {
+  return (
+    <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]">
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<Section id='error-state' title='Error State' />
+
+به‌طور مشابه، error state نمایانگر آبجکت خطایی است که هنگام درخواست fetch ایجاد شده است. این state می‌تواند برای نمایش پیام خطا، غیرفعال کردن دکمه ارسال یا نمایش دکمه تلاش مجدد (retry) استفاده شود.
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+توصیه می‌شود پیام خطای عمومی به کاربر نمایش داده شود، مانند: "مشکلی پیش آمد". این یک شیوه‌ی مناسب برای جلوگیری از افشای اطلاعات داخلی سرور محسوب می‌شود.
+</p>
+</Alert>
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit, error, reload } =
+    useChat({});
+
+  return (
+    <div>
+      {messages.map(m => (
+        <div key={m.id}>
+          {m.role}: {m.content}
+        </div>
+      ))}
+
+      {error && (
+        <>
+          <div>An error occurred.</div>
+          <button type="button" onClick={() => reload()}>
+            Retry
+          </button>
+        </>
+      )}
+
+      <form onSubmit={handleSubmit}>
+        <input
+          value={input}
+          onChange={handleInputChange}
+          disabled={error != null}
+        />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+
+<Section id='modify-messages' title='ویرایش پیام‌ها' />
+
+گاهی ممکن است بخواهید برخی از پیام‌های موجود را به‌صورت مستقیم ویرایش کنید. به‌عنوان مثال، می‌توان یک دکمه حذف به هر پیام اضافه کرد تا کاربران بتوانند آن‌ها را از تاریخچه چت حذف کنند.
+<div className="h-2" />
+
+تابع <Important>setMessages</Important> می‌تواند به شما در انجام این کارها کمک کند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const { messages, setMessages, ... } = useChat()
+
+const handleDelete = (id) => {
+  setMessages(messages.filter(message => message.id !== id))
+}
+
+return <>
+  {messages.map(message => (
+    <div key={message.id}>
+      {message.role === 'user' ? 'User: ' : 'AI: '}
+      {message.content}
+      <button onClick={() => handleDelete(message.id)}>Delete</button>
+    </div>
+  ))}
+  ...`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+می‌توانید <Important>messages</Important> و <Important>setMessages</Important> را مانند یک جفت <Important>state</Important> و <Important>setState</Important> در React در نظر بگیرید.
+
+<Section id='controlled-input' title='ورودی کنترل شده' />
+
+در مثال اولیه، ما از callbackهای <Important>handleSubmit</Important> و <Important>handleInputChange</Important> برای مدیریت تغییرات ورودی و ارسال فرم استفاده کرده‌ایم. این روش برای موارد رایج کاربردی است، اما شما می‌توانید از APIهای کنترل‌نشده (uncontrolled) برای سناریوهای پیشرفته‌تر مانند اعتبارسنجی فرم یا ایجاد کامپوننت‌های سفارشی نیز، استفاده کنید.
+<div className="h-4" />
+
+مثال زیر نشان می‌دهد چگونه می‌توان از APIهای دقیق‌تر مانند <Important>setInput</Important> و <Important>append</Important> همراه با کامپوننت‌های ورودی و دکمه ارسال سفارشی استفاده کرد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const { input, setInput, append } = useChat()
+
+return <>
+  <MyCustomInput value={input} onChange={value => setInput(value)} />
+  <MySubmitButton onClick={() => {
+    // Send a new message to the AI provider
+    append({
+      role: 'user',
+      content: input,
+    })
+  }}/>
+  ...`}
+    </Highlight>
+</div>
+
+<Section id='cancellation-and-regeneration' title='لغو و بازتولید' />
+
+یکی دیگر از سناریوهای رایج، متوقف کردن پاسخی است که هنوز از ارائه‌دهنده هوش مصنوعی در حال استریم شدن است. شما می‌توانید این کار را با فراخوانی تابع <Important>stop</Important> که توسط هوک <Important>useChat</Important> بازگردانده می‌شود، انجام دهید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const { stop, status, ... } = useChat()
+
+return <>
+  <button onClick={stop} disabled={!(status === 'streaming' || status === 'submitted')}>Stop</button>
+  ...`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+زمانی که کاربر روی دکمه Stop کلیک می‌کند، درخواست fetch متوقف می‌شود. این کار از مصرف غیرضروری منابع جلوگیری کرده و تجربه کاربری برنامه چت‌بات شما را بهبود می‌بخشد.
+<div className="h-4" />
+
+به‌طور مشابه، شما می‌توانید از ارائه‌دهنده هوش مصنوعی بخواهید پیام آخر را دوباره پردازش کند، با فراخوانی تابع <Important>reload</Important> که توسط هوک <Important>useChat</Important> بازگردانده می‌شود:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const { reload, status, ... } = useChat()
+
+return <>
+  <button onClick={reload} disabled={!(status === 'ready' || status === 'error')}>Regenerate</button>
+  ...
+</>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+زمانی که کاربر روی دکمه Regenerate کلیک می‌کند، ارائه‌دهنده هوش مصنوعی پیام آخر را دوباره تولید کرده و پیام فعلی را به‌طور متقابل جایگزین می‌کند.
+
+<Section id='throttling-ui-updates' title='محدودسازی به‌روزرسانی‌های رابط کاربری' />
+
+<Alert variant="info">
+<p>
+این ویژگی در حال حاضر فقط برای React در دسترس است.
+</p>
+</Alert>
+<div className="h-2" />
+
+به‌صورت پیش‌فرض، هر بار که یک chunk جدید دریافت می‌شود، هوک <Important>useChat</Important> باعث رندر مجدد رابط کاربری می‌شود. شما می‌توانید با استفاده از <Important>experimental_throttle</Important> به محدودسازی (throttle) به‌روزرسانی‌های UI بپردازید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const { messages, ... } = useChat({
+  // Throttle the messages and data updates to 50ms:
+  experimental_throttle: 50
+})
+`}
+    </Highlight>
+</div>
+{/* <hr className="mb-2" /> */}
+
+
+
+
+{/* <Important>
+</Important>
+<hr className="mb-2" />
+<Section id='' title='' />
+<div className="h-2" />
+<ul>
+<li></li>
+</ul>
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {``}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/" alt=""/>
+<div className="h-2" />  
+
+
+<video
+  src="https://media.liara.ir/"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/> */}
+
+</Layout>
