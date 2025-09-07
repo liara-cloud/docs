@@ -40,9 +40,9 @@ body {
 
 }
 
-.layout a.text-[#2196f3] {
+.layout a[class*="text-"] {
   color: rgb(123, 168, 250);
-  text-decoration: rgba(123, 167, 250, 0.411);
+  text-decoration-color: rgba(123, 167, 250, 0.411);
 }
 
 
@@ -468,6 +468,61 @@ pre code {
 
 
 
+
+/* Custom Table Styles - Light Mode */
+.custom-table-container {
+  background: rgba(0, 0, 0, 0.03);
+  margin: 20px 0px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.custom-table-header {
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.custom-table-row {
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.custom-table-row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.custom-table-row-border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.custom-table-cell {
+  padding: 12px 16px;
+  text-align: center;
+  vertical-align: middle;
+  color: rgba(0, 0, 0, 0.7);
+  min-height: 48px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.custom-table-cell-ltr {
+  direction: ltr;
+}
 
 @layer utilities {
   .text-balance {

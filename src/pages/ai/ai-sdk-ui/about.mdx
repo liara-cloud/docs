@@ -25,57 +25,80 @@ import {
 } from "react-icons/go";
 
 import Head from "next/head";
+import TickBadge from "@/components/Common/tick-badge";
 
 <Layout>
+
 <Head>
 <title>مستندات AI SDK UI - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content=" مستندات مربوط به آشنایی با AI SDK UI با سرویس هوش مصنوعی لیارا "  />
+<meta property="og:description" content=" مستندات مربوط به آشنایی با AI SDK UI در سرویس هوش مصنوعی لیارا "  />
 </Head>
+
 # معرفی کتابخانه‌ی AI SDK UI
 <hr className="mb-2" />
-کتابخانه‌ی <Important>AI SDK UI</Important>مجموعه‌ای از ابزارهای آماده برای ساخت APIهای تعاملی مبتنی بر هوش مصنوعی است. این ابزار امکان پیاده‌سازی چت بات، تکمیل متن و دستیارهای هوشمند را با کمترین پیچیدگی فراهم می‌کند.
-<hr className="mb-2" />
-<Important>AI SDK UI</Important> مستقل از فریم‌ورک خاصی توسعه داده شده و به‌سادگی در پروژه‌های مختلف قابل استفاده می‌باشد. با این کتابخانه، نیازی به مدیریت دستی پیام‌ها، وضعیت بارگذاری یا بروزرسانی رابط کاربری نخواهید داشت. تمام این موارد از طریق هوک‌های ساده و کاربردی در<Important>
- AI SDK UI</Important>قابل مدیریت هستند.
-<hr className="mb-2" />
-<Section id="multi-step-calls" title="هوک‌های کلیدی" />
-این کتابخانه سه هوک اصلی را در اختیار شما قرار می‌دهد که هر کدام بخشی از نیازهای رایج در تعامل با مدل‌های زبانی را پوشش می‌دهند:
 
-<div className="h-2" />
+AI SDK UI با این هدف طراحی شده است که در ساخت برنامه‌های چت تعاملی، completionها و دستیارها به سادگی به شما کمک کند. AI SDK UI یک toolkit مستقل از فریم‌ورک (framework-agnostic) است 
+و فرایند ادغام قابلیت‌های پیشرفته‌ی هوش مصنوعی را در برنامه‌های شما ساده می‌سازد.
+
+<div className="h-4" />
+
+AI SDK UI به ما abstractionهای قدرتمندی ارائه می‌دهد که taskهای پیچیده‌ی chat stream و به‌روزرسانی رابط کاربری در بخش فرانت‌اند را ساده می‌کنند. این موضوع به شما این امکان را می‌دهد تا رابط‌های کاربری پویا و مبتنی بر هوش مصنوعی را با کارایی بیشتری توسعه دهید.
+با استفاده از چهار هوک اصلی — <Important>useChat</Important> , <Important>useCompletion</Important> , <Important>useObject</Important> و <Important>useAssistant</Important> — می‌توانید قابلیت‌های چت بلادرنگ (real-time chat)، تکمیل متن، استریم JSON و ویژگی‌های تعاملی دستیار را در برنامه‌ی خود بگنجانید.
+
+<div className="h-4" />
 <ul>
-<li><Important>useChat</Important></li>
-<p>
-این هوک برای پیاده‌سازی چت بلادرنگ طراحی شده است. با استفاده از <Important>useChat</Important>می‌توانید جریان پیام‌ها را به‌صورت استریمی دریافت و ارسال کنید. وضعیت‌هایی مانند ورودی کاربر، لیست پیام‌ها، خطاها و بارگذاری به‌صورت داخلی مدیریت می‌شوند و تناه کافیست UI مورد نظر خودتان را به آن متصل کنید..
-</p>
-<li><Important>useCompletion</Important></li>
-<p>
-برای کاربردهایی که نیاز به تکمیل متن یا پاسخ‌دهی خودکار دارند،<Important>useCompletion</Important>یک گزینه‌ی ساده و کاراآمد می‌باشد. این هوک پرامپت ورودی را دریافت کرده و پاسخ‌ها را به‌صورت استریمی و مرحله‌به‌مرحله در اختیار شما قرار می‌دهد. همزمان، رابط کاربری شما را با هر تغییر بروزرسانی می‌کند.
-</p>
-<li><Important>useObject</Important></li>
-<p>
-در مواردی که مدل، خروجی را به‌صورت ساخت‌یافته تولید می‌کند، می‌توانید از<Important>useObject</Important>استفاده کنید. این هوک داده‌های ساخت‌یافته را به‌صورت بلادرنگ دریافت کرده و امکان استفاده‌ی مستقیم آن‌ها در رابط کاربری را فراهم می‌کند.
-</p>
+<li><Important>useChat</Important> قابلیت استریم پیام‌های چت را فراهم می‌کند و state management را برای ورودی‌ها، پیام‌ها، loadingها و خطاها، abstract می‌کند. این ویژگی امکان ادغام ساده با هر طراحی رابط کاربری را به ما می‌دهد</li>
+<div className="h-2" />
+<li><Important>useCompletion</Important> به شما این امکان را می‌دهد که تکمیل متن (text completions) را در برنامه‌ی خود مدیریت کنید. این هوک مسئولیت مدیریت ورودی prompt را بر عهده گرفته و رابط کاربری را به‌صورت خودکار هنگام استریم، به‌روزرسانی می‌کند</li>
+<div className="h-2" />
+<li><Important>useObject</Important> یک هوک است که به شما اجازه می‌دهد آبجکت‌های JSON استریمی را استفاده کنید. این قابلیت روشی ساده برای مدیریت و نمایش داده‌های ساختاریافته (structured data) در برنامه‌ی شما ارائه می‌دهد</li>
+<div className="h-2" />
+<li><Important>useAssistant</Important> برای تسهیل تعامل با APIهای دستیار سازگار با OpenAI طراحی شده است. این هوک وضعیت رابط کاربری را مدیریت کرده و هنگام استریم پاسخ‌ها به‌صورت خودکار آن را به‌روزرسانی می‌کند</li>
+<div className="h-2" />
 </ul>
-<div className="h-2" />
+
 <hr className="mb-2" />
+<Section id='framework-support' title='پشتیبانی در فریم‌ورک‌های مختلف' />
 
+AI SDK UI در فریم‌ورک‌های <a href="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D8%B1%DB%8C-%D8%A7%DA%A9%D8%AA-react/" className="text-[#2196f3]">React</a> , <a href="https://docs.liara.ir/paas/nodejs/related-apps/svelte/" className="text-[#2196f3]">Svelte</a> , <a href="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D9%88%DB%8C%D9%88-%D8%AC%DB%8C-%D8%A7%D8%B3-vue/" className="text-[#2196f3]">Vue.js</a> و <a href="https://www.solidjs.com/" className="text-[#2196f3]">SolidJS</a> (که در SolidJS منقضی شده است)، پشتیبانی می‌شود. در ادامه، مقایسه‌ای از توابع پشتیبانی شده در این فریم‌ورک‌ها، قرار گرفته است: 
 
-<div className="h-2" />
-<Alert variant="success">
-<p>
-AI SDK UI با حذف پیچیدگی‌های پیاده‌سازی مدل‌های هوش مصنوعی، امکان تمرکز کامل توسعه‌دهنده بر طراحی UI را فراهم می‌کند.
-</p>
-</Alert>
-<Section id="multi-step-calls" title="پشتیبانی از فریم‌ورک‌های UI" />
-ناگفته نماند کتابخانه‌ی <Important>AI SDK UI</Important> از فریم‌ورک‌های رابط کاربری <a href="https://vuejs.org/" class="text-[#2196f3]">Vue.js</a> ,<a href="https://svelte.dev/" class="text-[#2196f3]">Svelte</a> ,<a href="https://react.dev/" class="text-[#2196f3]">React</a> و <a href="https://angular.dev/" class="text-[#2196f3]">Angular </a> پشتیبانی می‌کند، که در جدول زیر می‌توانید مقایسه‌ای از قابلیت‌های پشتیبانی شده در هر یک از این فریم‌ورک‌ها را مشاهده کنید:
+<Table headers={[
+  "تابع",
+  "React",
+  "Svelte",
+  "Vue.js",
+  "SolidJS (deprecated)",
+]} data={[
+  [
+    "useChat",
+    <TickBadge />,
+    <TickBadge label="Chat" />,
+    <TickBadge />,
+    <TickBadge />,
+  ],
+  [
+    "useCompletion",
+    <TickBadge />,
+    <TickBadge label="Completion" />,
+    <TickBadge />,
+    <TickBadge />,
+  ],
+  [
+    "useObject",
+    <TickBadge />,
+    <TickBadge label="StructuredObject" />,
+    <TickBadge type="error" />,
+    <TickBadge />,
+  ],
+  [
+    "useAssistant",
+    <TickBadge />,
+    <TickBadge type="error" />,
+    <TickBadge />,
+    <TickBadge />,
+  ],
+]}
+/>
 
-<Section id='backup-features' title="مقایسه توابع پشتیبانی شده" />
-<Table  headers={ ["تابع (Function)", "React", "Svelte", "Vue.js", "Angular"]}
- data={ [
-  [<Important>useChat</Important>, "بطور کامل پشتیبانی می‌شود", " فقط Chat پیشتبانی می‌شود", "بطور کامل پشتیبانی می‌شود", " فقط Chat پشتیبانی می‌شود"],
-  [<Important>useCompletion</Important>, "بطور کامل پشتیبانی می‌شود", " فقط Completion پشتیبانی می‌شود", "بطور کامل پشتیبانی می‌شود", " فقط Completion پشتیبانی می‌شود"],
-  [<Important>useObject</Important>, " بطور کامل پشتیبانی می‌شود", " فقط StructuredObject پشتیبانی می‌شود", "بطور کامل پشتیبانی نمی‌شود", "فقط StructuredObject پشتیبانی می‌شود"],
-  
-]} />
 </Layout>

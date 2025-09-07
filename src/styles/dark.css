@@ -146,29 +146,31 @@ img {
 }
 
 
-.dark .table-container table {
-    padding-top: 30;
-    border-spacing: 0px;
-    border-collapse: collapse;
-    color: #ffffff;
-    font-weight: 300;
+/* Custom Table Styles - Dark Mode */
+.dark .custom-table-container {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.dark .table-container table th {
-    padding: 10px;
-    white-space: nowrap;
-    font-weight: 300;
-    border-top: 1px solid #444444 !important;
+.dark .custom-table-header {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark .table-container table td,
-.dark .table-container table th {
-    border: 1px solid #ffffff22;
-    height: auto;
+.dark .custom-table-row:hover {
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
-.dark .table-container table tr:nth-child(odd) {
-    background: #ffffff10;
+.dark .custom-table-row-border {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark .custom-table-cell {
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dark .highlight-container {
@@ -193,31 +195,3 @@ img {
 }
 
 
-
-/*  */
-
-
-.table-container table {
-    padding-top: 30;
-    border-spacing: 0px;
-    border-collapse: collapse;
-    color: #000;
-    font-weight: 400;
-}
-
-.table-container table th {
-    padding: 10px;
-    white-space: nowrap;
-    font-weight: 400;
-    border-top: 1px solid #0002 !important;
-}
-
-.table-container table td,
-.table-container table th {
-    border: 1px solid #0002;
-    height: auto;
-}
-
-.table-container table tr:nth-child(odd) {
-    background: #00000008;
-}
