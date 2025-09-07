@@ -18,6 +18,7 @@ const parseSitemap = (xml) => {
 
   const urls = {
     paas: [],
+    ai: [],
     iaas: [],
     dbass: [],
     mail: [],
@@ -32,6 +33,8 @@ const parseSitemap = (xml) => {
     const url = $(elem).text().slice(0, -1);
 
     if (url.includes('/paas')) urls.paas.push(url);
+    
+    if (url.includes('/ai')) urls.ai.push(url);
     
     if (url.includes('/iaas')) urls.iaas.push(url);
 
