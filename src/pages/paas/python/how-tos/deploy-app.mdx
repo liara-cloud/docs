@@ -48,6 +48,23 @@ tzdata==2024.1
 `}
             </Highlight>
         </div>
+
+                <Section id="liara-json-run-command" title="تعیین دستور اجرای برنامه" />
+        <p>
+            در صورتی که قصد دارید دستورات مدنظرتان، پس از استقرار برنامه، اجرا شوند؛ باید در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و درون آن، در آرایه‌ای به نام <Important>args</Important> دستورات خود را مشابه قطعه کد زیر، مشخص کنید: 
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "args": [ "python3 app.py" ]
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در صورت مشخص نکردن <Important>args</Important>، لیارا به صورت خودکار، دستور <Important>python3 main.py</Important> را، اجرا خواهد کرد.
+        </p>
         <div className='h-4' />        
         <p>
             در ادامه، بایستی پوشه پروژه خود را درون یک فایل zip قرار بدهید؛ سپس در برنامه خود، بر روی گزینه <b>استقرار جدید</b> کلیک کرده؛ وارد تب <b>Drag & Drog</b> شوید و فایل zip را آپلود کنید تا وارد مرحله بعدی استقرار شوید:
@@ -65,6 +82,7 @@ tzdata==2024.1
         <p>
             پس از آپلود پروژه، باید شخصی‌سازی‌های پروژه را در برنامه خود، لحاظ کنید.
         </p>
+        
         {/* <div className="h-4" />
         <img src="https://media.liara.ir/docs/deploy-Python-app-using-console.gif" alt="build app on liara" />
         <div className="h-4" /> */}
@@ -170,7 +188,25 @@ tzdata==2024.1
   }
 }`}
             </Highlight>
-        </div>     
+        </div>
+
+        <Section id="liara-json-run-command" title="تعیین دستور اجرای برنامه" />
+        <p>
+            در صورتی که قصد دارید دستورات مدنظرتان، پس از استقرار برنامه، اجرا شوند؛ می‌توانید در فایل <Important>liara.json</Important> در آرایه‌ای به نام <Important>args</Important> آن‌ها را مشابه قطعه کد زیر، مشخص کنید: 
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "args": [ "python3 app.py" ]
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در صورت مشخص نکردن <Important>args</Important>، لیارا به صورت خودکار، دستور <Important>python3 main.py</Important> را، اجرا خواهد کرد.
+        </p>
+
         <div className='h-4' />
         <p>
             در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
@@ -181,6 +217,7 @@ tzdata==2024.1
                 {`{
   "app": "my-python-app", 
   "platform": "python",
+  "args": [ "python3 app.py" ],
   "port": 3000,
   "python": {
     "mirror": true,
@@ -313,7 +350,25 @@ tzdata==2024.1
 }`}
             </Highlight>
         </div>
-        <div className='h-4' />    
+
+        <Section id="liara-json-run-command" title="تعیین دستور اجرای برنامه" />
+        <p>
+            در صورتی که قصد دارید دستورات مدنظرتان، پس از استقرار برنامه، اجرا شوند؛ می‌توانید در فایل <Important>liara.json</Important> در آرایه‌ای به نام <Important>args</Important> آن‌ها را مشابه قطعه کد زیر، مشخص کنید: 
+        </p>
+                <div className="h-4" />
+        <div dir='ltr'>
+            <Highlight className="json">
+                {`{
+    "args": [ "python3 app.py" ]
+}`}
+            </Highlight>
+        </div>
+        <div className='h-4' />
+        <p>
+            در صورت مشخص نکردن <Important>args</Important>، لیارا به صورت خودکار، دستور <Important>python3 main.py</Important> را، اجرا خواهد کرد.
+        </p>
+
+        <div className='h-4' />
         <p>
             در نهایت، یک فایل <Important>liara.json</Important> می‌تواند مانند قطعه کد زیر باشد:
         </p>
@@ -322,6 +377,7 @@ tzdata==2024.1
             <Highlight className="json">
                 {`{
   "port": 3000,
+  "args": [ "python3 app.py" ],
   "python": {
     "mirror": true,
     "version": "3.12",
@@ -391,7 +447,7 @@ tzdata==2024.1
             </div>
             <div dir='ltr'>
                 <Highlight className="bash">
-                    {`git remote add origin https://github.com/your-account-user/your-repo-name.gi # افزودن دسترسی ریموت به مخزن`}
+                    {`git remote add origin https://github.com/your-account-user/your-repo-name.git # افزودن دسترسی ریموت به مخزن`}
                 </Highlight>
             </div>
             <div dir='ltr'>
