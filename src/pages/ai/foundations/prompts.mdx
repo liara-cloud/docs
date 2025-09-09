@@ -1633,7 +1633,7 @@ import fs from "fs";
 
 const openai = new OpenAI({
   baseURL: "<baseUrl>",
-  apiKey: "<LIARA_API_KEY",
+  apiKey: "<LIARA_API_KEY>",
 });
 
 async function main() {
@@ -1796,7 +1796,7 @@ class Program
         {
             new UserChatMessage(
                 ChatMessageContentPart.CreateTextPart("What is the audio saying?"),
-                ChatMessageContentPart.CreateInputAudioPart(audioData, ChatInputAudioFormat.Mp3) // ✅ FIXED
+                ChatMessageContentPart.CreateInputAudioPart(audioData, ChatInputAudioFormat.Mp3)
             )
         };
 
