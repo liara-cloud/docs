@@ -425,8 +425,12 @@ export default {
         hr: true
       },
       {
-        title: "چت بات",
+        title: "چت‌بات",
         link: "/ai/ai-sdk-ui/chatbot"
+      },
+      {
+        title: "ماندگاری پیام در چت‌بات",
+        link: "/ai/ai-sdk-ui/chatbot-message-persistence"
       },
     ],
 
