@@ -380,6 +380,13 @@ export async function POST(req: Request) {
 }`}
     </Highlight>
 </div>
+
+<Alert variant="info">
+<p>
+پروژه آماده استفاده مطابق با آموزش فوق، در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/AI-SDK-UI/chatbot-message-persistence-part-1" className="text-[#2196f3]">گیت‌هاب لیارا</a> موجود است که می‌توانید از آن، استفاده کنید. 
+</p>
+</Alert>
+
 <hr className="mb-2" />
 
 <Section id='sending-only-the-last-message' title='ارسال فقط آخرین پیام' />
@@ -562,36 +569,427 @@ export async function POST(req: Request) {
   حالتی را که در آن، کلاینت صفحه را بعد از قطع اتصال مجدداً بارگذاری می‌کند، اما استریم هنوز کامل نشده است، پوشش دهد.
 </p>
 </Alert>
-{/* <hr className="mb-2" /> */}
 
-{/*
-<Important>
-</Important>
 <hr className="mb-2" />
-<Section id='' title='' />
+<Section id='resuming-ongoing-streams' title='ادامه دادن استریم‌های در حال اجرا' />
+
+<Alert variant="info">
+<p>
+  این قابلیت آزمایشی است و ممکن است در آینده تغییر کند.
+</p>
+</Alert>
+<div className="h-2" />
+تفاوتی
+نمی‌کند که کلاینت بخاطر قطع شبکه یا بارگذاری مجدد صفحه، استریم را از دست داده باشد؛ 
+هوک <Important>useChat</Important> از قابلیت ادامه دادن استریم در حال اجرا در صفحه چت برای هر کلاینتی، به صورت آزمایشی، پشتیبانی می‌کند.
+این قابلیت برای ساخت اپلیکیشن‌هایی که درگیر مکالمه‌های طولانی هستند مفید است. همچنین این قابلیت، اطمینان حاصل می‌کند که در شرایط رخ دادن مشکلات شبکه، پیام‌ها از دست نمی‌روند.
+<div className="h-2" />
+
+در ادامه، پیش‌نیازها برای چت‌اپلیکیشن شما برای پشتیبانی از این قابلیت قرار گرفته است. 
+
 <div className="h-2" />
 <ul>
-<li></li>
+<li>نصب پکیج <a href="https://www.npmjs.com/package/resumable-stream" className="text-[#2196f3]">resumable-stream</a> که به شما کمک می‌کند مکانیزم publisher/subscriber را در استریم‌‌ها ایجاد و مدیریت کنید</li>
+<div className="h-1" />
+<li>ایجاد یک <a href="" className="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D8%A7%D8%A8%D8%B1%DB%8C-redis/">دیتابیس Redis</a> برای ذخیره وضعیت (state) استریم</li>
+<div className="h-1" />
+<li>ساخت یک جدول که IDهای استریم مرتبط با یک چت را رهگیری می‌کند</li>
 </ul>
+<div className="h-2" />
+
+برای ادامه دادن یک استریم، شما از تابع <Important>experimental_resume</Important> موجود در هوک <Important>useChat</Important> استفاده خواهید کرد. شما باید این تابع را در زمان mount اولیه‌ی هوک، داخل کامپوننت اصلی چت، فراخوانی کنید. 
+در مسیر <Important>app/components/chat.tsx</Important>، قطعه کد زیر را قرار دهید:
+
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="js">
-        {``}
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+import type { UIMessage } from 'ai';
+import { Input } from '@/app/components/input';
+import { Messages } from '@/app/components/messages';
+import { useAutoResume } from '@/app/hooks/use-auto-resume';
+
+export function Chat({ id, initialMessages = [] }: { id: string; initialMessages?: UIMessage[] }) {
+  const { experimental_resume, data, setMessages } = useChat({ id });
+
+  useAutoResume({
+    autoResume: true,
+    initialMessages,
+    experimental_resume,
+    data,
+    setMessages,
+  });
+
+  return (
+    <div>
+      <Messages />
+      <Input />
+    </div>
+  );
+}`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<div className="h-2" />  
-<img src="https://media.liara.ir/" alt=""/>
-<div className="h-2" />  
+برای یک پیاده‌سازی مقاوم‌تر که شرایط رقابتی احتمالی در هنگام اجرای درخواست ادامه دادن (resume request) را مدیریت کند، می‌توانید از هوک <Important>useAutoResume</Important> زیر استفاده کنید.
+این هوک به‌صورت خودکار بخش داده‌ی SSE مربوط به <Important>append-message</Important> را که توسط سرور استریم می‌شود، پردازش می‌کند.
+در مسیر <Important>app/hooks/use-auto-resume.tsx</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useEffect } from 'react';
+import type { UIMessage } from 'ai';
+import type { UseChatHelpers } from '@ai-sdk/react';
+
+export type DataPart = { type: 'append-message'; message: string };
+
+export interface Props {
+  autoResume: boolean;
+  initialMessages: UIMessage[];
+  experimental_resume: UseChatHelpers['experimental_resume'];
+  data: UseChatHelpers['data'];
+  setMessages: UseChatHelpers['setMessages'];
+}
+
+export function useAutoResume({
+  autoResume,
+  initialMessages,
+  experimental_resume,
+  data,
+  setMessages,
+}: Props) {
+  useEffect(() => {
+    if (!autoResume) return;
+
+    const mostRecentMessage = initialMessages.at(-1);
+
+    if (mostRecentMessage?.role === 'user') {
+      experimental_resume();
+    }
+
+    // we intentionally run this once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!data || data.length === 0) return;
+
+    const dataPart = data[0] as DataPart;
+
+    if (dataPart.type === 'append-message') {
+      const message = JSON.parse(dataPart.message) as UIMessage;
+      setMessages([...initialMessages, message]);
+    }
+  }, [data, initialMessages, setMessages]);
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس، می‌توانید از این هوک، مانند قطعه کد زیر در کامپوننت چت خود استفاده کنید.
+در مسیر <Important>app/components/chat.tsx</Important>، قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+import { Input } from '@/app/components/input';
+import { Messages } from '@/app/components/messages';
+import { useAutoResume } from '@/app/hooks/use-auto-resume';
+
+export function Chat() {
+  const { experimental_resume, data, setMessages } = useChat({ id });
+
+  useAutoResume({
+    autoResume: true,
+    initialMessages: [],
+    experimental_resume,
+    data,
+    setMessages,
+  });
+
+  return (
+    <div>
+      <Messages />
+      <Input />
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+هر بار که تابع  <Important>experimental_resume</Important> فراخوانی می‌شود، یک درخواست <Important>GET</Important> به endpoint پیکربندی شده چت ارسال می‌کند (به صورت پیش‌فرض، <Important>api/chat/</Important>)
+اگر استریمی فعال باشد، این تابع، ادامه‌ی آن را، از همان نقطه‌ی قبلی دنبال می‌کند، در غیر این صورت بدون خطا خاتمه می‌یابد.
+<div className="h-4" />
+
+درخواست GET به‌صورت خودکار پارامتر کوئری <Important>chatId</Important> را به URL اضافه می‌کند تا بتوان چتی که درخواست به آن تعلق دارد را شناسایی کرد. با استفاده از <Important>chatId</Important>، می‌توانید آخرین stream ID را از پایگاه داده بازیابی کرده و استریم را ادامه دهید.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`GET /api/chat?chatId=<your-chat-id>`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+قبل‌تر، فقط کافی بود که یک <Important>POST</Important> handler برای مسیر <Important>api/chat/</Important> پیاده‌سازی کنید تا بتوان چت‌های جدید ایجاد کرد. 
+هنگام استفاده از <Important>experimental_resume</Important>، شما باید همچنین یک <Important>GET</Important> handler برای مسیر <Important>api/chat/</Important> پیاده‌سازی کنید تا بتوان استریم را ادامه داد.
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`GET /api/chat?chatId=<your-chat-id>`}
+    </Highlight>
+</div>
+
+<Section id='1-implement-the-get-handler' title='۱. پیاده‌سازی GET handler' headingTag="h3" />
+
+یک متد <Important>GET</Important> به <Important>api/chat/</Important> اضافه کنید که: 
+
+<div className="h-2" />
+<ul>
+<li><Important>chatId</Important> را از query string بخواند</li>
+<div className="h-1" />
+<li>بررسی کند که <Important>chatId</Important> آماده است یا نه</li>
+<div className="h-1" />
+<li>تمامی stream IDهای ذخیره‌ شده برای آن چت را بارگذاری کند</li>
+<div className="h-1" />
+<li>آخرین stream ID را به عنوان آرگومان به <Important>()streamContext.resumableStream</Important> بدهد</li>
+<div className="h-1" />
+<li>در صورتی که استریم از قبل بسته شده بود، به یک استریم خالی (empty stream) برگردد</li>
+<div className="h-1" />
+</ul>
+<div className="h-2" />
+
+در مسیر <Important>app/api/chat/route.ts</Important>، می‌توانید قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { loadStreams } from '@/util/chat-store';
+import { createDataStream, getMessagesByChatId } from 'ai';
+import { after } from 'next/server';
+import { createResumableStreamContext } from 'resumable-stream';
+
+const streamContext = createResumableStreamContext({
+  waitUntil: after,
+});
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const chatId = searchParams.get('chatId');
+
+  if (!chatId) {
+    return new Response('id is required', { status: 400 });
+  }
+
+  const streamIds = await loadStreams(chatId);
+
+  if (!streamIds.length) {
+    return new Response('No streams found', { status: 404 });
+  }
+
+  const recentStreamId = streamIds.at(-1);
+
+  if (!recentStreamId) {
+    return new Response('No recent stream found', { status: 404 });
+  }
+
+  const emptyDataStream = createDataStream({
+    execute: () => {},
+  });
+
+  const stream = await streamContext.resumableStream(
+    recentStreamId,
+    () => emptyDataStream,
+  );
+
+  if (stream) {
+    return new Response(stream, { status: 200 });
+  }
+
+  /*
+   * For when the generation is "active" during SSR but the
+   * resumable stream has concluded after reaching this point.
+   */
+
+  const messages = await getMessagesByChatId({ id: chatId });
+  const mostRecentMessage = messages.at(-1);
+
+  if (!mostRecentMessage || mostRecentMessage.role !== 'assistant') {
+    return new Response(emptyDataStream, { status: 200 });
+  }
+
+  const messageCreatedAt = new Date(mostRecentMessage.createdAt);
+
+  const streamWithMessage = createDataStream({
+    execute: buffer => {
+      buffer.writeData({
+        type: 'append-message',
+        message: JSON.stringify(mostRecentMessage),
+      });
+    },
+  });
+
+  return new Response(streamWithMessage, { status: 200 });
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+بعد از پیاده‌سازی GET handler، می‌توانید POST handler را به‌روزرسانی کنید تا ساخت استریم‌های قابل ادامه دادن را مدیریت کند.
+
+<Section id='2-update-the-post-handler' title='۲. به‌روزرسانی POST handler' />
+
+هنگام ایجاد یک chat completion جدید، باید مراحل زیر را انجام دهید:
+
+<div className="h-2" />
+<ul>
+<li>یک <Important>streamId</Important> جدید ایجاد کنید</li>
+<div className="h-1" />
+<li>آن را همراه با <Important>chatId</Important> ذخیره کنید</li>
+<div className="h-1" />
+<li>یک <Important>createDataStream</Important> آغاز کنید که توکن‌ها را هنگام ورود، پردازش و منتقل کند</li>
+<div className="h-1" />
+<li>استریم جدید را به <Important>()streamContext.resumableStream</Important> تحویل دهید</li>
+</ul>
+<div className="h-2" />
+
+در مسیر <Important>app/api/chat/route.ts</Important>، می‌توانید قطعه کد زیر را قرار دهید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+      {`import { loadStreams, loadChat } from '@/util/chat-store';
+import {
+  appendResponseMessages,
+  createDataStream,
+  generateId,
+  streamText,
+} from 'ai';
+import { appendStreamId } from '@/util/chat-store';
+import { saveChat } from '@/tools/chat-store';
+import { after } from 'next/server';
+import { createResumableStreamContext } from 'resumable-stream/ioredis';
+import { createOpenAI } from '@ai-sdk/openai';
 
 
-<video
-  src="https://media.liara.ir/"
-  controls="controls"
-  className="block w-full"
-  width="100%"
-/>
-*/}
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const streamContext = createResumableStreamContext({
+  waitUntil: after,
+});
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const chatId = searchParams.get('chatId');
+
+  if (!chatId) {
+    return new Response('id is required', { status: 400 });
+  }
+
+  const streamIds = await loadStreams(chatId);
+
+  if (!streamIds.length) {
+    return new Response('No streams found', { status: 404 });
+  }
+
+  const recentStreamId = streamIds.at(-1);
+
+  if (!recentStreamId) {
+    return new Response('No recent stream found', { status: 404 });
+  }
+
+  const emptyDataStream = createDataStream({
+    execute: () => {},
+  });
+
+  const stream = await streamContext.resumableStream(
+    recentStreamId,
+    () => emptyDataStream,
+  );
+
+  if (stream) {
+    return new Response(stream, { status: 200 });
+  }
+
+  /*
+   * For when the generation is "active" during SSR but the
+   * resumable stream has concluded after reaching this point.
+   */
+
+  const messages = await loadChat(chatId);
+  const mostRecentMessage = messages.at(-1);
+
+  if (!mostRecentMessage || mostRecentMessage.role !== 'assistant') {
+    return new Response(emptyDataStream, { status: 200 });
+  }
+
+  const messageCreatedAt = mostRecentMessage.createdAt
+    ? new Date(mostRecentMessage.createdAt)
+    : new Date();
+
+  const streamWithMessage = createDataStream({
+    execute: buffer => {
+      buffer.writeData({
+        type: 'append-message',
+        message: JSON.stringify(mostRecentMessage),
+      });
+    },
+  });
+
+  return new Response(streamWithMessage, { status: 200 });
+}
+
+export async function POST(request: Request) {
+  const { id, messages } = await request.json();
+  const streamId = generateId();
+
+  // Record this new stream so we can resume later
+  await appendStreamId({ chatId: id, streamId });
+
+  // Build the data stream that will emit tokens
+  const stream = createDataStream({
+    execute: dataStream => {
+      const result = streamText({
+        model: my_model('openai/gpt-4o-mini'),
+        messages,
+        onFinish: async ({ response }) => {
+          await saveChat({
+            id,
+            messages: appendResponseMessages({
+              messages,
+              responseMessages: response.messages,
+            }),
+          });
+        },
+      });
+
+      // Return a resumable stream to the client
+      result.mergeIntoDataStream(dataStream);
+    },
+  });
+
+  return new Response(
+    await streamContext.resumableStream(streamId, () => stream),
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+با پیاده‌سازی هر دو handler، کلاینت‌های شما اکنون می‌توانند استریم‌های در حال اجرا را به‌صورت مطمئن و بدون مشکل ازسر بگیرند.
+
 
 </Layout>
