@@ -75,6 +75,7 @@ import {
   GoTools,
   GoKebabHorizontal,
   GoMortarBoard,
+  GoSearch,
   GoIterations,
   GoSignOut,
   GoReply,
@@ -329,6 +330,11 @@ export default {
         link: "/ai/foundations/agents"
       },
       {
+        title: "قابلیت جستجو در وب",
+        icon: <GoSearch />,
+        link: "/ai/foundations/websearch"
+      },
+      {
         hr: true
       },
       {
@@ -366,11 +372,11 @@ export default {
         icon: <GoRepoPush />,
         link: "/ai/references/about"
       },
-      {
-        title: "خطاهای AI SDK",
-        icon: <GoXCircle />,
-        link: "/ai/ai-sdk-errors/about"
-      },
+      // {
+      //   title: "خطاهای AI SDK",
+      //   icon: <GoXCircle />,
+      //   link: "/ai/ai-sdk-errors/about"
+      // },
   
     ],
 

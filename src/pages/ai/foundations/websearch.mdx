@@ -1,0 +1,129 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات قابلیت جستجو در وب با AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به معرفی قابلیت جستجو در وب با مدل‌های سرویس هوش مصنوعی لیارا و نحوه استفاده از این قابلیت"  />
+</Head>
+
+
+# قابلیت جستجو در وب با هوش مصنوعی
+<hr className="mb-2" />
+
+قابلیت جستجو در وب به مدل‌های هوش مصنوعی این امکان را می‌دهد که فراتر از داده‌های از پیش آموزش‌دیده عمل کرده و به اطلاعات به‌روز، دقیق و معتبر دسترسی پیدا کنند. این ویژگی باعث می‌شود پاسخ‌ها بر اساس آخرین منابع موجود در اینترنت ارائه شوند و دقت و کارآمدی مدل در حوزه‌های پویا مانند اخبار، فناوری یا قوانین افزایش یابد. همچنین جستجوی وب می‌تواند مکمل دانش پایه مدل باشد و محدودیت‌های ناشی از تاریخ آموزش را تا حد زیادی برطرف کند.
+<hr className="mb-2" />
+
+<Section id='enabling-websearch' title='فعال‌سازی قابلیت جستجو در وب در مدل' />
+
+برای استفاده از قابلیت جستجو در وب، تنها کافی است تا پس از به کار بردن نام مدل، عبارت <Important>online:</Important> را نیز به انتهای نام، اضافه کنید. به عنوان مثال، اگر قصد دارید از مدل <Important>openai/gpt-4o-mini</Important> با قابلیت جستجو در وب استفاده کنید، باید برای اتصال به مدل، از نام <Important>openai/gpt-4o-mini:online</Important> استفاده کنید.
+<div className="h-4" />
+
+
+در ادامه، مقایسه‌ای بین پاسخ‌های مدل <Important>openai/gpt-4o-mini</Important> و <Important>gpt-4o-mini:online</Important> ارائه شده است که تفاوت عملکرد این دو مدل را در پاسخ به یک سوال نشان می‌دهد:
+
+<Section id='model-response-without-websearch' title='پاسخ مدل بدون استفاده از قابلیت وب‌سرچ' headingTag="h3" />
+
+برای دریافت پاسخ از مدل <Important>openai/gpt-4o-mini</Important>، می‌توانید از کد زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { text } = await generateText({
+    model: my_model("openai/gpt-4o-mini"),
+    prompt: 'What is the latest iPhone model available now? no explaination \\
+    just the name and the release date.',
+});
+
+console.log(text);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای پرامپت فوق، مدل، تنها با دانش خود، پاسخ می‌دهد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="txt">
+        {`iPhone 15 Pro Max - September 22, 2023.`}
+    </Highlight>
+</div>
+
+<Section id='model-response-with-websearch' title='پاسخ مدل با استفاده از قابلیت وب‌سرچ' headingTag="h3" />
+
+برای دریافت پاسخ از مدل <Important>openai/gpt-4o-mini:online</Important>، می‌توانید از کد زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`// npm i @ai-sdk/openai@^1 ai@^4 dotenv
+
+import { generateText } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { config } from 'dotenv';
+
+config();
+const my_model = createOpenAI({
+  baseURL: process.env.BASE_URL!,
+  apiKey: process.env.LIARA_API_KEY!,
+});
+
+const { text } = await generateText({
+    model: my_model("openai/gpt-4o-mini:online"),
+    prompt: 'What is the latest iPhone model available now? no explaination \\
+    just the name and the release date.',
+});
+
+console.log(text);`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای پرامپت فوق، مدل، پس از جستجوی وب (در صورت نیاز)، پاسخ می‌دهد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="text">
+        {`The latest iPhone model available now is the iPhone 17, released on September 9, 2025.`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

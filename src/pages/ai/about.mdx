@@ -16,7 +16,7 @@ import {
   GoMortarBoard,
   GoTelescope, 
   GoTools,
-
+  GoSearch,
   GoDatabase,
   GoRocket,
   GoServer,
@@ -45,7 +45,7 @@ import Head from "next/head";
 در ادامه، بخوانید: 
 
 <div className="h-4" />
-<div className="grid md:grid-cols-4 gap-4">
+<div className="grid md:grid-cols-3 gap-4">
             {[
       { title: 'راه‌اندازی سریع سرویس AI لیارا', link: "./quick-start" },
       {
@@ -73,9 +73,14 @@ import Head from "next/head";
         link: "/ai/ai-sdk-core/about"
       },
       {
+        title: "کتابخانه AI SDK UI",
+        link: "/ai/ai-sdk-ui/about/"
+      },
+      {
         title: "ارجاعات AI SDK",
         link: "/ai/references/about"
       },
+
 
     
     ].map(item =>
@@ -159,6 +164,11 @@ import Head from "next/head";
              title: "Agentها (عامل‌ها)",
              icon: <GoMortarBoard />,
              link: "/ai/foundations/agents"
+           },
+           {
+              title: "قابلیت جستجو در وب",
+              icon: <GoSearch />,
+              link: "/ai/foundations/websearch"
            },
   ].map(item =>
               <Link href={item.link}>
