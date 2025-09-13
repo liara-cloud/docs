@@ -438,6 +438,10 @@ export default {
         title: "ماندگاری پیام در چت‌بات",
         link: "/ai/ai-sdk-ui/chatbot-message-persistence"
       },
+      {
+        title: "استفاده از tool در چت‌بات",
+        link: "/ai/ai-sdk-ui/chatbot-tool-usage"
+      },
     ],
 
     'references': [
