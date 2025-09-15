@@ -1560,69 +1560,6 @@ API هوش مصنوعی لیارا، ورودی صوتی با فرمت <Importan
         <HighlightTabs
             tabs={[
                 {
-                label: "cURL",
-                language: "bash",
-                code: `#!/bin/bash
-# create a file named command.sh and run with \`bash command.sh liara-song.mp3\`
-
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <audio_file.mp3>"
-    echo "Example: $0 liara-song.mp3"
-    exit 1
-fi
-
-AUDIO_FILE="$1"
-
-if [ ! -f "$AUDIO_FILE" ]; then
-    echo "Error: Audio file '$AUDIO_FILE' not found"
-    exit 1
-fi
-
-echo "Encoding audio file to base64..."
-
-AUDIO_BASE64=$(base64 -w 0 "$AUDIO_FILE")
-
-echo "Creating JSON payload..."
-
-cat > /tmp/payload.json << EOF
-{
-  "model": "google/gemini-2.5-flash",
-  "messages": [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "What is the audio saying?"
-        },
-        {
-          "type": "input_audio",
-          "input_audio": {
-            "data": "$AUDIO_BASE64",
-            "format": "mp3"
-          }
-        }
-      ]
-    }
-  ]
-}
-EOF
-
-echo "Sending request to API..."
-
-curl -X POST "<baseUrl>/chat/completions" \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer <LIARA_API_KEY>" \\
-  -d @/tmp/payload.json
-
-echo ""
-echo "Cleaning up temporary files..."
-
-rm /tmp/payload.json
-
-echo "Done!"`,
-                },
-                {
                 label: "JavaScript",
                 icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
                 language: "javascript",
@@ -1806,6 +1743,157 @@ class Program
     }
 }
 `,
+                },
+                {
+                label: "Go",
+                icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+                language: "go",
+                code: `// go get github.com/openai/openai-go
+// go get github.com/openai/openai-go/option
+
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+
+	openai "github.com/openai/openai-go/v2"
+	"github.com/openai/openai-go/v2/option"
+)
+
+type InputAudio struct {
+	Data   string \`json:"data"\`
+	Format string \`json:"format"\`
+}
+
+type ContentItem struct {
+	Type       string     \`json:"type"\`
+	Text       string     \`json:"text,omitempty"\`
+	InputAudio *InputAudio \`json:"input_audio,omitempty"\`
+}
+
+type Message struct {
+	Role    string        \`json:"role"\`
+	Content []ContentItem \`json:"content"\`
+}
+
+func main() {
+	audioPath := "liara-song.mp3"
+
+	audioBytes, err := os.ReadFile(audioPath)
+	if err != nil {
+		log.Fatalf("Failed to read audio file: %v", err)
+	}
+
+	base64Audio := base64.StdEncoding.EncodeToString(audioBytes)
+
+	client := openai.NewClient(
+		option.WithAPIKey("<LIARA_API_KEY>"),
+		option.WithBaseURL("<BASE_URL"),
+	)
+
+	messages := []Message{
+		{
+			Role: "user",
+			Content: []ContentItem{
+				{Type: "text", Text: "What is the audio saying?"},
+				{Type: "input_audio", InputAudio: &InputAudio{
+					Data:   base64Audio,
+					Format: "mp3",
+				}},
+			},
+		},
+	}
+
+	params := map[string]interface{}{
+		"model":    "google/gemini-2.5-flash",
+		"messages": messages,
+	}
+
+	var result map[string]interface{}
+	if err := client.Post(context.Background(), "/v1/chat/completions", params, &result); err != nil {
+		log.Fatalf("API request failed: %v", err)
+	}
+
+	if choices, ok := result["choices"].([]interface{}); ok && len(choices) > 0 {
+		if msg, ok := choices[0].(map[string]interface{})["message"].(map[string]interface{}); ok {
+			content, _ := json.MarshalIndent(msg["content"], "", "  ")
+			fmt.Println("Model Response:", string(content))
+		} else {
+			fmt.Printf("Unexpected message format: %+v\\n", choices[0])
+		}
+	} else {
+		fmt.Printf("No choices returned. Full response: %+v\\n", result)
+	}
+}
+`,
+                },
+                                {
+                label: "cURL",
+                language: "bash",
+                code: `#!/bin/bash
+# create a file named command.sh and run with \`bash command.sh liara-song.mp3\`
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <audio_file.mp3>"
+    echo "Example: $0 liara-song.mp3"
+    exit 1
+fi
+
+AUDIO_FILE="$1"
+
+if [ ! -f "$AUDIO_FILE" ]; then
+    echo "Error: Audio file '$AUDIO_FILE' not found"
+    exit 1
+fi
+
+echo "Encoding audio file to base64..."
+
+AUDIO_BASE64=$(base64 -w 0 "$AUDIO_FILE")
+
+echo "Creating JSON payload..."
+
+cat > /tmp/payload.json << EOF
+{
+  "model": "google/gemini-2.5-flash",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What is the audio saying?"
+        },
+        {
+          "type": "input_audio",
+          "input_audio": {
+            "data": "$AUDIO_BASE64",
+            "format": "mp3"
+          }
+        }
+      ]
+    }
+  ]
+}
+EOF
+
+echo "Sending request to API..."
+
+curl -X POST "<baseUrl>/chat/completions" \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
+  -d @/tmp/payload.json
+
+echo ""
+echo "Cleaning up temporary files..."
+
+rm /tmp/payload.json
+
+echo "Done!"`,
                 },
             ]}
         />
