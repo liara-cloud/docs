@@ -24,27 +24,26 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات شروع به کار با هوش مصنوعی DeepSeek - لیارا</title>
+<title>مستندات شروع به کار با هوش مصنوعی MoonshotAI/Kimi - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی DeepSeek در لیارا"  />
+<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی MoonshotAI/Kimi در لیارا"  />
 </Head>
-# شروع به کار با هوش مصنوعی DeepSeek
+# شروع به کار با هوش مصنوعی MoonshotAI/Kimi
 <hr className="mb-2" />
 
-<a href="https://www.deepseek.com" target='_blank' className="text-[#2196f3] " >DeepSeek</a> یک مدل هوش مصنوعی پیشرفته است که توسط تیمی در چین توسعه یافته و به‌عنوان یکی از رقبای جدی مدل‌های زبانی بزرگ مانند GPT و Gemini شناخته می‌شود. این مدل تمرکز ویژه‌ای بر توانایی درک و تولید کدهای برنامه‌نویسی، تحلیل متن و پاسخ‌گویی دقیق به سوالات دارد.
+<a href="https://www.moonshot.ai" target='_blank' className="text-[#2196f3] " >MoonshotAI/Kimi</a> یک مدل زبانی بزرگ با معماری Mixture of Experts (MoE) از شرکت Moonshot AI است که مجموعاً ۱ تریلیون پارامتر دارد، ولی در هر اجرا تنها حدود ۳۲ میلیارد پارامتر فعال می‌شوند.
+ویژگی برجسته این مدل، پشتیبانی از context window بسیار گسترده تا 256 هزار توکن است، که امکان پردازش متن‌های بسیار طولانی یا تعاملات چندمرحله‌ای را بهبود داده است.
+این مدل، برای کاربردهای پیشرفته در تولید و تحلیل کد، پردازش متن‌های بلند، و ساخت ربات‌ها یا Agentهای هوشمند (که بتوانند به صورت پیوسته چندگام را برنامه‌ریزی و اجرا کنند) طراحی شده و یکی از مدل‌های متن‌باز پیشرفته در هوش مصنوعی به شمار می‌آید.
 
 <div className="h-4" />
 
-در حال حاضر، لیارا، مدل‌های زیر از DeepSeek را در API خود پشتیبانی می‌کند:
+در حال حاضر، لیارا، مدل زیر از MoonshotAI/Kimi را در API خود پشتیبانی می‌کند:
 
 <div className="h-2" />
 <ul className="pr-4">
   {[
-    {text: <Important>deepseek/deepseek-chat-v3-0324</Important>,},
-    {text: <Important>deepseek/deepseek-r1-distill-llama-70b</Important>,},
-    {text: <Important>deepseek/deepseek-chat-v3.1</Important>,},
-
+    {text: <Important>moonshotai/kimi-k2-0905</Important>,},
   ].map((item, index) => (
     <li
       key={index}
@@ -60,7 +59,7 @@ import Head from "next/head";
 
 <br />
 
-پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/references/api/about/" className="text-[#2196f3]" >کلید API</a>، می‌توانید از مدل‌های DeepSeek استفاده کنید.
+پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/references/api/about/" className="text-[#2196f3]" >کلید API</a>، می‌توانید از مدل MoonshotAI/Kimi استفاده کنید.
 
 
 <div className="h-2" />

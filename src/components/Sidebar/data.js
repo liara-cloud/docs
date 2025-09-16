@@ -284,7 +284,7 @@ export default {
         link: "/ai/meta-llama"
       },
       {
-        title: "Mistral NeMo",
+        title: "Mistral/NeMo",
         icon: <IconContainer alt="https://media.liara.ir/logos/ai/mistral-nemo.svg" />,
         link: "/ai/mistral-nemo"
       },
@@ -297,6 +297,11 @@ export default {
         title: "Qwen",
         icon: <IconContainer alt="https://media.liara.ir/logos/ai/qwen-svg-white.png" />,
         link: "/ai/qwen"
+      },
+      {
+        title: "MoonshotAI/Kimi",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/moonshot-white.svg" />,
+        link: "/ai/moonshotai"
       },
       {
         hr: true
