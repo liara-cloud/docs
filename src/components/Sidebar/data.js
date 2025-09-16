@@ -566,6 +566,10 @@ export default {
         )
       },
       {
+        title: "چت بات دارای RAG",
+        link: "/ai/cookbook/rag-chatbot/"
+      },
+      {
         title: "چت بات چندمنظوره",
         link: "/ai/cookbook/multi-modal-chatbot"
       },

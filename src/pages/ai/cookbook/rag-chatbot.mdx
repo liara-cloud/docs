@@ -211,7 +211,7 @@ Chunking یا تکه‌تکه‌سازی، فرآیندی است که در آن�
 <div dir='ltr'>
     <Highlight className="bash">
         {`git clone https://github.com/liara-cloud/ai-sdk-examples.git
-cd ai-sdk-examples/rag-starter-raw`}
+cd ai-sdk-examples/rag-agent-completed`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -221,7 +221,7 @@ cd ai-sdk-examples/rag-starter-raw`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`pnpm install`}
+        {`npm install`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -280,7 +280,7 @@ cd ai-sdk-examples/rag-starter-raw`}
 <li>ایجاد یک جدول در دیتابیس برای ذخیره‌ی embeddingها</li>
 <li>افزودن منطق chunking و ایجاد embeddingها هنگام ساخت resources</li>
 <li>ایجاد یک چت‌بات</li>
-<li>اتصال چت‌بات به ابزارهایی برای جستجو و ایجاد resources برای پایگاه دانش آن</li>
+<li>اتصال چت‌بات به toolهایی برای جستجو و ایجاد resources برای پایگاه دانش آن</li>
 </ul>
 
 <Section id="create-embeddings-table" title="ایجاد جدول Embeddings" />
@@ -332,7 +332,7 @@ export const embeddings = pgTable(
 <div className="h-2" />
 
 برای انجام جستجوی شباهت (similarity search)، همچنین باید یک ایندکس (از نوع <a href="https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw" className="text-[#2196f3]">HNSW</a> یا <a href="https://github.com/pgvector/pgvector?tab=readme-ov-file#ivfflat" className="text-[#2196f3]">IVFFlat</a>) بر روی ستون <Important>embedding</Important> ایجاد کنید تا عملکرد بهتری داشته باشید.
-برای اعمال تغییرات در پایگاه داده، دستور زیر را اجرا کنید:
+برای اعمال تغییرات در دیتابیس، دستور زیر را اجرا کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -359,6 +359,7 @@ export const embeddings = pgTable(
 <Section id="generate-chunks" title="تولید chunkها" />
 
 برای ایجاد یک embedding، ابتدا باید یک قطعه از منبع اطلاعاتی (با طول نامشخص) را گرفته و سپس آن را به قطعه‌های کوچک‌تر تقسیم کنید، در ادامه، روی هر قطعه، بردارسازی کنید و سپس هر قطعه را در دیتابیس، ذخیره نمایید. بیایید با ساخت تابعی برای تقسیم محتوای منبع به قطعه‌های کوچک، شروع کنیم:
+در مسیر <Important>lib/ai/embedding.ts</Important> قطعه کد زیر را قرار دهید: 
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -382,7 +383,7 @@ export const embeddings = pgTable(
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`pnpm add ai@beta @ai-sdk/react@beta @ai-sdk/openai@beta`}
+        {`npm install @ai-sdk/openai@^1 ai@^4 @ai-sdk/react@^1.2.12`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -400,14 +401,18 @@ export const embeddings = pgTable(
 
 بیایید تابعی برای تولید embeddingها اضافه کنیم. کد زیر را در فایل <Important>lib/ai/embedding.ts</Important> خود قرار دهید:
 
-
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
         {`import { embedMany } from 'ai';
-import { openai } from '@ai-sdk/openai';
+import { createOpenAI } from '@ai-sdk/openai';
 
-const embeddingModel = openai.embedding('text-embedding-ada-002');
+const my_model = createOpenAI({
+    baseURL: process.env.BASE_URL!,
+    apiKey: process.env.LIARA_API_KEY!,
+});
+
+const embeddingModel = my_model.embedding('openai/text-embedding-ada-002');
 
 const generateChunks = (input: string): string[] => {
   return input
@@ -431,7 +436,7 @@ export const generateEmbeddings = async (
 </div>
 <div className="h-2" />
 
-در قطعه کد فوق، ابتدا، مدلی که برای تولید embeddingها می‌خواهید استفاده کنید تعریف می‌شود. در این مثال، از مدل بردارساز OpenAI به نام <Important>text-embedding-ada-002</Important> استفاده شده است.
+در قطعه کد فوق، ابتدا، مدلی که برای تولید embeddingها می‌خواهید استفاده کنید تعریف می‌شود. در این مثال، از مدل <Important>openai/text-embedding-ada-002</Important> استفاده شده است.
 
 در ادامه، یک تابع asynchronous به نام <Important>generateEmbeddings</Important> تعریف می‌شود. این تابع، داده‌ی ورودی (که در اینجا <Important>value</Important> نام دارد) را دریافت می‌کند و یک Promise از آرایه‌ای از objectها را برمی‌گرداند. هر object شامل یک embedding و محتوای مربوط به آن است.
 درون این تابع، ابتدا ورودی به یک‌سری قطعه (chunk) تقسیم می‌شود. سپس این قطعه‌ها به تابع <Important>embedMany</Important>، که از AI SDK وارد شده، ارسال می‌شوند؛ این تابع، embedding مربوط به هر chunk را تولید می‌کند. در نهایت، روی embeddingها پیمایش (map) انجام می‌شود تا خروجی نهایی در قالبی آماده برای ذخیره‌سازی در دیتابیس، تولید شود.
@@ -523,12 +528,496 @@ export const createResource = async (input: NewResourceParams) => {
 </div>
 <div className="h-2" />   
 
-در قطعه کد فوق، ابتدا، تابع <Important>generateEmbeddings</Important> که در مرحله‌ی قبل ایجاد کرده‌اید؛ فراخوانی می‌شود و محتوای منبع (content)، به آن داده می‌شود. پس از آنکه embeddingها متن را دریافت کردند (که در اینجا با <Important>e</Important> نشان داده شده‌اند)، در پایگاه داده ذخیره می‌شوند؛ به‌طوری که هر embedding در کنار resourceId مرتبط با خودش، ذخیره می‌شود.
+در قطعه کد فوق، ابتدا، تابع <Important>generateEmbeddings</Important> که در مرحله‌ی قبل ایجاد کرده‌اید؛ فراخوانی می‌شود و محتوای منبع (content)، به آن داده می‌شود. پس از آنکه embeddingها متن را دریافت کردند (که در اینجا با <Important>e</Important> نشان داده شده‌اند)، در دیتابیس ذخیره می‌شوند؛ به‌طوری که هر embedding در کنار resourceId مرتبط با خودش، ذخیره می‌شود.
 
 
+<Section id="create-root-page" title="ایجاد صفحه‌ی اصلی" />
+
+بیایید رابط کاربری (Frontend) را بسازیم. هوک <Important>useChat</Important> در AI SDK این امکان را می‌دهد که به‌سادگی یک رابط کاربری محاوره‌ای برای برنامه‌ی چت‌بات خود ایجاد کنید.
+در مسیر <Important>app/page.tsx</Important>، قطعه کد زیر را قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  return (
+    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      <div className="space-y-4">
+        {messages.map(m => (
+          <div key={m.id} className="whitespace-pre-wrap">
+            <div>
+              <div className="font-bold">{m.role}</div>
+              <p>{m.content}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
+          value={input}
+          placeholder="Say something..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+هوک <Important>useChat</Important> امکان استریم پیام‌های چت از مدل را فراهم می‌کند، وضعیت ورودی چت را مدیریت کرده و هنگام دریافت پیام‌های جدید، رابط کاربری را به‌طور خودکار به‌روزرسانی می‌کند.
+<div className="h-3" />
+
+برای اجرای سرور در حالت development، دستور زیر را اجرا کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`npm run dev`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+به آدرس <a href="http://localhost:3000" className="text-[#2196f3]">http://localhost:3000</a> بروید. باید صفحه‌ای خالی با یک نوار ورودی که در پایین صفحه قرار دارد، مشاهده کنید. سعی کنید یک پیام ارسال کنید. پیام برای کسری از ثانیه در رابط کاربری نمایش داده می‌شود و سپس ناپدید می‌شود.
+دلیل این اتفاق این است که هنوز مسیر API را برای فراخوانی مدل، تنظیم نکرده‌اید! به‌طور پیش‌فرض، <Important>useChat</Important> یک درخواست POST به مسیر <Important>api/chat/</Important> ارسال می‌کند و پیام‌ها را به‌عنوان request body منتقل می‌نماید.
+
+<div className="h-4" />
+<Alert variant="info">
+<p>
+می‌توانید endpoint را در پیکربندی <Important>useChat</Important> سفارشی‌سازی کنید.
+</p>
+</Alert>
+
+<Section id='create-api-route' title='ایجاد مسیر API' />
+
+در NextJS، می‌توانید برای یک مسیر مشخص، request handler سفارشی ایجاد کنید. این کار با استفاده از Route Handlers انجام می‌شود. هندلرها در یک فایل <Important>route.ts</Important> تعریف می‌شوند و می‌توانند متدهای HTTP مانند <Important>GET</Important>، <Important>POST</Important>، <Important>PUT</Important>، <Important>PATCH</Important> و ... را export کنند.
+برای ایجاد مسیر <Important>api/chat/</Important>، فایل <Important>app/api/chat/route.ts</Important> را ایجاد کرده و قطعه کد زیر را درون آن، قرار دهید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+const my_model = createOpenAI({
+    baseURL: process.env.BASE_URL!,
+    apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در این کد، شما یک تابع asynchronous به نام POST تعریف و export می‌کنید. سپس پیام‌ها را از request body بازیابی کرده و آن‌ها را همراه با مدلی که قصد استفاده از آن را دارید، به تابع <Important>streamText</Important> که از AI SDK ایمپورت شده است، ارسال می‌کنید. در نهایت، پاسخ مدل را در قالب <Important>AIStreamResponse</Important> بازمی‌گردانید.
+<div className="h-4" />
+
+اکنون به مرورگر بازگردید و دوباره تلاش کنید پیامی ارسال کنید. باید پاسخ مدل را مشاهده کنید که به‌طور مستقیم به صورت استریم برمی‌گردد!
+
+<Section id='refining-your-prompt' title='ارتقای پرامپت' />
+
+اکنون شما یک چت‌بات کاربردی دارید، اما هنوز کار خاص یا ویژه‌ای انجام نمی‌دهد.
+<div className="h-4" />
+
+بیایید با افزودن system instructionها، رفتار مدل را اصلاح و محدود کنیم. در این حالت، شما می‌خواهید مدل تنها از اطلاعاتی که بازیابی کرده است برای تولید پاسخ‌ها استفاده کند. برای این کار، route handler خود را با کد زیر به‌روزرسانی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createOpenAI } from '@ai-sdk/openai';
+import { streamText } from 'ai';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+const my_model = createOpenAI({
+    baseURL: process.env.BASE_URL!,
+    apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: \`You are a helpful assistant. Check your knowledge base before answering any questions.
+    Only respond to questions using information from tool calls.
+    if no relevant information is found in the tool calls, respond, "Sorry, I don't know."\`,
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+اکنون به مرورگر بازگردید و از مدل بپرسید غذای موردعلاقه‌ی شما چیست. از آنجا که مدل هیچ اطلاعات مرتبطی در اختیار ندارد، باید دقیقاً همان‌طور که در بالا دستور داده‌اید پاسخ دهد (“Sorry, I don’t know”). 
+در شکل کنونی، چت‌بات شما عملاً بی‌استفاده است.
+پس چگونه می‌توان به مدل توانایی افزودن و پرس‌وجوی (query) اطلاعات را داد؟
+
+<Section id='using-tools' title='استفاده از toolها' />
+
+tool یک تابع است که مدل می‌تواند برای انجام یک کار مشخص آن را فراخوانی کند. می‌توانید tool را مانند یک برنامه در نظر بگیرید که آن را در اختیار مدل قرار می‌دهید تا هر زمان که لازم بداند آن را اجرا کند.
+بیایید ببینیم چگونه می‌توانید یک tool ایجاد کنید که به مدل اجازه بدهد یک resource را ایجاد و embed کرده و در knowledge base چت‌بات، ذخیره کند.
+
+<Section id='' title='افزودن resource tool' />
+
+route handler خود را با کد زیر به‌روزرسانی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createResource } from '@/lib/actions/resources';
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamText, tool } from 'ai';
+import { z } from 'zod';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+const my_model = createOpenAI({
+    baseURL: process.env.BASE_URL!,
+    apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: \`You are a helpful assistant. Check your knowledge base before answering any questions.
+    Only respond to questions using information from tool calls.
+    if no relevant information is found in the tool calls, respond, "Sorry, I don't know."\`,
+    messages,
+    tools: {
+      addResource: tool({
+        description: \`add a resource to your knowledge base.
+          If the user provides a random piece of knowledge unprompted, use this tool without asking for confirmation.\`,
+        parameters: z.object({
+          content: z
+            .string()
+            .describe('the content or resource to add to the knowledge base'),
+        }),
+        execute: async ({ content }) => createResource({ content }),
+      }),
+    },
+  });
+
+  return result.toDataStreamResponse();
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در این کد، شما یک tool به نام <Important>addResource</Important> تعریف می‌کنید. این tool سه مؤلفه دارد:
+
+<div className="h-2" />
+<ul>
+<li><b>description</b>: توضیحی از tool که تعیین می‌کند چه زمانی tool انتخاب شود</li>
+<div className="h-1" />
+<li><b>parameters</b>: یک Zod schema که پارامترهای لازم برای اجرای tool را تعریف می‌کند</li>
+<div className="h-1" />
+<li><b>execute</b>: یک تابع asynchronous که با آرگومان‌های ارسال‌شده توسط فراخوانی tool اجرا می‌شود</li>
+</ul>
+<div className="h-2" />
+
+به زبان ساده، در هر بار تولید پاسخ، مدل تصمیم می‌گیرد آیا باید tool را فراخوانی کند یا خیر. اگر مدل تصمیم بگیرد tool را فراخوانی کند، پارامترها را از ورودی استخراج کرده و یک پیام جدید از نوع <Important>tool-call</Important> به آرایه‌ی <Important>messages</Important> اضافه می‌کند. سپس AI SDK تابع <Important>execute</Important> را با پارامترهای ارائه‌شده توسط پیام <Important>tool-call</Important> اجرا می‌کند.
+<div className="h-4" />
+
+اکنون به مرورگر بازگردید و به مدل بگویید که غذای مورد علاقه‌تان چیست. باید یک پاسخ خالی در رابط کاربری مشاهده کنید. آیا اتفاقی افتاد؟ بیایید بررسی کنیم. دستور زیر را در یک ترمینال جدید اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`pnpm db:studio`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+دستور فوق، Drizzle Studio را راه‌اندازی می‌کند، جایی که می‌توانید ردیف‌های موجود در دیتابیس‌ی خود را مشاهده کنید. باید یک ردیف جدید هم در جدول <Important>embeddings</Important> و هم در جدول <Important>resources</Important> مربوط به غذای مورد علاقه‌ی خود، مشاهده کنید!
+<div className="h-4" />
+
+حال بیایید چند تغییر در رابط کاربری ایجاد کنیم تا به کاربر نشان دهیم زمانی که یک tool فراخوانی شده است. به صفحه‌ی root خود بازگردید (app/page.tsx) و کد زیر را به آن، اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  return (
+    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      <div className="space-y-4">
+        {messages.map(m => (
+          <div key={m.id} className="whitespace-pre-wrap">
+            <div>
+              <div className="font-bold">{m.role}</div>
+              <p>
+                {m.content.length > 0 ? (
+                  m.content
+                ) : (
+                  <span className="italic font-light">
+                    {'calling tool: ' + m?.toolInvocations?.[0].toolName}
+                  </span>
+                )}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
+          value={input}
+          placeholder="Say something..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+با این تغییر، اکنون می‌توانید آن tool که فراخوانی شده است را به‌صورت شرطی مستقیماً در رابط کاربری (UI) نمایش دهید. فایل را ذخیره کنید و به مرورگر بازگردید. به مدل بگویید که فیلم مورد علاقه‌ی شما چیست. اکنون باید به جای پاسخ متنی معمول مدل، ببینید که کدام tool فراخوانی شده است.
+
+<Section id='improving-ux-with-multi-step-calls' title='بهبود UX با فراخوانی‌های چندمرحله‌ای' />
+
+خوب است اگر مدل بتواند action انجام‌شده را نیز خلاصه کند. با این حال، از نظر فنی، هنگامی که مدل یک tool را فراخوانی می‌کند، تولید پاسخ خود را به پایان رسانده است، زیرا یک tool call ایجاد کرده است. پس چگونه می‌توان این رفتار موردنظر را به دست آورد؟
+<div className="h-4" />
 
 
+AI SDK یک ویژگی به نام <Important>maxSteps</Important> دارد که نتایج فراخوانی tool را به‌صورت خودکار به مدل بازمی‌گرداند.
+<div className="h-4" />
 
+<Important>app/page.tsx</Important> را باز کنید و 
+قطعه کد زیر را جایگزین کد فعلی خود کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`'use client';
+
+import { useChat } from '@ai-sdk/react';
+
+export default function Chat() {
+const { messages, input, handleInputChange, handleSubmit } = useChat({
+  maxSteps: 3,
+});
+
+  return (
+    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+      <div className="space-y-4">
+        {messages.map(m => (
+          <div key={m.id} className="whitespace-pre-wrap">
+            <div>
+              <div className="font-bold">{m.role}</div>
+              <p>
+                {m.content.length > 0 ? (
+                  m.content
+                ) : (
+                  <span className="italic font-light">
+                    {'calling tool: ' + m?.toolInvocations?.[0].toolName}
+                  </span>
+                )}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
+          value={input}
+          placeholder="Say something..."
+          onChange={handleInputChange}
+        />
+      </form>
+    </div>
+  );
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+به مرورگر بازگردید و به مدل بگویید تاپینگ پیتزای مورد علاقه‌ی شما چیست. اکنون باید یک پاسخ follow-up از مدل مشاهده کنید که انجام عملیات را تأیید می‌کند.
+
+<Section id='retrieve-resource-tool' title='tool بازیابی resource' />
+
+مدل اکنون می‌تواند اطلاعات دلخواه را به knowledge base شما اضافه و embed کند، اما هنوز قادر به query کردن آن نیست. بیایید یک tool جدید ایجاد کنیم تا مدل بتواند با یافتن اطلاعات مرتبط در knowledge base، به سؤالات پاسخ دهد.
+برنامه، برای یافتن محتوای مشابه، باید ابتدا پرسش کاربر را embed کرده، سپس دیتابیس را برای شباهت‌های معنایی (semantic similarities) جستجو کند و آن را به‌عنوان context همراه با پرسش به مدل ارسال کند. برای انجام این کار، فایل <Important>lib/ai/embedding.ts</Important> را به‌روزرسانی کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { embed, embedMany } from 'ai';
+import { createOpenAI } from '@ai-sdk/openai';
+import { db } from '../db';
+import { cosineDistance, desc, gt, sql } from 'drizzle-orm';
+import { embeddings } from '../db/schema/embeddings';
+
+const my_model = createOpenAI({
+    baseURL: process.env.BASE_URL!,
+    apiKey: process.env.LIARA_API_KEY!,
+});
+
+const embeddingModel = my_model.embedding('openai/text-embedding-ada-002');
+
+const generateChunks = (input: string): string[] => {
+  return input
+    .trim()
+    .split('.')
+    .filter(i => i !== '');
+};
+
+export const generateEmbeddings = async (
+  value: string,
+): Promise<Array<{ embedding: number[]; content: string }>> => {
+  const chunks = generateChunks(value);
+  const { embeddings } = await embedMany({
+    model: embeddingModel,
+    values: chunks,
+  });
+  return embeddings.map((e, i) => ({ content: chunks[i], embedding: e }));
+};
+
+export const generateEmbedding = async (value: string): Promise<number[]> => {
+  const input = value.replaceAll('\\\\n', ' ');
+  const { embedding } = await embed({
+    model: embeddingModel,
+    value: input,
+  });
+  return embedding;
+};
+
+export const findRelevantContent = async (userQuery: string) => {
+  const userQueryEmbedded = await generateEmbedding(userQuery);
+  const similarity = sql<number>\`1 - (\${cosineDistance(
+    embeddings.embedding,
+    userQueryEmbedded,
+  )})\`;
+  const similarGuides = await db
+    .select({ name: embeddings.content, similarity })
+    .from(embeddings)
+    .where(gt(similarity, 0.5))
+    .orderBy(t => desc(t.similarity))
+    .limit(4);
+  return similarGuides;
+};`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در این کد، شما دو تابع اضافه می‌کنید:
+
+<div className="h-2" />
+<ul>
+<li><Important>generateEmbedding</Important>: یک embedding واحد از یک ورودی تولید می‌کند</li>
+<div className="h-1" />
+<li><Important>findRelevantContent</Important>: پرسش کاربر را embed کرده، پایگاه داده را برای آیتم‌های مشابه جستجو می‌کند و در نهایت آیتم‌های مرتبط را بازمی‌گرداند</li>
+</ul>
+<div className="h-2" />
+
+پس از انجام کار فوق، به مرحله‌ی نهایی می‌رسیم: ایجاد tool.
+<div className="h-2" />
+
+به <Important>api/chat/route.ts</Important> بازگردید و یک tool جدید به نام <Important>getInformation</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`import { createResource } from '@/lib/actions/resources';
+import { createOpenAI } from '@ai-sdk/openai';
+import { streamText, tool } from 'ai';
+import { z } from 'zod';
+import { findRelevantContent } from '@/lib/ai/embedding';
+
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
+
+const my_model = createOpenAI({
+    baseURL: process.env.BASE_URL!,
+    apiKey: process.env.LIARA_API_KEY!,
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: my_model('openai/gpt-4o-mini'),
+    system: \`You are a helpful assistant. Check your knowledge base before answering any questions.
+    Only respond to questions using information from tool calls.
+    if no relevant information is found in the tool calls, respond, "Sorry, I don't know."\`,
+    messages,
+    tools: {
+      addResource: tool({
+        description: \`add a resource to your knowledge base.
+          If the user provides a random piece of knowledge unprompted, use this tool without asking for confirmation.\`,
+        parameters: z.object({
+          content: z
+            .string()
+            .describe('the content or resource to add to the knowledge base'),
+        }),
+        execute: async ({ content }) => createResource({ content }),
+      }),
+      getInformation: tool({
+        description: \`get information from your knowledge base to answer questions.\`,
+        parameters: z.object({
+          question: z.string().describe('the users question'),
+        }),
+        execute: async ({ question }) => findRelevantContent(question),
+      }),
+    },
+  });
+
+  return result.toDataStreamResponse();
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+به مرورگر بازگردید، صفحه را refresh کنید و غذای مورد علاقه‌ی خود را بپرسید. اکنون باید ببینید که مدل <Important>getInformation</Important> را فراخوانی می‌کند و سپس از اطلاعات مرتبط برای ساخت پاسخ استفاده می‌کند.
+<hr className="mb-2" />
+
+<Section id='conclusion' title='نتیجه‌گیری' />
+
+تبریک می‌گوییم! شما با موفقیت یک چت‌بات هوش مصنوعی ساختید که می‌تواند به‌صورت پویا اطلاعات را به  knowledge base اضافه کرده و از آن، اطلاعات را بازیابی کند. در طول این راهنما، شما یاد گرفتید چگونه embedding ایجاد و ذخیره کنید، server actionها را برای مدیریت منابع تنظیم کنید و از toolها برای گسترش قابلیت‌های چت‌بات خود استفاده کنید.
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+  پروژه کامل را می‌توانید در <a href="https://github.com/liara-cloud/ai-sdk-examples/tree/master/rag-agent-completed" className="text-[#2196f3]">گیت‌هاب لیارا</a> مشاهده بفرمایید. 
+</p>
+</Alert>
 
 
 
