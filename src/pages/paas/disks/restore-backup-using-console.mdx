@@ -1,0 +1,83 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات بازیابی فایل پشتیبان در دیسک در کنسول  - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه بازیابی فایل پشتیبان در یک دیسک در کنسول لیارا"  />
+</Head>
+# بازیابی فایل پشتیبان در دیسک با کنسول
+
+<hr className="mb-2" />
+
+برای بازیابی فایل پشتیبان در دیسک با استفاده از کنسول، کافیست تا گام‌های زیر را طی کنید: 
+
+<Step  steps={[
+    {
+        step: "۱",
+        content: (
+            <>
+                <h3>تهیه فایل پشتیبان</h3>   
+                <p>
+                    طبق <Link className="text-[#2196f3]" href="">مستندات تهیه فایل پشتیبان از دیسک</Link>، می‌توانید از برنامه مبدا خود، فایل پشتیبان تهیه کنید. 
+                    یا اینکه می‌توانید از فایل پشتیبان خودکار، استفاده کنید. 
+                </p>
+            </>
+        )
+    },
+    {
+        step: "۲",
+        content: (
+            <>
+                <h3>بازیابی فایل پشتیبان در دیسک مقصد</h3>   
+                <p>
+                    پس از تهیه فایل پشتیبان، تنها کافیست تا در بخش <b>پشتیبان‌گیری</b> دیسک مبدا، بر روی آیکون بازیابی فایل پشتیبان مورد نظر خود، کلیک کنید. پس از انتخاب برنامه مقصد، دیسک نهایی را انتخاب کرده و سپس در مرحله <b>تایید نهایی</b> با کلیک بر روی گزینه <b>بازیابی</b>، عملیات بازیابی را آغاز کنید.  
+                </p>
+            </>
+        )
+    },
+
+]}
+
+/>
+
+<br />
+<video
+  src="https://media.liara.ir/disks/restore-disk-using-console.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+
+
+{/* 
+<Alert variant="success">
+<p>
+برای استفاده از دسترسی FTP، دست کم در یک استقرار باید از دیسک استفاده کرده باشید و وضعیت آن از آماده به کار به در حال استفاده تغییر کرده باشد. 
+</p>
+</Alert>
+
+<Alert variant="success">
+<p>
+همچنین بخوانید: <a href="../ftp-access" className="text-[#2196f3] ">اتصال به دیسک‌ها با استفاده از دسترسی FTP</a>
+</p>
+</Alert> */}
+
+</Layout>

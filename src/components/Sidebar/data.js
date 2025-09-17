@@ -1758,13 +1758,18 @@ export default {
         link: "/paas/disks/create-backup"
       },
       {
-        title: "بازیابی فایل پشتیبان با دسترسی FTP",
+        title: "بازیابی فایل پشتیبان با FTP",
         link: "/paas/disks/restore-backup-using-ftp"
       },
       {
         title: "بازیابی فایل پشتیبان با دستور wget",
         link: "/paas/disks/restore-backup-using-wget"
       },
+      {
+        title: "بازیابی فایل پشتیبان با کنسول",
+        link: "/paas/disks/restore-backup-using-console"
+      },
+
       {
         hr: true
       },
