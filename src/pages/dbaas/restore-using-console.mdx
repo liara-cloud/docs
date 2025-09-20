@@ -1,0 +1,79 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات بازیابی دیتابیس با فایل پشتیبان در کنسول - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه بازیابی دیتابیس در دیتابیس جدید با استفاده از فایل پشتیبان در کنسول در سرویس دیتابیس لیارا"  />
+</Head>
+
+
+# بازیابی دیتابیس در دیتابیس جدید در کنسول
+<hr className="mb-2" />
+
+برای بازیابی فایل پشتیبان دیتابیس فعلی خود در دیتابیس جدید، تنها کافیست تا گام‌های زیر را طی کنید:
+
+<Step  steps={[
+    {
+        step: "۱",
+        content: (
+            <>
+                <h3>تهیه فایل پشتیبان</h3>   
+                <p>
+                    طبق <Link className="text-[#2196f3]" href="/dbaas/mariadb/how-tos/create-backup/">مستندات تهیه فایل پشتیبان از دیتابیس</Link>، می‌توانید از دیتابیس مبدا خود، فایل پشتیبان تهیه کنید. 
+                    یا اینکه می‌توانید از فایل پشتیبان خودکار، استفاده کنید. 
+                </p>
+            </>
+        )
+    },
+    {
+        step: "۲",
+        content: (
+            <>
+                <h3>بازیابی فایل پشتیبان در دیسک مقصد</h3>   
+                <p>
+                    پس از تهیه فایل پشتیبان، تنها کافیست تا در بخش <b>پشتیبان‌گیری</b> دیتابیس مبدا، بر روی آیکون بازیابی فایل پشتیبان مورد نظر خود، کلیک کنید. پس از مشخص‌کردن اطلاعات دیتابیس جدید، در نهایت بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b> کلیک کنید تا عملیات ساخت دیتابیس جدید و بازیابی فایل پشتیبان مشخص‌شده درون آن، آغاز شود.  
+                </p>
+            </>
+        )
+    },
+
+]}
+
+/>
+
+<br />
+<video
+  src="https://media.liara.ir/mysql/restore-db-backup-using-console.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+
+</Layout>

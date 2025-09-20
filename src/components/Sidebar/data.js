@@ -41,6 +41,7 @@ import {
   GoCodespaces,
   GoWorkflow,
   GoPackageDependents,
+  GoGoReply,
   GoSync,
   GoPerson,
   GoTelescope,
@@ -4979,7 +4980,12 @@ export default {
         title: "انتقال دیتابیس",
         icon: <GoPackageDependents />,
         link: "/dbaas/move"
-      }
+      },
+      {
+        title: "بازیابی دیتابیس با کنسول",
+        icon: <GoReply  />,
+        link: "/dbaas/restore-using-console"
+      },
     ],
 
     move: [
@@ -5054,7 +5060,12 @@ export default {
         title: "انتقال دیتابیس",
         icon: <GoPackageDependents />,
         link: "/dbaas/move"
-      }
+      },
+      {
+        title: "بازیابی دیتابیس با کنسول",
+        icon: <GoReply  />,
+        link: "/dbaas/restore-using-console"
+      },
     ],
 
     details: [
