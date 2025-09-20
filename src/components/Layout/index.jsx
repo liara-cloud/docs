@@ -15,11 +15,13 @@ const Layout = ({ children }) => {
         <div className="flex">
           <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
           <div className="w-[100%] px-4 mt-[80px] md:px-0 overflow-x-hidden md:w-[1350px] layout md:pr-[300px] md:mt-[100px] md:mx-auto pb-10">
-            <div className="flex justify-end md:mb-[-60px]" >
-              {router.pathname !== "/404" &&
-                router.pathname !== "/" &&
-                router.pathname !== "/tv" && <PageActionButtons />}
-            </div>
+            {router.pathname !== "/404" &&
+              router.pathname !== "/" &&
+              router.pathname !== "/tv" && (
+                <div className="flex justify-end md:mb-[-60px]">
+                  <PageActionButtons />
+                </div>
+              )}
             {children}
           </div>
         </div>
