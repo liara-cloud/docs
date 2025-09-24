@@ -104,46 +104,80 @@ function getRelativePath(filePath: string, basePath: string): string {
 }
 
 try {
-  const srcPagesPath = path.join(process.cwd(), 'src', 'pages');
-  const outputPath = path.join(process.cwd(), 'llms.txt');
+  const srcPagesPath = path.join(process.cwd(), '..', 'src', 'pages');
+  const outputDir = path.join(process.cwd(), '..', 'src', 'pages', 'llms');
+  const allLinksPath = path.join(process.cwd(), '..', 'public', 'all-links-llms.txt');
   
-  console.log(`🔍 Searching for MDX files in: ${srcPagesPath}`);
+  console.log(`Searching for MDX files in: ${srcPagesPath}`);
   
   const mdxFiles = findMdxFiles(srcPagesPath);
   
   if (mdxFiles.length === 0) {
-    console.log('❌ No MDX files found in src/pages');
+    console.log('No MDX files found in src/pages');
     process.exit(1);
   }
   
-  console.log(`📁 Found ${mdxFiles.length} MDX files`);
+  console.log(`Found ${mdxFiles.length} MDX files`);
   
-  let combinedContent = '';
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+  
+  // Array to store all the generated links
+  const allLinks: string[] = [];
   
   for (const filePath of mdxFiles) {
     try {
-      console.log(`📄 Processing: ${filePath}`);
+      console.log(`Processing: ${filePath}`);
       
       const mdxContent = readMdxFile(filePath);
       
       const mdContent = convertMdxToMd(mdxContent);
       
       const relativePath = getRelativePath(filePath, srcPagesPath);
+      const mdFileName = relativePath.replace(/\.mdx$/, '.md');
+      const outputFilePath = path.join(outputDir, mdFileName);
       
-      combinedContent += `\n\n# File: ${relativePath}\n\n`;
-      combinedContent += mdContent;
-      combinedContent += '\n\n---\n';
+      const outputFileDir = path.dirname(outputFilePath);
+      if (!fs.existsSync(outputFileDir)) {
+        fs.mkdirSync(outputFileDir, { recursive: true });
+      }
+      
+      // Add the "all links" section to the end of each MD file
+      const finalMdContent = mdContent + '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
+      
+      fs.writeFileSync(outputFilePath, finalMdContent, 'utf-8');
+      console.log(`Saved: ${outputFilePath}`);
+      
+      // Generate URL for all-links.txt
+      const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
+      const url = `https://docs.liara.ir/${urlPath}`;
+      
+      // Extract title from the first heading in the content or use filename
+      let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
+      const headingMatch = mdContent.match(/^#\s+(.+)$/m);
+      if (headingMatch) {
+        title = headingMatch[1].trim();
+      }
+      
+      allLinks.push(`- [${title}](${url})`);
       
     } catch (fileError) {
-      console.error(`❌ Error processing ${filePath}:`, fileError);
+      console.error(`Error processing ${filePath}:`, fileError);
     }
   }
   
-  fs.writeFileSync(outputPath, combinedContent.trim(), 'utf-8');
-  console.log(`✅ All files converted and saved to: ${outputPath}`);
-  console.log(`📊 Total files processed: ${mdxFiles.length}`);
+  // Generate all-links.txt content
+  const allLinksContent = `# All Links\n\n${allLinks.sort().join('\n')}\n`;
+  
+  // Write all-links.txt
+  fs.writeFileSync(allLinksPath, allLinksContent, 'utf-8');
+  console.log(`✅ All links saved to: ${allLinksPath}`);
+  
+  console.log(`All files converted and saved to: ${outputDir}`);
+  console.log(`Total files processed: ${mdxFiles.length}`);
   
 } catch (err) {
-  console.error('❌ Error:', err);
+  console.error('Error:', err);
   process.exit(1);
 }
