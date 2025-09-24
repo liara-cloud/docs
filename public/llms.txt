@@ -1,13 +1,13 @@
 # Liara Docs - مستندات لیارا
 
-- [PaSS](https://docs.liara.ir/llms/paas/about)
-- [AIaaS](https://docs.liara.ir/llms/ai/about)
-- [IaaS](https://docs.liara.ir/llms/iaas/about)
-- [DBaaS](https://docs.liara.ir/llms/dbaas/about)
-- [One Click Apps](https://docs.liara.ir/llms/one-click-apps/about)
-- [Email Server](https://docs.liara.ir/llms/email-server/about)
-- [Object Storage S3 Compatible](https://docs.liara.ir/llms/object-storage/about)
-- [DNS Management System](https://docs.liara.ir/llms/dns-management-system/about)
+- [PaSS](https://docs.liara.ir/llms/paas/about.md)
+- [AIaaS](https://docs.liara.ir/llms/ai/about.md)
+- [IaaS](https://docs.liara.ir/llms/iaas/about.md)
+- [DBaaS](https://docs.liara.ir/llms/dbaas/about.md)
+- [One Click Apps](https://docs.liara.ir/llms/one-click-apps/about.md)
+- [Email Server](https://docs.liara.ir/llms/email-server/about.md)
+- [Object Storage S3 Compatible](https://docs.liara.ir/llms/object-storage/about.md)
+- [DNS Management System](https://docs.liara.ir/llms/dns-management-system/about.md)
 
 ## What is Liara? - لیارا چیست؟
 
