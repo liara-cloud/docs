@@ -19,4 +19,4 @@ Liara is a comprehensive and versatile cloud infrastructure that provides a wide
 
 تمامی لینک‌های صفحات مستندات در آدرس زیر قرار گرفته است: 
 
-[](https://docs.liara.ir/paas/about)
+[All Links](https://docs.liara.ir/all-links-llms.txt)
