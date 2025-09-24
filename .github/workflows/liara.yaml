@@ -14,11 +14,6 @@ jobs:
           node-version: "20"
       - name: install-dependencies
         run: npm ci
-      - name: convert-mdx-to-md
-        working-directory: ./mdx-to-md-converter
-        run: |
-          npm install
-          npm run convert
       - name: update-liara
         env:
           LIARA_TOKEN: ${{ secrets.IRAN_API_TOKEN }}
