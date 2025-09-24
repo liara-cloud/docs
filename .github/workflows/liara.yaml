@@ -12,6 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
+      - name: install-dependencies
+        run: npm ci
       - name: convert-mdx-to-md
         working-directory: ./mdx-to-md-converter
         run: |
