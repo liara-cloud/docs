@@ -1,0 +1,22 @@
+# Liara Docs - مستندات لیارا
+
+- [PaSS](https://docs.liara.ir/llms/paas/about)
+- [AIaaS](https://docs.liara.ir/llms/ai/about)
+- [IaaS](https://docs.liara.ir/llms/iaas/about)
+- [DBaaS](https://docs.liara.ir/llms/dbaas/about)
+- [One Click Apps](https://docs.liara.ir/llms/one-click-apps/about)
+- [Email Server](https://docs.liara.ir/llms/email-server/about)
+- [Object Storage S3 Compatible](https://docs.liara.ir/llms/object-storage/about)
+- [DNS Management System](https://docs.liara.ir/llms/dns-management-system/about)
+
+## What is Liara? - لیارا چیست؟
+
+لیارا یک زیرساخت ابری جامع و چندکاره است که با ارائه خدمات متنوع نظیر PaaS , DBaaS , IaaS , AI , S3 Compatible Object Storage , DNS Management , One Click Apps و Email Server، راهکاری ایده‌آل برای استقرار، مدیریت و مقیاس‌دهی به برنامه‌ها و وب‌سایت‌ها فراهم می‌کند. این پلتفرم به توسعه‌دهندگان کمک می‌کند تا بدون نیاز به درگیر شدن با پیچیدگی‌های مدیریت سرور، به سرعت پروژه‌های خود را در محیطی امن و پایدار پیاده‌سازی کنند.
+
+Liara is a comprehensive and versatile cloud infrastructure that provides a wide range of services such as PaaS, DBaaS, IaaS, AI, S3-compatible Object Storage, DNS Management, One-Click Apps, and Email Server. It offers an ideal solution for deploying, managing, and scaling applications and websites. This platform helps developers quickly implement their projects in a secure and stable environment without dealing with the complexities of server management.
+
+## All Links - تمام لینک‌ها 
+
+تمامی لینک‌های صفحات مستندات در آدرس زیر قرار گرفته است: 
+
+[](https://docs.liara.ir/paas/about)
