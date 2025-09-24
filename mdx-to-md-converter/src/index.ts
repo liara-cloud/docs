@@ -149,8 +149,8 @@ try {
       fs.writeFileSync(outputFilePath, finalMdContent, 'utf-8');
       console.log(`Saved: ${outputFilePath}`);
       
-      // Generate URL for all-links.txt
-      const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
+      // Generate URL for all-links.txt (remove .md extension from URL)
+      const urlPath = `llms/${mdFileName.replace(/\\/g, '/').replace(/\.md$/, '')}`;
       const url = `https://docs.liara.ir/${urlPath}`;
       
       // Extract title from the first heading in the content or use filename
