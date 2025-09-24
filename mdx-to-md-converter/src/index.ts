@@ -105,7 +105,7 @@ function getRelativePath(filePath: string, basePath: string): string {
 
 try {
   const srcPagesPath = path.join(process.cwd(), '..', 'src', 'pages');
-  const outputDir = path.join(process.cwd(), '..', 'src', 'pages', 'llms');
+  const outputDir = path.join(process.cwd(), '..', 'public', 'llms');
   const allLinksPath = path.join(process.cwd(), '..', 'public', 'all-links-llms.txt');
   
   console.log(`Searching for MDX files in: ${srcPagesPath}`);
@@ -146,11 +146,12 @@ try {
       // Add the "all links" section to the end of each MD file
       const finalMdContent = mdContent + '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
       
-      fs.writeFileSync(outputFilePath, finalMdContent, 'utf-8');
+      // Write file with explicit UTF-8 encoding and BOM
+      fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
       console.log(`Saved: ${outputFilePath}`);
       
-      // Generate URL for all-links.txt (remove .md extension from URL)
-      const urlPath = `llms/${mdFileName.replace(/\\/g, '/').replace(/\.md$/, '')}`;
+      // Generate URL for all-links.txt (keep .md extension for static files)
+      const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
       const url = `https://docs.liara.ir/${urlPath}`;
       
       // Extract title from the first heading in the content or use filename
@@ -170,8 +171,8 @@ try {
   // Generate all-links.txt content
   const allLinksContent = `# All Links\n\n${allLinks.sort().join('\n')}\n`;
   
-  // Write all-links.txt
-  fs.writeFileSync(allLinksPath, allLinksContent, 'utf-8');
+  // Write all-links.txt with explicit UTF-8 encoding and BOM
+  fs.writeFileSync(allLinksPath, '\ufeff' + allLinksContent, { encoding: 'utf8' });
   console.log(`✅ All links saved to: ${allLinksPath}`);
   
   console.log(`All files converted and saved to: ${outputDir}`);
