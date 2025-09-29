@@ -63,13 +63,14 @@ import Head from "next/head";
       }}
     >
         مدل {item.text}
+    <div className='h-1' />
     </li>  ))}
 </ul>
 
 <br />
 
 
-پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/references/api/about/" className="text-[#2196f3]" >کلید API</a>، می‌توانید مانند دستورات و قطعه‌های کد زیر، از مدل‌های OpenAI استفاده کنید.
+پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید مانند دستورات و قطعه‌های کد زیر، از مدل‌های OpenAI استفاده کنید.
 
 <div className="h-4" />
 <Alert variant="info">
@@ -86,6 +87,7 @@ import Head from "next/head";
 
 <ul>
   <li><Important>OpenAI SDK</Important>: ابزار رسمی ارائه‌شده توسط <a href="https://openai.com/" className="text-[#2196f3]">OpenAI</a>. تمامی مدل‌های ارائه‌شده در لیارا، با این SDK سازگار هستند.</li>
+  <div className="h-1" />
   <li><Important>AI SDK</Important>: ابزار ارائه‌شده توسط <a href="https://ai-sdk.dev/" className="text-[#2196f3]">Vercel</a>. این SDK، تنها برای جاوااسکریپت و تایپ‌اسکریپت در دسترس است.</li>
 </ul>
 

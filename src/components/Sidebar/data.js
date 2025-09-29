@@ -239,11 +239,6 @@ export default {
         link: "/ai/quick-start"
       },
       {
-        title: "اتصال تیم‌ها به AI",
-        icon: <GoPeople />,
-        link: "/ai/teams"
-      },
-      {
         title: "پرسش‌های متداول",
         icon: <GoQuestion />,
         link: "/ai/faq"
@@ -1005,6 +1000,11 @@ export default {
         title: "پلن‌های AI",
         icon: <GoCpu />,
         link: "/ai/details/plans"
+      },
+      {
+        title: "کلیدها",
+        icon: <GoKey />,
+        link: "/ai/details/keys"
       },
       {
         title: "لاگ‌ها",
@@ -2313,11 +2313,6 @@ export default {
         title: "دیتابیس ElasticSearch",
         icon: <IconContainer alt="elastic" />,
         link: "/paas/nextjs/how-tos/connect-to-db/elasticsearch"
-      },
-      {
-        title: "Prisma ORM",
-        icon: <IconContainer alt="prisma" />,
-        link: "/paas/nextjs/how-tos/connect-to-db/prisma"
       },
 
       {

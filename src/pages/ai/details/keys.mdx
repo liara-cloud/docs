@@ -1,0 +1,90 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کار با کلیدها در محصول هوش مصنوعی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به مدیریت کلیدها در محصول هوش مصنوعی لیارا"  />
+</Head>
+
+
+# کلیدها
+<hr className="mb-2" />
+
+برای احراز هویت و دسترسی به سرویس هوش مصنوعی لیارا، می‌توانید 
+از **کلیدها** استفاده کنید. در ادامه، به نحوه مدیریت کلیدها پرداخته شده است.
+
+<Section id='create' title='ساخت کلید'/>
+
+برای ساخت کلید کافیست 
+بر روی گزینه <b>کلیدها</b> کلیک کنید؛ در ادامه، بر روی <b>ایجاد کلید</b> کلیک کنید و پس از انتخاب نام برای کلید، در بخش <b>سطح دسترسی</b>، پروژه مورد نظر خود را انتخاب کنید و در نهایت، بر روی گزینه <b>تایید</b> کلیک کنید. 
+    <div className="h-3" />
+
+<video
+    src="https://media.liara.ir/ai/create-new-ai-key.mp4"
+    controls="controls"
+    className="block w-full"
+    width="100%"
+/>  
+<div className="h-4" />
+
+با انجام کار فوق، یک <Important>کلید API</Important> به شما تعلق می‌گیرد که بایستی آن را در جای امنی نگهداری کنید، چرا که این کلید تنها یکبار به شما نمایش داده می‌شود و در صورت گم کردن آن، بایستی یک کلید جدید ایجاد کنید.
+ 
+<Section id='edit' title='ویرایش کلید'/>
+
+برای ویرایش کلید، تنها کافیست تا بر روی سه نقطه کنار کلید مورد نظر خود کلیک کنید و گزینه **ویرایش کلید** را انتخاب کنید. 
+در این مرحله، می‌توانید نام کلید، وضعیت کلید (فعال/غیرفعال) و سطح دسترسی آن را تغییر دهید:
+
+<div className="h-2" />
+<video
+  src="https://media.liara.ir/ai/edit-ai-key.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<Section id='delete' title='حذف کلید'/>
+
+برای حذف کلید، کافیست تا بر روی سه نقطه کنار کلید مورد نظر خود کلیک کنید و گزینه **حذف کلید** را انتخاب کنید. سپس به منظور تایید، بر روی گزینه **حذف کلید** کلیک کنید. با انجام این کار، کلید مورد نظر شما حذف خواهد شد.
+
+<div className="h-2" />
+<video
+  src="https://media.liara.ir/ai/delete-ai-key.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" 
+/>
+<div className="h-2" />
+
+<Alert variant="error">
+  <p>
+ با حذف کلید، امکان دسترسی به سرویس هوش مصنوعی با استفاده از آن کلید، از بین خواهد رفت.
+  </p>
+</Alert>
+
+</Layout>
