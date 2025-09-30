@@ -33,6 +33,7 @@ import Head from "next/head";
 <div className="h-4" />
 <ul>
 <li><b>زمان</b>: زمانی که درخواست به LLM ارسال شده است</li>
+<li><b>کلید/کاربر</b>: کاربر یا اسم کلید API که درخواست توسط آن ارسال شده است</li>
 <li><b>وضعیت</b>: موفق بودن یا نبودن درخواست ارسالی</li>
 <li><b>ارائه‌دهنده/مدل</b>: اسم مدل (LLM) و ارائه‌دهنده‌اش، که درخواست به آن، ارسال شده است</li>
 <li><b>توکن‌ها</b>: تعداد توکن‌هایی که برای ورودی دادن به مدل و برای خروجی گرفتن از آن، مصرف شده است</li>
@@ -46,7 +47,7 @@ import Head from "next/head";
 <img src="https://media.liara.ir/ai/details/logs.png" alt="logs of Liara AI service"/>
 <div className="h-4" />
 
-امکان فیلتر کردن لاگ‌ها بر اساس <b>مدل مورد استفاده</b> و <b>زمان ارسال درخواست</b> نیز وجود دارد:
+امکان فیلتر کردن لاگ‌ها بر اساس <b>مدل مورد استفاده</b>، <b>زمان ارسال درخواست</b> و <b>کاربر/کلید API</b> نیز وجود دارد:
 
 <div className="h-4" />
 <img src="https://media.liara.ir/ai/details/filtered-logs-by-llm-and-date.png" alt="filtered logs of Liara AI service"/>

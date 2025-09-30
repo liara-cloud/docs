@@ -23,6 +23,8 @@ import {
   GoGitCompare,
   GoXCircle,
   GoGear,
+  GoCommentDiscussion,
+  GoReport,
   GoMail,
   GoGlobe,
   GoArrowLeft,
@@ -48,7 +50,7 @@ import Head from "next/head";
 از این رو، در ادامه، تمامی جزئیات مربوط به سرویس هوش مصنوعی لیارا، برای شما آماده شده‌است تا با مطالعه آن‌ها، دانش شما، بیش از پیش، ارتقا یابد:
 <div className="h-6" />
 
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-4 gap-3">
 {[
   {
     title: "پلن‌های AI",
@@ -82,6 +84,20 @@ import Head from "next/head";
     desc: "بهینه‌سازی عملکرد مدل‌های هوش مصنوعی بر اساس ترجیحات زمانی، کیفی یا مالی شما",
     link: "./performance-optimization",
   },
+  {
+    title: "گزارشات",
+    icon: <GoReport />,
+    desc: "مشاهده گزارشات مربوط به توکن‌ها و هزینه‌ها در درخواست‌های ارسال به مدل‌ها",
+    link: "/ai/details/monitorings"
+  },
+  {
+    title: "گفتگو با مدل‌ها",
+    icon: <GoCommentDiscussion />,
+    desc: "امکان مکالمه با مدل‌های AI در خود کنسول لیارا، مانند صفحه ChatGPT و Grok",
+    link: "/ai/details/conversation"
+  },
+
+
   {
     title: "حذف یک سرویس AI",
     icon: <GoXCircle />,

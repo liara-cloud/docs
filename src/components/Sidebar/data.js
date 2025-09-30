@@ -13,6 +13,7 @@ import {
   GoFileSymlinkFile,
   GoBroadcast,
   GoGear,
+  GoCommentDiscussion,
   GoCommandPalette,
   GoRead,
   GoLock,
@@ -59,6 +60,7 @@ import {
   GoNumber,
   GoFileBinary,
   GoEye,
+  GoReport,
   GoGraph,
   GoKey,
   GoQuote,
@@ -1012,6 +1014,11 @@ export default {
         link: "/ai/details/logs"
       },
       {
+        title: "گزارشات",
+        icon: <GoReport />,
+        link: "/ai/details/monitorings"
+      },
+      {
         title: "تغییر پلن AI",
         icon: <GoGitCompare />,
         link: "/ai/details/change-plan"
@@ -1020,6 +1027,11 @@ export default {
         title: "بهینه‌سازی عملکرد",
         icon: <GoGear />,
         link: "/ai/details/performance-optimization"
+      },
+      {
+        title: "گفتگو با مدل‌ها",
+        icon: <GoCommentDiscussion />,
+        link: "/ai/details/conversation"
       },
       {
         title: "حذف یک سرویس AI",
