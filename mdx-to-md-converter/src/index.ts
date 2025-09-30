@@ -143,8 +143,22 @@ try {
         fs.mkdirSync(outputFileDir, { recursive: true });
       }
       
+      // Build "original link" header (maps MD back to the human docs page)
+      // Example:
+      //   relativePath: "ai/google-gemini.mdx"
+      //   original URL: "https://docs.liara.ir/ai/google-gemini/"
+      let originalPath = relativePath.replace(/\.mdx$/, '');
+      if (originalPath.endsWith('/index')) {
+        originalPath = originalPath.slice(0, -('/index'.length));
+      }
+      const originalUrl = `https://docs.liara.ir/${originalPath}${originalPath.endsWith('/') ? '' : '/'}`;
+      const originalHeader = `Original link: ${originalUrl}\n\n`;
+
       // Add the "all links" section to the end of each MD file
-      const finalMdContent = mdContent + '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
+      const finalMdContent =
+        originalHeader +
+        mdContent +
+        '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
       
       // Write file with explicit UTF-8 encoding and BOM
       fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
