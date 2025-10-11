@@ -45,10 +45,11 @@ import Head from "next/head";
 
 
 <div className="h-4" />
-<div className="grid md:grid-cols-2 gap-4">
+<div className="grid md:grid-cols-3 gap-4">
             {[
-    { alt: 'https://media.liara.ir/logos/ubuntu.png', platform: 'Ubuntu', link: "./ubuntu/getting-started" },
-    { alt: 'https://media.liara.ir/logos/debian.png', platform: 'Debian', link: "./debian/getting-started" },
+    { alt: 'https://media.liara.ir/logos/ubuntu.png', platform: 'Ubuntu', link: "/iaas/ubuntu/getting-started" },
+    { alt: 'https://media.liara.ir/logos/debian.png', platform: 'Debian', link: "/iaas/debian/getting-started" },
+    { alt: 'https://media.liara.ir/iaas/windows-logo.png', platform: 'Windows Server', link: "/iaas/windowsserver/getting-started" },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">

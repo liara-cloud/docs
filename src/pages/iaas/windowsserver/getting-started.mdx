@@ -1,0 +1,64 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import Head from 'next/head'
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+
+<Layout>
+<Head>
+<title>مستندات شروع به کار با سرور مجازی ویندوز - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به شروع به کار با سرور مجازی ویندوز Windows Server در لیارا"  />
+</Head>
+# شروع به کار با سرور Windows Server
+<hr className="mb-2" />
+
+<a href="https://www.microsoft.com/en-us/windows-server" className="text-[#2196f3]">Windows Server</a> یک سیستم‌عامل قدرتمند و چندمنظوره از شرکت مایکروسافت است که برای مدیریت و ارائه‌ی خدمات شبکه، میزبانی برنامه‌ها، و پشتیبانی از زیرساخت‌های سازمانی طراحی شده است. این سیستم‌عامل امکان مدیریت کاربران، منابع سخت‌افزاری، امنیت شبکه و سرویس‌هایی مانند Active Directory , DNS , DHCP و IIS را فراهم می‌کند. 
+
+<div className="h-4" />
+سرور مجازی ویندوز قابلیت‌های متنوعی در زمینه‌ی مجازی‌سازی، مدیریت ابری، و امنیت داده‌ها ارائه می‌دهد و به دلیل پایداری، پشتیبانی گسترده و سهولت در ادغام با سایر محصولات مایکروسافت، یکی از محبوب‌ترین گزینه‌ها در محیط‌های سازمانی و مراکز داده به شمار می‌آید.
+در ادامه بخوانید:
+
+<br />
+
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+    {
+      text: 'راه‌اندازی سریع Windows Server در لیارا',
+      link: '/iaas/windowsserver/quick-start',
+    },
+
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <h4>
+                      {item.text}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
+</Layout>

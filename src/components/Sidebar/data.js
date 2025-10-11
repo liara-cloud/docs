@@ -4163,6 +4163,11 @@ export default {
         link: "/iaas/debian/getting-started"
       },
       {
+        title: "Windows Server",
+        icon: <IconContainer alt="https://media.liara.ir/iaas/windows-logo.png" />,
+        link: "/iaas/windowsserver/getting-started"
+      },
+      {
         hr: true
       },
       {
@@ -4295,6 +4300,211 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
         link: "/iaas/ubuntu/how-tos/setup-stack/mean"
       },
+      // {
+      //   title: "استک MERN",
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک TICK",
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/tick-stack-logo.png" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   title: "استک ELK",
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/elk-stack.svg" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mongodb"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //     <GoDatabase  />
+      //       <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی دیتابیس</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "دیتابیس CockroachDB",
+      //   icon: <IconContainer alt="mysql" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mysql"
+      // },
+      // {
+      //   title: "دیتابیس TimescaleDB",
+      //   icon: <IconContainer alt="postgres" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/postgresql"
+      // },
+      // {
+      //   title: "دیتابیس CouchDB",
+      //   icon: <IconContainer alt="mssql" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/mssql"
+      // },
+      // {
+      //   title: "دیتابیس RethinkDB",
+      //   icon: <IconContainer alt="sqlite" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/sqlite"
+      // },
+      // {
+      //   title: "دیتابیس Cassandra",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس Neo4j",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس InfluxDB",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس ClickHouse",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+      // {
+      //   title: "دیتابیس TiDB",
+      //   icon: <IconContainer alt="redis" />,
+      //   link: "/paas/nodejs/how-tos/connect-to-db/redis"
+      // },
+
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBug  />
+      //       <Link href="/paas/nodejs/fix-common-errors/about">رفع خطاهای رایج</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "رفع خطای Get query missing",
+      //   link: "/paas/nodejs/fix-common-errors/graphql-error"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoPaperclip   />
+      //     برنامه‌های مرتبط
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "JSON Server",
+      //   icon: <IconContainer alt="json" />,
+      //   link: "/paas/nodejs/related-apps/json-server"
+      // },
+    ],
+
+    windowsserver: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <IconContainer alt="https://media.liara.ir/iaas/windows-logo.png" />
+            سیستم‌عامل ویندوز
+          </div>
+        )
+      },
+      {
+        title: "برگشت به سرور مجازی ابری",
+        icon: <GoArrowRight />,
+        link: "/iaas/about"
+      },
+      {
+        title: "شروع به کار",
+        icon: <GoFlame />,
+        link: "/iaas/windowsserver/getting-started"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/iaas/windowsserver/quick-start"
+      },
+      // {
+      //   title: "لینک‌های مرتبط",
+      //   icon: <GoMegaphone />,
+      //   link: "/iaas/windowsserver/related-links"
+      // },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions />,
+        link: "/iaas/windowsserver/choose-version"
+      },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       < GoPackage />
+      //       شیوه‌ی
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "اتصال به سرور مجازی ابری با SSH",
+      //   link: "/iaas/ubuntu/how-tos/connect-to-server-using-ssh"
+      // },
+      // {
+      //   title: "اتصال دامنه به سرور با SSL",
+      //   link: "/iaas/ubuntu/how-tos/connect-domain"
+      // },
+      // {
+      //   title: "ساخت کاربر جدید",
+      //   link: "/iaas/ubuntu/how-tos/create-new-user"
+      // },
+      // {
+      //   title: "اعطای دسترسی مدیریتی به کاربر",
+      //   link: "/iaas/ubuntu/how-tos/grant-privileges-to-user"
+      // },
+      // {
+      //   title: "تنظیم فایروال UFW",
+      //   link: "/iaas/ubuntu/how-tos/set-firewall"
+      // },
+      // {
+      //   title: "تغییر پورت SSH",
+      //   link: "/iaas/ubuntu/how-tos/change-ssh-port",
+      // },
+      // {
+      //   title: "تنظیم DNS",
+      //   link: "/iaas/ubuntu/how-tos/set-dns"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoStack />
+      //       راه‌اندازی Stack
+      //       {/* <Link href="/paas/nodejs/how-tos/connect-to-db/about">راه‌اندازی Stack</Link> */}
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "استک LEMP",
+      //   icon: <IconContainer alt="nginx" />,
+      //   link: "/iaas/ubuntu/how-tos/setup-stack/lemp"
+      // },
+      // {
+      //   title: "استک LAMP",
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/apache-logo.webp" />,
+      //   link: "/iaas/ubuntu/how-tos/setup-stack/lamp"
+      // },
+      // {
+      //   title: "استک MEAN",
+      //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
+      //   link: "/iaas/ubuntu/how-tos/setup-stack/mean"
+      // },
       // {
       //   title: "استک MERN",
       //   icon: <IconContainer alt="https://media.liara.ir/logos/vps/expressjslogo.png" />,
