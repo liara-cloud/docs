@@ -22,7 +22,7 @@ import Head from "next/head";
 # راه‌اندازی سریع سرور مجازی ویندوز 
 
 <Tabs 
-  tabs={["Liara Console"]} 
+  tabs={["Liara Console", "Liara CLI"]} 
   content={[
   <>
   {/* <video
@@ -171,9 +171,9 @@ import Head from "next/head";
         {`liara vm create`}
       </Highlight>
     </div>
-    <Asciinema id="create-ubuntu-vm-using-cli" />
+    <Asciinema id="create-windows-server" />
     <div className="h-2" />
-    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه (اختیاری)، نوع سرور مجازی ابری (که باید بر روی ubuntu تنظیم شود)، ورژن سرور اوبونتو و <Link className="text-[#2196f3] " href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link>، مشخص شوند. در صورتی که قصد دارید از قابلیت <a href="/iaas/details/ssh-key" className="text-[#2196f3]">SSH Keys</a> استفاده کنید، باید کلید عمومی خود را در مرحله آخر ساخت سرور مجازی ابری و پس از وارد کردن گزینه <Important>y</Important> و زدن دکمه <Important>Enter</Important>، وارد کنید.</p>
+    <p>در ادامه اجرای این دستور، باید به ترتیب، شناسه (اختیاری)، نوع سرور مجازی ابری (که باید بر روی windowsserver تنظیم شود)، ورژن سرور ویندوز و <Link className="text-[#2196f3]" href="/iaas/details/hardware-plans">منابع سخت‌افزاری</Link>، مشخص شوند.</p>
     <div className="h-2" />
 
     <Alert variant="info">اگر که از قبل سرور مجازی ابری خود را ایجاد کرده‌اید؛ نیازی به انجام این کار نیست.</Alert>
@@ -194,7 +194,7 @@ import Head from "next/head";
       {`liara vm start`}
     </Highlight>
     </div>
-    <Asciinema id="start-vm-using-cli" />
+    <Asciinema id="start-windows-server-using-cli" />
     <Alert variant="info">
       <p>
         در صورتی که قصد دارید سیگنال روشن‌شدن در پس‌زمینه، به سرور مجازی ابری ارسال شود، دستور <Important>liara vm start -d</Important> را، اجرا کنید. 
@@ -238,6 +238,20 @@ import Head from "next/head";
       className="block w-full"
       width="100%"
     ></video>
+    
+    
+    <div className="h-4" />
+
+    <p>
+      در پنجره Remote Desktop Connection، بر روی گزینه <Important>Show Options</Important> کلیک کنید و در فیلد <Important>Computer</Important>، آدرس IP (نشانی) سرور مجازی ویندوز را از بخش <b>اتصال</b> کنسول لیارا وارد کنید.
+      در فیلد <Important>Username</Important>، نام کاربری سرور مجازی ویندوز (معمولاً Administrator) را وارد کنید و سپس بر روی گزینه <Important>Connect</Important> کلیک کنید.
+      در پنجره جدید باز شده (به نام Windows Security)، رمز عبور سرور مجازی ویندوز را وارد کنید و بر روی گزینه <Important>OK</Important> کلیک کنید تا به سرور مجازی ویندوز خود، متصل شوید.
+      در صورتی که با پیغام امنیتی مواجه شدید، بر روی گزینه <Important>Yes</Important> کلیک کنید تا اتصال برقرار شود.
+    </p>
+    <div className="h-4" />
+    <p>
+      با انجام گام‌های فوق، به سرور مجازی ویندوز خود متصل شده‌اید و می‌توانید از آن استفاده کنید.
+    </p>
 
 
 <Section id="activate-windows-server" title="فعال‌سازی سرور مجازی ویندوز" headingTag="h3" />
@@ -245,15 +259,90 @@ import Head from "next/head";
 پس از اتصال به سرور مجازی ویندوز، باید Windows Server را فعال‌سازی کنید. 
 برای این کار، مانند زیر عمل کنید: 
 
+<br />
+<video
+  src="https://media.liara.ir/iaas/windows-server/activate.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
 
-    <br />
-    <video
-      src="https://media.liara.ir/iaas/windows-server/activate.mp4"
-      controls="controls"
-      className="block w-full"
-      width="100%"
-    ></video>
-
+<Step  steps={[
+  {
+    step: "۱",
+    content: (
+    <>
+      <h3>کپی کردن Product Key</h3>
+      <p>
+        وارد <a href="" className="text-[#2196f3]">وب‌سایت رسمی مایکروسافت</a> شوید و از ستون Windows Server LTSC، در تب Windows Server 2025، کلید محصول (Product Key) مربوط به Windows Server 2025 Datacenter را کپی کنید.
+      </p>
+    </>
+    )
+  },
+  {
+    step: "۲",
+    content: (
+    <>
+      <h3>اجرای دستور نصب Product Key</h3>
+      <p>
+        وارد سرور مجازی ویندوز شوید، Power Shell را با دسترسی Administrator باز کنید و دستور زیر را اجرا کنید (به جای <Important>YOUR_PRODUCT_KEY</Important>، کلید محصول کپی شده را وارد کنید):
+      </p>
+      <div className="h-2" />
+      <div dir='ltr'>
+      <Highlight className="bash">
+        {`slmgr /ipk YOUR_PRODUCT_KEY`}
+      </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+        پس از اجرای دستور فوق، یک پیغام مبنی بر موفقیت‌آمیز بودن نصب کلید محصول نمایش داده می‌شود.
+      </p>
+    </>
+    )
+  },
+  {
+    step: "۳",
+    content: (
+    <>
+      <h3>اجرای دستور تنظیم سرور KMS</h3>
+      <p>
+        در همان پنجره Power Shell، دستور زیر را اجرا کنید تا سرور KMS مایکروسافت تنظیم شود (به جای <Important>kms.example.com</Important>، آدرس سرور KMS خود را وارد کنید؛ می‌توانید از آدرس <Important>kms.digiboy.ir</Important> نیز استفاده کنید):
+      </p>
+      <div className="h-2" />
+      <div dir='ltr'>
+      <Highlight className="bash">
+        {`slmgr /skms kms.example.com`}
+      </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+        پس از اجرای دستور فوق، یک پیغام مبنی بر موفقیت‌آمیز بودن تنظیم سرور KMS نمایش داده می‌شود.
+      </p>
+    </>
+    )
+  },
+  {
+    step: "۴",
+    content: (
+    <>
+      <h3>فعال‌سازی ویندوز</h3>
+      <p>
+        در همان پنجره Power Shell، دستور زیر را اجرا کنید تا ویندوزتان فعال‌سازی شود:
+      </p>
+      <div className="h-2" />
+      <div dir='ltr'>
+      <Highlight className="bash">
+        {`slmgr /ato`}
+      </Highlight>
+      </div>
+      <div className="h-2" />
+      <p>
+        پس از اجرای دستور فوق، یک پیغام مبنی بر موفقیت‌آمیز بودن فعال‌سازی ویندوز نمایش داده می‌شود.
+      </p>
+    </>
+    )
+  },
+]}/>
 
 <Alert variant="success">
 <p>
