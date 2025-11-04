@@ -1950,19 +1950,21 @@ console.log(result.text);`}
 شما می‌توانید در یک ورودی به مدل، همزمان از متن و فایل استفاده کنید. به عنوان مثال، می‌توانید از یک فایل به عنوان ورودی استفاده کنید و از مدل بخواهید که در مورد آن فایل توضیح دهد یا سوالاتی را پاسخ دهد.
 
 <div className="h-4" />
-<Alert variant="info">
-<p>
-در نظر داشته باشید که تنها راه ارائه فایل به مدل، استفاده از Buffer یا قرار دادن فایل به صورت محلی کنار کد است و امکان استفاده از لینک مستقیم وجود ندارد.
-</p>
-</Alert>
 
 
 <Tabs 
-  tabs={["AI SDK"]} 
+  tabs={["AI SDK", "HTTP Request"]} 
   content={[
-    <>
-    برای استفاده از پرامپت‌های متنی با استفاده از AI SDK، می‌توانید از کد زیر، استفاده کنید:
 
+    <>
+    <Alert variant="info">
+      <p>
+      در نظر داشته باشید که تنها راه ارائه فایل به مدل، استفاده از Buffer یا قرار دادن فایل به صورت محلی کنار کد است و امکان استفاده از لینک مستقیم وجود ندارد.
+      </p>
+    </Alert>
+    <div className='h-3' />
+
+    برای ارسال پرامپت متنی همراه با فایل در AI SDK، می‌توانید از دستور زیر استفاده کنید:    
     <div className='h-3' />
     <div dir="ltr" style={{ textAlign: "left", whiteSpace: "pre" }}>
       <Highlight className="js">
@@ -2003,9 +2005,124 @@ console.log(result.text)`}
 
     </>
 
+    ,<>
+
+    برای ارسال پرامپت متنی همراه با فایل در یک درخواست HTTP در پلتفرم‌های مختلف، می‌توانید از دستور زیر استفاده کنید:    
+    <Section id="send-file-using-url" title="ارسال فایل با URL" headingTag="h4" />
+    برای ارسال فایل به همراه پرامپت متنی از طریق درج URL، می‌توانید همانند قطعه کدهای زیر عمل کنید: 
+
+    <HighlightTabs
+  tabs={[
+    {
+      label: "Python",
+      icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+      language: "python",
+      code: `import requests
+import os
+
+# import dotenv 
+# dotenv.load_dotenv()
+
+url = os.getenv("LIARA_BASE_URL")
+api_key = os.getenv("LIARA_API_KEY") 
+model_name = "openai/gpt-4o-mini"
+
+
+headers = {
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json"
+}
+
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "text",
+                "text": "What are the main points in this document?"
+            },
+            {
+                "type": "file",
+                "file": {
+                    "filename": "document.pdf",
+                    "file_data": "https://media.liara.ir/ai/what-is-liara.pdf"
+                }
+            },
+        ]
+    }
+]
+
+payload = {
+    "model": model_name,
+    "messages": messages,
+}
+
+response = requests.post(url+"/chat/completions", headers=headers, json=payload)
+print(response.json())
+`,
+    },
+    {
+      label: "TypeScript",
+      icon: <ThemePlatformIcon light="https://media.liara.ir/logos/typescript.svg" dark="https://media.liara.ir/logos/typescript.svg" style={{ width: 18, height: 18 }} />,
+      language: "typescript",
+      code: `async function main() {
+  try {
+    const apiKey = "replace with liara ai key";
+    const url = "replace your base url"  + "/chat/completions"
+    if (!apiKey) {
+      throw new Error('API_KEY environment variable is not set');
+    }
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: \`Bearer \${apiKey}\`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'openai/gpt-4o-mini',
+        messages: [
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'text',
+                text: 'What are the main points in this document?',
+              },
+              {
+                type: 'file',
+                file: {
+                  filename: 'document.pdf',
+                  file_data: 'https://media.liara.ir/ai/what-is-liara.pdf',
+                },
+              },
+            ],
+          },
+        ],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(\`HTTP error! status: \${response.status}\`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  }
+}
+
+main();
+`,
+    },
+  ]}
+/> 
+
+    </>
   ]}
 />
-
 
 
 <Section id='assistant-prompt-types' title='انواع پرامپت‌ها با نقش دستیار (assistant) در AI SDK' />
