@@ -48,12 +48,14 @@ async function crawlPaas() {
     });
 
     $('section').each((i, section) => {
-      const title = $(section).find('h2').text();
+      const h2 = $(section).find('h2');
+      const title = h2.text();
       const body = $(section).nextUntil('section').text();
 
-      const element = `#${$(section).find('h2').next('div').attr('id')}`;
+      // Try to get ID from h2 itself first, then from next div
+      let element = h2.attr('id') ? `#${h2.attr('id')}` : `#${h2.next('div').attr('id')}`;
 
-      if (element !== '#see-also' && element !== '#also-read') {
+      if (element !== '#see-also' && element !== '#also-read' && element !== '#undefined') {
         DATA.push({
           id: uuidv4(),
           url: paas,
@@ -75,6 +77,25 @@ async function crawlPaas() {
             type: 'video',
           });
         }
+      }
+    });
+
+    // Also crawl h3 elements with IDs (for Section components)
+    $('h3[id]').each((i, h3) => {
+      const title = $(h3).text();
+      const element = `#${$(h3).attr('id')}`;
+      const body = $(h3).nextUntil('h2, h3, section').text();
+
+      if (element !== '#see-also' && element !== '#also-read') {
+        DATA.push({
+          id: uuidv4(),
+          url: paas,
+          title,
+          body,
+          element,
+          platform,
+          type: 'text',
+        });
       }
     });
 
