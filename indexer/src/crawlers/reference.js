@@ -29,32 +29,24 @@ async function crawlReference() {
     });
 
     $('section').each((i, section) => {
-      const h2 = $(section).find('h2');
-      const title = h2.text();
+      const heading = $(section).find('h2, h3, h4, h5, h6').first();
+      const title = heading.text();
       const body = $(section).next('p').text();
       
-      // Try to get ID from h2 itself first, then from next div
-      let element = h2.attr('id') ? `#${h2.attr('id')}` : `#${h2.next('div').attr('id')}`;
-
-      if (element !== '#see-also' && element !== '#also-read' && element !== '#undefined') {
-        DATA.push({
-          id: uuidv4(),
-          url: references,
-          title,
-          body,
-          element,
-          type: 'text',
-        });
+      // Get ID from the div that follows the heading (Section component pattern)
+      let element = heading.next('div').attr('id');
+      
+      // If no div with ID, try the heading itself
+      if (!element) {
+        element = heading.attr('id');
       }
-    });
+      
+      // Add # prefix if we found an ID
+      if (element) {
+        element = `#${element}`;
+      }
 
-    // Also crawl h3 elements with IDs (for Section components)
-    $('h3[id]').each((i, h3) => {
-      const title = $(h3).text();
-      const element = `#${$(h3).attr('id')}`;
-      const body = $(h3).nextUntil('h2, h3, section').text();
-
-      if (element !== '#see-also' && element !== '#also-read') {
+      if (element && element !== '#see-also' && element !== '#also-read' && element !== '#undefined' && element !== '#section-title') {
         DATA.push({
           id: uuidv4(),
           url: references,
