@@ -239,18 +239,18 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         </div> */}
 
 
-        <Section id="liara-json-procfile" title="تعیین فایل اصلی" />
+        <Section id="liara-json-mainFile" title="تعیین فایل اصلی" />
         <p>
             لیارا به صورت خودکار در مسیر اصلی پروژه، فایل با نام <Important>main.go</Important> را پیدا می‌کند 
             و پس از build پروژه، با اجرای دستور <Important>go run</Important>، فایل اصلی را اجرا می‌کند. در صورتی 
-            که نام فایل اصلی برنامه‌تان چیز دیگری است؛ باید نام آن را در فیلدی به نام <Important>procfile</Important> در فایل <Important>liara.json</Important> <b>به همراه پسوند <Important>go.</Important></b>، مانند شکل زیر، وارد کنید:         
+            که نام فایل اصلی برنامه‌تان چیز دیگری است؛ باید نام آن را در فیلدی به نام <Important>mainFile</Important> در فایل <Important>liara.json</Important> <b>به همراه پسوند <Important>go.</Important></b>، مانند شکل زیر، وارد کنید:         
         </p>
         <div className="h-4" />
         <div dir='ltr'>
         <Highlight className="json">
             {`{
   "go" : {
-    "procfile" : "app.go"
+    "mainFile" : "app.go"
    }
 }`}
         </Highlight>
@@ -299,7 +299,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
   "platform": "go",
   "port": 8080,
   "go": {
-    "procfile" : "app.go",
+    "mainFile" : "app.go",
     "version": "1.23",
     "timezone": "America/Los_Angeles"
   }
@@ -431,14 +431,14 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
         <p>
             لیارا به صورت خودکار در مسیر اصلی پروژه، فایل با نام <Important>main.go</Important> را پیدا می‌کند 
             و پس از build پروژه، با اجرای دستور <Important>go run</Important>، فایل اصلی را اجرا می‌کند. در صورتی 
-            که نام فایل اصلی برنامه‌تان چیز دیگری است؛ می‌توانید در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و نام فایل اصلی خود را در فیلدی به نام <Important>procfile</Important> در فایل <Important>liara.json</Important> <b>به همراه پسوند <Important>go.</Important></b>، مانند شکل زیر، وارد کنید:         
+            که نام فایل اصلی برنامه‌تان چیز دیگری است؛ می‌توانید در مسیر اصلی پروژه، یک فایل به نام <Important>liara.json</Important> ایجاد کنید و نام فایل اصلی خود را در فیلدی به نام <Important>mainFile</Important> در فایل <Important>liara.json</Important> <b>به همراه پسوند <Important>go.</Important></b>، مانند شکل زیر، وارد کنید:         
         </p>
         <div className="h-4" />
         <div dir='ltr'>
             <Highlight className="json">
                 {`{
   "go" : {
-    "procfile" : "app.go"
+    "mainFile" : "app.go"
    }
 }`}
             </Highlight>
@@ -499,7 +499,7 @@ github.com/jinzhu/gorm v1.9.16/go.mod h1:vnPOBfZMgAjq0QC2Rt8zgzoxzJKTKmSUHL0dRgm
                 {`{
   "port": 8080,
   "go": {
-    "procfile" : "main.go",
+    "mainFile" : "main.go",
     "version": "1.23",
     "timezone": "America/Los_Angeles"
   }
