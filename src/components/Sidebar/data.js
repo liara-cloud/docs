@@ -2468,6 +2468,10 @@ export default {
         link: "/paas/laravel/how-tos/use-ziggy"
       },
       {
+        title: "استفاده از Browsershot",
+        link: "/paas/laravel/how-tos/use-browsershot"
+      },
+      {
         title: "نصب یا به‌روزرسانی اکستنشن ",
         link: "/paas/laravel/how-tos/install-new-extension"
       },

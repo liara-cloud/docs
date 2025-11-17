@@ -1,0 +1,242 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از Browsershot در لاراول - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات آموزش استفاده از ماژول Browsershot در پلتفرم لاراول لیارا"  />
+</Head>
+
+
+# استفاده از Browsershot در لاراول
+<hr className="mb-2" />
+
+<a rel="nofollow" href="https://spatie.be/docs/browsershot/v4/introduction" target="_blank" className="text-[#2196f3]">ماژول Browsershot</a> در لاراول، می‌تواند یک صفحه وب را به یک عکس یا یک PDF تبدیل کند. این تبدیل با استفاده از <a href="/one-click-apps/headless-chrome/how-tos/connect-by-nodejs-and-puppeteer" className="text-[#2196f3]" target="_blank">Puppeteer</a> و <a href="/one-click-apps/headless-chrome/quick-start" className="text-[#2196f3]" target="_blank">Headless Chrome</a> انجام می‌شود. 
+در ادامه، آموزش استفاده از ماژول Browsershot در لاراول و نحوه استقرار آن در پلتفرم لاراول لیارا قرار گرفته است.
+
+<Step  steps={[
+    {
+    step: "۱",
+        content: (
+            <>
+                <h3>ایجاد پروژه لاراولی</h3>   
+                <p>
+                    در ابتدا، با اجرای دستور زیر، یک پروژه لاراولی جدید ایجاد کنید:
+                </p> 
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`laravel new browsershot-app`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+            </>
+        )
+    },
+    {
+    step: "۲",
+        content: (
+            <>
+                <h3>نصب Puppeteer و Browsershot</h3>   
+                <p>
+                    قبل از نصب Puppeteer، دستور زیر را اجرا کنید تا از رخ دادن خطا، جلوگیری شود:
+                </p> 
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`set PUPPETEER_SKIP_DOWNLOAD=true`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+                <p>
+                    سپس، با اجرای دستور زیر، می‌توانید Puppeteer را نصب کنید: 
+                </p>
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`npm install puppeteer`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+                <p>
+                    در نهایت، می‌توانید با اجرای دستور زیر، ماژول Browsershot را نصب کنید:
+                </p>
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`composer require spatie/browsershot`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+            </>
+        )
+    },
+    {
+    step: "۳",
+        content: (
+            <>
+                <h3>تعریف مسیر </h3>   
+                <p>
+                    در مسیر <Important>routes/web.php</Important>، قطعه کد زیر را قرار دهید: 
+                </p> 
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="php">
+                        {`<?php
+
+use Illuminate\\Support\\Facades\\Route;
+use App\\Http\\Controllers\\PdfController;
+
+Route::get('/', [PdfController::class, 'showForm'])->name('home');
+Route::post('/generate-pdf', [PdfController::class, 'generatePdf'])->name('generate.pdf');
+`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+            </>
+        )
+    },
+    {
+    step: "۴",
+        content: (
+            <>
+                <h3>تعریف و پیاده‌سازی کنترلر</h3>   
+                <p>
+                    با اجرای دستور زیر، یک کنترلر جدید ایجاد کنید:
+                </p> 
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="js">
+                        {`php artisan make:controller PdfController`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+                <p>
+                    سپس، در مسیر <Important>app/Http/Controllers/PdfController.php</Important>، قطعه کد زیر را قرار دهید: 
+                </p>
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="js">
+                        {`<?php
+
+namespace App\\Http\\Controllers;
+
+use Illuminate\\Http\\Request;
+use Spatie\\Browsershot\\Browsershot;
+
+class PdfController extends Controller
+{
+    public function showForm()
+    {
+        return view('home');
+    }
+
+    public function generatePdf(Request $request)
+    {
+        $request->validate([
+            'url' => 'required|url',
+        ]);
+
+        $url = $request->input('url');
+
+        $pdf = Browsershot::url($url)
+            ->setOption('browserWSEndpoint', env('REMOTE_CHROME_WSS'))
+            ->format('A4')
+            ->showBackground()
+            ->pdf();
+
+        return response($pdf, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename="webpage.pdf"');
+    }
+}`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+            </>
+        )
+    },
+{
+    step: "۵",
+        content: (
+            <>
+                <h3>ایجاد برنامه Headless Chrome</h3>   
+                <p>
+                    طبق <a href="/one-click-apps/headless-chrome/quick-start/" className="text-[#2196f3]" target="_blank">مستندات Chrome</a>، یک برنامه <a href="https://liara.ir/one-click-apps/chrome/" className="text-[#2196f3]" target="_blank">Headless Chrome</a> ایجاد کرده و از بخش <b>متغیرهای محیطی</b> برنامه، مقدار <Important>TOKEN</Important> را کپی کنید. 
+                </p>  
+            </>
+        )
+    },
+    {
+    step: "۵",
+        content: (
+            <>
+                <h3>ایجاد پلتفرم لاراول در لیارا و آماده‌سازی آن</h3>   
+                <p>
+                    در <a href="https://console.liara.ir/apps" className="text-[#2196f3]" target="_blank">کنسول لیارا</a>، یک برنامه لاراول ایجاد کنید و طبق مستندات <a href="/paas/laravel/how-tos/set-envs/" className="text-[#2196f3]" target="_blank">تنظیم متغیرهای محیطی</a>، دو متغیر زیر را به برنامه خود اضافه کنید:
+                </p> 
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="bash">
+                        {`REMOTE_CHROME_WSS=wss://<liara-chrome-app-url>?token=<your-env-token>
+PUPPETEER_SKIP_DOWNLOAD=true`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+                در قطعه کد فوق، به جای <Important>&lt;liara-chrome-app-url&gt;</Important>، آدرس برنامه Headless Chrome و به جای <Important>&lt;your-env-token&gt;</Important>، مقدار <Important>TOKEN</Important> که در مرحله قبل کپی کرده‌اید را قرار دهید.
+            </>
+        )
+    },
+    {
+    step: "۶",
+        content: (
+            <>
+                <h3>استقرار برنامه لاراول</h3>   
+                <p>
+                    در نهایت، با استفاده ازاجرای دستور زیر، برنامه لاراولی خود را در پلتفرم لاراول لیارا مستقر کنید (حتماْ موقعیت بیلد را بر روی <Important>germany</Important> تنظیم کنید):
+                </p> 
+                <div className="h-2" />
+                <div dir='ltr'>
+                    <Highlight className="js">
+                        {`liara deploy --build-location=germany`}
+                    </Highlight>
+                </div>
+                <div className="h-2" />  
+            </>
+        )
+    }
+]}
+/>
+<div className="h-4" />  
+
+<Alert variant="success">
+<p>
+یک پروژه آماده استقرار در <a target="_blank" href="https://github.com/liara-cloud/laravel-getting-started/tree/browsershot" className="text-[#2196f3]" target="_blank">گیت‌هاب لیارا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
+</p>
+</Alert>
+
+
+</Layout>
