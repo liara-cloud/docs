@@ -1,0 +1,145 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import Table from "@/components/Common/table";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی و کار با رکورد DMARC - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی و کار با رکورد DMARC در هاست ایمیل لیارا"  />
+</Head>
+
+
+# آشنایی و کار با رکود DMARC در سرور ایمیل لیارا
+<hr className="mb-2" />
+
+<a href="https://dmarc.org/overview" className="text-[#2196f3]">DMARC</a> یک استاندارد احراز هویت ایمیل است که به گیرندگان کمک می‌کند تشخیص دهند آیا پیام دریافتی واقعاً از دامنهٔ فرستنده، آمده است یا خیر. 
+در ادامه، به لزوم استفاده از این رکورد، معرفی و نحوه کار با آن، پرداخته شده است.
+
+<Section id='why-use-dmarc' title='لزوم استفاده از رکورد DMARC' />
+با وجود فناوری‌های احراز هویت ایمیل مانند <a href="/email-server/details/dns-records/#spf-record" className="text-[#2196f3]">SPF</a> و <a href="/email-server/details/dns-records/#dkim-record" className="text-[#2196f3]">DKIM</a>، مشکل 
+ایمیل‌های جعلی و فریبنده همچنان برطرف نشده است؛ چرا که گیرندگان ایمیل به دلایل زیر، نمی‌توانند ایمیل‌های جعلی را از ایمیل‌های احرازهویت شده، تفکیک کنند: 
+
+<div className="h-4" />
+    <ul class="fixed-list">
+        <li>محیط ایمیل پیچیده فرستندگان و به‌روزرسانی‌ها و تغییرات مداوم، باعث پیچیده شدن فرایند احراز هویت با SPF و DKIM شده است. </li>
+        <div className="h-2" />
+        <li>اگر فقط بخشی از پیام‌های یک دامنه، احراز هویت شوند، گیرندگان نمی‌توانند پیام‌های سالم بدون احراز هویت را از پیام‌های جعلی تشخیص دهند و به دلیل ضعف الگوریتم‌های ضدهرزنامه، بخشی از ایمیل‌های جعلی وارد صندوق ورودی می‌شوند</li>
+        <div className="h-2" />
+        <li>فرستندگان بازخورد کمی از وضعیت احراز هویت ایمیل‌هایشان دارند و همین موضوع رفع مشکل را در محیط‌های پیچیده بسیار دشوار می‌کند</li>
+        <div className="h-2" />
+        <li>حتی با احراز هویت کامل فرستنده، گیرندگان پیام‌های احراز نشده را رد نمی‌کنند تا پیام سالم احراز نشده‌ای از بین نرود</li>
+    </ul>
+<div className="h-4" />
+
+تنها راه حل مشکلات فوق، زمانی است که هم فرستندگان و هم گیرندگان، اطلاعات را با یکدیگر به اشتراک بگذارند. 
+گیرندگان باید اطلاعاتی درباره زیرساخت احراز هویت ایمیل خود در اختیار فرستندگان قرار دهند، و در مقابل، فرستندگان باید به گیرندگان بگویند هنگام دریافت پیامی که احراز هویت نمی‌شود، چه کاری را انجام دهند.
+
+<Section id='what-is-demarc' title='DMARC چیست؟' />
+
+DMARC به گونه‌ای طراحی شده است که در فرایند احراز هویت ایمیل یک سازمان قرار می‌گیرد و به گیرندگان ایمیل کمک می‌کند تشخیص دهند آیا پیام ارسال شده با اطلاعاتی که گیرنده درباره فرستنده می‌داند "هم‌تراز" (align) است یا نه. اگر این هم‌ترازی وجود نداشته باشد، DMARC درباره چگونگی برخورد با پیام‌های "غیرهم‌تراز" راهنمایی‌هایی را ارائه می‌دهد.
+
+
+<div className="h-4" />  
+<img src="https://media.liara.ir//email-server/dmarc-process.png" alt="dmarc process explaining"/>
+<div className="h-4" />  
+
+به صورت کلی، DMARC به‌گونه‌ای طراحی شده است که کارهای زیر را انجام دهد:
+
+<div className="h-4" />
+<ul>
+<li>خطاهای مثبت کاذب را حداقل کند</li>
+<div className="h-1" />
+<li>گزارشی جامع و قابل اعتماد از احراز هویت ارائه دهد</li>
+<div className="h-1" />
+<li>سیاست فرستنده را در گیرندگان، اعمال کند</li>
+<div className="h-1" />
+<li>موفقیت حملات فیشینگ را کاهش دهد</li>
+<div className="h-1" />
+<li>پیچیدگی‌ها را به صورت کلی، کم کند</li>
+<div className="h-1" />
+</ul>
+<div className="h-4" />
+
+DMARC بر اساس DKIM و SPF ساخته شده است که در حال حاضر در چارچوب IETF در حال توسعه هستند. DMARC به‌گونه‌ای طراحی شده است که جایگزین ADSP شود.
+
+<Section id='anatomy-of-a-dmarc-record-in-the-dns' title='ساختار یک رکورد DMARC در DNS' />
+
+سیاست‌های DMARC در DNS به صورت TXT RR است و مشخص می‌کند که گیرنده ایمیل باید با ایمیل‌هایی که هم‌تراز نیستند چه کارهایی را انجام دهد.
+به عنوان مثال، یک رکورد DMARC TXT RR برای دامنه‌ی sender.example.com می‌تواند به صورت زیر باشد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`"v=DMARC1;p=reject;pct=100;rua=mailto:postmaster@example.com"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در مثال فوق، فرستنده درخواست می‌کند که گیرنده تمامی پیام‌های غیرهم‌تراز را به‌طور کامل رد (reject) کند و یک گزارش به صورت تجمیعی (aggregate) از رد شدن‌ها به آدرس مشخص شده، ارسال کند. 
+<div className="h-2" />
+
+اگر فرستنده در حال آزمایش تنظیمات خود باشد، می‌تواند مقدار reject را با <Important>quarantine</Important> جایگزین کند که به گیرنده می‌گوید لزوماً پیام را رد نکند، بلکه آن را قرنطینه کند.
+
+<Section id='dmarc-available-tags' title='تگ های رکورد DMARC' />
+رکوردهای DMARC از همان سینتکس <Important>tag-value</Important> که برای  key recordهای مبتنی بر DNS در DKIM تعریف شده است، پشتیبانی می‌کنند. جدول زیر برخی از tagهای موجود را نشان می‌دهد:
+
+
+<Table  headers={["نام tag", "هدف", "مثال" ]}
+ data={ [
+  ["v", "ورژن پروتکل", <Important>v=DMARC1</Important>],
+  ["pct", <div dir="rtl"><p>درصد پیام‌هایی که می‌خواهید DMARC روی آن‌ها اعمال شود و بقیه بدون تغییر بمانند</p></div>, <Important>pct=20</Important>],
+  ["ruf", <div dir="rtl"><p>آدرس ایمیلی که گزارش‌های جزئی (forensic) درباره پیام‌های مشکل‌دار برای آن فرستاده می‌شود </p></div>, <Important>ruf=mailto:authfail@example.com</Important>],
+  ["rua", <div dir="rtl"><p>آدرس ایمیلی که گزارش‌های تجمیعی (aggregate) درباره نحوه عملکرد DMARC برای آن فرستاده می‌شود</p></div>, <Important>rua=mailto:aggrep@example.com</Important>],
+  ["p", <div dir="rtl"><p>سیاست‌های اصلی دامنه. مشخص می‌کند با پیام‌های غیرهم‌تراز چه کنید</p></div>, <Important>p=quarantine</Important>],
+  ["sp", "سیاست برای زیردامنه‌ها. وقتی یک زیردامنه پیام می‌فرستد، این قانون اعمال می‌شود", <Important>sp=reject</Important>],
+  ["adkim", <div dir="rtl"><p>چک کردن مطابقت امضای DKIM با دامنه فرستنده توسط گیرنده؛ <Important>s</Important> سخت و <Important>r</Important> نسبی.</p></div>, <Important>adkim=s</Important>],
+  ["aspf", <div dir="rtl"><p>چک کردن مطابقت SPF با دامنه فرستنده توسط گیرنده؛ <Important>s</Important> سخت و <Important>r</Important> نسبی.</p></div>, <Important>aspf=r</Important>],
+]} />
+
+<Alert variant="warning">
+<p>
+مثال‌های این جدول صرفاً برای توضیح هستند و نباید در Production استفاده شوند. برای آخرین و دقیق‌ترین نسخه، به <a href="https://dmarc.org/resources/specification" className="text-[#2196f3]">مستندات رسمی DMARC</a> مراجعه کنید.
+</p>
+</Alert>
+
+<Section id='use-dmarc-in-liara-email-server' title='استفاده از DMARC در سرور ایمیل لیارا' />
+
+ایمیل سرور لیارا از رکورد DMARC به صورت کامل، پشتیبانی می‌کند؛ شما می‌توانید در ایمیل سرور خود، وارد بخش **تنظیمات** شده و در بخش **رکورد DMARC** 
+می‌توانید اطلاعات مربوط به رکورد DMARC خود را مشاهده بفرمایید. همچنین، در صورتی که از <a href="" className="text-[#2196f3]">سامانه مدیریت دامنه لیارا</a> برای هاست ایمیل خود، استفاده می‌کنید، می‌توانید با کلیک بر روی گزینه **ایجاد خودکار رکورد**، رکود DMARC را به رکوردهای DNS دامنه خود، اضافه کنید. 
+همچنین، می‌توانید tagهای آن را تغییر داده و سپس، آن را به رکوردهای DNS خود، اضافه کنید. 
+
+
+<div className="h-2" />  
+<img src="https://media.liara.ir/email-server/dmarc-section.png" alt="dmarc section in liara email server"/>
+<div className="h-2" />  
+
+برای دریافت گزارش‌های DMARC از سمت گوگل نیز، تنها کافیست تا بر روی گزینه **ایجاد نشانی DMARC** کلیک کنید تا نشانی مربوطه یعنی <Important>dmarc@yourdomain.com</Important> برای‌تان ایجاد شود. 
+
+
+</Layout>

@@ -9770,7 +9770,7 @@ export default {
         link: "/email-server/how-tos/use-tags"
       },
       {
-        title: "فعال‌سازی هدر Subscibtion",
+        title: "فعال‌سازی هدر Subscription",
         link: "/email-server/how-tos/set-subscription-header"
       },
       {
@@ -10210,6 +10210,11 @@ export default {
         title: "رکوردهای DNS",
         icon: <GoFileBinary />,
         link: "/email-server/details/dns-records"
+      },
+      {
+        title: "رکورد DMARC",
+        icon: <GoLock />,
+        link: "/email-server/details/dmarc-record"
       },
       {
         title: "گزارشات",
