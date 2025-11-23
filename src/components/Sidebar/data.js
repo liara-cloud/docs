@@ -1004,6 +1004,16 @@ export default {
         link: "/ai/details/plans"
       },
       {
+        title: "آیدی (workspace) یک AI",
+        icon: <GoCommandPalette />,
+        link: "/ai/details/id"
+      },
+      {
+        title: "ارسال درخواست برای لاگ‌ کامل",
+        icon: <GoNote />,
+        link: "/ai/details/full-log-request"
+      },
+      {
         title: "کلیدها",
         icon: <GoKey />,
         link: "/ai/details/keys"

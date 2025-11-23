@@ -1,0 +1,51 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آیدی (workspace) یک AI - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات آشنایی با آیدی یا Workspace یک سرویس هوش مصنوعی و نحوه مشاهده آن در لیارا"  />
+</Head>
+# آیدی (workspace) یک سرویس هوش مصنوعی
+
+<hr className="mb-2" />
+
+آیدی سرویس هوش مصنوعی (workspace) یک شناسه منحصربه‌فرد است که لیارا به هر سرویس هوش مصنوعی که ایجاد می‌کنید، اختصاص می‌دهد. این آیدی برای موارد مختلفی به کار می‌رود. 
+
+<Section id="how-to-see-ai-id" title="نحوه مشاهده آیدی سرویس هوش مصنوعی" />
+روش‌های مختلفی برای مشاهده آیدی سرویس هوش مصنوعی مدنظرتان، وجود دارد 
+که یکی از ساده‌ترین آن‌ها، استفاده از URL کنسول لیارا در حین مشاهده سرویس هوش مصنوعی است.
+
+<div className="h-4" />
+<img src="https://media.liara.ir/ai/see-ai-id-in-console.png" alt="see ai id in console"/>
+<div className="h-4" />
+آیدی سرویس هوش مصنوعی بعد از <Important>ai/</Important> و قبل از <Important>/</Important> بعدی، قرار دارد.
+به‌عنوان مثال، اگر URL کنسول شما در صفحه **مدل‌ها** سرویس هوش مصنوعی‌تان مانند زیر باشد:
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://console.liara.ir/ai/682b7ab82bd70203933013ae/models`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+بنابراین آیدی سرویس هوش مصنوعی شما برابر با <Important>682b7ab82bd70203933013ae</Important> است.
+
+</Layout>
