@@ -873,6 +873,40 @@ Cron job یک ابزار در سیستم‌عامل‌های لینوکس است
 
 برای اطلاع بیشتر در مورد دیسک‌ها، می‌توانید به مستندات مربوط به اتصال به دیسک در هر پلتفرم، مراجعه کنید.
 
+<Section id="set-envs-on-liarajson" title="تنظیم متغیرهای محیطی در فایل liara.json" />
+
+شما می‌توانید در آبجکتی به نام <Important>envs</Important> تمامی متغیرهای محیطی را در فایل <Important>liara.json</Important> خود، مانند شکل زیر، تعریف و مقداردهی کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="json">
+        {`{
+  "envs":
+  {
+    "env1": "value1",
+    "env2": "value2",
+    "env3": "value3",
+    "env4": "value4",
+    "env5": "value5",
+  }
+}
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="warning">
+<p>
+در نظر داشته باشید که با انجام این کار، <b>تمامی متغیرهای قبلی ذخیره‌شده به همراه مقادیرشان</b> در برنامه‌تان، از بین خواهند رفت 
+و متغیرهای تعریفی شما در این فایل، جایگزین قبلی‌ها، خواهند شد.
+</p>
+</Alert>
+<Alert variant="warning">
+<p>
+در صورتی که پروژه‌تان شامل git است و متغیرهای تعریفی‌تان در این فایل حساس هستند؛ بهتر است اسم این فایل را در <Important>gitignore.</Important> قرار دهید تا مقادیر متغیرهای حساس، در git ذخیره و commit نشوند.
+</p>
+</Alert>
+
 <Section id="platform-fields" title="فیلدهای مخصوص هر پلتفرم" />
 
 هر پلتفرم در لیارا، در فایل <Important>liara.json</Important>، در کنار تمامی فیلدها و ویژگی‌های مشترک،
