@@ -4876,6 +4876,11 @@ export default {
         link: "/iaas/details/change-plan"
       },
       {
+        title: "تهیه و استفاده از اسنپ‌شات",
+        icon: <GoSync />,
+        link: "/iaas/details/snapshot"
+      },
+      {
         title: "حذف یک سرور مجازی ابری",
         icon: <GoXCircle />,
         link: "/iaas/details/delete-server"

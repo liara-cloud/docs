@@ -1,0 +1,127 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات کار با اسنپ شات در سرور مجازی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به "  />
+</Head>
+
+
+# تهیه اسنپ شات و کار با آن در سرور مجازی
+<hr className="mb-2" />
+
+اسنپ‌شات، یک تصویر کامل و لحظه‌ای از وضعیت سرور مجازی (فایل‌ها، تنظیمات و حافظه) است که برای بازگردانی سریع سرور به همان لحظه استفاده می‌شود.
+در ادامه، مفهوم، نحوه تهیه و استفاده از اسنپ‌شات در سرور مجازی لیارا، بررسی شده است.
+
+<Section id='what-is-snapshot' title='اسنپ شات چیست؟' />
+
+اسنپ‌شات (snapshot) یک کپی یا یک نمایش کامل در لحظه از وضعیت یک سرور مجازی است. اسنپ‌شات‌ها اغلب برای پشتیبان‌گیری، بازیابی و مدیریت داده‌ها مورد استفاده قرار می‌گیرند.
+آن‌ها داده‌ها و تنظیمات سرور مجازی را در یک لحظه‌ی مشخص ثبت می‌کنند و این امکان را به شما می‌دهند که در صورت نیاز، سرور مجازی را به همان وضعیت بازگردانید یا بدون لحظه‌ای وقفه در عملیات فعلی سیستم، نسخه‌های پشتیبان سازگار و یکپارچه ایجاد کنید.
+
+
+<Section id='create-snapshot' title='نحوه تهیه اسنپ شات از سرور' />
+
+برای تهیه اسنپ‌شات از سرور مجازی لیارا، کافیست تا در <a href="" className="text-[#2196f3]">کنسول لیارا</a> در بخش **سرور مجازی** وارد سرور مورد نظر خود شده و 
+در بخش **اسنپ‌شات‌ها**، بر روی گزینه **ایجاد اسنپ‌شات** کلیک کنید. 
+
+<div className="h-4" />
+<video
+  src="https://media.liara.ir/iaas/create-snapshot.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-4" />
+
+با انجام عملیات فوق، اسنپ‌شات شما ایجاد می‌شود. 
+
+<Section id='use-snapshot' title='نحوه استفاده از اسنپ شات' />
+
+برای ریکاوری اطلاعات ذخیره‌شده در اسنپ‌شات مدنظرتان، تنها کافیست تا وارد بخش **اسنپ‌شات‌‎ها** در سرور مجازی خود در کنسول شوید و بر روی دکمه **برگرداندن اسنپ‌شات** کلیک کنید. 
+
+<div className="h-4" />
+<Alert variant="warning">
+<p>
+بازیابی اسنپ‌شات منجر به خاموش شدن سرور مجازی شما می‌شود، پس از بازیابی، بایستی طبق <a href="/iaas/details/signals/#turning-on-signal" className="text-[#2196f3]">مستندات ارسال سیگنال</a>، سیگنال <b>روشن شدن</b> را به سرور خود، ارسال کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+<video
+  src="https://media.liara.ir/iaas/restore-snapshot.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-4" />
+
+<Section id='delete-snapshot' title='نحوه حذف اسنپ شات' />
+
+برای حذف اسنپ‌شات تهیه شده تنها کافیست تا در بخش **اسنپ‌شات‌ها** در سرور مجازی مدنظرتان، بر روی آیکن **حذف اسنپ‌شات** کلیک کرده و سپس در پنجره جدید باز شده، بر روی **حذف** کلیک کنید تا اسنپ‌شات حذف شود. 
+
+<div className="h-2" />
+<video
+  src="https://media.liara.ir/iaas/delete-snapshot.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+در نظر داشته باشید که با حذف اسنپ‌شات، امکان بازیابی آن وجود نخواهد داشت و اسنپ‌شات به صورت کامل، حذف خواهد شد.
+</p>
+</Alert>
+
+<Section id='snapshot-policies' title='ملزومات استفاده از اسنپ شات' />
+
+در هنگام استفاده از اسنپ‌شات‌ها، به نکات زیر توجه بفرمایید: 
+
+<div className="h-2" />
+<ul>
+<li>به ازای هرگیگابات حجم اسنپ‌شات، به صورت ساعتی، مبلغ مشخصی از حساب شما کسر می‌شود (مثلاً ماهانه ۱۰ هزارتومان)</li>
+<div className="h-1" />
+<li>بعد از هر عملیات در بخش اسنپ‌شات‌ها، در بخش <a href="/iaas/details/events/" className="text-[#2196f3]">رویدادها</a>، رویداد <Important>GET_VM_SNAPSHOTS</Important> باید <b>موفق</b> باشد تا عملیات به درستی انجام شود. </li>
+<div className="h-1" />
+<li>در صورتی که رویداد <Important>GET_VM_SNAPSHOTS</Important> <b>ناموفق</b> باشد، بایستی عملیات مدنظر خود را مجدداً انجام دهید تا رویداد، <b>موفق</b> شود</li>
+<div className="h-1" />
+<li>اسنپ‌شات‌ها صرفاً شامل محتویات دیسک هستند و محتویات RAM را در بر نمی‌گیرند</li>
+<div className="h-1" />
+<li>افزایش تعداد اسنپ‌شات‌ها می‌تواند منجر به کاهش سرعت دیسک سرور مجازی شما شود</li>
+</ul>
+<div className="h-2" />
+
+<Section id='why-increasing-snapshots-slows-down-vps' title='چرا افزایش اسنپ‌شات‌ها منجر به کاهش سرعت سرور مجازی می‌شود؟' />
+
+افزایش تعداد Snapshot در سرورهای مجازی ابری به‌طور مستقیم موجب افت عملکرد دیسک می‌شود، زیرا این Snapshotها در سیستم‌های ذخیره‌سازی ابری معمولاً بر پایه لایه‌های تفاضلی (Delta Layers) ایجاد می‌شوند. با هر Snapshot جدید، یک لایه Delta اضافه شده و ساختار Volume به یک زنجیره چندلایه تبدیل می‌شود. 
+<div className="h-4" />
+
+در معماری ذخیره‌سازی ابری، Snapshotهای زیاد باعث ایجاد لایه‌های متعدد می‌شود که هم خواندن و هم نوشتن را کند می‌کند؛ زیرا سیستم باید هر بلوک را در چندین لایه جستجو و پردازش کند. این موضوع سربار Metadata، افزایش Fragmentation و کاهش IOPS را به‌دنبال دارد و حتی عملیات‌هایی مثل Merge , Backup و Restore را نیز کند می‌کند. به همین دلیل افزایش Snapshot مستقیماً باعث افت کارایی دیسک در Cloud می‌شود.
+
+</Layout>
