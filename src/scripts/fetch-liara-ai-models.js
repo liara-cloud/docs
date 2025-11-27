@@ -1,6 +1,5 @@
-import fs from "fs";
-import path from "path";
-import fetch from "node-fetch";
+const fs = require("fs");
+const path = require("path");
 
 const CATEGORIES = [
   "deepseek",
