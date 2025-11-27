@@ -10,7 +10,7 @@ import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import ThemePlatformIcon from "@/components/Common/themeIcons"
-
+import models from "@/data/liara-ai-models.json";
 import {
   GoContainer,
   GoDatabase,
@@ -33,6 +33,7 @@ import Head from "next/head";
 # شروع به کار با هوش مصنوعی OpenAI
 <hr className="mb-2" />
 
+
 هوش مصنوعی <a href="https://openai.com" target='_blank' className="text-[#2196f3] " >OpenAI</a> مجموعه‌ای از مدل‌های پیشرفته است که برای درک و تولید زبان طبیعی، حل مسائل پیچیده، و تعامل انسانی طراحی شده‌است. 
 این فناوری با مدل‌ GPT توانسته در حوزه‌هایی مانند تولید محتوا، برنامه‌نویسی، تحلیل داده و ... نقش مؤثری ایفا کند.
 
@@ -42,30 +43,14 @@ import Head from "next/head";
 
 <div className="h-2" />
 <ul className="pr-4">
-  {[
-    {text: <Important>openai/gpt-5</Important>,},
-    {text: <Important>openai/gpt-5-chat</Important>,},
-    {text: <Important>openai/gpt-5-mini</Important>,},
-    {text: <Important>openai/gpt-5-nano</Important>,},
-    {text: <Important>openai/gpt-4.1</Important>,},
-    {text: <Important>openai/gpt-4.1-mini</Important>,},
-    {text: <Important>openai/gpt-4o-mini</Important>,},
-    {text: <Important>openai/o4-mini</Important>,},
-    {text: <Important>openai/o4-mini-high</Important>,},
-    {text: <Important>openai/o3</Important>,},
-    {text: <Important>openai/o1</Important>,},
-    {text: <Important>openai/gpt-5-codex</Important>,},
-    {text: <Important>openai/text-embedding-ada-002</Important>,},
-    {text: <Important>openai/text-embedding-3-small</Important>,},
-    {text: <Important>openai/text-embedding-3-large</Important>,},
-  ].map((item, index) => (
+  {models.openai.map((item, index) => (
     <li
       key={index}
       style={{
         textDecorationColor: "#9ca3af"
       }}
     >
-        مدل {item.text}
+        مدل <Important> {item}</Important>
     <div className='h-1' />
     </li>  ))}
 </ul>

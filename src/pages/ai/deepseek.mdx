@@ -9,6 +9,7 @@ import Important from "@/components/Common/important";
 import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
+import models from "@/data/liara-ai-models.json";
 
 import {
   GoContainer,
@@ -40,22 +41,16 @@ import Head from "next/head";
 
 <div className="h-2" />
 <ul className="pr-4">
-  {[
-    {text: <Important>deepseek/deepseek-chat-v3-0324</Important>,},
-    {text: <Important>deepseek/deepseek-r1-distill-llama-70b</Important>,},
-    {text: <Important>deepseek/deepseek-chat-v3.1</Important>,},
-
-  ].map((item, index) => (
+  {models.deepseek.map((item, index) => (
     <li
       key={index}
       style={{
         textDecorationColor: "#9ca3af"
       }}
     >
-        مدل {item.text}
-    <div className="h-1" />
-    </li>
-  ))}
+        مدل <Important> {item}</Important>
+    <div className='h-1' />
+    </li>  ))}
 </ul>
 
 <br />

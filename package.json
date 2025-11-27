@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "generate-llms": "npm --prefix mdx-to-md-converter ci && npm --prefix mdx-to-md-converter run convert",
-    "build": "npm run generate-llms && npm run sitemap && next build",
+    "build": "npm run generate-llms && npm run sitemap && npm run fetch:models && next build",
     "postbuild": "sh -c \"if [ -d public/llms ]; then mkdir -p out/llms && cp -R public/llms/* out/llms/; fi; if [ -f public/all-links-llms.txt ]; then cp public/all-links-llms.txt out/all-links-llms.txt; fi\"",
     "start": "next start",
     "lint": "next lint",
-    "sitemap": "node sitemap/generate.js"
+    "sitemap": "node sitemap/generate.js",
+    "fetch:models": "node src/scripts/fetch-liara-ai-models.js"
   },
   "dependencies": {
     "@liara/platformicons": "^3.13.0",
