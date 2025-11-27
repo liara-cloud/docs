@@ -1,0 +1,564 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import models from "@/data/liara-ai-models.json";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات شروع به کار با هوش مصنوعی Z.ai - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی Z.ai در لیارا"  />
+</Head>
+# شروع به کار با هوش مصنوعی Z.ai
+<hr className="mb-2" />
+
+<a href="https://z.ai" target='_blank' className="text-[#2196f3]">Z.ai</a> یک شرکت فعال در حوزه‌ی هوش مصنوعی است که Agentهای هوش مصنوعی مستقل را برای کسب‌وکارها ارائه می‌کند. این Agentها برای تعامل با مشتری و فروش در تمامی کانال‌ها (مانند تلفن، ایمیل و چت) طراحی شده‌اند؛ بدون آن‌که نیازی به مداخله‌ی انسان باشد. می‌توان آن را مشابه یک کارمند کاملاً دیجیتال و مجهز به هوش مصنوعی در نظر گرفت که قادر است مشتریان را درک و مشکلات آن‌ها را حل کند و از جانب آن‌ها عملیاتی را انجام دهد.
+<div className="h-4" />
+
+در حال حاضر، لیارا، مدل زیر از Z.ai را در API خود پشتیبانی می‌کند:
+
+<div className="h-2" />
+<ul className="pr-4">
+  {models["z-ai"].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        مدل <Important> {item}</Important>
+    <div className='h-1' />
+    </li>  ))}
+</ul>
+
+<br />
+
+پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید از مدل‌های Z.ai استفاده کنید.
+
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+در قطعه کدهای ارائه‌شده توسط لیارا برای اتصال به مدل، از OpenAI SDK استفاده می‌شود. تمامی مدل‌هایی که لیارا ارائه می‌دهد؛ سازگار با OpenAI SDK هستند.
+</p>
+</Alert>
+
+
+
+<Section id="connect" title="اتصال به مدل" />
+
+برای اتصال به مدل در سطح کد، می‌توانید از دو ابزار استفاده کنید: 
+
+<div className="h-4" />
+
+<ul>
+  <li><Important>OpenAI SDK</Important>: ابزار رسمی ارائه‌شده توسط <a href="https://openai.com/" className="text-[#2196f3]">OpenAI</a>. تمامی مدل‌های ارائه‌شده در لیارا، با این SDK سازگار هستند.</li>
+  <li><Important>AI SDK</Important>: ابزار ارائه‌شده توسط <a href="https://ai-sdk.dev/" className="text-[#2196f3]">Vercel</a>. این SDK، تنها برای جاوااسکریپت و تایپ‌اسکریپت در دسترس است.</li>
+</ul>
+
+<div className="h-4" />
+
+<p>
+در ادامه، نحوه اتصال به مدل، هم با <Important>OpenAI SDK</Important> و هم با <Important>AI SDK</Important>، بررسی شده است. 
+</p>
+
+
+<Tabs
+  tabs={[
+        {
+        label: "OpenAI SDK",
+        },
+        {
+        label: "AI SDK",
+        },
+  ]}
+
+  content={[
+
+  <>
+  <p>
+    برای اتصال به مدل با OpenAI SDK، می‌توانید از قطعه کدهای زیر، استفاده کنید.
+  </p>
+  <Tabs 
+  tabs={[
+        {
+        label: "JavaScript",
+        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "PHP",
+        icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Python",
+        icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "NET.",
+        icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Go",
+        icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "cURL",
+        },
+      ]}
+  content={[
+  
+  <>
+    <p>
+        در ابتدا، برای استفاده از مدل هوش مصنوعی مدنظر خود در جاوااسکریپت، باید پکیج <Important>openai</Important> را نصب کنید. برای این کار، می‌توانید از npm یا yarn استفاده کنید:
+    </p>
+
+        <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`npm install openai # or yarn add openai`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        سپس، می‌توانید مانند قطعه کد زیر، به مدل هوش مصنوعی خود متصل شوید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="js">
+        {`const OpenAI = require('openai');
+
+const openai = new OpenAI({
+  baseURL: '<baseUrl>',
+  apiKey: '<LIARA_API_KEY>',
+});
+
+async function main() {
+  const completion = await openai.chat.completions.create({
+    model: '<model_name>',
+    messages: [
+      {
+        role: 'user',
+        content: 'Hello!',
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message);
+}
+
+main();`}
+        </Highlight>
+    </div>
+  </>,
+
+  <>
+    <p>
+        در ابتدا، برای استفاده از مدل هوش مصنوعی مدنظر خود در PHP، باید پکیج‌های مورد نیاز را با اجرای دستور زیر، نصب کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`composer require openai-php/client guzzlehttp/guzzle`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    
+    <p>
+        سپس، می‌توانید مانند قطعه کد زیر، به مدل هوش مصنوعی خود متصل شوید:
+    </p>
+    
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="php">
+        {`<?php
+
+require 'vendor/autoload.php';
+
+use OpenAI\\Client;
+use OpenAI\\Laravel\\Facades\\OpenAI;
+use OpenAI\\Contracts\\ResponseContracts\\Chat\\CreateResponse;
+
+$yourApiKey = '<LIARA_API_KEY>'; 
+$baseUrl = '<baseUrl>'; 
+$model = '<model_name>'; 
+
+// Create the OpenAI client
+$client = \\OpenAI::factory()
+    ->withApiKey($yourApiKey)
+    ->withBaseUri($baseUrl)
+    ->make();
+
+// Send a chat completion request
+$result = $client->chat()->create([
+    'model' => $model,
+    'messages' => [
+        ['role' => 'user', 'content' => 'I love U Bro!'],
+    ],
+]);
+
+// Print the response
+echo $result->choices[0]->message->content;
+
+`}
+        </Highlight>
+    </div>
+  </>,
+
+  <>
+
+    <p>
+        در ابتدا، برای استفاده از مدل هوش مصنوعی مدنظر خود در Python، باید پکیج مورد نیاز را با اجرای دستور زیر، نصب کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`pip install openai`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    
+    <p>
+        سپس، می‌توانید مانند قطعه کد زیر، به مدل هوش مصنوعی خود متصل شوید:
+    </p>
+    
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="py">
+        {`from openai import OpenAI
+
+client = OpenAI(
+  base_url="<baseUrl>",
+  api_key="<LIARA_API_KEY>",
+)
+
+completion = client.chat.completions.create(
+  model="<model_name>",
+  messages=[
+    {
+      "role": "user",
+      "content": 'Hello!'
+    }
+  ]
+)
+
+print(completion.choices[0].message.content)`}
+        </Highlight>
+    </div>
+  </>,
+
+  <>
+
+    <p>
+        در ابتدا، برای استفاده از مدل هوش مصنوعی مدنظر خود در dotNET (CSharp)، باید پکیج مورد نیاز را با اجرای دستور زیر، نصب کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`dotnet add package OpenAI`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    
+    <p>
+        سپس، می‌توانید مانند قطعه کد زیر، به مدل هوش مصنوعی خود متصل شوید:
+    </p>
+    
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="cs">
+        {`using System.ClientModel;
+using OpenAI;
+using OpenAI.Chat;
+
+class Program
+{
+    static void Main()
+    {
+        string apiKey = "<LIARA_API_KEY>";
+        
+        string baseUrl = "<baseUrl>";
+        
+        OpenAIClientOptions options = new OpenAIClientOptions
+        {
+            Endpoint = new Uri(baseUrl)
+        };
+
+        ChatClient client = new(model: "<model_name>", credential: new ApiKeyCredential(apiKey), options: options);
+
+        ChatCompletion completion = client.CompleteChat("Hello!");
+
+        Console.WriteLine($"[ASSISTANT]: {completion.Content[0].Text}");
+    }
+}`}
+        </Highlight>
+    </div>
+  </>,
+
+  <>
+  
+    <p>
+        در ابتدا، برای استفاده از مدل هوش مصنوعی مدنظر خود در Go، باید پکیج‌های مورد نیاز را با اجرای دستورات زیر، نصب کنید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`go get package github.com/openai/openai-go
+go get package github.com/openai/openai-go/option`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+    
+    <p>
+        سپس، می‌توانید مانند قطعه کد زیر، به مدل هوش مصنوعی خود متصل شوید:
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+        {`package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go"
+	"github.com/openai/openai-go/option"
+)
+
+func main() {
+	const model = "<model_name>" 
+
+	
+	client := openai.NewClient(
+		option.WithAPIKey("<LIARA_API_KEY>"),
+		option.WithBaseURL("<baseUrl>"),       
+	)
+
+	chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
+		Messages: []openai.ChatCompletionMessageParamUnion{
+			openai.UserMessage("Hello!"),          
+		},
+		Model: model,                                           
+	})
+	if err != nil {
+		panic(err.Error())          
+	}
+
+	fmt.Println("Model Response:", chatCompletion.Choices[0].Message.Content)
+}`}
+        </Highlight>
+    </div>
+  </>,
+
+  <>
+    <div className="h-2" />
+    <div dir='ltr'>
+        <Highlight className="bash">
+        {`curl <baseUrl>\chat\completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer <LIARA_API_KEY>" \\
+  -d '{
+  "model": "<model_name>",
+  "messages": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Hello!"}
+  ]
+}'`}
+        </Highlight>
+    </div>
+  </>,
+
+  ]}
+  />
+
+  </>,
+
+  <>
+  <p>
+    برای اتصال به مدل با AI SDK، در ابتدا باید با اجرای دستور زیر، ماژول‌های مورد نیاز را نصب کنید:
+  </p>
+  <div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="bash">
+    {`npm i @ai-sdk/openai@^1 ai@^4`}
+  </Highlight>
+  </div>
+  <div className="h-2" />
+  <p>
+    در ادامه، می‌توانید مانند قطعه کد زیر، به مدل متصل شوید:
+  </p>
+  <div className="h-2" />
+  <div dir='ltr'>
+  <Highlight className="js">
+    {`import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+
+const my_model = createOpenAI({
+  baseURL: "<baseUrl>",
+  apiKey: "<LIARA_API_TOKEN>",
+});
+
+const { text } = await generateText({
+    model: my_model("<model_name>"),
+    prompt: 'Why is the sky blue?',
+});
+
+console.log('Generated Text:', text);
+`}
+  </Highlight>
+  </div>
+  <div className="h-2" />
+
+  </>
+
+
+  ]}
+
+/>
+
+
+در قطعه کد‌های فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_TOKEN&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های فوق را قرار دهید.
+
+
+
+<Section id="set-parameters" title="پارامترهای قابل تنظیم" />
+
+<Tabs
+  tabs={[
+        {
+        label: "OpenAI SDK",
+        },
+  ]}
+  content={[
+  <>
+    
+    در OpenAI SDK، شما می‌توانید پارامترهای زیر را تنظیم کنید.
+    <div className="h-4" />
+
+    <Alert variant="info">
+    <p>
+    در نظر داشته باشید که پارامترهای زیر، ممکن است در برخی از مدل‌ها، پشتیبانی نشوند.
+    </p>
+    </Alert>
+
+    <div className="h-4" />
+
+    <ul>
+    <li><Important>frequency_penalty</Important>:  عددی بین <Important>-2</Important> تا <Important>2</Important>. کاهش یا افزایش احتمال تکرار کلمات پرتکرار در پاسخ. هرچه بالاتر باشد؛ تنوع بیشتر است</li>
+    <li><Important>logit_bias</Important>:  تغییر احتمال ظاهر شدن توکن‌های خاص</li>
+    <li><Important>n</Important>: تعداد پاسخ‌هایی که قرار است مدل همزمان تولید کند.</li>
+    <li><Important>response_format</Important>: مدل را مجبور می‌کند خروجی را به فرمت خاصی برگرداند</li>
+    <li><Important>seed</Important>: مقدار عددی ثابت برای شروع تولید تصادفی، در صورت نیاز، به خروجی‌های قابل تکرار</li>
+    <li><Important>stop</Important>: آرایه‌ای از رشته‌ها برای اینکه مدل هنگام رسیدن به آن‌ها پاسخ را متوقف کند</li>
+    <li><Important>stream</Important>: اگر <Important>true</Important> باشد، پاسخ مدل به صورت استریم ارسال می‌شود. برای پیاده‌سازی‌های real-time یا رابط کاربری، این حالت مفید است</li>
+    <li><Important>stream_options</Important>: تنظیمات مربوط به حالت <Important>stream</Important>. فقط وقتی استفاده می‌شود که <Important>stream: true</Important> باشد</li>
+    <li><Important>temperature</Important>: عددی بین <Important>0</Important> تا <Important>2</Important>. کنترل میزان تصادفی بودن خروجی؛ عدد کمتر، واقع‌گرایی بیشتر و عدد بیشتر، خلاقیت بیشتر</li>
+    <li><Important>tool_choice</Important>: تعیین کردن اینکه مدل چه زمانی Tool را فراخوانی کند (به‌صورت هوشمند یا همیشه)</li>
+    <li><Important>tools</Important>: مشخص کردن یک‌سری Tool که مدل در صورت نیاز، آن‌ها را فراخوانی کند</li>
+    <li><Important>user</Important>: شناسه‌ی کاربر نهایی. برای دسته‌بندی بهتر درخواست‌ها و جلوگیری از سوءاستفاده، به‌کار می‌رود</li>
+    </ul>
+
+    <div className="h-8" />
+    <p>
+      در ادامه، مثال استفاده از این پارامترها، در زبان‌های مختلف، قرار گرفته است:
+    </p>
+
+    <Tabs 
+      tabs={[
+            {
+            label: "Python",
+            icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+            },
+          ]}
+      content={[
+  
+    <>
+    <div dir='ltr'>
+    <Highlight className="bash">
+      {`from openai import OpenAI
+
+client = OpenAI(
+  base_url='<baseUrl>',
+  api_key='<LIARA_API_KEY>',
+)
+
+response = client.chat.completions.create(
+    model="<model_name>",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "write a short article about Machine Learning in json"}
+    ],
+    frequency_penalty=1.2,
+    presence_penalty=1.0,
+    temperature=0.8,
+    top_p=0.9,
+    n=2,
+    seed=42,
+    stop=["\\nUser:", "\\nSystem:"],
+    logit_bias={"50256": -100}, 
+    stream=False,
+    stream_options=None,
+    response_format={"type": "json_object"},
+    tool_choice="auto",
+    tools=[
+        {
+            "type": "function",
+            "function": {
+                "name": "summarize_text",
+                "description": "summarizing a long text",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "text": {"type": "string", "description": "the text should be summarized"}
+                    },
+                    "required": ["text"]
+                }
+            }
+        }
+    ],
+)
+
+print(response)
+`}
+    </Highlight>
+    </div>
+    <div className="h-2" />
+  </>
+  ]}
+  />
+
+  <p>
+  در قطعه کد‌ فوق، به‌جای <Important>&lt;baseUrl&gt;</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>&lt;LIARA_API_TOKEN&gt;</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>&lt;model_name&gt;</Important>، نام یکی از مدل‌های فوق را قرار دهید.
+  </p>
+  
+  </>
+  ]}
+/>
+
+</Layout>

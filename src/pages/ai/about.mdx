@@ -99,7 +99,7 @@ import Head from "next/head";
 در حال حاضر، لیارا در API خود، از هوش مصنوعی‌های زیر پشتیبانی می‌کند:
 
 <div className="h-4" />
-<div className="grid md:grid-cols-2 gap-4">
+<div className="grid md:grid-cols-3 gap-4">
             {[
     { alt: 'https://media.liara.ir/logos/ai/openai-light.svg', platform: 'OpenAI/GPT', link: "./openai" },
     { alt: 'https://media.liara.ir/logos/ai/gemini-google.svg', platform: 'Google/Gemini', link: "./google-gemini" },
@@ -111,6 +111,7 @@ import Head from "next/head";
     { alt: 'https://media.liara.ir/logos/ai/perplexity.svg', platform: 'Perplexity', link: "./perplexity" },
     { alt: 'https://media.liara.ir/logos/ai/qwen-svg-white.png', platform: 'Qwen', link: "./qwen" },
     { alt: 'https://media.liara.ir/logos/ai/moonshot-white.svg', platform: 'MoonshotAI/Kimi', link: "./moonshotai" },
+    { alt: 'https://media.liara.ir/logos/ai/z-ai-white.svg', platform: 'Z.ai', link: "./z-ai" },
     ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">

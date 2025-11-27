@@ -302,6 +302,11 @@ export default {
         link: "/ai/moonshotai"
       },
       {
+        title: "Z.ai",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/z-ai-white.svg" />,
+        link: "/ai/z-ai"
+      },
+      {
         hr: true
       },
       {
