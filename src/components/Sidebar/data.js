@@ -9784,6 +9784,10 @@ export default {
         link: "/email-server/how-tos/set-subscription-header"
       },
       {
+        title: "استفاده از CC و BCC",
+        link: "/email-server/how-tos/use-cc-bcc"
+      },
+      {
         hr: true
       },
       {
@@ -9947,6 +9951,10 @@ export default {
         link: "/email-server/how-tos/set-subscription-header"
       },
       {
+        title: "استفاده از CC و BCC",
+        link: "/email-server/how-tos/use-cc-bcc"
+      },
+      {
         hr: true
       },
       {
@@ -10108,6 +10116,10 @@ export default {
       {
         title: "فعال‌سازی هدر Subscibtion",
         link: "/email-server/how-tos/set-subscription-header"
+      },
+      {
+        title: "استفاده از CC و BCC",
+        link: "/email-server/how-tos/use-cc-bcc"
       },
       {
         hr: true

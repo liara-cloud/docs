@@ -1,0 +1,101 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استفاده از CC و BCC در ایمیل سرور - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی و کار با BCC و CC در هاست ایمیل لیارا"  />
+</Head>
+
+
+# کار با CC و BCC در لیارا
+<hr className="mb-2" />
+
+سرورایمیل لیارا، از دو قابلیت BCC و CC پشتیبانی می‌کند و این امکان را به شما می‌دهد تا در
+برنامه خود، این قابلیت را فعال کنید. در ادامه به معرفی این دو قابلیت و نحوه استفاده از آن‌ها در ایمیل سرور لیارا، پرداخته شده است. 
+
+<Section id='what-is-cc' title='CC چیست؟' />
+
+CC یا Carbon Copy که به آن رو نوشت نیز می‌گویند، یک روش ساده برای ارسال نسخه‌هایی از یک ایمیل به دیگر افراد، افزون بر گیرنده است.
+اگر تاکنون ایمیلی دریافت کرده‌اید که CC شده باشد، احتمالاً متوجه شده‌اید که ایمیل هم به شما و هم به فهرستی از افراد دیگر که CC شده‌اند، ارسال شده است.
+وقتی از CC استفاده شود؛ می‌توانید فهرست دریافت‌کنندگان را ببینید:
+
+<div className="h-4" />  
+<img src="https://media.liara.ir/email-server/cc-usage-example-email-server.png" alt="cc usage example email server"/>
+
+<Section id='what-is-bcc' title='BCC چیست؟' />
+
+BCC یا Blind Carbon Copy مانند CC، روشی برای ارسال نسخه‌هایی از یک ایمیل به دیگران است؛ با این تفاوت که اگر BCC شوید، نمی‌توانید فهرست دریافت‌کنندگان را ببینید، سایر دریافت‌کنندگان نیز، نمی‌توانند ببینند که فرد دیگری، نسخه‌ای از ایمیل را دریافت کرده است.
+
+<Section id='use' title='نحوه استفاده از قابلیت CC و BCC' />
+
+برای استفاده از قابلیت CC و BCC، با فرض اینکه متغیرهای محیطی ایمیل‌سرور از قبل تعریف شده‌اند، می‌توانید همانند قطعه کدهای زیر، عمل کنید: 
+
+<HighlightTabs
+  tabs={[
+    {
+      label: "NodeJS",
+      icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+      language: "javascript",
+      code: `const mailOptions = {
+    from: \`"my app" <\${process.env.MAIL_FROM}>\`, 
+    to: 'info@example.com',
+    cc: ["example.one@example.com", "example.two@example.com"], // replace with real e-mails
+    // bcc: ["example.one@example.com", "example.two@example.com"], 
+    subject: 'Test Email', 
+    text: 'This is a test email sent from Node.js', 
+    html: '<b>This is a test email sent from Node.js</b>', 
+    headers: {
+      "x-liara-tag": "test_email", 
+    },
+};`
+    },
+    {
+      label: "NextJS",
+      icon: <PlatformIcon platform="next" style={{ width: 32, height: 32 }} />,
+      language: "javascript",
+      code: `const mailOptions = {
+    from: \`"My App" <\${process.env.MAIL_FROM}>\`,
+    to: 'test@example.com', 
+    cc: ["example.one@example.com", "example.two@example.com"], // replace with real e-mails
+    // bcc: ["example.one@example.com", "example.two@example.com"], 
+    subject: 'Test Email', 
+    text: 'This is a test email sent from a Next.js API route!',
+    html: '<b>This is a test email sent from a Next.js API route!</b>',
+    headers: {
+        "x-liara-tag": "test_email", 
+      },
+  };`
+    },
+  ]}
+
+/>
+
+
+</Layout>
+
