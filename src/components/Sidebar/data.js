@@ -5699,6 +5699,11 @@ export default {
         link: "/dbaas/postgresql/create-user"
       },
       {
+        title: "آشنایی با افزونه‌ها",
+        icon: <GoTools />,
+        link: "/dbaas/postgresql/extensions"
+      },
+      {
         hr: true
       },
       {

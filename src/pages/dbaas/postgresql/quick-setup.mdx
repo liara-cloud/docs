@@ -80,12 +80,44 @@ width="100%"
       در صورتی که قصد دارید از Local و یا جاهای دیگر به غیر از لیارا، به دیتابیس خود متصل شوید؛ کافیست تا گزینه <b>دسترسی از طریق شبکه عمومی</b> را در حین راه‌اندازی دیتابیس، فعال کنید.
     </p>
     </Alert>
-    <Alert variant="success">
+  </>
+  )
+  },
+  {
+  step: "۴",
+  content: (
+  <>
+    <h3>استفاده از افزونه‌ها</h3>
     <p>
-      در صورتی که به قابلیت <Important>Geographic Objects</Important> در دیتابیس خود نیاز دارید، کافیست تا در حین ساخت، گزینه <b>افزونه PostGIS</b> را، فعال کنید.
+      در حال حاضر، دیتابیس پستگرس لیارا، افزونه‌های زیر را ارائه می‌دهد:
     </p>
+    <ul>
+      <li><b>افزونه PostGIS</b>: اگر به قابلیت <Important>Geographic Objects</Important> در دیتابیس خود نیاز دارید، کافیست تا در حین ساخت، این گزینه را فعال کنید.</li>
+      <div className="h-1" />
+      <li><b>افزونه Pgvector</b>: اگر به قابلیت ذخیره‌سازی و جستجوی vector embeddings در دیتابیس‌ خود نیاز دارید کافیست تا در حین ساخت، این گزینه را فعال کنید</li>
+    </ul>
+    <div className="h-4" />
+    <Alert variant="info">
+      <p>
+        پس از ساخت دیتابیس، شما می‌توانید در بخش <b>تنظیمات</b> دیتابیس، در قسمت <b>تنظیمات افزونه</b>، افزونه‌های مدنظر خود را فعال، یا غیرفعال کنید.  با اعمال تغییرات 
+        در این بخش، دیتابیس شما ری‌استارت خواهد شد. 
+      </p>
     </Alert>
-    <div className="h-1" />
+    
+    <img src="https://media.liara.ir/postgresql/extension-settings.png" alt="see extension-settings in postgresql db" />
+    <div className="h-2" />
+    
+    <Alert variant="warning">
+      <p>
+        افزونه Pgvector لیارا، از قابلیت <Important>HNSW indexing</Important>، پشتیبانی نمی‌کند.
+      </p>
+    </Alert>
+
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/dbaas/postgresql/extensions" className="text-[#2196f3]">آشنایی با افزونه‌های دیتابیس PostgreSQL لیارا</a>
+      </p>
+    </Alert>
   </>
   )
   },

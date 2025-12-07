@@ -1,0 +1,91 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات آشنایی با افزونه های قابل ارائه PostgreSQL - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به آشنایی با افزونه‌های قابل ارائه در دیتابیس PostgreSQL لیارا و موارد استفاده آن‌ها"  />
+</Head>
+
+
+# آشنایی با افزونه های در دسترس PostgreSQL
+<hr className="mb-2" />
+
+در حال حاضر، در دیتابیس PostgreSQL لیارا، افزونه‌های زیر، ارائه می‌شوند: 
+
+<div className="h-2" />
+<ul>
+<li><b>PostGIS</b></li>
+<li><b>Pgvector</b></li>
+</ul>
+<div className="h-2" />
+
+در ادامه، به توضیح هر یک از افزونه‌ها پرداخته شده است.
+
+<Section id='what-is-postgis' title='افزونه PostGIS چیست؟' />
+
+<a href="https://postgis.net/" className="text-[#2196f3]">PostGIS</a> قابلیت‌های ذخیره‌سازی (storing)، ایندکس‌گذاری (indexing) و querying داده‌های مکانی یا همان geospatial data را به دیتابیس PostgreSQL اضافه می‌کند.
+این افزونه، قابلیت‌های زیر را دارد:
+
+<div className="h-2" />
+<ul>
+<li>امکان ذخیره‌سازی انواع مختلف داده‌های مکانی مانند نقاط، خطوط، چندضلعی‌ها و multi-geometryها در هر دو حالت دوبعدی (2D) و سه‌بعدی (3D) </li>
+<div className="h-1" />
+<li>امکان جستجو و بازیابی سریع spatial data بر اساس موقعیت مکانی آن‌ها</li>
+<div className="h-1" />
+<li>پشتیبانی از مجموعه گسترده‌ای از توابع مکانی که امکان فیلتر و تحلیل داده‌های مکانی، اندازه‌گیری فواصل و مساحت‌ها و سایر عملیات را فراهم می‌کند</li>
+<div className="h-1" />
+<li>امکان استفاده از ابزارهایی برای پردازش و دستکاری داده‌های هندسی، مانند ساده‌سازی، تبدیل و تعمیم هندسه‌ها</li>
+<div className="h-1" />
+<li>امکان ذخیره‌سازی و پردازش داده‌های raster مانند داده‌های ارتفاعی و داده‌های هواشناسی</li>
+<div className="h-1" />
+<li>امکان استفاده از توابع مربوط به geocoding و geocoding معکوس</li>
+<div className="h-1" />
+<li>امکان دسترسی و کار با PostGIS از طریق ابزارهای جانبی مانند QGIS , GeoServer , MapServer , ArcGIS و Tableau</li>
+</ul>
+
+<Section id='what-is-pgvector' title='افزونه Pgvector چیست؟' />
+<a href="https://github.com/pgvector/pgvector" className="text-[#2196f3]">Pgvector</a> این امکان را به شما می‌دهد تا بردارهای خود را 
+همراه با سایر داده‌ها، ذخیره کنید. این افزونه، از موارد زیر، پشتیبانی می‌کند: 
+
+<div className="h-2" />
+<ul>
+<li>جستجوی نزدیک‌ترین همسایه دقیق و تقریبی</li>
+<div className="h-1" />
+<li>بردارهای با دقت Single-precision , Half-precision، باینری و Sparse</li>
+<div className="h-1" />
+<li>فاصله‌های مختلف: فاصله L2 , Inner Product , کسینوسی، L1، هامینگ و جاکارد (Jaccard)</li>
+<div className="h-1" />
+<li>استفاده از هر زبان برنامه‌نویسی که کلاینت PostgreSQL را دارد</li>
+</ul>
+<div className="h-2" />
+
+این افزونه، از اصول ACID، بازیابی point-in-time، عملیات JOIN و سایر ویژگی‌های برجسته PostgreSQL نیز، پشتیبانی می‌کند.
+
+
+</Layout>
