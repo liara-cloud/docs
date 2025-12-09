@@ -26,22 +26,28 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 برای حذف Object Storage، در ابتدا بایستی طبق <a href="../how-tos/delete-key" className="text-[#2196f3] ">مستندات حذف کلید</a>، کلیدهای متصل به باکت مدنظرتان را حذف کنید.
-یا اینکه می‌توانید بر روی گزینه **ویرایش** یک کلید کلیک کرده و باکت مورد نظرتان را از آن کلید، جدا کنید:
-<div className="h-4" />
-<img src="https://media.liara.ir/docs/remove-bucket-from-key.gif" alt=""/>
-<div className="h-4" />
+یا اینکه می‌توانید بر روی گزینه **ویرایش** یک کلید کلیک کرده و باکت مورد نظرتان را از آن کلید، جدا کنید.
 
-
+<div className="h-4" />
 
  سپس، کافیست تا در منوی **ذخیره‌سازی ابری** بر روی سه‌نقطه باکت مدنظرتان کلیک کنید،
 سپس؛ بر روی گزینه **حذف باکت** کلیک کرده 
 در نهایت، کافیست تا شناسه باکت خود را در فیلد خواسته‌شده، وارد کنید و بر روی گزینه **حذف باکت** کلیک کنید تا Object Storage‌تان حذف شود:
 
 <div className="h-4" />
-<img src="https://media.liara.ir/docs/delete-email-server.gif" alt="delete email-server"/>
+    <video
+      src="https://media.liara.ir/object-storage/delete-bucket.mp4"
+      controls="controls"
+      className="block w-full"
+      width="100%"
+    />
 <div className="h-4" />
 
-در نظر داشته باشید که با انجام کار فوق تمامی اطلاعات درون Object Storage‌تان
-**برای همیشه** پاک خواهند شد و امکان بازیابی آن‌ها، در لیارا، وجود نخواهد داشت!
+<Alert variant="warning">
+<p>
+با حذف فضای ذخیره‌سازی ابری، تمامی اطلاعات درون Object Storage‌تان
+<b>برای همیشه</b> پاک خواهد شد و امکان بازیابی آن‌ها، در لیارا، وجود نخواهد داشت.
+</p>
+</Alert>
 
 </Layout>

@@ -11097,7 +11097,7 @@ export default {
         link: "/object-storage/about"
       },
       {
-        title: "ویژگی‌های ذخیره‌سازی ابری در لیارا",
+        title: "ویژگی‌های ذخیره‌سازی ابری",
         icon: <GoInfo />,
         link: "/object-storage/details/about"
       },
