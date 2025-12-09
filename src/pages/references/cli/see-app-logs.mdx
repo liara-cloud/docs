@@ -43,7 +43,8 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`liara logs [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>] [-s <value>] [-t] [-f] [-c] [--team-id <value>]`}
+{`liara logs [-h] [--debug] [--api-token <value>]  [--account <value>] [-a <value>]
+           [-s <value>] [-t] [-f] [-c] [--team-id <value>] [-r <version>] [--release <version>]`}
 </Highlight>
 </div>
 
@@ -106,9 +107,16 @@ import Head from "next/head";
   [
     <Important>s- یا since--</Important>,
     <div dir="rtl">
-    <p>نمایش لاگ‌ها براساس timestamp وارد شده</p>
+    <p>نمایش لاگ‌ها بر اساس timestamp وارد شده</p>
     </div>,
     <Important>"liara logs --since="1 hour ago</Important>,
+  ],
+  [
+    <Important>r- یا release--</Important>,
+    <div dir="rtl">
+    <p>نمایش لاگ‌ها بر اساس ورژن استقرار برنامه</p>
+    </div>,
+    <Important>liara logs -r v2</Important>,
   ],
   
 ]} />
