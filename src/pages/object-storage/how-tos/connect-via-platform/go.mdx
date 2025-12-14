@@ -21,11 +21,31 @@ import Head from "next/head";
 # اتصال به فضای ذخیره‌سازی ابری در برنامه‌های go
 <hr className="mb-2" />
 
-برای استفاده از Object Storage در برنامه‌های go، بایستی پکیج مورد نیاز را با اجرای دستور زیر، نصب کنید:
+
+<video
+  src="https://media.liara.ir/go/object-storage.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+پروژه و کدهای مورد استفاده در ویدیوی فوق در <a href="https://github.com/liara-cloud/go-getting-started/tree/object-storage" className="text-[#2196f3] ">اینجا</a> قابل مشاهده و دسترسی هستند.
+</p>
+</Alert>
+
+
+برای استفاده از Object Storage در برنامه‌های go، بایستی پکیج‌های مورد نیاز را با اجرای دستورات زیر، نصب کنید:
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`go get github.com/aws/aws-sdk-go`}
+        {`go get github.com/aws/aws-sdk-go-v2/aws
+go get github.com/aws/aws-sdk-go-v2/config
+go get github.com/aws/aws-sdk-go-v2/credentials
+go get github.com/aws/aws-sdk-go-v2/service/s3
+go get github.com/joho/godotenv`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -40,10 +60,10 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`LIARA_ENDPOINT_URL=https://storage.iran.liara.space
-LIARA_ACCESS_KEY=nieiou08cnbod58p
-LIARA_SECRET_KEY=20b71a4c-1168-4945-8ed3-4724dbf9e997
-BUCKET_NAME=bucket-name`}
+        {`LIARA_ACCESS_KEY=saeatk19sndmg66e
+LIARA_SECRET_KEY=a47e00f4-5036-4f55-b68a-aabb4a375a03
+LIARA_BUCKET_NAME=some-bucket-name
+LIARA_ENDPOINT=https://storage.iran.liara.space`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -55,52 +75,66 @@ BUCKET_NAME=bucket-name`}
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="go">
-        {`// s3client.go
-package main
+        {`// config/s3config.go
+package config
 
 import (
-    "log"
-    "os"
+	"context"
+	"log"
+	"os"
 
-    "github.com/aws/aws-sdk-go/aws"
-    "github.com/aws/aws-sdk-go/aws/credentials"
-    "github.com/aws/aws-sdk-go/aws/session"
-    "github.com/aws/aws-sdk-go/service/s3"
-    "github.com/joho/godotenv"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/credentials"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/joho/godotenv"
 )
 
-var s3Client *s3.S3
-var bucket string
+type S3Config struct {
+	Client   *s3.Client
+	Bucket   string
+	Endpoint string
+}
 
-func initS3Client() {
-    // Load environment variables from .env file
-    err := godotenv.Load()
-    if err != nil {
-        log.Fatal("Error loading .env file")
-    }
+func LoadS3Config() (*S3Config, error) {
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Warning: .env file not found, using environment variables")
+	}
 
-    endpoint := os.Getenv("LIARA_ENDPOINT_URL")
-    accessKey := os.Getenv("LIARA_ACCESS_KEY")
-    secretKey := os.Getenv("LIARA_SECRET_KEY")
-    bucket = os.Getenv("BUCKET_NAME")
+	endpoint := os.Getenv("LIARA_ENDPOINT")
+	bucket := os.Getenv("LIARA_BUCKET_NAME")
+	accessKey := os.Getenv("LIARA_ACCESS_KEY")
+	secretKey := os.Getenv("LIARA_SECRET_KEY")
 
-    if endpoint == "" || accessKey == "" || secretKey == "" || bucket == "" {
-        log.Fatal("Environment variables are not set properly")
-    }
+	if endpoint == "" || bucket == "" || accessKey == "" || secretKey == "" {
+		log.Fatal("Missing required environment variables")
+	}
 
-    // Create a new AWS session
-    sess, err := session.NewSession(&aws.Config{
-        Endpoint:    aws.String(endpoint),
-        Region:      aws.String("us-east-1"), // Region is required but can be arbitrary for S3-compatible storage
-        Credentials: credentials.NewStaticCredentials(accessKey, secretKey, ""),
-    })
-    if err != nil {
-        log.Fatalf("Failed to create AWS session: %v", err)
-    }
+	cfg, err := config.LoadDefaultConfig(context.TODO(),
+		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(
+			accessKey,
+			secretKey,
+			"",
+		)),
+		config.WithRegion("us-east-1"),
+	)
+	if err != nil {
+		return nil, err
+	}
 
-    // Create S3 client
-    s3Client = s3.New(sess)
-}`}
+	client := s3.NewFromConfig(cfg, func(o *s3.Options) {
+		o.BaseEndpoint = aws.String(endpoint)
+		o.UsePathStyle = true
+	})
+
+	return &S3Config{
+		Client:   client,
+		Bucket:   bucket,
+		Endpoint: endpoint,
+	}, nil
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -110,150 +144,203 @@ func initS3Client() {
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="go">
-        {`// upload.go
-package main
+        {`// handlers/upload.go
+package handlers
 
 import (
-	"bytes"
+	"context"
 	"fmt"
 	"io"
 	"net/http"
-	"net/url"
+	"path/filepath"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-func uploadFile(w http.ResponseWriter, r *http.Request) {
-    r.ParseMultipartForm(10 << 20) // 10 MB limit
-    file, handler, err := r.FormFile("file")
-    if err != nil {
-        http.Redirect(w, r, "/list?message="+url.QueryEscape("Error: Unable to parse file."), http.StatusSeeOther)
-        return
-    }
-    defer file.Close()
-
-    buf := bytes.NewBuffer(nil)
-    io.Copy(buf, file)
-
-    _, err = s3Client.PutObject(&s3.PutObjectInput{
-        Bucket: aws.String(bucket),
-        Key:    aws.String(handler.Filename),
-        Body:   bytes.NewReader(buf.Bytes()),
-    })
-    if err != nil {
-        http.Redirect(w, r, "/list?message="+url.QueryEscape("Error: Failed to upload file."), http.StatusSeeOther)
-        return
-    }
-
-    // Redirect with success message
-    http.Redirect(w, r, "/list?message="+url.QueryEscape(fmt.Sprintf("File '%s' uploaded successfully.", handler.Filename)), http.StatusSeeOther)
-}`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-<Section id="get-permanent-url" title="دریافت لینک دائمی" />
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="go">
-        {`// permanent.go
-package main
-
-import "fmt"
-
-var endpointURL string
-
-// SetEndpointURL sets the endpoint URL for generating permanent URLs
-func setEndpointURL(url string) {
-    endpointURL = url
+func UploadFile(client *s3.Client, bucket string, file io.Reader, filename string) error {
+	_, err := client.PutObject(context.TODO(), &s3.PutObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(filename),
+		Body:   file,
+	})
+	return err
 }
 
-// GeneratePermanentURL generates the permanent URL for a file
-func GeneratePermanentURL(fileKey string) string {
-    return fmt.Sprintf("%s/%s/%s", endpointURL, bucket, fileKey)
-}`}
+func UploadHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+
+		err := r.ParseMultipartForm(32 << 20)
+		if err != nil {
+			http.Error(w, "Error parsing form: "+err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		file, header, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Error retrieving file: "+err.Error(), http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		filename := filepath.Base(header.Filename)
+
+		err = UploadFile(client, bucket, file, filename)
+		if err != nil {
+			http.Error(w, "Error uploading file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, "File uploaded successfully: %s", filename)
+	}
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<Section id="pre-signed-url" title="دریافت لینک موقتی" />
+<Section id="get-permanent-temp-link" title="دریافت لینک دائمی یا موقت" />
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="go">
-        {`// presigned.go
-package main
+        {`// handlers/links.go
+package handlers
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-func generatePreSignedURL(w http.ResponseWriter, r *http.Request) {
-    fileKey := r.URL.Query().Get("key")
-    if fileKey == "" {
-        http.Error(w, "Missing 'key' query parameter", http.StatusBadRequest)
-        return
-    }
+func GetPermanentLink(endpoint, bucket, key string) string {
+	return fmt.Sprintf("%s/%s/%s", endpoint, bucket, key)
+}
 
-    req, _ := s3Client.GetObjectRequest(&s3.GetObjectInput{
-        Bucket: aws.String(bucket),
-        Key:    aws.String(fileKey),
-    })
+func GetTemporaryLink(client *s3.Client, bucket, key string, duration time.Duration) (string, error) {
+	presignClient := s3.NewPresignClient(client)
 
-    urlStr, err := req.Presign(15 * time.Minute)
-    if err != nil {
-        http.Error(w, fmt.Sprintf("Failed to generate pre-signed URL: %v", err), http.StatusInternalServerError)
-        return
-    }
+	presignedReq, err := presignClient.PresignGetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	}, func(opts *s3.PresignOptions) {
+		opts.Expires = duration
+	})
 
-    fmt.Fprintf(w, "Pre-signed URL for file '%s': %s\n", fileKey, urlStr)
-}`}
+	if err != nil {
+		return "", err
+	}
+
+	return presignedReq.URL, nil
+}
+
+func PermanentLinkHandler(endpoint, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		link := GetPermanentLink(endpoint, bucket, key)
+		w.Header().Set("Content-Type", "text/plain")
+		fmt.Fprint(w, link)
+	}
+}
+
+func TemporaryLinkHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		duration := 1 * time.Hour
+		if durationParam := r.URL.Query().Get("duration"); durationParam != "" {
+			parsedDuration, err := time.ParseDuration(durationParam)
+			if err == nil {
+				duration = parsedDuration
+			}
+		}
+
+		link, err := GetTemporaryLink(client, bucket, key, duration)
+		if err != nil {
+			http.Error(w, "Error generating link: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "text/plain")
+		fmt.Fprint(w, link)
+	}
+}
+`}
     </Highlight>
 </div>
-<div className="h-2" />
 
 <Section id="download-file" title="دانلود فایل" />
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="go">
-        {`// download.go
-package main
+        {`// handlers/download.go
+package handlers
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-func downloadFile(w http.ResponseWriter, r *http.Request) {
-    fileKey := r.URL.Query().Get("key")
-    if fileKey == "" {
-        http.Error(w, "Missing 'key' query parameter", http.StatusBadRequest)
-        return
-    }
+func DownloadFile(client *s3.Client, bucket, key string) (io.ReadCloser, error) {
+	result, err := client.GetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	})
+	if err != nil {
+		return nil, err
+	}
 
-    resp, err := s3Client.GetObject(&s3.GetObjectInput{
-        Bucket: aws.String(bucket),
-        Key:    aws.String(fileKey),
-    })
-    if err != nil {
-        http.Error(w, fmt.Sprintf("Failed to download file: %v", err), http.StatusInternalServerError)
-        return
-    }
-    defer resp.Body.Close()
+	return result.Body, nil
+}
 
-    w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=%s", fileKey))
-    w.Header().Set("Content-Type", "application/octet-stream")
-    io.Copy(w, resp.Body)
-}`}
+func DownloadHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		body, err := DownloadFile(client, bucket, key)
+		if err != nil {
+			http.Error(w, "Error downloading file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+		defer body.Close()
+
+		w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\\"%s\\"", key))
+		w.Header().Set("Content-Type", "application/octet-stream")
+
+		_, err = io.Copy(w, body)
+		if err != nil {
+			http.Error(w, "Error streaming file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -262,37 +349,50 @@ func downloadFile(w http.ResponseWriter, r *http.Request) {
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="go">
-        {`// delete.go
-package main
+        {`// handlers/delete.go
+package handlers
 
 import (
+	"context"
 	"fmt"
 	"net/http"
-	"net/url"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-func deleteFile(w http.ResponseWriter, r *http.Request) {
-    fileKey := r.URL.Query().Get("key")
-    if fileKey == "" {
-        http.Redirect(w, r, "/list?message="+url.QueryEscape("Error: Missing 'key' query parameter."), http.StatusSeeOther)
-        return
-    }
+func DeleteFile(client *s3.Client, bucket, key string) error {
+	_, err := client.DeleteObject(context.TODO(), &s3.DeleteObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	})
+	return err
+}
 
-    _, err := s3Client.DeleteObject(&s3.DeleteObjectInput{
-        Bucket: aws.String(bucket),
-        Key:    aws.String(fileKey),
-    })
-    if err != nil {
-        http.Redirect(w, r, "/list?message="+url.QueryEscape(fmt.Sprintf("Error: Failed to delete file '%s'.", fileKey)), http.StatusSeeOther)
-        return
-    }
+func DeleteHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodDelete && r.Method != http.MethodPost {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
 
-    // Redirect with success message
-    http.Redirect(w, r, "/list?message="+url.QueryEscape(fmt.Sprintf("File '%s' deleted successfully.", fileKey)), http.StatusSeeOther)
-}`}
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		err := DeleteFile(client, bucket, key)
+		if err != nil {
+			http.Error(w, "Error deleting file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, "File deleted successfully: %s", key)
+	}
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -301,102 +401,76 @@ func deleteFile(w http.ResponseWriter, r *http.Request) {
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="go">
-        {`// list.go
-package main
+        {`// handlers/list.go
+package handlers
 
 import (
-	"bytes"
-	"fmt"
+	"context"
+	"encoding/json"
 	"net/http"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 )
 
-func listFiles(w http.ResponseWriter, r *http.Request) {
-    // Fetch optional message or link from query parameters
-    message := r.URL.Query().Get("message")
-    permanentLink := r.URL.Query().Get("permanent_link")
-    presignedURL := r.URL.Query().Get("presigned_url")
+type FileInfo struct {
+	Key          string \`json:"key"\`
+	Size         int64  \`json:"size"\`
+	LastModified string \`json:"lastModified"\`
+}
 
-    // Fetch files from the S3 bucket
-    result, err := s3Client.ListObjectsV2(&s3.ListObjectsV2Input{
-        Bucket: aws.String(bucket),
-    })
-    if err != nil {
-        http.Error(w, fmt.Sprintf("Failed to list files: %v", err), http.StatusInternalServerError)
-        return
-    }
+func ListFiles(client *s3.Client, bucket string) ([]FileInfo, error) {
+	resp, err := client.ListObjectsV2(context.TODO(), &s3.ListObjectsV2Input{
+		Bucket: aws.String(bucket),
+	})
+	if err != nil {
+		return nil, err
+	}
 
-    // Generate HTML dynamically
-    var html bytes.Buffer
-    html.WriteString(\`
-    <h1>File Manager</h1>\`)
+	files := make([]FileInfo, 0, len(resp.Contents))
+	for _, obj := range resp.Contents {
+		files = append(files, FileInfo{
+			Key:          aws.ToString(obj.Key),
+			Size:         aws.ToInt64(obj.Size),
+			LastModified: obj.LastModified.String(),
+		})
+	}
 
-    // Display message if present
-    if message != "" {
-        html.WriteString(fmt.Sprintf(\`<p>%s</p>\`, message))
-    }
+	return files, nil
+}
 
-    // Display permanent link if present
-    if permanentLink != "" {
-        html.WriteString(fmt.Sprintf(\`<p><strong>Permanent Link:</strong> <a href="%s" target="_blank">%s</a></p>\`, permanentLink, permanentLink))
-    }
+func ListHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		files, err := ListFiles(client, bucket)
+		if err != nil {
+			http.Error(w, "Error listing files: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
 
-    // Display pre-signed URL if present
-    if presignedURL != "" {
-        html.WriteString(fmt.Sprintf(\`<p><strong>Pre-Signed URL:</strong> <a href="%s" target="_blank">%s</a></p>\`, presignedURL, presignedURL))
-    }
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(files)
+	}
+}
 
-    // Upload form
-    html.WriteString(\`
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="file">Upload File:</label>
-        <input type="file" name="file" id="file" required>
-        <button type="submit">Upload</button>
-    </form>
-    <table border="1">
-        <tr>
-            <th>File Name</th>
-            <th>Actions</th>
-        </tr>\`)
+func ListObjectsV2(client *s3.Client, bucket string) ([]types.Object, error) {
+	resp, err := client.ListObjectsV2(context.TODO(), &s3.ListObjectsV2Input{
+		Bucket: aws.String(bucket),
+	})
+	if err != nil {
+		return nil, err
+	}
 
-    for _, item := range result.Contents {
-        fileKey := *item.Key
-
-        // Add table row
-        html.WriteString(fmt.Sprintf(\`
-        <tr>
-            <td>%s</td>
-            <td>
-                <form action="/get-permanent-link" method="get" style="display:inline;">
-                    <input type="hidden" name="key" value="%s">
-                    <button type="submit">Get Permanent Link</button>
-                </form>
-                <form action="/get-presigned-url" method="get" style="display:inline;">
-                    <input type="hidden" name="key" value="%s">
-                    <button type="submit">Get Pre-Signed URL</button>
-                </form>
-                <form action="/delete" method="get" style="display:inline;">
-                    <input type="hidden" name="key" value="%s">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>\`, fileKey, fileKey, fileKey, fileKey))
-    }
-
-    html.WriteString(\`</table>\`)
-
-    w.Header().Set("Content-Type", "text/html")
-    w.Write(html.Bytes())
-}`}
+	return resp.Contents, nil
+}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 <Section id="all-features" title="تجمیع قابلیت‌ها" />
 
-برای استفاده از تمامی کدهای ذکر شده، یک فایل به اسم <Important>main.go</Important> ایجاد کنید و کدهای زیر را در آن قرار دهید:
+برای استفاده از تمامی کدهای ذکر شده، یک فایل به اسم <Important>main.go</Important> ایجاد کنید و کد زیر را در آن قرار دهید:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -408,89 +482,241 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"net/url"
-	"os"
-	"time"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/s3"
+	"example.com/config"
+	"example.com/handlers"
 )
 
 func main() {
-    // Initialize S3 client
-    initS3Client()
 
-    // Set the endpoint URL for generating permanent URLs
-    setEndpointURL(os.Getenv("LIARA_ENDPOINT_URL"))
+	s3Config, err := config.LoadS3Config()
+	if err != nil {
+		log.Fatal("Error loading S3 config:", err)
+	}
 
-    // Define routes
-    http.HandleFunc("/", mainPage)
-    http.HandleFunc("/upload", uploadFile)
-    http.HandleFunc("/download", downloadFile)
-    http.HandleFunc("/delete", deleteFile)
-    http.HandleFunc("/list", listFiles)
+	fmt.Println("S3 Object Storage Manager")
+	fmt.Println("Bucket:", s3Config.Bucket)
+	fmt.Println("Endpoint:", s3Config.Endpoint)
 
-    // New routes for getting links
-    http.HandleFunc("/get-permanent-link", getPermanentLink)
-    http.HandleFunc("/get-presigned-url", getPreSignedURL)
+	http.Handle("/style.css", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "templates/style.css")
+	}))
+	http.Handle("/script.js", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "templates/script.js")
+	}))
 
-    // Start the server
-    port := "8080"
-    fmt.Printf("Server started on port %s\n", port)
-    log.Fatal(http.ListenAndServe(":"+port, nil))
+	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/upload", handlers.UploadHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/download", handlers.DownloadHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/delete", handlers.DeleteHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/list", handlers.ListHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/link/permanent", handlers.PermanentLinkHandler(s3Config.Endpoint, s3Config.Bucket))
+	http.HandleFunc("/link/temporary", handlers.TemporaryLinkHandler(s3Config.Client, s3Config.Bucket))
+
+	port := ":8080"
+	fmt.Printf("\\nServer starting on http://localhost%s\\n", port)
+	log.Fatal(http.ListenAndServe(port, nil))
 }
 
-func getPermanentLink(w http.ResponseWriter, r *http.Request) {
-    fileKey := r.URL.Query().Get("key")
-    if fileKey == "" {
-        http.Redirect(w, r, "/list?message=Error: Missing file key.", http.StatusSeeOther)
-        return
-    }
-
-    // Generate permanent link
-    permanentLink := GeneratePermanentURL(fileKey)
-
-    // Redirect back to /list with the permanent link
-    redirectURL := fmt.Sprintf("/list?permanent_link=%s", url.QueryEscape(permanentLink))
-    http.Redirect(w, r, redirectURL, http.StatusSeeOther)
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "templates/index.html")
 }
-
-func getPreSignedURL(w http.ResponseWriter, r *http.Request) {
-    fileKey := r.URL.Query().Get("key")
-    if fileKey == "" {
-        http.Redirect(w, r, "/list?message=Error: Missing file key.", http.StatusSeeOther)
-        return
-    }
-
-    // Generate pre-signed URL
-    req, _ := s3Client.GetObjectRequest(&s3.GetObjectInput{
-        Bucket: aws.String(bucket),
-        Key:    aws.String(fileKey),
-    })
-    presignedURL, _ := req.Presign(15 * time.Minute)
-
-    // Redirect back to /list with the pre-signed URL
-    redirectURL := fmt.Sprintf("/list?presigned_url=%s", url.QueryEscape(presignedURL))
-    http.Redirect(w, r, redirectURL, http.StatusSeeOther)
-}`}
+`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-در ادامه، یک فایل به اسم <Important>templates.go</Important> ایجاد کنید و کدهای زیر را در آن قرار دهید:
+در ادامه، یک فایل با مسیر <Important>templates/index.html</Important> ایجاد کنید و کدهای زیر را در آن قرار دهید:
 
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="go">
-        {`// templates.go
-package main
+    <Highlight className="html">
+        {`<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <header>
+            <h1>S3 Object Storage Manager</h1>
+            <p class="subtitle">Upload, Download, and Manage Your Files</p>
+        </header>
 
-import "net/http"
+        <div class="content">
+            <div id="message" class="message"></div>
 
-func mainPage(w http.ResponseWriter, r *http.Request) {
-    http.Redirect(w, r, "/list", http.StatusSeeOther)
-}`}
+            <!-- Upload Section -->
+            <div class="section">
+                <h2>Upload File</h2>
+                <form id="uploadForm">
+                    <div class="upload-section">
+                        <div class="form-group">
+                            <label for="fileInput">Select File:</label>
+                            <input type="file" id="fileInput" name="file" required>
+                        </div>
+                        <button type="submit">Upload</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- File List Section -->
+            <div class="section">
+                <h2>Files in Storage</h2>
+                <button onclick="loadFiles()">Refresh List</button>
+                <div id="fileList">
+                    <div class="loading">Loading files...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show message
+        function showMessage(text, type = 'success') {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = \`message \${type} show\`;
+            setTimeout(() => {
+                messageEl.classList.remove('show');
+            }, 5000);
+        }
+
+        // Upload file
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const text = await response.text();
+                if (response.ok) {
+                    showMessage(text, 'success');
+                    e.target.reset();
+                    loadFiles();
+                } else {
+                    showMessage(text, 'error');
+                }
+            } catch (error) {
+                showMessage('Error uploading file: ' + error.message, 'error');
+            }
+        });
+
+        // Load files
+        async function loadFiles() {
+            const fileListEl = document.getElementById('fileList');
+            fileListEl.innerHTML = '<div class="loading">Loading files...</div>';
+            
+            try {
+                const response = await fetch('/list');
+                const files = await response.json();
+                
+                if (files.length === 0) {
+                    fileListEl.innerHTML = '<p style="text-align: center; color: #666;">No files found</p>';
+                    return;
+                }
+                
+                fileListEl.innerHTML = files.map(file => \`
+                    <div class="file-item">
+                        <div class="file-info">
+                            <div class="file-name">\${file.key}</div>
+                            <div class="file-meta">
+                                Size: \${formatBytes(file.size)} | 
+                                Modified: \${new Date(file.lastModified).toLocaleString()}
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button onclick="getPermanentLink('\${file.key}')" class="btn-link">Permanent Link</button>
+                            <button onclick="getTempLink('\${file.key}')" class="btn-link">Temp Link (1h)</button>
+                            <button onclick="downloadFile('\${file.key}')" class="btn-download">Download</button>
+                            <button onclick="deleteFile('\${file.key}')" class="btn-delete">Delete</button>
+                        </div>
+                    </div>
+                \`).join('');
+            } catch (error) {
+                fileListEl.innerHTML = '<p style="text-align: center; color: #dc3545;">Error loading files</p>';
+                showMessage('Error loading files: ' + error.message, 'error');
+            }
+        }
+
+        // Get permanent link
+        async function getPermanentLink(key) {
+            try {
+                const response = await fetch(\`/link/permanent?key=\${encodeURIComponent(key)}\`);
+                const link = await response.text();
+                
+                if (response.ok) {
+                    navigator.clipboard.writeText(link);
+                    showMessage('Permanent Link: ' + link, 'success');
+                } else {
+                    showMessage(link, 'error');
+                }
+            } catch (error) {
+                showMessage('Error getting link: ' + error.message, 'error');
+            }
+        }
+
+        // Get temporary link (1 hour)
+        async function getTempLink(key) {
+            try {
+                const response = await fetch(\`/link/temporary?key=\${encodeURIComponent(key)}&duration=1h\`);
+                const link = await response.text();
+                
+                if (response.ok) {
+                    navigator.clipboard.writeText(link);
+                    showMessage('Temporary Link (1 hour): ' + link, 'success');
+                } else {
+                    showMessage(link, 'error');
+                }
+            } catch (error) {
+                showMessage('Error getting link: ' + error.message, 'error');
+            }
+        }
+
+        // Download file
+        function downloadFile(key) {
+            window.location.href = \`/download?key=\${encodeURIComponent(key)}\`;
+        }
+
+        // Delete file
+        async function deleteFile(key) {
+            if (!confirm(\`Are you sure you want to delete "\${key}"?\`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(\`/delete?key=\${encodeURIComponent(key)}\`, {
+                    method: 'POST'
+                });
+                
+                const text = await response.text();
+                if (response.ok) {
+                    showMessage(text, 'success');
+                    loadFiles();
+                } else {
+                    showMessage(text, 'error');
+                }
+            } catch (error) {
+                showMessage('Error deleting file: ' + error.message, 'error');
+            }
+        }
+
+        // Format bytes
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Load files on page load
+        loadFiles();
+    </script>
+</body>
+</html>`}
     </Highlight>
 </div>
 <div className="h-2" />
@@ -499,16 +725,11 @@ func mainPage(w http.ResponseWriter, r *http.Request) {
 
 <div className="h-2" />
 <div dir='ltr'>
-    <Highlight className="go">
-        {`go run .`}
+    <Highlight className="bash">
+        {`go run main.go`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-<Alert variant="success">
-<p>
-یک پروژه آماده استقرار در <a target="_blank" href="https://github.com/liara-cloud/go-getting-started/tree/object-storage" className="text-[#2196f3] ">گیت‌هاب لیارا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
-</p>
-</Alert>
 
 </Layout>
