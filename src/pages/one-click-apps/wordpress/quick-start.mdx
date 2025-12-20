@@ -23,15 +23,34 @@ import Head from "next/head";
 # راه‌اندازی سریع برنامه‌های WordPress
 <hr className="mb-2" />
 
+<Tabs 
+  tabs={["Apache", "OpenLiteSpeed"]} 
+  content={[
+  <>
+
   <video
   src="https://media.liara.ir/docs/wordpress-2.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
   />
-  
-  <br />
-  <div className="h-2" />
+  </>,
+
+  <>
+  <video
+  src="https://media.liara.ir/wordpress-openlite-speed/setup.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+  />
+  </>
+  ]}
+
+/>
+
+
+<br />
+<div className="h-2" />
 
 <a href="https://wordpress.org/download/" className="text-[#2196f3] ">wordpress</a> یک سیستم مدیریت محتوا (CMS) است که به کاربران امکان می‌دهد به‌راحتی وب‌سایت‌ها و وبلاگ‌های شخصی خود را، ایجاد و مدیریت کنند. این پلتفرم متن‌باز و رایگان است و با استفاده از پلاگین‌ها و تم‌های متنوع، قابلیت‌های زیادی برای سفارشی‌سازی دارد. وردپرس با زبان برنامه‌نویسی PHP نوشته شده و معمولاً از پایگاه‌داده MySQL استفاده می‌کند.
 برای راه‌اندازی برنامه با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
@@ -68,7 +87,7 @@ content: (
 <>
 <h3>راه‌اندازی برنامه</h3>
 <p>
-    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>WordPress</b>، کلیک کنید. 
+    بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>wordpress</b> یا <b>wordpress-openlitespeed</b> ، کلیک کنید. 
     در ادامه، می‌توانید از گزینه <b>نصب سریع</b> یا گزینه <b>نصب پیشرفته</b> برای استقرار و نصب برنامه‌تان استفاده کنید:
 </p>
 <Tabs 
@@ -119,7 +138,7 @@ content: (
       </Alert>
       <Alert variant="info">
         <p>
-          محتوای کامل <Important>Liara Compose</Important> برنامه در <a href="https://github.com/liara-cloud/compose-templates/blob/master/wordpress/liara-compose.yaml" className="text-[#2196f3]">اینجا</a>، قرار گرفته است.
+          محتوای کامل <Important>Liara Compose</Important> برنامه <a href="https://github.com/liara-cloud/compose-templates/blob/master/wordpress/liara-compose.yaml" className="text-[#2196f3]">WordPress</a> و <a href="https://github.com/liara-cloud/compose-templates/blob/master/wordpress-openlitespeed/liara-compose.yaml" className="text-[#2196f3]">WordPress OpenLiteSpeed</a>، در گیت‌هاب برای شما قرار گرفته است.
         </p>
       </Alert>
     </>
@@ -132,15 +151,19 @@ content: (
 
 ]}/>
 
-
 <br/>   
-<div className="h-1" />
+
 
 <Alert variant="info">
 <p>
 در راه‌اندازی اولیه وب‌سایت وردپرس، قسمت مربوط به اتصال به دیتابیس به صورت خودکار توسط لیارا، انجام می‌شود و این مرحله به شما نمایش داده نمی‌شود.
 </p>
 </Alert>
+
+<Section id="differences-between-apache-and-openlitespeed" title="تفاوت بین وب سرور Apache و OpenLiteSpeed چیست؟" />
+
+<a href="https://www.apache.org" target="_blank" rel="noopener"  className="text-[#2196f3]">Apache</a> یک وب‌سرور پایدار و سازگار با وردپرس است که از ‎<Important>htaccess.</Important>‎ به صورت کامل پشتیبانی می‌کند، اما در ترافیک بالا مصرف منابع بیشتری دارد، در حالی‌ که <a href="https://openlitespeed.org" className="text-[#2196f3]" target="_blank" rel="noopener">OpenLiteSpeed</a> وب‌سروری با معماری event-driven است که سرعت بالاتر و مصرف منابع کمتری دارد و برای سایت‌های پرترافیک، مناسب‌تر است، هرچند سازگاری آن با ‎<Important>htaccess.</Important>‎ محدودتر از Apache است.
+
 
 <Section id="see-also" title="همچنین بخوانید:" />
 
