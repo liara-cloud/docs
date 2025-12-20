@@ -9,6 +9,8 @@ import Important from "@/components/Common/important";
 import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
+import Table from "@/components/Common/table";
+
 import {
     GoArrowLeft,
 } from "react-icons/go";
@@ -25,9 +27,14 @@ import Head from "next/head";
 
 <hr className="mb-2" />
 بی‌شک از مهم‌ترین مراحل ساخت یک پروژه، انتخاب منابع سخت‌افزاری مناسب و مورد نیاز یک دیتابیس است. گاهاً ممکن است که علت به خطا خوردن دیتابیس، سرعت پایین و بازدهی کم آن به خاطر انتخاب منابع سخت‌افزاری نامناسب باشد. پس توجه به این موضوع، حائز اهمیت است.
-<div className="h-2" />
-<img src="https://media.liara.ir/docs/database-hardware-plans.png" alt="see-hardware-plans"/>
-<div className="h-4" />
+
+<Table headers={["مشخصات", "عطارد", "زمین", "مریخ", "مشتری", "زحل", "اورانوس", "نپتون", "پلوتون"]}
+data={[
+    ["RAM (GB)", "۰.۱۲۸", "۰.۵۱۲", "۱", "۲", "۴", "۸", "۱۶", "۳۲"],
+    ["CPU (CORE)", "۰.۱۲۵", "۰.۵", "۱", "۱", "۲", "۴", "۸", "۱۶"],
+    ["Disk (GB SSD)", "۱.۲۵", "۵", "۱۰", "۲۰", "۴۰", "۸۰", "۱۶۰", "۳۲۰"]
+]} 
+/>
 
 به صورت کلی، لیارا پلن‌های سخت‌افزاری زیر را ارائه می‌دهد:
 

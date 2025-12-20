@@ -9,6 +9,8 @@ import Important from "@/components/Common/important";
 import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
+import Table from "@/components/Common/table";
+
 import {
     GoArrowLeft,
 } from "react-icons/go";
@@ -27,9 +29,16 @@ import Head from "next/head";
 <hr className="mb-2" />
 بی‌شک از مهم‌ترین مراحل ساخت یک پروژه، انتخاب منابع سخت‌افزاری مناسب و مورد نیاز سرور مجازی ابری است. گاهاً ممکن است که علت به خطا خوردن پروژه، سرعت پایین و بازدهی کم آن به خاطر انتخاب منابع سخت‌افزاری نامناسب باشد. پس توجه به این موضوع، حائز اهمیت است.
 
-<div className="h-2" />
-<img src="https://media.liara.ir/vps/iaas-plans-on-liara.png" alt="see-hardware-plans"/>
-<div className="h-4" />
+
+
+<Table headers={["مشخصات", "مشتری", "زحل", "اورانوس", "نپتون", "پلوتون", "اریس"]}
+data={[
+    ["RAM (GB)", "۲", "۴", "۸", "۱۶", "۳۲", "۶۴"],
+    ["CPU (CORE)", "۱", "۲", "۴", "۸", "۱۶", "۳۲"],
+    ["Disk (GB SSD)", "۲۰", "۴۰", "۸۰", "۱۶۰", "۳۲۰", "۶۴۰"]
+]} 
+/>
+
 
 به صورت کلی، لیارا پلن‌های سخت‌افزاری زیر را ارائه می‌دهد:
 

@@ -1905,6 +1905,10 @@ export default {
         title: "رکورد ACME-Challenge",
         link: "/paas/domains/acme-challenge-record"
       },
+      {
+        title: "ری‌دایرکت برنامه",
+        link: "/paas/domains/redirect-url"
+      },
     ],
     cicd: [
       {
@@ -11171,6 +11175,7 @@ export default {
         title: "مدیریت رکوردها",
         link: "/dns-management-system/how-tos/manage-records"
       },
+      
 
       {
         hr: true
@@ -11225,6 +11230,7 @@ export default {
         title: "مدیریت رکوردها",
         link: "/dns-management-system/how-tos/manage-records"
       },
+      
 
       {
         hr: true
@@ -11279,6 +11285,7 @@ export default {
         title: "مدیریت رکوردها",
         link: "/dns-management-system/how-tos/manage-records"
       },
+      
 
       {
         hr: true

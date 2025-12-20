@@ -1,0 +1,58 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ری دایرکت دامنه - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات ری‌دایرکت کردن دامنه در سامانه مدیریت دامنه لیارا"  />
+</Head>
+
+
+# ری دایرکت دامنه
+<hr className="mb-2" />
+
+ری‌دایرکت (Redirect) به معنی هدایت خودکار کاربر یا موتور جستجو از یک آدرس (URL) به آدرس دیگر است.
+در سامانه مدیریت دامنه لیارا، شما می‌توانید از قابلیت ری دایرکت، استفاده کنید. 
+
+<div className="h-2" />
+
+برای این کار، تنها کافیست تا پس از ثبت زیردامنه خود، در بخش **ریدایرکت دامنه**، در قسمت **انتخاب دامنه**، دامنه مدنظر خود را انتخاب کنید و در قسمت **نوع ریدایرکت**، مقدار ۳۰۱ یا ۳۰۲ را انتخاب کنید و در نهایت بر روی گزینه **ذخیره** کلیک کنید تا ریدایرکت، ثبت شود. 
+
+<div className="h-4" />
+<video
+  src="https://media.liara.ir/domain/redirect-url.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%" 
+/>
+
+<Section id='difference-between-301-and-302-redirects' title='تفاوت ری‌دایرکت ۳۰۱ و ۳۰۲ چیست؟' />
+
+ری‌دایرکت 301 برای  تغییر آدرس دائمی استفاده می‌شود و موتورهای جستجو، URL جدید را جایگزین قبلی می‌کنند و تمام اعتبار SEO به صفحه جدید منتقل می‌شود. در مقابل، ری‌دایرکت 302 برای تغییر آدرس موقتی است و URL اصلی در نتایج جستجو باقی می‌ماند.
+
+</Layout>

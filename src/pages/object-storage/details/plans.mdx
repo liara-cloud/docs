@@ -8,6 +8,7 @@ import Card from "@/components/Common/card";
 import Important from "@/components/Common/important";
 import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
+import Table from "@/components/Common/table";
 import PlatformIcon from "@/components/Common/icons";
 import {
     GoArrowLeft,
@@ -25,16 +26,12 @@ import Head from "next/head";
 # آشنایی با پلن‌های فضای ذخیره‌سازی ابری لیارا
 <hr className="mb-2" />
 
-به صورت کلی، لیارا در فضای ذخیره‌سازی ابری 
-پلن 2.5GB تا 1280GB فضا را به کاربران خود، ارائه می‌دهد که می‌توانید بر حسب نیاز خود، یکی از این پلن‌ها را، انتخاب کنید:
+لیارا، پلن‌های زیر را برای فضای ذخیره‌سازی ابری، ارائه می‌دهد:
 
-<div className="h-2" />
-<video
-src="https://media.liara.ir/docs/object-storage-plans.mp4"
-controls="controls"
-className="block w-full"
-width="100%"
-></video>
-<div className="h-2" />
+<Table headers={["مشخصات", "پلن 20GB", "پلن 40GB", "پلن 80GB", "پلن 160GB", "پلن 320GB", "پلن 640GB", "پلن 1280GB"]}
+data={[
+    ["Disk (GB SSD)", "۲۰", "۴۰", "۸۰", "۱۶۰", "۳۲۰", "۶۴۰", "۱۲۸۰"]
+]} 
+/>
 
 </Layout>

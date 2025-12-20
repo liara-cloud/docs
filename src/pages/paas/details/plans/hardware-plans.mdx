@@ -9,6 +9,7 @@ import Important from "@/components/Common/important";
 import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
+import Table from "@/components/Common/table";
 import {
     GoArrowLeft,
 } from "react-icons/go";
@@ -42,9 +43,15 @@ width="100%"
 همچنین بخوانید: <a href="/paas/details/observations/hardware/#find-best-plan-by-monitoring" className="text-[#2196f3] ">انتخاب بهترین پلن برای برنامه با استفاده از گزارشات سخت‌افزاری</a>
 </p>
 </Alert>
-<div className="h-2" />
-<img src="https://media.liara.ir/docs/hardware-plans.png" alt="see-hardware-plans"/>
-<div className="h-4" />
+
+
+<Table headers={["مشخصات", "عطارد (رایگان)", "زمین", "مریخ", "مشتری", "زحل", "اورانوس", "نپتون", "پلوتون"]}
+data={[
+    ["RAM (GB)", "۰.۱۲۸", "۰.۵۱۲", "۱", "۲", "۴", "۸", "۱۶", "۳۲"],
+    ["CPU (CORE)", "۰.۱۲۵", "۰.۵", "۱", "۱", "۲", "۴", "۸", "۱۶"],
+    ["Disk (GB SSD)", "ندارد", "۵", "۱۰", "۲۰", "۴۰", "۸۰", "۱۶۰", "۳۲۰"] 
+    ]} 
+/>
 
 به صورت کلی، لیارا پلن‌های سخت‌افزاری زیر را ارائه می‌دهد:
 
