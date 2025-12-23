@@ -19,117 +19,313 @@ import Head from "next/head";
 <meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس‌ با Prisma ORM در پلتفرم NodeJS در لیارا"  />
 </Head>
 # اتصال به دیتابیس با استفاده از Prisma در برنامه‌های NodeJS 
+
 <hr className="mb-2" />
-<video
+
+{/* <video
     src="https://media.liara.ir/prisma/prisma.mp4"
     controls="controls"
     className="block w-full"
     width="100%"
-></video>
-<br />
-
+/>
+<div className="h-2" />
 <Alert variant="info">
 <p>
 پروژه و کدهای مورد استفاده در ویدیوی فوق در <a className="text-[#2196f3] " href="https://github.com/liara-cloud/nodejs-getting-started/tree/prisma">اینجا</a> قابل مشاهده و دسترسی است.
 </p>
 </Alert>
+<div className="h-2" /> */}
 
-<a href="https://www.prisma.io/" className="text-[#2196f3] ">Prisma</a> یک ORM برای NodeJS و زبان TypeScript است که بسیاری از مشکل‌های ORMهای دیگر در آن برطرف شده و به شما امکان اتصال و اجرای کوئری بر روی دیتابیس‌های PostgreSQL, MySQL, SQL Server, SQLite و MongoDB را می‌دهد.<div className="h-2" />
+<a href="https://www.prisma.io/" target="_blank" className="text-[#2196f3]" rel="noopener">Prisma</a> یک ORM متن‌باز و شامل سه بخش زیر است:‌
+
+<div className="h-2" />
+<ul>
+<li><b>Prisma Client</b>: یک کوئری‌ساز auto-generated و type-safe برای <a href="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D9%86%D9%88%D8%AF-%D8%AC%DB%8C-%D8%A7%D8%B3-node/" className="text-[#2196f3]">NodeJS</a> و <a href="/paas/nodejs/how-tos/use-type-script/" className="text-[#2196f3]">TypeScript</a></li>
+<li><b>Prisma Migrate</b>: سیستم مدیریت migrationها در دیتابیس</li>
+<li><b>Prisma Studio</b>: رابط گرافیکی برای مشاهده و ویرایش داده‌ها در دیتابیس</li>
+</ul>
+<div className="h-2" />
+
+Prisma Client می‌تواند در هر برنامه‌ی NodeJS یا TypeScript مورد استفاده قرار گیرد، از جمله برنامه‌های serverless و میکروسرویس‌ها. 
+در ادامه، به نحوه استفاده از این ORM با <a href="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D8%A7%D8%A8%D8%B1%DB%8C-postgre-sql/" className="text-[#2196f3]">دیتابیس PostgreSQL</a> و نحوه استقرار برنامه‌های مبتنی بر آن در لیارا، پرداخته شده است. 
+<div className="h-2" />
 
 برای استفاده از این ORM، در ابتدا باید با اجرای دستور زیر در خط فرمان سیستم خود، فایل‌های Migration را ایجاد کنید:
 
+<Step  steps={[
+    {
+    step: "۱",
+    content: (
+        <>
+            <h3>ایجاد یک پروژه NodeJS</h3>   
+            <p>
+                با اجرای دستورات زیر، محیط پروژه NodeJS خود را ایجاد کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`mkdir prisma-liara
+cd prisma-liara
+npm init -y`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>
+    )
+    },
+    {
+    step: "۲",
+    content: (
+        <>
+            <h3>نصب پکیج‌های مورد نیاز</h3>   
+            <p>
+               با اجرای دستورات زیر، تمامی پکیج‌ها و ابزارهای مورد نیاز برنامه را، نصب کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`npm install prisma @types/node @types/express typescript --save-dev
+npm install @prisma/client @prisma/adapter-pg @faker-js/faker express`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>
+    )
+    },
+    {
+    step: "۳",
+    content: (
+        <>
+            <h3>راه‌اندازی و پیکربندی Prisma</h3>   
+            <p>
+                با اجرای دستور زیر، Prisma را در برنامه خود، راه‌اندازی کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`npx prisma init --datasource-provider postgresql`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+            دستور فوق، چندین فایل مرتبط با prisma را در پروژه‌تان، ایجاد می‌کند.
+            درون فایل <Important>env.</Important>، متغیر <Important>DATABASE_URL</Important> را مشابه زیر، مقداردهی کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`DATABASE_URL=postgresql://USERNAME:PASSWORD@HOST:PORT/postgres`}
+                </Highlight>
+            </div>
+            <Alert variant="info">
+                <p>
+                    مقدار متغیر فوق را با اطلاعات دیتابیس PostgreSQL خود، آپدیت کنید.
+                </p>
+            </Alert>
+            <div className="h-2" />
+            <p>
+                در ادامه، قطعه کد زیر را جایگزین کد فعلی فایل <Important>prisma/schema.prisma</Important> کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="prisma">
+                    {`generator client {
+  provider = "prisma-client-js"
+}
 
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`npx prisma migrate dev --name init --create-only`}
-    </Highlight>
-</div>
-<div className="h-2" />
+datasource db {
+  provider = "postgresql"
+}
 
-سپس، باید در بخش <Important>scripts</Important> فایل <Important>package.json</Important>، اسکریپت <Important>build</Important> را به‌صورت زیر بنویسید:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="json">
-        {`"scripts": {
-  "build": "npx prisma generate",
-},`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-اگر که از قبل اسکریپت <Important>build</Important> را تعریف کرده بودید؛ می‌توانید با استفاده از عملگر <Important>&&</Important> دستور مربوط به Prisma را نیز، به اسکریپت خود اضافه کنید، به عنوان مثال:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="json">
-        {`"scripts": {
-  "build": "npx prisma generate && webpack --watch"
-},`}
-    </Highlight>
-</div>
-<div className="h-2" />
-همچنین باید متغیر <Important>DATABASE_URL</Important> را طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی در برنامه</a>، به برنامه خود اضافه کنید. در مثال زیر از دیتابیس PostgreSQL استفاده شده است:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`DATABASE_URL=postgresql://USERNAME:PASSWORD@HOST:PORT/postgres`}
-    </Highlight>
-</div>
-<div className="h-2" />
-اگر که از <a href="/dbaas/about" className="text-[#2196f3] ">دیتابیس لیارا</a> استفاده می‌کنید؛ توصیه می‌شود هم برنامه و هم دیتابیس را در یک <a href="/paas/details/private-network" className="text-[#2196f3] ">شبکه خصوصی</a> قرار دهید و برای ایجاد اتصال ایمن و مطمئن از URI شبکه خصوصی دیتابیس استفاده کنید.
-
-در ادامه، باید طبق <a href="/paas/disks/create" className="text-[#2196f3] ">مستندات مربوط به ایجاد دیسک</a>، یک دیسک به نام <Important>prisma</Important> (یا هر نام دلخواه دیگری) و اندازه موردنیاز در برنامه خود ایجاد کنید. سپس با یکی از روش‌های زیر، مراحل باقی‌مانده را پیش ببرید:
-
-
-<Tabs 
-    tabs={["Liara Console", "Liara CLI"]} 
-    content={[
-    <>
-        <p>
-            در ابتدا کافیست تا پروژه را در Console مستقر کنید و در مرحله اتصال دیسک به برنامه، مسیر دیسک را <Important>prisma/migrations</Important> قرار دهید. و ادامه فرایند استقرار را جلو ببرید.
-        </p>
-    
-    </>,
-
-    <>
-        <p>یک فایل <Important>liara.json</Important> در مسیر اصلی پروژه خود ایجاد کنید و با استفاده از قطعه کد زیر، آن دیسک را به برنامه متصل کنید:</p>
-        <div className="h-2" />
-        <div dir='ltr'>
-            <Highlight className="json">
-                {`{
-    "disks":[
-        {
-            "name": "prisma",
-            "mountTo": "prisma/migrations"
-        }
-    ]
+model User {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  name  String
 }`}
-            </Highlight>
-        </div>
-        <div className="h-2" />
-        <Alert variant='warning'>
-        <p>
-        در نظر داشته باشید که باید در فیلد <Important>name</Important> نام دیسکی که ایجاد کرده‌اید را، وارد کنید.
-        </p>
-        </Alert>
-        <p>درنهایت می‌توانید با اجرای دستور <Important>liara deploy</Important>، پروژه‌ی خود را در لیارا مستقر کنید.</p>
-    </>,
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>
+    )
+    },
+    {
+    step: "۴",
+    content: (
+        <>
+            <h3>ایجاد migrationها</h3>   
+            <p>
+               با اجرای دستور زیر، migrationها را قبل از استقرار برنامه، تولید کنید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="bash">
+                    {`npx prisma migrate dev --name init`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+        </>
+    )
+    },
+    {
+    step: "۵",
+    content: (
+        <>
+            <h3>ایجاد و پیکربندی‌ برنامه اصلی</h3>   
+            <p>
+                مسیر <Important>src/server.ts</Important> را ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید: 
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="node">
+                    {`import express, { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { faker } from "@faker-js/faker";
+import dotenv from "dotenv";
 
-]} 
+dotenv.config();
+
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL!,
+});
+
+const prisma = new PrismaClient({ adapter });
+const app = express();
+
+function createRandomUser() {
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  const email = faker.internet.email({ firstName, lastName });
+
+  return {
+    name: \`\${firstName} \${lastName}\`,
+    email,
+  };
+}
+
+app.get("/", async (req: Request, res: Response) => {
+  try {
+    const randomUser = createRandomUser();
+    const user = await prisma.user.create({
+      data: randomUser,
+    });
+
+    res.json({
+      success: true,
+      user,
+    });
+  } catch (err: any) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      error: "Internal Server Error",
+    });
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(\`Server running on port \${PORT}\`);
+});
+`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+                در مسیر اصلی پروژه، یک فایل به نام <Important>tsconfig.json</Important> ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
+            </p>
+
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="json">
+                    {`{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "rootDir": "./",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts", "prisma.config.ts"]
+}`}
+                </Highlight>
+            </div>
+            <div className="h-2" />            
+
+        </>
+    )
+    },
+    {
+    step: "۶",
+    content: (
+        <>
+            <h3>آماده‌سازی برنامه برای استقرار</h3>   
+            <p>
+                بخش <Important>scripts</Important> را مانند زیر در فایل <Important>package.json</Important> تغییر دهید: 
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+                <Highlight className="json">
+                    {`"scripts": {
+    "build": "npx prisma generate && tsc",
+    "start": "node dist/src/server.js"
+},`}
+                </Highlight>
+            </div>
+            <div className="h-2" />
+            <p>
+                همچنین، یک فایل در مسیر اصلی پروژه، به نام <Important>liara_pre_start.sh</Important> ایجاد کنید و قطعه کد زیر را، درون آن، قرار دهید:
+            </p>
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`npx prisma migrate deploy`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+        </>
+    )
+    },
+    {
+    step: "۷",
+    content: (
+        <>
+            <h3>استقرار برنامه در لیارا</h3>   
+            <p>
+                متغیر <Important>DATABASE_URL</Important> تعریف شده در فایل <Important>env.</Important> را طبق مستندات <a href="/paas/details/envs" className="text-[#2196f3] ">تنظیم متغیرهای محیطی در برنامه</a>، به برنامه خود اضافه کنید. 
+            </p>
+            <div className="h-2" />
+
+            <Alert variant="info">
+                <p>
+                    در صورت استفاده از <a href="https://liara.ir/landing/%D9%87%D8%A7%D8%B3%D8%AA-%D8%A7%D8%A8%D8%B1%DB%8C-postgre-sql/" className="text-[#2196f3] ">دیتابیس PostgreSQL لیارا</a>، توصیه می‌شود هم برنامه و هم دیتابیس را در یک <a href="/paas/details/private-network" className="text-[#2196f3] ">شبکه خصوصی</a> قرار دهید و برای ایجاد اتصال ایمن و مطمئن از URI شبکه خصوصی دیتابیس استفاده کنید.
+                </p>
+            </Alert>
+
+            <div className="h-2" />
+            <p>
+                در نهایت، طبق <a href="/paas/nodejs/how-tos/create-app/" className="text-[#2196f3]">مستندات ساخت برنامه NodeJS</a>، یک برنامه NodeJS ایجاد کنید و با اجرای دستور زیر با استفاده از <a href="/references/cli/about/" className="text-[#2196f3]">Liara CLI</a>، برنامه خود را در لیارا، مستقر کنید:
+            </p>
+
+            <div className="h-2" />
+            <div dir='ltr'>
+            <Highlight className="bash">
+                {`liara deploy --port 3000`}
+            </Highlight>
+            </div>
+            <div className="h-2" />
+        </>
+    )
+    },
+]}
 />
 
-پس از استقرار موفق پروژه می‌توانید دستور زیر را برای اعمال Migrationها در خط فرمان سیستم خود اجرا کنید:
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="json">
-        {`liara shell -c "npx prisma migrate deploy"`}
-    </Highlight>
-</div>
-<div className="h-2" />
-
-
+<br />
 <Alert variant='info'>
     <p>
-    اگر که در اجرای دستور فوق با خطای <Important>ReadOnly</Important> مواجه شدید کافیست تا <Link href="/paas/details/file-system" className="text-[#2196f3] ">طبق مستندات فایل‌سیستم</Link>، فایل‌سیستم <Important>ReadOnly</Important> برنامه خود را موقتاً به <Important>Writable</Important> تغییر داده، دستور را اجرا کرده و سپس آن را مجدداً به حالت قبلی، برگردانید. 
+        یک پروژه NodeJS مبتنی بر Prisma در <a href="https://github.com/liara-cloud/nodejs-getting-started/tree/prisma" className="text-[#2196f3]">گیت‌هاب لیارا</a> وجود دارد که می‌توانید از آن، استفاده کنید.
     </p>
 </Alert>
 
