@@ -4967,7 +4967,7 @@ export default {
         link: "/iaas/disks/see-disks"
       },
       {
-        title: "افزایش فضای دیسک اولیه",
+        title: "افزایش فضای دیسک",
         link: "/iaas/disks/extend-disk"
       },
       {
