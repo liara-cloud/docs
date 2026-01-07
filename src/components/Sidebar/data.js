@@ -4967,6 +4967,10 @@ export default {
         link: "/iaas/disks/see-disks"
       },
       {
+        title: "افزایش فضای دیسک اولیه",
+        link: "/iaas/disks/extend-disk"
+      },
+      {
         title: "ساخت دیسک‌ جدید",
         link: "/iaas/disks/create"
       },

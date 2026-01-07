@@ -1,0 +1,57 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات افزایش فضای دیسک اولیه در سرور مجازی ابری - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه افزایش فضای دیسک اولیه یا همان Primary Disk در سرور مجازی ابری لیارا"  />
+</Head>
+# افزایش فضای دیسک اولیه در سرور مجازی ابری
+
+<hr className="mb-2" />
+
+برای افزایش فضای دیسک اولیه (primary disk) در سرور مجازی ابری، در ابتدا باید طبق <a href="/iaas/details/signals/#turning-off-signal" className="text-[#2196f3]">مستندات ارسال سینگال کردن</a>، سرور مجازی خود را خاموش کنید. سپس کافیست تا پس از ورود به بخش **دیسک‌ها** در سرور مجازی ابری، بر روی آیکن تغییر اندازه primary disk خود کلیک کنید؛ اندازه جدید دیسک  را به گیگابایت وارد کنید و سپس بر روی **تایید** کلیک کنید.
+در نهایت، کافیست تا سینگال روشن کردن را ارسال کنید تا سرور مجازی ابری، روشن شود. 
+<div className="h-4" />
+<video
+  src="https://media.liara.ir/vps/extend-disk.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-4" />
+
+<Alert variant="info">
+<p>
+در نظر داشته باشید که در فیلد خواسته شده <b>اندازه دیسک</b>، بایستی اندازه جدید دیسک و نه فضای اضافی مورد نیاز خود را، وارد کنید. به عنوان مثال اگر که اندازه دیسک فعلی‌تان، ۱۵ گیگابایت است و به ۶ گیگابایت فضای ذخیره‌سازی بیشتر نیاز دارید، باید در فیلد خواسته شده، مقدار <Important>21</Important> را وارد کنید. 
+</p>
+</Alert>
+<Alert variant="info">
+<p>
+عملیات افزایش فضای primary disk برای بار اول ممکن است کمی زمان‌بر باشد. 
+</p>
+</Alert>
+<Alert variant="success">
+<p>
+می‌توانید وضعیت تغییر اندازه دیسک اولیه سرور مجازی خود را در بخش **رویدادها** مشاهده بفرمایید.
+</p>
+</Alert>
+
+
+</Layout>
