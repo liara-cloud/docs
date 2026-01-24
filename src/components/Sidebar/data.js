@@ -6580,6 +6580,11 @@ export default {
         link: "/one-click-apps/vikunja/quick-start"
       },
       {
+        title: "Sentry",
+        icon: <IconContainer alt="https://console.liara.ir/static/media/sentry.e14b95d30360962e19b9.png" />,
+        link: "/one-click-apps/sentry/quick-start"
+      },
+      {
         title: "Drupal",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/favicon.png" />,
         link: "/one-click-apps/drupal/quick-start"
