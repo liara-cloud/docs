@@ -6600,6 +6600,11 @@ export default {
         link: "/one-click-apps/docker/quick-start"
       },
       {
+        title: "GitLab CE",
+        icon: <IconContainer alt="https://console.liara.ir/static/media/gitlab.d871c5fb74e21922b3e8.png" />,
+        link: "/one-click-apps/gitlabce/quick-start"
+      },
+      {
         title: "Rocket.Chat",
         icon: <IconContainer alt="rocketchat" />,
         link: "/one-click-apps/rocketchat/quick-start"
