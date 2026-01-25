@@ -6595,6 +6595,11 @@ export default {
         link: "/one-click-apps/onedev/quick-start"
       },
       {
+        title: "Docker",
+        icon: <IconContainer alt="https://console.liara.ir/static/media/docker.da990585cec02dfbdb39.png" />,
+        link: "/one-click-apps/docker/quick-start"
+      },
+      {
         title: "Rocket.Chat",
         icon: <IconContainer alt="rocketchat" />,
         link: "/one-click-apps/rocketchat/quick-start"
