@@ -1,0 +1,198 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه سوپابیس (Supabase) - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به راه‌اندازی سریع برنامه سوپابیس یا Supabase در لیارا"  />
+</Head>
+
+# راه‌اندازی سریع سوپابیس (Supabase)
+<hr className="mb-2" />
+
+<div className="h-4" />
+<video
+  src="https://media.liara.ir/supabase/setup-supabase.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+<div className="h-4" />
+
+<Alert variant="info">
+<p>
+  برنامه آماده supabase مبتنی بر Liara Compose نمی‌باشد و در یک سرور مجازی دبیان شامل داکر، مستقر می‌شود. 
+</p>
+</Alert>
+<div className="h-4" />
+
+
+<a href="https://supabase.com/" className="text-[#2196f3] ">Supabase</a> یک پلتفرم متن‌باز توسعه بک‌اند (Backend-as-a-Service) است که مبتنی بر PostgreSQL ساخته شده و به عنوان جایگزینی قدرتمند و انعطاف‌پذیر برای Firebase شناخته می‌شود. این سرویس با ارائه ابزارهای آماده شامل دیتابیس کامل Postgres، احراز هویت کاربران، APIهای خودکار، ذخیره‌سازی فایل، قابلیت Realtime و Edge Functions و پشتیبانی از Vector embeddings، به توسعه‌دهندگان این امکان را می‌دهد که بدون نیاز به ساخت و مدیریت سرور اختصاصی، بک‌اند برنامه‌های وب و موبایل خود را در کوتاه‌ترین زمان ممکن راه‌اندازی کنند.
+<div className="h-4" />
+
+برای راه‌اندازی برنامه با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>ورود به حساب کاربری</h3>   
+<p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+</>
+)
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای راه‌اندازی برنامه آماده را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+  {
+    step: "۳",
+    content: (
+    <>
+      <h3>ساخت برنامه</h3>
+      <p>
+          بر روی منوی <b>برنامه‌های آماده</b> و سپس بر روی برنامه <b>supabase</b>، کلیک کنید. 
+          در ادامه، بر روی گزینه <b>نصب برنامه</b> کلیک کنید. در صفحه جدید، پس از انتخاب نسخه‌ی برنامه، شناسه‌ی سرور و انتخاب منابع 
+          و افزودن کلید عمومی (در صورت نیاز)، بر روی گزینه <b>ایجاد سرور مجازی ابری</b> کلیک کنید.
+      </p>
+  </>
+  )
+  },
+  {
+    step: "۴",
+    content: (
+    <>
+      <h3>بررسی عملکرد برنامه</h3>
+      <p>
+        پس از ساخت برنامه، در بخش <b>سرور مجازی ابری</b>، برنامه supabase خود را انتخاب کنید. وارد بخش <b>اتصال</b> شوید و طبق <a href="/iaas/debian/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">مستندات اتصال به سرور مجازی با SSH</a>، به سرور مجازی برنامه supabase متصل شوید.
+        پس از اتصال به سرور، دستورات زیر رو اجرا کنید: 
+      </p>
+      <div className="h-2" />
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`cd /opt/supabase-project
+docker compose ps`}
+          </Highlight>
+      </div>
+      <div className="h-2" />  
+      <p>
+        با اجرای دستورات فوق، وضعیت کانتینر‌های در حال اجرا به شما نمایش داده می‌شود. 
+        در نظر داشته باشید که هیچ کانتینری نباید STATUS با مقدار <Important>unhealthy</Important> داشته باشد. 
+        در این صورت، برنامه به صورت موفق اجرا شده است.
+      </p>
+  </>
+  )
+  },
+  {
+    step: "۵",
+    content: (
+    <>
+      <h3>مشاهده اطلاعات و اجرای برنامه</h3>
+      <p>
+        پس از اطمینان از صحیح بودن برنامه، در مسیر فعلی (<Important>opt/supabase-project/</Important>)
+        دستور زیر را اجرا کنید: 
+      </p>
+      <div className="h-2" />
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`cat .env | grep DASHBOARD`}
+          </Highlight>
+      </div>
+      <div className="h-2" />  
+      <p>
+        در ادامه، مقادیر <Important>DASHBOARD_USERNAME</Important> و <Important>DASHBOARD_PASSWORD</Important> را برای ورود به supabase، کپی کنید.
+       
+        سپس در مرورگر خود،
+        وارد آدرس زیر شوید:
+      </p>
+      <div className="h-2" />
+      <div dir='ltr'>
+          <Highlight className="bash">
+              {`http://IP:8000`}
+          </Highlight>
+      </div>
+      <div className="h-2" />  
+      <p>
+        در آدرس فوق، به جای <Important>IP</Important>، آدرس IP سرور مجازی خود را وارد کنید.
+        پس از بالا آمدن سایت، در فیلدهای خواسته شده، مقادیر کپی‌شده را قرار دهید و بر روی <Important>Sign in</Important> کلیک کنید. 
+      </p>
+  </>
+  )
+  },
+  {
+    step: "۶",
+    content: (
+    <>
+      <h3>پیکربندی برنامه (اختیاری)</h3>
+      <p>
+        در صورت نیاز، می‌توانید در سرور مجازی supabase، در مسیر <Important>opt/supabase-project/</Important>، فایل <Important>env.</Important> را تغییر داده و متغیرهای محیطی مورد نیاز خود را، تنظیم کنید. 
+      </p>
+
+      <Alert variant="info">
+        <p>
+          در برنامه آماده supabase لیارا، مقدار <Important>DASHBOARD_PASSWORD</Important> به صورت auto generated ایجاد می‌شود و نیازی نیست که آن را، تغییر دهید. 
+        </p>
+      </Alert>
+  </>
+  )
+  },
+]}/>
+
+<div className='h-4' />
+
+با انجام کارهای فوق، برنامه supabase آماده استفاده است. 
+
+
+
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "شروع به کار با سرور مجازی دبیان",
+        link: "/iaas/debian/getting-started"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

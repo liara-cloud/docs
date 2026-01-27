@@ -6569,6 +6569,11 @@ export default {
         icon: <IconContainer alt="soketi" />,
         link: "/one-click-apps/soketi/quick-start"
       },
+      // {
+      //   title: "Appwrite",
+      //   icon: <IconContainer alt="https://console.liara.ir/static/media/appwrite.d06cb90b162a92031afa.png" />,
+      //   link: "/one-click-apps/appwrite/quick-start"
+      // },
       {
         title: "ImgProxy",
         icon: <IconContainer alt="imgproxy" />,
@@ -6593,6 +6598,11 @@ export default {
         title: "Onedev",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.webp" />,
         link: "/one-click-apps/onedev/quick-start"
+      },
+      {
+        title: "Supabase",
+        icon: <IconContainer alt="https://console.liara.ir/static/media/supabase.133e9caaae544d4c7307.png" />,
+        link: "/one-click-apps/supabase/quick-start"
       },
       {
         title: "Docker",
