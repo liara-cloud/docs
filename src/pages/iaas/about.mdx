@@ -66,6 +66,57 @@ import Head from "next/head";
               </Link>
             )}
           </div>
+
+
+<Section id="liara-vps-as-one-click-apps" title="لیارا چه VPSهایی را در قالب برنامه های آماده ارائه می دهد؟" />
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-5 gap-4">
+            {[
+      {
+        title: "Sentry",
+        alt: "https://console.liara.ir/static/media/sentry.e14b95d30360962e19b9.png",
+        link: "/one-click-apps/sentry/quick-start"
+      },
+      {
+        title: "Docker",
+        alt: "https://console.liara.ir/static/media/docker.da990585cec02dfbdb39.png",
+        link: "/one-click-apps/docker/quick-start"
+      },
+      {
+        title: "GitLab CE",
+        alt: "https://console.liara.ir/static/media/gitlab.d871c5fb74e21922b3e8.png",
+        link: "/one-click-apps/gitlabce/quick-start"
+      },
+      {
+        title: "Supabase",
+        alt: "https://console.liara.ir/static/media/supabase.133e9caaae544d4c7307.png",
+        link: "/one-click-apps/gitlabce/quick-start"
+      },
+      {
+        title: "Appwrite",
+        alt: "https://console.liara.ir/static/media/appwrite.d06cb90b162a92031afa.png",
+        link: "/one-click-apps/appwrite/quick-start"
+      },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.title}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
 {/* 
 <br />
 

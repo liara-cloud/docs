@@ -6569,11 +6569,11 @@ export default {
         icon: <IconContainer alt="soketi" />,
         link: "/one-click-apps/soketi/quick-start"
       },
-      // {
-      //   title: "Appwrite",
-      //   icon: <IconContainer alt="https://console.liara.ir/static/media/appwrite.d06cb90b162a92031afa.png" />,
-      //   link: "/one-click-apps/appwrite/quick-start"
-      // },
+      {
+        title: "Appwrite",
+        icon: <IconContainer alt="https://console.liara.ir/static/media/appwrite.d06cb90b162a92031afa.png" />,
+        link: "/one-click-apps/appwrite/quick-start"
+      },
       {
         title: "ImgProxy",
         icon: <IconContainer alt="imgproxy" />,

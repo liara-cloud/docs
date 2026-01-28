@@ -99,7 +99,7 @@ content: (
       <div className="h-2" />
       <div dir='ltr'>
           <Highlight className="bash">
-              {`cd /opt/appwrite/self-hosted
+              {`cd /opt/appwrite
 docker compose ps`}
           </Highlight>
       </div>
@@ -116,33 +116,21 @@ docker compose ps`}
     step: "۵",
     content: (
     <>
-      <h3>پیکربندی و اجرای برنامه</h3>
-      <p>
-        پس از اطمینان از صحیح بودن برنامه، در مسیر فعلی (<Important>opt/appwrite/self-hosted/</Important>)
-        دستور زیر را اجرا کنید: 
-      </p>
-      <div className="h-2" />
-      <div dir='ltr'>
-          <Highlight className="bash">
-              {`docker compose exec web appwrite createuser`}
-          </Highlight>
-      </div>
-      <div className="h-2" />  
-      <p>
-        در ادامه، ایمیل و پسورد کاربر جدید را وارد کنید و در صورتی که می‌خواهید کاربر جدید superuser باشد، تاییدیه آن را نیز بزنید. 
+      <h3>ثبت نام در برنامه</h3>
 
-        سپس در مرورگر خود،
-        وارد آدرس زیر شوید:
+      <p>
+          در مرورگر خود، وارد آدرس زیر شوید:
       </p>
       <div className="h-2" />
       <div dir='ltr'>
           <Highlight className="bash">
-              {`http://IP:9000`}
+              {`http://IP`}
           </Highlight>
       </div>
       <div className="h-2" />  
       <p>
         در آدرس فوق، به جای <Important>IP</Important>، آدرس IP سرور مجازی خود را وارد کنید. 
+        سپس در صفحه باز شده، بر روی گزینه <b>Sign up</b> کلیک کنید. پس از پر کردن فیلدهای خواسته شده، بر روی دکمه <b>Sign up</b> کلیک کنید. در صفحه جدید یک نام برای پروژه خود انتخاب کنید و سپس بر روی <b>Create</b> کلیک کنید. 
       </p>
   </>
   )
