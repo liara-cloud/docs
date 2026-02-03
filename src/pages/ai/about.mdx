@@ -20,6 +20,7 @@ import {
   GoDatabase,
   GoRocket,
   GoServer,
+  GoImage,
   GoMail,
   GoGlobe,
   GoArrowLeft,
@@ -167,6 +168,11 @@ import Head from "next/head";
               title: "قابلیت جستجو در وب",
               icon: <GoSearch />,
               link: "/ai/foundations/websearch"
+           },
+           {
+              title: "تولید تصویر",
+              icon: <GoImage />,
+              link: "/ai/foundations/image-generation"
            },
   ].map(item =>
               <Link href={item.link}>

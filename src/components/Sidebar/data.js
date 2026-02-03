@@ -79,6 +79,7 @@ import {
   GoKebabHorizontal,
   GoMortarBoard,
   GoSearch,
+  GoImage,
   GoIterations,
   GoSignOut,
   GoReply,
@@ -341,6 +342,11 @@ export default {
         title: "قابلیت جستجو در وب",
         icon: <GoSearch />,
         link: "/ai/foundations/websearch"
+      },
+      {
+        title: "تولید تصویر",
+        icon: <GoImage />,
+        link: "/ai/foundations/image-generation"
       },
       {
         hr: true
