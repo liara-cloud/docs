@@ -6596,6 +6596,11 @@ export default {
         link: "/one-click-apps/sentry/quick-start"
       },
       {
+        title: "Qdrant",
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/qdrant/qdrant-brandmark-red.svg" />,
+        link: "/one-click-apps/qdrant/quick-start"
+      },
+      {
         title: "Drupal",
         icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/favicon.png" />,
         link: "/one-click-apps/drupal/quick-start"
@@ -8327,6 +8332,41 @@ export default {
       {
         title: "تغییر نسخه‌ی برنامه مستقر شده",
         link: "/one-click-apps/vikunja/how-tos/choose-version"
+      },
+    ],
+    qdrant: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/qdrant/qdrant-brandmark-red.svg" />
+            برنامه Qdrant
+          </div>
+        )
+      },
+      {
+        title: "برگشت به برنامه‌های آماده",
+        icon: <GoArrowRight />,
+        link: "/one-click-apps/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/one-click-apps/qdrant/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            < GoPackage />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "تغییر نسخه‌ی برنامه مستقر شده",
+        link: "/one-click-apps/qdrant/how-tos/choose-version"
       },
     ],
     prestashop: [
