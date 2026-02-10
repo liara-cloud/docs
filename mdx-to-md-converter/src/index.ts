@@ -17,6 +17,7 @@ import { convertSection } from './modules/convertSection';
 import { convertStep } from './modules/convertStep';
 import { removeHrAndLayout } from './modules/removeHrAndLayout';
 import { removeIndentations } from './modules/removeIndentations';
+import { overviewByAI } from './modules/overviewByAI';
 
 import fs from 'fs';
 import path from 'path';
@@ -103,36 +104,44 @@ function getRelativePath(filePath: string, basePath: string): string {
   return path.relative(basePath, filePath).replace(/\\/g, '/');
 }
 
-try {
-  const srcPagesPath = path.join(process.cwd(), '..', 'src', 'pages');
-  const outputDir = path.join(process.cwd(), '..', 'public', 'llms');
-  const allLinksPath = path.join(process.cwd(), '..', 'public', 'all-links-llms.txt');
-  
-  console.log(`Searching for MDX files in: ${srcPagesPath}`);
-  
-  const mdxFiles = findMdxFiles(srcPagesPath);
-  
-  if (mdxFiles.length === 0) {
-    console.log('No MDX files found in src/pages');
-    process.exit(1);
-  }
-  
-  console.log(`Found ${mdxFiles.length} MDX files`);
-  
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
-  
-  // Array to store all the generated links
-  const allLinks: string[] = [];
-  
-  for (const filePath of mdxFiles) {
+async function main() {
+  try {
+    const srcPagesPath = path.join(process.cwd(), '..', 'src', 'pages');
+    const outputDir = path.join(process.cwd(), '..', 'public', 'llms');
+    const allLinksPath = path.join(process.cwd(), '..', 'public', 'all-links-llms.txt');
+    
+    console.log(`Searching for MDX files in: ${srcPagesPath}`);
+    
+    const mdxFiles = findMdxFiles(srcPagesPath);
+    
+    if (mdxFiles.length === 0) {
+      console.log('No MDX files found in src/pages');
+      process.exit(1);
+    }
+    
+    console.log(`Found ${mdxFiles.length} MDX files`);
+    
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+    
+    // Array to store all the generated links
+    const allLinks: string[] = [];
+    
+    for (const filePath of mdxFiles) {
     try {
       console.log(`Processing: ${filePath}`);
       
       const mdxContent = readMdxFile(filePath);
       
       const mdContent = convertMdxToMd(mdxContent);
+      
+      // Extra step: Store the final MD output in informal_md variable
+      const informal_md = mdContent;
+      
+      // Process with AI to get overview
+      console.log(`Processing with AI: ${filePath}`);
+      const aiProcessedContent = await overviewByAI(informal_md);
       
       const relativePath = getRelativePath(filePath, srcPagesPath);
       const mdFileName = relativePath.replace(/\.mdx$/, '.md');
@@ -157,7 +166,7 @@ try {
       // Add the "all links" section to the end of each MD file
       const finalMdContent =
         originalHeader +
-        mdContent +
+        aiProcessedContent +
         '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
       
       // Write file with explicit UTF-8 encoding and BOM
@@ -189,10 +198,14 @@ try {
   fs.writeFileSync(allLinksPath, '\ufeff' + allLinksContent, { encoding: 'utf8' });
   console.log(`✅ All links saved to: ${allLinksPath}`);
   
-  console.log(`All files converted and saved to: ${outputDir}`);
-  console.log(`Total files processed: ${mdxFiles.length}`);
-  
-} catch (err) {
-  console.error('Error:', err);
-  process.exit(1);
+    console.log(`All files converted and saved to: ${outputDir}`);
+    console.log(`Total files processed: ${mdxFiles.length}`);
+    
+  } catch (err) {
+    console.error('Error:', err);
+    process.exit(1);
+  }
 }
+
+// Run the main function
+main();
