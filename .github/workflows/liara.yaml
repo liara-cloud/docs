@@ -6,6 +6,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      MY_BASE_URL: ${{ secrets.MY_BASE_URL }}
+      MY_API_KEY: ${{ secrets.MY_API_KEY }}
 
     steps:
       - uses: actions/checkout@v3
