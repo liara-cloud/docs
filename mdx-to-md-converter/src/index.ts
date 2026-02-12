@@ -18,6 +18,7 @@ import { convertStep } from './modules/convertStep';
 import { removeHrAndLayout } from './modules/removeHrAndLayout';
 import { removeIndentations } from './modules/removeIndentations';
 import { overviewByAI } from './modules/overviewByAI';
+import { loadHashCache, saveHashCache, hasFileChanged, updateFileHash } from './modules/hashCache';
 
 import fs from 'fs';
 import path from 'path';
@@ -125,21 +126,50 @@ async function main() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
     
-    // Array to store all the generated links
+    const hashCache = loadHashCache();
+    console.log('Loaded hash cache');
+    
     const allLinks: string[] = [];
+    
+    let processedCount = 0;
+    let skippedCount = 0;
     
     for (const filePath of mdxFiles) {
     try {
-      console.log(`Processing: ${filePath}`);
-      
       const mdxContent = readMdxFile(filePath);
+      
+      if (!hasFileChanged(filePath, mdxContent, hashCache)) {
+        console.log(`Skipped (unchanged): ${filePath}`);
+        skippedCount++;
+        
+        const relativePath = getRelativePath(filePath, srcPagesPath);
+        const mdFileName = relativePath.replace(/\.mdx$/, '.md');
+        const outputFilePath = path.join(outputDir, mdFileName);
+        
+        if (fs.existsSync(outputFilePath)) {
+          const existingContent = fs.readFileSync(outputFilePath, 'utf-8');
+          const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
+          const url = `https://docs.liara.ir/${urlPath}`;
+          
+          let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
+          const headingMatch = existingContent.match(/^#\s+(.+)$/m);
+          if (headingMatch) {
+            title = headingMatch[1].trim();
+          }
+          
+          allLinks.push(`- [${title}](${url})`);
+        }
+        
+        continue;
+      }
+      
+      console.log(`Processing (new/modified): ${filePath}`);
+      processedCount++;
       
       const mdContent = convertMdxToMd(mdxContent);
       
-      // Extra step: Store the final MD output in informal_md variable
       const informal_md = mdContent;
       
-      // Process with AI to get overview
       console.log(`Processing with AI: ${filePath}`);
       const aiProcessedContent = await overviewByAI(informal_md);
       
@@ -152,10 +182,6 @@ async function main() {
         fs.mkdirSync(outputFileDir, { recursive: true });
       }
       
-      // Build "original link" header (maps MD back to the human docs page)
-      // Example:
-      //   relativePath: "ai/google-gemini.mdx"
-      //   original URL: "https://docs.liara.ir/ai/google-gemini/"
       let originalPath = relativePath.replace(/\.mdx$/, '');
       if (originalPath.endsWith('/index')) {
         originalPath = originalPath.slice(0, -('/index'.length));
@@ -163,21 +189,19 @@ async function main() {
       const originalUrl = `https://docs.liara.ir/${originalPath}${originalPath.endsWith('/') ? '' : '/'}`;
       const originalHeader = `Original link: ${originalUrl}\n\n`;
 
-      // Add the "all links" section to the end of each MD file
       const finalMdContent =
         originalHeader +
         aiProcessedContent +
         '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
       
-      // Write file with explicit UTF-8 encoding and BOM
       fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
       console.log(`Saved: ${outputFilePath}`);
       
-      // Generate URL for all-links.txt (keep .md extension for static files)
+      updateFileHash(filePath, mdxContent, hashCache);
+      
       const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
       const url = `https://docs.liara.ir/${urlPath}`;
       
-      // Extract title from the first heading in the content or use filename
       let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
       const headingMatch = mdContent.match(/^#\s+(.+)$/m);
       if (headingMatch) {
@@ -191,15 +215,19 @@ async function main() {
     }
   }
   
-  // Generate all-links.txt content
-  const allLinksContent = `# All Links\n\n${allLinks.sort().join('\n')}\n`;
-  
-  // Write all-links.txt with explicit UTF-8 encoding and BOM
-  fs.writeFileSync(allLinksPath, '\ufeff' + allLinksContent, { encoding: 'utf8' });
-  console.log(`✅ All links saved to: ${allLinksPath}`);
-  
-    console.log(`All files converted and saved to: ${outputDir}`);
-    console.log(`Total files processed: ${mdxFiles.length}`);
+    saveHashCache(hashCache);
+    console.log('Saved hash cache');
+    
+    const allLinksContent = `# All Links\n\n${allLinks.sort().join('\n')}\n`;
+    
+    fs.writeFileSync(allLinksPath, '\ufeff' + allLinksContent, { encoding: 'utf8' });
+    console.log(`All links saved to: ${allLinksPath}`);
+    
+    console.log('\nSummary:');
+    console.log(`   Total files found: ${mdxFiles.length}`);
+    console.log(`   Processed (new/modified): ${processedCount}`);
+    console.log(`   Skipped (unchanged): ${skippedCount}`);
+    console.log(`   All files saved to: ${outputDir}`);
     
   } catch (err) {
     console.error('Error:', err);
@@ -207,5 +235,4 @@ async function main() {
   }
 }
 
-// Run the main function
 main();
