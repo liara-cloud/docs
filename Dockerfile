@@ -1,6 +1,12 @@
 # 1) Build
 FROM node:18-alpine AS builder
 
+ARG MY_BASE_URL
+ARG MY_API_KEY
+
+ENV MY_BASE_URL=$MY_BASE_URL
+ENV MY_API_KEY=$MY_API_KEY
+
 WORKDIR /app
 
 COPY package*.json /app/
