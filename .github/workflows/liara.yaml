@@ -6,10 +6,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      MY_BASE_URL: ${{ secrets.MY_BASE_URL }}
-      MY_API_KEY: ${{ secrets.MY_API_KEY }}
-
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -24,7 +20,7 @@ jobs:
           MY_API_KEY: ${{ secrets.MY_API_KEY }}
         run: |
           npm i -g @liara/cli@7
-          liara deploy --app="g2-the-docs" --api-token="$LIARA_TOKEN" --platform=docker --port=80 --no-app-logs
+          liara deploy --app="g2-the-docs" --api-token="$LIARA_TOKEN" --platform=docker --port=80 --no-app-logs --build-arg="MY_BASE_URL=$MY_BASE_URL" --build-arg="MY_API_KEY=$MY_API_KEY"
       - name: Sleep for 60 seconds
         run: sleep 60
         shell: bash
