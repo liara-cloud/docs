@@ -18,7 +18,7 @@ import { convertStep } from './modules/convertStep';
 import { removeHrAndLayout } from './modules/removeHrAndLayout';
 import { removeIndentations } from './modules/removeIndentations';
 import { overviewByAI } from './modules/overviewByAI';
-import { loadHashCache, saveHashCache, hasFileChanged, updateFileHash } from './modules/hashCache';
+import { loadHashCache, saveHashCache, hasFileChanged, updateFileHash, loadFailedCache, saveFailedCache, addToFailedCache, removeFromFailedCache } from './modules/hashCache';
 
 import fs from 'fs';
 import path from 'path';
@@ -128,20 +128,41 @@ async function main() {
     
     const hashCache = loadHashCache();
     console.log('Loaded hash cache');
+
+    const failedCache = loadFailedCache();
+    console.log(`Loaded failed cache with ${failedCache.length} files`);
     
     const allLinks: string[] = [];
     
     let processedCount = 0;
     let skippedCount = 0;
+    let failedCount = 0;
     
-    for (const filePath of mdxFiles) {
+    const filesToProcess = [...mdxFiles];
+    filesToProcess.sort((a, b) => {
+      const relativePathA = getRelativePath(a, srcPagesPath);
+      const displayPathA = `src/pages/${relativePathA}`;
+      const relativePathB = getRelativePath(b, srcPagesPath);
+      const displayPathB = `src/pages/${relativePathB}`;
+      
+      const isAFailed = failedCache.includes(displayPathA);
+      const isBFailed = failedCache.includes(displayPathB);
+      
+      if (isAFailed && !isBFailed) return -1;
+      if (!isAFailed && isBFailed) return 1;
+      return 0;
+    });
+
+    for (const filePath of filesToProcess) {
       const relativePath = getRelativePath(filePath, srcPagesPath);
       const displayPath = `src/pages/${relativePath}`;
       
     try {
       const mdxContent = readMdxFile(filePath);
       
-      if (!hasFileChanged(displayPath, mdxContent, hashCache)) {
+      const isFailed = failedCache.includes(displayPath);
+
+      if (!isFailed && !hasFileChanged(displayPath, mdxContent, hashCache)) {
         console.log(`Skipped (unchanged): ${displayPath}`);
         skippedCount++;
         const mdFileName = relativePath.replace(/\.mdx$/, '.md');
@@ -164,7 +185,11 @@ async function main() {
         continue;
       }
       
-      console.log(`Processing (new/modified): ${displayPath}`);
+      if (isFailed) {
+        console.log(`Retrying failed file: ${displayPath}`);
+      } else {
+        console.log(`Processing (new/modified): ${displayPath}`);
+      }
       processedCount++;
       
       const mdContent = convertMdxToMd(mdxContent);
@@ -198,6 +223,12 @@ async function main() {
       
       updateFileHash(displayPath, mdxContent, hashCache);
       
+      if (isFailed) {
+        removeFromFailedCache(displayPath, failedCache);
+        saveFailedCache(failedCache);
+        console.log(`Removed from failed cache: ${displayPath}`);
+      }
+
       saveHashCache(hashCache);
       console.log(`Hash cache updated`);
       
@@ -214,6 +245,9 @@ async function main() {
       
     } catch (fileError) {
       console.error(`Error processing ${displayPath}:`, fileError);
+      addToFailedCache(displayPath, failedCache);
+      saveFailedCache(failedCache);
+      failedCount++;
     }
   }
   
@@ -227,8 +261,9 @@ async function main() {
     
     console.log('\nSummary:');
     console.log(`   Total files found: ${mdxFiles.length}`);
-    console.log(`   Processed (new/modified): ${processedCount}`);
+    console.log(`   Processed (new/modified/retried): ${processedCount}`);
     console.log(`   Skipped (unchanged): ${skippedCount}`);
+    console.log(`   Failed: ${failedCount}`);
     console.log(`   All files saved to: ${outputDir}`);
     
   } catch (err) {

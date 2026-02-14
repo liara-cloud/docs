@@ -3,8 +3,9 @@ import fs from 'fs';
 import path from 'path';
 
 const CACHE_FILE = path.join(process.cwd(), '.hash-cache.json');
+const FAILED_CACHE_FILE = path.join(process.cwd(), '.failed-cache.json');
 
-interface HashCache {
+export interface HashCache {
   [filePath: string]: string;
 }
 
@@ -69,4 +70,37 @@ export function hasFileChanged(filePath: string, content: string, cache: HashCac
 
 export function updateFileHash(filePath: string, content: string, cache: HashCache): void {
   cache[filePath] = generateHash(content);
+}
+
+export function loadFailedCache(): string[] {
+  try {
+    if (fs.existsSync(FAILED_CACHE_FILE)) {
+      const data = fs.readFileSync(FAILED_CACHE_FILE, 'utf-8');
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.warn('Failed to load failed cache:', error);
+  }
+  return [];
+}
+
+export function saveFailedCache(failedFiles: string[]): void {
+  try {
+    fs.writeFileSync(FAILED_CACHE_FILE, JSON.stringify(failedFiles, null, 2), 'utf-8');
+  } catch (error) {
+    console.error('Failed to save failed cache:', error);
+  }
+}
+
+export function addToFailedCache(filePath: string, failedFiles: string[]): void {
+  if (!failedFiles.includes(filePath)) {
+    failedFiles.push(filePath);
+  }
+}
+
+export function removeFromFailedCache(filePath: string, failedFiles: string[]): void {
+  const index = failedFiles.indexOf(filePath);
+  if (index !== -1) {
+    failedFiles.splice(index, 1);
+  }
 }
