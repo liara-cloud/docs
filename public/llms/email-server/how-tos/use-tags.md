@@ -1,0 +1,132 @@
+﻿Original link: https://docs.liara.ir/email-server/how-tos/use-tags/
+
+# استفاده از قابلیت tag در ایمیل‌سرور
+
+قابلیت tag  
+یا برچسب در یک ایمیل سرور به کاربران اجازه می‌دهد تا ایمیل‌های دریافتی و ارسالی خود را به صورت سازمان‌یافته‌تر مدیریت کنند. tagها معمولاً برچسب‌های دلخواهی هستند که می‌توانید به یک ایمیل اختصاص دهید تا آن را در دسته‌های خاصی قرار دهید.  
+این قابلیت مشابه سیستم برچسب‌گذاری (Labeling) در برنامه‌هایی مانند Gmail است.
+
+قابلیت tag در ایمیل سرور به شما کمک می‌کند تا ایمیل‌ها را به صورت سازمان‌یافته‌تر دسته‌بندی کنید، جستجوی سریع‌تری داشته باشید و ایمیل‌های مرتبط با موضوعات یا پروژه‌های خاص را به راحتی مدیریت کنید. این قابلیت باعث افزایش بهره‌وری و سهولت در مدیریت ایمیل‌ها می‌شود.  
+در ادامه مستندات مربوط به استفاده از تگ‌ها در ایمیل‌سرور لیارا، برای شما قرار گرفته است.  
+
+## استفاده از تگ‌ها در کنسول
+برای استفاده از این قابلیت در بخش [ارسال ایمیل](https://docs.liara.ir/email-server/how-tos/send-email-via-console) کنسول لیارا، تنها کافیست تا در فیلدی  
+به نام **تگ**، نام تگ دلخواه خود را، بنویسید:  
+
+![send_mail_with_tags](https://media.liara.ir/docs/send_mail_with_tags.png)
+
+## استفاده از تگ‌ها در کد
+در صورتی که برای ارسال ایمیل از [پلتفرم خاصی](https://docs.liara.ir/email-server/how-tos/connect-via-platform/about) استفاده می‌کنید و قصد دارید که ایمیل‌های ارسالی  
+با تگ مشخص شوند؛ کافیست تا در تنظیمات مربوط به `headers`، مقدار `x-liara-tag` را مانند قطعه کدهای زیر، به برنامه خود، اضافه کنید:
+
+## NodeJS
+
+```js
+const mailOptions = {
+    from: `"my app" <${process.env.MAIL_FROM}>`, // Sender address
+    to: 'test@example.com', // List of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from Node.js', // Plain text body
+    html: '<b>This is a test email sent from Node.js</b>', // HTML body
+    headers: {
+      "x-liara-tag": "test_email", // Tags 
+    },
+};
+```
+
+## NextJS
+
+```js
+// Email options
+  const mailOptions = {
+    from: `"My App" <${process.env.MAIL_FROM}>`, // sender address
+    to: 'test@example.com', // list of receivers
+    subject: 'Test Email', // Subject line
+    text: 'This is a test email sent from a Next.js API route!', // plain text body
+    html: '<b>This is a test email sent from a Next.js API route!</b>', // html body
+    headers: {
+        "x-liara-tag": "test_email", // Tags 
+      },
+  };
+```
+
+## Laravel
+
+```laravel
+public function headers(): Headers
+    {
+        return new Headers(
+            text: [
+                'x-liara-tag' => 'test_email',
+            ],
+        );
+    }
+```
+
+## PHP
+
+```php
+// Content
+$mail->isHTML(true);                                  // Set email format to HTML
+$mail->Subject = 'Test Email';
+$mail->Body    = 'This is a test email sent using PHPMailer and SMTP.';
+$mail->AltBody = 'This is the plain text version of the email content.';
+$mail->addCustomHeader('x-liara-tag', 'test-tag'); // use Liara Tags
+
+```
+
+## Django
+
+```py
+email = EmailMessage(
+        subject,
+        message,
+        settings.EMAIL_FROM_ADDRESS,
+        recipient_list,
+        headers={"x-liara-tag": "test-tag"} # using liara tag feature,
+    )
+```
+
+## Flask
+
+```flask
+# Create a message
+msg = Message(subject='Test Email from Flask',
+      recipients=['recipient@example.com'],  # Replace with the recipient's email address
+      body='This is a test email sent from Flask using SMTP on Liara.',
+      extra_headers = {"x-liara-tag": "test_tag"}) # Use liara tag feature
+
+```
+
+## .NET
+
+```dotnet
+// Create the email message
+        var mailMessage = new MailMessage(fromAddress, toAddress)
+        {
+            Subject = "Test Email",
+            Body = "<h2>This is a test email sent from a .NET Core application using SMTP<h2>",
+            IsBodyHtml = true
+        };
+
+        // Add custom headers
+        mailMessage.Headers.Add("x-liara-tag", "test-tag");
+```
+
+## go
+
+```go
+// Create a new email message
+    m := gomail.NewMessage()
+    m.SetHeader("From", mailFrom)
+    m.SetHeader("To", "recipient@example.com") // Set recipient email here
+    m.SetHeader("Subject", "Test Email from Go with HTML")
+    m.SetHeader("x-liara-tag", "test-tag") // Custom header for tagging
+
+```
+
+> در یک سرور ایمیل، می‌توانید به تعداد ۱۰ تگ غیرتکراری، ایجاد نمایید و هر تگ می‌تواند بین ۲ الی ۵۰ کاراکتر باشد.
+
+## all links
+
+[All links of docs](https://docs.liara.ir/all-links-llms.txt)

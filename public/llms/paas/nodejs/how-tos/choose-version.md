@@ -1,0 +1,49 @@
+﻿Original link: https://docs.liara.ir/paas/nodejs/how-tos/choose-version/
+
+# انتخاب نسخه NodeJS در لیارا
+
+در حال حاضر در لیارا، نسخه‌های زیر از  NodeJS ارائه می‌شوند: 
+
+- نسخه 8
+- نسخه 10
+- نسخه 12
+- نسخه 14
+- نسخه 16
+- نسخه 18
+- نسخه 20
+- نسخه 22 (پیش‌فرض)
+
+## تغییر نسخه پیش‌فرض
+
+## Liara Console
+
+پس از بارگذاری پروژه خود در لیارا، کافیست تا در مرحله انتخاب نسخه، نسخه مورد نظر برنامه‌تان را انتخاب کنید.  
+![how to choose nodejs version in liara console](https://media.liara.ir/docs/choose-nodejs-version.png)
+
+## Liara CLI
+
+برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام `liara.json` در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NodeJS به 18 می‌باشد:
+
+```json
+{
+    "node": {
+    "version": "18"
+  }
+}
+```
+
+## Github
+
+برای تغییر نسخه پیش‌فرض، کافیست تا یک فایل به نام `liara.json` در مسیر اصلی پروژه، ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید. قطعه کد زیر برای تغییر نسخه NodeJS به 18 می‌باشد:
+
+```json
+{
+    "node": {
+    "version": "18"
+  }
+}
+```
+
+## all links
+
+[All links of docs](https://docs.liara.ir/all-links-llms.txt)

@@ -135,14 +135,15 @@ async function main() {
     let skippedCount = 0;
     
     for (const filePath of mdxFiles) {
+      const relativePath = getRelativePath(filePath, srcPagesPath);
+      const displayPath = `src/pages/${relativePath}`;
+      
     try {
       const mdxContent = readMdxFile(filePath);
       
-      if (!hasFileChanged(filePath, mdxContent, hashCache)) {
-        console.log(`Skipped (unchanged): ${filePath}`);
+      if (!hasFileChanged(displayPath, mdxContent, hashCache)) {
+        console.log(`Skipped (unchanged): ${displayPath}`);
         skippedCount++;
-        
-        const relativePath = getRelativePath(filePath, srcPagesPath);
         const mdFileName = relativePath.replace(/\.mdx$/, '.md');
         const outputFilePath = path.join(outputDir, mdFileName);
         
@@ -163,17 +164,15 @@ async function main() {
         continue;
       }
       
-      console.log(`Processing (new/modified): ${filePath}`);
+      console.log(`Processing (new/modified): ${displayPath}`);
       processedCount++;
       
       const mdContent = convertMdxToMd(mdxContent);
       
-      const informal_md = mdContent;
+      console.log(`Processing with AI: ${displayPath}`);
+      const aiProcessedContent = await overviewByAI(mdContent);
       
-      console.log(`Processing with AI: ${filePath}`);
-      const aiProcessedContent = await overviewByAI(informal_md);
-      
-      const relativePath = getRelativePath(filePath, srcPagesPath);
+      const informal_md = aiProcessedContent;
       const mdFileName = relativePath.replace(/\.mdx$/, '.md');
       const outputFilePath = path.join(outputDir, mdFileName);
       
@@ -191,13 +190,16 @@ async function main() {
 
       const finalMdContent =
         originalHeader +
-        aiProcessedContent +
+        informal_md +
         '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
       
       fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
       console.log(`Saved: ${outputFilePath}`);
       
-      updateFileHash(filePath, mdxContent, hashCache);
+      updateFileHash(displayPath, mdxContent, hashCache);
+      
+      saveHashCache(hashCache);
+      console.log(`Hash cache updated`);
       
       const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
       const url = `https://docs.liara.ir/${urlPath}`;
@@ -211,7 +213,7 @@ async function main() {
       allLinks.push(`- [${title}](${url})`);
       
     } catch (fileError) {
-      console.error(`Error processing ${filePath}:`, fileError);
+      console.error(`Error processing ${displayPath}:`, fileError);
     }
   }
   

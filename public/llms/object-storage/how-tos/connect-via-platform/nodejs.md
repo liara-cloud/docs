@@ -1,0 +1,291 @@
+﻿Original link: https://docs.liara.ir/object-storage/how-tos/connect-via-platform/nodejs/
+
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های NodeJS
+
+[Video link](https://media.liara.ir/nodejs/nodejs-object-storage.mp4)
+
+> پروژه و کدهای مورد استفاده در ویدیوی فوق در [https://github.com/liara-cloud/nodejs-getting-started/tree/object-storage](https://github.com/liara-cloud/nodejs-getting-started/tree/object-storage) قابل مشاهده و دسترسی هستند.
+
+برای استفاده از Object Storage در برنامه‌های NodeJS، می‌توانید از  
+پکیج `aws-sdk/client-s3` استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
+
+```bash
+npm install @aws-sdk/client-s3
+```
+
+پس از آن، کافیست تا طبق [https://docs.liara.ir/object-storage/how-tos/create-key](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.  
+اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**،  
+برای شما قرار گرفته است.  
+در نهایت نیز، بایستی  
+اطلاعات مربوط به Object Storage خود را  
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+```bash
+LIARA_ENDPOINT=https://<Liara Bucket Endpoint>
+LIARA_BUCKET_NAME=<Bucket Name>
+LIARA_ACCESS_KEY=<Access Key>
+LIARA_SECRET_KEY=<Secret Key>
+```
+
+تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛  
+در ادامه، مثال‌هایی از این مورد برای‌تان آورده شده است:  
+
+## نمونه کد آپلود فایل
+
+```js
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+
+const params = {
+	Body: "<Binary String>",
+	Bucket: process.env.LIARA_BUCKET_NAME,
+	Key: "objectkey",
+};
+
+// async/await
+try {
+  await client.send(new PutObjectCommand(params));
+} catch (error) {
+	console.log(error);
+}
+
+// callback
+client.send(new PutObjectCommand(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data);
+  }
+});
+```
+
+## نمونه کد دانلود فایل
+
+```js
+const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+const params = {
+  Bucket: process.env(LIARA_BUCKET_NAME),
+  Key: "objectkey"
+};
+
+// async/await
+try {
+  const data = await client.send(new GetObjectCommand(params));
+  console.log(data.Body.toString());
+} catch (error) {
+  console.log(error);
+}
+
+// callback
+client.send(new GetObjectCommand(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log(data.Body.toString());
+  }
+});
+```
+
+## نمونه کد دریافت لینک دانلود فایل
+
+```js
+const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+require("dotenv").config();
+
+const filename = "example_filename.png"; // change this to your filename
+
+const client = new S3Client({
+  region: "default",
+  endpoint: process.env.LIARA_ENDPOINT,
+  credentials: {
+    accessKeyId: process.env.LIARA_ACCESS_KEY,
+    secretAccessKey: process.env.LIARA_SECRET_KEY,
+  },
+});
+const params = {
+  Bucket: process.env.LIARA_BUCKET_NAME,
+  Key: filename,
+};
+
+const command = new GetObjectCommand(params);
+getSignedUrl(client, command).then((url) => console.log(url));
+```
+
+## نمونه کد دریافت لیست فایل‌های موجود در باکت
+
+```js
+const { S3Client, ListObjectsV2Command } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+
+const params = {
+  Bucket: process.env.LIARA_BUCKET_NAME
+};
+
+// async/await
+try {
+  const data = await client.send(new ListObjectsV2Command(params));
+  const files = data.Contents.map((file) => file.Key);
+  console.log(files);
+} catch (error) {
+  console.log(error);
+}
+
+// callback
+client.send(new ListObjectsV2Command(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    const files = data.Contents.map((file) => file.Key);
+    console.log(files);
+  }
+});
+```
+
+## نمونه کد حذف فایل
+
+```js
+const { S3Client, DeleteObjectCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+    region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY
+	},
+});
+
+const params = {
+  Bucket: process.env.LIARA_BUCKET_NAME,
+  Key: "objectkey"
+};
+
+// async/await
+try {
+  await client.send(new DeleteObjectCommand(params));
+  console.log("File deleted successfully");
+} catch (error) {
+  console.log(error);
+}
+
+// callback
+client.send(new DeleteObjectCommand(params), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("File deleted successfully");
+  }
+});
+```
+
+## نمونه کد نمایش لیست باکت‌ها
+
+```js
+const { S3Client, ListBucketsCommand } = require("@aws-sdk/client-s3");
+require("dotenv").config();
+
+const client = new S3Client({
+	region: "default",
+	endpoint: process.env.LIARA_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.LIARA_ACCESS_KEY,
+		secretAccessKey: process.env.LIARA_SECRET_KEY,
+	},
+});
+
+
+client.send(new ListBucketsCommand({}), (error, data) => {
+  if (error) {
+    console.log(error);
+  } else {
+    const buckets = data.Buckets.map((bucket) => bucket.Name);
+    console.log(buckets); // List of bucket names
+  }
+});
+```
+
+## نمونه کد آپلود فایل از طریق multer
+
+```js
+import AWS from 'aws-sdk';
+import multer from 'multer';
+import express from 'express';
+import multerS3 from 'multer-s3';
+
+const config = {
+  endpoint: process.env(LIARA_ENDPOINT),
+  accessKeyId: process.env(LIARA_ACCESS_KEY),
+  secretAccessKey: process.env(LIARA_SECRET_KEY),
+  region: "default",
+};
+
+const app = express();
+const s3 = new AWS.S3(config);
+
+const upload = multer({
+  storage: multerS3({
+    s3,
+    bucket: process.env(LIARA_BUCKET_NAME),
+    key: function (req, file, cb) {
+      console.log(file);
+      cb(null, file.originalname);
+    },
+  }),
+});
+
+
+// route
+app.post('/upload', upload.single('objectKey'), function (req, res) {
+  console.log(req.file);
+
+  return res.send({
+    status: 'success',
+    message: 'file uploaded!',
+    url: {
+      size: req.file.size,
+      url: req.file.location,
+      name: req.file.key,
+      type: req.file.mimetype,
+    },
+  });
+});
+
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});
+```
+
+## all links
+
+[All links of docs](https://docs.liara.ir/all-links-llms.txt)

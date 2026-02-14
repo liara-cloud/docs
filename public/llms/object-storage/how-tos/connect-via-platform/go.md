@@ -1,0 +1,660 @@
+﻿Original link: https://docs.liara.ir/object-storage/how-tos/connect-via-platform/go/
+
+# اتصال به فضای ذخیره‌سازی ابری در برنامه‌های go
+
+[Video link](https://media.liara.ir/go/object-storage.mp4)
+
+> پروژه و کدهای مورد استفاده در ویدیوی فوق در [اینجا](https://github.com/liara-cloud/go-getting-started/tree/object-storage) قابل مشاهده و دسترسی هستند.
+
+برای استفاده از Object Storage در برنامه‌های go، بایستی پکیج‌های مورد نیاز را با اجرای دستورات زیر، نصب کنید:
+
+```bash
+go get github.com/aws/aws-sdk-go-v2/aws
+go get github.com/aws/aws-sdk-go-v2/config
+go get github.com/aws/aws-sdk-go-v2/credentials
+go get github.com/aws/aws-sdk-go-v2/service/s3
+go get github.com/joho/godotenv
+```
+
+پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.
+اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
+برای شما قرار گرفته است.
+در نهایت نیز، بایستی 
+اطلاعات مربوط به Object Storage خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
+```bash
+LIARA_ACCESS_KEY=saeatk19sndmg66e
+LIARA_SECRET_KEY=a47e00f4-5036-4f55-b68a-aabb4a375a03
+LIARA_BUCKET_NAME=some-bucket-name
+LIARA_ENDPOINT=https://storage.iran.liara.space
+```
+
+تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
+در ادامه، مثال‌هایی از نحوه استفاده از Object Storage در برنامه‌های go برای شما قرار گرفته است.
+
+## پیکربندی اولیه، ساخت نشست و کلاینت S3
+
+```go
+// config/s3config.go
+package config
+
+import (
+	"context"
+	"log"
+	"os"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/credentials"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/joho/godotenv"
+)
+
+type S3Config struct {
+	Client   *s3.Client
+	Bucket   string
+	Endpoint string
+}
+
+func LoadS3Config() (*S3Config, error) {
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Warning: .env file not found, using environment variables")
+	}
+
+	endpoint := os.Getenv("LIARA_ENDPOINT")
+	bucket := os.Getenv("LIARA_BUCKET_NAME")
+	accessKey := os.Getenv("LIARA_ACCESS_KEY")
+	secretKey := os.Getenv("LIARA_SECRET_KEY")
+
+	if endpoint == "" || bucket == "" || accessKey == "" || secretKey == "" {
+		log.Fatal("Missing required environment variables")
+	}
+
+	cfg, err := config.LoadDefaultConfig(context.TODO(),
+		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(
+			accessKey,
+			secretKey,
+			"",
+		)),
+		config.WithRegion("us-east-1"),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	client := s3.NewFromConfig(cfg, func(o *s3.Options) {
+		o.BaseEndpoint = aws.String(endpoint)
+		o.UsePathStyle = true
+	})
+
+	return &S3Config{
+		Client:   client,
+		Bucket:   bucket,
+		Endpoint: endpoint,
+	}, nil
+}
+```
+
+## آپلود کردن فایل
+
+```go
+// handlers/upload.go
+package handlers
+
+import (
+	"context"
+	"fmt"
+	"io"
+	"net/http"
+	"path/filepath"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+)
+
+func UploadFile(client *s3.Client, bucket string, file io.Reader, filename string) error {
+	_, err := client.PutObject(context.TODO(), &s3.PutObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(filename),
+		Body:   file,
+	})
+	return err
+}
+
+func UploadHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+
+		err := r.ParseMultipartForm(32 << 20)
+		if err != nil {
+			http.Error(w, "Error parsing form: "+err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		file, header, err := r.FormFile("file")
+		if err != nil {
+			http.Error(w, "Error retrieving file: "+err.Error(), http.StatusBadRequest)
+			return
+		}
+		defer file.Close()
+
+		filename := filepath.Base(header.Filename)
+
+		err = UploadFile(client, bucket, file, filename)
+		if err != nil {
+			http.Error(w, "Error uploading file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, "File uploaded successfully: %s", filename)
+	}
+}
+```
+
+## دریافت لینک دائمی یا موقت
+
+```go
+// handlers/links.go
+package handlers
+
+import (
+	"context"
+	"fmt"
+	"net/http"
+	"time"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+)
+
+func GetPermanentLink(endpoint, bucket, key string) string {
+	return fmt.Sprintf("%s/%s/%s", endpoint, bucket, key)
+}
+
+func GetTemporaryLink(client *s3.Client, bucket, key string, duration time.Duration) (string, error) {
+	presignClient := s3.NewPresignClient(client)
+
+	presignedReq, err := presignClient.PresignGetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	}, func(opts *s3.PresignOptions) {
+		opts.Expires = duration
+	})
+
+	if err != nil {
+		return "", err
+	}
+
+	return presignedReq.URL, nil
+}
+
+func PermanentLinkHandler(endpoint, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		link := GetPermanentLink(endpoint, bucket, key)
+		w.Header().Set("Content-Type", "text/plain")
+		fmt.Fprint(w, link)
+	}
+}
+
+func TemporaryLinkHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		duration := 1 * time.Hour
+		if durationParam := r.URL.Query().Get("duration"); durationParam != "" {
+			parsedDuration, err := time.ParseDuration(durationParam)
+			if err == nil {
+				duration = parsedDuration
+			}
+		}
+
+		link, err := GetTemporaryLink(client, bucket, key, duration)
+		if err != nil {
+			http.Error(w, "Error generating link: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "text/plain")
+		fmt.Fprint(w, link)
+	}
+}
+```
+
+## دانلود فایل
+
+```go
+// handlers/download.go
+package handlers
+
+import (
+	"context"
+	"fmt"
+	"io"
+	"net/http"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+)
+
+func DownloadFile(client *s3.Client, bucket, key string) (io.ReadCloser, error) {
+	result, err := client.GetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return result.Body, nil
+}
+
+func DownloadHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		body, err := DownloadFile(client, bucket, key)
+		if err != nil {
+			http.Error(w, "Error downloading file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+		defer body.Close()
+
+		w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s\"", key))
+		w.Header().Set("Content-Type", "application/octet-stream")
+
+		_, err = io.Copy(w, body)
+		if err != nil {
+			http.Error(w, "Error streaming file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+}
+```
+
+## حذف فایل
+
+```go
+// handlers/delete.go
+package handlers
+
+import (
+	"context"
+	"fmt"
+	"net/http"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+)
+
+func DeleteFile(client *s3.Client, bucket, key string) error {
+	_, err := client.DeleteObject(context.TODO(), &s3.DeleteObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	})
+	return err
+}
+
+func DeleteHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodDelete && r.Method != http.MethodPost {
+			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+			return
+		}
+
+		key := r.URL.Query().Get("key")
+		if key == "" {
+			http.Error(w, "Missing 'key' parameter", http.StatusBadRequest)
+			return
+		}
+
+		err := DeleteFile(client, bucket, key)
+		if err != nil {
+			http.Error(w, "Error deleting file: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, "File deleted successfully: %s", key)
+	}
+}
+```
+
+## لیست‌کردن فایل‌ها
+
+```go
+// handlers/list.go
+package handlers
+
+import (
+	"context"
+	"encoding/json"
+	"net/http"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/aws/aws-sdk-go-v2/service/s3/types"
+)
+
+type FileInfo struct {
+	Key          string `json:"key"`
+	Size         int64  `json:"size"`
+	LastModified string `json:"lastModified"`
+}
+
+func ListFiles(client *s3.Client, bucket string) ([]FileInfo, error) {
+	resp, err := client.ListObjectsV2(context.TODO(), &s3.ListObjectsV2Input{
+		Bucket: aws.String(bucket),
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	files := make([]FileInfo, 0, len(resp.Contents))
+	for _, obj := range resp.Contents {
+		files = append(files, FileInfo{
+			Key:          aws.ToString(obj.Key),
+			Size:         aws.ToInt64(obj.Size),
+			LastModified: obj.LastModified.String(),
+		})
+	}
+
+	return files, nil
+}
+
+func ListHandler(client *s3.Client, bucket string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		files, err := ListFiles(client, bucket)
+		if err != nil {
+			http.Error(w, "Error listing files: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(files)
+	}
+}
+
+func ListObjectsV2(client *s3.Client, bucket string) ([]types.Object, error) {
+	resp, err := client.ListObjectsV2(context.TODO(), &s3.ListObjectsV2Input{
+		Bucket: aws.String(bucket),
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return resp.Contents, nil
+}
+```
+
+## تجمیع قابلیت‌ها
+
+برای استفاده از تمامی کدهای ذکر شده، یک فایل به اسم `main.go` ایجاد کنید و کد زیر را در آن قرار دهید:
+
+```go
+// main.go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+
+	"example.com/config"
+	"example.com/handlers"
+)
+
+func main() {
+
+	s3Config, err := config.LoadS3Config()
+	if err != nil {
+		log.Fatal("Error loading S3 config:", err)
+	}
+
+	fmt.Println("S3 Object Storage Manager")
+	fmt.Println("Bucket:", s3Config.Bucket)
+	fmt.Println("Endpoint:", s3Config.Endpoint)
+
+	http.Handle("/style.css", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "templates/style.css")
+	}))
+	http.Handle("/script.js", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "templates/script.js")
+	}))
+
+	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/upload", handlers.UploadHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/download", handlers.DownloadHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/delete", handlers.DeleteHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/list", handlers.ListHandler(s3Config.Client, s3Config.Bucket))
+	http.HandleFunc("/link/permanent", handlers.PermanentLinkHandler(s3Config.Endpoint, s3Config.Bucket))
+	http.HandleFunc("/link/temporary", handlers.TemporaryLinkHandler(s3Config.Client, s3Config.Bucket))
+
+	port := ":8080"
+	fmt.Printf("\nServer starting on http://localhost%s\n", port)
+	log.Fatal(http.ListenAndServe(port, nil))
+}
+
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "templates/index.html")
+}
+```
+
+در ادامه، یک فایل با مسیر `templates/index.html` ایجاد کنید و کدهای زیر را در آن قرار دهید:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="container">
+        <header>
+            <h1>S3 Object Storage Manager</h1>
+            Upload, Download, and Manage Your Files
+        </header>
+
+        <div class="content">
+            <div id="message" class="message"></div>
+
+            <!-- Upload Section -->
+            <div class="section">
+                ## Upload File
+                <form id="uploadForm">
+                    <div class="upload-section">
+                        <div class="form-group">
+                            <label for="fileInput">Select File:</label>
+                            <input type="file" id="fileInput" name="file" required>
+                        </div>
+                        <button type="submit">Upload</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- File List Section -->
+            <div class="section">
+                ## Files in Storage
+                <button onclick="loadFiles()">Refresh List</button>
+                <div id="fileList">
+                    <div class="loading">Loading files...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show message
+        function showMessage(text, type = 'success') {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = `message ${type} show`;
+            setTimeout(() => {
+                messageEl.classList.remove('show');
+            }, 5000);
+        }
+
+        // Upload file
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const text = await response.text();
+                if (response.ok) {
+                    showMessage(text, 'success');
+                    e.target.reset();
+                    loadFiles();
+                } else {
+                    showMessage(text, 'error');
+                }
+            } catch (error) {
+                showMessage('Error uploading file: ' + error.message, 'error');
+            }
+        });
+
+        // Load files
+        async function loadFiles() {
+            const fileListEl = document.getElementById('fileList');
+            fileListEl.innerHTML = '<div class="loading">Loading files...</div>';
+            
+            try {
+                const response = await fetch('/list');
+                const files = await response.json();
+                
+                if (files.length === 0) {
+                    fileListEl.innerHTML = 'No files found';
+                    return;
+                }
+                
+                fileListEl.innerHTML = files.map(file => `
+                    <div class="file-item">
+                        <div class="file-info">
+                            <div class="file-name">${file.key}</div>
+                            <div class="file-meta">
+                                Size: ${formatBytes(file.size)} | 
+                                Modified: ${new Date(file.lastModified).toLocaleString()}
+                            </div>
+                        </div>
+                        <div class="file-actions">
+                            <button onclick="getPermanentLink('${file.key}')" class="btn-link">Permanent Link</button>
+                            <button onclick="getTempLink('${file.key}')" class="btn-link">Temp Link (1h)</button>
+                            <button onclick="downloadFile('${file.key}')" class="btn-download">Download</button>
+                            <button onclick="deleteFile('${file.key}')" class="btn-delete">Delete</button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                fileListEl.innerHTML = 'Error loading files';
+                showMessage('Error loading files: ' + error.message, 'error');
+            }
+        }
+
+        // Get permanent link
+        async function getPermanentLink(key) {
+            try {
+                const response = await fetch(`/link/permanent?key=${encodeURIComponent(key)}`);
+                const link = await response.text();
+                
+                if (response.ok) {
+                    navigator.clipboard.writeText(link);
+                    showMessage('Permanent Link: ' + link, 'success');
+                } else {
+                    showMessage(link, 'error');
+                }
+            } catch (error) {
+                showMessage('Error getting link: ' + error.message, 'error');
+            }
+        }
+
+        // Get temporary link (1 hour)
+        async function getTempLink(key) {
+            try {
+                const response = await fetch(`/link/temporary?key=${encodeURIComponent(key)}&duration=1h`);
+                const link = await response.text();
+                
+                if (response.ok) {
+                    navigator.clipboard.writeText(link);
+                    showMessage('Temporary Link (1 hour): ' + link, 'success');
+                } else {
+                    showMessage(link, 'error');
+                }
+            } catch (error) {
+                showMessage('Error getting link: ' + error.message, 'error');
+            }
+        }
+
+        // Download file
+        function downloadFile(key) {
+            window.location.href = `/download?key=${encodeURIComponent(key)}`;
+        }
+
+        // Delete file
+        async function deleteFile(key) {
+            if (!confirm(`Are you sure you want to delete "${key}"?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/delete?key=${encodeURIComponent(key)}`, {
+                    method: 'POST'
+                });
+                
+                const text = await response.text();
+                if (response.ok) {
+                    showMessage(text, 'success');
+                    loadFiles();
+                } else {
+                    showMessage(text, 'error');
+                }
+            } catch (error) {
+                showMessage('Error deleting file: ' + error.message, 'error');
+            }
+        }
+
+        // Format bytes
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Load files on page load
+        loadFiles();
+    </script>
+</body>
+</html>
+```
+
+تمامی کارها انجام شده است و می‌توانید با اجرای دستور زیر، برنامه خود را اجرا کنید:
+
+```bash
+go run main.go
+```
+
+## all links
+
+[All links of docs](https://docs.liara.ir/all-links-llms.txt)

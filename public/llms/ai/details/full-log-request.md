@@ -1,0 +1,162 @@
+﻿Original link: https://docs.liara.ir/ai/details/full-log-request/
+
+# ارسال درخواست برای لاگ‌ کامل
+
+هر درخواستی که به سرویس هوش مصنوعی خود در لیارا ارسال می‌کنید، لاگ خروجی آن درخواست، شامل یک ID خواهد بود.  
+به عنوان مثال، فرض کنید که با استفاده از [cURL](https://liara.ir/blog/curl-%DA%86%DB%8C%D8%B3%D8%AA%D8%9F-%D9%86%D8%AD%D9%88%D9%87-%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%AF-%D9%81%D8%A7%DB%8C%D9%84-%D8%A8%D8%A7-curl-%D8%AF%D8%B1-%D9%84%DB%8C%D9%86%D9%88%DA%A9%D8%B3/) درخواست زیر را ارسال کرده‌اید:  
+
+```bash
+curl https://ai.liara.ir/api/682b7ab82bd70203933013ae/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer $LIARA_API_KEY" \\
+  -d '{
+  "model": "openai/gpt-4o-mini",
+  "messages": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Hello!"}
+  ]
+}'
+```
+
+خروجی دستور فوق، مشابه زیر خواهد بود:  
+
+```json
+{
+  "id": "6922b3240bbead6ac2126c0a",
+  "model": "openai/gpt-4o-mini",
+  "object": "chat.completion",
+  "created": 1763881763,
+  "choices": [
+    {
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hello! How can I assist you today?",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "total_cost_toman": 0.9888243750000001,
+    "prompt_tokens": 19,
+    "completion_tokens": 9,
+    "total_tokens": 28,
+    "cost": 0.00000825,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": null,
+      "upstream_inference_prompt_cost": 0.00000285,
+      "upstream_inference_completions_cost": 0.0000054
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0
+    }
+  }
+}
+```
+
+در قطعه کد فوق، مقدار فیلد `id` برابر با `6922b3240bbead6ac2126c0a` می‌باشد.  
+
+## مشاهده جزئیات کامل یک درخواست
+
+شما می‌توانید مانند دستور زیر، با استفاده از ID پاسخ درخواست و [آیدی سرویس هوش مصنوعی خود](https://docs.liara.ir/ai/details/id/)، جزئیات کامل درخواست خود را مشاهده بفرمایید:  
+
+```js
+https://ai.liara.ir/v1/workspaces/<workspaceID>/logs/<logID>
+```
+
+در قطعه کد فوق، به جای `&lt;workspaceID&gt;`، آیدی سرویس هوش مصنوعی خود و به جای `&lt;logID&gt;`، آیدی درخواست ارسال شده خود را قرار دهید.  
+
+با فرض مقدار `682b7ab82bd70203933013ae` برای `&lt;workspaceID&gt;`، لینک کامل برابر با زیر خواهد بود:
+
+```js
+https://ai.liara.ir/v1/workspaces/682b7ab82bd70203933013ae/logs/6922b3240bbead6ac2126c0a
+```
+
+اکنون با داشتن لینک فوق، تنها کافیست تا یک درخواست GET ارسال کنید تا جزئیات کامل خروجی درخواست ارسالی خود را، ببینید:  
+
+```bash
+curl -s -X GET "https://ai.liara.ir/v1/workspaces/\${WORKSPACE_ID}/logs/\${LOG_ID}" \\
+  -H "Authorization: Bearer \${API_KEY}" \\
+  -H "Content-Type: application/json"
+```
+
+بدیهی است که بایستی مقادیر متغیرهای فوق را تعریف یا جای‌گذاری کنید.  
+برای راحتی کار، می‌توانید یک bash script با نام `get_ai_log.sh` ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:  
+
+```bash
+#!/bin/bash
+
+WORKSPACE_ID="xxxxxxxxxx" 
+LOG_ID="xxxxxxxxxx"
+API_KEY="xxxxxxxxxx"
+
+response=$(curl -s -X GET "https://ai.liara.ir/v1/workspaces/\${WORKSPACE_ID}/logs/\${LOG_ID}" \\
+  -H "Authorization: Bearer \${API_KEY}" \\
+  -H "Content-Type: application/json")
+
+if [ $? -ne 0 ]; then
+  echo "Error fetching data from API"
+  exit 1
+fi
+
+echo "$response" | jq '.' > output.json
+
+if [ $? -eq 0 ]; then
+  echo "JSON created successfully"
+else
+  echo "Error processing JSON"
+fi
+```
+
+بدیهی است که باید مقادیر `WORKSPACE_ID` و `LOG_ID` و `API_KEY` را به ترتیب، با [آیدی سرویس AI](https://docs.liara.ir/ai/details/id/)، آیدی پاسخ درخواست و [کلید هوش مصنوعی](https://docs.liara.ir/ai/details/keys/) خود، جایگزین کنید.  
+
+در نهایت، با اجرای دستور `bash get_ai_log.sh`، یک فایل به نام `output.json` خواهید داشت  
+که محتوای آن مشابه زیر خواهد بود:  
+
+```json
+{
+  "created_at": "2025-11-23T07:09:24.459541+00:00",
+  "model": "openai/gpt-4o-mini",
+  "external_user": null,
+  "streamed": true,
+  "cancelled": false,
+  "latency": 634,
+  "moderation_latency": null,
+  "generation_time": 113,
+  "tokens_prompt": 19,
+  "tokens_completion": 9,
+  "native_tokens_prompt": 19,
+  "native_tokens_completion": 9,
+  "native_tokens_completion_images": null,
+  "native_tokens_reasoning": 0,
+  "native_tokens_cached": 0,
+  "num_media_prompt": null,
+  "num_input_audio_prompt": null,
+  "num_media_completion": 0,
+  "num_search_results": null,
+  "finish_reason": "stop",
+  "native_finish_reason": "stop",
+  "usage": 0.00000825,
+  "api_type": "completions",
+  "upstream_id": "chatcmpl-CeyVnUizHMXLzvh487v1IpZ4Ewu6p",
+  "total_cost": 0.00000825,
+  "cache_discount": null,
+  "upstream_inference_cost": 0,
+  "provider_name": "OpenAI",
+  "total_cost_toman": 0
+}
+```
+
+## all links
+
+[All links of docs](https://docs.liara.ir/all-links-llms.txt)

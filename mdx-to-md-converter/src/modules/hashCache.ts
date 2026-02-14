@@ -16,12 +16,36 @@ export function loadHashCache(): HashCache {
   try {
     if (fs.existsSync(CACHE_FILE)) {
       const data = fs.readFileSync(CACHE_FILE, 'utf-8');
-      return JSON.parse(data);
+      const cache = JSON.parse(data);
+      return migrateAbsolutePathsToRelative(cache);
     }
   } catch (error) {
     console.warn('Failed to load hash cache, starting fresh:', error);
   }
   return {};
+}
+
+function migrateAbsolutePathsToRelative(cache: HashCache): HashCache {
+  const migratedCache: HashCache = {};
+  
+  for (const [filePath, hash] of Object.entries(cache)) {
+    if (filePath.includes('\\src\\pages\\') || filePath.includes('/src/pages/')) {
+      const srcPagesIndex = filePath.indexOf('src/pages/') !== -1
+        ? filePath.indexOf('src/pages/')
+        : filePath.indexOf('src\\pages\\');
+      
+      if (srcPagesIndex !== -1) {
+        const relativePath = filePath.substring(srcPagesIndex).replace(/\\/g, '/');
+        migratedCache[relativePath] = hash;
+      } else {
+        migratedCache[filePath] = hash;
+      }
+    } else {
+      migratedCache[filePath] = hash;
+    }
+  }
+  
+  return migratedCache;
 }
 
 export function saveHashCache(cache: HashCache): void {

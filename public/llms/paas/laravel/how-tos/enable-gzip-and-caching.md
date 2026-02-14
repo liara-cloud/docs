@@ -1,0 +1,71 @@
+﻿Original link: https://docs.liara.ir/paas/laravel/how-tos/enable-gzip-and-caching/
+
+# فعال‌سازی Gzip و Caching در Laravel
+
+Gzip یک الگوریتم فشرده‌سازی است که اندازه فایل‌های ارسالی از سرور به مرورگر را کاهش می‌دهد و زمان بارگذاری صفحات را بهبود می‌بخشد. Caching نیز در Laravel برای ذخیره نتایج پردازش‌های تکراری به کار می‌رود تا سرعت و عملکرد برنامه افزایش یابد. لاراول از چندین درایور کش مختلف مانند فایل، دیتابیس، Redis و Memcached پشتیبانی می‌کند.
+
+برای فعال‌سازی Gzip در لاراول، باید در فایل `public/.htaccess` قطعه کد زیر:
+
+```config
+ # Enable Gzip
+<IfModule mod_deflate.c>
+ AddOutputFilterByType DEFLATE text/plain
+ AddOutputFilterByType DEFLATE text/html
+ AddOutputFilterByType DEFLATE text/xml
+ AddOutputFilterByType DEFLATE text/css
+ AddOutputFilterByType DEFLATE text/javascript
+ AddOutputFilterByType DEFLATE application/xml
+ AddOutputFilterByType DEFLATE application/xhtml+xml
+ AddOutputFilterByType DEFLATE application/rss+xml
+ AddOutputFilterByType DEFLATE application/atom_xml
+ AddOutputFilterByType DEFLATE application/javascript
+ AddOutputFilterByType DEFLATE application/x-javascript
+ AddOutputFilterByType DEFLATE application/x-shockwave-flash
+</IfModule>
+```
+
+و برای فعال‌سازی قابلیت Caching، قطعه کد زیر را وارد کنید:
+
+```config
+# Enable Caching
+<IfModule mod_expires.c>
+ ExpiresActive On
+ ExpiresByType text/css "access plus 1 month"
+ ExpiresByType text/javascript "access plus 1 month"
+ ExpiresByType text/html "access plus 1 month"
+ ExpiresByType application/javascript "access plus 1 month"
+ ExpiresByType image/gif "access plus 1 month"
+ ExpiresByType image/jpeg "access plus 1 month"
+ ExpiresByType image/png "access plus 1 month"
+ ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>
+<ifmodule mod_headers.c>
+ <filesmatch "\.(ico|jpe?g|png|gif|swf)$">
+  Header set Cache-Control "max-age=2592000, public"
+ </filesmatch>
+ <filesmatch "\.(css)$">
+  Header set Cache-Control "max-age=604800, public"
+ </filesmatch>
+ <filesmatch "\.(js)$">
+  Header set Cache-Control "max-age=216000, private"
+ </filesmatch>
+</ifmodule>
+```
+
+سپس باید قطعه کد زیر را به فایل `webpack.mix.js` اضافه کنید:
+
+```js
+if (mix.inProduction()) {
+    mix.version();
+}
+```
+
+درنهایت کافیست تا فایل‌های Asset را مانند مثال زیر در برنامه‌ی خود فراخوانی کنید:
+
+```html
+<script src="{{ mix('js/app.js') }}"></script>
+```
+
+## all links
+
+[All links of docs](https://docs.liara.ir/all-links-llms.txt)
