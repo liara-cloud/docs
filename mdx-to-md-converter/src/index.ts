@@ -127,7 +127,13 @@ async function main() {
     }
     
     const hashCache = loadHashCache();
-    console.log('Loaded hash cache');
+    console.log('Loaded hash cache with', Object.keys(hashCache).length, 'entries');
+    
+    const cacheKeys = Object.keys(hashCache);
+    console.log('First 5 cache entries:');
+    for (let i = 0; i < Math.min(5, cacheKeys.length); i++) {
+      console.log(`  ${cacheKeys[i]}: ${hashCache[cacheKeys[i]]}`);
+    }
 
     const failedCache = loadFailedCache();
     console.log(`Loaded failed cache with ${failedCache.length} files`);
@@ -157,10 +163,22 @@ async function main() {
       const relativePath = getRelativePath(filePath, srcPagesPath);
       const displayPath = `src/pages/${relativePath}`;
       
+      if (processedCount + skippedCount + failedCount < 5) {
+        console.log(`Processing file: ${filePath}`);
+        console.log(`Relative path: ${relativePath}`);
+        console.log(`Display path: ${displayPath}`);
+      }
+      
     try {
       const mdxContent = readMdxFile(filePath);
       
       const isFailed = failedCache.includes(displayPath);
+      
+      if (hashCache[displayPath]) {
+        console.log(`Found cache entry for ${displayPath}`);
+      } else {
+        console.log(`No cache entry found for ${displayPath}`);
+      }
 
       if (!isFailed && !hasFileChanged(displayPath, mdxContent, hashCache)) {
         console.log(`Skipped (unchanged): ${displayPath}`);

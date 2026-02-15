@@ -30,7 +30,10 @@ function migrateAbsolutePathsToRelative(cache: HashCache): HashCache {
   const migratedCache: HashCache = {};
   
   for (const [filePath, hash] of Object.entries(cache)) {
-    if (filePath.includes('\\src\\pages\\') || filePath.includes('/src/pages/')) {
+    if (filePath.startsWith('src/pages/')) {
+      migratedCache[filePath] = hash;
+    }
+    else if (filePath.includes('\\src\\pages\\') || filePath.includes('/src/pages/')) {
       const srcPagesIndex = filePath.indexOf('src/pages/') !== -1
         ? filePath.indexOf('src/pages/')
         : filePath.indexOf('src\\pages\\');
@@ -41,7 +44,17 @@ function migrateAbsolutePathsToRelative(cache: HashCache): HashCache {
       } else {
         migratedCache[filePath] = hash;
       }
-    } else {
+    }
+    else if (filePath.includes('mdx-to-md-converter/src/pages/')) {
+      const srcPagesIndex = filePath.indexOf('src/pages/');
+      if (srcPagesIndex !== -1) {
+        const relativePath = filePath.substring(srcPagesIndex).replace(/\\/g, '/');
+        migratedCache[relativePath] = hash;
+      } else {
+        migratedCache[filePath] = hash;
+      }
+    }
+    else {
       migratedCache[filePath] = hash;
     }
   }
@@ -62,10 +75,15 @@ export function hasFileChanged(filePath: string, content: string, cache: HashCac
   const cachedHash = cache[filePath];
   
   if (!cachedHash) {
+    console.log(`No cached hash for ${filePath}, treating as changed`);
     return true;
   }
   
-  return currentHash !== cachedHash;
+  const hasChanged = currentHash !== cachedHash;
+  if (hasChanged) {
+    console.log(`Hash changed for ${filePath}`);
+  }
+  return hasChanged;
 }
 
 export function updateFileHash(filePath: string, content: string, cache: HashCache): void {
