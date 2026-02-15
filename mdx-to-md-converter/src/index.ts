@@ -18,10 +18,10 @@ import { convertStep } from './modules/convertStep';
 import { removeHrAndLayout } from './modules/removeHrAndLayout';
 import { removeIndentations } from './modules/removeIndentations';
 import { overviewByAI } from './modules/overviewByAI';
+import { loadHashCache, saveHashCache, hasFileChanged, updateFileHash, loadFailedCache, saveFailedCache, addToFailedCache, removeFromFailedCache } from './modules/hashCache';
 
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 
 function findMdxFiles(dir: string): string[] {
   const files: string[] = [];
@@ -45,55 +45,6 @@ function findMdxFiles(dir: string): string[] {
   return files;
 }
 
-function getChangedMdxFiles(srcPagesPath: string): string[] {
-  try {
-    try {
-      execSync('git rev-parse --git-dir', { stdio: 'ignore' });
-    } catch {
-      console.warn('Not in a git repository, processing all files');
-      return findMdxFiles(srcPagesPath);
-    }
-
-    const outputDir = path.join(process.cwd(), '..', 'public', 'llms');
-    const hasExistingOutput = fs.existsSync(outputDir) &&
-                             fs.readdirSync(outputDir).length > 0;
-    
-    if (!hasExistingOutput) {
-      console.log('No existing output detected, processing all files (fresh build)');
-      return findMdxFiles(srcPagesPath);
-    }
-
-    console.log('Existing output detected, attempting git change detection');
-    
-    let gitCommand = 'git diff --name-only HEAD~1';
-    
-    try {
-      execSync('git rev-parse HEAD~1', { stdio: 'ignore' });
-    } catch {
-      console.log('No previous commit found, processing all files');
-      return findMdxFiles(srcPagesPath);
-    }
-    
-    const changedFiles = execSync(gitCommand, { encoding: 'utf-8' })
-      .split('\n')
-      .filter(file => file.trim())
-      .filter(file => file.startsWith('src/pages/') && file.endsWith('.mdx'))
-      .map(file => path.resolve(file));
-    
-    console.log(`Git detected ${changedFiles.length} changed MDX files`);
-    
-    if (changedFiles.length === 0) {
-      console.log('No changed files detected, skipping processing');
-      return [];
-    }
-    
-    return changedFiles;
-  } catch (error) {
-    console.warn('Git detection failed, processing all files:', error);
-    return findMdxFiles(srcPagesPath);
-  }
-}
-
 function readMdxFile(filePath: string): string {
   if (!fs.existsSync(filePath)) {
     throw new Error(`File not found: ${filePath}`);
@@ -110,23 +61,41 @@ function convertMdxToMd(mdxContent: string): string {
   }
 
   content = removeHead(content);
+
   content = convertVideos(content);
+
   content = removeBreaksAndDivs(content);
+
   content = convertLinks(content);
+
   content = convertHeadings(content);
+
   content = removeParagraphs(content);
+
   content = convertImportant(content);
+
   content = convertAlert(content);
+
   content = convertHighlight(content);
+
   content = convertLightboxImage(content);
+
   content = convertTick(content);
+
   content = convertImg(content);
-  // content = convertTable(content);
+
+  content = convertTable(content);
+
   content = convertUlLi(content);
+
   content = removeAsciinema(content);
+
   content = convertSection(content);
+
   content = convertStep(content);
+
   content = removeHrAndLayout(content);
+
   content = removeIndentations(content);
 
   return content;
@@ -144,92 +113,146 @@ async function main() {
     
     console.log(`Searching for MDX files in: ${srcPagesPath}`);
     
-    const changedMdxFiles = getChangedMdxFiles(srcPagesPath);
-    const allMdxFiles = findMdxFiles(srcPagesPath);
+    const mdxFiles = findMdxFiles(srcPagesPath);
     
-    console.log(`Found ${allMdxFiles.length} total MDX files`);
-    console.log(`Processing ${changedMdxFiles.length} changed MDX files`);
+    if (mdxFiles.length === 0) {
+      console.log('No MDX files found in src/pages');
+      process.exit(1);
+    }
+    
+    console.log(`Found ${mdxFiles.length} MDX files`);
     
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
     
+    const hashCache = loadHashCache();
+    console.log('Loaded hash cache');
+
+    const failedCache = loadFailedCache();
+    console.log(`Loaded failed cache with ${failedCache.length} files`);
+    
     const allLinks: string[] = [];
     
     let processedCount = 0;
     let skippedCount = 0;
+    let failedCount = 0;
     
-    for (const filePath of allMdxFiles) {
+    const filesToProcess = [...mdxFiles];
+    filesToProcess.sort((a, b) => {
+      const relativePathA = getRelativePath(a, srcPagesPath);
+      const displayPathA = `src/pages/${relativePathA}`;
+      const relativePathB = getRelativePath(b, srcPagesPath);
+      const displayPathB = `src/pages/${relativePathB}`;
+      
+      const isAFailed = failedCache.includes(displayPathA);
+      const isBFailed = failedCache.includes(displayPathB);
+      
+      if (isAFailed && !isBFailed) return -1;
+      if (!isAFailed && isBFailed) return 1;
+      return 0;
+    });
+
+    for (const filePath of filesToProcess) {
       const relativePath = getRelativePath(filePath, srcPagesPath);
       const displayPath = `src/pages/${relativePath}`;
-      const mdFileName = relativePath.replace(/\.mdx$/, '.md');
-      const outputFilePath = path.join(outputDir, mdFileName);
       
-      const isChanged = changedMdxFiles.includes(filePath);
+    try {
+      const mdxContent = readMdxFile(filePath);
       
-      if (!isChanged && fs.existsSync(outputFilePath)) {
+      const isFailed = failedCache.includes(displayPath);
+
+      if (!isFailed && !hasFileChanged(displayPath, mdxContent, hashCache)) {
         console.log(`Skipped (unchanged): ${displayPath}`);
         skippedCount++;
+        const mdFileName = relativePath.replace(/\.mdx$/, '.md');
+        const outputFilePath = path.join(outputDir, mdFileName);
         
-        const existingContent = fs.readFileSync(outputFilePath, 'utf-8');
-        const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
-        const url = `https://docs.liara.ir/${urlPath}`;
-        
-        let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
-        const headingMatch = existingContent.match(/^#\s+(.+)$/m);
-        if (headingMatch) {
-          title = headingMatch[1].trim();
+        if (fs.existsSync(outputFilePath)) {
+          const existingContent = fs.readFileSync(outputFilePath, 'utf-8');
+          const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
+          const url = `https://docs.liara.ir/${urlPath}`;
+          
+          let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
+          const headingMatch = existingContent.match(/^#\s+(.+)$/m);
+          if (headingMatch) {
+            title = headingMatch[1].trim();
+          }
+          
+          allLinks.push(`- [${title}](${url})`);
         }
         
-        allLinks.push(`- [${title}](${url})`);
         continue;
       }
       
-      try {
-        console.log(`Processing (${isChanged ? 'changed' : 'new'}): ${displayPath}`);
-        processedCount++;
-        
-        const mdxContent = readMdxFile(filePath);
-        const mdContent = convertMdxToMd(mdxContent);
-        
-        console.log(`Processing with AI: ${displayPath}`);
-        const aiProcessedContent = await overviewByAI(mdContent);
-        
-        const outputFileDir = path.dirname(outputFilePath);
-        if (!fs.existsSync(outputFileDir)) {
-          fs.mkdirSync(outputFileDir, { recursive: true });
-        }
-        
-        let originalPath = relativePath.replace(/\.mdx$/, '');
-        if (originalPath.endsWith('/index')) {
-          originalPath = originalPath.slice(0, -('/index'.length));
-        }
-        const originalUrl = `https://docs.liara.ir/${originalPath}${originalPath.endsWith('/') ? '' : '/'}`;
-        const originalHeader = `Original link: ${originalUrl}\n\n`;
-
-        const finalMdContent =
-          originalHeader +
-          aiProcessedContent +
-          '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
-        
-        fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
-        console.log(`Saved: ${outputFilePath}`);
-        
-        const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
-        const url = `https://docs.liara.ir/${urlPath}`;
-        
-        let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
-        const headingMatch = mdContent.match(/^#\s+(.+)$/m);
-        if (headingMatch) {
-          title = headingMatch[1].trim();
-        }
-        
-        allLinks.push(`- [${title}](${url})`);
-        
-      } catch (fileError) {
-        console.error(`Error processing ${displayPath}:`, fileError);
+      if (isFailed) {
+        console.log(`Retrying failed file: ${displayPath}`);
+      } else {
+        console.log(`Processing (new/modified): ${displayPath}`);
       }
+      processedCount++;
+      
+      const mdContent = convertMdxToMd(mdxContent);
+      
+      console.log(`Processing with AI: ${displayPath}`);
+      const aiProcessedContent = await overviewByAI(mdContent);
+      
+      const informal_md = aiProcessedContent;
+      const mdFileName = relativePath.replace(/\.mdx$/, '.md');
+      const outputFilePath = path.join(outputDir, mdFileName);
+      
+      const outputFileDir = path.dirname(outputFilePath);
+      if (!fs.existsSync(outputFileDir)) {
+        fs.mkdirSync(outputFileDir, { recursive: true });
+      }
+      
+      let originalPath = relativePath.replace(/\.mdx$/, '');
+      if (originalPath.endsWith('/index')) {
+        originalPath = originalPath.slice(0, -('/index'.length));
+      }
+      const originalUrl = `https://docs.liara.ir/${originalPath}${originalPath.endsWith('/') ? '' : '/'}`;
+      const originalHeader = `Original link: ${originalUrl}\n\n`;
+
+      const finalMdContent =
+        originalHeader +
+        informal_md +
+        '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
+      
+      fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
+      console.log(`Saved: ${outputFilePath}`);
+      
+      updateFileHash(displayPath, mdxContent, hashCache);
+      
+      if (isFailed) {
+        removeFromFailedCache(displayPath, failedCache);
+        saveFailedCache(failedCache);
+        console.log(`Removed from failed cache: ${displayPath}`);
+      }
+
+      saveHashCache(hashCache);
+      console.log(`Hash cache updated`);
+      
+      const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
+      const url = `https://docs.liara.ir/${urlPath}`;
+      
+      let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
+      const headingMatch = mdContent.match(/^#\s+(.+)$/m);
+      if (headingMatch) {
+        title = headingMatch[1].trim();
+      }
+      
+      allLinks.push(`- [${title}](${url})`);
+      
+    } catch (fileError) {
+      console.error(`Error processing ${displayPath}:`, fileError);
+      addToFailedCache(displayPath, failedCache);
+      saveFailedCache(failedCache);
+      failedCount++;
     }
+  }
+  
+    saveHashCache(hashCache);
+    console.log('Saved hash cache');
     
     const allLinksContent = `# All Links\n\n${allLinks.sort().join('\n')}\n`;
     
@@ -237,9 +260,10 @@ async function main() {
     console.log(`All links saved to: ${allLinksPath}`);
     
     console.log('\nSummary:');
-    console.log(`   Total files found: ${allMdxFiles.length}`);
-    console.log(`   Processed (new/changed): ${processedCount}`);
+    console.log(`   Total files found: ${mdxFiles.length}`);
+    console.log(`   Processed (new/modified/retried): ${processedCount}`);
     console.log(`   Skipped (unchanged): ${skippedCount}`);
+    console.log(`   Failed: ${failedCount}`);
     console.log(`   All files saved to: ${outputDir}`);
     
   } catch (err) {
