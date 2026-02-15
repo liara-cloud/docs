@@ -8,28 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
+    
       - name: install-dependencies
         run: npm ci
-      - name: Cache MDX Converter
-        uses: actions/cache@v3
-        with:
-          path: |
-            mdx-to-md-converter/.hash-cache.json
-            mdx-to-md-converter/.failed-cache.json
-          key: ${{ runner.os }}-mdx-cache-${{ hashFiles('src/pages/**/*.mdx') }}
-          restore-keys: |
-            ${{ runner.os }}-mdx-cache-
-
-      - name: Run MDX Converter
-        env:
-          MY_BASE_URL: ${{ secrets.MY_BASE_URL }}
-          MY_API_KEY: ${{ secrets.MY_API_KEY }}
-        run: |
-          npm run generate-llms
-
       - name: update-liara
         env:
           LIARA_TOKEN: ${{ secrets.IRAN_API_TOKEN }}
