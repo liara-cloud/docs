@@ -9,8 +9,6 @@ ENV MY_API_KEY=$MY_API_KEY
 
 WORKDIR /app
 
-RUN apk add --no-cache git
-
 COPY package*.json /app/
 
 RUN npm ci
