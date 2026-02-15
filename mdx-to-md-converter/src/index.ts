@@ -54,13 +54,24 @@ function getChangedMdxFiles(srcPagesPath: string): string[] {
       return findMdxFiles(srcPagesPath);
     }
 
+    const outputDir = path.join(process.cwd(), '..', 'public', 'llms');
+    const hasExistingOutput = fs.existsSync(outputDir) &&
+                             fs.readdirSync(outputDir).length > 0;
+    
+    if (!hasExistingOutput) {
+      console.log('No existing output detected, processing all files (fresh build)');
+      return findMdxFiles(srcPagesPath);
+    }
+
+    console.log('Existing output detected, attempting git change detection');
+    
     let gitCommand = 'git diff --name-only HEAD~1';
     
     try {
       execSync('git rev-parse HEAD~1', { stdio: 'ignore' });
     } catch {
-      console.log('No previous commit found, getting all tracked files');
-      gitCommand = 'git ls-files';
+      console.log('No previous commit found, processing all files');
+      return findMdxFiles(srcPagesPath);
     }
     
     const changedFiles = execSync(gitCommand, { encoding: 'utf-8' })
@@ -72,11 +83,8 @@ function getChangedMdxFiles(srcPagesPath: string): string[] {
     console.log(`Git detected ${changedFiles.length} changed MDX files`);
     
     if (changedFiles.length === 0) {
-      const allFiles = findMdxFiles(srcPagesPath);
-      if (allFiles.length > 0) {
-        console.log('No changed files detected but MDX files exist, processing all files as fallback');
-        return allFiles;
-      }
+      console.log('No changed files detected, skipping processing');
+      return [];
     }
     
     return changedFiles;
