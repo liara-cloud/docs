@@ -15,6 +15,13 @@ jobs:
           node-version: "20"
       - name: install-dependencies
         run: npm ci
+      - name: generate-llms-content
+        env:
+          MY_BASE_URL: ${{ secrets.MY_BASE_URL }}
+          MY_API_KEY: ${{ secrets.MY_API_KEY }}
+        run: |
+          echo "Running MDX to MD conversion with git-based change detection..."
+          npm run generate-llms
       - name: update-liara
         env:
           LIARA_TOKEN: ${{ secrets.IRAN_API_TOKEN }}

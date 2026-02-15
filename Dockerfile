@@ -1,9 +1,6 @@
 # 1) Build
 FROM node:18-alpine AS builder
 
-# Install git for change detection
-RUN apk add --no-cache git
-
 ARG MY_BASE_URL
 ARG MY_API_KEY
 
@@ -15,8 +12,6 @@ WORKDIR /app
 COPY package*.json /app/
 
 RUN npm ci
-
-COPY .git /app/.git
 
 COPY . /app/
 
