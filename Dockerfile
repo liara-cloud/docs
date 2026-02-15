@@ -17,6 +17,14 @@ RUN npm ci
 
 COPY . /app/
 
+RUN if [ ! -d .git ]; then \
+      git init && \
+      git config user.email "ci@liara.ir" && \
+      git config user.name "Liara CI" && \
+      git add . && \
+      git commit -m "Initial commit for build"; \
+    fi
+
 RUN npm run build
 
 # 2) Run

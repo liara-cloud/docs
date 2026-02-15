@@ -47,11 +47,19 @@ function findMdxFiles(dir: string): string[] {
 
 function getChangedMdxFiles(srcPagesPath: string): string[] {
   try {
+    try {
+      execSync('git rev-parse --git-dir', { stdio: 'ignore' });
+    } catch {
+      console.warn('Not in a git repository, processing all files');
+      return findMdxFiles(srcPagesPath);
+    }
+
     let gitCommand = 'git diff --name-only HEAD~1';
     
     try {
       execSync('git rev-parse HEAD~1', { stdio: 'ignore' });
     } catch {
+      console.log('No previous commit found, getting all tracked files');
       gitCommand = 'git ls-files';
     }
     
@@ -62,6 +70,15 @@ function getChangedMdxFiles(srcPagesPath: string): string[] {
       .map(file => path.resolve(file));
     
     console.log(`Git detected ${changedFiles.length} changed MDX files`);
+    
+    if (changedFiles.length === 0) {
+      const allFiles = findMdxFiles(srcPagesPath);
+      if (allFiles.length > 0) {
+        console.log('No changed files detected but MDX files exist, processing all files as fallback');
+        return allFiles;
+      }
+    }
+    
     return changedFiles;
   } catch (error) {
     console.warn('Git detection failed, processing all files:', error);
