@@ -1,0 +1,98 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل ubuntu - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل اوبونتو "  />
+</Head>
+
+
+# تنظیم میرور در سیستم عامل ubuntu
+<hr className="mb-2" />
+
+لیارا برای سیستم عامل ubuntu، میرورهای زیر را ارائه می‌دهد: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://linux-mirror.liara.ir/repository/ubuntu
+https://linux-mirror.liara.ir/repository/ubuntu-security`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای تنظیم میرورهای فوق در سیستم عامل ubuntu خود، گام‌های زیر را طی کنید: 
+
+<Step  steps={[
+    {
+        step: "۱",
+            content: (
+                <>
+                    <h3>بررسی نسخه سیستم عامل</h3>
+                    <p>برای تنظیم میرور، به <Important>VERSION_CODENAME</Important>، نیاز است. برای پیدا کردن مقدار آن، دستور زیر را اجرا کنید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="js">
+                            {`cat /etc/os-release`}
+                        </Highlight>
+                    </div>
+                    <div className="h-2" />
+                    <p>پس از اجرای دستور فوق، مقدار ذکر شده را در جایی ذخیره کنید.</p>
+                </>
+            )
+    },
+    {
+        step: "۲",
+            content: (
+                <>
+                    <h3>تنظیم میرور لیارا</h3>
+                    <p>برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، دستورات زیر را اجرا کنید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="js">
+                            {`deb https://linux-mirror.liara.ir/repository/ubuntu/ <CODENAME> main restricted universe multiverse
+deb https://linux-mirror.liara.ir/repository/ubuntu/ <CODENAME>-updates main restricted universe multiverse
+deb https://linux-mirror.liara.ir/repository/ubuntu-security/ <CODENAME>-security main restricted universe multiverse
+`}
+                        </Highlight>
+                    </div>
+                    <div className="h-2" />
+                    <p>در دستورات فوق، به جای <Important>&lt;CODENAME&gt;</Important>، خروجی دستور مرحله اول را قرار دهید.</p>
+                </>
+            )
+    }
+]}
+/>
+
+<div className="h-4" />
+
+با انجام مراحل فوق، تمامی کارها انجام شده است و زین‌پس، سیستم عامل شما، برای دانلود پکیج‌های مرتبط با اوبونتو، از میرورهای لیارا، استفاده خواهد کرد. 
+
+</Layout>

@@ -11980,9 +11980,9 @@ export default {
         )
       },
       {
-        title: "کار با میرور داکر",
-        icon: <IconContainer alt="docker" />,
-        link: "/mirrors/docker"
+        title: "تنظیم میرور اوبونتو",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ubuntu.png" />,
+        link: "/mirrors/ubuntu"
       },
     
       // {
