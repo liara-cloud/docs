@@ -33,6 +33,7 @@ import {
   GoServer,
   GoTerminal,
   GoGlobe,
+  GoRepo,
   GoCode,
   GoBrowser,
   GoArrowRight,
@@ -161,6 +162,11 @@ export default {
       title: "سامانه مدیریت دامنه",
       icon: <GoGlobe />,
       link: "/dns-management-system/about"
+    },
+    {
+      title: "مخازن نرم‌افزاری (میرورها)",
+      icon: <GoRepo />,
+      link: "/mirrors/about"
     },
     {
       hr: true
@@ -11940,6 +11946,55 @@ export default {
         link: "/references/team/delete-team"
       },
     ],
+  },
+
+  mirrors: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoRepo />
+            مخازن نرم‌افزاری (میرورها)
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره میرورها",
+        icon: <GoInfo />,
+        link: "/mirrors/about"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <  GoGear />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "کار با میرور داکر",
+        icon: <IconContainer alt="docker" />,
+        link: "/mirrors/docker"
+      },
+    
+      // {
+      //   hr: true
+      // },
+      // {
+      //   title: "جزئیات سرویس DNS",
+      //   icon: <GoNote />,
+      //   link: "/dns-management-system/details/about"
+      // },
+    ],
+
   },
 
 };

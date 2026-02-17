@@ -131,7 +131,6 @@ function collectExistingMdLinks(outputDir: string): string[] {
         const urlPath = `llms/${relativePath}`;
         const url = `https://docs.liara.ir/${urlPath}`;
         
-        // Try to extract title from first heading
         const content = fs.readFileSync(fullPath, 'utf-8');
         let title = relativePath.replace(/\.md$/, '').replace(/\//g, ' > ');
         const headingMatch = content.match(/^#\s+(.+)$/m);
@@ -157,7 +156,6 @@ async function main() {
     
     console.log(`Searching for MDX files in: ${srcPagesPath}`);
     
-    // Determine which files to process
     const processAll = shouldProcessAllFiles();
     let filesToProcess: string[] = [];
     
@@ -171,19 +169,16 @@ async function main() {
       console.log(`Git detected ${changes.modified.length} modified/added files`);
       console.log(`Git detected ${changes.deleted.length} deleted files`);
       
-      // Delete corresponding MD files for deleted MDX files
       if (changes.deleted.length > 0) {
         deleteCorrespondingMdFiles(changes.deleted);
       }
       
-      // Get absolute paths for modified files
       filesToProcess = getAbsolutePaths(changes.modified, projectRoot);
     }
     
     if (filesToProcess.length === 0 && !processAll) {
       console.log('No MDX files changed, skipping conversion');
       
-      // Still generate all-links file from existing MD files
       console.log('Generating all-links from existing MD files...');
       const allLinks = collectExistingMdLinks(outputDir);
       const allLinksContent = `# All Links\n\n${allLinks.sort().join('\n')}\n`;
@@ -256,7 +251,6 @@ async function main() {
       }
     }
     
-    // Collect links from all existing MD files (both newly processed and previously existing)
     console.log('Collecting all links from existing MD files...');
     const allExistingLinks = collectExistingMdLinks(outputDir);
     

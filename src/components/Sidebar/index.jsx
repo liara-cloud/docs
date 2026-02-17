@@ -46,6 +46,9 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
     if (section === "ai") {
       return getSectionData("ai", sidebar_name);
     }
+    if (section === "mirrors") {
+      return getSectionData("mirrors", sidebar_name);
+    }
 
     return data.home;
   };
