@@ -7,23 +7,70 @@ export interface GitChanges {
   deleted: string[];
 }
 
+const getProjectRoot = () => path.join(process.cwd(), '..');
+
 export function getChangedMdxFiles(): GitChanges {
+  const projectRoot = getProjectRoot();
+  
   try {
-    execSync('git rev-parse --git-dir', { stdio: 'ignore' });
+    execSync('git rev-parse --git-dir', { stdio: 'ignore', cwd: projectRoot });
     
     let modifiedOutput = '';
     let deletedOutput = '';
     
     try {
-      modifiedOutput = execSync(
-        'git diff --name-only --diff-filter=AM HEAD~1 HEAD -- "src/pages/**/*.mdx"',
-        { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'] }
-      );
+      const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
       
-      deletedOutput = execSync(
-        'git diff --name-only --diff-filter=D HEAD~1 HEAD -- "src/pages/**/*.mdx"',
-        { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'] }
-      );
+      if (isCI) {
+        modifiedOutput = execSync(
+          'git diff --name-only --diff-filter=AM HEAD~1 HEAD -- "src/pages/**/*.mdx"',
+          { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+        );
+        
+        deletedOutput = execSync(
+          'git diff --name-only --diff-filter=D HEAD~1 HEAD -- "src/pages/**/*.mdx"',
+          { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+        );
+      } else {
+
+        const lastCommitModified = execSync(
+          'git diff --name-only --diff-filter=AM HEAD~1 HEAD -- "src/pages/**/*.mdx"',
+          { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+        ).trim();
+        
+        const workingDirModified = execSync(
+          'git diff --name-only --diff-filter=AM HEAD -- "src/pages/**/*.mdx"',
+          { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+        ).trim();
+        
+        const stagedModified = execSync(
+          'git diff --name-only --cached --diff-filter=AM -- "src/pages/**/*.mdx"',
+          { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+        ).trim();
+        
+        const allModified = [
+          ...lastCommitModified.split('\n').filter(Boolean),
+          ...workingDirModified.split('\n').filter(Boolean),
+          ...stagedModified.split('\n').filter(Boolean)
+        ];
+        modifiedOutput = [...new Set(allModified)].join('\n');
+        
+        const lastCommitDeleted = execSync(
+          'git diff --name-only --diff-filter=D HEAD~1 HEAD -- "src/pages/**/*.mdx"',
+          { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+        ).trim();
+        
+        const workingDirDeleted = execSync(
+          'git diff --name-only --diff-filter=D HEAD -- "src/pages/**/*.mdx"',
+          { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+        ).trim();
+        
+        const allDeleted = [
+          ...lastCommitDeleted.split('\n').filter(Boolean),
+          ...workingDirDeleted.split('\n').filter(Boolean)
+        ];
+        deletedOutput = [...new Set(allDeleted)].join('\n');
+      }
     } catch (diffError) {
       console.warn('Git diff failed, will process all files:', diffError);
       return { modified: [], deleted: [] };
@@ -40,12 +87,14 @@ export function getChangedMdxFiles(): GitChanges {
 }
 
 export function shouldProcessAllFiles(): boolean {
+  const projectRoot = getProjectRoot();
+  
   try {
-    execSync('git rev-parse --git-dir', { stdio: 'ignore' });
+    execSync('git rev-parse --git-dir', { stdio: 'ignore', cwd: projectRoot });
     
     try {
-      execSync('git rev-parse HEAD~1', { stdio: 'ignore' });
-      return false; 
+      execSync('git rev-parse HEAD~1', { stdio: 'ignore', cwd: projectRoot });
+      return false;
     } catch {
       console.log('No git history available (first commit or shallow clone)');
       return true;
