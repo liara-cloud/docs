@@ -1,0 +1,69 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {  
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه تنظیم میرورهای composer - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور کامپوزر لیارا"  />
+</Head>
+
+
+# تنظیم میرورهای کامپوزر
+<hr className="mb-2" />
+
+لیارا میرور composer را در آدرس زیر، ارائه می‌دهد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://package-mirror.liara.ir/repository/composer/`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای تنظیم میرور فوق کافیست تا دستور زیر را اجرا کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`composer config -g repos.packagist composer https://package-mirror.liara.ir/repository/composer/`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای بررسی میرورها، می‌توانید از دستور زیر استفاده کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`composer config --list --global`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>

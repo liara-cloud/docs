@@ -12019,7 +12019,7 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/logos/Manjaro-logo.png" />,
         link: "/mirrors/manjaro"
       },
-{
+      {
         hr: true
       },
       {
@@ -12055,6 +12055,22 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/logos/microsoft.png" />,
         link: "/mirrors/mcr"
       },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <  GoGear />
+            شیوه‌ی تنظیم میرور پکیج منیجرها
+          </div>
+        )
+      },
+      { icon: <IconContainer alt='https://media.liara.ir/logos/composer.png'/>, title: 'کامپوزر', link: "/mirrors/composer" },
+      { icon: <IconContainer alt='go'/>, title: 'گولنگ', link: "/mirrors/go" },
+      { icon: <IconContainer alt='nodejs'/>, title: 'ان پی ام', link: "/mirrors/npm" },
+      { icon: <IconContainer alt='dotnet'/>, title: 'نوگت', link: "/mirrors/nuget" },
+      { icon: <IconContainer alt='python'/>, title: 'پای پی آی', link: "/mirrors/pypi" },
       // {
       //   hr: true
       // },

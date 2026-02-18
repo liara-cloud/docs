@@ -1,0 +1,71 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {  
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه تنظیم میرورهای Go Modules - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور گولنگ لیارا"  />
+</Head>
+
+
+# تنظیم میرورهای گولنگ
+<hr className="mb-2" />
+
+لیارا میرور Go Modules را در آدرس زیر، ارائه می‌دهد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://package-mirror.liara.ir/repository/go/`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای تنظیم میرور فوق کافیست تا دستورات زیر را اجرا کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`go env -w GOPROXY=https://package-mirror.liara.ir/repository/go/
+go env -w GOSUMDB=off
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای بررسی میرورها، می‌توانید از دستور زیر استفاده کنید (متغیر <Important>GOPROXY</Important> را بررسی کنید):
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`go env # for linux: go env | grep GOPROXY`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+</Layout>
