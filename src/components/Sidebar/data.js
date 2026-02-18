@@ -12019,7 +12019,42 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/logos/Manjaro-logo.png" />,
         link: "/mirrors/manjaro"
       },
-    
+{
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <  GoGear />
+            شیوه‌ی تنظیم میرور Container Registry
+          </div>
+        )
+      },
+      {
+        title: "داکرهاب",
+        icon: <IconContainer alt="docker" />,
+        link: "/mirrors/docker"
+      },
+      {
+        title: "گیت‌هاب",
+        icon: <IconContainer alt="github" />,
+        link: "/mirrors/ghcr"
+      },
+      {
+        title: "کوی",
+        icon: <IconContainer alt="https://media.liara.ir/logos/quay.png" />,
+        link: "/mirrors/quay"
+      },
+      {
+        title: "کوبرنتیز",
+        icon: <IconContainer alt="https://media.liara.ir/logos/k8s.png" />,
+        link: "/mirrors/k8s"
+      },
+      {
+        title: "مایکروسافت",
+        icon: <IconContainer alt="https://media.liara.ir/logos/microsoft.png" />,
+        link: "/mirrors/mcr"
+      },
       // {
       //   hr: true
       // },

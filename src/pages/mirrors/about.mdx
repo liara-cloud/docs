@@ -95,4 +95,37 @@ import Head from "next/head";
             )}
           </div>
 
+
+<Section headingTag="h3" id="container-registry-mirrors" title="میرورهای رجیستری کانتینرها" />
+
+این دسته شامل میرورهای رجیستری کانتینرهاست که ایمیج‌های Docker و Kubernetes و سایر پلتفرم‌ها را از طریق Container Registry Mirrors به‌صورت کش‌شده ارائه می‌دهند. هدف آن‌ها کاهش زمان Pull، افزایش پایداری و جلوگیری از وابستگی به رجیستری‌های خارجی در زمان قطعی یا محدودیت است.
+در ادامه لیستی از این میرورها قرار گرفته است:
+
+
+<div className="h-4" />
+<div className="grid md:grid-cols-3 gap-4">
+            {[
+    { alt: 'docker', platform: 'DockerHub', link: "/mirrors/docker" },
+    { alt: 'github', platform: 'Github Container Registry', link: "/mirrors/ghcr" },
+    { alt: 'https://media.liara.ir/logos/quay.png', platform: 'Quay', link: "/mirrors/quay" },
+    { alt: 'https://media.liara.ir/logos/k8s.png', platform: 'K8S', link: "/mirrors/k8s" },
+    { alt: 'https://media.liara.ir/logos/microsoft.png', platform: 'MCR', link: "/mirrors/mcr" },
+  ].map(item =>
+              <Link href={item.link}>
+                <Card className="flex cursor-pointer w-full items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-[40px] p-1  bg-[#333] rounded-lg">
+                      <PlatformIcon platform={item.alt} />
+                    </div>
+                    <h4>
+                      {item.platform}
+                    </h4>
+                  </div>
+                  <GoArrowLeft className="ml-1" />
+                </Card>
+              </Link>
+            )}
+          </div>
+
+
 </Layout>

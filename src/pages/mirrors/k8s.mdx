@@ -1,0 +1,118 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {  
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه تنظیم میرورهای K8S - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور K8S لیارا"  />
+</Head>
+
+
+# تنظیم میرورهای K8S
+<hr className="mb-2" />
+
+لیارا میرور K8S را در آدرس زیر، ارائه می‌دهد:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://k8s-mirror.liara.ir`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای تنظیم میرور فوق کافیست تا گام‌های زیر را طی کنید: 
+
+<div className="h-4" />
+<Alert variant="success">
+<p>
+    در نظر داشته باشید که گام‌های زیر، برای داکر نسخه <Important>25</Important> و بالاتر از آن، مناسب است. 
+</p>
+</Alert>
+
+<Step  steps={[
+    {
+        step: "۱",
+            content: (
+                <>
+                    <h3>تهیه بکاپ از تنظیمات فعلی</h3>
+                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`cp /etc/docker/daemon.json /etc/docker/daemon.json.bak`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۲",
+            content: (
+                <>
+                    <h3>تنظیم میرور لیارا</h3>
+                    <p>برای تنظیم میرور لیارا، دستور زیر را اجرا کنید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`echo '{
+  "registry-mirrors": [
+    "https://k8s-mirror.liara.ir"
+  ]
+}' > /etc/docker/daemon.json
+`}
+                        </Highlight>
+                    </div>                           
+                </>
+            )
+    },
+    {
+        step: "۳",
+            content: (
+                <>
+                    <h3>ری‌استارت برنامه و فایل‌های کانفیگ</h3>
+                    <p>اکنون کافیست تا دستورات زیر را اجرا کنید تا از میرور لیارا، استفاده شود: </p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`systemctl daemon-reload
+systemctl restart docker`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    }
+]}
+/>
+
+<div className="h-4" />
+
+با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
+به این میرورها ارسال خواهند شد. 
+
+</Layout>
