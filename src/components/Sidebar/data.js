@@ -11975,14 +11975,39 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             <  GoGear />
-            شیوه‌ی
+            شیوه‌ی تنظیم میرور در سیستم‌عامل
           </div>
         )
       },
       {
-        title: "تنظیم میرور اوبونتو",
+        title: "اوبونتو",
         icon: <IconContainer alt="https://media.liara.ir/logos/ubuntu.png" />,
         link: "/mirrors/ubuntu"
+      },
+      {
+        title: "دبیان",
+        icon: <IconContainer alt="https://media.liara.ir/logos/debian.png" />,
+        link: "/mirrors/debian"
+      },
+      {
+        title: "فدورا",
+        icon: <IconContainer alt="https://media.liara.ir/logos/fedora.png" />,
+        link: "/mirrors/fedora"
+      },
+      {
+        title: "سنت‌اواس",
+        icon: <IconContainer alt="https://media.liara.ir/logos/centos.svg" />,
+        link: "/mirrors/centos"
+      },
+      {
+        title: "اوپن‌سوس",
+        icon: <IconContainer alt="https://media.liara.ir/logos/opensuse.png" />,
+        link: "/mirrors/opensuse"
+      },
+      {
+        title: "راکی لینوکس",
+        icon: <IconContainer alt="https://media.liara.ir/logos/Rocky_Linux_logo.svg" />,
+        link: "/mirrors/rocky-linux"
       },
     
       // {

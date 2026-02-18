@@ -27,28 +27,28 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم میرور در سیستم عامل ubuntu - لیارا</title>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل debian - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل اوبونتو "  />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل دبیان"  />
 </Head>
 
 
-# تنظیم میرور در سیستم عامل ubuntu
+# تنظیم میرور در سیستم عامل debian
 <hr className="mb-2" />
 
-لیارا برای سیستم عامل ubuntu، میرورهای زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل debian، میرورهای زیر را ارائه می‌دهد: 
 
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`https://linux-mirror.liara.ir/repository/ubuntu/
-https://linux-mirror.liara.ir/repository/ubuntu-security/`}
+        {`https://linux-mirror.liara.ir/repository/debian/
+https://linux-mirror.liara.ir/repository/debian-security/`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-برای تنظیم میرورهای فوق در سیستم عامل ubuntu خود، گام‌های زیر را طی کنید: 
+برای تنظیم میرورهای فوق در سیستم عامل debian خود، گام‌های زیر را طی کنید: 
 
 <Step  steps={[
     {
@@ -60,7 +60,7 @@ https://linux-mirror.liara.ir/repository/ubuntu-security/`}
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="js">
-                            {`cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak`}
+                            {`cp /etc/apt/sources.list /etc/apt/sources.list.bak`}
                         </Highlight>
                     </div>
                 </>
@@ -71,29 +71,26 @@ https://linux-mirror.liara.ir/repository/ubuntu-security/`}
             content: (
                 <>
                     <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، در ابتدا دستور زیر را اجرا کنید:</p>
+                    <p>برای تنظیم میرور لیارا در سیستم عامل دبیان خود، در ابتدا دستور زیر را اجرا کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="js">
-                            {`nano /etc/apt/sources.list.d/ubuntu.sources`}
+                            {`nano /etc/apt/sources.list`}
                         </Highlight>
                     </div>
                     <div className="h-2" />
-                    <p>پس از باز شدن ویرایشگر، مقادیر <Important>URIs</Important> را تغییر دهید؛ به عنوان مثال:</p>
+                    <p>پس از باز شدن ویرایشگر، مقادیر بعد از <Important>deb</Important> و <Important>deb-src</Important> را تغییر دهید؛ به عنوان مثال:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="js">
-                            {`Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu
-Suites: noble noble-updates noble-backports
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+                            {`deb https://linux-mirror.liara.ir/repository/debian bookworm main non-free-firmware
+deb-src https://linux-mirror.liara.ir/repository/debian bookworm main non-free-firmware
 
-Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu-security
-Suites: noble-security
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
+deb https://linux-mirror.liara.ir/repository/debian-security bookworm-security main non-free-firmware
+deb-src https://linux-mirror.liara.ir/repository/debian-security bookworm-security main non-free-firmware
+
+deb https://linux-mirror.liara.ir/repository/debian bookworm-updates main non-free-firmware
+deb-src https://linux-mirror.liara.ir/repository/debian bookworm-updates main non-free-firmware`}
                         </Highlight>
                     </div>
                     <div className="h-2" />   

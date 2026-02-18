@@ -27,40 +27,39 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم میرور در سیستم عامل ubuntu - لیارا</title>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل CentOS - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل اوبونتو "  />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل سنت او اس"  />
 </Head>
 
 
-# تنظیم میرور در سیستم عامل ubuntu
+# تنظیم میرور در سیستم عامل CentOS
 <hr className="mb-2" />
 
-لیارا برای سیستم عامل ubuntu، میرورهای زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل CentOS، میرور زیر را ارائه می‌دهد: 
 
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`https://linux-mirror.liara.ir/repository/ubuntu/
-https://linux-mirror.liara.ir/repository/ubuntu-security/`}
+        {`https://linux-mirror.liara.ir/repository/centos/`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-برای تنظیم میرورهای فوق در سیستم عامل ubuntu خود، گام‌های زیر را طی کنید: 
+برای تنظیم میرور فوق در سیستم عامل CentOS خود، گام‌های زیر را طی کنید: 
 
 <Step  steps={[
     {
         step: "۱",
             content: (
                 <>
-                    <h3>تهیه بکاپ از تنظیمات فعلی</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
+                    <h3>ایجاد یک ریپازیتوری جدید</h3>
+                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک ریپازیتوری جدید برای دانلود یا آپدیت پکیح‌ها در سیستم عامل خود ایجاد کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
-                            {`cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak`}
+                        <Highlight className="bash">
+                            {`sudo nano /etc/yum.repos.d/liara-mirror.repo`}
                         </Highlight>
                     </div>
                 </>
@@ -71,33 +70,21 @@ https://linux-mirror.liara.ir/repository/ubuntu-security/`}
             content: (
                 <>
                     <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، در ابتدا دستور زیر را اجرا کنید:</p>
+                    <p>برای تنظیم میرور لیارا در سیستم عامل سنت او اس خود، قطعه کد زیر را در مسیر مذکور، قرار دهید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
-                            {`nano /etc/apt/sources.list.d/ubuntu.sources`}
+                        <Highlight className="bash">
+                            {`[liara-baseos]
+name=Liara CentOS BaseOS
+baseurl=https://linux-mirror.liara.ir/repository/centos/$releasever/BaseOS/$basearch/os/
+enabled=1
+gpgcheck=0`}
                         </Highlight>
                     </div>
                     <div className="h-2" />
-                    <p>پس از باز شدن ویرایشگر، مقادیر <Important>URIs</Important> را تغییر دهید؛ به عنوان مثال:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="js">
-                            {`Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu
-Suites: noble noble-updates noble-backports
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-
-Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu-security
-Suites: noble-security
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
-                        </Highlight>
-                    </div>
-                    <div className="h-2" />   
+               
                     <p>در نهایت، <Important>CTRL + X</Important> را بزنید و سپس <Important>Y</Important> و بعد از آن، <Important>Enter</Important> را بزنید تا تغییرات، ذخیره شوند.</p>                 
+                    <div className="h-2" />                          
                 </>
             )
     },
@@ -109,8 +96,8 @@ Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
                     <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود: </p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
-                            {`apt update`}
+                        <Highlight className="bash">
+                            {`sudo dnf update`}
                         </Highlight>
                     </div>
                 </>

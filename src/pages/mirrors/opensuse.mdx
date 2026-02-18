@@ -1,0 +1,65 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {  
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل OpenSUSE - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل اوپن‌سوس"  />
+</Head>
+
+
+# تنظیم میرور در سیستم عامل OpenSUSE
+<hr className="mb-2" />
+
+لیارا برای سیستم عامل OpenSUSE، میرور زیر را ارائه می‌دهد: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://linux-mirror.liara.ir/repository/opensuse/`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای تنظیم میرور فوق در سیستم عامل OpenSUSE خود، کافیست تا دستورات زیر را اجرا کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo zypper addrepo https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/ opensuse-oss
+sudo zypper refresh
+`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+با انجام کار فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
+به این میرورها ارسال خواهند شد. 
+
+</Layout>

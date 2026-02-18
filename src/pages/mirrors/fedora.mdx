@@ -1,0 +1,159 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {  
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل fedora - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل فدورا"  />
+</Head>
+
+
+# تنظیم میرور در سیستم عامل fedora
+<hr className="mb-2" />
+
+لیارا برای سیستم عامل fedora، میرور زیر را ارائه می‌دهد: 
+
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://linux-mirror.liara.ir/repository/fedora/`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای تنظیم میرور فوق در سیستم عامل fedora خود، گام‌های زیر را طی کنید: 
+
+<Step  steps={[
+    {
+        step: "۱",
+            content: (
+                <>
+                    <h3>تهیه بکاپ از تنظیمات فعلی</h3>
+                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستورات زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`sudo cp /etc/yum.repos.d/fedora.repo /etc/yum.repos.d/fedora.repo.bak
+sudo cp /etc/yum.repos.d/fedora-updates.repo /etc/yum.repos.d/fedora-updates.repo.bak`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۲",
+            content: (
+                <>
+                    <h3>تنظیم میرور لیارا</h3>
+                    <p>برای تنظیم میرور لیارا در سیستم عامل فدورا خود، در ابتدا دستور زیر را اجرا کنید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`sudo nano /etc/yum.repos.d/fedora.repo`}
+                        </Highlight>
+                    </div>
+                    <div className="h-2" />
+                    <p>پس از باز شدن ویرایشگر، تمامی تنظیمات را پاک کنید و تنظیمات زیر را قرار دهید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`[fedora]
+name=Fedora $releasever - $basearch
+baseurl=https://linux-mirror.liara.ir/repository/fedora/linux/releases/$releasever/Everything/$basearch/os/
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
+enabled=1
+countme=1
+metadata_expire=7d
+repo_gpgcheck=0
+type=rpm
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
+skip_if_unavailable=False`}
+                        </Highlight>
+                    </div>
+                    <div className="h-2" />   
+                    <p>سپس، <Important>CTRL + X</Important> را بزنید و سپس <Important>Y</Important> و بعد از آن، <Important>Enter</Important> را بزنید تا تغییرات، ذخیره شوند.</p>                 
+                    <div className="h-2" />   
+                    <p>در ادامه، دستور زیر را اجرا کنید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`sudo nano /etc/yum.repos.d/fedora-updates.repo`}
+                        </Highlight>
+                    </div>
+                    <div className="h-2" />
+                    <p>پس از باز شدن ویرایشگر، تمامی تنظیمات را پاک کنید و تنظیمات زیر را قرار دهید:</p>
+                    <div className="h-2" />
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`[updates]
+name=Fedora $releasever - $basearch - Updates
+baseurl=http://linux-mirror.liara.ir/repository/fedora/linux/updates/$releasever/Everything/$basearch/
+#metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
+enabled=1
+countme=1
+repo_gpgcheck=0
+type=rpm
+gpgcheck=0
+metadata_expire=6h
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
+skip_if_unavailable=False`}
+                        </Highlight>
+                    </div>
+                    <div className="h-2" />            
+                    <p>در نهایت <Important>CTRL + X</Important> را بزنید و سپس <Important>Y</Important> و بعد از آن، <Important>Enter</Important> را بزنید تا تغییرات، ذخیره شوند.</p>                 
+                    <div className="h-2" />                              
+                </>
+            )
+    },
+    {
+        step: "۳",
+            content: (
+                <>
+                    <h3>آپدیت سیستم</h3>
+                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود: </p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`sudo dnf update`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    }
+]}
+/>
+
+<div className="h-4" />
+
+با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
+به این میرورها ارسال خواهند شد. 
+
+</Layout>
