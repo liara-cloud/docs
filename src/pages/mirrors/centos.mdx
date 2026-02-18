@@ -54,37 +54,36 @@ import Head from "next/head";
         step: "۱",
             content: (
                 <>
-                    <h3>ایجاد یک ریپازیتوری جدید</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک ریپازیتوری جدید برای دانلود یا آپدیت پکیح‌ها در سیستم عامل خود ایجاد کنید:</p>
+                    <h3>تهیه بکاپ و تنظیم میرورهای لیارا</h3>
+                    <p>برای تهیه بکاپ از تنظیمات فعلی، غیرفعال کردن میرورهای فعلی و تنظیم میرور لیارا، تنها کافیست تا دستور زیر را اجرا کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`sudo nano /etc/yum.repos.d/liara-mirror.repo`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل سنت او اس خود، قطعه کد زیر را در مسیر مذکور، قرار دهید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`[liara-baseos]
+                            {`mkdir -p /etc/yum.repos.d/backup && \\
+for f in /etc/yum.repos.d/*.repo; do cp "$f" /etc/yum.repos.d/backup/ \\
+&& sed -i "s/enabled=1/enabled=0/g" "$f"; done && \\
+cat > /etc/yum.repos.d/liara-mirror.repo <<'EOF'
+[liara-baseos]
 name=Liara CentOS BaseOS
 baseurl=https://linux-mirror.liara.ir/repository/centos/$releasever/BaseOS/$basearch/os/
 enabled=1
-gpgcheck=0`}
+gpgcheck=0
+
+[liara-appstream]
+name=Liara CentOS AppStream
+baseurl=https://linux-mirror.liara.ir/repository/centos/$releasever/AppStream/$basearch/os/
+enabled=1
+gpgcheck=0
+
+[liara-extras]
+name=Liara CentOS Extras
+baseurl=https://linux-mirror.liara.ir/repository/centos/$releasever/extras/$basearch/os/
+enabled=1
+gpgcheck=0
+EOF
+`}
                         </Highlight>
                     </div>
-                    <div className="h-2" />
-               
-                    <p>در نهایت، <Important>CTRL + X</Important> را بزنید و سپس <Important>Y</Important> و بعد از آن، <Important>Enter</Important> را بزنید تا تغییرات، ذخیره شوند.</p>                 
-                    <div className="h-2" />                          
                 </>
             )
     },
@@ -97,7 +96,7 @@ gpgcheck=0`}
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`sudo dnf update`}
+                            {`yum update`}
                         </Highlight>
                     </div>
                 </>
@@ -107,6 +106,7 @@ gpgcheck=0`}
 />
 
 <div className="h-4" />
+
 
 با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
 به این میرورها ارسال خواهند شد. 

@@ -52,9 +52,18 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`sudo zypper addrepo https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/ opensuse-oss
-sudo zypper refresh
-`}
+        {`zypper addrepo \\
+  --priority 100 \\
+  --no-gpgcheck \\
+  https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/ \\
+  opensuse-oss`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`zypper refresh`}
     </Highlight>
 </div>
 <div className="h-2" />

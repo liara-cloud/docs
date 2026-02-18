@@ -27,27 +27,27 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم میرور در سیستم عامل Rocky Linux - لیارا</title>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل Alpine Linux - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل راکی لینوکس"  />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل آلپاین لینوکس"  />
 </Head>
 
 
-# تنظیم میرور در سیستم عامل Rocky Linux
+# تنظیم میرور در سیستم عامل Alpine Linux
 <hr className="mb-2" />
 
-لیارا برای سیستم عامل Rocky Linux، میرور زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل Alpine Linux، میرور زیر را ارائه می‌دهد: 
 
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`https://linux-mirror.liara.ir/repository/rocky/`}
+        {`https://linux-mirror.liara.ir/repository/alpine/`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-برای تنظیم میرور فوق در سیستم عامل Rocky Linux خود، گام‌های زیر را طی کنید: 
+برای تنظیم میرور فوق در سیستم عامل Alpine Linux خود، گام‌های زیر را طی کنید: 
 
 <Step  steps={[
     {
@@ -55,11 +55,11 @@ import Head from "next/head";
             content: (
                 <>
                     <h3>تهیه بکاپ از تنظیمات فعلی</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستورات زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید (در صورت وجود):</p>
+                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستورات زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`cp /etc/yum.repos.d/rocky.repo /etc/yum.repos.d/rocky.repo.bak`}
+                            {`cp /etc/apk/repositories /etc/apk/repositories.bak`}
                         </Highlight>
                     </div>
                 </>
@@ -70,38 +70,15 @@ import Head from "next/head";
             content: (
                 <>
                     <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل راکی لینوکس خود، دستور زیر را اجرا کنید:</p>
+                    <p>برای تنظیم میرور لیارا در سیستم عامل آلپاین لینوکس خود، دستور زیر را اجرا کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`tee /etc/yum.repos.d/rocky.repo <<'EOF'
-[baseos]
-name=Rocky Linux $releasever - BaseOS
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/BaseOS/$basearch/os/
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
-metadata_expire=6h
-
-[appstream]
-name=Rocky Linux $releasever - AppStream
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/AppStream/$basearch/os/
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
-metadata_expire=6h
-
-[crb]
-name=Rocky Linux $releasever - CRB
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/CRB/$basearch/os/
-enabled=1
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
-metadata_expire=6h
-EOF
-`}
+                            {`ALPINE_VERSION=$(cat /etc/alpine-release | cut -d'.' -f1-2) && \\
+echo "https://linux-mirror.liara.ir/repository/alpine/v\${ALPINE_VERSION}/main" > /etc/apk/repositories && \\
+echo "https://linux-mirror.liara.ir/repository/alpine/v\${ALPINE_VERSION}/community" >> /etc/apk/repositories`}
                         </Highlight>
-                    </div>                                                       
+                    </div>                           
                 </>
             )
     },
@@ -114,7 +91,7 @@ EOF
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`dnf clean all && dnf update`}
+                            {`apk update`}
                         </Highlight>
                     </div>
                 </>
@@ -125,7 +102,7 @@ EOF
 
 <div className="h-4" />
 
-با انجام کارهای فوق، میرور لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد. 
+با انجام کارهای فوق، میرور لیارا در سیستم عامل شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج 
+به این میرور ارسال خواهد شد. 
 
 </Layout>

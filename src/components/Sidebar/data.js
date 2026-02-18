@@ -12009,6 +12009,16 @@ export default {
         icon: <IconContainer alt="https://media.liara.ir/logos/Rocky_Linux_logo.svg" />,
         link: "/mirrors/rocky-linux"
       },
+      {
+        title: "آرچ لینوکس",
+        icon: <IconContainer alt="https://media.liara.ir/logos/Arch_Linux.png" />,
+        link: "/mirrors/arch-linux"
+      },
+      {
+        title: "مانجارو",
+        icon: <IconContainer alt="https://media.liara.ir/logos/Manjaro-logo.png" />,
+        link: "/mirrors/manjaro"
+      },
     
       // {
       //   hr: true
