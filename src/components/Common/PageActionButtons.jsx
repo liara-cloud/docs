@@ -8,6 +8,7 @@ import {
   GoChevronDown,
   GoCheck,
   GoPencil,
+  GoFileCode,
 } from "react-icons/go";
 
 const PageActionButtons = () => {
@@ -79,6 +80,13 @@ const PageActionButtons = () => {
     }
   };
 
+  const viewMarkdown = () => {
+    const path = router.asPath.replace(/\/$/, ""); // Remove trailing slash
+    const mdUrl = `${window.location.origin}/llms${path}.md`;
+    window.open(mdUrl, "_blank");
+    setIsOpen(false);
+  };
+
   return (
     <div className="relative mb-4" ref={dropdownRef}>
       <div
@@ -111,6 +119,19 @@ const PageActionButtons = () => {
             style={{ backgroundColor: "#333" }}
           >
             <div className="py-1">
+              <button
+                onClick={viewMarkdown}
+                className="flex items-center gap-3 w-full px-4 py-2 text-sm text-white hover:opacity-80 transition-colors"
+              >
+                <GoFileCode className="text-gray-400" />
+                <div className="text-right">
+                  <div className="text-white">نمایش MarkDown</div>
+                  <div className="text-gray-400 text-xs">
+                    مشاهده فایل MarkDown این صفحه
+                  </div>
+                </div>
+              </button>
+
               <button
                 onClick={editOnGitHub}
                 className="flex items-center gap-3 w-full px-4 py-2 text-sm text-white hover:opacity-80 transition-colors"
