@@ -25,6 +25,7 @@ import {
   getAbsolutePaths,
   findMdxFilesWithoutMd
 } from './modules/gitChanges';
+import { ManifestManager } from './modules/manifestManager';
 
 import fs from 'fs';
 import path from 'path';
@@ -155,6 +156,8 @@ async function main() {
     const outputDir = path.join(projectRoot, 'public', 'llms');
     const allLinksPath = path.join(projectRoot, 'public', 'all-links-llms.txt');
     
+    const manifest = new ManifestManager(outputDir);
+    
     console.log(`Searching for MDX files in: ${srcPagesPath}`);
     
     const processAll = shouldProcessAllFiles();
@@ -250,6 +253,8 @@ async function main() {
         
         fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
         console.log(`✓ Saved: ${outputFilePath}`);
+        
+        manifest.markAsProcessed(filePath, outputFilePath);
         
         const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
         const url = `https://docs.liara.ir/${urlPath}`;

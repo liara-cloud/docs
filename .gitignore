@@ -12,6 +12,9 @@
 
 all-links-llms.txt
 
+# mdx-to-md manifest (tracks processed files)
+public/llms/.mdx-to-md-manifest.json
+
 # testing
 /coverage
 
