@@ -18,11 +18,12 @@ import { convertStep } from './modules/convertStep';
 import { removeHrAndLayout } from './modules/removeHrAndLayout';
 import { removeIndentations } from './modules/removeIndentations';
 import { overviewByAI } from './modules/overviewByAI';
-import { 
-  getChangedMdxFiles, 
-  shouldProcessAllFiles, 
+import {
+  getChangedMdxFiles,
+  shouldProcessAllFiles,
   deleteCorrespondingMdFiles,
-  getAbsolutePaths 
+  getAbsolutePaths,
+  findMdxFilesWithoutMd
 } from './modules/gitChanges';
 
 import fs from 'fs';
@@ -173,7 +174,18 @@ async function main() {
         deleteCorrespondingMdFiles(changes.deleted);
       }
       
-      filesToProcess = getAbsolutePaths(changes.modified, projectRoot);
+      console.log('Checking for MDX files without corresponding MD files...');
+      const missingMdFiles = findMdxFilesWithoutMd(srcPagesPath, outputDir);
+      
+      if (missingMdFiles.length > 0) {
+        console.log(`Found ${missingMdFiles.length} MDX files without corresponding MD files`);
+        
+        const allFilesToProcess = [...new Set([...changes.modified, ...missingMdFiles])];
+        filesToProcess = getAbsolutePaths(allFilesToProcess, projectRoot);
+      } else {
+        console.log('All MDX files have corresponding MD files');
+        filesToProcess = getAbsolutePaths(changes.modified, projectRoot);
+      }
     }
     
     if (filesToProcess.length === 0 && !processAll) {

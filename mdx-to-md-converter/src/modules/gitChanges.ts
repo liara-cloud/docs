@@ -123,3 +123,36 @@ export function deleteCorrespondingMdFiles(deletedMdxFiles: string[]): void {
 export function getAbsolutePaths(relativePaths: string[], basePath: string): string[] {
   return relativePaths.map(relPath => path.join(basePath, relPath));
 }
+
+
+export function findMdxFilesWithoutMd(srcPagesPath: string, outputDir: string): string[] {
+  const missingMdFiles: string[] = [];
+  
+  function traverseMdxFiles(currentDir: string) {
+    const items = fs.readdirSync(currentDir);
+    
+    for (const item of items) {
+      const fullPath = path.join(currentDir, item);
+      const stat = fs.statSync(fullPath);
+      
+      if (stat.isDirectory()) {
+        traverseMdxFiles(fullPath);
+      } else if (item.endsWith('.mdx')) {
+        const relativePath = path.relative(srcPagesPath, fullPath).replace(/\\/g, '/');
+        
+        const mdFileName = relativePath.replace(/\.mdx$/, '.md');
+        const mdFilePath = path.join(outputDir, mdFileName);
+        
+        if (!fs.existsSync(mdFilePath)) {
+          missingMdFiles.push(relativePath);
+        }
+      }
+    }
+  }
+  
+  if (fs.existsSync(srcPagesPath)) {
+    traverseMdxFiles(srcPagesPath);
+  }
+  
+  return missingMdFiles;
+}
