@@ -1,24 +1,40 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+echo "Checking for MDX changes in staging area..."
 
-echo "🔍 Checking for MDX changes..."
+STAGED_MDX_MODIFIED=$(git diff --cached --name-only --diff-filter=AM -- "src/pages/**/*.mdx" || true)
+STAGED_MDX_DELETED=$(git diff --cached --name-only --diff-filter=D -- "src/pages/**/*.mdx" || true)
 
-# Check if there are any MDX files in the staging area
-MDX_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.mdx$' || true)
-
-if [ -n "$MDX_FILES" ]; then
-  echo "📝 Found MDX changes, converting to MD..."
-  echo "$MDX_FILES"
+if [ -n "$STAGED_MDX_MODIFIED" ] || [ -n "$STAGED_MDX_DELETED" ]; then
+  if [ -n "$STAGED_MDX_MODIFIED" ]; then
+    echo "Found staged modified/added MDX files:"
+    echo "$STAGED_MDX_MODIFIED"
+  fi
   
-  # Run the conversion
+  if [ -n "$STAGED_MDX_DELETED" ]; then
+    echo "Found staged deleted MDX files:"
+    echo "$STAGED_MDX_DELETED"
+  fi
+  
+  echo ""
+  echo "Converting MDX files to MD..."
+  
   npm run generate-llms:pre-commit
   
-  echo "✅ MD files generated and added to commit"
+  if [ $? -ne 0 ]; then
+    echo "❌ MD file generation failed"
+    exit 1
+  fi
+  
+  echo "MD files generated and added to commit"
 else
-  echo "ℹ️  No MDX changes detected"
+  echo "  No staged MDX changes detected"
   
-  echo "🔍 Checking if all MDX files have corresponding MD files..."
+  echo " Checking if all MDX files have corresponding MD files..."
   npm run generate-llms:pre-commit
+  
+  if [ $? -ne 0 ]; then
+    echo " MD file check failed"
+    exit 1
+  fi
 fi
 
-echo "✅ Pre-commit checks passed"
+echo "Pre-commit checks passed"

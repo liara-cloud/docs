@@ -156,3 +156,40 @@ export function findMdxFilesWithoutMd(srcPagesPath: string, outputDir: string): 
   
   return missingMdFiles;
 }
+
+/**
+ * Get staged MDX files for pre-commit hook
+ * Returns files that are staged (added, modified, or deleted)
+ */
+export function getStagedMdxFiles(): GitChanges {
+  const projectRoot = getProjectRoot();
+  
+  try {
+    execSync('git rev-parse --git-dir', { stdio: 'ignore', cwd: projectRoot });
+    
+    try {
+      // Get staged modified/added files
+      const modifiedOutput = execSync(
+        'git diff --cached --name-only --diff-filter=AM -- "src/pages/**/*.mdx"',
+        { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+      ).trim();
+      
+      // Get staged deleted files
+      const deletedOutput = execSync(
+        'git diff --cached --name-only --diff-filter=D -- "src/pages/**/*.mdx"',
+        { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'ignore'], cwd: projectRoot }
+      ).trim();
+      
+      const modified = modifiedOutput.split('\n').filter(Boolean);
+      const deleted = deletedOutput.split('\n').filter(Boolean);
+      
+      return { modified, deleted };
+    } catch (diffError) {
+      console.warn('Git diff failed:', diffError);
+      return { modified: [], deleted: [] };
+    }
+  } catch (error) {
+    console.warn('Git not available:', error);
+    return { modified: [], deleted: [] };
+  }
+}

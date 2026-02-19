@@ -9,6 +9,7 @@
     "dev": "ts-node src/index.ts",
     "convert": "ts-node src/index.ts",
     "convert:build": "npm run build && node dist/index.js",
+    "pre-commit": "ts-node src/pre-commit.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^2.0.28",
-    "ai": "^6.0.78"
+    "ai": "^6.0.78",
+    "dotenv": "^17.3.1"
   }
 }

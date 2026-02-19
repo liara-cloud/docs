@@ -1,5 +1,8 @@
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { generateText } from 'ai';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const MAX_CHUNK_SIZE = 50000; 
 
@@ -57,7 +60,7 @@ considaring:
 export async function overviewByAI(informal_md: string): Promise<string> {
   try {
     const baseURL = process.env.MY_BASE_URL;
-    const apiKey  = process.env.MY_API_KEY;
+    const apiKey = process.env.MY_API_KEY;
 
     if (!baseURL || !apiKey) {
       throw new Error('MY_BASE_URL and MY_API_KEY environment variables must be set');

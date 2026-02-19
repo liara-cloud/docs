@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "generate-llms": "npm --prefix mdx-to-md-converter ci && npm --prefix mdx-to-md-converter run convert",
-    "generate-llms:pre-commit": "npm --prefix mdx-to-md-converter run convert && git add public/llms public/all-links-llms.txt",
+    "generate-llms:pre-commit": "npm --prefix mdx-to-md-converter run pre-commit && git add public/llms public/all-links-llms.txt",
     "build": "npm run sitemap && npm run fetch:models && next build",
     "postbuild": "sh -c \"if [ -d public/llms ]; then mkdir -p out/llms && cp -R public/llms/* out/llms/; fi; if [ -f public/all-links-llms.txt ]; then cp public/all-links-llms.txt out/all-links-llms.txt; fi\"",
     "start": "next start",
