@@ -180,7 +180,11 @@ async function main() {
       if (missingMdFiles.length > 0) {
         console.log(`Found ${missingMdFiles.length} MDX files without corresponding MD files`);
         
-        const allFilesToProcess = [...new Set([...changes.modified, ...missingMdFiles])];
+        const missingMdFilesFullPaths = missingMdFiles.map(relPath =>
+          `src/pages/${relPath}`
+        );
+        
+        const allFilesToProcess = [...new Set([...changes.modified, ...missingMdFilesFullPaths])];
         filesToProcess = getAbsolutePaths(allFilesToProcess, projectRoot);
       } else {
         console.log('All MDX files have corresponding MD files');
