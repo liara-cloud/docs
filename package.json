@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "generate-llms": "npm --prefix mdx-to-md-converter ci && npm --prefix mdx-to-md-converter run convert",
+    "generate-llms:pre-commit": "npm --prefix mdx-to-md-converter run convert && git add public/llms public/all-links-llms.txt",
     "build": "npm run sitemap && npm run fetch:models && next build",
     "postbuild": "sh -c \"if [ -d public/llms ]; then mkdir -p out/llms && cp -R public/llms/* out/llms/; fi; if [ -f public/all-links-llms.txt ]; then cp public/all-links-llms.txt out/all-links-llms.txt; fi\"",
     "start": "next start",
     "lint": "next lint",
     "sitemap": "node sitemap/generate.js",
-    "fetch:models": "node src/scripts/fetch-liara-ai-models.js"
+    "fetch:models": "node src/scripts/fetch-liara-ai-models.js",
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@liara/platformicons": "^3.13.0",
@@ -18,6 +20,7 @@
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",
     "clsx": "^2.1.1",
+    "husky": "^9.1.7",
     "lodash.debounce": "^4.0.8",
     "meilisearch": "^0.41.0",
     "next": "14.2.3",

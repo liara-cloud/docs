@@ -1,7 +1,6 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { ManifestManager } from './manifestManager';
 
 export interface GitChanges {
   modified: string[];
@@ -127,8 +126,7 @@ export function getAbsolutePaths(relativePaths: string[], basePath: string): str
 
 
 export function findMdxFilesWithoutMd(srcPagesPath: string, outputDir: string): string[] {
-  const filesToProcess: string[] = [];
-  const manifest = new ManifestManager(outputDir);
+  const missingMdFiles: string[] = [];
   
   function traverseMdxFiles(currentDir: string) {
     const items = fs.readdirSync(currentDir);
@@ -145,8 +143,8 @@ export function findMdxFilesWithoutMd(srcPagesPath: string, outputDir: string): 
         const mdFileName = relativePath.replace(/\.mdx$/, '.md');
         const mdFilePath = path.join(outputDir, mdFileName);
         
-        if (manifest.needsProcessing(fullPath, mdFilePath)) {
-          filesToProcess.push(relativePath);
+        if (!fs.existsSync(mdFilePath)) {
+          missingMdFiles.push(relativePath);
         }
       }
     }
@@ -156,5 +154,5 @@ export function findMdxFilesWithoutMd(srcPagesPath: string, outputDir: string): 
     traverseMdxFiles(srcPagesPath);
   }
   
-  return filesToProcess;
+  return missingMdFiles;
 }
