@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "src/pages/**/*.mdx"
+      - "mdx-to-md-converter/**"
 jobs:
   generate-md:
     runs-on: ubuntu-latest
@@ -30,14 +35,24 @@ jobs:
         run: |
           echo "Checking for MDX files without corresponding MD files..."
           npm run generate-llms
+
+      - name: Verify no diffs (PR only)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          git add -A
+          if ! git diff --cached --quiet; then
+            echo "Generated MD is out of date. Run 'npm run generate-llms' and commit the results." >&2
+            exit 1
+          fi
       
-      - name: Check for changes
+      - name: Check for changes (push only)
+        if: ${{ github.event_name == 'push' }}
         id: check_changes
         run: |
           git diff --quiet public/llms public/all-links-llms.txt || echo "has_changes=true" >> $GITHUB_OUTPUT
       
-      - name: Commit and push if changed
-        if: steps.check_changes.outputs.has_changes == 'true'
+      - name: Commit and push if changed (push only)
+        if: ${{ github.event_name == 'push' && steps.check_changes.outputs.has_changes == 'true' }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
