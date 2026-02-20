@@ -33,8 +33,8 @@ jobs:
           MY_BASE_URL: ${{ secrets.MY_BASE_URL }}
           MY_API_KEY: ${{ secrets.MY_API_KEY }}
         run: |
-          echo "Checking for MDX files without corresponding MD files..."
-          npm run generate-llms
+          echo "Repairing missing MD files only (no full rebuild)..."
+          npm --prefix mdx-to-md-converter run pre-commit -- --repair-missing
 
       - name: Verify no diffs (PR only)
         if: ${{ github.event_name == 'pull_request' }}
