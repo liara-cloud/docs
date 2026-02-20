@@ -1,9 +1,5 @@
 ﻿Original link: https://docs.liara.ir/mirrors/about/
 
-
-
-
-
 # آشنایی با میرور (مخزن نرم افزاری) لیارا
 
 
@@ -121,8 +117,6 @@
 </Link>
 )}
 </div>
-
-
 
 ## all links
 

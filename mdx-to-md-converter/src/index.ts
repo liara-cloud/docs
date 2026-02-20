@@ -212,7 +212,7 @@ async function main() {
     
     const allLinks: string[] = [];
     let processedCount = 0;
-    let fallbackCount = 0;
+    let skippedAiCount = 0;
     let errorCount = 0;
     
     for (const filePath of filesToProcess) {
@@ -241,15 +241,16 @@ async function main() {
           if (aiResult && aiResult.trim().length >= 50) {
             aiProcessedContent = aiResult.trim();
           } else {
-            console.warn(`⚠️  AI returned empty/short result for ${displayPath}, using fallback`);
+            console.warn(`⚠️  AI returned empty/short result for ${displayPath}, skipping write`);
           }
         } catch (aiErr) {
-          console.warn(`⚠️  AI failed for ${displayPath}, using fallback`, aiErr);
+          console.warn(`⚠️  AI failed for ${displayPath}, skipping write`, aiErr);
         }
 
-        const usedContent = aiProcessedContent ?? mdContent;
         if (!aiProcessedContent) {
-          fallbackCount++;
+          console.warn(`⏭️  Skipping MD write for ${displayPath} due to AI unavailability`);
+          skippedAiCount++;
+          continue;
         }
 
         let originalPath = relativePath.replace(/\.mdx$/, '');
@@ -261,7 +262,7 @@ async function main() {
 
         const finalMdContent =
           originalHeader +
-          usedContent +
+          aiProcessedContent +
           '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
 
         fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
@@ -293,7 +294,7 @@ async function main() {
     
     console.log('\n=== Summary ===');
     console.log(`Processed files: ${processedCount}`);
-    console.log(`Used fallback (no AI) for: ${fallbackCount}`);
+    console.log(`Skipped due to AI unavailable: ${skippedAiCount}`);
     console.log(`Errors: ${errorCount}`);
     console.log(`Output directory: ${outputDir}`);
     console.log(`Total MD files: ${allExistingLinks.length}`);
