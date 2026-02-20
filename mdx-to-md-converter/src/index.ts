@@ -234,24 +234,14 @@ async function main() {
           fs.mkdirSync(outputFileDir, { recursive: true });
         }
 
-        let aiProcessedContent: string | null = null;
-        try {
-          console.log(`Processing with AI: ${displayPath}`);
-          const aiResult = await overviewByAI(mdContent);
-          if (aiResult && aiResult.trim().length >= 50) {
-            aiProcessedContent = aiResult.trim();
-          } else {
-            console.warn(`⚠️  AI returned empty/short result for ${displayPath}, skipping write`);
-          }
-        } catch (aiErr) {
-          console.warn(`⚠️  AI failed for ${displayPath}, skipping write`, aiErr);
-        }
-
-        if (!aiProcessedContent) {
-          console.warn(`⏭️  Skipping MD write for ${displayPath} due to AI unavailability`);
+        console.log(`Processing with AI: ${displayPath}`);
+        const aiRes = await overviewByAI(mdContent);
+        if (aiRes.status !== 'SUCCESS') {
+          console.warn(`⏭️  Skipping MD write for ${displayPath} due to AI status: ${aiRes.status}`);
           skippedAiCount++;
           continue;
         }
+        const aiProcessedContent = aiRes.text;
 
         let originalPath = relativePath.replace(/\.mdx$/, '');
         if (originalPath.endsWith('/index')) {

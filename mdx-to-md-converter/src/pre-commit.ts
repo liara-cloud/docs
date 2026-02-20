@@ -121,28 +121,35 @@ async function main() {
     console.log(`📝 Found ${stagedChanges.modified.length} staged modified/added MDX files`);
     console.log(`🗑️  Found ${stagedChanges.deleted.length} staged deleted MDX files`);
     
+const args = new Set(process.argv.slice(2));
+const onlyStaged = args.has('--only-staged') || !args.has('--all');
+const repairMissing = args.has('--repair-missing') || args.has('--repair-missing=1');
+const aiEnabled = !!(process.env.MY_BASE_URL && process.env.MY_API_KEY);
+
+console.log(`⚙️  Options -> mode: ${onlyStaged ? 'only-staged' : 'all'}, repair-missing: ${repairMissing ? 'on' : 'off'}`);
+console.log(`🤖 AI enabled: ${aiEnabled ? 'yes' : 'no (will skip MD writes)'}`);
     if (stagedChanges.deleted.length > 0) {
       console.log('🗑️  Deleting corresponding MD files for deleted MDX files...');
       deleteCorrespondingMdFiles(stagedChanges.deleted);
     }
     
     console.log('🔍 Checking for MDX files without corresponding MD files...');
-    const missingMdFiles = findMdxFilesWithoutMd(srcPagesPath, outputDir);
+    const missingMdFiles = repairMissing ? findMdxFilesWithoutMd(srcPagesPath, outputDir) : [];
     
     let filesToProcess: string[] = [];
-    
-    if (missingMdFiles.length > 0) {
-      console.log(`📝 Found ${missingMdFiles.length} MDX files without corresponding MD files`);
-      
-      const missingMdFilesFullPaths = missingMdFiles.map(relPath =>
-        `src/pages/${relPath}`
-      );
-      
-      const allFilesToProcess = [...new Set([...stagedChanges.modified, ...missingMdFilesFullPaths])];
-      filesToProcess = getAbsolutePaths(allFilesToProcess, projectRoot);
-    } else {
-      filesToProcess = getAbsolutePaths(stagedChanges.modified, projectRoot);
+    const relPaths: string[] = [];
+
+    relPaths.push(...stagedChanges.modified);
+
+    if (repairMissing && missingMdFiles.length > 0) {
+      console.log(`📝 Found ${missingMdFiles.length} MDX files without corresponding MD files (repair requested)`);
+      const missingMdFilesFullPaths = missingMdFiles.map(relPath => `src/pages/${relPath}`);
+      for (const p of missingMdFilesFullPaths) {
+        if (!relPaths.includes(p)) relPaths.push(p);
+      }
     }
+
+    filesToProcess = getAbsolutePaths(relPaths, projectRoot);
     
     if (filesToProcess.length === 0 && stagedChanges.deleted.length === 0) {
       console.log('ℹ️  No MDX files to process');
@@ -185,24 +192,14 @@ async function main() {
           fs.mkdirSync(outputFileDir, { recursive: true });
         }
 
-        let aiProcessedContent: string | null = null;
-        try {
-          console.log(`🤖 Processing with AI: ${displayPath}`);
-          const aiResult = await overviewByAI(mdContent);
-          if (aiResult && aiResult.trim().length >= 50) {
-            aiProcessedContent = aiResult.trim();
-          } else {
-            console.warn(`⚠️  AI returned empty/short result for ${displayPath}, skipping write`);
-          }
-        } catch (aiErr) {
-          console.warn(`⚠️  AI failed for ${displayPath}, skipping write`, aiErr);
-        }
-
-        if (!aiProcessedContent) {
-          console.warn(`⏭️  Skipping MD write for ${displayPath} due to AI unavailability`);
+        console.log(`🤖 Processing with AI: ${displayPath}`);
+        const aiRes = await overviewByAI(mdContent);
+        if (aiRes.status !== 'SUCCESS') {
+          console.warn(`⏭️  Skipping MD write for ${displayPath} due to AI status: ${aiRes.status}`);
           skippedAiCount++;
           continue;
         }
+        const aiProcessedContent = aiRes.text;
 
         let originalPath = relativePath.replace(/\.mdx$/, '');
         if (originalPath.endsWith('/index')) {

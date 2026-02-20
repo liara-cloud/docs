@@ -1,8 +1,11 @@
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { generateText } from 'ai';
 import dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../..', '.env') });
+dotenv.config({ path: path.join(__dirname, '../../..', '.env') });
 
 const MAX_CHUNK_SIZE = 50000; 
 
@@ -57,17 +60,25 @@ considaring:
   return text;
 }
 
-export async function overviewByAI(informal_md: string): Promise<string> {
+export type AIResultStatus = 'SUCCESS' | 'SKIPPED' | 'FAILED';
+
+export interface AIResult {
+  status: AIResultStatus;
+  text: string;
+}
+
+export async function overviewByAI(informal_md: string): Promise<AIResult> {
+  const baseURL = process.env.MY_BASE_URL;
+  const apiKey = process.env.MY_API_KEY;
+
+  if (!baseURL || !apiKey) {
+    console.warn('AI disabled/unavailable: MY_BASE_URL or MY_API_KEY not set; skipping AI conversion');
+    return { status: 'SKIPPED', text: '' };
+  }
+
   try {
-    const baseURL = process.env.MY_BASE_URL;
-    const apiKey = process.env.MY_API_KEY;
-
-    if (!baseURL || !apiKey) {
-      throw new Error('MY_BASE_URL and MY_API_KEY environment variables must be set');
-    }
-
     const chunks = splitIntoChunks(informal_md, MAX_CHUNK_SIZE);
-    
+
     if (chunks.length > 1) {
       console.log(`Content split into ${chunks.length} chunks`);
     }
@@ -78,23 +89,26 @@ export async function overviewByAI(informal_md: string): Promise<string> {
         if (chunks.length > 1) {
           console.log(`Processing chunk ${i + 1}/${chunks.length}...`);
         }
-        
+
         const processed = await processChunk(chunks[i], baseURL, apiKey, i, chunks.length);
         processedChunks.push(processed);
-        
+
         if (i < chunks.length - 1) {
           await new Promise(resolve => setTimeout(resolve, 1000));
         }
       } catch (chunkError: any) {
         console.error(`Error processing chunk ${i + 1}/${chunks.length}:`, chunkError.message);
-        processedChunks.push(chunks[i]);
+        return { status: 'FAILED', text: '' };
       }
     }
 
-    return processedChunks.join('\n\n');
-    
+    const text = processedChunks.join('\n\n').trim();
+    if (text.length < 50) {
+      return { status: 'FAILED', text: '' };
+    }
+    return { status: 'SUCCESS', text };
   } catch (error: any) {
     console.error('Error in overviewByAI:', error.message || error);
-    return informal_md;
+    return { status: 'FAILED', text: '' };
   }
 }
