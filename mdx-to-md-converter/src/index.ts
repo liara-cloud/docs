@@ -212,6 +212,8 @@ async function main() {
     
     const allLinks: string[] = [];
     let processedCount = 0;
+    let fallbackCount = 0;
+    let errorCount = 0;
     
     for (const filePath of filesToProcess) {
       const relativePath = getRelativePath(filePath, srcPagesPath);
@@ -220,22 +222,36 @@ async function main() {
       try {
         console.log(`Processing: ${displayPath}`);
         processedCount++;
-        
+
         const mdxContent = readMdxFile(filePath);
         const mdContent = convertMdxToMd(mdxContent);
-        
-        console.log(`Processing with AI: ${displayPath}`);
-        const aiProcessedContent = await overviewByAI(mdContent);
-        
-        const informal_md = aiProcessedContent;
+
         const mdFileName = relativePath.replace(/\.mdx$/, '.md');
         const outputFilePath = path.join(outputDir, mdFileName);
-        
+
         const outputFileDir = path.dirname(outputFilePath);
         if (!fs.existsSync(outputFileDir)) {
           fs.mkdirSync(outputFileDir, { recursive: true });
         }
-        
+
+        let aiProcessedContent: string | null = null;
+        try {
+          console.log(`Processing with AI: ${displayPath}`);
+          const aiResult = await overviewByAI(mdContent);
+          if (aiResult && aiResult.trim().length >= 50) {
+            aiProcessedContent = aiResult.trim();
+          } else {
+            console.warn(`⚠️  AI returned empty/short result for ${displayPath}, using fallback`);
+          }
+        } catch (aiErr) {
+          console.warn(`⚠️  AI failed for ${displayPath}, using fallback`, aiErr);
+        }
+
+        const usedContent = aiProcessedContent ?? mdContent;
+        if (!aiProcessedContent) {
+          fallbackCount++;
+        }
+
         let originalPath = relativePath.replace(/\.mdx$/, '');
         if (originalPath.endsWith('/index')) {
           originalPath = originalPath.slice(0, -('/index'.length));
@@ -245,24 +261,25 @@ async function main() {
 
         const finalMdContent =
           originalHeader +
-          informal_md +
+          usedContent +
           '\n\n## all links\n\n[All links of docs](https://docs.liara.ir/all-links-llms.txt)\n';
-        
+
         fs.writeFileSync(outputFilePath, '\ufeff' + finalMdContent, { encoding: 'utf8' });
         console.log(`✓ Saved: ${outputFilePath}`);
-        
+
         const urlPath = `llms/${mdFileName.replace(/\\/g, '/')}`;
         const url = `https://docs.liara.ir/${urlPath}`;
-        
+
         let title = mdFileName.replace(/\.md$/, '').replace(/\//g, ' > ');
         const headingMatch = mdContent.match(/^#\s+(.+)$/m);
         if (headingMatch) {
           title = headingMatch[1].trim();
         }
-        
+
         allLinks.push(`- [${title}](${url})`);
-        
+
       } catch (fileError) {
+        errorCount++;
         console.error(`✗ Error processing ${displayPath}:`, fileError);
       }
     }
@@ -276,6 +293,8 @@ async function main() {
     
     console.log('\n=== Summary ===');
     console.log(`Processed files: ${processedCount}`);
+    console.log(`Used fallback (no AI) for: ${fallbackCount}`);
+    console.log(`Errors: ${errorCount}`);
     console.log(`Output directory: ${outputDir}`);
     console.log(`Total MD files: ${allExistingLinks.length}`);
     

@@ -12,7 +12,7 @@
     "lint": "next lint",
     "sitemap": "node sitemap/generate.js",
     "fetch:models": "node src/scripts/fetch-liara-ai-models.js",
-    "prepare": "husky || true"
+    "prepare": "npx husky install || echo husky skipped"
   },
   "dependencies": {
     "@liara/platformicons": "^3.13.0",

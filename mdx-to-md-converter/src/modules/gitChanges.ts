@@ -88,6 +88,12 @@ export function getChangedMdxFiles(): GitChanges {
 
 export function shouldProcessAllFiles(): boolean {
   const projectRoot = getProjectRoot();
+
+
+  const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+  if (isCI) {
+    return true;
+  }
   
   try {
     execSync('git rev-parse --git-dir', { stdio: 'ignore', cwd: projectRoot });
