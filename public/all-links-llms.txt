@@ -948,6 +948,7 @@
 - [شروع به کار با هوش مصنوعی DeepSeek](https://docs.liara.ir/llms/ai/deepseek.md)
 - [شروع به کار با هوش مصنوعی Google/Gemini](https://docs.liara.ir/llms/ai/google-gemini.md)
 - [شروع به کار با هوش مصنوعی Llama](https://docs.liara.ir/llms/ai/meta-llama.md)
+- [شروع به کار با هوش مصنوعی MiniMax](https://docs.liara.ir/llms/ai/minimax.md)
 - [شروع به کار با هوش مصنوعی MoonshotAI/Kimi](https://docs.liara.ir/llms/ai/moonshotai.md)
 - [شروع به کار با هوش مصنوعی NeMo](https://docs.liara.ir/llms/ai/mistral-nemo.md)
 - [شروع به کار با هوش مصنوعی OpenAI](https://docs.liara.ir/llms/ai/openai.md)

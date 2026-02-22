@@ -314,6 +314,11 @@ export default {
         link: "/ai/z-ai"
       },
       {
+        title: "MiniMax",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/minimax-white.png" />,
+        link: "/ai/minimax"
+      },
+      {
         hr: true
       },
       {
