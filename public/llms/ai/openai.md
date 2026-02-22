@@ -11,11 +11,12 @@
 
 پس از [ایجاد سرویس هوش مصنوعی](https://docs.liara.ir/ai/quick-start) و دریافت `baseUrl` و [ساخت کلید](https://docs.liara.ir/ai/details/keys/#create)، می‌توانید مانند دستورات و قطعه‌های کد زیر، از مدل‌های OpenAI استفاده کنید.
 
-> همچنین بخوانید: [مستندات کار با Embedding Modelها](https://docs.liara.ir/ai/ai-sdk-core/embeddings)
+> همچنین بخوانید: [مستندات کار با Embedding Modelها](https://docs.liara.ir/ai/ai-sdk-core/embeddings)  
+> همچنین بخوانید: [مستندات تولید تصویر با هوش مصنوعی](https://docs.liara.ir/ai/foundations/image-generation/)
 
 ## اتصال به مدل
 
-برای اتصال به مدل در سطح کد، می‌توانید از دو ابزار استفاده کنید:  
+برای اتصال به مدل در سطح کد، می‌توانید از دو ابزار استفاده کنید:
 
 - `OpenAI SDK`: ابزار رسمی ارائه‌شده توسط [OpenAI](https://openai.com/). تمامی مدل‌های ارائه‌شده در لیارا، با این SDK سازگار هستند.
 - `AI SDK`: ابزار ارائه‌شده توسط [Vercel](https://ai-sdk.dev/). این SDK، تنها برای جاوااسکریپت و تایپ‌اسکریپت در دسترس است.
@@ -100,7 +101,6 @@ $result = $client->chat()->create([
 
 // Print the response
 echo $result->choices[0]->message->content;
-
 ```
 
 ### Python
@@ -219,9 +219,9 @@ func main() {
 ### cURL
 
 ```bash
-curl <baseUrl>\chat\completions \\
-  -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer <LIARA_API_KEY>" \\
+curl <baseUrl>\chat\completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <LIARA_API_KEY>" \
   -d '{
   "model": "<model_name>",
   "messages": [
@@ -259,11 +259,14 @@ const { text } = await generateText({
 });
 
 console.log('Generated Text:', text);
+
 ```
 
-در قطعه کد‌های فوق، به‌جای `<baseUrl>`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`, کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`, نام یکی از مدل‌های فوق را قرار دهید.
+در قطعه کد‌های فوق، به‌جای `<baseUrl>`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`، کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`، نام یکی از مدل‌های فوق را قرار دهید.
 
 ## پارامترهای قابل تنظیم
+
+### OpenAI SDK
 
 در OpenAI SDK، شما می‌توانید پارامترهای زیر را تنظیم کنید.
 
@@ -333,7 +336,7 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-در قطعه کد‌ فوق، به‌جای `<baseUrl>`, آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`, کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`, نام یکی از مدل‌های فوق را قرار دهید.
+در قطعه کد‌ فوق، به‌جای `<baseUrl>`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`، کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`، نام یکی از مدل‌های فوق را قرار دهید.
 
 ## all links
 
