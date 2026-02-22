@@ -12,7 +12,8 @@ const CATEGORIES = [
   "perplexity",
   "qwen",
   "moonshotai",
-  "z-ai"
+  "z-ai",
+  "minimax",
 ];
 
 function categorizeModel(modelId) {
