@@ -15,6 +15,7 @@ import {
   GoCode,
   GoPerson,
   GoRepo,
+  GoPeople,
   GoGlobe,
   GoArrowLeft,
   GoCloud
@@ -387,6 +388,13 @@ const REFERENCES = [
     icon: <GoRepo />,
     desc:
       "آشنایی با میرورهای لیارا و نحوه استفاده از آن‌ها برای دانلود ایمیج‌ها و پکیج‌ها",
+    link: "/mirrors/about"
+  },
+  {
+    title: "تیم‌ها و دسترسی‌ها",
+    icon: <GoPeople />,
+    desc:
+      "آشنایی با تیم‌ها در لیارا برای کار کردن بر روی یک پروژه تیمی و گروهی",
     link: "/mirrors/about"
   }
 
