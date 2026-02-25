@@ -14,6 +14,7 @@ import {
   GoTerminal,
   GoCode,
   GoPerson,
+  GoRepo,
   GoGlobe,
   GoArrowLeft,
   GoCloud
@@ -380,7 +381,15 @@ const REFERENCES = [
     desc:
       "اطلاعات در مورد پنل کاربری لیارا، از ثبت تیکت تا تخمین‌هزینه‌های سرویس‌های مورد استفاده",
     link: "/references/console/about"
+  },
+  {
+    title: "مخازن نرم‌افزاری (میرورها)",
+    icon: <GoRepo />,
+    desc:
+      "آشنایی با میرورهای لیارا و نحوه استفاده از آن‌ها برای دانلود ایمیج‌ها و پکیج‌ها",
+    link: "/mirrors/about"
   }
+
 ];
 
 const MOST_VISITED_LINKS = [

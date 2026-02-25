@@ -164,11 +164,6 @@ export default {
       link: "/dns-management-system/about"
     },
     {
-      title: "مخازن نرم‌افزاری (میرورها)",
-      icon: <GoRepo />,
-      link: "/mirrors/about"
-    },
-    {
       hr: true
     },
     {
@@ -193,6 +188,11 @@ export default {
       title: "تیم‌ها و دسترسی‌ها",
       icon: <GoPeople />,
       link: "/references/team/about"
+    },
+    {
+      title: "مخازن نرم‌افزاری (میرورها)",
+      icon: <GoRepo />,
+      link: "/mirrors/about"
     },
     {
       hr: true
