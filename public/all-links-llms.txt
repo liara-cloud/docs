@@ -281,6 +281,7 @@
 - [اتصال دامنه به برنامه](https://docs.liara.ir/llms/paas/domains/about.md)
 - [اتصال دامنه به سرور مجازی ابری به همراه تهیه گواهی SSL](https://docs.liara.ir/llms/iaas/debian/how-tos/connect-domain.md)
 - [اتصال دامنه به سرور مجازی ابری به همراه تهیه گواهی SSL](https://docs.liara.ir/llms/iaas/ubuntu/how-tos/connect-domain.md)
+- [اتصال هوش مصنوعی به OpenClaw](https://docs.liara.ir/llms/ai/connect-to-service/openclaw.md)
 - [اتصال هوش مصنوعی به افزونه Cline](https://docs.liara.ir/llms/ai/connect-to-service/cline.md)
 - [اتصال هوش مصنوعی به افزونه Kilo Code](https://docs.liara.ir/llms/ai/connect-to-service/kilo-code.md)
 - [اتصال هوش مصنوعی به برنامه N8N](https://docs.liara.ir/llms/ai/connect-to-service/n8n.md)

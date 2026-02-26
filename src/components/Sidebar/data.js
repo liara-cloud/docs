@@ -972,6 +972,11 @@ export default {
         link: "/ai/connect-to-service/sillytavern"
       },
       {
+        title: "OpenClaw",
+        icon: <IconContainer alt="https://media.liara.ir/ai/openclaw.svg" />,
+        link: "/ai/connect-to-service/openclaw"
+      },
+      {
         hr: true
       },
       {
