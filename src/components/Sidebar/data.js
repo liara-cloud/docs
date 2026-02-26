@@ -11809,9 +11809,9 @@ export default {
         hr: true
       },
       {
-        title: "مستندات OpenAPI",
+        title: "مستندات توسعه‌دهندگان",
         icon: <IconContainer alt="json" />,
-        link: "https://openapi.liara.ir/"
+        link: "https://developers.liara.ir/"
       },
       {
         title: "دریافت اطلاعات جامع کاربری",
