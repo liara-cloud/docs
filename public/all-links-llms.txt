@@ -1052,7 +1052,6 @@
 - [مشاهده دیسک‌ها](https://docs.liara.ir/llms/iaas/disks/see-disk-details.md)
 - [مشاهده دیسک‌های سرور مجازی ابری در کنسول](https://docs.liara.ir/llms/iaas/disks/see-disks.md)
 - [مشاهده رویدادهای سرور مجازی با API](https://docs.liara.ir/llms/iaas/api/see-vm-events.md)
-- [مشاهده فایل در باکت](https://docs.liara.ir/llms/object-storage/how-tos/see-file.md)
 - [مشاهده لاگ‌های برنامه با Liara CLI](https://docs.liara.ir/llms/references/cli/see-app-logs.md)
 - [مشاهده لیست دامنه‌ها با Liara CLI](https://docs.liara.ir/llms/references/cli/list-domains.md)
 - [مشاهده لیستی از ایمیل‌سرورهای ایجاد شده با Liara CLI](https://docs.liara.ir/llms/references/cli/list-email-servers.md)

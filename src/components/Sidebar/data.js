@@ -10404,7 +10404,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             < GoFileDirectory />
-            شیوه‌ی کار با باکت
+            شیوه‌ی کار با باکت در کنسول
           </div>
         )
       },
@@ -10415,10 +10415,6 @@ export default {
       {
         title: "دانلود فایل",
         link: "/object-storage/how-tos/download-file"
-      },
-      {
-        title: "مشاهده فایل",
-        link: "/object-storage/how-tos/see-file"
       },
       {
         title: "اشتراک‌گذاری فایل",
@@ -10609,7 +10605,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             < GoFileDirectory />
-            شیوه‌ی کار با باکت
+            شیوه‌ی کار با باکت در کنسول
           </div>
         )
       },
@@ -10621,10 +10617,7 @@ export default {
         title: "دانلود فایل",
         link: "/object-storage/how-tos/download-file"
       },
-      {
-        title: "مشاهده فایل",
-        link: "/object-storage/how-tos/see-file"
-      },
+
       {
         title: "اشتراک‌گذاری فایل",
         link: "/object-storage/how-tos/share-file"
@@ -10808,7 +10801,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             < GoFileDirectory />
-            شیوه‌ی کار با باکت
+            شیوه‌ی کار با باکت در کنسول
           </div>
         )
       },
@@ -10819,10 +10812,6 @@ export default {
       {
         title: "دانلود فایل",
         link: "/object-storage/how-tos/download-file"
-      },
-      {
-        title: "مشاهده فایل",
-        link: "/object-storage/how-tos/see-file"
       },
       {
         title: "اشتراک‌گذاری فایل",
@@ -11008,7 +10997,7 @@ export default {
         badge: (
           <div className="flex items-center gap-2">
             < GoFileDirectory />
-            شیوه‌ی کار با باکت
+            شیوه‌ی کار با باکت در کنسول
           </div>
         )
       },
@@ -11019,10 +11008,6 @@ export default {
       {
         title: "دانلود فایل",
         link: "/object-storage/how-tos/download-file"
-      },
-      {
-        title: "مشاهده فایل",
-        link: "/object-storage/how-tos/see-file"
       },
       {
         title: "اشتراک‌گذاری فایل",

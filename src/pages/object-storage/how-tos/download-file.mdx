@@ -22,16 +22,44 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 برای دانلود فایل 
-تنها کافیست وارد باکت مورد نظرتان شوید و در لیست فایل‌ها، روی آیکون دانلود کلیک کنید:
+دو روش وجود دارد: 
 
+<Step  steps={[
+  {
+    step: "۱",
+    content: (
+      <>
+        <h3>دانلود فایل با استفاده از S3 SDK</h3>   
+        <p> برای یادگیری کار با S3 SDK به <a href="/object-storage/how-tos/connect-via-platform/about/" className="text-[#2196f3]">مستندات مربوطه</a> مراجعه بفرمایید.</p>
+      </>
+    )
+  },
+  {
+    step: "۲",
+    content: (
+      <>
+        <h3>دانلود فایل با دامنه شخصی</h3>   
+        <p>برای دانلود فایل با دامنه شخصی‌تان، کافیست تا طبق <a href="/object-storage/add-domain/" className="text-[#2196f3]">مستندات اتصال دامنه به باکت</a>، دامنه خود را به باکت متصل کنید. سپس می‌توانید فایل خود را با لینک دامنه‌تان، دانلود کنید.</p>
+        <div className="h-2" />
+        <p>
+          به عنوان مثال، فرض کنید که دامنه‌تان <Important>example.com</Important> است. 
+          با فرض اینکه فایل مدنظرتان در باکت در مسیر <Important>path/to/myfile.txt</Important> قرار دارد و دامنه‌تان به باکت متصل و SSL آن نیز فعال است، می‌توانید با مراجعه به لینک زیر، فایل را مشاهده و دانلود کنید:
+        </p>
 
+        <div className="h-2" />
+        <div dir='ltr'>
+          <Highlight className="bash">
+            {`https://example.com/path/to/myfile.txt`}
+          </Highlight>
+        </div>
+        <div className="h-2" />
 
-<div className="h-4" />
-    <video
-      src="https://media.liara.ir/object-storage/download-file.mp4"
-      controls="controls"
-      className="block w-full"
-      width="100%"
-    />
-<div className="h-4" />
+      
+      </>
+    )
+  },
+]}
+
+/>
+
 </Layout>

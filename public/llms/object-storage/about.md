@@ -14,29 +14,42 @@
 
 با استفاده از API ساده و سازگار با AWS SDK، می‌توانید به راحتی و در زبان‌ها و فریم‌ورک‌های مختلف برنامه‌نویسی، فایل‌های خود را مدیریت کنید. این سرویس با افزایش مقیاس‌پذیری برنامه‌ها، عملکرد فوق‌العاده‌ای را در مواجهه با workloadهای بالا ارائه می‌دهد و با یک کلیک، امکان تغییر سطح دسترسی فایل‌ها از عمومی به خصوصی را فراهم می‌سازد.
 
-لیارا با رابط کاربری اختصاصی و سازگاری با AWS SDK، مدیریت ذخیره‌سازی ابری را برای شما آسان و امن می‌کند، تا با خیالی آسوده به توسعه برنامه‌های خود بپردازید.
+لیارا با رابط کاربری اختصاصی و سازگاری با AWS SDK، مدیریت ذخیره‌سازی ابری را برای شما آسان و امن می‌کند، تا با خیالی آسوده به توسعه برنامه‌های خود بپردازید.  
 در ادامه، بخوانید:
 
-- [#### نحوه آپلود فایل](https://docs.liara.ir/object-storage/how-tos/upload-file)
-- [#### نحوه دانلود فایل](https://docs.liara.ir/object-storage/how-tos/download-file)
-- [#### نحوه مشاهده فایل](https://docs.liara.ir/object-storage/how-tos/see-file)
-- [#### نحوه اشتراک‌گذاری فایل](https://docs.liara.ir/object-storage/how-tos/share-file)
-- [#### نحوه حذف فایل](https://docs.liara.ir/object-storage/how-tos/delete-file)
-- [#### نحوه تغییر سطح دسترسی](https://docs.liara.ir/object-storage/how-tos/change-access-level)
-- [#### نحوه ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)
-- [#### نحوه ساخت کلید جدید](https://docs.liara.ir/object-storage/how-tos/generate-new-key)
-- [#### نحوه ویرایش کلید](https://docs.liara.ir/object-storage/how-tos/edit-key)
-- [#### نحوه حذف کلید](https://docs.liara.ir/object-storage/how-tos/delete-key)
-- [#### نحوه انتقال فایل از باکت به باکت دیگر](https://docs.liara.ir/object-storage/how-tos/move-bucket)
-- [#### نحوه تهیه فایل‌پشتیبان با rclone](https://docs.liara.ir/object-storage/how-tos/create-backup-using-rclone)
-- [#### نحوه تهیه فایل‌پشتیبان با S3 Browser](https://docs.liara.ir/object-storage/how-tos/create-backup-using-s3-browser)
-- [#### نحوه اتصال با AWS SDK از طریق پلتفرم](https://docs.liara.ir/object-storage/how-tos/connect-via-platform/about)
-
+- #### نحوه آپلود فایل
+  [https://docs.liara.ir/object-storage/how-tos/upload-file](https://docs.liara.ir/object-storage/how-tos/upload-file)
+- #### نحوه دانلود فایل
+  [https://docs.liara.ir/object-storage/how-tos/download-file](https://docs.liara.ir/object-storage/how-tos/download-file)
+- #### نحوه اشتراک‌گذاری فایل
+  [https://docs.liara.ir/object-storage/how-tos/share-file](https://docs.liara.ir/object-storage/how-tos/share-file)
+- #### نحوه حذف فایل
+  [https://docs.liara.ir/object-storage/how-tos/delete-file](https://docs.liara.ir/object-storage/how-tos/delete-file)
+- #### نحوه تغییر سطح دسترسی
+  [https://docs.liara.ir/object-storage/how-tos/change-access-level](https://docs.liara.ir/object-storage/how-tos/change-access-level)
+- #### نحوه ایجاد کلید
+  [https://docs.liara.ir/object-storage/how-tos/create-key](https://docs.liara.ir/object-storage/how-tos/create-key)
+- #### نحوه ساخت کلید جدید
+  [https://docs.liara.ir/object-storage/how-tos/generate-new-key](https://docs.liara.ir/object-storage/how-tos/generate-new-key)
+- #### نحوه ویرایش کلید
+  [https://docs.liara.ir/object-storage/how-tos/edit-key](https://docs.liara.ir/object-storage/how-tos/edit-key)
+- #### نحوه حذف کلید
+  [https://docs.liara.ir/object-storage/how-tos/delete-key](https://docs.liara.ir/object-storage/how-tos/delete-key)
+- #### نحوه انتقال فایل از باکت به باکت دیگر
+  [https://docs.liara.ir/object-storage/how-tos/move-bucket](https://docs.liara.ir/object-storage/how-tos/move-bucket)
+- #### نحوه تهیه فایل‌پشتیبان با rclone
+  [https://docs.liara.ir/object-storage/how-tos/create-backup-using-rclone](https://docs.liara.ir/object-storage/how-tos/create-backup-using-rclone)
+- #### نحوه تهیه فایل‌پشتیبان با S3 Browser
+  [https://docs.liara.ir/object-storage/how-tos/create-backup-using-s3-browser](https://docs.liara.ir/object-storage/how-tos/create-backup-using-s3-browser)
+- #### نحوه اتصال با AWS SDK از طریق پلتفرم
+  [https://docs.liara.ir/object-storage/how-tos/connect-via-platform/about](https://docs.liara.ir/object-storage/how-tos/connect-via-platform/about)
 
 ## همچنین بخوانید:
 
-- [#### آشنایی با جزئیات فضای ذخیره‌سازی ابری](./details/about)
-- [#### اضافه کردن دامنه به باکت](./add-domain)
+- #### آشنایی با جزئیات فضای ذخیره‌سازی ابری
+  [./details/about](./details/about)
+- #### اضافه کردن دامنه به باکت
+  [./add-domain](./add-domain)
 
 ## all links
 
