@@ -4269,11 +4269,11 @@ export default {
         icon: <GoZap />,
         link: "/iaas/ubuntu/quick-start"
       },
-      {
-        title: "لینک‌های مرتبط",
-        icon: <GoMegaphone />,
-        link: "/iaas/ubuntu/related-links"
-      },
+      // {
+      //   title: "لینک‌های مرتبط",
+      //   icon: <GoMegaphone />,
+      //   link: "/iaas/ubuntu/related-links"
+      // },
       {
         title: "نسخه‌های قابل ارائه",
         icon: <GoVersions />,
@@ -4679,11 +4679,11 @@ export default {
         icon: <GoZap />,
         link: "/iaas/debian/quick-start"
       },
-      {
-        title: "لینک‌های مرتبط",
-        icon: <GoMegaphone />,
-        link: "/iaas/debian/related-links"
-      },
+      // {
+      //   title: "لینک‌های مرتبط",
+      //   icon: <GoMegaphone />,
+      //   link: "/iaas/debian/related-links"
+      // },
       {
         title: "نسخه‌های قابل ارائه",
         icon: <GoVersions />,
