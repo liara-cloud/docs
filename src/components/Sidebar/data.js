@@ -963,7 +963,7 @@ export default {
       },
       {
         title: "OpenWeb UI",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/openwebui/openwebui-logo.png" />,
         link: "/ai/connect-to-service/openweb"
       },
       {
@@ -988,17 +988,17 @@ export default {
       },
       // {
       //   title: "Copilot",
-      //   icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
+      //   icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.site/ai/chat-gpt-copilot/chatgpt-copilot.png" />,
       //   link: "/ai/connect-to-service/chat-gpt-copilot"
       // },
       {
         title: "Kilo Code",
-        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/kilo-code/kilocode-logo.png" />,
+        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.site/ai/kilo-code/kilocode-logo.png" />,
         link: "/ai/connect-to-service/kilo-code"
       },
       {
         title: "Cline",
-        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.space/ai/cline-bot/cline.png" />,
+        icon: <IconContainer alt="https://ofs-liara.storage.c2.liara.site/ai/cline-bot/cline.png" />,
         link: "/ai/connect-to-service/cline"
       },
     ],
@@ -6603,7 +6603,7 @@ export default {
       },
       {
         title: "Vikunja",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/vikunja/favicon.webp" />,
         link: "/one-click-apps/vikunja/quick-start"
       },
       {
@@ -6613,17 +6613,17 @@ export default {
       },
       {
         title: "Qdrant",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/qdrant/qdrant-brandmark-red.svg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/qdrant/qdrant-brandmark-red.svg" />,
         link: "/one-click-apps/qdrant/quick-start"
       },
       {
         title: "Drupal",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/drupal/favicon.png" />,
         link: "/one-click-apps/drupal/quick-start"
       },
       {
         title: "Onedev",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/onedev/onedev-light.md.webp" />,
         link: "/one-click-apps/onedev/quick-start"
       },
       {
@@ -6653,27 +6653,27 @@ export default {
       },
       {
         title: "Moodle",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/moodle/favicon.png" />,
         link: "/one-click-apps/moodle/quick-start"
       },
       {
         title: "Memos",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/memos/memos-logo.svg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/memos/memos-logo.svg" />,
         link: "/one-click-apps/memos/quick-start"
       },
       {
         title: "Kutt",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/kutt/download.webp" />,
         link: "/one-click-apps/kutt/quick-start"
       },
       {
         title: "Flowise AI",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/flowise/favicon.webp" />,
         link: "/one-click-apps/flowise/quick-start"
       },
       {
         title: "PgHero",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/pg-hero/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/pg-hero/favicon.png" />,
         link: "/one-click-apps/pghero/quick-start"
       },
       {
@@ -6693,7 +6693,7 @@ export default {
       },
       {
         title: "Etherpad",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/etherpad/favicon.ico" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/etherpad/favicon.ico" />,
         link: "/one-click-apps/etherpad/quick-start"
       },
       {
@@ -6713,7 +6713,7 @@ export default {
       },
       {
         title: "Umami",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/umami/favicon.webp" />,
         link: "/one-click-apps/umami/quick-start"
       },
       {
@@ -6788,17 +6788,17 @@ export default {
       },
       {
         title: "OpenWebUI",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openwebui/openwebui-logo.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/openwebui/openwebui-logo.png" />,
         link: "/one-click-apps/openwebui/quick-start"
       },
       {
         title: "Registry",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/liara-docker-image-registry/logo-registry.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/liara-docker-image-registry/logo-registry.png" />,
         link: "/one-click-apps/registry/quick-start"
       },
       {
         title: "Discourse",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/discourse/favicon.webp" />,
         link: "/one-click-apps/discourse/quick-start"
       },
       {
@@ -6813,172 +6813,172 @@ export default {
       },
       {
         title: "Listmonk",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/listmonk/listmonk-icon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/listmonk/listmonk-icon.webp" />,
         link: "/one-click-apps/listmonk/quick-start"
       },
       {
         title: "Jupyter notebook",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/jupyter/jupyter.svg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/jupyter/jupyter.svg" />,
         link: "/one-click-apps/jupyter-notebook/quick-start"
       },
       {
         title: "SuperTokens",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/supertoken/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/supertoken/favicon.webp" />,
         link: "/one-click-apps/supertokens/quick-start"
       },
       {
         title: "Directus",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/directus/directus-colorful-logo.webp" />,
         link: "/one-click-apps/directus/quick-start"
       },
       {
         title: "Affine",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/affine/affine-light-logo.webp" />,
         link: "/one-click-apps/affine/quick-start"
       },
       {
         title: "Focalboard",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/focalboard/focalboard-logo.webp" />,
         link: "/one-click-apps/focalboard/quick-start"
       },
       {
         title: "Maybe",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/maybe/favicon.webp" />,
         link: "/one-click-apps/maybe/quick-start"
       },
       {
         title: "Paperless",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/paperless/paperless-logo.webp" />,
         link: "/one-click-apps/paperless/quick-start"
       },
       {
         title: "Typesense",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/typesense/type-sense-logo.webp" />,
         link: "/one-click-apps/typesense/quick-start"
       },
       {
         title: "OpenProject",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/openproject/openproject-logo.webp" />,
         link: "/one-click-apps/openproject/quick-start"
       },
       {
         title: "Ntfy",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/ntfy/ntfy-logo.webp" />,
         link: "/one-click-apps/ntfy/quick-start"
       },
       {
         title: "Formbricks",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/formbricks/formbricks-logo.webp" />,
         link: "/one-click-apps/formbricks/quick-start"
       },
       {
         title: "Actual",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/actual/actual-logo.webp" />,
         link: "/one-click-apps/actual/quick-start"
       },
       {
         title: "Grist",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/grist/grist-logo.webp" />,
         link: "/one-click-apps/grist/quick-start"
       },
       {
         title: "Keila",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/favicon.jpg" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/keila/favicon.jpg" />,
         link: "/one-click-apps/keila/quick-start"
       },
       {
         title: "Zitadel",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/zitadel/favicon.webp" />,
         link: "/one-click-apps/zitadel/quick-start"
       },
       {
         title: "Passbolt",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/passbolt/passbolt-logo.webp" />,
         link: "/one-click-apps/passbolt/quick-start"
       },
       {
         title: "DocuSeal",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/docuseal/docuseal-logo.webp" />,
         link: "/one-click-apps/docuseal/quick-start"
       },
       {
         title: "Docmost",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/docmost/favicon.webp" />,
         link: "/one-click-apps/docmost/quick-start"
       },
       {
         title: "LinkStack",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/linkstack/linkstack-logo.webp" />,
         link: "/one-click-apps/linkstack/quick-start"
       },
       {
         title: "Mixpost",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/mixpost/favicon.webp" />,
         link: "/one-click-apps/mixpost/quick-start"
       },
       {
         title: "Nocobase",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/nocobase/nocobase-icon.webp" />,
         link: "/one-click-apps/nocobase/quick-start"
       },
       {
         title: "Vvveb",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/vvveb/vvveb-logo.webp" />,
         link: "/one-click-apps/vvveb/quick-start"
       },
       {
         title: "Teable",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/teable/favicon.webp" />,
         link: "/one-click-apps/teable/quick-start"
       },
       {
         title: "Infisical",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/infisical/insifical-icon.webp" />,
         link: "/one-click-apps/infisical/quick-start"
       },
       {
         title: "Activepieces",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/activepieces/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/activepieces/favicon.png" />,
         link: "/one-click-apps/activepieces/quick-start"
       },
       {
         title: "Automatisch",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/automatisch/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/automatisch/favicon.webp" />,
         link: "/one-click-apps/automatisch/quick-start"
       },
       {
         title: "Rallly",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-good-logo.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/rallly/rallly-good-logo.webp" />,
         link: "/one-click-apps/rallly/quick-start"
       },
       {
         title: "FreeScout",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/freescout/favicon.png" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/freescout/favicon.png" />,
         link: "/one-click-apps/freescout/quick-start"
       },
       {
         title: "CyberChef",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/cyberchef/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/cyberchef/favicon.webp" />,
         link: "/one-click-apps/cyberchef/quick-start"
       },
       {
         title: "chatwoot",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/chatwoot/favicon.avif" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/chatwoot/favicon.avif" />,
         link: "/one-click-apps/chatwoot/quick-start"
       },
       {
         title: "CheckCle",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/checkcle/logo-checkcle.ico" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/checkcle/logo-checkcle.ico" />,
         link: "/one-click-apps/checkcle/quick-start"
       },
       {
         title: "Harness",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/harness/favicon.webp" />,
         link: "/one-click-apps/harness/quick-start"
       },
       {
         title: "Postiz",
-        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.space/postiz/favicon.avif" />,
+        icon: <IconContainer alt="https://one-click-apps.storage.iran.liara.site/postiz/favicon.avif" />,
         link: "/one-click-apps/postiz/quick-start"
       },
 
@@ -6988,7 +6988,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/postiz/favicon.avif" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/postiz/favicon.avif" />
             برنامه Postiz
           </div>
         )
@@ -7024,7 +7024,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/cyberchef/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/cyberchef/favicon.webp" />
             برنامه CyberChef
           </div>
         )
@@ -7060,7 +7060,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/harness/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/harness/favicon.webp" />
             برنامه Harness
           </div>
         )
@@ -7096,7 +7096,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/automatisch/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/automatisch/favicon.webp" />
             برنامه Automatisch
           </div>
         )
@@ -7132,7 +7132,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/chatwoot/favicon.avif" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/chatwoot/favicon.avif" />
             برنامه chatwoot
           </div>
         )
@@ -7168,7 +7168,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/checkcle/logo-checkcle.ico" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/checkcle/logo-checkcle.ico" />
             برنامه CheckCle
           </div>
         )
@@ -7204,7 +7204,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/zitadel/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/zitadel/favicon.webp" />
             برنامه Zitadel
           </div>
         )
@@ -7240,7 +7240,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/activepieces/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/activepieces/favicon.png" />
             برنامه Activepieces
           </div>
         )
@@ -7276,7 +7276,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/teable/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/teable/favicon.webp" />
             برنامه Teable
           </div>
         )
@@ -7312,7 +7312,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/nocobase/nocobase-icon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/nocobase/nocobase-icon.webp" />
             برنامه Nocobase
           </div>
         )
@@ -7348,7 +7348,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/infisical/insifical-icon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/infisical/insifical-icon.webp" />
             برنامه Infisical
           </div>
         )
@@ -7384,7 +7384,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/discourse/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/discourse/favicon.webp" />
             برنامه Discourse
           </div>
         )
@@ -7420,7 +7420,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-          <IconContainer alt="https://one-click-apps.storage.iran.liara.space/liara-docker-image-registry/logo-registry.png" />            
+          <IconContainer alt="https://one-click-apps.storage.iran.liara.site/liara-docker-image-registry/logo-registry.png" />            
           برنامه Registry
           </div>
         )
@@ -7442,7 +7442,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/wiki-js/wikijs-full-2021-768t-svg-yOi8.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/wiki-js/wikijs-full-2021-768t-svg-yOi8.webp" />
             برنامه Wiki.js
           </div>
         )
@@ -7478,7 +7478,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/moodle/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/moodle/favicon.png" />
             برنامه Moodle
           </div>
         )
@@ -7513,7 +7513,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/memos/memos-logo.svg" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/memos/memos-logo.svg" />
             برنامه Memos
           </div>
         )
@@ -7548,7 +7548,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/kutt/download.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/kutt/download.webp" />
             برنامه Kutt
           </div>
         )
@@ -7850,7 +7850,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/onedev/onedev-light.md.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/onedev/onedev-light.md.webp" />
             برنامه Onedev
           </div>
         )
@@ -7885,7 +7885,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/drupal/drupal-icon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/drupal/drupal-icon.webp" />
             برنامه Drupal
           </div>
         )
@@ -7954,7 +7954,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/flowise/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/flowise/favicon.webp" />
             برنامه FlowiseAI
           </div>
         )
@@ -7989,7 +7989,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/pg-hero/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/pg-hero/favicon.png" />
             برنامه PgHero
           </div>
         )
@@ -8249,7 +8249,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/umami/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/umami/favicon.webp" />
             برنامه Umami
           </div>
         )
@@ -8284,7 +8284,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/etherpad/favicon.ico" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/etherpad/favicon.ico" />
             برنامه Etherpad
           </div>
         )
@@ -8319,7 +8319,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vikunja/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/vikunja/favicon.webp" />
             برنامه Vikunja
           </div>
         )
@@ -8354,7 +8354,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/qdrant/qdrant-brandmark-red.svg" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/qdrant/qdrant-brandmark-red.svg" />
             برنامه Qdrant
           </div>
         )
@@ -9095,7 +9095,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/directus/directus-colorful-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/directus/directus-colorful-logo.webp" />
             برنامه Directus
           </div>
         )
@@ -9130,7 +9130,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/affine/affine-light-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/affine/affine-light-logo.webp" />
             برنامه Affine
           </div>
         )
@@ -9165,7 +9165,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/focalboard/focalboard-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/focalboard/focalboard-logo.webp" />
             برنامه Focalboard
           </div>
         )
@@ -9200,7 +9200,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/maybe/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/maybe/favicon.webp" />
             برنامه Maybe
           </div>
         )
@@ -9235,7 +9235,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/paperless/paperless-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/paperless/paperless-logo.webp" />
             برنامه Paperless
           </div>
         )
@@ -9270,7 +9270,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/typesense/type-sense-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/typesense/type-sense-logo.webp" />
             برنامه Typesense
           </div>
         )
@@ -9305,7 +9305,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/openproject/openproject-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/openproject/openproject-logo.webp" />
             برنامه OpenProject
           </div>
         )
@@ -9340,7 +9340,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/ntfy/ntfy-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/ntfy/ntfy-logo.webp" />
             برنامه Ntfy
           </div>
         )
@@ -9375,7 +9375,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/formbricks/formbricks-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/formbricks/formbricks-logo.webp" />
             برنامه Formbricks
           </div>
         )
@@ -9410,7 +9410,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/actual/actual-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/actual/actual-logo.webp" />
             برنامه Actual
           </div>
         )
@@ -9445,7 +9445,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/grist/grist-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/grist/grist-logo.webp" />
             برنامه Grist
           </div>
         )
@@ -9480,7 +9480,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/keila/favicon.jpg" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/keila/favicon.jpg" />
             برنامه Keila
           </div>
         )
@@ -9515,7 +9515,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/passbolt/passbolt-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/passbolt/passbolt-logo.webp" />
             برنامه Passbolt
           </div>
         )
@@ -9554,7 +9554,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docuseal/docuseal-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/docuseal/docuseal-logo.webp" />
             برنامه DocuSeal
           </div>
         )
@@ -9589,7 +9589,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/docmost/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/docmost/favicon.webp" />
             برنامه Docmost
           </div>
         )
@@ -9624,7 +9624,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/linkstack/linkstack-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/linkstack/linkstack-logo.webp" />
             برنامه linkstack
           </div>
         )
@@ -9659,7 +9659,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/mixpost/favicon.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/mixpost/favicon.webp" />
             برنامه Mixpost
           </div>
         )
@@ -9695,7 +9695,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/vvveb/vvveb-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/vvveb/vvveb-logo.webp" />
             برنامه Vvveb
           </div>
         )
@@ -9730,7 +9730,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/freescout/favicon.png" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/freescout/favicon.png" />
             برنامه FreeScout
           </div>
         )
@@ -9766,7 +9766,7 @@ export default {
       {
         badge: (
           <div className="flex items-center gap-2">
-            <IconContainer alt="https://one-click-apps.storage.iran.liara.space/rallly/rallly-logo.webp" />
+            <IconContainer alt="https://one-click-apps.storage.iran.liara.site/rallly/rallly-logo.webp" />
             برنامه Rallly
           </div>
         )

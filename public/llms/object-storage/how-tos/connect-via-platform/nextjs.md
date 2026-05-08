@@ -17,7 +17,7 @@ npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-LIARA_ENDPOINT=https://storage.iran.liara.space
+LIARA_ENDPOINT=https://storage.iran.liara.site
 LIARA_BUCKET_NAME=my-bucket-name
 LIARA_ACCESS_KEY=nieiou08cnbod58p
 LIARA_SECRET_KEY=df67ef3e-ccb6-4a25-97ba-3526f33da3fc

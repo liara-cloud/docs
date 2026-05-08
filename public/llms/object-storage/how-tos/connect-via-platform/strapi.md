@@ -24,7 +24,7 @@ npm install @strapi/provider-upload-aws-s3
 LIARA_ACCESS_KEY_ID=73f8u0nhgrseognt
 LIARA_ACCESS_SECRET=bea78f17-904e-4e64-8d2e-f009834e41f1
 LIARA_REGION=us-east-1
-LIARA_ENDPOINT=https://storage.iran.liara.space
+LIARA_ENDPOINT=https://storage.iran.liara.site
 LIARA_BUCKET=strapi-bucket
 ```
 
@@ -59,7 +59,7 @@ module.exports = ({ env }) => ({
 همچنین بایستی در فایل `config/middlewares.js` قطعه کد زیر را به آرایه‌های `img-src` و `media-src` اضافه کنید:
 
 ```bash
-'strapi-bucket.storage.iran.liara.space',
+'strapi-bucket.storage.iran.liara.site',
 ```
 
 در کد فوق، به جای `strapi-bucket` باید نام باکت خود را وارد کنید.  

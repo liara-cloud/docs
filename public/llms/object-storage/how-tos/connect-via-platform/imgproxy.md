@@ -12,13 +12,13 @@ https://imgproxy-app.liara.run/_/resize:fill:300:400:0/gravity:sm/plain/
 حال، فرض کنید که URL عکس ذخیره‌شده در فضای ذخیره‌سازی ابری لیارا نیز، برابر با مقدار زیر است:
 
 ```bash
-https://bucket.storage.iran.liara.space/liara-poster.png
+https://bucket.storage.iran.liara.site/liara-poster.png
 ```
 
 اکنون، برای اعمال Imgproxy بر روی عکس مد نظر خود، کافیست تا URL پیکربندی شده Imgproxy را قبل از URL عکس مدنظر خود قرار دهید:
 
 ```bash
-https://imgproxy-app.liara.run/_/resize:fill:300:400:0/gravity:sm/plain/https://bucket.storage.iran.liara.space/liara-poster.png
+https://imgproxy-app.liara.run/_/resize:fill:300:400:0/gravity:sm/plain/https://bucket.storage.iran.liara.site/liara-poster.png
 ```
 
 بدین نحو، تمامی تغییرات اعمال می‌شوند و شما می‌توانید با استفاده از URL فوق، به عکس نهایی خود دسترسی داشته باشید.

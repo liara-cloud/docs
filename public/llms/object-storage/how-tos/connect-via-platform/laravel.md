@@ -26,7 +26,7 @@ AWS_SECRET_ACCESS_KEY=c2a8704a-c200-4848-82ca-2ddad28c12f1
 AWS_DEFAULT_REGION=us-east-1
 AWS_BUCKET=bucket-name
 AWS_USE_PATH_STYLE_ENDPOINT=true
-AWS_ENDPOINT=https://storage.iran.liara.space
+AWS_ENDPOINT=https://storage.iran.liara.site
 ```
 
 در ادامه، قطعه کد زیر را در `config/filesystems.php` بررسی کنید و در صورت عدم وجود، آن را اضافه کنید:

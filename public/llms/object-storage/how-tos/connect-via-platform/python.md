@@ -21,7 +21,7 @@ pip install boto3
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-LIARA_ENDPOINT_URL=https://storage.iran.liara.space
+LIARA_ENDPOINT_URL=https://storage.iran.liara.site
 LIARA_ACCESS_KEY=nieiou08cnbod58p
 LIARA_SECRET_KEY=ed94d3c3-f076-4d91-88dd-c00ae2ac2bae
 BUCKET_NAME=bucket-name
