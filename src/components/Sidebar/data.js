@@ -12015,6 +12015,11 @@ export default {
         link: "/mirrors/manjaro"
       },
       {
+        title: "آلما لینوکس",
+        icon: <IconContainer alt="https://media.liara.ir/logos/Manjaro-logo.png" />,
+        link: "/mirrors/alma-linux"
+      },
+      {
         hr: true
       },
       {

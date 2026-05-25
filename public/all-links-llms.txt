@@ -636,6 +636,7 @@
 - [تنظیم لاگ‌ها](https://docs.liara.ir/llms/paas/php/how-tos/set-logs.md)
 - [تنظیم لاگ‌ها](https://docs.liara.ir/llms/paas/python/how-tos/set-logs.md)
 - [تنظیم موقعیت build](https://docs.liara.ir/llms/paas/details/build-location.md)
+- [تنظیم میرور در سیستم عامل Alma Linux](https://docs.liara.ir/llms/mirrors/alma-linux.md)
 - [تنظیم میرور در سیستم عامل Alpine Linux](https://docs.liara.ir/llms/mirrors/alpine-linux.md)
 - [تنظیم میرور در سیستم عامل Arch Linux](https://docs.liara.ir/llms/mirrors/arch-linux.md)
 - [تنظیم میرور در سیستم عامل CentOS](https://docs.liara.ir/llms/mirrors/centos.md)
