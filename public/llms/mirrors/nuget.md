@@ -20,6 +20,14 @@ dotnet nuget add source "https://package-mirror.liara.ir/repository/nuget/index.
 dotnet nuget list source
 ```
 
+## حذف میرور لیارا
+
+برای حذف میرور لیارا از تنظیمات، تنها کافیست تا دستور زیر را اجرا کنید: 
+
+```bash
+dotnet nuget remove source LiaraMirror
+```
+
 ## all links
 
 [All links of docs](https://docs.liara.ir/all-links-llms.txt)

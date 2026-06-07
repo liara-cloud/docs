@@ -68,4 +68,18 @@ go env -w GOSUMDB=off
 </div>
 <div className="h-2" />
 
+
+
+<Section id="unset-mirror" title="حذف میرور لیارا" />
+
+برای حذف میرور لیارا از تنظیمات، تنها کافیست تا دستور زیر را اجرا کنید: 
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`go env -u GOPROXY && go env -u GOSUMDB`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
 </Layout> 

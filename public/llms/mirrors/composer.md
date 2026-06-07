@@ -8,7 +8,7 @@
 https://package-mirror.liara.ir/repository/composer/
 ```
 
-برای تنظیم میرور فوق کافیست تا دستور زیر را اجرا کنید:
+برای تنظیم میرور فوق کافیست تا دستور زیر را اجرا کنید: 
 
 ```bash
 composer config -g repos.packagist composer https://package-mirror.liara.ir/repository/composer/
@@ -18,6 +18,14 @@ composer config -g repos.packagist composer https://package-mirror.liara.ir/repo
 
 ```bash
 composer config --list --global
+```
+
+## حذف میرور لیارا
+
+برای حذف میرور لیارا از تنظیمات، تنها کافیست تا دستور زیر را اجرا کنید: 
+
+```bash
+composer config -g --unset repos.packagist
 ```
 
 ## all links

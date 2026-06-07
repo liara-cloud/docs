@@ -21,6 +21,14 @@ go env -w GOSUMDB=off
 go env # for linux: go env | grep GOPROXY
 ```
 
+## حذف میرور لیارا
+
+برای حذف میرور لیارا از تنظیمات، تنها کافیست تا دستور زیر را اجرا کنید: 
+
+```bash
+go env -u GOPROXY && go env -u GOSUMDB
+```
+
 ## all links
 
 [All links of docs](https://docs.liara.ir/all-links-llms.txt)

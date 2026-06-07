@@ -8,7 +8,7 @@
 https://package-mirror.liara.ir/repository/npm/
 ```
 
-برای تنظیم میرور فوق کافیست تا دستور زیر را اجرا کنید:
+برای تنظیم میرور فوق کافیست تا دستور زیر را اجرا کنید: 
 
 ```bash
 npm config set registry https://package-mirror.liara.ir/repository/npm/ --global
@@ -18,6 +18,14 @@ npm config set registry https://package-mirror.liara.ir/repository/npm/ --global
 
 ```bash
 npm config get registry
+```
+
+## حذف میرور لیارا
+
+برای حذف میرور لیارا از تنظیمات، تنها کافیست تا دستور زیر را اجرا کنید: 
+
+```bash
+npm config delete registry --global
 ```
 
 ## all links
