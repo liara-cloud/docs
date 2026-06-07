@@ -114,4 +114,67 @@ systemctl restart docker`}
 با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
 به این میرورها ارسال خواهند شد. 
 
+
+
+<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
+
+برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+
+<Step  steps={[
+    {
+        step: "۱",
+            content: (
+                <>
+                    <h3>حذف تنظیمات فعلی</h3>
+                    <p>
+                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
+                    </p>
+                    <div className="h-2" />
+                        <Alert variant="error">
+                            <p>
+                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+                            </p>
+                        </Alert>
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`rm -f /etc/docker/daemon.json`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۲",
+            content: (
+                <>
+                    <h3>بازگردانی فایل پشتیبان</h3>
+                    <p>نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`mv /etc/docker/daemon.json.bak /etc/docker/daemon.json`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۳",
+            content: (
+                <>
+                    <h3>آپدیت سیستم</h3>
+                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست رجیستری‌ها به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`systemctl daemon-reload && systemctl restart docker`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    }
+]}
+/>
+
+
 </Layout>
