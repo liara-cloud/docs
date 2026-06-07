@@ -47,28 +47,89 @@ import Head from "next/head";
 </div>
 <div className="h-2" />
 
-برای تنظیم میرور فوق در سیستم عامل OpenSUSE خود، کافیست تا دستورات زیر را اجرا کنید: 
+برای تنظیم میرور فوق در سیستم عامل OpenSUSE و همچنین تهیه بکاپ از تنظیمات فعلی خود، کافیست تا دستور زیر را اجرا کنید: 
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`zypper addrepo \\
+        {`sudo mkdir -p /etc/zypp/repos.d/backup && \\
+sudo cp -a /etc/zypp/repos.d/*.repo /etc/zypp/repos.d/backup/ && \\
+zypper lr -u > ~/zypper-repos-backup.txt && \\
+zypper addrepo \\
   --priority 100 \\
   --no-gpgcheck \\
   https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/ \\
-  opensuse-oss`}
-    </Highlight>
-</div>
-<div className="h-2" />
-<div className="h-2" />
-<div dir='ltr'>
-    <Highlight className="bash">
-        {`zypper refresh`}
+  opensuse-oss && \\
+zypper refresh`}
     </Highlight>
 </div>
 <div className="h-2" />
 
 با انجام کار فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
 به این میرورها ارسال خواهند شد. 
+
+
+
+
+<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
+
+برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+
+<Step  steps={[
+    {
+        step: "۱",
+            content: (
+                <>
+                    <h3>حذف تنظیمات فعلی</h3>
+                    <p>
+                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
+                    </p>
+                    <div className="h-2" />
+                        <Alert variant="error">
+                            <p>
+                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+                            </p>
+                        </Alert>
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`zypper removerepo opensuse-oss`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۲",
+            content: (
+                <>
+                    <h3>بازگردانی فایل پشتیبان</h3>
+                    <p>یک کپی فایل پشتیبان با دستور زیر، با نام فایل اصلی، بگیرید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`cp -a /etc/zypp/repos.d/backup/*.repo /etc/zypp/repos.d/`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۳",
+            content: (
+                <>
+                    <h3>آپدیت سیستم</h3>
+                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`zypper refresh && zypper lr -u`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    }
+]}
+/>
+
 
 </Layout> 

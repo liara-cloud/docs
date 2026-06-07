@@ -1,50 +1,84 @@
 ﻿Original link: https://docs.liara.ir/mirrors/ubuntu/
 
-
-
-
-
 # تنظیم میرور در سیستم عامل ubuntu
-
 
 لیارا برای سیستم عامل ubuntu، میرورهای زیر را ارائه می‌دهد: 
 
-
-
 ```bash
-https://linux-mirror.liara.ir/repository/ubuntu
-https://linux-mirror.liara.ir/repository/ubuntu-security
+https://linux-mirror.liara.ir/repository/ubuntu/
+https://linux-mirror.liara.ir/repository/ubuntu-security/
 ```
-
 
 برای تنظیم میرورهای فوق در سیستم عامل ubuntu خود، گام‌های زیر را طی کنید: 
 
-۱. بررسی نسخه سیستم عامل
-برای تنظیم میرور، به `VERSION_CODENAME`، نیاز است. برای پیدا کردن مقدار آن، دستور زیر را اجرا کنید:
+۱. تهیه بکاپ از تنظیمات فعلی  
+قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:
 
-```js
-cat /etc/os-release
+```bash
+cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
 ```
 
-پس از اجرای دستور فوق، مقدار ذکر شده را در جایی ذخیره کنید.
+۲. تنظیم میرور لیارا  
+برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، در ابتدا دستور زیر را اجرا کنید:
 
-۲. تنظیم میرور لیارا
-برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، دستورات زیر را اجرا کنید:
-
-```js
-deb https://linux-mirror.liara.ir/repository/ubuntu/ <CODENAME> main restricted universe multiverse
-deb https://linux-mirror.liara.ir/repository/ubuntu/ <CODENAME>-updates main restricted universe multiverse
-deb https://linux-mirror.liara.ir/repository/ubuntu-security/ <CODENAME>-security main restricted universe multiverse
-
+```bash
+nano /etc/apt/sources.list.d/ubuntu.sources
 ```
 
-در دستورات فوق، به جای `&lt;CODENAME&gt;`، خروجی دستور مرحله اول را قرار دهید.
+پس از باز شدن ویرایشگر، مقادیر `URIs` را تغییر دهید؛ به عنوان مثال:
 
+```bash
+Types: deb
+URIs: https://linux-mirror.liara.ir/repository/ubuntu
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 
+Types: deb
+URIs: https://linux-mirror.liara.ir/repository/ubuntu-security
+Suites: noble-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+```
 
-با انجام مراحل فوق، تمامی کارها انجام شده است و زین‌پس، سیستم عامل شما، برای دانلود پکیج‌های مرتبط با اوبونتو، از میرورهای لیارا، استفاده خواهد کرد. 
+در نهایت، `CTRL + X` را بزنید و سپس `Y` و بعد از آن، `Enter` را بزنید تا تغییرات، ذخیره شوند.
 
+۳. آپدیت سیستم  
+اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
 
+```bash
+apt update
+```
+
+با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج  
+به این میرورها ارسال خواهند شد. 
+
+## غیرفعال کردن میرورهای لیارا
+
+برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+
+۱. حذف تنظیمات فعلی  
+با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
+
+> حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+
+```bash
+rm -f /etc/apt/sources.list.d/ubuntu.sources
+```
+
+۲. بازگردانی فایل پشتیبان  
+نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:
+
+```bash
+mv /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources
+```
+
+۳. آپدیت سیستم  
+اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
+
+```bash
+apt update
+```
 
 ## all links
 

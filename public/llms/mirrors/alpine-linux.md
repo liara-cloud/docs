@@ -22,8 +22,8 @@ cp /etc/apk/repositories /etc/apk/repositories.bak
 
 ```bash
 ALPINE_VERSION=$(cat /etc/alpine-release | cut -d'.' -f1-2) && \
-echo "https://linux-mirror.liara.ir/repository/alpine/v\${ALPINE_VERSION}/main" > /etc/apk/repositories && \
-echo "https://linux-mirror.liara.ir/repository/alpine/v\${ALPINE_VERSION}/community" >> /etc/apk/repositories
+echo "https://linux-mirror.liara.ir/repository/alpine/v${ALPINE_VERSION}/main" > /etc/apk/repositories && \
+echo "https://linux-mirror.liara.ir/repository/alpine/v${ALPINE_VERSION}/community" >> /etc/apk/repositories
 ```
 
 ۳. آپدیت سیستم  
@@ -35,6 +35,33 @@ apk update
 
 با انجام کارهای فوق، میرور لیارا در سیستم عامل شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج  
 به این میرور ارسال خواهد شد. 
+
+## غیرفعال کردن میرورهای لیارا
+
+برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+
+۱. حذف تنظیمات فعلی  
+با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
+
+> حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+
+```bash
+rm -f /etc/apk/repositories
+```
+
+۲. بازگردانی فایل پشتیبان  
+نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:
+
+```bash
+mv /etc/apk/repositories.bak /etc/apk/repositories
+```
+
+۳. آپدیت سیستم  
+اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
+
+```bash
+apk update
+```
 
 ## all links
 

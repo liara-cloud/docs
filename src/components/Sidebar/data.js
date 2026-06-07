@@ -12016,8 +12016,13 @@ export default {
       },
       {
         title: "آلما لینوکس",
-        icon: <IconContainer alt="https://media.liara.ir/logos/Manjaro-logo.png" />,
+        icon: <IconContainer alt="https://media.liara.ir/logos/almalinux.png" />,
         link: "/mirrors/alma-linux"
+      },
+      {
+        title: "الپاین لینوکس",
+        icon: <IconContainer alt="https://media.liara.ir/logos/alpine-linux.svg" />,
+        link: "/mirrors/alpine-linux"
       },
       {
         hr: true

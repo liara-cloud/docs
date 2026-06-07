@@ -59,7 +59,7 @@ https://linux-mirror.liara.ir/repository/ubuntu-security/`}
                     <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
+                        <Highlight className="bash">
                             {`cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak`}
                         </Highlight>
                     </div>
@@ -74,7 +74,7 @@ https://linux-mirror.liara.ir/repository/ubuntu-security/`}
                     <p>برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، در ابتدا دستور زیر را اجرا کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
+                        <Highlight className="bash">
                             {`nano /etc/apt/sources.list.d/ubuntu.sources`}
                         </Highlight>
                     </div>
@@ -82,7 +82,7 @@ https://linux-mirror.liara.ir/repository/ubuntu-security/`}
                     <p>پس از باز شدن ویرایشگر، مقادیر <Important>URIs</Important> را تغییر دهید؛ به عنوان مثال:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
+                        <Highlight className="bash">
                             {`Types: deb
 URIs: https://linux-mirror.liara.ir/repository/ubuntu
 Suites: noble noble-updates noble-backports
@@ -109,7 +109,7 @@ Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
                     <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود: </p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
+                        <Highlight className="bash">
                             {`apt update`}
                         </Highlight>
                     </div>
@@ -123,5 +123,68 @@ Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
 
 با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
 به این میرورها ارسال خواهند شد. 
+
+
+<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
+
+برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+
+<Step  steps={[
+    {
+        step: "۱",
+            content: (
+                <>
+                    <h3>حذف تنظیمات فعلی</h3>
+                    <p>
+                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
+                    </p>
+                    <div className="h-2" />
+                        <Alert variant="error">
+                            <p>
+                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+                            </p>
+                        </Alert>
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`rm -f /etc/apt/sources.list.d/ubuntu.sources`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۲",
+            content: (
+                <>
+                    <h3>بازگردانی فایل پشتیبان</h3>
+                    <p>نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:</p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`mv /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    },
+    {
+        step: "۳",
+            content: (
+                <>
+                    <h3>آپدیت سیستم</h3>
+                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
+                    <div className="h-2" />
+                    <div dir='ltr'>
+                        <Highlight className="bash">
+                            {`apt update`}
+                        </Highlight>
+                    </div>
+                </>
+            )
+    }
+]}
+/>
+
+
 
 </Layout>
