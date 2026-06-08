@@ -1,5 +1,5 @@
 # 1) Build
-FROM node:18-alpine AS builder
+FROM docker-mirror.liara.ir/node:18-alpine AS builder
 
 ARG MY_BASE_URL
 ARG MY_API_KEY
@@ -11,7 +11,7 @@ WORKDIR /app
 
 COPY package*.json /app/
 
-RUN npm ci
+RUN npm ci --registry=https://package-mirror.liara.ir/repository/npm/
 
 COPY . /app/
 
