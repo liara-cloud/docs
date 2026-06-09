@@ -10,7 +10,7 @@ on:
       - "mdx-to-md-converter/**"
 jobs:
   generate-md:
-    runs-on: ${{ secrets.LIARA_RUNNER_HOST }}
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
