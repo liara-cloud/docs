@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/liara-cloud/docs-private/refs/heads/master/public/favicon.ico?token=GHSAT0AAAAAAD3YPQFCBQKVGNJO2DMI4DF42RKVWVA" alt="Liar Logo" />
-</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/liara-cloud/docs/master/public/static/logo.svg" alt="Liara Logo">
+</div>
 
 ---
 
