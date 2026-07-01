@@ -2,34 +2,44 @@
   "deepseek": [
     "deepseek/deepseek-chat-v3-0324",
     "deepseek/deepseek-r1-distill-llama-70b",
-    "deepseek/deepseek-chat-v3.1"
+    "deepseek/deepseek-chat-v3.1",
+    "deepseek/deepseek-v4-pro",
+    "deepseek/deepseek-v4-flash"
   ],
   "google": [
-    "google/gemini-2.0-flash-lite-001",
-    "google/gemini-2.0-flash-001",
     "google/gemini-2.5-pro-preview",
     "google/gemini-2.5-flash",
     "google/gemma-3-27b-it",
     "google/gemini-2.5-pro",
-    "google/gemini-3-pro-preview",
     "google/gemini-embedding-001",
     "google/gemini-3-flash-preview",
     "google/gemini-3-pro-image-preview",
-    "google/gemini-2.5-flash-image"
+    "google/gemini-2.5-flash-image",
+    "google/gemini-3.1-pro-preview",
+    "google/gemini-3.1-pro-preview-customtools",
+    "google/gemini-embedding-2",
+    "google/gemini-3.1-flash-lite",
+    "google/gemini-2.5-flash-lite",
+    "google/gemini-3.5-flash"
   ],
   "meta-llama": [
-    "meta-llama/llama-3.3-70b-instruct"
+    "meta-llama/llama-3.3-70b-instruct",
+    "meta-llama/llama-3.1-8b-instruct",
+    "meta-llama/llama-guard-4-12b"
   ],
   "anthropic": [
-    "anthropic/claude-3.7-sonnet",
-    "anthropic/claude-3.7-sonnet:thinking",
-    "anthropic/claude-3.5-sonnet",
     "anthropic/claude-opus-4",
     "anthropic/claude-sonnet-4",
     "anthropic/claude-sonnet-4.5",
     "anthropic/claude-haiku-4.5",
     "anthropic/claude-opus-4.5",
-    "anthropic/claude-opus-4.6"
+    "anthropic/claude-opus-4.6",
+    "anthropic/claude-sonnet-4.6",
+    "anthropic/claude-opus-4.7",
+    "anthropic/claude-opus-4.6-fast",
+    "anthropic/claude-opus-4.8",
+    "anthropic/claude-opus-4.8-fast",
+    "anthropic/claude-opus-4.7-fast"
   ],
   "openai": [
     "openai/gpt-4.1-mini",
@@ -56,14 +66,25 @@
     "openai/gpt-image-1-mini",
     "openai/gpt-5.2",
     "openai/gpt-5.2-chat",
-    "openai/gpt-5.2-codex"
+    "openai/gpt-5.2-codex",
+    "openai/gpt-5.3-codex",
+    "openai/gpt-5.5-pro",
+    "openai/gpt-5.5",
+    "openai/gpt-5.1-codex-max",
+    "openai/gpt-5.3-chat",
+    "openai/gpt-5.4",
+    "openai/gpt-5.4-nano",
+    "openai/gpt-5.4-mini",
+    "openai/gpt-5.4-pro",
+    "openai/gpt-image-2",
+    "openai/o3-pro",
+    "openai/o3-mini"
   ],
   "x-ai": [
-    "x-ai/grok-3-mini-beta",
-    "x-ai/grok-3-beta",
-    "x-ai/grok-4",
-    "x-ai/grok-code-fast-1",
-    "x-ai/grok-4-fast"
+    "x-ai/grok-4.3",
+    "x-ai/grok-4.20-multi-agent",
+    "x-ai/grok-4.20",
+    "x-ai/grok-build-0.1"
   ],
   "mistralai": [
     "mistralai/mistral-nemo"
@@ -77,22 +98,37 @@
     "qwen/qwen3-coder",
     "qwen/qwen3-235b-a22b-thinking-2507",
     "qwen/qwen3-32b",
-    "qwen/qwen-turbo",
     "qwen/qwen-2.5-72b-instruct",
     "qwen/qwen-plus",
-    "qwen/qwen-max"
+    "qwen/qwen3.7-max",
+    "qwen/qwen3.5-flash-02-23"
   ],
   "moonshotai": [
     "moonshotai/kimi-k2-0905",
     "moonshotai/kimi-k2-thinking",
-    "moonshotai/kimi-k2.5"
+    "moonshotai/kimi-k2.5",
+    "moonshotai/kimi-k2.6",
+    "moonshotai/kimi-k2.7-code"
   ],
   "z-ai": [
     "z-ai/glm-4.6",
-    "z-ai/glm-5"
+    "z-ai/glm-5",
+    "z-ai/glm-5.1",
+    "z-ai/glm-5.2"
   ],
   "minimax": [
-    "minimax/minimax-m2.5"
+    "minimax/minimax-m2.5",
+    "minimax/minimax-m3"
+  ],
+  "aion-labs": [
+    "aion-labs/aion-2.0"
+  ],
+  "intfloat": [
+    "intfloat/multilingual-e5-large"
+  ],
+  "xiaomi": [
+    "xiaomi/mimo-v2.5-pro",
+    "xiaomi/mimo-v2.5"
   ],
   "other": []
 }

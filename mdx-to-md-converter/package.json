@@ -6,10 +6,10 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts",
-    "convert": "ts-node src/index.ts",
+    "dev": "tsx src/index.ts",
+    "convert": "node dist/index.js",
     "convert:build": "npm run build && node dist/index.js",
-    "pre-commit": "ts-node src/pre-commit.ts",
+    "pre-commit": "node dist/pre-commit.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,13 +18,13 @@
   "type": "commonjs",
   "devDependencies": {
     "@types/node": "^24.5.2",
-    "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "nodemon": "^3.1.10"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^2.0.28",
     "ai": "^6.0.78",
-    "dotenv": "^17.3.1"
+    "dotenv": "^17.3.1",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.2"
   }
 }

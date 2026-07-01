@@ -14,6 +14,9 @@ const CATEGORIES = [
   "moonshotai",
   "z-ai",
   "minimax",
+  "aion-labs",
+  "intfloat",
+  "xiaomi"
 ];
 
 function categorizeModel(modelId) {

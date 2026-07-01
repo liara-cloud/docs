@@ -319,6 +319,21 @@ export default {
         link: "/ai/minimax"
       },
       {
+        title: "Xiaomi",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/xiaomi-logo.svg" />,
+        link: "/ai/xiaomi"
+      },
+      {
+        title: "AION Labs",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/aionlabs-logo.svg" />,
+        link: "/ai/aionlabs"
+      },
+      {
+        title: "Hugging Face",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/huggingface-logo.svg" />,
+        link: "/ai/hugging-face"
+      },
+      {
         hr: true
       },
       {
