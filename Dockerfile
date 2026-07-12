@@ -11,7 +11,8 @@ WORKDIR /app
 
 COPY package*.json /app/
 
-RUN npm ci --registry=https://package-mirror.liara.ir/repository/npm/
+# RUN npm i --registry=https://mirror-npm.runflare.com
+RUN npm i 
 
 COPY . /app/
 

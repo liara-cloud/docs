@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.12",
+    "cheerio": "1.0.0-rc.12",
     "got": "^14.4.2",
     "meilisearch": "^0.41.0",
     "uuid": "^10.0.0"
