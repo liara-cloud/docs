@@ -770,6 +770,7 @@
 - [راه‌اندازی سریع برنامه‌های Headless Chrome](https://docs.liara.ir/llms/one-click-apps/headless-chrome/quick-start.md)
 - [راه‌اندازی سریع برنامه‌های Imgproxy](https://docs.liara.ir/llms/one-click-apps/imgproxy/quick-start.md)
 - [راه‌اندازی سریع برنامه‌های Infisical](https://docs.liara.ir/llms/one-click-apps/infisical/quick-start.md)
+- [راه‌اندازی سریع برنامه‌های Jitsi](https://docs.liara.ir/llms/one-click-apps/jitsi/quick-start.md)
 - [راه‌اندازی سریع برنامه‌های Jupyter notebook](https://docs.liara.ir/llms/one-click-apps/jupyter-notebook/quick-start.md)
 - [راه‌اندازی سریع برنامه‌های Keila](https://docs.liara.ir/llms/one-click-apps/keila/quick-start.md)
 - [راه‌اندازی سریع برنامه‌های Kibana](https://docs.liara.ir/llms/one-click-apps/kibana/quick-start.md)

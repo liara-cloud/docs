@@ -4,8 +4,8 @@
 
 ## One-Click-App چیست؟
 
-**One-Click-App** (یا برنامه‌ آماده یک کلیکی)
-به برنامه‌هایی گفته می‌شود که شما می‌توانید آنها را تنها با یک کلیک و بدون نگرانی در مورد زیرساخت‌های فنی، ایجاد و مدیریت کنید.
+**One-Click-App** (یا برنامه‌ آماده یک کلیکی)  
+به برنامه‌هایی گفته می‌شود که شما می‌توانید آنها را تنها با یک کلیک و بدون نگرانی در مورد زیرساخت‌های فنی، ایجاد و مدیریت کنید.  
 تمامی تنظیمات برنامه‌های یک کلیکی، از قبل توسط لیارا انجام شده است و نیازی نیست که شما کار خاصی را انجام دهید.
 
 ## لیارا چه برنامه‌هایی را ارائه می‌دهد؟
@@ -23,6 +23,7 @@
 - [Moodle](https://docs.liara.ir/one-click-apps/moodle/quick-start)
 - [Kutt](https://docs.liara.ir/one-click-apps/kutt/quick-start)
 - [FlowiseAI](https://docs.liara.ir/one-click-apps/flowise/quick-start)
+- [Jitsi](https://docs.liara.ir/one-click-apps/jitsi/quick-start)
 - [PgHero](https://docs.liara.ir/one-click-apps/pghero/quick-start)
 - [NextCloud](https://docs.liara.ir/one-click-apps/nextcloud/quick-start)
 - [Gitea](https://docs.liara.ir/one-click-apps/gitea/quick-start)
@@ -93,11 +94,17 @@
 
 ## همچنین بخوانید:
 
+### آشنایی با جزئیات پلتفرم
 - [آشنایی با جزئیات پلتفرم](https://docs.liara.ir/paas/details/about)
+
+### آشنایی با دیسک‌ها در پلتفرم
 - [آشنایی با دیسک‌ها در پلتفرم](https://docs.liara.ir/paas/disks/about)
+
+### اتصال دامنه خریداری شده به پلتفرم
 - [اتصال دامنه خریداری شده به پلتفرم](https://docs.liara.ir/paas/domains/about)
 
 ## پربازدیدترین مستندات برنامه‌های آماده
+
 - [راه‌اندازی WordPress با Duplicator](https://docs.liara.ir/one-click-apps/wordpress/how-tos/duplicator)
 - [رفع خطای err_too_many_redirects در وردپرس](https://docs.liara.ir/one-click-apps/wordpress/fix-common-errors/too-many-redirects-error)
 - [اتصال با Selenium در Python به Headless Chrome](https://docs.liara.ir/one-click-apps/headless-chrome/how-tos/connect-by-python-and-selenium)

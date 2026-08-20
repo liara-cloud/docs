@@ -22,7 +22,8 @@
     "google/gemini-2.5-flash-lite",
     "google/gemini-3.5-flash",
     "google/gemini-3.6-flash",
-    "google/gemini-3.5-flash-lite"
+    "google/gemini-3.5-flash-lite",
+    "google/gemini-3.7-flash"
   ],
   "meta-llama": [
     "meta-llama/llama-3.3-70b-instruct",
@@ -38,7 +39,6 @@
     "anthropic/claude-opus-4.6",
     "anthropic/claude-sonnet-4.6",
     "anthropic/claude-opus-4.7",
-    "anthropic/claude-opus-4.6-fast",
     "anthropic/claude-opus-4.8",
     "anthropic/claude-opus-4.8-fast",
     "anthropic/claude-opus-4.7-fast",
@@ -53,7 +53,6 @@
     "openai/gpt-4.1",
     "openai/o4-mini",
     "openai/o4-mini-high",
-    "openai/gpt-5-chat",
     "openai/gpt-5-mini",
     "openai/gpt-5-nano",
     "openai/text-embedding-3-small",
@@ -62,10 +61,8 @@
     "openai/gpt-5",
     "openai/o1",
     "openai/o3",
-    "openai/gpt-5-codex",
     "openai/gpt-5.1-codex",
     "openai/gpt-5.1",
-    "openai/gpt-5.1-chat",
     "openai/gpt-5.1-codex-mini",
     "openai/gpt-image-1.5",
     "openai/gpt-image-1",
@@ -77,7 +74,6 @@
     "openai/gpt-5.5-pro",
     "openai/gpt-5.5",
     "openai/gpt-5.1-codex-max",
-    "openai/gpt-5.3-chat",
     "openai/gpt-5.4",
     "openai/gpt-5.4-nano",
     "openai/gpt-5.4-mini",
@@ -97,7 +93,8 @@
     "x-ai/grok-4.20-multi-agent",
     "x-ai/grok-4.20",
     "x-ai/grok-build-0.1",
-    "x-ai/grok-4.5"
+    "x-ai/grok-4.5",
+    "x-ai/grok-4.6"
   ],
   "mistralai": [
     "mistralai/mistral-nemo"
@@ -128,7 +125,8 @@
     "z-ai/glm-4.6",
     "z-ai/glm-5",
     "z-ai/glm-5.1",
-    "z-ai/glm-5.2"
+    "z-ai/glm-5.2",
+    "z-ai/glm-5.3"
   ],
   "minimax": [
     "minimax/minimax-m2.5",

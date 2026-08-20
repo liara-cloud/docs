@@ -6666,6 +6666,11 @@ export default {
         link: "/one-click-apps/gitlabce/quick-start"
       },
       {
+        title: "Jitsi",
+        icon: <IconContainer alt="https://console.liara.ir/static/media/jitsi.e85319f675fb681de796.png" />,
+        link: "/one-click-apps/jitsi/quick-start"
+      },
+      {
         title: "Rocket.Chat",
         icon: <IconContainer alt="rocketchat" />,
         link: "/one-click-apps/rocketchat/quick-start"
