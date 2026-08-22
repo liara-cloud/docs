@@ -8,7 +8,7 @@
 
 برای راه‌اندازی برنامه با استفاده از ابزار [Liara Console](https://docs.liara.ir/references/console/about) کافیست تا مراحل زیر را طی کنید:
 
-۱. ورود به حساب کاربری  
+۱. ورود به حساب کاربری   
 وارد [کنسول لیارا](https://console.liara.ir) شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.
 
 ۲. انتخاب حساب  
@@ -16,12 +16,14 @@
 
 > همچنین بخوانید: [مدیریت تیم‌ها در لیارا](https://docs.liara.ir/references/team/about/)
 
-## پیکربندی Jisti
+---
+
+### پیکربندی Jisti  
 پس از ساخت برنامه، در بخش **سرور مجازی ابری**، برنامه jitsi خود را انتخاب کنید. وارد بخش **اتصال** شوید و طبق [مستندات اتصال به سرور مجازی با SSH](https://docs.liara.ir/iaas/debian/how-tos/connect-to-server-using-ssh)، به سرور مجازی برنامه jitsi متصل شوید.  
 پس از اتصال به سرور، دستورات زیر رو اجرا کنید:
 
 ```bash
-cd /opt/appwrite
+cd /opt/jitsi
 docker compose exec prosody bash
 ```
 
@@ -35,6 +37,7 @@ prosodyctl --config /run/prosody/config/prosody.cfg.lua register User meet.jitsi
 
 > همچنین بخوانید: [مدیریت تیم‌ها در لیارا](https://docs.liara.ir/references/team/about/)
 
+---
 
 - #### تغییر نسخه‌ی برنامه مستقر شده  
   [https://docs.liara.ir/one-click-apps/Jitsi/how-tos/choose-version](https://docs.liara.ir/one-click-apps/Jitsi/how-tos/choose-version)
