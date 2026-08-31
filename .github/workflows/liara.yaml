@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: "20"
       - name: install-dependencies
-        run: npm ci
+        run: npm i
       - name: update-liara
         env:
           LIARA_TOKEN: some-token
