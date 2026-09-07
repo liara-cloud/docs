@@ -1,0 +1,158 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع ClickHouse - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات نصب و راه‌اندازی دیتابیس ClickHouse در لیارا"  />
+</Head>
+
+# راه‌اندازی سریع دیتابیس ClickHouse
+<hr className="mb-2" />
+
+<a href="https://ClickHouse.org/" className="text-[#2196f3] ">ClickHouse</a> یک دیتابیس تحلیلی و متن‌باز است که برای پردازش سریع حجم بسیار زیادی از داده‌ها طراحی شده است. این دیتابیس در تحلیل لحظه‌ای داده‌ها، گزارش‌گیری، مانیتورینگ، لاگ‌ها، سیستم‌های مالی و پردازش رویدادهای بزرگ کاربرد دارد. 
+
+<div className="h-4" />
+
+معماری ستونی ClickHouse باعث می‌شود کوئری‌های تحلیلی روی میلیاردها رکورد با سرعت بالا اجرا شوند و هزینه ذخیره‌سازی و پردازش کاهش پیدا کند. به همین دلیل بسیاری از شرکت‌ها از آن برای ساخت داشبوردهای تحلیلی و سیستم‌های داده در مقیاس بزرگ استفاده می‌کنند.
+
+
+
+<br />
+<video
+src="https://media.liara.ir/clickhouse/clickhouse-setup.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+></video>
+<br />
+
+  برای راه‌اندازی دیتابیس با استفاده از <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+  <Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ورود به حساب کاربری</h3>   
+    <p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+  </>
+  )
+  },
+  {
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای راه‌اندازی دیتابیس را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+  {
+  step: "۳",
+  content: (
+  <>
+    <h3>ایجاد دیتابیس</h3>
+    <p>
+      وارد منوی <b>دیتابیس</b> شوید، بر روی گزینه <b>راه‌اندازی دیتابیس</b> کلیک کنید؛ در ادامه دیتابیس <b>ClickHouse</b> را انتخاب کنید و پس از انتخاب <a href="/dbaas/ClickHouse/choose-version" className="text-[#2196f3] ">نسخه دیتابیس</a>، شناسه، <a href="/paas/details/private-network#set-private-network-for-app-and-db" className="text-[#2196f3] ">شبکه خصوصی</a> و <a href="/dbaas/details/plans/about" className="text-[#2196f3] ">منابع سخت‌افزاری و بسته امکانات</a>، کافیست تا بر روی گزینه <b>راه‌اندازی و نصب دیتابیس</b>، کلیک کنید. 
+    </p>
+    <div className="h-3" />
+    <Alert variant="info">
+    <p>
+      شناسه‌ای که برای دیتابیس انتخاب می‌کنید، باید نسبت به شناسه‌های سرویس‌های موجود در حساب کاربری‌تان، یکتا باشد و می‌توانید از این شناسه، برای اتصال به دیتابیس در شبکه خصوصی، استفاده کنید.
+    </p>
+    </Alert>
+    <Alert variant="info">
+    <p>
+      در صورتی که قصد دارید از Local و یا جاهای دیگر به غیر از لیارا، به دیتابیس خود متصل شوید؛ کافیست تا گزینه <b>دسترسی از طریق شبکه عمومی</b> را در حین راه‌اندازی دیتابیس، فعال کنید.
+    </p>
+    </Alert>
+    <div className="h-1" />
+  </>
+  )
+  },
+]}/>
+<div className="h-4" />
+با انجام مراحل فوق، دیتابیس شما ساخته می‌شود و می‌توانید از آن، استفاده کنید.
+
+<div className="h-1" />
+<Alert variant="success">
+    <p>
+      پس از راه‌اندازی سرور، به صورت خودکار، یک دیتابیس خالی برای شما ایجاد می‌شود که می‌توانید از آن، استفاده کنید.
+    </p>
+</Alert>
+<Alert variant="success">
+    <p>
+      همچنین بخوانید: <a href="/dbaas/details/about" className="text-[#2196f3] ">آشنایی با جزئیات یک دیتابیس</a>
+    </p>
+</Alert>
+<div className="h-1" />
+برای اتصال به دیتابیس، می‌توانید وارد منوی <b>نحوه اتصال</b> دیتابیس خود شوید؛ اگر که قصد دارید برنامه‌های خارج از لیارا را به دیتابیس متصل کنید؛ باید از اطلاعات شبکه عمومی استفاده کنید. در غیر این‌صورت، برای اتصال برنامه‌های درون لیارا، بهتر است که برای امنیت بیشتر، برنامه و دیتابیس درون یک شبکه خصوصی قرار بگیرند و با استفاده از اطلاعات شبکه خصوصی، به یکدیگر، متصل شوند.
+
+<div className="h-2" />
+<img src="https://media.liara.ir/clickhouse/connection-info.png" alt="see db info"/>
+
+
+<Section id="see-also" title="همچنین بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "نسخه‌های ارائه شده دیتابیس",
+        link: "./choose-version"
+      },
+      {
+        title: "اتصال از طریق پلتفرم‌های مختلف به دیتابیس",
+        link: "./how-tos/connect-via-platform/about"
+      },
+      // {
+      //   title: "اتصال از طریق رابط‌های کاربری گرافیکی (GUI) به دیتابیس",
+      //   link: "./how-tos/connect-via-gui/about"
+      // },
+      // {
+      //   title: "اتصال از طریق CommandLine Interface (CLI)",
+      //   link: "./how-tos/connect-via-cli/about"
+      // },
+      // {
+      //   title: "ایجاد فایل پشتیبان",
+      //   link: "./how-tos/create-backup"
+      // },
+      // {
+      //   title: "بازیابی فایل پشتیبان",
+      //   link: "./how-tos/restore-backup"
+      // },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+</Layout>

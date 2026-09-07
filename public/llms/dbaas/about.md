@@ -18,25 +18,16 @@
 - [Redis](./redis/quick-setup)
 - [ElasticSearch](./elastic-search/quick-setup)
 - [RabbitMQ](./rabbitmq/quick-setup)
+- [ClickHouse](./clickhouse/quick-setup)
 
-<!-- 
 
-اگر که در حال حاضر، لیارا از پلتفرم مورد نظر شما به صورت مستقیم پشتیبانی نمی‌کند؛ جای نگرانی نیست! شما می‌توانید با استفاده از [سرویس Docker لیارا](https://docs.liara.ir/paas/docker/getting-started) برنامه‌های خود را به سرعت و با بیشترین بازدهی، مستقر کنید؛ در ادامه مستندات برخی از پلتفرم‌های مورد استفاده، آمده است:
 
-- [go](https://docs.liara.ir/paas/docker/related-apps/go)
-- [Nginx](https://docs.liara.ir/paas/docker/related-apps/nginx)
-- [Streamlit](https://docs.liara.ir/paas/docker/related-apps/streamlit)
-- [FastAPI](https://docs.liara.ir/paas/docker/related-apps/fastapi)
-- [Python Scripts](https://docs.liara.ir/paas/docker/related-apps/python)
-- [ArangoDB](https://docs.liara.ir/paas/docker/related-apps/arangodb)
-- [Seq](https://docs.liara.ir/paas/docker/related-apps/seq)
-- [Flutter](https://docs.liara.ir/paas/docker/related-apps/flutter)
 
--->
 
 ## همچنین بخوانید:
 - [آشنایی با جزئیات دیتابیس](./details/about)
 - [نحوه انتقال دیتابیس](./move)
+
 
 ## پربازدیدترین مستندات دیتابیس
 

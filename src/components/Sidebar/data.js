@@ -5264,6 +5264,11 @@ export default {
         link: "/dbaas/rabbitmq/quick-setup"
       },
       {
+        title: "ClickHouse",
+        icon: <IconContainer alt="https://console.liara.ir/static/media/clickhouse.86265fad5d8bfcac89d7.png" />,
+        link: "/dbaas/clickhouse/quick-setup"
+      },
+      {
         hr: true
       },
       {
@@ -5575,6 +5580,152 @@ export default {
         title: "بازیابی فایل پشتیبان",
         link: "/dbaas/mariadb/how-tos/restore-backup"
       },
+
+    ],
+    clickhouse: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <IconContainer alt="https://console.liara.ir/static/media/clickhouse.86265fad5d8bfcac89d7.png" />
+            دیتابیس ClickHouse
+          </div>
+        )
+      },
+      {
+        title: "برگشت به دیتابیس",
+        icon: <GoArrowRight />,
+        link: "/dbaas/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/dbaas/clickhouse/quick-setup"
+      },
+      {
+        title: "نسخه‌های قابل ارائه",
+        icon: <GoVersions />,
+        link: "/dbaas/clickhouse/choose-version"
+      },
+      // {
+      //   title: "ایجاد و مدیریت کاربر جدید",
+      //   icon: <GoKey />,
+      //   link: "/dbaas/clickhouse/create-user"
+      // },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            < GoPackage />
+            <Link href="/dbaas/clickhouse/how-tos/connect-via-platform/about">
+              اتصال از طریق پلتفرم
+            </Link>
+          </div>
+        )
+      },
+      {
+        title: "NodeJS",
+        icon: <IconContainer alt="nodejs" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/nodejs"
+      },
+      // {
+      //   title: "NextJS",
+      //   icon: <IconContainer alt="next" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/nextjs"
+      // },
+      // {
+      //   title: "Laravel",
+      //   icon: <IconContainer alt="laravel" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/laravel"
+      // },
+      // {
+      //   title: "PHP",
+      //   icon: <IconContainer alt="php" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/php"
+      // },
+      // {
+      //   title: "Python",
+      //   icon: <IconContainer alt="python" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/python"
+      // },
+      // {
+      //   title: "Django",
+      //   icon: <IconContainer alt="django" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/django"
+      // },
+      // {
+      //   title: "Flask",
+      //   icon: <IconContainer alt="flask" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/flask"
+      // },
+      // {
+      //   title: "NET.",
+      //   icon: <IconContainer alt="netcore" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/dotnet"
+      // },
+      // {
+      //   title: "Go",
+      //   icon: <IconContainer alt="go" />,
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/go"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoBrowser />
+      //       <Link href="/dbaas/clickhouse/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "PHPMyAdmin",
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-gui/phpmyadmin"
+      // },
+      // {
+      //   title: "DBeaver",
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-gui/dbeaver"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoTerminal />
+      //       <Link href="/dbaas/clickhouse/how-tos/connect-via-cli/about">اتصال از طریق CLI</Link>
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "MySQL CLI",
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-cli/mysql"
+      // },
+      // {
+      //   title: "clickhouse CLI",
+      //   link: "/dbaas/clickhouse/how-tos/connect-via-cli/mariadb"
+      // },
+      // {
+      //   hr: true
+      // },
+      // {
+      //   badge: (
+      //     <div className="flex items-center gap-2">
+      //       <GoReply />
+      //       مدیریت فایل‌های پشتیبان
+      //     </div>
+      //   )
+      // },
+      // {
+      //   title: "ایجاد فایل پشتیبان",
+      //   link: "/dbaas/clickhouse/how-tos/create-backup"
+      // },
+      // {
+      //   title: "بازیابی فایل پشتیبان",
+      //   link: "/dbaas/clickhouse/how-tos/restore-backup"
+      // },
 
     ],
     mysql: [

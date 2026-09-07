@@ -41,7 +41,7 @@ import Head from "next/head";
 
 
 <div className="h-4" />
-<div className="grid md:grid-cols-4 gap-4">
+<div className="grid md:grid-cols-3 gap-4">
             {[
     { alt: 'mariadb', platform: 'MariaDB', link: "./mariadb/quick-setup" },
     { alt: 'mysql', platform: 'MySQL', link: "./mysql/quick-setup" },
@@ -51,6 +51,7 @@ import Head from "next/head";
     { alt: 'redis', platform: 'Redis', link: "./redis/quick-setup" },
     { alt: 'elastic', platform: 'ElasticSearch', link: "./elastic-search/quick-setup" },
     { alt: 'rabbitmq', platform: 'RabbitMQ', link: "./rabbitmq/quick-setup" },
+    { alt: 'https://console.liara.ir/static/media/clickhouse.86265fad5d8bfcac89d7.png', platform: 'ClickHouse', link: "./clickhouse/quick-setup" },
   ].map(item =>
               <Link href={item.link}>
                 <Card className="flex cursor-pointer w-full items-center justify-between">
