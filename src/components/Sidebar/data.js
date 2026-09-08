@@ -5606,11 +5606,11 @@ export default {
         icon: <GoVersions />,
         link: "/dbaas/clickhouse/choose-version"
       },
-      // {
-      //   title: "ایجاد و مدیریت کاربر جدید",
-      //   icon: <GoKey />,
-      //   link: "/dbaas/clickhouse/create-user"
-      // },
+      {
+        title: "ایجاد و مدیریت کاربر جدید",
+        icon: <GoKey />,
+        link: "/dbaas/clickhouse/create-user"
+      },
       {
         hr: true
       },
@@ -5629,41 +5629,41 @@ export default {
         icon: <IconContainer alt="nodejs" />,
         link: "/dbaas/clickhouse/how-tos/connect-via-platform/nodejs"
       },
-      // {
-      //   title: "NextJS",
-      //   icon: <IconContainer alt="next" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/nextjs"
-      // },
-      // {
-      //   title: "Laravel",
-      //   icon: <IconContainer alt="laravel" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/laravel"
-      // },
-      // {
-      //   title: "PHP",
-      //   icon: <IconContainer alt="php" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/php"
-      // },
-      // {
-      //   title: "Python",
-      //   icon: <IconContainer alt="python" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/python"
-      // },
-      // {
-      //   title: "Django",
-      //   icon: <IconContainer alt="django" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/django"
-      // },
-      // {
-      //   title: "Flask",
-      //   icon: <IconContainer alt="flask" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/flask"
-      // },
-      // {
-      //   title: "NET.",
-      //   icon: <IconContainer alt="netcore" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/dotnet"
-      // },
+      {
+        title: "NextJS",
+        icon: <IconContainer alt="next" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/nextjs"
+      },
+      {
+        title: "Laravel",
+        icon: <IconContainer alt="laravel" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/laravel"
+      },
+      {
+        title: "PHP",
+        icon: <IconContainer alt="php" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/php"
+      },
+      {
+        title: "Python",
+        icon: <IconContainer alt="python" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/python"
+      },
+      {
+        title: "Django",
+        icon: <IconContainer alt="django" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/django"
+      },
+      {
+        title: "Flask",
+        icon: <IconContainer alt="flask" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/flask"
+      },
+      {
+        title: "NET.",
+        icon: <IconContainer alt="netcore" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/dotnet"
+      },
       // {
       //   title: "Go",
       //   icon: <IconContainer alt="go" />,

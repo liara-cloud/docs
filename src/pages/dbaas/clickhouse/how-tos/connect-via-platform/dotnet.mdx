@@ -14,19 +14,19 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به MariaDB در پلتفرم NET. - لیارا</title>
+<title>مستندات اتصال به ClickHouse در پلتفرم NET. - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس MariaDB در فریم‌ورک DOTNET"  />
+<meta property="og:description" content="مستندات قدم به قدم اتصال به دیتابیس ClickHouse در فریم‌ورک DOTNET"  />
 </Head>
-# اتصال به دیتابیس MariaDB در برنامه‌های NET.
+# اتصال به دیتابیس ClickHouse در برنامه‌های NET.
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MariaDB در ابتدا باید پکیج <Important>Pomelo.EntityFrameworkCore.MySql</Important> را بر روی پروژه خود نصب کنید؛ می‌توانید این پکیج را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس ClickHouse در ابتدا باید پکیج <Important>ClickHouse.Client</Important> را بر روی پروژه خود نصب کنید؛ می‌توانید این پکیج را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.2`}
+        {`dotnet add package ClickHouse.Client`}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -43,30 +43,168 @@ import Head from "next/head";
       "Microsoft.AspNetCore": "Warning"
     }
   },
+  
   "AllowedHosts": "*",
-  "ConnectionStrings": {
-    "Production": "server=etna.liara.cloud; port=34665; user=root; password=H90ZsLcOGp65WSmOnbHYCKsg; database=objective_rubin"
+
+   "ClickHouse": {
+    "Host": "rainier.liara.cloud",
+    "Port": "33273",
+    "Database": "default",
+    "Username": "root",
+    "Password": "x4y2LJvdFyG5wVO87VbXDrpg"
+  }
+}
+`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+در ادامه، در مسیر <Important>Services/ClickHouseService.cs</Important>، قطعه کد زیر را قرار دهید: 
+
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`using ClickHouse.Client.ADO;
+
+namespace ClickHouseDemo.Services;
+
+public class ClickHouseService
+{
+    private readonly string _connectionString;
+
+
+    public ClickHouseService(IConfiguration configuration)
+    {
+        _connectionString =
+            $"Host={configuration["ClickHouse:Host"]};" +
+            $"Port={configuration["ClickHouse:Port"]};" +
+            $"Database={configuration["ClickHouse:Database"]};" +
+            $"Username={configuration["ClickHouse:Username"]};" +
+            $"Password={configuration["ClickHouse:Password"]};";
+    }
+
+
+    public async Task<object?> TestConnection()
+    {
+        await using var connection =
+            new ClickHouseConnection(_connectionString);
+
+        await connection.OpenAsync();
+
+
+        await using var command =
+            connection.CreateCommand();
+
+
+        command.CommandText = "SELECT 1";
+
+
+        return await command.ExecuteScalarAsync();
     }
 }`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-اکنون، می‌توانید در فایل <Important>Program.cs</Important>، به روش زیر، به دیتابیس MariaDB خود متصل شوید:
+سپس، سرویس ایجاد شده را در مسیر <Important>Program.cs</Important>، ثبت کنید: 
+
+<div className="h-2" />
+    <div dir='ltr'>
+    <Highlight className="bash">
+        {`using ClickHouseDemo.Services;
+
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddControllers();
+
+builder.Services.AddSingleton<ClickHouseService>();
+
+
+var app = builder.Build();
+
+
+app.MapControllers();
+
+
+app.Run();`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+
+حال، کافیست تا یک کنترلر در مسیر <Important>Controllers/ClickHouseController.cs</Important> ایجاد کنید:
 
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="dotnet">
-        {`using Microsoft.EntityFrameworkCore;
-using your-project-name.Data;
-var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("Production");
-var serverVersion = ServerVersion.AutoDetect(connectionString);
-builder.Services.AddDbContext<your-db-Context>(options =>
-  options.UseMySql(connectionString, serverVersion));`}
+        {`using Microsoft.AspNetCore.Mvc;
+using ClickHouseDemo.Services;
+
+
+namespace ClickHouseDemo.Controllers;
+
+
+[ApiController]
+[Route("api/clickhouse")]
+public class ClickHouseController : ControllerBase
+{
+
+    private readonly ClickHouseService _clickhouse;
+
+
+    public ClickHouseController(
+        ClickHouseService clickhouse
+    )
+    {
+        _clickhouse = clickhouse;
+    }
+
+
+
+    [HttpGet("test")]
+    public async Task<IActionResult> Test()
+    {
+        try
+        {
+            var result =
+                await _clickhouse.TestConnection();
+
+
+            return Ok(new
+            {
+                success = true,
+                message = "ClickHouse connection successful",
+                result
+            });
+
+        }
+        catch(Exception ex)
+        {
+            return StatusCode(500, new
+            {
+                success = false,
+                message = "ClickHouse connection failed",
+                error = ex.Message
+            });
+        }
+    }
+}`}
     </Highlight>
     </div>
 <div className="h-2" />
+
+تمامی کارها انجام شده است و اکنون، می‌توانید در مسیر <Important>api/clickhouse/test/</Important> در مرورگر، تست اتصال به دیتابیس را انجام دهید. 
+
+<div className="h-2" />
+<Alert variant="success">
+<p>
+مثال فوق از اتصال به دیتابیس را می‌توانید به صورت کامل در <a href="https://github.com/liara-cloud/clickhouse-connect-examples/tree/dotnet" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
 
 </Layout>

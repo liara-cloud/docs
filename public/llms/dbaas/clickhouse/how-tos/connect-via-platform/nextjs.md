@@ -1,13 +1,11 @@
 ﻿Original link: https://docs.liara.ir/dbaas/clickhouse/how-tos/connect-via-platform/nextjs/
 
-# اتصال به دیتابیس MariaDB در برنامه‌های NextJS
+# اتصال به دیتابیس ClickHouse در برنامه‌های NextJS
 
-## Pages Router
-
-روش‌ها و کتابخانه‌های مختلفی برای اتصال به MariaDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج `mariadb` است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
+روش‌ها و کتابخانه‌های مختلفی برای اتصال به ClickHouse در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج `clickhouse` است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
 
 ```bash
-npm install mariadb
+npm install @clickhouse/client
 ```
 
 پس از آن، کافیست تا 
@@ -15,191 +13,82 @@ npm install mariadb
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-DB_HOST=bromo.liara.cloud
-DB_PORT=32703
-DB_USER=root
-DB_PASS=5T7kBqMMGLQYDGAkVdAtvd3L
-DB_NAME=upbeat_rosalind
+CLICKHOUSE_HOST=http://rainier.liara.cloud:33273
+CLICKHOUSE_USER=root
+CLICKHOUSE_PASSWORD=x4y2LJvdFyG5wVO87VbXDrpg
+NEXT_PUBLIC_APP_URL=http://localhost:3000 # replace it on production
 ```
 
-در ادامه، بایستی در مسیر `lib` (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر `src/lib`)، یک فایل به نام `mariadb.js` ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-```js
-import mariadb from 'mariadb';
+اکنون، می‌توانید متغیرهای محیطی را در برنامه خود خوانده و به دیتابیس متصل شوید؛ برای ساخت کلاینت ClickHouse، کافیست در مسیر `lib/clickhouse.ts`، قطعه کد زیر را قرار دهید:
 
-const pool = mariadb.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  connectionLimit: 5
+```js
+import { createClient } from '@clickhouse/client';
+
+export const clickhouse = createClient({
+      host: process.env.CLICKHOUSE_HOST!,
+      username: process.env.CLICKHOUSE_USER!,
+      password: process.env.CLICKHOUSE_PASSWORD!,
+      max_open_connections: 10,
+      request_timeout: 10000,
 });
+```
 
-export async function connectToMariaDB() {
-  const connection = await pool.getConnection();
-  return connection;
+اکنون، برای ساخت API Route تنها کافیست تا در مسیر `app/api/clickhouse/route.ts` قطعه کد زیر را قرار دهید: 
+
+```js
+import { NextResponse } from 'next/server';
+import { clickhouse } from '@/lib/clickhouse';
+
+export async function GET() {
+  try {
+    await clickhouse.query({
+      query: 'SELECT 1',
+      format: 'JSONEachRow',
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: 'ClickHouse connection successful',
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'ClickHouse connection failed',
+      },
+      { status: 500 }
+    );
+  }
 }
 ```
 
-سپس، بایستی در مسیر `pages/api` (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر `src/pages/api`)، یک فایل به نام `mariadb.js` بسازید و قطعه کد زیر را در آن، قرار دهید:
-```js
-import { connectToMariaDB } from 'https://docs.liara.ir/lib/mariadb';
-
-export default async function handler(req, res) {
-  const connection = await connectToMariaDB();
-  connection.release();
-
-  res.status(200).json({ message: 'Connected to MariaDB successfully' });
-}
-```
-
-تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل `pages/index.js` (یا `src/pages/index.js`) از دیتابیس خود، استفاده کنید:
+در نهایت، کافیست تا در مسیر `app/clickhouse-test/page.tsx`، قطعه کد زیر را قرار دهید: 
 
 ```js
-import { useEffect, useState } from 'react';
-
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/mariadb');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
+export default async function ClickHouseTestPage() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/clickhouse`,
+    {
+      cache: 'no-store',
     }
+  );
 
-    fetchData();
-  }, []);
+  const data = await res.json();
 
   return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        Error: {error.message}
-      ) : data ? (
-        {JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...
-      )}
-    </div>
+    <main>
+      <h1>ClickHouse Status</h1>
+
+      {JSON.stringify(data, null, 2)}
+      </pre>
+    </main>
   );
 }
 ```
 
-در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
+تمامی کارها انجام شده است و اکنون، می‌توانید در مسیر `clickhouse-test/` در مرورگر، تست اتصال به دیتابیس ClickHouse را بررسی کنید. 
 
-## App Router
-
-روش‌ها و کتابخانه‌های مختلفی برای اتصال به MariaDB در NextJS وجود دارد. یکی از این راه‌ها، استفاده از پکیج `mariadb` است که در ابتدا، با اجرای دستور زیر، باید آن را نصب کنید:
-
-```bash
-npm install mariadb
-```
-
-پس از آن، کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
-
-```bash
-DB_HOST=bromo.liara.cloud
-DB_PORT=32703
-DB_USER=root
-DB_PASS=5T7kBqMMGLQYDGAkVdAtvd3L
-DB_NAME=upbeat_rosalind
-```
-
-در ادامه، بایستی در مسیر `lib` (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر `src/lib`)، یک فایل به نام `mariadb.js` ایجاد کنید و قطعه کد زیر را در آن، قرار دهید:
-```js
-import mariadb from 'mariadb';
-
-const pool = mariadb.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  connectionLimit: 5
-});
-
-export async function connectToMariaDB() {
-  const connection = await pool.getConnection();
-  return connection;
-}
-```
-
-سپس، بایستی در مسیر `app/api` (یا اگر که از دایرکتوری src استفاده می‌کنید؛ در مسیر `src/app/api`)، یک دایرکتوری به نام `mariadb` ایجاد کنید و درون آن، یک فایل به نام `route.js` بسازید و قطعه کد زیر را در آن، قرار دهید:
-
-```js
-import { connectToMariaDB } from '@/lib/mariadb';
-
-export async function GET(request) {
-  const connection = await connectToMariaDB();
-  connection.release();
-
-  return new Response(JSON.stringify({ message: 'Connected to MariaDB successfully' }));
-}
-```
-
-تمامی کارها انجام شده است و شما می‌توانید با استفاده از قطعه کد مثال زیر در فایل `app/page.js` (یا `src/app/page.js`) از دیتابیس خود، استفاده کنید:
-
-```js
-'use client'; 
-
-import { useEffect, useState } from 'react';
-
-export default function Home() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('/api/mariadb');
-        const result = await res.json();
-        setData(result);
-      } catch (err) {
-        setError(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <h1>Database Connection Test</h1>
-      {error ? (
-        Error: {error.message}
-      ) : data ? (
-        {JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...
-      )}
-    </div>
-  );
-}
-```
-
-در نظر داشته باشید که می‌توانید قطعه کدهای فوق را با توجه به نیاز خود، تغییر دهید.
-
-## استفاده از Connection Pooling
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-> همچنین بخوانید: [آشنایی بیشتر با قابلیت Connection Pooling](https://docs.liara.ir/dbaas/details/connection-pool)
-
-در پکیج `mariadb` این قابلیت به صورت خودکار تعبیه شده است و شما می‌توانید در فایل `lib/mariadb.js` (یا `src/lib/mariadb.js`) حین اتصال به دیتابیس پارامتر زیر را بر اساس نیاز خود، مقدار دهی کنید:
-
-```js
-const pool = mariadb.createPool({
-  // other codes ...
-  connectionLimit: 5  // amount of connections in a same time
-});
-```
+> مثال فوق از اتصال به دیتابیس را می‌توانید به صورت کامل در [گیت‌هاب لیارا](https://github.com/liara-cloud/clickhouse-connect-examples/tree/nextjs)، مشاهده کنید.
 
 ## all links
 

@@ -1,17 +1,16 @@
 ﻿Original link: https://docs.liara.ir/dbaas/clickhouse/how-tos/connect-via-platform/go/
 
-# اتصال به دیتابیس MariaDB در برنامه‌های go
+# اتصال به دیتابیس ClickHouse در برنامه‌های go
 
-برای اتصال به دیتابیس MariaDB در برنامه‌های go، در ابتدا باید ماژول‌های مربوط به آن‌را با اجرای دستورات زیر، نصب کنید:
+برای اتصال به دیتابیس ClickHouse در برنامه‌های go، در ابتدا باید ماژول‌های مربوط به آن‌را با اجرای دستورات زیر، نصب کنید:
 
 ```bash
 go get -u github.com/go-sql-driver/mysql
 go get github.com/joho/godotenv
-
 ```
 
-پس از آن، کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
+پس از آن، کافیست تا  
+اطلاعات مربوط به دیتابیس خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
@@ -69,7 +68,6 @@ func main() {
 
     fmt.Println("Connected to the database")
 }
-
 ```
 
 ## all links

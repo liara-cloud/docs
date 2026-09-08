@@ -2,90 +2,45 @@
 
 # ایجاد و مدیریت کاربر جدید در دیتابیس ClickHouse
 
-وقتی که شما یک دیتابیس ClickHouse جدید در لیارا، ایجاد می‌کنید؛ به صورت خودکار یک کاربر به نام root همراه با آن ایجاد می‌شود که همان دسترسی پیش‌فرض است.  
+وقتی که شما یک دیتابیس ClickHouse جدید در لیارا، ایجاد می‌کنید؛ به صورت خودکار یک کاربر به نام root همراه با آن ایجاد می‌شود که همان دسترسی پیش‌فرض است.
 دسترسی پیش‌فرض یا کاربر `root` در ClickHouse، یک اکانت مدیریتی با بیشترین سطح دسترسی است. این کاربر معادل administrator در سیستم‌های عامل مختلف است و می‌تواند تمام عملیات‌های مدیریتی و اجرایی در پایگاه داده را انجام دهد.
 
-شما می‌توانید با استفاده از ابزارهای مختلفی نظیر mysql-cli، کاربران جدید با دسترسی‌های جدید  
+شما می‌توانید با استفاده از ابزار cURL، کاربران جدید با دسترسی‌های جدید 
 در دیتابیس خود ایجاد کنید؛ در ادامه به نحوه ساخت کاربران جدید با دسترسی‌های مختلف در دیتابیس، پرداخته شده است.
 
-برای ساخت کاربر جدید در دیتابیس، در ابتدا باید [ابزار mysql-cli](https://docs.liara.ir/dbaas/ClickHouse/how-tos/connect-via-cli/mysql/) را بر روی سیستم (یا سرور خود)، نصب کنید؛ در ادامه، بایستی با استفاده از اطلاعات موجود در بخش **نحوه اتصال** دیتابیس‌تان در لیارا و با استفاده از دستور زیر، در ترمینال، به دیتابیس با کاربر root، متصل شوید:  
+## ساخت کاربر ادمین
+برای ساخت کاربر جدید با دسترسی ادمین، می‌توانید از دستور زیر استفاده کنید (نام کاربر جدید، `<admin_username>` است): 
 
 ```bash
-mysql --host <hostname> -u <username> -p--port <port> -D <database_name>
+curl --user <root_user>:<root_password> \\
+"<host>:<port>/" \\
+--data-binary "CREATE USER <admin_username> IDENTIFIED WITH sha256_password BY '<admin_password>'"
 ```
 
-پس از اتصال موفق، می‌توانید با استفاده از دستور `CREATE USER`، کاربران مد نظر خود را، ایجاد کنید.
+در ادامه، می‌توانید با اجرای دستور زیر، به کاربر جدید، تمامی دسترسی‌ها را اعطا کنید:
+
+```bash
+curl --user <root_user>:<root_password> \\
+"<host>:<port>/" \\
+--data-binary "GRANT ALL ON *.* TO <admin_username> WITH GRANT OPTION"
+```
 
 ## ساخت کاربر با دسترسی Read-Only
-برای ایجاد کاربر جدید که تنها اجازه خواندن اطلاعات (READ) از دیتابیس را دارد، می‌توانید از دستورات زیر استفاده کنید:
+برای ایجاد کاربر جدید که تنها اجازه خواندن اطلاعات (READ) از دیتابیس را دارد، می‌توانید در ابتدا، دستور زیر را اجرا کرده:
 
 ```bash
-CREATE USER 'readonly_user'@'%' IDENTIFIED BY 'password';
-GRANT SELECT ON <database_name>.* TO 'readonly_user'@'%';
-FLUSH PRIVILEGES;
+curl --user <root_user>:<root_password> \\
+"<host>:<port>/" \\
+--data-binary "CREATE USER <readonly_username> IDENTIFIED WITH sha256_password BY '<readonly_password>' SETTINGS readonly = 1"
 ```
 
-دستور فوق، یک کاربر با نام `readonly_user` و رمزعبور `password` ایجاد می‌کند که این کاربر می‌تواند  
-فقط داده‌ها را، در تمامی جداول موجود در دیتابیس مورد نظر، `SELECT` کند (بخواند).
-
-پس از ساخت کاربر، می‌توانید از مشخصات آن، استفاده کرده و به دیتابیس متصل بشوید.  
-بدیهی است که کاربر ایجاد شده فوق، نمی‌تواند  
-دسترسی غیر از SELECT کردن داده‌ها را داشته باشد؛ مگر اینکه  
-دسترسی‌اش توسط کاربر root، تغییر پیدا کند.
-
-## ساخت کاربر با دسترسی محدود به برخی جداول
-در صورتی که بخواهید کاربری ایجاد کنید که فقط به چند جدول مشخص دسترسی داشته باشد، می‌توانید مانند دستورات زیر عمل کنید:
+و در ادامه، دستور زیر را اجرا کنید: 
 
 ```bash
-CREATE USER 'limited_user'@'%' IDENTIFIED BY 'password';
-GRANT SELECT, INSERT, UPDATE ON <database_name>.<table_name_1> TO 'limited_user'@'%';
-GRANT SELECT ON <database_name>.<table_name_2> TO 'limited_user'@'%';
-FLUSH PRIVILEGES;
+curl --user <root_user>:<root_password> \\
+"<host>:<port>/" \\
+--data-binary "GRANT SELECT ON *.* TO <readonly_username>"
 ```
-
-دستور فوق، یک کاربر به نام `limited_user` و رمزعبور `password` ایجاد می‌کند که می‌تواند  
-در جداول <table_name_1> و <table_name_2> در یک دیتابیس مشخص، عملیات `SELECT` , `INSERT` و `UPDATE` را، انجام دهد.
-
-بدیهی است که کاربر ایجاد شده فوق، نمی‌تواند دسترسی غیر از دسترسی‌های تعریف شده را داشته باشد؛ مگر اینکه دسترسی‌اش توسط کاربر root، تغییر پیدا کند.
-
-## ساخت کاربر فقط برای تهیه فایل پشتیبان
-
-در صورتی که بخواهید کاربری ایجاد کنید که فقط  
-بتواند وارد دیتابیس شود و فایل پشتیبان از آن تهیه کند، می‌توانید مانند قطعه کد زیر، عمل کنید:
-
-```bash
-CREATE USER 'backup_user'@'%' IDENTIFIED BY 'password';
-GRANT SELECT, LOCK TABLES, SHOW DATABASES ON *.* TO 'backup_user'@'%';
-FLUSH PRIVILEGES;
-```
-
-## مشاهده دسترسی‌های یک کاربر
-برای مشاهده دسترسی‌های یک کاربر می‌توانید از دستور `SHOW GRANTS` استفاده کنید. به عنوان مثال،  
-می‌توانید برای مشاهده دسترسی‌های کاربری به نام `readonly_user`، مانند قطعه کد زیر، عمل کنید:
-
-```bash
-SHOW GRANTS FOR 'readonly_user'@'%';
-```
-
-## حذف دسترسی‌ یک کاربر
-برای حذف یک دسترسی کاربر، می‌توانید از دستور `REVOKE` استفاده کنید؛  
-به عنوان مثال، فرض کنید که قصد دارید دسترسی `UPDATE` در جدول table1 از دیتابیس mydb را از کاربری به نام `limited_user`، سلب کنید.  
-برای این‌کار، می‌توانید از نمونه قطعه کد زیر، استفاده کنید:
-
-```bash
-REVOKE UPDATE ON database_name.table1 FROM 'limited_user'@'%';
-FLUSH PRIVILEGES;
-```
-
-## حذف یک کاربر
-برای حذف کاربر می‌توانید از دستور `DROP USER` استفاده کنید. به عنوان مثال،  
-برای حذف کاربری به نام `readonly_user` می‌توانید مانند قطعه کد زیر، عمل کنید:
-
-```bash
-DROP USER 'readonly_user'@'%';
-```
-
-> همچنین بخوانید: [مستندات ایجاد کاربر در ClickHouse](https://dev.mysql.com/doc/refman/8.4/en/create-user.html)
 
 ## all links
 

@@ -14,20 +14,20 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات اتصال به دیتابیس‌ MariaDB در Python - لیارا</title>
+<title>مستندات اتصال به دیتابیس‌ ClickHouse در Python - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس MariaDB در پلتفرم Python در لیارا"  />
+<meta property="og:description" content="مستندات مربوط به اتصال به دیتابیس ClickHouse در پلتفرم Python در لیارا"  />
 </Head>
-# اتصال به دیتابیس MariaDB در برنامه‌های Python
+# اتصال به دیتابیس ClickHouse در برنامه‌های Python
 <hr className="mb-2" />
 
-برای اتصال به دیتابیس MariaDB در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس ClickHouse در برنامه‌های Python، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`pip install mysql-connector-python`}
+        {`pip install clickhouse-connect `}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -37,12 +37,11 @@ import Head from "next/head";
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="bash">
-        {`DB_USER=root
-DB_PASSWORD=Wc9yvejxaWm6RrysATmcUeew
-DB_HOST=monte-rosa.liara.cloud
-DB_PORT=31983
-DB_NAME=awesome_swanson
-`}
+        {`CLICKHOUSE_HOST=rainier.liara.cloud
+CLICKHOUSE_PORT=33273
+CLICKHOUSE_DATABASE=default
+CLICKHOUSE_USERNAME=root
+CLICKHOUSE_PASSWORD=x4y2LJvdFyG5wVO87VbXDrpg`}
     </Highlight>
     </div>
 <div className="h-2" />
@@ -52,142 +51,45 @@ DB_NAME=awesome_swanson
 <div className="h-2" />
     <div dir='ltr'>
     <Highlight className="python">
-        {`import http.server
-import socketserver
-import mysql.connector
-import os
+        {`import os
+import clickhouse_connect
+from dotenv import load_dotenv
 
-db_config = {
-    'user': os.getenv('DB_USER'),
-    'password': os.getenv('DB_PASSWORD'),
-    'host': os.getenv('DB_HOST'),
-    'port': int(os.getenv('DB_PORT')),
-    'database': os.getenv('DB_NAME')
-}
+load_dotenv()
 
-def check_db_connection():
-    try:
-        connection = mysql.connector.connect(**db_config)
-        if connection.is_connected():
-            connection.close()
-            return "connection successful"
-    except mysql.connector.Error as e:
-        return f"error:  {e}"
-    return "connection failed"
+client = clickhouse_connect.get_client(
+    host=os.getenv("CLICKHOUSE_HOST"),
+    port=int(os.getenv("CLICKHOUSE_PORT")),
+    username=os.getenv("CLICKHOUSE_USERNAME"),
+    password=os.getenv("CLICKHOUSE_PASSWORD"),
+    database=os.getenv("CLICKHOUSE_DATABASE"),
+)
 
-class RequestHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html; charset=utf-8")
-        self.end_headers()
+try:
+    result = client.query("SELECT 1")
 
-        connection_status = check_db_connection()
+    print({
+        "success": True,
+        "message": "ClickHouse connection successful",
+        "result": result.result_rows
+    })
 
-        html_content = f"""
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>connection status</title>
-            <style>
-                body {{ font-family: Arial, sans-serif; background-color: #2B333F; color: #FFF; text-align: center; }}
-                .status {{ margin-top: 20%; font-size: 24px; }}
-            </style>
-        </head>
-        <body>
-            <div class="status">{connection_status}</div>
-        </body>
-        </html>
-        """
-        self.wfile.write(html_content.encode("utf-8"))
-
-PORT = 8000
-with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
-    print(f"Serving on port {PORT}")
-    httpd.serve_forever()
-`}
+except Exception as e:
+    print({
+        "success": False,
+        "message": "ClickHouse connection failed",
+        "error": str(e)
+    })`}
     </Highlight>
     </div>
 <div className="h-2" />
 
-<Section id="connection-pooling" title="استفاده از Connection Pooling" />
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.
-<Alert variant='success'>همچنین بخوانید: <a className="text-[#2196f3] " href="/dbaas/details/connection-pool">آشنایی بیشتر با قابلیت Connection Pooling</a></Alert>
-
-برای استفاده از قابلیت connection pooling در دیتابیس MariaDB، 
-می‌توانید مشابه قطعه کد زیر، عمل کنید:
-
 <div className="h-2" />
-  <div dir='ltr'>
-  <Highlight className="python">
-{`import http.server
-import socketserver
-from mysql.connector import pooling, Error
-import os
+<Alert variant="success">
+<p>
+مثال فوق از اتصال به دیتابیس را می‌توانید به صورت کامل در <a href="https://github.com/liara-cloud/clickhouse-connect-examples/tree/python" className="text-[#2196f3]">گیت‌هاب لیارا</a>، مشاهده کنید. 
+</p>
+</Alert>
 
-
-db_config = {
-    'user': os.getenv('DB_USER'),
-    'password': os.getenv('DB_PASSWORD'),
-    'host': os.getenv('DB_HOST'),
-    'port': int(os.getenv('DB_PORT')),
-    'database': os.getenv('DB_NAME')
-}
-
-try:
-    connection_pool = pooling.MySQLConnectionPool(
-        pool_name="mypool",
-        pool_size=5,  # connection amount
-        **db_config
-    )
-    print("Connection pool created successfully.")
-except Error as e:
-    print(f"Error while creating connection pool: {e}")
-
-def check_db_connection():
-    try:
-        connection = connection_pool.get_connection()
-        if connection.is_connected():
-            connection.close()  
-            return "connection successfull"
-    except Error as e:
-        return f"error: {e}"
-    return "connection failed"
-
-class RequestHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html; charset=utf-8")
-        self.end_headers()
-
-        connection_status = check_db_connection()
-
-        html_content = f"""
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>connection status</title>
-            <style>
-                body {{ font-family: Arial, sans-serif; background-color: #2B333F; color: #FFF; text-align: center; }}
-                .status {{ margin-top: 20%; font-size: 24px; }}
-            </style>
-        </head>
-        <body>
-            <div class="status">{connection_status}</div>
-        </body>
-        </html>
-        """
-        self.wfile.write(html_content.encode("utf-8"))
-
-PORT = 8000
-with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
-    print(f"Serving on port {PORT}")
-    httpd.serve_forever()
-`}
-  </Highlight>
-  </div>
-<div className="h-2" />
 
 </Layout>

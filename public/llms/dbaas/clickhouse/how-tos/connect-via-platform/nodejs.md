@@ -27,10 +27,10 @@ require('dotenv').config();
 const { createClient } = require('@clickhouse/client');
 
 const client = createClient({
-  url: process.env.CLICKHOUSE_HOST,
-  username: process.env.CLICKHOUSE_USER,
-  password: process.env.CLICKHOUSE_PASSWORD,
-  request_timeout: 10000,
+      url: process.env.CLICKHOUSE_HOST,
+      username: process.env.CLICKHOUSE_USER,
+      password: process.env.CLICKHOUSE_PASSWORD,
+      request_timeout: 10000,
 });
 
 async function connect() {
@@ -49,6 +49,8 @@ async function connect() {
 
 connect();
 ```
+
+> مثال فوق از اتصال به دیتابیس را می‌توانید به صورت کامل در [گیت‌هاب لیارا](https://github.com/liara-cloud/clickhouse-connect-examples/tree/nodejs)، مشاهده کنید.
 
 ## all links
 

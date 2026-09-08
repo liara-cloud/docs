@@ -1,61 +1,22 @@
 ﻿Original link: https://docs.liara.ir/dbaas/clickhouse/how-tos/connect-via-platform/django/
 
-# اتصال به دیتابیس MariaDB در برنامه‌های Django
+# اتصال به دیتابیس ClickHouse در برنامه‌های Django
 
-برای اتصال به دیتابیس MariaDB در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
+برای اتصال به دیتابیس ClickHouse در برنامه‌های Django، در ابتدا باید ماژول مربوط به آن‌را با اجرای دستور زیر، نصب کنید:
 
 ```bash
-pip install mysqlclient
+pip install clickhouse-connect python-dotenv
 ```
 
-در ادامه، بایستی در فایل `settings.py` تنظیمات مربوط به دیتابیس را وارد کنید: 
+در ادامه، یک app مجزا برای دیتابیس خود ایجاد کنید:
+
+```bash
+python manage.py startapp clickhouse
+```
+
+در ادامه، بایستی app جدید را به `settings.py` اضافه کنید:
 
 ```python
-# other codes ...
-import os
-DATABASES = {
-    'default': {
-        'ENGINE':   'django.db.backends.mysql', 
-        'NAME':     os.getenv("MYSQL_DB_NAME"), 
-        'USER':     os.getenv("MYSQL_DB_USER"),
-        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
-        'HOST':     os.getenv("MYSQL_DB_HOST"),
-        'PORT':     os.getenv("MYSQL_DB_PORT"),
-    },
-}
-# other codes ...
-```
-
-پس از آن، کافیست تا 
-اطلاعات مربوط به دیتابیس خود را 
-به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
-
-```bash
-MYSQL_DB_HOST=bromo.liara.cloud
-MYSQL_DB_PORT=33035
-MYSQL_DB_USER=root
-MYSQL_DB_PASS=gIg1uXioTrGDZOESQf0YXE87
-MYSQL_DB_NAME=compassionate_heisenberg
-
-```
-
-در نهایت، کافیست دستور زیر را اجرا کنید تا فایل `requirements.txt` به‌روز شود و نام ماژول مربوط به دیتابیس، در این فایل، قرار بگیرد:
-
-```bash
-pip freeze > requirements.txt
-```
-
-تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید. به عنوان مثال، می‌توانید با اجرای دستور زیر، یک application جدید ایجاد کنید:
-
-```bash
-python manage.py startapp mysql_app
-```
-
-سپس، این application جدید را به بخش `INSTALLED_APPS` در `settings.py`، اضافه کنید:
-
-```python
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,112 +24,103 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mysql_app', # add this
+    'clickhouse',
 ]
 ```
 
-در ادامه، در فایل `mysql_app/views.py` قطعه کد زیر را وارد کنید تا اتصال به دیتابیس، بررسی شود:
-
-```python
-from django.shortcuts import HttpResponse
-from django.db import connections
-
-def check_mysql_connection(request):
-    try:
-        with connections['default'].cursor() as cursor:
-            cursor.execute("SELECT 1")
-            result = cursor.fetchone()
-        if result:
-            return HttpResponse("MySQL connection successful")
-        else:
-            return HttpResponse("MySQL connection failed")
-    except Exception as e:
-        return HttpResponse(f"MySQL connection failed: {e}")
-```
-
-سپس، بایستی در دایرکتوری `mysql_app`، یک فایل به نام `urls.py` ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
-
-```python
-from django.urls import path
-from .views import check_mysql_connection
-
-urlpatterns = [
-    path('', check_mysql_connection, name='check_mysql_connection'),
-]
-```
-
-در نهایت، می‌توانید در فایل `urls.py` موجود در دایرکتوری اصلی پروژه، قطعه کد زیر را اضافه کنید:
-
-```python
-from django.urls import include, path
-
-urlpatterns = [
-    path('mysql/', include('mysql_app.urls')),
-    
-]
-```
-
-اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه `mysql/` وضعیت اتصال به دیتابیس خود را بررسی کنید.
-
-## استفاده از Connection Pooling
-
-مفهوم Connection pooling به معنای استفاده از یک مجموعه اتصالات از پیش ساخته شده برای اتصال به پایگاه داده است. این تکنیک باعث می‌شود به جای ایجاد و بستن مکرر اتصالات، از اتصالات موجود در مجموعه استفاده شود که کارایی را افزایش می‌دهد.  
-> همچنین بخوانید: [آشنایی بیشتر با قابلیت Connection Pooling](https://docs.liara.ir/dbaas/details/connection-pool)
-
-برای استفاده از قابلیت connection pooling در دیتابیس MySQL، فقط کافیست تا با اجرای دستور زیر، ماژول موردنیاز را نصب کنید:
+پس از آن، کافیست تا 
+اطلاعات مربوط به دیتابیس خود را 
+به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-pip install django-db-connection-pool[mysql]
+CLICKHOUSE_HOST=rainier.liara.cloud
+CLICKHOUSE_PORT=33273
+CLICKHOUSE_DATABASE=default
+CLICKHOUSE_USERNAME=root
+CLICKHOUSE_PASSWORD=x4y2LJvdFyG5wVO87VbXDrpg
 ```
 
-سپس، در فایل `settings.py` در بخش `DATABASES`، فیلد مربوط به `ENGINE` را مانند شکل زیر تغییر دهید:
+در ادامه، در مسیر، `clickhouse/client.py`، قطعه کد زیر را قرار دهید:
 
-```python
-# other codes ...
+```bash
 import os
-DATABASES = {
-    'default': {
-        'ENGINE':   'dj_db_conn_pool.backends.mysql', 
-        'NAME':     os.getenv("MYSQL_DB_NAME"), 
-        'USER':     os.getenv("MYSQL_DB_USER"),
-        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
-        'HOST':     os.getenv("MYSQL_DB_HOST"),
-        'PORT':     os.getenv("MYSQL_DB_PORT"),
-    },
-}
-# other codes ...
+import clickhouse_connect
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+client = clickhouse_connect.get_client(
+    host=os.getenv("CLICKHOUSE_HOST"),
+    port=int(os.getenv("CLICKHOUSE_PORT")),
+    username=os.getenv("CLICKHOUSE_USERNAME"),
+    password=os.getenv("CLICKHOUSE_PASSWORD"),
+    database=os.getenv("CLICKHOUSE_DATABASE"),
+)
 ```
 
-همچنین، می‌توانید تنظیمات مربوط به Connection Pooling را در فیلدی به نام `POOL_OPTIONS`مانند قطعه کد زیر، بر روی دیتابیس خود، اعمال کنید:
+در ادامه، در مسیر، `clickhouse/views.py`، قطعه کد زیر را قرار دهید:
 
-```python
-# other codes ...
-import os
-DATABASES = {
-    'default': {
-        'ENGINE':   'dj_db_conn_pool.backends.mysql', 
-        'NAME':     os.getenv("MYSQL_DB_NAME"), 
-        'USER':     os.getenv("MYSQL_DB_USER"),
-        'PASSWORD': os.getenv("MYSQL_DB_PASS"),
-        'HOST':     os.getenv("MYSQL_DB_HOST"),
-        'PORT':     os.getenv("MYSQL_DB_PORT"),
-        'POOL_OPTIONS': {
-            'POOL_SIZE': 10,
-            'MAX_OVERFLOW': 10,
-            'RECYCLE': 24 * 60 * 60
-        }
-    },
-}
-# other codes ...
+```bash
+from django.http import JsonResponse
+from .client import client
+
+
+def test_connection(request):
+    try:
+        result = client.query("SELECT 1")
+
+        return JsonResponse({
+            "success": True,
+            "message": "ClickHouse connection successful",
+            "result": result.result_rows,
+        })
+
+    except Exception as e:
+        return JsonResponse(
+            {
+                "success": False,
+                "message": "ClickHouse connection failed",
+                "error": str(e),
+            },
+            status=500,
+        )
 ```
 
-در نهایت، کافیست دستور زیر را اجرا کنید تا فایل `requirements.txt`، به‌روز شود و نام ماژول مورد نیاز، در آن، قرار بگیرد:
+سپس در مسیر، `clickhouse/urls.py`، قطعه کد زیر را قرار دهید:
 
-```python
-pip freeze > requirements.txt
+```bash
+from django.urls import path
+from .views import test_connection
+
+
+urlpatterns = [
+    path(
+        "test/",
+        test_connection,
+        name="clickhouse-test",
+    ),
+]
 ```
 
-اکنون می‌توانید مجدداً برنامه‌تان را اجرا کرده و در صفحه `mysql/` وضعیت اتصال به دیتابیس خود را بررسی کنید.
+در نهایت، در مسیر، `project-name>/urls.py>`، قطعه کد زیر را قرار دهید:
+
+```bash
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path(
+        "clickhouse/",
+        include("clickhouse.urls")
+    ),
+]
+```
+
+تمامی کارها انجام شده است و شما می‌توانید از دیتابیس خود استفاده کنید.
+
+> مثال فوق از اتصال به دیتابیس را می‌توانید به صورت کامل در [گیت‌هاب لیارا](https://github.com/liara-cloud/clickhouse-connect-examples/tree/django)، مشاهده کنید.
 
 ## all links
 

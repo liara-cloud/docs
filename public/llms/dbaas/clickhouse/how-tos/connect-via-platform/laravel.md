@@ -1,84 +1,127 @@
 ﻿Original link: https://docs.liara.ir/dbaas/clickhouse/how-tos/connect-via-platform/laravel/
 
-# اتصال به دیتابیس MariaDB در برنامه‌های Laravel
+# اتصال به دیتابیس ClickHouse در برنامه‌های Laravel
 
-برای اتصال به دیتابیس MariaDB نیاز به انجام کار خاصی نیست. فقط کافیست تا  
+برای اتصال به دیتابیس ClickHouse کافیست تا  
 اطلاعات مربوط به دیتابیس خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-DB_CONNECTION=mariadb
-DB_HOST=bromo.liara.cloud
-DB_PORT=32909
-DB_DATABASE=hardcore_napier
-DB_USERNAME=root
-DB_PASSWORD=gtccgkT8fHXuHJ52Sm0hBmf5
+CLICKHOUSE_HOST=rainier.liara.cloud
+CLICKHOUSE_PORT=33273
+CLICKHOUSE_DATABASE=default
+CLICKHOUSE_USERNAME=root
+CLICKHOUSE_PASSWORD=x4y2LJvdFyG5wVO87VbXDrpg
 ```
 
-پس از این کار، می‌توانید به دیتابیس مدنظرتان متصل شده و از آن استفاده کنید. به عنوان مثال، می‌توانید برای تست اتصال به دیتابیس، با اجرای دستور زیر، یک کنترلر به نام `DatabaseController` بسازید:
+در ادامه، با دستور زیر یک سرویس برای اتصال ایجاد کنید:  
 
 ```bash
-php artisan make:controller DatabaseController
+php artisan make:class Services/ClickHouseService
 ```
 
-در ادامه، می‌توانید قطعه کد زیر را در `app/Http/Controllers/DatabaseController.php` قرار دهید:
+سپس، در مسیر `app/Services/ClickHouseService.php` قطعه کد زیر را قرار دهید:  
 
-```bash
+```php
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Services;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Http\Request;
+use ClickHouseDB\Client;
 
-class DatabaseController extends Controller
+class ClickHouseService
 {
-    public function checkConnection()
+    private Client $client;
+
+    public function __construct()
     {
-        $databases = [
-            'mariadb' => 'default',
-        ];
+        $this->client = new Client([
+            'host' => env('CLICKHOUSE_HOST'),
+            'port' => env('CLICKHOUSE_PORT'),
+            'username' => env('CLICKHOUSE_USERNAME'),
+            'password' => env('CLICKHOUSE_PASSWORD'),
+        ]);
 
-        $results = [];
+        $this->client->database(
+            env('CLICKHOUSE_DATABASE')
+        );
+    }
 
-        foreach ($databases as $connection => $env) {
-            try {
-                Config::set('database.connections.' . $connection, [
-                    'driver' => env($env . '_CONNECTION', 'mariadb'),
-                    'host' => env($env . '_HOST', '127.0.0.1'),
-                    'port' => env($env . '_PORT', '3306'),
-                    'database' => env($env . '_DATABASE', 'forge'),
-                    'username' => env($env . '_USERNAME', 'forge'),
-                    'password' => env($env . '_PASSWORD', ''),
-                    'charset' => 'utf8mb4',
-                    'collation' => 'utf8mb4_unicode_ci',
-                    'prefix' => '',
-                    'strict' => true,
-                    'engine' => null,
-                ]);
-
-                DB::connection($connection)->getPdo();
-                $results[$connection] = 'Connection successful';
-            } catch (\Exception $e) {
-                $results[$connection] = 'Connection failed: ' . $e->getMessage();
-            }
-        }
-
-        return response()->json($results);
+    public function connectionTest()
+    {
+        return $this->client->select('SELECT 1');
     }
 }
 ```
 
-در نهایت، کافیست تا در `routes/web.php` قطعه کد زیر را اضافه کنید:
+در ادامه، کافیست تا در `routes/web.php` قطعه کد زیر را اضافه کنید:
 
-```bash
-use App\Http\Controllers\DatabaseController;
+```php
+use App\Services\ClickHouseService;
+Route::get('/clickhouse-test', function (ClickHouseService $clickhouse) {
 
-Route::get('/check-database-connection', [DatabaseController::class, 'checkConnection']);
+    try {
+
+        $result = $clickhouse->connectionTest();
+
+        return view('clickhouse-test', [
+            'success' => true,
+            'message' => 'Connection established successfully',
+            'result' => $result->rows(),
+        ]);
+
+    } catch (\Exception $e) {
+
+        return view('clickhouse-test', [
+            'success' => false,
+            'message' => $e->getMessage(),
+            'result' => null,
+        ]);
+    }
+
+});
 ```
 
-اکنون می‌توانید برنامه‌تان را اجرا کرده و در صفحه `check-database-connection/` وضعیت اتصال به دیتابیس خود را بررسی کنید.
+در ادامه، در مسیر `resources/views/clickhouse-test.blade.php`، قطعه کد زیر را قرار دهید:  
+
+```bash
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+
+<div class="card">
+
+    @if($success)
+
+        ## Connected
+
+        ClickHouse connection successful.
+
+    @else
+
+        ## Failed
+
+        {{ $message }}
+
+    @endif
+
+
+    ### Response:
+
+    {{ print_r($data, true) }}
+    </pre>
+
+</div>
+
+</body>
+</html>
+```
+
+تمامی کارها انجام شده است و اکنون می‌توانید در مرورگر، در صفحه `clickhouse-test/`، وضعیت اتصال به دیتابیس را بررسی کنید.  
+
+> مثال فوق از اتصال به دیتابیس را می‌توانید به صورت کامل در [گیت‌هاب لیارا](https://github.com/liara-cloud/clickhouse-connect-examples/tree/laravel)، مشاهده کنید.
 
 ## all links
 
