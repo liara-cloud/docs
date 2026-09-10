@@ -5,7 +5,7 @@
 برای اتصال به دیتابیس ClickHouse در برنامه‌های go، در ابتدا باید ماژول‌های مربوط به آن‌را با اجرای دستورات زیر، نصب کنید:
 
 ```bash
-go get -u github.com/go-sql-driver/mysql
+go get github.com/ClickHouse/clickhouse-go/v2
 go get github.com/joho/godotenv
 ```
 
@@ -14,11 +14,11 @@ go get github.com/joho/godotenv
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-DB_HOST=annapurna.liara.cloud
-DB_PORT=32933
-DB_NAME=gallant_ramanujan
-DB_USER=root
-DB_PASSWORD=UIhfscObpnZhhHG4bo6BOyvF
+CLICKHOUSE_HOST=rainier.liara.cloud
+CLICKHOUSE_PORT=32724
+CLICKHOUSE_DATABASE=default
+CLICKHOUSE_USERNAME=root
+CLICKHOUSE_PASSWORD=fCHDaXCPnkaRfIc2I457n8uo
 ```
 
 در نهایت، می‌توانید با استفاده از قطعه کد زیر، به دیتابیس خود، متصل شوید:
@@ -27,48 +27,52 @@ DB_PASSWORD=UIhfscObpnZhhHG4bo6BOyvF
 package main
 
 import (
-    "database/sql"
-    "fmt"
-    "log"
-    "os"
+	"context"
+	"fmt"
+	"log"
+	"os"
 
-    "github.com/joho/godotenv"
-    _ "github.com/go-sql-driver/mysql"
+	"github.com/ClickHouse/clickhouse-go/v2"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-    // Load environment variables from .env file
-    err := godotenv.Load()
-    if err != nil {
-        log.Fatalf("Error loading .env file")
-    }
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
-    // Get database connection details from environment variables
-    dbUser := os.Getenv("DB_USER")
-    dbPassword := os.Getenv("DB_PASSWORD")
-    dbHost := os.Getenv("DB_HOST")
-    dbPort := os.Getenv("DB_PORT")
-    dbName := os.Getenv("DB_NAME")
+	host := os.Getenv("CLICKHOUSE_HOST")
+	port := os.Getenv("CLICKHOUSE_PORT")
+	database := os.Getenv("CLICKHOUSE_DATABASE")
+	username := os.Getenv("CLICKHOUSE_USERNAME")
+	password := os.Getenv("CLICKHOUSE_PASSWORD")
 
-    // Create the data source name (DSN)
-    dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, dbPort, dbName)
+	conn := clickhouse.OpenDB(&clickhouse.Options{
+		Addr: []string{
+			fmt.Sprintf("%s:%s", host, port),
+		},
+		Protocol: clickhouse.HTTP,
+		Auth: clickhouse.Auth{
+			Database: database,
+			Username: username,
+			Password: password,
+		},
+	})
 
-    // Connect to MySQL
-    db, err := sql.Open("mysql", dsn)
-    if err != nil {
-        panic(err.Error())
-    }
-    defer db.Close()
+	defer conn.Close()
 
-    // Check if connection is ok
-    err = db.Ping()
-    if err != nil {
-        panic(err.Error())
-    }
+	ctx := context.Background()
 
-    fmt.Println("Connected to the database")
+	if err := conn.PingContext(ctx); err != nil {
+		log.Fatalf("ClickHouse connection failed: %v", err)
+	}
+
+	fmt.Println("ClickHouse connection successful ✅")
 }
 ```
+
+> مثال فوق از اتصال به دیتابیس را می‌توانید به صورت کامل در [گیت‌هاب لیارا](https://github.com/liara-cloud/clickhouse-connect-examples/tree/go)، مشاهده کنید.
 
 ## all links
 

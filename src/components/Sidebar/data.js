@@ -5664,30 +5664,14 @@ export default {
         icon: <IconContainer alt="netcore" />,
         link: "/dbaas/clickhouse/how-tos/connect-via-platform/dotnet"
       },
-      // {
-      //   title: "Go",
-      //   icon: <IconContainer alt="go" />,
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-platform/go"
-      // },
-      // {
-      //   hr: true
-      // },
-      // {
-      //   badge: (
-      //     <div className="flex items-center gap-2">
-      //       <GoBrowser />
-      //       <Link href="/dbaas/clickhouse/how-tos/connect-via-gui/about">اتصال از طریق GUI</Link>
-      //     </div>
-      //   )
-      // },
-      // {
-      //   title: "PHPMyAdmin",
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-gui/phpmyadmin"
-      // },
-      // {
-      //   title: "DBeaver",
-      //   link: "/dbaas/clickhouse/how-tos/connect-via-gui/dbeaver"
-      // },
+      {
+        title: "Go",
+        icon: <IconContainer alt="go" />,
+        link: "/dbaas/clickhouse/how-tos/connect-via-platform/go"
+      },
+      {
+        hr: true
+      },
       // {
       //   hr: true
       // },
