@@ -14,7 +14,7 @@ SSH (Secure Shell) یک پروتکل رمزنگاری‌شده برای اتصا
 
 ### Windows
 
-از ویندوز ۱۰ به بعد، OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است.  
+- از ویندوز ۱۰ به بعد، OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است.  
 می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
 
 ```bash
@@ -27,11 +27,9 @@ ssh -V
 Get-WindowsCapability -Online | ? Name -like 'OpenSSH.Client*' | Add-WindowsCapability -Online
 ```
 
----
-
 ### MacOS
 
-در MacOS، پکیج OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است.  
+- در MacOS، پکیج OpenSSH به‌صورت پیش‌فرض بر روی سیستم، نصب شده است.  
 می‌توانید نصب بودن آن را با اجرای دستور زیر، بررسی کنید:
 
 ```bash
@@ -44,11 +42,9 @@ ssh -V
 brew install openssh
 ```
 
----
-
 ### Linux
 
-پکیج OpenSSH معمولاً به‌صورت پیش‌فرض در اکثر توزیع‌های لینوکس نصب است، می‌توانید نصب بودن یا نبودن این پکیج را با اجرای دستور زیر در ترمینال خود، بررسی کنید:
+- پکیج OpenSSH معمولاً به‌صورت پیش‌فرض در اکثر توزیع‌های لینوکس نصب است، می‌توانید نصب بودن یا نبودن این پکیج را با اجرای دستور زیر در ترمینال خود، بررسی کنید:
 
 ```bash
 ssh -V
@@ -58,16 +54,16 @@ ssh -V
 
 #### Debian
 
-برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+- برای نصب OpenSSH، دستورات زیر را اجرا کنید:
 
 ```bash
 sudo apt update
 sudo apt install -y openssh-client
 ```
 
-#### Debian (duplicate tab)
+#### Debian
 
-برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+- برای نصب OpenSSH، دستورات زیر را اجرا کنید:
 
 ```bash
 sudo apt update
@@ -76,16 +72,16 @@ sudo apt install -y openssh-client
 
 #### Rocky Linux
 
-برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+- برای نصب OpenSSH، دستورات زیر را اجرا کنید:
 
 ```bash
 sudo yum install -y openssh-clients
 # sudo dnf install openssh-clients -y # برای نسخه‌های جدیدتر
 ```
 
-#### CentOS
+#### CentOS Stream
 
-برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+- برای نصب OpenSSH، دستورات زیر را اجرا کنید:
 
 ```bash
 sudo yum install -y openssh-clients
@@ -94,7 +90,7 @@ sudo yum install -y openssh-clients
 
 #### RHEL
 
-برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+- برای نصب OpenSSH، دستورات زیر را اجرا کنید:
 
 ```bash
 sudo yum install -y openssh-clients
@@ -103,7 +99,7 @@ sudo yum install -y openssh-clients
 
 #### AlmaLinux
 
-برای نصب OpenSSH، دستورات زیر را اجرا کنید:
+- برای نصب OpenSSH، دستورات زیر را اجرا کنید:
 
 ```bash
 sudo yum install -y openssh-clients
@@ -112,7 +108,7 @@ sudo yum install -y openssh-clients
 
 #### Arch Linux
 
-برای نصب OpenSSH، دستور زیر را اجرا کنید:
+- برای نصب OpenSSH، دستور زیر را اجرا کنید:
 
 ```bash
 sudo pacman -S openssh
@@ -120,7 +116,7 @@ sudo pacman -S openssh
 
 #### Manjaro
 
-برای نصب OpenSSH، دستور زیر را اجرا کنید:
+- برای نصب OpenSSH، دستور زیر را اجرا کنید:
 
 ```bash
 sudo pacman -S openssh

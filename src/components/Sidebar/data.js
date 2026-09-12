@@ -12154,9 +12154,9 @@ export default {
         link: "/mirrors/fedora"
       },
       {
-        title: "سنت‌اواس",
+        title: "سنت‌اواس استریم",
         icon: <IconContainer alt="https://media.liara.ir/logos/centos.svg" />,
-        link: "/mirrors/centos"
+        link: "/mirrors/centos-stream"
       },
       {
         title: "اوپن‌سوس",

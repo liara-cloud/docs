@@ -659,6 +659,7 @@
 - [تنظیم میرور در سیستم عامل Alma Linux](https://docs.liara.ir/llms/mirrors/alma-linux.md)
 - [تنظیم میرور در سیستم عامل Alpine Linux](https://docs.liara.ir/llms/mirrors/alpine-linux.md)
 - [تنظیم میرور در سیستم عامل Arch Linux](https://docs.liara.ir/llms/mirrors/arch-linux.md)
+- [تنظیم میرور در سیستم عامل CentOS Stream](https://docs.liara.ir/llms/mirrors/centos-stream.md)
 - [تنظیم میرور در سیستم عامل CentOS](https://docs.liara.ir/llms/mirrors/centos.md)
 - [تنظیم میرور در سیستم عامل Manjaro](https://docs.liara.ir/llms/mirrors/manjaro.md)
 - [تنظیم میرور در سیستم عامل OpenSUSE](https://docs.liara.ir/llms/mirrors/opensuse.md)

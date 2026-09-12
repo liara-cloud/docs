@@ -23,40 +23,40 @@
 
 ## میرورهای توزیع‌های لینوکسی
 
-میرورهای توزیع‌های لینوکسی شامل مخازن رسمی توزیع‌های لینوکسی هستند که برای دریافت پکیج‌های سیستم‌عامل استفاده می‌شوند. این میرورها به کاربران کمک می‌کنند به‌صورت سریع‌تر و پایدارتر و در زمان اختلالات اینترنت بین‌المللی، پکیج‌های موردنیاز خود را از سرورهای داخلی دریافت کنند. در ادامه لیستی از این میرورها قرار گرفته است: 
+میرورهای توزیع‌های لینوکسی شامل مخازن رسمی توزیع‌های لینوکسی هستند که برای دریافت پکیج‌های سیستم‌عامل استفاده می‌شوند. این میرورها به کاربران کمک می‌کنند به‌صورت سریع‌تر و پایدارتر و در زمان اختلالات اینترنت بین‌المللی، پکیج‌های موردنیاز خود را از سرورهای داخلی دریافت کنند. در ادامه لیستی از این میرورها قرار گرفته است:  
 
-- [Ubuntu](https://docs.liara.ir/mirrors/ubuntu)  
-- [Debian](https://docs.liara.ir/mirrors/debian)  
-- [Fedora](https://docs.liara.ir/mirrors/fedora)  
-- [CentOS](https://docs.liara.ir/mirrors/centos)  
-- [OpenSUSE](https://docs.liara.ir/mirrors/opensuse)  
-- [Rocky Linux](https://docs.liara.ir/mirrors/rocky-linux)  
-- [Alpine Linux](https://docs.liara.ir/mirrors/alpine-linux)  
-- [Arch Linux](https://docs.liara.ir/mirrors/arch-linux)  
-- [Manjaro](https://docs.liara.ir/mirrors/manjaro)  
-- [Alma Linux](https://docs.liara.ir/mirrors/alma-linux)  
+- [#### Ubuntu](https://docs.liara.ir/mirrors/ubuntu)
+- [#### Debian](https://docs.liara.ir/mirrors/debian)
+- [#### Fedora](https://docs.liara.ir/mirrors/fedora)
+- [#### CentOS Stream](https://docs.liara.ir/mirrors/centos-stream)
+- [#### OpenSUSE](https://docs.liara.ir/mirrors/opensuse)
+- [#### Rocky Linux](https://docs.liara.ir/mirrors/rocky-linux)
+- [#### Alpine Linux](https://docs.liara.ir/mirrors/alpine-linux)
+- [#### Arch Linux](https://docs.liara.ir/mirrors/arch-linux)
+- [#### Manjaro](https://docs.liara.ir/mirrors/manjaro)
+- [#### Alma Linux](https://docs.liara.ir/mirrors/alma-linux)
 
 ## میرورهای رجیستری کانتینرها
 
 این دسته شامل میرورهای رجیستری کانتینرهاست که ایمیج‌های Docker و Kubernetes و سایر پلتفرم‌ها را از طریق Container Registry Mirrors به‌صورت کش‌شده ارائه می‌دهند. هدف آن‌ها کاهش زمان Pull، افزایش پایداری و جلوگیری از وابستگی به رجیستری‌های خارجی در زمان قطعی یا محدودیت است.  
 در ادامه لیستی از این میرورها قرار گرفته است:
 
-- [DockerHub](https://docs.liara.ir/mirrors/docker)  
-- [Github Container Registry](https://docs.liara.ir/mirrors/ghcr)  
-- [Quay](https://docs.liara.ir/mirrors/quay)  
-- [K8S](https://docs.liara.ir/mirrors/k8s)  
-- [MCR](https://docs.liara.ir/mirrors/mcr)  
+- [#### DockerHub](https://docs.liara.ir/mirrors/docker)
+- [#### Github Container Registry](https://docs.liara.ir/mirrors/ghcr)
+- [#### Quay](https://docs.liara.ir/mirrors/quay)
+- [#### K8S](https://docs.liara.ir/mirrors/k8s)
+- [#### MCR](https://docs.liara.ir/mirrors/mcr)
 
 ## میرورهای پکیج‌منیجرها و زبان‌های برنامه‌نویسی
 
 این میرورها مربوط به زبان‌ها و پکیج‌منیجرهای نرم‌افزاری هستند و با عنوان Package Manager Mirrors شناخته می‌شوند.  
 در ادامه لیستی از این میرورها قرار گرفته است:
 
-- [Composer](https://docs.liara.ir/mirrors/composer)  
-- [Go](https://docs.liara.ir/mirrors/go)  
-- [NPM](https://docs.liara.ir/mirrors/npm)  
-- [NuGet](https://docs.liara.ir/mirrors/nuget)  
-- [PyPI](https://docs.liara.ir/mirrors/pypi)
+- [#### Composer](https://docs.liara.ir/mirrors/composer)
+- [#### Go](https://docs.liara.ir/mirrors/go)
+- [#### NPM](https://docs.liara.ir/mirrors/npm)
+- [#### NuGet](https://docs.liara.ir/mirrors/nuget)
+- [#### PyPI](https://docs.liara.ir/mirrors/pypi)
 
 ## all links
 

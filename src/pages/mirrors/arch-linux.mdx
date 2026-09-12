@@ -74,7 +74,9 @@ import Head from "next/head";
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`echo "Server = https://linux-mirror.liara.ir/repository/arch/\\$repo/os/\\$arch" > /etc/pacman.d/mirrorlist`}
+                            {`echo 'Server = https://linux-mirror.liara.ir/repository/arch/$repo/os/$arch' \\
+  > /etc/pacman.d/mirrorlist
+`}
                         </Highlight>
                     </div>
                     <div className="h-2" />                          

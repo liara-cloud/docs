@@ -52,15 +52,12 @@ import Head from "next/head";
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`sudo mkdir -p /etc/zypp/repos.d/backup && \\
-sudo cp -a /etc/zypp/repos.d/*.repo /etc/zypp/repos.d/backup/ && \\
-zypper lr -u > ~/zypper-repos-backup.txt && \\
-zypper addrepo \\
+        {`zypper addrepo \\
   --priority 100 \\
   --no-gpgcheck \\
-  https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/ \\
-  opensuse-oss && \\
-zypper refresh`}
+  'https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/' \\
+  opensuse-oss
+`}
     </Highlight>
 </div>
 <div className="h-2" />

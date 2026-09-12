@@ -21,7 +21,8 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 برای تنظیم میرور لیارا در سیستم عامل آرچ لینوکس خود، باید دستور زیر را اجرا کنید:
 
 ```bash
-echo "Server = https://linux-mirror.liara.ir/repository/arch/\\$repo/os/\\$arch" > /etc/pacman.d/mirrorlist
+echo 'Server = https://linux-mirror.liara.ir/repository/arch/$repo/os/$arch' \\
+  > /etc/pacman.d/mirrorlist
 ```
 
 ۳. آپدیت سیستم  

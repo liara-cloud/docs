@@ -2,7 +2,7 @@
 
 # تنظیم میرور در سیستم عامل Manjaro
 
-لیارا برای سیستم عامل Manjaro، میرور زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل Manjaro، میرور زیر را ارائه می‌دهد:
 
 ```bash
 https://linux-mirror.liara.ir/repository/manjaro/
@@ -21,8 +21,9 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 برای تنظیم میرور لیارا در سیستم عامل مانجارو خود، در ابتدا دستور زیر را اجرا کنید:
 
 ```bash
-echo "Server = https://linux-mirror.liara.ir/repository/manjaro/stable/\$repo/\$arch" \
- | tee /etc/pacman.d/mirrorlist > /dev/null
+echo 'Server = https://linux-mirror.liara.ir/repository/manjaro/stable/$repo/$arch' \\
+  | tee /etc/pacman.d/mirrorlist > /dev/null
+
 ```
 
 ۳. آپدیت سیستم  
