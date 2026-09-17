@@ -1,0 +1,142 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات راه‌اندازی سریع برنامه‌های WordPress - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه راه‌اندازی سریع برنامه وردپرس در لیارا"  />
+</Head>
+
+# راه‌اندازی سریع برنامه‌های WordPress
+<hr className="mb-2" />
+
+
+<video
+src="https://media.liara.ir/wordpress/wordpress-setup.mp4"
+controls="controls"
+className="block w-full"
+width="100%"
+/>
+  
+
+<br />
+<div className="h-2" />
+
+برای راه‌اندازی وردپرس حرفه‌ای با استفاده از ابزار <Link className="text-[#2196f3] " href="/references/console/about">Liara Console</Link> کافیست تا مراحل زیر را طی کنید:
+<Step  steps={[
+{
+step: "۱",
+content: (
+<>
+<h3>ورود به حساب کاربری</h3>   
+<p>وارد <Link className="text-[#2196f3] " href="https://console.liara.ir">کنسول لیارا</Link> شوید و با وارد کردن ایمیل یا شماره همراه ثبت شده، به اکانت خود در لیارا، لاگین کنید.</p>
+</>
+)
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>انتخاب حساب</h3>
+    <p>حساب شخصی یا تیم مدنظرتان برای راه‌اندازی برنامه آماده را انتخاب کنید.</p>
+    
+    <div className="h-4" />
+    <Alert variant="success">
+      <p>
+        همچنین بخوانید: <a href="/references/team/about/" className="text-[#2196f3]">مدیریت تیم‌ها در لیارا</a>
+      </p>
+    </Alert>
+  </>
+
+  )
+  },
+{
+step: "۳",
+content: (
+<>
+<h3>راه‌اندازی برنامه</h3>
+<p>
+    بر روی منوی <b>وردپرس اختصاصی</b> و سپس بر روی گزینه <b>ایجاد سایت</b>، کلیک کنید. 
+    در ادامه، یک شناسه یکتا برای برنامه خود انتخاب کنید تا برنامه‌تان با زیر دامنه <Important>liara.run.</Important> در دسترس قرار گیرد. 
+    در نهایت پس از انتخاب وب‌سرور (OpenLiteSpeed یا Apache) با توجه به نیاز خود بر روی گزینه <b>بعدی</b> کلیک کنید. در این گام پلن مدنظرتان را انتخاب کنید و بر روی گزینه <b>بعدی</b> کلیک کنید. در نهایت، بر روی گزینه <b>ساخت سایت</b> کلیک کنید تا 
+    وبسایت وردپرسی شما، ساخته شود.
+</p>
+
+</>
+)
+},
+
+]}/>
+
+<br/>   
+
+
+<Alert variant="info">
+<p>
+در راه‌اندازی اولیه وب‌سایت وردپرس، قسمت مربوط به اتصال به دیتابیس به صورت خودکار توسط لیارا، انجام می‌شود و این مرحله به شما نمایش داده نمی‌شود.
+</p>
+</Alert>
+
+
+<Section id="see-also" title="در ادامه، بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-2 gap-4">
+            {[
+      {
+        title: "اضافه کردن دامنه به برنامه",
+        link: "/wordpress/how-tos/add-domain"
+      },
+      {
+        title: "مدیریت فایل‌های وردپرس",
+        link: "/wordpress/how-tos/file-manager"
+      },
+      {
+        title: "کار با دیتابیس و PHPMyAdmin",
+        link: "/wordpress/how-tos/work-with-db"
+      },
+      {
+        title: "ایجاد و کار با دسترسی FTPS",
+        link: "/wordpress/how-tos/create-ftps-access"
+      },
+      {
+        title: "مهاجرت از cPanel به لیارا",
+        link: "/wordpress/how-tos/migrate-from-cpanel"
+      },
+      {
+        title: "نصب قالب با duplicator",
+        link: "/wordpress/how-tos/duplicator"
+      },
+      {
+        title: "رفع خطاهای رایج",
+        link: "/wordpress/fix-common-errors/about"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

@@ -1,0 +1,68 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات اضافه کردن دامنه به وردپرس - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به اضافه کردن دامنه به وردپرس در لیارا"  />
+</Head>
+
+
+# اضافه کردن دامنه به برنامه وردپرس
+<hr className="mb-2" />
+
+
+<video
+  src="https://media.liara.ir/wordpress/add-domain.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-4" />
+
+برای اضافه کردن دامنه به برنامه وردپرسی خود در لیارا، تنها کافیست تا وارد صفحه <b>دامنه‌ها</b>
+شوید و بر روی گزینه <b>افزودن دامنه</b> کلیک کنید. در ادامه، نام دامنه خود را وارد کنید و بر روی گزینه <b>ایجاد دامنه</b> کلیک کنید. 
+
+<div className="h-2" />
+
+با انجام کار فوق، چند رکورد DNS به شما داده می‌شود که باید آن‌ها را به سامانه مدیریت دامنه خود، اضافه کنید. 
+در صورتی که از <a href="/dns-management-system/about/" className="text-[#2196f3]">سامانه مدیریت دامنه لیارا</a> استفاده می‌کنید، این کار به صورت خودکار انجام می‌شود. 
+
+
+
+<Section id='enable-ssl' title='تهیه گواهی SSL' />
+
+پس از سبز شدن تمامی رکوردها، دامنه شما به برنامه وردپرس متصل می‌شود و می‌توانید با کلیک بر روی گزینه <b>تهیه گواهی SSL</b>، یک گواهی SSL رایگان تهیه کرده و دامنه‌تان را <Important>https</Important> کنید. 
+
+<Section id='disable-subdomain' title='غیرفعال کردن زیردامنه پیش‌فرض' />
+
+پس از اتصال دامنه شخصی‌تان به برنامه وردپرس، برای جلوگیری از مشکلات SEO، توصیه می‌شود که از قسمت <b>تنظیمات</b>، گزینه <b>زیردامنه پیش‌فرض</b> را غیرفعال کنید تا برنامه تنها از طریق دامنه اصلی‌تان، در دسترس باشد. 
+
+
+</Layout>

@@ -1,0 +1,92 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import {GoArrowLeft} from "react-icons/go";
+
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات وردپرس اختصاصی - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به  برنامه وردپرس اختصاصی در لیارا"  />
+</Head>
+
+# درباره وردپرس اختصاصی
+<hr className="mb-2" />
+
+<a className="text-[#2196f3]" target="_blank" rel="noopener" href="https://wordpress.org">وردپرس (WordPress)</a> یک سیستم مدیریت محتوا (CMS) متن‌باز است که برای ساخت و مدیریت وب‌سایت، وبلاگ و فروشگاه‌های آنلاین استفاده می‌شود. 
+این پلتفرم با رابط کاربری ساده، افزونه‌ها و قالب‌های متنوع، امکان توسعه سریع سایت بدون نیاز به ساخت همه بخش‌ها از ابتدا را فراهم می‌کند.
+وردپرس به دلیل انعطاف‌پذیری، جامعه کاربری بزرگ و قابلیت شخصی‌سازی بالا، یکی از محبوب‌ترین گزینه‌ها
+برای راه‌اندازی سایت‌های کوچک تا پروژه‌های حرفه‌ای محسوب می‌شود.
+
+<Section title="وردپرس اختصاصی لیارا چیست؟" id="what-is-liara-wordpress" />
+
+هاست وردپرس اختصاصی لیارا یک سرویس بهینه‌شده است که با هدف ارائه عملکرد پایدار، سرعت بالا و مدیریت ساده‌تر سایت‌های در حال رشد طراحی شده است. 
+در این سرویس، محیط اجرا و منابع مورد نیاز سایت اختصاصی و غیر اشتراکی هستند تا عملکرد وردپرس تحت تاثیر مصرف سایر کاربران قرار نگیرد 
+و سایت بتواند ترافیک و پردازش‌های سنگین‌تر را بهتر مدیریت کند.
+
+<div className="h-4" />
+
+دلیل اختصاصی بودن این سرویس، تخصیص منابع سخت‌افزاری مشخص مانند CPU و RAM به هر سایت، استفاده از زیرساخت ابری، امکان مشاهده مصرف منابع، 
+پشتیبان‌گیری خودکار و فراهم کردن محیطی ایزوله برای اجرای سایت است. 
+این ویژگی‌ها باعث می‌شوند فروشگاه‌ها، سایت‌های محتوایی و پروژه‌های وردپرسی در زمان افزایش بازدید، عملکرد پایدارتر و کنترل بیشتری روی منابع مورد استفاده خود داشته باشند.
+
+
+<Section title="لیارا چه وب سرور هایی را در وردپرس اختصاصی، ارائه می دهد؟" id="webservers-of-liara-wordpress" />
+
+به طور کلی، لیارا دو وب‌سرور <a className="text-[#2196f3]" target="_blank" rel="noopener" href="https://httpd.apache.org/">Apache</a> و <a className="text-[#2196f3]" target="_blank" rel="noopener" href="https://openlitespeed.org/">OpenLiteSpeed</a> ارائه می‌دهد که در ادامه، به توضیح هر کدام، پرداخته شده است. 
+
+<Section title="وب سرور Apache" id="apache-webserver" headingTag="h3" />
+
+Apache یکی از قدیمی‌ترین و پرکاربردترین وب‌سرورها در جهان است 
+که برای میزبانی وب‌سایت‌ها و مدیریت درخواست‌های HTTP استفاده می‌شود.
+این وب‌سرور به دلیل پایداری بالا، انعطاف‌پذیری، پشتیبانی از ماژول‌های مختلف و سازگاری گسترده
+با فناوری‌های وب، سال‌ها یکی از انتخاب‌های اصلی برای اجرای سایت‌های وردپرسی و برنامه‌های تحت وب بوده است.
+
+
+<Section title="وب سرور OpenLiteSpeed" id="openlitespeed-webserver" headingTag="h3" />
+
+OpenLiteSpeed یک وب‌سرور متن‌باز و پرسرعت است که توسط تیم LiteSpeed توسعه داده شده و با هدف ارائه عملکرد بهتر در بارهای کاری سنگین طراحی شده است. 
+این وب‌سرور با پشتیبانی از فناوری‌هایی مانند HTTP/3، کش داخلی و سازگاری با تنظیمات Apache، می‌تواند سرعت پاسخ‌گویی سایت‌های وردپرسی را بهبود دهد 
+و گزینه مناسبی برای سایت‌هایی باشد که به عملکرد بالا و مدیریت بهینه منابع نیاز دارند.
+
+
+<Section id="differences-between-apache-and-openlitespeed" title="تفاوت بین وب سرور Apache و OpenLiteSpeed چیست؟" />
+
+<a href="https://www.apache.org" target="_blank" rel="noopener"  className="text-[#2196f3]">Apache</a> یک وب‌سرور پایدار و سازگار با وردپرس است که از ‎<Important>htaccess.</Important>‎ به صورت کامل پشتیبانی می‌کند، اما در ترافیک بالا مصرف منابع بیشتری دارد، در حالی‌ که <a href="https://openlitespeed.org" className="text-[#2196f3]" target="_blank" rel="noopener">OpenLiteSpeed</a> وب‌سروری با معماری event-driven است که سرعت بالاتر و مصرف منابع کمتری دارد و برای سایت‌های پرترافیک، مناسب‌تر است، هرچند سازگاری آن با ‎<Important>htaccess.</Important>‎ محدودتر از Apache است.
+
+
+<Section id="see-also" title="در ادامه، بخوانید:" />
+
+<div className='h-2' />
+<div className="grid md:grid-cols-1 gap-4">
+            {[
+      {
+        title: "راه‌اندازی سریع وردپرس اختصاصی لیارا",
+        link: "/wordpress/quick-start/"
+      },
+  ].map(item =>
+    <Link href={item.link}>
+    <Card className="flex cursor-pointer w-full items-center justify-between">
+        <div className="flex items-center gap-3">
+        <h4>
+            {item.title}
+        </h4>
+        </div>
+        <GoArrowLeft className="ml-1" />
+    </Card>
+    </Link>
+            )}
+</div>
+
+
+</Layout>

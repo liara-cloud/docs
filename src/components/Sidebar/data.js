@@ -92,6 +92,7 @@ import {
 // ICONS  https://react-icons.github.io/react-icons/icons/go/
 
 import { BsStars } from "react-icons/bs";
+import { FaWordpressSimple } from "react-icons/fa";
 
 
 import PlatformIcon from "../Common/icons";
@@ -157,6 +158,11 @@ export default {
       title: "ذخیره‌سازی ابری",
       icon: <GoPaperclip />,
       link: "/object-storage/about"
+    },
+    {
+      title: "وردپرس اختصاصی",
+      icon: <FaWordpressSimple />,
+      link: "/wordpress/about"
     },
     {
       title: "سامانه مدیریت دامنه",
@@ -5197,6 +5203,8 @@ export default {
     ],
   },
 
+
+  
   dbaas: {
     about: [
       {
@@ -6735,11 +6743,7 @@ export default {
       {
         badge: "پلتفرم‌های قابل ارائه"
       },
-      {
-        title: "WordPress",
-        icon: <IconContainer alt="wordpress" />,
-        link: "/one-click-apps/wordpress/quick-start"
-      },
+
       {
         title: "Headless Chrome",
         icon: <IconContainer alt="chrome" />,
@@ -7780,88 +7784,6 @@ export default {
 
     ],
 
-    wordpress: [
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            برنامه WordPress
-          </div>
-        )
-      },
-      {
-        title: "برگشت به برنامه‌های آماده",
-        icon: <GoArrowRight />,
-        link: "/one-click-apps/about"
-      },
-      {
-        title: "راه‌اندازی سریع!",
-        icon: <GoZap />,
-        link: "/one-click-apps/wordpress/quick-start"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            < GoPackage />
-            شیوه‌ی
-          </div>
-        )
-      },
-      {
-        title: "انتقال WordPress از cPanel به لیارا",
-        link: "/one-click-apps/wordpress/how-tos/migrate-from-cpanel"
-      },
-      // {
-      //   title: "فعال‌سازی افزونه WP Rocket",
-      //   link: "/one-click-apps/wordpress/how-tos/enable-wprocket-extension"
-      // },
-      {
-        title: "راه‌اندازی WordPress با Duplicator",
-        link: "/one-click-apps/wordpress/how-tos/duplicator"
-      },
-      {
-        title: "تغییر نسخه‌ی برنامه مستقر شده",
-        link: "/one-click-apps/wordpress/how-tos/choose-version"
-      },
-      // {
-      //   title: "شخصی‌سازی تنظیمات php.ini",
-      //   link: "/one-click-apps/wordpress/how-tos/customize-php-ini"
-      // },
-      {
-        title: "مشاهده اکستنشن‌های نصب‌شده",
-        link: "/one-click-apps/wordpress/how-tos/see-extensions"
-      },
-      {
-        title: "تنظیم reverse proxy",
-        link: "/one-click-apps/wordpress/how-tos/set-reverse-proxy"
-      },
-      {
-        hr: true
-      },
-      {
-        badge: (
-          <div className="flex items-center gap-2">
-            <GoBug />
-            <Link href="/one-click-apps/wordpress/fix-common-errors/about">رفع خطاهای رایج</Link>
-          </div>
-        )
-      },
-      {
-        title: "رفع خطای err_too_many_redirects",
-        link: "/one-click-apps/wordpress/fix-common-errors/too-many-redirects-error"
-      },
-      {
-        title: "رفع خطای لود نشدن فایل‌های CSS",
-        link: "/one-click-apps/wordpress/fix-common-errors/css-not-loading-error"
-      },
-      {
-        title: "رفع خطاهای مربوط به دسترسی فایل",
-        link: "/one-click-apps/wordpress/fix-common-errors/file-access-errors"
-      },
-
-    ],
     'headless-chrome': [
       {
         badge: (
@@ -12251,5 +12173,96 @@ export default {
     ],
 
   },
+
+  wordpress: {
+    about: [
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <FaWordpressSimple />
+           وردپرس اختصاصی
+          </div>
+        )
+      },
+      {
+        title: "برگشت به خانه",
+        icon: <GoArrowRight />,
+        link: "/"
+      },
+      {
+        title: "درباره وردپرس اختصاصی",
+        icon: <GoInfo />,
+        link: "/wordpress/about"
+      },
+      {
+        title: "راه‌اندازی سریع!",
+        icon: <GoZap />,
+        link: "/wordpress/quick-start"
+      },
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            < GoPackage />
+            شیوه‌ی
+          </div>
+        )
+      },
+      {
+        title: "اضافه کردن دامنه به برنامه",
+        link: "/wordpress/how-tos/add-domain"
+      },
+      {
+        title: "مدیریت فایل‌های وردپرس",
+        link: "/wordpress/how-tos/file-manager"
+      },
+      {
+        title: "کار با دیتابیس و PHPMyAdmin",
+        link: "/wordpress/how-tos/work-with-db"
+      },
+      {
+        title: "ایجاد و کار با دسترسی FTPS",
+        link: "/wordpress/how-tos/create-ftps-access"
+      },
+      {
+        title: "مهاجرت از cPanel به لیارا",
+        link: "/wordpress/how-tos/migrate-from-cpanel"
+      },
+      {
+        title: "نصب قالب با duplicator",
+        link: "/wordpress/how-tos/duplicator"
+      },
+
+      {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+            <GoBug />
+            <Link href="/wordpress/fix-common-errors/about">رفع خطاهای رایج</Link>
+          </div>
+        )
+      },
+      {
+        title: "رفع خطای err_too_many_redirects",
+        link: "/wordpress/fix-common-errors/too-many-redirects-error"
+      },
+      {
+        title: "رفع خطای لود نشدن فایل‌های CSS",
+        link: "/wordpress/fix-common-errors/css-not-loading-error"
+      },
+      // {
+      //   title: "رفع خطاهای دسترسی فایل",
+      //   link: "/wordpress/fix-common-errors/file-access-errors"
+      // },
+    ],
+
+  },
+
+
+
 
 };

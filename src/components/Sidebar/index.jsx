@@ -49,6 +49,9 @@ const Sidebar = ({ setShowSidebar, showSidebar }) => {
     if (section === "mirrors") {
       return getSectionData("mirrors", sidebar_name);
     }
+    if (section === "wordpress") {
+      return getSectionData("wordpress", sidebar_name);
+    }
 
     return data.home;
   };

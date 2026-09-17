@@ -1,0 +1,77 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import ThemePlatformIcon from "@/components/Common/themeIcons"
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import HighlightTabs from "@/components/Common/HighlightTabs";
+import IconContainer from "@/components/Common/IconContainer";
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+  GoTelescope,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات ایجاد دسترسی FTPS - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به ایجاد دسترسی FTPS در وردپرس لیارا"  />
+</Head>
+
+
+# ایحاد و کار با دسترسی FTPS در وردپرس
+<hr className="mb-2" />
+
+
+<video
+  src="https://media.liara.ir/wordpress/create-ftp-access.mp4"
+  controls="controls"
+  className="block w-full"
+  width="100%"
+/>
+
+<div className="h-4" />
+
+
+دسترسی <a href="https://en.wikipedia.org/wiki/FTPS" className="text-[#2196f3]">FTPS یا FTP Secure</a> روشی امن برای انتقال فایل بین سیستم کاربر و سرور است که پروتکل FTP را با رمزنگاری SSL/TLS ترکیب می‌کند. 
+در این روش، اطلاعات ورود مانند نام کاربری و رمز عبور و همچنین فایل‌های در حال انتقال می‌توانند به صورت رمزنگاری‌شده بین کاربر و سرور جابه‌جا شوند 
+و در برابر شنود شبکه محافظت شوند.
+
+<Section id='create' title='ایجاد دسترسی FTPS' />
+
+برای ساخت دسترسی FTPS در وردپرس، تنها کافیست تا وارد منوی <b>FTPS</b> شده و بر روی گزینه <b>ایجاد دسترسی FTPS</b> کلیک کنید. 
+در ادامه، بایستی یک نام برای دسترسی خود انتخاب کرده و سپس بر روی گزینه <b>ایجاد دسترسی</b> کلیک کنید. 
+
+<div className="h-2" />
+<Alert variant="info">
+<p>
+اگر قصدتان این است که کاربر FTPS، تنها بتواند فایل‌ها را دانلود و یا مشاهده کند، باید گزینه <b>دسترسی فقط خواندنی</b> را نیز فعال کنید. 
+</p>
+</Alert>
+<div className="h-2" />
+
+<Section id='connect' title='اتصال با دسترسی FTPS' />
+
+برای اتصال به دیسک برنامه وردپرسی‌تان با استفاده از FTPS، تنها کافیست تا پس از ایجاد دسترسی، برنامه Filezilla یا WinSCP را نصب کرده و سپس 
+اطلاعات دسترسی را در فیلد‌های خواسته شده ، وارد کنید. 
+
+<Section id='delete' title='حذف دسترسی FTPS' />
+
+
+برای حذف دسترسی FTPS نیز، تنها کافیست تا بر روی سه نقطه کنار دسترسی کلیک کرده و سپس بر روی گزینه <b>حذف دسترسی</b> کلیک کنید. در ادامه گزینه <b>حذف دسترسی</b> را تایید کنید تا دسترسی شما حذف شود. 
+
+</Layout>

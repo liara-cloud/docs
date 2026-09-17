@@ -11,7 +11,6 @@
 ## لیارا چه برنامه‌هایی را ارائه می‌دهد؟
 لیارا از جمله اولین سرویس‌های میزبانی ابری ایرانی است که در زمینه ارائه خدمات مربوط به برنامه‌های مختلف، پیش‌تاز است. در حال حاضر، لیارا، برنامه‌های زیر را تحت عنوان **برنامه‌های آماده** به صورت مستقیم ارائه می‌دهد و شما می‌توانید فقط با زدن یک کلیک، برنامه‌های زیر را در لیارا ایجاد کرده و از آن‌ها، در راستای نیاز خود، استفاده کنید:
 
-- [WordPress](https://docs.liara.ir/one-click-apps/wordpress/quick-start)
 - [Headless Chrome](https://docs.liara.ir/one-click-apps/headless-chrome/quick-start)
 - [Soketi](https://docs.liara.ir/one-click-apps/soketi/quick-start)
 - [ImgProxy](https://docs.liara.ir/one-click-apps/imgproxy/quick-start)
@@ -94,13 +93,8 @@
 
 ## همچنین بخوانید:
 
-### آشنایی با جزئیات پلتفرم
 - [آشنایی با جزئیات پلتفرم](https://docs.liara.ir/paas/details/about)
-
-### آشنایی با دیسک‌ها در پلتفرم
 - [آشنایی با دیسک‌ها در پلتفرم](https://docs.liara.ir/paas/disks/about)
-
-### اتصال دامنه خریداری شده به پلتفرم
 - [اتصال دامنه خریداری شده به پلتفرم](https://docs.liara.ir/paas/domains/about)
 
 ## پربازدیدترین مستندات برنامه‌های آماده

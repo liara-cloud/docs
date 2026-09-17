@@ -23,12 +23,6 @@ import Head from "next/head";
 # راه‌اندازی وردپرس با استفاده از بسته نصب آسان (Duplicator)
 <hr className="mb-2" />
 
-<video
-src="https://media.liara.ir/docs/wordpress-duplicator.mp4"
-controls="controls"
-className="block w-full"
-width="100%"
-/>
 
 <br />
 <a href="https://wordpress.org/plugins/duplicator/" className="text-[#2196f3] ">Duplicator</a>  یک افزونه وردپرس است که به کاربران امکان می‌دهد از وب‌سایت‌های خود نسخه پشتیبان تهیه کرده و آن‌ها را به‌سادگی به سرور یا دامنه دیگری منتقل کنند. این افزونه به‌ویژه برای انتقال سایت‌ها، تهیه نسخه‌های پشتیبان منظم، و ایجاد بسته‌های نصب سریع مفید است. Duplicator با ارائه یک فرایند ساده و خودکار، کاربران را از مشکلات پیچیده انتقال و پشتیبان‌گیری بی‌نیاز می‌کند.
@@ -54,7 +48,7 @@ content: (
 <>
 <h3>اتصال دامنه به برنامه</h3>
 <p>
-در صورتی که قصد دارید برنامه‌تان متصل به دامنه خریداری‌شده خودتان باشد، باید قبل از هرچیزی، طبق مستندات <a href="/paas/domains/about" className="text-[#2196f3] ">دامنه‌ها</a>، دامنه مدنظرتان را به برنامه متصل و دامنه پیش‌فرض لیارا را، خاموش کنید.
+در صورتی که قصد دارید برنامه‌تان متصل به دامنه خریداری‌شده خودتان باشد، باید قبل از هرچیزی، طبق مستندات <a href="http://localhost:3001/wordpress/how-tos/add-domain/" className="text-[#2196f3] ">افزودن دامنه</a>، دامنه مدنظرتان را به برنامه متصل و دامنه پیش‌فرض لیارا را، خاموش کنید.
 </p>
 </>
 )
@@ -66,8 +60,8 @@ content: (
 <>
 <h3>انتقال فایل‌های Duplicator  به لیارا</h3>
 <p>
-    در برنامه وردپرسی خود در لیارا، یک <a href="/paas/disks/ftp-access" className="text-[#2196f3] ">یک دسترسی FTP جدید</a> برای دیسک <Important>data</Important> ایجاد کنید. با این دسترسی به دیسک متصل شوید و تمامی فایل‌های درون دیسک را پاک کنید.
-    در ادامه، فایل‌های Duplicator شده را با دسترسی FTP، درون دیسک، آپلود کنید.
+    در برنامه وردپرسی خود در لیارا، طبق مستندات <a href="/wordpress/how-tos/create-ftps-access/" className="text-[#2196f3] ">ایجاد دسترسی FTPS</a>، یک دسترسی FTPS برای دیسک وردپرس خود، ایجاد کنید. با این دسترسی به دیسک متصل شوید و تمامی فایل‌های درون دیسک را پاک کنید.
+    در ادامه، فایل‌های Duplicator را با همین دسترسی FTPS، درون دیسک، آپلود کنید.
 </p>
 
 
@@ -82,7 +76,7 @@ content: (
 <h3>نصب برنامه وردپرسی</h3>
 <p>
     وارد زیرصفحه <Important>installer.php/</Important> در برنامه خود شوید و مراحل نصب وردپرس را جلو ببرید. 
-    برای مشاهده‌ی اطلاعات دیتابیس ایجاد شده می‌توانید وارد دیتابیس برنامه وردپرسی خود شوید و اطلاعات دیتابیس را از منوی <b>نحوه‌ی اتصال</b> کپی کنید.
+    برای مشاهده‌ی اطلاعات دیتابیس می‌توانید طبق مستندات <a href="/wordpress/how-tos/work-with-db/" className="text-[#2196f3]">کار با دیتابیس وردپرس</a>، اطلاعات دیتابیس را استخراج کنید.
 
 </p>
 
@@ -93,29 +87,5 @@ content: (
 
 ]}/>
 
-
-<Section id="see-also" title="همچنین بخوانید:" />
-
-<div className='h-2' />
-<div className="grid md:grid-cols-1 gap-4">
-            {[
-    
-      {
-        title: "رفع خطاهای رایج",
-        link: "/one-click-apps/wordpress/fix-common-errors/about"
-      },
-  ].map(item =>
-    <Link href={item.link}>
-    <Card className="flex cursor-pointer w-full items-center justify-between">
-        <div className="flex items-center gap-3">
-        <h4>
-            {item.title}
-        </h4>
-        </div>
-        <GoArrowLeft className="ml-1" />
-    </Card>
-    </Link>
-            )}
-</div>
 
 </Layout>

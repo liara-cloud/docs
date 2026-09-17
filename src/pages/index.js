@@ -307,13 +307,19 @@ const BEST_PRODUCTS = [
     {
       title: "پلتفرم (PaaS)",
       icon: <GoContainer />,
-      desc: " بررسی انواع پلتفرم‌های پشتیبانی‌شده در لیارا و آموزش گام‌به‌گام راه‌اندازی و استقرار اپلیکیشن‌ها در هر کدام از این پلتفرم‌ها ",
+      desc: "بررسی انواع هاست ابری مدیریت شده در لیارا به زبان ساده",
       link: "/paas/about"
+    },
+    {
+      title: "وردپرس اختصاصی (WordPress)",
+      icon: <GoContainer />,
+      desc: "بررسی وردپرس اختصاصی لیارا، ساده‌تر از cPanel و DirectAdmin",
+      link: "/wordpress/about"
     },
     {
       title: "هوش مصنوعی (AI API)",
       icon: <BsStars />,
-      desc: "شامل معرفی APIهای مرتبط با هوش مصنوعی، نحوه اتصال آن‌ها به پروژه‌ها، و نحوه استفاده از آن‌ها در بستر لیارا",
+      desc: "بررسی و کار با API هوش مصنوعی لیارا برای اتصال به جدیدترین و قوی‌ترین LLMها",
       link: "/ai/about"
     },
   
@@ -489,7 +495,7 @@ export default function Home() {
           </div>
         </Section>
         <Section id="home-products" title={"محصولات لیارا"}>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {BEST_PRODUCTS.map(item =>
               <Link href={item.link}>
                 <Card className="min-h-[180px] flex flex-col cursor-pointer justify-between items-start w-full">
