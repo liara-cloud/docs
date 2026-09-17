@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "sitemap": "node sitemap/generate.js",
-    "fetch:models": "node src/scripts/fetch-liara-ai-models.js",
+    "fetch:models": "node src/scripts/fetch-liara-ai-models.js && node src/scripts/fetch-liara-database-versions.js",
     "prepare": "npx husky install || echo husky skipped"
   },
   "dependencies": {

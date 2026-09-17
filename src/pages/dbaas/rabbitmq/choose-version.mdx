@@ -9,6 +9,7 @@ import Important from "@/components/Common/important";
 import Highlight from "@/components/Common/highlight";
 import Link from "next/link";
 import NextPage from "@/components/Common/nextpage";
+import dbs from "@/data/liara-database-versions.json";
 
 import Head from "next/head";
 
@@ -25,20 +26,18 @@ import Head from "next/head";
 
 <div className="h-2" />
 <ul className="pr-4">
-  {[
-    {text: '4.0',},
-    {text: '3.13',},
-  ].map((item, index) => (
+  {dbs.rabbitmq.map((item, index) => (
     <li
       key={index}
       style={{
         textDecorationColor: "#9ca3af"
       }}
     >
-        نسخه {item.text}
-    </li>
-  ))}
+        نسخه <Important> {item}</Important>
+    <div className='h-1' />
+    </li>  ))}
 </ul>
+<br />
 
 <div className="h-2" />
 <Alert variant="warning">

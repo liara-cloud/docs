@@ -4,7 +4,8 @@
     "deepseek/deepseek-r1-distill-llama-70b",
     "deepseek/deepseek-chat-v3.1",
     "deepseek/deepseek-v4-pro",
-    "deepseek/deepseek-v4-flash"
+    "deepseek/deepseek-v4-flash",
+    "deepseek/deepseek-v4.1-flash"
   ],
   "google": [
     "google/gemini-2.5-pro-preview",
@@ -25,7 +26,9 @@
     "google/gemini-3.5-flash-lite",
     "google/gemini-3.7-flash",
     "google/gemini-3.1-flash-tts-preview",
-    "google/chirp-3"
+    "google/chirp-3",
+    "google/gemini-3.8-flash",
+    "google/gemma-4-26b-a4b-it"
   ],
   "meta-llama": [
     "meta-llama/llama-3.3-70b-instruct",
@@ -91,7 +94,9 @@
     "openai/gpt-5.6-terra-pro",
     "openai/tts-1",
     "openai/tts-1-hd",
-    "openai/whisper-large-v3"
+    "openai/whisper-large-v3",
+    "openai/gpt-6-astra",
+    "openai/gpt-6-astra-pro"
   ],
   "x-ai": [
     "x-ai/grok-4.3",
@@ -140,7 +145,8 @@
     "z-ai/glm-5",
     "z-ai/glm-5.1",
     "z-ai/glm-5.2",
-    "z-ai/glm-5.3"
+    "z-ai/glm-5.3",
+    "z-ai/glm-5.3-flash"
   ],
   "minimax": [
     "minimax/minimax-m2.5",
