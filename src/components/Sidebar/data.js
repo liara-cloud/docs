@@ -325,6 +325,26 @@ export default {
         link: "/ai/minimax"
       },
       {
+        title: "Cohere",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/cohere.svg" />,
+        link: "/ai/cohere"
+      },
+      {
+        title: "Voyage AI",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/voyageai.svg" />,
+        link: "/ai/voyageai"
+      },
+      {
+        title: "Microsoft",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/microsoft.svg" />,
+        link: "/ai/microsoft"
+      },
+      {
+        title: "Sesame",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/sesame.png" />,
+        link: "/ai/sesame"
+      },
+      {
         title: "Xiaomi",
         icon: <IconContainer alt="https://media.liara.ir/logos/ai/xiaomi-logo.svg" />,
         link: "/ai/xiaomi"

@@ -18,6 +18,13 @@ const CATEGORIES = [
   "intfloat",
   "xiaomi",
   "tencent",
+  "cohere",
+  "voyageai",
+  "microsoft",
+  "sesame",
+  "deepgram",
+  "fish-audio",
+  "nvidia",
 ];
 
 function categorizeModel(modelId) {

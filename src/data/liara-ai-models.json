@@ -167,20 +167,33 @@
   "tencent": [
     "tencent/hy3-preview"
   ],
-  "other": [
-    "sesame/csm-1b",
-    "microsoft/mai-voice-2",
-    "microsoft/mai-voice-2-flash",
-    "fish-audio/s2-pro",
-    "fish-audio/s1",
-    "deepgram/aura-2",
-    "microsoft/mai-transcribe-1.5",
-    "fish-audio/transcribe-1",
-    "nvidia/nemotron-3.5-asr-streaming-multilingual-0.6b",
+  "cohere": [
     "cohere/rerank-v3.5",
     "cohere/rerank-4-fast",
-    "cohere/rerank-4-pro",
+    "cohere/rerank-4-pro"
+  ],
+  "voyageai": [
     "voyageai/rerank-2.5-lite",
     "voyageai/rerank-2.5"
-  ]
+  ],
+  "microsoft": [
+    "microsoft/mai-voice-2",
+    "microsoft/mai-voice-2-flash",
+    "microsoft/mai-transcribe-1.5"
+  ],
+  "sesame": [
+    "sesame/csm-1b"
+  ],
+  "deepgram": [
+    "deepgram/aura-2"
+  ],
+  "fish-audio": [
+    "fish-audio/s2-pro",
+    "fish-audio/s1",
+    "fish-audio/transcribe-1"
+  ],
+  "nvidia": [
+    "nvidia/nemotron-3.5-asr-streaming-multilingual-0.6b"
+  ],
+  "other": []
 }
