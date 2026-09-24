@@ -99,6 +99,7 @@ $result = $client->chat()->create([
 
 // Print the response
 echo $result->choices[0]->message->content;
+
 ```
 
 ### Python
@@ -254,13 +255,12 @@ const { text } = await generateText({
 });
 
 console.log('Generated Text:', text);
+
 ```
 
-در قطعه کد‌های فوق، به‌جای `<baseUrl>`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>، کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`، نام یکی از مدل‌های فوق را قرار دهید.
+در قطعه کد‌های فوق، به‌جای `<baseUrl>`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`, کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`, نام یکی از مدل‌های فوق را قرار دهید.
 
 ## پارامترهای قابل تنظیم
-
-### OpenAI SDK
 
 در OpenAI SDK، شما می‌توانید پارامترهای زیر را تنظیم کنید.
 
@@ -281,7 +281,7 @@ console.log('Generated Text:', text);
 
 در ادامه، مثال استفاده از این پارامترها، در زبان‌های مختلف، قرار گرفته است:
 
-#### Python
+### Python
 
 ```bash
 from openai import OpenAI
@@ -303,7 +303,7 @@ response = client.chat.completions.create(
     top_p=0.9,
     n=2,
     seed=42,
-    stop=["\nUser:", "\nSystem:"],
+    stop=["\\nUser:", "\\nSystem:"],
     logit_bias={"50256": -100}, 
     stream=False,
     stream_options=None,
@@ -331,6 +331,308 @@ print(response)
 ```
 
 در قطعه کد‌ فوق، به‌جای `<baseUrl>`, آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`, کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`, نام یکی از مدل‌های فوق را قرار دهید.
+
+## اتصال به مدل های تبدیل متن به گفتار (TTS)
+
+برای کار با مدل‌های TTS می‌توانید از ماژول `openai` استفاده کنید. در ادامه، مثال‌های استفاده از مدل‌های TTS آمده است: 
+
+### JavaScript
+
+```js
+// npm install openai dotenv
+require("dotenv").config();
+
+const fs = require("fs");
+const OpenAI = require("openai");
+
+const client = new OpenAI({
+  apiKey: process.env.LIARA_API_KEY,
+  baseURL: process.env.BASE_URL,
+});
+
+async function main() {
+  const response = await client.audio.speech.create({
+    model: process.env.TTS_MODEL_NAME,
+    voice: process.env.TTS_VOICE,
+    input: "Hello! This audio was generated using Microsoft MAI Voice through Liara.",
+    response_format: "mp3",
+  });
+
+  const buffer = Buffer.from(await response.arrayBuffer());
+
+  fs.writeFileSync("speech.mp3", buffer);
+
+  console.log("Audio saved to speech.mp3");
+}
+
+main().catch(console.error);
+```
+
+> پروژه کامل قطعه کد فوق در [گیت‌هاب لیارا](https://github.com/liara-cloud/ai-tts-examples/tree/nodejs) قابل مشاهده و استفاده است.
+
+### PHP
+
+```php
+<?php
+// composer require openai-php/client vlucas/phpdotenv guzzlehttp/guzzle
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$client = OpenAI::factory()
+    ->withApiKey($_ENV["LIARA_API_KEY"])
+    ->withBaseUri($_ENV["BASE_URL"])
+    ->make();
+
+$audio = $client->audio()->speech([
+    "model" => $_ENV["TTS_MODEL_NAME"],
+    "voice" => $_ENV["TTS_VOICE"],
+    "input" => "Hello! This audio was generated using Microsoft MAI Voice through Liara on PHP!!! Ohhhh Yeahhhhh!",
+    "response_format" => "mp3",
+]);
+
+file_put_contents(
+    __DIR__ . "/speech.mp3",
+    $audio
+);
+
+echo "Audio saved to speech.mp3";
+```
+
+> پروژه کامل قطعه کد فوق در [گیت‌هاب لیارا](https://github.com/liara-cloud/ai-tts-examples/tree/php) قابل مشاهده و استفاده است.
+
+### Python
+
+```py
+# pip install openai python-dotenv
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+client = OpenAI(
+    api_key=os.getenv("LIARA_API_KEY"),
+    base_url=os.getenv("BASE_URL"),
+)
+
+speech_file = Path("speech.mp3")
+
+with client.audio.speech.with_streaming_response.create(
+    model=os.getenv("TTS_MODEL_NAME"),
+    voice=os.getenv("TTS_VOICE"),
+    input="Hello! This audio was generated using Microsoft MAI Voice through Liara on Python! it's awesome, right?",
+    response_format="mp3",
+) as response:
+    response.stream_to_file(speech_file)
+
+print("Audio saved to speech.mp3")
+```
+
+> پروژه کامل قطعه کد فوق در [گیت‌هاب لیارا](https://github.com/liara-cloud/ai-tts-examples/tree/python) قابل مشاهده و استفاده است.
+
+### .NET
+
+```cs
+// dotnet add package OpenAI && dotnet add package DotNetEnv
+using System.ClientModel;
+using DotNetEnv;
+using OpenAI;
+using OpenAI.Audio;
+
+Env.Load();
+
+var baseUrl = Environment.GetEnvironmentVariable("BASE_URL")
+    ?? throw new Exception("BASE_URL is not defined.");
+
+var apiKey = Environment.GetEnvironmentVariable("LIARA_API_KEY")
+    ?? throw new Exception("LIARA_API_KEY is not defined.");
+
+var modelName = Environment.GetEnvironmentVariable("TTS_MODEL_NAME")
+    ?? throw new Exception("TTS_MODEL_NAME is not defined.");
+
+var voiceName = Environment.GetEnvironmentVariable("TTS_VOICE")
+    ?? throw new Exception("TTS_VOICE is not defined.");
+
+var client = new OpenAIClient(
+    credential: new ApiKeyCredential(apiKey),
+    options: new OpenAIClientOptions
+    {
+        Endpoint = new Uri(baseUrl)
+    }
+);
+
+AudioClient audioClient = client.GetAudioClient(modelName);
+
+GeneratedSpeechVoice voice = new(voiceName);
+
+BinaryData speech = await audioClient.GenerateSpeechAsync(
+    "Hello! This audio was generated using Microsoft MAI Voice through Liara. On DOTNET!!! This is Crazy!!!!",
+    voice,
+    new SpeechGenerationOptions
+    {
+        ResponseFormat = GeneratedSpeechFormat.Mp3
+    }
+);
+
+await File.WriteAllBytesAsync(
+    "speech.mp3",
+    speech.ToArray()
+);
+
+Console.WriteLine("Audio saved to speech.mp3");
+```
+
+> پروژه کامل قطعه کد فوق در [گیت‌هاب لیارا](https://github.com/liara-cloud/ai-tts-examples/tree/dotnet) قابل مشاهده و استفاده است.
+
+### Go
+
+```bash
+// go get github.com/openai/openai-go/v3 github.com/joho/godotenv
+package main
+
+import (
+	"context"
+	"fmt"
+	"io"
+	"os"
+
+	"github.com/joho/godotenv"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+)
+
+func main() {
+	err := godotenv.Load()
+	if err != nil {
+		panic("Error loading .env file")
+	}
+
+	baseURL := os.Getenv("BASE_URL")
+	apiKey := os.Getenv("LIARA_API_KEY")
+	modelName := os.Getenv("TTS_MODEL_NAME")
+	voiceName := os.Getenv("TTS_VOICE")
+
+	client := openai.NewClient(
+		option.WithAPIKey(apiKey),
+		option.WithBaseURL(baseURL),
+	)
+
+	response, err := client.Audio.Speech.New(
+		context.Background(),
+		openai.AudioSpeechNewParams{
+			Model: modelName,
+
+			Voice: openai.AudioSpeechNewParamsVoiceUnion{
+				OfString: openai.String(voiceName),
+			},
+
+			Input: "Hello! This audio was generated using Microsoft MAI Voice through Liara. On Go!!!! Hellll Yeahhhh",
+
+			ResponseFormat: openai.AudioSpeechNewParamsResponseFormatMP3,
+		},
+	)
+
+	if err != nil {
+		panic(err)
+	}
+
+	defer response.Body.Close()
+
+	file, err := os.Create("speech.mp3")
+	if err != nil {
+		panic(err)
+	}
+
+	defer file.Close()
+
+	_, err = io.Copy(file, response.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Audio saved to speech.mp3")
+}
+```
+
+> پروژه کامل قطعه کد فوق در [گیت‌هاب لیارا](https://github.com/liara-cloud/ai-tts-examples/tree/go) قابل مشاهده و استفاده است.
+
+در قطعه کدهای فوق، به‌جای `BASE_URL`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `LIARA_API_KEY`، کلید API خود را وارد کنید. همچنین، به‌جای `TTS_MODEL_NAME`، نام یکی از مدل‌های TTS و به‌جای `TTS_VOICE`، نام Voice موردنظر را قرار دهید.
+
+## مقادیر قابل استفاده به عنوان متغیر TTS_VOICE
+
+`TTS_VOICE` یک پارامتر در مدل‌های TTS است که مشخص می‌کند مدل هوش مصنوعی با چه صدای از پیش تعریف‌شده‌ای متن را به گفتار تبدیل کند. هر Voice یک پروفایل صوتی مستقل است که ویژگی‌هایی مثل جنسیت صدا، لحن (Tone)، سرعت، حس بیان (Emotion)، لهجه و سبک صحبت کردن را تعیین می‌کند.
+
+در حال حاضر، می‌توانید مقدار متغیر `TTS_VOICE`  را برای مدل‌های مذکور، با مقادیر زیر پر کنید (بعد از `#` ‌یک‌سری توضیحات راجع به هر Voice قرار گرفته است).
+
+```bash
+TTS_VOICE=English_Graceful_Lady
+# Female - Graceful, gentle and natural - English
+
+TTS_VOICE=English_Insightful_Speaker
+# Male - Clear, thoughtful and professional - English
+
+TTS_VOICE=English_radiant_girl
+# Female - Bright, youthful and energetic - English
+
+TTS_VOICE=English_Persuasive_Man
+# Male - Confident and persuasive - English
+
+TTS_VOICE=English_ReservedYoungMan
+# Male - Calm, restrained and youthful - English
+
+TTS_VOICE=English_PlayfulGirl
+# Female - Playful, lively and youthful - English
+
+TTS_VOICE=English_CalmWoman
+# Female - Calm, soft and composed - English
+
+TTS_VOICE=English_Gentle-voiced_man
+# Male - Gentle, warm and relaxed - English
+
+TTS_VOICE=English_Upbeat_Woman
+# Female - Upbeat, energetic and friendly - English
+
+TTS_VOICE=English_Whispering_girl
+# Female - Soft and whisper-like - English
+
+TTS_VOICE=English_Diligent_Man
+# Male - Steady, serious and professional - English
+
+TTS_VOICE=English_StressedLady
+# Female - Tense and emotionally stressed - English
+
+TTS_VOICE=English_AssertiveQueen
+# Female - Strong, assertive and authoritative - English
+
+TTS_VOICE=English_AnimeCharacter
+# Female - Animated, expressive character voice - English
+
+TTS_VOICE=English_ConfidentWoman
+# Female - Confident, clear and professional - English
+
+TTS_VOICE=English_Deep-VoicedGentleman
+# Male - Deep, mature and composed - English
+
+TTS_VOICE=English_Wiselady
+# Female - Mature, calm and thoughtful - English
+
+TTS_VOICE=English_SentimentalLady
+# Female - Emotional, gentle and sentimental - English
+
+TTS_VOICE=English_SadTeen
+# Young - Sad and emotional - English
+
+TTS_VOICE=English_ImposingManner
+# Male - Strong, imposing and authoritative - English
+
+TTS_VOICE=English_ExuberantGirl
+# Female - Highly energetic and expressive - English
+```
 
 ## all links
 

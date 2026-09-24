@@ -16,7 +16,7 @@ import {
   GoDatabase,
   GoRocket,
   GoServer,
-  GoMail,
+  Gol,
   GoGlobe,
   GoArrowLeft,
 } from "react-icons/go";
@@ -25,23 +25,23 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات شروع به کار با هوش مصنوعی Sesame - لیارا</title>
+<title>مستندات شروع به کار با هوش مصنوعی Deepgram - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی Sesame در لیارا"  />
+<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی Deepgram در لیارا"  />
 </Head>
-# شروع به کار با هوش مصنوعی Sesame
+# شروع به کار با هوش مصنوعی Deepgram
 <hr className="mb-2" />
 
-<a href="https://www.sesame.com/" target='_blank' className="text-[#2196f3]">Sesame</a> یک شرکت فعال در حوزه هوش مصنوعی صوتی و Agentهای مکالمه‌ای است که تمرکز آن بر ایجاد تعامل صوتی طبیعی، دارای ریتم، لحن و آگاهی از زمینه مکالمه است.
+<a href="https://deepgram.com/" target='_blank' className="text-[#2196f3]">Deepgram</a> یک شرکت فعال در حوزه هوش مصنوعی صوتی (Voice AI) است که ابزارها و APIهایی برای تبدیل گفتار به متن (Speech-to-Text)، تبدیل متن به گفتار (Text-to-Speech) و ساخت Agentهای صوتی بلادرنگ ارائه می‌کند. سرویس‌های این شرکت برای کاربردهایی مانند دستیارهای صوتی، مراکز تماس، تحلیل مکالمات، رونویسی پادکست و سیستم‌های مکالمه‌ای طراحی شده‌اند و امکان استفاده به صورت ابری یا Self-hosted را نیز فراهم می‌کنند.
 
 <div className="h-4" />
 
-در حال حاضر، لیارا، مدل‌های زیر از Sesame را در API خود پشتیبانی می‌کند:
+در حال حاضر، لیارا، مدل‌های زیر از Deepgram را در API خود پشتیبانی می‌کند:
 
 <div className="h-2" />
 <ul className="pr-4">
-  {models.sesame.map((item, index) => (
+  {models.deepgram.map((item, index) => (
     <li
       key={index}
       style={{
@@ -55,7 +55,7 @@ import Head from "next/head";
 
 <br />
 
-پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید از مدل‌های Sesame استفاده کنید.
+پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید از مدل‌های Deepgram استفاده کنید.
 
 
 
@@ -102,11 +102,11 @@ const client = new OpenAI({
   baseURL: process.env.BASE_URL,
 });
 
-async function main() {
+async function n() {
   const response = await client.audio.speech.create({
     model: process.env.TTS_MODEL_NAME,
     voice: process.env.TTS_VOICE,
-    input: "Hello! This audio was generated using Sesame MAI Voice through Liara.",
+    input: "Hello! This audio was generated using Deepgram through Liara.",
     response_format: "mp3",
   });
 
@@ -117,7 +117,7 @@ async function main() {
   console.log("Audio saved to speech.mp3");
 }
 
-main().catch(console.error);`}
+n().catch(console.error);`}
         </Highlight>
     </div>
 
@@ -149,7 +149,7 @@ $client = OpenAI::factory()
 $audio = $client->audio()->speech([
     "model" => $_ENV["TTS_MODEL_NAME"],
     "voice" => $_ENV["TTS_VOICE"],
-    "input" => "Hello! This audio was generated using Sesame MAI Voice through Liara on PHP!!! Ohhhh Yeahhhhh!",
+    "input" => "Hello! This audio was generated using Deepgram through Liara on PHP!!! Ohhhh Yeahhhhh!",
     "response_format" => "mp3",
 ]);
 
@@ -193,7 +193,7 @@ speech_file = Path("speech.mp3")
 with client.audio.speech.with_streaming_response.create(
     model=os.getenv("TTS_MODEL_NAME"),
     voice=os.getenv("TTS_VOICE"),
-    input="Hello! This audio was generated using Sesame MAI Voice through Liara on Python! it's awesome, right?",
+    input="Hello! This audio was generated using Deepgram through Liara on Python! it's awesome, right?",
     response_format="mp3",
 ) as response:
     response.stream_to_file(speech_file)
@@ -245,7 +245,7 @@ AudioClient audioClient = client.GetAudioClient(modelName);
 GeneratedSpeechVoice voice = new(voiceName);
 
 BinaryData speech = await audioClient.GenerateSpeechAsync(
-    "Hello! This audio was generated using Sesame. On DOTNET!!! This is Crazy!!!!",
+    "Hello! This audio was generated using Deepgram. On DOTNET!!! This is Crazy!!!!",
     voice,
     new SpeechGenerationOptions
     {
@@ -274,7 +274,7 @@ Console.WriteLine("Audio saved to speech.mp3");`}
     <div dir='ltr'>
         <Highlight className="bash">
         {`// go get github.com/openai/openai-go/v3 github.com/joho/godotenv
-package main
+package n
 
 import (
 	"context"
@@ -287,7 +287,7 @@ import (
 	"github.com/openai/openai-go/v3/option"
 )
 
-func main() {
+func n() {
 	err := godotenv.Load()
 	if err != nil {
 		panic("Error loading .env file")
@@ -312,7 +312,7 @@ func main() {
 				OfString: openai.String(voiceName),
 			},
 
-			Input: "Hello! This audio was generated using Sesame. On Go!!!! Hellll Yeahhhh",
+			Input: "Hello! This audio was generated using Deepgram. On Go!!!! Hellll Yeahhhh",
 
 			ResponseFormat: openai.AudioSpeechNewParamsResponseFormatMP3,
 		},
@@ -355,6 +355,7 @@ func main() {
 در قطعه کدهای فوق، به‌جای <Important>BASE_URL</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>LIARA_API_KEY</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>TTS_MODEL_NAME</Important>، نام یکی از مدل‌های TTS و به‌جای <Important>TTS_VOICE</Important>، نام Voice موردنظر را قرار دهید.
 
 
+
 <Section id="usable-tts-voices" title="مقادیر قابل استفاده به عنوان متغیر TTS_VOICE" headingTag="h3"/>
 
 <Important>TTS_VOICE</Important> یک پارامتر در مدل‌های TTS است که مشخص می‌کند مدل هوش مصنوعی با چه صدای از پیش تعریف‌شده‌ای متن را به گفتار تبدیل کند. هر Voice یک پروفایل صوتی مستقل است که ویژگی‌هایی مثل جنسیت صدا، لحن (Tone)، سرعت، حس بیان (Emotion)، لهجه و سبک صحبت کردن را تعیین می‌کند.
@@ -366,16 +367,123 @@ func main() {
 <div className="h-2" />
     <div dir='ltr'>
         <Highlight className="bash">
-        {`TTS_VOICE=maya                     # Female - Conversational, expressive
-TTS_VOICE=dot                      # Female - Casual, friendly conversational
-TTS_VOICE=alloy                    
+        {`TTS_VOICE=aura-2-thalia-en       # English - Female - Warm, expressive
+TTS_VOICE=aura-2-amalthea-en     # English - Female - Natural, balanced
+TTS_VOICE=aura-2-andromeda-en    # English - Female - Friendly, conversational
+TTS_VOICE=aura-2-apollo-en       # English - Male - Deep, confident
+TTS_VOICE=aura-2-arcas-en        # English - Male - Warm, natural
+TTS_VOICE=aura-2-aries-en        # English - Male - Energetic, clear
+TTS_VOICE=aura-2-asteria-en      # English - Female - Bright, engaging
+TTS_VOICE=aura-2-athena-en       # English - Female - Confident, professional
+TTS_VOICE=aura-2-atlas-en        # English - Male - Steady, corporate
+TTS_VOICE=aura-2-aurora-en       # English - Female - Soft, natural
+TTS_VOICE=aura-2-callista-en     # English - Female - Clear, conversational
+TTS_VOICE=aura-2-cora-en         # English - Female - Calm, natural
+TTS_VOICE=aura-2-cordelia-en     # English - Female - Elegant, expressive
+TTS_VOICE=aura-2-delia-en        # English - Female - Friendly, smooth
+TTS_VOICE=aura-2-draco-en        # English - Male - Strong, authoritative
+TTS_VOICE=aura-2-electra-en      # English - Female - Energetic, lively
+TTS_VOICE=aura-2-harmonia-en     # English - Female - Balanced, warm
+TTS_VOICE=aura-2-helena-en       # English - Female - Professional, clear
+TTS_VOICE=aura-2-hera-en         # English - Female - Confident, refined
+TTS_VOICE=aura-2-hermes-en       # English - Male - Fast, energetic
+TTS_VOICE=aura-2-hyperion-en     # English - Male - Deep, powerful
+TTS_VOICE=aura-2-iris-en         # English - Female - Soft, pleasant
+TTS_VOICE=aura-2-janus-en        # English - Male - Neutral, conversational
+TTS_VOICE=aura-2-juno-en         # English - Female - Natural, friendly
+TTS_VOICE=aura-2-jupiter-en      # English - Male - Strong, narrator style
+TTS_VOICE=aura-2-luna-en         # English - Female - Calm, soft
+TTS_VOICE=aura-2-mars-en         # English - Male - Bold, energetic
+TTS_VOICE=aura-2-minerva-en      # English - Female - Intelligent, professional
+TTS_VOICE=aura-2-neptune-en      # English - Male - Smooth, deep
+TTS_VOICE=aura-2-odysseus-en     # English - Male - Storytelling, expressive
+TTS_VOICE=aura-2-ophelia-en      # English - Female - Gentle, expressive
+TTS_VOICE=aura-2-orion-en        # English - Male - Balanced, professional
+TTS_VOICE=aura-2-orpheus-en      # English - Male - Warm, narrative
+TTS_VOICE=aura-2-pandora-en      # English - Female - Expressive, creative
+TTS_VOICE=aura-2-phoebe-en       # English - Female - Bright, friendly
+TTS_VOICE=aura-2-pluto-en        # English - Male - Deep, dramatic
+TTS_VOICE=aura-2-saturn-en       # English - Male - Calm, mature
+TTS_VOICE=aura-2-selene-en       # English - Female - Soft, elegant
+TTS_VOICE=aura-2-theia-en        # English - Female - Natural, warm
+TTS_VOICE=aura-2-vesta-en        # English - Female - Clear, balanced
+TTS_VOICE=aura-2-zeus-en         # English - Male - Deep, authoritative
 
 
-# Male`}
+# French Voices
+
+TTS_VOICE=aura-2-agathe-fr       # French - Female - Natural, elegant
+TTS_VOICE=aura-2-hector-fr       # French - Male - Clear, professional
+
+
+# Spanish Voices
+
+TTS_VOICE=aura-2-agustina-es     # Spanish - Female - Natural
+TTS_VOICE=aura-2-alvaro-es       # Spanish - Male - Warm
+TTS_VOICE=aura-2-antonia-es      # Spanish - Female - Expressive
+TTS_VOICE=aura-2-aquila-es       # Spanish - Male - Clear
+TTS_VOICE=aura-2-carina-es       # Spanish - Female - Friendly
+TTS_VOICE=aura-2-celeste-es      # Spanish - Female - Soft
+TTS_VOICE=aura-2-diana-es        # Spanish - Female - Natural
+TTS_VOICE=aura-2-estrella-es     # Spanish - Female - Bright
+TTS_VOICE=aura-2-gloria-es       # Spanish - Female - Professional
+TTS_VOICE=aura-2-javier-es       # Spanish - Male - Conversational
+TTS_VOICE=aura-2-luciano-es      # Spanish - Male - Deep
+TTS_VOICE=aura-2-nestor-es       # Spanish - Male - Warm
+TTS_VOICE=aura-2-olivia-es       # Spanish - Female - Friendly
+TTS_VOICE=aura-2-selena-es       # Spanish - Female - Soft
+TTS_VOICE=aura-2-silvia-es       # Spanish - Female - Natural
+TTS_VOICE=aura-2-sirio-es        # Spanish - Male - Clear
+TTS_VOICE=aura-2-valerio-es      # Spanish - Male - Strong
+
+
+# German Voices
+
+TTS_VOICE=aura-2-aurelia-de      # German - Female - Natural
+TTS_VOICE=aura-2-elara-de        # German - Female - Soft
+TTS_VOICE=aura-2-fabian-de       # German - Male - Professional
+TTS_VOICE=aura-2-julius-de       # German - Male - Deep
+TTS_VOICE=aura-2-kara-de         # German - Female - Friendly
+TTS_VOICE=aura-2-lara-de         # German - Female - Clear
+TTS_VOICE=aura-2-viktoria-de     # German - Female - Elegant
+
+
+# Italian Voices
+
+TTS_VOICE=aura-2-cesare-it      # Italian - Male - Deep
+TTS_VOICE=aura-2-cinzia-it      # Italian - Female - Natural
+TTS_VOICE=aura-2-demetra-it     # Italian - Female - Expressive
+TTS_VOICE=aura-2-dionisio-it    # Italian - Male - Strong
+TTS_VOICE=aura-2-elio-it        # Italian - Male - Warm
+TTS_VOICE=aura-2-flavio-it      # Italian - Male - Professional
+TTS_VOICE=aura-2-livia-it       # Italian - Female - Soft
+TTS_VOICE=aura-2-maia-it        # Italian - Female - Friendly
+TTS_VOICE=aura-2-melia-it       # Italian - Female - Natural
+
+
+# Dutch Voices
+
+TTS_VOICE=aura-2-beatrix-nl     # Dutch - Female - Natural
+TTS_VOICE=aura-2-cornelia-nl    # Dutch - Female - Professional
+TTS_VOICE=aura-2-daphne-nl      # Dutch - Female - Friendly
+TTS_VOICE=aura-2-hestia-nl      # Dutch - Female - Warm
+TTS_VOICE=aura-2-lars-nl        # Dutch - Male - Clear
+TTS_VOICE=aura-2-leda-nl        # Dutch - Female - Soft
+TTS_VOICE=aura-2-rhea-nl        # Dutch - Female - Natural
+TTS_VOICE=aura-2-roman-nl       # Dutch - Male - Deep
+TTS_VOICE=aura-2-sander-nl      # Dutch - Male - Conversational
+
+
+# Japanese Voices
+
+TTS_VOICE=aura-2-ama-ja         # Japanese - Female - Natural
+TTS_VOICE=aura-2-ebisu-ja       # Japanese - Male - Calm
+TTS_VOICE=aura-2-fujin-ja       # Japanese - Male - Clear
+TTS_VOICE=aura-2-izanami-ja     # Japanese - Female - Expressive
+TTS_VOICE=aura-2-uzume-ja       # Japanese - Female - Friendly`}
         </Highlight>
     </div>
 <div className="h-2" />
-
 
 
 

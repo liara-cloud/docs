@@ -25,19 +25,19 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات شروع به کار با هوش مصنوعی Meta/Llama - لیارا</title>
+<title>مستندات شروع به کار با هوش مصنوعی Meta - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی Meta/Llama در لیارا"  />
+<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی Meta در لیارا"  />
 </Head>
-# شروع به کار با هوش مصنوعی Llama
+# شروع به کار با هوش مصنوعی Meta و LLama
 <hr className="mb-2" />
 
 <a href="https://www.llama.com/" target='_blank' className="text-[#2196f3] " >Llama (Large Language Model Meta AI)</a> توسط شرکت Meta (فیسبوک سابق) توسعه یافته و یکی از مدل‌های متن‌باز مهم در دنیای هوش مصنوعی است. این مدل با هدف ارائه عملکرد بالا در پردازش زبان طبیعی و در عین حال دسترسی آزاد برای پژوهشگران و توسعه‌دهندگان طراحی شده است. LLaMA در نسخه‌های مختلفی عرضه شده، از جمله LLaMA 2 و جدیدتر، که با بهره‌گیری از داده‌های متنوع و معماری بهینه، توان رقابت با مدل‌هایی مانند GPT و Claude را دارد. تمرکز Meta در این پروژه، توسعه هوش مصنوعی شفاف، قابل اعتماد و قابل استفاده برای جامعه گسترده‌تر است.
 
 <div className="h-4" />
 
-در حال حاضر، لیارا، مدل زیر از Llama را در API خود پشتیبانی می‌کند:
+در حال حاضر، لیارا، مدل زیر از Meta را در API خود پشتیبانی می‌کند:
 
 <div className="h-2" />
 <ul className="pr-4">
@@ -53,9 +53,22 @@ import Head from "next/head";
     </li>  ))}
 </ul>
 
+<ul className="pr-4">
+  {models["meta"].map((item, index) => (
+    <li
+      key={index}
+      style={{
+        textDecorationColor: "#9ca3af"
+      }}
+    >
+        مدل <Important> {item}</Important>
+    <div className='h-1' />
+    </li>  ))}
+</ul>
+
 <br />
 
-پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید از مدل Llama استفاده کنید.
+پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید از مدل Meta استفاده کنید.
 
 <div className="h-2" />
 <Alert variant="success">
@@ -562,5 +575,297 @@ print(response)
   </>
   ]}
 />
+
+
+
+
+
+<Section id="connect-tts" title="اتصال به مدل های تبدیل متن به گفتار (TTS)" />
+
+برای کار با مدل‌های TTS می‌توانید از ماژول <Important>openai</Important> استفاده کنید. در ادامه، مثال‌های استفاده از مدل‌های TTS آمده است: 
+
+  <Tabs 
+  tabs={[
+        {
+        label: "JavaScript",
+        icon: <PlatformIcon platform="nodejs" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "PHP",
+        icon: <PlatformIcon platform="php" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Python",
+        icon: <PlatformIcon platform="python" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: ".NET",
+        icon: <PlatformIcon platform="dotnet" style={{ width: 32, height: 32 }} />,
+        },
+        {
+        label: "Go",
+        icon: <PlatformIcon platform="go" style={{ width: 32, height: 32 }} />,
+        },
+      ]}
+  content={[
+  
+  <>
+    <div dir='ltr'>
+        <Highlight className="js">
+        {`// npm install openai dotenv
+require("dotenv").config();
+
+const fs = require("fs");
+const OpenAI = require("openai");
+
+const client = new OpenAI({
+  apiKey: process.env.LIARA_API_KEY,
+  baseURL: process.env.BASE_URL,
+});
+
+async function n() {
+  const response = await client.audio.speech.create({
+    model: process.env.TTS_MODEL_NAME,
+    input: "Hello! This audio was generated using Fish Audio through Liara.",
+    response_format: "mp3",
+  });
+
+  const buffer = Buffer.from(await response.arrayBuffer());
+
+  fs.writeFileSync("speech.mp3", buffer);
+
+  console.log("Audio saved to speech.mp3");
+}
+
+n().catch(console.error);`}
+        </Highlight>
+    </div>
+
+    <div className="h-2" />
+    <Alert variant="success">
+      <p>
+        پروژه کامل قطعه کد فوق در <a href="https://github.com/liara-cloud/ai-tts-examples/tree/nodejs" className="text-[#2196f3]">گیت‌هاب لیارا</a> قابل مشاهده و استفاده است. 
+      </p>
+    </Alert>
+  </>,
+
+  <>
+
+        <div dir='ltr'>
+        <Highlight className="php">
+        {`<?php
+// composer require openai-php/client vlucas/phpdotenv guzzlehttp/guzzle
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$client = OpenAI::factory()
+    ->withApiKey($_ENV["LIARA_API_KEY"])
+    ->withBaseUri($_ENV["BASE_URL"])
+    ->make();
+
+$audio = $client->audio()->speech([
+    "model" => $_ENV["TTS_MODEL_NAME"],
+    "input" => "Hello! This audio was generated using Fish Audio through Liara on PHP!!! Ohhhh Yeahhhhh!",
+    "response_format" => "mp3",
+]);
+
+file_put_contents(
+    __DIR__ . "/speech.mp3",
+    $audio
+);
+
+echo "Audio saved to speech.mp3";`}
+        </Highlight>
+    </div>
+
+
+    <div className="h-2" />
+    <Alert variant="success">
+      <p>
+        پروژه کامل قطعه کد فوق در <a href="https://github.com/liara-cloud/ai-tts-examples/tree/php" className="text-[#2196f3]">گیت‌هاب لیارا</a> قابل مشاهده و استفاده است. 
+      </p>
+    </Alert>
+  </>,
+
+  <>
+    <div dir='ltr'>
+        <Highlight className="py">
+        {`# pip install openai python-dotenv
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+client = OpenAI(
+    api_key=os.getenv("LIARA_API_KEY"),
+    base_url=os.getenv("BASE_URL"),
+)
+
+speech_file = Path("speech.mp3")
+
+with client.audio.speech.with_streaming_response.create(
+    model=os.getenv("TTS_MODEL_NAME"),
+    input="Hello! This audio was generated using Fish Audio through Liara on Python! it's awesome, right?",
+    response_format="mp3",
+) as response:
+    response.stream_to_file(speech_file)
+
+print("Audio saved to speech.mp3")`}
+        </Highlight>
+    </div>
+ <div className="h-2" />
+    <Alert variant="success">
+      <p>
+        پروژه کامل قطعه کد فوق در <a href="https://github.com/liara-cloud/ai-tts-examples/tree/python" className="text-[#2196f3]">گیت‌هاب لیارا</a> قابل مشاهده و استفاده است. 
+      </p>
+    </Alert>
+  </>,
+
+  <>
+    <div dir='ltr'>
+        <Highlight className="cs">
+        {`// dotnet add package OpenAI && dotnet add package DotNetEnv
+using System.ClientModel;
+using DotNetEnv;
+using OpenAI;
+using OpenAI.Audio;
+
+Env.Load();
+
+var baseUrl = Environment.GetEnvironmentVariable("BASE_URL")
+    ?? throw new Exception("BASE_URL is not defined.");
+
+var apiKey = Environment.GetEnvironmentVariable("LIARA_API_KEY")
+    ?? throw new Exception("LIARA_API_KEY is not defined.");
+
+var modelName = Environment.GetEnvironmentVariable("TTS_MODEL_NAME")
+    ?? throw new Exception("TTS_MODEL_NAME is not defined.");
+
+var client = new OpenAIClient(
+    credential: new ApiKeyCredential(apiKey),
+    options: new OpenAIClientOptions
+    {
+        Endpoint = new Uri(baseUrl)
+    }
+);
+
+AudioClient audioClient = client.GetAudioClient(modelName);
+
+GeneratedSpeechVoice voice = new(voiceName);
+
+BinaryData speech = await audioClient.GenerateSpeechAsync(
+    "Hello! This audio was generated using Fish Audio. On DOTNET!!! This is Crazy!!!!",
+    new SpeechGenerationOptions
+    {
+        ResponseFormat = GeneratedSpeechFormat.Mp3
+    }
+);
+
+await File.WriteAllBytesAsync(
+    "speech.mp3",
+    speech.ToArray()
+);
+
+Console.WriteLine("Audio saved to speech.mp3");`}
+        </Highlight>
+    </div>
+ <div className="h-2" />
+    <Alert variant="success">
+      <p>
+        پروژه کامل قطعه کد فوق در <a href="https://github.com/liara-cloud/ai-tts-examples/tree/dotnet" className="text-[#2196f3]">گیت‌هاب لیارا</a> قابل مشاهده و استفاده است. 
+      </p>
+    </Alert>
+  </>,
+
+  <>
+
+    <div dir='ltr'>
+        <Highlight className="bash">
+        {`// go get github.com/openai/openai-go/v3 github.com/joho/godotenv
+package n
+
+import (
+	"context"
+	"fmt"
+	"io"
+	"os"
+
+	"github.com/joho/godotenv"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+)
+
+func n() {
+	err := godotenv.Load()
+	if err != nil {
+		panic("Error loading .env file")
+	}
+
+	baseURL := os.Getenv("BASE_URL")
+	apiKey := os.Getenv("LIARA_API_KEY")
+	modelName := os.Getenv("TTS_MODEL_NAME")
+
+	client := openai.NewClient(
+		option.WithAPIKey(apiKey),
+		option.WithBaseURL(baseURL),
+	)
+
+	response, err := client.Audio.Speech.New(
+		context.Background(),
+		openai.AudioSpeechNewParams{
+			Model: modelName,
+
+			Voice: openai.AudioSpeechNewParamsVoiceUnion{
+				OfString: openai.String(voiceName),
+			},
+
+			Input: "Hello! This audio was generated using Fish Audio. On Go!!!! Hellll Yeahhhh",
+
+			ResponseFormat: openai.AudioSpeechNewParamsResponseFormatMP3,
+		},
+	)
+
+	if err != nil {
+		panic(err)
+	}
+
+	defer response.Body.Close()
+
+	file, err := os.Create("speech.mp3")
+	if err != nil {
+		panic(err)
+	}
+
+	defer file.Close()
+
+	_, err = io.Copy(file, response.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Audio saved to speech.mp3")
+}`}
+        </Highlight>
+    </div>
+  <div className="h-2" />
+    <Alert variant="success">
+      <p>
+        پروژه کامل قطعه کد فوق در <a href="https://github.com/liara-cloud/ai-tts-examples/tree/go" className="text-[#2196f3]">گیت‌هاب لیارا</a> قابل مشاهده و استفاده است. 
+      </p>
+    </Alert>
+  </>,
+
+  ]}
+  />
+
+
+در قطعه کدهای فوق، به‌جای <Important>BASE_URL</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>LIARA_API_KEY</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>TTS_MODEL_NAME</Important>، نام یکی از مدل‌های TTS را قرار دهید.
+
 
 </Layout>

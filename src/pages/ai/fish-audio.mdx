@@ -16,7 +16,7 @@ import {
   GoDatabase,
   GoRocket,
   GoServer,
-  GoMail,
+  Gol,
   GoGlobe,
   GoArrowLeft,
 } from "react-icons/go";
@@ -25,24 +25,23 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات شروع به کار با هوش مصنوعی Microsoft - لیارا</title>
+<title>مستندات شروع به کار با هوش مصنوعی Fish Audio - لیارا</title>
 
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی Microsoft در لیارا"  />
+<meta property="og:description" content="مستندات شروع به کار با هوش مصنوعی Fish Audio در لیارا"  />
 </Head>
-# شروع به کار با هوش مصنوعی Microsoft
+# شروع به کار با هوش مصنوعی Fish Audio
 <hr className="mb-2" />
 
-<a href="https://www.microsoft.com/" target='_blank' className="text-[#2196f3]">Microsoft</a> یکی از بزرگ‌ترین شرکت‌های فناوری جهان است که در حوزه‌هایی مانند سیستم‌عامل، نرم‌افزارهای سازمانی، رایانش ابری، ابزارهای توسعه و هوش مصنوعی فعالیت می‌کند. محصولات شناخته‌شده این شرکت شامل Windows , Microsoft 365 , GitHub و Azure هستند و بخش مهمی از زیرساخت هوش مصنوعی آن نیز از طریق Microsoft Foundry و Azure ارائه می‌شود. مایکروسافت علاوه بر مدل‌های اختصاصی خود مانند خانواده MAI و Phi، دسترسی به مجموعه گسترده‌ای از مدل‌های هوش مصنوعی شرکت‌های دیگر را نیز در پلتفرم ابری خود فراهم می‌کند.
-
+<a href="https://fish.audio/" target='_blank' className="text-[#2196f3]">Fish Audio</a> یک پلتفرم هوش مصنوعی صوتی است که روی تولید و پردازش صدا تمرکز دارد و سرویس‌هایی مثل تبدیل متن به گفتار (TTS)، تبدیل گفتار به متن (STT)، شبیه‌سازی صدا (Voice Cloning) و ساخت Voice Agent ارائه می‌کند. 
 
 <div className="h-4" />
 
-در حال حاضر، لیارا، مدل‌های زیر از Microsoft را در API خود پشتیبانی می‌کند:
+در حال حاضر، لیارا، مدل‌های زیر از Fish Audio را در API خود پشتیبانی می‌کند:
 
 <div className="h-2" />
 <ul className="pr-4">
-  {models.microsoft.map((item, index) => (
+  {models["fish-audio"].map((item, index) => (
     <li
       key={index}
       style={{
@@ -56,7 +55,7 @@ import Head from "next/head";
 
 <br />
 
-پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید از مدل‌های Microsoft استفاده کنید.
+پس از <a href="/ai/quick-start" className="text-[#2196f3] " >ایجاد سرویس هوش مصنوعی</a> و دریافت <Important>baseUrl</Important> و <a href="/ai/details/keys/#create" className="text-[#2196f3]" >ساخت کلید</a>، می‌توانید از مدل‌های Fish Audio استفاده کنید.
 
 
 
@@ -103,11 +102,10 @@ const client = new OpenAI({
   baseURL: process.env.BASE_URL,
 });
 
-async function main() {
+async function n() {
   const response = await client.audio.speech.create({
     model: process.env.TTS_MODEL_NAME,
-    voice: process.env.TTS_VOICE,
-    input: "Hello! This audio was generated using Microsoft MAI Voice through Liara.",
+    input: "Hello! This audio was generated using Fish Audio through Liara.",
     response_format: "mp3",
   });
 
@@ -118,7 +116,7 @@ async function main() {
   console.log("Audio saved to speech.mp3");
 }
 
-main().catch(console.error);`}
+n().catch(console.error);`}
         </Highlight>
     </div>
 
@@ -149,8 +147,7 @@ $client = OpenAI::factory()
 
 $audio = $client->audio()->speech([
     "model" => $_ENV["TTS_MODEL_NAME"],
-    "voice" => $_ENV["TTS_VOICE"],
-    "input" => "Hello! This audio was generated using Microsoft MAI Voice through Liara on PHP!!! Ohhhh Yeahhhhh!",
+    "input" => "Hello! This audio was generated using Fish Audio through Liara on PHP!!! Ohhhh Yeahhhhh!",
     "response_format" => "mp3",
 ]);
 
@@ -193,8 +190,7 @@ speech_file = Path("speech.mp3")
 
 with client.audio.speech.with_streaming_response.create(
     model=os.getenv("TTS_MODEL_NAME"),
-    voice=os.getenv("TTS_VOICE"),
-    input="Hello! This audio was generated using Microsoft MAI Voice through Liara on Python! it's awesome, right?",
+    input="Hello! This audio was generated using Fish Audio through Liara on Python! it's awesome, right?",
     response_format="mp3",
 ) as response:
     response.stream_to_file(speech_file)
@@ -230,9 +226,6 @@ var apiKey = Environment.GetEnvironmentVariable("LIARA_API_KEY")
 var modelName = Environment.GetEnvironmentVariable("TTS_MODEL_NAME")
     ?? throw new Exception("TTS_MODEL_NAME is not defined.");
 
-var voiceName = Environment.GetEnvironmentVariable("TTS_VOICE")
-    ?? throw new Exception("TTS_VOICE is not defined.");
-
 var client = new OpenAIClient(
     credential: new ApiKeyCredential(apiKey),
     options: new OpenAIClientOptions
@@ -246,8 +239,7 @@ AudioClient audioClient = client.GetAudioClient(modelName);
 GeneratedSpeechVoice voice = new(voiceName);
 
 BinaryData speech = await audioClient.GenerateSpeechAsync(
-    "Hello! This audio was generated using Microsoft MAI Voice through Liara. On DOTNET!!! This is Crazy!!!!",
-    voice,
+    "Hello! This audio was generated using Fish Audio. On DOTNET!!! This is Crazy!!!!",
     new SpeechGenerationOptions
     {
         ResponseFormat = GeneratedSpeechFormat.Mp3
@@ -275,7 +267,7 @@ Console.WriteLine("Audio saved to speech.mp3");`}
     <div dir='ltr'>
         <Highlight className="bash">
         {`// go get github.com/openai/openai-go/v3 github.com/joho/godotenv
-package main
+package n
 
 import (
 	"context"
@@ -288,7 +280,7 @@ import (
 	"github.com/openai/openai-go/v3/option"
 )
 
-func main() {
+func n() {
 	err := godotenv.Load()
 	if err != nil {
 		panic("Error loading .env file")
@@ -297,7 +289,6 @@ func main() {
 	baseURL := os.Getenv("BASE_URL")
 	apiKey := os.Getenv("LIARA_API_KEY")
 	modelName := os.Getenv("TTS_MODEL_NAME")
-	voiceName := os.Getenv("TTS_VOICE")
 
 	client := openai.NewClient(
 		option.WithAPIKey(apiKey),
@@ -313,7 +304,7 @@ func main() {
 				OfString: openai.String(voiceName),
 			},
 
-			Input: "Hello! This audio was generated using Microsoft MAI Voice through Liara. On Go!!!! Hellll Yeahhhh",
+			Input: "Hello! This audio was generated using Fish Audio. On Go!!!! Hellll Yeahhhh",
 
 			ResponseFormat: openai.AudioSpeechNewParamsResponseFormatMP3,
 		},
@@ -347,41 +338,19 @@ func main() {
         پروژه کامل قطعه کد فوق در <a href="https://github.com/liara-cloud/ai-tts-examples/tree/go" className="text-[#2196f3]">گیت‌هاب لیارا</a> قابل مشاهده و استفاده است. 
       </p>
     </Alert>
-
-
   </>,
 
   ]}
   />
 
 
-در قطعه کدهای فوق، به‌جای <Important>BASE_URL</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>LIARA_API_KEY</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>TTS_MODEL_NAME</Important>، نام یکی از مدل‌های TTS و به‌جای <Important>TTS_VOICE</Important>، نام Voice موردنظر را قرار دهید.
-
-
-<Section id="usable-tts-voices" title="مقادیر قابل استفاده به عنوان متغیر TTS_VOICE" headingTag="h3"/>
-
-<Important>TTS_VOICE</Important> یک پارامتر در مدل‌های TTS است که مشخص می‌کند مدل هوش مصنوعی با چه صدای از پیش تعریف‌شده‌ای متن را به گفتار تبدیل کند. هر Voice یک پروفایل صوتی مستقل است که ویژگی‌هایی مثل جنسیت صدا، لحن (Tone)، سرعت، حس بیان (Emotion)، لهجه و سبک صحبت کردن را تعیین می‌کند.
-
-<div className="h-4" />
-
-در حال حاضر، می‌توانید مقدار متغیر <Important>TTS_VOICE</Important>  را برای مدل‌های مذکور، با مقادیر زیر پر کنید (بعد از <Important>#</Important> ‌یک‌سری توضیحات راجع به هر Voice قرار گرفته است).
-
-<div className="h-2" />
-    <div dir='ltr'>
-        <Highlight className="bash">
-        {`TTS_VOICE=en-US-JennyNeural        # Female - Natural, friendly, conversational
-TTS_VOICE=en-US-GuyNeural          # Male - Deep, professional, narration style
-TTS_VOICE=en-US-AriaNeural         # Female - Expressive, natural, assistant style
-TTS_VOICE=en-US-DavisNeural        # Male - Warm, calm, conversational
-TTS_VOICE=en-GB-SoniaNeural        # Female - British accent, clear, natural
-TTS_VOICE=en-GB-RyanNeural         # Male - British accent, professional
-TTS_VOICE=fa-IR-DilaraNeural       # Female - Persian, natural voice`}
-        </Highlight>
-    </div>
-<div className="h-2" />
+در قطعه کدهای فوق، به‌جای <Important>BASE_URL</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>LIARA_API_KEY</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>TTS_MODEL_NAME</Important>، نام یکی از مدل‌های TTS را قرار دهید.
 
 
 <hr className="mb-2" />
+
+
+
 
 
 <Section id="connect-stt" title="اتصال به مدل های تبدیل گفتار به متن (STT)" />
@@ -791,5 +760,11 @@ func main() {
 
 
 در قطعه کدهای فوق، به‌جای <Important>BASE_URL</Important>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای <Important>LIARA_API_KEY</Important>، کلید API خود را وارد کنید. همچنین، به‌جای <Important>STT_MODEL_NAME</Important>، نام مدل STT و به‌جای <Important>AUDIO_FILE</Important>، نام یا مسیر فایل صوتی موردنظر برای تبدیل گفتار به متن را قرار دهید.
+
+
+
+
+
+
 
 </Layout>

@@ -290,7 +290,7 @@ export default {
         link: "/ai/anthropic-claude"
       },
       {
-        title: "Meta/Llama",
+        title: "Meta",
         icon: <IconContainer alt="https://media.liara.ir/logos/ai/meta-llama.svg" />,
         link: "/ai/meta-llama"
       },
@@ -343,6 +343,21 @@ export default {
         title: "Sesame",
         icon: <IconContainer alt="https://media.liara.ir/logos/ai/sesame.png" />,
         link: "/ai/sesame"
+      },
+      {
+        title: "Deepgram",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/deepgram.svg" />,
+        link: "/ai/deepgram"
+      },
+      {
+        title: "Fish Audio",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/fish-audio.png" />,
+        link: "/ai/fish-audio"
+      },
+      {
+        title: "Nvidia",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/nvidia.svg" />,
+        link: "/ai/nvidia"
       },
       {
         title: "Xiaomi",

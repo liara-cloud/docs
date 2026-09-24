@@ -25,6 +25,7 @@ const CATEGORIES = [
   "deepgram",
   "fish-audio",
   "nvidia",
+  "meta",
 ];
 
 function categorizeModel(modelId) {
