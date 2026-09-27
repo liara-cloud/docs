@@ -111,7 +111,7 @@
 [29.008618, "o", "p"]
 [29.440845, "o", "\u001b[?1l\u001b>"]
 [29.441324, "o", "\u001b[?2004l\r\r\n"]
-[29.447618, "o", "\u001b]2;pg_restore -h arthur.iran.liara.ir -p 31567 -U root -F c --create -d postgres\u0007\u001b]1;pg_restore\u0007"]
+[29.447618, "o", "\u001b]2;pg_restore -h arthurstorage.c2.liara.site.liara.ir -p 31567 -U root -F c --create -d postgres\u0007\u001b]1;pg_restore\u0007"]
 [30.49272, "o", "Password: "]
 [31.724741, "o", "\r\n"]
 [35.112903, "o", "\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                \r \r"]

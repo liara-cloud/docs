@@ -13,7 +13,7 @@ App\\Providers\\BroadcastServiceProvider
 سپس در  
 بخش **تنظیمات، متغیرها** برنامه Soketi تهیه شده، متغیر `BROADCAST_DRIVER` را برابر با `pusher` قرار دهید.
 
-حال به‌منظور اتصال به Soketi در برنامه‌های Laravel باید درایور زیر را به فایل `config/broadcasting.php` اضافه کرده و آدرس برنامه‌ی Soketi را با `soketi-app.iran.liara.run` جایگزین کنید:
+حال به‌منظور اتصال به Soketi در برنامه‌های Laravel باید درایور زیر را به فایل `config/broadcasting.php` اضافه کرده و آدرس برنامه‌ی Soketi را با `soketi-app.liara.run` جایگزین کنید:
 
 ```bash
 'pusher' => [
@@ -22,7 +22,7 @@ App\\Providers\\BroadcastServiceProvider
 'secret' => env('PUSHER_APP_SECRET'),
 'app_id' => env('PUSHER_APP_ID'),
 'options' => [
-    'host' => 'soketi-app.iran.liara.run',
+    'host' => 'soketi-app.liara.run',
     'port' => 443,
     'scheme' => 'https'
     ],
@@ -40,14 +40,14 @@ window.Echo = new Echo({
   broadcaster: 'pusher',
   key: 'app-key',
   forceTLS: true,
-  wsHost: 'soketi-app.iran.liara.run',
+  wsHost: 'soketi-app.liara.run',
   wsPort: 443,
   cluster: 'eu',
   enableStats: false,
 });
 ```
 
-> برای مقداردهی `key` و `wsHost` در فرانت‌اند برنامه از Laravel Mix استفاده نکنید و مقادیر `app-key` و `soketi-app.iran.liara.run` را به‌طور مستقیم در قطعه کد فوق قرار دهید.
+> برای مقداردهی `key` و `wsHost` در فرانت‌اند برنامه از Laravel Mix استفاده نکنید و مقادیر `app-key` و `soketi-app.liara.run` را به‌طور مستقیم در قطعه کد فوق قرار دهید.
 
 ## all links
 

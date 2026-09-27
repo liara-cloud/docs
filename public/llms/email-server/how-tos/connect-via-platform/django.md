@@ -4,12 +4,12 @@
 
 [Video link](https://media.liara.ir/django/django-email-server.mp4)
 
-> پروژه و کدهای مورد استفاده در ویدیوی فوق در [اینجا](https://github.com/liara-cloud/django-getting-started/tree/email-server) قابل مشاهده و دسترسی هستند.
+> پروژه و کدهای مورد استفاده در ویدیوی فوق در [https://github.com/liara-cloud/django-getting-started/tree/email-server](https://github.com/liara-cloud/django-getting-started/tree/email-server) قابل مشاهده و دسترسی هستند.
 
 ## SMTPS
 
 برای استفاده از سرویس ایمیل در برنامه‌های Django، کافیست  
-تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
+تا طبق [https://docs.liara.ir/email-server/how-tos/add-smtp-user](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [https://docs.liara.ir/email-server/how-tos/add-account](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
 در ادامه نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
@@ -75,7 +75,7 @@ def send_email(request):
 ## SMTP
 
 برای استفاده از سرویس ایمیل در برنامه‌های Django، کافیست  
-تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
+تا طبق [https://docs.liara.ir/email-server/how-tos/add-smtp-user](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [https://docs.liara.ir/email-server/how-tos/add-account](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
 در ادامه نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
@@ -102,8 +102,10 @@ EMAIL_USE_TLS = True  # Use STARTTLS encryption
 EMAIL_FROM_ADDRESS = os.getenv('MAIL_FROM_ADDRESS')
 ```
 
-<!-- > برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
-> به جای STARTTLS، از TLS استفاده شود. -->
+<!--
+> برای ارسال امن‌تر ایمیل‌ها، می‌توانید مقدار Port را بر روی 465 قرار دهید تا
+> به جای STARTTLS، از TLS استفاده شود.
+-->
 
 تمامی کارها انجام شده است و شما می‌توانید از ایمیل‌سرور خود استفاده کنید؛ به عنوان مثال، می‌توانید یک app جدید ایجاد  
 کنید و `views.py` آن را همانند قطعه کد زیر، بنویسید:  
@@ -133,13 +135,13 @@ def send_test_email(request):
 
 ## HTTP
 
-برای ارسال ایمیل با استفاده از پروتکل HTTP، به [API لیارا](https://docs.liara.ir/references/api/about/) و [آیدی ایمیل‌سرور](https://docs.liara.ir/email-server/details/mail-id)  
-و [نشانی ایمیل‌سرور](https://docs.liara.ir/email-server/how-tos/add-account) نیاز خواهید داشت.  
+برای ارسال ایمیل با استفاده از پروتکل HTTP، به [https://docs.liara.ir/references/api/about/](https://docs.liara.ir/references/api/about/) و [https://docs.liara.ir/email-server/details/mail-id](https://docs.liara.ir/email-server/details/mail-id)  
+و [https://docs.liara.ir/email-server/how-tos/add-account](https://docs.liara.ir/email-server/how-tos/add-account) نیاز خواهید داشت.  
 برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید:
 
 ```bash
 MAIL_SERVER_ID=***
-MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+MAIL_SERVICE_URL=https://mail-service.liara.ir/api/v1/mails
 API_LIARA_TOKEN=***
 MAIL_FROM=info@example.com
 ```
@@ -218,7 +220,7 @@ urlpatterns = [
 curl http://127.0.0.1:8000/send-email/
 ```
 
-> همچنین بخوانید: [پورت‌های ایمیل‌سرور لیارا](https://docs.liara.ir/email-server/details/ports/)
+> همچنین بخوانید: [https://docs.liara.ir/email-server/details/ports/](https://docs.liara.ir/email-server/details/ports/)
 
 ## all links
 

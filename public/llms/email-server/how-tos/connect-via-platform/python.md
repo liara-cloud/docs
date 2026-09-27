@@ -4,7 +4,7 @@
 
 [Video link](https://media.liara.ir/python/python-email.mp4)
 
-> پروژه و کدهای مورد استفاده در ویدیوی فوق در [https://github.com/liara-cloud/python-getting-started/tree/emailServer](https://github.com/liara-cloud/python-getting-started/tree/emailServer) قابل مشاهده و دسترسی هستند.
+> پروژه و کدهای مورد استفاده در ویدیوی فوق در [اینجا](https://github.com/liara-cloud/python-getting-started/tree/emailServer) قابل مشاهده و دسترسی هستند.
 
 ## SMTPS
 
@@ -143,14 +143,14 @@ send_email(to_address, subject, body)
 
 ```bash
 MAIL_SERVER_ID=***
-MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+MAIL_SERVICE_URL=https://mail-service.liara.ir/api/v1/mails
 LIARA_API_TOKEN=***
 ```
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید:
 
 ```bash
-import requests # Install using \`pip install requests\`
+import requests # Install using `pip install requests`
 import os
 
 # from dotenv import load_dotenv # Uncomment if you use .env file

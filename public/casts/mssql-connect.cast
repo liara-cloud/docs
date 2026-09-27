@@ -55,7 +55,7 @@
 [15.388075, "o", "\u001b[7mj2NjUEnyq4S6w0UHnnmWYlSw\u001b[27m"]
 [16.018709, "o", "\u001b[24D\u001b[27mj\u001b[27m2\u001b[27mN\u001b[27mj\u001b[27mU\u001b[27mE\u001b[27mn\u001b[27my\u001b[27mq\u001b[27m4\u001b[27mS\u001b[27m6\u001b[27mw\u001b[27m0\u001b[27mU\u001b[27mH\u001b[27mn\u001b[27mn\u001b[27mm\u001b[27mW\u001b[27mY\u001b[27ml\u001b[27mS\u001b[27mw\u001b[?1l\u001b>"]
 [16.018862, "o", "\u001b[?2004l\r\r\n"]
-[16.019353, "o", "\u001b]2;sqlcmd -S arthur.iran.liara.ir,30033 -Usa -P j2NjUEnyq4S6w0UHnnmWYlSw\u0007\u001b]1;sqlcmd\u0007"]
+[16.019353, "o", "\u001b]2;sqlcmd -S arthurstorage.c2.liara.site.liara.ir,30033 -Usa -P j2NjUEnyq4S6w0UHnnmWYlSw\u0007\u001b]1;sqlcmd\u0007"]
 [18.069177, "o", "1> "]
 [19.144325, "o", ":"]
 [19.546183, "o", "h"]

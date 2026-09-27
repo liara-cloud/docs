@@ -21,7 +21,7 @@ pip install boto3
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-LIARA_ENDPOINT_URL=https://storage.iran.liara.site
+LIARA_ENDPOINT_URL=https://storage.c2.liara.site
 LIARA_ACCESS_KEY=nieiou08cnbod58p
 LIARA_SECRET_KEY=20b71a4c-1168-4945-8ed3-4724dbf9e997
 BUCKET_NAME=my-bucket
@@ -69,8 +69,6 @@ def get_s3_client():
         aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
     )
 ```
-
-اکنون، می‌توانید در فایل `views.py`، بنا به نیاز خود، قطعه کدهای زیر را، به قطعه کد فعلی، اضافه کنید.
 
 ## نمونه کد آپلود فایل
 
@@ -193,14 +191,14 @@ urlpatterns = [
                 $.get('/api/files/list/', function (data) {
                     $('#fileList').empty();
                     data.files.forEach(function (file) {
-                        const listItem = `
+                        const listItem = \`
                             <li>
-                                ${file}
-                                <button class="delete-btn" data-file="${file}">Delete</button>
-                                <button class="presigned-btn" data-file="${file}">Pre-Signed URL</button>
-                                [Permanent URL](${generatePermanentUrl(file)})
+                                \${file}
+                                <button class="delete-btn" data-file="\${file}">Delete</button>
+                                <button class="presigned-btn" data-file="\${file}">Pre-Signed URL</button>
+                                [Permanent URL](\${generatePermanentUrl(file)})
                             </li>
-                        `;
+                        \`;
                         $('#fileList').append(listItem);
                     });
                 });
@@ -210,7 +208,7 @@ urlpatterns = [
             function generatePermanentUrl(fileName) {
                 const bucketName = "{{ AWS_STORAGE_BUCKET_NAME }}";
                 const endpointUrl = "{{ AWS_S3_ENDPOINT_URL }}";
-                return `${endpointUrl}/${bucketName}/${fileName}`;
+                return \`\${endpointUrl}/\${bucketName}/\${fileName}\`;
             }
 
             // Upload file

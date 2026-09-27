@@ -2,7 +2,7 @@
 
 # استقرار برنامه‌های Django وابسته به Celery در لیارا
 
-[Celery](https://docs.celeryq.dev/en/stable/) یک کتابخانه مدیریت صف و پردازش‌های ناهمزمان در پایتون است که به شما امکان می‌دهد تا وظایف (tasks) سنگین و زمان‌بر را به صورت پس‌زمینه و مستقل از اجرای اصلی برنامه، انجام دهید. این ابزار برای اجرای وظایف به صورت توزیع‌شده و با قابلیت زمان‌بندی طراحی شده است و معمولاً با Django برای مدیریت وظایف پس‌زمینه مثل ارسال ایمیل، پردازش داده‌ها و سایر عملیات طولانی ترکیب می‌شود.
+[Celery](https://docs.celeryq.dev/en/stable/) یک کتابخانه مدیریت صف و پردازش‌های ناهمزمان در پایتون است که به شما امکان می‌دهد تا وظایف (tasks) سنگین و زمان‌بر را به صورت پس‌زمینه و مستقل از اجرای اصلی برنامه، انجام دهید. این ابزار برای اجرای وظایف به صورت توزیع‌شده و با قابلیت زمان‌بندی طراحی شده است و معمولاً با Django برای مدیریت وظایف پس‌زمینه مثل ارسال ایمیل، پردازش داده‌ها و سایر عملیات طولانی ترکیب می‌شود.  
 طبق [مستندات شروع به کار با Celery در برنامه‌های Django](https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html)، فرض می‌شود که شما برنامه‌ای با ساختار زیر دارید:
 
 ```bash
@@ -33,7 +33,7 @@ def debug_task(self):
     print(f'Request: {self.request!r}')
 ```
 
-حال برای اطمینان از import شدن ماژول `celery.py` در زمان اجرای `shared_task` توسط فریم‌ورک Django، ماژول `init__.py` را در مسیر proj/proj ایجاد کرده و قطعه کد زیر را در این فایل قرار دهید:
+حال برای اطمینان از import شدن ماژول `celery.py` در زمان اجرای `shared_task` توسط فریم‌ورک Django، ماژول `init___.py__` را در مسیر proj/proj ایجاد کرده و قطعه کد زیر را در این فایل قرار دهید:
 
 ```python
 from .celery import app as celery_app
@@ -46,8 +46,8 @@ __all__ = ('celery_app',)
 ```python
 # Celery Configuration Options
 
-BROKER_URL = 'redis://:a*********3t@tommy.iran.liara.ir:34470/0'
-CELERY_RESULT_BACKEND = 'redis://:a*********3t@tommy.iran.liara.ir:34470/0'
+BROKER_URL = 'redis://:a*********3t@tommy.liara.ir:34470/0'
+CELERY_RESULT_BACKEND = 'redis://:a*********3t@tommy.liara.ir:34470/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

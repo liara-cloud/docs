@@ -22,11 +22,11 @@ MAIL_USERNAME=magical_benz_7s4t7p
 MAIL_PASSWORD=9aaf526a-3352-4d96-99b1-63af70c696e2
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=info@example.com
-MAIL_FROM_NAME="\${APP_NAME}"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 > با تنظیم `MAIL_ENCRYPTION=tls`، می‌توانید به‌صورت امن اقدام به ارسال ایمیل‌های تراکنشی کنید.  
-> در نظر داشته باشید که باید فایل `config/mail.php`، شامل قطعه کد زیر، باشد:
+در نظر داشته باشید که باید فایل `config/mail.php`، شامل قطعه کد زیر، باشد:
 
 ```php
 <?php
@@ -143,7 +143,7 @@ MAIL_USERNAME=magical_benz_7s4t7p
 MAIL_PASSWORD=9aaf526a-3352-4d96-99b1-63af70c696e2
 MAIL_ENCRYPTION=
 MAIL_FROM_ADDRESS=info@example.com
-MAIL_FROM_NAME="\${APP_NAME}"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 در نظر داشته باشید که باید فایل `config/mail.php`، شامل قطعه کد زیر، باشد:
@@ -178,7 +178,6 @@ return [
 
 ];
 ```
-
 > در نظر داشته باشید که Laravel برای ارسال ایمیل از رمز‌نگاری TLS استفاده می‌کند؛ در صورتی که قادر به ارسال از طریق TLS نباشد، آن را به STARTTLS، تغییر می‌دهد.
 
 در ادامه، بایستی با اجرای دستوری مشابه دستور زیر، یک Mailable ایجاد کنید:  
@@ -258,7 +257,7 @@ Route::get('/send-test-email', function () {
 
 ```bash
 MAIL_SERVER_ID=***
-MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+MAIL_SERVICE_URL=https://mail-service.liara.ir/api/v1/mails
 API_LIARA_TOKEN=***
 MAIL_FROM_ADDRESS=info@looms.ir
 ```

@@ -4,7 +4,7 @@
 
 [Video link](https://media.liara.ir/docs/nextjs-email.mp4)
 
-> پروژه و کدهای مورد استفاده در ویدیوی فوق در [اینجا](https://github.com/liara-cloud/nextjs-getting-started/tree/sendEmail) قابل مشاهده و دسترسی هستند.
+> پروژه و کدهای مورد استفاده در ویدیوی فوق در [https://github.com/liara-cloud/nextjs-getting-started/tree/sendEmail](https://github.com/liara-cloud/nextjs-getting-started/tree/sendEmail) قابل مشاهده و دسترسی هستند.
 
 ## SMTPS
 
@@ -15,7 +15,7 @@
 npm install nodemailer
 ```
 
-پس از آن، کافیست تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
+پس از آن، کافیست تا طبق [https://docs.liara.ir/email-server/how-tos/add-smtp-user](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [https://docs.liara.ir/email-server/how-tos/add-account](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
 در نهایت نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود (در فایل `env.local.` در حالت Development، و در فایل `env.production.` در حالت Production)، اضافه کنید؛ به عنوان مثال:
@@ -82,7 +82,7 @@ export default async function handler(req, res) {
 npm install nodemailer
 ```
 
-پس از آن، کافیست تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
+پس از آن، کافیست تا طبق [https://docs.liara.ir/email-server/how-tos/add-smtp-user](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [https://docs.liara.ir/email-server/how-tos/add-account](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
 در نهایت نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود (در فایل `env.local.` در حالت Development، و در فایل `env.production.` در حالت Production)، اضافه کنید؛ به عنوان مثال:
@@ -142,13 +142,13 @@ export default async function handler(req, res) {
 
 ## HTTP
 
-برای ارسال ایمیل با استفاده از پروتکل HTTP، به [API لیارا](https://docs.liara.ir/references/api/about/) و [آیدی ایمیل‌سرور](https://docs.liara.ir/email-server/details/mail-id)  
-و [نشانی ایمیل‌سرور](https://docs.liara.ir/email-server/how-tos/add-account) نیاز خواهید داشت.  
+برای ارسال ایمیل با استفاده از پروتکل HTTP، به [https://docs.liara.ir/references/api/about/](https://docs.liara.ir/references/api/about/) و [https://docs.liara.ir/email-server/details/mail-id](https://docs.liara.ir/email-server/details/mail-id)  
+و [https://docs.liara.ir/email-server/how-tos/add-account](https://docs.liara.ir/email-server/how-tos/add-account) نیاز خواهید داشت.  
 برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید:
 
 ```bash
 MAIL_SERVER_ID=***
-MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+MAIL_SERVICE_URL=https://mail-service.liara.ir/api/v1/mails
 API_LIARA_TOKEN=***
 MAIL_FROM=info@example.com
 ```
@@ -229,7 +229,7 @@ export default function Home() {
 }
 ```
 
-> همچنین بخوانید: [پورت‌های ایمیل‌سرور لیارا](https://docs.liara.ir/email-server/details/ports/)
+> همچنین بخوانید: [https://docs.liara.ir/email-server/details/ports/](https://docs.liara.ir/email-server/details/ports/)
 
 ## all links
 

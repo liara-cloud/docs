@@ -26,7 +26,7 @@ AWS_SECRET_ACCESS_KEY=c2a8704a-c200-4848-82ca-2ddad28c12f1
 AWS_DEFAULT_REGION=us-east-1
 AWS_BUCKET=bucket-name
 AWS_USE_PATH_STYLE_ENDPOINT=true
-AWS_ENDPOINT=https://storage.iran.liara.site
+AWS_ENDPOINT=https://storage.c2.liara.site
 ```
 
 در ادامه، قطعه کد زیر را در `config/filesystems.php` بررسی کنید و در صورت عدم وجود، آن را اضافه کنید:
@@ -44,6 +44,7 @@ AWS_ENDPOINT=https://storage.iran.liara.site
             'throw' => false,
             'report' => false,
         ],
+
 ```
 
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛  
@@ -51,11 +52,13 @@ AWS_ENDPOINT=https://storage.iran.liara.site
 می‌توانید با اجرای دستورات زیر، در پروژه خود،  
 برای هر عملیات در فضای ذخیره‌سازی ابری، یک کنترلر ایجاد کنید:
 
-- php artisan make:controller S3/StorageController  
-- php artisan make:controller S3/UploadController  
-- php artisan make:controller S3/DownloadController  
-- php artisan make:controller S3/DeleteController  
-- php artisan make:controller S3/PresignedController  
+```bash
+php artisan make:controller S3/StorageController
+php artisan make:controller S3/UploadController
+php artisan make:controller S3/DownloadController
+php artisan make:controller S3/DeleteController
+php artisan make:controller S3/PresignedController
+```
 
 ## نمونه کد برای نمایش فایل‌های یک باکت و اسامی باکت‌ها
 
@@ -163,6 +166,7 @@ class DeleteController extends Controller
         return redirect()->route('s3.index')->with('success', 'File deleted successfully.');
     }
 }
+
 ```
 
 ## نمونه کد برای ایجاد لینک موقت برای فایل‌ها
@@ -190,6 +194,7 @@ class PresignedController extends Controller
         return response()->json(['url' => $url]);
     }
 }
+
 ```
 
 برای استفاده از کنترلرها، بایستی قطعه کد زیر را، به فایل `web.php` در مسیر `routes` اضافه کنید:

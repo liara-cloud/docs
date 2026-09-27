@@ -11,7 +11,6 @@
 برای استفاده از سرویس ایمیل در برنامه‌های PHP، می‌توانید از  
 پکیج phpmailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
-
 ```bash
 composer require phpmailer/phpmailer
 # composer require vlucas/phpdotenv phpmailer/phpmailer # for dotenv
@@ -21,7 +20,6 @@ composer require phpmailer/phpmailer
 در نهایت نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
-
 
 ```bash
 MAIL_HOST=smtp.c1.liara.email
@@ -37,7 +35,6 @@ MAIL_FROM_NAME=my-app
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا،  
 اقدام به ارسال ایمیل‌های تراکنشی کنید:  
-
 
 ```php
 <?php
@@ -90,7 +87,6 @@ try {
 برای استفاده از سرویس ایمیل در برنامه‌های PHP، می‌توانید از  
 پکیج phpmailer استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
 
-
 ```bash
 composer require phpmailer/phpmailer
 # composer require vlucas/phpdotenv phpmailer/phpmailer # for dotenv
@@ -100,7 +96,6 @@ composer require phpmailer/phpmailer
 در نهایت نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
-
 
 ```bash
 MAIL_HOST=smtp.c1.liara.email
@@ -116,7 +111,6 @@ MAIL_FROM_NAME=my-app
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا،  
 اقدام به ارسال ایمیل‌های تراکنشی کنید:  
-
 
 ```php
 <?php
@@ -170,10 +164,9 @@ try {
 و [نشانی ایمیل‌سرور](https://docs.liara.ir/email-server/how-tos/add-account) نیاز خواهید داشت.  
 برای این‌کار، اطلاعات مربوطه را مشابه زیر به متغیرهای محیطی برنامه خود، اضافه کنید:
 
-
 ```bash
 MAIL_SERVER_ID=***
-MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+MAIL_SERVICE_URL=https://mail-service.liara.ir/api/v1/mails
 LIARA_API_TOKEN=***
 MAIL_FROM_EMAIL=info@example.com
 
@@ -182,7 +175,6 @@ MAIL_FROM_EMAIL=info@example.com
 > مقدار فیلد `MAIL_FROM_EMAIL` باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از پروتکل HTTP، اقدام به ارسال ایمیل‌های تراکنشی کنید:
-
 
 ```bash
 <?php

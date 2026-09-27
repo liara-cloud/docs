@@ -17,7 +17,7 @@ npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-LIARA_ENDPOINT=https://storage.iran.liara.site
+LIARA_ENDPOINT=https://storage.c2.liara.site
 LIARA_BUCKET_NAME=my-bucket-name
 LIARA_ACCESS_KEY=nieiou08cnbod58p
 LIARA_SECRET_KEY=df67ef3e-ccb6-4a25-97ba-3526f33da3fc
@@ -161,18 +161,13 @@ export async function DELETE(req: Request) {
 npx shadcn@latest init
 ```
 
-سپس با اجرای دستور زیر، کامپوننت‌های مورد نیاز برنامه را نصب کنید:
+سپس با اجرای دستور زیر، کامپوننت‌های مورد نیاز برنامه را نصب کنید:  
 
 ```ts
 npx shadcn@latest add button input card
 ```
 
 در نهایت، در مسیر اصلی پروژه، یک فایل جدید به نام `app/storage/page.tsx` بسازید و کد زیر را در آن قرار دهید:
-
-- Managing Files
-- Uploading file
-- Download
-- Delete
 
 ```ts
 // src/app/storage/page.tsx or /app/storage/page.tsx

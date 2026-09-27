@@ -16,7 +16,7 @@ go get github.com/aws/aws-sdk-go-v2/service/s3
 go get github.com/joho/godotenv
 ```
 
-پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.
+پس از آن، کافیست تا طبق [https://docs.liara.ir/object-storage/how-tos/create-key](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.
 اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
 برای شما قرار گرفته است.
 در نهایت نیز، بایستی 
@@ -27,7 +27,7 @@ go get github.com/joho/godotenv
 LIARA_ACCESS_KEY=saeatk19sndmg66e
 LIARA_SECRET_KEY=a47e00f4-5036-4f55-b68a-aabb4a375a03
 LIARA_BUCKET_NAME=some-bucket-name
-LIARA_ENDPOINT=https://storage.iran.liara.site
+LIARA_ENDPOINT=https://storage.c2.liara.site
 ```
 
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
@@ -95,6 +95,7 @@ func LoadS3Config() (*S3Config, error) {
 		Endpoint: endpoint,
 	}, nil
 }
+
 ```
 
 ## آپلود کردن فایل
@@ -155,6 +156,7 @@ func UploadHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		fmt.Fprintf(w, "File uploaded successfully: %s", filename)
 	}
 }
+
 ```
 
 ## دریافت لینک دائمی یا موقت
@@ -234,6 +236,7 @@ func TemporaryLinkHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		fmt.Fprint(w, link)
 	}
 }
+
 ```
 
 ## دانلود فایل
@@ -289,6 +292,7 @@ func DownloadHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		}
 	}
 }
+
 ```
 
 ## حذف فایل
@@ -337,6 +341,7 @@ func DeleteHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		fmt.Fprintf(w, "File deleted successfully: %s", key)
 	}
 }
+
 ```
 
 ## لیست‌کردن فایل‌ها
@@ -404,6 +409,7 @@ func ListObjectsV2(client *s3.Client, bucket string) ([]types.Object, error) {
 
 	return resp.Contents, nil
 }
+
 ```
 
 ## تجمیع قابلیت‌ها

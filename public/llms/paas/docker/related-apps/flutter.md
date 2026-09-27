@@ -4,7 +4,6 @@
 
 [Flutter](https://flutter.dev/) یک فریم‌ورک توسعه رابط کاربری (UI) متن‌باز است که توسط گوگل ساخته شده است. این فریم‌ورک به توسعه‌دهندگان امکان می‌دهد تا اپلیکیشن‌های native زیبا و با عملکرد بالا را برای سیستم‌عامل‌های iOS و Android و وب و دسکتاپ با استفاده از یک کدبیس واحد توسعه دهند. Flutter از زبان برنامه‌نویسی Dart استفاده می‌کند و ابزارک‌های (widgets) سفارشی خود را ارائه می‌دهد که به طراحی رابط‌های کاربری پیچیده کمک می‌کند.
 
-
 شما می‌توانید برنامه‌های Flutter خود را با [ایجاد برنامه‌های Docker](../../how-tos/create-app) در لیارا، مستقر کنید.
 برای این‌کار، کافیست تا در مسیر اصلی پروژه در Local، یک فایل به نام `Dockerfile` ایجاد کنید و قطعه کد زیر را درون آن، قرار دهید:
 
@@ -54,10 +53,9 @@ RUN flutter pub get && \\
     flutter build web
 
 # Stage 2 - Create the run-time image
-FROM registry2.iran.liara.ir/platforms/static-platform:base
+FROM registry2storage.c2.liara.site.liara.ir/platforms/static-platform:base
 COPY --from=0 /app/build/web /usr/share/nginx/html
 ```
-
 
 در نهایت، در مسیری که `Dockerfile` قرار گرفته است، دستور زیر را اجرا کنید تا برنامه‌تان در لیارا مستقر شود:
 
@@ -65,8 +63,7 @@ COPY --from=0 /app/build/web /usr/share/nginx/html
 liara deploy --platform=docker --port=80
 ```
 
-
-> `Dockerfile` فوق، صرفاً یک نمونه است و شما می‌توانید آن را با توجه به نیاز خودتان ویرایش کنید۔
+> `Dockerfile` فوق، صرفاً یک نمونه است و شما می‌توانید آن را با توجه به نیاز خودتان ویرایش کنید.
 
 ## all links
 

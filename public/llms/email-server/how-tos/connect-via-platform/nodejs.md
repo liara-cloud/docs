@@ -15,7 +15,7 @@
 npm install nodemailer
 ```
 
-پس از آن، کافیست تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
+پس از آن، کافیست تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در نهایت نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
@@ -26,6 +26,7 @@ MAIL_PORT=465
 MAIL_USER=sweet_brattain_hrt81t
 MAIL_PASSWORD=4eba6d6d-96f4-6d04-b055-705031ba525d
 MAIL_FROM=info@example.com
+
 ```
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا،  
@@ -70,6 +71,7 @@ transporter.sendMail(mailOptions, (error, info) => {
     }
     console.log('Email sent: ' + info.response);
 });
+
 ```
 
 ## SMTP
@@ -81,7 +83,7 @@ transporter.sendMail(mailOptions, (error, info) => {
 npm install nodemailer
 ```
 
-پس از آن، کافیست تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.  
+پس از آن، کافیست تا طبق [مستندات SMTP](https://docs.liara.ir/email-server/how-tos/add-smtp-user)، یک دسترسی SMTP و طبق [مستندات افزودن نشانی](https://docs.liara.ir/email-server/how-tos/add-account)، یک نشانی برای ایمیل‌سرور خود، ایجاد کنید.
 در نهایت نیز، بایستی  
 اطلاعات مربوط به ایمیل‌سرور خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
@@ -92,6 +94,7 @@ MAIL_PORT=587
 MAIL_USER=sweet_brattain_hrt81t
 MAIL_PASSWORD=4eba6d6d-96f4-6d04-b055-705031ba525d
 MAIL_FROM=info@example.com
+
 ```
 
 در نهایت می‌توانید در پروژه‌ی خود مانند مثال زیر عمل کرده و با استفاده از دسترسی SMTP سرویس ایمیل لیارا،  
@@ -136,6 +139,7 @@ transporter.sendMail(mailOptions, (error, info) => {
     }
     console.log('Email sent: ' + info.response);
 });
+
 ```
 
 ## HTTP
@@ -146,9 +150,10 @@ transporter.sendMail(mailOptions, (error, info) => {
 
 ```bash
 MAIL_SERVER_ID=***
-MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+MAIL_SERVICE_URL=https://mail-service.liara.ir/api/v1/mails
 API_LIARA_TOKEN=***
 MAIL_FROM=info@example.com
+
 ```
 
 در نهایت می‌توانید در پروژه‌ی خود  
@@ -191,6 +196,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: error.response ? error.response.data : error.message });
   }
 }
+
 ```
 
 > فیلد `from` باید یکی از نشانی‌های اضافه شده در سرویس ایمیل باشد.

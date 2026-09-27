@@ -13,7 +13,7 @@
 pip install boto3
 ```
 
-پس از آن، کافیست تا طبق [https://docs.liara.ir/object-storage/how-tos/create-key](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.  
+پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.  
 اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**،  
 برای شما قرار گرفته است.  
 در نهایت نیز، بایستی  
@@ -21,14 +21,14 @@ pip install boto3
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
 
 ```bash
-LIARA_ENDPOINT_URL=https://storage.iran.liara.site
+LIARA_ENDPOINT_URL=https://storage.c2.liara.site
 LIARA_ACCESS_KEY=nieiou08cnbod58p
 LIARA_SECRET_KEY=20b71a4c-1168-4945-8ed3-4724dbf9e997
 BUCKET_NAME=my-bucket
 ```
 
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛  
-در ادامه، مثالی از نحوه استفاده برای‌تان آورده شده است:  
+در ادامه، مثالی از نحوه استفاده برای‌تان آورده شده است: 
 
 ## پیکربندی اولیه و اتصال به باکت در برنامه
 

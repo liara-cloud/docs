@@ -158,7 +158,7 @@ if __name__ == '__main__':
 
 ```bash
 MAIL_SERVER_ID=***
-MAIL_SERVICE_URL=https://mail-service.iran.liara.ir/api/v1/mails
+MAIL_SERVICE_URL=https://mail-service.liara.ir/api/v1/mails
 LIARA_API_TOKEN=***
 MAIL_FROM_EMAIL=info@example.com
 ```
@@ -175,7 +175,7 @@ import os
 # pip install python-dotenv uncomment these two lines if using .env
 
 # # Load environment variables from .env file
-# from dotenv import load_dotenv 
+# from dotenv import load_dotenv
 # load_dotenv()
 
 app = Flask(__name__)

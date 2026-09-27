@@ -150,7 +150,7 @@
 [35.994296, "o", "p"]
 [36.273945, "o", "\u001b[?1l\u001b>"]
 [36.274297, "o", "\u001b[?2004l\r\r\n"]
-[36.275572, "o", "\u001b]2;mongorestore -u root -p FVS6OtqdyzcBtj7zveoNatyX --host arthur.iran.liara.ir \u0007\u001b]1;mongorestore\u0007"]
+[36.275572, "o", "\u001b]2;mongorestore -u root -p FVS6OtqdyzcBtj7zveoNatyX --host arthurstorage.c2.liara.site.liara.ir \u0007\u001b]1;mongorestore\u0007"]
 [36.281999, "o", "2022-01-31T14:44:37.449+0330\tusing write concern: &{majority false 0}\r\n"]
 [36.821728, "o", "2022-01-31T14:44:37.988+0330\twill listen for SIGTERM, SIGINT, and SIGKILL\r\n"]
 [36.966545, "o", "2022-01-31T14:44:38.133+0330\tconnected to node type: standalone\r\n"]

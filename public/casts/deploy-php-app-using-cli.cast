@@ -53,7 +53,7 @@
 [2.429067, "o", "\u001b[1G\u001b[0K\u001b[36m⠼\u001b[39m Building..."]
 [2.455778, "o", "\u001b[1G\u001b[0K\u001b[36m⠴\u001b[39m Building..."]
 [2.482061, "o", "\u001b[1G\u001b[0K> Fetching the source code: 0%\r\n"]
-[2.482353, "o", "\u001b[1G> Fetching the source code: 100%\r\n\u001b[1G\r\n\u001b[1G> Preparing the build environment...\r\n\u001b[1G\r\n\u001b[1GStep 1/1 : FROM registry2.iran.liara.ir/platforms/php-platform:release-2024-06-02T10-55-php8.3\u001b[1G\r\n\u001b[1G# Executing 14 build trigger\u001b[1Gs\u001b[1G\r\n\u001b[1G\u001b[36m⠦\u001b[39m Building..."]
+[2.482353, "o", "\u001b[1G> Fetching the source code: 100%\r\n\u001b[1G\r\n\u001b[1G> Preparing the build environment...\r\n\u001b[1G\r\n\u001b[1GStep 1/1 : FROM registry2storage.c2.liara.site.liara.ir/platforms/php-platform:release-2024-06-02T10-55-php8.3\u001b[1G\r\n\u001b[1G# Executing 14 build trigger\u001b[1Gs\u001b[1G\r\n\u001b[1G\u001b[36m⠦\u001b[39m Building..."]
 [2.509064, "o", "\u001b[1G\u001b[0K\u001b[36m⠧\u001b[39m Building..."]
 [2.536095, "o", "\u001b[1G\u001b[0K\u001b[36m⠇\u001b[39m Building..."]
 [2.562753, "o", "\u001b[1G\u001b[0K\u001b[36m⠏\u001b[39m Building..."]

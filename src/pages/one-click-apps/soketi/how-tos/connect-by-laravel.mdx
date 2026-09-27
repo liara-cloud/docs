@@ -45,7 +45,7 @@ import Head from "next/head";
 بخش <b>تنظیمات، متغیرها</b> برنامه Soketi تهیه شده، متغیر <Important>BROADCAST_DRIVER</Important> را برابر با <Important>pusher</Important> قرار دهید.
 <div className="h-2" />
 
-حال به‌منظور اتصال به Soketi در برنامه‌های Laravel باید درایور زیر را به فایل <Important>config/broadcasting.php</Important> اضافه کرده و آدرس برنامه‌ی Soketi را با <Important>soketi-app.iran.liara.run</Important> جایگزین کنید:
+حال به‌منظور اتصال به Soketi در برنامه‌های Laravel باید درایور زیر را به فایل <Important>config/broadcasting.php</Important> اضافه کرده و آدرس برنامه‌ی Soketi را با <Important>soketi-app.liara.run</Important> جایگزین کنید:
 
 <div className="h-4" />
 <div dir='ltr'>
@@ -56,7 +56,7 @@ import Head from "next/head";
 'secret' => env('PUSHER_APP_SECRET'),
 'app_id' => env('PUSHER_APP_ID'),
 'options' => [
-    'host' => 'soketi-app.iran.liara.run',
+    'host' => 'soketi-app.liara.run',
     'port' => 443,
     'scheme' => 'https'
     ],
@@ -79,7 +79,7 @@ window.Echo = new Echo({
   broadcaster: 'pusher',
   key: 'app-key',
   forceTLS: true,
-  wsHost: 'soketi-app.iran.liara.run',
+  wsHost: 'soketi-app.liara.run',
   wsPort: 443,
   cluster: 'eu',
   enableStats: false,
@@ -90,7 +90,7 @@ window.Echo = new Echo({
 
 <Alert variant="info">
 <p>
-برای مقداردهی <Important>key</Important> و <Important>wsHost</Important> در فرانت‌اند برنامه از Laravel Mix استفاده نکنید و مقادیر <Important>app-key</Important> و <Important>soketi-app.iran.liara.run</Important> را به‌طور مستقیم در قطعه کد فوق قرار دهید.
+برای مقداردهی <Important>key</Important> و <Important>wsHost</Important> در فرانت‌اند برنامه از Laravel Mix استفاده نکنید و مقادیر <Important>app-key</Important> و <Important>soketi-app.liara.run</Important> را به‌طور مستقیم در قطعه کد فوق قرار دهید.
 </p>
 </Alert>
 

@@ -74,7 +74,7 @@
 [23.468767, "o", "spicious_agnesi.sql\u001b[1m \u001b[0m"]
 [23.925803, "o", "\b\u001b[0m \b"]
 [23.926175, "o", "\u001b[?1l\u001b>\u001b[?2004l\r\r\n"]
-[23.927523, "o", "\u001b]2;mysql -u root -pTQn6TwgOsEz62xDSOT6LH9Zb -h arthur.iran.liara.ir -P 33844 < \u0007\u001b]1;mysql\u0007"]
+[23.927523, "o", "\u001b]2;mysql -u root -pTQn6TwgOsEz62xDSOT6LH9Zb -h arthurstorage.c2.liara.site.liara.ir -P 33844 < \u0007\u001b]1;mysql\u0007"]
 [23.934676, "o", "mysql: [Warning] Using a password on the command line interface can be insecure.\r\n"]
 [25.867806, "o", "\u001b[1m\u001b[7m%\u001b[27m\u001b[1m\u001b[0m                                                                              \r \r"]
 [25.868172, "o", "\u001b]2;amin@cloud:~\u0007\u001b]1;~\u0007"]
