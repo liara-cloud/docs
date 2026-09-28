@@ -1,0 +1,71 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+
+import {
+  GoContainer,
+  GoDatabase,
+  GoRocket,
+  GoServer,
+  GoMail,
+  GoGlobe,
+  GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات دریافت اطلاعات مالی با API - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به دریافت اطلاعات مالی با ای‌پی‌آی لیارا"  />
+</Head>
+# دریافت اطلاعات مالی با API 
+<hr className="mb-2" />
+
+برای دریافت اطلاعات مالی می‌توانید از endpoint زیر استفاده کنید:
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className='bash'>
+{`https://api.liara.ir/v1/billing`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+این endpoint شامل اطلاعات زیر است:
+
+
+<div className="h-2" />
+<ul>
+  <li>میزان اعتبار (به تومان)</li>
+  <li>نوع اکانت (فرد حقیقی یا تیم)</li>
+  <li>حداقل عدد قابل شارژ (به تومان)</li>
+  <li>زمان آخرین باری که سیستم درباره کمبود اعتبار اطلاع‌رسانی کرده</li>
+</ul>
+<div className="h-2" />
+
+<Section id="example" title="نمونه ارسال درخواست" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/billing \\
+  --header "Authorization: Bearer TOKEN"`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+
+</Layout>

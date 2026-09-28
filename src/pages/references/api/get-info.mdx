@@ -24,21 +24,299 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات دریافت اطلاعات جامع کاربری با API - لیارا</title>
+<title>مستندات دریافت اطلاعات جامع کاربر و کنسول با API - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به دریافت اطلاعات جامع کاربری با ای‌پی‌آی لیارا"  />
+<meta property="og:description" content="مستندات مربوط به دریافت اطلاعات جامع کاربر و کنسول با ای‌پی‌آی لیارا"  />
 </Head>
-# دریافت اطلاعات جامع کاربری
+# دریافت اطلاعات جامع کاربر و کنسول با API 
 <hr className="mb-2" />
 
-در endpoint زیر شما می‌توانید به اطلاعات کاملی از حساب کاربری، پلن‌های قابل انتخاب به‌همراه قیمت، مشخصات هر پلن و نسخه‌های دیتابیس‌ها دسترسی داشته باشید. بنابراین از اطلاعاتی که از این endpoint دریافت می‌کنید می‌توانید در endpointهای دیگر استفاده کنید:
+یکی از endpointهایی که <Important>api.iran.liara.ir</Important> ارائه می‌دهد، <Important>me/</Important> است. این endpoint شامل اطلاعات زیر است: 
 
 <div className="h-2" />
+<ul>
+  <li>اطلاعات خود کاربر</li>
+  <li>اطلاعات Object Storage کاربر</li>
+  <li>اطلاعات امنیتی حساب کاربری</li>
+  <li>اطلاعات مرتبط با سطح کاربری فعلی کاربر</li>
+
+  <div className="h-4" />
+
+  <li>نسخه‌های قابل ارائه دیتابیس‌های لیارا</li>
+  <li>نسخه‌های پیش‌فرض دیتابیس‌های لیارا</li>
+
+  <div className="h-4" />
+
+  <li>Feature Flag های فعال سیستم لیارا</li>
+
+  <div className="h-4" />
+
+  <li>پلن‌های PaaS لیارا</li>
+  <li>پلن‌های سرویس ایمیل لیارا</li>
+  <li>پلن‌های دیتابیس لیارا</li>
+  <li>پلن‌های Object Storage لیارا</li>
+
+  <div className="h-4" />
+
+  <li>بسته امکانات PaaS</li>
+  <li>بسته امکانات دیتابیس‌ها</li>
+
+  <div className="h-4" />
+
+  <li>اطلاعات بسته‌های سطح کاربری</li>
+
+</ul>
+<div className="h-2" />
+
+<Section id="example" title="نمونه ارسال درخواست" />
+
+برای دریافت اطلاعات جامع کاربری خود و کنسول لیارا، می‌توانید مانند دستور <Important>cURL</Important> زیر عمل کنید: 
+
+
+<div className="h-4" />
 <div dir="ltr">
 <Highlight className='bash'>
-{`GET/v1/me`}
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN"`}
 </Highlight>
 </div>
 <div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-account-info" title="نمونه ارسال درخواست برای دریافت فقط اطلاعات کاربری" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.user'"`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+
+<Section id="example-for-getting-object-storage-info" title="نمونه ارسال درخواست برای دریافت اطلاعات Object Storageهای کاربر" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.user.storage'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+
+<Section id="example-for-getting-security-info" title="نمونه ارسال درخواست برای دریافت اطلاعات امنیتی حساب کاربر" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.user | {
+    twoFA,
+    hasPassword,
+    emailVerifiedAt,
+    phoneVerifiedAt,
+    lastTwoFAVerifiedAt
+  }'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-current-subscription" title="نمونه ارسال درخواست برای دریافت اطلاعات مرتبط با سطح کاربری فعلی کاربر" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.user.currentSubscriptionPlan'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-database-versions" title="نمونه ارسال درخواست برای دریافت نسخه‌های دیتابیس‌های قابل ارائه" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.databaseVersions'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-default-database-versions" title="نمونه ارسال درخواست برای دریافت نسخه پیش‌فرض دیتابیس‌ها" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.defaultDatabaseVersions'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-feature-flags" title="نمونه ارسال درخواست برای دریافت فیچر فلگ‌های کنسول لیارا" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.featureFlags'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-all-plans" title="نمونه ارسال درخواست برای دریافت اطلاعات پلن‌های تمامی محصولات" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-paas-plans" title="نمونه ارسال درخواست برای دریافت اطلاعات پلن‌های PaaS" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.projects'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-mail-plans" title="نمونه ارسال درخواست برای دریافت پلن‌های سرویس ایمیل" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.mail'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-database-plans" title="نمونه ارسال درخواست برای دریافت اطلاعات پلن‌های دیتابیس" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.databases'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-object-storage-plans" title="نمونه ارسال درخواست برای دریافت اطلاعات پلن‌های Object Storage" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.objectStorage'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-paas-bundles" title="نمونه ارسال درخواست برای دریافت اطلاعات بسته‌های امکانات PaaS" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.projectBundlePlans'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-dbaas-bundles" title="نمونه ارسال درخواست برای دریافت اطلاعات بسته‌های امکانات DBaaS" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.databaseBundlePlans'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+
+<Section id="example-for-getting-subscription-bundles" title="نمونه ارسال درخواست برای دریافت اطلاعات بسته‌های سطح کاربری" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.iran.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.subscription'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
 
 </Layout>

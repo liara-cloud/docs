@@ -11920,9 +11920,22 @@ export default {
         link: "https://developers.liara.ir/"
       },
       {
+        hr: true
+      },
+      {
+        badge: (
+          <div className="flex items-center gap-2">
+             APIهای پراستفاده
+          </div>
+        )
+      },
+      {
         title: "دریافت اطلاعات جامع کاربری",
-        icon: <GoInfo />,
         link: "/references/api/get-info"
+      },
+      {
+        title: "دریافت اطلاعات مالی",
+        link: "/references/api/billing"
       },
     ],
 
