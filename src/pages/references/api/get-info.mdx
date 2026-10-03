@@ -31,23 +31,20 @@ import Head from "next/head";
 # دریافت اطلاعات جامع کاربر و کنسول با API 
 <hr className="mb-2" />
 
-یکی از endpointهایی که <Important>api.iran.liara.ir</Important> ارائه می‌دهد، <Important>me/</Important> است. این endpoint شامل اطلاعات زیر است: 
+یکی از endpointهایی که <Important>api.liara.ir</Important> ارائه می‌دهد، <Important>me/</Important> است. این endpoint شامل اطلاعات زیر است: 
 
 <div className="h-2" />
 <ul>
-  <li>اطلاعات خود کاربر</li>
+  <li>اطلاعات خود کاربر (مانند نام، ایمیل، شماره موبایل و نوع حساب کاربری)</li>
   <li>اطلاعات Object Storage کاربر</li>
   <li>اطلاعات امنیتی حساب کاربری</li>
   <li>اطلاعات مرتبط با سطح کاربری فعلی کاربر</li>
+  <li>امکانات فعال حساب کاربری (مانند شبکه خصوصی)</li>
 
   <div className="h-4" />
 
   <li>نسخه‌های قابل ارائه دیتابیس‌های لیارا</li>
   <li>نسخه‌های پیش‌فرض دیتابیس‌های لیارا</li>
-
-  <div className="h-4" />
-
-  <li>Feature Flag های فعال سیستم لیارا</li>
 
   <div className="h-4" />
 
@@ -68,6 +65,118 @@ import Head from "next/head";
 </ul>
 <div className="h-2" />
 
+<Section id="response-structure" title="ساختار پاسخ" />
+
+پاسخ این endpoint یک آبجکت JSON است که از چند بخش اصلی تشکیل شده است. در فهرست زیر می‌توانید این بخش‌ها را ببینید:
+
+<div className="h-2" />
+<ul>
+  <li><Important>user</Important>: اطلاعات کاربر، Object Storage، امنیت حساب و سطح کاربری فعلی</li>
+  <div className="h-1" />
+  <li><Important>databaseVersions</Important>: نسخه‌های قابل ارائه برای هر نوع دیتابیس</li>
+  <div className="h-1" />
+  <li><Important>defaultDatabaseVersions</Important>: نسخه پیش‌فرض هر نوع دیتابیس</li>
+  <div className="h-1" />
+  <li><Important>plans</Important>: پلن‌های محصولات لیارا و بسته‌های امکانات آن‌ها</li>
+</ul>
+<div className="h-2" />
+
+نمونه‌ای از پاسخ این endpoint (بخش <Important>user</Important>) در ادامه آورده شده است (با مقادیر فرضی): 
+
+<div className="h-4" />
+<div dir="ltr">
+<Highlight className='json'>
+{`{
+  "user": {
+    "_id": "64e7xxxxxxxxxxxxxxxxxxxx",
+    "fullname": "نام و نام خانوادگی",
+    "nationalCode": "0123456789",
+    "invoiceIssuingEnabled": true,
+    "email": "user@example.com",
+    "phone": "09123456789",
+    "joined_at": "2023-08-24T11:53:47.323Z",
+    "hasPassword": true,
+    "emailVerifiedAt": "2023-08-24T11:56:54.165Z",
+    "phoneVerifiedAt": "2023-08-24T11:56:47.004Z",
+    "isVerified": true,
+    "storage": {
+      "namespace": "64e7xxxxxxxxxxxxxxxxxxxx",
+      "status": "DEACTIVE",
+      "planID": "ir-40g",
+      "accessKey": "ACCESS_KEY",
+      "secretKey": "SECRET_KEY"
+    },
+    "isTeam": false,
+    "accountType": "REAL_PERSON",
+    "minCreditAmount": 20000,
+    "isManualMinCredit": false,
+    "legacyNetworkFeature": false,
+    "privateNetworkFeature": true,
+    "legacyObjectStorageFeature": false,
+    "hasSucceedPayment": true,
+    "currentSubscriptionPlan": {
+      "type": "subscription",
+      "subscriptionPlanID": "free",
+      "subscriptionPlanExpiration": "2026-10-29T08:40:26.064Z",
+      "maxTechnicalTicketsPerMonth": "infinite",
+      "subscriptionDurationType": "monthly",
+      "technicalTicketsCount": 0
+    },
+    "gitRepositoryIntegrations": [],
+    "gitProviderIntegrations": [],
+    "twoFA": false,
+    "remainingFreeCredit": 0
+  },
+  "databaseVersions": { ... },
+  "defaultDatabaseVersions": { ... },
+  "featureFlags": [ ... ],
+  "plans": { ... }
+}`}
+</Highlight>
+</div>
+
+<Alert variant="warning" className="mt-4">
+<p>
+اطلاعات پاسخ این endpoint شامل اطلاعات حساس مانند اطلاعات هویتی کاربر و کلیدهای دسترسی Object Storage است. لطفاً این اطلاعات را در اختیار دیگران قرار ندهید و آن‌ها را در جاهایی مانند لاگ، تیکت و مخازن کد عمومی ذخیره نکنید.
+</p>
+</Alert>
+
+<div className="h-2" />
+
+در ادامه، مهم‌ترین فیلدهای بخش <Important>user</Important> توضیح داده شده است:
+
+<div className="h-2" />
+<ul>
+  <li><Important>fullname</Important> و <Important>nationalCode</Important>: نام و کد ملی ثبت‌شده برای حساب کاربری</li>
+  <div className="h-1" />
+  <li><Important>email</Important> و <Important>phone</Important>: ایمیل و شماره موبایل حساب کاربری. زمان تایید هر کدام در <Important>emailVerifiedAt</Important> و <Important>phoneVerifiedAt</Important> مشخص است</li>
+  <div className="h-1" />
+  <li><Important>isVerified</Important>: وضعیت احراز هویت حساب کاربری</li>
+  <div className="h-1" />
+  <li><Important>accountType</Important>: نوع حساب کاربری، مانند <Important>REAL_PERSON</Important> برای حساب‌های حقیقی</li>
+  <div className="h-1" />
+  <li><Important>isTeam</Important>: مشخص می‌کند که آیا این حساب یک تیم است یا خیر</li>
+  <div className="h-1" />
+  <li><Important>invoiceIssuingEnabled</Important>: مشخص می‌کند که آیا صدور فاکتور برای حساب فعال است یا خیر</li>
+  <div className="h-1" />
+  <li><Important>minCreditAmount</Important>: حداقل مبلغ اعتبار برای اعلان در حساب کاربری. اگر <Important>isManualMinCredit</Important> برابر <Important>true</Important> باشد، این مقدار به‌صورت دستی تعیین شده است</li>
+  <div className="h-1" />
+  <li><Important>remainingFreeCredit</Important>: میزان اعتبار رایگان باقی‌مانده</li>
+  <div className="h-1" />
+  <li><Important>hasSucceedPayment</Important>: مشخص می‌کند که آیا حساب کاربری تاکنون پرداخت موفقی داشته است یا خیر</li>
+  <div className="h-1" />
+  <li><Important>hasPassword</Important> و <Important>twoFA</Important>: وضعیت تعیین رمز عبور و فعال بودن احراز هویت دو مرحله‌ای</li>
+  <div className="h-1" />
+  <li><Important>storage</Important>: اطلاعات Object Storage شامل <Important>namespace</Important>، وضعیت، شناسه پلن و کلیدهای دسترسی</li>
+  <div className="h-1" />
+  <li><Important>privateNetworkFeature</Important>: مشخص می‌کند که آیا امکان استفاده از شبکه خصوصی برای حساب فعال است یا خیر</li>
+  <div className="h-1" />
+  <li><Important>currentSubscriptionPlan</Important>: اطلاعات سطح کاربری فعلی، شامل شناسه پلن (<Important>subscriptionPlanID</Important>)، تاریخ انقضا و ...</li>
+  <div className="h-1" />
+  <li><Important>gitRepositoryIntegrations</Important> و <Important>gitProviderIntegrations</Important>: اتصال‌های حساب کاربری به repositoryها و سرویس‌های مبتنی بر Git</li>
+</ul>
+<div className="h-2" />
+
 <Section id="example" title="نمونه ارسال درخواست" />
 
 برای دریافت اطلاعات جامع کاربری خود و کنسول لیارا، می‌توانید مانند دستور <Important>cURL</Important> زیر عمل کنید: 
@@ -77,7 +186,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN"`}
 </Highlight>
 </div>
@@ -91,9 +200,9 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
-  | jq '.user'"`}
+  | jq '.user'`}
 </Highlight>
 </div>
 <div className="h-2" />
@@ -107,7 +216,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.user.storage'`}
 </Highlight>
@@ -123,7 +232,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.user | {
     twoFA,
@@ -144,7 +253,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.user.currentSubscriptionPlan'`}
 </Highlight>
@@ -159,7 +268,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.databaseVersions'`}
 </Highlight>
@@ -174,24 +283,9 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.defaultDatabaseVersions'`}
-</Highlight>
-</div>
-<div className="h-2" />
-
-در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
-
-
-<Section id="example-for-getting-feature-flags" title="نمونه ارسال درخواست برای دریافت فیچر فلگ‌های کنسول لیارا" />
-
-<div dir="ltr">
-<Highlight className='bash'>
-{`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
-  --header "Authorization: Bearer TOKEN" \\
-  | jq '.featureFlags'`}
 </Highlight>
 </div>
 <div className="h-2" />
@@ -204,7 +298,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans'`}
 </Highlight>
@@ -219,7 +313,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans.projects'`}
 </Highlight>
@@ -234,7 +328,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans.mail'`}
 </Highlight>
@@ -249,7 +343,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans.databases'`}
 </Highlight>
@@ -264,7 +358,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans.objectStorage'`}
 </Highlight>
@@ -279,7 +373,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans.projectBundlePlans'`}
 </Highlight>
@@ -294,7 +388,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans.databaseBundlePlans'`}
 </Highlight>
@@ -309,7 +403,7 @@ import Head from "next/head";
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.iran.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.plans.subscription'`}
 </Highlight>
@@ -318,5 +412,81 @@ import Head from "next/head";
 
 در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
 
+
+<Section id="example-for-getting-user-features" title="نمونه ارسال درخواست برای دریافت اطلاعات هویتی و امکانات فعال حساب کاربر" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.user | {fullname, email, phone, accountType, isVerified, isTeam, privateNetworkFeature}'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+<Section id="example-for-getting-credit-info" title="نمونه ارسال درخواست برای دریافت اطلاعات اعتبار حساب کاربر" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.user | {minCreditAmount, isManualMinCredit, remainingFreeCredit, hasSucceedPayment}'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+<Section id="example-for-getting-specific-database-versions" title="نمونه ارسال درخواست برای دریافت نسخه‌های یک دیتابیس مشخص" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.databaseVersions.postgres'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+در مثال فوق، نسخه‌های قابل ارائه برای PostgreSQL دریافت می‌شود. به‌جای <Important>postgres</Important> می‌توانید یکی از مقادیر <Important>mysql</Important>، <Important>mariadb</Important>، <Important>mssql</Important>، <Important>mongodb</Important>، <Important>redis</Important>، <Important>elasticsearch</Important>، <Important>rabbitmq</Important> یا <Important>clickhouse</Important> را قرار دهید.
+
+<Section id="example-for-getting-default-version-of-a-database" title="نمونه ارسال درخواست برای دریافت نسخه پیش‌فرض یک دیتابیس مشخص" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.defaultDatabaseVersions.redis'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+<Section id="example-for-getting-available-paas-plans" title="نمونه ارسال درخواست برای دریافت پلن‌های قابل استفاده PaaS" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me \\
+  --header "Authorization: Bearer TOKEN" \\
+  | jq '.plans.projects | with_entries(select(.value.available == true))'`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
+
+<div className="h-2" />
+
+با دستور فوق، فقط پلن‌هایی که مقدار <Important>available</Important> آن‌ها برابر <Important>true</Important> است، یعنی در حال حاضر قابل سفارش هستند، نمایش داده می‌شوند. این روش برای پلن‌های دیتابیس (<Important>.plans.databases</Important>)، Object Storage (<Important>.plans.objectStorage</Important>) و سرویس ایمیل (<Important>.plans.mail</Important>) هم قابل استفاده است.
 
 </Layout>
