@@ -29,7 +29,7 @@ import Head from "next/head";
 <Head>
 <title>مستندات مدیریت فایل‌های وردپرسی - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به مدیریت فایل‌های وردپرس"  />
+<meta property="og:description" content="مستندات مربوط به مدیریت فایل‌های وردپرس در کنسول لیارا؛ آپلود، دانلود، مشاهده و ویرایش فایل‌ها و تنظیم سطح دسترسی و مالکیت"  />
 </Head>
 
 
@@ -37,7 +37,7 @@ import Head from "next/head";
 <hr className="mb-2" />
 
 <video
-  src="https://media.liara.ir/wordpress/file-management.mp4"
+  src="https://media.liara.ir/wordpress/file-manager/file-manager.mp4"
   controls="controls"
   className="block w-full"
   width="100%"
@@ -45,7 +45,178 @@ import Head from "next/head";
 
 <div className="h-4" />
 
-برای مدیریت فایل‌های وردپرس در خود کنسول لیارا، تنها کافیست تا در برنامه وردپرس خود، وارد بخش <b>فایل‌ها</b> شوید. 
-در این بخش، می‌توانید فایل‌های موجود در مسیر <Important>var/www/html/</Important> را مشاهده کرده و سایر عملیات کار با فایل را انجام دهید. 
+با فایل‌منیجر وردپرس لیارا، بدون نیاز به نصب هیچ ابزار جانبی یا اتصال از طریق <a href="/wordpress/how-tos/create-ftps-access/" className="text-[#2196f3]">FTPS</a>، می‌توانید فایل‌های سایت وردپرسی خود را مستقیماً از داخل کنسول مدیریت کنید.
+آپلود و دانلود فایل، ساخت پوشه، مشاهده و ویرایش فایل‌های متنی (مانند <Important>htaccess.</Important> یا <Important>wp-config.php</Important>) و همچنین تنظیم سطح دسترسی (Permission) و مالکیت (Owner) فایل‌ها، همگی از همین بخش قابل انجام هستند.
+
+<Section id="access" title="دسترسی به فایل منیجر" />
+
+برای ورود به ابزار مدیریت فایل، کافیست تا در <a href="https://console.liara.ir/" className="text-[#2196f3]">کنسول لیارا</a> وارد بخش **وردپرس اختصاصی** شده، برنامه مورد نظر خود را انتخاب کنید و سپس از منوی کناری، بر روی گزینه **فایل‌ها** کلیک کنید.
+در این صفحه، فایل‌های موجود در مسیر <Important>var/www/html/</Important> (ریشه سایت وردپرس شما) نمایش داده می‌شوند.
+
+<div className="h-4" />
+<img src="https://media.liara.ir/wordpress/file-manager/file-manager.png" alt="WordPress file manager in Liara console"/>
+<div className="h-4" />
+
+<Section id="storage" title="وضعیت فضای ذخیره‌سازی" />
+
+در ابتدای صفحه فایل‌ها، کادر **فضای ذخیره‌سازی وردپرس** وضعیت دیسک برنامه را به شما نشان می‌دهد که شامل موارد زیر است:
+
+<div className="h-2" />
+<ul>
+<li><b>کل فضای قابل استفاده</b>: کل فضای دیسکی که برای برنامه وردپرس شما در نظر گرفته شده است</li>
+<div className="h-1" />
+<li><b>فضای استفاده شده</b>: حجمی که فایل‌های سایت، افزونه‌ها، قالب‌ها و رسانه‌های آپلودشده گرفته‌اند</li>
+<div className="h-1" />
+<li><b>فضای خالی موجود</b>: فضایی که هنوز برای ذخیره فایل‌های جدید در دسترس است</li>
+<div className="h-1" />
+<li><b>درصد استفاده شده</b>: نمودار دایره‌ای که نسبت فضای مصرف‌شده به کل فضا را نشان می‌دهد</li>
+</ul>
+<div className="h-2" />
+
+اگر فضای دیسک برنامه‌تان رو به اتمام است، می‌توانید با کلیک بر روی دکمه **ارتقا / تغییر اندازه**، پلن برنامه خود را ارتقا داده و فضای بیشتری دریافت کنید.
+
+<Section id="browse" title="مرور فایل‌ها و پوشه‌ها" />
+
+مسیری که در حال مشاهده آن هستید، در نوار بالای جدول (برای مثال <Important>root /</Important>) نمایش داده می‌شود. برای ورود به یک پوشه، کافیست بر روی نام آن یا فلش کنار آن کلیک کنید و برای بازگشت به مسیرهای قبلی نیز می‌توانید از همین نوار مسیر استفاده کنید. دکمه جستجو در کنار نوار مسیر نیز برای پیدا کردن سریع فایل‌ها و پوشه‌ها در دسترس است.
+<div className="h-2" />
+
+در جدول فایل‌ها، اطلاعات زیر برای هر فایل یا پوشه نمایش داده می‌شود:
+
+<div className="h-2" />
+<ul>
+<li><b>Name</b>: نام فایل یا پوشه</li>
+<div className="h-1" />
+<li><b>Format</b>: نوع فایل بر اساس پسوند آن (مانند <Important>php</Important>، <Important>txt</Important> یا <Important>htaccess</Important>)؛ برای پوشه‌ها نیز عبارت <Important>Directory</Important> نمایش داده می‌شود</li>
+<div className="h-1" />
+<li><b>Permissions</b>: سطح دسترسی فایل یا پوشه به‌صورت نمادین (مانند <Important>--rw-r--r</Important> )</li>
+<div className="h-1" />
+<li><b>Owner:Group</b>: کاربر و گروه مالک فایل یا پوشه (مانند <Important>nobody:nogroup</Important>)</li>
+<div className="h-1" />
+<li><b>Size</b>: حجم فایل</li>
+<div className="h-1" />
+<li><b>Last modified</b>: تاریخ آخرین تغییر فایل یا پوشه</li>
+</ul>
+<div className="h-2" />
+
+در انتهای هر ردیف نیز گزینه‌های **دانلود**، **دسترسی** و **دیدن** برای فایل‌ها قرار دارند. برای پوشه‌ها، تنها گزینه **دسترسی** در دسترس است.
+
+<Section id="upload-and-create" title="آپلود فایل و ساخت پوشه جدید" />
+
+برای آپلود فایل در مسیر فعلی، بر روی دکمه **آپلود فایل** کلیک کرده و فایل مورد نظر خود را از سیستم‌تان انتخاب کنید. برای ساخت پوشه جدید در مسیر فعلی نیز، بر روی دکمه **پوشه جدید** کلیک کرده و نام پوشه را وارد کنید.
+
+<div className="h-2" />
+
+<Alert variant="info">
+<p>
+فایل‌ها و پوشه‌ها همیشه در مسیری ساخته یا آپلود می‌شوند که هم‌اکنون در آن قرار دارید؛ بنابراین، پیش از آپلود، ابتدا وارد پوشه مقصد شوید. برای مثال، برای آپلود دستی یک افزونه، ابتدا وارد مسیر <Important>wp-content/plugins</Important> شوید.
+</p>
+</Alert>
+
+<Section id="download" title="دانلود فایل" />
+
+برای دانلود هر فایل بر روی سیستم خود، کافیست در ردیف مربوط به آن فایل، بر روی گزینه **دانلود** کلیک کنید.
+
+<Section id="view-and-edit" title="مشاهده و ویرایش فایل‌ها" />
+
+با کلیک بر روی گزینه **دیدن** در ردیف یک فایل، محتوای آن در یک ویرایشگر کد با شماره خط نمایش داده می‌شود. در فایل‌های متنی (مانند <Important>htaccess.</Important>، <Important>wp-config.php</Important> یا سایر فایل‌های PHP , HTML و TXT)، علاوه بر مشاهده، امکان **ویرایش** نیز وجود دارد:
+
+<div className="h-2" />
+<ul>
+<li>بر روی گزینه <b>دیدن</b> در ردیف فایل مورد نظر کلیک کنید</li>
+<div className="h-1" />
+<li>تغییرات مورد نظر خود را در ویرایشگر اعمال کنید</li>
+<div className="h-1" />
+<li>بر روی دکمه <b>ویرایش</b> کلیک کنید تا تغییرات در فایل ذخیره شود؛ در صورتی که نمی‌خواهید تغییری ذخیره شود، بر روی دکمه <b>بستن</b> کلیک کنید</li>
+</ul>
+<div className="h-2" />
+
+<div className="h-4" />
+<img src="https://media.liara.ir/wordpress/file-manager/see-option.png" alt="view and edit a file in WordPress file manager"/>
+<div className="h-4" />
+
+<Alert variant="warning">
+<p>
+یک اشتباه در فایل‌هایی مانند <Important>wp-config.php</Important> یا <Important>htaccess.</Important> می‌تواند باعث از دسترس خارج شدن کل سایت شود (برای مثال خطای 500). پیش از ویرایش این فایل‌ها، یک نسخه از محتوای فعلی آن‌ها را نگه دارید یا از بخش <b>پشتیبان‌گیری</b>، یک نسخه پشتیبان تهیه کنید.
+</p>
+</Alert>
+
+<Section id="permissions" title="تنظیم سطح دسترسی و مالکیت" />
+
+با کلیک بر روی گزینه **دسترسی** در ردیف یک فایل یا پوشه، پنجره تنظیم دسترسی باز می‌شود. در بالای این پنجره، مسیر **انتخاب‌شده** نمایش داده می‌شود و تنظیمات در دو تب **تنظیم خودکار** و **تنظیم جزئیات** در دسترس هستند.
+
+<div className="h-4" />
+
+<Alert variant="info">
+<p>
+سطح دسترسی یا مالکیت نادرست، یکی از دلایل رایج خطاهایی مانند عدم امکان نصب افزونه و قالب، خطا در آپلود رسانه یا خطای 403 در وردپرس است. اگر با چنین خطاهایی مواجه شدید، معمولاً گزینه <a href="#auto-setup" className="text-[#2196f3]">تنظیم خودکار</a> ساده‌ترین راه حل است.
+</p>
+</Alert>
+
+<Section id="auto-setup" title="تنظیم خودکار" headingTag="h3" />
+
+در تب **تنظیم خودکار**، لیارا بر اساس وب‌سرور وردپرس شما، مقادیر مناسب سطح دسترسی و مالکیت را به‌طور خودکار اعمال می‌کند. وب‌سرور برنامه شما به‌صورت خودکار شناسایی می‌شود و گزینه متناسب با آن با برچسب **پیشنهادی** مشخص می‌شود. در صورت نیاز، می‌توانید گزینه دیگر را نیز انتخاب کنید:
+
+<div className="h-2" />
+<ul>
+<li><b>OpenLiteSpeed</b>: مناسب برای وردپرس‌هایی که با وب‌سرور OpenLiteSpeed اجرا می‌شوند؛ مالکیت <Important>nobody:nogroup</Important> و سطح دسترسی <Important>0755</Important></li>
+<div className="h-2" />
+<li><b>Apache</b>: مناسب برای وردپرس‌هایی که با وب‌سرور Apache اجرا می‌شوند؛ مالکیت <Important>www-data:www-data</Important> و سطح دسترسی <Important>0755</Important></li>
+</ul>
+<div className="h-2" />
+
+پس از انتخاب گزینه مورد نظر، بر روی دکمه **اصلاح دسترسی و مالکیت** کلیک کنید.
+
+<div className="h-4" />
+<img src="https://media.liara.ir/wordpress/file-manager/auto-setup.png" alt="automatic permission and ownership setup in WordPress file manager"/>
+<div className="h-4" />
+
+<Alert variant="warning">
+<p>
+در تنظیم خودکار، تغییرات علاوه بر مسیر انتخاب‌شده، بر روی تمامی فایل‌ها و پوشه‌های داخل آن نیز اعمال می‌شود و امکان بازگشت خودکار به وضعیت قبلی وجود ندارد. اگر روی پوشه‌ای با تعداد زیادی فایل این کار را انجام می‌دهید، پیشنهاد می‌شود ابتدا یک نسخه پشتیبان تهیه کنید.
+</p>
+</Alert>
+
+<Section id="advanced-setup" title="تنظیم جزئیات" headingTag="h3" />
+
+اگر می‌خواهید سطح دسترسی یک فایل یا پوشه را به‌صورت دقیق مشخص کنید، از تب **تنظیم جزئیات** استفاده کنید. در این تب، می‌توانید یکی از سطح‌های دسترسی متداول را انتخاب کنید:
+
+<div className="h-2" />
+<ul>
+<li><b>خصوصی</b> (<Important>0600</Important> یا <Important>-------rw</Important>): فقط مالک فایل می‌تواند آن را بخواند و بنویسد؛ مناسب فایل‌های حساس مانند <Important>env.</Important></li>
+<div className="h-1" />
+<li><b>اشتراکی محدود</b> (<Important>0640</Important> یا <Important>-----rw-r</Important>): مالک می‌تواند بخواند و بنویسد، گروه فقط می‌تواند بخواند و سایرین هیچ دسترسی‌ای ندارند</li>
+<div className="h-1" />
+<li><b>پیش‌فرض</b> (<Important>0644</Important> یا <Important>--rw-r--r</Important>): مالک می‌تواند بخواند و بنویسد و همه می‌توانند بخوانند؛ متداول‌ترین حالت و مناسب برای بیشتر فایل‌ها</li>
+<div className="h-1" />
+<li><b>قابل اجرا</b> (<Important>0755</Important> یا <Important>rwxr-xr-x</Important>): مالک دسترسی کامل دارد و همه می‌توانند فایل را بخوانند و اجرا کنند؛ مناسب اسکریپت‌ها و پوشه‌ها</li>
+<div className="h-1" />
+<li><b>تنظیم دستی</b>: امکان وارد کردن یک مقدار سه‌رقمی دلخواه (مانند <Important>664</Important>)</li>
+</ul>
+<div className="h-2" />
+
+مقدار انتخاب‌شده، در قسمت **دسترسی نهایی** هم به‌صورت عددی و هم به‌صورت نمادین نمایش داده می‌شود تا پیش از اعمال، از درستی آن مطمئن شوید.
+در فیلد **مالک و گروه (اختیاری)** نیز می‌توانید کاربر و گروه مالک را با قالب <Important>user:group</Important> (برای مثال <Important>nobody:nogroup</Important>) تغییر دهید. در پایان، بر روی دکمه **اعمال تغییرات** کلیک کنید.
+
+<div className="h-4" />
+<img src="https://media.liara.ir/wordpress/file-manager/advanced-setup.png" alt="advanced permission setup in WordPress file manager"/>
+<div className="h-4" />
+
+<Section id="permission-digits" title="معنی اعداد سطح دسترسی" headingTag="h3" />
+
+هر سطح دسترسی از سه رقم تشکیل شده است (صفر ابتدایی در مقادیری مانند <Important>0644</Important> تأثیری در دسترسی‌ها ندارد) که به‌ترتیب از چپ به راست، دسترسی **مالک** (Owner)، **گروه** (Group) و **سایرین** (Others) را مشخص می‌کنند. هر رقم، از جمع مقادیر زیر به دست می‌آید:
+
+<div className="h-4" />
+<ul>
+<li><b>۴</b> یا <Important>r</Important>: خواندن (Read)</li>
+<div className="h-1" />
+<li><b>۲</b> یا <Important>w</Important>: نوشتن (Write)</li>
+<div className="h-1" />
+<li><b>۱</b> یا <Important>x</Important>: اجرا (Execute)؛ برای پوشه‌ها به معنای امکان ورود به پوشه است</li>
+</ul>
+<div className="h-4" />
+
+برای مثال، در مقدار <Important>644</Important>، رقم ۶ (۴+۲) یعنی مالک می‌تواند بخواند و بنویسد و دو رقم ۴ یعنی گروه و سایرین فقط می‌توانند بخوانند. در وردپرس، معمولاً سطح دسترسی <Important>644</Important> برای فایل‌ها و <Important>755</Important> برای پوشه‌ها استفاده می‌شود.
+
+
 
 </Layout>

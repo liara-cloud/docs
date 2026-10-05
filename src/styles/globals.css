@@ -183,6 +183,16 @@ img {
   border: 1px solid #00000015;
 }
 
+/* set by FitImages for images narrower than the content column */
+img.img-fit {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  object-fit: scale-down;
+  object-position: center;
+  background-color: #1b1c20;
+}
+
 
 
 h1 {

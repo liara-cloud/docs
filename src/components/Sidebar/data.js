@@ -380,6 +380,11 @@ export default {
         link: "/ai/tencent"
       },
       {
+        title: "Jev",
+        icon: <GoCpu />,
+        link: "/ai/jev"
+      },
+      {
         hr: true
       },
       {
@@ -12263,7 +12268,7 @@ export default {
         link: "/wordpress/how-tos/add-domain"
       },
       {
-        title: "مدیریت فایل‌های وردپرس",
+        title: "مدیریت فایل‌ها و دسترسی‌ها",
         link: "/wordpress/how-tos/file-manager"
       },
       {

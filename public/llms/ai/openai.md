@@ -16,7 +16,7 @@
 
 ## اتصال به مدل
 
-برای اتصال به مدل در سطح کد، می‌توانید از دو ابزار استفاده کنید:  
+برای اتصال به مدل در سطح کد، می‌توانید از دو ابزار استفاده کنید:
 
 - `OpenAI SDK`: ابزار رسمی ارائه‌شده توسط [OpenAI](https://openai.com/). تمامی مدل‌های ارائه‌شده در لیارا، با این SDK سازگار هستند.  
 - `AI SDK`: ابزار ارائه‌شده توسط [Vercel](https://ai-sdk.dev/). این SDK، تنها برای جاوااسکریپت و تایپ‌اسکریپت در دسترس است.
@@ -101,6 +101,7 @@ $result = $client->chat()->create([
 
 // Print the response
 echo $result->choices[0]->message->content;
+
 ```
 
 ### Python
@@ -261,7 +262,7 @@ const { text } = await generateText({
 console.log('Generated Text:', text);
 ```
 
-در قطعه کد‌های فوق، به‌جای `<baseUrl>`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`، کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`، نام یکی از مدل‌های فوق را قرار دهید.
+در قطعه کد‌های فوق، به‌جای `<baseUrl>`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`, کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`, نام یکی از مدل‌های فوق را قرار دهید.
 
 ## پارامترهای قابل تنظیم
 
@@ -283,6 +284,8 @@ console.log('Generated Text:', text);
 - `user`: شناسه‌ی کاربر نهایی. برای دسته‌بندی بهتر درخواست‌ها و جلوگیری از سوءاستفاده، به‌کار می‌رود
 
 در ادامه، مثال استفاده از این پارامترها، در زبان‌های مختلف، قرار گرفته است:
+
+### Python
 
 ```bash
 from openai import OpenAI
@@ -331,7 +334,7 @@ response = client.chat.completions.create(
 print(response)
 ```
 
-در قطعه کد‌ فوق، به‌جای `<baseUrl>، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`، کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`، نام یکی از مدل‌های فوق را قرار دهید.
+در قطعه کد‌ فوق، به‌جای `<baseUrl>`, آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `<LIARA_API_TOKEN>`, کلید API خود را وارد کنید. همچنین، به‌جای `<model_name>`, نام یکی از مدل‌های فوق را قرار دهید.
 
 ## اتصال به مدل های تبدیل متن به گفتار (TTS)
 
@@ -562,7 +565,7 @@ func main() {
 
 > پروژه کامل قطعه کد فوق در [گیت‌هاب لیارا](https://github.com/liara-cloud/ai-tts-examples/tree/go) قابل مشاهده و استفاده است.
 
-در قطعه کدهای فوق، به‌جای `BASE_URL`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `LIARA_API_KEY`، کلید API خود را وارد کنید. همچنین، به‌جای `TTS_MODEL_NAME`، نام یکی از مدل‌های TTS و به‌جای `TTS_VOICE`، نام Voice موردنظر را قرار دهید.
+در قطعه کدهای فوق، به‌جای `BASE_URL`, آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `LIARA_API_KEY`, کلید API خود را وارد کنید. همچنین، به‌جای `TTS_MODEL_NAME`, نام یکی از مدل‌های TTS و به‌جای `TTS_VOICE`, نام Voice موردنظر را قرار دهید.
 
 ## مقادیر قابل استفاده به عنوان متغیر TTS_VOICE
 
@@ -921,7 +924,478 @@ func main() {
 
 > پروژه کامل قطعه کد فوق در [گیت‌هاب لیارا](https://github.com/liara-cloud/ai-stt-examples/tree/go) قابل مشاهده و استفاده است.
 
-در قطعه کدهای فوق، به‌جای `BASE_URL`، آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `LIARA_API_KEY`، کلید API خود را وارد کنید. همچنین، به‌جای `STT_MODEL_NAME`، نام مدل STT و به‌جای `AUDIO_FILE`، نام یا مسیر فایل صوتی موردنظر برای تبدیل گفتار به متن را قرار دهید.
+در قطعه کدهای فوق، به‌جای `BASE_URL`, آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `LIARA_API_KEY`, کلید API خود را وارد کنید. همچنین، به‌جای `STT_MODEL_NAME`, نام مدل STT و به‌جای `AUDIO_FILE`, نام یا مسیر فایل صوتی موردنظر برای تبدیل گفتار به متن را قرار دهید.
+
+## تولید تصویر
+
+برای تولید تصویر با مدل‌های OpenAI، می‌توانید از ماژول `openai` استفاده کنید. در ابتدا، یک فایل `.env` با محتوای زیر، در مسیر اصلی پروژه خود ایجاد کنید:
+
+```dotenv
+BASE_URL=<baseUrl>
+LIARA_API_KEY=<LIARA_API_KEY>
+IMAGE_MODEL_NAME=<image_model_name>
+```
+
+سپس، می‌توانید مانند قطعه کدهای زیر، تصویر موردنظر خود را تولید کنید:
+
+### JavaScript
+
+```js
+// npm install openai dotenv
+import "dotenv/config";
+import OpenAI from "openai";
+import { writeFile } from "fs/promises";
+
+const openai = new OpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+async function main() {
+  const img = await openai.images.generate({
+    model: process.env.IMAGE_MODEL_NAME,
+    prompt: "A cute baby sea otter",
+    n: 1,
+    size: "1024x1024",
+    quality: "high",
+  });
+
+  const imageBuffer = Buffer.from(img.data[0].b64_json, "base64");
+  await writeFile("output.png", imageBuffer);
+
+  console.log("Image saved to output.png");
+}
+
+main().catch(console.error);
+```
+
+### PHP
+
+```php
+<?php
+// composer require openai-php/client vlucas/phpdotenv guzzlehttp/guzzle
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$client = OpenAI::factory()
+    ->withApiKey($_ENV["LIARA_API_KEY"])
+    ->withBaseUri($_ENV["BASE_URL"])
+    ->make();
+
+$result = $client->images()->create([
+    'model' => $_ENV["IMAGE_MODEL_NAME"],
+    'prompt' => 'A cute baby sea otter',
+    'n' => 1,
+    'size' => '1024x1024',
+    'quality' => 'high',
+]);
+
+$imageBytes = base64_decode($result->data[0]->b64_json);
+file_put_contents('output.png', $imageBytes);
+
+echo "Image saved to output.png";
+```
+
+### Python
+
+```py
+# pip install openai python-dotenv
+import base64
+import os
+
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+client = OpenAI(
+    base_url=os.getenv("BASE_URL"),
+    api_key=os.getenv("LIARA_API_KEY"),
+)
+
+img = client.images.generate(
+    model=os.getenv("IMAGE_MODEL_NAME"),
+    prompt="A cute baby sea otter",
+    n=1,
+    size="1024x1024",
+    quality="high",
+)
+
+image_bytes = base64.b64decode(img.data[0].b64_json)
+with open("output.png", "wb") as f:
+    f.write(image_bytes)
+
+print("Image saved to output.png")
+```
+
+### .NET
+
+```cs
+// dotnet add package OpenAI && dotnet add package DotNetEnv
+using System.ClientModel;
+using DotNetEnv;
+using OpenAI;
+using OpenAI.Images;
+
+Env.Load();
+
+var baseUrl = Environment.GetEnvironmentVariable("BASE_URL")
+    ?? throw new Exception("BASE_URL is not defined.");
+
+var apiKey = Environment.GetEnvironmentVariable("LIARA_API_KEY")
+    ?? throw new Exception("LIARA_API_KEY is not defined.");
+
+var modelName = Environment.GetEnvironmentVariable("IMAGE_MODEL_NAME")
+    ?? throw new Exception("IMAGE_MODEL_NAME is not defined.");
+
+ImageClient client = new(
+    model: modelName,
+    credential: new ApiKeyCredential(apiKey),
+    options: new OpenAIClientOptions
+    {
+        Endpoint = new Uri(baseUrl)
+    }
+);
+
+GeneratedImage generated = await client.GenerateImageAsync(
+    "Create a basket full of flowers.",
+    new ImageGenerationOptions
+    {
+        Size = GeneratedImageSize.W1024xH1024,
+        Quality = "high",
+    }
+);
+
+byte[] bytes = generated.ImageBytes.ToArray();
+
+string fileName = $"generated_{DateTime.Now:yyyyMMdd_HHmmss}.png";
+await File.WriteAllBytesAsync(fileName, bytes);
+
+Console.WriteLine($"Image saved to {fileName}");
+```
+
+### Go
+
+```bash
+// go get github.com/sashabaranov/go-openai github.com/joho/godotenv
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"os"
+
+	"github.com/joho/godotenv"
+	openai "github.com/sashabaranov/go-openai"
+)
+
+func main() {
+	if err := godotenv.Load(); err != nil {
+		panic("Error loading .env file")
+	}
+
+	config := openai.DefaultConfig(os.Getenv("LIARA_API_KEY"))
+	config.BaseURL = os.Getenv("BASE_URL")
+	c := openai.NewClientWithConfig(config)
+
+	req := openai.ImageRequest{
+		Prompt:            "Parrot on a skateboard performing a trick. Large bold text \"SKATE MASTER\" banner at the bottom of the image. Cartoon style, natural light, high detail, 1:1 aspect ratio.",
+		Background:        openai.CreateImageBackgroundOpaque, // or CreateImageBackgroundTransparent
+		Model:             os.Getenv("IMAGE_MODEL_NAME"),
+		Size:              "1024x1024", // '1024x1024', '1024x1536', '1536x1024', and 'auto'
+		N:                 1,           // number of images to generate
+		Quality:           "high",      // "low", "medium", "high", and "auto"
+		OutputCompression: 100,
+		OutputFormat:      "png", // 'png', 'webp', and 'jpeg'
+	}
+
+	resp, err := c.CreateImage(context.Background(), req)
+	if err != nil {
+		fmt.Printf("Image generation error: %v\n", err)
+		return
+	}
+
+	imgBytes, err := base64.StdEncoding.DecodeString(resp.Data[0].B64JSON)
+	if err != nil {
+		fmt.Printf("Base64 decode error: %v\n", err)
+		return
+	}
+
+	outputPath := "generated_image.png"
+	if err := os.WriteFile(outputPath, imgBytes, 0644); err != nil {
+		fmt.Printf("Failed to write image file: %v\n", err)
+		return
+	}
+
+	fmt.Printf("The image was saved as %s\n", outputPath)
+}
+```
+
+### cURL
+
+```bash
+curl "$BASE_URL/images/generations" \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer $LIARA_API_KEY" \\
+  -d '{
+  "model": "'"$IMAGE_MODEL_NAME"'",
+  "prompt": "A cute baby sea otter",
+  "n": 1,
+  "size": "1024x1024",
+  "quality": "high"
+}'
+```
+
+در قطعه کدهای فوق، به‌جای `BASE_URL`, آدرس سرویس هوش مصنوعی خود را قرار دهید و به‌جای `LIARA_API_KEY`, کلید API خود را وارد کنید. همچنین، به‌جای `IMAGE_MODEL_NAME`, نام یکی از مدل‌های تولید تصویر OpenAI را قرار دهید.
+
+## ویرایش تصویر
+
+برای ویرایش یک یا چند تصویر موجود (به‌عنوان مثال، ترکیب چند تصویر یا اعمال تغییرات روی یک تصویر)، می‌توانید مانند قطعه کدهای زیر عمل کنید. متغیرهای محیطی مورد نیاز، مشابه بخش [تولید تصویر](#image-generation) هستند:
+
+### JavaScript
+
+```js
+// npm install openai dotenv
+import "dotenv/config";
+import fs from "fs";
+import OpenAI, { toFile } from "openai";
+
+const openai = new OpenAI({
+  baseURL: process.env.BASE_URL,
+  apiKey: process.env.LIARA_API_KEY,
+});
+
+const imageFiles = [
+  "bath-bomb.png",
+  "body-lotion.png",
+  "incense-kit.png",
+  "soap.png",
+];
+
+async function main() {
+  const images = await Promise.all(
+    imageFiles.map((file) =>
+      toFile(fs.createReadStream(file), null, {
+        type: "image/png",
+      })
+    )
+  );
+
+  const rsp = await openai.images.edit({
+    model: process.env.IMAGE_MODEL_NAME,
+    image: images,
+    prompt: "Create a lovely gift basket with these four items in it",
+  });
+
+  const imageBytes = Buffer.from(rsp.data[0].b64_json, "base64");
+  fs.writeFileSync("basket.png", imageBytes);
+
+  console.log("Image saved to basket.png");
+}
+
+main().catch(console.error);
+```
+
+### PHP
+
+```php
+<?php
+// composer require openai-php/client vlucas/phpdotenv guzzlehttp/guzzle
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$client = OpenAI::factory()
+    ->withApiKey($_ENV["LIARA_API_KEY"])
+    ->withBaseUri($_ENV["BASE_URL"])
+    ->make();
+
+$prompt = "
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.
+";
+
+$result = $client->images()->edit([
+    'model' => $_ENV["IMAGE_MODEL_NAME"],
+    'image' => [
+        fopen('body-lotion.png', 'rb'),
+        fopen('bath-bomb.png', 'rb'),
+        fopen('incense-kit.png', 'rb'),
+        fopen('soap.png', 'rb'),
+    ],
+    'prompt' => $prompt,
+]);
+
+$imageBytes = base64_decode($result->data[0]->b64_json);
+file_put_contents('gift-basket.png', $imageBytes);
+
+echo "Image saved to gift-basket.png";
+```
+
+### Python
+
+```py
+# pip install openai python-dotenv
+import base64
+import os
+
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+client = OpenAI(
+    base_url=os.getenv("BASE_URL"),
+    api_key=os.getenv("LIARA_API_KEY"),
+)
+
+prompt = """
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.
+"""
+
+result = client.images.edit(
+    model=os.getenv("IMAGE_MODEL_NAME"),
+    image=[
+        open("body-lotion.png", "rb"),
+        open("bath-bomb.png", "rb"),
+        open("incense-kit.png", "rb"),
+        open("soap.png", "rb"),
+    ],
+    prompt=prompt,
+)
+
+image_bytes = base64.b64decode(result.data[0].b64_json)
+
+with open("gift-basket.png", "wb") as f:
+    f.write(image_bytes)
+
+print("Image saved to gift-basket.png")
+```
+
+### .NET
+
+```cs
+// dotnet add package OpenAI && dotnet add package DotNetEnv
+using System.ClientModel;
+using DotNetEnv;
+using OpenAI;
+using OpenAI.Images;
+
+Env.Load();
+
+var baseUrl = Environment.GetEnvironmentVariable("BASE_URL")
+    ?? throw new Exception("BASE_URL is not defined.");
+
+var apiKey = Environment.GetEnvironmentVariable("LIARA_API_KEY")
+    ?? throw new Exception("LIARA_API_KEY is not defined.");
+
+var modelName = Environment.GetEnvironmentVariable("IMAGE_MODEL_NAME")
+    ?? throw new Exception("IMAGE_MODEL_NAME is not defined.");
+
+ImageClient client = new(
+    model: modelName,
+    credential: new ApiKeyCredential(apiKey),
+    options: new OpenAIClientOptions
+    {
+        Endpoint = new Uri(baseUrl)
+    }
+);
+
+var imageToEdit = "basket.png";
+using var imageStream = File.OpenRead(imageToEdit);
+
+ClientResult<GeneratedImage> editedImageResult =
+    await client.GenerateImageEditAsync(
+        image: imageStream,
+        imageFilename: Path.GetFileName(imageToEdit),
+        prompt: "make them happy"
+    );
+
+byte[] bytes = editedImageResult.Value.ImageBytes.ToArray();
+await File.WriteAllBytesAsync("edited.png", bytes);
+
+Console.WriteLine("Image saved to edited.png");
+```
+
+### Go
+
+```bash
+// go get github.com/sashabaranov/go-openai github.com/joho/godotenv
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"os"
+
+	"github.com/joho/godotenv"
+	openai "github.com/sashabaranov/go-openai"
+)
+
+func main() {
+	if err := godotenv.Load(); err != nil {
+		panic("Error loading .env file")
+	}
+
+	config := openai.DefaultConfig(os.Getenv("LIARA_API_KEY"))
+	config.BaseURL = os.Getenv("BASE_URL")
+	c := openai.NewClientWithConfig(config)
+
+	orig, err := os.Open("output.png")
+	if err != nil {
+		panic(err)
+	}
+	defer orig.Close()
+
+	req := openai.ImageEditRequest{
+		Image:   openai.WrapReader(orig, "output.png", "image/png"),
+		Prompt:  "make them happy",
+		Model:   os.Getenv("IMAGE_MODEL_NAME"),
+		Size:    "1024x1024",
+		N:       1,
+		Quality: "high",
+	}
+
+	resp, err := c.CreateEditImage(context.Background(), req)
+	if err != nil {
+		panic(err)
+	}
+
+	if len(resp.Data) > 0 && resp.Data[0].B64JSON != "" {
+		b, err := base64.StdEncoding.DecodeString(resp.Data[0].B64JSON)
+		if err != nil {
+			panic(err)
+		}
+		if err := os.WriteFile("edited.png", b, 0644); err != nil {
+			panic(err)
+		}
+		fmt.Println("Image saved to edited.png")
+	}
+}
+```
+
+### cURL
+
+```bash
+curl "$BASE_URL/images/edits" \\
+  -H "Authorization: Bearer $LIARA_API_KEY" \\
+  -F "model=$IMAGE_MODEL_NAME" \\
+  -F "image[]=@body-lotion.png" \\
+  -F "image[]=@bath-bomb.png" \\
+  -F "image[]=@incense-kit.png" \\
+  -F "image[]=@soap.png" \\
+  -F "prompt=Create a lovely gift basket with these four items in it"
+```
+
+در قطعه کدهای فوق، نام فایل‌های تصویری ورودی را با مسیر تصاویر موردنظر خود جایگزین کنید.
 
 ## all links
 
