@@ -401,6 +401,7 @@
 - [استقرار برنامه‌های Deno در لیارا](https://docs.liara.ir/llms/paas/docker/related-apps/deno.md)
 - [استقرار برنامه‌های Django وابسته به Celery در لیارا](https://docs.liara.ir/llms/paas/django/related-apps/celery.md)
 - [استقرار برنامه‌های Django وابسته به Celery در لیارا](https://docs.liara.ir/llms/paas/python/related-apps/celery.md)
+- [استقرار برنامه‌های EVE در لیارا](https://docs.liara.ir/llms/paas/nodejs/related-apps/eve.md)
 - [استقرار برنامه‌های Echo در لیارا](https://docs.liara.ir/llms/paas/go/related-apps/echo.md)
 - [استقرار برنامه‌های Eleventy در لیارا](https://docs.liara.ir/llms/paas/static/related-apps/eleventy.md)
 - [استقرار برنامه‌های FastAPI در لیارا](https://docs.liara.ir/llms/paas/python/related-apps/fastapi.md)

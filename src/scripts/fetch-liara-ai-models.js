@@ -26,6 +26,7 @@ const CATEGORIES = [
   "fish-audio",
   "nvidia",
   "meta",
+  "typesafe"
 ];
 
 function categorizeModel(modelId) {

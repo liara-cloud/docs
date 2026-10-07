@@ -1,0 +1,238 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import NextPage from "@/components/Common/nextpage";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات استقرار برنامه‌های EVE - لیارا</title>
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نحوه استقرار برنامه‌های EVE در پلتفرم NodeJS در لیارا"  />
+</Head>
+# استقرار برنامه‌های EVE در لیارا
+<hr className="mb-2" />
+
+<a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target='_blank' className="text-[#2196f3]">EVE</a> یک فریم‌ورک متن‌باز از Vercel برای ساخت و اجرای AI Agentهاست.
+یعنی می‌توان با یک ساختار فایل ساده، Agentهایی ساخت که ابزار، Skill , Subagent، زمان‌بندی و Human-in-the-loop داشته باشند. 
+
+<div className="h-4" />
+
+برای استقرار برنامه‌های EVE در لیارا، می‌توانید طبق مراحل زیر، عمل کنید: 
+
+<Step  steps={[
+{
+  step: "۱",
+  content: (
+  <>
+    <h3>ساخت برنامه EVE</h3>   
+    <p>
+        با اجرای دستور زیر، در سیستم خود، یک برنامه EVE ایجاد کنید: 
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`npx eve@latest init my-agent`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+
+  </>
+  )
+},
+{
+  step: "۲",
+  content: (
+  <>
+    <h3>تنظیم هوش مصنوعی لیارا</h3>   
+    <p>
+       برای استفاده از <a href="/ai/about/" className="text-[#2196f3]">هوش مصنوعی لیارا</a> در پروژه، در ابتدا در ترمینال، دستور زیر را اجرا کنید: 
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`npm i @ai-sdk/openai-compatible`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+    <p>
+        در ادامه، در مسیر <Important>agent/agent.ts</Important>، قطعه کد زیر را قرار دهید:
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`import { defineAgent } from "eve";
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
+
+const liaraProvider = createOpenAICompatible({
+  name: "my-provider",
+  baseURL: process.env.LIARA_BASE_URL!, 
+  apiKey: process.env.LIARA_API_KEY,    
+});
+
+
+export default defineAgent({
+  model: liaraProvider("openai/gpt-6-luna"),
+  modelContextWindowTokens: 128_000,
+});`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+
+    <p>
+        می‌توانید به جای مدل <Important>openai/gpt-6-luna</Important>، از سایر مدل‌های لیارا نیز، استفاده کنید. 
+    </p>
+
+  </>
+  )
+},
+{
+  step: "۳",
+  content: (
+  <>
+    <h3>تنظیم Authentication</h3>   
+    <p>
+        برای دسترسی امن به EVE، کافیست تا قطعه کد زیر را در مسیر <Important>agent/channels/eve.ts</Important>، قرار دهید:       
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`import { timingSafeEqual } from "node:crypto";
+import { eveChannel } from "eve/channels/eve";
+import {
+  extractBearerToken,
+  localDev,
+  vercelOidc,
+  withAuthChallenges,
+  type AuthFn,
+} from "eve/channels/auth";
+
+const apiKeyAuth: AuthFn<Request> = withAuthChallenges(
+  (request) => {
+    const expected = process.env.AGENT_API_KEY;
+    const token = extractBearerToken(request.headers.get("authorization"));
+    if (!expected || !token) return null;
+    const a = Buffer.from(token);
+    const b = Buffer.from(expected);
+    if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
+    return {
+      attributes: {},
+      authenticator: "api-key",
+      principalId: "api-client",
+      principalType: "service",
+    };
+  },
+  [{ scheme: "Bearer" }],
+);
+
+export default eveChannel({
+  auth: [
+    apiKeyAuth,
+    vercelOidc(),
+    localDev(),
+  ],
+});
+`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+
+  </>
+  )
+},
+{
+  step: "۴",
+  content: (
+  <>
+    <h3>ساخت برنامه NodeJS در لیارا</h3>   
+    <p>
+        طبق مستندات <a href="/paas/nodejs/how-tos/create-app/" className="text-[#2196f3]">ساخت برنامه NodeJS</a>، یک برنامه NodeJS بسازید. 
+    </p>
+
+  </>
+  )
+},
+{
+  step: "۵",
+  content: (
+  <>
+    <h3>تنظیم متغیرهای محیطی برنامه</h3>   
+    <p>
+        طبق مستندات <a href="/paas/details/envs/" className="text-[#2196f3]">تنظیم متغیرهای محیطی</a>، متغیرهای زیر را برای برنامه خود، تنظیم کنید: 
+    </p>
+
+    <div className="h-2" />
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`AGENT_API_KEY=<token>
+LIARA_BASE_URL=<base-url>
+LIARA_API_KEY=<api-key>`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+    
+    <p>
+        مقادیر فوق را با اطلاعات واقعی، پر کنید. برای تولید مقدار <Important>AGENT_API_KEY</Important>، می‌توانید دستور زیر را اجرا کنید: 
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+
+
+  </>
+  )
+},
+{
+  step: "۶",
+  content: (
+  <>
+    <h3>استقرار برنامه</h3>   
+    <p>
+        طبق مستندات <a href="/paas/nodejs/how-tos/deploy-app/" className="text-[#2196f3]">استقرار برنامه</a>، برنامه خود را در لیارا، مستقر کنید.  
+    </p>
+
+  </>
+  )
+},
+{
+  step: "۷",
+  content: (
+  <>
+    <h3>اتصال به برنامه از لوکال</h3>   
+    <p>
+        برای اتصال به برنامه، می‌توانید از دستور زیر استفاده کنید: 
+    </p>
+    <div className="h-2" />
+    <div dir='ltr'>
+      <Highlight className="bash">
+        {`npx eve remote connect --url https://<your-url> -H "Authorization: Bearer <AGENT_API_KEY>"`}
+      </Highlight>
+    </div>
+    <div className="h-2" />
+
+
+  </>
+  )
+},
+
+]}/>
+
+
+
+
+</Layout>

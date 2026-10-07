@@ -214,7 +214,8 @@
     "meta/muse-spark-1.3-contributor",
     "meta/muse-voice-transcribe-1.0"
   ],
-  "other": [
+  "typesafe": [
     "typesafe/jev-1.13"
-  ]
+  ],
+  "other": []
 }

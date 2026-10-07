@@ -380,8 +380,8 @@ export default {
         link: "/ai/tencent"
       },
       {
-        title: "Jev",
-        icon: <GoCpu />,
+        title: "TypeSafe/Jev",
+        icon: <IconContainer alt="https://media.liara.ir/logos/ai/typesafe.svg" />,
         link: "/ai/jev"
       },
       {
@@ -2244,6 +2244,11 @@ export default {
         title: "Nitro",
         icon: <IconContainer alt="https://media.liara.ir/docs/nitro-icon.svg" />,
         link: "/paas/nodejs/related-apps/nitro"
+      },
+      {
+        title: "EVE",
+        icon: <IconContainer alt="https://media.liara.ir/eve/eve.svg" />,
+        link: "/paas/nodejs/related-apps/eve"
       },
       {
         title: "NestJS",
