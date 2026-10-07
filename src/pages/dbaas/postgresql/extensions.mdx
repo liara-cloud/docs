@@ -45,7 +45,21 @@ import Head from "next/head";
 </ul>
 <div className="h-2" />
 
+علاوه بر این دو افزونه، ۵۲ افزونه دیگر نیز در دیتابیس PostgreSQL لیارا در دسترس هستند. بخش عمده‌ای از این افزونه‌ها، 
+جزو ماژول‌های رسمی PostgreSQL (contrib) هستند و تعدادی از آن‌ها نیز، همراه با افزونه PostGIS نصب شده‌اند. 
 در ادامه، به توضیح هر یک از افزونه‌ها پرداخته شده است.
+
+<div className="h-2" />
+<ul>
+<li><a href="#what-is-postgis" className="text-[#2196f3]">PostGIS</a> و <a href="#what-is-pgvector" className="text-[#2196f3]">Pgvector</a></li>
+<div className="h-1" />
+<li><a href="#how-to-enable-extensions" className="text-[#2196f3]">نحوه فعال‌سازی افزونه‌ها</a></li>
+<div className="h-1" />
+<li><a href="#postgis-related-extensions" className="text-[#2196f3]">افزونه‌های نصب‌شده همراه با PostGIS</a></li>
+<div className="h-1" />
+<li><a href="#other-extensions" className="text-[#2196f3]">سایر افزونه‌های در دسترس</a></li>
+</ul>
+<div className="h-2" />
 
 <Section id='what-is-postgis' title='افزونه PostGIS چیست؟' />
 
@@ -86,6 +100,302 @@ import Head from "next/head";
 <div className="h-2" />
 
 این افزونه، از اصول ACID، بازیابی point-in-time، عملیات JOIN و سایر ویژگی‌های برجسته PostgreSQL نیز، پشتیبانی می‌کند.
+
+<Section id='how-to-enable-extensions' title='نحوه فعال‌سازی افزونه‌ها' />
+
+افزونه‌ها در PostgreSQL، به ازای هر دیتابیس فعال می‌شوند؛ بنابراین، پس از اتصال به دیتابیس موردنظر، 
+کافیست تا مشابه دستور زیر، نام افزونه را در دستور <Important>CREATE EXTENSION</Important> وارد کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="sql">
+        {`CREATE EXTENSION IF NOT EXISTS pg_trgm;`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+برای مشاهده فهرست افزونه‌های در دسترس و نسخه آن‌ها نیز، می‌توانید از دستور زیر استفاده کنید:
+
+<div className="h-4" />
+    <div dir='ltr'>
+    <Highlight className="sql">
+        {`SELECT name, default_version, installed_version FROM pg_available_extensions ORDER BY name;`}
+    </Highlight>
+    </div>
+<div className="h-2" />
+
+<Section id='postgis-related-extensions' title='افزونه‌های نصب‌شده همراه با PostGIS' />
+
+افزونه‌های این بخش، جزو ماژول‌های پیش‌فرض PostgreSQL نیستند و به همراه افزونه PostGIS نصب شده‌اند. 
+اکثر این افزونه‌ها، برای کار کردن، به خود افزونه <Important>postgis</Important> نیاز دارند؛ 
+بنابراین، پیش از فعال‌سازی آن‌ها، افزونه PostGIS را در دیتابیس خود فعال کنید.
+
+<Section id='address-standardizer' title='افزونه address_standardizer' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://postgis.net/docs/Extras.html#Address_Standardizer">address_standardizer</a> برای تجزیه (parse) یک آدرس پستی به اجزای تشکیل‌دهنده آن مانند شماره پلاک، نام خیابان، شهر، ایالت و کد پستی استفاده می‌شود و آن اجزا را به یک قالب استاندارد و یکسان تبدیل می‌کند. 
+این افزونه، بر اساس جداول قواعد (rules)، واژه‌نامه (lexicon) و gazetteer کار می‌کند و معمولاً در فرایند پاک‌سازی داده‌های آدرس و آماده‌سازی آن‌ها برای geocoding، مورد استفاده قرار می‌گیرد.
+
+<Section id='address-standardizer-data-us' title='افزونه address_standardizer_data_us' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://postgis.net/docs/Extras.html#Address_Standardizer">address_standardizer_data_us</a>، داده‌های نمونه و آماده‌ای شامل جداول rules، lexicon و gazetteer را برای استانداردسازی آدرس‌های کشور ایالات متحده، در اختیار افزونه address_standardizer قرار می‌دهد. 
+با فعال‌سازی این افزونه، دیگر نیازی به ساخت دستی این جداول نیست و می‌توانید مستقیماً، آدرس‌های آمریکایی را استانداردسازی کنید؛ همچنین، می‌توانید از این جداول، به عنوان الگویی برای ساخت داده‌های مشابه برای سایر کشورها، استفاده کنید.
+
+<Section id='postgis-raster' title='افزونه postgis_raster' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://postgis.net/docs/RT_reference.html">postgis_raster</a>، پشتیبانی از داده‌های raster (داده‌های شبکه‌ای و پیکسلی مانند تصاویر ماهواره‌ای، مدل‌های ارتفاعی زمین و نقشه‌های دمایی) را به PostGIS اضافه می‌کند. 
+این افزونه، نوع داده <Important>raster</Important> و مجموعه‌ای از توابع را برای ذخیره‌سازی، تحلیل، برش، محاسبات جبری روی باندها و تبدیل بین داده‌های raster و vector، فراهم می‌کند.
+
+<Section id='postgis-sfcgal' title='افزونه postgis_sfcgal' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://postgis.net/docs/reference_sfcgal.html">postgis_sfcgal</a>، توابع PostGIS را با استفاده از کتابخانه SFCGAL (مبتنی بر CGAL) گسترش می‌دهد و امکان انجام عملیات هندسی پیشرفته به ویژه روی داده‌های سه‌بعدی را فراهم می‌کند. 
+عملیاتی مانند محاسبه حجم، اکستروژن (extrude) اشکال، اشتراک و تفاضل سه‌بعدی، straight skeleton و محاسبه دقیق‌تر برخی روابط هندسی، از جمله قابلیت‌های این افزونه هستند.
+
+<Section id='postgis-tiger-geocoder' title='افزونه postgis_tiger_geocoder' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://postgis.net/docs/Extras.html#Tiger_Geocoder">postgis_tiger_geocoder</a>، یک geocoder مبتنی بر داده‌های TIGER (داده‌های رسمی اداره سرشماری آمریکا) است که امکان تبدیل آدرس‌های متنی به مختصات جغرافیایی (geocoding) و برعکس (reverse geocoding) را فراهم می‌کند. 
+این افزونه، به افزونه‌های postgis و fuzzystrmatch وابسته است و تنها برای آدرس‌های ایالات متحده کاربرد دارد؛ همچنین، برای استفاده از آن، باید داده‌های TIGER در دیتابیس بارگذاری شوند.
+
+<Section id='postgis-topology' title='افزونه postgis_topology' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://postgis.net/docs/Topology.html">postgis_topology</a>، امکان مدیریت داده‌های مکانی به صورت توپولوژیک را فراهم می‌کند؛ در این مدل، به جای ذخیره مستقل هر شکل، اجزای مشترک مانند گره‌ها (nodes)، یال‌ها (edges) و وجه‌ها (faces) یک بار ذخیره شده و بین عوارض مختلف، به اشتراک گذاشته می‌شوند. 
+این رویکرد، برای داده‌هایی مانند مرزهای اداری و قطعات زمین که باید بدون هم‌پوشانی و شکاف کنار هم قرار بگیرند، بسیار کاربردی است و ویرایش یکپارچه آن‌ها را ساده‌تر می‌کند.
+
+<Section id='other-extensions' title='سایر افزونه‌های در دسترس' />
+
+افزونه‌های این بخش، جزو ماژول‌های رسمی PostgreSQL هستند که همراه با توزیع PostgreSQL ارائه می‌شوند. 
+برخی از این افزونه‌ها مانند <Important>plpgsql</Important>، به صورت پیش‌فرض در هر دیتابیس فعال هستند و سایر افزونه‌ها، باید طبق 
+<a href="#how-to-enable-extensions" className="text-[#2196f3]">بخش فعال‌سازی افزونه‌ها</a>، به صورت دستی فعال شوند.
+
+<Section id='amcheck' title='افزونه amcheck' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/amcheck.html">amcheck</a>، توابعی را برای بررسی سلامت و یکپارچگی ساختار منطقی ایندکس‌های B-Tree و جداول (heap) فراهم می‌کند. 
+با استفاده از این افزونه، می‌توانید خرابی‌های احتمالی ناشی از مشکلات سخت‌افزاری، باگ‌های نرم‌افزاری یا تغییر رفتار collationها را پیش از آن‌که منجر به نتایج نادرست در کوئری‌ها شوند، شناسایی کنید.
+
+<Section id='autoinc' title='افزونه autoinc' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/contrib-spi.html">autoinc</a>، یک تابع trigger به نام <Important>()autoinc</Important> ارائه می‌دهد که در زمان درج یا به‌روزرسانی رکورد، مقدار بعدی یک sequence را در فیلد عددی مشخص‌شده قرار می‌دهد. 
+این افزونه، بیشتر به عنوان نمونه‌ای از نوشتن trigger با رابط SPI ارائه شده است و در اکثر موارد، استفاده از ستون‌های <Important>serial</Important> یا <Important>identity</Important> جایگزین مناسب‌تری برای آن است.
+
+<Section id='bloom' title='افزونه bloom' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/bloom.html">bloom</a>، یک نوع ایندکس مبتنی بر Bloom filter را به PostgreSQL اضافه می‌کند. 
+این ایندکس، برای جداولی با ستون‌های زیاد که کوئری‌ها روی ترکیب‌های دلخواهی از این ستون‌ها با شرط برابری اجرا می‌شوند، مناسب است؛ زیرا به جای ساخت چندین ایندکس B-Tree، یک ایندکس کم‌حجم روی همه ستون‌ها ساخته می‌شود؛ البته این ایندکس، احتمال نتایج مثبت کاذب دارد که در مرحله بعد، با بررسی رکوردها، حذف می‌شوند.
+
+<Section id='btree-gin' title='افزونه btree_gin' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/btree-gin.html">btree_gin</a>، کلاس‌های عملگری (operator class) را برای ایندکس GIN فراهم می‌کند که رفتاری مشابه B-Tree را برای انواع داده معمولی مانند اعداد، متن و تاریخ شبیه‌سازی می‌کنند. 
+کاربرد اصلی این افزونه، ساخت ایندکس‌های چندستونی GIN است که در آن، یک ستون از نوع داده‌ای مانند jsonb یا آرایه و ستون دیگر، از یک نوع داده ساده است.
+
+<Section id='btree-gist' title='افزونه btree_gist' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/btree-gist.html">btree_gist</a>، کلاس‌های عملگری را برای ایندکس GiST فراهم می‌کند که امکان ایندکس‌گذاری انواع داده ساده را با رفتاری مشابه B-Tree می‌دهند. 
+این افزونه، به ویژه برای ساخت exclusion constraintها کاربرد دارد؛ برای مثال، می‌توانید جلوی رزرو هم‌زمان یک اتاق (ستون عددی) در بازه‌های زمانی دارای هم‌پوشانی (ستون range) را بگیرید.
+
+<Section id='citext' title='افزونه citext' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/citext.html">citext</a>، نوع داده <Important>citext</Important> را برای ذخیره رشته‌های متنی غیرحساس به بزرگی و کوچکی حروف (case-insensitive) اضافه می‌کند. 
+مقایسه‌ها در این نوع داده، بدون توجه به بزرگی و کوچکی حروف انجام می‌شوند؛ بنابراین، برای ستون‌هایی مانند ایمیل یا نام کاربری که باید یکتا باشند، دیگر نیازی به استفاده مکرر از تابع <Important>()lower</Important> در کوئری‌ها و ایندکس‌ها نیست.
+
+<Section id='cube' title='افزونه cube' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/cube.html">cube</a>، نوع داده <Important>cube</Important> را برای نمایش نقاط و مکعب‌های چندبعدی اضافه می‌کند. 
+این افزونه، عملگرهایی برای بررسی هم‌پوشانی، شمول و محاسبه فاصله (اقلیدسی، منهتن و چبیشف) ارائه می‌دهد و با پشتیبانی از ایندکس GiST، امکان جستجوی سریع نزدیک‌ترین همسایه‌ها را در فضاهای چندبعدی فراهم می‌کند؛ همچنین، این افزونه، پیش‌نیاز افزونه earthdistance است.
+
+<Section id='dblink' title='افزونه dblink' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/dblink.html">dblink</a>، امکان اتصال به یک دیتابیس PostgreSQL دیگر و اجرای کوئری روی آن را از داخل یک session فعلی فراهم می‌کند. 
+با استفاده از توابع این افزونه، می‌توانید نتایج کوئری‌های دیتابیس راه‌دور را مانند یک جدول دریافت کنید یا دستورات را به صورت غیرهم‌زمان (asynchronous) اجرا کنید؛ البته در اکثر موارد جدید، افزونه postgres_fdw رابط استانداردتر و کامل‌تری ارائه می‌دهد.
+
+<Section id='dict-int' title='افزونه dict_int' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/dict-int.html">dict_int</a>، یک دیکشنری نمونه برای جستجوی تمام‌متن (Full-Text Search) است که نحوه ایندکس‌گذاری اعداد صحیح را کنترل می‌کند. 
+این دیکشنری، با محدود کردن تعداد ارقام اعداد، از ایجاد تعداد بسیار زیادی واژه یکتا در ایندکس جلوگیری کرده و در نتیجه، کارایی جستجو را بهبود می‌بخشد.
+
+<Section id='dict-xsyn' title='افزونه dict_xsyn' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/dict-xsyn.html">dict_xsyn</a>، یک دیکشنری توسعه‌یافته مترادف (Extended Synonym) برای جستجوی تمام‌متن است که هر کلمه را با گروهی از مترادف‌های آن جایگزین می‌کند. 
+با استفاده از این افزونه، می‌توانید یک فایل مترادف تعریف کنید تا جستجو برای یک کلمه، نتایج مربوط به مترادف‌های آن را نیز، شامل شود.
+
+<Section id='earthdistance' title='افزونه earthdistance' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/earthdistance.html">earthdistance</a>، دو روش برای محاسبه فاصله دو نقطه روی سطح کره زمین بر اساس طول و عرض جغرافیایی ارائه می‌دهد؛ روش اول مبتنی بر افزونه cube و روش دوم مبتنی بر نوع داده داخلی <Important>point</Important> است. 
+این افزونه، زمین را یک کره کامل در نظر می‌گیرد؛ بنابراین، برای محاسبات ساده مانند یافتن مکان‌های نزدیک کافیست، اما برای محاسبات دقیق مکانی، استفاده از PostGIS توصیه می‌شود.
+
+<Section id='file-fdw' title='افزونه file_fdw' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/file-fdw.html">file_fdw</a>، یک Foreign Data Wrapper است که امکان دسترسی به فایل‌های موجود در فایل‌سیستم سرور دیتابیس را، به شکل یک جدول خارجی (foreign table) فراهم می‌کند. 
+فایل‌ها باید در قالبی قابل خواندن توسط دستور <Important>COPY FROM</Important> مانند CSV یا text باشند؛ توجه داشته باشید که ایجاد جداول خارجی با این افزونه، به دسترسی‌های سطح بالا نیاز دارد.
+
+<Section id='fuzzystrmatch' title='افزونه fuzzystrmatch' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/fuzzystrmatch.html">fuzzystrmatch</a>، توابعی را برای سنجش میزان شباهت و فاصله بین رشته‌ها فراهم می‌کند. 
+الگوریتم‌هایی مانند Levenshtein برای محاسبه فاصله ویرایشی و Soundex، Metaphone و Double Metaphone برای مقایسه آوایی کلمات، در این افزونه پیاده‌سازی شده‌اند که برای یافتن کلمات با املای مشابه یا تشخیص غلط‌های تایپی کاربرد دارند.
+
+<Section id='hstore' title='افزونه hstore' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/hstore.html">hstore</a>، نوع داده <Important>hstore</Important> را برای ذخیره مجموعه‌ای از جفت‌های کلید-مقدار (key-value) در یک ستون اضافه می‌کند. 
+این افزونه، برای داده‌های نیمه‌ساختاریافته یا رکوردهایی با ویژگی‌های متغیر مناسب است و از ایندکس‌های GIN و GiST پشتیبانی می‌کند؛ البته در پروژه‌های جدید، نوع داده jsonb امکانات گسترده‌تری ارائه می‌دهد.
+
+<Section id='insert-username' title='افزونه insert_username' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/contrib-spi.html">insert_username</a>، یک تابع trigger ارائه می‌دهد که نام کاربر فعلی دیتابیس را در یک فیلد متنی مشخص، ذخیره می‌کند. 
+با استفاده از این افزونه، می‌توانید به سادگی ثبت کنید که هر رکورد، آخرین بار توسط کدام کاربر دیتابیس درج یا ویرایش شده است.
+
+<Section id='intagg' title='افزونه intagg' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/intagg.html">intagg</a>، یک aggregator و یک enumerator برای اعداد صحیح ارائه می‌دهد که امکان تجمیع مقادیر در یک آرایه و باز کردن آرایه به چند رکورد را فراهم می‌کنند. 
+این افزونه، اکنون منسوخ (obsolete) محسوب می‌شود و صرفاً برای سازگاری با نسخه‌های قدیمی حفظ شده است؛ زیرا توابع داخلی <Important>array_agg</Important> و <Important>unnest</Important> همان قابلیت‌ها را ارائه می‌دهند.
+
+<Section id='intarray' title='افزونه intarray' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/intarray.html">intarray</a>، توابع و عملگرهای متعددی را برای کار با آرایه‌های اعداد صحیح (بدون مقدار null) فراهم می‌کند؛ مانند مرتب‌سازی، حذف مقادیر تکراری، اشتراک و اجتماع آرایه‌ها. 
+همچنین، این افزونه، از ایندکس‌های GiST و GIN پشتیبانی می‌کند که جستجوی سریع رکوردهایی که آرایه آن‌ها شامل یا هم‌پوشان با مقادیر خاصی است را ممکن می‌سازد؛ این قابلیت، برای پیاده‌سازی سیستم‌های برچسب‌گذاری (tagging) کاربردی است.
+
+<Section id='isn' title='افزونه isn' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/isn.html">isn</a>، انواع داده‌ای را برای استانداردهای شماره‌گذاری بین‌المللی محصولات مانند EAN13 , UPC , ISBN , ISMN و ISSN اضافه می‌کند. 
+مقادیر این انواع داده، در هنگام ورود، بر اساس رقم کنترلی (check digit) اعتبارسنجی می‌شوند و امکان تبدیل بین قالب‌های مختلف مانند ISBN-10 و ISBN-13 نیز، فراهم است.
+
+<Section id='lo' title='افزونه lo' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/lo.html">lo</a>، امکاناتی را برای مدیریت Large Objectها (اشیای حجیم باینری) فراهم می‌کند؛ از جمله نوع داده <Important>lo</Important> و تابع trigger به نام <Important>lo_manage</Important>. 
+این trigger، هنگام حذف یا تغییر رکوردی که به یک Large Object اشاره دارد، شیء مربوطه را نیز حذف می‌کند تا از باقی ماندن اشیای بی‌استفاده (orphan) در دیتابیس جلوگیری شود.
+
+<Section id='ltree' title='افزونه ltree' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/ltree.html">ltree</a>، نوع داده <Important>ltree</Important> را برای نمایش برچسب‌های داده‌ای که در یک ساختار درختی و سلسله‌مراتبی ذخیره شده‌اند (مانند <Important>Top.Science.Astronomy</Important>) اضافه می‌کند. 
+این افزونه، عملگرها و الگوهای جستجوی قدرتمندی برای یافتن والدها، فرزندان و مسیرهای منطبق با یک الگو ارائه می‌دهد و برای پیاده‌سازی دسته‌بندی‌های تودرتو، نمودارهای سازمانی و ساختار منوها مناسب است.
+
+<Section id='moddatetime' title='افزونه moddatetime' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/contrib-spi.html">moddatetime</a>، یک تابع trigger ارائه می‌دهد که در هنگام به‌روزرسانی هر رکورد، زمان فعلی را در یک فیلد از نوع timestamp ذخیره می‌کند. 
+این افزونه، روشی ساده برای نگه‌داری خودکار ستون‌هایی مانند <Important>updated_at</Important> است و نیاز به نوشتن تابع trigger اختصاصی را برطرف می‌کند.
+
+<Section id='pageinspect' title='افزونه pageinspect' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pageinspect.html">pageinspect</a>، توابعی را برای بررسی محتوای صفحات (pages) دیتابیس در سطح پایین فراهم می‌کند. 
+با استفاده از این افزونه، می‌توانید ساختار داخلی صفحات جداول و ایندکس‌ها، هدرها و tupleها را مشاهده کنید که برای اشکال‌زدایی و یادگیری عملکرد داخلی PostgreSQL مفید است؛ استفاده از اکثر توابع این افزونه، به دسترسی superuser نیاز دارد.
+
+<Section id='pg-buffercache' title='افزونه pg_buffercache' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgbuffercache.html">pg_buffercache</a>، امکان مشاهده لحظه‌ای وضعیت shared buffer cache در PostgreSQL را فراهم می‌کند. 
+با استفاده از این افزونه، می‌توانید بررسی کنید که کدام جداول و ایندکس‌ها، چه مقدار از حافظه کش را اشغال کرده‌اند و چه تعداد از بافرها dirty هستند؛ این اطلاعات، برای تنظیم مقدار shared_buffers و تحلیل عملکرد، کاربردی است.
+
+<Section id='pg-freespacemap' title='افزونه pg_freespacemap' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgfreespacemap.html">pg_freespacemap</a>، امکان بررسی Free Space Map (نقشه فضای آزاد) جداول و ایندکس‌ها را فراهم می‌کند. 
+با استفاده از توابع این افزونه، می‌توانید مقدار فضای آزاد ثبت‌شده برای هر صفحه از یک جدول را مشاهده کنید و میزان پراکندگی فضای خالی و اثر عملیات VACUUM را تحلیل کنید.
+
+<Section id='pg-logicalinspect' title='افزونه pg_logicalinspect' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pglogicalinspect.html">pg_logicalinspect</a>، توابعی برای بررسی محتوای فایل‌های snapshot مربوط به logical decoding فراهم می‌کند. 
+این افزونه، که از نسخه ۱۸ PostgreSQL ارائه شده است، بیشتر برای اشکال‌زدایی و آموزش در زمینه logical replication کاربرد دارد و به شما کمک می‌کند تا اطلاعات ذخیره‌شده در snapshotهای logical را مشاهده کنید.
+
+<Section id='pg-prewarm' title='افزونه pg_prewarm' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgprewarm.html">pg_prewarm</a>، امکان بارگذاری داده‌های جداول و ایندکس‌ها در حافظه کش سیستم‌عامل یا shared buffers را فراهم می‌کند. 
+با استفاده از این افزونه، پس از راه‌اندازی مجدد دیتابیس، می‌توانید داده‌های پرکاربرد را از پیش در حافظه بارگذاری کنید تا کوئری‌های اولیه، به دلیل خالی بودن کش، کند اجرا نشوند.
+
+<Section id='pg-stat-statements' title='افزونه pg_stat_statements' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgstatstatements.html">pg_stat_statements</a>، آمار اجرای تمام کوئری‌های اجراشده در دیتابیس را جمع‌آوری و نگه‌داری می‌کند؛ اطلاعاتی مانند تعداد دفعات اجرا، مجموع و میانگین زمان اجرا، تعداد رکوردهای بازگشتی و میزان استفاده از بافرها. 
+این افزونه، یکی از مهم‌ترین ابزارها برای شناسایی کوئری‌های کند و پرهزینه و بهینه‌سازی عملکرد دیتابیس است.
+
+<Section id='pg-surgery' title='افزونه pg_surgery' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgsurgery.html">pg_surgery</a>، توابعی برای اصلاح مستقیم tupleهای یک جدول در سطح پایین ارائه می‌دهد؛ مانند حذف اجباری یک tuple یا علامت‌گذاری آن به عنوان frozen. 
+این افزونه، صرفاً برای بازیابی جداول آسیب‌دیده در شرایط اضطراری طراحی شده است و استفاده نادرست از آن می‌تواند منجر به ناسازگاری یا از دست رفتن داده شود؛ بنابراین، تنها با آگاهی کامل و پس از تهیه بکاپ، از آن استفاده کنید.
+
+<Section id='pg-trgm' title='افزونه pg_trgm' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgtrgm.html">pg_trgm</a>، توابع و عملگرهایی برای تعیین میزان شباهت متن‌ها بر اساس trigramها (دنباله‌های سه‌حرفی) ارائه می‌دهد. 
+این افزونه، با پشتیبانی از ایندکس‌های GIN و GiST، امکان جستجوی سریع شباهت‌محور (fuzzy search) و همچنین تسریع کوئری‌های <Important>LIKE</Important>، <Important>ILIKE</Important> و عبارات منظم (regex) را فراهم می‌کند.
+
+<Section id='pg-visibility' title='افزونه pg_visibility' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgvisibility.html">pg_visibility</a>، امکان بررسی Visibility Map و بیت‌های visibility در سطح صفحات یک جدول را فراهم می‌کند. 
+با استفاده از این افزونه، می‌توانید تشخیص دهید که چه بخشی از صفحات جدول all-visible یا all-frozen هستند و همچنین، ناسازگاری‌های احتمالی در Visibility Map را شناسایی کنید.
+
+<Section id='pg-walinspect' title='افزونه pg_walinspect' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgwalinspect.html">pg_walinspect</a>، توابعی را برای بررسی محتوای Write-Ahead Log (WAL) از طریق SQL فراهم می‌کند. 
+با استفاده از این افزونه، می‌توانید رکوردهای WAL در یک بازه مشخص را مشاهده کنید و آمارهایی مانند حجم WAL تولیدشده به تفکیک نوع عملیات را به دست آورید که برای تحلیل حجم تغییرات و اشکال‌زدایی replication کاربردی است.
+
+<Section id='pgcrypto' title='افزونه pgcrypto' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgcrypto.html">pgcrypto</a>، توابع رمزنگاری متنوعی را به PostgreSQL اضافه می‌کند؛ از جمله توابع هش (مانند SHA-256)، هش امن رمزهای عبور با الگوریتم‌هایی مانند bcrypt، رمزنگاری متقارن و نامتقارن مبتنی بر PGP و تولید داده‌های تصادفی امن. 
+با استفاده از این افزونه، می‌توانید عملیات رمزنگاری را مستقیماً در سطح دیتابیس انجام دهید.
+
+<Section id='pgrowlocks' title='افزونه pgrowlocks' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgrowlocks.html">pgrowlocks</a>، اطلاعات مربوط به قفل‌های سطح رکورد (row-level locks) یک جدول مشخص را نمایش می‌دهد. 
+با استفاده از این افزونه، می‌توانید ببینید کدام رکوردها قفل شده‌اند، نوع قفل چیست و کدام تراکنش یا پروسس آن را نگه داشته است؛ این اطلاعات، برای عیب‌یابی مشکلات هم‌زمانی و انتظارهای طولانی، مفید است.
+
+<Section id='pgstattuple' title='افزونه pgstattuple' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/pgstattuple.html">pgstattuple</a>، توابعی برای دریافت آمار دقیق در سطح tuple از جداول و ایندکس‌ها ارائه می‌دهد؛ مانند تعداد tupleهای زنده و حذف‌شده (dead) و میزان فضای آزاد. 
+این افزونه، برای تشخیص میزان bloat در جداول و ایندکس‌ها و تصمیم‌گیری درباره اجرای عملیاتی مانند VACUUM یا REINDEX، کاربرد دارد.
+
+<Section id='plpgsql' title='افزونه plpgsql' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/plpgsql.html">plpgsql</a>، زبان رویه‌ای (procedural language) پیش‌فرض PostgreSQL است که امکان نوشتن توابع، procedureها و triggerها را با استفاده از متغیرها، حلقه‌ها، شرط‌ها و مدیریت خطا فراهم می‌کند. 
+این افزونه، به صورت پیش‌فرض در تمام دیتابیس‌ها فعال است و نیازی به فعال‌سازی دستی ندارد.
+
+<Section id='postgres-fdw' title='افزونه postgres_fdw' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/postgres-fdw.html">postgres_fdw</a>، یک Foreign Data Wrapper برای دسترسی به داده‌های ذخیره‌شده در یک سرور PostgreSQL خارجی است. 
+با استفاده از این افزونه، می‌توانید جداول دیتابیس راه‌دور را به صورت foreign table تعریف کرده و مانند جداول محلی، روی آن‌ها کوئری SELECT، INSERT، UPDATE و DELETE اجرا کنید؛ این افزونه، در صورت امکان، شرط‌ها و JOINها را برای اجرا به سرور راه‌دور ارسال می‌کند تا کارایی افزایش یابد.
+
+<Section id='refint' title='افزونه refint' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/contrib-spi.html">refint</a>، توابع trigger به نام‌های <Important>()check_primary_key</Important> و <Important>()check_foreign_key</Important> را برای پیاده‌سازی یکپارچگی ارجاعی (referential integrity) ارائه می‌دهد. 
+این افزونه، نمونه‌ای قدیمی از نوشتن trigger با رابط SPI است و در کاربردهای امروزی، استفاده از قیود داخلی FOREIGN KEY در PostgreSQL، جایگزین بهتر و مطمئن‌تری برای آن محسوب می‌شود.
+
+<Section id='seg' title='افزونه seg' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/seg.html">seg</a>، نوع داده <Important>seg</Important> را برای نمایش بازه‌های عددی (line segments) یا مقادیر ممیز شناور همراه با عدم قطعیت اضافه می‌کند. 
+این افزونه، به ویژه برای داده‌های آزمایشگاهی و علمی مانند «۶.۵ ± ۰.۲» کاربرد دارد و ارقام معنادار را حفظ می‌کند؛ همچنین، از ایندکس GiST و عملگرهایی برای بررسی هم‌پوشانی و شمول بازه‌ها، پشتیبانی می‌کند.
+
+<Section id='sslinfo' title='افزونه sslinfo' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/sslinfo.html">sslinfo</a>، اطلاعات مربوط به گواهی SSL ارائه‌شده توسط کلاینت متصل به دیتابیس را در اختیار شما قرار می‌دهد. 
+با استفاده از توابع این افزونه، می‌توانید بررسی کنید که اتصال فعلی رمزنگاری‌شده است یا خیر، و اطلاعاتی مانند نسخه SSL، الگوریتم رمزنگاری و مشخصات گواهی کلاینت را دریافت کنید.
+
+<Section id='tablefunc' title='افزونه tablefunc' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/tablefunc.html">tablefunc</a>، مجموعه‌ای از توابع را ارائه می‌دهد که خروجی آن‌ها به صورت جدول است. 
+مهم‌ترین تابع این افزونه، <Important>crosstab</Important> است که امکان ساخت جداول pivot (تبدیل سطرها به ستون‌ها) را فراهم می‌کند؛ همچنین، توابعی مانند <Important>normal_rand</Important> برای تولید اعداد تصادفی با توزیع نرمال و <Important>connectby</Important> برای پیمایش داده‌های درختی، در این افزونه وجود دارند.
+
+<Section id='tcn' title='افزونه tcn' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/tcn.html">tcn</a> (مخفف Triggered Change Notification)، یک تابع trigger ارائه می‌دهد که هنگام هرگونه تغییر در جدول، یک اعلان (notification) از طریق مکانیزم <Important>NOTIFY</Important> ارسال می‌کند. 
+این اعلان، شامل نام جدول، نوع عملیات و مقادیر کلید اصلی رکورد تغییریافته است و کلاینت‌هایی که با دستور <Important>LISTEN</Important> منتظر هستند، می‌توانند به صورت آنی از تغییرات مطلع شوند.
+
+<Section id='tsm-system-rows' title='افزونه tsm_system_rows' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/tsm-system-rows.html">tsm_system_rows</a>، یک روش نمونه‌برداری جدید به نام <Important>SYSTEM_ROWS</Important> را برای استفاده در عبارت <Important>TABLESAMPLE</Important> اضافه می‌کند. 
+با استفاده از این روش، می‌توانید به جای درصد، تعداد دقیق رکوردهای موردنظر را برای نمونه‌برداری تصادفی از یک جدول مشخص کنید؛ این روش، نمونه‌برداری را در سطح بلاک انجام می‌دهد و بسیار سریع است، اما نمونه‌ها، کاملاً تصادفی نیستند.
+
+<Section id='tsm-system-time' title='افزونه tsm_system_time' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/tsm-system-time.html">tsm_system_time</a>، روش نمونه‌برداری <Important>SYSTEM_TIME</Important> را برای عبارت <Important>TABLESAMPLE</Important> اضافه می‌کند. 
+در این روش، به جای تعداد یا درصد رکوردها، حداکثر زمان صرف‌شده برای خواندن جدول را بر حسب میلی‌ثانیه مشخص می‌کنید و دیتابیس، تا زمانی که این مدت تمام شود، رکورد برمی‌گرداند؛ این ویژگی، برای نمونه‌برداری سریع از جداول بسیار بزرگ، مفید است.
+
+<Section id='unaccent' title='افزونه unaccent' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/unaccent.html">unaccent</a>، یک دیکشنری جستجوی تمام‌متن و یک تابع با همین نام ارائه می‌دهد که علائم و اعراب (diacritics) را از حروف حذف می‌کند؛ برای مثال، کلمه <Important>Hôtel</Important> را به <Important>Hotel</Important> تبدیل می‌کند. 
+این افزونه، برای پیاده‌سازی جستجوهایی که نباید به علائم آوایی حساس باشند، کاربرد دارد و قواعد جایگزینی آن، قابل سفارشی‌سازی است.
+
+<Section id='uuid-ossp' title='افزونه uuid-ossp' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/uuid-ossp.html">uuid-ossp</a>، توابعی برای تولید شناسه‌های یکتای جهانی (UUID) بر اساس الگوریتم‌های استاندارد مختلف (نسخه‌های ۱، ۳، ۴ و ۵) ارائه می‌دهد. 
+توجه داشته باشید که در صورت نیاز تنها به UUID تصادفی (نسخه ۴)، می‌توانید از تابع داخلی <Important>()gen_random_uuid</Important> نیز، بدون نیاز به فعال‌سازی این افزونه، استفاده کنید. 
+نام این افزونه، شامل کاراکتر خط تیره است؛ بنابراین، در هنگام فعال‌سازی، باید آن را داخل دابل کوتیشن قرار دهید (<Important>;"CREATE EXTENSION "uuid-ossp</Important>).
+
+<Section id='xml2' title='افزونه xml2' />
+
+افزونه <a className="text-[#2196f3]" target="_blank" rel="nofollow noopener" href="https://www.postgresql.org/docs/current/xml2.html">xml2</a>، توابعی برای اجرای کوئری‌های XPath روی داده‌های XML و اعمال تبدیل‌های XSLT ارائه می‌دهد. 
+این افزونه، قدیمی محسوب می‌شود و بخش زیادی از قابلیت‌های آن، اکنون از طریق نوع داده داخلی <Important>xml</Important> و توابع استاندارد PostgreSQL مانند <Important>()xpath</Important> و <Important>XMLTABLE</Important> در دسترس است؛ بنابراین، برای پروژه‌های جدید، استفاده از قابلیت‌های داخلی توصیه می‌شود.
 
 
 </Layout>

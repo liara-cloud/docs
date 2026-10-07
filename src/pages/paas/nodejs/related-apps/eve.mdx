@@ -12,6 +12,58 @@ import NextPage from "@/components/Common/nextpage";
 
 import Head from "next/head";
 
+export const agentCode = `import { defineAgent } from "eve";
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
+
+const liaraProvider = createOpenAICompatible({
+  name: "my-provider",
+  baseURL: process.env.LIARA_BASE_URL!, 
+  apiKey: process.env.LIARA_API_KEY,    
+});
+
+
+export default defineAgent({
+  model: liaraProvider("openai/gpt-6-luna"),
+  modelContextWindowTokens: 128_000,
+});`;
+
+export const eveChannelCode = `import { timingSafeEqual } from "node:crypto";
+import { eveChannel } from "eve/channels/eve";
+import {
+  extractBearerToken,
+  localDev,
+  vercelOidc,
+  withAuthChallenges,
+  type AuthFn,
+} from "eve/channels/auth";
+
+const apiKeyAuth: AuthFn<Request> = withAuthChallenges(
+  (request) => {
+    const expected = process.env.AGENT_API_KEY;
+    const token = extractBearerToken(request.headers.get("authorization"));
+    if (!expected || !token) return null;
+    const a = Buffer.from(token);
+    const b = Buffer.from(expected);
+    if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
+    return {
+      attributes: {},
+      authenticator: "api-key",
+      principalId: "api-client",
+      principalType: "service",
+    };
+  },
+  [{ scheme: "Bearer" }],
+);
+
+export default eveChannel({
+  auth: [
+    apiKeyAuth,
+    vercelOidc(),
+    localDev(),
+  ],
+});
+`;
+
 <Layout>
 <Head>
 <title>مستندات استقرار برنامه‌های EVE - لیارا</title>
@@ -71,20 +123,7 @@ import Head from "next/head";
     <div className="h-2" />
     <div dir='ltr'>
       <Highlight className="bash">
-        {`import { defineAgent } from "eve";
-import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
-
-const liaraProvider = createOpenAICompatible({
-  name: "my-provider",
-  baseURL: process.env.LIARA_BASE_URL!, 
-  apiKey: process.env.LIARA_API_KEY,    
-});
-
-
-export default defineAgent({
-  model: liaraProvider("openai/gpt-6-luna"),
-  modelContextWindowTokens: 128_000,
-});`}
+        {agentCode}
       </Highlight>
     </div>
     <div className="h-2" />
@@ -108,42 +147,7 @@ export default defineAgent({
     <div className="h-2" />
     <div dir='ltr'>
       <Highlight className="bash">
-        {`import { timingSafeEqual } from "node:crypto";
-import { eveChannel } from "eve/channels/eve";
-import {
-  extractBearerToken,
-  localDev,
-  vercelOidc,
-  withAuthChallenges,
-  type AuthFn,
-} from "eve/channels/auth";
-
-const apiKeyAuth: AuthFn<Request> = withAuthChallenges(
-  (request) => {
-    const expected = process.env.AGENT_API_KEY;
-    const token = extractBearerToken(request.headers.get("authorization"));
-    if (!expected || !token) return null;
-    const a = Buffer.from(token);
-    const b = Buffer.from(expected);
-    if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
-    return {
-      attributes: {},
-      authenticator: "api-key",
-      principalId: "api-client",
-      principalType: "service",
-    };
-  },
-  [{ scheme: "Bearer" }],
-);
-
-export default eveChannel({
-  auth: [
-    apiKeyAuth,
-    vercelOidc(),
-    localDev(),
-  ],
-});
-`}
+        {eveChannelCode}
       </Highlight>
     </div>
     <div className="h-2" />
