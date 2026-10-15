@@ -2,87 +2,85 @@
 
 # تنظیم میرور در سیستم عامل Rocky Linux
 
-لیارا برای سیستم عامل Rocky Linux، میرور زیر را ارائه می‌دهد: 
+
+لیارا برای سیستم عامل Rocky Linux، میرور زیر را ارائه می‌دهد:
+
+
 
 ```bash
 https://linux-mirror.liara.ir/repository/rocky/
 ```
 
-برای تنظیم میرور فوق در سیستم عامل Rocky Linux خود، گام‌های زیر را طی کنید: 
 
-۱. تهیه بکاپ از تنظیمات فعلی  
-قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستورات زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید (در صورت وجود):
+> نسخه‌های پشتیبانی‌شده: `Rocky Linux 9` و `Rocky Linux 10`.
+
+برای تنظیم میرور فوق در سیستم عامل Rocky Linux خود، گام‌های زیر را طی کنید (دستورات را با کاربر root یا با `sudo` اجرا کنید):
+
+۱. تهیه بکاپ از تنظیمات فعلی
+قبل از تنظیم میرورهای لیارا، بهتر است یک بکاپ از تنظیمات فعلی تهیه کنید:
 
 ```bash
 cp /etc/yum.repos.d/rocky.repo /etc/yum.repos.d/rocky.repo.bak
 ```
 
-۲. تنظیم میرور لیارا  
-برای تنظیم میرور لیارا در سیستم عامل راکی لینوکس خود، دستور زیر را اجرا کنید:
+۲. تنظیم میرور لیارا
+برای تنظیم میرور لیارا، دستور زیر را اجرا کنید:
 
 ```bash
 tee /etc/yum.repos.d/rocky.repo <<'EOF'
 [baseos]
 name=Rocky Linux $releasever - BaseOS
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/BaseOS/$basearch/os/
+baseurl=https://linux-mirror.liara.ir/repository/rocky/$releasever/BaseOS/$basearch/os/
 enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-$releasever
 metadata_expire=6h
 
 [appstream]
 name=Rocky Linux $releasever - AppStream
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/AppStream/$basearch/os/
+baseurl=https://linux-mirror.liara.ir/repository/rocky/$releasever/AppStream/$basearch/os/
 enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-$releasever
 metadata_expire=6h
 
 [crb]
 name=Rocky Linux $releasever - CRB
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/CRB/$basearch/os/
+baseurl=https://linux-mirror.liara.ir/repository/rocky/$releasever/CRB/$basearch/os/
 enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-$releasever
 metadata_expire=6h
 EOF
 ```
 
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
+۳. آپدیت سیستم
+اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
 
 ```bash
 dnf clean all && dnf update
 ```
 
-با انجام کارهای فوق، میرور لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج  
-به این میرورها ارسال خواهند شد. 
 
-## غیرفعال کردن میرورهای لیارا
 
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+با انجام کارهای فوق، میرور لیارا در سیستم عامل Rocky Linux شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج به این میرور ارسال می‌شود.
 
-۱. حذف تنظیمات فعلی  
-با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
+## عیب‌یابی
 
-> حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+اگر هنگام اجرای `dnf` خطای `404` می‌گیرید، احتمالاً در آدرس مخزن‌ها از `$contentdir` استفاده شده است. این متغیر در Rocky Linux به `pub/rocky` تبدیل می‌شود و آدرس نهایی نادرست خواهد بود. در فایل `/etc/yum.repos.d/rocky.repo` عبارت `$contentdir/` را از خطوط `baseurl` حذف کنید، یا فایل را با دستور گام ۲ دوباره بنویسید.
 
-```bash
-rm -f /etc/yum.repos.d/rocky.repo
-```
 
-۲. بازگردانی فایل پشتیبان  
-یک کپی فایل پشتیبان با دستور زیر، با نام فایل اصلی، بگیرید:
+
+اگر خطای کلید GPG می‌گیرید (مثلاً در Rocky Linux 10)، مطمئن شوید خط `gpgkey` شما به‌جای شماره‌ی ثابت از `$releasever` استفاده می‌کند، مثل مثال بالا.
+
+## بازگشت به تنظیمات قبلی
+
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
+
 
 ```bash
 cp -f /etc/yum.repos.d/rocky.repo.bak /etc/yum.repos.d/rocky.repo
-```
-
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
-
-```bash
-dnf clean all && dnf makecache && dnf repolist
+dnf clean all && dnf makecache
 ```
 
 ## all links

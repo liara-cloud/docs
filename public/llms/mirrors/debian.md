@@ -1,81 +1,77 @@
 ﻿Original link: https://docs.liara.ir/mirrors/debian/
 
-# تنظیم میرور در سیستم عامل debian
+# تنظیم میرور در سیستم عامل Debian
 
-لیارا برای سیستم عامل debian، میرورهای زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل Debian، میرورهای زیر را ارائه می‌دهد:
 
 ```bash
-https://linux-mirror.liara.ir/repository/debian/
-https://linux-mirror.liara.ir/repository/debian-security/
+http://linux-mirror.liara.ir/repository/debian/
+http://linux-mirror.liara.ir/repository/debian-security/
 ```
 
-برای تنظیم میرورهای فوق در سیستم عامل debian خود، گام‌های زیر را طی کنید: 
+> نسخه‌های پشتیبانی‌شده: `Debian 12 (bookworm)` و `Debian 13 (trixie)`.
 
-۱. تهیه بکاپ از تنظیمات فعلی  
-قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:
+برای تنظیم میرورهای فوق در سیستم عامل Debian خود، گام‌های زیر را طی کنید:
 
-```js
-cp /etc/apt/sources.list /etc/apt/sources.list.bak
+۱. تهیه بکاپ و خالی کردن sources.list  
+قبل از تنظیم میرورهای لیارا، دستور زیر از فایل‌های `sources.list` و `debian.sources` بکاپ می‌گیرد (در پوشه‌ی `/etc/apt/backup`) و سپس محتوای `/etc/apt/sources.list` را پاک می‌کند تا مخازن قدیمی با میرور لیارا تداخل نداشته باشند:
+
+```bash
+sudo mkdir -p /etc/apt/backup
+for f in /etc/apt/sources.list /etc/apt/sources.list.d/debian.sources; do
+  b="/etc/apt/backup/$(basename "$f")"
+  [ -f "$f" ] && [ ! -e "$b" ] && sudo cp "$f" "$b"
+done
+sudo truncate -s 0 /etc/apt/sources.list
 ```
 
 ۲. تنظیم میرور لیارا  
-برای تنظیم میرور لیارا در سیستم عامل دبیان خود، در ابتدا دستور زیر را اجرا کنید:
-
-```js
-nano /etc/apt/sources.list
-```
-
-پس از باز شدن ویرایشگر، مقادیر بعد از `deb` و `deb-src` را تغییر دهید؛ به عنوان مثال:
-
-```js
-deb https://linux-mirror.liara.ir/repository/debian bookworm main non-free-firmware
-deb-src https://linux-mirror.liara.ir/repository/debian bookworm main non-free-firmware
-
-deb https://linux-mirror.liara.ir/repository/debian-security bookworm-security main non-free-firmware
-deb-src https://linux-mirror.liara.ir/repository/debian-security bookworm-security main non-free-firmware
-
-deb https://linux-mirror.liara.ir/repository/debian bookworm-updates main non-free-firmware
-deb-src https://linux-mirror.liara.ir/repository/debian bookworm-updates main non-free-firmware
-```
-
-در نهایت، `CTRL + X` را بزنید و سپس `Y` و بعد از آن، `Enter` را بزنید تا تغییرات، ذخیره شوند.
-
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
-
-```js
-apt update
-```
-
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج  
-به این میرورها ارسال خواهند شد. 
-
-## غیرفعال کردن میرورهای لیارا
-
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-۱. حذف تنظیمات فعلی  
-با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-
-> حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+دستور زیر نام نسخه‌ی سیستم عامل شما (مثل `bookworm`) را خودکار تشخیص می‌دهد و فایل `debian.sources` را با میرورهای لیارا می‌سازد:
 
 ```bash
-rm -f /etc/apt/sources.list
-```
+CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
+sudo tee /etc/apt/sources.list.d/debian.sources <<EOF
+Types: deb deb-src
+URIs: http://linux-mirror.liara.ir/repository/debian
+Suites: $CODENAME $CODENAME-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
-۲. بازگردانی فایل پشتیبان  
-نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:
-
-```bash
-mv /etc/apt/sources.list.bak /etc/apt/sources.list
+Types: deb deb-src
+URIs: http://linux-mirror.liara.ir/repository/debian-security
+Suites: $CODENAME-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
 ```
 
 ۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
+اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
 
 ```bash
-apt update
+sudo apt update
 ```
+
+با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج به این میرورها ارسال خواهند شد.
+
+## بازگشت به تنظیمات قبلی
+
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
+
+```bash
+sudo cp /etc/apt/backup/sources.list /etc/apt/sources.list
+if [ -f /etc/apt/backup/debian.sources ]; then
+  sudo cp /etc/apt/backup/debian.sources /etc/apt/sources.list.d/debian.sources
+else
+  sudo rm -f /etc/apt/sources.list.d/debian.sources
+fi
+sudo apt update
+```
+
+## نکات
+
+- در گام ۱ محتوای `/etc/apt/sources.list` به‌طور کامل پاک می‌شود. اگر مخازن دیگری (غیر از Debian) در این فایل اضافه کرده بودید، آن‌ها را از فایل بکاپ به یک فایل جدید در `/etc/apt/sources.list.d/` منتقل کنید.
+- بکاپ‌ها فقط در اولین اجرا ساخته می‌شوند. اگر دستور گام ۱ را دوباره اجرا کنید، بکاپ اصلی بازنویسی نمی‌شود.
 
 ## all links
 

@@ -13,9 +13,9 @@
 pip install boto3
 ```
 
-پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.  
+پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.
 اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**،  
-برای شما قرار گرفته است.  
+برای شما قرار گرفته است.
 در نهایت نیز، بایستی  
 اطلاعات مربوط به Object Storage خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
@@ -27,8 +27,8 @@ LIARA_SECRET_KEY=20b71a4c-1168-4945-8ed3-4724dbf9e997
 BUCKET_NAME=my-bucket
 ```
 
-تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛  
-در ادامه، مثالی از نحوه استفاده برای‌تان آورده شده است: 
+تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛
+در ادامه، مثالی از نحوه استفاده برای‌تان آورده شده است:  
 
 ## پیکربندی اولیه و اتصال به باکت در برنامه
 
@@ -93,6 +93,39 @@ def generate_presigned_url(bucket_name, file_name, expiration=3600):
         flash(f"Error generating pre-signed URL: {e}", "error")
         return None
 ```
+
+## نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی
+
+اگر طبق [مستندات اتصال دامنه](https://docs.liara.ir/object-storage/add-domain)، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند `bucket-name.storage.c2.liara.site`) و نه در مسیر لینک. کلاینت boto3 هنگام استفاده از `endpoint_url` به‌صورت پیش‌فرض لینک را به‌صورت path-style می‌سازد؛ به همین دلیل، در قطعه کد زیر یک کلاینت با `addressing_style` برابر با `virtual` برای ساخت لینک ایجاد شده است:
+
+```py
+import boto3
+from botocore.config import Config
+from urllib.parse import urlsplit, urlunsplit
+
+CUSTOM_DOMAIN = "example.com"  # change this to your custom domain
+
+presign_client = boto3.client(
+    "s3",
+    endpoint_url=LIARA_ENDPOINT_URL,
+    aws_access_key_id=LIARA_ACCESS_KEY,
+    aws_secret_access_key=LIARA_SECRET_KEY,
+    config=Config(signature_version="s3v4", s3={"addressing_style": "virtual"}),
+)
+
+def generate_custom_domain_url(bucket_name, file_name, expiration=3600):
+    signed = presign_client.generate_presigned_url(
+        "get_object",
+        Params={"Bucket": bucket_name, "Key": file_name},
+        ExpiresIn=expiration,
+    )
+    parts = urlsplit(signed)
+    return urlunsplit(parts._replace(netloc=CUSTOM_DOMAIN))
+```
+
+> فقط مقدار `host` را تغییر دهید و پارامترهای `*-X-Amz` موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
 
 ## حذف فایل
 

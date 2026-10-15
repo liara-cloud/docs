@@ -286,6 +286,65 @@ func TemporaryLinkHandler(client *s3.Client, bucket string) http.HandlerFunc {
     </Highlight>
 </div>
 
+<Section id="link-download-file-custom-domain" title="نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی" />
+
+اگر طبق <a href="/object-storage/add-domain" className="text-[#2196f3] ">مستندات اتصال دامنه</a>، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+<div className="h-2" />
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند <Important>bucket-name.storage.c2.liara.site</Important>) و نه در مسیر لینک. کلاینت S3 در این مستندات با <Important>UsePathStyle = true</Important> ساخته شده است؛ به همین دلیل، در قطعه کد زیر این گزینه فقط برای ساخت لینک موقت غیرفعال شده و نیازی به ساخت کلاینت جداگانه نیست:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="go">
+        {`// handlers/custom_domain_link.go
+package handlers
+
+import (
+	"context"
+	"net/url"
+	"time"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+)
+
+func GetCustomDomainTemporaryLink(client *s3.Client, bucket, key, domain string, duration time.Duration) (string, error) {
+	// disable path-style only for this presign client, so the bucket name is placed in the host
+	presignClient := s3.NewPresignClient(client, func(po *s3.PresignOptions) {
+		po.ClientOptions = append(po.ClientOptions, func(o *s3.Options) {
+			o.UsePathStyle = false
+		})
+	})
+
+	presignedReq, err := presignClient.PresignGetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	}, func(opts *s3.PresignOptions) {
+		opts.Expires = duration
+	})
+	if err != nil {
+		return "", err
+	}
+
+	u, err := url.Parse(presignedReq.URL)
+	if err != nil {
+		return "", err
+	}
+	u.Host = domain // for example: "example.com"
+
+	return u.String(), nil
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="warning">
+<p>
+فقط مقدار <Important>host</Important> را تغییر دهید و پارامترهای <Important>*-X-Amz</Important> موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
+</p>
+</Alert>
+
 <Section id="download-file" title="دانلود فایل" />
 <div className="h-2" />
 <div dir='ltr'>

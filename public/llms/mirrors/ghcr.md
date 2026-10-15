@@ -1,72 +1,38 @@
 ﻿Original link: https://docs.liara.ir/mirrors/ghcr/
 
-# تنظیم میرورهای Github Container Registry
+# تنظیم میرور GitHub Container Registry (ghcr)
 
-لیارا میرور ghcr را در آدرس زیر، ارائه می‌دهد:
-
-```bash
-https://ghcr-mirror.liara.ir
-```
-
-برای تنظیم میرور فوق کافیست تا گام‌های زیر را طی کنید: 
-
-> در نظر داشته باشید که گام‌های زیر، برای داکر نسخه `25` و بالاتر از آن، مناسب است.
-
-۱. تهیه بکاپ از تنظیمات فعلی  
-قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:
+لیارا میرور ghcr را در آدرس زیر ارائه می‌دهد:
 
 ```bash
-cp /etc/docker/daemon.json /etc/docker/daemon.json.bak
+ghcr-mirror.liara.ir
 ```
 
-۲. تنظیم میرور لیارا  
-برای تنظیم میرور لیارا، دستور زیر را اجرا کنید:
+## نحوه‌ی استفاده
+
+برای دانلود ایمیج کافیست در آدرس ایمیج، `ghcr.io` را با `ghcr-mirror.liara.ir` جایگزین کنید.
+
+مثلاً به‌جای:
 
 ```bash
-echo '{
-  "registry-mirrors": [
-    "https://ghcr-mirror.liara.ir"
-  ]
-}' > /etc/docker/daemon.json
+docker pull ghcr.io/google/cadvisor:v0.60.6
 ```
 
-۳. ری‌استارت برنامه و فایل‌های کانفیگ  
-اکنون کافیست تا دستورات زیر را اجرا کنید تا از میرور لیارا، استفاده شود:
+بزنید:
 
 ```bash
-systemctl daemon-reload
-systemctl restart docker
+docker pull ghcr-mirror.liara.ir/google/cadvisor:v0.60.6
 ```
 
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد.  
+این روش در `docker-compose.yml` و Dockerfile هم کار می‌کند:
 
-## غیرفعال کردن میرورهای لیارا
-
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید:  
-
-۱. حذف تنظیمات فعلی  
-با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-
-> حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-
-```bash
-rm -f /etc/docker/daemon.json
+```yaml
+services:
+  cadvisor:
+    image: ghcr-mirror.liara.ir/google/cadvisor:v0.60.6
 ```
 
-۲. بازگردانی فایل پشتیبان  
-نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:
-
-```bash
-mv /etc/docker/daemon.json.bak /etc/docker/daemon.json
-```
-
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست رجیستری‌ها به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
-
-```bash
-systemctl daemon-reload && systemctl restart docker
-```
+> تنظیم `registry-mirrors` در `daemon.json` برای ghcr کار نمی‌کند (داکر میرور را فقط برای Docker Hub در نظر می‌گیرد)؛ بنابراین باید آدرس ایمیج را مستقیماً تغییر دهید.
 
 ## all links
 

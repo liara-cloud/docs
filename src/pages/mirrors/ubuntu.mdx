@@ -12,7 +12,7 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import HighlightTabs from "@/components/Common/HighlightTabs";
 import IconContainer from "@/components/Common/IconContainer";
-import {  
+import {
   GoContainer,
   GoDatabase,
   GoRocket,
@@ -27,40 +27,59 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم میرور در سیستم عامل ubuntu - لیارا</title>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل Ubuntu - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
-<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل اوبونتو "  />
+<meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل اوبونتو"  />
 </Head>
 
 
-# تنظیم میرور در سیستم عامل ubuntu
+# تنظیم میرور در سیستم عامل Ubuntu
 <hr className="mb-2" />
 
-لیارا برای سیستم عامل ubuntu، میرورهای زیر را ارائه می‌دهد: 
+<Section id="what-is-ubuntu-mirror" title="سرویس میرور Ubuntu لیارا چیست؟" />
+
+میرور Ubuntu لیارا یک نسخه‌ی کامل و به‌روز از مخازن رسمی Ubuntu و همچنین بخش‌های امنیتی آن شامل Ubuntu Security Team است.
+
+<div className="h-2" />
+
+این سرویس با هدف افزایش سرعت، پایداری و دسترس‌پذیری پکیج‌ها و آپدیت‌های امنیتی طراحی شده و نسخه‌های مختلف مخازن اصلی و مخزن امنیتی را با سرعت بسیار بالا ارائه می‌دهد.
+
+<div className="h-2" />
+
+در این ساختار، درخواست‌های apt ابتدا به سرورهای داخلی لیارا ارسال شده و بسته‌ی مورد نظر از کش داخلی بازیابی می‌شود. با این رویکرد، دریافت آپدیت‌ها و پکیج‌ها بدون مواجهه با محدودیت‌های خارجی، تحریم‌ها یا قطع و وصل اینترنت بین‌الملل انجام می‌شود.
+
+<Section id="setup" title="تنظیم میرور در سیستم عامل Ubuntu" />
+
+لیارا برای سیستم عامل Ubuntu، میرورهای زیر را ارائه می‌دهد:
 
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`https://linux-mirror.liara.ir/repository/ubuntu/
-https://linux-mirror.liara.ir/repository/ubuntu-security/`}
+        {`http://linux-mirror.liara.ir/repository/ubuntu/
+http://linux-mirror.liara.ir/repository/ubuntu-security/`}
     </Highlight>
-</div> 
+</div>
 <div className="h-2" />
 
-برای تنظیم میرورهای فوق در سیستم عامل ubuntu خود، گام‌های زیر را طی کنید: 
+برای تنظیم میرورهای فوق در سیستم عامل Ubuntu خود، گام‌های زیر را طی کنید:
 
 <Step  steps={[
     {
         step: "۱",
             content: (
                 <>
-                    <h3>تهیه بکاپ از تنظیمات فعلی</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
+                    <h3>تهیه بکاپ و خالی کردن sources.list</h3>
+                    <p>قبل از تنظیم میرورهای لیارا، دستور زیر از فایل‌های <Important>sources.list</Important> و <Important>ubuntu.sources</Important> بکاپ می‌گیرد (در پوشه‌ی <Important>/etc/apt/backup</Important>) و سپس محتوای <Important>/etc/apt/sources.list</Important> را پاک می‌کند تا مخازن قدیمی با میرور لیارا تداخل نداشته باشند:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak`}
+                            {`sudo mkdir -p /etc/apt/backup
+for f in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+  b="/etc/apt/backup/$(basename "$f")"
+  [ -f "$f" ] && [ ! -e "$b" ] && sudo cp "$f" "$b"
+done
+sudo truncate -s 0 /etc/apt/sources.list`}
                         </Highlight>
                     </div>
                 </>
@@ -71,33 +90,26 @@ https://linux-mirror.liara.ir/repository/ubuntu-security/`}
             content: (
                 <>
                     <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، در ابتدا دستور زیر را اجرا کنید:</p>
+                    <p>دستور زیر نام نسخه‌ی سیستم عامل شما (مثل <Important>noble</Important>) را خودکار تشخیص می‌دهد و فایل <Important>ubuntu.sources</Important> را با میرورهای لیارا می‌سازد:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`nano /etc/apt/sources.list.d/ubuntu.sources`}
-                        </Highlight>
-                    </div>
-                    <div className="h-2" />
-                    <p>پس از باز شدن ویرایشگر، مقادیر <Important>URIs</Important> را تغییر دهید؛ به عنوان مثال:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu
-Suites: noble noble-updates noble-backports
+                            {`CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
+sudo tee /etc/apt/sources.list.d/ubuntu.sources <<EOF
+Types: deb
+URIs: http://linux-mirror.liara.ir/repository/ubuntu
+Suites: $CODENAME $CODENAME-updates $CODENAME-backports
 Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 
 Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu-security
-Suites: noble-security
+URIs: http://linux-mirror.liara.ir/repository/ubuntu-security
+Suites: $CODENAME-security
 Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+EOF`}
                         </Highlight>
                     </div>
-                    <div className="h-2" />   
-                    <p>در نهایت، <Important>CTRL + X</Important> را بزنید و سپس <Important>Y</Important> و بعد از آن، <Important>Enter</Important> را بزنید تا تغییرات، ذخیره شوند.</p>                 
                 </>
             )
     },
@@ -106,11 +118,11 @@ Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
             content: (
                 <>
                     <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود: </p>
+                    <p>اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`apt update`}
+                            {`sudo apt update`}
                         </Highlight>
                     </div>
                 </>
@@ -121,70 +133,28 @@ Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg`}
 
 <div className="h-4" />
 
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد. 
+با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج به این میرورها ارسال خواهند شد.
 
+<Section id='unset-mirrors' title='بازگشت به تنظیمات قبلی' />
 
-<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
 
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo cp /etc/apt/backup/sources.list /etc/apt/sources.list
+sudo cp /etc/apt/backup/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources
+sudo apt update`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
-<Step  steps={[
-    {
-        step: "۱",
-            content: (
-                <>
-                    <h3>حذف تنظیمات فعلی</h3>
-                    <p>
-                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-                    </p>
-                    <div className="h-2" />
-                        <Alert variant="error">
-                            <p>
-                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-                            </p>
-                        </Alert>
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`rm -f /etc/apt/sources.list.d/ubuntu.sources`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>بازگردانی فایل پشتیبان</h3>
-                    <p>نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`mv /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۳",
-            content: (
-                <>
-                    <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`apt update`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    }
-]}
-/>
+<Section id='notes' title='نکات' />
 
+<ul>
+<li>در گام ۱ محتوای <Important>/etc/apt/sources.list</Important> به‌طور کامل پاک می‌شود. اگر مخازن دیگری (غیر از Ubuntu) در این فایل اضافه کرده بودید، آن‌ها را از فایل بکاپ به یک فایل جدید در <Important>/etc/apt/sources.list.d/</Important> منتقل کنید.</li>
+<li>بکاپ‌ها فقط در اولین اجرا ساخته می‌شوند. اگر دستور گام ۱ را دوباره اجرا کنید، بکاپ اصلی بازنویسی نمی‌شود.</li>
+</ul>
 
 
 </Layout>

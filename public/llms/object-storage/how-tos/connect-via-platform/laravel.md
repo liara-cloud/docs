@@ -44,7 +44,6 @@ AWS_ENDPOINT=https://storage.c2.liara.site
             'throw' => false,
             'report' => false,
         ],
-
 ```
 
 تمامی کارها انجام شده است و می‌توانید از Object Storage در برنامه خود، استفاده کنید؛  
@@ -166,7 +165,6 @@ class DeleteController extends Controller
         return redirect()->route('s3.index')->with('success', 'File deleted successfully.');
     }
 }
-
 ```
 
 ## نمونه کد برای ایجاد لینک موقت برای فایل‌ها
@@ -194,7 +192,6 @@ class PresignedController extends Controller
         return response()->json(['url' => $url]);
     }
 }
-
 ```
 
 برای استفاده از کنترلرها، بایستی قطعه کد زیر را، به فایل `web.php` در مسیر `routes` اضافه کنید:
@@ -290,7 +287,43 @@ Route::prefix('s3-storage')->group(function () {
 </html>
 ```
 
-می‌توانید پس از اجرای برنامه، در مسیر `s3-storage/` از فضای ذخیره‌سازی ابری لیارا استفاده کنید.
+می‌توانید پس از اجرای برنامه، در مسیر `s3-storage/` از فضای ذخیره‌سازی ابری لیارا استفاده کنید. 
+
+## نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی
+
+اگر طبق [مستندات اتصال دامنه](https://docs.liara.ir/object-storage/add-domain)، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند `bucket-name.storage.c2.liara.site`) و نه در مسیر لینک. دیسک `s3` در این مستندات با `AWS_USE_PATH_STYLE_ENDPOINT=true` تنظیم شده است؛ به همین دلیل، یک دیسک جداگانه با `use_path_style_endpoint` برابر با `false` در فایل `config/filesystems.php` تعریف کنید. گزینه‌ی `temporary_url` باعث می‌شود Laravel مقدار Host لینک موقت را به‌صورت خودکار به دامنه اختصاصی شما تغییر دهد:
+
+```php
+// config/filesystems.php
+'s3-custom-domain' => [
+    'driver' => 's3',
+    'key' => env('AWS_ACCESS_KEY_ID'),
+    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+    'region' => env('AWS_DEFAULT_REGION'),
+    'bucket' => env('AWS_BUCKET'),
+    'endpoint' => env('AWS_ENDPOINT'),
+    'use_path_style_endpoint' => false,
+    'temporary_url' => env('AWS_TEMPORARY_URL'),
+    'throw' => false,
+    'report' => false,
+],
+```
+
+سپس، دامنه اختصاصی خود را به فایل `.env` اضافه کنید:
+
+```bash
+AWS_TEMPORARY_URL=https://example.com
+```
+
+در نهایت، برای ساخت لینک موقت با دامنه اختصاصی، از این دیسک استفاده کنید:
+
+```laravel
+$url = Storage::disk('s3-custom-domain')->temporaryUrl($file, now()->addHours(1));
+```
+
+> فقط مقدار `host` را تغییر دهید و پارامترهای `*-X-Amz` موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
 
 ## all links
 

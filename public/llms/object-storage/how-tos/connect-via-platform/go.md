@@ -16,7 +16,7 @@ go get github.com/aws/aws-sdk-go-v2/service/s3
 go get github.com/joho/godotenv
 ```
 
-پس از آن، کافیست تا طبق [https://docs.liara.ir/object-storage/how-tos/create-key](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.
+پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.
 اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**، 
 برای شما قرار گرفته است.
 در نهایت نیز، بایستی 
@@ -95,7 +95,6 @@ func LoadS3Config() (*S3Config, error) {
 		Endpoint: endpoint,
 	}, nil
 }
-
 ```
 
 ## آپلود کردن فایل
@@ -156,7 +155,6 @@ func UploadHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		fmt.Fprintf(w, "File uploaded successfully: %s", filename)
 	}
 }
-
 ```
 
 ## دریافت لینک دائمی یا موقت
@@ -236,8 +234,56 @@ func TemporaryLinkHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		fmt.Fprint(w, link)
 	}
 }
-
 ```
+
+## نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی
+
+اگر طبق [مستندات اتصال دامنه](https://docs.liara.ir/object-storage/add-domain)، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند `bucket-name.storage.c2.liara.site`) و نه در مسیر لینک. کلاینت S3 در این مستندات با `UsePathStyle = true` ساخته شده است؛ به همین دلیل، در قطعه کد زیر این گزینه فقط برای ساخت لینک موقت غیرفعال شده و نیازی به ساخت کلاینت جداگانه نیست:
+
+```go
+// handlers/custom_domain_link.go
+package handlers
+
+import (
+	"context"
+	"net/url"
+	"time"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+)
+
+func GetCustomDomainTemporaryLink(client *s3.Client, bucket, key, domain string, duration time.Duration) (string, error) {
+	// disable path-style only for this presign client, so the bucket name is placed in the host
+	presignClient := s3.NewPresignClient(client, func(po *s3.PresignOptions) {
+		po.ClientOptions = append(po.ClientOptions, func(o *s3.Options) {
+			o.UsePathStyle = false
+		})
+	})
+
+	presignedReq, err := presignClient.PresignGetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	}, func(opts *s3.PresignOptions) {
+		opts.Expires = duration
+	})
+	if err != nil {
+		return "", err
+	}
+
+	u, err := url.Parse(presignedReq.URL)
+	if err != nil {
+		return "", err
+	}
+	u.Host = domain // for example: "example.com"
+
+	return u.String(), nil
+}
+```
+
+> فقط مقدار `host` را تغییر دهید و پارامترهای `*-X-Amz` موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
 
 ## دانلود فایل
 
@@ -292,7 +338,6 @@ func DownloadHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		}
 	}
 }
-
 ```
 
 ## حذف فایل
@@ -341,7 +386,6 @@ func DeleteHandler(client *s3.Client, bucket string) http.HandlerFunc {
 		fmt.Fprintf(w, "File deleted successfully: %s", key)
 	}
 }
-
 ```
 
 ## لیست‌کردن فایل‌ها
@@ -409,7 +453,6 @@ func ListObjectsV2(client *s3.Client, bucket string) ([]types.Object, error) {
 
 	return resp.Contents, nil
 }
-
 ```
 
 ## تجمیع قابلیت‌ها

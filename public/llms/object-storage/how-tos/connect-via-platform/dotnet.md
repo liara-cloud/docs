@@ -100,6 +100,53 @@ private async Task<string> GeneratePresignedUrlAsync(string fileName)
 }
 ```
 
+## نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی
+
+اگر طبق [مستندات اتصال دامنه](https://docs.liara.ir/object-storage/add-domain)، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند `bucket-name.storage.c2.liara.site`) و نه در مسیر لینک. کلاینت S3 در این مستندات با `ForcePathStyle = true` ساخته شده است؛ به همین دلیل، در قطعه کد زیر یک کلاینت جداگانه با `ForcePathStyle = false` برای ساخت لینک ایجاد شده است:
+
+```dotnet
+using Amazon;
+using Amazon.Runtime;
+using Amazon.S3;
+using Amazon.S3.Model;
+
+private static string GenerateCustomDomainPresignedUrl(IConfiguration configuration, string fileName)
+{
+    const string customDomain = "example.com"; // change this to your custom domain
+
+    var config = new AmazonS3Config
+    {
+        ServiceURL = configuration["LIARA_ENDPOINT_URL"],
+        ForcePathStyle = false // the bucket name is placed in the host
+    };
+    var credentials = new BasicAWSCredentials(
+        configuration["LIARA_ACCESS_KEY"],
+        configuration["LIARA_SECRET_KEY"]
+    );
+
+    using var client = new AmazonS3Client(credentials, config);
+
+    var request = new GetPreSignedUrlRequest
+    {
+        BucketName = configuration["BUCKET_NAME"],
+        Key = fileName,
+        Expires = System.DateTime.UtcNow.AddHours(1), // URL valid for 1 hour
+        Protocol = Protocol.HTTPS
+    };
+
+    var builder = new UriBuilder(client.GetPreSignedURL(request))
+    {
+        Host = customDomain
+    };
+
+    return builder.Uri.AbsoluteUri;
+}
+```
+
+> فقط مقدار `host` را تغییر دهید و پارامترهای `*-X-Amz` موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
+
 ## نمونه کد دریافت لینک دائم فایل
 
 ```dotnet

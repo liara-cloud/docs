@@ -70,6 +70,8 @@ def get_s3_client():
     )
 ```
 
+اکنون، می‌توانید در فایل `views.py`، بنا به نیاز خود، قطعه کدهای زیر را، به قطعه کد فعلی، اضافه کنید.
+
 ## نمونه کد آپلود فایل
 
 ```py
@@ -135,6 +137,47 @@ def generate_presigned_url(request):
         return JsonResponse({'error': str(e)}, status=500)
 ```
 
+## نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی
+
+اگر طبق [https://docs.liara.ir/object-storage/add-domain](https://docs.liara.ir/object-storage/add-domain)، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند `bucket-name.storage.c2.liara.site`) و نه در مسیر لینک. کلاینت boto3 هنگام استفاده از `endpoint_url` به‌صورت پیش‌فرض لینک را به‌صورت path-style می‌سازد؛ به همین دلیل، در قطعه کد زیر یک کلاینت با `addressing_style` برابر با `virtual` برای ساخت لینک ایجاد شده است:
+
+```py
+import boto3
+from botocore.config import Config
+from urllib.parse import urlsplit, urlunsplit
+
+CUSTOM_DOMAIN = "example.com"  # change this to your custom domain
+
+presign_client = boto3.client(
+    "s3",
+    endpoint_url=settings.AWS_S3_ENDPOINT_URL,
+    aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+    config=Config(signature_version="s3v4", s3={"addressing_style": "virtual"}),
+)
+
+def generate_custom_domain_url(request):
+    file_name = request.GET.get('file_name')
+    if not file_name:
+        return JsonResponse({'error': 'File name is required'}, status=400)
+    try:
+        signed = presign_client.generate_presigned_url(
+            'get_object',
+            Params={'Bucket': settings.AWS_STORAGE_BUCKET_NAME, 'Key': file_name},
+            ExpiresIn=3600  # URL valid for 1 hour
+        )
+        parts = urlsplit(signed)
+        return JsonResponse({'url': urlunsplit(parts._replace(netloc=CUSTOM_DOMAIN))})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+```
+
+برای استفاده از این تابع، کافیست مانند تابع `generate_presigned_url`، یک مسیر برای آن در `urls.py` تعریف کنید.
+
+> فقط مقدار `host` را تغییر دهید و پارامترهای `*-X-Amz` موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
+
 ## نمونه کد برای مدیریت فایل‌ها
 
 ```py
@@ -191,14 +234,14 @@ urlpatterns = [
                 $.get('/api/files/list/', function (data) {
                     $('#fileList').empty();
                     data.files.forEach(function (file) {
-                        const listItem = \`
+                        const listItem = `
                             <li>
-                                \${file}
-                                <button class="delete-btn" data-file="\${file}">Delete</button>
-                                <button class="presigned-btn" data-file="\${file}">Pre-Signed URL</button>
-                                [Permanent URL](\${generatePermanentUrl(file)})
+                                ${file}
+                                <button class="delete-btn" data-file="${file}">Delete</button>
+                                <button class="presigned-btn" data-file="${file}">Pre-Signed URL</button>
+                                [Permanent URL](${generatePermanentUrl(file)})
                             </li>
-                        \`;
+                        `;
                         $('#fileList').append(listItem);
                     });
                 });
@@ -208,7 +251,7 @@ urlpatterns = [
             function generatePermanentUrl(fileName) {
                 const bucketName = "{{ AWS_STORAGE_BUCKET_NAME }}";
                 const endpointUrl = "{{ AWS_S3_ENDPOINT_URL }}";
-                return \`\${endpointUrl}/\${bucketName}/\${fileName}\`;
+                return `${endpointUrl}/${bucketName}/${fileName}`;
             }
 
             // Upload file

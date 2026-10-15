@@ -1,84 +1,93 @@
 ﻿Original link: https://docs.liara.ir/mirrors/ubuntu/
 
-# تنظیم میرور در سیستم عامل ubuntu
+# تنظیم میرور در سیستم عامل Ubuntu
 
-لیارا برای سیستم عامل ubuntu، میرورهای زیر را ارائه می‌دهد: 
+
+## سرویس میرور Ubuntu لیارا چیست؟
+
+میرور Ubuntu لیارا یک نسخه‌ی کامل و به‌روز از مخازن رسمی Ubuntu و همچنین بخش‌های امنیتی آن شامل Ubuntu Security Team است.
+
+
+
+این سرویس با هدف افزایش سرعت، پایداری و دسترس‌پذیری پکیج‌ها و آپدیت‌های امنیتی طراحی شده و نسخه‌های مختلف مخازن اصلی و مخزن امنیتی را با سرعت بسیار بالا ارائه می‌دهد.
+
+
+
+در این ساختار، درخواست‌های apt ابتدا به سرورهای داخلی لیارا ارسال شده و بسته‌ی مورد نظر از کش داخلی بازیابی می‌شود. با این رویکرد، دریافت آپدیت‌ها و پکیج‌ها بدون مواجهه با محدودیت‌های خارجی، تحریم‌ها یا قطع و وصل اینترنت بین‌الملل انجام می‌شود.
+
+## تنظیم میرور در سیستم عامل Ubuntu
+
+لیارا برای سیستم عامل Ubuntu، میرورهای زیر را ارائه می‌دهد:
+
+
 
 ```bash
-https://linux-mirror.liara.ir/repository/ubuntu/
-https://linux-mirror.liara.ir/repository/ubuntu-security/
+http://linux-mirror.liara.ir/repository/ubuntu/
+http://linux-mirror.liara.ir/repository/ubuntu-security/
 ```
 
-برای تنظیم میرورهای فوق در سیستم عامل ubuntu خود، گام‌های زیر را طی کنید: 
 
-۱. تهیه بکاپ از تنظیمات فعلی  
-قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:
+برای تنظیم میرورهای فوق در سیستم عامل Ubuntu خود، گام‌های زیر را طی کنید:
+
+۱. تهیه بکاپ و خالی کردن sources.list  
+قبل از تنظیم میرورهای لیارا، دستور زیر از فایل‌های `sources.list` و `ubuntu.sources` بکاپ می‌گیرد (در پوشه‌ی `/etc/apt/backup`) و سپس محتوای `/etc/apt/sources.list` را پاک می‌کند تا مخازن قدیمی با میرور لیارا تداخل نداشته باشند:
 
 ```bash
-cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
+sudo mkdir -p /etc/apt/backup
+for f in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+  b="/etc/apt/backup/$(basename "$f")"
+  [ -f "$f" ] && [ ! -e "$b" ] && sudo cp "$f" "$b"
+done
+sudo truncate -s 0 /etc/apt/sources.list
 ```
 
 ۲. تنظیم میرور لیارا  
-برای تنظیم میرور لیارا در سیستم عامل اوبونتو خود، در ابتدا دستور زیر را اجرا کنید:
+دستور زیر نام نسخه‌ی سیستم عامل شما (مثل `noble`) را خودکار تشخیص می‌دهد و فایل `ubuntu.sources` را با میرورهای لیارا می‌سازد:
 
 ```bash
-nano /etc/apt/sources.list.d/ubuntu.sources
-```
-
-پس از باز شدن ویرایشگر، مقادیر `URIs` را تغییر دهید؛ به عنوان مثال:
-
-```bash
+CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
+sudo tee /etc/apt/sources.list.d/ubuntu.sources <<EOF
 Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu
-Suites: noble noble-updates noble-backports
+URIs: http://linux-mirror.liara.ir/repository/ubuntu
+Suites: $CODENAME $CODENAME-updates $CODENAME-backports
 Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 
 Types: deb
-URIs: https://linux-mirror.liara.ir/repository/ubuntu-security
-Suites: noble-security
+URIs: http://linux-mirror.liara.ir/repository/ubuntu-security
+Suites: $CODENAME-security
 Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-```
-
-در نهایت، `CTRL + X` را بزنید و سپس `Y` و بعد از آن، `Enter` را بزنید تا تغییرات، ذخیره شوند.
-
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
-
-```bash
-apt update
-```
-
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج  
-به این میرورها ارسال خواهند شد. 
-
-## غیرفعال کردن میرورهای لیارا
-
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-۱. حذف تنظیمات فعلی  
-با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-
-> حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-
-```bash
-rm -f /etc/apt/sources.list.d/ubuntu.sources
-```
-
-۲. بازگردانی فایل پشتیبان  
-نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:
-
-```bash
-mv /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources
+EOF
 ```
 
 ۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
+اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
 
 ```bash
-apt update
+sudo apt update
 ```
+
+
+
+با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج به این میرورها ارسال خواهند شد.
+
+## بازگشت به تنظیمات قبلی
+
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
+
+
+```bash
+sudo cp /etc/apt/backup/sources.list /etc/apt/sources.list
+sudo cp /etc/apt/backup/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources
+sudo apt update
+```
+
+
+## نکات
+
+- در گام ۱ محتوای `/etc/apt/sources.list` به‌طور کامل پاک می‌شود. اگر مخازن دیگری (غیر از Ubuntu) در این فایل اضافه کرده بودید، آن‌ها را از فایل بکاپ به یک فایل جدید در `/etc/apt/sources.list.d/` منتقل کنید.
+- بکاپ‌ها فقط در اولین اجرا ساخته می‌شوند. اگر دستور گام ۱ را دوباره اجرا کنید، بکاپ اصلی بازنویسی نمی‌شود.
 
 ## all links
 

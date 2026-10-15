@@ -4394,6 +4394,10 @@ export default {
         link: "/iaas/ubuntu/how-tos/set-dns"
       },
       {
+        title: "نصب Docker",
+        link: "/iaas/ubuntu/how-tos/install-docker"
+      },
+      {
         hr: true
       },
       {
@@ -4802,6 +4806,10 @@ export default {
       {
         title: "تنظیم DNS",
         link: "/iaas/debian/how-tos/set-dns"
+      },
+      {
+        title: "نصب Docker",
+        link: "/iaas/debian/how-tos/install-docker"
       },
       // {
       //   hr: true

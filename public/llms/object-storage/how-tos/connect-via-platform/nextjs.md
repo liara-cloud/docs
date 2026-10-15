@@ -2,12 +2,15 @@
 
 # اتصال به فضای ذخیره‌سازی ابری در برنامه‌های NextJS
 
+
 برای استفاده از Object Storage در برنامه‌های NextJS، می‌توانید از  
 پکیج‌های `aws-sdk` استفاده کنید که بایستی با دستور زیر، آن‌ها را در پروژه خود، نصب کنید:
+
 
 ```bash
 npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
 ```
+
 
 پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.  
 اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**،  
@@ -15,6 +18,7 @@ npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
 در نهایت نیز، بایستی  
 اطلاعات مربوط به Object Storage خود را  
 به متغیرهای محیطی برنامه خود، اضافه کنید؛ به عنوان مثال:
+
 
 ```bash
 LIARA_ENDPOINT=https://storage.c2.liara.site
@@ -24,7 +28,9 @@ LIARA_SECRET_KEY=df67ef3e-ccb6-4a25-97ba-3526f33da3fc
 
 ```
 
+
 سپس، می‌توانید در مسیر اصلی پروژه (ریشه پروژه یا اگر که از  دایرکتوری `src` استفاده می‌کنید در داخل این دایرکتوری)، یک فایل جدید به نام `lib/s3.ts` بسازید و کد زیر را در آن قرار دهید:
+
 
 ```ts
 // src/lib/s3.ts or /lib/s3.ts
@@ -39,9 +45,12 @@ export const s3 = new S3Client({
   },
   forcePathStyle: true,
 });
+
 ```
 
+
 تمامی کارها انجام شده است و اکنون، می‌توانید APIهای مربوط به S3 را در پروژه خود، استفاده کنید. برای استفاده از APIهای مختلف S3، بایستی ساختار پروژه مانند شکل زیر باشد:
+
 
 ```bash
 app/api/storage/ 
@@ -51,7 +60,9 @@ app/api/storage/
 ├── presigned/route.ts         
 ├── delete/route.ts            
 ├── list-buckets/route.ts      
+
 ```
+
 
 ## نمونه کد آپلود فایل
 
@@ -77,7 +88,9 @@ export async function POST(req: Request) {
 
   return Response.json({ message: "File uploaded" });
 }
+
 ```
+
 
 ## نمونه کد دریافت لینک موقت فایل
 
@@ -99,7 +112,59 @@ export async function POST(req: Request) {
 
   return Response.json({ url });
 }
+
 ```
+
+
+## نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی
+
+اگر طبق [مستندات اتصال دامنه](https://docs.liara.ir/object-storage/add-domain)، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند `bucket-name.storage.c2.liara.site`) و نه در مسیر لینک. کلاینت `s3` در این مستندات با `forcePathStyle: true` ساخته شده است و لینک را به‌صورت path-style تولید می‌کند؛ به همین دلیل، در قطعه کد زیر یک کلاینت جداگانه بدون `forcePathStyle` برای ساخت لینک ایجاد شده است:
+
+
+```ts
+// src/app/api/storage/presigned-custom-domain/route.ts or /app/api/storage/presigned-custom-domain/route.ts
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const CUSTOM_DOMAIN = "example.com"; // change this to your custom domain
+
+// without forcePathStyle, so the bucket name is placed in the host
+const presignClient = new S3Client({
+  region: "default",
+  endpoint: process.env.LIARA_ENDPOINT,
+  requestChecksumCalculation: "WHEN_REQUIRED",
+  responseChecksumValidation: "WHEN_REQUIRED",
+  credentials: {
+    accessKeyId: process.env.LIARA_ACCESS_KEY!,
+    secretAccessKey: process.env.LIARA_SECRET_KEY!,
+  },
+});
+
+export async function POST(req: Request) {
+  const { key } = await req.json();
+
+  const signed = await getSignedUrl(
+    presignClient,
+    new GetObjectCommand({
+      Bucket: process.env.LIARA_BUCKET_NAME,
+      Key: key,
+    }),
+    { expiresIn: 3600 }
+  );
+
+  const url = new URL(signed);
+  url.host = CUSTOM_DOMAIN;
+
+  return Response.json({ url: url.toString() });
+}
+```
+
+
+> فقط مقدار `host` را تغییر دهید و پارامترهای `*-X-Amz` موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
+
 
 ## نمونه کد لیست کردن فایل‌های داخل باکت
 
@@ -116,7 +181,9 @@ export async function GET() {
   const data = await s3.send(command);
   return Response.json({ files: data.Contents });
 }
+
 ```
+
 
 ## نمونه کد لیست کردن باکت‌ها
 
@@ -130,7 +197,9 @@ export async function GET() {
   const data = await s3.send(command);
   return Response.json({ buckets: data.Buckets });
 }
+
 ```
+
 
 ## نمونه کد حذف فایل
 
@@ -151,23 +220,30 @@ export async function DELETE(req: Request) {
 
   return Response.json({ message: "File deleted" });
 }
+
 ```
+
 
 ## ایجاد رابط کاربری برای کار با S3
 
 روش‌های زیادی برای استفاده از S3 وجود دارد. یکی از این راه‌ها، ایجاد رابط کاربری است که می‌توان با استفاده از ابزار `shadcn` یک رابط کاربری زیبا و ساده ایجاد کرد. برای استفاده از این ابزار، در ابتدا، آن را با اجرای دستور زیر، نصب کنید:
 
+
 ```ts
 npx shadcn@latest init
 ```
 
+
 سپس با اجرای دستور زیر، کامپوننت‌های مورد نیاز برنامه را نصب کنید:  
+
 
 ```ts
 npx shadcn@latest add button input card
 ```
 
+
 در نهایت، در مسیر اصلی پروژه، یک فایل جدید به نام `app/storage/page.tsx` بسازید و کد زیر را در آن قرار دهید:
+
 
 ```ts
 // src/app/storage/page.tsx or /app/storage/page.tsx
@@ -259,9 +335,12 @@ export default function FileManager() {
     </div>
   );
 }
+
 ```
 
+
 تمامی کارها انجام شده است و شما می‌توانید پس از اجرای پروژه، وارد صفحه `storage/` شوید و فایل‌های خود را در فضای ذخیره‌سازی ابری، مدیریت کنید.
+
 
 > یک پروژه آماده استقرار در [گیت‌هاب لیارا](https://github.com/liara-cloud/nextjs-getting-started/tree/object-storage) وجود دارد که می‌توانید از آن، استفاده کنید.
 

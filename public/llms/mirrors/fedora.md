@@ -1,112 +1,85 @@
 ﻿Original link: https://docs.liara.ir/mirrors/fedora/
 
-# تنظیم میرور در سیستم عامل fedora
+# تنظیم میرور در سیستم عامل Fedora
 
-لیارا برای سیستم عامل fedora، میرور زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل Fedora، میرور زیر را ارائه می‌دهد:
 
 ```bash
 https://linux-mirror.liara.ir/repository/fedora/
 ```
 
-برای تنظیم میرور فوق در سیستم عامل fedora خود، گام‌های زیر را طی کنید: 
+> فقط نسخه‌هایی از Fedora روی میرور موجود هستند که هنوز توسط خود Fedora پشتیبانی می‌شوند. نسخه‌هایی که به پایان عمر (EOL) رسیده‌اند از مخازن اصلی Fedora حذف شده‌اند.
+
+برای تنظیم میرور فوق در سیستم عامل Fedora خود، گام‌های زیر را طی کنید:
 
 ۱. تهیه بکاپ از تنظیمات فعلی  
-قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستورات زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:
+قبل از تنظیم میرار لیارا، بهتر است یک بکاپ از تنظیمات فعلی تهیه کنید:
 
 ```bash
-sudo cp /etc/yum.repos.d/fedora.repo /etc/yum.repos.d/fedora.repo.bak
-sudo cp /etc/yum.repos.d/fedora-updates.repo /etc/yum.repos.d/fedora-updates.repo.bak
+for f in fedora fedora-updates; do
+  [ -f /etc/yum.repos.d/$f.repo ] && [ ! -e /etc/yum.repos.d/$f.repo.bak ] && sudo cp /etc/yum.repos.d/$f.repo /etc/yum.repos.d/$f.repo.bak
+done
 ```
 
 ۲. تنظیم میرور لیارا  
-برای تنظیم میرور لیارا در سیستم عامل فدورا خود، در ابتدا دستور زیر را اجرا کنید:
+ابتدا مخزن اصلی Fedora را تنظیم کنید:
 
 ```bash
-sudo nano /etc/yum.repos.d/fedora.repo
-```
-
-پس از باز شدن ویرایشگر، تمامی تنظیمات را پاک کنید و تنظیمات زیر را قرار دهید:
-
-```bash
+sudo tee /etc/yum.repos.d/fedora.repo <<'EOF'
 [fedora]
 name=Fedora $releasever - $basearch
 baseurl=https://linux-mirror.liara.ir/repository/fedora/linux/releases/$releasever/Everything/$basearch/os/
-metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
 enabled=1
-countme=1
 metadata_expire=7d
 repo_gpgcheck=0
 type=rpm
-gpgcheck=0
+gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 skip_if_unavailable=False
+EOF
 ```
 
-سپس، `CTRL + X` را بزنید و سپس `Y` و بعد از آن، `Enter` را بزنید تا تغییرات، ذخیره شوند.                  
-
-در ادامه، دستور زیر را اجرا کنید:
+سپس مخزن آپدیت‌ها را تنظیم کنید:
 
 ```bash
-sudo nano /etc/yum.repos.d/fedora-updates.repo
-```
-
-پس از باز شدن ویرایشگر، تمامی تنظیمات را پاک کنید و تنظیمات زیر را قرار دهید:
-
-```bash
+sudo tee /etc/yum.repos.d/fedora-updates.repo <<'EOF'
 [updates]
 name=Fedora $releasever - $basearch - Updates
-baseurl=http://linux-mirror.liara.ir/repository/fedora/linux/updates/$releasever/Everything/$basearch/
-metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
+baseurl=https://linux-mirror.liara.ir/repository/fedora/linux/updates/$releasever/Everything/$basearch/
 enabled=1
-countme=1
 repo_gpgcheck=0
 type=rpm
-gpgcheck=0
+gpgcheck=1
 metadata_expire=6h
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 skip_if_unavailable=False
-```
-
-در نهایت `CTRL + X` را بزنید و سپس `Y` و بعد از آن، `Enter` را بزنید تا تغییرات، ذخیره شوند.
-
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
-
-```bash
-sudo dnf update
-```
-
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج  
-به این میرورها ارسال خواهند شد. 
-
-## غیرفعال کردن میرورهای لیارا
-
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-۱. حذف تنظیمات فعلی  
-با اجرای دستورات زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-
-> حتماً قبل از اجرای دستورات زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-
-```bash
-rm -f /etc/yum.repos.d/fedora.repo
-rm -f /etc/yum.repos.d/fedora-updates.repo
-```
-
-۲. بازگردانی فایل‌های پشتیبان  
-نام فایل‌های پشتیبان را با دستورات زیر، به نام فایل‌های اصلی، تغییر دهید:
-
-```bash
-mv /etc/yum.repos.d/fedora.repo.bak /etc/yum.repos.d/fedora.repo
-mv /etc/yum.repos.d/fedora-updates.repo.bak /etc/yum.repos.d/fedora-updates.repo
+EOF
 ```
 
 ۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
+اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
 
 ```bash
-dnf clean all && dnf makecache && dnf update
+sudo dnf clean all && sudo dnf update
 ```
+
+با انجام کارهای فوق، میرور لیارا در سیستم عامل Fedora شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج به این میرور ارسال می‌شود.
+
+## بازگشت به تنظیمات قبلی
+
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
+
+```bash
+sudo cp /etc/yum.repos.d/fedora.repo.bak /etc/yum.repos.d/fedora.repo
+sudo cp /etc/yum.repos.d/fedora-updates.repo.bak /etc/yum.repos.d/fedora-updates.repo
+sudo dnf clean all
+```
+
+## نکات
+
+- آدرس مخزن‌ها را دقیقاً با همین ساختار (`.../linux/releases/$releasever/Everything/$basearch/os/` و `.../linux/updates/$releasever/Everything/$basearch/`) بنویسید. اگر فقط آدرس پایه (`.../repository/fedora/`) را بدهید، `dnf` فایل‌های متادیتا را پیدا نمی‌کند و خطای 404 می‌گیرد.
+- امضای پکیج‌ها (`gpgcheck=1`) با کلیدهای GPG خود Fedora که از قبل روی سیستم نصب است بررسی می‌شود.
+- بکاپ فقط در اولین اجرا ساخته می‌شود. اگر دستور گام ۱ را دوباره اجرا کنید، بکاپ اصلی بازنویسی نمی‌شود.
 
 ## all links
 

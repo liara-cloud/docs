@@ -4,7 +4,7 @@
 
 [Video link](https://media.liara.ir/nodejs/nodejs-object-storage.mp4)
 
-> پروژه و کدهای مورد استفاده در ویدیوی فوق در [https://github.com/liara-cloud/nodejs-getting-started/tree/object-storage](https://github.com/liara-cloud/nodejs-getting-started/tree/object-storage) قابل مشاهده و دسترسی هستند.
+> پروژه و کدهای مورد استفاده در ویدیوی فوق در [اینجا](https://github.com/liara-cloud/nodejs-getting-started/tree/object-storage) قابل مشاهده و دسترسی هستند.
 
 برای استفاده از Object Storage در برنامه‌های NodeJS، می‌توانید از  
 پکیج `aws-sdk/client-s3` استفاده کنید که بایستی با دستور زیر، آن را در پروژه خود، نصب کنید:
@@ -13,7 +13,7 @@
 npm install @aws-sdk/client-s3
 ```
 
-پس از آن، کافیست تا طبق [https://docs.liara.ir/object-storage/how-tos/create-key](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.  
+پس از آن، کافیست تا طبق [مستندات ایجاد کلید](https://docs.liara.ir/object-storage/how-tos/create-key)، یک کلید جدید برای باکت خود بسازید.  
 اطلاعات مربوط به ENDPOINT و نام باکت نیز در صفحه **تنظیمات**، در بخش **دسترسی با SDK**،  
 برای شما قرار گرفته است.  
 در نهایت نیز، بایستی  
@@ -130,6 +130,48 @@ const params = {
 const command = new GetObjectCommand(params);
 getSignedUrl(client, command).then((url) => console.log(url));
 ```
+
+## نمونه کد دریافت لینک دانلود فایل با دامنه اختصاصی
+
+اگر طبق [مستندات اتصال دامنه](https://docs.liara.ir/object-storage/add-domain)، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک دانلود (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.  
+با این روش، نیازی به استفاده از `bucketEndpoint` یا `forcePathStyle` و ساخت کلاینت جداگانه برای دامنه اختصاصی نیست و تمامی کارها با همان کلاینت اصلی انجام می‌شود:
+
+```js
+const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+require("dotenv").config();
+
+const client = new S3Client({
+  region: "default",
+  endpoint: process.env.LIARA_ENDPOINT,
+  requestChecksumCalculation: "WHEN_REQUIRED",
+  responseChecksumValidation: "WHEN_REQUIRED",
+  credentials: {
+    accessKeyId: process.env.LIARA_ACCESS_KEY,
+    secretAccessKey: process.env.LIARA_SECRET_KEY,
+  },
+});
+
+async function main() {
+  const signed = await getSignedUrl(
+    client,
+    new GetObjectCommand({
+      Bucket: process.env.LIARA_BUCKET_NAME,
+      Key: "example_filename.png", // change this to your filename
+    }),
+    { expiresIn: 3600 }
+  );
+
+  const url = new URL(signed);
+  url.host = "example.com"; // change this to your custom domain
+
+  console.log(url.toString());
+}
+
+main();
+```
+
+> فقط مقدار `host` را تغییر دهید و پارامترهای `*-X-Amz` موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
 
 ## نمونه کد دریافت لیست فایل‌های موجود در باکت
 

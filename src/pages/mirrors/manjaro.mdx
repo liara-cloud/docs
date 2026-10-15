@@ -12,7 +12,7 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import HighlightTabs from "@/components/Common/HighlightTabs";
 import IconContainer from "@/components/Common/IconContainer";
-import {  
+import {
   GoContainer,
   GoDatabase,
   GoRocket,
@@ -36,7 +36,17 @@ import Head from "next/head";
 # تنظیم میرور در سیستم عامل Manjaro
 <hr className="mb-2" />
 
-لیارا برای سیستم عامل Manjaro، میرور زیر را ارائه می‌دهد: 
+<Section id="what-is-manjaro-mirror" title="سرویس میرور Manjaro لیارا چیست؟" />
+
+میرور Manjaro لیارا یک نسخه‌ی سریع و داخلی از مخازن رسمی Manjaro Linux است که برای افزایش سرعت، پایداری و دسترس‌پذیری در نصب و به‌روزرسانی پکیج‌ها طراحی شده است.
+
+<div className="h-2" />
+
+با استفاده از این میرور، تمام درخواست‌های pacman ابتدا به سرورهای داخلی لیارا ارسال می‌شوند و پکیج‌ها با سرعت بسیار بالاتر، بدون محدودیت‌های CDN خارجی و بدون مواجهه با اختلال‌ها یا تحریم‌های بین‌المللی دریافت می‌شوند.
+
+<Section id="setup" title="تنظیم میرور در سیستم عامل Manjaro" />
+
+لیارا برای سیستم عامل Manjaro، میرور زیر را ارائه می‌دهد:
 
 
 <div className="h-2" />
@@ -47,7 +57,7 @@ import Head from "next/head";
 </div>
 <div className="h-2" />
 
-برای تنظیم میرور فوق در سیستم عامل Manjaro خود، گام‌های زیر را طی کنید: 
+برای تنظیم میرور فوق در سیستم عامل Manjaro خود، گام‌های زیر را طی کنید:
 
 <Step  steps={[
     {
@@ -55,11 +65,11 @@ import Head from "next/head";
             content: (
                 <>
                     <h3>تهیه بکاپ از تنظیمات فعلی</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستورات زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
+                    <p>قبل از تنظیم میرور لیارا، بهتر است یک بکاپ از تنظیمات فعلی تهیه کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`}
+                            {`[ -e /etc/pacman.d/mirrorlist.bak ] || sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`}
                         </Highlight>
                     </div>
                 </>
@@ -70,15 +80,19 @@ import Head from "next/head";
             content: (
                 <>
                     <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل مانجارو خود، در ابتدا دستور زیر را اجرا کنید:</p>
+                    <p>برای تنظیم میرور لیارا، دستور زیر را اجرا کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`echo 'Server = https://linux-mirror.liara.ir/repository/manjaro/stable/$repo/$arch' \\
-  | tee /etc/pacman.d/mirrorlist > /dev/null
-`}
+                            {`sudo tee /etc/pacman.d/mirrorlist <<'EOF'
+Server = https://linux-mirror.liara.ir/repository/manjaro/stable/$repo/$arch
+EOF`}
                         </Highlight>
-                    </div>                           
+                    </div>
+                    <div className="h-2" />
+                    <Alert variant="warning">
+                        <p>عبارت‌های <Important>$repo</Important> و <Important>$arch</Important> را تغییر ندهید و دستور را دقیقاً با همین شکل (با <Important>{`<<'EOF'`}</Important> و تک‌کوتیشن) اجرا کنید. این دو متغیر را خود <Important>pacman</Important> پر می‌کند و اگر شل آن‌ها را جایگزین کند، آدرس نادرست می‌شود.</p>
+                    </Alert>
                 </>
             )
     },
@@ -87,11 +101,11 @@ import Head from "next/head";
             content: (
                 <>
                     <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود: </p>
+                    <p>اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
-                            {`pacman -Syyu`}
+                            {`sudo pacman -Syyu`}
                         </Highlight>
                     </div>
                 </>
@@ -102,70 +116,27 @@ import Head from "next/head";
 
 <div className="h-4" />
 
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد. 
+با انجام کارهای فوق، میرور لیارا در سیستم عامل Manjaro شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج به این میرور ارسال می‌شود.
+
+<Section id='unset-mirrors' title='بازگشت به تنظیمات قبلی' />
+
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo cp /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist
+sudo pacman -Syy`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id='notes' title='نکات' />
+
+<ul>
+<li>آدرس میرور را باید به‌صورت <Important>.../repository/manjaro/stable/$repo/$arch</Important> در <Important>Server</Important> بنویسید. اگر فقط آدرس پایه (<Important>.../repository/manjaro/</Important>) را بدهید، <Important>pacman</Important> فایل‌های دیتابیس را پیدا نمی‌کند و خطای 404 می‌گیرد.</li>
+<li>بکاپ فقط در اولین اجرا ساخته می‌شود. اگر دستور گام ۱ را دوباره اجرا کنید، بکاپ اصلی بازنویسی نمی‌شود.</li>
+</ul>
 
 
-<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
-
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-<Step  steps={[
-    {
-        step: "۱",
-            content: (
-                <>
-                    <h3>حذف تنظیمات فعلی</h3>
-                    <p>
-                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-                    </p>
-                    <div className="h-2" />
-                        <Alert variant="error">
-                            <p>
-                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-                            </p>
-                        </Alert>
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`rm -f /etc/pacman.d/mirrorlist`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>بازگردانی فایل پشتیبان</h3>
-                    <p>نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`mv /etc/pacman.d/mirrorlist.bak /etc/pacman.d/mirrorlist`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۳",
-            content: (
-                <>
-                    <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`pacman -Syyu`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    }
-]}
-/>
-
-
-
-</Layout> 
+</Layout>

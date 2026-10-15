@@ -12,7 +12,7 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import HighlightTabs from "@/components/Common/HighlightTabs";
 import IconContainer from "@/components/Common/IconContainer";
-import {  
+import {
   GoContainer,
   GoDatabase,
   GoRocket,
@@ -27,40 +27,51 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم میرور در سیستم عامل debian - لیارا</title>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل Debian - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
 <meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل دبیان"  />
 </Head>
 
 
-# تنظیم میرور در سیستم عامل debian
+# تنظیم میرور در سیستم عامل Debian
 <hr className="mb-2" />
 
-لیارا برای سیستم عامل debian، میرورهای زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل Debian، میرورهای زیر را ارائه می‌دهد:
 
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`https://linux-mirror.liara.ir/repository/debian/
-https://linux-mirror.liara.ir/repository/debian-security/`}
+        {`http://linux-mirror.liara.ir/repository/debian/
+http://linux-mirror.liara.ir/repository/debian-security/`}
     </Highlight>
 </div>
 <div className="h-2" />
+<div className="h-2" />
+<Alert variant="info">
+<p>
+نسخه‌های پشتیبانی‌شده: <Important>Debian 12 (bookworm)</Important> و <Important>Debian 13 (trixie)</Important>.
+</p>
+</Alert>
 
-برای تنظیم میرورهای فوق در سیستم عامل debian خود، گام‌های زیر را طی کنید: 
+برای تنظیم میرورهای فوق در سیستم عامل Debian خود، گام‌های زیر را طی کنید:
 
 <Step  steps={[
-    { 
+    {
         step: "۱",
             content: (
                 <>
-                    <h3>تهیه بکاپ از تنظیمات فعلی</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
+                    <h3>تهیه بکاپ و خالی کردن sources.list</h3>
+                    <p>قبل از تنظیم میرورهای لیارا، دستور زیر از فایل‌های <Important>sources.list</Important> و <Important>debian.sources</Important> بکاپ می‌گیرد (در پوشه‌ی <Important>/etc/apt/backup</Important>) و سپس محتوای <Important>/etc/apt/sources.list</Important> را پاک می‌کند تا مخازن قدیمی با میرور لیارا تداخل نداشته باشند:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
-                            {`cp /etc/apt/sources.list /etc/apt/sources.list.bak`}
+                        <Highlight className="bash">
+                            {`sudo mkdir -p /etc/apt/backup
+for f in /etc/apt/sources.list /etc/apt/sources.list.d/debian.sources; do
+  b="/etc/apt/backup/$(basename "$f")"
+  [ -f "$f" ] && [ ! -e "$b" ] && sudo cp "$f" "$b"
+done
+sudo truncate -s 0 /etc/apt/sources.list`}
                         </Highlight>
                     </div>
                 </>
@@ -71,30 +82,26 @@ https://linux-mirror.liara.ir/repository/debian-security/`}
             content: (
                 <>
                     <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل دبیان خود، در ابتدا دستور زیر را اجرا کنید:</p>
+                    <p>دستور زیر نام نسخه‌ی سیستم عامل شما (مثل <Important>bookworm</Important>) را خودکار تشخیص می‌دهد و فایل <Important>debian.sources</Important> را با میرورهای لیارا می‌سازد:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
-                            {`nano /etc/apt/sources.list`}
+                        <Highlight className="bash">
+                            {`CODENAME=$(. /etc/os-release && echo "$VERSION_CODENAME")
+sudo tee /etc/apt/sources.list.d/debian.sources <<EOF
+Types: deb deb-src
+URIs: http://linux-mirror.liara.ir/repository/debian
+Suites: $CODENAME $CODENAME-updates
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb deb-src
+URIs: http://linux-mirror.liara.ir/repository/debian-security
+Suites: $CODENAME-security
+Components: main non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF`}
                         </Highlight>
                     </div>
-                    <div className="h-2" />
-                    <p>پس از باز شدن ویرایشگر، مقادیر بعد از <Important>deb</Important> و <Important>deb-src</Important> را تغییر دهید؛ به عنوان مثال:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="js">
-                            {`deb https://linux-mirror.liara.ir/repository/debian bookworm main non-free-firmware
-deb-src https://linux-mirror.liara.ir/repository/debian bookworm main non-free-firmware
-
-deb https://linux-mirror.liara.ir/repository/debian-security bookworm-security main non-free-firmware
-deb-src https://linux-mirror.liara.ir/repository/debian-security bookworm-security main non-free-firmware
-
-deb https://linux-mirror.liara.ir/repository/debian bookworm-updates main non-free-firmware
-deb-src https://linux-mirror.liara.ir/repository/debian bookworm-updates main non-free-firmware`}
-                        </Highlight>
-                    </div>
-                    <div className="h-2" />   
-                    <p>در نهایت، <Important>CTRL + X</Important> را بزنید و سپس <Important>Y</Important> و بعد از آن، <Important>Enter</Important> را بزنید تا تغییرات، ذخیره شوند.</p>                 
                 </>
             )
     },
@@ -103,11 +110,11 @@ deb-src https://linux-mirror.liara.ir/repository/debian bookworm-updates main no
             content: (
                 <>
                     <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود: </p>
+                    <p>اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
-                        <Highlight className="js">
-                            {`apt update`}
+                        <Highlight className="bash">
+                            {`sudo apt update`}
                         </Highlight>
                     </div>
                 </>
@@ -118,72 +125,32 @@ deb-src https://linux-mirror.liara.ir/repository/debian bookworm-updates main no
 
 <div className="h-4" />
 
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد. 
+با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج به این میرورها ارسال خواهند شد.
 
+<Section id='unset-mirrors' title='بازگشت به تنظیمات قبلی' />
 
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
 
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo cp /etc/apt/backup/sources.list /etc/apt/sources.list
+if [ -f /etc/apt/backup/debian.sources ]; then
+  sudo cp /etc/apt/backup/debian.sources /etc/apt/sources.list.d/debian.sources
+else
+  sudo rm -f /etc/apt/sources.list.d/debian.sources
+fi
+sudo apt update`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
-<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
+<Section id='notes' title='نکات' />
 
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-<Step  steps={[
-    {
-        step: "۱",
-            content: (
-                <>
-                    <h3>حذف تنظیمات فعلی</h3>
-                    <p>
-                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-                    </p>
-                    <div className="h-2" />
-                        <Alert variant="error">
-                            <p>
-                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-                            </p>
-                        </Alert>
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`rm -f /etc/apt/sources.list`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>بازگردانی فایل پشتیبان</h3>
-                    <p>نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`mv /etc/apt/sources.list.bak /etc/apt/sources.list`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۳",
-            content: (
-                <>
-                    <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`apt update`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    }
-]}
-/>
-
+<ul>
+<li>در گام ۱ محتوای <Important>/etc/apt/sources.list</Important> به‌طور کامل پاک می‌شود. اگر مخازن دیگری (غیر از Debian) در این فایل اضافه کرده بودید، آن‌ها را از فایل بکاپ به یک فایل جدید در <Important>/etc/apt/sources.list.d/</Important> منتقل کنید.</li>
+<li>بکاپ‌ها فقط در اولین اجرا ساخته می‌شوند. اگر دستور گام ۱ را دوباره اجرا کنید، بکاپ اصلی بازنویسی نمی‌شود.</li>
+</ul>
 
 
 </Layout>

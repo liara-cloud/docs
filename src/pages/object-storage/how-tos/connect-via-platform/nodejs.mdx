@@ -177,6 +177,56 @@ getSignedUrl(client, command).then((url) => console.log(url));`}
 </div>
 <div className="h-2" />
 
+<Section id="link-download-file-custom-domain" title="نمونه کد دریافت لینک دانلود فایل با دامنه اختصاصی" />
+
+اگر طبق <a href="/object-storage/add-domain" className="text-[#2196f3] ">مستندات اتصال دامنه</a>، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک دانلود (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+با این روش، نیازی به استفاده از <Important>bucketEndpoint</Important> یا <Important>forcePathStyle</Important> و ساخت کلاینت جداگانه برای دامنه اختصاصی نیست و تمامی کارها با همان کلاینت اصلی انجام می‌شود:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="js">
+        {`const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+require("dotenv").config();
+
+const client = new S3Client({
+  region: "default",
+  endpoint: process.env.LIARA_ENDPOINT,
+  requestChecksumCalculation: "WHEN_REQUIRED",
+  responseChecksumValidation: "WHEN_REQUIRED",
+  credentials: {
+    accessKeyId: process.env.LIARA_ACCESS_KEY,
+    secretAccessKey: process.env.LIARA_SECRET_KEY,
+  },
+});
+
+async function main() {
+  const signed = await getSignedUrl(
+    client,
+    new GetObjectCommand({
+      Bucket: process.env.LIARA_BUCKET_NAME,
+      Key: "example_filename.png", // change this to your filename
+    }),
+    { expiresIn: 3600 }
+  );
+
+  const url = new URL(signed);
+  url.host = "example.com"; // change this to your custom domain
+
+  console.log(url.toString());
+}
+
+main();`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="warning">
+<p>
+فقط مقدار <Important>host</Important> را تغییر دهید و پارامترهای <Important>*-X-Amz</Important> موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
+</p>
+</Alert>
+
 <Section id="list-files" title="نمونه کد دریافت لیست فایل‌های موجود در باکت" />
 <div className="h-2" />
 <div dir='ltr'>

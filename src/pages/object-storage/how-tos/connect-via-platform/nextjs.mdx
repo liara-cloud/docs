@@ -180,6 +180,62 @@ export async function POST(req: Request) {
 </div>
 <div className="h-2" />
 
+<Section id="link-download-file-custom-domain" title="نمونه کد دریافت لینک موقت دانلود فایل با دامنه اختصاصی" />
+
+اگر طبق <a href="/object-storage/add-domain" className="text-[#2196f3] ">مستندات اتصال دامنه</a>، یک دامنه اختصاصی به باکت خود متصل کرده‌اید، ساده‌ترین روش برای دریافت لینک موقت (Presigned) با دامنه اختصاصی این است که لینک را با Endpoint اصلی لیارا تولید کنید و سپس مقدار Host آن را به دامنه اختصاصی تغییر دهید.
+
+<div className="h-2" />
+
+برای این کار، لینک باید به‌صورت virtual-hosted ساخته شود؛ یعنی نام باکت در ابتدای Host قرار بگیرد (مانند <Important>bucket-name.storage.c2.liara.site</Important>) و نه در مسیر لینک. کلاینت <Important>s3</Important> در این مستندات با <Important>forcePathStyle: true</Important> ساخته شده است و لینک را به‌صورت path-style تولید می‌کند؛ به همین دلیل، در قطعه کد زیر یک کلاینت جداگانه بدون <Important>forcePathStyle</Important> برای ساخت لینک ایجاد شده است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="ts">
+        {`// src/app/api/storage/presigned-custom-domain/route.ts or /app/api/storage/presigned-custom-domain/route.ts
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const CUSTOM_DOMAIN = "example.com"; // change this to your custom domain
+
+// without forcePathStyle, so the bucket name is placed in the host
+const presignClient = new S3Client({
+  region: "default",
+  endpoint: process.env.LIARA_ENDPOINT,
+  requestChecksumCalculation: "WHEN_REQUIRED",
+  responseChecksumValidation: "WHEN_REQUIRED",
+  credentials: {
+    accessKeyId: process.env.LIARA_ACCESS_KEY!,
+    secretAccessKey: process.env.LIARA_SECRET_KEY!,
+  },
+});
+
+export async function POST(req: Request) {
+  const { key } = await req.json();
+
+  const signed = await getSignedUrl(
+    presignClient,
+    new GetObjectCommand({
+      Bucket: process.env.LIARA_BUCKET_NAME,
+      Key: key,
+    }),
+    { expiresIn: 3600 }
+  );
+
+  const url = new URL(signed);
+  url.host = CUSTOM_DOMAIN;
+
+  return Response.json({ url: url.toString() });
+}`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="warning">
+<p>
+فقط مقدار <Important>host</Important> را تغییر دهید و پارامترهای <Important>*-X-Amz</Important> موجود در لینک را دستکاری نکنید؛ در غیر این صورت امضای لینک نامعتبر می‌شود و دسترسی به فایل با خطا مواجه خواهد شد.
+</p>
+</Alert>
+
 <Section id="list-files" title="نمونه کد لیست کردن فایل‌های داخل باکت" />
 <div className="h-2" />
 <div dir='ltr'>

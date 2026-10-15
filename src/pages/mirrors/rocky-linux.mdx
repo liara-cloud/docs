@@ -12,7 +12,7 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import HighlightTabs from "@/components/Common/HighlightTabs";
 import IconContainer from "@/components/Common/IconContainer";
-import {  
+import {
   GoContainer,
   GoDatabase,
   GoRocket,
@@ -34,9 +34,9 @@ import Head from "next/head";
 
 
 # تنظیم میرور در سیستم عامل Rocky Linux
-<hr className="mb-2" /> 
+<hr className="mb-2" />
 
-لیارا برای سیستم عامل Rocky Linux، میرور زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل Rocky Linux، میرور زیر را ارائه می‌دهد:
 
 
 <div className="h-2" />
@@ -46,8 +46,14 @@ import Head from "next/head";
     </Highlight>
 </div>
 <div className="h-2" />
+<div className="h-2" />
+<Alert variant="info">
+<p>
+نسخه‌های پشتیبانی‌شده: <Important>Rocky Linux 9</Important> و <Important>Rocky Linux 10</Important>.
+</p>
+</Alert>
 
-برای تنظیم میرور فوق در سیستم عامل Rocky Linux خود، گام‌های زیر را طی کنید: 
+برای تنظیم میرور فوق در سیستم عامل Rocky Linux خود، گام‌های زیر را طی کنید (دستورات را با کاربر root یا با <Important>sudo</Important> اجرا کنید):
 
 <Step  steps={[
     {
@@ -55,7 +61,7 @@ import Head from "next/head";
             content: (
                 <>
                     <h3>تهیه بکاپ از تنظیمات فعلی</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستورات زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید (در صورت وجود):</p>
+                    <p>قبل از تنظیم میرورهای لیارا، بهتر است یک بکاپ از تنظیمات فعلی تهیه کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
@@ -70,38 +76,37 @@ import Head from "next/head";
             content: (
                 <>
                     <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا در سیستم عامل راکی لینوکس خود، دستور زیر را اجرا کنید:</p>
+                    <p>برای تنظیم میرور لیارا، دستور زیر را اجرا کنید:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
                             {`tee /etc/yum.repos.d/rocky.repo <<'EOF'
 [baseos]
 name=Rocky Linux $releasever - BaseOS
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/BaseOS/$basearch/os/
+baseurl=https://linux-mirror.liara.ir/repository/rocky/$releasever/BaseOS/$basearch/os/
 enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-$releasever
 metadata_expire=6h
 
 [appstream]
 name=Rocky Linux $releasever - AppStream
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/AppStream/$basearch/os/
+baseurl=https://linux-mirror.liara.ir/repository/rocky/$releasever/AppStream/$basearch/os/
 enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-$releasever
 metadata_expire=6h
 
 [crb]
 name=Rocky Linux $releasever - CRB
-baseurl=https://linux-mirror.liara.ir/repository/rocky/$contentdir/$releasever/CRB/$basearch/os/
+baseurl=https://linux-mirror.liara.ir/repository/rocky/$releasever/CRB/$basearch/os/
 enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-$releasever
 metadata_expire=6h
-EOF
-`}
+EOF`}
                         </Highlight>
-                    </div>                                                       
+                    </div>
                 </>
             )
     },
@@ -110,7 +115,7 @@ EOF
             content: (
                 <>
                     <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود: </p>
+                    <p>اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:</p>
                     <div className="h-2" />
                     <div dir='ltr'>
                         <Highlight className="bash">
@@ -125,71 +130,28 @@ EOF
 
 <div className="h-4" />
 
-با انجام کارهای فوق، میرور لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد. 
+با انجام کارهای فوق، میرور لیارا در سیستم عامل Rocky Linux شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج به این میرور ارسال می‌شود.
 
+<Section id='troubleshooting' title='عیب‌یابی' />
 
+اگر هنگام اجرای <Important>dnf</Important> خطای <Important>404</Important> می‌گیرید، احتمالاً در آدرس مخزن‌ها از <Important>$contentdir</Important> استفاده شده است. این متغیر در Rocky Linux به <Important>pub/rocky</Important> تبدیل می‌شود و آدرس نهایی نادرست خواهد بود. در فایل <Important>/etc/yum.repos.d/rocky.repo</Important> عبارت <Important>$contentdir/</Important> را از خطوط <Important>baseurl</Important> حذف کنید، یا فایل را با دستور گام ۲ دوباره بنویسید.
 
-<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
+<div className="h-2" />
 
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
+اگر خطای کلید GPG می‌گیرید (مثلاً در Rocky Linux 10)، مطمئن شوید خط <Important>gpgkey</Important> شما به‌جای شماره‌ی ثابت از <Important>$releasever</Important> استفاده می‌کند، مثل مثال بالا.
 
-<Step  steps={[
-    {
-        step: "۱",
-            content: (
-                <>
-                    <h3>حذف تنظیمات فعلی</h3>
-                    <p>
-                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-                    </p>
-                    <div className="h-2" />
-                        <Alert variant="error">
-                            <p>
-                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-                            </p>
-                        </Alert>
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`rm -f /etc/yum.repos.d/rocky.repo`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>بازگردانی فایل پشتیبان</h3>
-                    <p>یک کپی فایل پشتیبان با دستور زیر، با نام فایل اصلی، بگیرید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`cp -f /etc/yum.repos.d/rocky.repo.bak /etc/yum.repos.d/rocky.repo`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۳",
-            content: (
-                <>
-                    <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`dnf clean all && dnf makecache && dnf repolist`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    }
-]}
-/>
+<Section id='unset-mirrors' title='بازگشت به تنظیمات قبلی' />
 
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`cp -f /etc/yum.repos.d/rocky.repo.bak /etc/yum.repos.d/rocky.repo
+dnf clean all && dnf makecache`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
 
 </Layout>

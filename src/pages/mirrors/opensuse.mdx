@@ -12,7 +12,7 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import HighlightTabs from "@/components/Common/HighlightTabs";
 import IconContainer from "@/components/Common/IconContainer";
-import {  
+import {
   GoContainer,
   GoDatabase,
   GoRocket,
@@ -27,17 +27,26 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم میرور در سیستم عامل OpenSUSE - لیارا</title>
+<title>مستندات نحوه تنظیم میرور در سیستم عامل openSUSE - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
 <meta property="og:description" content="مستندات مربوط به تنظیم میرور لیارا در سیستم عامل اوپن‌سوس"  />
 </Head>
 
 
-# تنظیم میرور در سیستم عامل OpenSUSE
+# تنظیم میرور در سیستم عامل openSUSE
 <hr className="mb-2" />
 
-لیارا برای سیستم عامل OpenSUSE، میرور زیر را ارائه می‌دهد: 
+<Section id="what-is-opensuse-mirror" title="سرویس میرور openSUSE لیارا چیست؟" />
 
+میرور openSUSE لیارا یک نسخه‌ی کامل و به‌روز از مخازن رسمی این توزیع لینوکس است که به‌منظور افزایش سرعت، پایداری و دسترس‌پذیری هنگام نصب و به‌روزرسانی پکیج‌ها ارائه می‌شود.
+
+<div className="h-2" />
+
+در این سرویس، درخواست‌های ابزار بسته‌مدیریتی Zypper ابتدا به سرورهای داخلی لیارا هدایت می‌شوند و شما می‌توانید پکیج‌ها را با سرعت بسیار بالاتر، بدون تحریم‌ها، کندی اینترنت خارجی یا قطعی‌های بین‌المللی دریافت کنید.
+
+<Section id="setup" title="تنظیم میرور در سیستم عامل openSUSE" />
+
+لیارا برای سیستم عامل openSUSE، میرور زیر را ارائه می‌دهد:
 
 <div className="h-2" />
 <div dir='ltr'>
@@ -47,86 +56,74 @@ import Head from "next/head";
 </div>
 <div className="h-2" />
 
-برای تنظیم میرور فوق در سیستم عامل OpenSUSE و همچنین تهیه بکاپ از تنظیمات فعلی خود، کافیست تا دستور زیر را اجرا کنید: 
+میرور برای <Important>openSUSE Leap 16</Important> و <Important>openSUSE Tumbleweed</Important> در دسترس است. نسخه‌ی خود را با دستور زیر ببینید و سپس بخش مربوط به آن را اجرا کنید:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`zypper addrepo \\
-  --priority 100 \\
-  --no-gpgcheck \\
-  'https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/' \\
-  opensuse-oss
-`}
+        {`cat /etc/os-release`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-با انجام کار فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد. 
+<Section id="leap-16" title="openSUSE Leap 16" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo zypper addrepo \\
+  --priority 100 \\
+  --no-gpgcheck \\
+  'https://linux-mirror.liara.ir/repository/opensuse/distribution/leap/$releasever/repo/oss/' \\
+  opensuse-oss`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo zypper refresh`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+در Leap 16 مخزن جداگانه‌ی آپدیت وجود ندارد و آپدیت‌ها در مخزن بالا هستند.
+
+<Section id="tumbleweed" title="openSUSE Tumbleweed" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo zypper addrepo \\
+  --priority 100 \\
+  --no-gpgcheck \\
+  'https://linux-mirror.liara.ir/repository/opensuse/tumbleweed/repo/oss/' \\
+  opensuse-tumbleweed-oss`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo zypper refresh`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+با انجام کار فوق، میرور لیارا در سیستم عامل شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج به این میرور ارسال خواهند شد.
+
+<Section id='unset-mirrors' title='غیرفعال کردن میرور لیارا' />
+
+برای غیرفعال کردن میرور لیارا، کافیست مخزنی که اضافه کرده‌اید را حذف کنید (در Leap 16 نام مخزن <Important>opensuse-oss</Important> و در Tumbleweed نام آن <Important>opensuse-tumbleweed-oss</Important> است):
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo zypper removerepo opensuse-oss
+sudo zypper refresh`}
+    </Highlight>
+</div>
+<div className="h-2" />
 
 
-
-
-<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
-
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-<Step  steps={[
-    {
-        step: "۱",
-            content: (
-                <>
-                    <h3>حذف تنظیمات فعلی</h3>
-                    <p>
-                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-                    </p>
-                    <div className="h-2" />
-                        <Alert variant="error">
-                            <p>
-                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-                            </p>
-                        </Alert>
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`zypper removerepo opensuse-oss`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>بازگردانی فایل پشتیبان</h3>
-                    <p>یک کپی فایل پشتیبان با دستور زیر، با نام فایل اصلی، بگیرید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`cp -a /etc/zypp/repos.d/backup/*.repo /etc/zypp/repos.d/`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۳",
-            content: (
-                <>
-                    <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`zypper refresh && zypper lr -u`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    }
-]}
-/>
-
-
-</Layout> 
+</Layout>

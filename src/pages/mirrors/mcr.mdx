@@ -12,7 +12,7 @@ import Link from "next/link";
 import PlatformIcon from "@/components/Common/icons";
 import HighlightTabs from "@/components/Common/HighlightTabs";
 import IconContainer from "@/components/Common/IconContainer";
-import {  
+import {
   GoContainer,
   GoDatabase,
   GoRocket,
@@ -27,155 +27,66 @@ import Head from "next/head";
 
 <Layout>
 <Head>
-<title>مستندات نحوه تنظیم میرورهای MCR - لیارا</title>
+<title>مستندات نحوه تنظیم میرور MCR - لیارا</title>
 <meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
 <meta property="og:description" content="مستندات مربوط به تنظیم میرور MCR لیارا"  />
 </Head>
 
 
-# تنظیم میرورهای MCR
+# تنظیم میرور MCR (Microsoft Container Registry)
 <hr className="mb-2" />
 
-لیارا میرور MCR را در آدرس زیر، ارائه می‌دهد:
+لیارا میرور MCR را در آدرس زیر ارائه می‌دهد:
 
 <div className="h-2" />
 <div dir='ltr'>
     <Highlight className="bash">
-        {`https://mcr-mirror.liara.ir`}
+        {`mcr-mirror.liara.ir`}
     </Highlight>
 </div>
 <div className="h-2" />
 
-برای تنظیم میرور فوق کافیست تا گام‌های زیر را طی کنید: 
+<Section id="usage" title="نحوه‌ی استفاده" />
 
-<div className="h-4" />
-<Alert variant="success">
+برای دانلود ایمیج کافیست در آدرس ایمیج، <Important>mcr.microsoft.com</Important> را با <Important>mcr-mirror.liara.ir</Important> جایگزین کنید.
+
+<div className="h-2" />
+
+مثلاً به‌جای:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`docker pull mcr.microsoft.com/dotnet/aspnet:8.0`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+بزنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`docker pull mcr-mirror.liara.ir/dotnet/aspnet:8.0`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+این روش در <Important>docker-compose.yml</Important> و Dockerfile هم کار می‌کند:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="dockerfile">
+        {`FROM mcr-mirror.liara.ir/dotnet/aspnet:8.0`}
+    </Highlight>
+</div>
+<div className="h-2" />
+<div className="h-2" />
+<Alert variant="warning">
 <p>
-    در نظر داشته باشید که گام‌های زیر، برای داکر نسخه <Important>25</Important> و بالاتر از آن، مناسب است. 
+تنظیم <Important>registry-mirrors</Important> در <Important>daemon.json</Important> برای MCR کار نمی‌کند (داکر میرور را فقط برای Docker Hub در نظر می‌گیرد)؛ بنابراین باید آدرس ایمیج را مستقیماً تغییر دهید.
 </p>
 </Alert>
-
-<Step  steps={[
-    {
-        step: "۱",
-            content: (
-                <>
-                    <h3>تهیه بکاپ از تنظیمات فعلی</h3>
-                    <p>قبل از تنظیم میرورهای لیارا، بهتر است با اجرای دستور زیر، یک بکاپ از تنظیمات فعلی سیستم عامل خود تهیه کنید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`cp /etc/docker/daemon.json /etc/docker/daemon.json.bak`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>تنظیم میرور لیارا</h3>
-                    <p>برای تنظیم میرور لیارا، دستور زیر را اجرا کنید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`echo '{
-  "registry-mirrors": [
-    "https://mcr-mirror.liara.ir"
-  ]
-}' > /etc/docker/daemon.json
-`}
-                        </Highlight>
-                    </div>                           
-                </>
-            )
-    },
-    { 
-        step: "۳",
-            content: (
-                <>
-                    <h3>ری‌استارت برنامه و فایل‌های کانفیگ</h3>
-                    <p>اکنون کافیست تا دستورات زیر را اجرا کنید تا از میرور لیارا، استفاده شود: </p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`systemctl daemon-reload
-systemctl restart docker`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    }
-]}
-/>
-
-<div className="h-4" />
-
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج 
-به این میرورها ارسال خواهند شد. 
-
-
-<Section id='unset-mirrors' title='غیرفعال کردن میرورهای لیارا' />
-
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-<Step  steps={[
-    {
-        step: "۱",
-            content: (
-                <>
-                    <h3>حذف تنظیمات فعلی</h3>
-                    <p>
-                        با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-                    </p>
-                    <div className="h-2" />
-                        <Alert variant="error">
-                            <p>
-                                حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
-                            </p>
-                        </Alert>
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`rm -f /etc/docker/daemon.json`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۲",
-            content: (
-                <>
-                    <h3>بازگردانی فایل پشتیبان</h3>
-                    <p>نام فایل پشتیبان را با دستور زیر، به نام فایل اصلی، تغییر دهید:</p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`mv /etc/docker/daemon.json.bak /etc/docker/daemon.json`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    },
-    {
-        step: "۳",
-            content: (
-                <>
-                    <h3>آپدیت سیستم</h3>
-                    <p>اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست رجیستری‌ها به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند: </p>
-                    <div className="h-2" />
-                    <div dir='ltr'>
-                        <Highlight className="bash">
-                            {`systemctl daemon-reload && systemctl restart docker`}
-                        </Highlight>
-                    </div>
-                </>
-            )
-    }
-]}
-/>
-
 
 
 </Layout>

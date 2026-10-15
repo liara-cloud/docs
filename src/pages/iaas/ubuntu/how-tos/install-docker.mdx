@@ -1,0 +1,200 @@
+import Layout from "@/components/Layout";
+import Button from "@/components/Common/button";
+import Section from "@/components/Common/section";
+import Alert from "@/components/Common/alert";
+import Tabs from "@/components/Common/tab";
+import Step from "@/components/Common/step";
+import Card from "@/components/Common/card";
+import Important from "@/components/Common/important";
+import Highlight from "@/components/Common/highlight";
+import Link from "next/link";
+import PlatformIcon from "@/components/Common/icons";
+import {
+    GoArrowLeft,
+} from "react-icons/go";
+
+import Head from "next/head";
+
+<Layout>
+<Head>
+<title>مستندات نصب Docker در سرور مجازی ابری Ubuntu - لیارا</title>
+
+<meta property="og:title" content="مستندات خدمات رایانش ابری لیارا" />
+<meta property="og:description" content="مستندات مربوط به نصب داکر با میرور لیارا در سرور مجازی اوبونتو"  />
+</Head>
+# نصب Docker روی Ubuntu با میرور لیارا
+
+<hr className="mb-2" />
+
+لیارا برای نصب Docker روی <Important>Ubuntu</Important>، مخزن و کلید GPG اختصاصی ارائه می‌دهد. همچنین برای دانلود ایمیج‌ها، <a href="/mirrors/docker" className="text-[#2196f3]">میرور DockerHub</a> در دسترس است:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`https://docker-mirror.liara.ir`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای شروع، طبق مستندات <a href="/iaas/ubuntu/how-tos/connect-to-server-using-ssh" className="text-[#2196f3]">اتصال به سرور با SSH</a>، به سرور متصل شوید. دستورات با <Important>sudo</Important> نوشته شده‌اند؛ اگر با کاربر root وارد شده‌اید، می‌توانید <Important>sudo</Important> را حذف کنید.
+
+<Section id="prerequisites" title="۱. نصب پیش‌نیازها" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo apt-get update
+sudo apt-get install -y ca-certificates curl`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="gpg-key" title="۲. دریافت کلید GPG از میرور لیارا" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://linux-mirror.liara.ir/repository/ubuntu-docker/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="add-repository" title="۳. افزودن مخزن Docker لیارا" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+Architectures: amd64
+URIs: https://linux-mirror.liara.ir/repository/ubuntu-docker/
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="dockerhub-mirror" title="۴. تنظیم میرور DockerHub" />
+
+ابتدا از تنظیمات فعلی (در صورت وجود) بکاپ بگیرید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo mkdir -p /etc/docker
+[ -f /etc/docker/daemon.json ] && sudo cp /etc/docker/daemon.json /etc/docker/daemon.json.bak`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس میرور لیارا را تنظیم کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo tee /etc/docker/daemon.json > /dev/null <<EOF
+{
+  "registry-mirrors": [
+    "https://docker-mirror.liara.ir"
+  ]
+}
+EOF`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="install-docker" title="۵. نصب Docker" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="docker-without-sudo" title="۶. اجرای Docker بدون sudo" />
+
+برای اینکه کاربر فعلی بتواند بدون <Important>sudo</Important> از Docker استفاده کند، آن را به گروه <Important>docker</Important> اضافه کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo usermod -aG docker $USER`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+سپس یک‌بار از سیستم خارج و دوباره وارد شوید تا تغییر اعمال شود. برای اعمال سریع در همان ترمینال هم می‌توانید دستور زیر را بزنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`newgrp docker`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Alert variant="warning">
+<p>
+دسترسی به گروه <Important>docker</Important> عملاً معادل دسترسی root روی سرور است؛ فقط کاربرهای مورد اعتماد را به این گروه اضافه کنید.
+</p>
+</Alert>
+
+<Section id="verify" title="۷. بررسی نصب" />
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`docker --version
+docker compose version
+docker info | grep -A1 "Registry Mirrors"`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+برای اطمینان از کارکرد میرور، یک ایمیج تست دانلود کنید:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`docker run --rm hello-world`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="already-installed" title="اگر Docker از قبل نصب بوده است" />
+
+اگر Docker از قبل روی سرور نصب بوده، بعد از تغییر <Important>daemon.json</Important> باید آن را ری‌استارت کنید تا میرور اعمال شود:
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`sudo systemctl daemon-reload
+sudo systemctl restart docker`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+<Section id="notes" title="نکات" />
+
+<ul>
+<li>مخزن Docker لیارا برای معماری <Important>amd64</Important> تنظیم شده است.</li>
+<li>تنظیم <Important>registry-mirrors</Important> فقط برای DockerHub کار می‌کند. برای <a href="/mirrors/ghcr" className="text-[#2196f3]">ghcr</a>، <a href="/mirrors/mcr" className="text-[#2196f3]">mcr</a>، <a href="/mirrors/quay" className="text-[#2196f3]">quay</a> و <a href="/mirrors/k8s" className="text-[#2196f3]">k8s</a> باید آدرس ایمیج را مستقیماً تغییر دهید. همچنین می‌توانید برای DockerHub هم به‌جای تنظیم سراسری، آدرس را به ابتدای نام ایمیج اضافه کنید:</li>
+</ul>
+
+<div className="h-2" />
+<div dir='ltr'>
+    <Highlight className="bash">
+        {`docker pull docker-mirror.liara.ir/nginx:1.31`}
+    </Highlight>
+</div>
+<div className="h-2" />
+
+
+</Layout>

@@ -1,17 +1,19 @@
 ﻿Original link: https://docs.liara.ir/mirrors/alma-linux/
 
-# تنظیم میرور در سیستم عامل Alma Linux
+# تنظیم میرور در سیستم عامل AlmaLinux
 
-لیارا برای سیستم عامل Alma Linux، میرور زیر را ارائه می‌دهد: 
+لیارا برای سیستم عامل AlmaLinux، میرور زیر را ارائه می‌دهد:
 
 ```bash
-https://linux-mirror.liara.ir/repository/almalinux/
+http://linux-mirror.liara.ir/repository/almalinux/
 ```
 
-برای تنظیم میرور فوق در سیستم عامل Alma Linux خود، گام‌های زیر را طی کنید: 
+> این میرور مخصوص `AlmaLinux` است. نسخه‌های پشتیبانی‌شده: `AlmaLinux 8`، `AlmaLinux 9` و `AlmaLinux 10`.
+
+برای تنظیم میرور فوق در سیستم عامل AlmaLinux خود، گام‌های زیر را طی کنید:
 
 ۱. تهیه بکاپ و تنظیم میرورهای لیارا  
-برای تهیه بکاپ از تنظیمات فعلی، غیرفعال کردن میرورهای فعلی و تنظیم میرور لیارا، تنها کافیست تا دستور زیر را اجرا کنید:
+برای تهیه بکاپ از تنظیمات فعلی، غیرفعال کردن میرورهای فعلی و تنظیم میرور لیارا، تنها کافیست دستور زیر را اجرا کنید:
 
 ```bash
 mkdir -p /etc/yum.repos.d/backup && \\
@@ -20,59 +22,44 @@ for f in /etc/yum.repos.d/*.repo; do cp "$f" /etc/yum.repos.d/backup/ \\
 cat > /etc/yum.repos.d/liara-mirror.repo <<'EOF'
 [liara-baseos]
 name=Liara AlmaLinux BaseOS
-baseurl=https://linux-mirror.liara.ir/repository/almalinux/$releasever/BaseOS/$basearch/os/
+baseurl=http://linux-mirror.liara.ir/repository/almalinux/$releasever/BaseOS/$basearch/os/
 enabled=1
 gpgcheck=0
-
 [liara-appstream]
 name=Liara AlmaLinux AppStream
-baseurl=https://linux-mirror.liara.ir/repository/almalinux/$releasever/AppStream/$basearch/os/
+baseurl=http://linux-mirror.liara.ir/repository/almalinux/$releasever/AppStream/$basearch/os/
 enabled=1
 gpgcheck=0
-
 [liara-extras]
 name=Liara AlmaLinux Extras
-baseurl=https://linux-mirror.liara.ir/repository/almalinux/$releasever/extras/$basearch/os/
+baseurl=http://linux-mirror.liara.ir/repository/almalinux/$releasever/extras/$basearch/os/
 enabled=1
 gpgcheck=0
 EOF
 ```
 
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
+این دستور:  
+- از همه‌ی فایل‌های `/etc/yum.repos.d/*.repo` در پوشه‌ی `backup` نسخه‌ی پشتیبان می‌گیرد،  
+- مخازن فعلی را غیرفعال می‌کند،  
+- فایل `liara-mirror.repo` را با میرور لیارا می‌سازد.
+
+۲. آپدیت سیستم  
+اکنون دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود:
 
 ```bash
 yum update
 ```
 
-با انجام کارهای فوق، میرورهای لیارا در سیستم عامل شما تنظیم خواهند شد و درخواست‌های آپدیت یا دانلود پکیج  
-به این میرورها ارسال خواهند شد. 
+با انجام کارهای فوق، میرور لیارا در سیستم عامل AlmaLinux شما تنظیم خواهد شد و درخواست‌های آپدیت یا دانلود پکیج به این میرور ارسال می‌شود.
 
-## غیرفعال کردن میرورهای لیارا
+## بازگشت به تنظیمات قبلی
 
-برای غیرفعال کردن میرور لیارا، سریع‌ترین راه، بازیابی فایل بکاپ و حذف تنظیمات فعلی است؛ تنها کافیست تا گام‌های زیر را جلو بروید: 
-
-۱. حذف تنظیمات فعلی  
-با اجرای دستور زیر، در ابتدا، تنظیمات فعلی خود را حذف کنید:
-
-> حتماً قبل از اجرای دستور زیر، از وجود و سلامت فایل پشتیبان اطمینان حاصل کنید.
+اگر خواستید تنظیمات قبلی را برگردانید، دستورات زیر را اجرا کنید:
 
 ```bash
 rm -f /etc/yum.repos.d/liara-mirror.repo
-```
-
-۲. بازگردانی فایل پشتیبان  
-یک کپی فایل پشتیبان با دستور زیر، با نام فایل اصلی، بگیرید:
-
-```bash
 cp -f /etc/yum.repos.d/backup/*.repo /etc/yum.repos.d/
-```
-
-۳. آپدیت سیستم  
-اکنون کافیست تا دستور زیر را اجرا کنید تا فهرست مخازن به‌روزرسانی شود و مطمئن شوید که همه چیز به درستی کار می‌کند:
-
-```bash
-dnf clean all && dnf makecache && dnf repolist
+yum clean all && yum makecache
 ```
 
 ## all links
