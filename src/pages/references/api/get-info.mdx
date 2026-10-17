@@ -37,7 +37,7 @@ import Head from "next/head";
 <ul>
   <li>اطلاعات خود کاربر (مانند نام، ایمیل، شماره موبایل و نوع حساب کاربری)</li>
   <li>اطلاعات Object Storage کاربر</li>
-  <li>اطلاعات امنیتی حساب کاربری</li>
+  <li>اطلاعات امنیتی حساب کاربری (مانند وضعیت رمز عبور و تایید ایمیل و موبایل)</li>
   <li>اطلاعات مرتبط با سطح کاربری فعلی کاربر</li>
   <li>امکانات فعال حساب کاربری (مانند شبکه خصوصی)</li>
 
@@ -65,13 +65,17 @@ import Head from "next/head";
 </ul>
 <div className="h-2" />
 
+برخی از اطلاعات حساب کاربری، مانند سطح کاربری فعلی، وضعیت احراز هویت دو مرحله‌ای، اعتبار رایگان، اتصال‌های Git و اطلاعات UTM، دیگر در پاسخ <Important>me/</Important> ارائه نمی‌شوند و باید آن‌ها را از <a href="#sub-endpoints" className="text-[#2196f3]">endpointهای جداگانه <Important>/me/*</Important></a> دریافت کنید.
+
 <Section id="response-structure" title="ساختار پاسخ" />
 
 پاسخ این endpoint یک آبجکت JSON است که از چند بخش اصلی تشکیل شده است. در فهرست زیر می‌توانید این بخش‌ها را ببینید:
 
 <div className="h-2" />
 <ul>
-  <li><Important>user</Important>: اطلاعات کاربر، Object Storage، امنیت حساب و سطح کاربری فعلی</li>
+  <li><Important>user</Important>اطلاعات حساب کاربری</li>
+  <div className="h-1" />
+  <li><Important>team</Important>: اطلاعات تیم، نقش و دسترسی‌های عضو تیم (فقط زمانی که درخواست در حالت تیمی ارسال شود)</li>
   <div className="h-1" />
   <li><Important>databaseVersions</Important>: نسخه‌های قابل ارائه برای هر نوع دیتابیس</li>
   <div className="h-1" />
@@ -114,18 +118,7 @@ import Head from "next/head";
     "privateNetworkFeature": true,
     "legacyObjectStorageFeature": false,
     "hasSucceedPayment": true,
-    "currentSubscriptionPlan": {
-      "type": "subscription",
-      "subscriptionPlanID": "free",
-      "subscriptionPlanExpiration": "2026-10-29T08:40:26.064Z",
-      "maxTechnicalTicketsPerMonth": "infinite",
-      "subscriptionDurationType": "monthly",
-      "technicalTicketsCount": 0
-    },
-    "gitRepositoryIntegrations": [],
-    "gitProviderIntegrations": [],
-    "twoFA": false,
-    "remainingFreeCredit": 0
+    ...
   },
   "databaseVersions": { ... },
   "defaultDatabaseVersions": { ... },
@@ -161,21 +154,178 @@ import Head from "next/head";
   <div className="h-1" />
   <li><Important>minCreditAmount</Important>: حداقل مبلغ اعتبار برای اعلان در حساب کاربری. اگر <Important>isManualMinCredit</Important> برابر <Important>true</Important> باشد، این مقدار به‌صورت دستی تعیین شده است</li>
   <div className="h-1" />
-  <li><Important>remainingFreeCredit</Important>: میزان اعتبار رایگان باقی‌مانده</li>
-  <div className="h-1" />
   <li><Important>hasSucceedPayment</Important>: مشخص می‌کند که آیا حساب کاربری تاکنون پرداخت موفقی داشته است یا خیر</li>
   <div className="h-1" />
-  <li><Important>hasPassword</Important> و <Important>twoFA</Important>: وضعیت تعیین رمز عبور و فعال بودن احراز هویت دو مرحله‌ای</li>
+  <li><Important>hasPassword</Important>: مشخص می‌کند که آیا برای حساب کاربری رمز عبور تعیین شده است یا خیر</li>
   <div className="h-1" />
   <li><Important>storage</Important>: اطلاعات Object Storage شامل <Important>namespace</Important>، وضعیت، شناسه پلن و کلیدهای دسترسی</li>
   <div className="h-1" />
   <li><Important>privateNetworkFeature</Important>: مشخص می‌کند که آیا امکان استفاده از شبکه خصوصی برای حساب فعال است یا خیر</li>
-  <div className="h-1" />
-  <li><Important>currentSubscriptionPlan</Important>: اطلاعات سطح کاربری فعلی، شامل شناسه پلن (<Important>subscriptionPlanID</Important>)، تاریخ انقضا و ...</li>
-  <div className="h-1" />
-  <li><Important>gitRepositoryIntegrations</Important> و <Important>gitProviderIntegrations</Important>: اتصال‌های حساب کاربری به repositoryها و سرویس‌های مبتنی بر Git</li>
 </ul>
 <div className="h-2" />
+
+<Section id="sub-endpoints" title="endpointهای جداگانه اطلاعات حساب کاربری" />
+
+علاوه بر <Important>me/</Important>، endpointهای زیر برای دریافت بخش‌های مشخصی از اطلاعات حساب کاربری ارائه شده‌اند. همه این endpointها با متد <Important>GET</Important> فراخوانی می‌شوند و در حالت تیمی، اطلاعات تیم را برمی‌گردانند:
+
+<div className="h-2" />
+<ul>
+  <li><Important>me/subscription/</Important>: اطلاعات سطح کاربری فعلی</li>
+  <div className="h-1" />
+  <li><Important>me/two-fa/</Important>: وضعیت احراز هویت دو مرحله‌ای</li>
+  <div className="h-1" />
+  <li><Important>me/free-credit/</Important>: میزان اعتبار رایگان باقی‌مانده</li>
+  <div className="h-1" />
+  <li><Important>me/git-integrations/</Important>: اتصال‌های حساب کاربری به سرویس‌ها و repositoryهای Github</li>
+  <div className="h-1" />
+  <li><Important>me/utm/</Important>: اطلاعات کمپین (UTM) که حساب کاربری از طریق آن عضو شده است</li>
+</ul>
+<div className="h-2" />
+
+<Section id="me-subscription" title="دریافت اطلاعات سطح کاربری فعلی" headingTag="h3" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me/subscription \\
+  --header "Authorization: Bearer TOKEN"`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+نمونه پاسخ (با مقادیر فرضی):
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='json'>
+{`{
+  "currentSubscriptionPlan": {
+    "_id": "6abbxxxxxxxxxxxxxxxxxxxx",
+    "type": "subscription",
+    "userID": "64e7xxxxxxxxxxxxxxxxxxxx",
+    "subscriptionPlanID": "free",
+    "subscriptionPlanExpiration": "2026-10-29T08:40:26.064Z",
+    "maxTechnicalTicketsPerMonth": "infinite",
+    "subscriptionDurationType": "monthly",
+    "createdAt": "2026-09-29T08:40:26.066Z",
+    "updatedAt": "2026-09-29T08:40:26.066Z",
+    "technicalTicketsCount": 0
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+فیلد <Important>subscriptionPlanID</Important> شناسه سطح کاربری فعلی، <Important>subscriptionPlanExpiration</Important> تاریخ انقضای آن و <Important>technicalTicketsCount</Important> تعداد تیکت‌های فنی ثبت‌شده در دوره فعلی است.
+<Section id="me-two-fa" title="دریافت وضعیت احراز هویت دو مرحله‌ای" headingTag="h3" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me/two-fa \\
+  --header "Authorization: Bearer TOKEN"`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+نمونه پاسخ:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='json'>
+{`{
+  "twoFA": true,
+  "lastTwoFAVerifiedAt": "2026-10-01T09:12:30.000Z"
+}`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+فیلد <Important>twoFA</Important> فعال بودن احراز هویت دو مرحله‌ای و <Important>lastTwoFAVerifiedAt</Important> زمان آخرین تایید موفق آن را مشخص می‌کند. در حالت تیمی، این فیلدها در پاسخ وجود ندارند.
+
+<Section id="me-free-credit" title="دریافت اعتبار رایگان باقی‌مانده" headingTag="h3" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me/free-credit \\
+  --header "Authorization: Bearer TOKEN"`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+نمونه پاسخ:
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='json'>
+{`{
+  "remainingFreeCredit": 0
+}`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+در حالت تیمی، فیلد <Important>remainingFreeCredit</Important> در پاسخ وجود ندارد. هم‌چنین در نظر داشته باشید که در حال حاضر اعتبار رایگان ارائه نمی‌شود.
+
+<Section id="me-git-integrations" title="دریافت اتصال‌های Git حساب کاربری" headingTag="h3" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me/git-integrations \\
+  --header "Authorization: Bearer TOKEN"`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+نمونه پاسخ (با مقادیر فرضی):
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='json'>
+{`{
+  "gitProviderIntegrations": [...],
+  "gitRepositoryIntegrations": [...]
+}`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+آرایه <Important>gitProviderIntegrations</Important> حساب‌های Git متصل‌شده و آرایه <Important>gitRepositoryIntegrations</Important> اتصال‌های repository مرتبط با هر کدام را نشان می‌دهد.
+
+<Section id="me-utm" title="دریافت اطلاعات UTM حساب کاربری" headingTag="h3" />
+
+<div dir="ltr">
+<Highlight className='bash'>
+{`curl --request GET \\
+  --url https://api.liara.ir/v1/me/utm \\
+  --header "Authorization: Bearer TOKEN"`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+نمونه پاسخ (با مقادیر فرضی):
+
+<div className="h-2" />
+<div dir="ltr">
+<Highlight className='json'>
+{`{
+  "utm": {
+    "_id": "66b1xxxxxxxxxxxxxxxxxxxx",
+    "source": "example-source",
+    "freeCreditAmount": 500000,
+    "joinedAt": "2026-05-01T08:00:00.000Z",
+    "expiresAt": "2026-06-01T08:00:00.000Z",
+  }
+}`}
+</Highlight>
+</div>
+<div className="h-2" />
+
+اگر حساب کاربری از طریق هیچ کمپینی عضو نشده باشد، مقدار <Important>utm</Important> برابر <Important>null</Important> خواهد بود.
+
+در تمامی دستورات فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
 
 <Section id="example" title="نمونه ارسال درخواست" />
 
@@ -235,11 +385,9 @@ import Head from "next/head";
   --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
   | jq '.user | {
-    twoFA,
     hasPassword,
     emailVerifiedAt,
-    phoneVerifiedAt,
-    lastTwoFAVerifiedAt
+    phoneVerifiedAt
   }'`}
 </Highlight>
 </div>
@@ -247,15 +395,16 @@ import Head from "next/head";
 
 در عبارت فوق، بایستی به جای <Important>TOKEN</Important>، <a href="/references/api/about/#api-access-key" className="text-[#2196f3]">کلید API حساب کاربری خود</a> را وارد کنید. 
 
+برای دریافت وضعیت احراز هویت دو مرحله‌ای، از <a href="#me-two-fa" className="text-[#2196f3]">endpoint <Important>me/two-fa/</Important></a> استفاده کنید.
 
 <Section id="example-for-getting-current-subscription" title="نمونه ارسال درخواست برای دریافت اطلاعات مرتبط با سطح کاربری فعلی کاربر" />
 
 <div dir="ltr">
 <Highlight className='bash'>
 {`curl --request GET \\
-  --url https://api.liara.ir/v1/me \\
+  --url https://api.liara.ir/v1/me/subscription \\
   --header "Authorization: Bearer TOKEN" \\
-  | jq '.user.currentSubscriptionPlan'`}
+  | jq '.currentSubscriptionPlan'`}
 </Highlight>
 </div>
 <div className="h-2" />
@@ -434,7 +583,7 @@ import Head from "next/head";
 {`curl --request GET \\
   --url https://api.liara.ir/v1/me \\
   --header "Authorization: Bearer TOKEN" \\
-  | jq '.user | {minCreditAmount, isManualMinCredit, remainingFreeCredit, hasSucceedPayment}'`}
+  | jq '.user | {minCreditAmount, isManualMinCredit, hasSucceedPayment}'`}
 </Highlight>
 </div>
 <div className="h-2" />
