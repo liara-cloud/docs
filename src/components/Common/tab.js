@@ -1,7 +1,41 @@
-import React, { useState } from "react";
+import React, { isValidElement, useEffect, useRef, useState } from "react";
+import TabPanel from "./TabPanel";
+
+const containsId = (node, id) => {
+  if (Array.isArray(node)) return node.some((child) => containsId(child, id));
+  if (!isValidElement(node)) return false;
+  return node.props.id === id || containsId(node.props.children, id);
+};
 
 const TabComponent = ({ tabs, content }) => {
   const [activeTab, setActiveTab] = useState(0);
+  const hashChecked = useRef(false);
+  const pendingScroll = useRef(null);
+
+  useEffect(() => {
+    if (hashChecked.current) return;
+    hashChecked.current = true;
+
+    let id;
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1));
+    } catch {
+      return;
+    }
+    if (!id || !Array.isArray(content)) return;
+
+    const index = content.findIndex((item) => containsId(item, id));
+    if (index > 0) {
+      pendingScroll.current = { index, id };
+      setActiveTab(index);
+    }
+  }, [content]);
+
+  useEffect(() => {
+    if (pendingScroll.current?.index !== activeTab) return;
+    document.getElementById(pendingScroll.current.id)?.scrollIntoView();
+    pendingScroll.current = null;
+  }, [activeTab]);
 
   return (
     <div id="tab" dir="ltr" className="w-full mt-10 rtl">
@@ -33,11 +67,12 @@ const TabComponent = ({ tabs, content }) => {
 
       {/* Tab content */}
       <div dir="rtl" className="mt-5 p-4">
-        {Array.isArray(content) && content.length > activeTab && (
-          <div key={`highlight-tab-${activeTab}`}>
-            {content[activeTab]}
-          </div>
-        )}
+        {Array.isArray(content) &&
+          content.map((item, index) => (
+            <TabPanel key={index} active={activeTab === index}>
+              {item}
+            </TabPanel>
+          ))}
       </div>
     </div>
   );

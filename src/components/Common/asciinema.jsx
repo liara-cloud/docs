@@ -5,10 +5,7 @@ export default function Asciinema({ id }) {
   const ref = useRef();
   useEffect(
     () => {
-      AsciinemaPlayer.create(
-        `/casts/${id}.cast`,
-        document.getElementById(`${ref.current.id}`)
-      );
+      AsciinemaPlayer.create(`/casts/${id}.cast`, ref.current);
     },
     [id]
   );
