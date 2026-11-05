@@ -1,5 +1,5 @@
 # 1) Build
-FROM docker-mirror.liara.ir/node:18-alpine AS builder
+FROM docker-mirror.liara.ir/node:24-alpine AS builder
 
 ARG MY_BASE_URL
 ARG MY_API_KEY
