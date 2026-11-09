@@ -209,12 +209,14 @@ const types = [
 
 export default function PlatformIcon({ platform, style = {} }) {
   const type = types.find(type => type.alt === platform);
+  // Turbopack (default in Next 16) imports images as a URL string; webpack gives { src }
+  const logoSrc = typeof type?.logo === "string" ? type.logo : type?.logo?.src;
 
-  if(type?.logo?.src ) {
+  if (logoSrc) {
     return (
       <img
         className="page-icon"
-        src={type.logo.src}
+        src={logoSrc}
         alt={type.alt}
         style={{
           ...style,
